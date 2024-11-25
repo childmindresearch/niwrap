@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRIS_PREPROC_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2bb4886135fce5b3651f3050a69d2251f17b9700.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dd5edb4541571b929ce3905d2cb09807c8f4d850.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mris_preproc&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -220,208 +220,205 @@
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRIS_PREPROC_METADATA</span><span class="p">)</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_preproc&quot;</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--out&quot;</span><span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">outfile</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="p">])</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--target&quot;</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="s2">&quot;--target&quot;</span><span class="p">,</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">target_subject</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="p">])</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--hemi&quot;</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="s2">&quot;--hemi&quot;</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">hemi</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="p">])</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">meas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="s2">&quot;--meas&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="n">meas</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="p">])</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>            <span class="s2">&quot;--label&quot;</span><span class="p">,</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>            <span class="n">label</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="p">])</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">measdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="s2">&quot;--measdir&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="n">measdir</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="p">])</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">subjects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="o">*</span><span class="n">subjects</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="p">])</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">fsgd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="s2">&quot;--fsgd&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fsgd</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="p">])</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">subjectlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;--f&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjectlist</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">qdec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="s2">&quot;--qdec&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">qdec_long</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="s2">&quot;--qdec-long&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec_long</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">surfmeasfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;--is&quot;</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">surfmeasfile</span><span class="p">]</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="p">])</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[VOLMEASFILE]&quot;</span><span class="p">)</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">projfrac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>            <span class="s2">&quot;--projfrac&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">projfrac</span><span class="p">)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="p">])</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">projfrac_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="s2">&quot;--projfrac-max&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_max</span><span class="p">)</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="p">])</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">projfrac_avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>            <span class="s2">&quot;--projfrac-avg&quot;</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_avg</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="p">])</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">no_mask_non_cortex</span><span class="p">:</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-mask-non-cortex&quot;</span><span class="p">)</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">session_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>            <span class="s2">&quot;--sf&quot;</span><span class="p">,</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">session_file</span><span class="p">)</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="p">])</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">dir_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>            <span class="s2">&quot;--df&quot;</span><span class="p">,</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dir_file</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="p">])</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="k">if</span> <span class="n">analysis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>            <span class="s2">&quot;--analysis&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>            <span class="n">analysis</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="p">])</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">if</span> <span class="n">contrast</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>            <span class="s2">&quot;--contrast&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>            <span class="n">contrast</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="p">])</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">cvar_flag</span><span class="p">:</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cvar&quot;</span><span class="p">)</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">offset_flag</span><span class="p">:</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--offset&quot;</span><span class="p">)</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">map_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>            <span class="s2">&quot;--map&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="n">map_</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>        <span class="p">])</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">if</span> <span class="n">etiv_flag</span><span class="p">:</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--etiv&quot;</span><span class="p">)</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>            <span class="s2">&quot;--fwhm&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="p">])</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">fwhm_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>            <span class="s2">&quot;--fwhm-src&quot;</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm_src</span><span class="p">)</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="p">])</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>        <span class="p">])</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="k">if</span> <span class="n">niters_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>            <span class="s2">&quot;--niters-src&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters_src</span><span class="p">)</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="p">])</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">cortex_only</span><span class="p">:</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cortex-only&quot;</span><span class="p">)</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="k">if</span> <span class="n">mgz_flag</span><span class="p">:</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mgz&quot;</span><span class="p">)</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">no_jac_flag</span><span class="p">:</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-jac&quot;</span><span class="p">)</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="k">if</span> <span class="n">paired_diff_flag</span><span class="p">:</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--paired-diff&quot;</span><span class="p">)</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="k">if</span> <span class="n">cache_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>            <span class="s2">&quot;--cache-out&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>            <span class="n">cache_out</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="p">])</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="k">if</span> <span class="n">cache_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>            <span class="s2">&quot;--cache-in&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>            <span class="n">cache_in</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>        <span class="p">])</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="k">if</span> <span class="n">cache_out_only</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>            <span class="s2">&quot;--cache-out-only&quot;</span><span class="p">,</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>            <span class="n">cache_out_only</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>        <span class="p">])</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">no_prune_flag</span><span class="p">:</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-prune&quot;</span><span class="p">)</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="k">if</span> <span class="n">mean_flag</span><span class="p">:</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mean&quot;</span><span class="p">)</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">std_flag</span><span class="p">:</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--std&quot;</span><span class="p">)</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">reshape_flag</span><span class="p">:</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reshape&quot;</span><span class="p">)</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="k">if</span> <span class="n">surfreg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>            <span class="s2">&quot;--surfreg&quot;</span><span class="p">,</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>            <span class="n">surfreg</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>        <span class="p">])</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="k">if</span> <span class="n">subjects_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>            <span class="s2">&quot;--SUBJECTS_DIR&quot;</span><span class="p">,</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>            <span class="n">subjects_dir</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>        <span class="p">])</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">synth_flag</span><span class="p">:</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--synth&quot;</span><span class="p">)</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">tmpdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>            <span class="s2">&quot;--tmpdir&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>            <span class="n">tmpdir</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>        <span class="p">])</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">nocleanup_flag</span><span class="p">:</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="k">if</span> <span class="n">cleanup_flag</span><span class="p">:</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>            <span class="s2">&quot;--log&quot;</span><span class="p">,</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>            <span class="n">log</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>        <span class="p">])</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">nolog_flag</span><span class="p">:</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="k">if</span> <span class="n">debug_flag</span><span class="p">:</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisPreprocOutputs</span><span class="p">(</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="p">)</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="s2">&quot;MRIS_PREPROC_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="s2">&quot;MrisPreprocOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="s2">&quot;mris_preproc&quot;</span><span class="p">,</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="p">]</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">outfile</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="p">])</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="s2">&quot;--target&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">target_subject</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="p">])</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="s2">&quot;--hemi&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">hemi</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="p">])</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">meas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="s2">&quot;--meas&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="n">meas</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="p">])</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>            <span class="s2">&quot;--label&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="n">label</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="p">])</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">measdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>            <span class="s2">&quot;--measdir&quot;</span><span class="p">,</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>            <span class="n">measdir</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="p">])</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">subjects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="o">*</span><span class="n">subjects</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">fsgd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="s2">&quot;--fsgd&quot;</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fsgd</span><span class="p">)</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="p">])</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">subjectlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="s2">&quot;--f&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjectlist</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">qdec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;--qdec&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">qdec_long</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="s2">&quot;--qdec-long&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec_long</span><span class="p">)</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="p">])</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">surfmeasfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="s2">&quot;--is&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">surfmeasfile</span><span class="p">]</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="p">])</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[VOLMEASFILE]&quot;</span><span class="p">)</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">projfrac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="s2">&quot;--projfrac&quot;</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">projfrac</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="p">])</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">projfrac_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="s2">&quot;--projfrac-max&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_max</span><span class="p">)</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="p">])</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">projfrac_avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>            <span class="s2">&quot;--projfrac-avg&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_avg</span><span class="p">)</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="p">])</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">no_mask_non_cortex</span><span class="p">:</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-mask-non-cortex&quot;</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">session_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>            <span class="s2">&quot;--sf&quot;</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">session_file</span><span class="p">)</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="p">])</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">dir_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="s2">&quot;--df&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dir_file</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="p">])</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">analysis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="s2">&quot;--analysis&quot;</span><span class="p">,</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="n">analysis</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="p">])</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">contrast</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="s2">&quot;--contrast&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>            <span class="n">contrast</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="p">])</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">cvar_flag</span><span class="p">:</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cvar&quot;</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">offset_flag</span><span class="p">:</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--offset&quot;</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">map_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="s2">&quot;--map&quot;</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>            <span class="n">map_</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="p">])</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">etiv_flag</span><span class="p">:</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--etiv&quot;</span><span class="p">)</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>            <span class="s2">&quot;--fwhm&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="p">])</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">fwhm_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>            <span class="s2">&quot;--fwhm-src&quot;</span><span class="p">,</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm_src</span><span class="p">)</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="p">])</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="p">])</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">niters_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>            <span class="s2">&quot;--niters-src&quot;</span><span class="p">,</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters_src</span><span class="p">)</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>        <span class="p">])</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="k">if</span> <span class="n">cortex_only</span><span class="p">:</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cortex-only&quot;</span><span class="p">)</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">mgz_flag</span><span class="p">:</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mgz&quot;</span><span class="p">)</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="k">if</span> <span class="n">no_jac_flag</span><span class="p">:</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-jac&quot;</span><span class="p">)</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">paired_diff_flag</span><span class="p">:</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--paired-diff&quot;</span><span class="p">)</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="k">if</span> <span class="n">cache_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>            <span class="s2">&quot;--cache-out&quot;</span><span class="p">,</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>            <span class="n">cache_out</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="p">])</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="k">if</span> <span class="n">cache_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>            <span class="s2">&quot;--cache-in&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>            <span class="n">cache_in</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="p">])</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="k">if</span> <span class="n">cache_out_only</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>            <span class="s2">&quot;--cache-out-only&quot;</span><span class="p">,</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>            <span class="n">cache_out_only</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>        <span class="p">])</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="k">if</span> <span class="n">no_prune_flag</span><span class="p">:</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-prune&quot;</span><span class="p">)</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="k">if</span> <span class="n">mean_flag</span><span class="p">:</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mean&quot;</span><span class="p">)</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="k">if</span> <span class="n">std_flag</span><span class="p">:</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--std&quot;</span><span class="p">)</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="k">if</span> <span class="n">reshape_flag</span><span class="p">:</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reshape&quot;</span><span class="p">)</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">surfreg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>            <span class="s2">&quot;--surfreg&quot;</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>            <span class="n">surfreg</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>        <span class="p">])</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">subjects_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>            <span class="s2">&quot;--SUBJECTS_DIR&quot;</span><span class="p">,</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>            <span class="n">subjects_dir</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>        <span class="p">])</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">synth_flag</span><span class="p">:</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--synth&quot;</span><span class="p">)</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="k">if</span> <span class="n">tmpdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>            <span class="s2">&quot;--tmpdir&quot;</span><span class="p">,</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>            <span class="n">tmpdir</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>        <span class="p">])</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="n">nocleanup_flag</span><span class="p">:</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">cleanup_flag</span><span class="p">:</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>            <span class="s2">&quot;--log&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>            <span class="n">log</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="p">])</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">nolog_flag</span><span class="p">:</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">debug_flag</span><span class="p">:</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisPreprocOutputs</span><span class="p">(</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="p">)</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="s2">&quot;MRIS_PREPROC_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="s2">&quot;MrisPreprocOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="s2">&quot;mris_preproc&quot;</span><span class="p">,</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -430,7 +427,7 @@
                     <div class="attr variable">
             <span class="name">MRIS_PREPROC_METADATA</span>        =
 <input id="MRIS_PREPROC_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRIS_PREPROC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2bb4886135fce5b3651f3050a69d2251f17b9700.boutiques&#39;, name=&#39;mris_preproc&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRIS_PREPROC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;dd5edb4541571b929ce3905d2cb09807c8f4d850.boutiques&#39;, name=&#39;mris_preproc&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -629,201 +626,198 @@
 </span><span id="mris_preproc-150"><a href="#mris_preproc-150"><span class="linenos">150</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRIS_PREPROC_METADATA</span><span class="p">)</span>
 </span><span id="mris_preproc-151"><a href="#mris_preproc-151"><span class="linenos">151</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="mris_preproc-152"><a href="#mris_preproc-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_preproc&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-153"><a href="#mris_preproc-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--out&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-154"><a href="#mris_preproc-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-155"><a href="#mris_preproc-155"><span class="linenos">155</span></a>        <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-156"><a href="#mris_preproc-156"><span class="linenos">156</span></a>        <span class="n">outfile</span>
-</span><span id="mris_preproc-157"><a href="#mris_preproc-157"><span class="linenos">157</span></a>    <span class="p">])</span>
-</span><span id="mris_preproc-158"><a href="#mris_preproc-158"><span class="linenos">158</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--target&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-159"><a href="#mris_preproc-159"><span class="linenos">159</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-160"><a href="#mris_preproc-160"><span class="linenos">160</span></a>        <span class="s2">&quot;--target&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-161"><a href="#mris_preproc-161"><span class="linenos">161</span></a>        <span class="n">target_subject</span>
-</span><span id="mris_preproc-162"><a href="#mris_preproc-162"><span class="linenos">162</span></a>    <span class="p">])</span>
-</span><span id="mris_preproc-163"><a href="#mris_preproc-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--hemi&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-164"><a href="#mris_preproc-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-165"><a href="#mris_preproc-165"><span class="linenos">165</span></a>        <span class="s2">&quot;--hemi&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-166"><a href="#mris_preproc-166"><span class="linenos">166</span></a>        <span class="n">hemi</span>
-</span><span id="mris_preproc-167"><a href="#mris_preproc-167"><span class="linenos">167</span></a>    <span class="p">])</span>
-</span><span id="mris_preproc-168"><a href="#mris_preproc-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">meas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-169"><a href="#mris_preproc-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-170"><a href="#mris_preproc-170"><span class="linenos">170</span></a>            <span class="s2">&quot;--meas&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-171"><a href="#mris_preproc-171"><span class="linenos">171</span></a>            <span class="n">meas</span>
-</span><span id="mris_preproc-172"><a href="#mris_preproc-172"><span class="linenos">172</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-173"><a href="#mris_preproc-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-174"><a href="#mris_preproc-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-175"><a href="#mris_preproc-175"><span class="linenos">175</span></a>            <span class="s2">&quot;--label&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-176"><a href="#mris_preproc-176"><span class="linenos">176</span></a>            <span class="n">label</span>
-</span><span id="mris_preproc-177"><a href="#mris_preproc-177"><span class="linenos">177</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-178"><a href="#mris_preproc-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">measdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-179"><a href="#mris_preproc-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-180"><a href="#mris_preproc-180"><span class="linenos">180</span></a>            <span class="s2">&quot;--measdir&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-181"><a href="#mris_preproc-181"><span class="linenos">181</span></a>            <span class="n">measdir</span>
-</span><span id="mris_preproc-182"><a href="#mris_preproc-182"><span class="linenos">182</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-183"><a href="#mris_preproc-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">subjects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-184"><a href="#mris_preproc-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-185"><a href="#mris_preproc-185"><span class="linenos">185</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-186"><a href="#mris_preproc-186"><span class="linenos">186</span></a>            <span class="o">*</span><span class="n">subjects</span>
-</span><span id="mris_preproc-187"><a href="#mris_preproc-187"><span class="linenos">187</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-188"><a href="#mris_preproc-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">fsgd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-189"><a href="#mris_preproc-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-190"><a href="#mris_preproc-190"><span class="linenos">190</span></a>            <span class="s2">&quot;--fsgd&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-191"><a href="#mris_preproc-191"><span class="linenos">191</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fsgd</span><span class="p">)</span>
-</span><span id="mris_preproc-192"><a href="#mris_preproc-192"><span class="linenos">192</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-193"><a href="#mris_preproc-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">subjectlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-194"><a href="#mris_preproc-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-195"><a href="#mris_preproc-195"><span class="linenos">195</span></a>            <span class="s2">&quot;--f&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-196"><a href="#mris_preproc-196"><span class="linenos">196</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjectlist</span><span class="p">)</span>
-</span><span id="mris_preproc-197"><a href="#mris_preproc-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-198"><a href="#mris_preproc-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">qdec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-199"><a href="#mris_preproc-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-200"><a href="#mris_preproc-200"><span class="linenos">200</span></a>            <span class="s2">&quot;--qdec&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-201"><a href="#mris_preproc-201"><span class="linenos">201</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec</span><span class="p">)</span>
-</span><span id="mris_preproc-202"><a href="#mris_preproc-202"><span class="linenos">202</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-203"><a href="#mris_preproc-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">qdec_long</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-204"><a href="#mris_preproc-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-205"><a href="#mris_preproc-205"><span class="linenos">205</span></a>            <span class="s2">&quot;--qdec-long&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-206"><a href="#mris_preproc-206"><span class="linenos">206</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec_long</span><span class="p">)</span>
-</span><span id="mris_preproc-207"><a href="#mris_preproc-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-208"><a href="#mris_preproc-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">surfmeasfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-209"><a href="#mris_preproc-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-210"><a href="#mris_preproc-210"><span class="linenos">210</span></a>            <span class="s2">&quot;--is&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-211"><a href="#mris_preproc-211"><span class="linenos">211</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">surfmeasfile</span><span class="p">]</span>
-</span><span id="mris_preproc-212"><a href="#mris_preproc-212"><span class="linenos">212</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-213"><a href="#mris_preproc-213"><span class="linenos">213</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[VOLMEASFILE]&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-214"><a href="#mris_preproc-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">projfrac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-215"><a href="#mris_preproc-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-216"><a href="#mris_preproc-216"><span class="linenos">216</span></a>            <span class="s2">&quot;--projfrac&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-217"><a href="#mris_preproc-217"><span class="linenos">217</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">projfrac</span><span class="p">)</span>
-</span><span id="mris_preproc-218"><a href="#mris_preproc-218"><span class="linenos">218</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-219"><a href="#mris_preproc-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">projfrac_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-220"><a href="#mris_preproc-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-221"><a href="#mris_preproc-221"><span class="linenos">221</span></a>            <span class="s2">&quot;--projfrac-max&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-222"><a href="#mris_preproc-222"><span class="linenos">222</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_max</span><span class="p">)</span>
-</span><span id="mris_preproc-223"><a href="#mris_preproc-223"><span class="linenos">223</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-224"><a href="#mris_preproc-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">projfrac_avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-225"><a href="#mris_preproc-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-226"><a href="#mris_preproc-226"><span class="linenos">226</span></a>            <span class="s2">&quot;--projfrac-avg&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-227"><a href="#mris_preproc-227"><span class="linenos">227</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_avg</span><span class="p">)</span>
-</span><span id="mris_preproc-228"><a href="#mris_preproc-228"><span class="linenos">228</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-229"><a href="#mris_preproc-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">no_mask_non_cortex</span><span class="p">:</span>
-</span><span id="mris_preproc-230"><a href="#mris_preproc-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-mask-non-cortex&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-231"><a href="#mris_preproc-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">session_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-232"><a href="#mris_preproc-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-233"><a href="#mris_preproc-233"><span class="linenos">233</span></a>            <span class="s2">&quot;--sf&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-234"><a href="#mris_preproc-234"><span class="linenos">234</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">session_file</span><span class="p">)</span>
-</span><span id="mris_preproc-235"><a href="#mris_preproc-235"><span class="linenos">235</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-236"><a href="#mris_preproc-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">dir_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-237"><a href="#mris_preproc-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-238"><a href="#mris_preproc-238"><span class="linenos">238</span></a>            <span class="s2">&quot;--df&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-239"><a href="#mris_preproc-239"><span class="linenos">239</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dir_file</span><span class="p">)</span>
-</span><span id="mris_preproc-240"><a href="#mris_preproc-240"><span class="linenos">240</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-241"><a href="#mris_preproc-241"><span class="linenos">241</span></a>    <span class="k">if</span> <span class="n">analysis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-242"><a href="#mris_preproc-242"><span class="linenos">242</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-243"><a href="#mris_preproc-243"><span class="linenos">243</span></a>            <span class="s2">&quot;--analysis&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-244"><a href="#mris_preproc-244"><span class="linenos">244</span></a>            <span class="n">analysis</span>
-</span><span id="mris_preproc-245"><a href="#mris_preproc-245"><span class="linenos">245</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-246"><a href="#mris_preproc-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">contrast</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-247"><a href="#mris_preproc-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-248"><a href="#mris_preproc-248"><span class="linenos">248</span></a>            <span class="s2">&quot;--contrast&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-249"><a href="#mris_preproc-249"><span class="linenos">249</span></a>            <span class="n">contrast</span>
-</span><span id="mris_preproc-250"><a href="#mris_preproc-250"><span class="linenos">250</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-251"><a href="#mris_preproc-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">cvar_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-252"><a href="#mris_preproc-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cvar&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-253"><a href="#mris_preproc-253"><span class="linenos">253</span></a>    <span class="k">if</span> <span class="n">offset_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-254"><a href="#mris_preproc-254"><span class="linenos">254</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--offset&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-255"><a href="#mris_preproc-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">map_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-256"><a href="#mris_preproc-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-257"><a href="#mris_preproc-257"><span class="linenos">257</span></a>            <span class="s2">&quot;--map&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-258"><a href="#mris_preproc-258"><span class="linenos">258</span></a>            <span class="n">map_</span>
-</span><span id="mris_preproc-259"><a href="#mris_preproc-259"><span class="linenos">259</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-260"><a href="#mris_preproc-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">etiv_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-261"><a href="#mris_preproc-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--etiv&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-262"><a href="#mris_preproc-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-263"><a href="#mris_preproc-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-264"><a href="#mris_preproc-264"><span class="linenos">264</span></a>            <span class="s2">&quot;--fwhm&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-265"><a href="#mris_preproc-265"><span class="linenos">265</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
-</span><span id="mris_preproc-266"><a href="#mris_preproc-266"><span class="linenos">266</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-267"><a href="#mris_preproc-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">fwhm_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-268"><a href="#mris_preproc-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-269"><a href="#mris_preproc-269"><span class="linenos">269</span></a>            <span class="s2">&quot;--fwhm-src&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-270"><a href="#mris_preproc-270"><span class="linenos">270</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm_src</span><span class="p">)</span>
-</span><span id="mris_preproc-271"><a href="#mris_preproc-271"><span class="linenos">271</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-272"><a href="#mris_preproc-272"><span class="linenos">272</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-273"><a href="#mris_preproc-273"><span class="linenos">273</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-274"><a href="#mris_preproc-274"><span class="linenos">274</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-275"><a href="#mris_preproc-275"><span class="linenos">275</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-</span><span id="mris_preproc-276"><a href="#mris_preproc-276"><span class="linenos">276</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-277"><a href="#mris_preproc-277"><span class="linenos">277</span></a>    <span class="k">if</span> <span class="n">niters_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-278"><a href="#mris_preproc-278"><span class="linenos">278</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-279"><a href="#mris_preproc-279"><span class="linenos">279</span></a>            <span class="s2">&quot;--niters-src&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-280"><a href="#mris_preproc-280"><span class="linenos">280</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters_src</span><span class="p">)</span>
-</span><span id="mris_preproc-281"><a href="#mris_preproc-281"><span class="linenos">281</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-282"><a href="#mris_preproc-282"><span class="linenos">282</span></a>    <span class="k">if</span> <span class="n">cortex_only</span><span class="p">:</span>
-</span><span id="mris_preproc-283"><a href="#mris_preproc-283"><span class="linenos">283</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cortex-only&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-284"><a href="#mris_preproc-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">mgz_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-285"><a href="#mris_preproc-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mgz&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-286"><a href="#mris_preproc-286"><span class="linenos">286</span></a>    <span class="k">if</span> <span class="n">no_jac_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-287"><a href="#mris_preproc-287"><span class="linenos">287</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-jac&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-288"><a href="#mris_preproc-288"><span class="linenos">288</span></a>    <span class="k">if</span> <span class="n">paired_diff_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-289"><a href="#mris_preproc-289"><span class="linenos">289</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--paired-diff&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-290"><a href="#mris_preproc-290"><span class="linenos">290</span></a>    <span class="k">if</span> <span class="n">cache_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-291"><a href="#mris_preproc-291"><span class="linenos">291</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-292"><a href="#mris_preproc-292"><span class="linenos">292</span></a>            <span class="s2">&quot;--cache-out&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-293"><a href="#mris_preproc-293"><span class="linenos">293</span></a>            <span class="n">cache_out</span>
-</span><span id="mris_preproc-294"><a href="#mris_preproc-294"><span class="linenos">294</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-295"><a href="#mris_preproc-295"><span class="linenos">295</span></a>    <span class="k">if</span> <span class="n">cache_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-296"><a href="#mris_preproc-296"><span class="linenos">296</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-297"><a href="#mris_preproc-297"><span class="linenos">297</span></a>            <span class="s2">&quot;--cache-in&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-298"><a href="#mris_preproc-298"><span class="linenos">298</span></a>            <span class="n">cache_in</span>
-</span><span id="mris_preproc-299"><a href="#mris_preproc-299"><span class="linenos">299</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-300"><a href="#mris_preproc-300"><span class="linenos">300</span></a>    <span class="k">if</span> <span class="n">cache_out_only</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-301"><a href="#mris_preproc-301"><span class="linenos">301</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-302"><a href="#mris_preproc-302"><span class="linenos">302</span></a>            <span class="s2">&quot;--cache-out-only&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-303"><a href="#mris_preproc-303"><span class="linenos">303</span></a>            <span class="n">cache_out_only</span>
-</span><span id="mris_preproc-304"><a href="#mris_preproc-304"><span class="linenos">304</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-305"><a href="#mris_preproc-305"><span class="linenos">305</span></a>    <span class="k">if</span> <span class="n">no_prune_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-306"><a href="#mris_preproc-306"><span class="linenos">306</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-prune&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-307"><a href="#mris_preproc-307"><span class="linenos">307</span></a>    <span class="k">if</span> <span class="n">mean_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-308"><a href="#mris_preproc-308"><span class="linenos">308</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mean&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-309"><a href="#mris_preproc-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">std_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-310"><a href="#mris_preproc-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--std&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-311"><a href="#mris_preproc-311"><span class="linenos">311</span></a>    <span class="k">if</span> <span class="n">reshape_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-312"><a href="#mris_preproc-312"><span class="linenos">312</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reshape&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-313"><a href="#mris_preproc-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">surfreg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-314"><a href="#mris_preproc-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-315"><a href="#mris_preproc-315"><span class="linenos">315</span></a>            <span class="s2">&quot;--surfreg&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-316"><a href="#mris_preproc-316"><span class="linenos">316</span></a>            <span class="n">surfreg</span>
-</span><span id="mris_preproc-317"><a href="#mris_preproc-317"><span class="linenos">317</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-318"><a href="#mris_preproc-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">subjects_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-319"><a href="#mris_preproc-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-320"><a href="#mris_preproc-320"><span class="linenos">320</span></a>            <span class="s2">&quot;--SUBJECTS_DIR&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-321"><a href="#mris_preproc-321"><span class="linenos">321</span></a>            <span class="n">subjects_dir</span>
-</span><span id="mris_preproc-322"><a href="#mris_preproc-322"><span class="linenos">322</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-323"><a href="#mris_preproc-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">synth_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-324"><a href="#mris_preproc-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--synth&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-325"><a href="#mris_preproc-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">tmpdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-326"><a href="#mris_preproc-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-327"><a href="#mris_preproc-327"><span class="linenos">327</span></a>            <span class="s2">&quot;--tmpdir&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-328"><a href="#mris_preproc-328"><span class="linenos">328</span></a>            <span class="n">tmpdir</span>
-</span><span id="mris_preproc-329"><a href="#mris_preproc-329"><span class="linenos">329</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-330"><a href="#mris_preproc-330"><span class="linenos">330</span></a>    <span class="k">if</span> <span class="n">nocleanup_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-331"><a href="#mris_preproc-331"><span class="linenos">331</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-332"><a href="#mris_preproc-332"><span class="linenos">332</span></a>    <span class="k">if</span> <span class="n">cleanup_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-333"><a href="#mris_preproc-333"><span class="linenos">333</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-334"><a href="#mris_preproc-334"><span class="linenos">334</span></a>    <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mris_preproc-335"><a href="#mris_preproc-335"><span class="linenos">335</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mris_preproc-336"><a href="#mris_preproc-336"><span class="linenos">336</span></a>            <span class="s2">&quot;--log&quot;</span><span class="p">,</span>
-</span><span id="mris_preproc-337"><a href="#mris_preproc-337"><span class="linenos">337</span></a>            <span class="n">log</span>
-</span><span id="mris_preproc-338"><a href="#mris_preproc-338"><span class="linenos">338</span></a>        <span class="p">])</span>
-</span><span id="mris_preproc-339"><a href="#mris_preproc-339"><span class="linenos">339</span></a>    <span class="k">if</span> <span class="n">nolog_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-340"><a href="#mris_preproc-340"><span class="linenos">340</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-341"><a href="#mris_preproc-341"><span class="linenos">341</span></a>    <span class="k">if</span> <span class="n">debug_flag</span><span class="p">:</span>
-</span><span id="mris_preproc-342"><a href="#mris_preproc-342"><span class="linenos">342</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="mris_preproc-343"><a href="#mris_preproc-343"><span class="linenos">343</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisPreprocOutputs</span><span class="p">(</span>
-</span><span id="mris_preproc-344"><a href="#mris_preproc-344"><span class="linenos">344</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mris_preproc-345"><a href="#mris_preproc-345"><span class="linenos">345</span></a>    <span class="p">)</span>
-</span><span id="mris_preproc-346"><a href="#mris_preproc-346"><span class="linenos">346</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="mris_preproc-347"><a href="#mris_preproc-347"><span class="linenos">347</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="mris_preproc-153"><a href="#mris_preproc-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-154"><a href="#mris_preproc-154"><span class="linenos">154</span></a>        <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-155"><a href="#mris_preproc-155"><span class="linenos">155</span></a>        <span class="n">outfile</span>
+</span><span id="mris_preproc-156"><a href="#mris_preproc-156"><span class="linenos">156</span></a>    <span class="p">])</span>
+</span><span id="mris_preproc-157"><a href="#mris_preproc-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-158"><a href="#mris_preproc-158"><span class="linenos">158</span></a>        <span class="s2">&quot;--target&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-159"><a href="#mris_preproc-159"><span class="linenos">159</span></a>        <span class="n">target_subject</span>
+</span><span id="mris_preproc-160"><a href="#mris_preproc-160"><span class="linenos">160</span></a>    <span class="p">])</span>
+</span><span id="mris_preproc-161"><a href="#mris_preproc-161"><span class="linenos">161</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-162"><a href="#mris_preproc-162"><span class="linenos">162</span></a>        <span class="s2">&quot;--hemi&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-163"><a href="#mris_preproc-163"><span class="linenos">163</span></a>        <span class="n">hemi</span>
+</span><span id="mris_preproc-164"><a href="#mris_preproc-164"><span class="linenos">164</span></a>    <span class="p">])</span>
+</span><span id="mris_preproc-165"><a href="#mris_preproc-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">meas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-166"><a href="#mris_preproc-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-167"><a href="#mris_preproc-167"><span class="linenos">167</span></a>            <span class="s2">&quot;--meas&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-168"><a href="#mris_preproc-168"><span class="linenos">168</span></a>            <span class="n">meas</span>
+</span><span id="mris_preproc-169"><a href="#mris_preproc-169"><span class="linenos">169</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-170"><a href="#mris_preproc-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-171"><a href="#mris_preproc-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-172"><a href="#mris_preproc-172"><span class="linenos">172</span></a>            <span class="s2">&quot;--label&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-173"><a href="#mris_preproc-173"><span class="linenos">173</span></a>            <span class="n">label</span>
+</span><span id="mris_preproc-174"><a href="#mris_preproc-174"><span class="linenos">174</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-175"><a href="#mris_preproc-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">measdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-176"><a href="#mris_preproc-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-177"><a href="#mris_preproc-177"><span class="linenos">177</span></a>            <span class="s2">&quot;--measdir&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-178"><a href="#mris_preproc-178"><span class="linenos">178</span></a>            <span class="n">measdir</span>
+</span><span id="mris_preproc-179"><a href="#mris_preproc-179"><span class="linenos">179</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-180"><a href="#mris_preproc-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">subjects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-181"><a href="#mris_preproc-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-182"><a href="#mris_preproc-182"><span class="linenos">182</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-183"><a href="#mris_preproc-183"><span class="linenos">183</span></a>            <span class="o">*</span><span class="n">subjects</span>
+</span><span id="mris_preproc-184"><a href="#mris_preproc-184"><span class="linenos">184</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-185"><a href="#mris_preproc-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">fsgd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-186"><a href="#mris_preproc-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-187"><a href="#mris_preproc-187"><span class="linenos">187</span></a>            <span class="s2">&quot;--fsgd&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-188"><a href="#mris_preproc-188"><span class="linenos">188</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fsgd</span><span class="p">)</span>
+</span><span id="mris_preproc-189"><a href="#mris_preproc-189"><span class="linenos">189</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-190"><a href="#mris_preproc-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">subjectlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-191"><a href="#mris_preproc-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-192"><a href="#mris_preproc-192"><span class="linenos">192</span></a>            <span class="s2">&quot;--f&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-193"><a href="#mris_preproc-193"><span class="linenos">193</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjectlist</span><span class="p">)</span>
+</span><span id="mris_preproc-194"><a href="#mris_preproc-194"><span class="linenos">194</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-195"><a href="#mris_preproc-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">qdec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-196"><a href="#mris_preproc-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-197"><a href="#mris_preproc-197"><span class="linenos">197</span></a>            <span class="s2">&quot;--qdec&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-198"><a href="#mris_preproc-198"><span class="linenos">198</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec</span><span class="p">)</span>
+</span><span id="mris_preproc-199"><a href="#mris_preproc-199"><span class="linenos">199</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-200"><a href="#mris_preproc-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">qdec_long</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-201"><a href="#mris_preproc-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-202"><a href="#mris_preproc-202"><span class="linenos">202</span></a>            <span class="s2">&quot;--qdec-long&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-203"><a href="#mris_preproc-203"><span class="linenos">203</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">qdec_long</span><span class="p">)</span>
+</span><span id="mris_preproc-204"><a href="#mris_preproc-204"><span class="linenos">204</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-205"><a href="#mris_preproc-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">surfmeasfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-206"><a href="#mris_preproc-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-207"><a href="#mris_preproc-207"><span class="linenos">207</span></a>            <span class="s2">&quot;--is&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-208"><a href="#mris_preproc-208"><span class="linenos">208</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">surfmeasfile</span><span class="p">]</span>
+</span><span id="mris_preproc-209"><a href="#mris_preproc-209"><span class="linenos">209</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-210"><a href="#mris_preproc-210"><span class="linenos">210</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[VOLMEASFILE]&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-211"><a href="#mris_preproc-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">projfrac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-212"><a href="#mris_preproc-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-213"><a href="#mris_preproc-213"><span class="linenos">213</span></a>            <span class="s2">&quot;--projfrac&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-214"><a href="#mris_preproc-214"><span class="linenos">214</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">projfrac</span><span class="p">)</span>
+</span><span id="mris_preproc-215"><a href="#mris_preproc-215"><span class="linenos">215</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-216"><a href="#mris_preproc-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">projfrac_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-217"><a href="#mris_preproc-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-218"><a href="#mris_preproc-218"><span class="linenos">218</span></a>            <span class="s2">&quot;--projfrac-max&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-219"><a href="#mris_preproc-219"><span class="linenos">219</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_max</span><span class="p">)</span>
+</span><span id="mris_preproc-220"><a href="#mris_preproc-220"><span class="linenos">220</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-221"><a href="#mris_preproc-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">projfrac_avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-222"><a href="#mris_preproc-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-223"><a href="#mris_preproc-223"><span class="linenos">223</span></a>            <span class="s2">&quot;--projfrac-avg&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-224"><a href="#mris_preproc-224"><span class="linenos">224</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">projfrac_avg</span><span class="p">)</span>
+</span><span id="mris_preproc-225"><a href="#mris_preproc-225"><span class="linenos">225</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-226"><a href="#mris_preproc-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">no_mask_non_cortex</span><span class="p">:</span>
+</span><span id="mris_preproc-227"><a href="#mris_preproc-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-mask-non-cortex&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-228"><a href="#mris_preproc-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">session_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-229"><a href="#mris_preproc-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-230"><a href="#mris_preproc-230"><span class="linenos">230</span></a>            <span class="s2">&quot;--sf&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-231"><a href="#mris_preproc-231"><span class="linenos">231</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">session_file</span><span class="p">)</span>
+</span><span id="mris_preproc-232"><a href="#mris_preproc-232"><span class="linenos">232</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-233"><a href="#mris_preproc-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">dir_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-234"><a href="#mris_preproc-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-235"><a href="#mris_preproc-235"><span class="linenos">235</span></a>            <span class="s2">&quot;--df&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-236"><a href="#mris_preproc-236"><span class="linenos">236</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dir_file</span><span class="p">)</span>
+</span><span id="mris_preproc-237"><a href="#mris_preproc-237"><span class="linenos">237</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-238"><a href="#mris_preproc-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">analysis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-239"><a href="#mris_preproc-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-240"><a href="#mris_preproc-240"><span class="linenos">240</span></a>            <span class="s2">&quot;--analysis&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-241"><a href="#mris_preproc-241"><span class="linenos">241</span></a>            <span class="n">analysis</span>
+</span><span id="mris_preproc-242"><a href="#mris_preproc-242"><span class="linenos">242</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-243"><a href="#mris_preproc-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">contrast</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-244"><a href="#mris_preproc-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-245"><a href="#mris_preproc-245"><span class="linenos">245</span></a>            <span class="s2">&quot;--contrast&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-246"><a href="#mris_preproc-246"><span class="linenos">246</span></a>            <span class="n">contrast</span>
+</span><span id="mris_preproc-247"><a href="#mris_preproc-247"><span class="linenos">247</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-248"><a href="#mris_preproc-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">cvar_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-249"><a href="#mris_preproc-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cvar&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-250"><a href="#mris_preproc-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">offset_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-251"><a href="#mris_preproc-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--offset&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-252"><a href="#mris_preproc-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">map_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-253"><a href="#mris_preproc-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-254"><a href="#mris_preproc-254"><span class="linenos">254</span></a>            <span class="s2">&quot;--map&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-255"><a href="#mris_preproc-255"><span class="linenos">255</span></a>            <span class="n">map_</span>
+</span><span id="mris_preproc-256"><a href="#mris_preproc-256"><span class="linenos">256</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-257"><a href="#mris_preproc-257"><span class="linenos">257</span></a>    <span class="k">if</span> <span class="n">etiv_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-258"><a href="#mris_preproc-258"><span class="linenos">258</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--etiv&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-259"><a href="#mris_preproc-259"><span class="linenos">259</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-260"><a href="#mris_preproc-260"><span class="linenos">260</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-261"><a href="#mris_preproc-261"><span class="linenos">261</span></a>            <span class="s2">&quot;--fwhm&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-262"><a href="#mris_preproc-262"><span class="linenos">262</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+</span><span id="mris_preproc-263"><a href="#mris_preproc-263"><span class="linenos">263</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-264"><a href="#mris_preproc-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">fwhm_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-265"><a href="#mris_preproc-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-266"><a href="#mris_preproc-266"><span class="linenos">266</span></a>            <span class="s2">&quot;--fwhm-src&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-267"><a href="#mris_preproc-267"><span class="linenos">267</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm_src</span><span class="p">)</span>
+</span><span id="mris_preproc-268"><a href="#mris_preproc-268"><span class="linenos">268</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-269"><a href="#mris_preproc-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-270"><a href="#mris_preproc-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-271"><a href="#mris_preproc-271"><span class="linenos">271</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-272"><a href="#mris_preproc-272"><span class="linenos">272</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+</span><span id="mris_preproc-273"><a href="#mris_preproc-273"><span class="linenos">273</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-274"><a href="#mris_preproc-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">niters_src</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-275"><a href="#mris_preproc-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-276"><a href="#mris_preproc-276"><span class="linenos">276</span></a>            <span class="s2">&quot;--niters-src&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-277"><a href="#mris_preproc-277"><span class="linenos">277</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters_src</span><span class="p">)</span>
+</span><span id="mris_preproc-278"><a href="#mris_preproc-278"><span class="linenos">278</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-279"><a href="#mris_preproc-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">cortex_only</span><span class="p">:</span>
+</span><span id="mris_preproc-280"><a href="#mris_preproc-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cortex-only&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-281"><a href="#mris_preproc-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">mgz_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-282"><a href="#mris_preproc-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mgz&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-283"><a href="#mris_preproc-283"><span class="linenos">283</span></a>    <span class="k">if</span> <span class="n">no_jac_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-284"><a href="#mris_preproc-284"><span class="linenos">284</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-jac&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-285"><a href="#mris_preproc-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">paired_diff_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-286"><a href="#mris_preproc-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--paired-diff&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-287"><a href="#mris_preproc-287"><span class="linenos">287</span></a>    <span class="k">if</span> <span class="n">cache_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-288"><a href="#mris_preproc-288"><span class="linenos">288</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-289"><a href="#mris_preproc-289"><span class="linenos">289</span></a>            <span class="s2">&quot;--cache-out&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-290"><a href="#mris_preproc-290"><span class="linenos">290</span></a>            <span class="n">cache_out</span>
+</span><span id="mris_preproc-291"><a href="#mris_preproc-291"><span class="linenos">291</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-292"><a href="#mris_preproc-292"><span class="linenos">292</span></a>    <span class="k">if</span> <span class="n">cache_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-293"><a href="#mris_preproc-293"><span class="linenos">293</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-294"><a href="#mris_preproc-294"><span class="linenos">294</span></a>            <span class="s2">&quot;--cache-in&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-295"><a href="#mris_preproc-295"><span class="linenos">295</span></a>            <span class="n">cache_in</span>
+</span><span id="mris_preproc-296"><a href="#mris_preproc-296"><span class="linenos">296</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-297"><a href="#mris_preproc-297"><span class="linenos">297</span></a>    <span class="k">if</span> <span class="n">cache_out_only</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-298"><a href="#mris_preproc-298"><span class="linenos">298</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-299"><a href="#mris_preproc-299"><span class="linenos">299</span></a>            <span class="s2">&quot;--cache-out-only&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-300"><a href="#mris_preproc-300"><span class="linenos">300</span></a>            <span class="n">cache_out_only</span>
+</span><span id="mris_preproc-301"><a href="#mris_preproc-301"><span class="linenos">301</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-302"><a href="#mris_preproc-302"><span class="linenos">302</span></a>    <span class="k">if</span> <span class="n">no_prune_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-303"><a href="#mris_preproc-303"><span class="linenos">303</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-prune&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-304"><a href="#mris_preproc-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">mean_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-305"><a href="#mris_preproc-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mean&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-306"><a href="#mris_preproc-306"><span class="linenos">306</span></a>    <span class="k">if</span> <span class="n">std_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-307"><a href="#mris_preproc-307"><span class="linenos">307</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--std&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-308"><a href="#mris_preproc-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">reshape_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-309"><a href="#mris_preproc-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reshape&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-310"><a href="#mris_preproc-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">surfreg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-311"><a href="#mris_preproc-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-312"><a href="#mris_preproc-312"><span class="linenos">312</span></a>            <span class="s2">&quot;--surfreg&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-313"><a href="#mris_preproc-313"><span class="linenos">313</span></a>            <span class="n">surfreg</span>
+</span><span id="mris_preproc-314"><a href="#mris_preproc-314"><span class="linenos">314</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-315"><a href="#mris_preproc-315"><span class="linenos">315</span></a>    <span class="k">if</span> <span class="n">subjects_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-316"><a href="#mris_preproc-316"><span class="linenos">316</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-317"><a href="#mris_preproc-317"><span class="linenos">317</span></a>            <span class="s2">&quot;--SUBJECTS_DIR&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-318"><a href="#mris_preproc-318"><span class="linenos">318</span></a>            <span class="n">subjects_dir</span>
+</span><span id="mris_preproc-319"><a href="#mris_preproc-319"><span class="linenos">319</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-320"><a href="#mris_preproc-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">synth_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-321"><a href="#mris_preproc-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--synth&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-322"><a href="#mris_preproc-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">tmpdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-323"><a href="#mris_preproc-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-324"><a href="#mris_preproc-324"><span class="linenos">324</span></a>            <span class="s2">&quot;--tmpdir&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-325"><a href="#mris_preproc-325"><span class="linenos">325</span></a>            <span class="n">tmpdir</span>
+</span><span id="mris_preproc-326"><a href="#mris_preproc-326"><span class="linenos">326</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-327"><a href="#mris_preproc-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="n">nocleanup_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-328"><a href="#mris_preproc-328"><span class="linenos">328</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-329"><a href="#mris_preproc-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">cleanup_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-330"><a href="#mris_preproc-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-331"><a href="#mris_preproc-331"><span class="linenos">331</span></a>    <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mris_preproc-332"><a href="#mris_preproc-332"><span class="linenos">332</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mris_preproc-333"><a href="#mris_preproc-333"><span class="linenos">333</span></a>            <span class="s2">&quot;--log&quot;</span><span class="p">,</span>
+</span><span id="mris_preproc-334"><a href="#mris_preproc-334"><span class="linenos">334</span></a>            <span class="n">log</span>
+</span><span id="mris_preproc-335"><a href="#mris_preproc-335"><span class="linenos">335</span></a>        <span class="p">])</span>
+</span><span id="mris_preproc-336"><a href="#mris_preproc-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">nolog_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-337"><a href="#mris_preproc-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-338"><a href="#mris_preproc-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">debug_flag</span><span class="p">:</span>
+</span><span id="mris_preproc-339"><a href="#mris_preproc-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="mris_preproc-340"><a href="#mris_preproc-340"><span class="linenos">340</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisPreprocOutputs</span><span class="p">(</span>
+</span><span id="mris_preproc-341"><a href="#mris_preproc-341"><span class="linenos">341</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="mris_preproc-342"><a href="#mris_preproc-342"><span class="linenos">342</span></a>    <span class="p">)</span>
+</span><span id="mris_preproc-343"><a href="#mris_preproc-343"><span class="linenos">343</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="mris_preproc-344"><a href="#mris_preproc-344"><span class="linenos">344</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

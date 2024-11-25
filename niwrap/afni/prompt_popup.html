@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">PROMPT_POPUP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;86851443966e9bfb5766658bc6ca87fa7bd600d7.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c49781663b45a469741c170b04a34f6ea105a5a2.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;prompt_popup&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -119,36 +119,33 @@
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">PROMPT_POPUP_METADATA</span><span class="p">)</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;prompt_popup&quot;</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-message&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="n">message_pause</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>            <span class="s2">&quot;-pause&quot;</span><span class="p">,</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>            <span class="n">message_pause</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="p">])</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-button&quot;</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">if</span> <span class="n">buttons_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>            <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>            <span class="o">*</span><span class="n">buttons_b</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="p">])</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-timeout&quot;</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="k">if</span> <span class="n">timeout_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>            <span class="s2">&quot;-to&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">timeout_to</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="p">])</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">PromptPopupOutputs</span><span class="p">(</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;PROMPT_POPUP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;PromptPopupOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="s2">&quot;prompt_popup&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="p">]</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">if</span> <span class="n">message_pause</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>            <span class="s2">&quot;-pause&quot;</span><span class="p">,</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>            <span class="n">message_pause</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="p">])</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="k">if</span> <span class="n">buttons_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>            <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>            <span class="o">*</span><span class="n">buttons_b</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="p">])</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="n">timeout_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>            <span class="s2">&quot;-to&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">timeout_to</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="p">])</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">PromptPopupOutputs</span><span class="p">(</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="s2">&quot;PROMPT_POPUP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="s2">&quot;PromptPopupOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;prompt_popup&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -157,7 +154,7 @@
                     <div class="attr variable">
             <span class="name">PROMPT_POPUP_METADATA</span>        =
 <input id="PROMPT_POPUP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="PROMPT_POPUP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;86851443966e9bfb5766658bc6ca87fa7bd600d7.boutiques&#39;, name=&#39;prompt_popup&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="PROMPT_POPUP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c49781663b45a469741c170b04a34f6ea105a5a2.boutiques&#39;, name=&#39;prompt_popup&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -255,29 +252,26 @@
 </span><span id="prompt_popup-49"><a href="#prompt_popup-49"><span class="linenos">49</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">PROMPT_POPUP_METADATA</span><span class="p">)</span>
 </span><span id="prompt_popup-50"><a href="#prompt_popup-50"><span class="linenos">50</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="prompt_popup-51"><a href="#prompt_popup-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;prompt_popup&quot;</span><span class="p">)</span>
-</span><span id="prompt_popup-52"><a href="#prompt_popup-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-message&quot;</span><span class="p">)</span>
-</span><span id="prompt_popup-53"><a href="#prompt_popup-53"><span class="linenos">53</span></a>    <span class="k">if</span> <span class="n">message_pause</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="prompt_popup-54"><a href="#prompt_popup-54"><span class="linenos">54</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="prompt_popup-55"><a href="#prompt_popup-55"><span class="linenos">55</span></a>            <span class="s2">&quot;-pause&quot;</span><span class="p">,</span>
-</span><span id="prompt_popup-56"><a href="#prompt_popup-56"><span class="linenos">56</span></a>            <span class="n">message_pause</span>
-</span><span id="prompt_popup-57"><a href="#prompt_popup-57"><span class="linenos">57</span></a>        <span class="p">])</span>
-</span><span id="prompt_popup-58"><a href="#prompt_popup-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-button&quot;</span><span class="p">)</span>
-</span><span id="prompt_popup-59"><a href="#prompt_popup-59"><span class="linenos">59</span></a>    <span class="k">if</span> <span class="n">buttons_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="prompt_popup-60"><a href="#prompt_popup-60"><span class="linenos">60</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="prompt_popup-61"><a href="#prompt_popup-61"><span class="linenos">61</span></a>            <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
-</span><span id="prompt_popup-62"><a href="#prompt_popup-62"><span class="linenos">62</span></a>            <span class="o">*</span><span class="n">buttons_b</span>
-</span><span id="prompt_popup-63"><a href="#prompt_popup-63"><span class="linenos">63</span></a>        <span class="p">])</span>
-</span><span id="prompt_popup-64"><a href="#prompt_popup-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-timeout&quot;</span><span class="p">)</span>
-</span><span id="prompt_popup-65"><a href="#prompt_popup-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">timeout_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="prompt_popup-66"><a href="#prompt_popup-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="prompt_popup-67"><a href="#prompt_popup-67"><span class="linenos">67</span></a>            <span class="s2">&quot;-to&quot;</span><span class="p">,</span>
-</span><span id="prompt_popup-68"><a href="#prompt_popup-68"><span class="linenos">68</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">timeout_to</span><span class="p">)</span>
-</span><span id="prompt_popup-69"><a href="#prompt_popup-69"><span class="linenos">69</span></a>        <span class="p">])</span>
-</span><span id="prompt_popup-70"><a href="#prompt_popup-70"><span class="linenos">70</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">PromptPopupOutputs</span><span class="p">(</span>
-</span><span id="prompt_popup-71"><a href="#prompt_popup-71"><span class="linenos">71</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="prompt_popup-72"><a href="#prompt_popup-72"><span class="linenos">72</span></a>    <span class="p">)</span>
-</span><span id="prompt_popup-73"><a href="#prompt_popup-73"><span class="linenos">73</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="prompt_popup-74"><a href="#prompt_popup-74"><span class="linenos">74</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="prompt_popup-52"><a href="#prompt_popup-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="n">message_pause</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="prompt_popup-53"><a href="#prompt_popup-53"><span class="linenos">53</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="prompt_popup-54"><a href="#prompt_popup-54"><span class="linenos">54</span></a>            <span class="s2">&quot;-pause&quot;</span><span class="p">,</span>
+</span><span id="prompt_popup-55"><a href="#prompt_popup-55"><span class="linenos">55</span></a>            <span class="n">message_pause</span>
+</span><span id="prompt_popup-56"><a href="#prompt_popup-56"><span class="linenos">56</span></a>        <span class="p">])</span>
+</span><span id="prompt_popup-57"><a href="#prompt_popup-57"><span class="linenos">57</span></a>    <span class="k">if</span> <span class="n">buttons_b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="prompt_popup-58"><a href="#prompt_popup-58"><span class="linenos">58</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="prompt_popup-59"><a href="#prompt_popup-59"><span class="linenos">59</span></a>            <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
+</span><span id="prompt_popup-60"><a href="#prompt_popup-60"><span class="linenos">60</span></a>            <span class="o">*</span><span class="n">buttons_b</span>
+</span><span id="prompt_popup-61"><a href="#prompt_popup-61"><span class="linenos">61</span></a>        <span class="p">])</span>
+</span><span id="prompt_popup-62"><a href="#prompt_popup-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">timeout_to</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="prompt_popup-63"><a href="#prompt_popup-63"><span class="linenos">63</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="prompt_popup-64"><a href="#prompt_popup-64"><span class="linenos">64</span></a>            <span class="s2">&quot;-to&quot;</span><span class="p">,</span>
+</span><span id="prompt_popup-65"><a href="#prompt_popup-65"><span class="linenos">65</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">timeout_to</span><span class="p">)</span>
+</span><span id="prompt_popup-66"><a href="#prompt_popup-66"><span class="linenos">66</span></a>        <span class="p">])</span>
+</span><span id="prompt_popup-67"><a href="#prompt_popup-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">PromptPopupOutputs</span><span class="p">(</span>
+</span><span id="prompt_popup-68"><a href="#prompt_popup-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="prompt_popup-69"><a href="#prompt_popup-69"><span class="linenos">69</span></a>    <span class="p">)</span>
+</span><span id="prompt_popup-70"><a href="#prompt_popup-70"><span class="linenos">70</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="prompt_popup-71"><a href="#prompt_popup-71"><span class="linenos">71</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

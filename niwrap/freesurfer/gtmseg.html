@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">GTMSEG_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;56850d99783753956f9eec863186d1d63f175108.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9b6f7181c5beb8781cb3df8a1cad8c5f58cdb324.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gtmseg&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -161,83 +161,82 @@
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GTMSEG_METADATA</span><span class="p">)</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gtmseg&quot;</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">subject</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="p">])</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="n">outvol</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;--usf&quot;</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">usf</span><span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">subsegwm</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subsegwm&quot;</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">keep_hypo</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-hypo&quot;</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">keep_cc</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-cc&quot;</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">dmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="s2">&quot;--dmax&quot;</span><span class="p">,</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">ctx_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="s2">&quot;--ctx-annot&quot;</span><span class="p">,</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="n">ctx_annot</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">wm_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;--wm-annot&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="n">wm_annot</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">output_usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="s2">&quot;--output-usf&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">output_usf</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;--head&quot;</span><span class="p">,</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="n">head</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">subseg_cbwm</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subseg-cblum-wm&quot;</span><span class="p">)</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">no_pons</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-pons&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">no_vermis</span><span class="p">:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-vermis&quot;</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">ctab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="s2">&quot;--ctab&quot;</span><span class="p">,</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ctab</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="p">])</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">no_seg_stats</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-seg-stats&quot;</span><span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">xcerseg</span><span class="p">:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--xcerseg&quot;</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GtmsegOutputs</span><span class="p">(</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">output_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/&quot;</span> <span class="o">+</span> <span class="n">outvol</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">output_ctab</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/gtmseg+myseg.ctab&quot;</span><span class="p">),</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="p">)</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">subject</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="p">])</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">outvol</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;--usf&quot;</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">usf</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">subsegwm</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subsegwm&quot;</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">keep_hypo</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-hypo&quot;</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">keep_cc</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-cc&quot;</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">dmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;--dmax&quot;</span><span class="p">,</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">ctx_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;--ctx-annot&quot;</span><span class="p">,</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="n">ctx_annot</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">wm_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;--wm-annot&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="n">wm_annot</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">output_usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="s2">&quot;--output-usf&quot;</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">output_usf</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="p">])</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="s2">&quot;--head&quot;</span><span class="p">,</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="n">head</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="p">])</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">subseg_cbwm</span><span class="p">:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subseg-cblum-wm&quot;</span><span class="p">)</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">no_pons</span><span class="p">:</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-pons&quot;</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">no_vermis</span><span class="p">:</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-vermis&quot;</span><span class="p">)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">ctab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="s2">&quot;--ctab&quot;</span><span class="p">,</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ctab</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="p">])</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">no_seg_stats</span><span class="p">:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-seg-stats&quot;</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">xcerseg</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--xcerseg&quot;</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GtmsegOutputs</span><span class="p">(</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">output_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/&quot;</span> <span class="o">+</span> <span class="n">outvol</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">output_ctab</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/gtmseg+myseg.ctab&quot;</span><span class="p">),</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="s2">&quot;GTMSEG_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;GtmsegOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;gtmseg&quot;</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="p">]</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="s2">&quot;GTMSEG_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="s2">&quot;GtmsegOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;gtmseg&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -246,7 +245,7 @@
                     <div class="attr variable">
             <span class="name">GTMSEG_METADATA</span>        =
 <input id="GTMSEG_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="GTMSEG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;56850d99783753956f9eec863186d1d63f175108.boutiques&#39;, name=&#39;gtmseg&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="GTMSEG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9b6f7181c5beb8781cb3df8a1cad8c5f58cdb324.boutiques&#39;, name=&#39;gtmseg&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -406,76 +405,75 @@
 </span><span id="gtmseg-85"><a href="#gtmseg-85"><span class="linenos"> 85</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GTMSEG_METADATA</span><span class="p">)</span>
 </span><span id="gtmseg-86"><a href="#gtmseg-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="gtmseg-87"><a href="#gtmseg-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gtmseg&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-88"><a href="#gtmseg-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-89"><a href="#gtmseg-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-90"><a href="#gtmseg-90"><span class="linenos"> 90</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-91"><a href="#gtmseg-91"><span class="linenos"> 91</span></a>        <span class="n">subject</span>
-</span><span id="gtmseg-92"><a href="#gtmseg-92"><span class="linenos"> 92</span></a>    <span class="p">])</span>
-</span><span id="gtmseg-93"><a href="#gtmseg-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-94"><a href="#gtmseg-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-95"><a href="#gtmseg-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-96"><a href="#gtmseg-96"><span class="linenos"> 96</span></a>            <span class="n">outvol</span>
-</span><span id="gtmseg-97"><a href="#gtmseg-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-98"><a href="#gtmseg-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-99"><a href="#gtmseg-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-100"><a href="#gtmseg-100"><span class="linenos">100</span></a>            <span class="s2">&quot;--usf&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-101"><a href="#gtmseg-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">usf</span><span class="p">)</span>
-</span><span id="gtmseg-102"><a href="#gtmseg-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-103"><a href="#gtmseg-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">subsegwm</span><span class="p">:</span>
-</span><span id="gtmseg-104"><a href="#gtmseg-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subsegwm&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-105"><a href="#gtmseg-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">keep_hypo</span><span class="p">:</span>
-</span><span id="gtmseg-106"><a href="#gtmseg-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-hypo&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-107"><a href="#gtmseg-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">keep_cc</span><span class="p">:</span>
-</span><span id="gtmseg-108"><a href="#gtmseg-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-cc&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-109"><a href="#gtmseg-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">dmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-110"><a href="#gtmseg-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-111"><a href="#gtmseg-111"><span class="linenos">111</span></a>            <span class="s2">&quot;--dmax&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-112"><a href="#gtmseg-112"><span class="linenos">112</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span>
-</span><span id="gtmseg-113"><a href="#gtmseg-113"><span class="linenos">113</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-114"><a href="#gtmseg-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">ctx_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-115"><a href="#gtmseg-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-116"><a href="#gtmseg-116"><span class="linenos">116</span></a>            <span class="s2">&quot;--ctx-annot&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-117"><a href="#gtmseg-117"><span class="linenos">117</span></a>            <span class="n">ctx_annot</span>
-</span><span id="gtmseg-118"><a href="#gtmseg-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-119"><a href="#gtmseg-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">wm_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-120"><a href="#gtmseg-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-121"><a href="#gtmseg-121"><span class="linenos">121</span></a>            <span class="s2">&quot;--wm-annot&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-122"><a href="#gtmseg-122"><span class="linenos">122</span></a>            <span class="n">wm_annot</span>
-</span><span id="gtmseg-123"><a href="#gtmseg-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-124"><a href="#gtmseg-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">output_usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-125"><a href="#gtmseg-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-126"><a href="#gtmseg-126"><span class="linenos">126</span></a>            <span class="s2">&quot;--output-usf&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-127"><a href="#gtmseg-127"><span class="linenos">127</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">output_usf</span><span class="p">)</span>
-</span><span id="gtmseg-128"><a href="#gtmseg-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-129"><a href="#gtmseg-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-130"><a href="#gtmseg-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-131"><a href="#gtmseg-131"><span class="linenos">131</span></a>            <span class="s2">&quot;--head&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-132"><a href="#gtmseg-132"><span class="linenos">132</span></a>            <span class="n">head</span>
-</span><span id="gtmseg-133"><a href="#gtmseg-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-134"><a href="#gtmseg-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">subseg_cbwm</span><span class="p">:</span>
-</span><span id="gtmseg-135"><a href="#gtmseg-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subseg-cblum-wm&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-136"><a href="#gtmseg-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">no_pons</span><span class="p">:</span>
-</span><span id="gtmseg-137"><a href="#gtmseg-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-pons&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-138"><a href="#gtmseg-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">no_vermis</span><span class="p">:</span>
-</span><span id="gtmseg-139"><a href="#gtmseg-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-vermis&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-140"><a href="#gtmseg-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">ctab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="gtmseg-141"><a href="#gtmseg-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="gtmseg-142"><a href="#gtmseg-142"><span class="linenos">142</span></a>            <span class="s2">&quot;--ctab&quot;</span><span class="p">,</span>
-</span><span id="gtmseg-143"><a href="#gtmseg-143"><span class="linenos">143</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ctab</span><span class="p">)</span>
-</span><span id="gtmseg-144"><a href="#gtmseg-144"><span class="linenos">144</span></a>        <span class="p">])</span>
-</span><span id="gtmseg-145"><a href="#gtmseg-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">no_seg_stats</span><span class="p">:</span>
-</span><span id="gtmseg-146"><a href="#gtmseg-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-seg-stats&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-147"><a href="#gtmseg-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">xcerseg</span><span class="p">:</span>
-</span><span id="gtmseg-148"><a href="#gtmseg-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--xcerseg&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-149"><a href="#gtmseg-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="gtmseg-150"><a href="#gtmseg-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="gtmseg-151"><a href="#gtmseg-151"><span class="linenos">151</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GtmsegOutputs</span><span class="p">(</span>
-</span><span id="gtmseg-152"><a href="#gtmseg-152"><span class="linenos">152</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="gtmseg-153"><a href="#gtmseg-153"><span class="linenos">153</span></a>        <span class="n">output_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/&quot;</span> <span class="o">+</span> <span class="n">outvol</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="gtmseg-154"><a href="#gtmseg-154"><span class="linenos">154</span></a>        <span class="n">output_ctab</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/gtmseg+myseg.ctab&quot;</span><span class="p">),</span>
-</span><span id="gtmseg-155"><a href="#gtmseg-155"><span class="linenos">155</span></a>    <span class="p">)</span>
-</span><span id="gtmseg-156"><a href="#gtmseg-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="gtmseg-157"><a href="#gtmseg-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="gtmseg-88"><a href="#gtmseg-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-89"><a href="#gtmseg-89"><span class="linenos"> 89</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-90"><a href="#gtmseg-90"><span class="linenos"> 90</span></a>        <span class="n">subject</span>
+</span><span id="gtmseg-91"><a href="#gtmseg-91"><span class="linenos"> 91</span></a>    <span class="p">])</span>
+</span><span id="gtmseg-92"><a href="#gtmseg-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-93"><a href="#gtmseg-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-94"><a href="#gtmseg-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-95"><a href="#gtmseg-95"><span class="linenos"> 95</span></a>            <span class="n">outvol</span>
+</span><span id="gtmseg-96"><a href="#gtmseg-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-97"><a href="#gtmseg-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-98"><a href="#gtmseg-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-99"><a href="#gtmseg-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;--usf&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-100"><a href="#gtmseg-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">usf</span><span class="p">)</span>
+</span><span id="gtmseg-101"><a href="#gtmseg-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-102"><a href="#gtmseg-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">subsegwm</span><span class="p">:</span>
+</span><span id="gtmseg-103"><a href="#gtmseg-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subsegwm&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-104"><a href="#gtmseg-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">keep_hypo</span><span class="p">:</span>
+</span><span id="gtmseg-105"><a href="#gtmseg-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-hypo&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-106"><a href="#gtmseg-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">keep_cc</span><span class="p">:</span>
+</span><span id="gtmseg-107"><a href="#gtmseg-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep-cc&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-108"><a href="#gtmseg-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">dmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-109"><a href="#gtmseg-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-110"><a href="#gtmseg-110"><span class="linenos">110</span></a>            <span class="s2">&quot;--dmax&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-111"><a href="#gtmseg-111"><span class="linenos">111</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span>
+</span><span id="gtmseg-112"><a href="#gtmseg-112"><span class="linenos">112</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-113"><a href="#gtmseg-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">ctx_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-114"><a href="#gtmseg-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-115"><a href="#gtmseg-115"><span class="linenos">115</span></a>            <span class="s2">&quot;--ctx-annot&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-116"><a href="#gtmseg-116"><span class="linenos">116</span></a>            <span class="n">ctx_annot</span>
+</span><span id="gtmseg-117"><a href="#gtmseg-117"><span class="linenos">117</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-118"><a href="#gtmseg-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">wm_annot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-119"><a href="#gtmseg-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-120"><a href="#gtmseg-120"><span class="linenos">120</span></a>            <span class="s2">&quot;--wm-annot&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-121"><a href="#gtmseg-121"><span class="linenos">121</span></a>            <span class="n">wm_annot</span>
+</span><span id="gtmseg-122"><a href="#gtmseg-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-123"><a href="#gtmseg-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">output_usf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-124"><a href="#gtmseg-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-125"><a href="#gtmseg-125"><span class="linenos">125</span></a>            <span class="s2">&quot;--output-usf&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-126"><a href="#gtmseg-126"><span class="linenos">126</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">output_usf</span><span class="p">)</span>
+</span><span id="gtmseg-127"><a href="#gtmseg-127"><span class="linenos">127</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-128"><a href="#gtmseg-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-129"><a href="#gtmseg-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-130"><a href="#gtmseg-130"><span class="linenos">130</span></a>            <span class="s2">&quot;--head&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-131"><a href="#gtmseg-131"><span class="linenos">131</span></a>            <span class="n">head</span>
+</span><span id="gtmseg-132"><a href="#gtmseg-132"><span class="linenos">132</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-133"><a href="#gtmseg-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">subseg_cbwm</span><span class="p">:</span>
+</span><span id="gtmseg-134"><a href="#gtmseg-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--subseg-cblum-wm&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-135"><a href="#gtmseg-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">no_pons</span><span class="p">:</span>
+</span><span id="gtmseg-136"><a href="#gtmseg-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-pons&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-137"><a href="#gtmseg-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">no_vermis</span><span class="p">:</span>
+</span><span id="gtmseg-138"><a href="#gtmseg-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-vermis&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-139"><a href="#gtmseg-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">ctab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="gtmseg-140"><a href="#gtmseg-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="gtmseg-141"><a href="#gtmseg-141"><span class="linenos">141</span></a>            <span class="s2">&quot;--ctab&quot;</span><span class="p">,</span>
+</span><span id="gtmseg-142"><a href="#gtmseg-142"><span class="linenos">142</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ctab</span><span class="p">)</span>
+</span><span id="gtmseg-143"><a href="#gtmseg-143"><span class="linenos">143</span></a>        <span class="p">])</span>
+</span><span id="gtmseg-144"><a href="#gtmseg-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">no_seg_stats</span><span class="p">:</span>
+</span><span id="gtmseg-145"><a href="#gtmseg-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-seg-stats&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-146"><a href="#gtmseg-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">xcerseg</span><span class="p">:</span>
+</span><span id="gtmseg-147"><a href="#gtmseg-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--xcerseg&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-148"><a href="#gtmseg-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="gtmseg-149"><a href="#gtmseg-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="gtmseg-150"><a href="#gtmseg-150"><span class="linenos">150</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GtmsegOutputs</span><span class="p">(</span>
+</span><span id="gtmseg-151"><a href="#gtmseg-151"><span class="linenos">151</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="gtmseg-152"><a href="#gtmseg-152"><span class="linenos">152</span></a>        <span class="n">output_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/&quot;</span> <span class="o">+</span> <span class="n">outvol</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="gtmseg-153"><a href="#gtmseg-153"><span class="linenos">153</span></a>        <span class="n">output_ctab</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;$SUBJECTS_DIR/&quot;</span> <span class="o">+</span> <span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/gtmseg+myseg.ctab&quot;</span><span class="p">),</span>
+</span><span id="gtmseg-154"><a href="#gtmseg-154"><span class="linenos">154</span></a>    <span class="p">)</span>
+</span><span id="gtmseg-155"><a href="#gtmseg-155"><span class="linenos">155</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="gtmseg-156"><a href="#gtmseg-156"><span class="linenos">156</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

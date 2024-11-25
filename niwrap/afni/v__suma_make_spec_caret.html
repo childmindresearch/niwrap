@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V__SUMA_MAKE_SPEC_CARET_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d6c8f4a4c9a4bdbf869e9c12beaa446f3b1adfdb.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;cc316fd47ad9021f3421b2de0b8443b137383b41.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@SUMA_Make_Spec_Caret&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -125,25 +125,24 @@
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@SUMA_Make_Spec_Caret&quot;</span><span class="p">)</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sid&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="s2">&quot;-sid&quot;</span><span class="p">,</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">subject_id</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="p">])</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSumaMakeSpecCaretOutputs</span><span class="p">(</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="n">left_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_lh.spec&quot;</span><span class="p">),</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">right_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_rh.spec&quot;</span><span class="p">),</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="s2">&quot;-sid&quot;</span><span class="p">,</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">subject_id</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="p">])</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSumaMakeSpecCaretOutputs</span><span class="p">(</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">left_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_lh.spec&quot;</span><span class="p">),</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="n">right_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_rh.spec&quot;</span><span class="p">),</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;VSumaMakeSpecCaretOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;V__SUMA_MAKE_SPEC_CARET_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="s2">&quot;v__suma_make_spec_caret&quot;</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="p">]</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="s2">&quot;VSumaMakeSpecCaretOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;V__SUMA_MAKE_SPEC_CARET_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;v__suma_make_spec_caret&quot;</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -234,7 +233,7 @@
                     <div class="attr variable">
             <span class="name">V__SUMA_MAKE_SPEC_CARET_METADATA</span>        =
 <input id="V__SUMA_MAKE_SPEC_CARET_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__SUMA_MAKE_SPEC_CARET_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d6c8f4a4c9a4bdbf869e9c12beaa446f3b1adfdb.boutiques&#39;, name=&#39;@SUMA_Make_Spec_Caret&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__SUMA_MAKE_SPEC_CARET_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;cc316fd47ad9021f3421b2de0b8443b137383b41.boutiques&#39;, name=&#39;@SUMA_Make_Spec_Caret&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -276,18 +275,17 @@
 </span><span id="v__suma_make_spec_caret-49"><a href="#v__suma_make_spec_caret-49"><span class="linenos">49</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="v__suma_make_spec_caret-50"><a href="#v__suma_make_spec_caret-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@SUMA_Make_Spec_Caret&quot;</span><span class="p">)</span>
 </span><span id="v__suma_make_spec_caret-51"><a href="#v__suma_make_spec_caret-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="v__suma_make_spec_caret-52"><a href="#v__suma_make_spec_caret-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sid&quot;</span><span class="p">)</span>
-</span><span id="v__suma_make_spec_caret-53"><a href="#v__suma_make_spec_caret-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__suma_make_spec_caret-54"><a href="#v__suma_make_spec_caret-54"><span class="linenos">54</span></a>        <span class="s2">&quot;-sid&quot;</span><span class="p">,</span>
-</span><span id="v__suma_make_spec_caret-55"><a href="#v__suma_make_spec_caret-55"><span class="linenos">55</span></a>        <span class="n">subject_id</span>
-</span><span id="v__suma_make_spec_caret-56"><a href="#v__suma_make_spec_caret-56"><span class="linenos">56</span></a>    <span class="p">])</span>
-</span><span id="v__suma_make_spec_caret-57"><a href="#v__suma_make_spec_caret-57"><span class="linenos">57</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSumaMakeSpecCaretOutputs</span><span class="p">(</span>
-</span><span id="v__suma_make_spec_caret-58"><a href="#v__suma_make_spec_caret-58"><span class="linenos">58</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__suma_make_spec_caret-59"><a href="#v__suma_make_spec_caret-59"><span class="linenos">59</span></a>        <span class="n">left_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_lh.spec&quot;</span><span class="p">),</span>
-</span><span id="v__suma_make_spec_caret-60"><a href="#v__suma_make_spec_caret-60"><span class="linenos">60</span></a>        <span class="n">right_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_rh.spec&quot;</span><span class="p">),</span>
-</span><span id="v__suma_make_spec_caret-61"><a href="#v__suma_make_spec_caret-61"><span class="linenos">61</span></a>    <span class="p">)</span>
-</span><span id="v__suma_make_spec_caret-62"><a href="#v__suma_make_spec_caret-62"><span class="linenos">62</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v__suma_make_spec_caret-63"><a href="#v__suma_make_spec_caret-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v__suma_make_spec_caret-52"><a href="#v__suma_make_spec_caret-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__suma_make_spec_caret-53"><a href="#v__suma_make_spec_caret-53"><span class="linenos">53</span></a>        <span class="s2">&quot;-sid&quot;</span><span class="p">,</span>
+</span><span id="v__suma_make_spec_caret-54"><a href="#v__suma_make_spec_caret-54"><span class="linenos">54</span></a>        <span class="n">subject_id</span>
+</span><span id="v__suma_make_spec_caret-55"><a href="#v__suma_make_spec_caret-55"><span class="linenos">55</span></a>    <span class="p">])</span>
+</span><span id="v__suma_make_spec_caret-56"><a href="#v__suma_make_spec_caret-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSumaMakeSpecCaretOutputs</span><span class="p">(</span>
+</span><span id="v__suma_make_spec_caret-57"><a href="#v__suma_make_spec_caret-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v__suma_make_spec_caret-58"><a href="#v__suma_make_spec_caret-58"><span class="linenos">58</span></a>        <span class="n">left_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_lh.spec&quot;</span><span class="p">),</span>
+</span><span id="v__suma_make_spec_caret-59"><a href="#v__suma_make_spec_caret-59"><span class="linenos">59</span></a>        <span class="n">right_hemisphere_spec</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject_id</span> <span class="o">+</span> <span class="s2">&quot;_rh.spec&quot;</span><span class="p">),</span>
+</span><span id="v__suma_make_spec_caret-60"><a href="#v__suma_make_spec_caret-60"><span class="linenos">60</span></a>    <span class="p">)</span>
+</span><span id="v__suma_make_spec_caret-61"><a href="#v__suma_make_spec_caret-61"><span class="linenos">61</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v__suma_make_spec_caret-62"><a href="#v__suma_make_spec_caret-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

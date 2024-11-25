@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V_3D_TORTOISETO_HERE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;83f372724dc58e7674ba98fc48a12133c4132934.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2c0fda32e3474b870fd0a5338ce8f82ed5b16685.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dTORTOISEtoHere&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -134,40 +134,38 @@
 </span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_TORTOISETO_HERE_METADATA</span><span class="p">)</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dTORTOISEtoHere&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dt_tort&quot;</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-dt_tort&quot;</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dt_tort</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="p">])</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="n">prefix</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="p">])</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">scale_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="s2">&quot;-scale_fac&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="p">])</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dTortoisetoHereOutputs</span><span class="p">(</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>        <span class="n">output_dt_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>
-</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;V3dTortoisetoHereOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>    <span class="s2">&quot;V_3D_TORTOISETO_HERE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a>    <span class="s2">&quot;v_3d_tortoiseto_here&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a><span class="p">]</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="s2">&quot;-dt_tort&quot;</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dt_tort</span><span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="p">])</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">prefix</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="p">])</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">scale_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>            <span class="s2">&quot;-scale_fac&quot;</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="p">])</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dTortoisetoHereOutputs</span><span class="p">(</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">output_dt_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="s2">&quot;V3dTortoisetoHereOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;V_3D_TORTOISETO_HERE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;v_3d_tortoiseto_here&quot;</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -245,7 +243,7 @@ Dxx, Dxy, Dyy, Dxz, Dyz, Dzz.</p>
                     <div class="attr variable">
             <span class="name">V_3D_TORTOISETO_HERE_METADATA</span>        =
 <input id="V_3D_TORTOISETO_HERE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_TORTOISETO_HERE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;83f372724dc58e7674ba98fc48a12133c4132934.boutiques&#39;, name=&#39;3dTORTOISEtoHere&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_TORTOISETO_HERE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2c0fda32e3474b870fd0a5338ce8f82ed5b16685.boutiques&#39;, name=&#39;3dTORTOISEtoHere&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -300,33 +298,31 @@ Dxx, Dxy, Dyy, Dxz, Dyz, Dzz.</p>
 </span><span id="v_3d_tortoiseto_here-61"><a href="#v_3d_tortoiseto_here-61"><span class="linenos">61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_TORTOISETO_HERE_METADATA</span><span class="p">)</span>
 </span><span id="v_3d_tortoiseto_here-62"><a href="#v_3d_tortoiseto_here-62"><span class="linenos">62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="v_3d_tortoiseto_here-63"><a href="#v_3d_tortoiseto_here-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dTORTOISEtoHere&quot;</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-64"><a href="#v_3d_tortoiseto_here-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dt_tort&quot;</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-65"><a href="#v_3d_tortoiseto_here-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_tortoiseto_here-66"><a href="#v_3d_tortoiseto_here-66"><span class="linenos">66</span></a>        <span class="s2">&quot;-dt_tort&quot;</span><span class="p">,</span>
-</span><span id="v_3d_tortoiseto_here-67"><a href="#v_3d_tortoiseto_here-67"><span class="linenos">67</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dt_tort</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-68"><a href="#v_3d_tortoiseto_here-68"><span class="linenos">68</span></a>    <span class="p">])</span>
-</span><span id="v_3d_tortoiseto_here-69"><a href="#v_3d_tortoiseto_here-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-70"><a href="#v_3d_tortoiseto_here-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_tortoiseto_here-71"><a href="#v_3d_tortoiseto_here-71"><span class="linenos">71</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="v_3d_tortoiseto_here-72"><a href="#v_3d_tortoiseto_here-72"><span class="linenos">72</span></a>        <span class="n">prefix</span>
-</span><span id="v_3d_tortoiseto_here-73"><a href="#v_3d_tortoiseto_here-73"><span class="linenos">73</span></a>    <span class="p">])</span>
-</span><span id="v_3d_tortoiseto_here-74"><a href="#v_3d_tortoiseto_here-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">scale_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_tortoiseto_here-75"><a href="#v_3d_tortoiseto_here-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_tortoiseto_here-76"><a href="#v_3d_tortoiseto_here-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-scale_fac&quot;</span><span class="p">,</span>
-</span><span id="v_3d_tortoiseto_here-77"><a href="#v_3d_tortoiseto_here-77"><span class="linenos">77</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-78"><a href="#v_3d_tortoiseto_here-78"><span class="linenos">78</span></a>        <span class="p">])</span>
-</span><span id="v_3d_tortoiseto_here-79"><a href="#v_3d_tortoiseto_here-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
-</span><span id="v_3d_tortoiseto_here-80"><a href="#v_3d_tortoiseto_here-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-81"><a href="#v_3d_tortoiseto_here-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
-</span><span id="v_3d_tortoiseto_here-82"><a href="#v_3d_tortoiseto_here-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-83"><a href="#v_3d_tortoiseto_here-83"><span class="linenos">83</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
-</span><span id="v_3d_tortoiseto_here-84"><a href="#v_3d_tortoiseto_here-84"><span class="linenos">84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-85"><a href="#v_3d_tortoiseto_here-85"><span class="linenos">85</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dTortoisetoHereOutputs</span><span class="p">(</span>
-</span><span id="v_3d_tortoiseto_here-86"><a href="#v_3d_tortoiseto_here-86"><span class="linenos">86</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_tortoiseto_here-87"><a href="#v_3d_tortoiseto_here-87"><span class="linenos">87</span></a>        <span class="n">output_dt_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="v_3d_tortoiseto_here-88"><a href="#v_3d_tortoiseto_here-88"><span class="linenos">88</span></a>    <span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-89"><a href="#v_3d_tortoiseto_here-89"><span class="linenos">89</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v_3d_tortoiseto_here-90"><a href="#v_3d_tortoiseto_here-90"><span class="linenos">90</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v_3d_tortoiseto_here-64"><a href="#v_3d_tortoiseto_here-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_tortoiseto_here-65"><a href="#v_3d_tortoiseto_here-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-dt_tort&quot;</span><span class="p">,</span>
+</span><span id="v_3d_tortoiseto_here-66"><a href="#v_3d_tortoiseto_here-66"><span class="linenos">66</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dt_tort</span><span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-67"><a href="#v_3d_tortoiseto_here-67"><span class="linenos">67</span></a>    <span class="p">])</span>
+</span><span id="v_3d_tortoiseto_here-68"><a href="#v_3d_tortoiseto_here-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_tortoiseto_here-69"><a href="#v_3d_tortoiseto_here-69"><span class="linenos">69</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="v_3d_tortoiseto_here-70"><a href="#v_3d_tortoiseto_here-70"><span class="linenos">70</span></a>        <span class="n">prefix</span>
+</span><span id="v_3d_tortoiseto_here-71"><a href="#v_3d_tortoiseto_here-71"><span class="linenos">71</span></a>    <span class="p">])</span>
+</span><span id="v_3d_tortoiseto_here-72"><a href="#v_3d_tortoiseto_here-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">scale_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_tortoiseto_here-73"><a href="#v_3d_tortoiseto_here-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_tortoiseto_here-74"><a href="#v_3d_tortoiseto_here-74"><span class="linenos">74</span></a>            <span class="s2">&quot;-scale_fac&quot;</span><span class="p">,</span>
+</span><span id="v_3d_tortoiseto_here-75"><a href="#v_3d_tortoiseto_here-75"><span class="linenos">75</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-76"><a href="#v_3d_tortoiseto_here-76"><span class="linenos">76</span></a>        <span class="p">])</span>
+</span><span id="v_3d_tortoiseto_here-77"><a href="#v_3d_tortoiseto_here-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
+</span><span id="v_3d_tortoiseto_here-78"><a href="#v_3d_tortoiseto_here-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-79"><a href="#v_3d_tortoiseto_here-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
+</span><span id="v_3d_tortoiseto_here-80"><a href="#v_3d_tortoiseto_here-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-81"><a href="#v_3d_tortoiseto_here-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
+</span><span id="v_3d_tortoiseto_here-82"><a href="#v_3d_tortoiseto_here-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-83"><a href="#v_3d_tortoiseto_here-83"><span class="linenos">83</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dTortoisetoHereOutputs</span><span class="p">(</span>
+</span><span id="v_3d_tortoiseto_here-84"><a href="#v_3d_tortoiseto_here-84"><span class="linenos">84</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v_3d_tortoiseto_here-85"><a href="#v_3d_tortoiseto_here-85"><span class="linenos">85</span></a>        <span class="n">output_dt_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="v_3d_tortoiseto_here-86"><a href="#v_3d_tortoiseto_here-86"><span class="linenos">86</span></a>    <span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-87"><a href="#v_3d_tortoiseto_here-87"><span class="linenos">87</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v_3d_tortoiseto_here-88"><a href="#v_3d_tortoiseto_here-88"><span class="linenos">88</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

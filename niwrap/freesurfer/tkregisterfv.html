@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TKREGISTERFV_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2e6cf34bff587fcec0717d7fe0f45a7f48a683bd.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5ebc1a63857c8578925dcc917e8e3ae5ac3c4e9b.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tkregisterfv&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -179,136 +179,132 @@
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TKREGISTERFV_METADATA</span><span class="p">)</span>
 </span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tkregisterfv&quot;</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mov&quot;</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">mov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--targ&quot;</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">targ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;--targ&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">targ</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reg&quot;</span><span class="p">)</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">subject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="n">subject</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">fstarg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="s2">&quot;--fstarg&quot;</span><span class="p">,</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fstarg</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">sd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="s2">&quot;--sd&quot;</span><span class="p">,</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="n">sd</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="p">])</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">seg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">aseg_flag</span><span class="p">:</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aseg&quot;</span><span class="p">)</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">aparc_aseg_flag</span><span class="p">:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aparc+aseg&quot;</span><span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="s2">&quot;--opacity&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">surfs_flag</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--surfs&quot;</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">pial_surfs_flag</span><span class="p">:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--pial-surfs&quot;</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">all_surfs_flag</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--all-surfs&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">no_surfs_flag</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-surfs&quot;</span><span class="p">)</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">lh_only_flag</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--lh-only&quot;</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">rh_only_flag</span><span class="p">:</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rh-only&quot;</span><span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="s2">&quot;--surf&quot;</span><span class="p">,</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="p">])</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">aux_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>            <span class="s2">&quot;--aux-surf&quot;</span><span class="p">,</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux_s</span><span class="p">)</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="p">])</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">plane</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="s2">&quot;--plane&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>            <span class="n">plane</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="p">])</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">no_config_flag</span><span class="p">:</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-config&quot;</span><span class="p">)</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">mov2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="s2">&quot;--mov2&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov2</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="p">])</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">reg2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;--reg2&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg2</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">mov3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="s2">&quot;--mov3&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov3</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">reg3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="s2">&quot;--reg3&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg3</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">heat_flag</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--heat&quot;</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">regheader_flag</span><span class="p">:</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--regheader&quot;</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>            <span class="s2">&quot;--params&quot;</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="p">])</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">flip_x_flag</span><span class="p">:</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-x&quot;</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">flip_y_flag</span><span class="p">:</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-y&quot;</span><span class="p">)</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">flip_z_flag</span><span class="p">:</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-z&quot;</span><span class="p">)</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">fstal</span><span class="p">:</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fstal&quot;</span><span class="p">)</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">aux</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>            <span class="s2">&quot;--aux&quot;</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="p">])</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TkregisterfvOutputs</span><span class="p">(</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="p">)</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;TKREGISTERFV_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="s2">&quot;TkregisterfvOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="s2">&quot;tkregisterfv&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="p">]</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">mov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">targ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="s2">&quot;--targ&quot;</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">targ</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="p">])</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="p">])</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">subject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="n">subject</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">fstarg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;--fstarg&quot;</span><span class="p">,</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fstarg</span><span class="p">)</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">sd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="s2">&quot;--sd&quot;</span><span class="p">,</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="n">sd</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="p">])</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">seg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="p">])</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">aseg_flag</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aseg&quot;</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">aparc_aseg_flag</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aparc+aseg&quot;</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="s2">&quot;--opacity&quot;</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="p">])</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">surfs_flag</span><span class="p">:</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--surfs&quot;</span><span class="p">)</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">pial_surfs_flag</span><span class="p">:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--pial-surfs&quot;</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">all_surfs_flag</span><span class="p">:</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--all-surfs&quot;</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">no_surfs_flag</span><span class="p">:</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-surfs&quot;</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">lh_only_flag</span><span class="p">:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--lh-only&quot;</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">rh_only_flag</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rh-only&quot;</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>            <span class="s2">&quot;--surf&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="p">])</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">aux_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>            <span class="s2">&quot;--aux-surf&quot;</span><span class="p">,</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux_s</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="p">])</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">plane</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="s2">&quot;--plane&quot;</span><span class="p">,</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="n">plane</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="p">])</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">no_config_flag</span><span class="p">:</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-config&quot;</span><span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">mov2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="s2">&quot;--mov2&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov2</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="p">])</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">reg2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="s2">&quot;--reg2&quot;</span><span class="p">,</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg2</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="p">])</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">mov3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="s2">&quot;--mov3&quot;</span><span class="p">,</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov3</span><span class="p">)</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="p">])</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">reg3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="s2">&quot;--reg3&quot;</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg3</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="p">])</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">heat_flag</span><span class="p">:</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--heat&quot;</span><span class="p">)</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">regheader_flag</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--regheader&quot;</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;--params&quot;</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="p">])</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">flip_x_flag</span><span class="p">:</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-x&quot;</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">flip_y_flag</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-y&quot;</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">flip_z_flag</span><span class="p">:</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-z&quot;</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">fstal</span><span class="p">:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fstal&quot;</span><span class="p">)</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">aux</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>            <span class="s2">&quot;--aux&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="p">])</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TkregisterfvOutputs</span><span class="p">(</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="p">)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;TKREGISTERFV_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;TkregisterfvOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;tkregisterfv&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -317,7 +313,7 @@
                     <div class="attr variable">
             <span class="name">TKREGISTERFV_METADATA</span>        =
 <input id="TKREGISTERFV_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TKREGISTERFV_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2e6cf34bff587fcec0717d7fe0f45a7f48a683bd.boutiques&#39;, name=&#39;tkregisterfv&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TKREGISTERFV_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5ebc1a63857c8578925dcc917e8e3ae5ac3c4e9b.boutiques&#39;, name=&#39;tkregisterfv&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -475,129 +471,125 @@
 </span><span id="tkregisterfv-109"><a href="#tkregisterfv-109"><span class="linenos">109</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TKREGISTERFV_METADATA</span><span class="p">)</span>
 </span><span id="tkregisterfv-110"><a href="#tkregisterfv-110"><span class="linenos">110</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="tkregisterfv-111"><a href="#tkregisterfv-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tkregisterfv&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-112"><a href="#tkregisterfv-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mov&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-113"><a href="#tkregisterfv-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">mov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-114"><a href="#tkregisterfv-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-115"><a href="#tkregisterfv-115"><span class="linenos">115</span></a>            <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-116"><a href="#tkregisterfv-116"><span class="linenos">116</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov</span><span class="p">)</span>
-</span><span id="tkregisterfv-117"><a href="#tkregisterfv-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-118"><a href="#tkregisterfv-118"><span class="linenos">118</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--targ&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-119"><a href="#tkregisterfv-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">targ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-120"><a href="#tkregisterfv-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-121"><a href="#tkregisterfv-121"><span class="linenos">121</span></a>            <span class="s2">&quot;--targ&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-122"><a href="#tkregisterfv-122"><span class="linenos">122</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">targ</span><span class="p">)</span>
-</span><span id="tkregisterfv-123"><a href="#tkregisterfv-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-124"><a href="#tkregisterfv-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reg&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-125"><a href="#tkregisterfv-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-126"><a href="#tkregisterfv-126"><span class="linenos">126</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-127"><a href="#tkregisterfv-127"><span class="linenos">127</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span>
-</span><span id="tkregisterfv-128"><a href="#tkregisterfv-128"><span class="linenos">128</span></a>    <span class="p">])</span>
-</span><span id="tkregisterfv-129"><a href="#tkregisterfv-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-130"><a href="#tkregisterfv-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">subject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-131"><a href="#tkregisterfv-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-132"><a href="#tkregisterfv-132"><span class="linenos">132</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-133"><a href="#tkregisterfv-133"><span class="linenos">133</span></a>            <span class="n">subject</span>
-</span><span id="tkregisterfv-134"><a href="#tkregisterfv-134"><span class="linenos">134</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-135"><a href="#tkregisterfv-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">fstarg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-136"><a href="#tkregisterfv-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-137"><a href="#tkregisterfv-137"><span class="linenos">137</span></a>            <span class="s2">&quot;--fstarg&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-138"><a href="#tkregisterfv-138"><span class="linenos">138</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fstarg</span><span class="p">)</span>
-</span><span id="tkregisterfv-139"><a href="#tkregisterfv-139"><span class="linenos">139</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-140"><a href="#tkregisterfv-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">sd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-141"><a href="#tkregisterfv-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-142"><a href="#tkregisterfv-142"><span class="linenos">142</span></a>            <span class="s2">&quot;--sd&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-143"><a href="#tkregisterfv-143"><span class="linenos">143</span></a>            <span class="n">sd</span>
-</span><span id="tkregisterfv-144"><a href="#tkregisterfv-144"><span class="linenos">144</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-145"><a href="#tkregisterfv-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">seg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-146"><a href="#tkregisterfv-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-147"><a href="#tkregisterfv-147"><span class="linenos">147</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-148"><a href="#tkregisterfv-148"><span class="linenos">148</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg</span><span class="p">)</span>
-</span><span id="tkregisterfv-149"><a href="#tkregisterfv-149"><span class="linenos">149</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-150"><a href="#tkregisterfv-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">aseg_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-151"><a href="#tkregisterfv-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aseg&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-152"><a href="#tkregisterfv-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">aparc_aseg_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-153"><a href="#tkregisterfv-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aparc+aseg&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-154"><a href="#tkregisterfv-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-155"><a href="#tkregisterfv-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-156"><a href="#tkregisterfv-156"><span class="linenos">156</span></a>            <span class="s2">&quot;--opacity&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-157"><a href="#tkregisterfv-157"><span class="linenos">157</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
-</span><span id="tkregisterfv-158"><a href="#tkregisterfv-158"><span class="linenos">158</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-159"><a href="#tkregisterfv-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">surfs_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-160"><a href="#tkregisterfv-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--surfs&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-161"><a href="#tkregisterfv-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">pial_surfs_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-162"><a href="#tkregisterfv-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--pial-surfs&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-163"><a href="#tkregisterfv-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">all_surfs_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-164"><a href="#tkregisterfv-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--all-surfs&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-165"><a href="#tkregisterfv-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">no_surfs_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-166"><a href="#tkregisterfv-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-surfs&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-167"><a href="#tkregisterfv-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">lh_only_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-168"><a href="#tkregisterfv-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--lh-only&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-169"><a href="#tkregisterfv-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">rh_only_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-170"><a href="#tkregisterfv-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rh-only&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-171"><a href="#tkregisterfv-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-172"><a href="#tkregisterfv-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-173"><a href="#tkregisterfv-173"><span class="linenos">173</span></a>            <span class="s2">&quot;--surf&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-174"><a href="#tkregisterfv-174"><span class="linenos">174</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
-</span><span id="tkregisterfv-175"><a href="#tkregisterfv-175"><span class="linenos">175</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-176"><a href="#tkregisterfv-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">aux_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-177"><a href="#tkregisterfv-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-178"><a href="#tkregisterfv-178"><span class="linenos">178</span></a>            <span class="s2">&quot;--aux-surf&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-179"><a href="#tkregisterfv-179"><span class="linenos">179</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux_s</span><span class="p">)</span>
-</span><span id="tkregisterfv-180"><a href="#tkregisterfv-180"><span class="linenos">180</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-181"><a href="#tkregisterfv-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">plane</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-182"><a href="#tkregisterfv-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-183"><a href="#tkregisterfv-183"><span class="linenos">183</span></a>            <span class="s2">&quot;--plane&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-184"><a href="#tkregisterfv-184"><span class="linenos">184</span></a>            <span class="n">plane</span>
-</span><span id="tkregisterfv-185"><a href="#tkregisterfv-185"><span class="linenos">185</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-186"><a href="#tkregisterfv-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">no_config_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-187"><a href="#tkregisterfv-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-config&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-188"><a href="#tkregisterfv-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">mov2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-189"><a href="#tkregisterfv-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-190"><a href="#tkregisterfv-190"><span class="linenos">190</span></a>            <span class="s2">&quot;--mov2&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-191"><a href="#tkregisterfv-191"><span class="linenos">191</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov2</span><span class="p">)</span>
-</span><span id="tkregisterfv-192"><a href="#tkregisterfv-192"><span class="linenos">192</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-193"><a href="#tkregisterfv-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">reg2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-194"><a href="#tkregisterfv-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-195"><a href="#tkregisterfv-195"><span class="linenos">195</span></a>            <span class="s2">&quot;--reg2&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-196"><a href="#tkregisterfv-196"><span class="linenos">196</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg2</span><span class="p">)</span>
-</span><span id="tkregisterfv-197"><a href="#tkregisterfv-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-198"><a href="#tkregisterfv-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">mov3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-199"><a href="#tkregisterfv-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-200"><a href="#tkregisterfv-200"><span class="linenos">200</span></a>            <span class="s2">&quot;--mov3&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-201"><a href="#tkregisterfv-201"><span class="linenos">201</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov3</span><span class="p">)</span>
-</span><span id="tkregisterfv-202"><a href="#tkregisterfv-202"><span class="linenos">202</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-203"><a href="#tkregisterfv-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">reg3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-204"><a href="#tkregisterfv-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-205"><a href="#tkregisterfv-205"><span class="linenos">205</span></a>            <span class="s2">&quot;--reg3&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-206"><a href="#tkregisterfv-206"><span class="linenos">206</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg3</span><span class="p">)</span>
-</span><span id="tkregisterfv-207"><a href="#tkregisterfv-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-208"><a href="#tkregisterfv-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">heat_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-209"><a href="#tkregisterfv-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--heat&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-210"><a href="#tkregisterfv-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">regheader_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-211"><a href="#tkregisterfv-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--regheader&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-212"><a href="#tkregisterfv-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-213"><a href="#tkregisterfv-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-214"><a href="#tkregisterfv-214"><span class="linenos">214</span></a>            <span class="s2">&quot;--params&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-215"><a href="#tkregisterfv-215"><span class="linenos">215</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span><span id="tkregisterfv-216"><a href="#tkregisterfv-216"><span class="linenos">216</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-217"><a href="#tkregisterfv-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">flip_x_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-218"><a href="#tkregisterfv-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-x&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-219"><a href="#tkregisterfv-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">flip_y_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-220"><a href="#tkregisterfv-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-y&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-221"><a href="#tkregisterfv-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">flip_z_flag</span><span class="p">:</span>
-</span><span id="tkregisterfv-222"><a href="#tkregisterfv-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-z&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-223"><a href="#tkregisterfv-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">fstal</span><span class="p">:</span>
-</span><span id="tkregisterfv-224"><a href="#tkregisterfv-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fstal&quot;</span><span class="p">)</span>
-</span><span id="tkregisterfv-225"><a href="#tkregisterfv-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">aux</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tkregisterfv-226"><a href="#tkregisterfv-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tkregisterfv-227"><a href="#tkregisterfv-227"><span class="linenos">227</span></a>            <span class="s2">&quot;--aux&quot;</span><span class="p">,</span>
-</span><span id="tkregisterfv-228"><a href="#tkregisterfv-228"><span class="linenos">228</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
-</span><span id="tkregisterfv-229"><a href="#tkregisterfv-229"><span class="linenos">229</span></a>        <span class="p">])</span>
-</span><span id="tkregisterfv-230"><a href="#tkregisterfv-230"><span class="linenos">230</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TkregisterfvOutputs</span><span class="p">(</span>
-</span><span id="tkregisterfv-231"><a href="#tkregisterfv-231"><span class="linenos">231</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="tkregisterfv-232"><a href="#tkregisterfv-232"><span class="linenos">232</span></a>    <span class="p">)</span>
-</span><span id="tkregisterfv-233"><a href="#tkregisterfv-233"><span class="linenos">233</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="tkregisterfv-234"><a href="#tkregisterfv-234"><span class="linenos">234</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="tkregisterfv-112"><a href="#tkregisterfv-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">mov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-113"><a href="#tkregisterfv-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-114"><a href="#tkregisterfv-114"><span class="linenos">114</span></a>            <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-115"><a href="#tkregisterfv-115"><span class="linenos">115</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov</span><span class="p">)</span>
+</span><span id="tkregisterfv-116"><a href="#tkregisterfv-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-117"><a href="#tkregisterfv-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">targ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-118"><a href="#tkregisterfv-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-119"><a href="#tkregisterfv-119"><span class="linenos">119</span></a>            <span class="s2">&quot;--targ&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-120"><a href="#tkregisterfv-120"><span class="linenos">120</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">targ</span><span class="p">)</span>
+</span><span id="tkregisterfv-121"><a href="#tkregisterfv-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-122"><a href="#tkregisterfv-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-123"><a href="#tkregisterfv-123"><span class="linenos">123</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-124"><a href="#tkregisterfv-124"><span class="linenos">124</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span>
+</span><span id="tkregisterfv-125"><a href="#tkregisterfv-125"><span class="linenos">125</span></a>    <span class="p">])</span>
+</span><span id="tkregisterfv-126"><a href="#tkregisterfv-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">subject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-127"><a href="#tkregisterfv-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-128"><a href="#tkregisterfv-128"><span class="linenos">128</span></a>            <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-129"><a href="#tkregisterfv-129"><span class="linenos">129</span></a>            <span class="n">subject</span>
+</span><span id="tkregisterfv-130"><a href="#tkregisterfv-130"><span class="linenos">130</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-131"><a href="#tkregisterfv-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">fstarg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-132"><a href="#tkregisterfv-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-133"><a href="#tkregisterfv-133"><span class="linenos">133</span></a>            <span class="s2">&quot;--fstarg&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-134"><a href="#tkregisterfv-134"><span class="linenos">134</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fstarg</span><span class="p">)</span>
+</span><span id="tkregisterfv-135"><a href="#tkregisterfv-135"><span class="linenos">135</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-136"><a href="#tkregisterfv-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">sd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-137"><a href="#tkregisterfv-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-138"><a href="#tkregisterfv-138"><span class="linenos">138</span></a>            <span class="s2">&quot;--sd&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-139"><a href="#tkregisterfv-139"><span class="linenos">139</span></a>            <span class="n">sd</span>
+</span><span id="tkregisterfv-140"><a href="#tkregisterfv-140"><span class="linenos">140</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-141"><a href="#tkregisterfv-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">seg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-142"><a href="#tkregisterfv-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-143"><a href="#tkregisterfv-143"><span class="linenos">143</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-144"><a href="#tkregisterfv-144"><span class="linenos">144</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg</span><span class="p">)</span>
+</span><span id="tkregisterfv-145"><a href="#tkregisterfv-145"><span class="linenos">145</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-146"><a href="#tkregisterfv-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">aseg_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-147"><a href="#tkregisterfv-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aseg&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-148"><a href="#tkregisterfv-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">aparc_aseg_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-149"><a href="#tkregisterfv-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--aparc+aseg&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-150"><a href="#tkregisterfv-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-151"><a href="#tkregisterfv-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-152"><a href="#tkregisterfv-152"><span class="linenos">152</span></a>            <span class="s2">&quot;--opacity&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-153"><a href="#tkregisterfv-153"><span class="linenos">153</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opacity</span><span class="p">)</span>
+</span><span id="tkregisterfv-154"><a href="#tkregisterfv-154"><span class="linenos">154</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-155"><a href="#tkregisterfv-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">surfs_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-156"><a href="#tkregisterfv-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--surfs&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-157"><a href="#tkregisterfv-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">pial_surfs_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-158"><a href="#tkregisterfv-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--pial-surfs&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-159"><a href="#tkregisterfv-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">all_surfs_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-160"><a href="#tkregisterfv-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--all-surfs&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-161"><a href="#tkregisterfv-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">no_surfs_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-162"><a href="#tkregisterfv-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-surfs&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-163"><a href="#tkregisterfv-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">lh_only_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-164"><a href="#tkregisterfv-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--lh-only&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-165"><a href="#tkregisterfv-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">rh_only_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-166"><a href="#tkregisterfv-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rh-only&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-167"><a href="#tkregisterfv-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-168"><a href="#tkregisterfv-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-169"><a href="#tkregisterfv-169"><span class="linenos">169</span></a>            <span class="s2">&quot;--surf&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-170"><a href="#tkregisterfv-170"><span class="linenos">170</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
+</span><span id="tkregisterfv-171"><a href="#tkregisterfv-171"><span class="linenos">171</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-172"><a href="#tkregisterfv-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">aux_s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-173"><a href="#tkregisterfv-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-174"><a href="#tkregisterfv-174"><span class="linenos">174</span></a>            <span class="s2">&quot;--aux-surf&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-175"><a href="#tkregisterfv-175"><span class="linenos">175</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux_s</span><span class="p">)</span>
+</span><span id="tkregisterfv-176"><a href="#tkregisterfv-176"><span class="linenos">176</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-177"><a href="#tkregisterfv-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">plane</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-178"><a href="#tkregisterfv-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-179"><a href="#tkregisterfv-179"><span class="linenos">179</span></a>            <span class="s2">&quot;--plane&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-180"><a href="#tkregisterfv-180"><span class="linenos">180</span></a>            <span class="n">plane</span>
+</span><span id="tkregisterfv-181"><a href="#tkregisterfv-181"><span class="linenos">181</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-182"><a href="#tkregisterfv-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">no_config_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-183"><a href="#tkregisterfv-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-config&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-184"><a href="#tkregisterfv-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">mov2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-185"><a href="#tkregisterfv-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-186"><a href="#tkregisterfv-186"><span class="linenos">186</span></a>            <span class="s2">&quot;--mov2&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-187"><a href="#tkregisterfv-187"><span class="linenos">187</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov2</span><span class="p">)</span>
+</span><span id="tkregisterfv-188"><a href="#tkregisterfv-188"><span class="linenos">188</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-189"><a href="#tkregisterfv-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">reg2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-190"><a href="#tkregisterfv-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-191"><a href="#tkregisterfv-191"><span class="linenos">191</span></a>            <span class="s2">&quot;--reg2&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-192"><a href="#tkregisterfv-192"><span class="linenos">192</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg2</span><span class="p">)</span>
+</span><span id="tkregisterfv-193"><a href="#tkregisterfv-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-194"><a href="#tkregisterfv-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">mov3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-195"><a href="#tkregisterfv-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-196"><a href="#tkregisterfv-196"><span class="linenos">196</span></a>            <span class="s2">&quot;--mov3&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-197"><a href="#tkregisterfv-197"><span class="linenos">197</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mov3</span><span class="p">)</span>
+</span><span id="tkregisterfv-198"><a href="#tkregisterfv-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-199"><a href="#tkregisterfv-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">reg3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-200"><a href="#tkregisterfv-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-201"><a href="#tkregisterfv-201"><span class="linenos">201</span></a>            <span class="s2">&quot;--reg3&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-202"><a href="#tkregisterfv-202"><span class="linenos">202</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reg3</span><span class="p">)</span>
+</span><span id="tkregisterfv-203"><a href="#tkregisterfv-203"><span class="linenos">203</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-204"><a href="#tkregisterfv-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">heat_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-205"><a href="#tkregisterfv-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--heat&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-206"><a href="#tkregisterfv-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">regheader_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-207"><a href="#tkregisterfv-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--regheader&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-208"><a href="#tkregisterfv-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-209"><a href="#tkregisterfv-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-210"><a href="#tkregisterfv-210"><span class="linenos">210</span></a>            <span class="s2">&quot;--params&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-211"><a href="#tkregisterfv-211"><span class="linenos">211</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span><span id="tkregisterfv-212"><a href="#tkregisterfv-212"><span class="linenos">212</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-213"><a href="#tkregisterfv-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">flip_x_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-214"><a href="#tkregisterfv-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-x&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-215"><a href="#tkregisterfv-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">flip_y_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-216"><a href="#tkregisterfv-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-y&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-217"><a href="#tkregisterfv-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">flip_z_flag</span><span class="p">:</span>
+</span><span id="tkregisterfv-218"><a href="#tkregisterfv-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--flip-z&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-219"><a href="#tkregisterfv-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">fstal</span><span class="p">:</span>
+</span><span id="tkregisterfv-220"><a href="#tkregisterfv-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fstal&quot;</span><span class="p">)</span>
+</span><span id="tkregisterfv-221"><a href="#tkregisterfv-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">aux</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tkregisterfv-222"><a href="#tkregisterfv-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tkregisterfv-223"><a href="#tkregisterfv-223"><span class="linenos">223</span></a>            <span class="s2">&quot;--aux&quot;</span><span class="p">,</span>
+</span><span id="tkregisterfv-224"><a href="#tkregisterfv-224"><span class="linenos">224</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
+</span><span id="tkregisterfv-225"><a href="#tkregisterfv-225"><span class="linenos">225</span></a>        <span class="p">])</span>
+</span><span id="tkregisterfv-226"><a href="#tkregisterfv-226"><span class="linenos">226</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TkregisterfvOutputs</span><span class="p">(</span>
+</span><span id="tkregisterfv-227"><a href="#tkregisterfv-227"><span class="linenos">227</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="tkregisterfv-228"><a href="#tkregisterfv-228"><span class="linenos">228</span></a>    <span class="p">)</span>
+</span><span id="tkregisterfv-229"><a href="#tkregisterfv-229"><span class="linenos">229</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="tkregisterfv-230"><a href="#tkregisterfv-230"><span class="linenos">230</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

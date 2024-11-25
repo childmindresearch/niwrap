@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DMRI_FORREST_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a71e5168cdbdc9ac491b9812cea28f8ffc3fa086.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a860992aadd3038f26abd4c931b85cc93ace621f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dmri_forrest&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -130,52 +130,48 @@
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_FORREST_METADATA</span><span class="p">)</span>
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_forrest&quot;</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;--test&quot;</span><span class="p">,</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="n">test_dir</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="p">])</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--train&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;--train&quot;</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mask&quot;</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--tract&quot;</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;--tract&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tract_files</span><span class="p">]</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">seg_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg_file</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">diff_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;--diff&quot;</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">diff_file</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DmriForrestOutputs</span><span class="p">(</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;DMRI_FORREST_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="s2">&quot;DmriForrestOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="s2">&quot;dmri_forrest&quot;</span><span class="p">,</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="p">]</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="s2">&quot;--test&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="n">test_dir</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="p">])</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;--train&quot;</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="p">])</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="p">])</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;--tract&quot;</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tract_files</span><span class="p">]</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">seg_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg_file</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">diff_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;--diff&quot;</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">diff_file</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DmriForrestOutputs</span><span class="p">(</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;DMRI_FORREST_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="s2">&quot;DmriForrestOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;dmri_forrest&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -184,7 +180,7 @@
                     <div class="attr variable">
             <span class="name">DMRI_FORREST_METADATA</span>        =
 <input id="DMRI_FORREST_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DMRI_FORREST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a71e5168cdbdc9ac491b9812cea28f8ffc3fa086.boutiques&#39;, name=&#39;dmri_forrest&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DMRI_FORREST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a860992aadd3038f26abd4c931b85cc93ace621f.boutiques&#39;, name=&#39;dmri_forrest&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -256,82 +252,78 @@
 
     </div>
     <a class="headerlink" href="#dmri_forrest"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dmri_forrest-26"><a href="#dmri_forrest-26"><span class="linenos"> 26</span></a><span class="k">def</span> <span class="nf">dmri_forrest</span><span class="p">(</span>
-</span><span id="dmri_forrest-27"><a href="#dmri_forrest-27"><span class="linenos"> 27</span></a>    <span class="n">test_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="dmri_forrest-28"><a href="#dmri_forrest-28"><span class="linenos"> 28</span></a>    <span class="n">train_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="dmri_forrest-29"><a href="#dmri_forrest-29"><span class="linenos"> 29</span></a>    <span class="n">mask_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="dmri_forrest-30"><a href="#dmri_forrest-30"><span class="linenos"> 30</span></a>    <span class="n">tract_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="dmri_forrest-31"><a href="#dmri_forrest-31"><span class="linenos"> 31</span></a>    <span class="n">seg_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dmri_forrest-32"><a href="#dmri_forrest-32"><span class="linenos"> 32</span></a>    <span class="n">diff_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dmri_forrest-33"><a href="#dmri_forrest-33"><span class="linenos"> 33</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dmri_forrest-34"><a href="#dmri_forrest-34"><span class="linenos"> 34</span></a>    <span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="dmri_forrest-35"><a href="#dmri_forrest-35"><span class="linenos"> 35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dmri_forrest-36"><a href="#dmri_forrest-36"><span class="linenos"> 36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DmriForrestOutputs</span><span class="p">:</span>
-</span><span id="dmri_forrest-37"><a href="#dmri_forrest-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="dmri_forrest-38"><a href="#dmri_forrest-38"><span class="linenos"> 38</span></a><span class="sd">    dmri_forrest is a tool for processing diffusion MRI data using a random</span>
-</span><span id="dmri_forrest-39"><a href="#dmri_forrest-39"><span class="linenos"> 39</span></a><span class="sd">    forest-based method.</span>
-</span><span id="dmri_forrest-40"><a href="#dmri_forrest-40"><span class="linenos"> 40</span></a><span class="sd">    </span>
-</span><span id="dmri_forrest-41"><a href="#dmri_forrest-41"><span class="linenos"> 41</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="dmri_forrest-42"><a href="#dmri_forrest-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
-</span><span id="dmri_forrest-43"><a href="#dmri_forrest-43"><span class="linenos"> 43</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="dmri_forrest-44"><a href="#dmri_forrest-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
-</span><span id="dmri_forrest-45"><a href="#dmri_forrest-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
-</span><span id="dmri_forrest-46"><a href="#dmri_forrest-46"><span class="linenos"> 46</span></a><span class="sd">        test_dir: Directory containing the test subject data.</span>
-</span><span id="dmri_forrest-47"><a href="#dmri_forrest-47"><span class="linenos"> 47</span></a><span class="sd">        train_file: File listing training subject directories, one per line.</span>
-</span><span id="dmri_forrest-48"><a href="#dmri_forrest-48"><span class="linenos"> 48</span></a><span class="sd">        mask_file: Input brain mask volume name, relative to subject directory.</span>
-</span><span id="dmri_forrest-49"><a href="#dmri_forrest-49"><span class="linenos"> 49</span></a><span class="sd">        tract_files: Input tract label volume(s), relative to subject directory.</span>
-</span><span id="dmri_forrest-50"><a href="#dmri_forrest-50"><span class="linenos"> 50</span></a><span class="sd">        seg_file: Input aparc+aseg volume name, relative to subject directory.</span>
-</span><span id="dmri_forrest-51"><a href="#dmri_forrest-51"><span class="linenos"> 51</span></a><span class="sd">        diff_file: Input diffusion orientation volume name, relative to subject\</span>
-</span><span id="dmri_forrest-52"><a href="#dmri_forrest-52"><span class="linenos"> 52</span></a><span class="sd">            directory.</span>
-</span><span id="dmri_forrest-53"><a href="#dmri_forrest-53"><span class="linenos"> 53</span></a><span class="sd">        debug: Turn on debugging mode.</span>
-</span><span id="dmri_forrest-54"><a href="#dmri_forrest-54"><span class="linenos"> 54</span></a><span class="sd">        checkopts: Only check options and exit.</span>
-</span><span id="dmri_forrest-55"><a href="#dmri_forrest-55"><span class="linenos"> 55</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dmri_forrest-56"><a href="#dmri_forrest-56"><span class="linenos"> 56</span></a><span class="sd">    Returns:</span>
-</span><span id="dmri_forrest-57"><a href="#dmri_forrest-57"><span class="linenos"> 57</span></a><span class="sd">        NamedTuple of outputs (described in `DmriForrestOutputs`).</span>
-</span><span id="dmri_forrest-58"><a href="#dmri_forrest-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dmri_forrest-59"><a href="#dmri_forrest-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dmri_forrest-60"><a href="#dmri_forrest-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_FORREST_METADATA</span><span class="p">)</span>
-</span><span id="dmri_forrest-61"><a href="#dmri_forrest-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="dmri_forrest-62"><a href="#dmri_forrest-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_forrest&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-63"><a href="#dmri_forrest-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-64"><a href="#dmri_forrest-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dmri_forrest-65"><a href="#dmri_forrest-65"><span class="linenos"> 65</span></a>        <span class="s2">&quot;--test&quot;</span><span class="p">,</span>
-</span><span id="dmri_forrest-66"><a href="#dmri_forrest-66"><span class="linenos"> 66</span></a>        <span class="n">test_dir</span>
-</span><span id="dmri_forrest-67"><a href="#dmri_forrest-67"><span class="linenos"> 67</span></a>    <span class="p">])</span>
-</span><span id="dmri_forrest-68"><a href="#dmri_forrest-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--train&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-69"><a href="#dmri_forrest-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dmri_forrest-70"><a href="#dmri_forrest-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;--train&quot;</span><span class="p">,</span>
-</span><span id="dmri_forrest-71"><a href="#dmri_forrest-71"><span class="linenos"> 71</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
-</span><span id="dmri_forrest-72"><a href="#dmri_forrest-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
-</span><span id="dmri_forrest-73"><a href="#dmri_forrest-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mask&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-74"><a href="#dmri_forrest-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dmri_forrest-75"><a href="#dmri_forrest-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
-</span><span id="dmri_forrest-76"><a href="#dmri_forrest-76"><span class="linenos"> 76</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
-</span><span id="dmri_forrest-77"><a href="#dmri_forrest-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
-</span><span id="dmri_forrest-78"><a href="#dmri_forrest-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--tract&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-79"><a href="#dmri_forrest-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dmri_forrest-80"><a href="#dmri_forrest-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;--tract&quot;</span><span class="p">,</span>
-</span><span id="dmri_forrest-81"><a href="#dmri_forrest-81"><span class="linenos"> 81</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tract_files</span><span class="p">]</span>
-</span><span id="dmri_forrest-82"><a href="#dmri_forrest-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
-</span><span id="dmri_forrest-83"><a href="#dmri_forrest-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">seg_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dmri_forrest-84"><a href="#dmri_forrest-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dmri_forrest-85"><a href="#dmri_forrest-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
-</span><span id="dmri_forrest-86"><a href="#dmri_forrest-86"><span class="linenos"> 86</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg_file</span><span class="p">)</span>
-</span><span id="dmri_forrest-87"><a href="#dmri_forrest-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
-</span><span id="dmri_forrest-88"><a href="#dmri_forrest-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">diff_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dmri_forrest-89"><a href="#dmri_forrest-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dmri_forrest-90"><a href="#dmri_forrest-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;--diff&quot;</span><span class="p">,</span>
-</span><span id="dmri_forrest-91"><a href="#dmri_forrest-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">diff_file</span><span class="p">)</span>
-</span><span id="dmri_forrest-92"><a href="#dmri_forrest-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
-</span><span id="dmri_forrest-93"><a href="#dmri_forrest-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="dmri_forrest-94"><a href="#dmri_forrest-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-95"><a href="#dmri_forrest-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
-</span><span id="dmri_forrest-96"><a href="#dmri_forrest-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
-</span><span id="dmri_forrest-97"><a href="#dmri_forrest-97"><span class="linenos"> 97</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DmriForrestOutputs</span><span class="p">(</span>
-</span><span id="dmri_forrest-98"><a href="#dmri_forrest-98"><span class="linenos"> 98</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="dmri_forrest-99"><a href="#dmri_forrest-99"><span class="linenos"> 99</span></a>    <span class="p">)</span>
-</span><span id="dmri_forrest-100"><a href="#dmri_forrest-100"><span class="linenos">100</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="dmri_forrest-101"><a href="#dmri_forrest-101"><span class="linenos">101</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dmri_forrest-26"><a href="#dmri_forrest-26"><span class="linenos">26</span></a><span class="k">def</span> <span class="nf">dmri_forrest</span><span class="p">(</span>
+</span><span id="dmri_forrest-27"><a href="#dmri_forrest-27"><span class="linenos">27</span></a>    <span class="n">test_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="dmri_forrest-28"><a href="#dmri_forrest-28"><span class="linenos">28</span></a>    <span class="n">train_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="dmri_forrest-29"><a href="#dmri_forrest-29"><span class="linenos">29</span></a>    <span class="n">mask_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="dmri_forrest-30"><a href="#dmri_forrest-30"><span class="linenos">30</span></a>    <span class="n">tract_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="dmri_forrest-31"><a href="#dmri_forrest-31"><span class="linenos">31</span></a>    <span class="n">seg_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dmri_forrest-32"><a href="#dmri_forrest-32"><span class="linenos">32</span></a>    <span class="n">diff_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dmri_forrest-33"><a href="#dmri_forrest-33"><span class="linenos">33</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dmri_forrest-34"><a href="#dmri_forrest-34"><span class="linenos">34</span></a>    <span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="dmri_forrest-35"><a href="#dmri_forrest-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dmri_forrest-36"><a href="#dmri_forrest-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DmriForrestOutputs</span><span class="p">:</span>
+</span><span id="dmri_forrest-37"><a href="#dmri_forrest-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="dmri_forrest-38"><a href="#dmri_forrest-38"><span class="linenos">38</span></a><span class="sd">    dmri_forrest is a tool for processing diffusion MRI data using a random</span>
+</span><span id="dmri_forrest-39"><a href="#dmri_forrest-39"><span class="linenos">39</span></a><span class="sd">    forest-based method.</span>
+</span><span id="dmri_forrest-40"><a href="#dmri_forrest-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="dmri_forrest-41"><a href="#dmri_forrest-41"><span class="linenos">41</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="dmri_forrest-42"><a href="#dmri_forrest-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="dmri_forrest-43"><a href="#dmri_forrest-43"><span class="linenos">43</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="dmri_forrest-44"><a href="#dmri_forrest-44"><span class="linenos">44</span></a><span class="sd">    </span>
+</span><span id="dmri_forrest-45"><a href="#dmri_forrest-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
+</span><span id="dmri_forrest-46"><a href="#dmri_forrest-46"><span class="linenos">46</span></a><span class="sd">        test_dir: Directory containing the test subject data.</span>
+</span><span id="dmri_forrest-47"><a href="#dmri_forrest-47"><span class="linenos">47</span></a><span class="sd">        train_file: File listing training subject directories, one per line.</span>
+</span><span id="dmri_forrest-48"><a href="#dmri_forrest-48"><span class="linenos">48</span></a><span class="sd">        mask_file: Input brain mask volume name, relative to subject directory.</span>
+</span><span id="dmri_forrest-49"><a href="#dmri_forrest-49"><span class="linenos">49</span></a><span class="sd">        tract_files: Input tract label volume(s), relative to subject directory.</span>
+</span><span id="dmri_forrest-50"><a href="#dmri_forrest-50"><span class="linenos">50</span></a><span class="sd">        seg_file: Input aparc+aseg volume name, relative to subject directory.</span>
+</span><span id="dmri_forrest-51"><a href="#dmri_forrest-51"><span class="linenos">51</span></a><span class="sd">        diff_file: Input diffusion orientation volume name, relative to subject\</span>
+</span><span id="dmri_forrest-52"><a href="#dmri_forrest-52"><span class="linenos">52</span></a><span class="sd">            directory.</span>
+</span><span id="dmri_forrest-53"><a href="#dmri_forrest-53"><span class="linenos">53</span></a><span class="sd">        debug: Turn on debugging mode.</span>
+</span><span id="dmri_forrest-54"><a href="#dmri_forrest-54"><span class="linenos">54</span></a><span class="sd">        checkopts: Only check options and exit.</span>
+</span><span id="dmri_forrest-55"><a href="#dmri_forrest-55"><span class="linenos">55</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dmri_forrest-56"><a href="#dmri_forrest-56"><span class="linenos">56</span></a><span class="sd">    Returns:</span>
+</span><span id="dmri_forrest-57"><a href="#dmri_forrest-57"><span class="linenos">57</span></a><span class="sd">        NamedTuple of outputs (described in `DmriForrestOutputs`).</span>
+</span><span id="dmri_forrest-58"><a href="#dmri_forrest-58"><span class="linenos">58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dmri_forrest-59"><a href="#dmri_forrest-59"><span class="linenos">59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dmri_forrest-60"><a href="#dmri_forrest-60"><span class="linenos">60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_FORREST_METADATA</span><span class="p">)</span>
+</span><span id="dmri_forrest-61"><a href="#dmri_forrest-61"><span class="linenos">61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="dmri_forrest-62"><a href="#dmri_forrest-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_forrest&quot;</span><span class="p">)</span>
+</span><span id="dmri_forrest-63"><a href="#dmri_forrest-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dmri_forrest-64"><a href="#dmri_forrest-64"><span class="linenos">64</span></a>        <span class="s2">&quot;--test&quot;</span><span class="p">,</span>
+</span><span id="dmri_forrest-65"><a href="#dmri_forrest-65"><span class="linenos">65</span></a>        <span class="n">test_dir</span>
+</span><span id="dmri_forrest-66"><a href="#dmri_forrest-66"><span class="linenos">66</span></a>    <span class="p">])</span>
+</span><span id="dmri_forrest-67"><a href="#dmri_forrest-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dmri_forrest-68"><a href="#dmri_forrest-68"><span class="linenos">68</span></a>        <span class="s2">&quot;--train&quot;</span><span class="p">,</span>
+</span><span id="dmri_forrest-69"><a href="#dmri_forrest-69"><span class="linenos">69</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
+</span><span id="dmri_forrest-70"><a href="#dmri_forrest-70"><span class="linenos">70</span></a>    <span class="p">])</span>
+</span><span id="dmri_forrest-71"><a href="#dmri_forrest-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dmri_forrest-72"><a href="#dmri_forrest-72"><span class="linenos">72</span></a>        <span class="s2">&quot;--mask&quot;</span><span class="p">,</span>
+</span><span id="dmri_forrest-73"><a href="#dmri_forrest-73"><span class="linenos">73</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
+</span><span id="dmri_forrest-74"><a href="#dmri_forrest-74"><span class="linenos">74</span></a>    <span class="p">])</span>
+</span><span id="dmri_forrest-75"><a href="#dmri_forrest-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dmri_forrest-76"><a href="#dmri_forrest-76"><span class="linenos">76</span></a>        <span class="s2">&quot;--tract&quot;</span><span class="p">,</span>
+</span><span id="dmri_forrest-77"><a href="#dmri_forrest-77"><span class="linenos">77</span></a>        <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tract_files</span><span class="p">]</span>
+</span><span id="dmri_forrest-78"><a href="#dmri_forrest-78"><span class="linenos">78</span></a>    <span class="p">])</span>
+</span><span id="dmri_forrest-79"><a href="#dmri_forrest-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">seg_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dmri_forrest-80"><a href="#dmri_forrest-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dmri_forrest-81"><a href="#dmri_forrest-81"><span class="linenos">81</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
+</span><span id="dmri_forrest-82"><a href="#dmri_forrest-82"><span class="linenos">82</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">seg_file</span><span class="p">)</span>
+</span><span id="dmri_forrest-83"><a href="#dmri_forrest-83"><span class="linenos">83</span></a>        <span class="p">])</span>
+</span><span id="dmri_forrest-84"><a href="#dmri_forrest-84"><span class="linenos">84</span></a>    <span class="k">if</span> <span class="n">diff_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dmri_forrest-85"><a href="#dmri_forrest-85"><span class="linenos">85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dmri_forrest-86"><a href="#dmri_forrest-86"><span class="linenos">86</span></a>            <span class="s2">&quot;--diff&quot;</span><span class="p">,</span>
+</span><span id="dmri_forrest-87"><a href="#dmri_forrest-87"><span class="linenos">87</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">diff_file</span><span class="p">)</span>
+</span><span id="dmri_forrest-88"><a href="#dmri_forrest-88"><span class="linenos">88</span></a>        <span class="p">])</span>
+</span><span id="dmri_forrest-89"><a href="#dmri_forrest-89"><span class="linenos">89</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="dmri_forrest-90"><a href="#dmri_forrest-90"><span class="linenos">90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="dmri_forrest-91"><a href="#dmri_forrest-91"><span class="linenos">91</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
+</span><span id="dmri_forrest-92"><a href="#dmri_forrest-92"><span class="linenos">92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
+</span><span id="dmri_forrest-93"><a href="#dmri_forrest-93"><span class="linenos">93</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DmriForrestOutputs</span><span class="p">(</span>
+</span><span id="dmri_forrest-94"><a href="#dmri_forrest-94"><span class="linenos">94</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="dmri_forrest-95"><a href="#dmri_forrest-95"><span class="linenos">95</span></a>    <span class="p">)</span>
+</span><span id="dmri_forrest-96"><a href="#dmri_forrest-96"><span class="linenos">96</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="dmri_forrest-97"><a href="#dmri_forrest-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

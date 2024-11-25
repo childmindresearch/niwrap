@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">NEW_INVWARP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6881f6a9ac24768b78da2be721228b7becb799a6.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ffa393a935719522cd554acfecf1048305b6f3f0.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;new_invwarp&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -138,54 +138,51 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">NEW_INVWARP_METADATA</span><span class="p">)</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;invwarp&quot;</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-w&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;-w&quot;</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">warpvol</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">outvol</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">refvol</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">relflag</span><span class="p">:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rel&quot;</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">absflag</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--abs&quot;</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">noconstraintflag</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noconstraint&quot;</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">jmin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;--jmin&quot;</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmin</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">jmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;--jmax&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmax</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">debugflag</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">verboseflag</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NewInvwarpOutputs</span><span class="p">(</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">out_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvol</span><span class="p">),</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="s2">&quot;NEW_INVWARP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="s2">&quot;NewInvwarpOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="s2">&quot;new_invwarp&quot;</span><span class="p">,</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="p">]</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;-w&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">warpvol</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="p">])</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">outvol</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="p">])</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">refvol</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">relflag</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rel&quot;</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">absflag</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--abs&quot;</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">noconstraintflag</span><span class="p">:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noconstraint&quot;</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">jmin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;--jmin&quot;</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmin</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">jmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;--jmax&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmax</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">debugflag</span><span class="p">:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">verboseflag</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NewInvwarpOutputs</span><span class="p">(</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">out_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvol</span><span class="p">),</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="s2">&quot;NEW_INVWARP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="s2">&quot;NewInvwarpOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="s2">&quot;new_invwarp&quot;</span><span class="p">,</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -194,7 +191,7 @@
                     <div class="attr variable">
             <span class="name">NEW_INVWARP_METADATA</span>        =
 <input id="NEW_INVWARP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="NEW_INVWARP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6881f6a9ac24768b78da2be721228b7becb799a6.boutiques&#39;, name=&#39;new_invwarp&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="NEW_INVWARP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ffa393a935719522cd554acfecf1048305b6f3f0.boutiques&#39;, name=&#39;new_invwarp&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -321,47 +318,44 @@
 </span><span id="new_invwarp-65"><a href="#new_invwarp-65"><span class="linenos"> 65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">NEW_INVWARP_METADATA</span><span class="p">)</span>
 </span><span id="new_invwarp-66"><a href="#new_invwarp-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="new_invwarp-67"><a href="#new_invwarp-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;invwarp&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-68"><a href="#new_invwarp-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-w&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-69"><a href="#new_invwarp-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="new_invwarp-70"><a href="#new_invwarp-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;-w&quot;</span><span class="p">,</span>
-</span><span id="new_invwarp-71"><a href="#new_invwarp-71"><span class="linenos"> 71</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">warpvol</span><span class="p">)</span>
-</span><span id="new_invwarp-72"><a href="#new_invwarp-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
-</span><span id="new_invwarp-73"><a href="#new_invwarp-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-74"><a href="#new_invwarp-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="new_invwarp-75"><a href="#new_invwarp-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="new_invwarp-76"><a href="#new_invwarp-76"><span class="linenos"> 76</span></a>        <span class="n">outvol</span>
-</span><span id="new_invwarp-77"><a href="#new_invwarp-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
-</span><span id="new_invwarp-78"><a href="#new_invwarp-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-79"><a href="#new_invwarp-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="new_invwarp-80"><a href="#new_invwarp-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
-</span><span id="new_invwarp-81"><a href="#new_invwarp-81"><span class="linenos"> 81</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">refvol</span><span class="p">)</span>
-</span><span id="new_invwarp-82"><a href="#new_invwarp-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
-</span><span id="new_invwarp-83"><a href="#new_invwarp-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">relflag</span><span class="p">:</span>
-</span><span id="new_invwarp-84"><a href="#new_invwarp-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rel&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-85"><a href="#new_invwarp-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">absflag</span><span class="p">:</span>
-</span><span id="new_invwarp-86"><a href="#new_invwarp-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--abs&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-87"><a href="#new_invwarp-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">noconstraintflag</span><span class="p">:</span>
-</span><span id="new_invwarp-88"><a href="#new_invwarp-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noconstraint&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-89"><a href="#new_invwarp-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">jmin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="new_invwarp-90"><a href="#new_invwarp-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="new_invwarp-91"><a href="#new_invwarp-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;--jmin&quot;</span><span class="p">,</span>
-</span><span id="new_invwarp-92"><a href="#new_invwarp-92"><span class="linenos"> 92</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmin</span><span class="p">)</span>
-</span><span id="new_invwarp-93"><a href="#new_invwarp-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
-</span><span id="new_invwarp-94"><a href="#new_invwarp-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">jmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="new_invwarp-95"><a href="#new_invwarp-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="new_invwarp-96"><a href="#new_invwarp-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;--jmax&quot;</span><span class="p">,</span>
-</span><span id="new_invwarp-97"><a href="#new_invwarp-97"><span class="linenos"> 97</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmax</span><span class="p">)</span>
-</span><span id="new_invwarp-98"><a href="#new_invwarp-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="new_invwarp-99"><a href="#new_invwarp-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">debugflag</span><span class="p">:</span>
-</span><span id="new_invwarp-100"><a href="#new_invwarp-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-101"><a href="#new_invwarp-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">verboseflag</span><span class="p">:</span>
-</span><span id="new_invwarp-102"><a href="#new_invwarp-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
-</span><span id="new_invwarp-103"><a href="#new_invwarp-103"><span class="linenos">103</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NewInvwarpOutputs</span><span class="p">(</span>
-</span><span id="new_invwarp-104"><a href="#new_invwarp-104"><span class="linenos">104</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="new_invwarp-105"><a href="#new_invwarp-105"><span class="linenos">105</span></a>        <span class="n">out_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvol</span><span class="p">),</span>
-</span><span id="new_invwarp-106"><a href="#new_invwarp-106"><span class="linenos">106</span></a>    <span class="p">)</span>
-</span><span id="new_invwarp-107"><a href="#new_invwarp-107"><span class="linenos">107</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="new_invwarp-108"><a href="#new_invwarp-108"><span class="linenos">108</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="new_invwarp-68"><a href="#new_invwarp-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="new_invwarp-69"><a href="#new_invwarp-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;-w&quot;</span><span class="p">,</span>
+</span><span id="new_invwarp-70"><a href="#new_invwarp-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">warpvol</span><span class="p">)</span>
+</span><span id="new_invwarp-71"><a href="#new_invwarp-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
+</span><span id="new_invwarp-72"><a href="#new_invwarp-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="new_invwarp-73"><a href="#new_invwarp-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="new_invwarp-74"><a href="#new_invwarp-74"><span class="linenos"> 74</span></a>        <span class="n">outvol</span>
+</span><span id="new_invwarp-75"><a href="#new_invwarp-75"><span class="linenos"> 75</span></a>    <span class="p">])</span>
+</span><span id="new_invwarp-76"><a href="#new_invwarp-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="new_invwarp-77"><a href="#new_invwarp-77"><span class="linenos"> 77</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+</span><span id="new_invwarp-78"><a href="#new_invwarp-78"><span class="linenos"> 78</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">refvol</span><span class="p">)</span>
+</span><span id="new_invwarp-79"><a href="#new_invwarp-79"><span class="linenos"> 79</span></a>    <span class="p">])</span>
+</span><span id="new_invwarp-80"><a href="#new_invwarp-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">relflag</span><span class="p">:</span>
+</span><span id="new_invwarp-81"><a href="#new_invwarp-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--rel&quot;</span><span class="p">)</span>
+</span><span id="new_invwarp-82"><a href="#new_invwarp-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">absflag</span><span class="p">:</span>
+</span><span id="new_invwarp-83"><a href="#new_invwarp-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--abs&quot;</span><span class="p">)</span>
+</span><span id="new_invwarp-84"><a href="#new_invwarp-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">noconstraintflag</span><span class="p">:</span>
+</span><span id="new_invwarp-85"><a href="#new_invwarp-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noconstraint&quot;</span><span class="p">)</span>
+</span><span id="new_invwarp-86"><a href="#new_invwarp-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">jmin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="new_invwarp-87"><a href="#new_invwarp-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="new_invwarp-88"><a href="#new_invwarp-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;--jmin&quot;</span><span class="p">,</span>
+</span><span id="new_invwarp-89"><a href="#new_invwarp-89"><span class="linenos"> 89</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmin</span><span class="p">)</span>
+</span><span id="new_invwarp-90"><a href="#new_invwarp-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
+</span><span id="new_invwarp-91"><a href="#new_invwarp-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">jmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="new_invwarp-92"><a href="#new_invwarp-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="new_invwarp-93"><a href="#new_invwarp-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;--jmax&quot;</span><span class="p">,</span>
+</span><span id="new_invwarp-94"><a href="#new_invwarp-94"><span class="linenos"> 94</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">jmax</span><span class="p">)</span>
+</span><span id="new_invwarp-95"><a href="#new_invwarp-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
+</span><span id="new_invwarp-96"><a href="#new_invwarp-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">debugflag</span><span class="p">:</span>
+</span><span id="new_invwarp-97"><a href="#new_invwarp-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="new_invwarp-98"><a href="#new_invwarp-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">verboseflag</span><span class="p">:</span>
+</span><span id="new_invwarp-99"><a href="#new_invwarp-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
+</span><span id="new_invwarp-100"><a href="#new_invwarp-100"><span class="linenos">100</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NewInvwarpOutputs</span><span class="p">(</span>
+</span><span id="new_invwarp-101"><a href="#new_invwarp-101"><span class="linenos">101</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="new_invwarp-102"><a href="#new_invwarp-102"><span class="linenos">102</span></a>        <span class="n">out_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvol</span><span class="p">),</span>
+</span><span id="new_invwarp-103"><a href="#new_invwarp-103"><span class="linenos">103</span></a>    <span class="p">)</span>
+</span><span id="new_invwarp-104"><a href="#new_invwarp-104"><span class="linenos">104</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="new_invwarp-105"><a href="#new_invwarp-105"><span class="linenos">105</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

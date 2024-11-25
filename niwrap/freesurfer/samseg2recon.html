@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SAMSEG2RECON_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ef8108989f4cbbd09cc37a4e906425ab19fd4b04.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;048d40320d037b3297ee8dde5bb23cf254ed2c03.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;samseg2recon&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -155,58 +155,56 @@
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SAMSEG2RECON_METADATA</span><span class="p">)</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;samseg2recon&quot;</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">subject</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--samseg&quot;</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">samseg_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;--samseg&quot;</span><span class="p">,</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">samseg_dir</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">no_cc</span><span class="p">:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cc&quot;</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">fill</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fill&quot;</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">normalization2</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--normalization2&quot;</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">uchar</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--uchar&quot;</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">no_keep_exc</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-keep-exc&quot;</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">long_tp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="s2">&quot;--long&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">long_tp</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="p">])</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">base</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--base&quot;</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">mask_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="p">])</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">from_recon_all</span><span class="p">:</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--from-recon-all&quot;</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">force_update</span><span class="p">:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force-update&quot;</span><span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Samseg2reconOutputs</span><span class="p">(</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">filled_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/filled.mgz&quot;</span><span class="p">),</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">norm_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/norm.mgz&quot;</span><span class="p">),</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">orig_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/orig/001.mgz&quot;</span><span class="p">),</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="s2">&quot;SAMSEG2RECON_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="s2">&quot;Samseg2reconOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="s2">&quot;samseg2recon&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="p">]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">subject</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">samseg_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;--samseg&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">samseg_dir</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">no_cc</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cc&quot;</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">fill</span><span class="p">:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fill&quot;</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">normalization2</span><span class="p">:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--normalization2&quot;</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">uchar</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--uchar&quot;</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">no_keep_exc</span><span class="p">:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-keep-exc&quot;</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">long_tp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;--long&quot;</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">long_tp</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">base</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--base&quot;</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">mask_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">from_recon_all</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--from-recon-all&quot;</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">force_update</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force-update&quot;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Samseg2reconOutputs</span><span class="p">(</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">filled_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/filled.mgz&quot;</span><span class="p">),</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">norm_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/norm.mgz&quot;</span><span class="p">),</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">orig_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/orig/001.mgz&quot;</span><span class="p">),</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="p">)</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="s2">&quot;SAMSEG2RECON_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="s2">&quot;Samseg2reconOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="s2">&quot;samseg2recon&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -215,7 +213,7 @@
                     <div class="attr variable">
             <span class="name">SAMSEG2RECON_METADATA</span>        =
 <input id="SAMSEG2RECON_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SAMSEG2RECON_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ef8108989f4cbbd09cc37a4e906425ab19fd4b04.boutiques&#39;, name=&#39;samseg2recon&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SAMSEG2RECON_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;048d40320d037b3297ee8dde5bb23cf254ed2c03.boutiques&#39;, name=&#39;samseg2recon&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -380,51 +378,49 @@ used.</p>
 </span><span id="samseg2recon-76"><a href="#samseg2recon-76"><span class="linenos"> 76</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SAMSEG2RECON_METADATA</span><span class="p">)</span>
 </span><span id="samseg2recon-77"><a href="#samseg2recon-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="samseg2recon-78"><a href="#samseg2recon-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;samseg2recon&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-79"><a href="#samseg2recon-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-80"><a href="#samseg2recon-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="samseg2recon-81"><a href="#samseg2recon-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="samseg2recon-82"><a href="#samseg2recon-82"><span class="linenos"> 82</span></a>        <span class="n">subject</span>
-</span><span id="samseg2recon-83"><a href="#samseg2recon-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
-</span><span id="samseg2recon-84"><a href="#samseg2recon-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--samseg&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-85"><a href="#samseg2recon-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">samseg_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="samseg2recon-86"><a href="#samseg2recon-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="samseg2recon-87"><a href="#samseg2recon-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;--samseg&quot;</span><span class="p">,</span>
-</span><span id="samseg2recon-88"><a href="#samseg2recon-88"><span class="linenos"> 88</span></a>            <span class="n">samseg_dir</span>
-</span><span id="samseg2recon-89"><a href="#samseg2recon-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="samseg2recon-90"><a href="#samseg2recon-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">no_cc</span><span class="p">:</span>
-</span><span id="samseg2recon-91"><a href="#samseg2recon-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cc&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-92"><a href="#samseg2recon-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">fill</span><span class="p">:</span>
-</span><span id="samseg2recon-93"><a href="#samseg2recon-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fill&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-94"><a href="#samseg2recon-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">normalization2</span><span class="p">:</span>
-</span><span id="samseg2recon-95"><a href="#samseg2recon-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--normalization2&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-96"><a href="#samseg2recon-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">uchar</span><span class="p">:</span>
-</span><span id="samseg2recon-97"><a href="#samseg2recon-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--uchar&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-98"><a href="#samseg2recon-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">no_keep_exc</span><span class="p">:</span>
-</span><span id="samseg2recon-99"><a href="#samseg2recon-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-keep-exc&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-100"><a href="#samseg2recon-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">long_tp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="samseg2recon-101"><a href="#samseg2recon-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="samseg2recon-102"><a href="#samseg2recon-102"><span class="linenos">102</span></a>            <span class="s2">&quot;--long&quot;</span><span class="p">,</span>
-</span><span id="samseg2recon-103"><a href="#samseg2recon-103"><span class="linenos">103</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">long_tp</span><span class="p">)</span>
-</span><span id="samseg2recon-104"><a href="#samseg2recon-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="samseg2recon-105"><a href="#samseg2recon-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">base</span><span class="p">:</span>
-</span><span id="samseg2recon-106"><a href="#samseg2recon-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--base&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-107"><a href="#samseg2recon-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">mask_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="samseg2recon-108"><a href="#samseg2recon-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="samseg2recon-109"><a href="#samseg2recon-109"><span class="linenos">109</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
-</span><span id="samseg2recon-110"><a href="#samseg2recon-110"><span class="linenos">110</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
-</span><span id="samseg2recon-111"><a href="#samseg2recon-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="samseg2recon-112"><a href="#samseg2recon-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">from_recon_all</span><span class="p">:</span>
-</span><span id="samseg2recon-113"><a href="#samseg2recon-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--from-recon-all&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-114"><a href="#samseg2recon-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">force_update</span><span class="p">:</span>
-</span><span id="samseg2recon-115"><a href="#samseg2recon-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force-update&quot;</span><span class="p">)</span>
-</span><span id="samseg2recon-116"><a href="#samseg2recon-116"><span class="linenos">116</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Samseg2reconOutputs</span><span class="p">(</span>
-</span><span id="samseg2recon-117"><a href="#samseg2recon-117"><span class="linenos">117</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="samseg2recon-118"><a href="#samseg2recon-118"><span class="linenos">118</span></a>        <span class="n">filled_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/filled.mgz&quot;</span><span class="p">),</span>
-</span><span id="samseg2recon-119"><a href="#samseg2recon-119"><span class="linenos">119</span></a>        <span class="n">norm_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/norm.mgz&quot;</span><span class="p">),</span>
-</span><span id="samseg2recon-120"><a href="#samseg2recon-120"><span class="linenos">120</span></a>        <span class="n">orig_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/orig/001.mgz&quot;</span><span class="p">),</span>
-</span><span id="samseg2recon-121"><a href="#samseg2recon-121"><span class="linenos">121</span></a>    <span class="p">)</span>
-</span><span id="samseg2recon-122"><a href="#samseg2recon-122"><span class="linenos">122</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="samseg2recon-123"><a href="#samseg2recon-123"><span class="linenos">123</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="samseg2recon-79"><a href="#samseg2recon-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="samseg2recon-80"><a href="#samseg2recon-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="samseg2recon-81"><a href="#samseg2recon-81"><span class="linenos"> 81</span></a>        <span class="n">subject</span>
+</span><span id="samseg2recon-82"><a href="#samseg2recon-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
+</span><span id="samseg2recon-83"><a href="#samseg2recon-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">samseg_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="samseg2recon-84"><a href="#samseg2recon-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="samseg2recon-85"><a href="#samseg2recon-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;--samseg&quot;</span><span class="p">,</span>
+</span><span id="samseg2recon-86"><a href="#samseg2recon-86"><span class="linenos"> 86</span></a>            <span class="n">samseg_dir</span>
+</span><span id="samseg2recon-87"><a href="#samseg2recon-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
+</span><span id="samseg2recon-88"><a href="#samseg2recon-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">no_cc</span><span class="p">:</span>
+</span><span id="samseg2recon-89"><a href="#samseg2recon-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cc&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-90"><a href="#samseg2recon-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">fill</span><span class="p">:</span>
+</span><span id="samseg2recon-91"><a href="#samseg2recon-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--fill&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-92"><a href="#samseg2recon-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">normalization2</span><span class="p">:</span>
+</span><span id="samseg2recon-93"><a href="#samseg2recon-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--normalization2&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-94"><a href="#samseg2recon-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">uchar</span><span class="p">:</span>
+</span><span id="samseg2recon-95"><a href="#samseg2recon-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--uchar&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-96"><a href="#samseg2recon-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">no_keep_exc</span><span class="p">:</span>
+</span><span id="samseg2recon-97"><a href="#samseg2recon-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-keep-exc&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-98"><a href="#samseg2recon-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">long_tp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="samseg2recon-99"><a href="#samseg2recon-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="samseg2recon-100"><a href="#samseg2recon-100"><span class="linenos">100</span></a>            <span class="s2">&quot;--long&quot;</span><span class="p">,</span>
+</span><span id="samseg2recon-101"><a href="#samseg2recon-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">long_tp</span><span class="p">)</span>
+</span><span id="samseg2recon-102"><a href="#samseg2recon-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="samseg2recon-103"><a href="#samseg2recon-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">base</span><span class="p">:</span>
+</span><span id="samseg2recon-104"><a href="#samseg2recon-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--base&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-105"><a href="#samseg2recon-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">mask_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="samseg2recon-106"><a href="#samseg2recon-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="samseg2recon-107"><a href="#samseg2recon-107"><span class="linenos">107</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
+</span><span id="samseg2recon-108"><a href="#samseg2recon-108"><span class="linenos">108</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
+</span><span id="samseg2recon-109"><a href="#samseg2recon-109"><span class="linenos">109</span></a>        <span class="p">])</span>
+</span><span id="samseg2recon-110"><a href="#samseg2recon-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">from_recon_all</span><span class="p">:</span>
+</span><span id="samseg2recon-111"><a href="#samseg2recon-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--from-recon-all&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-112"><a href="#samseg2recon-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">force_update</span><span class="p">:</span>
+</span><span id="samseg2recon-113"><a href="#samseg2recon-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force-update&quot;</span><span class="p">)</span>
+</span><span id="samseg2recon-114"><a href="#samseg2recon-114"><span class="linenos">114</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Samseg2reconOutputs</span><span class="p">(</span>
+</span><span id="samseg2recon-115"><a href="#samseg2recon-115"><span class="linenos">115</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="samseg2recon-116"><a href="#samseg2recon-116"><span class="linenos">116</span></a>        <span class="n">filled_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/filled.mgz&quot;</span><span class="p">),</span>
+</span><span id="samseg2recon-117"><a href="#samseg2recon-117"><span class="linenos">117</span></a>        <span class="n">norm_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/norm.mgz&quot;</span><span class="p">),</span>
+</span><span id="samseg2recon-118"><a href="#samseg2recon-118"><span class="linenos">118</span></a>        <span class="n">orig_mgz</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s2">&quot;/mri/orig/001.mgz&quot;</span><span class="p">),</span>
+</span><span id="samseg2recon-119"><a href="#samseg2recon-119"><span class="linenos">119</span></a>    <span class="p">)</span>
+</span><span id="samseg2recon-120"><a href="#samseg2recon-120"><span class="linenos">120</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="samseg2recon-121"><a href="#samseg2recon-121"><span class="linenos">121</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

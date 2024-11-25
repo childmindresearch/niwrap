@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">WM_ANAT_SNR_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b83cfde0c278109c7b02a176eb4ecbdce4736a1b.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;bc76bbfe5bc73f815ba252ba2ec1d2b82838940c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;wm-anat-snr&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -132,45 +132,43 @@
 </span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WM_ANAT_SNR_METADATA</span><span class="p">)</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wm-anat-snr&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">subject</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="p">])</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--o&quot;</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">output_file</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="p">])</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force&quot;</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">nerode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="s2">&quot;--nerode&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nerode</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="p">])</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>            <span class="n">tmp_dir</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="p">])</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="k">if</span> <span class="n">cleanup</span><span class="p">:</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cleanup&quot;</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WmAnatSnrOutputs</span><span class="p">(</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>        <span class="n">output_datafile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>
-</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>
-</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a>    <span class="s2">&quot;WM_ANAT_SNR_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos">97</span></a>    <span class="s2">&quot;WmAnatSnrOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos">98</span></a>    <span class="s2">&quot;wm_anat_snr&quot;</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos">99</span></a><span class="p">]</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">subject</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="p">])</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">output_file</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="p">])</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">nerode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>            <span class="s2">&quot;--nerode&quot;</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nerode</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="p">])</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>            <span class="n">tmp_dir</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="p">])</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">cleanup</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cleanup&quot;</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WmAnatSnrOutputs</span><span class="p">(</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>        <span class="n">output_datafile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>    <span class="s2">&quot;WM_ANAT_SNR_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a>    <span class="s2">&quot;WmAnatSnrOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a>    <span class="s2">&quot;wm_anat_snr&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos">97</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -179,7 +177,7 @@
                     <div class="attr variable">
             <span class="name">WM_ANAT_SNR_METADATA</span>        =
 <input id="WM_ANAT_SNR_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="WM_ANAT_SNR_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b83cfde0c278109c7b02a176eb4ecbdce4736a1b.boutiques&#39;, name=&#39;wm-anat-snr&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="WM_ANAT_SNR_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;bc76bbfe5bc73f815ba252ba2ec1d2b82838940c.boutiques&#39;, name=&#39;wm-anat-snr&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -300,38 +298,36 @@
 </span><span id="wm_anat_snr-59"><a href="#wm_anat_snr-59"><span class="linenos">59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WM_ANAT_SNR_METADATA</span><span class="p">)</span>
 </span><span id="wm_anat_snr-60"><a href="#wm_anat_snr-60"><span class="linenos">60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="wm_anat_snr-61"><a href="#wm_anat_snr-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wm-anat-snr&quot;</span><span class="p">)</span>
-</span><span id="wm_anat_snr-62"><a href="#wm_anat_snr-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="wm_anat_snr-63"><a href="#wm_anat_snr-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="wm_anat_snr-64"><a href="#wm_anat_snr-64"><span class="linenos">64</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="wm_anat_snr-65"><a href="#wm_anat_snr-65"><span class="linenos">65</span></a>        <span class="n">subject</span>
-</span><span id="wm_anat_snr-66"><a href="#wm_anat_snr-66"><span class="linenos">66</span></a>    <span class="p">])</span>
-</span><span id="wm_anat_snr-67"><a href="#wm_anat_snr-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--o&quot;</span><span class="p">)</span>
-</span><span id="wm_anat_snr-68"><a href="#wm_anat_snr-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="wm_anat_snr-69"><a href="#wm_anat_snr-69"><span class="linenos">69</span></a>        <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
-</span><span id="wm_anat_snr-70"><a href="#wm_anat_snr-70"><span class="linenos">70</span></a>        <span class="n">output_file</span>
-</span><span id="wm_anat_snr-71"><a href="#wm_anat_snr-71"><span class="linenos">71</span></a>    <span class="p">])</span>
-</span><span id="wm_anat_snr-72"><a href="#wm_anat_snr-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="wm_anat_snr-73"><a href="#wm_anat_snr-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force&quot;</span><span class="p">)</span>
-</span><span id="wm_anat_snr-74"><a href="#wm_anat_snr-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">nerode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="wm_anat_snr-75"><a href="#wm_anat_snr-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="wm_anat_snr-76"><a href="#wm_anat_snr-76"><span class="linenos">76</span></a>            <span class="s2">&quot;--nerode&quot;</span><span class="p">,</span>
-</span><span id="wm_anat_snr-77"><a href="#wm_anat_snr-77"><span class="linenos">77</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nerode</span><span class="p">)</span>
-</span><span id="wm_anat_snr-78"><a href="#wm_anat_snr-78"><span class="linenos">78</span></a>        <span class="p">])</span>
-</span><span id="wm_anat_snr-79"><a href="#wm_anat_snr-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="wm_anat_snr-80"><a href="#wm_anat_snr-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="wm_anat_snr-81"><a href="#wm_anat_snr-81"><span class="linenos">81</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
-</span><span id="wm_anat_snr-82"><a href="#wm_anat_snr-82"><span class="linenos">82</span></a>            <span class="n">tmp_dir</span>
-</span><span id="wm_anat_snr-83"><a href="#wm_anat_snr-83"><span class="linenos">83</span></a>        <span class="p">])</span>
-</span><span id="wm_anat_snr-84"><a href="#wm_anat_snr-84"><span class="linenos">84</span></a>    <span class="k">if</span> <span class="n">cleanup</span><span class="p">:</span>
-</span><span id="wm_anat_snr-85"><a href="#wm_anat_snr-85"><span class="linenos">85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
-</span><span id="wm_anat_snr-86"><a href="#wm_anat_snr-86"><span class="linenos">86</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
-</span><span id="wm_anat_snr-87"><a href="#wm_anat_snr-87"><span class="linenos">87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cleanup&quot;</span><span class="p">)</span>
-</span><span id="wm_anat_snr-88"><a href="#wm_anat_snr-88"><span class="linenos">88</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WmAnatSnrOutputs</span><span class="p">(</span>
-</span><span id="wm_anat_snr-89"><a href="#wm_anat_snr-89"><span class="linenos">89</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="wm_anat_snr-90"><a href="#wm_anat_snr-90"><span class="linenos">90</span></a>        <span class="n">output_datafile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
-</span><span id="wm_anat_snr-91"><a href="#wm_anat_snr-91"><span class="linenos">91</span></a>    <span class="p">)</span>
-</span><span id="wm_anat_snr-92"><a href="#wm_anat_snr-92"><span class="linenos">92</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="wm_anat_snr-93"><a href="#wm_anat_snr-93"><span class="linenos">93</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="wm_anat_snr-62"><a href="#wm_anat_snr-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="wm_anat_snr-63"><a href="#wm_anat_snr-63"><span class="linenos">63</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="wm_anat_snr-64"><a href="#wm_anat_snr-64"><span class="linenos">64</span></a>        <span class="n">subject</span>
+</span><span id="wm_anat_snr-65"><a href="#wm_anat_snr-65"><span class="linenos">65</span></a>    <span class="p">])</span>
+</span><span id="wm_anat_snr-66"><a href="#wm_anat_snr-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="wm_anat_snr-67"><a href="#wm_anat_snr-67"><span class="linenos">67</span></a>        <span class="s2">&quot;--o&quot;</span><span class="p">,</span>
+</span><span id="wm_anat_snr-68"><a href="#wm_anat_snr-68"><span class="linenos">68</span></a>        <span class="n">output_file</span>
+</span><span id="wm_anat_snr-69"><a href="#wm_anat_snr-69"><span class="linenos">69</span></a>    <span class="p">])</span>
+</span><span id="wm_anat_snr-70"><a href="#wm_anat_snr-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="wm_anat_snr-71"><a href="#wm_anat_snr-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--force&quot;</span><span class="p">)</span>
+</span><span id="wm_anat_snr-72"><a href="#wm_anat_snr-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">nerode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="wm_anat_snr-73"><a href="#wm_anat_snr-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="wm_anat_snr-74"><a href="#wm_anat_snr-74"><span class="linenos">74</span></a>            <span class="s2">&quot;--nerode&quot;</span><span class="p">,</span>
+</span><span id="wm_anat_snr-75"><a href="#wm_anat_snr-75"><span class="linenos">75</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nerode</span><span class="p">)</span>
+</span><span id="wm_anat_snr-76"><a href="#wm_anat_snr-76"><span class="linenos">76</span></a>        <span class="p">])</span>
+</span><span id="wm_anat_snr-77"><a href="#wm_anat_snr-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="wm_anat_snr-78"><a href="#wm_anat_snr-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="wm_anat_snr-79"><a href="#wm_anat_snr-79"><span class="linenos">79</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
+</span><span id="wm_anat_snr-80"><a href="#wm_anat_snr-80"><span class="linenos">80</span></a>            <span class="n">tmp_dir</span>
+</span><span id="wm_anat_snr-81"><a href="#wm_anat_snr-81"><span class="linenos">81</span></a>        <span class="p">])</span>
+</span><span id="wm_anat_snr-82"><a href="#wm_anat_snr-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">cleanup</span><span class="p">:</span>
+</span><span id="wm_anat_snr-83"><a href="#wm_anat_snr-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cleanup&quot;</span><span class="p">)</span>
+</span><span id="wm_anat_snr-84"><a href="#wm_anat_snr-84"><span class="linenos">84</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
+</span><span id="wm_anat_snr-85"><a href="#wm_anat_snr-85"><span class="linenos">85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-cleanup&quot;</span><span class="p">)</span>
+</span><span id="wm_anat_snr-86"><a href="#wm_anat_snr-86"><span class="linenos">86</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WmAnatSnrOutputs</span><span class="p">(</span>
+</span><span id="wm_anat_snr-87"><a href="#wm_anat_snr-87"><span class="linenos">87</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="wm_anat_snr-88"><a href="#wm_anat_snr-88"><span class="linenos">88</span></a>        <span class="n">output_datafile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
+</span><span id="wm_anat_snr-89"><a href="#wm_anat_snr-89"><span class="linenos">89</span></a>    <span class="p">)</span>
+</span><span id="wm_anat_snr-90"><a href="#wm_anat_snr-90"><span class="linenos">90</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="wm_anat_snr-91"><a href="#wm_anat_snr-91"><span class="linenos">91</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

@@ -93,7 +93,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FSLREGISTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0601e6dd8fcbca9c72182d658cd9dd3ef5daab58.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;385a2a600cd9af0368eb6eb02a84773b379061b6.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fslregister&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -199,137 +199,134 @@
 </span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLREGISTER_METADATA</span><span class="p">)</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslregister&quot;</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">subjid</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="p">])</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mov&quot;</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">mov_vol</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="p">])</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reg&quot;</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">reg_file</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="p">])</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="s2">&quot;--fslmat&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="n">fsl_matrix</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="p">])</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">init_fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="s2">&quot;--initfslmat&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="n">init_fsl_matrix</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="p">])</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">no_init_xfm</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noinitxfm&quot;</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">dof</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="s2">&quot;--dof&quot;</span><span class="p">,</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dof</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="p">])</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">bins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="s2">&quot;--bins&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="s2">&quot;--cost&quot;</span><span class="p">,</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>            <span class="n">cost</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="p">])</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">max_angle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>            <span class="s2">&quot;--maxangle&quot;</span><span class="p">,</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_angle</span><span class="p">)</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="p">])</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">no_new_schedule</span><span class="p">:</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-new-schedule&quot;</span><span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">no_allow_swap</span><span class="p">:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-allow-swap&quot;</span><span class="p">)</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">no_trans</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-trans&quot;</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">bet_mov</span><span class="p">:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betmov&quot;</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">bet_fvalue</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="s2">&quot;--betfvalue&quot;</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bet_fvalue</span><span class="p">)</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="p">])</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">bet_func</span><span class="p">:</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betfunc&quot;</span><span class="p">)</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">bet_ref</span><span class="p">:</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betref&quot;</span><span class="p">)</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>            <span class="s2">&quot;--frame&quot;</span><span class="p">,</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="p">])</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">mid_frame</span><span class="p">:</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mid-frame&quot;</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">freesurfer_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;--fsvol&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">freesurfer_volume</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="s2">&quot;--template-out&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">template_output</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="n">output_volume</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="p">])</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>            <span class="n">tmp_dir</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="p">])</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">no_log</span><span class="p">:</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>            <span class="s2">&quot;--lta&quot;</span><span class="p">,</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>            <span class="n">lta_format</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="p">])</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslregisterOutputs</span><span class="p">(</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">output_reg_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">reg_file</span><span class="p">),</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fsl_matrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">lta_format</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">template_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="p">)</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;FSLREGISTER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;FslregisterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;fslregister&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="p">]</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">subjid</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="p">])</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">mov_vol</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="p">])</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">reg_file</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">])</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;--fslmat&quot;</span><span class="p">,</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="n">fsl_matrix</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">init_fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;--initfslmat&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="n">init_fsl_matrix</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">no_init_xfm</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noinitxfm&quot;</span><span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="p">])</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">dof</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="s2">&quot;--dof&quot;</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dof</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="p">])</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">bins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="s2">&quot;--bins&quot;</span><span class="p">,</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="p">])</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="s2">&quot;--cost&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="n">cost</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="p">])</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">max_angle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>            <span class="s2">&quot;--maxangle&quot;</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_angle</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="p">])</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">no_new_schedule</span><span class="p">:</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-new-schedule&quot;</span><span class="p">)</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">no_allow_swap</span><span class="p">:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-allow-swap&quot;</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">no_trans</span><span class="p">:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-trans&quot;</span><span class="p">)</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">bet_mov</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betmov&quot;</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">bet_fvalue</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>            <span class="s2">&quot;--betfvalue&quot;</span><span class="p">,</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bet_fvalue</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="p">])</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">bet_func</span><span class="p">:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betfunc&quot;</span><span class="p">)</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">bet_ref</span><span class="p">:</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betref&quot;</span><span class="p">)</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>            <span class="s2">&quot;--frame&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="p">])</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">mid_frame</span><span class="p">:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mid-frame&quot;</span><span class="p">)</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">freesurfer_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="s2">&quot;--fsvol&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="n">freesurfer_volume</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;--template-out&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">template_output</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="n">output_volume</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="p">])</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="p">])</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="n">tmp_dir</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="p">])</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">no_log</span><span class="p">:</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>            <span class="s2">&quot;--lta&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>            <span class="n">lta_format</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="p">])</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslregisterOutputs</span><span class="p">(</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">output_reg_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">reg_file</span><span class="p">),</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fsl_matrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">lta_format</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">template_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;FSLREGISTER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;FslregisterOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;fslregister&quot;</span><span class="p">,</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -338,7 +335,7 @@
                     <div class="attr variable">
             <span class="name">FSLREGISTER_METADATA</span>        =
 <input id="FSLREGISTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSLREGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0601e6dd8fcbca9c72182d658cd9dd3ef5daab58.boutiques&#39;, name=&#39;fslregister&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSLREGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;385a2a600cd9af0368eb6eb02a84773b379061b6.boutiques&#39;, name=&#39;fslregister&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -566,130 +563,127 @@
 </span><span id="fslregister-114"><a href="#fslregister-114"><span class="linenos">114</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLREGISTER_METADATA</span><span class="p">)</span>
 </span><span id="fslregister-115"><a href="#fslregister-115"><span class="linenos">115</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="fslregister-116"><a href="#fslregister-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslregister&quot;</span><span class="p">)</span>
-</span><span id="fslregister-117"><a href="#fslregister-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--s&quot;</span><span class="p">)</span>
-</span><span id="fslregister-118"><a href="#fslregister-118"><span class="linenos">118</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-119"><a href="#fslregister-119"><span class="linenos">119</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
-</span><span id="fslregister-120"><a href="#fslregister-120"><span class="linenos">120</span></a>        <span class="n">subjid</span>
-</span><span id="fslregister-121"><a href="#fslregister-121"><span class="linenos">121</span></a>    <span class="p">])</span>
-</span><span id="fslregister-122"><a href="#fslregister-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mov&quot;</span><span class="p">)</span>
-</span><span id="fslregister-123"><a href="#fslregister-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-124"><a href="#fslregister-124"><span class="linenos">124</span></a>        <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
-</span><span id="fslregister-125"><a href="#fslregister-125"><span class="linenos">125</span></a>        <span class="n">mov_vol</span>
-</span><span id="fslregister-126"><a href="#fslregister-126"><span class="linenos">126</span></a>    <span class="p">])</span>
-</span><span id="fslregister-127"><a href="#fslregister-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reg&quot;</span><span class="p">)</span>
-</span><span id="fslregister-128"><a href="#fslregister-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-129"><a href="#fslregister-129"><span class="linenos">129</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
-</span><span id="fslregister-130"><a href="#fslregister-130"><span class="linenos">130</span></a>        <span class="n">reg_file</span>
-</span><span id="fslregister-131"><a href="#fslregister-131"><span class="linenos">131</span></a>    <span class="p">])</span>
-</span><span id="fslregister-132"><a href="#fslregister-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-133"><a href="#fslregister-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-134"><a href="#fslregister-134"><span class="linenos">134</span></a>            <span class="s2">&quot;--fslmat&quot;</span><span class="p">,</span>
-</span><span id="fslregister-135"><a href="#fslregister-135"><span class="linenos">135</span></a>            <span class="n">fsl_matrix</span>
-</span><span id="fslregister-136"><a href="#fslregister-136"><span class="linenos">136</span></a>        <span class="p">])</span>
-</span><span id="fslregister-137"><a href="#fslregister-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">init_fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-138"><a href="#fslregister-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-139"><a href="#fslregister-139"><span class="linenos">139</span></a>            <span class="s2">&quot;--initfslmat&quot;</span><span class="p">,</span>
-</span><span id="fslregister-140"><a href="#fslregister-140"><span class="linenos">140</span></a>            <span class="n">init_fsl_matrix</span>
-</span><span id="fslregister-141"><a href="#fslregister-141"><span class="linenos">141</span></a>        <span class="p">])</span>
-</span><span id="fslregister-142"><a href="#fslregister-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">no_init_xfm</span><span class="p">:</span>
-</span><span id="fslregister-143"><a href="#fslregister-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noinitxfm&quot;</span><span class="p">)</span>
-</span><span id="fslregister-144"><a href="#fslregister-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-145"><a href="#fslregister-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-146"><a href="#fslregister-146"><span class="linenos">146</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
-</span><span id="fslregister-147"><a href="#fslregister-147"><span class="linenos">147</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-</span><span id="fslregister-148"><a href="#fslregister-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="fslregister-149"><a href="#fslregister-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">dof</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-150"><a href="#fslregister-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-151"><a href="#fslregister-151"><span class="linenos">151</span></a>            <span class="s2">&quot;--dof&quot;</span><span class="p">,</span>
-</span><span id="fslregister-152"><a href="#fslregister-152"><span class="linenos">152</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dof</span><span class="p">)</span>
-</span><span id="fslregister-153"><a href="#fslregister-153"><span class="linenos">153</span></a>        <span class="p">])</span>
-</span><span id="fslregister-154"><a href="#fslregister-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">bins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-155"><a href="#fslregister-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-156"><a href="#fslregister-156"><span class="linenos">156</span></a>            <span class="s2">&quot;--bins&quot;</span><span class="p">,</span>
-</span><span id="fslregister-157"><a href="#fslregister-157"><span class="linenos">157</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
-</span><span id="fslregister-158"><a href="#fslregister-158"><span class="linenos">158</span></a>        <span class="p">])</span>
-</span><span id="fslregister-159"><a href="#fslregister-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-160"><a href="#fslregister-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-161"><a href="#fslregister-161"><span class="linenos">161</span></a>            <span class="s2">&quot;--cost&quot;</span><span class="p">,</span>
-</span><span id="fslregister-162"><a href="#fslregister-162"><span class="linenos">162</span></a>            <span class="n">cost</span>
-</span><span id="fslregister-163"><a href="#fslregister-163"><span class="linenos">163</span></a>        <span class="p">])</span>
-</span><span id="fslregister-164"><a href="#fslregister-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">max_angle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-165"><a href="#fslregister-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-166"><a href="#fslregister-166"><span class="linenos">166</span></a>            <span class="s2">&quot;--maxangle&quot;</span><span class="p">,</span>
-</span><span id="fslregister-167"><a href="#fslregister-167"><span class="linenos">167</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_angle</span><span class="p">)</span>
-</span><span id="fslregister-168"><a href="#fslregister-168"><span class="linenos">168</span></a>        <span class="p">])</span>
-</span><span id="fslregister-169"><a href="#fslregister-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">no_new_schedule</span><span class="p">:</span>
-</span><span id="fslregister-170"><a href="#fslregister-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-new-schedule&quot;</span><span class="p">)</span>
-</span><span id="fslregister-171"><a href="#fslregister-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">no_allow_swap</span><span class="p">:</span>
-</span><span id="fslregister-172"><a href="#fslregister-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-allow-swap&quot;</span><span class="p">)</span>
-</span><span id="fslregister-173"><a href="#fslregister-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">no_trans</span><span class="p">:</span>
-</span><span id="fslregister-174"><a href="#fslregister-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-trans&quot;</span><span class="p">)</span>
-</span><span id="fslregister-175"><a href="#fslregister-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">bet_mov</span><span class="p">:</span>
-</span><span id="fslregister-176"><a href="#fslregister-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betmov&quot;</span><span class="p">)</span>
-</span><span id="fslregister-177"><a href="#fslregister-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">bet_fvalue</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-178"><a href="#fslregister-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-179"><a href="#fslregister-179"><span class="linenos">179</span></a>            <span class="s2">&quot;--betfvalue&quot;</span><span class="p">,</span>
-</span><span id="fslregister-180"><a href="#fslregister-180"><span class="linenos">180</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bet_fvalue</span><span class="p">)</span>
-</span><span id="fslregister-181"><a href="#fslregister-181"><span class="linenos">181</span></a>        <span class="p">])</span>
-</span><span id="fslregister-182"><a href="#fslregister-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">bet_func</span><span class="p">:</span>
-</span><span id="fslregister-183"><a href="#fslregister-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betfunc&quot;</span><span class="p">)</span>
-</span><span id="fslregister-184"><a href="#fslregister-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">bet_ref</span><span class="p">:</span>
-</span><span id="fslregister-185"><a href="#fslregister-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betref&quot;</span><span class="p">)</span>
-</span><span id="fslregister-186"><a href="#fslregister-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-187"><a href="#fslregister-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-188"><a href="#fslregister-188"><span class="linenos">188</span></a>            <span class="s2">&quot;--frame&quot;</span><span class="p">,</span>
-</span><span id="fslregister-189"><a href="#fslregister-189"><span class="linenos">189</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
-</span><span id="fslregister-190"><a href="#fslregister-190"><span class="linenos">190</span></a>        <span class="p">])</span>
-</span><span id="fslregister-191"><a href="#fslregister-191"><span class="linenos">191</span></a>    <span class="k">if</span> <span class="n">mid_frame</span><span class="p">:</span>
-</span><span id="fslregister-192"><a href="#fslregister-192"><span class="linenos">192</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mid-frame&quot;</span><span class="p">)</span>
-</span><span id="fslregister-193"><a href="#fslregister-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">freesurfer_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-194"><a href="#fslregister-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-195"><a href="#fslregister-195"><span class="linenos">195</span></a>            <span class="s2">&quot;--fsvol&quot;</span><span class="p">,</span>
-</span><span id="fslregister-196"><a href="#fslregister-196"><span class="linenos">196</span></a>            <span class="n">freesurfer_volume</span>
-</span><span id="fslregister-197"><a href="#fslregister-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="fslregister-198"><a href="#fslregister-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-199"><a href="#fslregister-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-200"><a href="#fslregister-200"><span class="linenos">200</span></a>            <span class="s2">&quot;--template-out&quot;</span><span class="p">,</span>
-</span><span id="fslregister-201"><a href="#fslregister-201"><span class="linenos">201</span></a>            <span class="n">template_output</span>
-</span><span id="fslregister-202"><a href="#fslregister-202"><span class="linenos">202</span></a>        <span class="p">])</span>
-</span><span id="fslregister-203"><a href="#fslregister-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-204"><a href="#fslregister-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-205"><a href="#fslregister-205"><span class="linenos">205</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
-</span><span id="fslregister-206"><a href="#fslregister-206"><span class="linenos">206</span></a>            <span class="n">output_volume</span>
-</span><span id="fslregister-207"><a href="#fslregister-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="fslregister-208"><a href="#fslregister-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-209"><a href="#fslregister-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-210"><a href="#fslregister-210"><span class="linenos">210</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
-</span><span id="fslregister-211"><a href="#fslregister-211"><span class="linenos">211</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="fslregister-212"><a href="#fslregister-212"><span class="linenos">212</span></a>        <span class="p">])</span>
-</span><span id="fslregister-213"><a href="#fslregister-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-214"><a href="#fslregister-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-215"><a href="#fslregister-215"><span class="linenos">215</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
-</span><span id="fslregister-216"><a href="#fslregister-216"><span class="linenos">216</span></a>            <span class="n">tmp_dir</span>
-</span><span id="fslregister-217"><a href="#fslregister-217"><span class="linenos">217</span></a>        <span class="p">])</span>
-</span><span id="fslregister-218"><a href="#fslregister-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
-</span><span id="fslregister-219"><a href="#fslregister-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
-</span><span id="fslregister-220"><a href="#fslregister-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">no_log</span><span class="p">:</span>
-</span><span id="fslregister-221"><a href="#fslregister-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
-</span><span id="fslregister-222"><a href="#fslregister-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fslregister-223"><a href="#fslregister-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
-</span><span id="fslregister-224"><a href="#fslregister-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fslregister-225"><a href="#fslregister-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
-</span><span id="fslregister-226"><a href="#fslregister-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslregister-227"><a href="#fslregister-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslregister-228"><a href="#fslregister-228"><span class="linenos">228</span></a>            <span class="s2">&quot;--lta&quot;</span><span class="p">,</span>
-</span><span id="fslregister-229"><a href="#fslregister-229"><span class="linenos">229</span></a>            <span class="n">lta_format</span>
-</span><span id="fslregister-230"><a href="#fslregister-230"><span class="linenos">230</span></a>        <span class="p">])</span>
-</span><span id="fslregister-231"><a href="#fslregister-231"><span class="linenos">231</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslregisterOutputs</span><span class="p">(</span>
-</span><span id="fslregister-232"><a href="#fslregister-232"><span class="linenos">232</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fslregister-233"><a href="#fslregister-233"><span class="linenos">233</span></a>        <span class="n">output_reg_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">reg_file</span><span class="p">),</span>
-</span><span id="fslregister-234"><a href="#fslregister-234"><span class="linenos">234</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-235"><a href="#fslregister-235"><span class="linenos">235</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fsl_matrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-236"><a href="#fslregister-236"><span class="linenos">236</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">lta_format</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-237"><a href="#fslregister-237"><span class="linenos">237</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">template_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-238"><a href="#fslregister-238"><span class="linenos">238</span></a>    <span class="p">)</span>
-</span><span id="fslregister-239"><a href="#fslregister-239"><span class="linenos">239</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fslregister-240"><a href="#fslregister-240"><span class="linenos">240</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fslregister-117"><a href="#fslregister-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-118"><a href="#fslregister-118"><span class="linenos">118</span></a>        <span class="s2">&quot;--s&quot;</span><span class="p">,</span>
+</span><span id="fslregister-119"><a href="#fslregister-119"><span class="linenos">119</span></a>        <span class="n">subjid</span>
+</span><span id="fslregister-120"><a href="#fslregister-120"><span class="linenos">120</span></a>    <span class="p">])</span>
+</span><span id="fslregister-121"><a href="#fslregister-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-122"><a href="#fslregister-122"><span class="linenos">122</span></a>        <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
+</span><span id="fslregister-123"><a href="#fslregister-123"><span class="linenos">123</span></a>        <span class="n">mov_vol</span>
+</span><span id="fslregister-124"><a href="#fslregister-124"><span class="linenos">124</span></a>    <span class="p">])</span>
+</span><span id="fslregister-125"><a href="#fslregister-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-126"><a href="#fslregister-126"><span class="linenos">126</span></a>        <span class="s2">&quot;--reg&quot;</span><span class="p">,</span>
+</span><span id="fslregister-127"><a href="#fslregister-127"><span class="linenos">127</span></a>        <span class="n">reg_file</span>
+</span><span id="fslregister-128"><a href="#fslregister-128"><span class="linenos">128</span></a>    <span class="p">])</span>
+</span><span id="fslregister-129"><a href="#fslregister-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-130"><a href="#fslregister-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-131"><a href="#fslregister-131"><span class="linenos">131</span></a>            <span class="s2">&quot;--fslmat&quot;</span><span class="p">,</span>
+</span><span id="fslregister-132"><a href="#fslregister-132"><span class="linenos">132</span></a>            <span class="n">fsl_matrix</span>
+</span><span id="fslregister-133"><a href="#fslregister-133"><span class="linenos">133</span></a>        <span class="p">])</span>
+</span><span id="fslregister-134"><a href="#fslregister-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">init_fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-135"><a href="#fslregister-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-136"><a href="#fslregister-136"><span class="linenos">136</span></a>            <span class="s2">&quot;--initfslmat&quot;</span><span class="p">,</span>
+</span><span id="fslregister-137"><a href="#fslregister-137"><span class="linenos">137</span></a>            <span class="n">init_fsl_matrix</span>
+</span><span id="fslregister-138"><a href="#fslregister-138"><span class="linenos">138</span></a>        <span class="p">])</span>
+</span><span id="fslregister-139"><a href="#fslregister-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">no_init_xfm</span><span class="p">:</span>
+</span><span id="fslregister-140"><a href="#fslregister-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--noinitxfm&quot;</span><span class="p">)</span>
+</span><span id="fslregister-141"><a href="#fslregister-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">niters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-142"><a href="#fslregister-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-143"><a href="#fslregister-143"><span class="linenos">143</span></a>            <span class="s2">&quot;--niters&quot;</span><span class="p">,</span>
+</span><span id="fslregister-144"><a href="#fslregister-144"><span class="linenos">144</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+</span><span id="fslregister-145"><a href="#fslregister-145"><span class="linenos">145</span></a>        <span class="p">])</span>
+</span><span id="fslregister-146"><a href="#fslregister-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">dof</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-147"><a href="#fslregister-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-148"><a href="#fslregister-148"><span class="linenos">148</span></a>            <span class="s2">&quot;--dof&quot;</span><span class="p">,</span>
+</span><span id="fslregister-149"><a href="#fslregister-149"><span class="linenos">149</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">dof</span><span class="p">)</span>
+</span><span id="fslregister-150"><a href="#fslregister-150"><span class="linenos">150</span></a>        <span class="p">])</span>
+</span><span id="fslregister-151"><a href="#fslregister-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">bins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-152"><a href="#fslregister-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-153"><a href="#fslregister-153"><span class="linenos">153</span></a>            <span class="s2">&quot;--bins&quot;</span><span class="p">,</span>
+</span><span id="fslregister-154"><a href="#fslregister-154"><span class="linenos">154</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
+</span><span id="fslregister-155"><a href="#fslregister-155"><span class="linenos">155</span></a>        <span class="p">])</span>
+</span><span id="fslregister-156"><a href="#fslregister-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-157"><a href="#fslregister-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-158"><a href="#fslregister-158"><span class="linenos">158</span></a>            <span class="s2">&quot;--cost&quot;</span><span class="p">,</span>
+</span><span id="fslregister-159"><a href="#fslregister-159"><span class="linenos">159</span></a>            <span class="n">cost</span>
+</span><span id="fslregister-160"><a href="#fslregister-160"><span class="linenos">160</span></a>        <span class="p">])</span>
+</span><span id="fslregister-161"><a href="#fslregister-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">max_angle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-162"><a href="#fslregister-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-163"><a href="#fslregister-163"><span class="linenos">163</span></a>            <span class="s2">&quot;--maxangle&quot;</span><span class="p">,</span>
+</span><span id="fslregister-164"><a href="#fslregister-164"><span class="linenos">164</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_angle</span><span class="p">)</span>
+</span><span id="fslregister-165"><a href="#fslregister-165"><span class="linenos">165</span></a>        <span class="p">])</span>
+</span><span id="fslregister-166"><a href="#fslregister-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">no_new_schedule</span><span class="p">:</span>
+</span><span id="fslregister-167"><a href="#fslregister-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-new-schedule&quot;</span><span class="p">)</span>
+</span><span id="fslregister-168"><a href="#fslregister-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">no_allow_swap</span><span class="p">:</span>
+</span><span id="fslregister-169"><a href="#fslregister-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-allow-swap&quot;</span><span class="p">)</span>
+</span><span id="fslregister-170"><a href="#fslregister-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">no_trans</span><span class="p">:</span>
+</span><span id="fslregister-171"><a href="#fslregister-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--no-trans&quot;</span><span class="p">)</span>
+</span><span id="fslregister-172"><a href="#fslregister-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">bet_mov</span><span class="p">:</span>
+</span><span id="fslregister-173"><a href="#fslregister-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betmov&quot;</span><span class="p">)</span>
+</span><span id="fslregister-174"><a href="#fslregister-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">bet_fvalue</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-175"><a href="#fslregister-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-176"><a href="#fslregister-176"><span class="linenos">176</span></a>            <span class="s2">&quot;--betfvalue&quot;</span><span class="p">,</span>
+</span><span id="fslregister-177"><a href="#fslregister-177"><span class="linenos">177</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">bet_fvalue</span><span class="p">)</span>
+</span><span id="fslregister-178"><a href="#fslregister-178"><span class="linenos">178</span></a>        <span class="p">])</span>
+</span><span id="fslregister-179"><a href="#fslregister-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">bet_func</span><span class="p">:</span>
+</span><span id="fslregister-180"><a href="#fslregister-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betfunc&quot;</span><span class="p">)</span>
+</span><span id="fslregister-181"><a href="#fslregister-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">bet_ref</span><span class="p">:</span>
+</span><span id="fslregister-182"><a href="#fslregister-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--betref&quot;</span><span class="p">)</span>
+</span><span id="fslregister-183"><a href="#fslregister-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-184"><a href="#fslregister-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-185"><a href="#fslregister-185"><span class="linenos">185</span></a>            <span class="s2">&quot;--frame&quot;</span><span class="p">,</span>
+</span><span id="fslregister-186"><a href="#fslregister-186"><span class="linenos">186</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</span><span id="fslregister-187"><a href="#fslregister-187"><span class="linenos">187</span></a>        <span class="p">])</span>
+</span><span id="fslregister-188"><a href="#fslregister-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">mid_frame</span><span class="p">:</span>
+</span><span id="fslregister-189"><a href="#fslregister-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--mid-frame&quot;</span><span class="p">)</span>
+</span><span id="fslregister-190"><a href="#fslregister-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">freesurfer_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-191"><a href="#fslregister-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-192"><a href="#fslregister-192"><span class="linenos">192</span></a>            <span class="s2">&quot;--fsvol&quot;</span><span class="p">,</span>
+</span><span id="fslregister-193"><a href="#fslregister-193"><span class="linenos">193</span></a>            <span class="n">freesurfer_volume</span>
+</span><span id="fslregister-194"><a href="#fslregister-194"><span class="linenos">194</span></a>        <span class="p">])</span>
+</span><span id="fslregister-195"><a href="#fslregister-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-196"><a href="#fslregister-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-197"><a href="#fslregister-197"><span class="linenos">197</span></a>            <span class="s2">&quot;--template-out&quot;</span><span class="p">,</span>
+</span><span id="fslregister-198"><a href="#fslregister-198"><span class="linenos">198</span></a>            <span class="n">template_output</span>
+</span><span id="fslregister-199"><a href="#fslregister-199"><span class="linenos">199</span></a>        <span class="p">])</span>
+</span><span id="fslregister-200"><a href="#fslregister-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-201"><a href="#fslregister-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-202"><a href="#fslregister-202"><span class="linenos">202</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
+</span><span id="fslregister-203"><a href="#fslregister-203"><span class="linenos">203</span></a>            <span class="n">output_volume</span>
+</span><span id="fslregister-204"><a href="#fslregister-204"><span class="linenos">204</span></a>        <span class="p">])</span>
+</span><span id="fslregister-205"><a href="#fslregister-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-206"><a href="#fslregister-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-207"><a href="#fslregister-207"><span class="linenos">207</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+</span><span id="fslregister-208"><a href="#fslregister-208"><span class="linenos">208</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="fslregister-209"><a href="#fslregister-209"><span class="linenos">209</span></a>        <span class="p">])</span>
+</span><span id="fslregister-210"><a href="#fslregister-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-211"><a href="#fslregister-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-212"><a href="#fslregister-212"><span class="linenos">212</span></a>            <span class="s2">&quot;--tmp&quot;</span><span class="p">,</span>
+</span><span id="fslregister-213"><a href="#fslregister-213"><span class="linenos">213</span></a>            <span class="n">tmp_dir</span>
+</span><span id="fslregister-214"><a href="#fslregister-214"><span class="linenos">214</span></a>        <span class="p">])</span>
+</span><span id="fslregister-215"><a href="#fslregister-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">no_cleanup</span><span class="p">:</span>
+</span><span id="fslregister-216"><a href="#fslregister-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nocleanup&quot;</span><span class="p">)</span>
+</span><span id="fslregister-217"><a href="#fslregister-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">no_log</span><span class="p">:</span>
+</span><span id="fslregister-218"><a href="#fslregister-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
+</span><span id="fslregister-219"><a href="#fslregister-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fslregister-220"><a href="#fslregister-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
+</span><span id="fslregister-221"><a href="#fslregister-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fslregister-222"><a href="#fslregister-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
+</span><span id="fslregister-223"><a href="#fslregister-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslregister-224"><a href="#fslregister-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslregister-225"><a href="#fslregister-225"><span class="linenos">225</span></a>            <span class="s2">&quot;--lta&quot;</span><span class="p">,</span>
+</span><span id="fslregister-226"><a href="#fslregister-226"><span class="linenos">226</span></a>            <span class="n">lta_format</span>
+</span><span id="fslregister-227"><a href="#fslregister-227"><span class="linenos">227</span></a>        <span class="p">])</span>
+</span><span id="fslregister-228"><a href="#fslregister-228"><span class="linenos">228</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslregisterOutputs</span><span class="p">(</span>
+</span><span id="fslregister-229"><a href="#fslregister-229"><span class="linenos">229</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fslregister-230"><a href="#fslregister-230"><span class="linenos">230</span></a>        <span class="n">output_reg_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">reg_file</span><span class="p">),</span>
+</span><span id="fslregister-231"><a href="#fslregister-231"><span class="linenos">231</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fslregister-232"><a href="#fslregister-232"><span class="linenos">232</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fsl_matrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fslregister-233"><a href="#fslregister-233"><span class="linenos">233</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">lta_format</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fslregister-234"><a href="#fslregister-234"><span class="linenos">234</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">template_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fslregister-235"><a href="#fslregister-235"><span class="linenos">235</span></a>    <span class="p">)</span>
+</span><span id="fslregister-236"><a href="#fslregister-236"><span class="linenos">236</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fslregister-237"><a href="#fslregister-237"><span class="linenos">237</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

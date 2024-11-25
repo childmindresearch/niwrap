@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FROM3D_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f1fd9173af972349aa65df96d4aeba216307ee59.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e74a40ffe48bb62b1922051d53c1f76c0e73e296.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;from3d&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -172,29 +172,27 @@
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-tlast&quot;</span><span class="p">,</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tlast</span><span class="p">)</span>
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="p">])</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">prefix</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="p">])</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">From3dOutputs</span><span class="p">(</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">extracted_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*.img&quot;</span><span class="p">),</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;FROM3D_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;From3dOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="s2">&quot;from3d&quot;</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="p">]</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="p">])</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">prefix</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="p">])</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">From3dOutputs</span><span class="p">(</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">extracted_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*.img&quot;</span><span class="p">),</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="s2">&quot;FROM3D_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;From3dOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;from3d&quot;</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -203,7 +201,7 @@
                     <div class="attr variable">
             <span class="name">FROM3D_METADATA</span>        =
 <input id="FROM3D_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FROM3D_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f1fd9173af972349aa65df96d4aeba216307ee59.boutiques&#39;, name=&#39;from3d&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FROM3D_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e74a40ffe48bb62b1922051d53c1f76c0e73e296.boutiques&#39;, name=&#39;from3d&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -364,22 +362,20 @@
 </span><span id="from3d-99"><a href="#from3d-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-tlast&quot;</span><span class="p">,</span>
 </span><span id="from3d-100"><a href="#from3d-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tlast</span><span class="p">)</span>
 </span><span id="from3d-101"><a href="#from3d-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="from3d-102"><a href="#from3d-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
-</span><span id="from3d-103"><a href="#from3d-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="from3d-104"><a href="#from3d-104"><span class="linenos">104</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
-</span><span id="from3d-105"><a href="#from3d-105"><span class="linenos">105</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="from3d-106"><a href="#from3d-106"><span class="linenos">106</span></a>    <span class="p">])</span>
-</span><span id="from3d-107"><a href="#from3d-107"><span class="linenos">107</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="from3d-108"><a href="#from3d-108"><span class="linenos">108</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="from3d-109"><a href="#from3d-109"><span class="linenos">109</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="from3d-110"><a href="#from3d-110"><span class="linenos">110</span></a>        <span class="n">prefix</span>
-</span><span id="from3d-111"><a href="#from3d-111"><span class="linenos">111</span></a>    <span class="p">])</span>
-</span><span id="from3d-112"><a href="#from3d-112"><span class="linenos">112</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">From3dOutputs</span><span class="p">(</span>
-</span><span id="from3d-113"><a href="#from3d-113"><span class="linenos">113</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="from3d-114"><a href="#from3d-114"><span class="linenos">114</span></a>        <span class="n">extracted_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*.img&quot;</span><span class="p">),</span>
-</span><span id="from3d-115"><a href="#from3d-115"><span class="linenos">115</span></a>    <span class="p">)</span>
-</span><span id="from3d-116"><a href="#from3d-116"><span class="linenos">116</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="from3d-117"><a href="#from3d-117"><span class="linenos">117</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="from3d-102"><a href="#from3d-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="from3d-103"><a href="#from3d-103"><span class="linenos">103</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="from3d-104"><a href="#from3d-104"><span class="linenos">104</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+</span><span id="from3d-105"><a href="#from3d-105"><span class="linenos">105</span></a>    <span class="p">])</span>
+</span><span id="from3d-106"><a href="#from3d-106"><span class="linenos">106</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="from3d-107"><a href="#from3d-107"><span class="linenos">107</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="from3d-108"><a href="#from3d-108"><span class="linenos">108</span></a>        <span class="n">prefix</span>
+</span><span id="from3d-109"><a href="#from3d-109"><span class="linenos">109</span></a>    <span class="p">])</span>
+</span><span id="from3d-110"><a href="#from3d-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">From3dOutputs</span><span class="p">(</span>
+</span><span id="from3d-111"><a href="#from3d-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="from3d-112"><a href="#from3d-112"><span class="linenos">112</span></a>        <span class="n">extracted_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*.img&quot;</span><span class="p">),</span>
+</span><span id="from3d-113"><a href="#from3d-113"><span class="linenos">113</span></a>    <span class="p">)</span>
+</span><span id="from3d-114"><a href="#from3d-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="from3d-115"><a href="#from3d-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
