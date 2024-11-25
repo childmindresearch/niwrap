@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Variance calculator for BASIL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "basil_var -d [RESULTS_DIR] -m [MASK_IMAGE]",
+  "command-line": "basil_var [RESULTS_DIR] [MASK_IMAGE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"

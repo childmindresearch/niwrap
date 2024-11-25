@@ -3,7 +3,7 @@
   "name": "fslregister",
   "author": "FreeSurfer Developers",
   "description": "Registers a volume to its FreeSurfer anatomical using FSL's FLIRT and creates a FreeSurfer register.dat file.",
-  "command-line": "fslregister --s [SUBJ_ID] --mov [MOV_VOL] --reg [REG_FILE] [FSL_MAT] [INIT_FSL_MAT] [NO_INIT_XFM] [NITERS] [DOF] [BINS] [COST] [MAXANGLE] [NO_NEW_SCHEDULE] [NO_ALLOW_SWAP] [NO_TRANS] [BET_MOV] [BET_FVALUE] [BET_FUNC] [BET_REF] [FRAME] [MID_FRAME] [FSVOL] [TEMPLATE_OUT] [OUT_VOL] [VERBOSE] [TMP_DIR] [NO_CLEANUP] [NO_LOG] [VERSION] [HELP] [LTA]",
+  "command-line": "fslregister [SUBJ_ID] [MOV_VOL] [REG_FILE] [FSL_MAT] [INIT_FSL_MAT] [NO_INIT_XFM] [NITERS] [DOF] [BINS] [COST] [MAXANGLE] [NO_NEW_SCHEDULE] [NO_ALLOW_SWAP] [NO_TRANS] [BET_MOV] [BET_FVALUE] [BET_FUNC] [BET_REF] [FRAME] [MID_FRAME] [FSVOL] [TEMPLATE_OUT] [OUT_VOL] [VERBOSE] [TMP_DIR] [NO_CLEANUP] [NO_LOG] [VERSION] [HELP] [LTA]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

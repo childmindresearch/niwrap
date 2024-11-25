@@ -3,7 +3,7 @@
   "name": "@afni_refacer_run",
   "author": "AFNI Developers",
   "description": "This script re-faces one input dataset, using a master shell dataset to write over the subject's 'face' region.",
-  "command-line": "@afni_refacer_run -input [INPUT_FILE] [MODE] -prefix [PREFIX] [ANONYMIZE_FLAG] [COST_FUNCTION] [SHELL_OPTION] [NO_CLEAN_FLAG] [NO_IMAGES_FLAG] [OVERWRITE_FLAG] [VERBOSE_FLAG]",
+  "command-line": "@afni_refacer_run -input [INPUT_FILE] [MODE] [PREFIX] [ANONYMIZE_FLAG] [COST_FUNCTION] [SHELL_OPTION] [NO_CLEAN_FLAG] [NO_IMAGES_FLAG] [OVERWRITE_FLAG] [VERBOSE_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

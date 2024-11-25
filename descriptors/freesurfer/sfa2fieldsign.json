@@ -3,7 +3,7 @@
   "name": "sfa2fieldsign",
   "author": "FreeSurfer Developers",
   "description": "Computes fieldsign map from sfa-sess output. Masks the angle volumes and samples them to the surface.",
-  "command-line": "sfa2fieldsign --sfa [SFADIR] --reg [REGISTER_DAT] [THRESH] [FWHM] [PROJ_FRAC] [OCCIP_FLAG] [PATCH] [OSD] [LH_FLAG] [RH_FLAG]",
+  "command-line": "sfa2fieldsign [SFADIR] [REGISTER_DAT] [THRESH] [FWHM] [PROJ_FRAC] [OCCIP_FLAG] [PATCH] [OSD] [LH_FLAG] [RH_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

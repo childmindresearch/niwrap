@@ -3,7 +3,7 @@
   "name": "samseg2recon",
   "author": "FreeSurfer Developers",
   "description": "Creates and populates a subjects directory for use with recon-all from SAMSEG outputs.",
-  "command-line": "samseg2recon --s [SUBJECT] --samseg [SAMSEG_DIR] [NO_CC_FLAG] [FILL_FLAG] [NORMALIZATION2_FLAG] [UCHAR_FLAG] [NO_KEEP_EXC_FLAG] [LONG_TP] [BASE_FLAG] [MASK_FILE] [FROM_RECON_ALL_FLAG] [FORCE_UPDATE_FLAG]",
+  "command-line": "samseg2recon [SUBJECT] [SAMSEG_DIR] [NO_CC_FLAG] [FILL_FLAG] [NORMALIZATION2_FLAG] [UCHAR_FLAG] [NO_KEEP_EXC_FLAG] [LONG_TP] [BASE_FLAG] [MASK_FILE] [FROM_RECON_ALL_FLAG] [FORCE_UPDATE_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

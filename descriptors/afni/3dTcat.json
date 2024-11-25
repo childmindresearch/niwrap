@@ -1,6 +1,6 @@
 {
   "name": "3dTcat",
-  "command-line": "3dTcat [RLT] [IN_FILES] [OUT_FILE] [OUTPUTTYPE] [VERBOSE]",
+  "command-line": "3dTcat [RLT][IN_FILES] [OUT_FILE] [OUTPUTTYPE] [VERBOSE]",
   "author": "AFNI Developers",
   "description": "Concatenate sub-bricks from input datasets into one big 3D+time dataset.\nTODO Replace InputMultiPath in_files with Traits.List, if possible. Current version adds extra whitespace.",
   "url": "https://afni.nimh.nih.gov/",
@@ -31,7 +31,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "rlt",
@@ -41,7 +45,11 @@
       "command-line-flag": "-rlt",
       "description": "'' or '+' or '++'. Remove linear trends in each voxel time series loaded from each input dataset, separately. option -rlt removes the least squares fit of 'a+b*t' to each voxel time series. option -rlt+ adds dataset mean back in. option -rlt++ adds overall mean of all dataset timeseries back in.",
       "optional": true,
-      "value-choices": ["", "+", "++"]
+      "value-choices": [
+        "",
+        "+",
+        "++"
+      ]
     },
     {
       "id": "verbose",

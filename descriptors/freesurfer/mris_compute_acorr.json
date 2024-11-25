@@ -1,7 +1,7 @@
 {
   "name": "mris_compute_acorr",
   "description": "Compute the autocorrelation function of a curvature file on a spherical surface.",
-  "command-line": "mris_compute_acorr -o [OUTPUT_SUBJECT] [HEMI] [SURF] [CURV] [C1_SUBJECTS] : [C2_SUBJECTS]",
+  "command-line": "mris_compute_acorr [OUTPUT_SUBJECT] [HEMI] [SURF] [CURV] [C1_SUBJECTS] : [C2_SUBJECTS]",
   "schema-version": "0.5",
   "inputs": [
     {

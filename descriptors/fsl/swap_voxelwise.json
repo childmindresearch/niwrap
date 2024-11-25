@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/swap_voxelwise_descriptor.json",
   "description": "Reordering of vectors with direction preservation",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "swap_voxelwise -v [VECTORS_FILE_LIST] -s [SCALARS_FILE_LIST] -m [MASK] -b [OUTPUT_BASE_NAME] --mode [REORDER_MODE] --initmask [INIT_MASK] --xthresh [CROSSING_THRESH] -V",
+  "command-line": "swap_voxelwise [VECTORS_FILE_LIST] [SCALARS_FILE_LIST] [MASK] [OUTPUT_BASE_NAME] [REORDER_MODE] [INIT_MASK] [CROSSING_THRESH] -V",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -92,7 +92,11 @@
     {
       "description": "Specify the main input files for swap_voxelwise",
       "id": "compulsory_params_group",
-      "members": ["vectors_file_list", "scalars_file_list", "mask"],
+      "members": [
+        "vectors_file_list",
+        "scalars_file_list",
+        "mask"
+      ],
       "name": "Main Input Files"
     },
     {

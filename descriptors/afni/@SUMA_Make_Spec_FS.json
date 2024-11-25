@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Prepare for surface viewing in SUMA",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@SUMA_Make_Spec_FS [OPTIONS] -sid [SUBJECT_ID]",
+  "command-line": "@SUMA_Make_Spec_FS [OPTIONS] [SUBJECT_ID]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

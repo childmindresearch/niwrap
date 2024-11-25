@@ -3,7 +3,7 @@
   "name": "3dTto1D",
   "author": "AFNI Developers",
   "description": "Collapse a 4D time series to a 1D time series",
-  "command-line": "3dTto1D -input [INPUT_DATASET] -method [METHOD] [AUTOMASK_FLAG] [MASK] [PREFIX] [VERBOSE]",
+  "command-line": "3dTto1D -input [INPUT_DATASET] [METHOD] [AUTOMASK_FLAG] [MASK] [PREFIX] [VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

@@ -3,7 +3,7 @@
   "name": "parse_fs_lt_log.py",
   "author": "AFNI Developers",
   "description": "Parses FreeSurfer labeltable log file and retrieves labeltable indices.",
-  "command-line": "parse_fs_lt_log.py -logfile [LOGFILE] -labels [LABELS] [SHOW_ORIG] [SHOW_ALL_ORIG] [VERBOSE]",
+  "command-line": "parse_fs_lt_log.py -logfile [LOGFILE] [LABELS] [SHOW_ORIG] [SHOW_ALL_ORIG] [VERBOSE]",
   "inputs": [
     {
       "description": "Specify rank log file.",

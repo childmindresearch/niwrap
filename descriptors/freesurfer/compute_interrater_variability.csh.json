@@ -2,7 +2,7 @@
   "name": "compute_interrater_variability.csh",
   "tool-version": "7.4.1",
   "description": "Computes the interrater variability between label volumes from different raters or time points using several metrics.",
-  "command-line": "compute_interrater_variability --vol1 [LABEL_VOL1] --vol2 [LABEL_VOL2] --out [OUTPUT_PREFIX]",
+  "command-line": "compute_interrater_variability [LABEL_VOL1] [LABEL_VOL2] [OUTPUT_PREFIX]",
   "schema-version": "0.5",
   "inputs": [
     {

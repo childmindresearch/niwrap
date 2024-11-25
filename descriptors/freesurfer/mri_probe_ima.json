@@ -3,7 +3,7 @@
   "name": "mri_probe_ima",
   "author": "FreeSurfer Developers",
   "description": "Query Siemens IMA files to extract header information",
-  "command-line": "mri_probe_ima --i [IMA_FILE] [KEY_STRING] [OFFSET_TYPE_LEN] [ATTRIBUTE_NAME] [FILEINFO_FLAG] [DICTIONARY_FLAG] [OBS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_probe_ima [IMA_FILE] [KEY_STRING] [OFFSET_TYPE_LEN] [ATTRIBUTE_NAME] [FILEINFO_FLAG] [DICTIONARY_FLAG] [OBS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

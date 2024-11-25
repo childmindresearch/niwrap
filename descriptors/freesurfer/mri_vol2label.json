@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_vol2label",
   "description": "Converts values in a volume or surface overlay to a label using specified parameters.",
-  "command-line": "mri_vol2label --i [INPUT] --id [LABEL_ID] --thresh [THRESHOLD] --l [LABEL_FILE] --v [VOL_FILE] --surf [SURF_SUBJECT_HEMI] --surf-path [SURF_PATH] --opt [OPT_PARAMS] --remove-holes-islands [REMOVE_HOLES_FLAG] --dilate [DILATIONS] --erode [EROSIONS] [HELP_FLAG]",
+  "command-line": "mri_vol2label [INPUT] [LABEL_ID] [THRESHOLD] [LABEL_FILE] [VOL_FILE] [SURF_SUBJECT_HEMI] [SURF_PATH] [OPT_PARAMS] [REMOVE_HOLES_FLAG] [DILATIONS] [EROSIONS] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -3,7 +3,7 @@
   "name": "meanval",
   "author": "FreeSurfer Developers",
   "description": "Tool to calculate the mean value of an image within a mask",
-  "command-line": "meanval --i [INPUT_FILE] --m [MASK_FILE] --o [OUTPUT_FILE] [AVGWF_FLAG]",
+  "command-line": "meanval [INPUT_FILE] [MASK_FILE] [OUTPUT_FILE] [AVGWF_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

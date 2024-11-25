@@ -3,7 +3,7 @@
   "name": "@IsoMasks",
   "author": "AFNI Developers",
   "description": "Creates isosurfaces from isovolume envelopes.",
-  "command-line": "@IsoMasks -mask [INPUT_DATASET] [ISOVALS]",
+  "command-line": "@IsoMasks [INPUT_DATASET] [ISOVALS]",
   "inputs": [
     {
       "description": "Input dataset for creating isosurfaces",

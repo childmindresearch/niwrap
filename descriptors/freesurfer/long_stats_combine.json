@@ -3,7 +3,7 @@
   "name": "long_stats_combine",
   "author": "FreeSurfer Developers",
   "description": "Adds columns from stats into longitudinal qdec table, using longitudinally processed results.",
-  "command-line": "long_stats_combine --qdec [QDEC] --stats [STATS] --meas [MEAS] --sd [SD] --out [OUTQDEC] [OUTSTATS] [INSTATS] [CROSS_FLAG]",
+  "command-line": "long_stats_combine [QDEC] [STATS] [MEAS] [SD] --out [OUTQDEC] [OUTSTATS] [INSTATS] [CROSS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

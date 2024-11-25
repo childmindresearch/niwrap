@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "Not provided",
   "description": "dmri_forrest is a tool for processing diffusion MRI data using a random forest-based method.",
-  "command-line": "dmri_forrest --test [TEST_DIR] --train [TRAIN_FILE] --mask [MASK_FILE] --tract [TRACT_FILES] [SEG_FILE] [DIFF_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "dmri_forrest [TEST_DIR] [TRAIN_FILE] [MASK_FILE] [TRACT_FILES] [SEG_FILE] [DIFF_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

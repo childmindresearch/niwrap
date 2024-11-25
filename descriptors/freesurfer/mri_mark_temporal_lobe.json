@@ -2,7 +2,7 @@
   "name": "mri_mark_temporal_lobe",
   "tool-version": "7.4.1",
   "description": "A tool for marking the temporal lobe in MRI images.",
-  "command-line": "mri_mark_temporal_lobe [SPACING] [USE_GRADIENT_FLAG] [SUBJECTS] [OUTPUT]",
+  "command-line": "mri_mark_temporal_lobe [SPACING] [USE_GRADIENT_FLAG][SUBJECTS][OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {

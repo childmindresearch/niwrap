@@ -3,7 +3,7 @@
   "name": "dmri_extractSurfaceMeasurements",
   "author": "FreeSurfer Developers",
   "description": "A tool for extracting surface measurements from diffusion MRI data.",
-  "command-line": "dmri_extractSurfaceMeasurements -i [STREAMLINE_FILE] -sl [LH_SURFACE_FILE] -tl [LH_THICKNESS_OVERLAY] -cl [LH_CURVATURE_OVERLAY] -sr [RH_SURFACE_FILE] -tr [RH_THICKNESS_OVERLAY] -cr [RH_CURVATURE_OVERLAY] -o [OUTPUT_DIRECTORY] [REFERENCE_IMAGE] [REFERENCE_IMAGE_ANATOMICAL] [TRANSFORMATION] [ANNOTATION_FILE] [FA_OPTIONS]",
+  "command-line": "dmri_extractSurfaceMeasurements [STREAMLINE_FILE] [LH_SURFACE_FILE] [LH_THICKNESS_OVERLAY] [LH_CURVATURE_OVERLAY] [RH_SURFACE_FILE] [RH_THICKNESS_OVERLAY] [RH_CURVATURE_OVERLAY] [OUTPUT_DIRECTORY] [REFERENCE_IMAGE] [REFERENCE_IMAGE_ANATOMICAL] [TRANSFORMATION] [ANNOTATION_FILE] [FA_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {

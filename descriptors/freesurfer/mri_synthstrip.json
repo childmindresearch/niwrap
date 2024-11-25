@@ -3,7 +3,7 @@
   "name": "mri_synthstrip",
   "author": "FreeSurfer Developers",
   "description": "Robust, universal skull-stripping for brain images of any type.",
-  "command-line": "mri_synthstrip -i [IMAGE] [-o [OUT]] [-m [MASK]] [-g [GPU_FLAG]] [-b [BORDER]] [--no-csf [NO_CSF_FLAG]] [--model [MODEL]]",
+  "command-line": "mri_synthstrip [IMAGE] [[OUT]] [[MASK]] [[GPU_FLAG]] [[BORDER]] [[NO_CSF_FLAG]] [[MODEL]]",
   "schema-version": "0.5",
   "inputs": [
     {

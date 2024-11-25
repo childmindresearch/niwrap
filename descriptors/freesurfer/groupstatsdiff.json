@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "groupstatsdiff",
   "description": "Evaluate the differences between two groupstats outputs from recon-all analyses in Freesurfer.",
-  "command-line": "groupstatsdiff --g1 [GROUP1_DIR] --g2 [GROUP2_DIR] --o [OUTPUT_DIR] [NO_MAPS_FLAG] [OSGM_FLAG] [NO_COMMON_FLAG] [ALLOW_SUBJ_DIFF_FLAG] [NO_AREA_FLAG] [NO_VOLUME_FLAG] [NO_BA_FLAG] [NO_APARCSTATS_FLAG] [NO_ASEGSTATS_FLAG] [NO_WPARCSTATS_FLAG] [NO_STATS_FLAG] [NO_PRUNE_FLAG] [FWHM_VALUE] --sd1 [SUBJECTS_DIR1] --sd2 [SUBJECTS_DIR2] [NO_DICE_FLAG] [DICE_CTAB]",
+  "command-line": "groupstatsdiff --g1 [GROUP1_DIR] --g2 [GROUP2_DIR] --o [OUTPUT_DIR] [NO_MAPS_FLAG] [OSGM_FLAG] [NO_COMMON_FLAG] [ALLOW_SUBJ_DIFF_FLAG] [NO_AREA_FLAG] [NO_VOLUME_FLAG] [NO_BA_FLAG] [NO_APARCSTATS_FLAG] [NO_ASEGSTATS_FLAG] [NO_WPARCSTATS_FLAG] [NO_STATS_FLAG] [NO_PRUNE_FLAG] [FWHM_VALUE] [SUBJECTS_DIR1] [SUBJECTS_DIR2] [NO_DICE_FLAG] [DICE_CTAB]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -2,7 +2,7 @@
   "name": "long_qdec_table",
   "description": "Tool to operate on longitudinal QDEC tables.",
   "schema-version": "0.5",
-  "command-line": "long_qdec_table --qdec [QDEC_TABLE] [SPLIT] [CROSS_FLAG] [SORT] [OUT]",
+  "command-line": "long_qdec_table [QDEC_TABLE] [SPLIT] [CROSS_FLAG] [SORT] [OUT]",
   "inputs": [
     {
       "id": "qdec_table",

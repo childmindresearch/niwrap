@@ -1,6 +1,6 @@
 {
   "name": "antsRegistrationSyNQuick.sh",
-  "command-line": "antsRegistrationSyNQuick.sh -d [DIMENSIONALITY] -f [FIXED_IMAGE] -m [MOVING_IMAGE] -o [OUTPUT_PREFIX] [TRANSFORM_TYPE]",
+  "command-line": "antsRegistrationSyNQuick.sh [DIMENSIONALITY] [FIXED_IMAGE] [MOVING_IMAGE] [OUTPUT_PREFIX] [TRANSFORM_TYPE]",
   "description": "A script to quickly compute a SyN-based registration between two images using ANTS.",
   "schema-version": "0.5",
   "tool-version": "2.5.3",
@@ -16,7 +16,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "-d",
       "description": "Dimensionality of the images (2 or 3)."
     },
@@ -53,7 +56,10 @@
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["s", "b"],
+      "value-choices": [
+        "s",
+        "b"
+      ],
       "description": "Type of transform: 's' for SyN, 'b' for B-spline SyN. Default is 's'."
     }
   ],

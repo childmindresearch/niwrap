@@ -1,7 +1,7 @@
 {
   "name": "applyMorph",
   "description": "A tool for applying a morph to a volume using a template and a transform",
-  "command-line": "applyMorph [INPUTS] --template [TEMPLATE] --transform [TRANSFORM] [ZLIB_BUFFER] [DBG_COORDS]",
+  "command-line": "applyMorph [INPUTS] [TEMPLATE] [TRANSFORM] [ZLIB_BUFFER] [DBG_COORDS]",
   "schema-version": "0.5",
   "inputs": [
     {

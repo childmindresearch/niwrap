@@ -1,6 +1,6 @@
 {
   "name": "mris_estimate_wm",
-  "command-line": "mris_estimate_wm --subjs [SUBJECTS] --hemi [HEMI] [SDIR] [MODEL] [SUFFIX] [GPU_FLAG] [RSI_FLAG] [SINGLE_ITER_FLAG] [VOL]",
+  "command-line": "mris_estimate_wm --subjs [SUBJECTS] [HEMI] [SDIR] [MODEL] [SUFFIX] [GPU_FLAG] [RSI_FLAG] [SINGLE_ITER_FLAG] [VOL]",
   "description": "Tool to estimate white matter surfaces using MRI data.",
   "schema-version": "0.5",
   "inputs": [

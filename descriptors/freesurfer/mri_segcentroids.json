@@ -1,7 +1,7 @@
 {
   "name": "mri_segcentroids",
   "description": "Computes the center of mass for individual structures in a segmentation.",
-  "command-line": "mri_segcentroids --i [INPUT_SEGMENTATION] --o [OUTPUT_FILE] [POINTSET_FLAG] [REGISTRATION_FILE] [WEIGHTS_FILE] [LUT_FILE] [DEFAULT_LUT_FLAG]",
+  "command-line": "mri_segcentroids [INPUT_SEGMENTATION] [OUTPUT_FILE] [POINTSET_FLAG] [REGISTRATION_FILE] [WEIGHTS_FILE] [LUT_FILE] [DEFAULT_LUT_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

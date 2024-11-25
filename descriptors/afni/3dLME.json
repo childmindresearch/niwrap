@@ -4,7 +4,7 @@
   "description": "AFNI Group Analysis Program with Linear Mixed-Effects Modeling Approach",
   "author": "AFNI Developers",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dLME -prefix [PREFIX] -model [MODEL] -dataTable [DATA_TABLE] -bounds [BOUNDS] -cio [CIO_FLAG] -corStr [COR_STR] -cutoff [CUTOFF] -dbgArgs [DBG_ARGS_FLAG] -jobs [JOBS] -gltCode [GLT_CODE] -gltLabel [GLT_LABEL] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] -ICC [ICC_FLAG] -ICCb [ICCB_FLAG] -logLik [LOG_LIK_FLAG] -LOGIT [LOGIT_FLAG] -ml [ML_FLAG] -qVarsCenters [QVARS_CENTERS] -qVars [QVARS] -ranEff [RANEFF] -mask [MASK] -num_glf [NUM_GLF] -num_glt [NUM_GLT] -resid [RESID] -RE [RE] -REprefix [REPREFIX] -RIO [RIO_FLAG] -show_allowed_options [SHOW_OPTIONS_FLAG] -SS_type [SS_TYPE]",
+  "command-line": "3dLME -prefix [PREFIX] -model [MODEL] -dataTable [DATA_TABLE] -bounds [BOUNDS] [CIO_FLAG] -corStr [COR_STR] -cutoff [CUTOFF] [DBG_ARGS_FLAG] -jobs [JOBS] -gltCode [GLT_CODE] -gltLabel [GLT_LABEL] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] [ICC_FLAG] [ICCB_FLAG] [LOG_LIK_FLAG] [LOGIT_FLAG] -ml [ML_FLAG] -qVarsCenters [QVARS_CENTERS] -qVars [QVARS] -ranEff [RANEFF] -mask [MASK] -num_glf [NUM_GLF] -num_glt [NUM_GLT] -resid [RESID] -RE [RE] -REprefix [REPREFIX] -RIO [RIO_FLAG] [SHOW_OPTIONS_FLAG] -SS_type [SS_TYPE]",
   "inputs": [
     {
       "description": "Prefix for output files",

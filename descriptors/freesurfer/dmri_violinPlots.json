@@ -1,7 +1,7 @@
 {
   "name": "dmri_violinPlots",
   "description": "Generate violin plots for dMRI data",
-  "command-line": "dmri_violinPlots -i [INPUT_DIRECTORY] -l [LABELS] -s [STRUCTURE]",
+  "command-line": "dmri_violinPlots [INPUT_DIRECTORY] [LABELS] [STRUCTURE]",
   "schema-version": "0.5",
   "inputs": [
     {

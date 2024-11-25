@@ -1,6 +1,6 @@
 {
   "name": "antsIntermodalityIntrasubject.sh",
-  "command-line": "antsIntermodalityIntrasubject.sh [DIMENSION] -r [ANATOMICAL_T1_IMAGE] -R [ANATOMICAL_REFERENCE_IMAGE] -i [SCALAR_IMAGE_TO_MATCH] -x [ANATOMICAL_T1BRAINMASK] -t [TRANSFORM_TYPE] -w [T1_TO_TEMPLATE_PREFIX] -T [TEMPLATE_SPACE] [OUTPUT_PREFIX] [LABELS_IN_TEMPLATE_SPACE] [AUXILIARY_SCALAR_IMAGES] [AUXILIARY_DT_IMAGE]",
+  "command-line": "antsIntermodalityIntrasubject.sh [DIMENSION] [ANATOMICAL_T1_IMAGE] [ANATOMICAL_REFERENCE_IMAGE] [SCALAR_IMAGE_TO_MATCH] [ANATOMICAL_T1BRAINMASK] [TRANSFORM_TYPE] [T1_TO_TEMPLATE_PREFIX] [TEMPLATE_SPACE] [OUTPUT_PREFIX] [LABELS_IN_TEMPLATE_SPACE] [AUXILIARY_SCALAR_IMAGES] [AUXILIARY_DT_IMAGE]",
   "author": "ANTs Developers",
   "description": "Performs registration between a scalar image and a T1 image.",
   "url": "https://github.com/ANTsX/ANTs",
@@ -60,7 +60,12 @@
       "type": "Number",
       "integer": true,
       "command-line-flag": "-t",
-      "value-choices": [0, 1, 2, 3],
+      "value-choices": [
+        0,
+        1,
+        2,
+        3
+      ],
       "description": "Type of transform: 0=rigid, 1=affine, 2=rigid+small_def, 3=affine+small_def"
     },
     {

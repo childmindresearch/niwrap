@@ -1,7 +1,7 @@
 {
   "name": "gems_compute_atlas_probs",
   "description": "Tool to compute atlas probabilities using SAMSEG results.",
-  "command-line": "gems_compute_atlas_probs --subjects-dir [SUBJECTS_DIR] --mesh-collections [MESH_COLLECTIONS] --out-dir [OUT_DIR] [SEGMENTATIONS_DIR] [GT_FROM_FS_FLAG] [SEGMENTATION_NAME] [MULTI_STRUCTURE_FLAG] [LABELS] [FROM_SAMSEG_FLAG] [EM_ITERATIONS] [SHOW_FIGS_FLAG] [SAVE_FIGS_FLAG] [SAVE_AVERAGE_FIGS_FLAG] [SUBJECTS_FILE] [LABELS_FILE] [SAMSEG_SUBDIR]",
+  "command-line": "gems_compute_atlas_probs [SUBJECTS_DIR] [MESH_COLLECTIONS] [OUT_DIR] [SEGMENTATIONS_DIR] [GT_FROM_FS_FLAG] [SEGMENTATION_NAME] [MULTI_STRUCTURE_FLAG] [LABELS] [FROM_SAMSEG_FLAG] [EM_ITERATIONS] [SHOW_FIGS_FLAG] [SAVE_FIGS_FLAG] [SAVE_AVERAGE_FIGS_FLAG] [SUBJECTS_FILE] [LABELS_FILE] [SAMSEG_SUBDIR]",
   "schema-version": "0.5",
   "inputs": [
     {

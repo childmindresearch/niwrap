@@ -4,7 +4,7 @@
   "author": "NiftyReg Developers",
   "description": "Tool for performing various transformation operations on medical images including control point to deformation conversion, composition of transformations, and converting between deformation and displacement fields.",
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
-  "command-line": "reg_transform -ref [REFERENCE_IMAGE] [OPTIONS]",
+  "command-line": "reg_transform [REFERENCE_IMAGE] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {

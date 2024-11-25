@@ -2,7 +2,7 @@
   "name": "fsr-coreg",
   "tool-version": "7.4.1",
   "description": "Co-registers input data in preparation for FreeSurfer analysis",
-  "command-line": "fsr-coreg --i [IMPORT_DIR] --ref [REFERENCE_MODE] --threads [NTHREADS] [FORCE_UPDATE_FLAG] --o [OUTPUT_DIR] --expert [EXPERT_FILE]",
+  "command-line": "fsr-coreg [IMPORT_DIR] [REFERENCE_MODE] [NTHREADS] [FORCE_UPDATE_FLAG] [OUTPUT_DIR] [EXPERT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {

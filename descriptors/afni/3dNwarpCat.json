@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpCat.html",
   "description": "Catenates (composes) 3D warps defined on a grid or via a matrix.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dNwarpCat [INTERPOLATION] [VERBOSITY] -prefix [OUTPUT_PREFIX] [SPACE_MARKER] -warp1 [WARP1] -warp2 [WARP2] [WARP_FILES] [INVERT_FINAL_WARP] [EXTRA_PADDING]",
+  "command-line": "3dNwarpCat [INTERPOLATION] [VERBOSITY] [OUTPUT_PREFIX] [SPACE_MARKER] [WARP1] [WARP2] [WARP_FILES] [INVERT_FINAL_WARP] [EXTRA_PADDING]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

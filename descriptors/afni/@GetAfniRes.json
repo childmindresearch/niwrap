@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Tool to return the voxel resolution of a dataset",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@GetAfniRes [OUTPUT_TYPE] [DSET]",
+  "command-line": "@GetAfniRes[OUTPUT_TYPE] [DSET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -18,7 +18,11 @@
       "id": "output_type",
       "name": "Output Type",
       "command-line-flag": "",
-      "value-choices": ["-min", "-max", "-mean"]
+      "value-choices": [
+        "-min",
+        "-max",
+        "-mean"
+      ]
     },
     {
       "description": "Input dataset",

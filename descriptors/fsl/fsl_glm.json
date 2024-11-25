@@ -5,7 +5,7 @@
   "descriptor-url": "N/A",
   "description": "Simple GLM allowing temporal or spatial regression on either text data or images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fsl_glm -i [INPUT_FILE] -d [DESIGN] -o [OUTPUT_FILE] [CONTRASTS] [MASK] [DOF] [DES_NORM_FLAG] [DAT_NORM_FLAG] [VN_FLAG] [DEMEAN_FLAG] [OUT_COPE] [OUT_Z] [OUT_T] [OUT_P] [OUT_F] [OUT_PF] [OUT_RESIDUALS] [OUT_VARCB] [OUT_SIGSQ] [OUT_DATA] [OUT_VNSCALES] [VX_TEXT] [VX_IMAGES] [HELP_FLAG]",
+  "command-line": "fsl_glm [INPUT_FILE] [DESIGN] [OUTPUT_FILE] [CONTRASTS] [MASK] [DOF] [DES_NORM_FLAG] [DAT_NORM_FLAG] [VN_FLAG] [DEMEAN_FLAG] [OUT_COPE] [OUT_Z] [OUT_T] [OUT_P] [OUT_F] [OUT_PF] [OUT_RESIDUALS] [OUT_VARCB] [OUT_SIGSQ] [OUT_DATA] [OUT_VNSCALES] [VX_TEXT] [VX_IMAGES] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -235,7 +235,10 @@
     {
       "description": "Compulsory inputs for FSL GLM",
       "id": "compulsory_group",
-      "members": ["input_file", "design_matrix"],
+      "members": [
+        "input_file",
+        "design_matrix"
+      ],
       "name": "Compulsory Parameters"
     },
     {
@@ -274,13 +277,18 @@
     {
       "description": "Beta options for FSL GLM",
       "id": "beta_options_group",
-      "members": ["vx_text", "vx_images"],
+      "members": [
+        "vx_text",
+        "vx_images"
+      ],
       "name": "Beta Options"
     },
     {
       "description": "Miscellaneous options for FSL GLM",
       "id": "miscellaneous_params_group",
-      "members": ["help_flag"],
+      "members": [
+        "help_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

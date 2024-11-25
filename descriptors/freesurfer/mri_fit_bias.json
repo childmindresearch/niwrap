@@ -3,7 +3,7 @@
   "name": "mri_fit_bias",
   "author": "FreeSurfer Developers",
   "description": "A tool for intensity normalization and bias correction in MRI images.",
-  "command-line": "mri_fit_bias --i [INPUT_VOL] --cutoff [LPF_CUTOFF] --seg [SEG_VOL] --mask [MASK_VOL] --o [OUT_VOL] --bias [BIAS_FIELD] --dct [DCT_VOL] --thresh [THRESH_VAL] --erode [N_ERODE] --threads [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_fit_bias [INPUT_VOL] [LPF_CUTOFF] [SEG_VOL] [MASK_VOL] [OUT_VOL] [BIAS_FIELD] [DCT_VOL] [THRESH_VAL] [N_ERODE] [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

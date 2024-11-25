@@ -1,7 +1,7 @@
 {
   "name": "isolate_labels_keeporigval.csh",
   "description": "Separates out a particular or all labels into individual binary files keeping the original label values for subsequent shape analysis.",
-  "command-line": "isolate_labels_keeporigval.csh --vol [LABELVOL] --outprefix [OUTPREFIX] [LABEL] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "isolate_labels_keeporigval.csh [LABELVOL] [OUTPREFIX] [LABEL] [VERSION_FLAG] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

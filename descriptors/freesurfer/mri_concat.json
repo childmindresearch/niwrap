@@ -3,7 +3,7 @@
   "name": "mri_concat",
   "author": "FreeSurfer Developers",
   "description": "Concatenates input data sets.",
-  "command-line": "mri_concat [INPUT_FILES] --o [OUTPUT_FILE] [ADDITIONAL_OPTIONS]",
+  "command-line": "mri_concat [INPUT_FILES] [OUTPUT_FILE] [ADDITIONAL_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {

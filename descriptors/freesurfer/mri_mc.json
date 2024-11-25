@@ -1,7 +1,7 @@
 {
   "name": "mri_mc",
   "description": "Extract a surface from a label volume using Marching Cubes algorithm.",
-  "command-line": "mri_mc [INPUT_VOLUME] [LABEL_VALUE] [OUTPUT_SURFACE] [CONNECTIVITY]",
+  "command-line": "mri_mc [INPUT_VOLUME] [LABEL_VALUE] [OUTPUT_SURFACE][CONNECTIVITY]",
   "schema-version": "0.5",
   "inputs": [
     {

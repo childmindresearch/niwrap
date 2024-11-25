@@ -2,7 +2,7 @@
   "name": "createMorph",
   "tool-version": "7.4.1",
   "description": "Tool to create morphological transformations using specified input transforms.",
-  "command-line": "createMorph --in [INPUT_TRANSFORMS] --out [OUTPUT_TRANSFORM] [TEMPLATE] [SUBJECT] [DEBUG_COORDINATES]",
+  "command-line": "createMorph [INPUT_TRANSFORMS] [OUTPUT_TRANSFORM] [TEMPLATE] [SUBJECT] [DEBUG_COORDINATES]",
   "schema-version": "0.5",
   "inputs": [
     {

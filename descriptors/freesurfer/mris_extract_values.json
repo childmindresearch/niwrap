@@ -1,7 +1,7 @@
 {
   "name": "mris_extract_values",
   "description": "Extracts values from surface, overlay, and annotation files and outputs them to a CSV file.",
-  "command-line": "mris_extract_values -i [SURFACE] -v [OVERLAY] -a [ANNOTATION] -o [CSVFILE] -m [NUM_IMAGES] [IMAGE_FILES]",
+  "command-line": "mris_extract_values [SURFACE] [OVERLAY] [ANNOTATION] [CSVFILE] [NUM_IMAGES] [IMAGE_FILES]",
   "schema-version": "0.5",
   "inputs": [
     {

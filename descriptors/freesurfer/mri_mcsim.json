@@ -3,7 +3,7 @@
   "name": "mri_mcsim",
   "author": "FreeSurfer Developers",
   "description": "Monte Carlo simulation tool for surface-based multiple comparisons",
-  "command-line": "mri_mcsim --o [TOP_OUTPUT_DIR] --base [BASE] --surface [SUBJECTNAME] [HEMISPHERE] [NREPS] [FWHM_VALUES] [FWHM_MAX_FLAG] [AVG_VERT_AREA_FLAG] [SEED_VALUE] [LABEL_FILE] [MASK_FILE] [NO_LABEL_FLAG] [NO_SAVE_MASK_FLAG] [SURFACE_NAME] [LOG_FILE] [DONE_FILE] [STOP_FILE] [SAVE_FILE] [SAVE_ITER_FLAG] [SUBJECTS_DIR] [DEBUG_FLAG] [CHECK_OPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_mcsim [TOP_OUTPUT_DIR] [BASE] [SUBJECTNAME] [HEMISPHERE] [NREPS] [FWHM_VALUES] [FWHM_MAX_FLAG] [AVG_VERT_AREA_FLAG] [SEED_VALUE] [LABEL_FILE] [MASK_FILE] [NO_LABEL_FLAG] [NO_SAVE_MASK_FLAG] [SURFACE_NAME] [LOG_FILE] [DONE_FILE] [STOP_FILE] [SAVE_FILE] [SAVE_ITER_FLAG] [SUBJECTS_DIR] [DEBUG_FLAG] [CHECK_OPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

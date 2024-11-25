@@ -1,7 +1,7 @@
 {
   "name": "mri_stopmask",
   "description": "This program creates a mask used to stop the search for the maximum gradient in mris_place_surface, preventing the surface from wandering into areas it should not.",
-  "command-line": "mri_stopmask --o [OUTPUT_MASK] --filled [FILLED_AUTO_MGZ] [FILLED_MGZ] --aseg [ASEG_PRESURF_MGZ] [LATERAL_VENTRICLES_FLAG] [WMSA_ERODE_MM] [WM_MGZ] [BRAIN_FINALSURFS_MGZ] [NO_FILLED_FLAG] [NO_LV_FLAG] [NO_WMSA_FLAG] [NO_WM_FLAG] [NO_BFS_FLAG]",
+  "command-line": "mri_stopmask [OUTPUT_MASK] [FILLED_AUTO_MGZ] [FILLED_MGZ] [ASEG_PRESURF_MGZ] [LATERAL_VENTRICLES_FLAG] [WMSA_ERODE_MM] [WM_MGZ] [BRAIN_FINALSURFS_MGZ] [NO_FILLED_FLAG] [NO_LV_FLAG] [NO_WMSA_FLAG] [NO_WM_FLAG] [NO_BFS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -3,7 +3,7 @@
   "name": "mris_diff",
   "author": "FreeSurfer Developers",
   "description": "A tool for comparing differences between surface files in FreeSurfer.",
-  "command-line": "mris_diff [SURFACE1] [SURFACE2] --s1 [SUBJ1] --s2 [SUBJ2] --sd1 [SUBJECTS_DIR1] --sd2 [SUBJECTS_DIR2] --hemi [HEMISPHERE]",
+  "command-line": "mris_diff [SURFACE1] [SURFACE2] [SUBJ1] [SUBJ2] [SUBJECTS_DIR1] [SUBJECTS_DIR2] [HEMISPHERE]",
   "schema-version": "0.5",
   "inputs": [
     {

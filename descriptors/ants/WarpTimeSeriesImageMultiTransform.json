@@ -1,6 +1,6 @@
 {
   "name": "WarpTimeSeriesImageMultiTransform",
-  "command-line": "WarpTimeSeriesImageMultiTransform [IMAGE_DIMENSION] [MOVING_IMAGE] [OUTPUT_IMAGE] -R [REFERENCE_IMAGE] [TRANSFORMS] [INTERPOLATION]",
+  "command-line": "WarpTimeSeriesImageMultiTransform [IMAGE_DIMENSION] [MOVING_IMAGE] [OUTPUT_IMAGE] [REFERENCE_IMAGE] [TRANSFORMS] [INTERPOLATION]",
   "description": "WarpTimeSeriesImageMultiTransform is a tool used to apply a series of transformations to a time series image, either forward or reverse, using affine transforms and warps.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -13,7 +13,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [3, 4],
+      "value-choices": [
+        3,
+        4
+      ],
       "description": "The dimensionality of the input images (3D or 4D)."
     },
     {
@@ -56,7 +59,10 @@
       "value-key": "[INTERPOLATION]",
       "type": "String",
       "optional": true,
-      "value-choices": ["NearestNeighbor", "BSpline"],
+      "value-choices": [
+        "NearestNeighbor",
+        "BSpline"
+      ],
       "description": "Specifies the type of interpolation to use: Nearest Neighbor or 3rd order B-Spline."
     }
   ],

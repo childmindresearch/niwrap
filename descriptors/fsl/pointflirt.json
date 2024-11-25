@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to align point coordinates between volumes and compute affine transformation matrices.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "pointflirt -i [INVOL_COORDS] -r [REFVOL_COORDS] -o [OUT_MATRIX] [USE_VOX] [VOL_INPUT] [VOL_REF] [VERBOSE_FLAG]",
+  "command-line": "pointflirt -i [INVOL_COORDS] -r [REFVOL_COORDS] [OUT_MATRIX] [USE_VOX] [VOL_INPUT] [VOL_REF] [VERBOSE_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"

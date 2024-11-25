@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu",
   "description": "A frontend tool to perform mathematical operations on volumes/surfaces of data using mris_calc.",
-  "command-line": "fscalc [INPUT_FILE1] [OPERATION] [INPUT_FILE2] --o [OUTPUT_FILE] [OUTPUT_DATA_TYPE] [DEBUG_FLAG] [TMP_DIR] [NO_CLEANUP_FLAG] [LOG_FILE]",
+  "command-line": "fscalc [INPUT_FILE1] [OPERATION] [INPUT_FILE2] [OUTPUT_FILE] [OUTPUT_DATA_TYPE] [DEBUG_FLAG] [TMP_DIR] [NO_CLEANUP_FLAG] [LOG_FILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

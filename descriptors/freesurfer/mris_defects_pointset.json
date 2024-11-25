@@ -1,7 +1,7 @@
 {
   "name": "mris_defects_pointset",
   "description": "Produces a pointset file containing the locations of each topological defect in a surface",
-  "command-line": "mris_defects_pointset --surf [SURFACE] --defects [DEFECTS] --out [OUT] [LABEL] [CONTROL]",
+  "command-line": "mris_defects_pointset [SURFACE] [DEFECTS] [OUT] [LABEL] [CONTROL]",
   "schema-version": "0.5",
   "inputs": [
     {

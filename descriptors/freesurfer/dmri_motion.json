@@ -1,6 +1,6 @@
 {
   "name": "dmri_motion",
-  "command-line": "dmri_motion --out [OUTFILE] [OUTF] [MAT] [DWI] [BVAL] [THRESHOLD] [DIFFUSIVITY] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
+  "command-line": "dmri_motion [OUTFILE] [OUTF] [MAT] [DWI] [BVAL] [THRESHOLD] [DIFFUSIVITY] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
   "schema-version": "0.5",
   "description": "A tool for calculating motion measures from DWI scans.",
   "inputs": [

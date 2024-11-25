@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWUncert.html",
   "description": "Use jackknifing to estimate uncertainty of DTI parameters, important for probabilistic tractography.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dDWUncert -inset [INPUT_FILE] -input [INPUT_PREFIX] -prefix [OUTPUT_PREFIX] -grads [GRAD_FILE] -bmatrix_FULL [BMATRIX_FILE] -iters [NUM_ITERS] -mask [MASK_FILE] -calc_thr_FA [CALC_THR_FA] -csf_fa [CSF_FA]",
+  "command-line": "3dDWUncert -inset [INPUT_FILE] -input [INPUT_PREFIX] -prefix [OUTPUT_PREFIX] -grads [GRAD_FILE] -bmatrix_FULL [BMATRIX_FILE] [NUM_ITERS] [MASK_FILE] [CALC_THR_FA] [CSF_FA]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

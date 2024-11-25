@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Nonparametric Wilcoxon signed-rank test for paired comparisons of two samples",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dWilcoxon [WORKMEM] [VOXEL] -dset 1 [DS1_X] -dset 2 [DS2_Y] -out [PREFIX]",
+  "command-line": "3dWilcoxon [WORKMEM] [VOXEL] -dset 1 [DS1_X] -dset 2 [DS2_Y] [PREFIX]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

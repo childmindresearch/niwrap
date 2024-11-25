@@ -1,7 +1,7 @@
 {
   "name": "mris_multimodal",
   "description": "A FreeSurfer tool for processing multimodal surface data.",
-  "command-line": "mris_multimodal -i [INPUT_SURFACE] -t [TARGET_SURFACE] -o [OUTPUT_SURFACE] [FILL_HOLES_FLAG] [CURVATURE_FLAG] [THICKNESS_FLAG] -a [ANNOTATION_OUTPUT] -v [OVERLAY_OUTPUT] -c [CSV_OUTPUT] [VTK_FLAG]",
+  "command-line": "mris_multimodal -i [INPUT_SURFACE] -t [TARGET_SURFACE] -o [OUTPUT_SURFACE] [FILL_HOLES_FLAG] [CURVATURE_FLAG] [THICKNESS_FLAG] [ANNOTATION_OUTPUT] [OVERLAY_OUTPUT] [CSV_OUTPUT] [VTK_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

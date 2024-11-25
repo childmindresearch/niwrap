@@ -3,7 +3,7 @@
   "name": "trac-paths",
   "author": "FreeSurfer Developers",
   "description": "Tractography for a single subject.",
-  "command-line": "trac-paths -c [DMRIRC_FILE] [LOG_FILE] [NO_LOG_FLAG] [CMD_FILE] [NO_CMD_FLAG] [NO_ISRUNNING_FLAG] [UMASK_VALUE] [GROUP_ID] [ALLOW_CORE_DUMP_FLAG] [DEBUG_FLAG] [DONTRUN_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "trac-paths [DMRIRC_FILE] [LOG_FILE] [NO_LOG_FLAG] [CMD_FILE] [NO_CMD_FLAG] [NO_ISRUNNING_FLAG] [UMASK_VALUE] [GROUP_ID] [ALLOW_CORE_DUMP_FLAG] [DEBUG_FLAG] [DONTRUN_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

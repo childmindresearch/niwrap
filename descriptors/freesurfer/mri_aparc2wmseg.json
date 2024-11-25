@@ -3,7 +3,7 @@
   "name": "mri_aparc2wmseg",
   "author": "FreeSurfer Developers",
   "description": "A tool to convert aparc+aseg.mgz annotations into a white matter segmentation file.",
-  "command-line": "mri_aparc2wmseg --s [SUBJECT] --wmseg [WMSEGFILE] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_aparc2wmseg [SUBJECT] [WMSEGFILE] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

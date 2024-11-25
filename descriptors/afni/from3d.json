@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Extract 2D image files from a 3D AFNI dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "from3d [VERBOSE] [NSIZE] [RAW_FLAG] [FLOAT_FLAG] [ZFIRST] [ZLAST] [TFIRST] [TLAST] -input [INPUT_FILE] -prefix [PREFIX]",
+  "command-line": "from3d [VERBOSE] [NSIZE] [RAW_FLAG] [FLOAT_FLAG] [ZFIRST] [ZLAST] [TFIRST] [TLAST] [INPUT_FILE] [PREFIX]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Compiles AFNI's diffusion plugin.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@make_plug_diff -vtk [VTKDIR] -xm [XMDIR] -asrc [ASRCDIR] -abin [ABINDIR] [COMMENTS_FLAG] [LINUX_FLAG] [DIFFDIR]",
+  "command-line": "@make_plug_diff [VTKDIR] [XMDIR] [ASRCDIR] [ABINDIR] [COMMENTS_FLAG] [LINUX_FLAG] [DIFFDIR]",
   "schema-version": "0.5",
   "inputs": [
     {

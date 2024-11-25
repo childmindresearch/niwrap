@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_stats2seg",
   "description": "A command-line tool for converting MRI statistical maps to segmented volume.",
-  "command-line": "mri_stats2seg --stat [STAT_FILE] --seg [SEGMENTATION_VOLUME] --o [OUTPUT_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_stats2seg [STAT_FILE] [SEGMENTATION_VOLUME] [OUTPUT_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

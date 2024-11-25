@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Command line calculator with formatted output options",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "ccalc [FORMAT] -eval [EXPR]",
+  "command-line": "ccalc [FORMAT] [EXPR]",
   "schema-version": "0.5",
   "inputs": [
     {

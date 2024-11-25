@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Re-sample dataset with irregular time grid to regular time grid via linear interpolation.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dTRfix -input [INPUT_FILE] -TRlist [TR_LIST] -TIMElist [TIME_LIST] -prefix [PREFIX] -TRout [OUTPUT_TR]",
+  "command-line": "3dTRfix [INPUT_FILE] [TR_LIST] [TIME_LIST] [PREFIX] [OUTPUT_TR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

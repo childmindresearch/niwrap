@@ -1,6 +1,6 @@
 {
   "name": "mris_multiscale_stats",
-  "command-line": "mris_multiscale_stats -o [OUTPUT_SUBJECT] [OPTIONS] [HEMI] [SURF] [CURV] [CLASS1_SUBJECTS] : [CLASS2_SUBJECTS]",
+  "command-line": "mris_multiscale_stats [OUTPUT_SUBJECT] [OPTIONS] [HEMI] [SURF] [CURV] [CLASS1_SUBJECTS] : [CLASS2_SUBJECTS]",
   "description": "Compute the autocorrelation function of a curvature file using multiscale statistical techniques.",
   "schema-version": "0.5",
   "inputs": [

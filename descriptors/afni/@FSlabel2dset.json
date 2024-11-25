@@ -3,7 +3,7 @@
   "name": "@FSlabel2dset",
   "author": "AFNI Developers",
   "description": "A script to convert a FreeSurfer ASCII label file into a SUMA dataset and a SUMA ROI",
-  "command-line": "@FSlabel2dset -fs [FS_LABEL_FILE] -val [VAL] [HELP_FLAG] [ECHO_FLAG] [KEEP_TMP_FLAG]",
+  "command-line": "@FSlabel2dset [FS_LABEL_FILE] [VAL] [HELP_FLAG] [ECHO_FLAG] [KEEP_TMP_FLAG]",
   "inputs": [
     {
       "command-line-flag": "-fs",

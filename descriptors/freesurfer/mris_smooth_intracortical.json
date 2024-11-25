@@ -3,7 +3,7 @@
   "name": "mris_smooth_intracortical",
   "author": "FreeSurfer Developers",
   "description": "Smooths data overlaid onto cortical surface meshes using specified tangential and radial extents.",
-  "command-line": "mris_smooth_intracortical --surf_dir [SURF_DIR] --surf_name [SURF_NAME] --overlay_dir [OVERLAY_DIR] --overlay_name [OVERLAY_NAME] [--output_dir [OUTPUT_DIR]] [--output_name [OUTPUT_NAME]] [--tan-size [TAN_SIZE]] [--rad-size [RAD_SIZE]] [--rad-start [RAD_START]] [--tan-weights [TAN_WEIGHTS]]",
+  "command-line": "mris_smooth_intracortical [SURF_DIR] [SURF_NAME] [OVERLAY_DIR] [OVERLAY_NAME] [[OUTPUT_DIR]] [[OUTPUT_NAME]] [[TAN_SIZE]] [[RAD_SIZE]] [[RAD_START]] [[TAN_WEIGHTS]]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

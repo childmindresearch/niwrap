@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Replaces voxel values using a mapping file with specified columns",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dExchange -prefix [PREFIX] -input [DATASET] -map [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "3dExchange [PREFIX] -input [DATASET] -map [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

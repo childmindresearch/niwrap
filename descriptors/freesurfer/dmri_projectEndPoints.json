@@ -1,6 +1,6 @@
 {
   "name": "dmri_projectEndPoints",
-  "command-line": "dmri_projectEndPoints -i [STREAMLINE_FILE] -sl [LEFT_SURFACE_FILE] -sr [RIGHT_SURFACE_FILE] -ol [LEFT_OVERLAY_FILE] -or [RIGHT_OVERLAY_FILE] -ri [REFERENCE_IMAGE]",
+  "command-line": "dmri_projectEndPoints [STREAMLINE_FILE] [LEFT_SURFACE_FILE] [RIGHT_SURFACE_FILE] [LEFT_OVERLAY_FILE] [RIGHT_OVERLAY_FILE] [REFERENCE_IMAGE]",
   "schema-version": "0.5",
   "description": "A tool for projecting the endpoints of streamlines onto cortical surfaces, producing overlay files for visualization.",
   "inputs": [

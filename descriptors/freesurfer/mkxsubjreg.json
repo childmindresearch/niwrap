@@ -1,7 +1,7 @@
 {
   "name": "mkxsubjreg",
   "description": "Creates a new registration matrix that maps from the functional volume of the source subject to the orig of the target subject through the talairach transform.",
-  "command-line": "mkxsubjreg --srcreg [SRCREG] --targreg [TARGREG] [TARGET_SUBJECT] [TRANSFORM_NAME] [SUBJECTS_DIR] [FUNCTIONAL_VOLUME] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mkxsubjreg [SRCREG] [TARGREG] [TARGET_SUBJECT] [TRANSFORM_NAME] [SUBJECTS_DIR] [FUNCTIONAL_VOLUME] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

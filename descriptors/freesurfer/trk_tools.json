@@ -2,7 +2,7 @@
   "name": "trk_tools",
   "tool-version": "7.4.1",
   "description": "Tool for processing TRK files",
-  "command-line": "trk_tools -i [REFERENCE_IMAGE] -f [INPUT_TRK] [OUTPUT_TRK] [OUTPUT_IMAGE] [UPDATE_HEADER] [OUTPUT_VTK]",
+  "command-line": "trk_tools [REFERENCE_IMAGE] [INPUT_TRK] [OUTPUT_TRK] [OUTPUT_IMAGE] [UPDATE_HEADER] [OUTPUT_VTK]",
   "inputs": [
     {
       "id": "reference_image",
