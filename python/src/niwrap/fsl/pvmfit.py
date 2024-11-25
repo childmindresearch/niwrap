@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PVMFIT_METADATA = Metadata(
-    id="5bffa358f96e6a5eb036b1185a9728fddd1d2bdc.boutiques",
+    id="2873389b6bc4586f988630b860c7c91d553dc1af.boutiques",
     name="pvmfit",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -81,14 +81,22 @@ def pvmfit(
     execution = runner.start_execution(PVMFIT_METADATA)
     cargs = []
     cargs.append("pvmfit")
-    cargs.append("-k")
-    cargs.append(execution.input_file(data_file))
-    cargs.append("-m")
-    cargs.append(execution.input_file(mask_file))
-    cargs.append("-r")
-    cargs.append(execution.input_file(bvec_file))
-    cargs.append("-b")
-    cargs.append(execution.input_file(bval_file))
+    cargs.extend([
+        "-k",
+        execution.input_file(data_file)
+    ])
+    cargs.extend([
+        "-m",
+        execution.input_file(mask_file)
+    ])
+    cargs.extend([
+        "-r",
+        execution.input_file(bvec_file)
+    ])
+    cargs.extend([
+        "-b",
+        execution.input_file(bval_file)
+    ])
     if output_basename is not None:
         cargs.extend([
             "-o",

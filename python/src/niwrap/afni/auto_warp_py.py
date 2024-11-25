@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AUTO_WARP_PY_METADATA = Metadata(
-    id="717d1503884b0d326e79a7885336787157442069.boutiques",
+    id="a6e140162bdb60ac7b3f82c488330c94eee4e2ab.boutiques",
     name="auto_warp.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -110,10 +110,14 @@ def auto_warp_py(
     execution = runner.start_execution(AUTO_WARP_PY_METADATA)
     cargs = []
     cargs.append("auto_warp.py")
-    cargs.append("-base")
-    cargs.append(execution.input_file(base))
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_))
+    cargs.extend([
+        "-base",
+        execution.input_file(base)
+    ])
+    cargs.extend([
+        "-input",
+        execution.input_file(input_)
+    ])
     if skull_strip_input:
         cargs.append("-skull_strip_input")
     if qblur is not None:

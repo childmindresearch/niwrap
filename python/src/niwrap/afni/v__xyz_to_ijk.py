@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__XYZ_TO_IJK_METADATA = Metadata(
-    id="19759dbb81f9560426ecb6ea27ee2b763e341085.boutiques",
+    id="f65004c9ca02f4ebcb9eb700f189cfb89bf2d6a7.boutiques",
     name="@xyz_to_ijk",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,10 +54,14 @@ def v__xyz_to_ijk(
     execution = runner.start_execution(V__XYZ_TO_IJK_METADATA)
     cargs = []
     cargs.append("@xyz_to_ijk")
-    cargs.append("-inset")
-    cargs.append(execution.input_file(inset))
-    cargs.append("-xyz")
-    cargs.append(str(x_coord))
+    cargs.extend([
+        "-inset",
+        execution.input_file(inset)
+    ])
+    cargs.extend([
+        "-xyz",
+        str(x_coord)
+    ])
     cargs.append(str(y_coord))
     cargs.append(str(z_coord))
     if prefix is not None:

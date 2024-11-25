@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA = Metadata(
-    id="e97404ae1ad4852f95795d417d56b26d0b94534a.boutiques",
+    id="7077a0ec33cad3ec92f07187a676e90870f7a568.boutiques",
     name="adjunct_tort_plot_dp_align",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -67,16 +67,24 @@ def adjunct_tort_plot_dp_align(
     execution = runner.start_execution(ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA)
     cargs = []
     cargs.append("adjunct_tort_plot_dp_align")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-prefix")
-    cargs.append(output_prefix)
-    cargs.append("-enorm_max")
+    cargs.extend([
+        "-input",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-prefix",
+        output_prefix
+    ])
     if enorm_max is not None:
-        cargs.append(str(enorm_max))
-    cargs.append("-enorm_hline")
+        cargs.extend([
+            "-enorm_max",
+            str(enorm_max)
+        ])
     if enorm_hline is not None:
-        cargs.append(str(enorm_hline))
+        cargs.extend([
+            "-enorm_hline",
+            str(enorm_hline)
+        ])
     if no_svg:
         cargs.append("-no_svg")
     ret = AdjunctTortPlotDpAlignOutputs(

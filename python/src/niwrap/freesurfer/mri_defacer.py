@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DEFACER_METADATA = Metadata(
-    id="7a5bbf5b8c2c58461c7967b9a5ef249770dc28e7.boutiques",
+    id="60b1530510c97ea1b3bc72d2d9a99ad0bdb19732.boutiques",
     name="mri_defacer",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,12 +57,18 @@ def mri_defacer(
     execution = runner.start_execution(MRI_DEFACER_METADATA)
     cargs = []
     cargs.append("mri_defacer")
-    cargs.append("--i")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append("--hm")
-    cargs.append(execution.input_file(headmask))
-    cargs.append("--ts")
-    cargs.append(execution.input_file(tempsurf))
+    cargs.extend([
+        "-i",
+        "-" + execution.input_file(input_volume)
+    ])
+    cargs.extend([
+        "-hm",
+        "-" + execution.input_file(headmask)
+    ])
+    cargs.extend([
+        "-ts",
+        "-" + execution.input_file(tempsurf)
+    ])
     if templabel is not None:
         cargs.extend([
             "--l",
@@ -73,8 +79,10 @@ def mri_defacer(
             "--w",
             str(watermark)
         ])
-    cargs.append("--o")
-    cargs.append(defaced_volume)
+    cargs.extend([
+        "-o",
+        "-" + defaced_volume
+    ])
     if facemask is not None:
         cargs.extend([
             "--m",

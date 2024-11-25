@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWE_METADATA = Metadata(
-    id="09e65d22e1d26e8cbeb0c4289af71884a930f478.boutiques",
+    id="0e45a44f0fe355bc2d4492ca107d3556e12a3f06.boutiques",
     name="swe",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -137,16 +137,26 @@ def swe(
     execution = runner.start_execution(SWE_METADATA)
     cargs = []
     cargs.append("swe")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-o")
-    cargs.append(output_root)
-    cargs.append("-d")
-    cargs.append(execution.input_file(design_mat))
-    cargs.append("-t")
-    cargs.append(execution.input_file(design_con))
-    cargs.append("-s")
-    cargs.append(execution.input_file(design_sub))
+    cargs.extend([
+        "-i",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-o",
+        output_root
+    ])
+    cargs.extend([
+        "-d",
+        execution.input_file(design_mat)
+    ])
+    cargs.extend([
+        "-t",
+        execution.input_file(design_con)
+    ])
+    cargs.extend([
+        "-s",
+        execution.input_file(design_sub)
+    ])
     if mask is not None:
         cargs.extend([
             "-m",

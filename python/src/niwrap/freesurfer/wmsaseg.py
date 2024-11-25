@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WMSASEG_METADATA = Metadata(
-    id="2e0861a19070a1e7976cfeb1e7d287551f318fab.boutiques",
+    id="a6e36c0bfdc6de1ed78e20ee77708c97975422a3.boutiques",
     name="wmsaseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -67,8 +67,10 @@ def wmsaseg(
     execution = runner.start_execution(WMSASEG_METADATA)
     cargs = []
     cargs.append("wmsaseg")
-    cargs.append("--s")
-    cargs.append(subject)
+    cargs.extend([
+        "-s",
+        "-" + subject
+    ])
     if source_orig is not None:
         cargs.extend([
             "--s+orig",

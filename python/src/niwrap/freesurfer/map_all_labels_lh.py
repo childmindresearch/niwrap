@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_ALL_LABELS_LH_METADATA = Metadata(
-    id="ab433ed8aaab04d76ba54fc7f0f1ec7477dc72b1.boutiques",
+    id="569f8a45a5f0082dff949fe6bc883e667d21393b.boutiques",
     name="map_all_labels-lh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,8 +53,10 @@ def map_all_labels_lh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_ALL_LABELS_LH_METADATA)
     cargs = []
-    cargs.append("map_all_labels-lh")
-    cargs.append(which)
+    cargs.extend([
+        "-lh",
+        "map_all_labels" + which
+    ])
     cargs.append(fname)
     cargs.append(hemi)
     cargs.append(execution.input_file(spherical_surf))

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_EROSION_THICK_METADATA = Metadata(
-    id="744d10f8875a0e0bb50de2078a93479596a98437.boutiques",
+    id="2fa43b8a1476fd2236932499a9d5daa1c321dceb.boutiques",
     name="@measure_erosion_thick",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -86,13 +86,19 @@ def v__measure_erosion_thick(
     execution = runner.start_execution(V__MEASURE_EROSION_THICK_METADATA)
     cargs = []
     cargs.append("@measure_erosion_thick")
-    cargs.append("-maskset")
-    cargs.append(execution.input_file(maskset))
-    cargs.append("-surfset")
-    cargs.append(execution.input_file(surfset))
-    cargs.append("-outdir")
+    cargs.extend([
+        "-maskset",
+        execution.input_file(maskset)
+    ])
+    cargs.extend([
+        "-surfset",
+        execution.input_file(surfset)
+    ])
     if outdir is not None:
-        cargs.append(outdir)
+        cargs.extend([
+            "-outdir",
+            outdir
+        ])
     if resample is not None:
         cargs.extend([
             "-resample",

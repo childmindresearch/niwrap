@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_ALIGN_ANAT_PAIR_METADATA = Metadata(
-    id="b8144a4b5ca2e9d93de3ee16481095c9a8a388b0.boutiques",
+    id="285752989d858ebde4c88536af78b1b8f06b16d1.boutiques",
     name="fat_proc_align_anat_pair",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -73,12 +73,18 @@ def fat_proc_align_anat_pair(
     execution = runner.start_execution(FAT_PROC_ALIGN_ANAT_PAIR_METADATA)
     cargs = []
     cargs.append("fat_proc_align_anat_pair")
-    cargs.append("-in_t1w")
-    cargs.append(execution.input_file(input_t1w))
-    cargs.append("-in_t2w")
-    cargs.append(execution.input_file(input_t2w))
-    cargs.append("-prefix")
-    cargs.append(output_prefix)
+    cargs.extend([
+        "-in_t1w",
+        execution.input_file(input_t1w)
+    ])
+    cargs.extend([
+        "-in_t2w",
+        execution.input_file(input_t2w)
+    ])
+    cargs.extend([
+        "-prefix",
+        output_prefix
+    ])
     if output_grid is not None:
         cargs.extend([
             "-newgrid",

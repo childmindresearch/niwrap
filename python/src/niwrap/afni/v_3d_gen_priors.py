@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GEN_PRIORS_METADATA = Metadata(
-    id="977ba7ee520e636db6e42d487f8b18a781dedf2c.boutiques",
+    id="a128f767b532e1cfac48dcd88ac61c173a14841f.boutiques",
     name="3dGenPriors",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -102,10 +102,14 @@ def v_3d_gen_priors(
     execution = runner.start_execution(V_3D_GEN_PRIORS_METADATA)
     cargs = []
     cargs.append("3dGenPriors")
-    cargs.append("-sig")
-    cargs.append(execution.input_file(sigs))
-    cargs.append("-tdist")
-    cargs.append(execution.input_file(tdist))
+    cargs.extend([
+        "-sig",
+        execution.input_file(sigs)
+    ])
+    cargs.extend([
+        "-tdist",
+        execution.input_file(tdist)
+    ])
     cargs.extend([
         "-cprefix",
         cprefix

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_VOLSMOOTH_METADATA = Metadata(
-    id="6daa83c0151b5fa3e4b9db3a35a80f2ff180a3e1.boutiques",
+    id="a3869f946718cebaa5f57d113b8bf294802399ae.boutiques",
     name="mris_volsmooth",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -80,12 +80,18 @@ def mris_volsmooth(
     execution = runner.start_execution(MRIS_VOLSMOOTH_METADATA)
     cargs = []
     cargs.append("mris_volsmooth")
-    cargs.append("--i")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append("--o")
-    cargs.append(output_volume)
-    cargs.append("--reg")
-    cargs.append(execution.input_file(registration))
+    cargs.extend([
+        "-i",
+        "-" + execution.input_file(input_volume)
+    ])
+    cargs.extend([
+        "-o",
+        "-" + output_volume
+    ])
+    cargs.extend([
+        "-reg",
+        "-" + execution.input_file(registration)
+    ])
     if projfrac is not None:
         cargs.extend([
             "--projfrac",

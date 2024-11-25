@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ROBUST_REGISTER_METADATA = Metadata(
-    id="9447b4640a01ad953999f030b2233f0a06f973eb.boutiques",
+    id="add4939ffe721325fa6c5ad7410f82c2883741d4.boutiques",
     name="mri_robust_register",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -73,12 +73,18 @@ def mri_robust_register(
     execution = runner.start_execution(MRI_ROBUST_REGISTER_METADATA)
     cargs = []
     cargs.append("mri_robust_register")
-    cargs.append("--mov")
-    cargs.append(execution.input_file(movable_volume))
-    cargs.append("--dst")
-    cargs.append(execution.input_file(target_volume))
-    cargs.append("--lta")
-    cargs.append(output_registration)
+    cargs.extend([
+        "-mov",
+        "-" + execution.input_file(movable_volume)
+    ])
+    cargs.extend([
+        "-dst",
+        "-" + execution.input_file(target_volume)
+    ])
+    cargs.extend([
+        "-lta",
+        "-" + output_registration
+    ])
     cargs.append("[OUTLIER_SENSITIVITY_OPTION]")
     cargs.append("[OPTIONS]")
     ret = MriRobustRegisterOutputs(

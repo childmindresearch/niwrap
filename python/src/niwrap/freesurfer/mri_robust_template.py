@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ROBUST_TEMPLATE_METADATA = Metadata(
-    id="092f887514149896ea845584b32f67146d67d774.boutiques",
+    id="4657aee9954448e4db764886f82366d77a63d11b.boutiques",
     name="mri_robust_template",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -64,10 +64,14 @@ def mri_robust_template(
     execution = runner.start_execution(MRI_ROBUST_TEMPLATE_METADATA)
     cargs = []
     cargs.append("mri_robust_template")
-    cargs.append("--mov")
-    cargs.extend([execution.input_file(f) for f in mov_files])
-    cargs.append("--template")
-    cargs.append(template_file)
+    cargs.extend([
+        "-mov",
+        "-" + "".join([execution.input_file(f) for f in mov_files])
+    ])
+    cargs.extend([
+        "-template",
+        "-" + template_file
+    ])
     cargs.append("[SENSITIVITY_OPTION]")
     if lta_files is not None:
         cargs.extend([

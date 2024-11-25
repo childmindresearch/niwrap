@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GROUPSTATSDIFF_METADATA = Metadata(
-    id="a925fe45b875c893981f812b9809221b8fda0659.boutiques",
+    id="894320848d548ae41dd7014996c729f7b0ed34c5.boutiques",
     name="groupstatsdiff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -86,12 +86,18 @@ def groupstatsdiff(
     execution = runner.start_execution(GROUPSTATSDIFF_METADATA)
     cargs = []
     cargs.append("groupstatsdiff")
-    cargs.append("--g1")
-    cargs.append(group1_dir)
-    cargs.append("--g2")
-    cargs.append(group2_dir)
-    cargs.append("--o")
-    cargs.append(output_dir)
+    cargs.extend([
+        "-g1",
+        "-" + group1_dir
+    ])
+    cargs.extend([
+        "-g2",
+        "-" + group2_dir
+    ])
+    cargs.extend([
+        "-o",
+        "-" + output_dir
+    ])
     if no_maps:
         cargs.append("--no-maps")
     if osgm:

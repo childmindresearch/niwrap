@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_TRACK_ID_METADATA = Metadata(
-    id="b7b386b4448e9a7ba850519cb7c0ac387a865bbf.boutiques",
+    id="ef980800e1b4aec428e7f46cdbd5c109fbf99339.boutiques",
     name="map_TrackID",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,14 +62,22 @@ def map_track_id(
     execution = runner.start_execution(MAP_TRACK_ID_METADATA)
     cargs = []
     cargs.append("map_TrackID")
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-in_trk")
-    cargs.append(execution.input_file(in_trk))
-    cargs.append("-in_map")
-    cargs.append(execution.input_file(in_map))
-    cargs.append("-ref")
-    cargs.append(execution.input_file(reference))
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    cargs.extend([
+        "-in_trk",
+        execution.input_file(in_trk)
+    ])
+    cargs.extend([
+        "-in_map",
+        execution.input_file(in_map)
+    ])
+    cargs.extend([
+        "-ref",
+        execution.input_file(reference)
+    ])
     if verbose:
         cargs.append("-verb")
     if orig_zero:

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILM_CIFTI_METADATA = Metadata(
-    id="9e88b9f52a47a4b9c7a560382e18b0ba873d667f.boutiques",
+    id="7e2504e3ecb6cdf617162ea7e2b85cf9bf443541.boutiques",
     name="film_cifti",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -63,14 +63,22 @@ def film_cifti(
     execution = runner.start_execution(FILM_CIFTI_METADATA)
     cargs = []
     cargs.append("film_cifti")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_filename))
-    cargs.append("-o")
-    cargs.append(basename)
-    cargs.append("-l")
-    cargs.append(execution.input_file(left_surface))
-    cargs.append("-r")
-    cargs.append(execution.input_file(right_surface))
+    cargs.extend([
+        "-i",
+        execution.input_file(input_filename)
+    ])
+    cargs.extend([
+        "-o",
+        basename
+    ])
+    cargs.extend([
+        "-l",
+        execution.input_file(left_surface)
+    ])
+    cargs.extend([
+        "-r",
+        execution.input_file(right_surface)
+    ])
     if susan_threshold is not None:
         cargs.extend([
             "--st",

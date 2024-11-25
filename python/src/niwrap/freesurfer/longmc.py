@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONGMC_METADATA = Metadata(
-    id="17d5a8ed86a108d566a0bdff36ff2814a4f3ab96.boutiques",
+    id="29883e3bcac4243d91ad002d12fb421f330edf15.boutiques",
     name="longmc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,8 +54,10 @@ def longmc(
     execution = runner.start_execution(LONGMC_METADATA)
     cargs = []
     cargs.append("longmc")
-    cargs.append("-long")
-    cargs.append(cross_tp_name)
+    cargs.extend([
+        "-long",
+        cross_tp_name
+    ])
     cargs.append(base_name)
     if conform_to_hires:
         cargs.append("-conf2hires")

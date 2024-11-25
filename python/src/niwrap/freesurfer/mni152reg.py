@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MNI152REG_METADATA = Metadata(
-    id="7504056171a369d8a74c0d791c35276db085c741.boutiques",
+    id="f1980d1efe85533c89f382a51f9ff5ad4dbd7c4f.boutiques",
     name="mni152reg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,8 +56,10 @@ def mni152reg(
     execution = runner.start_execution(MNI152REG_METADATA)
     cargs = []
     cargs.append("mni152reg")
-    cargs.append("--s")
-    cargs.append(subject)
+    cargs.extend([
+        "-s",
+        "-" + subject
+    ])
     if register_1mm:
         cargs.append("--1")
     if output is not None:

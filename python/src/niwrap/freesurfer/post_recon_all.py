@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POST_RECON_ALL_METADATA = Metadata(
-    id="434925cae230ca12d47f83faeb2b5ce93dea72be.boutiques",
+    id="691e08f4a56cf4d7db4bcd51aa89d62a6ea0e207.boutiques",
     name="post-recon-all",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -72,8 +72,10 @@ def post_recon_all(
     runner = runner or get_global_runner()
     execution = runner.start_execution(POST_RECON_ALL_METADATA)
     cargs = []
-    cargs.append("post-recon-all")
-    cargs.append(subject)
+    cargs.extend([
+        "-all",
+        "post-recon" + subject
+    ])
     if no_subfields:
         cargs.append("--no-subfields")
     if no_subregions:

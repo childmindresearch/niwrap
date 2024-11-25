@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RCA_LONG_TP_INIT_METADATA = Metadata(
-    id="58c8f81ab3bff88031a93bb937908f681bef1add.boutiques",
+    id="83b045ce4132499c278fb346e4d05cbbdfdecdef.boutiques",
     name="rca-long-tp-init",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,8 +53,10 @@ def rca_long_tp_init(
     execution = runner.start_execution(RCA_LONG_TP_INIT_METADATA)
     cargs = []
     cargs.append("rca-long-tp-init")
-    cargs.append("-long")
-    cargs.append(timepoint)
+    cargs.extend([
+        "-long",
+        timepoint
+    ])
     cargs.append(base)
     if use_long_base_ctrl_vol:
         cargs.append("-uselongbasectrlvol")

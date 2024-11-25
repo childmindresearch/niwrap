@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DTO_XDATASET_METADATA = Metadata(
-    id="659cded4451a7073e735922b9f1fad33b442c502.boutiques",
+    id="c99be10f2d1ab4a4b340c919e77eeca80ea43268.boutiques",
     name="3dtoXdataset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,8 +49,10 @@ def v_3dto_xdataset(
     execution = runner.start_execution(V_3DTO_XDATASET_METADATA)
     cargs = []
     cargs.append("3dtoXdataset")
-    cargs.append("-prefix")
-    cargs.append(prefix)
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     cargs.append(execution.input_file(mask))
     cargs.extend([execution.input_file(f) for f in input_files])
     ret = V3dtoXdatasetOutputs(

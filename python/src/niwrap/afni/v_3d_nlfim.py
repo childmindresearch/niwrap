@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NLFIM_METADATA = Metadata(
-    id="a4c9f15cadc6347edfbee179e6d7966fdba5f370.boutiques",
+    id="b2553c2bf57346747079630757e1d16620ea8119.boutiques",
     name="3dNLfim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -75,12 +75,18 @@ def v_3d_nlfim(
     execution = runner.start_execution(V_3D_NLFIM_METADATA)
     cargs = []
     cargs.append("3dNLfim")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-signal")
-    cargs.append(signal_model)
-    cargs.append("-noise")
-    cargs.append(noise_model)
+    cargs.extend([
+        "-input",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-signal",
+        signal_model
+    ])
+    cargs.extend([
+        "-noise",
+        noise_model
+    ])
     cargs.append("[ADDITIONAL_OPTIONS]")
     ret = V3dNlfimOutputs(
         root=execution.output_file("."),

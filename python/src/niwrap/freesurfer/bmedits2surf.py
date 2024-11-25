@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BMEDITS2SURF_METADATA = Metadata(
-    id="cca406a5e86117c8b81172471f6910fd96a7caf1.boutiques",
+    id="72726dc1b0f9d2d8cad243bd75a4708a76dffcec.boutiques",
     name="bmedits2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -77,8 +77,10 @@ def bmedits2surf(
     execution = runner.start_execution(BMEDITS2SURF_METADATA)
     cargs = []
     cargs.append("bmedits2surf")
-    cargs.append("--s")
-    cargs.append(subject)
+    cargs.extend([
+        "-s",
+        "-" + subject
+    ])
     if self:
         cargs.append("--self")
     if overwrite:

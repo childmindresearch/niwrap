@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIX_SUBJECT_RH_METADATA = Metadata(
-    id="4253e9480dd126e91b603c10daea90ad6a0f081b.boutiques",
+    id="a857e272d39df165d14eea449e8d774cc2d82d28.boutiques",
     name="fix_subject-rh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -46,8 +46,10 @@ def fix_subject_rh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIX_SUBJECT_RH_METADATA)
     cargs = []
-    cargs.append("fix_subject-rh")
-    cargs.append(input_directory)
+    cargs.extend([
+        "-rh",
+        "fix_subject" + input_directory
+    ])
     if help_flag:
         cargs.append("--help")
     ret = FixSubjectRhOutputs(

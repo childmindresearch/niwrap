@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGMENT_SUBJECT_OLD_SKULL_STRIP_METADATA = Metadata(
-    id="9dfadbc07fc21e10e8ab42b8d9376f4d5b23b93a.boutiques",
+    id="abc48359fac304f034867897b978186bcd82c5e7.boutiques",
     name="segment_subject_old_skull_strip",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,10 +58,14 @@ def segment_subject_old_skull_strip(
     execution = runner.start_execution(SEGMENT_SUBJECT_OLD_SKULL_STRIP_METADATA)
     cargs = []
     cargs.append("mri_nu_correct.mni")
-    cargs.append("--i")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append("--xfm")
-    cargs.append(output_xfm)
+    cargs.extend([
+        "-i",
+        "-" + execution.input_file(input_volume)
+    ])
+    cargs.extend([
+        "-xfm",
+        "-" + output_xfm
+    ])
     if log_file is not None:
         cargs.extend([
             "--log",

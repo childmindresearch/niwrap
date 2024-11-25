@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SCHURPROD_METADATA = Metadata(
-    id="da12155482f4636f91bc92051a18cb14dbe98f1a.boutiques",
+    id="abaff00b71cea2d8f9814d0eae44978f1e0fffa3.boutiques",
     name="fsl_schurprod",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -61,12 +61,18 @@ def fsl_schurprod(
     execution = runner.start_execution(FSL_SCHURPROD_METADATA)
     cargs = []
     cargs.append("fsl_schurprod")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-d")
-    cargs.append(execution.input_file(design_file))
-    cargs.append("-o")
-    cargs.append(output_file)
+    cargs.extend([
+        "-i",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-d",
+        execution.input_file(design_file)
+    ])
+    cargs.extend([
+        "-o",
+        output_file
+    ])
     if regression_flag:
         cargs.append("-r")
     if index is not None:

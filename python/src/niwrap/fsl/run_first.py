@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_FIRST_METADATA = Metadata(
-    id="1cc38ed357eab3f3dba004e9e8636152088bc178.boutiques",
+    id="9c36642e60a73765cd9d2b8e529767ad4bc7800c.boutiques",
     name="run_first",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -64,16 +64,26 @@ def run_first(
     execution = runner.start_execution(RUN_FIRST_METADATA)
     cargs = []
     cargs.append("run_first")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_image))
-    cargs.append("-t")
-    cargs.append(execution.input_file(transformation_matrix))
-    cargs.append("-n")
-    cargs.append(str(n_modes))
-    cargs.append("-o")
-    cargs.append(output_basename)
-    cargs.append("-m")
-    cargs.append(execution.input_file(model_name))
+    cargs.extend([
+        "-i",
+        execution.input_file(input_image)
+    ])
+    cargs.extend([
+        "-t",
+        execution.input_file(transformation_matrix)
+    ])
+    cargs.extend([
+        "-n",
+        str(n_modes)
+    ])
+    cargs.extend([
+        "-o",
+        output_basename
+    ])
+    cargs.extend([
+        "-m",
+        execution.input_file(model_name)
+    ])
     if verbose_flag:
         cargs.append("-v")
     if intref_model_name is not None:

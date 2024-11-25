@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOMB_SCARGLE_METADATA = Metadata(
-    id="4a8cb9c44f40d39fa20b61bfcaa0f24045676f26.boutiques",
+    id="87603e423e75a60222fcf2313b14ff328ab6860e.boutiques",
     name="3dLombScargle",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -85,10 +85,14 @@ def v_3d_lomb_scargle(
     execution = runner.start_execution(V_3D_LOMB_SCARGLE_METADATA)
     cargs = []
     cargs.append("3dLombScargle")
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-inset")
-    cargs.append(execution.input_file(inset))
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    cargs.extend([
+        "-inset",
+        execution.input_file(inset)
+    ])
     if censor_1d is not None:
         cargs.extend([
             "-censor_1D",

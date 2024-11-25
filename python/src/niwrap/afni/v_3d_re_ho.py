@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RE_HO_METADATA = Metadata(
-    id="dda32945e21f34bdcf109d39ffa140b210c47ae4.boutiques",
+    id="a70331895fb8ece074a2e63976ac43635a1ab69b.boutiques",
     name="3dReHo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -90,10 +90,14 @@ def v_3d_re_ho(
     execution = runner.start_execution(V_3D_RE_HO_METADATA)
     cargs = []
     cargs.append("3dReHo")
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-inset")
-    cargs.append(execution.input_file(inset))
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    cargs.extend([
+        "-inset",
+        execution.input_file(inset)
+    ])
     if nneigh is not None:
         cargs.extend([
             "-nneigh",

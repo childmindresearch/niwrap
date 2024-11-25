@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BUGR_METADATA = Metadata(
-    id="5042932b382661a1522f88122883df464b6d66c6.boutiques",
+    id="61b1c8588fe75d759f05f238db179fab105dd284.boutiques",
     name="bugr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,15 +49,23 @@ def bugr(
     execution = runner.start_execution(BUGR_METADATA)
     cargs = []
     cargs.append("bugr")
-    cargs.append("-subject")
-    cargs.append(subject_name)
-    cargs.append("-command")
-    cargs.append(command_line)
-    cargs.append("-error")
-    cargs.append(error_message)
-    cargs.append("-log")
+    cargs.extend([
+        "-subject",
+        subject_name
+    ])
+    cargs.extend([
+        "-command",
+        command_line
+    ])
+    cargs.extend([
+        "-error",
+        error_message
+    ])
     if log_file is not None:
-        cargs.append(execution.input_file(log_file))
+        cargs.extend([
+            "-log",
+            execution.input_file(log_file)
+        ])
     ret = BugrOutputs(
         root=execution.output_file("."),
     )

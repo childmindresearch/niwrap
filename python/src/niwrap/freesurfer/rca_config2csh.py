@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RCA_CONFIG2CSH_METADATA = Metadata(
-    id="a7dd967c3e4aa987eb6ee710bd94e91e4b6e3852.boutiques",
+    id="686fee520ae2e7d0092acdfe76999230fe227db6.boutiques",
     name="rca-config2csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -42,8 +42,10 @@ def rca_config2csh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_CONFIG2CSH_METADATA)
     cargs = []
-    cargs.append("rca-config2csh")
-    cargs.append(execution.input_file(configfile))
+    cargs.extend([
+        "-config2csh",
+        "rca" + execution.input_file(configfile)
+    ])
     ret = RcaConfig2cshOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_SUBJECT_FLASH_METADATA = Metadata(
-    id="1df8c065888bfc7f86452126f83156edc3b2e9dc.boutiques",
+    id="a4cef948389e14d3033ee28cfbfd5a1e80f3bf6a.boutiques",
     name="label_subject_flash",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,8 +54,10 @@ def label_subject_flash(
     execution = runner.start_execution(LABEL_SUBJECT_FLASH_METADATA)
     cargs = []
     cargs.append("mri_ca_label")
-    cargs.append("-flash")
-    cargs.append(execution.input_file(tissue_params))
+    cargs.extend([
+        "-flash",
+        execution.input_file(tissue_params)
+    ])
     cargs.append(execution.input_file(norm_volume))
     cargs.append(execution.input_file(transform_file))
     cargs.append(execution.input_file(classifier_array))

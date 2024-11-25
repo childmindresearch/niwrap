@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZIPPER_ZAPPER_METADATA = Metadata(
-    id="2ba2cdb11947ea00198430901e3d2367101ee603.boutiques",
+    id="59bf83e360ae4ac1e37861ff59c471a75dc9046f.boutiques",
     name="3dZipperZapper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -97,10 +97,14 @@ def v_3d_zipper_zapper(
     execution = runner.start_execution(V_3D_ZIPPER_ZAPPER_METADATA)
     cargs = []
     cargs.append("3dZipperZapper")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-prefix")
-    cargs.append(output_prefix)
+    cargs.extend([
+        "-input",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-prefix",
+        output_prefix
+    ])
     if mask_file is not None:
         cargs.extend([
             "-mask",

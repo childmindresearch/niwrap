@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__COMMAND_GLOBB_METADATA = Metadata(
-    id="3fcaa2b9f57f4c3a8e88b6f2a4841a766c684dcf.boutiques",
+    id="c2faf81a08e05a3e16060acc326e418fbdfeaad0.boutiques",
     name="@CommandGlobb",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -64,8 +64,10 @@ def v__command_globb(
     cargs.append("-newxt")
     if extension is not None:
         cargs.append(extension)
-    cargs.append("-list")
-    cargs.extend(brick_list)
+    cargs.extend([
+        "-list",
+        *brick_list
+    ])
     ret = VCommandGlobbOutputs(
         root=execution.output_file("."),
         output_files=execution.output_file(output_dir + "/*"),

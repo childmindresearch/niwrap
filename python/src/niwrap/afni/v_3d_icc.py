@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ICC_METADATA = Metadata(
-    id="c36b2e699621f93d8018a24c3d6ec49dbb41d10c.boutiques",
+    id="3b60b28aa116a6528080ede242f30957e1e83309.boutiques",
     name="3dICC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,13 +60,19 @@ def v_3d_icc(
     cargs = []
     cargs.append("3dICC")
     cargs.append(model)
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-mask")
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     if mask is not None:
-        cargs.append(execution.input_file(mask))
-    cargs.append("-dataTable")
-    cargs.append(data_table)
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    cargs.extend([
+        "-dataTable",
+        data_table
+    ])
     cargs.append("[OPTIONS]")
     ret = V3dIccOutputs(
         root=execution.output_file("."),

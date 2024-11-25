@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IS_SURFACE_METADATA = Metadata(
-    id="38511ff0e5ee1b02febec08a5001c4a86e46d25c.boutiques",
+    id="45c9687496cf309c65ba4d9e2e07872900cc3d36.boutiques",
     name="is-surface",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -43,8 +43,10 @@ def is_surface(
     runner = runner or get_global_runner()
     execution = runner.start_execution(IS_SURFACE_METADATA)
     cargs = []
-    cargs.append("is-surface")
-    cargs.append(execution.input_file(infile))
+    cargs.extend([
+        "-surface",
+        "is" + execution.input_file(infile)
+    ])
     ret = IsSurfaceOutputs(
         root=execution.output_file("."),
     )

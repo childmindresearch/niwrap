@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MVLM_METADATA = Metadata(
-    id="826bf6e43e123006abcdbc03fb27954bf2f9d2a4.boutiques",
+    id="d83684c064207288053ac34bcd07b987edd109a8.boutiques",
     name="fsl_mvlm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -78,10 +78,14 @@ def fsl_mvlm(
     execution = runner.start_execution(FSL_MVLM_METADATA)
     cargs = []
     cargs.append("fsl_mvlm")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-o")
-    cargs.append(basename_output_files)
+    cargs.extend([
+        "-i",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-o",
+        basename_output_files
+    ])
     if algorithm is not None:
         cargs.extend([
             "-a",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RCA_BASE_INIT_METADATA = Metadata(
-    id="2b694b2566d2da6e924a830a4008847ba76324ae.boutiques",
+    id="40035e4c6889519a8062b007d6e932c3e18ff078.boutiques",
     name="rca-base-init",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -46,9 +46,11 @@ def rca_base_init(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_BASE_INIT_METADATA)
     cargs = []
-    cargs.append("rca-base-init")
     if log_file is not None:
-        cargs.append(log_file)
+        cargs.extend([
+            "-init",
+            "rca-base" + log_file
+        ])
     if status_file is not None:
         cargs.append(status_file)
     if cmd_file is not None:

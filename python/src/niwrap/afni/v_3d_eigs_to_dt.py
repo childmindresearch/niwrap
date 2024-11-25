@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EIGS_TO_DT_METADATA = Metadata(
-    id="277228059bce43b644e4c5cf8ab984d713a0f026.boutiques",
+    id="28fad7eb2ac634dd2431ef9451ad93178516ba6f.boutiques",
     name="3dEigsToDT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -68,12 +68,18 @@ def v_3d_eigs_to_dt(
     execution = runner.start_execution(V_3D_EIGS_TO_DT_METADATA)
     cargs = []
     cargs.append("3dEigsToDT")
-    cargs.append("-eig_vals")
-    cargs.append(eig_vals)
-    cargs.append("-eig_vecs")
-    cargs.append(eig_vecs)
-    cargs.append("-prefix")
-    cargs.append(prefix)
+    cargs.extend([
+        "-eig_vals",
+        eig_vals
+    ])
+    cargs.extend([
+        "-eig_vecs",
+        eig_vecs
+    ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     if mask is not None:
         cargs.extend([
             "-mask",

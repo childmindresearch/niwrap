@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PCTSURFCON_METADATA = Metadata(
-    id="c4706fbf4cb63e2cc978aa0b3ff7186a7c40d49f.boutiques",
+    id="0e082a082c6b181a71427db52d685c35d4270743.boutiques",
     name="pctsurfcon",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -67,8 +67,10 @@ def pctsurfcon(
     execution = runner.start_execution(PCTSURFCON_METADATA)
     cargs = []
     cargs.append("pctsurfcon")
-    cargs.append("--s")
-    cargs.append(subject)
+    cargs.extend([
+        "-s",
+        "-" + subject
+    ])
     if fsvol is not None:
         cargs.extend([
             "--fsvol",

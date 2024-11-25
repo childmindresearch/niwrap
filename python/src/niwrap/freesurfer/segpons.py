@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGPONS_METADATA = Metadata(
-    id="2c9f16ec3bf239224251d6958db69dc52849c5d7.boutiques",
+    id="04d3f2e92938be16dac472808d7bd1b47d87d6bf.boutiques",
     name="segpons",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,8 +55,10 @@ def segpons(
     execution = runner.start_execution(SEGPONS_METADATA)
     cargs = []
     cargs.append("segpons")
-    cargs.append("--s")
-    cargs.append(subject)
+    cargs.extend([
+        "-s",
+        "-" + subject
+    ])
     if aseg:
         cargs.append("--aseg")
     if apas:

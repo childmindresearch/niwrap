@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_FIRST_ALL_METADATA = Metadata(
-    id="9efb1633aebcb5dc76c6cce48e811c8475fbaf94.boutiques",
+    id="969df88743cb206b767170e9a9d7af5b9fccc839.boutiques",
     name="run_first_all",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -88,10 +88,14 @@ def run_first_all(
         cargs.append("-d")
     if verbose_flag:
         cargs.append("-v")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_image))
-    cargs.append("-o")
-    cargs.append(output_image)
+    cargs.extend([
+        "-i",
+        execution.input_file(input_image)
+    ])
+    cargs.extend([
+        "-o",
+        output_image
+    ])
     ret = RunFirstAllOutputs(
         root=execution.output_file("."),
         output_image_file=execution.output_file(output_image),

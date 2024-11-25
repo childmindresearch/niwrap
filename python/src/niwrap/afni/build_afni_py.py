@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BUILD_AFNI_PY_METADATA = Metadata(
-    id="ee4b7185c56e742278b295803c7a5885f8b4523b.boutiques",
+    id="5ece05598d1697d198d00afcd4406cf97e678dcf.boutiques",
     name="build_afni.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -71,8 +71,10 @@ def build_afni_py(
     execution = runner.start_execution(BUILD_AFNI_PY_METADATA)
     cargs = []
     cargs.append("build_afni.py")
-    cargs.append("-build_root")
-    cargs.append(build_root)
+    cargs.extend([
+        "-build_root",
+        build_root
+    ])
     if clean_root is not None:
         cargs.extend([
             "-clean_root",

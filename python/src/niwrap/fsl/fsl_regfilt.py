@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_REGFILT_METADATA = Metadata(
-    id="d42ece30af77a0e256ce772eb17817edd6dcec34.boutiques",
+    id="a9f10caa9156fed6096e14e9c58b1e94e7627073.boutiques",
     name="fsl_regfilt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -90,12 +90,18 @@ def fsl_regfilt(
     execution = runner.start_execution(FSL_REGFILT_METADATA)
     cargs = []
     cargs.append("fsl_regfilt")
-    cargs.append("-i")
-    cargs.append(execution.input_file(infile))
-    cargs.append("-d")
-    cargs.append(execution.input_file(designfile))
-    cargs.append("-o")
-    cargs.append(outfile)
+    cargs.extend([
+        "-i",
+        execution.input_file(infile)
+    ])
+    cargs.extend([
+        "-d",
+        execution.input_file(designfile)
+    ])
+    cargs.extend([
+        "-o",
+        outfile
+    ])
     if maskfile is not None:
         cargs.extend([
             "-m",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SLICE_NDICE_METADATA = Metadata(
-    id="d342ea12e7304645ed3af49b8a60039dae05237d.boutiques",
+    id="598febc74d108ad6ff7fca05d1d3b44822acc841.boutiques",
     name="3dSliceNDice",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,12 +61,18 @@ def v_3d_slice_ndice(
     execution = runner.start_execution(V_3D_SLICE_NDICE_METADATA)
     cargs = []
     cargs.append("3dSliceNDice")
-    cargs.append("-insetA")
-    cargs.append(execution.input_file(infile_a))
-    cargs.append("-insetB")
-    cargs.append(execution.input_file(infile_b))
-    cargs.append("-prefix")
-    cargs.append(output_prefix)
+    cargs.extend([
+        "-insetA",
+        execution.input_file(infile_a)
+    ])
+    cargs.extend([
+        "-insetB",
+        execution.input_file(infile_b)
+    ])
+    cargs.extend([
+        "-prefix",
+        output_prefix
+    ])
     if out_domain is not None:
         cargs.extend([
             "-out_domain",

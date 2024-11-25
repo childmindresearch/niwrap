@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEG2FILLED_METADATA = Metadata(
-    id="477f10e5dae96e86c0f15ed7e96ce7e19d9135aa.boutiques",
+    id="a428d1fb6a5c1fe7f159b9209c6a5db3096bac3a.boutiques",
     name="seg2filled",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,12 +57,18 @@ def seg2filled(
     execution = runner.start_execution(SEG2FILLED_METADATA)
     cargs = []
     cargs.append("seg2filled")
-    cargs.append("--seg")
-    cargs.append(execution.input_file(seg_file))
-    cargs.append("--norm")
-    cargs.append(execution.input_file(norm_file))
-    cargs.append("--o")
-    cargs.append(output_file)
+    cargs.extend([
+        "-seg",
+        "-" + execution.input_file(seg_file)
+    ])
+    cargs.extend([
+        "-norm",
+        "-" + execution.input_file(norm_file)
+    ])
+    cargs.extend([
+        "-o",
+        "-" + output_file
+    ])
     if ndil is not None:
         cargs.extend([
             "--ndil",

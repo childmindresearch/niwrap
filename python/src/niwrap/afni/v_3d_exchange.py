@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXCHANGE_METADATA = Metadata(
-    id="6b39249eb1a96c2881072b39169883d1342c561a.boutiques",
+    id="3e408bc5aa20050eef4fda53573169bbdd9f90f3.boutiques",
     name="3dExchange",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,10 +61,14 @@ def v_3d_exchange(
         "-prefix",
         prefix
     ])
-    cargs.append("-input")
-    cargs.append(execution.input_file(infile))
-    cargs.append("-map")
-    cargs.append(execution.input_file(mapfile))
+    cargs.extend([
+        "-input",
+        execution.input_file(infile)
+    ])
+    cargs.extend([
+        "-map",
+        execution.input_file(mapfile)
+    ])
     if version:
         cargs.append("-ver")
     if help_:

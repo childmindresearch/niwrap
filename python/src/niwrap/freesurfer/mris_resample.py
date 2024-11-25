@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_RESAMPLE_METADATA = Metadata(
-    id="e187ec7b7c5b58de38a7c83e920c1e371e8ef9c5.boutiques",
+    id="7fcc33d6d1beef644ca132fe8d9dba14913ed890.boutiques",
     name="mris_resample",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,14 +59,22 @@ def mris_resample(
     execution = runner.start_execution(MRIS_RESAMPLE_METADATA)
     cargs = []
     cargs.append("mris_resample")
-    cargs.append("--atlas_reg")
-    cargs.append(execution.input_file(atlas_reg))
-    cargs.append("--subject_reg")
-    cargs.append(execution.input_file(subject_reg))
-    cargs.append("--subject_surf")
-    cargs.append(execution.input_file(subject_surf))
-    cargs.append("--out")
-    cargs.append(execution.input_file(output))
+    cargs.extend([
+        "-atlas_reg",
+        "-" + execution.input_file(atlas_reg)
+    ])
+    cargs.extend([
+        "-subject_reg",
+        "-" + execution.input_file(subject_reg)
+    ])
+    cargs.extend([
+        "-subject_surf",
+        "-" + execution.input_file(subject_surf)
+    ])
+    cargs.extend([
+        "-out",
+        "-" + execution.input_file(output)
+    ])
     if annot_in is not None:
         cargs.extend([
             "--annot_in",

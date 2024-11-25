@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_STATS_METADATA = Metadata(
-    id="8c6b45f906d7c0e1e820d4a588c291c551f45d9a.boutiques",
+    id="249f8989b29896820a47b1028e9f74d171d4927e.boutiques",
     name="xtract_stats",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -51,12 +51,18 @@ def xtract_stats(
     execution = runner.start_execution(XTRACT_STATS_METADATA)
     cargs = []
     cargs.append("xtract_stats")
-    cargs.append("-d")
-    cargs.append(folder_basename)
-    cargs.append("-xtract")
-    cargs.append(xtract_dir)
-    cargs.append("-w")
-    cargs.append(xtract2diff)
+    cargs.extend([
+        "-d",
+        folder_basename
+    ])
+    cargs.extend([
+        "-xtract",
+        xtract_dir
+    ])
+    cargs.extend([
+        "-w",
+        xtract2diff
+    ])
     cargs.append("[reference]")
     cargs.append("[output_file]")
     cargs.append("[structures_file]")

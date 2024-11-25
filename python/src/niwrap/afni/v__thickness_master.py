@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__THICKNESS_MASTER_METADATA = Metadata(
-    id="ba36d5a86743210981b04629a836f5e001bb1b00.boutiques",
+    id="7cbe201588fb28fa02cdf63392c9f32c09dd8fea.boutiques",
     name="@thickness_master",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,13 +55,19 @@ def v__thickness_master(
     execution = runner.start_execution(V__THICKNESS_MASTER_METADATA)
     cargs = []
     cargs.append("@thickness_master")
-    cargs.append("-maskset")
-    cargs.append(execution.input_file(maskset))
-    cargs.append("-surfset")
-    cargs.append(execution.input_file(surfset))
-    cargs.append("-outdir")
+    cargs.extend([
+        "-maskset",
+        execution.input_file(maskset)
+    ])
+    cargs.extend([
+        "-surfset",
+        execution.input_file(surfset)
+    ])
     if outdir is not None:
-        cargs.append(outdir)
+        cargs.extend([
+            "-outdir",
+            outdir
+        ])
     ret = VThicknessMasterOutputs(
         root=execution.output_file("."),
         output_bb_dir=execution.output_file(outdir + "_bb/") if (outdir is not None) else None,

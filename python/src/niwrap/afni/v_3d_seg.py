@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SEG_METADATA = Metadata(
-    id="498111797cc0fca6f289b33b4b6d556f3f061185.boutiques",
+    id="4123c75e45877969c11d1945ca8aa03d37c83bcc.boutiques",
     name="3dSeg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -96,11 +96,15 @@ def v_3d_seg(
     execution = runner.start_execution(V_3D_SEG_METADATA)
     cargs = []
     cargs.append("3dSeg")
-    cargs.append("-anat")
-    cargs.append(execution.input_file(anat))
-    cargs.append("-mask")
+    cargs.extend([
+        "-anat",
+        execution.input_file(anat)
+    ])
     if mask is not None:
-        cargs.append(mask)
+        cargs.extend([
+            "-mask",
+            mask
+        ])
     if blur_meth is not None:
         cargs.extend([
             "-blur_meth",

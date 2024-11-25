@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SSWARPER_METADATA = Metadata(
-    id="1cb5786a5affefb03cc2e65aca5873657f0dfd5b.boutiques",
+    id="807d0623fe4b7dc89849478e70898f42e427762c.boutiques",
     name="@SSwarper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -129,12 +129,18 @@ def v__sswarper(
     execution = runner.start_execution(V__SSWARPER_METADATA)
     cargs = []
     cargs.append("@SSwarper")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("-base")
-    cargs.append(execution.input_file(base_template))
-    cargs.append("-subid")
-    cargs.append(subject_id)
+    cargs.extend([
+        "-input",
+        execution.input_file(input_file)
+    ])
+    cargs.extend([
+        "-base",
+        execution.input_file(base_template)
+    ])
+    cargs.extend([
+        "-subid",
+        subject_id
+    ])
     if output_dir is not None:
         cargs.extend([
             "-odir",

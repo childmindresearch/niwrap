@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
-    id="1c41875abbfc51258f43fa8c151154d15b83f120.boutiques",
+    id="beba71e71e9ec183cbebde5e199f2a85b1324501.boutiques",
     name="antsBrainExtraction.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -77,14 +77,22 @@ def ants_brain_extraction_sh(
     execution = runner.start_execution(ANTS_BRAIN_EXTRACTION_SH_METADATA)
     cargs = []
     cargs.append("antsBrainExtraction.sh")
-    cargs.append("-d")
-    cargs.append(str(image_dimension))
-    cargs.append("-a")
-    cargs.append(execution.input_file(anatomical_image))
-    cargs.append("-e")
-    cargs.append(execution.input_file(template))
-    cargs.append("-m")
-    cargs.append(execution.input_file(probability_mask))
+    cargs.extend([
+        "-d",
+        str(image_dimension)
+    ])
+    cargs.extend([
+        "-a",
+        execution.input_file(anatomical_image)
+    ])
+    cargs.extend([
+        "-e",
+        execution.input_file(template)
+    ])
+    cargs.extend([
+        "-m",
+        execution.input_file(probability_mask)
+    ])
     if tissue_classification is not None:
         cargs.extend([
             "-c",
@@ -123,9 +131,11 @@ def ants_brain_extraction_sh(
         cargs.append("-u")
     if debug_mode:
         cargs.append("-z")
-    cargs.append("-o")
     if output_prefix is not None:
-        cargs.append(output_prefix)
+        cargs.extend([
+            "-o",
+            output_prefix
+        ])
     ret = AntsBrainExtractionShOutputs(
         root=execution.output_file("."),
         brain_extracted_image=execution.output_file(output_prefix + "_BrainExtractionBrain.nii.gz") if (output_prefix is not None) else None,

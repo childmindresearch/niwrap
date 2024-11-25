@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LME_METADATA = Metadata(
-    id="bd1787f97e2eb52763c81321ed328dfec07d234d.boutiques",
+    id="e9a80d6729c55d33424066db0a326673e6b70516.boutiques",
     name="3dLME",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -106,40 +106,62 @@ def v_3d_lme(
     execution = runner.start_execution(V_3D_LME_METADATA)
     cargs = []
     cargs.append("3dLME")
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-model")
-    cargs.append(model)
-    cargs.append("-dataTable")
-    cargs.append(data_table)
-    cargs.append("-bounds")
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    cargs.extend([
+        "-model",
+        model
+    ])
+    cargs.extend([
+        "-dataTable",
+        data_table
+    ])
     if bounds is not None:
-        cargs.extend(map(str, bounds))
+        cargs.extend([
+            "-bounds",
+            *map(str, bounds)
+        ])
     if cio_flag:
         cargs.append("-cio")
-    cargs.append("-corStr")
     if cor_str is not None:
-        cargs.append(cor_str)
-    cargs.append("-cutoff")
+        cargs.extend([
+            "-corStr",
+            cor_str
+        ])
     if cutoff is not None:
-        cargs.append(str(cutoff))
+        cargs.extend([
+            "-cutoff",
+            str(cutoff)
+        ])
     if dbg_args_flag:
         cargs.append("-dbgArgs")
-    cargs.append("-jobs")
     if jobs is not None:
-        cargs.append(str(jobs))
-    cargs.append("-gltCode")
+        cargs.extend([
+            "-jobs",
+            str(jobs)
+        ])
     if glt_code is not None:
-        cargs.append(glt_code)
-    cargs.append("-gltLabel")
+        cargs.extend([
+            "-gltCode",
+            glt_code
+        ])
     if glt_label is not None:
-        cargs.append(glt_label)
-    cargs.append("-glfLabel")
+        cargs.extend([
+            "-gltLabel",
+            glt_label
+        ])
     if glf_label is not None:
-        cargs.append(glf_label)
-    cargs.append("-glfCode")
+        cargs.extend([
+            "-glfLabel",
+            glf_label
+        ])
     if glf_code is not None:
-        cargs.append(glf_code)
+        cargs.extend([
+            "-glfCode",
+            glf_code
+        ])
     if icc_flag:
         cargs.append("-ICC")
     if iccb_flag:
@@ -151,41 +173,61 @@ def v_3d_lme(
     cargs.append("-ml")
     if ml_flag:
         cargs.append("-ML")
-    cargs.append("-qVarsCenters")
     if qvars_centers is not None:
-        cargs.append(qvars_centers)
-    cargs.append("-qVars")
+        cargs.extend([
+            "-qVarsCenters",
+            qvars_centers
+        ])
     if qvars is not None:
-        cargs.append(qvars)
-    cargs.append("-ranEff")
+        cargs.extend([
+            "-qVars",
+            qvars
+        ])
     if raneff is not None:
-        cargs.append(raneff)
-    cargs.append("-mask")
+        cargs.extend([
+            "-ranEff",
+            raneff
+        ])
     if mask is not None:
-        cargs.append(execution.input_file(mask))
-    cargs.append("-num_glf")
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
     if num_glf is not None:
-        cargs.append(str(num_glf))
-    cargs.append("-num_glt")
+        cargs.extend([
+            "-num_glf",
+            str(num_glf)
+        ])
     if num_glt is not None:
-        cargs.append(str(num_glt))
-    cargs.append("-resid")
+        cargs.extend([
+            "-num_glt",
+            str(num_glt)
+        ])
     if resid is not None:
-        cargs.append(resid)
-    cargs.append("-RE")
+        cargs.extend([
+            "-resid",
+            resid
+        ])
     if re_ is not None:
-        cargs.append(re_)
-    cargs.append("-REprefix")
+        cargs.extend([
+            "-RE",
+            re_
+        ])
     if reprefix is not None:
-        cargs.append(reprefix)
+        cargs.extend([
+            "-REprefix",
+            reprefix
+        ])
     cargs.append("-RIO")
     if rio_flag:
         cargs.append("-Rio")
     if show_options_flag:
         cargs.append("-show_allowed_options")
-    cargs.append("-SS_type")
     if ss_type is not None:
-        cargs.append(str(ss_type))
+        cargs.extend([
+            "-SS_type",
+            str(ss_type)
+        ])
     ret = V3dLmeOutputs(
         root=execution.output_file("."),
         output_nifti=execution.output_file(prefix + ".nii"),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MULTIMODAL_METADATA = Metadata(
-    id="682fa8c0ec2e0dc9c4af3e5eade956ef974e2229.boutiques",
+    id="6c75e35141c649f0ab512e4875436d422c8b10e5.boutiques",
     name="mris_multimodal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -69,12 +69,18 @@ def mris_multimodal(
     execution = runner.start_execution(MRIS_MULTIMODAL_METADATA)
     cargs = []
     cargs.append("mris_multimodal")
-    cargs.append("-i")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append("-t")
-    cargs.append(execution.input_file(target_surface))
-    cargs.append("-o")
-    cargs.append(execution.input_file(output_surface))
+    cargs.extend([
+        "-i",
+        execution.input_file(input_surface)
+    ])
+    cargs.extend([
+        "-t",
+        execution.input_file(target_surface)
+    ])
+    cargs.extend([
+        "-o",
+        execution.input_file(output_surface)
+    ])
     if fill_holes:
         cargs.append("-fillHoles")
     if curvature:

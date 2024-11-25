@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APQC_MAKE_HTML_METADATA = Metadata(
-    id="07c116f696d041aa0735cff7c774be94af315e97.boutiques",
+    id="a958dc9e454decaf99b430f63930ca86b1108a1f.boutiques",
     name="apqc_make_html",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,8 +43,10 @@ def apqc_make_html(
     execution = runner.start_execution(APQC_MAKE_HTML_METADATA)
     cargs = []
     cargs.append("apqc_make_html.py")
-    cargs.append("-qc_dir")
-    cargs.append(qc_dir)
+    cargs.extend([
+        "-qc_dir",
+        qc_dir
+    ])
     ret = ApqcMakeHtmlOutputs(
         root=execution.output_file("."),
     )

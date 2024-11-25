@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MVM_METADATA = Metadata(
-    id="41e1dd222d8dc8d40a7419dbf4444dad608de47a.boutiques",
+    id="2612be5737b405f93347f59a146e22ee9c08162b.boutiques",
     name="3dMVM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -78,45 +78,73 @@ def v_3d_mvm(
     cargs.append("3dMVM")
     if dbg_args is not None:
         cargs.append(dbg_args)
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-jobs")
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     if jobs is not None:
-        cargs.append(str(jobs))
-    cargs.append("-mask")
+        cargs.extend([
+            "-jobs",
+            str(jobs)
+        ])
     if mask is not None:
-        cargs.append(execution.input_file(mask))
-    cargs.append("-bsVars")
-    cargs.append(bs_vars)
-    cargs.append("-wsVars")
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    cargs.extend([
+        "-bsVars",
+        bs_vars
+    ])
     if ws_vars is not None:
-        cargs.append(ws_vars)
-    cargs.append("-qVars")
+        cargs.extend([
+            "-wsVars",
+            ws_vars
+        ])
     if q_vars is not None:
-        cargs.append(q_vars)
-    cargs.append("-qVarCenters")
+        cargs.extend([
+            "-qVars",
+            q_vars
+        ])
     if q_var_centers is not None:
-        cargs.append(q_var_centers)
-    cargs.append("-num_glt")
+        cargs.extend([
+            "-qVarCenters",
+            q_var_centers
+        ])
     if num_glt is not None:
-        cargs.append(str(num_glt))
-    cargs.append("-gltLabel")
+        cargs.extend([
+            "-num_glt",
+            str(num_glt)
+        ])
     if glt_label is not None:
-        cargs.append(glt_label)
-    cargs.append("-gltCode")
+        cargs.extend([
+            "-gltLabel",
+            glt_label
+        ])
     if glt_code is not None:
-        cargs.append(glt_code)
-    cargs.append("-num_glf")
+        cargs.extend([
+            "-gltCode",
+            glt_code
+        ])
     if num_glf is not None:
-        cargs.append(str(num_glf))
-    cargs.append("-glfLabel")
+        cargs.extend([
+            "-num_glf",
+            str(num_glf)
+        ])
     if glf_label is not None:
-        cargs.append(glf_label)
-    cargs.append("-glfCode")
+        cargs.extend([
+            "-glfLabel",
+            glf_label
+        ])
     if glf_code is not None:
-        cargs.append(glf_code)
-    cargs.append("-dataTable")
-    cargs.append(data_table)
+        cargs.extend([
+            "-glfCode",
+            glf_code
+        ])
+    cargs.extend([
+        "-dataTable",
+        data_table
+    ])
     ret = V3dMvmOutputs(
         root=execution.output_file("."),
         outfile_head=execution.output_file(prefix + "+tlrc.HEAD"),

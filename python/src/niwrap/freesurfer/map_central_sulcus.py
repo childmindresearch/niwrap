@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_CENTRAL_SULCUS_METADATA = Metadata(
-    id="473f6f24dbcf8903f3b8ae56f31139fead5b0c0c.boutiques",
+    id="ca8aeea364b75a5e16c0b6eafcdb6e7f1c756d05.boutiques",
     name="map_central_sulcus",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -129,8 +129,10 @@ def map_central_sulcus(
     execution = runner.start_execution(MAP_CENTRAL_SULCUS_METADATA)
     cargs = []
     cargs.append("recon-all")
-    cargs.append("-subjid")
-    cargs.append(subjid)
+    cargs.extend([
+        "-subjid",
+        subjid
+    ])
     cargs.append(process_directive)
     if hemi_flag is not None:
         cargs.extend([

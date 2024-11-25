@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUICKSPEC_SL_METADATA = Metadata(
-    id="08ed6159bee59987a1859b2905d55987174d322b.boutiques",
+    id="709c9014405509633a9c09650fc2fcd19e49e093.boutiques",
     name="quickspecSL",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -68,10 +68,14 @@ def quickspec_sl(
     execution = runner.start_execution(QUICKSPEC_SL_METADATA)
     cargs = []
     cargs.append("quickspecSL")
-    cargs.append("-surf_A")
-    cargs.append(execution.input_file(surf_a))
-    cargs.append("-surf_B")
-    cargs.append(execution.input_file(surf_b))
+    cargs.extend([
+        "-surf_A",
+        execution.input_file(surf_a)
+    ])
+    cargs.extend([
+        "-surf_B",
+        execution.input_file(surf_b)
+    ])
     if surf_intermed_pref is not None:
         cargs.extend([
             "-surf_intermed_pref",

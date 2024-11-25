@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__NOISY_SKULL_STRIP_METADATA = Metadata(
-    id="c7ff4d34b7c1585d06f46e9b52322c91389d58c8.boutiques",
+    id="b981b55490162536c9c6e2b9e7be2f92d046f89d.boutiques",
     name="@NoisySkullStrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,8 +56,10 @@ def v__noisy_skull_strip(
     execution = runner.start_execution(V__NOISY_SKULL_STRIP_METADATA)
     cargs = []
     cargs.append("@NoisySkullStrip")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_file))
+    cargs.extend([
+        "-input",
+        execution.input_file(input_file)
+    ])
     if keep_tmp:
         cargs.append("-keep_tmp")
     if v_3dskullstrip_opts is not None:

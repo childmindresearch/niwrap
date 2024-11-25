@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_IN2OUT_METADATA = Metadata(
-    id="4a0fafb32ed5b72823a2f2c3620ce2533eb5d2af.boutiques",
+    id="24cc5193feb14e3737f192161109e71637dc1422.boutiques",
     name="@measure_in2out",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -91,12 +91,18 @@ def v__measure_in2out(
     execution = runner.start_execution(V__MEASURE_IN2OUT_METADATA)
     cargs = []
     cargs.append("@measure_in2out")
-    cargs.append("-maskset")
-    cargs.append(execution.input_file(maskset))
-    cargs.append("-surfset")
-    cargs.append(execution.input_file(surfset))
-    cargs.append("-outdir")
-    cargs.append(outdir)
+    cargs.extend([
+        "-maskset",
+        execution.input_file(maskset)
+    ])
+    cargs.extend([
+        "-surfset",
+        execution.input_file(surfset)
+    ])
+    cargs.extend([
+        "-outdir",
+        outdir
+    ])
     if resample is not None:
         cargs.extend([
             "-resample",

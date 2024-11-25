@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GCA_APPLY_METADATA = Metadata(
-    id="5a1062dfabdc08f0e56aa6f8e08120b606870f5a.boutiques",
+    id="f4bd4a615b7c50d10e14f661f965b2406ad3cd26.boutiques",
     name="gca-apply",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -89,8 +89,10 @@ def gca_apply(
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCA_APPLY_METADATA)
     cargs = []
-    cargs.append("gca-apply")
-    cargs.append(execution.input_file(gcafile))
+    cargs.extend([
+        "-apply",
+        "gca" + execution.input_file(gcafile)
+    ])
     cargs.append(subject)
     if nthreads is not None:
         cargs.extend([

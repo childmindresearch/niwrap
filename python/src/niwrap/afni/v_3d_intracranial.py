@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_INTRACRANIAL_METADATA = Metadata(
-    id="23015e339767dba4b46f464166abf3f72e4cb644.boutiques",
+    id="7db670af0f7c48d8939167bf8be7fb82517885c7.boutiques",
     name="3dIntracranial",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -64,10 +64,14 @@ def v_3d_intracranial(
     execution = runner.start_execution(V_3D_INTRACRANIAL_METADATA)
     cargs = []
     cargs.append("3dIntracranial")
-    cargs.append("-anat")
-    cargs.append(execution.input_file(infile))
-    cargs.append("-prefix")
-    cargs.append(prefix)
+    cargs.extend([
+        "-anat",
+        execution.input_file(infile)
+    ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     if min_val is not None:
         cargs.extend([
             "-min_val",

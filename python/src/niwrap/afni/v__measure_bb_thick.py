@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_BB_THICK_METADATA = Metadata(
-    id="cfc08b06be4be34dbe86515a4f42ca26d14b7282.boutiques",
+    id="4067aaab94ddd866b5b5e3bdd4111236448a5019.boutiques",
     name="@measure_bb_thick",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -91,13 +91,19 @@ def v__measure_bb_thick(
     execution = runner.start_execution(V__MEASURE_BB_THICK_METADATA)
     cargs = []
     cargs.append("@measure_bb_thick")
-    cargs.append("-maskset")
-    cargs.append(execution.input_file(maskset))
-    cargs.append("-surfset")
-    cargs.append(execution.input_file(surfset))
-    cargs.append("-outdir")
+    cargs.extend([
+        "-maskset",
+        execution.input_file(maskset)
+    ])
+    cargs.extend([
+        "-surfset",
+        execution.input_file(surfset)
+    ])
     if outdir is not None:
-        cargs.append(outdir)
+        cargs.extend([
+            "-outdir",
+            outdir
+        ])
     if resample is not None:
         cargs.extend([
             "-resample",

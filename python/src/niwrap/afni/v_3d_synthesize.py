@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SYNTHESIZE_METADATA = Metadata(
-    id="1b7574324cf89a065c709504493c7ed745313d61.boutiques",
+    id="814a030fd63ed19fbe9b03dd6aaaa8fcb42ba91b.boutiques",
     name="3dSynthesize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,14 +59,22 @@ def v_3d_synthesize(
     execution = runner.start_execution(V_3D_SYNTHESIZE_METADATA)
     cargs = []
     cargs.append("3dSynthesize")
-    cargs.append("-cbucket")
-    cargs.append(execution.input_file(c_bucket))
-    cargs.append("-matrix")
-    cargs.append(execution.input_file(matrix))
-    cargs.append("-select")
-    cargs.append(select_)
-    cargs.append("-prefix")
-    cargs.append(prefix)
+    cargs.extend([
+        "-cbucket",
+        execution.input_file(c_bucket)
+    ])
+    cargs.extend([
+        "-matrix",
+        execution.input_file(matrix)
+    ])
+    cargs.extend([
+        "-select",
+        select_
+    ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     if dry_flag:
         cargs.append("-dry")
     if tr is not None:

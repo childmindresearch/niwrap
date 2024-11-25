@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_SEM_METADATA = Metadata(
-    id="8936d4c2b543a7a7fe17bbe75468cd8d13f99b52.boutiques",
+    id="5e2db5b8050b3ebdeb052af73814a070e4f66f50.boutiques",
     name="1dSEM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,14 +52,22 @@ def v_1d_sem(
     execution = runner.start_execution(V_1D_SEM_METADATA)
     cargs = []
     cargs.append("1dSEM")
-    cargs.append("-theta")
-    cargs.append(execution.input_file(theta))
-    cargs.append("-C")
-    cargs.append(execution.input_file(correlation_matrix))
-    cargs.append("-psi")
-    cargs.append(execution.input_file(residual_variance))
-    cargs.append("-DF")
-    cargs.append(str(degrees_of_freedom))
+    cargs.extend([
+        "-theta",
+        execution.input_file(theta)
+    ])
+    cargs.extend([
+        "-C",
+        execution.input_file(correlation_matrix)
+    ])
+    cargs.extend([
+        "-psi",
+        execution.input_file(residual_variance)
+    ])
+    cargs.extend([
+        "-DF",
+        str(degrees_of_freedom)
+    ])
     cargs.append("[OPTIONS]")
     ret = V1dSemOutputs(
         root=execution.output_file("."),

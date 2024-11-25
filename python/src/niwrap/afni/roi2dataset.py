@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROI2DATASET_METADATA = Metadata(
-    id="c994458c150bdc96a6edfd6a62cc84bbf9e38f61.boutiques",
+    id="cb7fc4644491b5997df0b2f69ea6410d2e3bd1f1.boutiques",
     name="ROI2dataset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -72,8 +72,10 @@ def roi2dataset(
     execution = runner.start_execution(ROI2DATASET_METADATA)
     cargs = []
     cargs.append("ROI2dataset")
-    cargs.append("-prefix")
-    cargs.append(prefix)
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     cargs.extend([execution.input_file(f) for f in input_rois])
     if keep_separate:
         cargs.append("-keep_separate")

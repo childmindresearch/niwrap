@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FAT_TRACT_COLORIZE_METADATA = Metadata(
-    id="419b2426fef682d260fe27e3825ba60780b27064.boutiques",
+    id="f3f64fbe07c8bd4496b0798d6dd6b6b10d632121.boutiques",
     name="@fat_tract_colorize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -71,14 +71,22 @@ def v__fat_tract_colorize(
     execution = runner.start_execution(V__FAT_TRACT_COLORIZE_METADATA)
     cargs = []
     cargs.append("@fat_tract_colorize")
-    cargs.append("-in_fa")
-    cargs.append(execution.input_file(in_fa))
-    cargs.append("-in_v1")
-    cargs.append(execution.input_file(in_v1))
-    cargs.append("-in_tracts")
-    cargs.append(in_tracts)
-    cargs.append("-prefix")
-    cargs.append(prefix)
+    cargs.extend([
+        "-in_fa",
+        execution.input_file(in_fa)
+    ])
+    cargs.extend([
+        "-in_v1",
+        execution.input_file(in_v1)
+    ])
+    cargs.extend([
+        "-in_tracts",
+        in_tracts
+    ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     if in_ulay is not None:
         cargs.extend([
             "-in_ulay",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RECON_ALL_METADATA = Metadata(
-    id="80e6e5897b9239e0bfdb40a5e3deab75cbeca1c5.boutiques",
+    id="ab17d5e676eb3ccc4691a058379b4eff9f537cd6.boutiques",
     name="recon-all",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -174,8 +174,10 @@ def recon_all(
     execution = runner.start_execution(RECON_ALL_METADATA)
     cargs = []
     cargs.append("recon-all")
-    cargs.append("-subjid")
-    cargs.append(subjid)
+    cargs.extend([
+        "-subjid",
+        subjid
+    ])
     if autorecon3_flag:
         cargs.append("-autorecon3")
     if hemi is not None:

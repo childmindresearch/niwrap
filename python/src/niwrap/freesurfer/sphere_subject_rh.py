@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHERE_SUBJECT_RH_METADATA = Metadata(
-    id="707205cf5093c8b03ec0a1c51082a073654b3986.boutiques",
+    id="844b29d70c1496f2da433daa0b47df80e286dc3b.boutiques",
     name="sphere_subject-rh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -43,8 +43,10 @@ def sphere_subject_rh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHERE_SUBJECT_RH_METADATA)
     cargs = []
-    cargs.append("sphere_subject-rh")
-    cargs.append(execution.input_file(license_file))
+    cargs.extend([
+        "-rh",
+        "sphere_subject" + execution.input_file(license_file)
+    ])
     ret = SphereSubjectRhOutputs(
         root=execution.output_file("."),
     )

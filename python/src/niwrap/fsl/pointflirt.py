@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POINTFLIRT_METADATA = Metadata(
-    id="865d60666d30e3997750a5b91e8a1cce07c0c22e.boutiques",
+    id="368f2a336f608f93bc76775007d95b1130fa4565.boutiques",
     name="pointflirt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -58,10 +58,14 @@ def pointflirt(
     execution = runner.start_execution(POINTFLIRT_METADATA)
     cargs = []
     cargs.append("pointflirt")
-    cargs.append("-i")
-    cargs.append(execution.input_file(invol_coords))
-    cargs.append("-r")
-    cargs.append(execution.input_file(refvol_coords))
+    cargs.extend([
+        "-i",
+        execution.input_file(invol_coords)
+    ])
+    cargs.extend([
+        "-r",
+        execution.input_file(refvol_coords)
+    ])
     if out_matrix is not None:
         cargs.extend([
             "-o",

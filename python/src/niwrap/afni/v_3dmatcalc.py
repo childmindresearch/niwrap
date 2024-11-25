@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMATCALC_METADATA = Metadata(
-    id="4a12ce66d0030ed964e44d50ee57940da8cb40ca.boutiques",
+    id="16d93c5bffdb2dd03645e781ad37c055e29c5516.boutiques",
     name="3dmatcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,12 +55,18 @@ def v_3dmatcalc(
     execution = runner.start_execution(V_3DMATCALC_METADATA)
     cargs = []
     cargs.append("3dmatcalc")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_dataset))
-    cargs.append("-matrix")
-    cargs.append(execution.input_file(input_matrix))
-    cargs.append("-prefix")
-    cargs.append(output_dataset)
+    cargs.extend([
+        "-input",
+        execution.input_file(input_dataset)
+    ])
+    cargs.extend([
+        "-matrix",
+        execution.input_file(input_matrix)
+    ])
+    cargs.extend([
+        "-prefix",
+        output_dataset
+    ])
     if mask is not None:
         cargs.extend([
             "-mask",

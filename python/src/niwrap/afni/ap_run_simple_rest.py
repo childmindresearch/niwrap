@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AP_RUN_SIMPLE_REST_METADATA = Metadata(
-    id="1a513a80095d0ec1e3d0c42d6752fc35554360e8.boutiques",
+    id="51acc3d2305cb727e55055aa552281969a79036d.boutiques",
     name="ap_run_simple_rest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -74,8 +74,10 @@ def ap_run_simple_rest(
             "-anat",
             execution.input_file(anat)
         ])
-    cargs.append("-epi")
-    cargs.extend([execution.input_file(f) for f in epi])
+    cargs.extend([
+        "-epi",
+        *[execution.input_file(f) for f in epi]
+    ])
     if nt_rm is not None:
         cargs.extend([
             "-nt_rm",

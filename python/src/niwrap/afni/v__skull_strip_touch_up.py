@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SKULL_STRIP_TOUCH_UP_METADATA = Metadata(
-    id="c803b7c3e18cf11101f928ee0b08cbc52d5011e4.boutiques",
+    id="c0f64458c20c581941a642ca8dc8fd97621c38dd.boutiques",
     name="@SkullStrip_TouchUp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,12 +56,18 @@ def v__skull_strip_touch_up(
     execution = runner.start_execution(V__SKULL_STRIP_TOUCH_UP_METADATA)
     cargs = []
     cargs.append("@SkullStrip_TouchUp")
-    cargs.append("-prefix")
-    cargs.append(prefix)
-    cargs.append("-brain")
-    cargs.append(execution.input_file(brain_dataset))
-    cargs.append("-head")
-    cargs.append(execution.input_file(head_dataset))
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    cargs.extend([
+        "-brain",
+        execution.input_file(brain_dataset)
+    ])
+    cargs.extend([
+        "-head",
+        execution.input_file(head_dataset)
+    ])
     if mask_out:
         cargs.append("-mask_out")
     if orig_dim:
