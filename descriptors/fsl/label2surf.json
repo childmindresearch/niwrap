@@ -62,10 +62,7 @@
     {
       "description": "Optional miscellaneous parameters for label2surf",
       "id": "miscellaneous_params_group",
-      "members": [
-        "verbose_flag",
-        "help_flag"
-      ],
+      "members": ["verbose_flag", "help_flag"],
       "name": "Miscellaneous Parameters"
     }
   ],

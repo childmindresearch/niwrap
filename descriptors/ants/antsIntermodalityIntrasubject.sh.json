@@ -60,12 +60,7 @@
       "type": "Number",
       "integer": true,
       "command-line-flag": "-t",
-      "value-choices": [
-        0,
-        1,
-        2,
-        3
-      ],
+      "value-choices": [0, 1, 2, 3],
       "description": "Type of transform: 0=rigid, 1=affine, 2=rigid+small_def, 3=affine+small_def"
     },
     {

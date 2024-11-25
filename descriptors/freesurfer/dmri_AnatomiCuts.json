@@ -69,12 +69,7 @@
       "optional": false,
       "id": "direction_flag",
       "name": "Direction Flag",
-      "value-choices": [
-        "s",
-        "d",
-        "a",
-        "o"
-      ]
+      "value-choices": ["s", "d", "a", "o"]
     }
   ],
   "output-files": [

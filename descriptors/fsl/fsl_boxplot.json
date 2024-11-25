@@ -100,10 +100,7 @@
     {
       "description": "Compulsory parameters for fsl_boxplot",
       "id": "compulsory_params_group",
-      "members": [
-        "input_files",
-        "output_image"
-      ],
+      "members": ["input_files", "output_image"],
       "name": "Compulsory Parameters"
     },
     {

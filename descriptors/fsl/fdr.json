@@ -124,9 +124,7 @@
     {
       "description": "Compulsory argument group",
       "id": "compulsory_params_group",
-      "members": [
-        "infile"
-      ],
+      "members": ["infile"],
       "name": "Compulsory Parameters"
     },
     {

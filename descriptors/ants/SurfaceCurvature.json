@@ -40,12 +40,7 @@
       "value-key": "[OPTION]",
       "type": "Number",
       "optional": false,
-      "value-choices": [
-        0,
-        5,
-        6,
-        7
-      ],
+      "value-choices": [0, 5, 6, 7],
       "description": "The operation mode: 0 for mean curvature, 5 for surface characterization, 6 for Gaussian curvature, and 7 for surface area.",
       "command-line-flag": ""
     }

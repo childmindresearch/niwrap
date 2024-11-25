@@ -18,10 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        2,
-        3
-      ],
+      "value-choices": [2, 3],
       "command-line-flag": "-d",
       "description": "Image dimensionality (2 or 3)."
     },
@@ -86,10 +83,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "-v",
       "description": "Verbose output."
     },
