@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ROISTATS_METADATA = Metadata(
-    id="d00737baa26c58d207ed2dff97d88d3ce1841358.boutiques",
+    id="80281254f3598a961619f69119f1d0eb9b58f421.boutiques",
     name="3dROIstats",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,10 +20,13 @@ class V3dRoistatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
-    """Output file."""
-    out_file_: OutputPathType
-    """Output tab-separated values file."""
+    stats: list[str]
+    """There will be one line of output for every sub-brick of every input
+    dataset. Across each line will be every statistic for every mask value. For
+    instance, if there 3 mask values (1,2,3), then the columns Mean_1, Mean_2
+    and Mean_3 will refer to the means across each mask value, respectively. If
+    4 statistics are requested, then there will be 12 stats displayed on each
+    line (4 for each mask region), besides the file and sub-brick number."""
 
 
 def v_3d_roistats(
@@ -148,10 +151,9 @@ def v_3d_roistats(
         ])
     ret = V3dRoistatsOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_roistat.1D"),
-        out_file_=execution.output_file("out_file"),
+        stats=[],
     )
-    execution.run(cargs)
+    execution.run(cargs, handle_stdout=lambda s: ret.stats.append(s))
     return ret
 
 
