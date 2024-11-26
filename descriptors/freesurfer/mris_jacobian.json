@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "#",
   "description": "This program computes the Jacobian of a surface mapping.",
-  "command-line": "mris_jacobian [ORIGINAL_SURFACE] [MAPPED_SURFACE] [JACOBIAN_FILE] [LOG_FLAG] [NOSCALE_FLAG] [INVERT_FLAG]",
+  "command-line": "mris_jacobian [ORIGINAL_SURFACE] [MAPPED_SURFACE] [JACOBIAN_FILE] [LOG] [NOSCALE] [INVERT]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-log",
       "description": "Compute and write out log of Jacobian.",
-      "value-key": "[LOG_FLAG]",
+      "value-key": "[LOG]",
       "type": "Flag",
       "optional": true,
       "id": "log",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-noscale",
       "description": "Don't scale Jacobian by total surface areas.",
-      "value-key": "[NOSCALE_FLAG]",
+      "value-key": "[NOSCALE]",
       "type": "Flag",
       "optional": true,
       "id": "noscale",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-invert",
       "description": "Compute -1/Jacobian for Jacobian < 1.",
-      "value-key": "[INVERT_FLAG]",
+      "value-key": "[INVERT]",
       "type": "Flag",
       "optional": true,
       "id": "invert",

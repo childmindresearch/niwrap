@@ -3,7 +3,7 @@
   "name": "fs-check-version",
   "author": "FreeSurfer Developers",
   "description": "Script to manage which version of FreeSurfer can be used to analyze data ensuring consistency with the desired version.",
-  "command-line": "fs-check-version [SUBJECTS_DIR] [OUTFILE] [SUBJECT] [REQUIRE_MATCH_FLAG] [TEST_FLAG]",
+  "command-line": "fs-check-version [SUBJECTS_DIR] [OUTFILE] [SUBJECT] [NO_REQUIRE_MATCH] [TEST_DEBUG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--require-match",
       "description": "Set REQUIRE_FS_MATCH for testing",
-      "value-key": "[REQUIRE_MATCH_FLAG]",
+      "value-key": "[REQUIRE_MATCH]",
       "type": "Flag",
       "optional": true,
       "id": "require_match",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--no-require-match",
       "description": "Unset REQUIRE_FS_MATCH for testing",
-      "value-key": "[REQUIRE_MATCH_FLAG]",
+      "value-key": "[NO_REQUIRE_MATCH]",
       "type": "Flag",
       "optional": true,
       "id": "no_require_match",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--test",
       "description": "Go through permutations for testing",
-      "value-key": "[TEST_FLAG]",
+      "value-key": "[TEST]",
       "type": "Flag",
       "optional": true,
       "id": "test",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--test-debug",
       "description": "Go through permutations for debugging",
-      "value-key": "[TEST_FLAG]",
+      "value-key": "[TEST_DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "test_debug",

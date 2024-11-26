@@ -3,7 +3,7 @@
   "name": "bayes_view",
   "author": "AFNI Developers",
   "description": "Launch a shiny app to visualize RBA output files. The files must have the .RData extension.",
-  "command-line": "bayes_view [INPUT_FOLDER] [HELP_FLAG] [SHINY_FOLDER]",
+  "command-line": "bayes_view [INPUT_FOLDER] [HELP] [SHINY_FOLDER]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

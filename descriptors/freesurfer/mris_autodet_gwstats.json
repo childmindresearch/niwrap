@@ -1,7 +1,7 @@
 {
   "name": "mris_autodet_gwstats",
   "description": "Manages the computation of the gray/white statistics used to place the white and pial surfaces.",
-  "command-line": "mris_autodet_gwstats [OUTPUT_FILE] [T1W_VOLUME] [WM_VOLUME] [SURF] [LH_SURF] [RH_SURF] [SUBJECT] [SUBJECTS_DIR] [MIN_BORDER_WHITE] [MAX_BORDER_WHITE] [MIN_GRAY_AT_WHITE_BORDER] [MAX_GRAY] [MAX_GRAY_AT_CSF_BORDER] [MIN_GRAY_AT_CSF_BORDER] [MAX_CSF]",
+  "command-line": "mris_autodet_gwstats [OUTPUT_FILE] [T1W_VOLUME] [WM_VOLUME] [SURF] [LHSURF] [RHSURF] [SUBJECT] [SUBJECTS_DIR] [MIN_BORDER_WHITE] [MAX_BORDER_WHITE] [MIN_GRAY_AT_WHITE_BORDER] [MAX_GRAY] [MAX_GRAY_AT_CSF_BORDER] [MIN_GRAY_AT_CSF_BORDER] [MAX_CSF]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--lh-surf",
       "description": "Left hemisphere surface",
-      "value-key": "[LH_SURF]",
+      "value-key": "[LHSURF]",
       "type": "File",
       "optional": true,
       "id": "lhsurf",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--rh-surf",
       "description": "Right hemisphere surface",
-      "value-key": "[RH_SURF]",
+      "value-key": "[RHSURF]",
       "type": "File",
       "optional": true,
       "id": "rhsurf",

@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "General Linear Model fitting with autocorrelation in FMRI",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "film_gls [INPUT_FILE] [AC_FLAG] [THRESHOLD] [AR_FLAG] [NOEST_FLAG] [OUTPUT_PW_FLAG] [PAVA_FLAG] [SA_FLAG] [VERBOSE_FLAG] [RESULTS_DIR] [MODE] [INPUT_SURFACE] [MEAN_FUNC_FILE] [MIN_TIMEPOINT_FILE] [PARADIGM_FILE] [T_CONTRASTS_FILE] [F_CONTRASTS_FILE] [EPITH] [MS] [TUKEY] [MT] [VEN] [VEF]",
+  "command-line": "film_gls [INFILE] [AC_FLAG] [THRESHOLD] [AR_FLAG] [NOEST_FLAG] [OUTPUTPW_FLAG] [PAVA_FLAG] [SA_FLAG] [VERBOSE_FLAG] [RESULTS_DIR] [MODE] [INPUT_SURFACE] [MEAN_FUNC_FILE] [MIN_TIMEPOINT_FILE] [PARADIGM_FILE] [T_CONTRASTS_FILE] [F_CONTRASTS_FILE] [EPITH] [MS] [TUKEY] [MT] [VEN] [VEF]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input data file (NIFTI for volumetric, GIFTI for surface)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "--outputPWdata",
       "description": "Output prewhitened data and average design matrix",
-      "value-key": "[OUTPUT_PW_FLAG]",
+      "value-key": "[OUTPUTPW_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "outputPW_flag",

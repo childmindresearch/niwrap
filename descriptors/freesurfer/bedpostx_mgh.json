@@ -3,7 +3,7 @@
   "author": "FreeSurfer Developers",
   "description": "A modified version of FSL's bedpostx compatible with PBS queueing system for parallel computation.",
   "tool-version": "7.4.1",
-  "command-line": "bedpostx_mgh [SUBJECT_DIR] [FIBRES] [ARD_WEIGHT] [BURNIN] [JUMPS] [SAMPLE_EVERY] [DECONVOLUTION_MODEL] [GRADIENT_FLAG]",
+  "command-line": "bedpostx_mgh [SUBJECT_DIRECTORY] [FIBRES] [ARD_WEIGHT] [BURNIN] [JUMPS] [SAMPLE_EVERY] [DECONV_MODEL] [GRADIENT_NONLIN]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,7 @@
       "name": "Subject Directory",
       "description": "Subject directory containing necessary files such as bvals, bvecs, data, and nodif_brain_mask.",
       "type": "String",
-      "value-key": "[SUBJECT_DIR]",
+      "value-key": "[SUBJECT_DIRECTORY]",
       "optional": false
     },
     {
@@ -65,7 +65,7 @@
       "name": "Deconvolution Model",
       "description": "Deconvolution model selection. 1: with sticks, 2: with sticks with a range of diffusivities (default), 3: with zeppelins",
       "type": "Number",
-      "value-key": "[DECONVOLUTION_MODEL]",
+      "value-key": "[DECONV_MODEL]",
       "optional": true
     },
     {
@@ -74,7 +74,7 @@
       "name": "Gradient Nonlinearities",
       "description": "Consider gradient nonlinearities, default is off",
       "type": "Flag",
-      "value-key": "[GRADIENT_FLAG]",
+      "value-key": "[GRADIENT_NONLIN]",
       "optional": true
     }
   ],

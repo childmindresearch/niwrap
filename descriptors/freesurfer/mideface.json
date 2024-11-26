@@ -1,6 +1,6 @@
 {
   "name": "mideface",
-  "command-line": "mideface [INPUT_VOLUME] [OUTPUT_VOLUME] [FACEMASK] [OUTPUT_DIR] [EXCLUSION_MASK] [SAMSEG_NDILATIONS] [SAMSEG_JSON] [INIT_REG] [SYNTHSEG_NDILATIONS] [FILL_CONST] [FHI] [CODE] [IMAGE_CONVERT] [THREADS] [DISPLAY_NO] [APPLY_VOLUME] [CHECK_VOLUME] [CHECK_OUTFILE] [OUTPUT_FORMAT]",
+  "command-line": "mideface [INPUT_VOLUME] [OUTPUT_VOLUME] [FACEMASK] [OUTPUT_DIR] [EXCLUSION_MASK] [SAMSEG_NDILATIONS] [SAMSEG_JSON] [INIT_REG] [SYNTHSEG_NDILATIONS] [FILL_CONST] [FHI] [CODE] [IMAGE_CONVERT] [THREADS] [DISPLAY_NO] [APPLY_VOLUME] [CHECK_VOLUME] [CHECK_OUTPUT_FILE] [OUTPUT_FORMAT]",
   "description": "Minimally invasive defacing tool",
   "schema-version": "0.5",
   "inputs": [
@@ -73,7 +73,7 @@
       "type": "Flag",
       "description": "Configure Samseg to run quickly",
       "optional": true,
-      "value-key": "[SAMSEG_FAST_FLAG]",
+      "value-key": "[SAMSEG_FAST]",
       "command-line-flag": "--samseg-fast"
     },
     {
@@ -82,7 +82,7 @@
       "type": "Flag",
       "description": "Do not configure Samseg to run quickly",
       "optional": true,
-      "value-key": "[NO_SAMSEG_FAST_FLAG]",
+      "value-key": "[NO_SAMSEG_FAST]",
       "command-line-flag": "--no-samseg-fast"
     },
     {
@@ -121,7 +121,7 @@
       "type": "Flag",
       "description": "Fill regions with zero",
       "optional": true,
-      "value-key": "[FILL_ZERO_FLAG]",
+      "value-key": "[FILL_ZERO]",
       "command-line-flag": "--fill-zero"
     },
     {
@@ -139,7 +139,7 @@
       "type": "Flag",
       "description": "Do not include ears in the defacing",
       "optional": true,
-      "value-key": "[NO_EARS_FLAG]",
+      "value-key": "[NO_EARS]",
       "command-line-flag": "--no-ears"
     },
     {
@@ -148,7 +148,7 @@
       "type": "Flag",
       "description": "Include back of head in defacing",
       "optional": true,
-      "value-key": "[BACK_OF_HEAD_FLAG]",
+      "value-key": "[BACK_OF_HEAD]",
       "command-line-flag": "--back-of-head"
     },
     {
@@ -157,7 +157,7 @@
       "type": "Flag",
       "description": "Include forehead in defacing (risks removing brain)",
       "optional": true,
-      "value-key": "[FOREHEAD_FLAG]",
+      "value-key": "[FOREHEAD]",
       "command-line-flag": "--forehead"
     },
     {
@@ -166,7 +166,7 @@
       "type": "Flag",
       "description": "Take pictures of the defaced result",
       "optional": true,
-      "value-key": "[PICS_FLAG]",
+      "value-key": "[PICS]",
       "command-line-flag": "--pics"
     },
     {
@@ -193,7 +193,7 @@
       "type": "Flag",
       "description": "Do not make a head surface after defacing",
       "optional": true,
-      "value-key": "[NO_POST_FLAG]",
+      "value-key": "[NO_POST]",
       "command-line-flag": "--no-post"
     },
     {
@@ -211,7 +211,7 @@
       "type": "Flag",
       "description": "Force reprocessing (only applicable if output directory is used)",
       "optional": true,
-      "value-key": "[FORCE_FLAG]",
+      "value-key": "[FORCE]",
       "command-line-flag": "--force"
     },
     {
@@ -274,7 +274,7 @@
       "type": "File",
       "description": "Optional output file for check result",
       "optional": true,
-      "value-key": "[CHECK_OUTFILE]",
+      "value-key": "[CHECK_OUTPUT_FILE]",
       "command-line-flag": "--check"
     }
   ],

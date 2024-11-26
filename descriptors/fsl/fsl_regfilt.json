@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Data de-noising by regressing out part of a design matrix using simple OLS regression on 4D images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fsl_regfilt [INPUT_FILE] [DESIGN_FILE] [OUTPUT_FILE] [MASK_FILE] [FILTER] [FREQ_FILTER_FLAG] [FREQ_IC_FLAG] [FREQ_IC_SMOOTH] [FTHRESH] [FTHRESH2] [VN_FLAG] [VERBOSE_FLAG] [AGGRESSIVE_FLAG] [HELP_FLAG] [OUT_DATA] [OUT_MIX] [OUT_VNSCALES]",
+  "command-line": "fsl_regfilt [INFILE] [DESIGNFILE] [OUTFILE] [MASKFILE] [FILTER] [FREQ_FILTER_FLAG] [FREQ_IC_FLAG] [FREQ_IC_SMOOTH] [FTHRESH] [FTHRESH2] [VN_FLAG] [VERBOSE_FLAG] [AGGRESSIVE_FLAG] [HELP_FLAG] [OUT_DATA] [OUT_MIX] [OUT_VNSCALES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input file name (4D image)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Output file name for the filtered data",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -30,7 +30,7 @@
     },
     {
       "description": "File name of the matrix with time courses (e.g. GLM design or MELODIC mixing matrix)",
-      "value-key": "[DESIGN_FILE]",
+      "value-key": "[DESIGNFILE]",
       "type": "File",
       "optional": false,
       "id": "designfile",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-m",
       "description": "Mask image file name",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASKFILE]",
       "type": "File",
       "optional": true,
       "id": "maskfile",

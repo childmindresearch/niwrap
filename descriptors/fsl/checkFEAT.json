@@ -1,11 +1,11 @@
 {
   "name": "checkFEAT",
   "description": "Perform checks on FEAT analysis results",
-  "command-line": "checkFEAT [REPORT] [REPORT_LOG]",
+  "command-line": "checkFEAT [REPORT_FILE] [REPORT_LOG_FILE]",
   "inputs": [
     {
       "description": "Path to the HTML report",
-      "value-key": "[REPORT]",
+      "value-key": "[REPORT_FILE]",
       "type": "File",
       "optional": false,
       "id": "report_file",
@@ -13,7 +13,7 @@
     },
     {
       "description": "Path to the HTML report log",
-      "value-key": "[REPORT_LOG]",
+      "value-key": "[REPORT_LOG_FILE]",
       "type": "File",
       "optional": false,
       "id": "report_log_file",

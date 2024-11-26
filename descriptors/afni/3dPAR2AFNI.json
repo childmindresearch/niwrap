@@ -3,7 +3,7 @@
   "name": "3dPAR2AFNI.pl",
   "author": "AFNI Developers",
   "description": "Convert Philips PAR/REC files to AFNI's BRIK/HEAD, NIfTI, or ANALYZE format",
-  "command-line": "3dPAR2AFNI.pl [INPUT_FILE] [OUTLIER_TEST_FLAG] [OUTPUT_FORMAT_FLAG] [OUTPUT_DIR] [VERBOSE_FLAG] [GZIP_FLAG] [BYTE_SWAP_FLAG]",
+  "command-line": "3dPAR2AFNI.pl [INPUT_FILE] [SKIP_OUTLIERS_TEST] [OUTPUT_ANALYZE] [OUTPUT_DIR] [VERBOSE_FLAG] [GZIP_FILES] [BYTE_SWAP_4]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-s",
       "description": "Skip the outliers test when converting 4D files. The default is to perform the outliers test.",
-      "value-key": "[OUTLIER_TEST_FLAG]",
+      "value-key": "[SKIP_OUTLIERS_TEST]",
       "type": "Flag",
       "optional": true,
       "id": "skip_outliers_test",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-n",
       "description": "Output NIfTI files instead of HEAD/BRIK. The default is to create HEAD/BRIK files.",
-      "value-key": "[OUTPUT_FORMAT_FLAG]",
+      "value-key": "[OUTPUT_NIFTI]",
       "type": "Flag",
       "optional": true,
       "id": "output_nifti",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-a",
       "description": "Output ANALYZE files instead of HEAD/BRIK.",
-      "value-key": "[OUTPUT_FORMAT_FLAG]",
+      "value-key": "[OUTPUT_ANALYZE]",
       "type": "Flag",
       "optional": true,
       "id": "output_analyze",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-g",
       "description": "Gzip the files created. The default is not to gzip the files.",
-      "value-key": "[GZIP_FLAG]",
+      "value-key": "[GZIP_FILES]",
       "type": "Flag",
       "optional": true,
       "id": "gzip_files",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-2",
       "description": "2-Byte-swap the files created. The default is not to 2 byte-swap.",
-      "value-key": "[BYTE_SWAP_FLAG]",
+      "value-key": "[BYTE_SWAP_2]",
       "type": "Flag",
       "optional": true,
       "id": "byte_swap_2",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "-4",
       "description": "4-Byte-swap the files created. The default is not to 4 byte-swap.",
-      "value-key": "[BYTE_SWAP_FLAG]",
+      "value-key": "[BYTE_SWAP_4]",
       "type": "Flag",
       "optional": true,
       "id": "byte_swap_4",

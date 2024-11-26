@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "exvivo-hemi-proc",
   "description": "Processes whole hemisphere data for Jeans entorhinal subfield labeling project.",
-  "command-line": "exvivo-hemi-proc [FLASHDIR] [OUTDIR] [SUBJECT] [HEMISPHERE_FLAG] [SUPTENT_FLAG] [NO_ROTATE_FLAG] [T1THRESH] [THREADS] [CHECK_ONLY_FLAG] [PREP_ONLY_FLAG] [MASK_ONLY_FLAG] [SAMSEG_ONLY_FLAG] [STOP_MMPPSP_AFTER] [FORCE_FLAG]",
+  "command-line": "exvivo-hemi-proc [FLASHDIR] [OUTDIR] [SUBJECT] [RIGHT_HEMI] [SUPTENT] [NO_ROTATE] [T1THRESH] [THREADS] [CHECK_ONLY] [PREP_ONLY] [MASK_ONLY] [SAMSEG_ONLY] [STOP_MMPPSP_AFTER] [FORCE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Process left hemisphere.",
-      "value-key": "[HEMISPHERE_FLAG]",
+      "value-key": "[LEFT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemi",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Process right hemisphere.",
-      "value-key": "[HEMISPHERE_FLAG]",
+      "value-key": "[RIGHT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemi",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--suptent",
       "description": "Indicate no tentorium (cblum and bstem) in the sample.",
-      "value-key": "[SUPTENT_FLAG]",
+      "value-key": "[SUPTENT]",
       "type": "Flag",
       "optional": true,
       "id": "suptent",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--no-rotate",
       "description": "Indicate rotation is not needed.",
-      "value-key": "[NO_ROTATE_FLAG]",
+      "value-key": "[NO_ROTATE]",
       "type": "Flag",
       "optional": true,
       "id": "no_rotate",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "--check-only",
       "description": "Only perform check, without further processing.",
-      "value-key": "[CHECK_ONLY_FLAG]",
+      "value-key": "[CHECK_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "check_only",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "--prep-only",
       "description": "Only run up to manual rotation.",
-      "value-key": "[PREP_ONLY_FLAG]",
+      "value-key": "[PREP_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "prep_only",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--mask-only",
       "description": "Only run up to creation of masks.",
-      "value-key": "[MASK_ONLY_FLAG]",
+      "value-key": "[MASK_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "mask_only",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--samseg-only",
       "description": "Only run up to samseg.",
-      "value-key": "[SAMSEG_ONLY_FLAG]",
+      "value-key": "[SAMSEG_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "samseg_only",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "--force",
       "description": "Force the execution, overriding checks.",
-      "value-key": "[FORCE_FLAG]",
+      "value-key": "[FORCE]",
       "type": "Flag",
       "optional": true,
       "id": "force",

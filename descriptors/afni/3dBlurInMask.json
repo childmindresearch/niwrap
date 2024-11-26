@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Blurs a dataset spatially inside a mask",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dBlurInMask [INPUT_FILE] [OUTPUT_PREFIX] [FWHM] [FWHM_DATASET] [MASK] [MULTI_MASK] [AUTO_MASK_FLAG] [PRESERVE_FLAG] [QUIET_FLAG] [FLOAT_FLAG] [FWHM_XYZ]",
+  "command-line": "3dBlurInMask [INPUT_FILE] [OUTPUT_PREFIX] [FWHM] [FWHM_DATASET] [MASK] [MULTI_MASK] [AUTOMASK] [PRESERVE] [QUIET] [FLOAT] [FWHM_XYZ]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Create an automask from the input dataset",
-      "value-key": "[AUTO_MASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-preserve",
       "description": "Preserve original values in the dataset outside the mask",
-      "value-key": "[PRESERVE_FLAG]",
+      "value-key": "[PRESERVE]",
       "type": "Flag",
       "optional": true,
       "id": "preserve",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Don't be verbose with progress reports",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "-float",
       "description": "Save dataset as floats",
-      "value-key": "[FLOAT_FLAG]",
+      "value-key": "[FLOAT]",
       "type": "Flag",
       "optional": true,
       "id": "float",

@@ -3,7 +3,7 @@
   "name": "mris_diff",
   "author": "FreeSurfer Developers",
   "description": "A tool for comparing differences between surface files in FreeSurfer.",
-  "command-line": "mris_diff [SURFACE1] [SURFACE2] [SUBJ1] [SUBJ2] [SUBJECTS_DIR1] [SUBJECTS_DIR2] [HEMISPHERE]",
+  "command-line": "mris_diff [SURFACE1] [SURFACE2] [SUBJECT1] [SUBJECT2] [SUBJ_DIR1] [SUBJ_DIR2] [HEMISPHERE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "--s1",
       "description": "Subject 1 name",
-      "value-key": "[SUBJ1]",
+      "value-key": "[SUBJECT1]",
       "type": "String",
       "optional": false,
       "id": "subject1",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "--s2",
       "description": "Subject 2 name",
-      "value-key": "[SUBJ2]",
+      "value-key": "[SUBJECT2]",
       "type": "String",
       "optional": false,
       "id": "subject2",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--sd1",
       "description": "Directory for Subject 1 (default is SUBJECTS_DIR)",
-      "value-key": "[SUBJECTS_DIR1]",
+      "value-key": "[SUBJ_DIR1]",
       "type": "String",
       "optional": true,
       "id": "subj_dir1",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--sd2",
       "description": "Directory for Subject 2 (default is SUBJECTS_DIR)",
-      "value-key": "[SUBJECTS_DIR2]",
+      "value-key": "[SUBJ_DIR2]",
       "type": "String",
       "optional": true,
       "id": "subj_dir2",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "--simple",
       "description": "Simple comparison of two surfaces to just report differences",
-      "value-key": "[SIMPLE_DIFF]",
+      "value-key": "[SIMPLE]",
       "type": "Flag",
       "optional": true,
       "id": "simple",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "--maxerrs",
       "description": "Stop looping after N errors (default=10)",
-      "value-key": "[MAX_ERRORS]",
+      "value-key": "[MAXERRS]",
       "type": "Number",
       "optional": true,
       "id": "maxerrs",

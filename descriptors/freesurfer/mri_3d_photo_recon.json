@@ -3,7 +3,7 @@
   "name": "mri_3d_photo_recon",
   "author": "FreeSurfer Developers",
   "description": "Code for 3D photo reconstruction (Tregidgo, et al., MICCAI 2020)",
-  "command-line": "mri_3d_photo_recon [INPUT_PHOTO_DIR] [INPUT_SEGMENTATION_DIR] [SLICE_THICKNESS] [PHOTO_RESOLUTION] [OUTPUT_DIRECTORY] [REF_MASK] [REF_SURFACE] [REF_SOFT_MASK] [MESH_REORIENT_WITH_INDICES] [PHOTOS_POSTERIOR_SIDE_FLAG] [ORDER_POSTERIOR_TO_ANTERIOR_FLAG] [ALLOW_Z_STRETCH_FLAG] [RIGID_ONLY_FOR_PHOTOS_FLAG] [GPU]",
+  "command-line": "mri_3d_photo_recon [INPUT_PHOTO_DIR] [INPUT_SEGMENTATION_DIR] [SLICE_THICKNESS] [PHOTO_RESOLUTION] [OUTPUT_DIRECTORY] [REF_MASK] [REF_SURFACE] [REF_SOFT_MASK] [MESH_REORIENT_WITH_INDICES] [PHOTOS_POSTERIOR_SIDE] [ORDER_POSTERIOR_TO_ANTERIOR] [ALLOW_Z_STRETCH] [RIGID_ONLY_FOR_PHOTOS] [GPU_INDEX]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "--photos_of_posterior_side",
       "description": "Use when photos are taken of posterior side of slabs (default is anterior side)",
-      "value-key": "[PHOTOS_POSTERIOR_SIDE_FLAG]",
+      "value-key": "[PHOTOS_POSTERIOR_SIDE]",
       "type": "Flag",
       "optional": true,
       "id": "photos_posterior_side",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "--order_posterior_to_anterior",
       "description": "Use when photos are ordered from posterior to anterior (default is anterior to posterior)",
-      "value-key": "[ORDER_POSTERIOR_TO_ANTERIOR_FLAG]",
+      "value-key": "[ORDER_POSTERIOR_TO_ANTERIOR]",
       "type": "Flag",
       "optional": true,
       "id": "order_posterior_to_anterior",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "--allow_z_stretch",
       "description": "Use to adjust the slice thickness to best match the reference. You should probably *never* use this with soft references (ref_soft_mask)",
-      "value-key": "[ALLOW_Z_STRETCH_FLAG]",
+      "value-key": "[ALLOW_Z_STRETCH]",
       "type": "Flag",
       "optional": true,
       "id": "allow_z_stretch",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "--rigid_only_for_photos",
       "description": "Switch on if you want photos to deform only rigidly (not affine)",
-      "value-key": "[RIGID_ONLY_FOR_PHOTOS_FLAG]",
+      "value-key": "[RIGID_ONLY_FOR_PHOTOS]",
       "type": "Flag",
       "optional": true,
       "id": "rigid_only_for_photos",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "--gpu",
       "description": "Index of GPU to use",
-      "value-key": "[GPU]",
+      "value-key": "[GPU_INDEX]",
       "type": "Number",
       "optional": true,
       "id": "gpu_index",

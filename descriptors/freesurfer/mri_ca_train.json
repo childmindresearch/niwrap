@@ -3,7 +3,7 @@
   "name": "mri_ca_train",
   "author": "FreeSurfer Developers",
   "description": "Trains GCA data with multiple subjects using provided segmentation volumes and other configuration.",
-  "command-line": "mri_ca_train [SUBJECTS] [OUTPUT_GCA] [SEGMENTATION] [TRANSFORM] [MASK_VOL] [NODE_SPACING] [PRIOR_SPACING] [INPUT_TRAINING] [SYMMETRIZE] [CHECK_SYMMETRY] [SANITY_CHECK] [THREADS] [DONE_FILE]",
+  "command-line": "mri_ca_train [SUBJECTS] [OUTPUT_GCA] [SEGMENTATION] [TRANSFORM] [MASK_VOLUME] [NODE_SPACING] [PRIOR_SPACING] [INPUT_TRAINING] [MAKESYM] [CHECK_SYMMETRY] [SANITY_CHECK] [THREADS] [DONE_FILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Volume name used as a mask, path relative to each subject's MRI directory.",
-      "value-key": "[MASK_VOL]",
+      "value-key": "[MASK_VOLUME]",
       "type": "String",
       "optional": true,
       "id": "mask_volume",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "-makesym",
       "description": "Symmetrize an already existing atlas. Specify input GCA and symmetrized GCA.",
-      "value-key": "[SYMMETRIZE]",
+      "value-key": "[MAKESYM]",
       "type": "String",
       "list": true,
       "max-list-entries": 2,

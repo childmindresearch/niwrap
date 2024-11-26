@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/3dClusterize/descriptor",
   "description": "A tool for voxelwise thresholding and clusterizing of datasets.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dClusterize [INPUT_DATASET] [MASK] [MASK_FROM_HDR] [OUT_MASK] [THRESH_SUB_BRICK] [DATA_SUB_BRICK] [ONESIDED] [TWOSIDED] [BISIDED] [WITHIN_RANGE] [NN] [CLUST_NVOX] [CLUST_VOL] [PREF_MAP] [PREF_DAT] [ONE_D_FORMAT] [NO_ONE_D_FORMAT] [SUMMARIZE] [NOSUM] [QUIET] [OUTVOL_IF_NO_CLUST] [ORIENT] [ABS_TABLE_DATA] [BINARY]",
+  "command-line": "3dClusterize [INSET] [MASK] [MASK_FROM_HDR] [OUT_MASK] [ITHR] [IDAT] [ONESIDED] [TWOSIDED] [BISIDED] [WITHIN_RANGE] [NN] [CLUST_NVOX] [CLUST_VOL] [PREF_MAP] [PREF_DAT] [ONE_D_FORMAT] [NO_ONE_D_FORMAT] [SUMMARIZE] [NOSUM] [QUIET] [OUTVOL_IF_NO_CLUST] [ORIENT] [ABS_TABLE_DATA] [BINARY]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Load in a dataset for thresholding and clusterizing",
-      "value-key": "[INPUT_DATASET]",
+      "value-key": "[INSET]",
       "type": "File",
       "optional": false,
       "id": "inset",
@@ -49,7 +49,7 @@
     },
     {
       "description": "Specify the sub-brick to use as the threshold source",
-      "value-key": "[THRESH_SUB_BRICK]",
+      "value-key": "[ITHR]",
       "type": "String",
       "optional": false,
       "id": "ithr",
@@ -58,7 +58,7 @@
     },
     {
       "description": "Specify the sub-brick to use as the data source",
-      "value-key": "[DATA_SUB_BRICK]",
+      "value-key": "[IDAT]",
       "type": "String",
       "optional": true,
       "id": "idat",

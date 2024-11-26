@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Dual purposes for processing a given subject's anatomical volume: skull-strip the brain and calculate the warp to a reference template/standard space.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@SSwarper [INPUT_FILE] [BASE_TEMPLATE] [SUBJECT_ID] [OUTPUT_DIR] [MIN_PATCH_SIZE] [NO_LITE_FLAG] [SKIP_WARP_FLAG] [UNIFIZE_OFF_FLAG] [INIT_SKULLSTRIP_OFF_FLAG] [EXTRA_QC_OFF_FLAG] [JUMP_TO_EXTRA_QC_FLAG] [COST_NL_INIT] [COST_NL_FINAL] [DEOBLIQUE_FLAG] [DEOBLIQUE_REFITLY_FLAG] [WARP_SCALE] [SSOPT_FLAG] [ANISO_OFF_FLAG] [CEIL_OFF_FLAG] [TMP_NAME_NICE_FLAG] [ECHO_FLAG] [VERBOSE_FLAG] [NOCLEAN_FLAG]",
+  "command-line": "@SSwarper [INPUT_FILE] [BASE_TEMPLATE] [SUBJECT_ID] [OUTPUT_DIR] [MIN_PATCH_SIZE] [NO_LITE] [SKIP_WARP] [UNIFIZE_OFF] [INIT_SKULLSTR_OFF] [EXTRA_QC_OFF] [JUMP_TO_EXTRA_QC] [COST_NL_INIT] [COST_NL_FINAL] [DEOBLIQUE] [DEOBLIQUE_REFITLY] [WARP_SCALE] [SSOPT_FLAG] [ANISO_OFF] [CEIL_OFF] [TMP_NAME_NICE] [ECHO] [VERBOSE] [NOCLEAN]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -58,7 +58,7 @@
     {
       "description": "Do not use the '-lite' option with 3dQwarp.",
       "command-line-flag": "-nolite",
-      "value-key": "[NO_LITE_FLAG]",
+      "value-key": "[NO_LITE]",
       "type": "Flag",
       "optional": true,
       "id": "no_lite",
@@ -67,7 +67,7 @@
     {
       "description": "Do not compute past the output of anatSS.<subid>.nii.",
       "command-line-flag": "-skipwarp",
-      "value-key": "[SKIP_WARP_FLAG]",
+      "value-key": "[SKIP_WARP]",
       "type": "Flag",
       "optional": true,
       "id": "skip_warp",
@@ -76,7 +76,7 @@
     {
       "description": "Do not start with a 3dUnifize command.",
       "command-line-flag": "-unifize_off",
-      "value-key": "[UNIFIZE_OFF_FLAG]",
+      "value-key": "[UNIFIZE_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "unifize_off",
@@ -85,7 +85,7 @@
     {
       "description": "Do not preprocess with a 3dSkullstrip command.",
       "command-line-flag": "-init_skullstr_off",
-      "value-key": "[INIT_SKULLSTRIP_OFF_FLAG]",
+      "value-key": "[INIT_SKULLSTR_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "init_skullstr_off",
@@ -94,7 +94,7 @@
     {
       "description": "Do not make extra QC images.",
       "command-line-flag": "-extra_qc_off",
-      "value-key": "[EXTRA_QC_OFF_FLAG]",
+      "value-key": "[EXTRA_QC_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "extra_qc_off",
@@ -103,7 +103,7 @@
     {
       "description": "Just make the two QC*jpg images from a previous run.",
       "command-line-flag": "-jump_to_extra_qc",
-      "value-key": "[JUMP_TO_EXTRA_QC_FLAG]",
+      "value-key": "[JUMP_TO_EXTRA_QC]",
       "type": "Flag",
       "optional": true,
       "id": "jump_to_extra_qc",
@@ -130,7 +130,7 @@
     {
       "description": "Apply obliquity information to deoblique the input volume.",
       "command-line-flag": "-deoblique",
-      "value-key": "[DEOBLIQUE_FLAG]",
+      "value-key": "[DEOBLIQUE]",
       "type": "Flag",
       "optional": true,
       "id": "deoblique",
@@ -139,7 +139,7 @@
     {
       "description": "Purge obliquity information to deoblique the input volume.",
       "command-line-flag": "-deoblique_refitly",
-      "value-key": "[DEOBLIQUE_REFITLY_FLAG]",
+      "value-key": "[DEOBLIQUE_REFITLY]",
       "type": "Flag",
       "optional": true,
       "id": "deoblique_refitly",
@@ -168,7 +168,7 @@
     {
       "description": "Do not preprocess with a 3danisosmooth command.",
       "command-line-flag": "-aniso_off",
-      "value-key": "[ANISO_OFF_FLAG]",
+      "value-key": "[ANISO_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "aniso_off",
@@ -177,7 +177,7 @@
     {
       "description": "Turn off capping on values after anisosmoothing.",
       "command-line-flag": "-ceil_off",
-      "value-key": "[CEIL_OFF_FLAG]",
+      "value-key": "[CEIL_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "ceil_off",
@@ -186,7 +186,7 @@
     {
       "description": "Use nicer, non-random intermediate file prefix for temporary files.",
       "command-line-flag": "-tmp_name_nice",
-      "value-key": "[TMP_NAME_NICE_FLAG]",
+      "value-key": "[TMP_NAME_NICE]",
       "type": "Flag",
       "optional": true,
       "id": "tmp_name_nice",
@@ -195,7 +195,7 @@
     {
       "description": "Run the script with 'set echo' for extra verbosity in the terminal output.",
       "command-line-flag": "-echo",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -204,7 +204,7 @@
     {
       "description": "Apply the '-verb' option to 3dQwarp for verbose progress information.",
       "command-line-flag": "-verb",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -213,7 +213,7 @@
     {
       "description": "Do not delete the 'junk' files at the end of computations.",
       "command-line-flag": "-noclean",
-      "value-key": "[NOCLEAN_FLAG]",
+      "value-key": "[NOCLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "noclean",

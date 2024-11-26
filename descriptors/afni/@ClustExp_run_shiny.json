@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Launch a shiny app that was created by ClustExp_StatParse.py",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@ClustExp_run_shiny [DIRECTORY] [HELP_FLAG]",
+  "command-line": "@ClustExp_run_shiny [DIRECTORY] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

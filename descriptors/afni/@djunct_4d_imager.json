@@ -1,5 +1,5 @@
 {
-  "command-line": "@djunct_4d_imager [INPUT_FILE] [PREFIX] [MOVIE_TYPE] [NO_CLEAN_FLAG]",
+  "command-line": "@djunct_4d_imager [INSET] [PREFIX] [DO_MOVIE] [NO_CLEAN]",
   "tool-version": "24.2.06",
   "name": "@djunct_4d_imager",
   "author": "AFNI Developers",
@@ -12,7 +12,7 @@
       "name": "Input Dataset",
       "optional": false,
       "type": "File",
-      "value-key": "[INPUT_FILE]"
+      "value-key": "[INSET]"
     },
     {
       "description": "Prefix for output files (required)",
@@ -29,7 +29,7 @@
       "name": "Movie Type",
       "optional": true,
       "type": "String",
-      "value-key": "[MOVIE_TYPE]",
+      "value-key": "[DO_MOVIE]",
       "value-choices": ["MPEG", "AGIF"]
     },
     {
@@ -39,7 +39,7 @@
       "name": "No Clean Flag",
       "optional": true,
       "type": "Flag",
-      "value-key": "[NO_CLEAN_FLAG]"
+      "value-key": "[NO_CLEAN]"
     }
   ],
   "schema-version": "0.5",

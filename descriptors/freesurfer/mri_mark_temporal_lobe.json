@@ -2,7 +2,7 @@
   "name": "mri_mark_temporal_lobe",
   "tool-version": "7.4.1",
   "description": "A tool for marking the temporal lobe in MRI images.",
-  "command-line": "mri_mark_temporal_lobe [SPACING] [USE_GRADIENT_FLAG][SUBJECTS][OUTPUT]",
+  "command-line": "mri_mark_temporal_lobe [SPACING] [USE_GRADIENT][SUBJECTS][OUTPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "description": "Flag to use intensity gradient as input to classifier",
       "command-line-flag": "-gradient",
-      "value-key": "[USE_GRADIENT_FLAG]",
+      "value-key": "[USE_GRADIENT]",
       "type": "Flag",
       "optional": true,
       "id": "use_gradient",
@@ -36,7 +36,7 @@
     {
       "description": "Output file for marked temporal lobes",
       "command-line-flag": "",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": false,
       "id": "output_file",

@@ -3,12 +3,12 @@
   "name": "mri_defacer",
   "author": "FreeSurfer Developers",
   "description": "Tool for defacing MRI images to remove facial features",
-  "command-line": "mri_defacer -[INPUT_VOL] -[HEADMASK] -[TEMPSURF] [TEMPLABEL] [WATERMARK] -[DEFACED_VOL] [FACEMASK] [CONST_IN] [CONST_OUT] [XMASK] [OPTIONS]",
+  "command-line": "mri_defacer -[INPUT_VOLUME] -[HEADMASK] -[TEMPSURF] [TEMPLABEL] [WATERMARK] -[DEFACED_VOLUME] [FACEMASK] [FILL_CONSTANTS] [EXCLUDE_MASK] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input volume",
-      "value-key": "[INPUT_VOL]",
+      "value-key": "[INPUT_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "input_volume",
@@ -54,7 +54,7 @@
     },
     {
       "description": "Output defaced volume",
-      "value-key": "[DEFACED_VOL]",
+      "value-key": "[DEFACED_VOLUME]",
       "type": "String",
       "optional": false,
       "id": "defaced_volume",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--fill-const",
       "description": "Constants for filling within/outside the mask",
-      "value-key": "[CONST_IN] [CONST_OUT]",
+      "value-key": "[FILL_CONSTANTS]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "--xmask",
       "description": "Mask to exclude from defacing",
-      "value-key": "[XMASK]",
+      "value-key": "[EXCLUDE_MASK]",
       "type": "File",
       "optional": true,
       "id": "exclude_mask",
@@ -121,7 +121,7 @@
     {
       "command-line-flag": "--distbounds",
       "description": "File with distance bounds for each label",
-      "value-key": "[DISTBOUNDSPATH]",
+      "value-key": "[DISTBOUNDS]",
       "type": "File",
       "optional": true,
       "id": "distbounds",
@@ -139,7 +139,7 @@
     {
       "command-line-flag": "--distdat",
       "description": "File with distances for each vertex",
-      "value-key": "[DISTDATPATH]",
+      "value-key": "[DISTDAT]",
       "type": "File",
       "optional": true,
       "id": "distdat",
@@ -157,7 +157,7 @@
     {
       "command-line-flag": "--ots",
       "description": "Output template surface after watermark/ripple",
-      "value-key": "[OUTPUTTEMPSURF]",
+      "value-key": "[OUTPUT_TEMPSURF]",
       "type": "File",
       "optional": true,
       "id": "output_tempsurf",
@@ -166,7 +166,7 @@
     {
       "command-line-flag": "--apply",
       "description": "Apply face mask and registration to another volume",
-      "value-key": "[VOL] [FACEMASK] [REG] [OUTPUT]",
+      "value-key": "[APPLY_TO_VOLUME]",
       "type": "String",
       "list": true,
       "max-list-entries": 4,
@@ -178,7 +178,7 @@
     {
       "command-line-flag": "--ripple-center",
       "description": "Center of ripple effect",
-      "value-key": "[R] [A] [S]",
+      "value-key": "[RIPPLE_CENTER]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -190,7 +190,7 @@
     {
       "command-line-flag": "--apply-ripple",
       "description": "Apply ripple effect on surface",
-      "value-key": "[INSURF] [AXIS] [AMP] [PERIOD] [LABEL] [OUTSURF]",
+      "value-key": "[APPLY_RIPPLE]",
       "type": "String",
       "list": true,
       "max-list-entries": 6,
@@ -202,7 +202,7 @@
     {
       "command-line-flag": "--gdiag",
       "description": "Set diagnostic level",
-      "value-key": "[DIAGNO]",
+      "value-key": "[DIAGNOSTIC_LEVEL]",
       "type": "Number",
       "optional": true,
       "id": "diagnostic_level",
@@ -211,7 +211,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -220,7 +220,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options and exit without executing",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",
@@ -229,7 +229,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

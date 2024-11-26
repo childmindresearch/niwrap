@@ -3,7 +3,7 @@
   "name": "imcp",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Copy images from one location to another",
-  "command-line": "imcp [INPUT_FILES] [OUTPUT_LOCATION]",
+  "command-line": "imcp [INFILES] [OUTPUT_LOCATION]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input image files (e.g. img1.nii.gz, img2.nii.gz)",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[INFILES]",
       "type": "File",
       "list": true,
       "id": "infiles",

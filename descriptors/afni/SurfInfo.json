@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Tool to gather information about surface files.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "SurfInfo [options] [SURFACE] [SPECIFIED_PARAMS] [DEBUG_LEVEL] [DETAIL_LEVEL] [QUIET] [SEPARATOR] [INPUT_TYPE] [SPEC_STATE] [SV] [SPEC]",
+  "command-line": "SurfInfo [options] [SURFACE] [COM] [DEBUG_LEVEL] [DETAIL_LEVEL] [QUIET] [SEPARATOR] [INPUT_SURFACE] [SURFACE_STATE] [SURFACE_VOLUME] [SPEC_FILE]",
   "inputs": [
     {
       "description": "Input surface file.",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-N_Node",
       "description": "Output the number of nodes.",
-      "value-key": "[SPECIFIED_PARAMS]",
+      "value-key": "[N_NODE]",
       "type": "Flag",
       "optional": true,
       "id": "n_node",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-N_FaceSet",
       "description": "Output the number of face sets.",
-      "value-key": "[SPECIFIED_PARAMS]",
+      "value-key": "[N_FACESET]",
       "type": "Flag",
       "optional": true,
       "id": "n_faceset",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-N_Tri",
       "description": "Output the number of triangles.",
-      "value-key": "[SPECIFIED_PARAMS]",
+      "value-key": "[N_TRI]",
       "type": "Flag",
       "optional": true,
       "id": "n_tri",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-COM",
       "description": "Output the center of mass.",
-      "value-key": "[SPECIFIED_PARAMS]",
+      "value-key": "[COM]",
       "type": "Flag",
       "optional": true,
       "id": "com",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-i_TYPE",
       "description": "Specify the input surface type and file.",
-      "value-key": "[INPUT_TYPE]",
+      "value-key": "[INPUT_SURFACE]",
       "type": "String",
       "optional": true,
       "id": "input_surface",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-tsn",
       "description": "Specify surface type, state, and name.",
-      "value-key": "[SPEC_STATE]",
+      "value-key": "[SURFACE_STATE]",
       "type": "String",
       "optional": true,
       "id": "surface_state",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-sv",
       "description": "Specify a surface volume file.",
-      "value-key": "[SV]",
+      "value-key": "[SURFACE_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "surface_volume",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "-spec",
       "description": "Specify a surface specification (spec) file.",
-      "value-key": "[SPEC]",
+      "value-key": "[SPEC_FILE]",
       "type": "File",
       "optional": true,
       "id": "spec_file",

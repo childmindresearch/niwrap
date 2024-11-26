@@ -3,7 +3,7 @@
   "name": "dicom_hinfo",
   "author": "AFNI Developers",
   "description": "Prints selected information from one or more DICOM files to stdout.",
-  "command-line": "dicom_hinfo [TAG] [FILE_SEPARATOR] [FULL_ENTRY_FLAG] [NO_NAME_FLAG] [NAME_LAST_FLAG] [FILES...]",
+  "command-line": "dicom_hinfo [TAG] [SEPSTR] [FULL_ENTRY] [NO_NAME] [NAMELAST] [FILES...]",
   "inputs": [
     {
       "command-line-flag": "-tag",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-sepstr",
       "description": "Use the specified string to separate fields instead of space.",
-      "value-key": "[FILE_SEPARATOR]",
+      "value-key": "[SEPSTR]",
       "type": "String",
       "optional": true,
       "id": "sepstr",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "-full_entry",
       "description": "Output the full entry if it is more than one word or contains white space.",
-      "value-key": "[FULL_ENTRY_FLAG]",
+      "value-key": "[FULL_ENTRY]",
       "type": "Flag",
       "optional": true,
       "id": "full_entry",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "-no_name",
       "description": "Omit the filename from the output.",
-      "value-key": "[NO_NAME_FLAG]",
+      "value-key": "[NO_NAME]",
       "type": "Flag",
       "optional": true,
       "id": "no_name",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-namelast",
       "description": "Place the filename last in the output instead of first.",
-      "value-key": "[NAME_LAST_FLAG]",
+      "value-key": "[NAMELAST]",
       "type": "Flag",
       "optional": true,
       "id": "namelast",

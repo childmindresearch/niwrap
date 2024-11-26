@@ -3,7 +3,7 @@
   "name": "viena_quant",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Automated brain ventricle quantification tool",
-  "command-line": "viena_quant [INPUT1] [INPUT2] [VENTRICLEMASK]",
+  "command-line": "viena_quant [INPUT1] [INPUT2] [VENTRICLE_MASK]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -27,7 +27,7 @@
     },
     {
       "description": "Ventricle mask (e.g. mask.nii.gz)",
-      "value-key": "[VENTRICLEMASK]",
+      "value-key": "[VENTRICLE_MASK]",
       "type": "File",
       "optional": false,
       "id": "ventricle_mask",

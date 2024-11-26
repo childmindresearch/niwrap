@@ -1,12 +1,12 @@
 {
   "name": "oct_register_mosaic",
   "description": "Tool for registering multiple OCT (Optical Coherence Tomography) tiles or a mosaic list into a single output volume",
-  "command-line": "oct_register_mosaic [TILES] [OUTPUT_VOLUME] [DOWNSAMPLE] [WEIGHT]",
+  "command-line": "oct_register_mosaic [TILES_OR_MOSAIC_LIST] [OUTPUT_VOLUME] [DOWNSAMPLE] [WEIGHT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "OCT tile images to be registered or a file listing the mosaic tiles",
-      "value-key": "[TILES]",
+      "value-key": "[TILES_OR_MOSAIC_LIST]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-W",
       "description": "File with tile weights to use in tile averaging",
-      "value-key": "[WEIGHT]",
+      "value-key": "[WEIGHT_FILE]",
       "type": "File",
       "optional": true,
       "id": "weight_file",

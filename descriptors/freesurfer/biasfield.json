@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "biasfield",
   "description": "Computes the bias field by dividing the (unconformed) orig.mgz by the norm.mgz.",
-  "command-line": "biasfield [SUBJECT] [TMPDIR] [NO_CLEANUP_FLAG] [HELP_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
+  "command-line": "biasfield [SUBJECT] [TMPDIR] [NO_CLEANUP] [HELP] [DEBUG] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--nocleanup",
       "description": "Prevent cleanup of temporary files",
-      "value-key": "[NO_CLEANUP_FLAG]",
+      "value-key": "[NO_CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cleanup",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debugging mode",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--version",
       "description": "Display script version info",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -1,7 +1,7 @@
 {
   "name": "mri_nlfilter",
   "description": "This program processes an image using a nonlocal filter and writes the results to an output file. It supports different filtering methods such as median, Gaussian, and mean.",
-  "command-line": "mri_nlfilter [INPUT_FILE] [OUTPUT_FILE] [BLUR_SIGMA] [GAUSSIAN_SIGMA] [MEAN_FLAG] [WINDOW_SIZE] [CPLOV_FLAG] [MINMAX_FLAG] [NO_OFFSETS_FLAG] [NO_CROP_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_nlfilter [INPUT_IMAGE] [OUTPUT_IMAGE] [BLUR_SIGMA] [GAUSSIAN_SIGMA] [MEAN_FLAG] [WINDOW_SIZE] [CPLOV_FLAG] [MINMAX_FLAG] [NO_OFFSETS_FLAG] [NO_CROP_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -14,7 +14,7 @@
       "type": "File",
       "optional": false,
       "description": "The input image file to be processed.",
-      "value-key": "[INPUT_FILE]"
+      "value-key": "[INPUT_IMAGE]"
     },
     {
       "id": "output_image",
@@ -22,7 +22,7 @@
       "type": "String",
       "optional": false,
       "description": "The output image file where the processed image will be saved.",
-      "value-key": "[OUTPUT_FILE]"
+      "value-key": "[OUTPUT_IMAGE]"
     },
     {
       "command-line-flag": "-blur",

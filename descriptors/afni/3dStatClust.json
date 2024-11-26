@@ -3,7 +3,7 @@
   "name": "3dStatClust",
   "author": "AFNI Developers",
   "description": "Perform agglomerative hierarchical clustering for user specified parameter sub-bricks, for all voxels whose threshold statistic is above a user specified value.",
-  "command-line": "3dStatClust [PREFIX] [SESSION_DIR] [VERBOSE_FLAG] [DISTANCE_OPTION] [THRESHOLD] [NCLUST] [DATASETS]",
+  "command-line": "3dStatClust [PREFIX] [SESSION_DIR] [VERBOSE] [DIST_COR] [THRESH] [NCLUST] [DATASETS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Print out verbose output as the program proceeds.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-dist_euc",
       "description": "Calculate Euclidean distance between parameters",
-      "value-key": "[DISTANCE_OPTION]",
+      "value-key": "[DIST_EUC]",
       "type": "Flag",
       "optional": true,
       "id": "dist_euc",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-dist_ind",
       "description": "Statistical distance for independent parameters",
-      "value-key": "[DISTANCE_OPTION]",
+      "value-key": "[DIST_IND]",
       "type": "Flag",
       "optional": true,
       "id": "dist_ind",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-dist_cor",
       "description": "Statistical distance for correlated parameters",
-      "value-key": "[DISTANCE_OPTION]",
+      "value-key": "[DIST_COR]",
       "type": "Flag",
       "optional": true,
       "id": "dist_cor",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-thresh",
       "description": "Threshold statistic from file tname. Only voxels whose threshold statistic is greater than t in absolute value will be considered. If file tname contains more than 1 sub-brick, the threshold stat. sub-brick must be specified.",
-      "value-key": "[THRESHOLD]",
+      "value-key": "[THRESH]",
       "type": "String",
       "optional": false,
       "id": "thresh",

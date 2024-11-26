@@ -19,7 +19,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Only cross-sectional stream",
-      "value-key": "[CROSS_FLAG]"
+      "value-key": "[CROSS]"
     },
     {
       "command-line-flag": "-b",
@@ -28,7 +28,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Only base stream",
-      "value-key": "[BASE_FLAG]"
+      "value-key": "[BASE]"
     },
     {
       "command-line-flag": "-l",
@@ -37,7 +37,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Only longitudinal stream",
-      "value-key": "[LONG_FLAG]"
+      "value-key": "[LONG]"
     },
     {
       "command-line-flag": "-d",
@@ -46,7 +46,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Only subject IDs with scripts/recon-all.done",
-      "value-key": "[DONE_FLAG]"
+      "value-key": "[DONE]"
     },
     {
       "command-line-flag": "-e",
@@ -55,7 +55,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Only subject IDs with scripts/recon-all.error",
-      "value-key": "[ERROR_FLAG]"
+      "value-key": "[ERROR]"
     },
     {
       "command-line-flag": "-r",
@@ -64,7 +64,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Only subject IDs with scripts/IsRunning.?h",
-      "value-key": "[RUNNING_FLAG]"
+      "value-key": "[RUNNING]"
     },
     {
       "command-line-flag": "-f",
@@ -73,7 +73,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Prepend full absolute path",
-      "value-key": "[FULL_PATH_FLAG]"
+      "value-key": "[FULL_PATH]"
     },
     {
       "command-line-flag": "-n",
@@ -82,7 +82,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Print number of subjects found",
-      "value-key": "[COUNT_FLAG]"
+      "value-key": "[COUNT]"
     },
     {
       "command-line-flag": "-h",
@@ -91,7 +91,7 @@
       "type": "Flag",
       "optional": true,
       "description": "Show this help text",
-      "value-key": "[HELP_FLAG]"
+      "value-key": "[HELP]"
     }
   ],
   "author": "FreeSurfer Developers",

@@ -3,7 +3,7 @@
   "name": "slow_surf_clustsim.py",
   "author": "AFNI Developers",
   "description": "Generate a tcsh script to run clustsim on surface",
-  "command-line": "slow_surf_clustsim.py [ON_SURFACE] [SAVE_SCRIPT] [PRINT_SCRIPT] [UVAR] [VERB] [HELP_FLAG] [HIST_FLAG] [SHOW_DEFAULT_CVARS_FLAG] [SHOW_DEFAULT_UVARS_FLAG] [SHOW_VALID_OPTS_FLAG] [VER_FLAG]",
+  "command-line": "slow_surf_clustsim.py [ON_SURFACE] [SAVE_SCRIPT] [PRINT_SCRIPT] [UVAR] [VERBOSITY] [HELP] [HIST] [SHOW_DEFAULT_CVARS] [SHOW_DEFAULT_UVARS] [SHOW_VALID_OPTS] [VERSION]",
   "inputs": [
     {
       "command-line-flag": "-on_surface",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Set the verbosity level",
-      "value-key": "[VERB]",
+      "value-key": "[VERBOSITY]",
       "type": "Number",
       "optional": true,
       "id": "verbosity",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show this help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show module history",
-      "value-key": "[HIST_FLAG]",
+      "value-key": "[HIST]",
       "type": "Flag",
       "optional": true,
       "id": "hist",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-show_default_cvars",
       "description": "List default control variables",
-      "value-key": "[SHOW_DEFAULT_CVARS_FLAG]",
+      "value-key": "[SHOW_DEFAULT_CVARS]",
       "type": "Flag",
       "optional": true,
       "id": "show_default_cvars",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-show_default_uvars",
       "description": "List default user variables",
-      "value-key": "[SHOW_DEFAULT_UVARS_FLAG]",
+      "value-key": "[SHOW_DEFAULT_UVARS]",
       "type": "Flag",
       "optional": true,
       "id": "show_default_uvars",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-show_valid_opts",
       "description": "List valid options",
-      "value-key": "[SHOW_VALID_OPTS_FLAG]",
+      "value-key": "[SHOW_VALID_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "show_valid_opts",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show current version",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

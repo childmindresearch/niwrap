@@ -3,7 +3,7 @@
   "name": "plugout_tta",
   "author": "AFNI Developers",
   "description": "Connects to AFNI and receives notification whenever the user changes Talairach coordinates, then drives Netscape to display the closest figures from the Talairach-Tournoux atlas.",
-  "command-line": "plugout_tta [HOST] [PORT] [VERBOSE_FLAG] [PORT_OFFSET] [PORT_OFFSET_QUIET] [PORT_OFFSET_BLOC] [MAX_PORT_BLOC] [MAX_PORT_BLOC_QUIET] [NUM_ASSIGNED_PORTS] [NUM_ASSIGNED_PORTS_QUIET]",
+  "command-line": "plugout_tta [HOST] [PORT] [VERBOSE] [PORT_OFFSET] [PORT_OFFSET_QUIET] [PORT_OFFSET_BLOC] [MAX_PORT_BLOC] [MAX_PORT_BLOC_QUIET] [NUM_ASSIGNED_PORTS] [NUM_ASSIGNED_PORTS_QUIET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-v",
       "description": "Verbose mode: prints out progress reports.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

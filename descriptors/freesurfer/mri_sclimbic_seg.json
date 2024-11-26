@@ -3,7 +3,7 @@
   "name": "mri_sclimbic_seg",
   "author": "FreeSurfer Developers",
   "description": "Segment subcortical limbic structures using Freesurfer.",
-  "command-line": "mri_sclimbic_seg [INPUT_FILE] [OUTPUT_FILE] [SUBJECTS] [SUBJECTS_DIR] [CONFORM_FLAG] [ETIV_FLAG] [EXCLUDE_LABELS] [KEEP_AC_FLAG] [VOX_COUNT_FLAG] [MODEL_FILE] [CTAB_FILE] [POP_STATS_FILE] [DEBUG_FLAG] [VMP_FLAG] [THREADS] [TAL_XFM] [WRITE_POSTERIORS_FLAG] [WRITE_VOLUMES_FLAG] [WRITE_QA_STATS_FLAG] [7T_FLAG] [PERCENTILE] [CUDA_DEVICE] [OUTPUT_BASE] [NO_CITE_FLAG] [NCHANNELS]",
+  "command-line": "mri_sclimbic_seg [INPUT_FILE] [OUTPUT_FILE] [SUBJECTS] [SUBJECTS_DIR] [CONFORM] [ETIV] [EXCLUDE_LABELS] [KEEP_AC] [VOX_COUNT_VOLUMES] [MODEL_FILE] [CTAB_FILE] [POPULATION_STATS] [DEBUG] [VMP] [THREADS] [TAL_XFM] [WRITE_POSTERIORS] [WRITE_VOLUMES] [WRITE_QA_STATS] [PREPROCESS_7T] [PERCENTILE] [CUDA_DEVICE] [OUTPUT_BASE] [NO_CITE] [NCHANNELS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--conform",
       "description": "Resample input to 1mm-iso; results will be put back in native resolution.",
-      "value-key": "[CONFORM_FLAG]",
+      "value-key": "[CONFORM]",
       "type": "Flag",
       "optional": true,
       "id": "conform",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--etiv",
       "description": "Include eTIV in volume stats (enabled by default in subject-mode and --tal).",
-      "value-key": "[ETIV_FLAG]",
+      "value-key": "[ETIV]",
       "type": "Flag",
       "optional": true,
       "id": "etiv",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--write_posteriors",
       "description": "Save the label posteriors.",
-      "value-key": "[WRITE_POSTERIORS_FLAG]",
+      "value-key": "[WRITE_POSTERIORS]",
       "type": "Flag",
       "optional": true,
       "id": "write_posteriors",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--write_volumes",
       "description": "Save label volume stats (enabled by default in subject-mode).",
-      "value-key": "[WRITE_VOLUMES_FLAG]",
+      "value-key": "[WRITE_VOLUMES]",
       "type": "Flag",
       "optional": true,
       "id": "write_volumes",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--write_qa_stats",
       "description": "Save QA stats (z and confidence).",
-      "value-key": "[WRITE_QA_STATS_FLAG]",
+      "value-key": "[WRITE_QA_STATS]",
       "type": "Flag",
       "optional": true,
       "id": "write_qa_stats",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "--keep_ac",
       "description": "Explicitly keep anterior commissure in the volume/qa files.",
-      "value-key": "[KEEP_AC_FLAG]",
+      "value-key": "[KEEP_AC]",
       "type": "Flag",
       "optional": true,
       "id": "keep_ac",
@@ -123,7 +123,7 @@
     {
       "command-line-flag": "--vox-count-volumes",
       "description": "Use discrete voxel count for label volumes.",
-      "value-key": "[VOX_COUNT_FLAG]",
+      "value-key": "[VOX_COUNT_VOLUMES]",
       "type": "Flag",
       "optional": true,
       "id": "vox_count_volumes",
@@ -150,7 +150,7 @@
     {
       "command-line-flag": "--population-stats",
       "description": "Alternative population volume stats for QA output.",
-      "value-key": "[POP_STATS_FILE]",
+      "value-key": "[POPULATION_STATS]",
       "type": "File",
       "optional": true,
       "id": "population_stats",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug logging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -168,7 +168,7 @@
     {
       "command-line-flag": "--vmp",
       "description": "Enable printing of vmpeak at the end.",
-      "value-key": "[VMP_FLAG]",
+      "value-key": "[VMP]",
       "type": "Flag",
       "optional": true,
       "id": "vmp",
@@ -187,7 +187,7 @@
     {
       "command-line-flag": "--7T",
       "description": "Preprocess 7T images (just sets percentile to 99.9).",
-      "value-key": "[7T_FLAG]",
+      "value-key": "[PREPROCESS_7T]",
       "type": "Flag",
       "optional": true,
       "id": "preprocess_7T",
@@ -224,7 +224,7 @@
     {
       "command-line-flag": "--no-cite-sclimbic",
       "description": "Do not cite sclimbic paper at the end.",
-      "value-key": "[NO_CITE_FLAG]",
+      "value-key": "[NO_CITE]",
       "type": "Flag",
       "optional": true,
       "id": "no_cite",

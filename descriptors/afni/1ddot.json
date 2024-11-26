@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Computes the correlation matrix of the input 1D files and their inverse correlation matrix.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "1ddot [ONE] [DEM] [COV] [INN] [RANK] [TERSE] [OKZERO] [INPUT_FILES] > stdout.txt",
+  "command-line": "1ddot [ONE_FLAG] [DEM_FLAG] [COV_FLAG] [INN_FLAG] [RANK_FLAG] [TERSE_FLAG] [OKZERO_FLAG] [INPUT_FILES] > stdout.txt",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-one",
       "description": "Make 1st vector be all 1's.",
-      "value-key": "[ONE]",
+      "value-key": "[ONE_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "one_flag",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-dem",
       "description": "Remove mean from all vectors (conflicts with '-one').",
-      "value-key": "[DEM]",
+      "value-key": "[DEM_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "dem_flag",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-cov",
       "description": "Compute with covariance matrix instead of correlation.",
-      "value-key": "[COV]",
+      "value-key": "[COV_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "cov_flag",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-inn",
       "description": "Compute with inner product matrix instead.",
-      "value-key": "[INN]",
+      "value-key": "[INN_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "inn_flag",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-rank",
       "description": "Compute Spearman rank correlation instead (also implies '-terse').",
-      "value-key": "[RANK]",
+      "value-key": "[RANK_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "rank_flag",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-terse",
       "description": "Output only the correlation or covariance matrix without any garnish.",
-      "value-key": "[TERSE]",
+      "value-key": "[TERSE_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "terse_flag",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-okzero",
       "description": "Do not quit if a vector is all zeros. The correlation matrix will have 0 where NaNs ought to go.",
-      "value-key": "[OKZERO]",
+      "value-key": "[OKZERO_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "okzero_flag",

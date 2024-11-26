@@ -3,11 +3,11 @@
   "name": "immask",
   "author": "AFNI Developers",
   "description": "Masks the input image based on specified criteria and produces the output image",
-  "command-line": "immask [THRESHOLD] [MASK_IMG] [POSITIVE_ONLY] [INPUT_IMG] [OUTPUT_IMG]",
+  "command-line": "immask [THRESHOLD] [MASK_IMAGE] [POSITIVE_ONLY] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "inputs": [
     {
       "description": "Input image to be masked",
-      "value-key": "[INPUT_IMG]",
+      "value-key": "[INPUT_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "input_image",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Output image after masking",
-      "value-key": "[OUTPUT_IMG]",
+      "value-key": "[OUTPUT_IMAGE]",
       "type": "String",
       "optional": false,
       "id": "output_image",
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Mask image; only locations that are nonzero in the mask image will be nonzero in the output image",
-      "value-key": "[MASK_IMG]",
+      "value-key": "[MASK_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "mask_image",

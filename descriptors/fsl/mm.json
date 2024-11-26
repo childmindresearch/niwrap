@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "description": "FSL's MM: mixture modelling",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "mm [SPATIAL_DATA_FILE] [MASK_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_FLAG] [EXAMPLE_EPI_FILE] [LOG_DIRECTORY] [NONSPATIAL_FLAG] [FIX_MRF_PREC_FLAG] [MRF_PREC_START] [MRF_PREC_MULTIPLIER] [INIT_MULTIPLIER] [NO_UPDATE_THETA_FLAG] [ZFSTAT_FLAG] [PHI] [NITERS] [THRESHOLD]",
+  "command-line": "mm [SPATIAL_DATA_FILE] [MASK_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_FLAG] [EXAMPLE_EPI_FILE] [LOG_DIRECTORY] [NONSPATIAL_FLAG] [FIX_MRF_PRECISION_FLAG] [MRF_PREC_START] [MRF_PREC_MULTIPLIER] [INIT_MULTIPLIER] [NO_UPDATE_THETA_FLAG] [ZFSTAT_FLAG] [PHI] [NITERS] [THRESHOLD]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--fmp",
       "description": "Fix MRF precision to mrfprecstart throughout.",
-      "value-key": "[FIX_MRF_PREC_FLAG]",
+      "value-key": "[FIX_MRF_PRECISION_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "fix_mrf_precision_flag",

@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "A script to find and kill AFNI processes",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@Quiet_Talkers [SUDO_FLAG] [PROGRAMS] [NPB_VALS] [NPB_RANGE] [PIF_KEY] [NO_NPB_FLAG] [LIST_FLAG] [QUIET_FLAG]",
+  "command-line": "@Quiet_Talkers [SUDO] [PROG] [NPB_VAL] [NPB_RANGE] [PIF_KEY] [NO_NPB] [LIST] [QUIET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-sudo",
       "description": "Invoke higher powers to kill processes that you do not own",
-      "value-key": "[SUDO_FLAG]",
+      "value-key": "[SUDO]",
       "type": "Flag",
       "optional": true,
       "id": "sudo",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-prog",
       "description": "Instead of the default program list, only kill the specified program. You can use multiple -prog options",
-      "value-key": "[PROGRAMS]",
+      "value-key": "[PROG]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-npb_val",
       "description": "Kill those programs using NIML port block NV",
-      "value-key": "[NPB_VALS]",
+      "value-key": "[NPB_VAL]",
       "type": "Number",
       "list": true,
       "optional": true,
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "-no_npb",
       "description": "Kill any program in the list regardless of -npb options or -pif",
-      "value-key": "[NO_NPB_FLAG]",
+      "value-key": "[NO_NPB]",
       "type": "Flag",
       "optional": true,
       "id": "no_npb",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-list",
       "description": "Just list process numbers, don't run kill command",
-      "value-key": "[LIST_FLAG]",
+      "value-key": "[LIST]",
       "type": "Flag",
       "optional": true,
       "id": "list",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Do it quietly",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",

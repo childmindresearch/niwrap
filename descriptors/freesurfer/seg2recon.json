@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "seg2recon",
   "description": "Creates and populates a subjects directory from an input image and segmentation suitable for running recon-all.",
-  "command-line": "seg2recon -[SUBJECT] -[SEGVOL] -[INPUTVOL] -[CTAB] [NDILATE] [THREADS] [FORCE_UPDATE_FLAG] [NO_CC_FLAG] [MASK] [HEADMASK] [THRESH] [EXPERT] [RCA_FLAG] [NO_BIAS_FIELD_COR_FLAG]",
+  "command-line": "seg2recon -[SUBJECT] -[SEGVOL] -[INPUTVOL] -[CTAB] [NDILATE] [THREADS] [FORCE_UPDATE] [NO_CC] [MASK] [HEADMASK] [THRESH] [EXPERT] [RCA] [NO_BIAS_FIELD_COR]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -61,7 +61,7 @@
     },
     {
       "command-line-flag": "--force-update",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "force_update",
@@ -70,7 +70,7 @@
     },
     {
       "command-line-flag": "--no-cc",
-      "value-key": "[NO_CC_FLAG]",
+      "value-key": "[NO_CC]",
       "type": "Flag",
       "optional": true,
       "id": "no_cc",
@@ -115,7 +115,7 @@
     },
     {
       "command-line-flag": "--rca",
-      "value-key": "[RCA_FLAG]",
+      "value-key": "[RCA]",
       "type": "Flag",
       "optional": true,
       "id": "rca",
@@ -124,7 +124,7 @@
     },
     {
       "command-line-flag": "--no-bias-field-cor",
-      "value-key": "[NO_BIAS_FIELD_COR_FLAG]",
+      "value-key": "[NO_BIAS_FIELD_COR]",
       "type": "Flag",
       "optional": true,
       "id": "no_bias_field_cor",

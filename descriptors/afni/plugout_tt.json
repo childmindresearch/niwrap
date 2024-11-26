@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "This program connects to AFNI and receives notification whenever the user changes Talairach coordinates.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "plugout_tt [HOST] [IJK_OPTION] [VERBOSE_FLAG] [PORT] [NAME] [PORT_OFFSET] [PORT_OFFSET_QUIET] [PORT_BLOC] [MAX_PORT_BLOC] [MAX_PORT_BLOC_QUIET] [NUM_ASSIGNED_PORTS] [NUM_ASSIGNED_PORTS_QUIET]",
+  "command-line": "plugout_tt [HOST] [IJK_OPTION] [VERBOSE] [PORT] [NAME] [PORT_OFFSET] [PORT_OFFSET_QUIET] [PORT_BLOC] [MAX_PORT_BLOC] [MAX_PORT_BLOC_QUIET] [NUM_ASSIGNED_PORTS] [NUM_ASSIGNED_PORTS_QUIET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     },
     {
       "description": "Enable verbose mode (prints lots of diagnostic messages).",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "command-line-flag": "-v",
       "type": "Flag",
       "optional": true,

@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
   "description": "Averages multiple input images after linear registration (FLIRT).",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "flirt_average [NINPUTS] [INPUT_FILE1] [INPUT_FILE2] ... [OUTPUT_FILE] [REFERENCE] [FLIRT_OPTIONS]",
+  "command-line": "flirt_average [NINPUTS] [INPUT1] [INPUT2] ... [OUTPUT_FILE] [REFERENCE_IMAGE] [FLIRT_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -23,7 +23,7 @@
     },
     {
       "description": "First input image (e.g. rawT1_1.nii.gz)",
-      "value-key": "[INPUT_FILE1]",
+      "value-key": "[INPUT1]",
       "type": "File",
       "optional": false,
       "id": "input1",
@@ -31,7 +31,7 @@
     },
     {
       "description": "Second input image (e.g. rawT1_2.nii.gz)",
-      "value-key": "[INPUT_FILE2]",
+      "value-key": "[INPUT2]",
       "type": "File",
       "optional": false,
       "id": "input2",
@@ -39,7 +39,7 @@
     },
     {
       "description": "Third input image (e.g. rawT1_3.nii.gz)",
-      "value-key": "[INPUT_FILE3]",
+      "value-key": "[INPUT3]",
       "type": "File",
       "optional": true,
       "id": "input3",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-FAref",
       "description": "Reference image to use instead of first input",
-      "value-key": "[REFERENCE]",
+      "value-key": "[REFERENCE_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "reference_image",

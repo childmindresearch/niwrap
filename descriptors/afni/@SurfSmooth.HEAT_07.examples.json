@@ -4,11 +4,11 @@
   "author": "AFNI Developers",
   "description": "A script to illustrate controlled blurring of data on the surface.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@SurfSmooth.HEAT_07.examples [SUMA_DEMO_PATH]",
+  "command-line": "@SurfSmooth.HEAT_07.examples [PATH_TO_SUMA_DEMO]",
   "inputs": [
     {
       "description": "Path to SUMA demo directory",
-      "value-key": "[SUMA_DEMO_PATH]",
+      "value-key": "[PATH_TO_SUMA_DEMO]",
       "type": "String",
       "optional": false,
       "id": "path_to_suma_demo",

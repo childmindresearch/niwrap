@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "3dConvolve is no longer supported in AFNI",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dConvolve [INPUT_FILE] [OUTPUT_FILE] [OPTIONS]",
+  "command-line": "3dConvolve [INFILE] [OUTFILE] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input file for 3dConvolve",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Output file for 3dConvolve",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",

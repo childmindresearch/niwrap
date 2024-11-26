@@ -3,7 +3,7 @@
   "name": "xcerebralseg",
   "author": "FreeSurfer Developers",
   "description": "Tool for labeling extracerebral structures including sulcal CSF, skull/bone, head soft tissue, and air inside the head, merged with aparc+aseg.mgz segmentation for a whole head segmentation.",
-  "command-line": "xcerebralseg [SUBJECT] [OUTPUT_VOLUME] [ATLAS] [MERGE_VOLUME] [SOURCE_VOLUME] [NO_STATS_FLAG] [SEG1_NAME] [NO_PONS_FLAG] [NO_VERMIS_FLAG] [THREADS]",
+  "command-line": "xcerebralseg [SUBJECT] [OUTPUT_VOLUME] [ATLAS] [MERGEVOL] [SOURCE_VOLUME] [NO_STATS] [SEG1_NAME] [NO_PONS] [NO_VERMIS] [THREADS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "--m",
       "description": "Merge with mergevol (default: aparc+aseg.mgz)",
-      "value-key": "[MERGE_VOLUME]",
+      "value-key": "[MERGEVOL]",
       "type": "String",
       "optional": true,
       "id": "mergevol",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--no-stats",
       "description": "Do not run mri_segstats",
-      "value-key": "[NO_STATS_FLAG]",
+      "value-key": "[NO_STATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_stats",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "--no-pons",
       "description": "Exclude pons segmentation",
-      "value-key": "[NO_PONS_FLAG]",
+      "value-key": "[NO_PONS]",
       "type": "Flag",
       "optional": true,
       "id": "no_pons",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "--no-vermis",
       "description": "Exclude vermis segmentation",
-      "value-key": "[NO_VERMIS_FLAG]",
+      "value-key": "[NO_VERMIS]",
       "type": "Flag",
       "optional": true,
       "id": "no_vermis",

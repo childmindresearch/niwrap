@@ -3,11 +3,11 @@
   "name": "fftest",
   "author": "AFNI Developers",
   "description": "A command line tool for testing purposes",
-  "command-line": "fftest [LEN] [NUM] [NVEC] [quiet]",
+  "command-line": "fftest [LENGTH] [NUM_TESTS] [VECTOR_SIZE] [QUIET_MODE]",
   "inputs": [
     {
       "description": "Length of the test",
-      "value-key": "[LEN]",
+      "value-key": "[LENGTH]",
       "type": "Number",
       "optional": false,
       "id": "length",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Number of tests to run",
-      "value-key": "[NUM]",
+      "value-key": "[NUM_TESTS]",
       "type": "Number",
       "optional": false,
       "id": "num_tests",
@@ -23,7 +23,7 @@
     },
     {
       "description": "Vector size for the test",
-      "value-key": "[NVEC]",
+      "value-key": "[VECTOR_SIZE]",
       "type": "Number",
       "optional": false,
       "id": "vector_size",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-q",
       "description": "Quiet mode",
-      "value-key": "[quiet]",
+      "value-key": "[QUIET_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "quiet_mode",

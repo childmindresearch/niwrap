@@ -3,13 +3,13 @@
   "name": "mri_fwhm",
   "author": "FreeSurfer Developers",
   "description": "FreeSurfer program to estimate the global Gaussian smoothness of a multi-frame, volume-based data set.",
-  "command-line": "mri_fwhm [INPUT_VOLUME] [OUTPUT_VOLUME] [SAVE_DETRENDED_FLAG] [SAVE_UNMASKED_FLAG] [SMOOTH_ONLY_FLAG] [MASK] [MASK_THRESH] [AUTO_MASK] [NERODE] [MASK_INV_FLAG] [OUT_MASK] [DETREND_MATRIX] [DETREND_ORDER] [SQR_FLAG] [SMOOTH_BY_FWHM] [SMOOTH_BY_GSTD] [MEDIAN_FILTER_WIDTH] [SMOOTH_TO_FWHM] [TO_FWHM_TOLERANCE] [TO_FWHM_NMAX] [TO_FWHM_FILE] [SUMMARY_FILE] [DAT_FILE] [FWHM_DAT_FILE] [FWHM_VOL_MEAN_FILE] [FWHM_VOL] [SYNTH_FLAG] [SYNTH_FRAMES] [NFRAMES_MIN] [INPUT_ISPM_FLAG] [INPUT_NSPMZEROPAD] [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_fwhm [INPUTVOL] [OUTPUTVOL] [SAVE_DETRENDED] [SAVE_UNMASKED] [SMOOTH_ONLY] [MASK] [MASK_THRESH] [AUTO_MASK] [NERODE] [MASK_INV] [OUT_MASK] [DETREND_MATRIX] [DETREND_ORDER] [SQUARE_INPUT] [SMOOTH_BY_FWHM] [SMOOTH_BY_GSTD] [MEDIAN_FILTER] [SMOOTH_TO_FWHM] [TO_FWHM_TOL] [TO_FWHM_NMAX] [TO_FWHM_FILE] [SUMMARY_FILE] [DAT_FILE] [FWHM_DAT_FILE] [FWHM_VOL_MEAN_FILE] [FWHM_VOL] [SYNTH] [SYNTH_FRAMES] [NFRAMES_MIN] [ISPM] [NSPM_ZERO_PADDING] [THREADS] [DEBUG] [CHECKOPTS] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--i",
       "description": "Input volume file. Format must be something readable by mri_convert (e.g., mgh, mgz, img, nii, nii.gz).",
-      "value-key": "[INPUT_VOLUME]",
+      "value-key": "[INPUTVOL]",
       "type": "File",
       "optional": false,
       "id": "inputvol",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--o",
       "description": "Output volume file: save input after smoothing.",
-      "value-key": "[OUTPUT_VOLUME]",
+      "value-key": "[OUTPUTVOL]",
       "type": "String",
       "optional": false,
       "id": "outputvol",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--save-detrended",
       "description": "Save input after smoothing and detrending.",
-      "value-key": "[SAVE_DETRENDED_FLAG]",
+      "value-key": "[SAVE_DETRENDED]",
       "type": "Flag",
       "optional": true,
       "id": "save_detrended",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--save-unmasked",
       "description": "Do not mask output volume.",
-      "value-key": "[SAVE_UNMASKED_FLAG]",
+      "value-key": "[SAVE_UNMASKED]",
       "type": "Flag",
       "optional": true,
       "id": "save_unmasked",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--smooth-only",
       "description": "Smooth and save, do not compute fwhm.",
-      "value-key": "[SMOOTH_ONLY_FLAG]",
+      "value-key": "[SMOOTH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "smooth_only",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--mask-inv",
       "description": "Invert mask.",
-      "value-key": "[MASK_INV_FLAG]",
+      "value-key": "[MASK_INV]",
       "type": "Flag",
       "optional": true,
       "id": "mask_inv",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "--sqr",
       "description": "Compute square of input before smoothing.",
-      "value-key": "[SQR_FLAG]",
+      "value-key": "[SQUARE_INPUT]",
       "type": "Flag",
       "optional": true,
       "id": "square_input",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "--median",
       "description": "Perform median filtering instead of Gaussian.",
-      "value-key": "[MEDIAN_FILTER_WIDTH]",
+      "value-key": "[MEDIAN_FILTER]",
       "type": "Number",
       "optional": true,
       "id": "median_filter",
@@ -171,7 +171,7 @@
     {
       "command-line-flag": "--to-fwhm-tol",
       "description": "Tolerance for smoothing to FWHM (default 0.5mm).",
-      "value-key": "[TO_FWHM_TOLERANCE]",
+      "value-key": "[TO_FWHM_TOL]",
       "type": "Number",
       "optional": true,
       "id": "to_fwhm_tol",
@@ -243,7 +243,7 @@
     {
       "command-line-flag": "--synth",
       "description": "Synthesize input with white Gaussian noise.",
-      "value-key": "[SYNTH_FLAG]",
+      "value-key": "[SYNTH]",
       "type": "Flag",
       "optional": true,
       "id": "synth",
@@ -270,7 +270,7 @@
     {
       "command-line-flag": "--ispm",
       "description": "Input is SPM-analyze.",
-      "value-key": "[INPUT_ISPM_FLAG]",
+      "value-key": "[ISPM]",
       "type": "Flag",
       "optional": true,
       "id": "ispm",
@@ -279,7 +279,7 @@
     {
       "command-line-flag": "--in_nspmzeropad",
       "description": "Zero-padding for SPM-analyze.",
-      "value-key": "[INPUT_NSPMZEROPAD]",
+      "value-key": "[NSPM_ZERO_PADDING]",
       "type": "Number",
       "optional": true,
       "id": "nspm_zero_padding",
@@ -297,7 +297,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -306,7 +306,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options and exit without running.",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",
@@ -315,7 +315,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -3,7 +3,7 @@
   "name": "tedana_wrapper.py",
   "author": "AFNI Developers",
   "description": "Internal wrapper to run tedana.py, typically used within afni_proc.py.",
-  "command-line": "tedana_wrapper.py [INPUT_FILES] [ECHO_TIMES] [MASK] [RESULTS_DIR] [PREFIX] [SAVE_ALL_FLAG] [PREP_ONLY_FLAG] [TEDANA_PROG] [TEDANA_IS_EXEC_FLAG] [TED_LABEL] [TEDANA_OPTS]",
+  "command-line": "tedana_wrapper.py [INPUT_FILES] [ECHO_TIMES] [MASK] [RESULTS_DIR] [PREFIX] [SAVE_ALL] [PREP_ONLY] [TEDANA_PROG] [TEDANA_IS_EXEC] [TED_LABEL] [TEDANA_OPTS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -58,7 +58,7 @@
     },
     {
       "description": "Save intermediate datasets. Default is to save only the 3dZcat stacked dataset (and tedana stuff).",
-      "value-key": "[SAVE_ALL_FLAG]",
+      "value-key": "[SAVE_ALL]",
       "type": "Flag",
       "optional": true,
       "id": "save_all",
@@ -67,7 +67,7 @@
     },
     {
       "description": "Do not run tedana.py, stop at 3dZcat.",
-      "value-key": "[PREP_ONLY_FLAG]",
+      "value-key": "[PREP_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "prep_only",
@@ -85,7 +85,7 @@
     },
     {
       "description": "Run 'tedana.py' rather than 'python tedana.py'.",
-      "value-key": "[TEDANA_IS_EXEC_FLAG]",
+      "value-key": "[TEDANA_IS_EXEC]",
       "type": "Flag",
       "optional": true,
       "id": "tedana_is_exec",
@@ -112,7 +112,7 @@
     },
     {
       "description": "Show help message and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -121,7 +121,7 @@
     },
     {
       "description": "Show detailed help and exit.",
-      "value-key": "[DETAILED_HELP_FLAG]",
+      "value-key": "[DETAILED_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "detailed_help",

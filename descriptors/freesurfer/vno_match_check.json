@@ -3,7 +3,7 @@
   "name": "vno_match_check",
   "author": "FreeSurfer Developers",
   "description": "Checks that all surfaces and surface data files for a subject have the same number of vertices.",
-  "command-line": "vno_match_check [SUBJID] [DEBUG_FLAG] [RH_FLAG] [LH_FLAG]",
+  "command-line": "vno_match_check [SUBJID] [DEBUG] [RIGHT_HEMI] [LEFT_HEMI]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "debug",
       "description": "Prints progress text",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "rh",
       "description": "Checks only the right hemisphere",
-      "value-key": "[RH_FLAG]",
+      "value-key": "[RIGHT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemi",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "lh",
       "description": "Checks only the left hemisphere",
-      "value-key": "[LH_FLAG]",
+      "value-key": "[LEFT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemi",

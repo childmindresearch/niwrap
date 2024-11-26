@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Computes the periodogram of each voxel time series. The periodogram is a crude estimate of the power spectrum.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dPeriodogram [PREFIX_OPTION] [TAPER_OPTION] [NFFT_OPTION] [DATASET]",
+  "command-line": "3dPeriodogram [PREFIX] [TAPER] [NFFT] [DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix for the output dataset",
-      "value-key": "[PREFIX_OPTION]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": true,
       "id": "prefix",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-taper",
       "description": "Fraction of data to taper",
-      "value-key": "[TAPER_OPTION]",
+      "value-key": "[TAPER]",
       "type": "Number",
       "optional": true,
       "minimum": 0,
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-nfft",
       "description": "Set FFT length to a specific number of points",
-      "value-key": "[NFFT_OPTION]",
+      "value-key": "[NFFT]",
       "type": "Number",
       "optional": true,
       "id": "nfft",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/surf2volcoord.json",
   "description": "Relates node indices to coordinates given x y z coordinates and returns the nodes closest to them.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "Surf2VolCoord [SURFACE] [GRID_VOL] [GRID_SUBBRICK] [SV] [ONE_NODE] [CLOSEST_NODES] [QUAL] [LPI_FLAG] [RAI_FLAG] [VERB_LEVEL] [PREFIX]",
+  "command-line": "Surf2VolCoord [SURFACE] [GRID_VOL] [GRID_SUBBRICK] [SV] [ONE_NODE] [CLOSEST_NODES] [QUAL] [LPI] [RAI] [VERB_LEVEL] [PREFIX]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -76,7 +76,7 @@
     },
     {
       "description": "Coordinate axis direction for values in XYZ.1D are in LPI.",
-      "value-key": "[LPI_FLAG]",
+      "value-key": "[LPI]",
       "command-line-flag": "-LPI",
       "type": "Flag",
       "optional": true,
@@ -85,7 +85,7 @@
     },
     {
       "description": "Coordinate axis direction for values in XYZ.1D are in RAI (default).",
-      "value-key": "[RAI_FLAG]",
+      "value-key": "[RAI]",
       "command-line-flag": "-RAI",
       "type": "Flag",
       "optional": true,

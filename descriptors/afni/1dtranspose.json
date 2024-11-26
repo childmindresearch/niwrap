@@ -4,11 +4,11 @@
   "author": "AFNI Developers",
   "description": "Transpose an AFNI *.1D file (ASCII list of numbers arranged in columns).",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "1dtranspose [INPUT_FILE] [OUTPUT_FILE]",
+  "command-line": "1dtranspose [INFILE] [OUTFILE]",
   "inputs": [
     {
       "description": "Input file (e.g. data.1D)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Output file (e.g. transposed_data.1D), or '-' to write to stdout",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": true,
       "id": "outfile",

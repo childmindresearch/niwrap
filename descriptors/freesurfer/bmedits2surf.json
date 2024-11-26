@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "bmedits2surf",
   "description": "Computes a binary map of surface locations where the brainmask.mgz has been edited.",
-  "command-line": "bmedits2surf -[SUBJECT] [SELF_FLAG] [OVERWRITE_FLAG] [TMP_DIR] [CLEANUP_FLAG] [NO_CLEANUP_FLAG] [DEBUG_FLAG] [LH_FLAG] [RH_FLAG] [NO_SURFS_FLAG]",
+  "command-line": "bmedits2surf -[SUBJECT] [SELF] [OVERWRITE] [TMP_DIR] [CLEANUP] [NO_CLEANUP] [DEBUG] [LEFT_HEMISPHERE] [RIGHT_HEMISPHERE] [NO_SURFS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--self",
       "description": "Output will be on self instead of fsaverage.",
-      "value-key": "[SELF_FLAG]",
+      "value-key": "[SELF]",
       "type": "Flag",
       "optional": true,
       "id": "self",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--overwrite",
       "description": "Force overwriting of existing results.",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--cleanup",
       "description": "Clean up temporary files.",
-      "value-key": "[CLEANUP_FLAG]",
+      "value-key": "[CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "cleanup",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--no-cleanup",
       "description": "Do not clean up temporary files.",
-      "value-key": "[NO_CLEANUP_FLAG]",
+      "value-key": "[NO_CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cleanup",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Perform operation only on the left hemisphere.",
-      "value-key": "[LH_FLAG]",
+      "value-key": "[LEFT_HEMISPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemisphere",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Perform operation only on the right hemisphere.",
-      "value-key": "[RH_FLAG]",
+      "value-key": "[RIGHT_HEMISPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemisphere",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "--no-surfs",
       "description": "Do not compute surfaces, only statistics.",
-      "value-key": "[NO_SURFS_FLAG]",
+      "value-key": "[NO_SURFS]",
       "type": "Flag",
       "optional": true,
       "id": "no_surfs",

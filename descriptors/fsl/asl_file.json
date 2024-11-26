@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "ASL data manipulation tool for FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "asl_file [DATA] [NTIS] [MASK] [IBF] [IAF] [RPTS] [PAIRS] [SPPAIRS] [DIFF] [SURRDIFF] [EXTRAPOLATE] [NEIGHBOUR] [PVGM] [PVWM] [KERNEL] [OUT] [OBF] [MEAN] [SPLIT] [EPOCH] [ELEN] [EOL] [EUNIT] [DECONV] [AIF]",
+  "command-line": "asl_file [DATAFILE] [NTIS] [MASK] [INBLOCKFORM] [INASLFORM] [RPTS] [PAIRS] [SPAIRS] [DIFF] [SURRDIFF] [EXTRAPOLATE] [NEIGHBOUR] [PVGM] [PVWM] [KERNEL] [OUTFILE] [OUTBLOCKFORM] [MEAN] [SPLIT] [EPOCH] [EPOCH_LENGTH] [EPOCH_OVERLAP] [EPOCH_UNIT] [DECONV] [AIF]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "--data",
       "description": "ASL data file",
-      "value-key": "[DATA]",
+      "value-key": "[DATAFILE]",
       "type": "File",
       "optional": false,
       "id": "datafile",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "--ibf",
       "description": "Input block format",
-      "value-key": "[IBF]",
+      "value-key": "[INBLOCKFORM]",
       "type": "String",
       "optional": true,
       "id": "inblockform",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--iaf",
       "description": "ASL data form",
-      "value-key": "[IAF]",
+      "value-key": "[INASLFORM]",
       "type": "String",
       "optional": true,
       "id": "inaslform",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "--spairs",
       "description": "Split the pairs within the data, e.g. to separate tag and control images in output",
-      "value-key": "[SPPAIRS]",
+      "value-key": "[SPAIRS]",
       "type": "Flag",
       "optional": true,
       "id": "spairs",
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "--out",
       "description": "Output data file",
-      "value-key": "[OUT]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -164,7 +164,7 @@
     {
       "command-line-flag": "--obf",
       "description": "Output block format",
-      "value-key": "[OBF]",
+      "value-key": "[OUTBLOCKFORM]",
       "type": "String",
       "optional": true,
       "id": "outblockform",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "--elen",
       "description": "Length of epochs in number of repeats",
-      "value-key": "[ELEN]",
+      "value-key": "[EPOCH_LENGTH]",
       "type": "Number",
       "optional": true,
       "id": "epoch_length",
@@ -210,7 +210,7 @@
     {
       "command-line-flag": "--eol",
       "description": "Amount of overlap between epochs in number of repeats",
-      "value-key": "[EOL]",
+      "value-key": "[EPOCH_OVERLAP]",
       "type": "Number",
       "optional": true,
       "id": "epoch_overlap",
@@ -219,7 +219,7 @@
     {
       "command-line-flag": "--eunit",
       "description": "Epochs to be determined over",
-      "value-key": "[EUNIT]",
+      "value-key": "[EPOCH_UNIT]",
       "type": "String",
       "optional": true,
       "id": "epoch_unit",

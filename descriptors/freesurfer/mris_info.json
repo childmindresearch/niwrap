@@ -3,11 +3,11 @@
   "name": "mris_info",
   "author": "FreeSurfer Developers",
   "description": "Prints out information about a surface file.",
-  "command-line": "mris_info [SURFACE_FILE] [OUTFILE] [SUBJECT_HEMI_SURFNAME] [PATCHFILE] [VNUM] [VXNUM] [CURVFILE] [ANNOTFILE] [EDGEMETRIC_ID] [EDGE_NUM] [VTXNO] [MTX_FMT] [MASK] [LABELFILE] [EDGE_FILE] [TALAIRACH_XFM_FLAG] [RESCALE_FLAG] [AREA_STATS_FLAG] [EDGE_STATS_FLAG] [QUALITY_STATS_FLAG] [INTERSECTIONS_FLAG] [NOGIFTI_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mris_info [SURFACEFILE] [OUTFILE] [SUBJECT_HEMI_SURFNAME] [PATCHFILE] [VERTEX_NUMBER] [EXTENDED_VERTEX_NUMBER] [CURVFILE] [ANNOTFILE] [EDGE_STATS_ID] [EDGE_NUMBER] [VTXNO] [MATRIX_FORMAT] [MASK_FILE] [LABEL_FILE] [EDGE_FILE] [TALAIRACH_XFM_FLAG] [RESCALE_FLAG] [AREA_STATS_FLAG] [EDGE_STATS_FLAG] [QUALITY_STATS_FLAG] [INTERSECTIONS_FLAG] [NOGIFTI_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
-      "value-key": "[SURFACE_FILE]",
+      "value-key": "[SURFACEFILE]",
       "type": "File",
       "optional": false,
       "id": "surfacefile",
@@ -61,7 +61,7 @@
     },
     {
       "command-line-flag": "--v",
-      "value-key": "[VNUM]",
+      "value-key": "[VERTEX_NUMBER]",
       "type": "Number",
       "optional": true,
       "id": "vertex_number",
@@ -70,7 +70,7 @@
     },
     {
       "command-line-flag": "--vx",
-      "value-key": "[VXNUM]",
+      "value-key": "[EXTENDED_VERTEX_NUMBER]",
       "type": "Number",
       "optional": true,
       "id": "extended_vertex_number",
@@ -106,7 +106,7 @@
     },
     {
       "command-line-flag": "--edge-stats",
-      "value-key": "[EDGEMETRIC_ID]",
+      "value-key": "[EDGE_STATS_ID]",
       "type": "String",
       "optional": true,
       "id": "edge_stats_id",
@@ -115,7 +115,7 @@
     },
     {
       "command-line-flag": "--ex",
-      "value-key": "[EDGE_NUM]",
+      "value-key": "[EDGE_NUMBER]",
       "type": "Number",
       "optional": true,
       "id": "edge_number",
@@ -133,7 +133,7 @@
     },
     {
       "command-line-flag": "--mtx-fmt",
-      "value-key": "[MTX_FMT]",
+      "value-key": "[MATRIX_FORMAT]",
       "type": "String",
       "optional": true,
       "id": "matrix_format",
@@ -160,7 +160,7 @@
     },
     {
       "command-line-flag": "--mask",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_FILE]",
       "type": "File",
       "optional": true,
       "id": "mask_file",
@@ -169,7 +169,7 @@
     },
     {
       "command-line-flag": "--label",
-      "value-key": "[LABELFILE]",
+      "value-key": "[LABEL_FILE]",
       "type": "File",
       "optional": true,
       "id": "label_file",

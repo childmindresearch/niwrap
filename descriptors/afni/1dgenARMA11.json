@@ -3,12 +3,12 @@
   "name": "1dgenARMA11",
   "author": "AFNI Developers",
   "description": "Program to generate an ARMA(1,1) time series, for simulation studies. Results are written to stdout.",
-  "command-line": "1dgenARMA11 [LENGTH_OPTION] [NUM_SERIES] [PARAM_A] [PARAM_B] [PARAM_LAM] [STD_DEV] [NORMALIZE_FLAG] [SEED] [CORCUT] [ARMA31] [ARMA51]",
+  "command-line": "1dgenARMA11 [LENGTH_ALT] [NUM_SERIES] [PARAM_A] [PARAM_B] [PARAM_LAM] [STD_DEV] [NORMALIZE] [SEED] [CORCUT] [ARMA31] [ARMA51]",
   "inputs": [
     {
       "command-line-flag": "-num",
       "description": "Specify the length of the time series vector to generate (equivalent to -len option).",
-      "value-key": "[LENGTH_OPTION]",
+      "value-key": "[LENGTH]",
       "type": "Number",
       "optional": true,
       "id": "length",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-len",
       "description": "Specify the length of the time series vector to generate (equivalent to -num option).",
-      "value-key": "[LENGTH_OPTION]",
+      "value-key": "[LENGTH_ALT]",
       "type": "Number",
       "optional": true,
       "id": "length_alt",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-norm",
       "description": "Normalize time series so sum of squares is 1.",
-      "value-key": "[NORMALIZE_FLAG]",
+      "value-key": "[NORMALIZE]",
       "type": "Flag",
       "optional": true,
       "id": "normalize",

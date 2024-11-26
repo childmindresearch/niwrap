@@ -3,7 +3,7 @@
   "name": "mris_ca_label",
   "author": "FreeSurfer Developers",
   "description": "Produces an annotation file in which each cortical surface vertex is assigned a neuroanatomical label using a previously-prepared atlas file.",
-  "command-line": "mris_ca_label [SUBJECT] [HEMI] [CANONSURF] [CLASSIFIER] [OUTPUTFILE] [SEED] [SDIR] [ORIG] [LONG_FLAG] [R] [NOVAR_FLAG] [NBRS] [F] [T] [P] [V] [W_NUMBER] [W_FILENAME] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mris_ca_label [SUBJECT] [HEMI] [CANONSURF] [CLASSIFIER] [OUTPUTFILE] [SEED] [SDIR] [ORIG] [LONG_FLAG] [R] [NOVAR_FLAG] [NBRS] [F] [T] [P] [V] [W] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -150,7 +150,7 @@
       "id": "w",
       "name": "Gibbs Process Snapshots",
       "type": "String",
-      "value-key": "[W_NUMBER] [W_FILENAME]",
+      "value-key": "[W]",
       "description": "Writes-out snapshots of gibbs process every <number> iterations to <filename> (default=disabled)",
       "optional": true
     },

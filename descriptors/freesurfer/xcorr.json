@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "xcorr",
   "description": "Computes the voxel-for-voxel correlation coefficient between two volumes.",
-  "command-line": "xcorr [INPUT1] [INPUT2] [OUTPUT] [LOG_FILE] [TMP_DIR] [NO_CLEANUP_FLAG]",
+  "command-line": "xcorr [INPUT1] [INPUT2] [OUTPUT] [LOG_FILE] [TMP_DIR] [NO_CLEANUP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--no-cleanup",
       "description": "Prevent cleanup of temporary files",
-      "value-key": "[NO_CLEANUP_FLAG]",
+      "value-key": "[NO_CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cleanup",

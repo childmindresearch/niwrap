@@ -2,7 +2,7 @@
   "name": "fs_temp_file",
   "tool-version": "7.4.1",
   "description": "Generates and creates an empty temporary file, printing the resulting path to stdout.",
-  "command-line": "fs_temp_file [BASE_DIR] [SUFFIX] [SCRATCH_FLAG] [HELP_FLAG]",
+  "command-line": "fs_temp_file [BASE_DIR_ALT] [SUFFIX_ALT] [SCRATCH] [HELP_ALT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--base",
       "description": "Manually specify base temporary directory.",
-      "value-key": "[BASE_DIR]",
+      "value-key": "[BASE_DIR_ALT]",
       "type": "String",
       "optional": true,
       "id": "base_dir_alt",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--suffix",
       "description": "Optional file suffix.",
-      "value-key": "[SUFFIX]",
+      "value-key": "[SUFFIX_ALT]",
       "type": "String",
       "optional": true,
       "id": "suffix_alt",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--scratch",
       "description": "Use /scratch directory if available, but FS_TMPDIR takes priority.",
-      "value-key": "[SCRATCH_FLAG]",
+      "value-key": "[SCRATCH]",
       "type": "Flag",
       "optional": true,
       "id": "scratch",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-h",
       "description": "Print help text and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help text and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP_ALT]",
       "type": "Flag",
       "optional": true,
       "id": "help_alt",

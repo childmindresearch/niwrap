@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_wbc",
   "description": "A tool for working with functional brain imaging data on surfaces and volumes.",
-  "command-line": "mri_wbc [FUNCTIONAL_VOLUME] [VOLUME_MASK] [LH_FUNCTIONAL_SURF] [LH_SURFACE] [LH_INFLATED] [LH_MASK] [LH_LABEL] [RH_FUNCTIONAL_SURF] [RH_SURFACE] [RH_INFLATED] [RH_MASK] [RH_LABEL] [RHO_THRESHOLD] [DIST_THRESHOLD] [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_wbc [FUNCTIONAL_VOLUME] [VOLUME_MASK] [LH_FUNCTIONAL_SURFACE] [LH_SURFACE] [LH_INFLATED] [LH_MASK] [LH_LABEL] [RH_FUNCTIONAL_SURFACE] [RH_SURFACE] [RH_INFLATED] [RH_MASK] [RH_LABEL] [RHO_THRESHOLD] [DIST_THRESHOLD] [THREADS] [DEBUG] [CHECKOPTS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Left hemisphere functional surface file",
-      "value-key": "[LH_FUNCTIONAL_SURF]",
+      "value-key": "[LH_FUNCTIONAL_SURFACE]",
       "type": "File",
       "optional": false,
       "id": "lh_functional_surface",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Right hemisphere functional surface file",
-      "value-key": "[RH_FUNCTIONAL_SURF]",
+      "value-key": "[RH_FUNCTIONAL_SURFACE]",
       "type": "File",
       "optional": false,
       "id": "rh_functional_surface",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options and exit without running",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",

@@ -4,11 +4,11 @@
   "author": "AFNI Developers",
   "description": "Compute GCOR, the global correlation",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@compute_gcor [INPUT_FILE] [MASK] [CORR_VOL_PREF] [INITIAL_TRS] [NO_DEMEAN_FLAG] [SAVE_TMP_FLAG] [VERBOSE_LEVEL]",
+  "command-line": "@compute_gcor [INPUT] [MASK] [CORR_VOL_PREFIX] [INITIAL_TRS] [NO_DEMEAN] [SAVE_TMP] [VERBOSE]",
   "inputs": [
     {
       "description": "Specify input dataset to compute the GCOR over",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-corr_vol",
       "description": "Specify prefix for correlation volume output",
-      "value-key": "[CORR_VOL_PREF]",
+      "value-key": "[CORR_VOL_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "corr_vol_prefix",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-no_demean",
       "description": "Do not demean as the first step",
-      "value-key": "[NO_DEMEAN_FLAG]",
+      "value-key": "[NO_DEMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "no_demean",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-savetmp",
       "description": "Save temporary files (do not remove at end)",
-      "value-key": "[SAVE_TMP_FLAG]",
+      "value-key": "[SAVE_TMP]",
       "type": "Flag",
       "optional": true,
       "id": "save_tmp",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Set verbose level (0=quiet, 3=max)",
-      "value-key": "[VERBOSE_LEVEL]",
+      "value-key": "[VERBOSE]",
       "type": "Number",
       "optional": true,
       "id": "verbose",

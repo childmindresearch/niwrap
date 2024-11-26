@@ -8,7 +8,7 @@
     {
       "command-line-flag": "-xyz",
       "description": "Specify the X, Y, and Z coordinates",
-      "value-key": "[X Y Z]",
+      "value-key": "[COORDINATES]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-or",
       "description": "Specify the orientation",
-      "value-key": "[ORIENT]",
+      "value-key": "[ORIENTATION]",
       "type": "String",
       "optional": false,
       "id": "orientation",

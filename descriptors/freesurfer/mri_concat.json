@@ -30,7 +30,7 @@
       "id": "file_list",
       "name": "File list",
       "type": "String",
-      "value-key": "[LIST_FILE]",
+      "value-key": "[FILE_LIST]",
       "optional": true
     },
     {
@@ -111,7 +111,7 @@
       "id": "matrix",
       "name": "Matrix file",
       "type": "File",
-      "value-key": "[MATRIX_FILE]",
+      "value-key": "[MATRIX]",
       "optional": true
     },
     {
@@ -120,7 +120,7 @@
       "id": "frame_weight",
       "name": "Frame weight file",
       "type": "File",
-      "value-key": "[WEIGHT_FILE]",
+      "value-key": "[FRAME_WEIGHT]",
       "optional": true
     },
     {

@@ -3,7 +3,7 @@
   "name": "mri_convert",
   "author": "FreeSurfer Developers",
   "description": "A general purpose utility for converting between different file formats supported by FreeSurfer",
-  "command-line": "mri_convert [INPUT_VOLUME] [OUTPUT_VOLUME] [OPTIONS]",
+  "command-line": "mri_convert [INP_VOLUME] [OUT_VOLUME] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -15,7 +15,7 @@
       "id": "inp_volume",
       "name": "Input Volume",
       "type": "File",
-      "value-key": "[INPUT_VOLUME]",
+      "value-key": "[INP_VOLUME]",
       "optional": false
     },
     {
@@ -23,7 +23,7 @@
       "id": "out_volume",
       "name": "Output Volume",
       "type": "String",
-      "value-key": "[OUTPUT_VOLUME]",
+      "value-key": "[OUT_VOLUME]",
       "optional": false
     },
     {
@@ -32,7 +32,7 @@
       "id": "read_only",
       "name": "Read Only",
       "type": "Flag",
-      "value-key": "[READ_ONLY_FLAG]",
+      "value-key": "[READ_ONLY]",
       "optional": true
     },
     {
@@ -41,7 +41,7 @@
       "id": "no_write",
       "name": "No Write",
       "type": "Flag",
-      "value-key": "[NO_WRITE_FLAG]",
+      "value-key": "[NO_WRITE]",
       "optional": true
     },
     {
@@ -50,7 +50,7 @@
       "id": "in_info",
       "name": "Input Volume Information",
       "type": "Flag",
-      "value-key": "[IN_INFO_FLAG]",
+      "value-key": "[IN_INFO]",
       "optional": true
     },
     {
@@ -59,7 +59,7 @@
       "id": "out_info",
       "name": "Output Volume Information",
       "type": "Flag",
-      "value-key": "[OUT_INFO_FLAG]",
+      "value-key": "[OUT_INFO]",
       "optional": true
     },
     {
@@ -68,7 +68,7 @@
       "id": "in_stats",
       "name": "Input Statistics",
       "type": "Flag",
-      "value-key": "[IN_STATS_FLAG]",
+      "value-key": "[IN_STATS]",
       "optional": true
     },
     {
@@ -77,7 +77,7 @@
       "id": "out_stats",
       "name": "Output Statistics",
       "type": "Flag",
-      "value-key": "[OUT_STATS_FLAG]",
+      "value-key": "[OUT_STATS]",
       "optional": true
     },
     {
@@ -86,7 +86,7 @@
       "id": "upsample",
       "name": "Upsample factor",
       "type": "Number",
-      "value-key": "[UPSAMPLE_FACTOR]",
+      "value-key": "[UPSAMPLE]",
       "optional": true
     },
     {
@@ -95,7 +95,7 @@
       "id": "force_ras_good",
       "name": "Force RAS Good",
       "type": "Flag",
-      "value-key": "[FORCE_RAS_GOOD_FLAG]",
+      "value-key": "[FORCE_RAS_GOOD]",
       "optional": true
     },
     {
@@ -122,7 +122,7 @@
       "id": "in_type",
       "name": "Input Type",
       "type": "String",
-      "value-key": "[INPUT_TYPE]",
+      "value-key": "[IN_TYPE]",
       "optional": true
     },
     {
@@ -131,7 +131,7 @@
       "id": "out_type",
       "name": "Output Type",
       "type": "String",
-      "value-key": "[OUTPUT_TYPE]",
+      "value-key": "[OUT_TYPE]",
       "optional": true
     },
     {
@@ -167,7 +167,7 @@
       "id": "bfile_little_endian",
       "name": "Bfile Little Endian",
       "type": "Flag",
-      "value-key": "[BFILE_LITTLE_ENDIAN_FLAG]",
+      "value-key": "[BFILE_LITTLE_ENDIAN]",
       "optional": true
     },
     {
@@ -176,7 +176,7 @@
       "id": "sphinx",
       "name": "Sphinx Orientation",
       "type": "Flag",
-      "value-key": "[SPHINX_FLAG]",
+      "value-key": "[SPHINX]",
       "optional": true
     }
   ],

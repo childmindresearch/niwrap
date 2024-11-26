@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "3dSignatures analysis tool for 3D genome organization",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSignatures [INPUT_FILE] [OUTPUT_FILE] [SEGMENTATION_FLAG] [FILTER_FLAG] [THRESHOLD] [SMOOTHING]",
+  "command-line": "3dSignatures [INFILE] [OUTFILE] [SEGMENTATION] [FILTER] [THRESHOLD] [SMOOTHING]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input file containing 3D genome data (e.g. genome_data.txt)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Output file to store analysis results (e.g. analysis_results.txt)",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "--segmentation",
       "description": "Flag to apply genome segmentation",
-      "value-key": "[SEGMENTATION_FLAG]",
+      "value-key": "[SEGMENTATION]",
       "type": "Flag",
       "optional": true,
       "id": "segmentation",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "--filter",
       "description": "Flag to apply data filtering",
-      "value-key": "[FILTER_FLAG]",
+      "value-key": "[FILTER]",
       "type": "Flag",
       "optional": true,
       "id": "filter",

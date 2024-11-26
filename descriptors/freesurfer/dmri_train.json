@@ -1,6 +1,6 @@
 {
   "name": "dmri_train",
-  "command-line": "dmri_train [SLIST] [TRK] [ROIS] [SEG] [CMASK] [LMASK] [BMASK_TRAINING] [OUTTRK] [BMASK_TEST] [FA] [REG] [REGNL] [REFNL] [BASEREG] [BASEREF] [NCPTS] [MAX] [XSTR] [APRIOR] [SPRIOR] [TRUNC] [OUT] [OUTDIR] [CPTDIR] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
+  "command-line": "dmri_train [SLIST] [TRK_FILES] [ROIS] [SEG] [CMASK] [LMASK] [BMASK_TRAINING] [OUTTRK] [BMASK_TEST] [FA] [REG] [REGNL] [REFNL] [BASEREG] [BASEREF] [NCPTS] [MAX_STREAMLINES] [XSTR] [APRIOR] [SPRIOR] [TRUNC] [OUT_FILES] [OUTDIR] [CPTDIR] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
   "description": "DMRI training tool for processing diffusion MRI data in FreeSurfer",
   "schema-version": "0.5",
   "inputs": [
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "--trk",
       "description": "Name(s) of input .trk file(s), one per path",
-      "value-key": "[TRK]",
+      "value-key": "[TRK_FILES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "--max",
       "description": "Maximum number of training streamlines to keep per path",
-      "value-key": "[MAX]",
+      "value-key": "[MAX_STREAMLINES]",
       "type": "Number",
       "optional": false,
       "id": "max_streamlines",
@@ -206,7 +206,7 @@
     {
       "command-line-flag": "--out",
       "description": "Base name(s) of output(s) for test subject, one per path",
-      "value-key": "[OUT]",
+      "value-key": "[OUT_FILES]",
       "type": "String",
       "list": true,
       "optional": false,

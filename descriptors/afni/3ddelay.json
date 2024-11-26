@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Estimates the time delay between each voxel time series in a 3D+time dataset and a reference time series.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3ddelay [INPUT_FILE] [REFERENCE_FILE] [SAMPLING_FREQ] [STIM_PERIOD] [PREFIX] [POLORT_ORDER] [NODTRND_FLAG] [UNITS_SECONDS] [UNITS_DEGREES] [UNITS_RADIANS] [PHZWRP_FLAG] [NOPHZWRP_FLAG] [PHZREVERSE_FLAG] [PHASE_SCALE] [BIAS_FLAG] [NOBIAS_FLAG] [DSAMP_FLAG] [NODSAMP_FLAG] [MASK_FILE] [FIRST_IMG] [LAST_IMG] [CCT] [OUTPUT_ASC] [OUTPUT_ASCTS]",
+  "command-line": "3ddelay [INPUT_FILE] [REFERENCE_FILE] [SAMPLING_FREQ] [STIM_PERIOD] [PREFIX] [POLORT] [NODTRND] [UNITS_SECONDS] [UNITS_DEGREES] [UNITS_RADIANS] [PHZWRP] [NOPHZWRP] [PHZREVERSE] [PHZSCALE] [BIAS] [NOBIAS] [DSAMP] [NODSAMP] [MASK] [NFIRST] [NLAST] [CO] [ASC] [ASCTS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-polort",
       "description": "Detrend input time series with polynomial of specified order. Default is -1 for auto selection",
-      "value-key": "[POLORT_ORDER]",
+      "value-key": "[POLORT]",
       "type": "Number",
       "optional": true,
       "id": "polort",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-nodtrnd",
       "description": "Remove only the mean (equivalent to polort 0)",
-      "value-key": "[NODTRND_FLAG]",
+      "value-key": "[NODTRND]",
       "type": "Flag",
       "optional": true,
       "id": "nodtrnd",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-phzwrp",
       "description": "Wrap delay (or phase) values",
-      "value-key": "[PHZWRP_FLAG]",
+      "value-key": "[PHZWRP]",
       "type": "Flag",
       "optional": true,
       "id": "phzwrp",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-nophzwrp",
       "description": "Do not wrap phase (default)",
-      "value-key": "[NOPHZWRP_FLAG]",
+      "value-key": "[NOPHZWRP]",
       "type": "Flag",
       "optional": true,
       "id": "nophzwrp",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "-phzreverse",
       "description": "Reverse phase such that phase -> (T-phase)",
-      "value-key": "[PHZREVERSE_FLAG]",
+      "value-key": "[PHZREVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "phzreverse",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "-phzscale",
       "description": "Scale phase: phase -> phase*SC (default no scaling)",
-      "value-key": "[PHASE_SCALE]",
+      "value-key": "[PHZSCALE]",
       "type": "Number",
       "optional": true,
       "id": "phzscale",
@@ -137,7 +137,7 @@
     {
       "command-line-flag": "-bias",
       "description": "Do not correct for the bias in the estimates",
-      "value-key": "[BIAS_FLAG]",
+      "value-key": "[BIAS]",
       "type": "Flag",
       "optional": true,
       "id": "bias",
@@ -146,7 +146,7 @@
     {
       "command-line-flag": "-nobias",
       "description": "Correct for the bias in the estimates (default)",
-      "value-key": "[NOBIAS_FLAG]",
+      "value-key": "[NOBIAS]",
       "type": "Flag",
       "optional": true,
       "id": "nobias",
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "-dsamp",
       "description": "Correct for slice timing differences (default)",
-      "value-key": "[DSAMP_FLAG]",
+      "value-key": "[DSAMP]",
       "type": "Flag",
       "optional": true,
       "id": "dsamp",
@@ -164,7 +164,7 @@
     {
       "command-line-flag": "-nodsamp",
       "description": "Do not correct for slice timing differences",
-      "value-key": "[NODSAMP_FLAG]",
+      "value-key": "[NODSAMP]",
       "type": "Flag",
       "optional": true,
       "id": "nodsamp",
@@ -173,7 +173,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Filename of mask dataset. Only voxels with non-zero values in the mask will be considered",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -182,7 +182,7 @@
     {
       "command-line-flag": "-nfirst",
       "description": "Number of first dataset image to use in the delay estimate",
-      "value-key": "[FIRST_IMG]",
+      "value-key": "[NFIRST]",
       "type": "Number",
       "optional": true,
       "id": "nfirst",
@@ -191,7 +191,7 @@
     {
       "command-line-flag": "-nlast",
       "description": "Number of last dataset image to use in the delay estimate",
-      "value-key": "[LAST_IMG]",
+      "value-key": "[NLAST]",
       "type": "Number",
       "optional": true,
       "id": "nlast",
@@ -200,7 +200,7 @@
     {
       "command-line-flag": "-co",
       "description": "Cross Correlation Coefficient threshold value to limit ascii output",
-      "value-key": "[CCT]",
+      "value-key": "[CO]",
       "type": "Number",
       "optional": true,
       "id": "co",
@@ -209,7 +209,7 @@
     {
       "command-line-flag": "-asc",
       "description": "Write the results to an ascii file for voxels with cross correlation coefficients larger than CCT",
-      "value-key": "[OUTPUT_ASC]",
+      "value-key": "[ASC]",
       "type": "String",
       "optional": true,
       "id": "asc",
@@ -218,7 +218,7 @@
     {
       "command-line-flag": "-ascts",
       "description": "Write the results and time series to an ascii file for voxels with cross correlation coefficients larger than CCT",
-      "value-key": "[OUTPUT_ASCTS]",
+      "value-key": "[ASCTS]",
       "type": "String",
       "optional": true,
       "id": "ascts",

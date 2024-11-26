@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/afni_fat_tract_colorize.json",
   "description": "Visualize tractographic output from 3dTrackID, particularly in probabilistic mode.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@fat_tract_colorize [FILE_FA] [FILE_V1] [FILE_TR] [PREFIX] [IN_ULAY] [NO_VIEW_FLAG] [ONLY_VIEW_FLAG]",
+  "command-line": "@fat_tract_colorize [IN_FA] [IN_V1] [IN_TRACTS] [PREFIX] [IN_ULAY] [NO_VIEW] [ONLY_VIEW]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "FA values of the DT fitting, used to modulate the brightness of the RGB coloration.",
-      "value-key": "[FILE_FA]",
+      "value-key": "[IN_FA]",
       "type": "File",
       "optional": false,
       "id": "in_fa",
@@ -22,7 +22,7 @@
     },
     {
       "description": "First eigenvector of the DT fitting. A unit vector volume with 3 components (0-1 range).",
-      "value-key": "[FILE_V1]",
+      "value-key": "[IN_V1]",
       "type": "File",
       "optional": false,
       "id": "in_v1",
@@ -31,7 +31,7 @@
     },
     {
       "description": "The INDIMAP or PAIRMAP file output by 3dTrackID, specifying the subbrick if >1 (e.g., NAME_INDIMAP+orig'[0]').",
-      "value-key": "[FILE_TR]",
+      "value-key": "[IN_TRACTS]",
       "type": "String",
       "optional": false,
       "id": "in_tracts",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-no_view",
       "description": "Turn off auto-running of AFNI_SUMA commands to view the output immediately.",
-      "value-key": "[NO_VIEW_FLAG]",
+      "value-key": "[NO_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "no_view",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-only_view",
       "description": "Only view the data with AFNI+SUMA, assuming the command has been run before.",
-      "value-key": "[ONLY_VIEW_FLAG]",
+      "value-key": "[ONLY_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "only_view",

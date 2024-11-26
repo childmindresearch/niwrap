@@ -3,7 +3,7 @@
   "name": "@ROI_Corr_Mat",
   "author": "AFNI Developers",
   "description": "Script to produce an NxN ROI correlation matrix of N ROIs",
-  "command-line": "@ROI_Corr_Mat [TimeSeriesVol] [ROIVol] [output] [ROISEL] [zval_flag] [OPT] [dirty_flag] [keep_tmp_flag] [echo_flag] [verb_flag]",
+  "command-line": "@ROI_Corr_Mat [TS_VOL] [ROI_VOL] [PREFIX] [ROISEL] [ZVAL] [MAT_OPT] [DIRTY] [KEEP_TMP] [ECHO] [VERB]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Time series volume",
-      "value-key": "[TimeSeriesVol]",
+      "value-key": "[TS_VOL]",
       "type": "File",
       "optional": false,
       "id": "ts_vol",
@@ -20,7 +20,7 @@
     },
     {
       "description": "ROI volume",
-      "value-key": "[ROIVol]",
+      "value-key": "[ROI_VOL]",
       "type": "File",
       "optional": false,
       "id": "roi_vol",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Use output for a prefix",
-      "value-key": "[output]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Output a zscore version of the correlation matrix",
-      "value-key": "[zval_flag]",
+      "value-key": "[ZVAL]",
       "type": "Flag",
       "optional": true,
       "id": "zval",
@@ -56,7 +56,7 @@
     },
     {
       "description": "Output matrix in different manners",
-      "value-key": "[OPT]",
+      "value-key": "[MAT_OPT]",
       "type": "String",
       "optional": true,
       "id": "mat_opt",
@@ -65,7 +65,7 @@
     },
     {
       "description": "Keep temporary files",
-      "value-key": "[dirty_flag]",
+      "value-key": "[DIRTY]",
       "type": "Flag",
       "optional": true,
       "id": "dirty",
@@ -74,7 +74,7 @@
     },
     {
       "description": "Keep temporary files",
-      "value-key": "[keep_tmp_flag]",
+      "value-key": "[KEEP_TMP]",
       "type": "Flag",
       "optional": true,
       "id": "keep_tmp",
@@ -83,7 +83,7 @@
     },
     {
       "description": "Set echo (echo all commands to screen)",
-      "value-key": "[echo_flag]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -92,7 +92,7 @@
     },
     {
       "description": "Verbose flag",
-      "value-key": "[verb_flag]",
+      "value-key": "[VERB]",
       "type": "Flag",
       "optional": true,
       "id": "verb",

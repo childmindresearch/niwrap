@@ -3,7 +3,7 @@
   "name": "fslswapdim_exe",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to swap the x, y, z axes dimensions of an image",
-  "command-line": "fslswapdim_exe [INPUT_FILE] [AXIS_A] [AXIS_B] [AXIS_C] [OUTPUT_FILE] [CHECK_LR_FLAG]",
+  "command-line": "fslswapdim_exe [INPUT_FILE] [AXIS_A] [AXIS_B] [AXIS_C] [OUTPUT_FILE] [CHECKLR_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--checkLR",
       "description": "Option to check if the specified arguments lead to a Left-Right swap or not, cannot be used with an output name",
-      "value-key": "[CHECK_LR_FLAG]",
+      "value-key": "[CHECKLR_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "checkLR_flag",

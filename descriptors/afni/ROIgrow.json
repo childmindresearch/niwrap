@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni/tree/master/src/ROIgrow",
   "description": "A program to expand an ROI on the surface.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "ROIgrow [SURF] [ROI_LABELS] [LIM] [PREFIX] [FULL_LIST_FLAG] [GROW_FROM_EDGE_FLAG] [INSPHERE_DIA] [INBOX_EDGES]",
+  "command-line": "ROIgrow [INPUT_SURFACE] [ROI_LABELS] [LIM_DISTANCE] [OUTPUT_PREFIX] [FULL_LIST] [GROW_FROM_EDGE] [INSPHERE_DIAMETER] [INBOX_EDGES]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Specify input surface. You can also use -t* and -spec and -surf methods to input surfaces.",
-      "value-key": "[SURF]",
+      "value-key": "[INPUT_SURFACE]",
       "type": "String",
       "optional": false,
       "command-line-flag": "-i_TYPE",
@@ -31,7 +31,7 @@
     },
     {
       "description": "Distance to cover from each node. The units of LIM are those of the surface's node coordinates. Distances are calculated along the surface's mesh.",
-      "value-key": "[LIM]",
+      "value-key": "[LIM_DISTANCE]",
       "type": "Number",
       "optional": false,
       "command-line-flag": "-lim",
@@ -40,7 +40,7 @@
     },
     {
       "description": "Prefix of 1D output dataset. Default is ROIgrow",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "command-line-flag": "-prefix",
@@ -49,7 +49,7 @@
     },
     {
       "description": "Output a row for each node on the surface. Nodes not in the grown ROI, receive a 0 for a label. This option is ONLY for use with -roi_labels.",
-      "value-key": "[FULL_LIST_FLAG]",
+      "value-key": "[FULL_LIST]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-full_list",
@@ -58,7 +58,7 @@
     },
     {
       "description": "Grow ROIs from their edges rather than the brute force default. This might make the program faster on large ROIs and large surfaces.",
-      "value-key": "[GROW_FROM_EDGE_FLAG]",
+      "value-key": "[GROW_FROM_EDGE]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-grow_from_edge",
@@ -67,7 +67,7 @@
     },
     {
       "description": "Diameter of the sphere inside which nodes are added instead of growing along the surface.",
-      "value-key": "[INSPHERE_DIA]",
+      "value-key": "[INSPHERE_DIAMETER]",
       "type": "Number",
       "optional": true,
       "command-line-flag": "-insphere",

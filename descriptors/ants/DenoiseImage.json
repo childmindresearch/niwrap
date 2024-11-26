@@ -1,12 +1,15 @@
 {
   "name": "DenoiseImage",
-  "command-line": "DenoiseImage [IMAGE_DIMENSIONALITY] [NOISE_MODEL] [SHRINK_FACTOR] [MASK_IMAGE] [PATCH_RADIUS] [SEARCH_RADIUS] [VERBOSE] [INPUT_IMAGE]   --output [[CORRECTED_IMAGE],[NOISE_IMAGE]]",
+  "command-line": "DenoiseImage [IMAGE_DIMENSIONALITY] [NOISE_MODEL] [SHRINK_FACTOR] [MASK_IMAGE] [PATCH_RADIUS] [SEARCH_RADIUS] [VERBOSE] [INPUT_IMAGE]   --output [[CORRECTED_IMAGE_PATH],[NOISE_IMAGE_PATH]]",
   "author": "ANTs Developers",
   "description": "Denoise an image using a spatially adaptive filter originally described in J. V. Manjon, P. Coupe, Luis Marti-Bonmati, D. L. Collins, and M. Robles. Adaptive Non-Local Means Denoising of MR Images With Spatially Varying Noise Levels, Journal of Magnetic Resonance Imaging, 31:192-203, June 2010.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
-  "container-image": { "type": "docker", "image": "antsx/ants:v2.5.3" },
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
   "inputs": [
     {
       "id": "image_dimensionality",
@@ -89,7 +92,7 @@
     {
       "id": "corrected_image_path",
       "name": "Corrected image path",
-      "value-key": "[CORRECTED_IMAGE]",
+      "value-key": "[CORRECTED_IMAGE_PATH]",
       "type": "String",
       "optional": false,
       "description": "The noise corrected version of the input image."
@@ -97,7 +100,7 @@
     {
       "id": "noise_image_path",
       "name": "Noise image path",
-      "value-key": "[NOISE_IMAGE]",
+      "value-key": "[NOISE_IMAGE_PATH]",
       "type": "String",
       "optional": false,
       "description": "Estimated noise image."

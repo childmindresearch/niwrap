@@ -1,6 +1,6 @@
 {
   "name": "mri_polv",
-  "command-line": "mri_polv [WINDOW_SIZE] <input image> <output image>",
+  "command-line": "mri_polv [WINDOW_SIZE] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "description": "Calculate an image specifying the plane of least variance at each point in the input image.",
   "schema-version": "0.5",
   "inputs": [
@@ -9,7 +9,7 @@
       "name": "Input Image",
       "type": "File",
       "description": "The input image file for processing.",
-      "value-key": "<input image>",
+      "value-key": "[INPUT_IMAGE]",
       "optional": false
     },
     {
@@ -17,7 +17,7 @@
       "name": "Output Image",
       "type": "File",
       "description": "The output image file specifying the plane of least variance.",
-      "value-key": "<output image>",
+      "value-key": "[OUTPUT_IMAGE]",
       "optional": false
     },
     {

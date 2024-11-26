@@ -3,7 +3,7 @@
   "name": "3dPVmap",
   "author": "AFNI Developers",
   "description": "Computes the first two principal component vectors of a time series dataset, then outputs the R-squared coefficient of each voxel time series with these first two components.",
-  "command-line": "3dPVmap [PREFIX] [MASK] [AUTOMASK_FLAG] [INPUT_DATASET]",
+  "command-line": "3dPVmap [PREFIX] [MASK] [AUTOMASK] [INPUTDATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Automatically generate a mask from the input dataset",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -38,7 +38,7 @@
     },
     {
       "description": "Input dataset (e.g., fred.nii)",
-      "value-key": "[INPUT_DATASET]",
+      "value-key": "[INPUTDATASET]",
       "type": "File",
       "optional": false,
       "id": "inputdataset",

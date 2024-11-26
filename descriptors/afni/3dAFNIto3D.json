@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-bin",
       "description": "Write data in binary format",
-      "value-key": "[BINARY_FLAG]",
+      "value-key": "[BINARY]",
       "type": "Flag",
       "optional": true,
       "id": "binary",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-txt",
       "description": "Write data in text format",
-      "value-key": "[TEXT_FLAG]",
+      "value-key": "[TEXT]",
       "type": "Flag",
       "optional": true,
       "id": "text",

@@ -3,7 +3,7 @@
   "name": "FATCAT_matplot",
   "author": "AFNI Developers",
   "description": "Launch a shiny app to visualize .netcc and/or .grid files.",
-  "command-line": "FATCAT_matplot [DIRECTORY] [SHINY_FOLDER_FLAG]",
+  "command-line": "FATCAT_matplot [DIRECTORY] [SHINY_FOLDER]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-ShinyFolder",
       "description": "Use a custom shiny folder (for testing purposes).",
-      "value-key": "[SHINY_FOLDER_FLAG]",
+      "value-key": "[SHINY_FOLDER]",
       "type": "Flag",
       "optional": true,
       "id": "shiny_folder",

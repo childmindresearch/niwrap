@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Apply a 3D 'Winsorizing' filter to a short-valued dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dWinsor [IRAD] [CBOT] [CTOP] [NREP] [KEEPZERO_FLAG] [CLIP] [PREFIX] [MASK] [DATASET]",
+  "command-line": "3dWinsor [IRAD] [CBOT] [CTOP] [NREP] [KEEPZERO] [CLIP] [PREFIX] [MASK] [DATASET]",
   "inputs": [
     {
       "description": "Include all points within 'distance' rr in the operation, where distance is defined as sqrt(i*i+j*j+k*k), and (i,j,k) are voxel index offsets.",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-keepzero",
       "description": "Don't filter voxels that are zero.",
-      "value-key": "[KEEPZERO_FLAG]",
+      "value-key": "[KEEPZERO]",
       "type": "Flag",
       "optional": true,
       "id": "keepzero",

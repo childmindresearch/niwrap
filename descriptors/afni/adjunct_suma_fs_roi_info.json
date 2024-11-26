@@ -3,11 +3,11 @@
   "name": "adjunct_suma_fs_roi_info",
   "author": "AFNI Developers",
   "description": "Script for making ROI stats for the SUMA/ directory created by @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.",
-  "command-line": "adjunct_suma_fs_roi_info [SUBJ_ID] [SUMA_DIR] [HELP_FLAG] [HVIEW_FLAG] [VERSION_FLAG]",
+  "command-line": "adjunct_suma_fs_roi_info [SUBJECT_ID] [SUMA_DIRECTORY] [HELP] [HVIEW] [VERSION]",
   "inputs": [
     {
       "description": "Subject ID",
-      "value-key": "[SUBJ_ID]",
+      "value-key": "[SUBJECT_ID]",
       "command-line-flag": "-sid",
       "type": "String",
       "optional": false,
@@ -16,7 +16,7 @@
     },
     {
       "description": "SUMA directory output by AFNI's @SUMA_Make_Spec_FS",
-      "value-key": "[SUMA_DIR]",
+      "value-key": "[SUMA_DIRECTORY]",
       "command-line-flag": "-suma_dir",
       "type": "String",
       "optional": false,
@@ -25,7 +25,7 @@
     },
     {
       "description": "Show help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "command-line-flag": "-help",
       "type": "Flag",
       "optional": true,
@@ -34,7 +34,7 @@
     },
     {
       "description": "Show help in text editor",
-      "value-key": "[HVIEW_FLAG]",
+      "value-key": "[HVIEW]",
       "command-line-flag": "-hview",
       "type": "Flag",
       "optional": true,
@@ -43,7 +43,7 @@
     },
     {
       "description": "Show version",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "command-line-flag": "-ver",
       "type": "Flag",
       "optional": true,

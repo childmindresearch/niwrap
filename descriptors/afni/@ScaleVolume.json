@@ -3,11 +3,11 @@
   "name": "@ScaleVolume",
   "author": "AFNI Developers",
   "description": "A tool to scale the volume of datasets",
-  "command-line": "@ScaleVolume [<-input DSET>] [<-prefix PREFIX>] [VAL_CLIP] [PERC_CLIP] [SCALE_BY_MEAN_FLAG] [SCALE_BY_MEDIAN_FLAG] [NORM_FLAG] [MASK]",
+  "command-line": "@ScaleVolume [INPUT_DSET] [PREFIX] [VAL_CLIP] [PERC_CLIP] [SCALE_BY_MEAN] [SCALE_BY_MEDIAN] [NORM] [MASK]",
   "inputs": [
     {
       "description": "Dataset to scale",
-      "value-key": "[<-input DSET>]",
+      "value-key": "[INPUT_DSET]",
       "type": "File",
       "optional": false,
       "id": "input_dset",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Prefix of output",
-      "value-key": "[<-prefix PREFIX>]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-scale_by_mean",
       "description": "Divide each sub-brick by mean of non-zero voxels",
-      "value-key": "[SCALE_BY_MEAN_FLAG]",
+      "value-key": "[SCALE_BY_MEAN]",
       "type": "Flag",
       "optional": true,
       "id": "scale_by_mean",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-scale_by_median",
       "description": "Divide each sub-brick by median of non-zero voxels",
-      "value-key": "[SCALE_BY_MEDIAN_FLAG]",
+      "value-key": "[SCALE_BY_MEDIAN]",
       "type": "Flag",
       "optional": true,
       "id": "scale_by_median",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-norm",
       "description": "For each time series T, Tnorm = (T - mean(T)) / stdev(T)",
-      "value-key": "[NORM_FLAG]",
+      "value-key": "[NORM]",
       "type": "Flag",
       "optional": true,
       "id": "norm",

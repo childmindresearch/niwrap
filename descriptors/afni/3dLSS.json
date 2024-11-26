@@ -10,7 +10,7 @@
   },
   "inputs": [
     {
-      "value-key": "[MMM]",
+      "value-key": "[MATRIX]",
       "description": "Read the matrix 'mmm', which should have been output from 3dDeconvolve via the '-x1D' option. It should have included exactly one '-stim_times_IM' option.",
       "type": "File",
       "command-line-flag": "-matrix",
@@ -19,7 +19,7 @@
       "name": "Matrix File"
     },
     {
-      "value-key": "[DDD]",
+      "value-key": "[INPUT]",
       "description": "Read time series dataset 'ddd'.",
       "type": "File",
       "command-line-flag": "-input",
@@ -37,7 +37,7 @@
       "name": "No Data Flag"
     },
     {
-      "value-key": "[MMM]",
+      "value-key": "[MASK]",
       "description": "Dataset 'MMM' will be used as a mask for the input; voxels outside the mask will not be fit by the regression model.",
       "type": "File",
       "command-line-flag": "-mask",
@@ -55,7 +55,7 @@
       "value-key": "[AUTOMASK]"
     },
     {
-      "value-key": "[PPP]",
+      "value-key": "[PREFIX]",
       "description": "Prefix name for the output dataset; this dataset will contain ONLY the LSS estimates of the beta weights for the '-stim_times_IM' stimuli.",
       "type": "String",
       "command-line-flag": "-prefix",
@@ -64,7 +64,7 @@
       "name": "Output Prefix"
     },
     {
-      "value-key": "[QQQ]",
+      "value-key": "[SAVE1D]",
       "description": "Save the estimator vectors to a 1D formatted file named 'qqq'.",
       "type": "String",
       "command-line-flag": "-save1D",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/3dSeg",
   "description": "Segments brain volumes into tissue classes with optional global and voxelwise priors.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSeg [ANAT] [MASK] [BLUR_METH] [BIAS_FWHM] [CLASSES] [BMRF] [BIAS_CLASSES] [PREFIX] [OVERWRITE] [DEBUG] [MIXFRAC] [MIXFLOOR] [GOLD] [GOLD_BIAS] [MAIN_N] [CSET] [LABEL_TABLE] [VOX_DEBUG] [VOX_DEBUG_FILE]",
+  "command-line": "3dSeg [ANAT] [MASK] [BLUR_METH] [BIAS_FWHM] [CLASSES] [BMRF] [BIAS_CLASSES] [PREFIX] [OVERWRITE] [DEBUG] [MIXFRAC] [MIXFLOOR] [GOLD] [GOLD_BIAS] [MAIN_N] [CSET] [LABELTABLE] [VOX_DEBUG] [VOX_DEBUG_FILE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "-labeltable",
       "description": "Label table containing integer keys and corresponding labels.",
-      "value-key": "[LABEL_TABLE]",
+      "value-key": "[LABELTABLE]",
       "type": "File",
       "optional": true,
       "id": "labeltable",

@@ -1,12 +1,12 @@
 {
   "name": "mri_head",
-  "command-line": "mri_head [IDENTIFY_FLAG] [READ_FLAG] [FILENAME] [HELP_FLAG]",
+  "command-line": "mri_head [IDENTIFY] [READ] [FILENAME] [QUESTION_MARK_HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-identify",
       "description": "Identify the MRI file",
-      "value-key": "[IDENTIFY_FLAG]",
+      "value-key": "[IDENTIFY]",
       "type": "Flag",
       "optional": true,
       "id": "identify",
@@ -15,7 +15,7 @@
     {
       "command-line-flag": "-read",
       "description": "Read the MRI file",
-      "value-key": "[READ_FLAG]",
+      "value-key": "[READ]",
       "type": "Flag",
       "optional": true,
       "id": "read",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-h",
       "description": "Display help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-u",
       "description": "Display usage information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[USAGE]",
       "type": "Flag",
       "optional": true,
       "id": "usage",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-?",
       "description": "Display help or usage information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[QUESTION_MARK_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "question_mark_help",

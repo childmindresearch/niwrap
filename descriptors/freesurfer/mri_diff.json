@@ -3,7 +3,7 @@
   "name": "mri_diff",
   "author": "FreeSurfer Developers",
   "description": "Determines whether two volumes differ based on dimensions, resolutions, acquisition parameters, geometry, precision, and pixel data.",
-  "command-line": "mri_diff [VOL1FILE] [VOL2FILE] [CHECK_RESOLUTION_FLAG] [CHECK_ACQUISITION_FLAG] [CHECK_GEOMETRY_FLAG] [CHECK_PRECISION_FLAG] [CHECK_PIXEL_FLAG] [CHECK_ORIENTATION_FLAG] [FILE_TYPE_DIFF_FLAG] [NO_EXIT_ON_DIFF_FLAG] [QA_FLAG] [PIX_ONLY_FLAG] [ABSDIFF_FLAG] [NO_ABSDIFF_FLAG] [DIFFABS_FLAG] [DIFFPCT_FLAG] [RSS_FLAG] [SSD_FLAG] [RMS_FLAG] [COUNT_FLAG] [THRESH] [COUNT_THRESH] [LOG] [DIFF] [SUSPICIOUS_DIFF_VOL] [SEGDIFF] [MERGE_EDITS] [AVG_DIFF] [DEBUG_FLAG] [VERBOSE_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_diff [VOL1FILE] [VOL2FILE] [RESOLUTION_CHECK] [ACQUISITION_PARAM_CHECK] [GEOMETRY_CHECK] [PRECISION_CHECK] [PIXEL_CHECK] [ORIENTATION_CHECK] [FILE_TYPE_DIFF_CHECK] [NO_EXIT_ON_DIFF] [QUALITY_ASSURANCE] [PIXEL_ONLY] [ABS_DIFFERENCE] [NO_ABS_DIFFERENCE] [DIFFERENCE_ABS] [PERCENTAGE_DIFFERENCE] [RSS_SAVE] [SSD_PRINT] [RMS_PRINT] [COUNT_DIFF_VOXELS] [PIXEL_THRESHOLD] [COUNT_THRESH_VOXELS] [LOG_FILE] [DIFFERENCE_IMAGE] [SUSPICIOUS_DIFF_VOLUME] [SEGMENTATION_DIFF] [MERGE_EDITS] [AVERAGE_DIFFERENCE] [DEBUG_MODE] [VERBOSE_MODE] [CHECK_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "--notallow-res",
       "description": "Do not check for resolution differences.",
-      "value-key": "[CHECK_RESOLUTION_FLAG]",
+      "value-key": "[RESOLUTION_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "resolution_check",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "--notallow-acq",
       "description": "Do not check for acquisition parameter differences.",
-      "value-key": "[CHECK_ACQUISITION_FLAG]",
+      "value-key": "[ACQUISITION_PARAM_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "acquisition_param_check",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "--notallow-geo",
       "description": "Do not check for geometry differences.",
-      "value-key": "[CHECK_GEOMETRY_FLAG]",
+      "value-key": "[GEOMETRY_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "geometry_check",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "--notallow-prec",
       "description": "Do not check for precision differences.",
-      "value-key": "[CHECK_PRECISION_FLAG]",
+      "value-key": "[PRECISION_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "precision_check",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "--notallow-pix",
       "description": "Do not check for pixel differences.",
-      "value-key": "[CHECK_PIXEL_FLAG]",
+      "value-key": "[PIXEL_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "pixel_check",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "--notallow-ori",
       "description": "Do not check for orientation differences.",
-      "value-key": "[CHECK_ORIENTATION_FLAG]",
+      "value-key": "[ORIENTATION_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "orientation_check",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "--notallow-type",
       "description": "Do not check for file type differences.",
-      "value-key": "[FILE_TYPE_DIFF_FLAG]",
+      "value-key": "[FILE_TYPE_DIFF_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "file_type_diff_check",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "--no-exit-on-diff",
       "description": "Do not exit on difference; run through everything.",
-      "value-key": "[NO_EXIT_ON_DIFF_FLAG]",
+      "value-key": "[NO_EXIT_ON_DIFF]",
       "type": "Flag",
       "optional": true,
       "id": "no_exit_on_diff",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "--qa",
       "description": "Check resolution, acquisition, precision, and orientation only.",
-      "value-key": "[QA_FLAG]",
+      "value-key": "[QUALITY_ASSURANCE]",
       "type": "Flag",
       "optional": true,
       "id": "quality_assurance",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "--pix-only",
       "description": "Only check pixel data.",
-      "value-key": "[PIX_ONLY_FLAG]",
+      "value-key": "[PIXEL_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "pixel_only",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "--absdiff",
       "description": "Take absolute value of difference (default).",
-      "value-key": "[ABSDIFF_FLAG]",
+      "value-key": "[ABS_DIFFERENCE]",
       "type": "Flag",
       "optional": true,
       "id": "abs_difference",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "--no-absdiff",
       "description": "Do not take absolute value of difference.",
-      "value-key": "[NO_ABSDIFF_FLAG]",
+      "value-key": "[NO_ABS_DIFFERENCE]",
       "type": "Flag",
       "optional": true,
       "id": "no_abs_difference",
@@ -137,7 +137,7 @@
     {
       "command-line-flag": "--diffabs",
       "description": "Take absolute value before computing difference.",
-      "value-key": "[DIFFABS_FLAG]",
+      "value-key": "[DIFFERENCE_ABS]",
       "type": "Flag",
       "optional": true,
       "id": "difference_abs",
@@ -146,7 +146,7 @@
     {
       "command-line-flag": "--diffpct",
       "description": "Compute percentage difference: 100*(v1-v2)/((v1+v2)/2).",
-      "value-key": "[DIFFPCT_FLAG]",
+      "value-key": "[PERCENTAGE_DIFFERENCE]",
       "type": "Flag",
       "optional": true,
       "id": "percentage_difference",
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "--rss",
       "description": "Save square root sum squares with --diff.",
-      "value-key": "[RSS_FLAG]",
+      "value-key": "[RSS_SAVE]",
       "type": "Flag",
       "optional": true,
       "id": "rss_save",
@@ -164,7 +164,7 @@
     {
       "command-line-flag": "--ssd",
       "description": "Print sum squared differences over all voxels.",
-      "value-key": "[SSD_FLAG]",
+      "value-key": "[SSD_PRINT]",
       "type": "Flag",
       "optional": true,
       "id": "ssd_print",
@@ -173,7 +173,7 @@
     {
       "command-line-flag": "--rms",
       "description": "Print root mean squared difference over all non-zero voxels.",
-      "value-key": "[RMS_FLAG]",
+      "value-key": "[RMS_PRINT]",
       "type": "Flag",
       "optional": true,
       "id": "rms_print",
@@ -182,7 +182,7 @@
     {
       "command-line-flag": "--count",
       "description": "Print number of differing voxels.",
-      "value-key": "[COUNT_FLAG]",
+      "value-key": "[COUNT_DIFF_VOXELS]",
       "type": "Flag",
       "optional": true,
       "id": "count_diff_voxels",
@@ -191,7 +191,7 @@
     {
       "command-line-flag": "--thresh",
       "description": "Pixel differences must be greater than this value to be considered different.",
-      "value-key": "[THRESH]",
+      "value-key": "[PIXEL_THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "pixel_threshold",
@@ -200,7 +200,7 @@
     {
       "command-line-flag": "--count-thresh",
       "description": "There must be at least this many voxels that are different.",
-      "value-key": "[COUNT_THRESH]",
+      "value-key": "[COUNT_THRESH_VOXELS]",
       "type": "Number",
       "optional": true,
       "id": "count_thresh_voxels",
@@ -209,7 +209,7 @@
     {
       "command-line-flag": "--log",
       "description": "Store difference information in this log file.",
-      "value-key": "[LOG]",
+      "value-key": "[LOG_FILE]",
       "type": "String",
       "optional": true,
       "id": "log_file",
@@ -218,7 +218,7 @@
     {
       "command-line-flag": "--diff",
       "description": "Save difference image to specified volume.",
-      "value-key": "[DIFF]",
+      "value-key": "[DIFFERENCE_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "difference_image",
@@ -227,7 +227,7 @@
     {
       "command-line-flag": "--diff_label_suspicious",
       "description": "Differing voxels replaced with label SUSPICIOUS in the specified volume.",
-      "value-key": "[SUSPICIOUS_DIFF_VOL]",
+      "value-key": "[SUSPICIOUS_DIFF_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "suspicious_diff_volume",
@@ -236,7 +236,7 @@
     {
       "command-line-flag": "--segdiff",
       "description": "Perform diff on voxels with specific label index.",
-      "value-key": "[SEGDIFF]",
+      "value-key": "[SEGMENTATION_DIFF]",
       "type": "String",
       "optional": true,
       "id": "segmentation_diff",
@@ -254,7 +254,7 @@
     {
       "command-line-flag": "--avg-diff",
       "description": "Save average difference to specified file.",
-      "value-key": "[AVG_DIFF]",
+      "value-key": "[AVERAGE_DIFFERENCE]",
       "type": "String",
       "optional": true,
       "id": "average_difference",
@@ -263,7 +263,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debugging mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "debug_mode",
@@ -272,7 +272,7 @@
     {
       "command-line-flag": "--verbose",
       "description": "Print information on all differences found.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose_mode",
@@ -281,7 +281,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options and exit without running anything.",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",

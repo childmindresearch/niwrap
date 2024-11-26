@@ -3,7 +3,7 @@
   "name": "tractstats2table",
   "author": "FreeSurfer Developers",
   "description": "Converts a track overall stats file created by tracula into a table used for group statistics.",
-  "command-line": "tractstats2table [INPUTS] [LOAD_PATHSTATS_FROM_FILE] [OVERALL_FLAG] [BYVOXEL_FLAG] [BYVOXEL_MEASURE] [TABLEFILE] [DELIMITER] [TRANSPOSE_FLAG] [DEBUG_FLAG]",
+  "command-line": "tractstats2table [INPUTS] [LOAD_PATHSTATS_FROM_FILE] [OVERALL] [BYVOXEL] [BYVOXEL_MEASURE] [TABLEFILE] [DELIMITER] [TRANSPOSE] [DEBUG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-o",
       "description": "Operate on the overall path statistics.",
-      "value-key": "[OVERALL_FLAG]",
+      "value-key": "[OVERALL]",
       "type": "Flag",
       "optional": true,
       "id": "overall",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-b",
       "description": "Operate on the byvoxel path statistics.",
-      "value-key": "[BYVOXEL_FLAG]",
+      "value-key": "[BYVOXEL]",
       "type": "Flag",
       "optional": true,
       "id": "byvoxel",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "--transpose",
       "description": "Transpose the table (default is subject in rows and measures/count in cols).",
-      "value-key": "[TRANSPOSE_FLAG]",
+      "value-key": "[TRANSPOSE]",
       "type": "Flag",
       "optional": true,
       "id": "transpose",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "-v",
       "description": "Increase verbosity.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

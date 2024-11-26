@@ -3,7 +3,7 @@
   "name": "3dLocalSVD",
   "author": "AFNI Developers",
   "description": "Computes the SVD of time series from a neighborhood of each voxel.",
-  "command-line": "3dLocalSVD [AUTO_MASK] [INPUT_FILE] [MASK] [OUTPUT_FILE] [NBHD] [POLORT] [VNORM] [VPROJ]",
+  "command-line": "3dLocalSVD [AUTO_MASK] [INPUT_FILE] [MASK_FILE] [OUTPUT_FILE] [NBHD] [POLORT] [VNORM] [VPROJ]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -29,7 +29,7 @@
     },
     {
       "description": "Restrict operations to this mask dataset",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_FILE]",
       "type": "File",
       "optional": true,
       "id": "mask_file",

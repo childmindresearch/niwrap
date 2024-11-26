@@ -3,7 +3,7 @@
   "name": "@djunct_modal_smoothing_with_rep",
   "author": "AFNI Developers",
   "description": "A script to perform modal smoothing of ROI maps and check for eliminated ROIs. If any ROIs are eliminated during smoothing, they are restored, potentially in a degraded form.",
-  "command-line": "@djunct_modal_smoothing_with_rep [INPUT_FILE] [OUTPUT_PREFIX] [MODESMOOTH_VALUE] [HELP_VIEW_FLAG] [HELP_FLAG] [VERSION_FLAG] [OVERWRITE_FLAG] [NO_CLEAN_FLAG]",
+  "command-line": "@djunct_modal_smoothing_with_rep [INPUT_FILE] [OUTPUT_PREFIX] [MODESMOOTH] [HELP_VIEW] [HELP] [VERSION] [OVERWRITE] [NO_CLEAN]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-modesmooth",
       "description": "Fill in X in: 3dLocalstat -nbhd \"SPHERE(-X)\" ...",
-      "value-key": "[MODESMOOTH_VALUE]",
+      "value-key": "[MODESMOOTH]",
       "type": "Number",
       "optional": true,
       "id": "modesmooth",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-hview",
       "description": "Display help in a viewable format",
-      "value-key": "[HELP_VIEW_FLAG]",
+      "value-key": "[HELP_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "help_view",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-help",
       "description": "Display help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Display version information",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-overwrite",
       "description": "Overwrite existing output files",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-no_clean",
       "description": "Do not clean up intermediate files",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NO_CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "no_clean",

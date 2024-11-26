@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-vnorm",
       "description": "L2 normalize all time series before SVD",
-      "value-key": "[VNORM_FLAG]",
+      "value-key": "[VNORM]",
       "type": "Flag",
       "optional": true,
       "id": "vnorm",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-sval",
       "description": "Output singular vectors 0 .. a (default a=0 = first one only)",
-      "value-key": "[SVAL_OUTPUT]",
+      "value-key": "[SVAL]",
       "type": "Number",
       "optional": true,
       "id": "sval",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Automatic mask definition",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-ort",
       "description": "Time series to remove from the data before SVD-ization. You can give more than 1 '-ort' option. 'xx.1D' can contain more than 1 column.",
-      "value-key": "[ORT_FILE]",
+      "value-key": "[ORT]",
       "type": "File",
       "optional": true,
       "list": true,

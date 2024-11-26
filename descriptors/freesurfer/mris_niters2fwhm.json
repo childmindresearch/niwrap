@@ -3,7 +3,7 @@
   "name": "mris_niters2fwhm",
   "author": "FreeSurfer Developers",
   "description": "Convert number of iterations to full width at half maximum (FWHM) for surface.",
-  "command-line": "mris_niters2fwhm [SUBJECT] [HEMI] [SURF] [DOF] [NITERS] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mris_niters2fwhm [SUBJECT] [HEMI] [SURF] [DOF] [NITERS] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print out information on how to use this program",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--interp, -interp",
       "description": "Interpolation method; options are nearestneighbour (or nn), trilinear, spline, sinc; default is sinc",
-      "value-key": "[INTERP_METHOD]",
+      "value-key": "[INTERPOLATION_METHOD]",
       "type": "String",
       "optional": true,
       "id": "interpolation_method",

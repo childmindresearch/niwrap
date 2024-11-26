@@ -1,7 +1,7 @@
 {
   "name": "mris_place_surface",
   "description": "This program positions the triangular mesh representing a cortical surface, either the 'white' surface (ie, white/gray boundary) or the 'pial' surface (ie, the gray/csf boundary).",
-  "command-line": "mris_place_surface [OUTPUT_SURFACE] [INPUT_SURFACE] [AUTODETECT_GRAY_WHITE_STATS] [INPUT_VOLUME] [SURFACE_TYPE_GROUP] [HEMI_GROUP] [WHITE_MATTER_SEG] [OUT_VOLUME] [OUT_VOLUME_ONLY] [RESTORE_255] [SEGMENTATION] [CORTICAL_PARCELLATION] [NSMOOTH] [SMOOTH_AFTER_RIP] [MAX_CBV_DIST] [RIP_LABEL] [RIP_MIDLINE] [RIP_BG] [RIP_BG_NO_ANNOT] [NO_RIP_FREEZE] [RIP_WMSA] [RIP_LESION] [NO_RIP] [RIP_OVERLAY] [RIP_SURFACE] [RIP_PROJECTION] [REPULSE_SURFACE] [WHITE_SURFACE] [BLEND_SURFACE] [MULTIMODAL_INPUT] [MM_REFINE] [PIN_MEDIAL_WALL] [NO_INTENSITY_PROC] [DEBUG_VERTEX] [RIPFLAG_OUT] [LOCAL_MAX] [TARGET_SURF] [STOP_MASK] [MM_MIN_MAX_INSIDE_OUTSIDE] [COVER_SEG] [FIRST_PEAK_D1] [FIRST_PEAK_D2] [WHITE_BORDER_LOW_FACTOR] [FILL_LAT_VENTS] [COST_FUNCTION_ARGS]",
+  "command-line": "mris_place_surface [OUTPUT_SURFACE] [INPUT_SURFACE] [AUTODETECT_GRAY_WHITE_STATS] [INPUT_VOLUME] [SURFACE_TYPE_GROUP] [HEMI_GROUP] [WM_SEGMENT] [OUT_VOLUME] [OUT_VOLUME_ONLY] [RESTORE_255] [SEGMENTATION] [CORTICAL_PARCELLATION] [NSMOOTH] [SMOOTH_AFTER_RIP] [MAX_CBV_DIST] [RIP_LABEL] [RIP_MIDLINE] [RIP_BG] [RIP_BG_NO_ANNOT] [NO_RIP_FREEZE] [RIP_WMSA] [RIP_LESION] [NO_RIP] [RIP_OVERLAY] [RIP_SURFACE] [RIP_PROJECTION] [REPULSE_SURFACE] [WHITE_SURFACE] [BLEND_SURFACE] [MULTIMODAL_INPUT] [MM_REFINE] [PIN_MEDIAL_WALL] [NO_INTENSITY_PROC] [DEBUG_VERTEX] [RIPFLAG_OUT] [LOCAL_MAX] [TARGET_SURF] [STOP_MASK] [MM_INTENSITY_LIMITS] [COVER_SEG] [FIRST_PEAK_D1] [FIRST_PEAK_D2] [WHITE_BORDER_LOW_FACTOR] [FILL_LATERAL_VENTRICLES] [COST_FUNCTION_ARGS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -60,7 +60,7 @@
     },
     {
       "description": "White matter segmentation",
-      "value-key": "[WHITE_MATTER_SEG]",
+      "value-key": "[WM_SEGMENT]",
       "command-line-flag": "--wm",
       "optional": true,
       "type": "String",
@@ -351,7 +351,7 @@
     },
     {
       "description": "Intensity limits for placing pial on multimodal input.",
-      "value-key": "[MM_MIN_MAX_INSIDE_OUTSIDE]",
+      "value-key": "[MM_INTENSITY_LIMITS]",
       "command-line-flag": "--mm_{min,max}_{inside,outside}",
       "optional": true,
       "type": "String",
@@ -396,7 +396,7 @@
     },
     {
       "description": "Fill lateral ventricles with 110.",
-      "value-key": "[FILL_LAT_VENTS]",
+      "value-key": "[FILL_LATERAL_VENTRICLES]",
       "command-line-flag": "--fill-lat-vents",
       "optional": true,
       "type": "Number",

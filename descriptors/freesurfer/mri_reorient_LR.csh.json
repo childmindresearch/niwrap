@@ -1,12 +1,12 @@
 {
   "name": "mri_reorient_LR.csh",
-  "command-line": "mri_reorient_LR [INPUT_FILE] [OUTPUT_FILE] [DISP_FLAG] [CLEAN_FLAG] [OUTREG_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_reorient_LR [INPUT_VOL] [OUTPUT_VOL] [DISPLAY_RESULT] [CLEAN_FILES] [OUTPUT_REGISTRATION] [VERSION] [HELP]",
   "schema-version": "0.5",
   "description": "A script to reorient MRI volumes from left-right orientation.",
   "inputs": [
     {
       "description": "Input file to be reoriented",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_VOL]",
       "type": "File",
       "optional": false,
       "id": "input_vol",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Reoriented input file",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUT_VOL]",
       "type": "String",
       "optional": false,
       "id": "output_vol",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "--disp",
       "description": "Display registration result using FreeView",
-      "value-key": "[DISP_FLAG]",
+      "value-key": "[DISPLAY_RESULT]",
       "type": "Flag",
       "optional": true,
       "id": "display_result",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "--clean",
       "description": "Delete all auxiliary and registration files",
-      "value-key": "[CLEAN_FLAG]",
+      "value-key": "[CLEAN_FILES]",
       "type": "Flag",
       "optional": true,
       "id": "clean_files",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--outreg",
       "description": "Write out the registration file that is applied to the reoriented input file (fslmat or lta)",
-      "value-key": "[OUTREG_FLAG]",
+      "value-key": "[OUTPUT_REGISTRATION]",
       "type": "Flag",
       "optional": true,
       "id": "output_registration",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

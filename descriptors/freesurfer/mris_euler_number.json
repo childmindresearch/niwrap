@@ -3,12 +3,12 @@
   "name": "mris_euler_number",
   "author": "FreeSurfer Developers",
   "description": "This program computes EulerNumber for a cortical surface",
-  "command-line": "mris_euler_number [IN_SURF] [OUTFILE_FLAG]",
+  "command-line": "mris_euler_number [INPUT_SURFACE] [OUTPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input surface file",
-      "value-key": "[IN_SURF]",
+      "value-key": "[INPUT_SURFACE]",
       "type": "File",
       "optional": false,
       "id": "input_surface",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-o",
       "description": "Write number of holes to output file",
-      "value-key": "[OUTFILE_FLAG]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": true,
       "id": "output_file",

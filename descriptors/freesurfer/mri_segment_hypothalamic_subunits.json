@@ -1,7 +1,7 @@
 {
   "name": "mri_segment_hypothalamic_subunits",
   "description": "This module segments hypothalamic subunits and can be run in two modes: on FreeSurfer subjects or on any T1-weighted scan(s) of approximately 1mm resolution.",
-  "command-line": "mri_segment_hypothalamic_subunits [SUBJECTS] [SUBJECTS_DIR] [WRITE_POSTERIORS_FLAG] [IMAGE] [OUTPUT] [POSTERIORS] [RESAMPLE] [VOLUME_OUTPUT] [CROP_SIZE] [THREADS] [CPU_FLAG]",
+  "command-line": "mri_segment_hypothalamic_subunits [SUBJECTS] [SUBJECTS_DIR] [WRITE_POSTERIORS] [IMAGE_INPUT] [OUTPUT] [POSTERIORS] [RESAMPLE] [VOLUME_OUTPUT] [CROP_SIZE] [THREADS] [CPU]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--write_posteriors",
       "description": "(FS mode, optional) Save posteriors; default is False.",
-      "value-key": "[WRITE_POSTERIORS_FLAG]",
+      "value-key": "[WRITE_POSTERIORS]",
       "type": "Flag",
       "optional": true,
       "id": "write_posteriors",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--i",
       "description": "(required in T1 mode) Image(s) to segment. Can be a path to a single image or to a folder.",
-      "value-key": "[IMAGE]",
+      "value-key": "[IMAGE_INPUT]",
       "type": "String",
       "optional": true,
       "id": "image_input",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--cpu",
       "description": "(both modes, optional) Enforce running with CPU rather than GPU.",
-      "value-key": "[CPU_FLAG]",
+      "value-key": "[CPU]",
       "type": "Flag",
       "optional": true,
       "id": "cpu",

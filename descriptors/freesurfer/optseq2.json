@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "http://surfer.nmr.mgh.harvard.edu/optseq",
   "description": "Optseq2 is a tool for automatically scheduling events for rapid-presentation event-related (RPER) fMRI experiments.",
-  "command-line": "optseq2 [NTP] [TR] [TPRESCAN] [PSDWIN] [EV] [REPVAR] [POLYFIT] [TNULLMIN] [TNULLMAX] [NSEARCH] [TSEARCH] [FOCB] [AR1] [PENALIZE] [EVC] [CMTX] [COST] [SUMDELAYS] [SEED] [NKEEP] [OUTSTEM] [MTXSTEM] [CMTXFILE] [SUMMARYFILE] [LOGFILE] [PCTUPDATE] [SVITER] [INSTEM] [INPUT_SCHEDULE] [NOSEARCH] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "optseq2 [NTP] [TR] [TPRESCAN] [PSDWIN] [EVENT] [REPVAR] [POLYFIT] [TNULLMIN] [TNULLMAX] [NSEARCH] [TSEARCH] [FIRST_ORDER_CB] [AR1] [PENALIZE] [EVC] [CMTX] [COST] [SUMDELAYS] [SEED] [NKEEP] [OUTSTEM] [MTXSTEM] [CMTXFILE] [SUMMARYFILE] [LOGFILE] [PCTUPDATE] [SVITERFILE] [INSTEM] [INPUT_SCHEDULE] [NOSEARCH] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--psdwin",
       "description": "Post-stimulus window specifications: minimum PSD, maximum PSD, and optional dPSD.",
-      "value-key": "[PSDWINDOW]",
+      "value-key": "[PSDWIN]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--ev",
       "description": "Event type specification with label, duration, and number of repetitions.",
-      "value-key": "[EV]",
+      "value-key": "[EVENT]",
       "type": "String",
       "list": true,
       "min-list-entries": 3,
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "--focb",
       "description": "Pre-optimize first order counter-balancing.",
-      "value-key": "[FOCB]",
+      "value-key": "[FIRST_ORDER_CB]",
       "type": "Number",
       "optional": true,
       "id": "first_order_cb",
@@ -256,7 +256,7 @@
     {
       "command-line-flag": "--sviter",
       "description": "File to save information from each iteration.",
-      "value-key": "[SVITER]",
+      "value-key": "[SVITERFILE]",
       "type": "String",
       "optional": true,
       "id": "sviterfile",
@@ -293,7 +293,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help page.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -302,7 +302,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version string.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

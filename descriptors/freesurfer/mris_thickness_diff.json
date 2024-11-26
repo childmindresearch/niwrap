@@ -3,7 +3,7 @@
   "name": "mris_thickness_diff",
   "author": "FreeSurfer Developers",
   "description": "Computes the difference of two surface data sets defined on two surface meshes.",
-  "command-line": "mris_thickness_diff [SURFACE1] [DATA1] [SURFACE2] [DATA2] [SRC_TYPE_FLAG] [TRG_TYPE_FLAG] [OUT_FILE] [OUT_RESAMPLED_FLAG] [NSMOOTH_FLAG] [REGISTER_FLAG] [XFORM_FILE] [INVERT_FLAG] [SRC_VOLUME] [DST_VOLUME] [ABS_FLAG] [LOG_FILE] [SUBJECT_NAME]",
+  "command-line": "mris_thickness_diff [SURFACE1] [DATA1] [SURFACE2] [DATA2] [SRC_TYPE] [TRG_TYPE] [OUT_FILE] [OUT_RESAMPLED] [NSMOOTH] [REGISTER] [XFORM] [INVERT] [SRC_VOLUME] [DST_VOLUME] [ABS] [LOG_FILE] [SUBJECT_NAME]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input surface data format (curv, paint or w)",
-      "value-key": "[SRC_TYPE_FLAG]",
+      "value-key": "[SRC_TYPE]",
       "command-line-flag": "-src_type",
       "type": "String",
       "optional": true,
@@ -21,7 +21,7 @@
     },
     {
       "description": "Output format (paint or w)",
-      "value-key": "[TRG_TYPE_FLAG]",
+      "value-key": "[TRG_TYPE]",
       "command-line-flag": "-trg_type",
       "type": "String",
       "optional": true,
@@ -39,7 +39,7 @@
     },
     {
       "description": "Output resampled thickness",
-      "value-key": "[OUT_RESAMPLED_FLAG]",
+      "value-key": "[OUT_RESAMPLED]",
       "command-line-flag": "-out_resampled",
       "type": "File",
       "optional": true,
@@ -48,7 +48,7 @@
     },
     {
       "description": "Number of smoothing steps",
-      "value-key": "[NSMOOTH_FLAG]",
+      "value-key": "[NSMOOTH]",
       "command-line-flag": "-nsmooth",
       "type": "Number",
       "optional": true,
@@ -57,7 +57,7 @@
     },
     {
       "description": "Perform ICP rigid registration",
-      "value-key": "[REGISTER_FLAG]",
+      "value-key": "[REGISTER]",
       "command-line-flag": "-register",
       "type": "Flag",
       "optional": true,
@@ -66,7 +66,7 @@
     },
     {
       "description": "Apply LTA transform to align input surface1 to surface2",
-      "value-key": "[XFORM_FILE]",
+      "value-key": "[XFORM]",
       "command-line-flag": "-xform",
       "type": "File",
       "optional": true,
@@ -75,7 +75,7 @@
     },
     {
       "description": "Reversely apply -xform",
-      "value-key": "[INVERT_FLAG]",
+      "value-key": "[INVERT]",
       "command-line-flag": "-invert",
       "type": "Flag",
       "optional": true,
@@ -102,7 +102,7 @@
     },
     {
       "description": "Compute the std of abs-thickness-diff",
-      "value-key": "[ABS_FLAG]",
+      "value-key": "[ABS]",
       "command-line-flag": "-abs",
       "type": "Flag",
       "optional": true,

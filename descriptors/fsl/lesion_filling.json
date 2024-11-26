@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Lesion filling tool as part of FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "lesion_filling [INPUT_IMAGE] [OUTPUT_IMAGE] [LESION_MASK_IMAGE] [WHITE_MATTER_MASK_IMAGE] [VERBOSE_FLAG] [COMPONENTS_FLAG]",
+  "command-line": "lesion_filling [INFILE] [OUTFILE] [LESIONMASK] [WMMASK] [VERBOSE_FLAG] [COMPONENTS_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-i",
       "description": "Input image filename (e.g., T1w image)",
-      "value-key": "[INPUT_IMAGE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-o",
       "description": "Output filename (lesion filled image)",
-      "value-key": "[OUTPUT_IMAGE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-l",
       "description": "Filename of lesion mask image",
-      "value-key": "[LESION_MASK_IMAGE]",
+      "value-key": "[LESIONMASK]",
       "type": "File",
       "optional": false,
       "id": "lesionmask",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-w",
       "description": "Filename of white matter mask image",
-      "value-key": "[WHITE_MATTER_MASK_IMAGE]",
+      "value-key": "[WMMASK]",
       "type": "File",
       "optional": true,
       "id": "wmmask",

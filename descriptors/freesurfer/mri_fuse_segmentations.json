@@ -1,7 +1,7 @@
 {
   "name": "mri_fuse_segmentations",
   "description": "Fuse a set of segmentations (asegs) into an initial estimate of a longitudinal one.",
-  "command-line": "mri_fuse_segmentations [ASEGS] [NOCC] [NORM] [TRANSFORMS] [SIGMA] [INPUT] [OUTPUT]",
+  "command-line": "mri_fuse_segmentations [ASEGS] [NOCC_ASEGS] [NORM_VOLUMES] [TRANSFORMS] [SIGMA] [INPUT_FILE] [OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-c",
       "description": "Path to aseg.auto_noCCseg.mgz files without CC labels, one per TP",
-      "value-key": "[NOCC]",
+      "value-key": "[NOCC_ASEGS]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "-n",
       "description": "Path to norm.mgz files, one per TP",
-      "value-key": "[NORM]",
+      "value-key": "[NORM_VOLUMES]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -56,7 +56,7 @@
     },
     {
       "description": "Input norm.mgz file",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_FILE]",
       "type": "File",
       "optional": false,
       "id": "input_file",

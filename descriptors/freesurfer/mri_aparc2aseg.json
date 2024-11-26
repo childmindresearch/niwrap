@@ -3,7 +3,7 @@
   "name": "mri_aparc2aseg",
   "author": "FreeSurfer Developers",
   "description": "Maps the cortical labels from the automatic cortical parcellation to the automatic segmentation volume.",
-  "command-line": "mri_aparc2aseg [SUBJECT] [OUTPUT_VOLFILE] [OLD_RIBBON_FLAG] [NEW_RIBBON_FLAG] [A2005S_FLAG] [A2009S_FLAG] [ANNOT_NAME] [ANNOT_TABLE] [BASE_OFFSET] [LABEL_WM_FLAG] [WMPARC_DMAX] [RIP_UNKNOWN_FLAG] [HYPO_AS_WM_FLAG] [NO_FIX_PARAHIP_FLAG] [SMOOTH_NORMALS] [CRS_TEST] [HEMISPHERE] [THREADS] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_aparc2aseg [SUBJECT] [OUTPUT_VOLFILE] [OLD_RIBBON] [NEW_RIBBON] [A2005S] [A2009S] [ANNOT_NAME] [ANNOT_TABLE] [BASE_OFFSET] [LABEL_WM] [WMPARC_DMAX] [RIP_UNKNOWN] [HYPO_AS_WM] [NO_FIX_PARAHIP] [SMOOTH_NORMALS] [CRS_TEST] [RIGHT_HEMISPHERE] [THREADS] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--old-ribbon",
       "description": "Use mri/hemi.ribbon.mgz as a mask for the cortex",
-      "value-key": "[OLD_RIBBON_FLAG]",
+      "value-key": "[OLD_RIBBON]",
       "type": "Flag",
       "optional": true,
       "id": "old_ribbon",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--new-ribbon",
       "description": "Mask cortical voxels with mri/ribbon.mgz. Same as --volmask",
-      "value-key": "[NEW_RIBBON_FLAG]",
+      "value-key": "[NEW_RIBBON]",
       "type": "Flag",
       "optional": true,
       "id": "new_ribbon",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--a2005s",
       "description": "Use ?h.aparc.a2005s.annot. Output will be aparc.a2005s+aseg.mgz.",
-      "value-key": "[A2005S_FLAG]",
+      "value-key": "[A2005S]",
       "type": "Flag",
       "optional": true,
       "id": "a2005s",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--a2009s",
       "description": "Use ?h.aparc.a2009s.annot. Output will be aparc.a2009s+aseg.mgz.",
-      "value-key": "[A2009S_FLAG]",
+      "value-key": "[A2009S]",
       "type": "Flag",
       "optional": true,
       "id": "a2009s",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--labelwm",
       "description": "Re-assign white matter voxel labels to the closest cortical point if within distance.",
-      "value-key": "[LABEL_WM_FLAG]",
+      "value-key": "[LABEL_WM]",
       "type": "Flag",
       "optional": true,
       "id": "label_wm",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--rip-unknown",
       "description": "Do not label WM based on 'unknown' cortical label",
-      "value-key": "[RIP_UNKNOWN_FLAG]",
+      "value-key": "[RIP_UNKNOWN]",
       "type": "Flag",
       "optional": true,
       "id": "rip_unknown",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--hypo-as-wm",
       "description": "Label hypointensities as WM",
-      "value-key": "[HYPO_AS_WM_FLAG]",
+      "value-key": "[HYPO_AS_WM]",
       "type": "Flag",
       "optional": true,
       "id": "hypo_as_wm",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "--no-fix-parahip",
       "description": "Do not remove unconnected regions from WM parahip",
-      "value-key": "[NO_FIX_PARAHIP_FLAG]",
+      "value-key": "[NO_FIX_PARAHIP]",
       "type": "Flag",
       "optional": true,
       "id": "no_fix_parahip",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Only process the left hemisphere",
-      "value-key": "[HEMISPHERE]",
+      "value-key": "[LEFT_HEMISPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemisphere",
@@ -162,7 +162,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Only process the right hemisphere",
-      "value-key": "[HEMISPHERE]",
+      "value-key": "[RIGHT_HEMISPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemisphere",
@@ -180,7 +180,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print out information on how to use this program",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -189,7 +189,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

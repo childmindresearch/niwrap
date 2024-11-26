@@ -2,7 +2,7 @@
   "name": "mri_cor2label",
   "tool-version": "7.4.1",
   "description": "Converts values in a volume or surface overlay to a label. Designed to convert parcellation volumes stored in mri format.",
-  "command-line": "mri_cor2label -[INPUT_FILE] -[LABEL_ID] -[LABEL_FILE] [THRESHOLD_FLAG] [VOLUME_FLAG] [SURFACE_FLAG] [SURFACE_PATH_FLAG] [OPTIMIZE_FLAG] [REMOVE_HOLES_ISLANDS_FLAG] [DILATE_FLAG] [ERODE_FLAG] [HELP_FLAG]",
+  "command-line": "mri_cor2label -[INPUT_FILE] -[LABEL_ID] -[LABEL_FILE] [THRESHOLD] [VOLUME_FILE] [SURFACE_OVERLAY] [SURFACE_PATH] [OPTIMIZE] [REMOVE_HOLES_ISLANDS] [DILATE] [ERODE] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -42,7 +42,7 @@
       "id": "threshold",
       "name": "Threshold Value",
       "type": "Number",
-      "value-key": "[THRESHOLD_FLAG]",
+      "value-key": "[THRESHOLD]",
       "optional": true
     },
     {
@@ -51,7 +51,7 @@
       "id": "volume_file",
       "name": "Volume File",
       "type": "String",
-      "value-key": "[VOLUME_FLAG]",
+      "value-key": "[VOLUME_FILE]",
       "optional": true
     },
     {
@@ -61,7 +61,7 @@
       "name": "Surface Overlay",
       "type": "String",
       "list": true,
-      "value-key": "[SURFACE_FLAG]",
+      "value-key": "[SURFACE_OVERLAY]",
       "optional": true,
       "min-list-entries": 3,
       "max-list-entries": 3
@@ -72,7 +72,7 @@
       "id": "surface_path",
       "name": "Surface Path",
       "type": "String",
-      "value-key": "[SURFACE_PATH_FLAG]",
+      "value-key": "[SURFACE_PATH]",
       "optional": true
     },
     {
@@ -82,7 +82,7 @@
       "name": "Optimize",
       "type": "String",
       "list": true,
-      "value-key": "[OPTIMIZE_FLAG]",
+      "value-key": "[OPTIMIZE]",
       "optional": true,
       "min-list-entries": 3,
       "max-list-entries": 3
@@ -93,7 +93,7 @@
       "id": "remove_holes_islands",
       "name": "Remove Holes and Islands",
       "type": "Flag",
-      "value-key": "[REMOVE_HOLES_ISLANDS_FLAG]",
+      "value-key": "[REMOVE_HOLES_ISLANDS]",
       "optional": true
     },
     {
@@ -102,7 +102,7 @@
       "id": "dilate",
       "name": "Dilate",
       "type": "Number",
-      "value-key": "[DILATE_FLAG]",
+      "value-key": "[DILATE]",
       "optional": true
     },
     {
@@ -111,7 +111,7 @@
       "id": "erode",
       "name": "Erode",
       "type": "Number",
-      "value-key": "[ERODE_FLAG]",
+      "value-key": "[ERODE]",
       "optional": true
     },
     {
@@ -120,7 +120,7 @@
       "id": "help",
       "name": "Help",
       "type": "Flag",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "optional": true
     }
   ],

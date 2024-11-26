@@ -3,7 +3,7 @@
   "name": "@Shift_Volume",
   "author": "AFNI Developers",
   "description": "Tool to shift a dataset in the RAI coordinate system or between MNI anatomical space and MNI space.",
-  "command-line": "@Shift_Volume [RAI_SHIFT_VECTOR] [MNI_ANAT_TO_MNI] [MNI_TO_MNI_ANAT] [DSET] [NO_CP_FLAG] [OUTPUT_PREFIX]",
+  "command-line": "@Shift_Volume [RAI_SHIFT_VECTOR] [MNI_ANAT_TO_MNI] [MNI_TO_MNI_ANAT] [DSET] [NO_CP] [PREFIX]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-no_cp",
       "description": "Do not create new data, shift the existing ones (use with caution).",
-      "value-key": "[NO_CP_FLAG]",
+      "value-key": "[NO_CP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cp",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix for the output dataset.",
-      "value-key": "[OUTPUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",

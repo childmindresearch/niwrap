@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/fswiki/mri_nl_align_binary",
   "description": "Non-linear alignment tool for MRI data",
-  "command-line": "mri_nl_align_binary [SOURCE] [TARGET] [WARP]",
+  "command-line": "mri_nl_align_binary [SOURCE_FILE] [TARGET_FILE] [WARP_FILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Source image file for alignment",
-      "value-key": "[SOURCE]",
+      "value-key": "[SOURCE_FILE]",
       "type": "File",
       "optional": false,
       "id": "source_file",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Target image file for alignment",
-      "value-key": "[TARGET]",
+      "value-key": "[TARGET_FILE]",
       "type": "File",
       "optional": false,
       "id": "target_file",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Output warp file",
-      "value-key": "[WARP]",
+      "value-key": "[WARP_FILE]",
       "type": "String",
       "optional": false,
       "id": "warp_file",

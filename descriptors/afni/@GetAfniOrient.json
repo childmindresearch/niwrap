@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/",
   "description": "Returns the orient code of AFNI datasets",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@GetAfniOrient [EXPLORATORY_FLAG] [INPUT_FILE]",
+  "command-line": "@GetAfniOrient [EXPLORATORY] [INFILE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input AFNI dataset (e.g. Hello+orig.HEAD)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-exp",
       "description": "Exploratory flag for additional functionalities",
-      "value-key": "[EXPLORATORY_FLAG]",
+      "value-key": "[EXPLORATORY]",
       "type": "Flag",
       "optional": true,
       "id": "exploratory",

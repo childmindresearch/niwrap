@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/init_user_dotfiles_descriptor.json",
   "description": "Initialize or evaluate user dot files (.cshrc, .bashrc, ...) for system settings.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "init_user_dotfiles.py [HELP_FLAG] [HELP_DOTFILES_FLAG] [HELP_DOTFILES_MOD_FLAG] [HELP_SHELLS_FLAG] [HIST_FLAG] [SHOW_VALID_OPTS_FLAG] [VER_FLAG] [DFLIST] [DIR_BIN] [DIR_DOT] [DO_UPDATES] [DRY_RUN_FLAG] [FORCE_FLAG] [MAKE_BACKUP] [SHELL_LIST] [TEST_FLAG] [VERBOSITY_LEVEL]",
+  "command-line": "init_user_dotfiles.py [HELP] [HELP_DOTFILES_ALL] [HELP_DOTFILES_MOD] [HELP_SHELLS] [HIST] [SHOW_VALID_OPTS] [VER] [DOT_FILES_LIST] [DIR_BIN] [DIR_DOT] [DO_UPDATES] [DRY_RUN] [FORCE] [MAKE_BACKUP] [SHELL_LIST] [TEST] [VERBOSITY_LEVEL]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show this help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-help_dotfiles_all",
       "description": "Display dot files known by the program",
-      "value-key": "[HELP_DOTFILES_FLAG]",
+      "value-key": "[HELP_DOTFILES_ALL]",
       "type": "Flag",
       "optional": true,
       "id": "help_dotfiles_all",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-help_dotfiles_mod",
       "description": "Display modifiable dot files",
-      "value-key": "[HELP_DOTFILES_MOD_FLAG]",
+      "value-key": "[HELP_DOTFILES_MOD]",
       "type": "Flag",
       "optional": true,
       "id": "help_dotfiles_mod",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-help_shells",
       "description": "Display shells known by the program",
-      "value-key": "[HELP_SHELLS_FLAG]",
+      "value-key": "[HELP_SHELLS]",
       "type": "Flag",
       "optional": true,
       "id": "help_shells",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show module history",
-      "value-key": "[HIST_FLAG]",
+      "value-key": "[HIST]",
       "type": "Flag",
       "optional": true,
       "id": "hist",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-show_valid_opts",
       "description": "List valid options",
-      "value-key": "[SHOW_VALID_OPTS_FLAG]",
+      "value-key": "[SHOW_VALID_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "show_valid_opts",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show current version",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VER]",
       "type": "Flag",
       "optional": true,
       "id": "ver",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-dflist",
       "description": "Specify dot files to focus on (default from -help_dotfiles_mod)",
-      "value-key": "[DFLIST]",
+      "value-key": "[DOT_FILES_LIST]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-dry_run",
       "description": "Do not modify files, but see what would happen",
-      "value-key": "[DRY_RUN_FLAG]",
+      "value-key": "[DRY_RUN]",
       "type": "Flag",
       "optional": true,
       "id": "dry_run",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-force",
       "description": "Force edits, whether they seem needed or not",
-      "value-key": "[FORCE_FLAG]",
+      "value-key": "[FORCE]",
       "type": "Flag",
       "optional": true,
       "id": "force",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-test",
       "description": "Just test the files for potential changes",
-      "value-key": "[TEST_FLAG]",
+      "value-key": "[TEST]",
       "type": "Flag",
       "optional": true,
       "id": "test",

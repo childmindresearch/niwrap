@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "none",
   "description": "Tool to normalize the white-matter of MRI volumes, optionally based on control points.",
-  "command-line": "mri_long_normalize [INPUT_VOL] [BASE_TP_FILE] [OUTPUT_VOL] [NORMALIZATION_ITERS] [DISABLE_1D] [SMOOTH_BIAS] [ASEG] [DEBUG_GVX] [DEBUG_GX] [READING] [PRINT_USAGE_FLAG]",
+  "command-line": "mri_long_normalize [INPUT_VOL] [BASE_TP_FILE] [OUTPUT_VOL] [NORMALIZATION_ITERS] [DISABLE_1D] [SMOOTH_BIAS] [ASEG] [DEBUG_GVX] [DEBUG_GX] [READING] [PRINT_USAGE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-u",
       "description": "Print usage information.",
-      "value-key": "[PRINT_USAGE_FLAG]",
+      "value-key": "[PRINT_USAGE]",
       "type": "Flag",
       "optional": true,
       "id": "print_usage",

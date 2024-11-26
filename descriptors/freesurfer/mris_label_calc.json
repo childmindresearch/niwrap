@@ -48,7 +48,7 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "value-key": "[N]"
+      "value-key": "[ITERATIONS]"
     }
   ],
   "output-files": [

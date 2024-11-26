@@ -2,14 +2,14 @@
   "name": "3dMannWhitney",
   "author": "AFNI Developers",
   "description": "Performs nonparametric Mann-Whitney two-sample test.",
-  "command-line": "3dMannWhitney [INPUT_DATASET_X] [INPUT_DATASET_Y] [OUTPUT_PREFIX] [WORKMEM] [VOXEL_NUM]",
+  "command-line": "3dMannWhitney [DSET1_X] [DSET2_Y] [OUTPUT_PREFIX] [WORKMEM] [VOXEL_NUM]",
   "schema-version": "0.5",
   "tool-version": "24.2.06",
   "inputs": [
     {
       "command-line-flag": "-dset 1",
       "description": "Data set for X observations. Must specify 1 and only 1 sub-brick.",
-      "value-key": "[INPUT_DATASET_X]",
+      "value-key": "[DSET1_X]",
       "type": "String",
       "list": true,
       "id": "dset1_x",
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "-dset 2",
       "description": "Data set for Y observations. Must specify 1 and only 1 sub-brick.",
-      "value-key": "[INPUT_DATASET_Y]",
+      "value-key": "[DSET2_Y]",
       "type": "String",
       "list": true,
       "id": "dset2_y",

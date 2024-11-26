@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Multi-Echo Independent Component Analysis for fMRI denoising",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "meica.py [INPUT_FILE] [ECHOTIMES] [AFFINE] [OUTPUT_DIRECTORY] [COMPONENTS_FLAG] [TLRC_FLAG] [THRESHOLD] [DEBUG_FLAG]",
+  "command-line": "meica.py [INFILE] [ECHO_TIMES] [AFFINE] [OUTPUT_DIRECTORY] [COMPONENTS] [TALAIRACH] [THRESHOLD] [DEBUG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input image dataset (e.g. dataset.nii.gz)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Echo times (e.g. 15.0,30.0,45.0)",
-      "value-key": "[ECHOTIMES]",
+      "value-key": "[ECHO_TIMES]",
       "type": "String",
       "optional": false,
       "id": "echo_times",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-c",
       "description": "Number of components for ICA",
-      "value-key": "[COMPONENTS_FLAG]",
+      "value-key": "[COMPONENTS]",
       "type": "Number",
       "optional": true,
       "id": "components",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-t",
       "description": "Apply standard Talairach transformation",
-      "value-key": "[TLRC_FLAG]",
+      "value-key": "[TALAIRACH]",
       "type": "Flag",
       "optional": true,
       "id": "talairach",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug mode",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

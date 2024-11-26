@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-fs_setup",
       "description": "Source $FREESURFER_HOME/SetUpFreeSurfer.csh",
-      "value-key": "[FS_SETUP_FLAG]",
+      "value-key": "[FS_SETUP]",
       "type": "Flag",
       "optional": true,
       "id": "fs_setup",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-fspath",
       "description": "Path to 'surf' and 'orig' directories; defaults to './', the current directory",
-      "value-key": "[FSPATH]",
+      "value-key": "[FILESYSTEM_PATH]",
       "type": "String",
       "optional": true,
       "id": "filesystem_path",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-make_rank_dsets",
       "description": "Create *rank* datasets; for backward compatibility",
-      "value-key": "[MAKE_RANK_DSETS_FLAG]",
+      "value-key": "[MAKE_RANK_DSETS]",
       "type": "Flag",
       "optional": true,
       "id": "make_rank_dsets",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-use_mgz",
       "description": "Use MGZ volumes even if COR volumes are there",
-      "value-key": "[USE_MGZ_FLAG]",
+      "value-key": "[USE_MGZ]",
       "type": "Flag",
       "optional": true,
       "id": "use_mgz",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-neuro",
       "description": "Use neurological orientation",
-      "value-key": "[NEURO_FLAG]",
+      "value-key": "[NEURO]",
       "type": "Flag",
       "optional": true,
       "id": "neuro",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-GNIFTI",
       "description": "Produce files in exchangeable formats; same as -NIFTI",
-      "value-key": "[GNIFTI_FLAG]",
+      "value-key": "[GNIFTI]",
       "type": "Flag",
       "optional": true,
       "id": "gnifti",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "-NIFTI",
       "description": "Produce files in exchangeable formats; output files in NIFTI format and surfaces in GIFTI format",
-      "value-key": "[NIFTI_FLAG]",
+      "value-key": "[NIFTI]",
       "type": "Flag",
       "optional": true,
       "id": "nifti",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "-no_ld",
       "description": "Do not run MapIcosahedron",
-      "value-key": "[NO_LD_FLAG]",
+      "value-key": "[NO_LD]",
       "type": "Flag",
       "optional": true,
       "id": "no_ld",

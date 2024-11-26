@@ -2,12 +2,12 @@
   "tool-version": "7.4.1",
   "name": "reg2subject",
   "description": "Returns the name of the subject in the registration file, whether it is an LTA or register.dat file.",
-  "command-line": "reg2subject [REG_FILE]",
+  "command-line": "reg2subject [REGFILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input registration file, either in LTA or register.dat format.",
-      "value-key": "[REG_FILE]",
+      "value-key": "[REGFILE]",
       "command-line-flag": "--r",
       "type": "File",
       "optional": false,

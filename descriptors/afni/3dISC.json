@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/3dISC_descriptor.json",
   "description": "Program for Voxelwise Inter-Subject Correlation (ISC) Analysis using linear mixed-effects modeling.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dISC [PREFIX_FLAG] [JOBS_FLAG] [MASK_FLAG] [MODEL_FLAG] [QVAR_CENTERS_FLAG] [QVARS_FLAG] [R2Z_FLAG] [CIO_FLAG] [DATA_TABLE_FLAG]",
+  "command-line": "3dISC [OUTFILE_PREFIX] [NUM_JOBS] [MASK_FILE] [MODEL_STRUCTURE] [QVAR_CENTERS] [QUANTITATIVE_VARS] [FISHER_TRANSFORM] [IO_FUNCTIONS] [DATA_TABLE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Output file name. For AFNI format, provide prefix only, with no view+suffix needed.",
-      "value-key": "[PREFIX_FLAG]",
+      "value-key": "[OUTFILE_PREFIX]",
       "command-line-flag": "-prefix",
       "type": "String",
       "optional": false,
@@ -22,7 +22,7 @@
     },
     {
       "description": "Specify the number of jobs to run concurrently. Choose 1 for a single-processor computer.",
-      "value-key": "[JOBS_FLAG]",
+      "value-key": "[NUM_JOBS]",
       "command-line-flag": "-jobs",
       "type": "Number",
       "optional": true,
@@ -31,7 +31,7 @@
     },
     {
       "description": "Process voxels inside this mask only. Default is no masking.",
-      "value-key": "[MASK_FLAG]",
+      "value-key": "[MASK_FILE]",
       "command-line-flag": "-mask",
       "type": "File",
       "optional": true,
@@ -40,7 +40,7 @@
     },
     {
       "description": "Specify the model structure for all the variables. The expression FORMULA with more than one variable has to be surrounded within quotes.",
-      "value-key": "[MODEL_FLAG]",
+      "value-key": "[MODEL_STRUCTURE]",
       "command-line-flag": "-model",
       "type": "String",
       "optional": false,
@@ -49,7 +49,7 @@
     },
     {
       "description": "Specify centering values for quantitative variables identified under -qVars. Multiple centers are separated by commas without spaces and should be within quotes.",
-      "value-key": "[QVAR_CENTERS_FLAG]",
+      "value-key": "[QVAR_CENTERS]",
       "command-line-flag": "-qVarCenters",
       "type": "String",
       "optional": true,
@@ -58,7 +58,7 @@
     },
     {
       "description": "Identify quantitative variables (or covariates). The list should be comma-separated and within quotes.",
-      "value-key": "[QVARS_FLAG]",
+      "value-key": "[QUANTITATIVE_VARS]",
       "command-line-flag": "-qVars",
       "type": "String",
       "optional": true,
@@ -67,7 +67,7 @@
     },
     {
       "description": "Perform Fisher transformation on the response variable (input files) if it is a correlation value.",
-      "value-key": "[R2Z_FLAG]",
+      "value-key": "[FISHER_TRANSFORM]",
       "command-line-flag": "-r2z",
       "type": "Flag",
       "optional": true,
@@ -76,7 +76,7 @@
     },
     {
       "description": "Use AFNI's C io functions (default) or R's io functions.",
-      "value-key": "[CIO_FLAG]",
+      "value-key": "[IO_FUNCTIONS]",
       "command-line-flag": "-cio",
       "type": "String",
       "optional": true,
@@ -86,7 +86,7 @@
     },
     {
       "description": "List the data structure with a header as the first line. Has to occur last in the script.",
-      "value-key": "[DATA_TABLE_FLAG]",
+      "value-key": "[DATA_TABLE]",
       "command-line-flag": "-dataTable",
       "type": "String",
       "optional": false,

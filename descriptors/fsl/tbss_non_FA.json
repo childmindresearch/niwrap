@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "TBSS processing for non-FA images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "tbss_non_FA [CONCATENATION_OPTION] [OUTPUT_FILE] [INPUT_FILES] [TR_VALUE] [VOLUME_NUMBER]",
+  "command-line": "tbss_non_FA [CONCAT_AUTO] [OUTPUT_FILE] [INPUT_FILES] [CONCAT_TR] [VOLUME_NUMBER]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-x",
       "description": "Concatenate images in the x direction.",
-      "value-key": "[CONCATENATION_OPTION]",
+      "value-key": "[CONCAT_X]",
       "type": "Flag",
       "optional": true,
       "id": "concat_x",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-y",
       "description": "Concatenate images in the y direction.",
-      "value-key": "[CONCATENATION_OPTION]",
+      "value-key": "[CONCAT_Y]",
       "type": "Flag",
       "optional": true,
       "id": "concat_y",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-z",
       "description": "Concatenate images in the z direction.",
-      "value-key": "[CONCATENATION_OPTION]",
+      "value-key": "[CONCAT_Z]",
       "type": "Flag",
       "optional": true,
       "id": "concat_z",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-t",
       "description": "Concatenate images in time.",
-      "value-key": "[CONCATENATION_OPTION]",
+      "value-key": "[CONCAT_T]",
       "type": "Flag",
       "optional": true,
       "id": "concat_t",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-a",
       "description": "Auto-choose: single slices -> volume, volumes -> 4D (time series).",
-      "value-key": "[CONCATENATION_OPTION]",
+      "value-key": "[CONCAT_AUTO]",
       "type": "Flag",
       "optional": true,
       "id": "concat_auto",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-tr",
       "description": "Concatenate images in time and set the output image TR (repetition time) to the final option value.",
-      "value-key": "[TR_VALUE]",
+      "value-key": "[CONCAT_TR]",
       "type": "Number",
       "optional": true,
       "id": "concat_tr",

@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-nwarp",
       "description": "Warp specification as in 3dNwarpApply",
-      "value-key": "['[WARP_SPEC]']",
+      "value-key": "[WARP_SPEC]",
       "type": "String",
       "optional": false,
       "id": "warp_spec",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-iwarp",
       "description": "Compute the inverse warp for each input (x,y,z) triple",
-      "value-key": "[I_WARP_FLAG]",
+      "value-key": "[IWARP]",
       "type": "Flag",
       "optional": true,
       "id": "iwarp",

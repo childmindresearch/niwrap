@@ -3,7 +3,7 @@
   "name": "SurfRetinoMap",
   "author": "AFNI Developers",
   "description": "Tool for retinotopic mapping on cortical surfaces.",
-  "command-line": "SurfRetinoMap [SURFACE] [POLAR] [ECCENTRICITY] [PREFIX] [NODE]",
+  "command-line": "SurfRetinoMap [SURFACE] [POLAR] [ECCENTRICITY] [PREFIX] [NODE_DEBUG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--node_dbg",
       "description": "Index of node number for which debugging information is output.",
-      "value-key": "[NODE]",
+      "value-key": "[NODE_DEBUG]",
       "type": "Number",
       "optional": true,
       "id": "node_debug",

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "groupstatsdiff",
   "description": "Evaluate the differences between two groupstats outputs from recon-all analyses in Freesurfer.",
-  "command-line": "groupstatsdiff -[GROUP1_DIR] -[GROUP2_DIR] -[OUTPUT_DIR] [NO_MAPS_FLAG] [OSGM_FLAG] [NO_COMMON_FLAG] [ALLOW_SUBJ_DIFF_FLAG] [NO_AREA_FLAG] [NO_VOLUME_FLAG] [NO_BA_FLAG] [NO_APARCSTATS_FLAG] [NO_ASEGSTATS_FLAG] [NO_WPARCSTATS_FLAG] [NO_STATS_FLAG] [NO_PRUNE_FLAG] [FWHM_VALUE] [SUBJECTS_DIR1] [SUBJECTS_DIR2] [NO_DICE_FLAG] [DICE_CTAB]",
+  "command-line": "groupstatsdiff -[GROUP1_DIR] -[GROUP2_DIR] -[OUTPUT_DIR] [NO_MAPS] [OSGM] [NO_COMMON] [ALLOW_SUBJ_DIFF] [NO_AREA] [NO_VOLUME] [NO_BA] [NO_APARCSTATS] [NO_ASEGSTATS] [NO_WPARCSTATS] [NO_STATS] [NO_PRUNE] [FWHM_VALUE] [SUBJECTS_DIR1] [SUBJECTS_DIR2] [NO_DICE] [DICE_CTAB]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--no-maps",
       "description": "Only analyze ROI data, no maps",
-      "value-key": "[NO_MAPS_FLAG]",
+      "value-key": "[NO_MAPS]",
       "type": "Flag",
       "optional": true,
       "id": "no_maps",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--osgm",
       "description": "Use OSGM instead of native FSGD",
-      "value-key": "[OSGM_FLAG]",
+      "value-key": "[OSGM]",
       "type": "Flag",
       "optional": true,
       "id": "osgm",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--no-common",
       "description": "Do not select common segments when running stattablediff",
-      "value-key": "[NO_COMMON_FLAG]",
+      "value-key": "[NO_COMMON]",
       "type": "Flag",
       "optional": true,
       "id": "no_common",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--allow-subj-diff",
       "description": "Allow list of subjects to be different between the two analyses",
-      "value-key": "[ALLOW_SUBJ_DIFF_FLAG]",
+      "value-key": "[ALLOW_SUBJ_DIFF]",
       "type": "Flag",
       "optional": true,
       "id": "allow_subj_diff",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--no-area",
       "description": "Do not compute area differences",
-      "value-key": "[NO_AREA_FLAG]",
+      "value-key": "[NO_AREA]",
       "type": "Flag",
       "optional": true,
       "id": "no_area",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--no-volume",
       "description": "Do not compute volume differences",
-      "value-key": "[NO_VOLUME_FLAG]",
+      "value-key": "[NO_VOLUME]",
       "type": "Flag",
       "optional": true,
       "id": "no_volume",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "--no-ba",
       "description": "Do not compute differences for BA labels",
-      "value-key": "[NO_BA_FLAG]",
+      "value-key": "[NO_BA]",
       "type": "Flag",
       "optional": true,
       "id": "no_ba",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "--no-aparcstats",
       "description": "Do not do aparcstats",
-      "value-key": "[NO_APARCSTATS_FLAG]",
+      "value-key": "[NO_APARCSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_aparcstats",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--no-asegstats",
       "description": "Do not do asegstats",
-      "value-key": "[NO_ASEGSTATS_FLAG]",
+      "value-key": "[NO_ASEGSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_asegstats",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--no-wparcstats",
       "description": "Do not do wmparcstats",
-      "value-key": "[NO_WPARCSTATS_FLAG]",
+      "value-key": "[NO_WPARCSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_wparcstats",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "--no-stats",
       "description": "Do not do any ROI stats",
-      "value-key": "[NO_STATS_FLAG]",
+      "value-key": "[NO_STATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_stats",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "--no-prune",
       "description": "Do not prune when running mri_glmfit",
-      "value-key": "[NO_PRUNE_FLAG]",
+      "value-key": "[NO_PRUNE]",
       "type": "Flag",
       "optional": true,
       "id": "no_prune",
@@ -170,7 +170,7 @@
     {
       "command-line-flag": "--no-dice",
       "description": "Do not compute dice",
-      "value-key": "[NO_DICE_FLAG]",
+      "value-key": "[NO_DICE]",
       "type": "Flag",
       "optional": true,
       "id": "no_dice",

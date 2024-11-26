@@ -3,7 +3,7 @@
   "name": "prompt_user",
   "author": "AFNI Developers",
   "description": "Tool that prompts a window requesting user input with a custom message.",
-  "command-line": "prompt_user [PAUSE_MESSAGE] [TIMEOUT]",
+  "command-line": "prompt_user [PAUSE_MESSAGE] [TIMEOUT_ALIAS]",
   "inputs": [
     {
       "command-line-flag": "<-pause>",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-to",
       "description": "Alias for -timeout",
-      "value-key": "[TIMEOUT]",
+      "value-key": "[TIMEOUT_ALIAS]",
       "type": "Number",
       "optional": true,
       "id": "timeout_alias",

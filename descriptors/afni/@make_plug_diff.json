@@ -4,13 +4,13 @@
   "author": "AFNI Developers",
   "description": "Compiles AFNI's diffusion plugin.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@make_plug_diff [VTKDIR] [XMDIR] [ASRCDIR] [ABINDIR] [COMMENTS_FLAG] [LINUX_FLAG] [DIFFDIR]",
+  "command-line": "@make_plug_diff [VTK_DIR] [XM_DIR] [AFNI_SRC_DIR] [AFNI_BIN_DIR] [COMMENTS] [LINUX] [DIFF_DIR]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-vtk",
       "description": "Directory where vtk is installed",
-      "value-key": "[VTKDIR]",
+      "value-key": "[VTK_DIR]",
       "type": "String",
       "optional": false,
       "id": "vtk_dir",
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "-xm",
       "description": "Directory where motif is installed",
-      "value-key": "[XMDIR]",
+      "value-key": "[XM_DIR]",
       "type": "String",
       "optional": false,
       "id": "xm_dir",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-asrc",
       "description": "Full path to AFNI's src/ directory",
-      "value-key": "[ASRCDIR]",
+      "value-key": "[AFNI_SRC_DIR]",
       "type": "String",
       "optional": false,
       "id": "afni_src_dir",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-abin",
       "description": "Path, relative to ASRCDIR, to abin",
-      "value-key": "[ABINDIR]",
+      "value-key": "[AFNI_BIN_DIR]",
       "type": "String",
       "optional": false,
       "id": "afni_bin_dir",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-diff",
       "description": "Name of directory containing diffusion code",
-      "value-key": "[DIFFDIR]",
+      "value-key": "[DIFF_DIR]",
       "type": "String",
       "optional": false,
       "id": "diff_dir",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-comments",
       "description": "Output comments only",
-      "value-key": "[COMMENTS_FLAG]",
+      "value-key": "[COMMENTS]",
       "type": "Flag",
       "optional": true,
       "id": "comments",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-linux",
       "description": "Flag for doing linuxy things",
-      "value-key": "[LINUX_FLAG]",
+      "value-key": "[LINUX]",
       "type": "Flag",
       "optional": true,
       "id": "linux",

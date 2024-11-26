@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "name": "3dGenFeatureDist",
   "description": "3dGenFeatureDist produces histogram volume (hives) from input data.",
-  "command-line": "3dGenFeatureDist [FEATURES_STRING] [CLASS_STRING] [PREFIX] [OVERWRITE_FLAG] [DEBUG_LEVEL] [OTHER_FLAG] [NO_OTHER_FLAG] [SHOW_HISTS]",
+  "command-line": "3dGenFeatureDist [FEATURES_STRING] [CLASS_STRING] [PREFIX] [OVERWRITE] [DEBUG_LEVEL] [OTHER] [NO_OTHER] [SHOW_HISTOGRAMS]",
   "inputs": [
     {
       "command-line-flag": "-features",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-overwrite",
       "description": "Automatically overwrite existing output.",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-OTHER",
       "description": "Add histograms for an 'OTHER' class that has a uniform pdf.",
-      "value-key": "[OTHER_FLAG]",
+      "value-key": "[OTHER]",
       "type": "Flag",
       "optional": true,
       "id": "other",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-no_OTHER",
       "description": "Opposite of -OTHER.",
-      "value-key": "[NO_OTHER_FLAG]",
+      "value-key": "[NO_OTHER]",
       "type": "Flag",
       "optional": true,
       "id": "no_other",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-samp",
       "description": "Specify which voxels belong to each class of interest.",
-      "value-key": "[SAMPLES]",
+      "value-key": "[SAMP]",
       "type": "String",
       "optional": true,
       "list": true,
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-sig",
       "description": "Specify volumes that define the features.",
-      "value-key": "[SIGNALS]",
+      "value-key": "[SIG]",
       "type": "String",
       "optional": true,
       "list": true,
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-hspec",
       "description": "Set histogram parameters for a specific feature.",
-      "value-key": "[HSPEC_PARAMS]",
+      "value-key": "[HSPEC]",
       "type": "String",
       "optional": true,
       "list": true,
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-ShowTheseHists",
       "description": "Show specified histograms and quit.",
-      "value-key": "[SHOW_HISTS]",
+      "value-key": "[SHOW_HISTOGRAMS]",
       "type": "String",
       "optional": true,
       "id": "show_histograms",

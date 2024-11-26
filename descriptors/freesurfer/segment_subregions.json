@@ -1,7 +1,7 @@
 {
   "name": "segment_subregions",
   "description": "Cross-sectional and longitudinal segmentation for brain structures like thalamus, brainstem, and hippo-amygdala.",
-  "command-line": "segment_subregions [STRUCTURE] [CROSS_SUBJ] [LONG_BASE] [SD] [SUFFIX] [TEMP_DIR] [OUT_DIR] [DEBUG_FLAG] [THREADS]",
+  "command-line": "segment_subregions [STRUCTURE] [CROSS] [LONG_BASE] [SD] [SUFFIX] [TEMP_DIR] [OUT_DIR] [DEBUG] [THREADS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -16,7 +16,7 @@
       "id": "cross",
       "name": "Cross-sectional Subject",
       "type": "String",
-      "value-key": "[CROSS_SUBJ]",
+      "value-key": "[CROSS]",
       "command-line-flag": "--cross",
       "description": "Subject to segment in cross-sectional analysis.",
       "optional": true
@@ -70,7 +70,7 @@
       "id": "debug",
       "name": "Debug Flag",
       "type": "Flag",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "command-line-flag": "--debug",
       "description": "Write intermediate debugging outputs.",
       "optional": true

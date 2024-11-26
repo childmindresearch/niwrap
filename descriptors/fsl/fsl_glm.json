@@ -5,7 +5,7 @@
   "descriptor-url": "N/A",
   "description": "Simple GLM allowing temporal or spatial regression on either text data or images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fsl_glm [INPUT_FILE] [DESIGN] [OUTPUT_FILE] [CONTRASTS] [MASK] [DOF] [DES_NORM_FLAG] [DAT_NORM_FLAG] [VN_FLAG] [DEMEAN_FLAG] [OUT_COPE] [OUT_Z] [OUT_T] [OUT_P] [OUT_F] [OUT_PF] [OUT_RESIDUALS] [OUT_VARCB] [OUT_SIGSQ] [OUT_DATA] [OUT_VNSCALES] [VX_TEXT] [VX_IMAGES] [HELP_FLAG]",
+  "command-line": "fsl_glm [INPUT_FILE] [DESIGN_MATRIX] [OUTPUT_FILE] [CONTRASTS] [MASK_FILE] [DOF] [DESIGN_NORM_FLAG] [DATA_NORM_FLAG] [VN_FLAG] [DEMEAN_FLAG] [OUTPUT_COPES] [OUTPUT_ZSTATS] [OUTPUT_TSTATS] [OUTPUT_PVALS] [OUTPUT_FVALS] [OUTPUT_PFVALS] [OUTPUT_RESIDUALS] [OUTPUT_VARCB] [OUTPUT_SIGSQ] [OUTPUT_DATA] [OUTPUT_VNSCALES] [VX_TEXT] [VX_IMAGES] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-d",
       "description": "File name of the GLM design matrix (text time courses for temporal regression or an image file for spatial regression)",
-      "value-key": "[DESIGN]",
+      "value-key": "[DESIGN_MATRIX]",
       "type": "File",
       "optional": false,
       "id": "design_matrix",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-m",
       "description": "Mask image file name if input is image",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_FILE]",
       "type": "File",
       "optional": true,
       "id": "mask_file",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--des_norm",
       "description": "Switch on normalisation of the design matrix columns to unit std. deviation",
-      "value-key": "[DES_NORM_FLAG]",
+      "value-key": "[DESIGN_NORM_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "design_norm_flag",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--dat_norm",
       "description": "Switch on normalisation of the data time series to unit std. deviation",
-      "value-key": "[DAT_NORM_FLAG]",
+      "value-key": "[DATA_NORM_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "data_norm_flag",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--out_cope",
       "description": "Output file name for COPEs (either as text file or image)",
-      "value-key": "[OUT_COPE]",
+      "value-key": "[OUTPUT_COPES]",
       "type": "File",
       "optional": true,
       "id": "output_copes",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "--out_z",
       "description": "Output file name for Z-stats (either as text file or image)",
-      "value-key": "[OUT_Z]",
+      "value-key": "[OUTPUT_ZSTATS]",
       "type": "File",
       "optional": true,
       "id": "output_zstats",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--out_t",
       "description": "Output file name for t-stats (either as text file or image)",
-      "value-key": "[OUT_T]",
+      "value-key": "[OUTPUT_TSTATS]",
       "type": "File",
       "optional": true,
       "id": "output_tstats",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--out_p",
       "description": "Output file name for p-values of Z-stats (either as text file or image)",
-      "value-key": "[OUT_P]",
+      "value-key": "[OUTPUT_PVALS]",
       "type": "File",
       "optional": true,
       "id": "output_pvals",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "--out_f",
       "description": "Output file name for F-value of full model fit",
-      "value-key": "[OUT_F]",
+      "value-key": "[OUTPUT_FVALS]",
       "type": "File",
       "optional": true,
       "id": "output_fvals",
@@ -149,7 +149,7 @@
     {
       "command-line-flag": "--out_pf",
       "description": "Output file name for p-value for full model fit",
-      "value-key": "[OUT_PF]",
+      "value-key": "[OUTPUT_PFVALS]",
       "type": "File",
       "optional": true,
       "id": "output_pfvals",
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "--out_res",
       "description": "Output file name for residuals",
-      "value-key": "[OUT_RESIDUALS]",
+      "value-key": "[OUTPUT_RESIDUALS]",
       "type": "File",
       "optional": true,
       "id": "output_residuals",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "--out_varcb",
       "description": "Output file name for variance of COPEs",
-      "value-key": "[OUT_VARCB]",
+      "value-key": "[OUTPUT_VARCB]",
       "type": "File",
       "optional": true,
       "id": "output_varcb",
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "--out_sigsq",
       "description": "Output file name for residual noise variance sigma-square",
-      "value-key": "[OUT_SIGSQ]",
+      "value-key": "[OUTPUT_SIGSQ]",
       "type": "File",
       "optional": true,
       "id": "output_sigsq",
@@ -185,7 +185,7 @@
     {
       "command-line-flag": "--out_data",
       "description": "Output file name for pre-processed data",
-      "value-key": "[OUT_DATA]",
+      "value-key": "[OUTPUT_DATA]",
       "type": "File",
       "optional": true,
       "id": "output_data",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "--out_vnscales",
       "description": "Output file name for scaling factors for variance normalisation",
-      "value-key": "[OUT_VNSCALES]",
+      "value-key": "[OUTPUT_VNSCALES]",
       "type": "File",
       "optional": true,
       "id": "output_vnscales",

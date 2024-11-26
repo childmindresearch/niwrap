@@ -1,7 +1,7 @@
 {
   "name": "gems_compute_atlas_probs",
   "description": "Tool to compute atlas probabilities using SAMSEG results.",
-  "command-line": "gems_compute_atlas_probs [SUBJECTS_DIR] [MESH_COLLECTIONS] [OUT_DIR] [SEGMENTATIONS_DIR] [GT_FROM_FS_FLAG] [SEGMENTATION_NAME] [MULTI_STRUCTURE_FLAG] [LABELS] [FROM_SAMSEG_FLAG] [EM_ITERATIONS] [SHOW_FIGS_FLAG] [SAVE_FIGS_FLAG] [SAVE_AVERAGE_FIGS_FLAG] [SUBJECTS_FILE] [LABELS_FILE] [SAMSEG_SUBDIR]",
+  "command-line": "gems_compute_atlas_probs [SUBJECTS_DIR] [MESH_COLLECTIONS] [OUT_DIR] [SEGMENTATIONS_DIR] [GT_FROM_FS] [SEGMENTATION_NAME] [MULTI_STRUCTURE] [LABELS] [FROM_SAMSEG] [EM_ITERATIONS] [SHOW_FIGS] [SAVE_FIGS] [SAVE_AVERAGE_FIGS] [SUBJECTS_FILE] [LABELS_FILE] [SAMSEG_SUBDIR]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--gt-from-FS",
       "description": "GT from FreeSurfer segmentations.",
-      "value-key": "[GT_FROM_FS_FLAG]",
+      "value-key": "[GT_FROM_FS]",
       "type": "Flag",
       "optional": true,
       "id": "gt_from_fs",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--multi-structure",
       "description": "Estimate alphas from more than 1 structure.",
-      "value-key": "[MULTI_STRUCTURE_FLAG]",
+      "value-key": "[MULTI_STRUCTURE]",
       "type": "Flag",
       "optional": true,
       "id": "multi_structure",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--from-samseg",
       "description": "SAMSEG runs obtained from command samseg instead of run_samseg.",
-      "value-key": "[FROM_SAMSEG_FLAG]",
+      "value-key": "[FROM_SAMSEG]",
       "type": "Flag",
       "optional": true,
       "id": "from_samseg",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--show-figs",
       "description": "Show figures during the run.",
-      "value-key": "[SHOW_FIGS_FLAG]",
+      "value-key": "[SHOW_FIGS]",
       "type": "Flag",
       "optional": true,
       "id": "show_figs",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--save-figs",
       "description": "Save rasterized prior of each subject.",
-      "value-key": "[SAVE_FIGS_FLAG]",
+      "value-key": "[SAVE_FIGS]",
       "type": "Flag",
       "optional": true,
       "id": "save_figs",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--save-average-figs",
       "description": "Save average rasterized prior.",
-      "value-key": "[SAVE_AVERAGE_FIGS_FLAG]",
+      "value-key": "[SAVE_AVERAGE_FIGS]",
       "type": "Flag",
       "optional": true,
       "id": "save_average_figs",

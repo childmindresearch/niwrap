@@ -3,13 +3,13 @@
   "name": "vol2segavg",
   "author": "FreeSurfer Developers",
   "description": "Computes the average of a volume inside a given segment of a segmentation resampling the input volume to the segmentation space.",
-  "command-line": "vol2segavg [OUTPUT] [INPUT] [REG] [SEGMENTATION] [APARC_ASEG_FLAG] [SUBJECT] [SEGMENTATION_ID] [MULTIPLY_VALUE] [NO_BB_FLAG] [ERODE] [DILATE] [WM_FLAG] [VCSF_FLAG] [XCSF_FLAG] [REMOVE_MEAN_FLAG]",
+  "command-line": "vol2segavg [OUTPUT_FILE] [INPUT_VOLUME] [REGISTRATION] [SEGMENTATION_FILE] [APARC_ASEG_FLAG] [SUBJECT_ID] [SEGMENTATION_ID] [MULTIPLY_VALUE] [NO_BB_FLAG] [ERODE_VALUE] [DILATE_VALUE] [WM_FLAG] [VCSF_FLAG] [XCSF_FLAG] [REMOVE_MEAN_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--o",
       "description": "Output file, can be .txt or a binary (e.g., .nii, .mgh)",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": false,
       "id": "output_file",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--i",
       "description": "Input volume file (e.g., vol.nii)",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "input_volume",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--reg",
       "description": "Registration file, can be reg.dat or use --regheader",
-      "value-key": "[REG]",
+      "value-key": "[REGISTRATION]",
       "type": "String",
       "optional": false,
       "id": "registration",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--seg",
       "description": "Segmentation file (e.g., seg.mgz)",
-      "value-key": "[SEGMENTATION]",
+      "value-key": "[SEGMENTATION_FILE]",
       "type": "File",
       "optional": false,
       "id": "segmentation_file",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--s",
       "description": "Subject ID, may be needed if --reg not supplied",
-      "value-key": "[SUBJECT]",
+      "value-key": "[SUBJECT_ID]",
       "type": "String",
       "optional": true,
       "id": "subject_id",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "--erode",
       "description": "Erode segmentation",
-      "value-key": "[ERODE]",
+      "value-key": "[ERODE_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "erode_value",
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "--dilate",
       "description": "Dilate segmentation",
-      "value-key": "[DILATE]",
+      "value-key": "[DILATE_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "dilate_value",

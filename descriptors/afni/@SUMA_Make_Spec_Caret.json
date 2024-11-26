@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-debug",
       "description": "Print debug information along the way",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-echo",
       "description": "Turn shell echo on",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",

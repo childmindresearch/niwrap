@@ -4,13 +4,13 @@
   "author": "AFNI Developers",
   "description": "Extract 2D image files from a 3D AFNI dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "from3d [VERBOSE] [NSIZE] [RAW_FLAG] [FLOAT_FLAG] [ZFIRST] [ZLAST] [TFIRST] [TLAST] [INPUT_FILE] [PREFIX]",
+  "command-line": "from3d [VERBOSE] [NSIZE] [RAW] [FLOAT] [ZFIRST] [ZLAST] [TFIRST] [TLAST] [INPUT] [PREFIX]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-input",
       "description": "Read 3D dataset from file 'fname'",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-raw",
       "description": "Write images in 'raw' format (just the data bytes). There will be no header information saying what the image dimensions are.",
-      "value-key": "[RAW_FLAG]",
+      "value-key": "[RAW]",
       "type": "Flag",
       "optional": true,
       "id": "raw",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-float",
       "description": "Write images as floats, no matter what they are in the dataset itself.",
-      "value-key": "[FLOAT_FLAG]",
+      "value-key": "[FLOAT]",
       "type": "Flag",
       "optional": true,
       "id": "float",

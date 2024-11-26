@@ -1,7 +1,7 @@
 {
   "name": "mri_concatenate_lta",
   "description": "Concatenates two consecutive LTA transformations into one overall transformation, Out = LTA2*LTA1",
-  "command-line": "mri_concatenate_lta [LTA_1] [LTA_2] [LTA_FINAL] [TAL_SRC] [TAL_TEMPLATE] [INVERT1_FLAG] [INVERT2_FLAG] [INVERTOUT_FLAG] [OUT_TYPE] [SUBJECT] [RMSDIFF_RADIUS] [RMSDIFF_OUTPUTFILE]",
+  "command-line": "mri_concatenate_lta [LTA_1] [LTA_2] [LTA_FINAL] [TAL_SRC] [TAL_TEMPLATE] [INVERT1] [INVERT2] [INVERTOUT] [OUT_TYPE] [SUBJECT] [RMSDIFF_RADIUS] [RMSDIFF_OUTPUTFILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -49,7 +49,7 @@
       "id": "invert1",
       "name": "Invert LTA 1 Flag",
       "command-line-flag": "-invert1",
-      "value-key": "[INVERT1_FLAG]",
+      "value-key": "[INVERT1]",
       "type": "Flag",
       "description": "Invert LTA1 before applying it",
       "optional": true
@@ -58,7 +58,7 @@
       "id": "invert2",
       "name": "Invert LTA 2 Flag",
       "command-line-flag": "-invert2",
-      "value-key": "[INVERT2_FLAG]",
+      "value-key": "[INVERT2]",
       "type": "Flag",
       "description": "Invert LTA2 before applying it",
       "optional": true
@@ -67,7 +67,7 @@
       "id": "invertout",
       "name": "Invert Output LTA Flag",
       "command-line-flag": "-invertout",
-      "value-key": "[INVERTOUT_FLAG]",
+      "value-key": "[INVERTOUT]",
       "type": "Flag",
       "description": "Invert output LTA",
       "optional": true

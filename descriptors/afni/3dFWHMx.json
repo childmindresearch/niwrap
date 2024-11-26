@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Compute Full Width at Half Maximum (FWHM) for FMRI datasets using AutoCorrelation Function (ACF)",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dFWHMx [MASK] [AUTOMASK_FLAG] [DEM_SEXT_FLAG] [UNIF_NORMALIZE_FLAG] [DETREND_FLAG] [DTPREFIX] [GEOM_FLAG] [ARITH_FLAG] [COMBINE_FLAG] [OUT_FILE] [COMPAT_FLAG] [ACF] [INPUT_FILE]",
+  "command-line": "3dFWHMx [MASK] [AUTOMASK] [DEMED] [UNIF] [DETREND] [DETPREFIX] [GEOM] [ARITH] [COMBINE] [OUT] [COMPAT] [ACF] [INFILE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Compute a mask from THIS dataset",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-demed",
       "description": "if the input dataset has more than one sub-brick then subtract the median of each voxel's time series before processing FWHM",
-      "value-key": "[DEM_SEXT_FLAG]",
+      "value-key": "[DEMED]",
       "type": "Flag",
       "optional": true,
       "id": "demed",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-unif",
       "description": "Normalize each voxel's time series to have the same MAD before processing FWHM, implies -demed",
-      "value-key": "[UNIF_NORMALIZE_FLAG]",
+      "value-key": "[UNIF]",
       "type": "Flag",
       "optional": true,
       "id": "unif",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-detrend",
       "description": "Detrend to order 'q'. If q is not given, the program picks q=NT/30; -detrend disables -demed, and includes -unif",
-      "value-key": "[DETREND_FLAG]",
+      "value-key": "[DETREND]",
       "type": "Number",
       "optional": true,
       "id": "detrend",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-detprefix",
       "description": "Save the detrended file into a dataset with prefix 'd'",
-      "value-key": "[DTPREFIX]",
+      "value-key": "[DETPREFIX]",
       "type": "String",
       "optional": true,
       "id": "detprefix",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-geom",
       "description": "Compute the final estimate as the geometric mean",
-      "value-key": "[GEOM_FLAG]",
+      "value-key": "[GEOM]",
       "type": "Flag",
       "optional": true,
       "id": "geom",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-arith",
       "description": "Compute the final estimate as the arithmetic mean",
-      "value-key": "[ARITH_FLAG]",
+      "value-key": "[ARITH]",
       "type": "Flag",
       "optional": true,
       "id": "arith",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-combine",
       "description": "Combine the final measurements along each axis into one result",
-      "value-key": "[COMBINE_FLAG]",
+      "value-key": "[COMBINE]",
       "type": "Flag",
       "optional": true,
       "id": "combine",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-out",
       "description": "Write output to file 'ttt' (3 columns of numbers). If not given, the sub-brick outputs are not written. Use '-out -' to write to stdout, if desired",
-      "value-key": "[OUT_FILE]",
+      "value-key": "[OUT]",
       "type": "String",
       "optional": true,
       "id": "out",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-compat",
       "description": "Be compatible with the older 3dFWHM",
-      "value-key": "[COMPAT_FLAG]",
+      "value-key": "[COMPAT]",
       "type": "Flag",
       "optional": true,
       "id": "compat",

@@ -3,7 +3,7 @@
   "name": "dmri_group",
   "author": "FreeSurfer Developers",
   "description": "A tool to process and analyze diffusion MRI group data.",
-  "command-line": "dmri_group [INPUT_LIST] [REFERENCE_VOLUME] [OUTPUT_BASE] [NO_INTERP_FLAG] [SECTIONS] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "dmri_group [INPUT_LIST] [REFERENCE_VOLUME] [OUTPUT_BASE] [NO_INTERPOLATION] [SECTIONS_NUM] [DEBUG_MODE] [CHECK_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "--nointerp",
       "description": "Do not attempt to interpolate along-tract measures (Assume that subjects are sampled at equivalent positions)",
-      "value-key": "[NO_INTERP_FLAG]",
+      "value-key": "[NO_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "no_interpolation",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--sec",
       "description": "Divide the pathway into a number of sections and output average measures for each section",
-      "value-key": "[SECTIONS]",
+      "value-key": "[SECTIONS_NUM]",
       "type": "Number",
       "optional": true,
       "id": "sections_num",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "debug_mode",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",

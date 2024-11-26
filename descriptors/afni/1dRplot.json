@@ -3,7 +3,7 @@
   "name": "1dRplot",
   "author": "AFNI Developers",
   "description": "Program for plotting a 1D file",
-  "command-line": "1dRplot [INPUT] [OPTIONS]",
+  "command-line": "1dRplot [INPUT_FILE] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input 1D file to plot",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_FILE]",
       "command-line-flag": "-input",
       "type": "File",
       "optional": false,
@@ -20,7 +20,7 @@
     },
     {
       "description": "Output prefix. See also -save.",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "command-line-flag": "-prefix",
       "type": "String",
       "optional": true,
@@ -78,7 +78,7 @@
     },
     {
       "description": "Text to be placed at left Y margin. You need one string per column.",
-      "value-key": "[LEFT_Y_TEXT]",
+      "value-key": "[LEFT_Y_MARGIN_TEXT]",
       "command-line-flag": "-col.text.lym",
       "type": "String",
       "optional": true,
@@ -87,7 +87,7 @@
     },
     {
       "description": "Text to be placed at right Y margin. You need one string per column.",
-      "value-key": "[RIGHT_Y_TEXT]",
+      "value-key": "[RIGHT_Y_MARGIN_TEXT]",
       "command-line-flag": "-col.text.rym",
       "type": "String",
       "optional": true,
@@ -183,7 +183,7 @@
     },
     {
       "description": "Save plot and quit. No need for -prefix with this option.",
-      "value-key": "[SAVE]",
+      "value-key": "[SAVE_PLOT]",
       "command-line-flag": "-save",
       "type": "Flag",
       "optional": true,

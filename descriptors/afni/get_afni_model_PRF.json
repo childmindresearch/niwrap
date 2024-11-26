@@ -3,11 +3,11 @@
   "name": "get_afni_model_PRF",
   "author": "AFNI Developers",
   "description": "A tool to get AFNI model parameters assuming a PRF framework",
-  "command-line": "get_afni_model_PRF [A] [X] [Y] [SIGMA]",
+  "command-line": "get_afni_model_PRF [AMPLITUDE] [X_COORD] [Y_COORD] [SIGMA]",
   "inputs": [
     {
       "description": "Amplitude for the AFNI model",
-      "value-key": "[A]",
+      "value-key": "[AMPLITUDE]",
       "type": "Number",
       "optional": false,
       "id": "amplitude",
@@ -15,7 +15,7 @@
     },
     {
       "description": "X-coordinate for the AFNI model",
-      "value-key": "[X]",
+      "value-key": "[X_COORD]",
       "type": "Number",
       "optional": false,
       "id": "x_coord",
@@ -23,7 +23,7 @@
     },
     {
       "description": "Y-coordinate for the AFNI model",
-      "value-key": "[Y]",
+      "value-key": "[Y_COORD]",
       "type": "Number",
       "optional": false,
       "id": "y_coord",

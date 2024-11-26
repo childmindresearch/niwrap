@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/src/scripts_src/@MakeLabelTable",
   "description": "Script used to create, modify, and transform label tables",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@MakeLabelTable [LABELTABLE_FLAG] [ATLAS_POINTLIST_FLAG] [LAB_R_FLAG] [LAB_V_FLAG] [LAB_FILE_FLAG] [DSET_FLAG] [LONGNAMES_FLAG] [LAST_LONGNAME_COL_FLAG] [CENTERS_FLAG] [CENTERTYPE_FLAG] [CENTERMASK_FLAG] [SKIP_NOVOXELS_FLAG] [ALL_LABELS_FLAG] [ALL_KEYS_FLAG] [LKEYS_FLAG] [RKEYS_FLAG] [KLABEL_FLAG] [MATCH_LABEL_FLAG] [LABELTABLE_OF_DSET_FLAG] [WORD_LABEL_MATCH_FLAG] [QUIET_DEATH_FLAG] [LT_TO_ATLAS_PL_FLAG] [DSET_LT_TO_ATLAS_PL_FLAG] [LT_TO_CSV_FLAG] [ATLASIZE_LABELED_DSET_FLAG] [ATLAS_FILE_FLAG] [ATLAS_NAME_FLAG] [ATLAS_DESCRIPTION_FLAG] [REPLACE_FLAG] [ADD_ATLAS_DSET_FLAG] [H_WEB_FLAG] [H_VIEW_FLAG] [ALL_OPTS_FLAG] [H_FIND_FLAG]",
+  "command-line": "@MakeLabelTable [LABELTABLE] [ATLAS_POINTLIST] [LAB_R] [LAB_V] [LAB_FILE] [DSET] [LONGNAMES] [LAST_LONGNAME_COL] [CENTERS] [CENTERTYPE] [CENTERMASK] [SKIP_NOVOXELS] [ALL_LABELS] [ALL_KEYS] [LKEYS] [RKEYS] [KLABEL] [MATCH_LABEL] [LABELTABLE_OF_DSET] [WORD_LABEL_MATCH] [QUIET_DEATH] [LT_TO_ATLAS_PL] [DSET_LT_TO_ATLAS_PL] [LT_TO_CSV] [ATLASIZE_LABELED_DSET] [ATLAS_FILE] [ATLAS_NAME] [ATLAS_DESCRIPTION] [REPLACE] [ADD_ATLAS_DSET] [H_WEB] [H_VIEW] [ALL_OPTS] [H_FIND]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -14,7 +14,7 @@
     {
       "description": "Name of output label table",
       "command-line-flag": "-labeltable",
-      "value-key": "[LABELTABLE_FLAG]",
+      "value-key": "[LABELTABLE]",
       "type": "String",
       "optional": false,
       "id": "labeltable",
@@ -23,7 +23,7 @@
     {
       "description": "Instead of a label table, produce an atlas point list",
       "command-line-flag": "-atlas_pointlist",
-      "value-key": "[ATLAS_POINTLIST_FLAG]",
+      "value-key": "[ATLAS_POINTLIST]",
       "type": "String",
       "optional": true,
       "id": "atlas_pointlist",
@@ -32,7 +32,7 @@
     {
       "description": "Define a label with its minimum and maximum key values",
       "command-line-flag": "-lab_r",
-      "value-key": "[LAB_R_FLAG]",
+      "value-key": "[LAB_R]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -42,7 +42,7 @@
     {
       "description": "Define a label and its value",
       "command-line-flag": "-lab_v",
-      "value-key": "[LAB_V_FLAG]",
+      "value-key": "[LAB_V]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -52,7 +52,7 @@
     {
       "description": "Set column delimiter for -lab_file option",
       "command-line-flag": "-lab_file_delim",
-      "value-key": "[LAB_FILE_DELIM_FLAG]",
+      "value-key": "[LAB_FILE_DELIM]",
       "type": "String",
       "optional": true,
       "id": "lab_file_delim",
@@ -61,7 +61,7 @@
     {
       "description": "Specify labels and keys from a text file",
       "command-line-flag": "-lab_file",
-      "value-key": "[LAB_FILE_FLAG]",
+      "value-key": "[LAB_FILE]",
       "type": "String",
       "list": true,
       "min-list-entries": 1,
@@ -73,7 +73,7 @@
     {
       "description": "Allow for another column of long names for regions",
       "command-line-flag": "-longnames",
-      "value-key": "[LONGNAMES_FLAG]",
+      "value-key": "[LONGNAMES]",
       "type": "Number",
       "optional": true,
       "id": "longnames",
@@ -82,7 +82,7 @@
     {
       "description": "Limit long names to nth column",
       "command-line-flag": "-last_longname_col",
-      "value-key": "[LAST_LONGNAME_COL_FLAG]",
+      "value-key": "[LAST_LONGNAME_COL]",
       "type": "Number",
       "optional": true,
       "id": "last_longname_col",
@@ -91,7 +91,7 @@
     {
       "description": "Attach the label table (or atlas point list) to dataset",
       "command-line-flag": "-dset",
-      "value-key": "[DSET_FLAG]",
+      "value-key": "[DSET]",
       "type": "File",
       "optional": true,
       "id": "dset",
@@ -100,7 +100,7 @@
     {
       "description": "Compute center of mass location for each ROI",
       "command-line-flag": "-centers",
-      "value-key": "[CENTERS_FLAG]",
+      "value-key": "[CENTERS]",
       "type": "Flag",
       "optional": true,
       "id": "centers",
@@ -109,7 +109,7 @@
     {
       "description": "Different ways to compute centers (Icent, Dcent, cm)",
       "command-line-flag": "-centertype",
-      "value-key": "[CENTERTYPE_FLAG]",
+      "value-key": "[CENTERTYPE]",
       "type": "String",
       "optional": true,
       "id": "centertype",
@@ -118,7 +118,7 @@
     {
       "description": "Calculate center of mass locations using a subset of voxels",
       "command-line-flag": "-centermask",
-      "value-key": "[CENTERMASK_FLAG]",
+      "value-key": "[CENTERMASK]",
       "type": "String",
       "optional": true,
       "id": "centermask",
@@ -127,7 +127,7 @@
     {
       "description": "Skip regions without voxels",
       "command-line-flag": "-skip_novoxels",
-      "value-key": "[SKIP_NOVOXELS_FLAG]",
+      "value-key": "[SKIP_NOVOXELS]",
       "type": "Flag",
       "optional": true,
       "id": "skip_novoxels",
@@ -136,7 +136,7 @@
     {
       "description": "Return a listing of all labels",
       "command-line-flag": "-all_labels",
-      "value-key": "[ALL_LABELS_FLAG]",
+      "value-key": "[ALL_LABELS]",
       "type": "Flag",
       "optional": true,
       "id": "all_labels",
@@ -145,7 +145,7 @@
     {
       "description": "Return a listing of all keys",
       "command-line-flag": "-all_keys",
-      "value-key": "[ALL_KEYS_FLAG]",
+      "value-key": "[ALL_KEYS]",
       "type": "Flag",
       "optional": true,
       "id": "all_keys",
@@ -154,7 +154,7 @@
     {
       "description": "Return the keys whose labels match a given label",
       "command-line-flag": "-lkeys",
-      "value-key": "[LKEYS_FLAG]",
+      "value-key": "[LKEYS]",
       "type": "String",
       "optional": true,
       "id": "lkeys",
@@ -163,7 +163,7 @@
     {
       "description": "Return the range (min max) of keys whose labels match a given label",
       "command-line-flag": "-rkeys",
-      "value-key": "[RKEYS_FLAG]",
+      "value-key": "[RKEYS]",
       "type": "String",
       "optional": true,
       "id": "rkeys",
@@ -172,7 +172,7 @@
     {
       "description": "Return the label associated with a given key",
       "command-line-flag": "-klabel",
-      "value-key": "[KLABEL_FLAG]",
+      "value-key": "[KLABEL]",
       "type": "String",
       "optional": true,
       "id": "klabel",
@@ -181,7 +181,7 @@
     {
       "description": "Return labels matching a given label",
       "command-line-flag": "-match_label",
-      "value-key": "[MATCH_LABEL_FLAG]",
+      "value-key": "[MATCH_LABEL]",
       "type": "String",
       "optional": true,
       "id": "match_label",
@@ -190,7 +190,7 @@
     {
       "description": "Dump the labeltable from a dataset",
       "command-line-flag": "-labeltable_of_dset",
-      "value-key": "[LABELTABLE_OF_DSET_FLAG]",
+      "value-key": "[LABELTABLE_OF_DSET]",
       "type": "File",
       "optional": true,
       "id": "labeltable_of_dset",
@@ -199,7 +199,7 @@
     {
       "description": "Use word matching for labels",
       "command-line-flag": "-word_label_match",
-      "value-key": "[WORD_LABEL_MATCH_FLAG]",
+      "value-key": "[WORD_LABEL_MATCH]",
       "type": "Flag",
       "optional": true,
       "id": "word_label_match",
@@ -208,7 +208,7 @@
     {
       "description": "Do not give error messages when failing",
       "command-line-flag": "-quiet_death",
-      "value-key": "[QUIET_DEATH_FLAG]",
+      "value-key": "[QUIET_DEATH]",
       "type": "Flag",
       "optional": true,
       "id": "quiet_death",
@@ -217,7 +217,7 @@
     {
       "description": "Transform Label Table to Atlas Point List",
       "command-line-flag": "-LT_to_atlas_PL",
-      "value-key": "[LT_TO_ATLAS_PL_FLAG]",
+      "value-key": "[LT_TO_ATLAS_PL]",
       "type": "String",
       "optional": true,
       "id": "lt_to_atlas_pl",
@@ -226,7 +226,7 @@
     {
       "description": "Get Label Table in dataset and write as an Atlas Point List",
       "command-line-flag": "-dset_LT_to_atlas_PL",
-      "value-key": "[DSET_LT_TO_ATLAS_PL_FLAG]",
+      "value-key": "[DSET_LT_TO_ATLAS_PL]",
       "type": "File",
       "list": true,
       "min-list-entries": 2,
@@ -238,7 +238,7 @@
     {
       "description": "Transform Label Table to CSV format",
       "command-line-flag": "-LT_to_CSV",
-      "value-key": "[LT_TO_CSV_FLAG]",
+      "value-key": "[LT_TO_CSV]",
       "type": "File",
       "optional": true,
       "id": "lt_to_csv",
@@ -247,7 +247,7 @@
     {
       "description": "Transform a labeled ROI dataset into an atlas",
       "command-line-flag": "-atlasize_labeled_dset",
-      "value-key": "[ATLASIZE_LABELED_DSET_FLAG]",
+      "value-key": "[ATLASIZE_LABELED_DSET]",
       "type": "File",
       "optional": true,
       "id": "atlasize_labeled_dset",
@@ -256,7 +256,7 @@
     {
       "description": "Specify the name of the NIML file where atlas attributes are stored",
       "command-line-flag": "-atlas_file",
-      "value-key": "[ATLAS_FILE_FLAG]",
+      "value-key": "[ATLAS_FILE]",
       "type": "String",
       "optional": true,
       "id": "atlas_file",
@@ -265,7 +265,7 @@
     {
       "description": "Name of the Atlas",
       "command-line-flag": "-atlas_name",
-      "value-key": "[ATLAS_NAME_FLAG]",
+      "value-key": "[ATLAS_NAME]",
       "type": "String",
       "optional": true,
       "id": "atlas_name",
@@ -274,7 +274,7 @@
     {
       "description": "Description of the Atlas, which appears in AFNI's whereami window",
       "command-line-flag": "-atlas_description",
-      "value-key": "[ATLAS_DESCRIPTION_FLAG]",
+      "value-key": "[ATLAS_DESCRIPTION]",
       "type": "String",
       "optional": true,
       "id": "atlas_description",
@@ -283,7 +283,7 @@
     {
       "description": "Replace existing Atlas if the name already exists in the NIML file",
       "command-line-flag": "-replace",
-      "value-key": "[REPLACE_FLAG]",
+      "value-key": "[REPLACE]",
       "type": "Flag",
       "optional": true,
       "id": "replace",
@@ -292,7 +292,7 @@
     {
       "description": "Add an existing atlas to an atlas file",
       "command-line-flag": "-add_atlas_dset",
-      "value-key": "[ADD_ATLAS_DSET_FLAG]",
+      "value-key": "[ADD_ATLAS_DSET]",
       "type": "File",
       "optional": true,
       "id": "add_atlas_dset",
@@ -301,7 +301,7 @@
     {
       "description": "Open webpage with help for this program",
       "command-line-flag": "-h_web",
-      "value-key": "[H_WEB_FLAG]",
+      "value-key": "[H_WEB]",
       "type": "Flag",
       "optional": true,
       "id": "h_web",
@@ -310,7 +310,7 @@
     {
       "description": "Open -help output in a GUI editor",
       "command-line-flag": "-h_view",
-      "value-key": "[H_VIEW_FLAG]",
+      "value-key": "[H_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "h_view",
@@ -319,7 +319,7 @@
     {
       "description": "List all of the options for this script",
       "command-line-flag": "-all_opts",
-      "value-key": "[ALL_OPTS_FLAG]",
+      "value-key": "[ALL_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "all_opts",
@@ -328,7 +328,7 @@
     {
       "description": "Search for lines containing a specific word in the help output",
       "command-line-flag": "-h_find",
-      "value-key": "[H_FIND_FLAG]",
+      "value-key": "[H_FIND]",
       "type": "String",
       "optional": true,
       "id": "h_find",

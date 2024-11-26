@@ -3,7 +3,7 @@
   "name": "@measure_bb_thick",
   "author": "AFNI Developers",
   "description": "Compute thickness of mask using ball and box method",
-  "command-line": "@measure_bb_thick [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTHSEARCH] [KEEP_TEMP_FILES] [BALLS_ONLY] [SURFSMOOTH_METHOD]",
+  "command-line": "@measure_bb_thick [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTH_SEARCH] [KEEP_TEMP_FILES] [BALLS_ONLY] [SURFSMOOTH_METHOD]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-depthsearch",
       "description": "Map to surface by looking for max along mm millimeter normal vectors. Default is 3 mm.",
-      "value-key": "[DEPTHSEARCH]",
+      "value-key": "[DEPTH_SEARCH]",
       "type": "Number",
       "optional": true,
       "id": "depth_search",

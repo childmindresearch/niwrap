@@ -3,7 +3,7 @@
   "name": "1dNLfit",
   "author": "AFNI Developers",
   "description": "Program to fit a model to a vector of data. The model is given by a symbolic expression, with parameters to be estimated.",
-  "command-line": "1dNLfit [EXPRESSION] [INDEPENDENT_VAR] [PARAMETERS] [DEPENDENT_DATA] [METHOD_FLAG]",
+  "command-line": "1dNLfit [EXPRESSION] [INDEPENDENT_VARIABLE] [PARAMETERS] [DEPENDENT_DATA] [METHOD]",
   "inputs": [
     {
       "command-line-flag": "-expr",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-indvar",
       "description": "Indicates which variable in '-expr' is the independent variable. All other symbols are parameters, which are either fixed (constants) or variables to be estimated. Read the values of the independent variable from 1D file.",
-      "value-key": "[INDEPENDENT_VAR]",
+      "value-key": "[INDEPENDENT_VARIABLE]",
       "type": "String",
       "optional": false,
       "id": "independent_variable",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-meth",
       "description": "Set the method for fitting: '1' for L1, '2' for L2 (default is L2).",
-      "value-key": "[METHOD_FLAG]",
+      "value-key": "[METHOD]",
       "type": "Number",
       "integer": true,
       "optional": true,

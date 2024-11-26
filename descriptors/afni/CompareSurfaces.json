@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/SUMA/main_toc.html",
   "description": "Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the local surface normal at each node in S1. Superseded by SurfToSurf.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "CompareSurfaces [SPEC_FILE] [HEMISPHERE] [SV1] [SV2] [FILE_PREFIX] [ONE_NODE] [NODE_RANGE] [NO_CONS] [NO_VOLREG] [NO_XFORM] [ENVIRONMENT_VAR] [TRACE] [EXTREME_TRACE] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE]",
+  "command-line": "CompareSurfaces [SPEC_FILE] [HEMISPHERE] [VOLUME_PARENT_1] [VOLUME_PARENT_2] [FILE_PREFIX] [ONE_NODE] [NODE_RANGE] [NO_CONSISTENCY_CHECK] [NO_VOLREG] [NO_TRANSFORM] [SET_ENVIRONMENT_VARIABLE] [TRACE] [EXTREME_TRACE] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-sv1",
       "description": "Volume parent BRIK for first surface.",
-      "value-key": "[SV1]",
+      "value-key": "[VOLUME_PARENT_1]",
       "type": "File",
       "optional": false,
       "id": "volume_parent_1",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-sv2",
       "description": "Volume parent BRIK for second surface.",
-      "value-key": "[SV2]",
+      "value-key": "[VOLUME_PARENT_2]",
       "type": "File",
       "optional": false,
       "id": "volume_parent_2",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-nocons",
       "description": "Skip mesh orientation consistency check. This speeds up the start time so it is useful for debugging runs.",
-      "value-key": "[NO_CONS]",
+      "value-key": "[NO_CONSISTENCY_CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "no_consistency_check",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-noxform",
       "description": "Same as -novolreg.",
-      "value-key": "[NO_XFORM]",
+      "value-key": "[NO_TRANSFORM]",
       "type": "Flag",
       "optional": true,
       "id": "no_transform",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-setenv",
       "description": "Set environment variable ENVname to be ENVvalue. Quotes are necessary.",
-      "value-key": "[ENVIRONMENT_VAR]",
+      "value-key": "[SET_ENVIRONMENT_VARIABLE]",
       "type": "String",
       "optional": true,
       "id": "set_environment_variable",

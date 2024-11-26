@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/your_tool_descriptor.json",
   "description": "Produces classification priors based on voxel signatures.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dGenPriors [SIGS] [TDIST] [CPREFIX] [PPREFIX] [LTFILE] [WHAT] [PREFIX] [CMASK] [MASK] [MRANGE] [DEBUG] [VOX_DEBUG] [VOX_DEBUG_FILE] [UID] [USE_TMP] [NO_TMP] [PSET] [CSET] [REGROUP_CLASSES] [CLASSES] [FEATURES] [STRICT_FEATURE_MATCH] [FEATGROUPS] [SHOW_THIS_DIST] [FAST] [SLOW]",
+  "command-line": "3dGenPriors [SIGS] [TDIST] [CPREFIX] [PPREFIX] [LABELTABLE] [DO] [PREFIX] [CMASK] [MASK] [MRANGE] [DEBUG] [VOX_DEBUG] [VOX_DEBUG_FILE] [UID] [USE_TMP] [NO_TMP] [PSET] [CSET] [REGROUP_CLASSES] [CLASSES] [FEATURES] [STRICT_FEATURE_MATCH] [FEATGROUPS] [SHOW_THIS_DIST] [FAST] [SLOW]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-labeltable",
       "description": "Labeltable to attach to output dataset",
-      "value-key": "[LTFILE]",
+      "value-key": "[LABELTABLE]",
       "type": "File",
       "optional": false,
       "id": "labeltable",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-do",
       "description": "Specify the output that this program should create.",
-      "value-key": "[WHAT]",
+      "value-key": "[DO]",
       "type": "String",
       "optional": false,
       "id": "do",

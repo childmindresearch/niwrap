@@ -3,7 +3,7 @@
   "name": "4swap",
   "author": "AFNI Developers",
   "description": "Swaps byte quadruples on the listed files.",
-  "command-line": "4swap [FILES] [QUIET_FLAG]",
+  "command-line": "4swap [FILES] [QUIET]",
   "inputs": [
     {
       "description": "List of files to process.",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-q",
       "description": "Work quietly; suppress output messages.",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",

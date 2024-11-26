@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni",
   "description": "A tool for applying False Discovery Rate (FDR) thresholding to voxelwise statistics in 3D functional datasets.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dFDR [INPUT] [MASK_FILE] [MASK_THR] [CONSTANT_TYPE] [QUIET_FLAG] [LIST_FLAG] [PREFIX] [MODE_OPTION] [PMASK_FLAG] [NOPMASK_FLAG] [FORCE_FLAG] [FLOAT_FLAG] [QVAL_FLAG]",
+  "command-line": "3dFDR [INPUT_FILE] [MASK_FILE] [MASK_THRESHOLD] [CONSTANT_TYPE] [QUIET] [LIST] [PREFIX] [MODE_OPTION] [PMASK] [NOPMASK] [FORCE] [FLOAT] [QVAL]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input 3D functional dataset filename",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_FILE]",
       "type": "File",
       "optional": false,
       "id": "input_file",
@@ -22,7 +22,7 @@
     },
     {
       "description": ".1D file containing column of p-values",
-      "value-key": "[INPUT1D]",
+      "value-key": "[INPUT1D_FILE]",
       "type": "File",
       "optional": true,
       "id": "input1d_file",
@@ -40,7 +40,7 @@
     },
     {
       "description": "Only voxels whose corresponding mask value is greater than or equal to the specified value in absolute terms will be considered. Default is 1.",
-      "value-key": "[MASK_THR]",
+      "value-key": "[MASK_THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "mask_threshold",
@@ -59,7 +59,7 @@
     },
     {
       "description": "Suppress screen output.",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -68,7 +68,7 @@
     },
     {
       "description": "Write sorted list of voxel q-values to screen.",
-      "value-key": "[LIST_FLAG]",
+      "value-key": "[LIST]",
       "type": "Flag",
       "optional": true,
       "id": "list",
@@ -96,7 +96,7 @@
     },
     {
       "description": "Ignore p=1 voxels (default in new mode).",
-      "value-key": "[PMASK_FLAG]",
+      "value-key": "[PMASK]",
       "type": "Flag",
       "optional": true,
       "id": "pmask",
@@ -105,7 +105,7 @@
     },
     {
       "description": "Count p=1 voxels (default in old mode).",
-      "value-key": "[NOPMASK_FLAG]",
+      "value-key": "[NOPMASK]",
       "type": "Flag",
       "optional": true,
       "id": "nopmask",
@@ -114,7 +114,7 @@
     },
     {
       "description": "Force conversion of all sub-bricks, treating them as p-values.",
-      "value-key": "[FORCE_FLAG]",
+      "value-key": "[FORCE]",
       "type": "Flag",
       "optional": true,
       "id": "force",
@@ -123,7 +123,7 @@
     },
     {
       "description": "Force the output of z-scores in floating point format.",
-      "value-key": "[FLOAT_FLAG]",
+      "value-key": "[FLOAT]",
       "type": "Flag",
       "optional": true,
       "id": "float",
@@ -132,7 +132,7 @@
     },
     {
       "description": "Force the output of q-values rather than z-scores.",
-      "value-key": "[QVAL_FLAG]",
+      "value-key": "[QVAL]",
       "type": "Flag",
       "optional": true,
       "id": "qval",

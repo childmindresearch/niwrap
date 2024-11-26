@@ -3,7 +3,7 @@
   "name": "3dCM",
   "author": "AFNI Developers",
   "description": "Tool for computing the center of mass of a dataset",
-  "command-line": "3dCM [OPTIONS] [DATASET]",
+  "command-line": "3dCM [OPTIONS] [DSET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset.",
-      "value-key": "[DATASET]",
+      "value-key": "[DSET]",
       "type": "File",
       "optional": false,
       "id": "dset",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Generate the mask automatically.",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-set",
       "description": "After computing the CM of the dataset, set the origin fields in the header so that the CM will be at (x,y,z) in DICOM coordinates.",
-      "value-key": "[SET]",
+      "value-key": "[SET_ORIGIN]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-local_ijk",
       "description": "Output values as (i,j,k) in local orientation.",
-      "value-key": "[LOCAL_IJK_FLAG]",
+      "value-key": "[LOCAL_IJK]",
       "type": "Flag",
       "optional": true,
       "id": "local_ijk",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "-all_rois",
       "description": "Automatically find all ROI values and compute their centers of mass.",
-      "value-key": "[ALL_ROIS_FLAG]",
+      "value-key": "[ALL_ROIS]",
       "type": "Flag",
       "optional": true,
       "id": "all_rois",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-Icent",
       "description": "Compute Internal Center, which finds the center voxel closest to the center of mass.",
-      "value-key": "[ICENT_FLAG]",
+      "value-key": "[ICENT]",
       "type": "Flag",
       "optional": true,
       "id": "icent",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-Dcent",
       "description": "Compute Distance Center, the center voxel with the shortest average distance to all other voxels. This is computationally expensive.",
-      "value-key": "[DCENT_FLAG]",
+      "value-key": "[DCENT]",
       "type": "Flag",
       "optional": true,
       "id": "dcent",

@@ -3,7 +3,7 @@
   "name": "mris_congeal",
   "author": "FreeSurfer Developers",
   "description": "Program that registers a set of input surfaces together and generates an atlas.",
-  "command-line": "mris_congeal [INPUT_SURFACE_NAME] [HEMI] [SUBJECTS]... [OUTPUT_SURFACE_NAME] [SUBJECTS_DIR] [DISABLE_RIGID_ALIGNMENT_FLAG] [DISABLE_SULC_ALIGNMENT_FLAG] [SMOOTHWM_CURV_FLAG] [JACOBIAN_OUTPUT] [DISTANCE_TERM] [MANUAL_LABEL] [ADDFRAME] [OVERLAY] [OVERLAY_DIR] [TARGET_SUBJECT_FLAG]",
+  "command-line": "mris_congeal [INPUT_SURFACE_NAME] [HEMI] [SUBJECTS]... [OUTPUT_SURFACE_NAME] [SUBJECTS_DIR] [DISABLE_RIGID_ALIGNMENT] [DISABLE_SULC_ALIGNMENT] [SMOOTHWM_CURV] [JACOBIAN_OUTPUT] [DISTANCE_TERM] [MANUAL_LABEL] [ADDFRAME] [OVERLAY] [OVERLAY_DIR] [TARGET_SUBJECT]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-norot",
       "description": "Disable initial rigid alignment",
-      "value-key": "[DISABLE_RIGID_ALIGNMENT_FLAG]",
+      "value-key": "[DISABLE_RIGID_ALIGNMENT]",
       "type": "Flag",
       "optional": true,
       "id": "disable_rigid_alignment",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-nosulc",
       "description": "Disable initial sulc alignment",
-      "value-key": "[DISABLE_SULC_ALIGNMENT_FLAG]",
+      "value-key": "[DISABLE_SULC_ALIGNMENT]",
       "type": "Flag",
       "optional": true,
       "id": "disable_sulc_alignment",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-curv",
       "description": "Use smoothwm curvature for final alignment",
-      "value-key": "[SMOOTHWM_CURV_FLAG]",
+      "value-key": "[SMOOTHWM_CURV]",
       "type": "Flag",
       "optional": true,
       "id": "smoothwm_curv",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "-1",
       "description": "Target specifies a subject's surface, not a template file",
-      "value-key": "[TARGET_SUBJECT_FLAG]",
+      "value-key": "[TARGET_SUBJECT]",
       "type": "Flag",
       "optional": true,
       "id": "target_subject",

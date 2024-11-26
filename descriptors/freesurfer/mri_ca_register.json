@@ -3,7 +3,7 @@
   "name": "mri_ca_register",
   "author": "FreeSurfer Developers",
   "description": "Generates a multi-dimensional talairach transform from a gca file and talairach.lta file",
-  "command-line": "mri_ca_register [INPUT_VOLUME] [TEMPLATE] [OUTPUT_VOLUME] [TOLERANCE] [MASK] [TRANSFORM_LTA] [LEVEL] [READ_INTENSITY] [ALIGN] [INVERT_SAVE_FILE] [DISTANCE] [REGULARIZE] [REGULARIZE_MEAN] [SCALE_SMOOTHNESS] [NOBRIGHT_FLAG] [RENORMALIZE_MAP_FLAG] [RENORMALIZE] [READ_LTA_FLAG] [SMOOTHNESS] [SAMPLES] [NSMALL] [FIXED_FLAG] [OPTIMAL_FLAG] [NONEG_FLAG] [WM_FLAG] [MIN_AVGS] [TRANSFORM_LIMIT] [RELABEL] [RELABEL_AVGS] [RESET_AVGS] [VF_FILE] [DIAG_FILE] [TR] [TE] [EXAMPLE] [BIGVENTRICLES_FLAG] [UNCOMPRESS_FLAG] [SECOND_PASS_RENORM_FLAG] [THREADS]",
+  "command-line": "mri_ca_register [INPUT_VOLUME] [TEMPLATE] [OUTPUT_VOLUME] [TOLERANCE] [MASK] [TRANSFORM_LTA] [LEVEL] [READ_INTENSITY] [ALIGN] [INVERT_SAVE_FILE] [DISTANCE] [REGULARIZE] [REGULARIZE_MEAN] [SCALE_SMOOTHNESS] [NOBRIGHT] [RENORMALIZE_MAP] [RENORMALIZE] [READ_LTA] [SMOOTHNESS] [SAMPLES] [NSMALL] [FIXED] [OPTIMAL] [NONEG] [WM] [MIN_AVGS] [TRANSFORM_LIMIT] [RELABEL] [RELABEL_AVGS] [RESET_AVGS] [VF_FILE] [DIAG_FILE] [TR] [TE] [EXAMPLE] [BIGVENTRICLES] [UNCOMPRESS] [SECOND_PASS_RENORM] [THREADS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -132,7 +132,7 @@
     {
       "command-line-flag": "-nobright",
       "description": "Disable brightness adjustment",
-      "value-key": "[NOBRIGHT_FLAG]",
+      "value-key": "[NOBRIGHT]",
       "type": "Flag",
       "optional": true,
       "id": "nobright",
@@ -141,7 +141,7 @@
     {
       "command-line-flag": "-renormalize_map",
       "description": "Renormalize using map",
-      "value-key": "[RENORMALIZE_MAP_FLAG]",
+      "value-key": "[RENORMALIZE_MAP]",
       "type": "Flag",
       "optional": true,
       "id": "renormalize_map",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "-read_lta",
       "description": "Use LTA file for registration",
-      "value-key": "[READ_LTA_FLAG]",
+      "value-key": "[READ_LTA]",
       "type": "Flag",
       "optional": true,
       "id": "read_lta",
@@ -195,7 +195,7 @@
     {
       "command-line-flag": "-fixed",
       "description": "Fixed mode for registration",
-      "value-key": "[FIXED_FLAG]",
+      "value-key": "[FIXED]",
       "type": "Flag",
       "optional": true,
       "id": "fixed",
@@ -204,7 +204,7 @@
     {
       "command-line-flag": "-optimal",
       "description": "Optimal registration settings",
-      "value-key": "[OPTIMAL_FLAG]",
+      "value-key": "[OPTIMAL]",
       "type": "Flag",
       "optional": true,
       "id": "optimal",
@@ -213,7 +213,7 @@
     {
       "command-line-flag": "-noneg",
       "description": "Disallow negative values",
-      "value-key": "[NONEG_FLAG]",
+      "value-key": "[NONEG]",
       "type": "Flag",
       "optional": true,
       "id": "noneg",
@@ -222,7 +222,7 @@
     {
       "command-line-flag": "-wm",
       "description": "White matter flag",
-      "value-key": "[WM_FLAG]",
+      "value-key": "[WM]",
       "type": "Flag",
       "optional": true,
       "id": "wm",
@@ -321,7 +321,7 @@
     {
       "command-line-flag": "-<no>bigventricles",
       "description": "Handle big ventricles",
-      "value-key": "[BIGVENTRICLES_FLAG]",
+      "value-key": "[BIGVENTRICLES]",
       "type": "Flag",
       "optional": true,
       "id": "bigventricles",
@@ -330,7 +330,7 @@
     {
       "command-line-flag": "-uncompress",
       "description": "Uncompress files",
-      "value-key": "[UNCOMPRESS_FLAG]",
+      "value-key": "[UNCOMPRESS]",
       "type": "Flag",
       "optional": true,
       "id": "uncompress",
@@ -339,7 +339,7 @@
     {
       "command-line-flag": "-secondpassrenorm",
       "description": "Second pass renormalization",
-      "value-key": "[SECOND_PASS_RENORM_FLAG]",
+      "value-key": "[SECOND_PASS_RENORM]",
       "type": "Flag",
       "optional": true,
       "id": "second_pass_renorm",

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "feat2segstats",
   "description": "Computes segmentation summaries and stores output in featdir/freesurfer/segstats/segvol/statname.dat",
-  "command-line": "feat2segstats [FEAT_DIR] [FEATDIRFILE] [SEG] [ASEG_FLAG] [APARC_ASEG_FLAG] [CTAB] [ALL_SEGS_FLAG] [COPES_FLAG] [VARCOPES_FLAG] [ZSTATS_FLAG] [PES_FLAG] [RVAR] [EXF] [MASK] [MEAN_FUNC] [STAT] [VERSION_FLAG] [HELP_FLAG] [DEBUG_FLAG] [NOLOG_FLAG]",
+  "command-line": "feat2segstats [FEAT_DIR] [FEATDIRFILE] [SEG_VOL] [ASEG_FLAG] [APARC_ASEG_FLAG] [CTAB] [ALL_SEGS_FLAG] [COPES_FLAG] [VARCOPES_FLAG] [ZSTATS_FLAG] [PES_FLAG] [RVAR] [EXAMPLE_FUNC] [MASK] [MEAN_FUNC] [STAT] [VERSION_FLAG] [HELP_FLAG] [DEBUG_FLAG] [NOLOG_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--seg",
       "description": "Segmentation volume",
-      "value-key": "[SEG]",
+      "value-key": "[SEG_VOL]",
       "type": "String",
       "optional": true,
       "id": "seg_vol",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--exf",
       "description": "Example function",
-      "value-key": "[EXF]",
+      "value-key": "[EXAMPLE_FUNC]",
       "type": "String",
       "optional": true,
       "id": "example_func",

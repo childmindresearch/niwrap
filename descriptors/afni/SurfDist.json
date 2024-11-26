@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Calculate shortest distance between node pairs on a surface mesh.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "SurfDist [SURFACE] [NODEPAIRS] [NODE_PATH_DO] [DISTANCE_FLAG]",
+  "command-line": "SurfDist [SURFACE] [NODEPAIRS] [NODE_PATH_DO] [GRAPH]",
   "inputs": [
     {
       "description": "Surface on which distances are computed.",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-Euclidean",
       "description": "Calculate Euclidean distance, rather than graph distance.",
-      "value-key": "[DISTANCE_FLAG]",
+      "value-key": "[EUCLIDEAN]",
       "type": "Flag",
       "optional": true,
       "id": "euclidean",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-Euclidian",
       "description": "Synonym for '-Euclidean'.",
-      "value-key": "[DISTANCE_FLAG]",
+      "value-key": "[EUCLIDIAN]",
       "type": "Flag",
       "optional": true,
       "id": "euclidian",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-graph",
       "description": "Calculate distance along the mesh (default).",
-      "value-key": "[DISTANCE_FLAG]",
+      "value-key": "[GRAPH]",
       "type": "Flag",
       "optional": true,
       "id": "graph",

@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Help flag to display usage information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

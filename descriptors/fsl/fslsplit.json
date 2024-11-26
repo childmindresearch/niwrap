@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Split a 4D image into separate volumes or a 3D image into separate slices",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fslsplit [INPUT_FILE] [OUTPUT_BASENAME] [SEPARATION_AXIS]",
+  "command-line": "fslsplit [INFILE] [OUTPUT_BASENAME] [SEPARATION_Z]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input image (e.g. img.nii.gz)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-t",
       "description": "Separate images in time (default behaviour)",
-      "value-key": "[SEPARATION_AXIS]",
+      "value-key": "[SEPARATION_TIME]",
       "type": "Flag",
       "optional": true,
       "id": "separation_time",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-x",
       "description": "Separate images in the x direction",
-      "value-key": "[SEPARATION_AXIS]",
+      "value-key": "[SEPARATION_X]",
       "type": "Flag",
       "optional": true,
       "id": "separation_x",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-y",
       "description": "Separate images in the y direction",
-      "value-key": "[SEPARATION_AXIS]",
+      "value-key": "[SEPARATION_Y]",
       "type": "Flag",
       "optional": true,
       "id": "separation_y",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-z",
       "description": "Separate images in the z direction",
-      "value-key": "[SEPARATION_AXIS]",
+      "value-key": "[SEPARATION_Z]",
       "type": "Flag",
       "optional": true,
       "id": "separation_z",

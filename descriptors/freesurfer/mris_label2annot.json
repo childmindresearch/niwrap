@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--l",
       "description": "Label file(s)",
-      "value-key": "[LABEL_FILE]",
+      "value-key": "[LABEL_FILES]",
       "type": "File",
       "list": true,
       "optional": true,
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "--surf",
       "description": "Surface name, default is orig",
-      "value-key": "[SURFNAME]",
+      "value-key": "[SURF]",
       "type": "String",
       "optional": true,
       "id": "surf",
