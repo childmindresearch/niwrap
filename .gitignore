@@ -296,3 +296,6 @@ cython_debug/
 
 .vscode
 /local_scripts
+report.html
+assets
+styx_tmp
