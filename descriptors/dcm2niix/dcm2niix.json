@@ -33,10 +33,7 @@
       "value-key": "[ADJACENT]",
       "command-line-flag": "-a",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Adjacent DICOMs (images from same series always in same folder) for faster conversion"
     },
     {
@@ -46,11 +43,7 @@
       "value-key": "[BIDS]",
       "command-line-flag": "-b",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n",
-        "o"
-      ],
+      "value-choices": ["y", "n", "o"],
       "description": "Generate BIDS sidecar JSON files (o=only: no NIfTI)"
     },
     {
@@ -60,10 +53,7 @@
       "value-key": "[BIDS_ANON]",
       "command-line-flag": "-ba",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Anonymize BIDS sidecar files by removing personal information"
     },
     {
@@ -93,13 +83,7 @@
       "value-key": "[EXPORT_FORMAT]",
       "command-line-flag": "-e",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n",
-        "o",
-        "j",
-        "b"
-      ],
+      "value-choices": ["y", "n", "o", "j", "b"],
       "description": "Export format: NRRD (y), MGH (o), JSON/JNIfTI (j), or BJNIfTI (b)"
     },
     {
@@ -118,12 +102,7 @@
       "value-key": "[DEFAULTS]",
       "command-line-flag": "-g",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n",
-        "o",
-        "i"
-      ],
+      "value-choices": ["y", "n", "o", "i"],
       "description": "Generate defaults file (o=only: reset and write defaults; i=ignore: reset defaults)"
     },
     {
@@ -133,10 +112,7 @@
       "value-key": "[IGNORE_DERIVED]",
       "command-line-flag": "-i",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Ignore derived, localizer and 2D images"
     },
     {
@@ -146,11 +122,7 @@
       "value-key": "[SCALING]",
       "command-line-flag": "-l",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n",
-        "o"
-      ],
+      "value-choices": ["y", "n", "o"],
       "description": "Losslessly scale 16-bit integers (y=scale, n=no but uint16->int16, o=original)"
     },
     {
@@ -160,13 +132,7 @@
       "value-key": "[MERGE_2D]",
       "command-line-flag": "-m",
       "optional": true,
-      "value-choices": [
-        "n",
-        "y",
-        "0",
-        "1",
-        "2"
-      ],
+      "value-choices": ["n", "y", "0", "1", "2"],
       "description": "Merge 2D slices from same series regardless of echo, exposure, etc. (0=no, 1=yes, 2=auto)"
     },
     {
@@ -195,10 +161,7 @@
       "value-key": "[PHILIPS_SCALING]",
       "command-line-flag": "-p",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Use Philips precise float (not display) scaling"
     },
     {
@@ -208,11 +171,7 @@
       "value-key": "[SEARCH_MODE]",
       "command-line-flag": "-q",
       "optional": true,
-      "value-choices": [
-        "y",
-        "l",
-        "n"
-      ],
+      "value-choices": ["y", "l", "n"],
       "description": "Search mode (y=show number of DICOMs, l=list DICOMs, n=no)"
     },
     {
@@ -222,10 +181,7 @@
       "value-key": "[RENAME]",
       "command-line-flag": "-r",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Rename instead of convert DICOMs"
     },
     {
@@ -235,10 +191,7 @@
       "value-key": "[SINGLE_FILE]",
       "command-line-flag": "-s",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Single file mode, do not convert other images in folder"
     },
     {
@@ -257,11 +210,7 @@
       "value-key": "[VERBOSE]",
       "command-line-flag": "-v",
       "optional": true,
-      "value-choices": [
-        "0",
-        "1",
-        "2"
-      ],
+      "value-choices": ["0", "1", "2"],
       "description": "Verbose output (0=no, 1=yes, 2=logorrheic)"
     },
     {
@@ -271,11 +220,7 @@
       "value-key": "[CONFLICT_BEHAVIOR]",
       "command-line-flag": "-w",
       "optional": true,
-      "value-choices": [
-        0,
-        1,
-        2
-      ],
+      "value-choices": [0, 1, 2],
       "description": "Write behavior for name conflicts (0=skip, 1=overwrite, 2=add suffix)"
     },
     {
@@ -285,11 +230,7 @@
       "value-key": "[CROP_3D]",
       "command-line-flag": "-x",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n",
-        "i"
-      ],
+      "value-choices": ["y", "n", "i"],
       "description": "Crop 3D acquisitions (i=ignore: neither crop nor rotate)"
     },
     {
@@ -299,13 +240,7 @@
       "value-key": "[GZ_COMPRESS]",
       "command-line-flag": "-z",
       "optional": true,
-      "value-choices": [
-        "y",
-        "o",
-        "i",
-        "n",
-        "3"
-      ],
+      "value-choices": ["y", "o", "i", "n", "3"],
       "description": "gz compress images (y=pigz, o=optimal pigz, i=internal:zlib, n=no, 3=no,3D)"
     },
     {
@@ -315,11 +250,7 @@
       "value-key": "[ENDIAN]",
       "command-line-flag": "--big-endian",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n",
-        "o"
-      ],
+      "value-choices": ["y", "n", "o"],
       "description": "Byte order (y=big-end, n=little-end, o=optimal/native)"
     },
     {
@@ -329,10 +260,7 @@
       "value-key": "[PROGRESS]",
       "command-line-flag": "--progress",
       "optional": true,
-      "value-choices": [
-        "y",
-        "n"
-      ],
+      "value-choices": ["y", "n"],
       "description": "Slicer format progress information"
     },
     {
@@ -380,10 +308,7 @@
     {
       "id": "bids_options",
       "name": "BIDS Options",
-      "members": [
-        "bids",
-        "bids_anon"
-      ],
+      "members": ["bids", "bids_anon"],
       "description": "Options related to BIDS sidecar generation"
     },
     {
