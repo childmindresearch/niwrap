@@ -20,7 +20,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest --html=report.html --self-contained-html --json-report --json-report-file=report.json tests
+          pytest --tb=no --html=report.html --self-contained-html --json-report --json-report-file=report.json tests
         continue-on-error: true
 
       - name: Upload HTML report
@@ -61,7 +61,7 @@ jobs:
             Commit: ${context.sha.substring(0, 7)}
             `;
             
-            await octokit.rest.issues.update({
+            await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ISSUE_NUMBER,
