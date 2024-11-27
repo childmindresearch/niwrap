@@ -61,7 +61,7 @@ jobs:
             Commit: ${context.sha.substring(0, 7)}
             `;
             
-            await github.issues.update({
+            await octokit.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ISSUE_NUMBER,
