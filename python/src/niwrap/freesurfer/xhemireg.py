@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XHEMIREG_METADATA = Metadata(
-    id="c2a43dba6a302983b9639684aeee62a29dcdb55a.boutiques",
+    id="f01b4255c8c371fe9d8cf7dac45f58046ba01896.boutiques",
     name="xhemireg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

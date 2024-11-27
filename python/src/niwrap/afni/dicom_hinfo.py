@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_HINFO_METADATA = Metadata(
-    id="b4e332870ec766036b07e84e159257d3b9ab3eb2.boutiques",
+    id="0de7df6566656068c4dc0dc5d6d2bae576cab754.boutiques",
     name="dicom_hinfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

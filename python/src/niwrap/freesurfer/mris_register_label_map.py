@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REGISTER_LABEL_MAP_METADATA = Metadata(
-    id="5553bdd3cdd9d466689b45127e1027c491153eaf.boutiques",
+    id="da7f5799fccbaa00ae28b92114de5d6ef1a4db4f.boutiques",
     name="mris_register_label_map",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

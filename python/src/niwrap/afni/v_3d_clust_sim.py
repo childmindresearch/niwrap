@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLUST_SIM_METADATA = Metadata(
-    id="83de2ab5d958ac816560b23c9f06a1204e67508e.boutiques",
+    id="493de4c7d1501714af71d386a011e1fe097ca5fb.boutiques",
     name="3dClustSim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

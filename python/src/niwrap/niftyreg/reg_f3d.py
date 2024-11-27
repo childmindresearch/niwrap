@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_F3D_METADATA = Metadata(
-    id="755023c100b0f6f168f1c8568c74487860e465ef.boutiques",
+    id="0bff34c2d804187d43112228069f9f0f0148283c.boutiques",
     name="reg_f3d",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",

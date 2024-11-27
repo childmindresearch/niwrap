@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_4D_IMAGER_METADATA = Metadata(
-    id="bd2c4d28906cfd2cf3f2ad964cccb79356c459e9.boutiques",
+    id="3dd204eaacbae468c095a2b5730ff8d05c57b1e8.boutiques",
     name="@djunct_4d_imager",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

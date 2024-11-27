@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_STATS_METADATA = Metadata(
-    id="249f8989b29896820a47b1028e9f74d171d4927e.boutiques",
+    id="f668c4e671c6991a9aeac8ad9a7c7b80fa8f3318.boutiques",
     name="xtract_stats",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

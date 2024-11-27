@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_FEAT2ANAT_METADATA = Metadata(
-    id="e4e1a59cb47b971bdef3a41ba9181359262a9fc5.boutiques",
+    id="6d99523d12853983a4cb41cacabf4975bd54d655.boutiques",
     name="reg-feat2anat",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

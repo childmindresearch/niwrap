@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFREG_METADATA = Metadata(
-    id="1174cc35cf02c17222302c2ee8756cddf3c5a47a.boutiques",
+    id="68e84766e8130637a36f745fc7308f0bf775b2d7.boutiques",
     name="surfreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

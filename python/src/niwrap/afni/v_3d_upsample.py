@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UPSAMPLE_METADATA = Metadata(
-    id="e15a35601ca3dbf1d8bf47d2d707df818a6560ac.boutiques",
+    id="4d4f480b62462021e1cd1de039282122822203f8.boutiques",
     name="3dUpsample",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class V3dUpsampleOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_brik: OutputPathType | None
+    output_brik: OutputPathType
     """Upsampled dataset in BRIK format."""
-    output_head: OutputPathType | None
+    output_head: OutputPathType
     """Header information for the upsampled dataset."""
 
 
@@ -87,8 +87,8 @@ def v_3d_upsample(
         ])
     ret = V3dUpsampleOutputs(
         root=execution.output_file("."),
-        output_brik=execution.output_file(output_prefix + "+orig.BRIK") if (output_prefix is not None) else None,
-        output_head=execution.output_file(output_prefix + "+orig.HEAD") if (output_prefix is not None) else None,
+        output_brik=execution.output_file("[PREFIX]+orig.BRIK"),
+        output_head=execution.output_file("[PREFIX]+orig.HEAD"),
     )
     execution.run(cargs)
     return ret

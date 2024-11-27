@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GEN_3_D_METADATA = Metadata(
-    id="00c11585ff83e35fb94f81149dd11b5e8f7ea950.boutiques",
+    id="d7c86450a317af80ad36a205714d4b598b921773.boutiques",
     name="fsl_gen_3D",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -51,7 +51,7 @@ def fsl_gen_3_d(
     cargs.append(execution.input_file(outfile))
     ret = FslGen3DOutputs(
         root=execution.output_file("."),
-        output_snapshot=execution.output_file(pathlib.Path(outfile).name),
+        output_snapshot=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

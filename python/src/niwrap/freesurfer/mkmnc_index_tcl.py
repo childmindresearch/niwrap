@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MKMNC_INDEX_TCL_METADATA = Metadata(
-    id="e25b588fc60442ec413a719fef73d59897ffe822.boutiques",
+    id="642e417b9b0ee295a619cf20f1a1fb900571d268.boutiques",
     name="mkmnc_index.tcl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,7 @@ def mkmnc_index_tcl(
     cargs.append(outfile)
     ret = MkmncIndexTclOutputs(
         root=execution.output_file("."),
-        indexfile=execution.output_file(outfile),
+        indexfile=execution.output_file("[OUTPUT_INDEX]"),
     )
     execution.run(cargs)
     return ret

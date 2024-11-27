@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_METRICS_METADATA = Metadata(
-    id="334f413c508897323e181314a6d4e06fdc8dc4a4.boutiques",
+    id="5e58dccd9bd1540ac2ae342efc61a7a9fc45c4c2.boutiques",
     name="SurfaceMetrics",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

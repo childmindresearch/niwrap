@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PARSE_FS_LT_LOG_PY_METADATA = Metadata(
-    id="86cfca21eedd3064a14e9fe9c8d7bd8656b5f58a.boutiques",
+    id="bc86d7205c69a1f53932715879d366e6a9ef6795.boutiques",
     name="parse_fs_lt_log.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

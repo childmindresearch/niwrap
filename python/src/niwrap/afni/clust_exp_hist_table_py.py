@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUST_EXP_HIST_TABLE_PY_METADATA = Metadata(
-    id="65bf8cf819db98a9fbc8b570e9306335fa8356d5.boutiques",
+    id="a706e0c184974ad6ed86360994f032d1d4e5296f.boutiques",
     name="ClustExp_HistTable.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

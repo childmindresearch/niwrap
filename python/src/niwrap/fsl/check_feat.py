@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CHECK_FEAT_METADATA = Metadata(
-    id="6ef6ad6c4ce0915caa02c06833b49b5eb2c21980.boutiques",
+    id="dd128d9ea40a4372b6b8d70f2ed5cf41858f23cd.boutiques",
     name="checkFEAT",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ANIMAL_WARPER_METADATA = Metadata(
-    id="d579a65017cdc0a556b0c069e8808dbbad954c1f.boutiques",
+    id="4c704ce05525848e08865cb268e84925dc07c58a.boutiques",
     name="@animal_warper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

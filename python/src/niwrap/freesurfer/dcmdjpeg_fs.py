@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMDJPEG_FS_METADATA = Metadata(
-    id="552259851f1f88eac5008471552bfd4f5608b33f.boutiques",
+    id="72def5b0b090531bebd9d33b2cf8001287532af2.boutiques",
     name="dcmdjpeg.fs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ICO_SUPERSAMPLE_METADATA = Metadata(
-    id="45c38ce14040a7378058b51625bbb6d74a943a5a.boutiques",
+    id="14aa48c095a4ad3f4f834bf5d2084bdf9092540a.boutiques",
     name="ico_supersample",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

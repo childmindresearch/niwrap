@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_2SWAP_METADATA = Metadata(
-    id="728c4876a96d25e9c23842571e532226995c4d5f.boutiques",
+    id="9a225778ddb446b7e5915ca65f1e69f4a2104017.boutiques",
     name="2swap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

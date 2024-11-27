@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FDR_METADATA = Metadata(
-    id="7f0d717912ad535e94523a0e999bf8e7b77d883e.boutiques",
+    id="b7f91aab2c4036d8fb29a233b784359789a1de20.boutiques",
     name="fdr",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -20,7 +20,7 @@ class FdrOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_adjusted: OutputPathType | None
+    output_adjusted: OutputPathType
     """Output FDR-adjusted p-values image"""
     output_thresholded: OutputPathType
     """Thresholded output p-value image"""
@@ -110,9 +110,9 @@ def fdr(
         cargs.append("-v")
     ret = FdrOutputs(
         root=execution.output_file("."),
-        output_adjusted=execution.output_file(adjustedimage + ".nii.gz") if (adjustedimage is not None) else None,
-        output_thresholded=execution.output_file(pathlib.Path(infile).name + "_thr.nii.gz"),
-        output_order=execution.output_file(pathlib.Path(infile).name + "_order.nii.gz"),
+        output_adjusted=execution.output_file("[OUTPUT_ADJUSTED_IMAGE].nii.gz"),
+        output_thresholded=execution.output_file("[INPUT_FILE]_thr.nii.gz"),
+        output_order=execution.output_file("[INPUT_FILE]_order.nii.gz"),
     )
     execution.run(cargs)
     return ret

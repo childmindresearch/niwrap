@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GRAD_UNWARP_METADATA = Metadata(
-    id="5eba6b18ea47c7542212c1e8983cc8a9d0f64b9e.boutiques",
+    id="3f8f59f71178da3b91ee74fc055a9520bba22b05.boutiques",
     name="grad_unwarp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

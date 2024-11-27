@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MOTION_OUTLIERS_METADATA = Metadata(
-    id="dba11db362b474e491e4f45437a96829cb5c507f.boutiques",
+    id="f6b6f5bc24c4f96b4e06e73ce63e58c1defb7bdf.boutiques",
     name="fsl_motion_outliers",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REGDAT2XFM_METADATA = Metadata(
-    id="d24c0503b644852ba5fb4efc153e9c4d555ad111.boutiques",
+    id="b9432995881f050a69f7f6321a3344dd584bf012.boutiques",
     name="regdat2xfm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

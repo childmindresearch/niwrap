@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FAT_TRACT_COLORIZE_METADATA = Metadata(
-    id="f3f64fbe07c8bd4496b0798d6dd6b6b10d632121.boutiques",
+    id="08df2223341e8a3953edfe06cc72302451f3e2c8.boutiques",
     name="@fat_tract_colorize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

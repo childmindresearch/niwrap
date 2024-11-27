@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SKELETONIZE_METADATA = Metadata(
-    id="fd90cf0acfd7282cd2a7e585312f8f5ee67d6795.boutiques",
+    id="0b067079e3dfa4d5ff1e1cf5bf10adf3ec69d818.boutiques",
     name="mris_skeletonize",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

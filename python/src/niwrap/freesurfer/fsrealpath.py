@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSREALPATH_METADATA = Metadata(
-    id="f92693bc3b802ea9e6271042a07684f417e48234.boutiques",
+    id="ef28f86a2514a0354df33824818f45a5947ff878.boutiques",
     name="fsrealpath",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

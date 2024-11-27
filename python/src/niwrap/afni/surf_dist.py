@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_DIST_METADATA = Metadata(
-    id="72e073419f09d40df9016fa6050521df038dab85.boutiques",
+    id="4b7fc8f067afc394968ebdfef5be6b16641eee5b.boutiques",
     name="SurfDist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

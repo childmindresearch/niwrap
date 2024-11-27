@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCP_METADATA = Metadata(
-    id="80ef44088b38d33f80df9bd6b81c44deed77e482.boutiques",
+    id="3ce02a1e9e4c018cb776d50ddced228a47e4d1ae.boutiques",
     name="imcp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__EXAMINE_GEN_FEAT_DISTS_METADATA = Metadata(
-    id="48ce3a5d6c5403479fccf8d702bacc4d574f1921.boutiques",
+    id="60ac2c94312fce85a0d90163607df55149e2869d.boutiques",
     name="@ExamineGenFeatDists",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

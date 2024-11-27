@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_STOPMASK_METADATA = Metadata(
-    id="d85c421f23ee85e0f64bc702b8e8cb596b27c637.boutiques",
+    id="e7f2a3c2cfe3f7fafce248b01fa340177fa54cc2.boutiques",
     name="mri_stopmask",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,6 +26,7 @@ class MriStopmaskOutputs(typing.NamedTuple):
 
 def mri_stopmask(
     output_mask: str,
+    filled: list[InputPathType],
     aseg_presurf: InputPathType,
     lateral_ventricles: bool = False,
     wmsa: float | None = None,
@@ -49,6 +50,8 @@ def mri_stopmask(
     
     Args:
         output_mask: Output stop mask in volume format.
+        filled: Include voxels edited fill voxels that are set in the\
+            filled.mgz.
         aseg_presurf: Used with --lv and/or --wmsa; Note: must be\
             aseg.presurf.mgz, not aseg.mgz.
         lateral_ventricles: Add lateral ventricles and choroid plexus to the\
@@ -66,6 +69,8 @@ def mri_stopmask(
     Returns:
         NamedTuple of outputs (described in `MriStopmaskOutputs`).
     """
+    if not (len(filled) <= 2): 
+        raise ValueError(f"Length of 'filled' must be less than 2 but was {len(filled)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_STOPMASK_METADATA)
     cargs = []
@@ -74,8 +79,10 @@ def mri_stopmask(
         "--o",
         output_mask
     ])
-    cargs.append("[FILLED_AUTO_MGZ]")
-    cargs.append("[FILLED_MGZ]")
+    cargs.extend([
+        "--filled",
+        *[execution.input_file(f) for f in filled]
+    ])
     cargs.extend([
         "--aseg",
         execution.input_file(aseg_presurf)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DEFECT_SEG_METADATA = Metadata(
-    id="d7521b2e9c0bbeebe1eaba76b2bef43939a6ee87.boutiques",
+    id="0e4a4cf0254a2348ea18fc134e746047a23ee4d4.boutiques",
     name="defect-seg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PARC_ATLAS_JACKKNIFE_TEST_METADATA = Metadata(
-    id="6b126ebcd1e9cb252ca69b0c91d621ee1ccc4341.boutiques",
+    id="c3bca782ff73ffb7144b8a68ae203b8cb4791e7f.boutiques",
     name="parc_atlas_jackknife_test",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

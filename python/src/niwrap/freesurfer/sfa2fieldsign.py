@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SFA2FIELDSIGN_METADATA = Metadata(
-    id="d31978a93db5246f9852d1afa32e6a94aca64bac.boutiques",
+    id="673483cb133e81114140c357c0715b77a189756a.boutiques",
     name="sfa2fieldsign",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

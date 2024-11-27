@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_FORREST_METADATA = Metadata(
-    id="a860992aadd3038f26abd4c931b85cc93ace621f.boutiques",
+    id="dd4542253804128ad899a822733de446938568c4.boutiques",
     name="dmri_forrest",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

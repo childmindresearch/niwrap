@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DTIFIT_METADATA = Metadata(
-    id="b30e954c9e4d729b9e256a49992af6b407b7f9f4.boutiques",
+    id="dacf8e41c8fb8dc8737a88c2eb3ec2ff8cf64a28.boutiques",
     name="dtifit",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_STAT_CLUST_METADATA = Metadata(
-    id="6a70f7b418a765318fd3dcc97f525db45ce69ab8.boutiques",
+    id="fc722addfbc175c71d3a318d604f19ee64fdb599.boutiques",
     name="3dStatClust",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

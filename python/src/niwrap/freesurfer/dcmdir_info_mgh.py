@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMDIR_INFO_MGH_METADATA = Metadata(
-    id="c2828c7015302f11e5a018164cdef72c9e760049.boutiques",
+    id="7ccff8790fdd0d584c57e3c31a9bf9ffd1e90e36.boutiques",
     name="dcmdir-info-mgh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

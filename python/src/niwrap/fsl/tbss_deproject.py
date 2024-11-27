@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_DEPROJECT_METADATA = Metadata(
-    id="ed48dd67e14e52e725252742ea458edaa497b12f.boutiques",
+    id="fff73a1ba7bde8cd6f4413cf518933120619f762.boutiques",
     name="tbss_deproject",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

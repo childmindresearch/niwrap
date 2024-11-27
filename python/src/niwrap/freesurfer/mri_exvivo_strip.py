@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_EXVIVO_STRIP_METADATA = Metadata(
-    id="eb6318eb01e790fe9ee2c28a9b19c9589d19c30c.boutiques",
+    id="217538f56a3313d7a4e4e23b0d83a1978f8c57f7.boutiques",
     name="mri_exvivo_strip",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -124,7 +124,7 @@ def mri_exvivo_strip(
         ])
     ret = MriExvivoStripOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(outvol),
+        output_file=execution.output_file("[OUTPUT_VOLUME]"),
         prediction_output=execution.output_file(pathlib.Path(pred).name) if (pred is not None) else None,
         normalized_output=execution.output_file(pathlib.Path(norm).name) if (norm is not None) else None,
     )

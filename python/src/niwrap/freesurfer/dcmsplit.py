@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMSPLIT_METADATA = Metadata(
-    id="f046018ddea679128421620bdf07a7b65b6644fe.boutiques",
+    id="3d5aa62fefcd13c6396a58e6fed84abe77250c1e.boutiques",
     name="dcmsplit",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

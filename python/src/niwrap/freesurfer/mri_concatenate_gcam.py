@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CONCATENATE_GCAM_METADATA = Metadata(
-    id="fd466778d5618f979eb973c0e7ee2af83aa44e4d.boutiques",
+    id="f2136516d8c43c1484d6b8f54f1f6627fae4ebe7.boutiques",
     name="mri_concatenate_gcam",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

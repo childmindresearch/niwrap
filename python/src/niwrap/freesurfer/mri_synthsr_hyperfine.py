@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHSR_HYPERFINE_METADATA = Metadata(
-    id="bc8959142168ed83f2f76e645562277bef3ba653.boutiques",
+    id="8af5c94607ef31a7bceecdbe213a0b0e78928e27.boutiques",
     name="mri_synthsr_hyperfine",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

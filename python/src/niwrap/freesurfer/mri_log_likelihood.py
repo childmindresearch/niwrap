@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_LOG_LIKELIHOOD_METADATA = Metadata(
-    id="2b67273316cd039a77b72dbd634a8fa61c7d85b6.boutiques",
+    id="f22fe6123ce8f0f860ffe7eecd35b5f18caff0af.boutiques",
     name="mri_log_likelihood",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

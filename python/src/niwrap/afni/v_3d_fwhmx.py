@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FWHMX_METADATA = Metadata(
-    id="27449a1dcd931f8aae9d15520a0f627e5b7d94bd.boutiques",
+    id="27fcae26d97c01565dd01cacee461bc369dc1068.boutiques",
     name="3dFWHMx",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class V3dFwhmxOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType | None
+    out_file: OutputPathType
     """Output file containing FWHM/ACF estimates"""
-    detrended_dataset: OutputPathType | None
+    detrended_dataset: OutputPathType
     """Detrended dataset file"""
 
 
@@ -120,8 +120,8 @@ def v_3d_fwhmx(
     cargs.append(execution.input_file(infile))
     ret = V3dFwhmxOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(out + ".1D") if (out is not None) else None,
-        detrended_dataset=execution.output_file(detprefix + ".nii.gz") if (detprefix is not None) else None,
+        out_file=execution.output_file("[OUT_FILE].1D"),
+        detrended_dataset=execution.output_file("[DTPREFIX].nii.gz"),
     )
     execution.run(cargs)
     return ret

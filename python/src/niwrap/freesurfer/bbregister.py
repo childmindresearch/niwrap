@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BBREGISTER_METADATA = Metadata(
-    id="c91c248a5dd8278e2483b5051c0f3f78da1c1117.boutiques",
+    id="95ef42511f6cfbce2fb40dcd5cdd047e2e1ac39b.boutiques",
     name="bbregister",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

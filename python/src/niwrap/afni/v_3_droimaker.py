@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3_DROIMAKER_METADATA = Metadata(
-    id="dfdbf8bd123cafe427a36b018dc4ddc9b71a1066.boutiques",
+    id="52994e672a5f137f27dbb8bbd59f66cee7093ffe.boutiques",
     name="3DROIMaker",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

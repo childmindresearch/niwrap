@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_CURVATURE_METADATA = Metadata(
-    id="493353ea71df79e065fdad0f99d080992da21be4.boutiques",
+    id="b2be5c74ffe0d5cc95cc6e6fc9fb27e6b3355ec4.boutiques",
     name="mris_curvature",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

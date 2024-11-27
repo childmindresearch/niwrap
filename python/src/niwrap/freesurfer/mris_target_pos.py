@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_TARGET_POS_METADATA = Metadata(
-    id="bdbf1fd4ddf83403cbaeed0f56a03f4d361ef154.boutiques",
+    id="8a1f7e5c9eef8b24a14e229ba9fabf1762b4bc4f.boutiques",
     name="mris_target_pos",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

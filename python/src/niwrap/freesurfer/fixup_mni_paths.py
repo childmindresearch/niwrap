@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXUP_MNI_PATHS_METADATA = Metadata(
-    id="2661181137b5beaa12742ede7d2de99ec6d47355.boutiques",
+    id="2bf5837eea05322482ae33a8bcc9d1f47a565a04.boutiques",
     name="fixup_mni_paths",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

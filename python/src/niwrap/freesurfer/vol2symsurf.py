@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOL2SYMSURF_METADATA = Metadata(
-    id="980a04944058c0937c4905d1272b68939943fcd5.boutiques",
+    id="22e164f84127031ad07cd425f37456f6e49f209f.boutiques",
     name="vol2symsurf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONVERT_DCM_ANAT_METADATA = Metadata(
-    id="78ebf336e1ff63740332c2c2dd0209701bae6164.boutiques",
+    id="b710eae3e3dfce23951c6f5d44bae1dc65d2b536.boutiques",
     name="fat_proc_convert_dcm_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

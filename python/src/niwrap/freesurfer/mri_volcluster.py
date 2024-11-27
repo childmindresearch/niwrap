@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VOLCLUSTER_METADATA = Metadata(
-    id="5e770e63f43f8b5f3bb2cef7aae10f248937d902.boutiques",
+    id="86e5f012e8262b1a51728b36e2469f6a4678ccf5.boutiques",
     name="mri_volcluster",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

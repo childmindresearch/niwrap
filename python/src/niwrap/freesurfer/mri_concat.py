@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CONCAT_METADATA = Metadata(
-    id="b815d2492f1cb6b0f420a08cc897c11cc2f2787c.boutiques",
+    id="07b7b4b76de79451ff17d85c367b7024bc7bb902.boutiques",
     name="mri_concat",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

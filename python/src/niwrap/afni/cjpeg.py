@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CJPEG_METADATA = Metadata(
-    id="c91bb799815c3c2fc8e175c9c148e01746ecf0ae.boutiques",
+    id="d97d9dec8a6b2f3c3cf0749ad19f8f3152857c64.boutiques",
     name="cjpeg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -76,7 +76,7 @@ def cjpeg(
     cargs.append(execution.input_file(infile))
     ret = CjpegOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
+        outfile=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

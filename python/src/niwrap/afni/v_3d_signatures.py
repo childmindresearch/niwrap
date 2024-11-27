@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SIGNATURES_METADATA = Metadata(
-    id="3a8c36dbe73fad66aa2f0bc3b1c2c29ec32ab76b.boutiques",
+    id="af8a004ab131d8875f41603ba011282e6a1e8e2f.boutiques",
     name="3dSignatures",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -76,7 +76,7 @@ def v_3d_signatures(
         ])
     ret = V3dSignaturesOutputs(
         root=execution.output_file("."),
-        results_file=execution.output_file(outfile + ".txt"),
+        results_file=execution.output_file("[OUTPUT_FILE].txt"),
     )
     execution.run(cargs)
     return ret

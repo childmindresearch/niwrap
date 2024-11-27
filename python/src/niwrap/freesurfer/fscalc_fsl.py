@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSCALC_FSL_METADATA = Metadata(
-    id="9b90c106dac10f7c9d02c0fc954567a93f2a17b4.boutiques",
+    id="a318448c0ae9ee2486a72de6136c2f2bdab8a57e.boutiques",
     name="fscalc.fsl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

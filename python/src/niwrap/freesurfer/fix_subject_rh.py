@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIX_SUBJECT_RH_METADATA = Metadata(
-    id="a857e272d39df165d14eea449e8d774cc2d82d28.boutiques",
+    id="3bb32adfbfd21f826f4e479a088d3bcfcdad5042.boutiques",
     name="fix_subject-rh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

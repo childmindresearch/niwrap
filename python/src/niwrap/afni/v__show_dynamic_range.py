@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SHOW_DYNAMIC_RANGE_METADATA = Metadata(
-    id="e7888caae2b4b5788c19d139f163887f1b35c7f2.boutiques",
+    id="141c9804faf651c39fdfbb62ca1490029cfefd97.boutiques",
     name="@ShowDynamicRange",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,8 +53,8 @@ def v__show_dynamic_range(
     cargs.append(execution.input_file(infile))
     ret = VShowDynamicRangeOutputs(
         root=execution.output_file("."),
-        minpercchange_file=execution.output_file(pathlib.Path(infile).name + "_minpercchange.nii.gz"),
-        range_file=execution.output_file(pathlib.Path(infile).name + ".range.nii.gz"),
+        minpercchange_file=execution.output_file("[INPUT_FILE]_minpercchange.nii.gz"),
+        range_file=execution.output_file("[INPUT_FILE].range.nii.gz"),
     )
     execution.run(cargs)
     return ret

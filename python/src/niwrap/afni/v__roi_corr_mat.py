@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_CORR_MAT_METADATA = Metadata(
-    id="d27741a76bf8e8edaca6216979d5f299279d17c6.boutiques",
+    id="6ddb9761cabcdb71b6373bdb4b4e43b7f1d206cf.boutiques",
     name="@ROI_Corr_Mat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -100,8 +100,8 @@ def v__roi_corr_mat(
         cargs.append("-verb")
     ret = VRoiCorrMatOutputs(
         root=execution.output_file("."),
-        matrix_1d=execution.output_file(prefix + "_matrix.1D"),
-        matrix_brick=execution.output_file(prefix + "_matrix.BRIK"),
+        matrix_1d=execution.output_file("[output]_matrix.1D"),
+        matrix_brick=execution.output_file("[output]_matrix.BRIK"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_COMBINE_METADATA = Metadata(
-    id="49bd5c5ad2ecbcce4f18004a6bd399e9ed2f0ecb.boutiques",
+    id="65e9785cccaed89659372ecd3281d7f744686926.boutiques",
     name="eddy_combine",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -89,9 +89,9 @@ def eddy_combine(
     cargs.append(str(only_matched_flag))
     ret = EddyCombineOutputs(
         root=execution.output_file("."),
-        combined_data=execution.output_file(output_path + "/combined_data.nii.gz"),
-        combined_bvals=execution.output_file(output_path + "/combined_bvals"),
-        combined_bvecs=execution.output_file(output_path + "/combined_bvecs"),
+        combined_data=execution.output_file("[outputpath]/combined_data.nii.gz"),
+        combined_bvals=execution.output_file("[outputpath]/combined_bvals"),
+        combined_bvecs=execution.output_file("[outputpath]/combined_bvecs"),
     )
     execution.run(cargs)
     return ret

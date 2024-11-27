@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_GROUP_METADATA = Metadata(
-    id="fb127da732702b0d687f5d1b3704976b2e674930.boutiques",
+    id="62e5f1536c9234b5603d09f4124d51072e3633cc.boutiques",
     name="dmri_group",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

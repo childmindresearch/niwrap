@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_DRIVE_METADATA = Metadata(
-    id="e1cb039cf6cd9c8eda885b4de1361558d90e3b37.boutiques",
+    id="65a44f6f7d92c1ad9ba4ed1d48f6c277a7f935fb.boutiques",
     name="plugout_drive",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

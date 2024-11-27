@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MATRIX_MULTIPLY_METADATA = Metadata(
-    id="990310787a22bd037146e4c5c2f1f8e39aef70b2.boutiques",
+    id="e27af9270450150cf8e376927c002e9ad9bce68e.boutiques",
     name="mri_matrix_multiply",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

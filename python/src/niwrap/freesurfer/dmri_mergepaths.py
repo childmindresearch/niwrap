@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_MERGEPATHS_METADATA = Metadata(
-    id="ffd7e9ba1b9b2240611cb178009a4c51ab815a1f.boutiques",
+    id="18bc644100dca612df1989666e60cf3a4214164c.boutiques",
     name="dmri_mergepaths",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MAKE_UCHAR_METADATA = Metadata(
-    id="a677779076766a05e27d29c22718f64415e61cc4.boutiques",
+    id="c299dc1179e4ab4f581f6357e1c8af3fbd1ff265.boutiques",
     name="mri_make_uchar",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

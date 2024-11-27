@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRAC_PREPROC_METADATA = Metadata(
-    id="6e9113eefa42679d01ff013518a32e8a3ba185f3.boutiques",
+    id="5854dffca5b99ca0a5c033e626a1874da235aa39.boutiques",
     name="trac-preproc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

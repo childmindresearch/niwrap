@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ANATOMICAL_STATS_METADATA = Metadata(
-    id="44936ba168b18c38262f3303530f5c72ca3a3276.boutiques",
+    id="79d9ac554c4b0f873f92544cb3131a838a6cad81.boutiques",
     name="mris_anatomical_stats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -24,7 +24,7 @@ class MrisAnatomicalStatsOutputs(typing.NamedTuple):
     """Output log file of the statistics"""
     output_table_file: OutputPathType | None
     """Tabular output stored in a table file"""
-    output_ctab_file: OutputPathType | None
+    output_ctab_file: OutputPathType
     """Output annotation color table file"""
 
 
@@ -32,6 +32,7 @@ def mris_anatomical_stats(
     subjectname: str,
     hemisphere: str,
     surfacename: str | None = None,
+    thickness_range: list[float] | None = None,
     label_file: InputPathType | None = None,
     thickness_file: InputPathType | None = None,
     annotation_file: InputPathType | None = None,
@@ -55,6 +56,7 @@ def mris_anatomical_stats(
         subjectname: Subject name.
         hemisphere: Hemisphere.
         surfacename: Surface name.
+        thickness_range: Only consider thicknesses in the specified range.
         label_file: Limit calculations to specified label.
         thickness_file: Use specified file for computing thickness statistics.
         annotation_file: Compute properties for each label in the annotation\
@@ -80,8 +82,11 @@ def mris_anatomical_stats(
     cargs.append(hemisphere)
     if surfacename is not None:
         cargs.append(surfacename)
-    cargs.append("[LOW_THRESH]")
-    cargs.append("[HI_THRESH]")
+    if thickness_range is not None:
+        cargs.extend([
+            "-i",
+            *map(str, thickness_range)
+        ])
     if label_file is not None:
         cargs.extend([
             "-l",
@@ -127,7 +132,7 @@ def mris_anatomical_stats(
         root=execution.output_file("."),
         output_log_file=execution.output_file(logfile + ".txt") if (logfile is not None) else None,
         output_table_file=execution.output_file(tablefile + ".txt") if (tablefile is not None) else None,
-        output_ctab_file=execution.output_file(color_table + ".txt") if (color_table is not None) else None,
+        output_ctab_file=execution.output_file("[CTAB_FILE].txt"),
     )
     execution.run(cargs)
     return ret

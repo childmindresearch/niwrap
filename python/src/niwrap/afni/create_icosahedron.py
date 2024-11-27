@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_ICOSAHEDRON_METADATA = Metadata(
-    id="1b17cec756a725d6453bb5c0f89f105427f4d2ca.boutiques",
+    id="0c5ed33e6d9371f02ee960933e1903bb9350e470.boutiques",
     name="CreateIcosahedron",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

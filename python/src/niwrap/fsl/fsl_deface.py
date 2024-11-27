@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_DEFACE_METADATA = Metadata(
-    id="4fb8a8564de7146602b9596a59dacaa826f83b4b.boutiques",
+    id="a15715dea3406463c691adb07f972b19226928c3.boutiques",
     name="fsl_deface",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -145,7 +145,7 @@ def fsl_deface(
         ])
     ret = FslDefaceOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(outfile + ".nii.gz"),
+        outfile=execution.output_file("[OUTPUT_FILE].nii.gz"),
         out_defacing_mask=execution.output_file(defacing_mask + ".nii.gz") if (defacing_mask is not None) else None,
         out_cropped_struc=execution.output_file(cropped_struc + ".nii.gz") if (cropped_struc is not None) else None,
         out_orig_to_std_mat=execution.output_file(orig_to_std_mat + ".mat") if (orig_to_std_mat is not None) else None,

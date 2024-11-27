@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__TO_RAI_METADATA = Metadata(
-    id="1a5cc8a5a702a9f62a7296e2f91329b3a241311d.boutiques",
+    id="ae5bb83cce00bf51d61da1e1b21d495548f69a92.boutiques",
     name="@ToRAI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

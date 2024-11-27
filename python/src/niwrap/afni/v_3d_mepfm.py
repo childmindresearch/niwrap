@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MEPFM_METADATA = Metadata(
-    id="7de39809ee1b6e1e9f7322fe43a0788c7c86dca9.boutiques",
+    id="44860000dde3dcae9381914d7a939fdce74cff79.boutiques",
     name="3dMEPFM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

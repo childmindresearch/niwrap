@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_ALIGN_ANAT_PAIR_METADATA = Metadata(
-    id="285752989d858ebde4c88536af78b1b8f06b16d1.boutiques",
+    id="b81d41214e66c7f77b2bbc885c2f23369ad68254.boutiques",
     name="fat_proc_align_anat_pair",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

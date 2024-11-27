@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COMPARE_SURFACES_METADATA = Metadata(
-    id="1e4adc71975e9cacfb4dd4b6b68d24185052774f.boutiques",
+    id="fae97b4935dc6acada057829467fb30bd5e3f339.boutiques",
     name="CompareSurfaces",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

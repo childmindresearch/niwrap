@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SPHERICAL_AVERAGE_METADATA = Metadata(
-    id="723dc623726aa4424592db34ebfc97ca7d6c5fcb.boutiques",
+    id="1428559d3a56abaf727b5871834a354591593a62.boutiques",
     name="mris_spherical_average",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

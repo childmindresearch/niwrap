@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_PROC_PY_METADATA = Metadata(
-    id="8fefd4e99e329e9d8b01b6efcda3bcc2c4a10756.boutiques",
+    id="a4908cc703567652b0ff66dd10430d6df6144142.boutiques",
     name="afni_proc.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

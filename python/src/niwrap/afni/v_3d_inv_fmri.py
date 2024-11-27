@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_INV_FMRI_METADATA = Metadata(
-    id="61c795f9e8fbcd27d184c27174d9a665a918cd0f.boutiques",
+    id="0e98d6cd57d0addd162bfa97a9fce6949e7b4f85.boutiques",
     name="3dInvFMRI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

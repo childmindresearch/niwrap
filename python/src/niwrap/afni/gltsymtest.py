@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GLTSYMTEST_METADATA = Metadata(
-    id="8b69853d0f4540d3f47435c31725118e2911c6f2.boutiques",
+    id="ee7f3e82da13db7db87fe98e1283b73580005843.boutiques",
     name="GLTsymtest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

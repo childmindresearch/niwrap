@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASEG2FEAT_METADATA = Metadata(
-    id="d0bf627ddfcb57fedb7a112f1a00a95ca786bd7a.boutiques",
+    id="a171951e01eefa6d930d2f5fc71421003b6f23e3.boutiques",
     name="aseg2feat",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

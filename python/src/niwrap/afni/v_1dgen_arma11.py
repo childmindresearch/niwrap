@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DGEN_ARMA11_METADATA = Metadata(
-    id="eec5da6e665ce89463e9d156358a3805c810fa76.boutiques",
+    id="9fce1559df8cc31e0d2c99d44319f7a47b38ba76.boutiques",
     name="1dgenARMA11",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA = Metadata(
-    id="f693ac4ad31f1a6eadc3feb7c36e205aa70b2373.boutiques",
+    id="b866ae2f76511eca887345fe0515e30b2318f31e.boutiques",
     name="antsMultivariateTemplateConstruction2.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

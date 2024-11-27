@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GPS_METADATA = Metadata(
-    id="8dd4ebe42246b6879ad7c581619f525981626137.boutiques",
+    id="b6e9756556d50c5c524e3645c380d3d12a887881.boutiques",
     name="gps",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

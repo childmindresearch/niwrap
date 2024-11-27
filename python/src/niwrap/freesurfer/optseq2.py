@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OPTSEQ2_METADATA = Metadata(
-    id="27eb9a00f900ae8acb105c775a04d353c77b2fb6.boutiques",
+    id="f5a782e2ed100a1f5d1145c015243dda721c541b.boutiques",
     name="optseq2",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -30,7 +30,7 @@ class Optseq2Outputs(typing.NamedTuple):
     """Output search summary"""
     output_log: OutputPathType | None
     """Output log file"""
-    output_sviter: OutputPathType | None
+    output_sviter: OutputPathType
     """Output per-iteration information"""
 
 
@@ -38,6 +38,7 @@ def optseq2(
     ntp: float,
     tr: float,
     tprescan: float,
+    psdwin: list[float],
     event: list[str] | None = None,
     repvar: str | None = None,
     polyfit: float | None = None,
@@ -80,6 +81,8 @@ def optseq2(
         ntp: Number of time points to be acquired during the scan.
         tr: Temporal resolution of acquisition in seconds.
         tprescan: Start events t seconds before first acquisition.
+        psdwin: Post-stimulus window specifications: minimum PSD, maximum PSD,\
+            and optional dPSD.
         event: Event type specification with label, duration, and number of\
             repetitions.
         repvar: Allow number of repetitions of event types to vary by\
@@ -136,7 +139,10 @@ def optseq2(
         "--tprescan",
         str(tprescan)
     ])
-    cargs.append("[PSDWIN]")
+    cargs.extend([
+        "--psdwin",
+        *map(str, psdwin)
+    ])
     if event is not None:
         cargs.extend([
             "--ev",
@@ -272,7 +278,7 @@ def optseq2(
         output_contrast_matrix=execution.output_file(cmtxfile) if (cmtxfile is not None) else None,
         output_summary=execution.output_file(summaryfile) if (summaryfile is not None) else None,
         output_log=execution.output_file(logfile) if (logfile is not None) else None,
-        output_sviter=execution.output_file(sviterfile) if (sviterfile is not None) else None,
+        output_sviter=execution.output_file("[SVITER]"),
     )
     execution.run(cargs)
     return ret

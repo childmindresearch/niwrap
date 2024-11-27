@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHARM_DECO_METADATA = Metadata(
-    id="6d15519a5c1313333c559fb924ae8964f9b076e5.boutiques",
+    id="6c5408eda75c3fcbee3c137d9a99cb7b538fb149.boutiques",
     name="SpharmDeco",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,6 +29,14 @@ class SpharmDecoOutputs(typing.NamedTuple):
 
 
 def spharm_deco(
+    i_type_s: InputPathType,
+    unit_sph_label: str,
+    order_l: float,
+    i_type_sd: list[InputPathType] | None = None,
+    data_d: InputPathType | None = None,
+    bases_prefix: str | None = None,
+    prefix: str | None = None,
+    o_type_sdr: list[InputPathType] | None = None,
     debug: float | None = None,
     sigma: float | None = None,
     runner: Runner | None = None,
@@ -41,6 +49,18 @@ def spharm_deco(
     URL: https://afni.nimh.nih.gov/
     
     Args:
+        i_type_s: Unit sphere, isotopic to the surface domain over which the\
+            data to be decomposed is defined.
+        unit_sph_label: Label of the unit sphere.
+        order_l: Decomposition order.
+        i_type_sd: A surface whose node coordinates provide data vectors (X, Y,\
+            Z) to be decomposed or a dataset whose columns are to be individually\
+            decomposed. You can specify multiple surfaces to be processed.
+        data_d: Data vectors to be decomposed.
+        bases_prefix: Save the basis functions under the prefix BASES_PREFIX.
+        prefix: Write out the reconstructed data into dataset PREFIX and write\
+            the beta coefficients for each processed data column.
+        o_type_sdr: Write out a new surface with reconstructed coordinates.
         debug: Debug levels (1-3).
         sigma: Smoothing parameter (0 .. 0.001) which weighs down the\
             contribution of higher order harmonics.
@@ -52,22 +72,19 @@ def spharm_deco(
     execution = runner.start_execution(SPHARM_DECO_METADATA)
     cargs = []
     cargs.append("SpharmDeco")
-    cargs.append("[<-i_TYPE")
-    cargs.append("S>]")
-    cargs.append("[<-unit_sph")
-    cargs.append("UNIT_SPH_LABEL>]")
-    cargs.append("[<-l")
-    cargs.append("L>]")
-    cargs.append("[<-i_TYPE")
-    cargs.append("SD>]")
-    cargs.append("[<-data")
-    cargs.append("D>]")
-    cargs.append("[-bases_prefix")
-    cargs.append("BASES]")
-    cargs.append("[-prefix")
-    cargs.append("PREFIX]")
-    cargs.append("[-o_TYPE")
-    cargs.append("SDR]")
+    cargs.append(execution.input_file(i_type_s))
+    cargs.append(unit_sph_label)
+    cargs.append(str(order_l))
+    if i_type_sd is not None:
+        cargs.extend([execution.input_file(f) for f in i_type_sd])
+    if data_d is not None:
+        cargs.append(execution.input_file(data_d))
+    if bases_prefix is not None:
+        cargs.append(bases_prefix)
+    if prefix is not None:
+        cargs.append(prefix)
+    if o_type_sdr is not None:
+        cargs.extend([execution.input_file(f) for f in o_type_sdr])
     if debug is not None:
         cargs.extend([
             "-debug",

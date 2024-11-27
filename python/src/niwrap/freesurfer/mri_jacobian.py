@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_JACOBIAN_METADATA = Metadata(
-    id="02ae4a187b42fcf3963ac202dc1a7655d9264dee.boutiques",
+    id="261fa5191d385d242b16ec1808b1a5ac51b44bc2.boutiques",
     name="mri_jacobian",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

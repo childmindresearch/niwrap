@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MVM_SCRIPTER_PY_METADATA = Metadata(
-    id="82b72a127567ec2077a59b2fc40c92cb4cb7aea9.boutiques",
+    id="2b93a491c79b77f3d34fa9c5577a2b3807db847a.boutiques",
     name="fat_mvm_scripter.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

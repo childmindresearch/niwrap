@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_MNI305_2MM_METADATA = Metadata(
-    id="b44d14e0facb385de07cb2a304e64c27240f56df.boutiques",
+    id="baca96deead4a89fad3eca8defaa337786ee5cdf.boutiques",
     name="reg-mni305.2mm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

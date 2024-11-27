@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LTA_DIFF_METADATA = Metadata(
-    id="993a10a3986ff06457d8d489e05026b1766b9172.boutiques",
+    id="e99c49541b6ef2ad5939381bb81d7249502ffc0c.boutiques",
     name="lta_diff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

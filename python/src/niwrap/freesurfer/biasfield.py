@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIASFIELD_METADATA = Metadata(
-    id="9279d23bc24bb1ce5f3f42049491d23b167647a1.boutiques",
+    id="c8391deeed6d412683183d406717be9cba1af3b4.boutiques",
     name="biasfield",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

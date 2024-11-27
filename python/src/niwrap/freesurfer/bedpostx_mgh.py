@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_MGH_METADATA = Metadata(
-    id="1c514c390a17d52e979297da13265185ccb77588.boutiques",
+    id="fb49a4fd21cd6f6cf877e9365ca0aa77e9e1a7f5.boutiques",
     name="bedpostx_mgh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

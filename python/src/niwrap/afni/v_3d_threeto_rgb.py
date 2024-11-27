@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_THREETO_RGB_METADATA = Metadata(
-    id="c2dc1030d39780e10c75c90a735a91d0208be497.boutiques",
+    id="fd2f0f469f3eeb8b127a8f8bc895939aa7c3f76f.boutiques",
     name="3dThreetoRGB",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class V3dThreetoRgbOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset_head: OutputPathType | None
+    output_dataset_head: OutputPathType
     """RGB-valued dataset output"""
-    output_dataset_brik: OutputPathType | None
+    output_dataset_brik: OutputPathType
     """RGB-valued dataset output"""
 
 
@@ -92,8 +92,8 @@ def v_3d_threeto_rgb(
         cargs.append(execution.input_file(input_dataset3))
     ret = V3dThreetoRgbOutputs(
         root=execution.output_file("."),
-        output_dataset_head=execution.output_file(output_prefix + "+rgb.HEAD") if (output_prefix is not None) else None,
-        output_dataset_brik=execution.output_file(output_prefix + "+rgb.BRIK") if (output_prefix is not None) else None,
+        output_dataset_head=execution.output_file("[PREFIX]+rgb.HEAD"),
+        output_dataset_brik=execution.output_file("[PREFIX]+rgb.BRIK"),
     )
     execution.run(cargs)
     return ret

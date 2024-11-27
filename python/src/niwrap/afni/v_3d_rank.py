@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RANK_METADATA = Metadata(
-    id="f24b152482b10fa0b6611d0411ec1b16078a8ea8.boutiques",
+    id="fbb4fae55a1cc1a7f9e8f340bec53c53b8ede166.boutiques",
     name="3dRank",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,11 +20,11 @@ class V3dRankOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset_head: OutputPathType | None
+    output_dataset_head: OutputPathType
     """Main output dataset in AFNI format (.HEAD file)"""
-    output_dataset_brik: OutputPathType | None
+    output_dataset_brik: OutputPathType
     """Main output dataset in AFNI format (.BRIK file)"""
-    rank_map_file: OutputPathType | None
+    rank_map_file: OutputPathType
     """Rank map 1D file showing the mapping from the rank to the integral values
     in the input dataset"""
 
@@ -72,9 +72,9 @@ def v_3d_rank(
         cargs.append("-help")
     ret = V3dRankOutputs(
         root=execution.output_file("."),
-        output_dataset_head=execution.output_file(output_prefix + "*.HEAD") if (output_prefix is not None) else None,
-        output_dataset_brik=execution.output_file(output_prefix + "*.BRIK") if (output_prefix is not None) else None,
-        rank_map_file=execution.output_file(output_prefix + "*.1D") if (output_prefix is not None) else None,
+        output_dataset_head=execution.output_file("[PREFIX]*.HEAD"),
+        output_dataset_brik=execution.output_file("[PREFIX]*.BRIK"),
+        rank_map_file=execution.output_file("[PREFIX]*.1D"),
     )
     execution.run(cargs)
     return ret

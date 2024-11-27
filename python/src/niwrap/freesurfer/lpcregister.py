@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LPCREGISTER_METADATA = Metadata(
-    id="f1ace3c128f898f4d1628f244026b2e6472c6fee.boutiques",
+    id="e5a5971735d364dfe8f37cf7d53f26828a5b15b4.boutiques",
     name="lpcregister",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

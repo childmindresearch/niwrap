@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_STATS_TPS_METADATA = Metadata(
-    id="b6247c9fde392acc04e225fb54b14a0f1e35bb16.boutiques",
+    id="3c998e4141922d2e9f28423b9a83ce90663efcfb.boutiques",
     name="long_stats_tps",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -93,7 +93,7 @@ def long_stats_tps(
         cargs.append("--cross")
     ret = LongStatsTpsOutputs(
         root=execution.output_file("."),
-        stacked_results=execution.output_file(output_file),
+        stacked_results=execution.output_file("[OUT]"),
     )
     execution.run(cargs)
     return ret

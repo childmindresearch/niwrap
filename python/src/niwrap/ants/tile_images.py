@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TILE_IMAGES_METADATA = Metadata(
-    id="8a5ab10347c4822ca1b9a1ace149a5ab531d4186.boutiques",
+    id="11f704401de392cf34f685f833e7073a2d69b714.boutiques",
     name="TileImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

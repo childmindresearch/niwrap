@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_ICOSAHEDRON_METADATA = Metadata(
-    id="1d9e7bc123810e1827523a4f31aefece32f411e6.boutiques",
+    id="29dbfdf370b411c5e1a730bd832837169913b924.boutiques",
     name="MapIcosahedron",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

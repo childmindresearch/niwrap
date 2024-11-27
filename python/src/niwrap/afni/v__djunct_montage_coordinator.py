@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_MONTAGE_COORDINATOR_METADATA = Metadata(
-    id="f3048da50feab9a5431a35d3b1470ddb44c8feb7.boutiques",
+    id="9c2cbb473d95421a680be52f18d9f90f2ec86dfb.boutiques",
     name="@djunct_montage_coordinator",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

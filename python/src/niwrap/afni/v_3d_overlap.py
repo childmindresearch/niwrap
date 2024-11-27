@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_OVERLAP_METADATA = Metadata(
-    id="7c4a09783f392121942ba5ea273c38f8724e341b.boutiques",
+    id="4440bc696db88baacf3e47d87d818dc09880f58d.boutiques",
     name="3dOverlap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,8 @@ class V3dOverlapOutputs(typing.NamedTuple):
 
 
 def v_3d_overlap(
+    dataset1: InputPathType,
+    dataset2: list[InputPathType],
     runner: Runner | None = None,
 ) -> V3dOverlapOutputs:
     """
@@ -37,6 +39,8 @@ def v_3d_overlap(
     URL: https://afni.nimh.nih.gov/
     
     Args:
+        dataset1: First input dataset (e.g. dset1+orig).
+        dataset2: Second input dataset (e.g. dset2+orig).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dOverlapOutputs`).
@@ -46,8 +50,8 @@ def v_3d_overlap(
     cargs = []
     cargs.append("3dOverlap")
     cargs.append("[OPTIONS]")
-    cargs.append("[DATASET1]")
-    cargs.append("[DATASET2]")
+    cargs.append(execution.input_file(dataset1))
+    cargs.extend([execution.input_file(f) for f in dataset2])
     ret = V3dOverlapOutputs(
         root=execution.output_file("."),
         output_brik=execution.output_file("[PREFIX]+orig.BRIK"),

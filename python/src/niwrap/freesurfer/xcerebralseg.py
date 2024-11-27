@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XCEREBRALSEG_METADATA = Metadata(
-    id="8185c238aec4ffe8f3eb70e8bcbb83f8e7a0af6b.boutiques",
+    id="14c3690bac7554084d7978a923e6d146bea56460.boutiques",
     name="xcerebralseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

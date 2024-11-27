@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANOVA2_METADATA = Metadata(
-    id="6aabc2d723b550f25dba0bfb60752185a653b6b0.boutiques",
+    id="959fd33254e73edf31c97775ab555edf5192d4f2.boutiques",
     name="3dANOVA2",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,35 +20,35 @@ class V3dAnova2Outputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_ftr: OutputPathType | None
+    output_ftr: OutputPathType
     """F-statistic for treatment effect output file"""
-    output_fa: OutputPathType | None
+    output_fa: OutputPathType
     """F-statistic for factor A effect output file"""
-    output_fb: OutputPathType | None
+    output_fb: OutputPathType
     """F-statistic for factor B effect output file"""
-    output_fab: OutputPathType | None
+    output_fab: OutputPathType
     """F-statistic for interaction output file"""
-    output_amean: OutputPathType | None
+    output_amean: OutputPathType
     """Estimate mean of factor A level output file"""
-    output_bmean: OutputPathType | None
+    output_bmean: OutputPathType
     """Estimate mean of factor B level output file"""
-    output_xmean: OutputPathType | None
+    output_xmean: OutputPathType
     """Estimate mean of cell at level i of factor A and level j of factor B
     output file"""
-    output_adiff: OutputPathType | None
+    output_adiff: OutputPathType
     """Difference between levels i and j of factor A output file"""
-    output_bdiff: OutputPathType | None
+    output_bdiff: OutputPathType
     """Difference between levels i and j of factor B output file"""
-    output_xdiff: OutputPathType | None
+    output_xdiff: OutputPathType
     """Difference between cell mean at A=i, B=j and cell mean at A=k, B=l output
     file"""
-    output_acontr: OutputPathType | None
+    output_acontr: OutputPathType
     """Contrast in factor A levels output file"""
-    output_bcontr: OutputPathType | None
+    output_bcontr: OutputPathType
     """Contrast in factor B levels output file"""
-    output_xcontr: OutputPathType | None
+    output_xcontr: OutputPathType
     """Contrast in cell means output file"""
-    output_bucket: OutputPathType | None
+    output_bucket: OutputPathType
     """Create one AFNI 'bucket' dataset file"""
 
 
@@ -238,20 +238,20 @@ def v_3d_anova2(
         cargs.append("-assume_sph")
     ret = V3dAnova2Outputs(
         root=execution.output_file("."),
-        output_ftr=execution.output_file(ftr + ".+tlrc") if (ftr is not None) else None,
-        output_fa=execution.output_file(fa + ".+tlrc") if (fa is not None) else None,
-        output_fb=execution.output_file(fb + ".+tlrc") if (fb is not None) else None,
-        output_fab=execution.output_file(fab + ".+tlrc") if (fab is not None) else None,
-        output_amean=execution.output_file(amean + ".+tlrc") if (amean is not None) else None,
-        output_bmean=execution.output_file(bmean + ".+tlrc") if (bmean is not None) else None,
-        output_xmean=execution.output_file(xmean + ".+tlrc") if (xmean is not None) else None,
-        output_adiff=execution.output_file(adiff + ".+tlrc") if (adiff is not None) else None,
-        output_bdiff=execution.output_file(bdiff + ".+tlrc") if (bdiff is not None) else None,
-        output_xdiff=execution.output_file(xdiff + ".+tlrc") if (xdiff is not None) else None,
-        output_acontr=execution.output_file(acontr + ".+tlrc") if (acontr is not None) else None,
-        output_bcontr=execution.output_file(bcontr + ".+tlrc") if (bcontr is not None) else None,
-        output_xcontr=execution.output_file(xcontr + ".+tlrc") if (xcontr is not None) else None,
-        output_bucket=execution.output_file(bucket + ".+tlrc") if (bucket is not None) else None,
+        output_ftr=execution.output_file("[FTR_PREFIX].+tlrc"),
+        output_fa=execution.output_file("[FA_PREFIX].+tlrc"),
+        output_fb=execution.output_file("[FB_PREFIX].+tlrc"),
+        output_fab=execution.output_file("[FAB_PREFIX].+tlrc"),
+        output_amean=execution.output_file("[AMEAN_PREFIX].+tlrc"),
+        output_bmean=execution.output_file("[BMEAN_PREFIX].+tlrc"),
+        output_xmean=execution.output_file("[XMEAN_PREFIX].+tlrc"),
+        output_adiff=execution.output_file("[ADIFF_PREFIX].+tlrc"),
+        output_bdiff=execution.output_file("[BDIFF_PREFIX].+tlrc"),
+        output_xdiff=execution.output_file("[XDIFF_PREFIX].+tlrc"),
+        output_acontr=execution.output_file("[ACONTR_PREFIX].+tlrc"),
+        output_bcontr=execution.output_file("[BCONTR_PREFIX].+tlrc"),
+        output_xcontr=execution.output_file("[XCONTR_PREFIX].+tlrc"),
+        output_bucket=execution.output_file("[BUCKET_PREFIX].+tlrc"),
     )
     execution.run(cargs)
     return ret

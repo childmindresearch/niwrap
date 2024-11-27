@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRAIN_GCS_ATLAS_METADATA = Metadata(
-    id="dbb54030bc434d2139cc39b196d8a4d6766dc029.boutiques",
+    id="1a63732873f8cb79725503aa714c4e9c6429889e.boutiques",
     name="train-gcs-atlas",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -112,7 +112,7 @@ def train_gcs_atlas(
         ])
     ret = TrainGcsAtlasOutputs(
         root=execution.output_file("."),
-        output_gcs_file=execution.output_file(pathlib.Path(output_gcs).name),
+        output_gcs_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

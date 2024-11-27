@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FS_UPDATE_METADATA = Metadata(
-    id="ac7250e0b405d7c5f977c5deddeee4d0947733b6.boutiques",
+    id="4603b7fb31c1aa61646a36fb25725ca6a61d057f.boutiques",
     name="fs_update",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

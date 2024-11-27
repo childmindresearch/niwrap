@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_GCUT_METADATA = Metadata(
-    id="6d912a8496229e7caf2d1d27dfdd816d5db54170.boutiques",
+    id="c5249bb02ffa774a12c2ba2999c969936e366408.boutiques",
     name="mri_gcut",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -75,7 +75,7 @@ def mri_gcut(
     cargs.append(outfile)
     ret = MriGcutOutputs(
         root=execution.output_file("."),
-        output_mask_file=execution.output_file(outfile),
+        output_mask_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

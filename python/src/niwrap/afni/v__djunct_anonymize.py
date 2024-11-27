@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_ANONYMIZE_METADATA = Metadata(
-    id="08092598b752b9fd2011da8ce44ca2cb1929ac90.boutiques",
+    id="b39c604a1cb220842f1bff1090f5403b2eb497f0.boutiques",
     name="@djunct_anonymize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

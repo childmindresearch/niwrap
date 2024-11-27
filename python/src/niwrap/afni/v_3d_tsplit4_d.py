@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSPLIT4_D_METADATA = Metadata(
-    id="501ddadcbbb7f97f47c1b740f0aae3aed7a2a8c3.boutiques",
+    id="861535b6c29e168191a0da4498bda4b743f855bf.boutiques",
     name="3dTsplit4D",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BET_METADATA = Metadata(
-    id="0c32e32ed0e5040ce288c7623cd79886215e0137.boutiques",
+    id="bfc24b8403e0fe9004feb334f123d79226615581.boutiques",
     name="bet",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -206,21 +206,21 @@ def bet(
         cargs.append("-d")
     ret = BetOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(maskfile + ".nii.gz"),
-        binary_mask=execution.output_file(maskfile + "_mask.nii.gz"),
-        overlay_file=execution.output_file(maskfile + "_overlay.nii.gz"),
-        approx_skull_img=execution.output_file(maskfile + "_skull.nii.gz"),
-        output_vtk_mesh=execution.output_file(maskfile + "_mesh.vtk"),
-        skull_mask=execution.output_file(maskfile + "_skull_mask.nii.gz"),
-        out_inskull_mask=execution.output_file(maskfile + "_inskull_mask.nii.gz"),
-        out_inskull_mesh=execution.output_file(maskfile + "_inskull_mesh.nii.gz"),
-        out_inskull_off=execution.output_file(maskfile + "_inskull_mesh.off"),
-        out_outskin_mask=execution.output_file(maskfile + "_outskin_mask.nii.gz"),
-        out_outskin_mesh=execution.output_file(maskfile + "_outskin_mesh.nii.gz"),
-        out_outskin_off=execution.output_file(maskfile + "_outskin_mesh.off"),
-        out_outskull_mask=execution.output_file(maskfile + "_outskull_mask.nii.gz"),
-        out_outskull_mesh=execution.output_file(maskfile + "_outskull_mesh.nii.gz"),
-        out_outskull_off=execution.output_file(maskfile + "_outskull_mesh.off"),
+        outfile=execution.output_file("[MASK].nii.gz"),
+        binary_mask=execution.output_file("[MASK]_mask.nii.gz"),
+        overlay_file=execution.output_file("[MASK]_overlay.nii.gz"),
+        approx_skull_img=execution.output_file("[MASK]_skull.nii.gz"),
+        output_vtk_mesh=execution.output_file("[MASK]_mesh.vtk"),
+        skull_mask=execution.output_file("[MASK]_skull_mask.nii.gz"),
+        out_inskull_mask=execution.output_file("[MASK]_inskull_mask.nii.gz"),
+        out_inskull_mesh=execution.output_file("[MASK]_inskull_mesh.nii.gz"),
+        out_inskull_off=execution.output_file("[MASK]_inskull_mesh.off"),
+        out_outskin_mask=execution.output_file("[MASK]_outskin_mask.nii.gz"),
+        out_outskin_mesh=execution.output_file("[MASK]_outskin_mesh.nii.gz"),
+        out_outskin_off=execution.output_file("[MASK]_outskin_mesh.off"),
+        out_outskull_mask=execution.output_file("[MASK]_outskull_mask.nii.gz"),
+        out_outskull_mesh=execution.output_file("[MASK]_outskull_mesh.nii.gz"),
+        out_outskull_off=execution.output_file("[MASK]_outskull_mesh.off"),
     )
     execution.run(cargs)
     return ret

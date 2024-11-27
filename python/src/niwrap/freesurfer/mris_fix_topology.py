@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_FIX_TOPOLOGY_METADATA = Metadata(
-    id="4f9d60e228057441b5837a38b5a5b31e620a5eb4.boutiques",
+    id="5d7620635b54b49eefdf920890334e0223158089.boutiques",
     name="mris_fix_topology",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

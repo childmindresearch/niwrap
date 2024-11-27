@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MERGE_STATS_TABLES_METADATA = Metadata(
-    id="f397566d03a49267ed0791aae2f6d7952941a7d8.boutiques",
+    id="004967733986569ad699b7fcfc4e0e899cb02c90.boutiques",
     name="merge_stats_tables",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FATCAT_MATPLOT_METADATA = Metadata(
-    id="085b4167b85a1cc4f21c43adeefb80758ae946b1.boutiques",
+    id="f644c652339bbfb3aa84d71606689abe580b8c2b.boutiques",
     name="FATCAT_matplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

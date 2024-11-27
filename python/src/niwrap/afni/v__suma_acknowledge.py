@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_ACKNOWLEDGE_METADATA = Metadata(
-    id="cfa888f786d62a915c478629467702bbd215cc37.boutiques",
+    id="a8f4715fa5105c4c0609bd564b7d507bb058f088.boutiques",
     name="@suma_acknowledge",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOMB_SCARGLE_METADATA = Metadata(
-    id="87603e423e75a60222fcf2313b14ff328ab6860e.boutiques",
+    id="ec1cdb90b6faac538a25b9943b1823c8bc7afa27.boutiques",
     name="3dLombScargle",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

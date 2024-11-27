@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEMS_COMPUTE_ATLAS_PROBS_METADATA = Metadata(
-    id="e932a709186d19d5d262bfa542f169f3d595741e.boutiques",
+    id="e4708282a3cd6c2187910866f5c82a92aef1d963.boutiques",
     name="gems_compute_atlas_probs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

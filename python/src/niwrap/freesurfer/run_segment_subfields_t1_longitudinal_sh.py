@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA = Metadata(
-    id="ee354f3c8bf703b37a87ce46efa290b9f59f1c0d.boutiques",
+    id="06a7bfba6231f999f1b4d6fa26f1a22c4fe4eb12.boutiques",
     name="run_SegmentSubfieldsT1Longitudinal.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

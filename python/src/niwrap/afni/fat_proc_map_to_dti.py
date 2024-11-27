@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_MAP_TO_DTI_METADATA = Metadata(
-    id="474924386097dcd7df273db530cc8e0549474d04.boutiques",
+    id="2b3d016adec8a1c1a140ee39d2b30af25ebd671d.boutiques",
     name="fat_proc_map_to_dti",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

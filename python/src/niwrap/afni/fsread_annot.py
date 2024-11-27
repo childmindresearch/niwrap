@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSREAD_ANNOT_METADATA = Metadata(
-    id="0e294e2ffa5abb5fca3f6e46a0f6e9df87196481.boutiques",
+    id="1aee44cf7efa00cb2630f7f3d7fb84af69eadb4f.boutiques",
     name="FSread_annot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CSVPRINT_METADATA = Metadata(
-    id="1b183de5c811f67e827319d561a2e7468aded34a.boutiques",
+    id="88fe426126aea1052da673cfeee9f2078fb01491.boutiques",
     name="csvprint",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

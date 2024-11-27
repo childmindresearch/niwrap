@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OCT_REGISTER_MOSAIC_METADATA = Metadata(
-    id="c8534c8b796c0aaac4b39681cd9d67d492f481e8.boutiques",
+    id="3c0f1193be4788ada8c34632e6598409865db885.boutiques",
     name="oct_register_mosaic",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

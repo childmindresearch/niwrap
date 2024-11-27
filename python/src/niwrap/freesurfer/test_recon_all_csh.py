@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEST_RECON_ALL_CSH_METADATA = Metadata(
-    id="ceb52b8a31da4718e7e103273bdb40eed29a73dd.boutiques",
+    id="8cf72a95ce1a11314c60b7ef805c1a1b7bf68cfb.boutiques",
     name="test_recon-all.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

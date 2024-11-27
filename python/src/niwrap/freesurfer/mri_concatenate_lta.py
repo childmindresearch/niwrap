@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CONCATENATE_LTA_METADATA = Metadata(
-    id="6bdd2d8b898ad18cca59fea91e0bc86baf92c633.boutiques",
+    id="4ebf515f1f226122f61f4db868b19e295a774022.boutiques",
     name="mri_concatenate_lta",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
