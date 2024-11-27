@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V__ROI_MODAL_GROW_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;45c2859063112b79d11cbd7f83ae7907f865d0f8.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a717544c0515cdd54f72389e876ae926a35bce90.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@ROI_modal_grow&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Final output dataset&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>
@@ -168,7 +168,7 @@
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VRoiModalGrowOutputs</span><span class="p">(</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_DIR]/[OUTPUT_PREFIX].nii.gz&quot;</span><span class="p">),</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="p">)</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -200,7 +200,7 @@
 </span><span id="VRoiModalGrowOutputs-21"><a href="#VRoiModalGrowOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="VRoiModalGrowOutputs-22"><a href="#VRoiModalGrowOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="VRoiModalGrowOutputs-23"><a href="#VRoiModalGrowOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="VRoiModalGrowOutputs-24"><a href="#VRoiModalGrowOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="VRoiModalGrowOutputs-24"><a href="#VRoiModalGrowOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="VRoiModalGrowOutputs-25"><a href="#VRoiModalGrowOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Final output dataset&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -212,7 +212,7 @@
                             <div id="VRoiModalGrowOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">VRoiModalGrowOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">VRoiModalGrowOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -238,7 +238,7 @@
                             </div>
                             <div id="VRoiModalGrowOutputs.output_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -254,7 +254,7 @@
                     <div class="attr variable">
             <span class="name">V__ROI_MODAL_GROW_METADATA</span>        =
 <input id="V__ROI_MODAL_GROW_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__ROI_MODAL_GROW_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;45c2859063112b79d11cbd7f83ae7907f865d0f8.boutiques&#39;, name=&#39;@ROI_modal_grow&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__ROI_MODAL_GROW_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a717544c0515cdd54f72389e876ae926a35bce90.boutiques&#39;, name=&#39;@ROI_modal_grow&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -344,7 +344,7 @@
 </span><span id="v__roi_modal_grow-95"><a href="#v__roi_modal_grow-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
 </span><span id="v__roi_modal_grow-96"><a href="#v__roi_modal_grow-96"><span class="linenos"> 96</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VRoiModalGrowOutputs</span><span class="p">(</span>
 </span><span id="v__roi_modal_grow-97"><a href="#v__roi_modal_grow-97"><span class="linenos"> 97</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__roi_modal_grow-98"><a href="#v__roi_modal_grow-98"><span class="linenos"> 98</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__roi_modal_grow-98"><a href="#v__roi_modal_grow-98"><span class="linenos"> 98</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_DIR]/[OUTPUT_PREFIX].nii.gz&quot;</span><span class="p">),</span>
 </span><span id="v__roi_modal_grow-99"><a href="#v__roi_modal_grow-99"><span class="linenos"> 99</span></a>    <span class="p">)</span>
 </span><span id="v__roi_modal_grow-100"><a href="#v__roi_modal_grow-100"><span class="linenos">100</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v__roi_modal_grow-101"><a href="#v__roi_modal_grow-101"><span class="linenos">101</span></a>    <span class="k">return</span> <span class="n">ret</span>

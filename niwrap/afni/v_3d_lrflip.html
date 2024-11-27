@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V_3D_LRFLIP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;da9ae489ee4907f481f368db8441cc0a2eb8cfa1.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f5fb5c24267d6a937ff2b7766ab5fb355973e781.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dLRflip&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">flipped_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">flipped_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset after flipping&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
@@ -135,7 +135,7 @@
 </span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">])</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dLrflipOutputs</span><span class="p">(</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">flipped_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">flipped_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*&quot;</span><span class="p">),</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="p">)</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -167,7 +167,7 @@
 </span><span id="V3dLrflipOutputs-21"><a href="#V3dLrflipOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="V3dLrflipOutputs-22"><a href="#V3dLrflipOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dLrflipOutputs-23"><a href="#V3dLrflipOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="V3dLrflipOutputs-24"><a href="#V3dLrflipOutputs-24"><span class="linenos">24</span></a>    <span class="n">flipped_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dLrflipOutputs-24"><a href="#V3dLrflipOutputs-24"><span class="linenos">24</span></a>    <span class="n">flipped_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dLrflipOutputs-25"><a href="#V3dLrflipOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset after flipping&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -179,7 +179,7 @@
                             <div id="V3dLrflipOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">V3dLrflipOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">flipped_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">V3dLrflipOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">flipped_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -205,7 +205,7 @@
                             </div>
                             <div id="V3dLrflipOutputs.flipped_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">flipped_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">flipped_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -221,7 +221,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_LRFLIP_METADATA</span>        =
 <input id="V_3D_LRFLIP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_LRFLIP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;da9ae489ee4907f481f368db8441cc0a2eb8cfa1.boutiques&#39;, name=&#39;3dLRflip&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_LRFLIP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f5fb5c24267d6a937ff2b7766ab5fb355973e781.boutiques&#39;, name=&#39;3dLRflip&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -278,7 +278,7 @@
 </span><span id="v_3d_lrflip-62"><a href="#v_3d_lrflip-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">])</span>
 </span><span id="v_3d_lrflip-63"><a href="#v_3d_lrflip-63"><span class="linenos">63</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dLrflipOutputs</span><span class="p">(</span>
 </span><span id="v_3d_lrflip-64"><a href="#v_3d_lrflip-64"><span class="linenos">64</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_lrflip-65"><a href="#v_3d_lrflip-65"><span class="linenos">65</span></a>        <span class="n">flipped_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_lrflip-65"><a href="#v_3d_lrflip-65"><span class="linenos">65</span></a>        <span class="n">flipped_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*&quot;</span><span class="p">),</span>
 </span><span id="v_3d_lrflip-66"><a href="#v_3d_lrflip-66"><span class="linenos">66</span></a>    <span class="p">)</span>
 </span><span id="v_3d_lrflip-67"><a href="#v_3d_lrflip-67"><span class="linenos">67</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v_3d_lrflip-68"><a href="#v_3d_lrflip-68"><span class="linenos">68</span></a>    <span class="k">return</span> <span class="n">ret</span>

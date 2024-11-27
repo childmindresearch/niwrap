@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRIS_REGISTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;40a89ac88023784533799172957cac82555eef45.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;71bb9adc1f4aed94938e55990498c71c387f4326.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mris_register&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -99,7 +99,7 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_surface_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output surface file after registration.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">jacobian_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">jacobian_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Jacobian output file if specified.&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
@@ -513,7 +513,7 @@
 </span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisRegisterOutputs</span><span class="p">(</span>
 </span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>        <span class="n">output_surface_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_fname</span><span class="p">),</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>        <span class="n">jacobian_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_fname</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>        <span class="n">jacobian_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[JACOBIAN_FILENAME]&quot;</span><span class="p">),</span>
 </span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="p">)</span>
 </span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -532,7 +532,7 @@
                     <div class="attr variable">
             <span class="name">MRIS_REGISTER_METADATA</span>        =
 <input id="MRIS_REGISTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRIS_REGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;40a89ac88023784533799172957cac82555eef45.boutiques&#39;, name=&#39;mris_register&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRIS_REGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;71bb9adc1f4aed94938e55990498c71c387f4326.boutiques&#39;, name=&#39;mris_register&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -560,7 +560,7 @@
 </span><span id="MrisRegisterOutputs-23"><a href="#MrisRegisterOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="MrisRegisterOutputs-24"><a href="#MrisRegisterOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_surface_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MrisRegisterOutputs-25"><a href="#MrisRegisterOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output surface file after registration.&quot;&quot;&quot;</span>
-</span><span id="MrisRegisterOutputs-26"><a href="#MrisRegisterOutputs-26"><span class="linenos">26</span></a>    <span class="n">jacobian_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MrisRegisterOutputs-26"><a href="#MrisRegisterOutputs-26"><span class="linenos">26</span></a>    <span class="n">jacobian_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MrisRegisterOutputs-27"><a href="#MrisRegisterOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Jacobian output file if specified.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -572,7 +572,7 @@
                             <div id="MrisRegisterOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MrisRegisterOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_surface_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">jacobian_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">MrisRegisterOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_surface_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">jacobian_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -611,7 +611,7 @@
                             </div>
                             <div id="MrisRegisterOutputs.jacobian_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">jacobian_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">jacobian_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -1044,7 +1044,7 @@
 </span><span id="mris_register-437"><a href="#mris_register-437"><span class="linenos">437</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisRegisterOutputs</span><span class="p">(</span>
 </span><span id="mris_register-438"><a href="#mris_register-438"><span class="linenos">438</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="mris_register-439"><a href="#mris_register-439"><span class="linenos">439</span></a>        <span class="n">output_surface_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_fname</span><span class="p">),</span>
-</span><span id="mris_register-440"><a href="#mris_register-440"><span class="linenos">440</span></a>        <span class="n">jacobian_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_fname</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mris_register-440"><a href="#mris_register-440"><span class="linenos">440</span></a>        <span class="n">jacobian_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[JACOBIAN_FILENAME]&quot;</span><span class="p">),</span>
 </span><span id="mris_register-441"><a href="#mris_register-441"><span class="linenos">441</span></a>    <span class="p">)</span>
 </span><span id="mris_register-442"><a href="#mris_register-442"><span class="linenos">442</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mris_register-443"><a href="#mris_register-443"><span class="linenos">443</span></a>    <span class="k">return</span> <span class="n">ret</span>

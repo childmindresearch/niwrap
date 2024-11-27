@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V_3D_RANK_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f24b152482b10fa0b6611d0411ec1b16078a8ea8.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;fbb4fae55a1cc1a7f9e8f340bec53c53b8ede166.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dRank&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -100,11 +100,11 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_dataset_head</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_dataset_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Main output dataset in AFNI format (.HEAD file)&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">output_dataset_brik</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">output_dataset_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Main output dataset in AFNI format (.BRIK file)&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">rank_map_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">rank_map_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rank map 1D file showing the mapping from the rank to the integral values</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">    in the input dataset&quot;&quot;&quot;</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
@@ -152,9 +152,9 @@
 </span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dRankOutputs</span><span class="p">(</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">output_dataset_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">output_dataset_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*.BRIK&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">rank_map_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*.1D&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">output_dataset_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*.HEAD&quot;</span><span class="p">),</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">output_dataset_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*.BRIK&quot;</span><span class="p">),</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">rank_map_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*.1D&quot;</span><span class="p">),</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="p">)</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -186,11 +186,11 @@
 </span><span id="V3dRankOutputs-21"><a href="#V3dRankOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="V3dRankOutputs-22"><a href="#V3dRankOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dRankOutputs-23"><a href="#V3dRankOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="V3dRankOutputs-24"><a href="#V3dRankOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_dataset_head</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dRankOutputs-24"><a href="#V3dRankOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_dataset_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dRankOutputs-25"><a href="#V3dRankOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Main output dataset in AFNI format (.HEAD file)&quot;&quot;&quot;</span>
-</span><span id="V3dRankOutputs-26"><a href="#V3dRankOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_dataset_brik</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dRankOutputs-26"><a href="#V3dRankOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_dataset_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dRankOutputs-27"><a href="#V3dRankOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Main output dataset in AFNI format (.BRIK file)&quot;&quot;&quot;</span>
-</span><span id="V3dRankOutputs-28"><a href="#V3dRankOutputs-28"><span class="linenos">28</span></a>    <span class="n">rank_map_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dRankOutputs-28"><a href="#V3dRankOutputs-28"><span class="linenos">28</span></a>    <span class="n">rank_map_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dRankOutputs-29"><a href="#V3dRankOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rank map 1D file showing the mapping from the rank to the integral values</span>
 </span><span id="V3dRankOutputs-30"><a href="#V3dRankOutputs-30"><span class="linenos">30</span></a><span class="sd">    in the input dataset&quot;&quot;&quot;</span>
 </span></pre></div>
@@ -203,7 +203,7 @@
                             <div id="V3dRankOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">V3dRankOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_dataset_head</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dataset_brik</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rank_map_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">V3dRankOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_dataset_head</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_dataset_brik</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">rank_map_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -229,7 +229,7 @@
                             </div>
                             <div id="V3dRankOutputs.output_dataset_head" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_dataset_head</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_dataset_head</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -242,7 +242,7 @@
                             </div>
                             <div id="V3dRankOutputs.output_dataset_brik" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_dataset_brik</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_dataset_brik</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -255,7 +255,7 @@
                             </div>
                             <div id="V3dRankOutputs.rank_map_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">rank_map_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">rank_map_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -272,7 +272,7 @@ in the input dataset</p>
                     <div class="attr variable">
             <span class="name">V_3D_RANK_METADATA</span>        =
 <input id="V_3D_RANK_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_RANK_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f24b152482b10fa0b6611d0411ec1b16078a8ea8.boutiques&#39;, name=&#39;3dRank&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_RANK_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;fbb4fae55a1cc1a7f9e8f340bec53c53b8ede166.boutiques&#39;, name=&#39;3dRank&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -335,9 +335,9 @@ in the input dataset</p>
 </span><span id="v_3d_rank-73"><a href="#v_3d_rank-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
 </span><span id="v_3d_rank-74"><a href="#v_3d_rank-74"><span class="linenos">74</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dRankOutputs</span><span class="p">(</span>
 </span><span id="v_3d_rank-75"><a href="#v_3d_rank-75"><span class="linenos">75</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_rank-76"><a href="#v_3d_rank-76"><span class="linenos">76</span></a>        <span class="n">output_dataset_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_rank-77"><a href="#v_3d_rank-77"><span class="linenos">77</span></a>        <span class="n">output_dataset_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*.BRIK&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_rank-78"><a href="#v_3d_rank-78"><span class="linenos">78</span></a>        <span class="n">rank_map_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;*.1D&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_rank-76"><a href="#v_3d_rank-76"><span class="linenos">76</span></a>        <span class="n">output_dataset_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*.HEAD&quot;</span><span class="p">),</span>
+</span><span id="v_3d_rank-77"><a href="#v_3d_rank-77"><span class="linenos">77</span></a>        <span class="n">output_dataset_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*.BRIK&quot;</span><span class="p">),</span>
+</span><span id="v_3d_rank-78"><a href="#v_3d_rank-78"><span class="linenos">78</span></a>        <span class="n">rank_map_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]*.1D&quot;</span><span class="p">),</span>
 </span><span id="v_3d_rank-79"><a href="#v_3d_rank-79"><span class="linenos">79</span></a>    <span class="p">)</span>
 </span><span id="v_3d_rank-80"><a href="#v_3d_rank-80"><span class="linenos">80</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v_3d_rank-81"><a href="#v_3d_rank-81"><span class="linenos">81</span></a>    <span class="k">return</span> <span class="n">ret</span>

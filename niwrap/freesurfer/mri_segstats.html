@@ -96,7 +96,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_SEGSTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8b0beadf5bf66cf63e623f92792c7f78eee97153.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;300e7b0601c055d2b615b67b314f5a1fa64fc1f6.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_segstats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -111,15 +111,15 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">summary_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output file for summary statistics.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">avg_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">avg_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Average waveform output text file.&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">sum_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">sum_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sum waveform output text file.&quot;&quot;&quot;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>    <span class="n">avg_waveform_vol_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>    <span class="n">avg_waveform_vol_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Average waveform volume output file.&quot;&quot;&quot;</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">spatial_frame_avg_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">spatial_frame_avg_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Spatial frame average output file.&quot;&quot;&quot;</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">ctab_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">ctab_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output color table with the reported segmentations.&quot;&quot;&quot;</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>
@@ -507,11 +507,11 @@
 </span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriSegstatsOutputs</span><span class="p">(</span>
 </span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>        <span class="n">summary_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>        <span class="n">avg_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">avg_waveform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">avg_waveform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>        <span class="n">sum_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sum_waveform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">sum_waveform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>        <span class="n">avg_waveform_vol_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">avg_waveform_vol</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">avg_waveform_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>        <span class="n">spatial_frame_avg_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">spatial_frame_avg</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">spatial_frame_avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>        <span class="n">ctab_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">ctab_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">ctab_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>        <span class="n">avg_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[AVG_WF]&quot;</span><span class="p">),</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>        <span class="n">sum_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[SUM_WF]&quot;</span><span class="p">),</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>        <span class="n">avg_waveform_vol_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[AVG_WF_VOL]&quot;</span><span class="p">),</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>        <span class="n">spatial_frame_avg_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[SFAVG]&quot;</span><span class="p">),</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>        <span class="n">ctab_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CTAB_OUT]&quot;</span><span class="p">),</span>
 </span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="p">)</span>
 </span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -530,7 +530,7 @@
                     <div class="attr variable">
             <span class="name">MRI_SEGSTATS_METADATA</span>        =
 <input id="MRI_SEGSTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_SEGSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8b0beadf5bf66cf63e623f92792c7f78eee97153.boutiques&#39;, name=&#39;mri_segstats&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_SEGSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;300e7b0601c055d2b615b67b314f5a1fa64fc1f6.boutiques&#39;, name=&#39;mri_segstats&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -558,15 +558,15 @@
 </span><span id="MriSegstatsOutputs-23"><a href="#MriSegstatsOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="MriSegstatsOutputs-24"><a href="#MriSegstatsOutputs-24"><span class="linenos">24</span></a>    <span class="n">summary_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriSegstatsOutputs-25"><a href="#MriSegstatsOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output file for summary statistics.&quot;&quot;&quot;</span>
-</span><span id="MriSegstatsOutputs-26"><a href="#MriSegstatsOutputs-26"><span class="linenos">26</span></a>    <span class="n">avg_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MriSegstatsOutputs-26"><a href="#MriSegstatsOutputs-26"><span class="linenos">26</span></a>    <span class="n">avg_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriSegstatsOutputs-27"><a href="#MriSegstatsOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Average waveform output text file.&quot;&quot;&quot;</span>
-</span><span id="MriSegstatsOutputs-28"><a href="#MriSegstatsOutputs-28"><span class="linenos">28</span></a>    <span class="n">sum_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MriSegstatsOutputs-28"><a href="#MriSegstatsOutputs-28"><span class="linenos">28</span></a>    <span class="n">sum_waveform_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriSegstatsOutputs-29"><a href="#MriSegstatsOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sum waveform output text file.&quot;&quot;&quot;</span>
-</span><span id="MriSegstatsOutputs-30"><a href="#MriSegstatsOutputs-30"><span class="linenos">30</span></a>    <span class="n">avg_waveform_vol_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MriSegstatsOutputs-30"><a href="#MriSegstatsOutputs-30"><span class="linenos">30</span></a>    <span class="n">avg_waveform_vol_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriSegstatsOutputs-31"><a href="#MriSegstatsOutputs-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Average waveform volume output file.&quot;&quot;&quot;</span>
-</span><span id="MriSegstatsOutputs-32"><a href="#MriSegstatsOutputs-32"><span class="linenos">32</span></a>    <span class="n">spatial_frame_avg_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MriSegstatsOutputs-32"><a href="#MriSegstatsOutputs-32"><span class="linenos">32</span></a>    <span class="n">spatial_frame_avg_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriSegstatsOutputs-33"><a href="#MriSegstatsOutputs-33"><span class="linenos">33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Spatial frame average output file.&quot;&quot;&quot;</span>
-</span><span id="MriSegstatsOutputs-34"><a href="#MriSegstatsOutputs-34"><span class="linenos">34</span></a>    <span class="n">ctab_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MriSegstatsOutputs-34"><a href="#MriSegstatsOutputs-34"><span class="linenos">34</span></a>    <span class="n">ctab_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriSegstatsOutputs-35"><a href="#MriSegstatsOutputs-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output color table with the reported segmentations.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -578,7 +578,7 @@
                             <div id="MriSegstatsOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MriSegstatsOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">summary_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">avg_waveform_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sum_waveform_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">avg_waveform_vol_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">spatial_frame_avg_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ctab_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">MriSegstatsOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">summary_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">avg_waveform_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">sum_waveform_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">avg_waveform_vol_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">spatial_frame_avg_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">ctab_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -617,7 +617,7 @@
                             </div>
                             <div id="MriSegstatsOutputs.avg_waveform_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">avg_waveform_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">avg_waveform_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -630,7 +630,7 @@
                             </div>
                             <div id="MriSegstatsOutputs.sum_waveform_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">sum_waveform_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">sum_waveform_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -643,7 +643,7 @@
                             </div>
                             <div id="MriSegstatsOutputs.avg_waveform_vol_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">avg_waveform_vol_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">avg_waveform_vol_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -656,7 +656,7 @@
                             </div>
                             <div id="MriSegstatsOutputs.spatial_frame_avg_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">spatial_frame_avg_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">spatial_frame_avg_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -669,7 +669,7 @@
                             </div>
                             <div id="MriSegstatsOutputs.ctab_output_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">ctab_output_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">ctab_output_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -1076,11 +1076,11 @@
 </span><span id="mri_segstats-419"><a href="#mri_segstats-419"><span class="linenos">419</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriSegstatsOutputs</span><span class="p">(</span>
 </span><span id="mri_segstats-420"><a href="#mri_segstats-420"><span class="linenos">420</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="mri_segstats-421"><a href="#mri_segstats-421"><span class="linenos">421</span></a>        <span class="n">summary_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
-</span><span id="mri_segstats-422"><a href="#mri_segstats-422"><span class="linenos">422</span></a>        <span class="n">avg_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">avg_waveform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">avg_waveform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_segstats-423"><a href="#mri_segstats-423"><span class="linenos">423</span></a>        <span class="n">sum_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sum_waveform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">sum_waveform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_segstats-424"><a href="#mri_segstats-424"><span class="linenos">424</span></a>        <span class="n">avg_waveform_vol_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">avg_waveform_vol</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">avg_waveform_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_segstats-425"><a href="#mri_segstats-425"><span class="linenos">425</span></a>        <span class="n">spatial_frame_avg_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">spatial_frame_avg</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">spatial_frame_avg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_segstats-426"><a href="#mri_segstats-426"><span class="linenos">426</span></a>        <span class="n">ctab_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">ctab_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">ctab_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_segstats-422"><a href="#mri_segstats-422"><span class="linenos">422</span></a>        <span class="n">avg_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[AVG_WF]&quot;</span><span class="p">),</span>
+</span><span id="mri_segstats-423"><a href="#mri_segstats-423"><span class="linenos">423</span></a>        <span class="n">sum_waveform_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[SUM_WF]&quot;</span><span class="p">),</span>
+</span><span id="mri_segstats-424"><a href="#mri_segstats-424"><span class="linenos">424</span></a>        <span class="n">avg_waveform_vol_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[AVG_WF_VOL]&quot;</span><span class="p">),</span>
+</span><span id="mri_segstats-425"><a href="#mri_segstats-425"><span class="linenos">425</span></a>        <span class="n">spatial_frame_avg_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[SFAVG]&quot;</span><span class="p">),</span>
+</span><span id="mri_segstats-426"><a href="#mri_segstats-426"><span class="linenos">426</span></a>        <span class="n">ctab_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CTAB_OUT]&quot;</span><span class="p">),</span>
 </span><span id="mri_segstats-427"><a href="#mri_segstats-427"><span class="linenos">427</span></a>    <span class="p">)</span>
 </span><span id="mri_segstats-428"><a href="#mri_segstats-428"><span class="linenos">428</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mri_segstats-429"><a href="#mri_segstats-429"><span class="linenos">429</span></a>    <span class="k">return</span> <span class="n">ret</span>

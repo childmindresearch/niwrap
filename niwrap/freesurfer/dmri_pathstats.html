@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DMRI_PATHSTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8a5d7db01ddb1259dcab3450e3473d7e24986a5d.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3cf7857fd656594e3f36154a5aa26eddfa493bdf.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dmri_pathstats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -100,11 +100,11 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Text file for overall path measures&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">out_vox_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">out_vox_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Text file for voxel-by-voxel measures along path&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">median_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">median_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;.trk file of median streamline&quot;&quot;&quot;</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
@@ -261,9 +261,9 @@
 </span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DmriPathstatsOutputs</span><span class="p">(</span>
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">out_vox_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvox</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">median_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">median</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">median</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT_FILE]&quot;</span><span class="p">),</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">out_vox_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT_VOX_FILE]&quot;</span><span class="p">),</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">median_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[MEDIAN_FILE]&quot;</span><span class="p">),</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="p">)</span>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -282,7 +282,7 @@
                     <div class="attr variable">
             <span class="name">DMRI_PATHSTATS_METADATA</span>        =
 <input id="DMRI_PATHSTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DMRI_PATHSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8a5d7db01ddb1259dcab3450e3473d7e24986a5d.boutiques&#39;, name=&#39;dmri_pathstats&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DMRI_PATHSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3cf7857fd656594e3f36154a5aa26eddfa493bdf.boutiques&#39;, name=&#39;dmri_pathstats&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -308,11 +308,11 @@
 </span><span id="DmriPathstatsOutputs-21"><a href="#DmriPathstatsOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="DmriPathstatsOutputs-22"><a href="#DmriPathstatsOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="DmriPathstatsOutputs-23"><a href="#DmriPathstatsOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="DmriPathstatsOutputs-24"><a href="#DmriPathstatsOutputs-24"><span class="linenos">24</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="DmriPathstatsOutputs-24"><a href="#DmriPathstatsOutputs-24"><span class="linenos">24</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="DmriPathstatsOutputs-25"><a href="#DmriPathstatsOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Text file for overall path measures&quot;&quot;&quot;</span>
-</span><span id="DmriPathstatsOutputs-26"><a href="#DmriPathstatsOutputs-26"><span class="linenos">26</span></a>    <span class="n">out_vox_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="DmriPathstatsOutputs-26"><a href="#DmriPathstatsOutputs-26"><span class="linenos">26</span></a>    <span class="n">out_vox_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="DmriPathstatsOutputs-27"><a href="#DmriPathstatsOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Text file for voxel-by-voxel measures along path&quot;&quot;&quot;</span>
-</span><span id="DmriPathstatsOutputs-28"><a href="#DmriPathstatsOutputs-28"><span class="linenos">28</span></a>    <span class="n">median_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="DmriPathstatsOutputs-28"><a href="#DmriPathstatsOutputs-28"><span class="linenos">28</span></a>    <span class="n">median_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="DmriPathstatsOutputs-29"><a href="#DmriPathstatsOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;.trk file of median streamline&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -324,7 +324,7 @@
                             <div id="DmriPathstatsOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">DmriPathstatsOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">out_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_vox_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">median_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">DmriPathstatsOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">out_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">out_vox_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">median_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -350,7 +350,7 @@
                             </div>
                             <div id="DmriPathstatsOutputs.out_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">out_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">out_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -363,7 +363,7 @@
                             </div>
                             <div id="DmriPathstatsOutputs.out_vox_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">out_vox_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">out_vox_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -376,7 +376,7 @@
                             </div>
                             <div id="DmriPathstatsOutputs.median_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">median_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">median_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -552,9 +552,9 @@
 </span><span id="dmri_pathstats-182"><a href="#dmri_pathstats-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
 </span><span id="dmri_pathstats-183"><a href="#dmri_pathstats-183"><span class="linenos">183</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DmriPathstatsOutputs</span><span class="p">(</span>
 </span><span id="dmri_pathstats-184"><a href="#dmri_pathstats-184"><span class="linenos">184</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="dmri_pathstats-185"><a href="#dmri_pathstats-185"><span class="linenos">185</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dmri_pathstats-186"><a href="#dmri_pathstats-186"><span class="linenos">186</span></a>        <span class="n">out_vox_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvox</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dmri_pathstats-187"><a href="#dmri_pathstats-187"><span class="linenos">187</span></a>        <span class="n">median_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">median</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">median</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dmri_pathstats-185"><a href="#dmri_pathstats-185"><span class="linenos">185</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT_FILE]&quot;</span><span class="p">),</span>
+</span><span id="dmri_pathstats-186"><a href="#dmri_pathstats-186"><span class="linenos">186</span></a>        <span class="n">out_vox_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT_VOX_FILE]&quot;</span><span class="p">),</span>
+</span><span id="dmri_pathstats-187"><a href="#dmri_pathstats-187"><span class="linenos">187</span></a>        <span class="n">median_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[MEDIAN_FILE]&quot;</span><span class="p">),</span>
 </span><span id="dmri_pathstats-188"><a href="#dmri_pathstats-188"><span class="linenos">188</span></a>    <span class="p">)</span>
 </span><span id="dmri_pathstats-189"><a href="#dmri_pathstats-189"><span class="linenos">189</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="dmri_pathstats-190"><a href="#dmri_pathstats-190"><span class="linenos">190</span></a>    <span class="k">return</span> <span class="n">ret</span>

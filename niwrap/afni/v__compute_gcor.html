@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V__COMPUTE_GCOR_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d9410dfe3cb0b268e03a4b833a2d567c23593843.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;13b8c868c93ec23df099263bf986463739795de3.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@compute_gcor&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -97,9 +97,9 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">corr_vol_brik</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">corr_vol_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output correlation volume BRIK file&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">corr_vol_head</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">corr_vol_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output correlation volume HEAD file&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
@@ -162,8 +162,8 @@
 </span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="p">])</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VComputeGcorOutputs</span><span class="p">(</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>        <span class="n">corr_vol_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.BRIK&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>        <span class="n">corr_vol_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>        <span class="n">corr_vol_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CORR_VOL_PREF]+tlrc.BRIK&quot;</span><span class="p">),</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>        <span class="n">corr_vol_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CORR_VOL_PREF]+tlrc.HEAD&quot;</span><span class="p">),</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="p">)</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -195,9 +195,9 @@
 </span><span id="VComputeGcorOutputs-21"><a href="#VComputeGcorOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="VComputeGcorOutputs-22"><a href="#VComputeGcorOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="VComputeGcorOutputs-23"><a href="#VComputeGcorOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="VComputeGcorOutputs-24"><a href="#VComputeGcorOutputs-24"><span class="linenos">24</span></a>    <span class="n">corr_vol_brik</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="VComputeGcorOutputs-24"><a href="#VComputeGcorOutputs-24"><span class="linenos">24</span></a>    <span class="n">corr_vol_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="VComputeGcorOutputs-25"><a href="#VComputeGcorOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output correlation volume BRIK file&quot;&quot;&quot;</span>
-</span><span id="VComputeGcorOutputs-26"><a href="#VComputeGcorOutputs-26"><span class="linenos">26</span></a>    <span class="n">corr_vol_head</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="VComputeGcorOutputs-26"><a href="#VComputeGcorOutputs-26"><span class="linenos">26</span></a>    <span class="n">corr_vol_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="VComputeGcorOutputs-27"><a href="#VComputeGcorOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output correlation volume HEAD file&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -209,7 +209,7 @@
                             <div id="VComputeGcorOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">VComputeGcorOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">corr_vol_brik</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">corr_vol_head</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">VComputeGcorOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">corr_vol_brik</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">corr_vol_head</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -235,7 +235,7 @@
                             </div>
                             <div id="VComputeGcorOutputs.corr_vol_brik" class="classattr">
                                 <div class="attr variable">
-            <span class="name">corr_vol_brik</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">corr_vol_brik</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -248,7 +248,7 @@
                             </div>
                             <div id="VComputeGcorOutputs.corr_vol_head" class="classattr">
                                 <div class="attr variable">
-            <span class="name">corr_vol_head</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">corr_vol_head</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -264,7 +264,7 @@
                     <div class="attr variable">
             <span class="name">V__COMPUTE_GCOR_METADATA</span>        =
 <input id="V__COMPUTE_GCOR_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__COMPUTE_GCOR_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d9410dfe3cb0b268e03a4b833a2d567c23593843.boutiques&#39;, name=&#39;@compute_gcor&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__COMPUTE_GCOR_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;13b8c868c93ec23df099263bf986463739795de3.boutiques&#39;, name=&#39;@compute_gcor&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -343,8 +343,8 @@
 </span><span id="v__compute_gcor-86"><a href="#v__compute_gcor-86"><span class="linenos">86</span></a>        <span class="p">])</span>
 </span><span id="v__compute_gcor-87"><a href="#v__compute_gcor-87"><span class="linenos">87</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VComputeGcorOutputs</span><span class="p">(</span>
 </span><span id="v__compute_gcor-88"><a href="#v__compute_gcor-88"><span class="linenos">88</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__compute_gcor-89"><a href="#v__compute_gcor-89"><span class="linenos">89</span></a>        <span class="n">corr_vol_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.BRIK&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__compute_gcor-90"><a href="#v__compute_gcor-90"><span class="linenos">90</span></a>        <span class="n">corr_vol_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">corr_vol_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__compute_gcor-89"><a href="#v__compute_gcor-89"><span class="linenos">89</span></a>        <span class="n">corr_vol_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CORR_VOL_PREF]+tlrc.BRIK&quot;</span><span class="p">),</span>
+</span><span id="v__compute_gcor-90"><a href="#v__compute_gcor-90"><span class="linenos">90</span></a>        <span class="n">corr_vol_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CORR_VOL_PREF]+tlrc.HEAD&quot;</span><span class="p">),</span>
 </span><span id="v__compute_gcor-91"><a href="#v__compute_gcor-91"><span class="linenos">91</span></a>    <span class="p">)</span>
 </span><span id="v__compute_gcor-92"><a href="#v__compute_gcor-92"><span class="linenos">92</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v__compute_gcor-93"><a href="#v__compute_gcor-93"><span class="linenos">93</span></a>    <span class="k">return</span> <span class="n">ret</span>

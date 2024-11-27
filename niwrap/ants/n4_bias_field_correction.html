@@ -141,7 +141,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">N4_BIAS_FIELD_CORRECTION_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;965245408dc0b827f930de3c006ee5451bc69733.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a09e8915f493f1422a58d845ae14da69329b8182.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;N4BiasFieldCorrection&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;ants&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;antsx/ants:v2.5.3&quot;</span><span class="p">,</span>
@@ -254,7 +254,7 @@
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">corrected_image</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The bias corrected version of the input image.&quot;&quot;&quot;</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">bias_field</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">bias_field</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimated bias field image.&quot;&quot;&quot;</span>
 </span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>
 </span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
@@ -418,8 +418,8 @@
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="n">corrected_image_path</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">bias_field_path</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">N4BiasFieldCorrectionOutputs</span><span class="p">(</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">corrected_image_path</span><span class="p">),</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">bias_field_path</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">bias_field_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CORRECTED_IMAGE]&quot;</span><span class="p">),</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[BIAS_FIELD]&quot;</span><span class="p">),</span>
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="p">)</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -886,7 +886,7 @@ been shown to work fairly well.</p>
 </span><span id="N4BiasFieldCorrectionOutputs-121"><a href="#N4BiasFieldCorrectionOutputs-121"><span class="linenos">121</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="N4BiasFieldCorrectionOutputs-122"><a href="#N4BiasFieldCorrectionOutputs-122"><span class="linenos">122</span></a>    <span class="n">corrected_image</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="N4BiasFieldCorrectionOutputs-123"><a href="#N4BiasFieldCorrectionOutputs-123"><span class="linenos">123</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The bias corrected version of the input image.&quot;&quot;&quot;</span>
-</span><span id="N4BiasFieldCorrectionOutputs-124"><a href="#N4BiasFieldCorrectionOutputs-124"><span class="linenos">124</span></a>    <span class="n">bias_field</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="N4BiasFieldCorrectionOutputs-124"><a href="#N4BiasFieldCorrectionOutputs-124"><span class="linenos">124</span></a>    <span class="n">bias_field</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="N4BiasFieldCorrectionOutputs-125"><a href="#N4BiasFieldCorrectionOutputs-125"><span class="linenos">125</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimated bias field image.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -898,7 +898,7 @@ been shown to work fairly well.</p>
                             <div id="N4BiasFieldCorrectionOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">N4BiasFieldCorrectionOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">corrected_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">bias_field</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">N4BiasFieldCorrectionOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">corrected_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">bias_field</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -937,7 +937,7 @@ been shown to work fairly well.</p>
                             </div>
                             <div id="N4BiasFieldCorrectionOutputs.bias_field" class="classattr">
                                 <div class="attr variable">
-            <span class="name">bias_field</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">bias_field</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -953,7 +953,7 @@ been shown to work fairly well.</p>
                     <div class="attr variable">
             <span class="name">N4_BIAS_FIELD_CORRECTION_METADATA</span>        =
 <input id="N4_BIAS_FIELD_CORRECTION_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="N4_BIAS_FIELD_CORRECTION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;965245408dc0b827f930de3c006ee5451bc69733.boutiques&#39;, name=&#39;N4BiasFieldCorrection&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
+            <label class="view-value-button pdoc-button" for="N4_BIAS_FIELD_CORRECTION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a09e8915f493f1422a58d845ae14da69329b8182.boutiques&#39;, name=&#39;N4BiasFieldCorrection&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
 
         
     </div>
@@ -1133,8 +1133,8 @@ been shown to work fairly well.</p>
 </span><span id="n4_bias_field_correction-285"><a href="#n4_bias_field_correction-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="n">corrected_image_path</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">bias_field_path</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
 </span><span id="n4_bias_field_correction-286"><a href="#n4_bias_field_correction-286"><span class="linenos">286</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">N4BiasFieldCorrectionOutputs</span><span class="p">(</span>
 </span><span id="n4_bias_field_correction-287"><a href="#n4_bias_field_correction-287"><span class="linenos">287</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="n4_bias_field_correction-288"><a href="#n4_bias_field_correction-288"><span class="linenos">288</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">corrected_image_path</span><span class="p">),</span>
-</span><span id="n4_bias_field_correction-289"><a href="#n4_bias_field_correction-289"><span class="linenos">289</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">bias_field_path</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">bias_field_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="n4_bias_field_correction-288"><a href="#n4_bias_field_correction-288"><span class="linenos">288</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[CORRECTED_IMAGE]&quot;</span><span class="p">),</span>
+</span><span id="n4_bias_field_correction-289"><a href="#n4_bias_field_correction-289"><span class="linenos">289</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[BIAS_FIELD]&quot;</span><span class="p">),</span>
 </span><span id="n4_bias_field_correction-290"><a href="#n4_bias_field_correction-290"><span class="linenos">290</span></a>    <span class="p">)</span>
 </span><span id="n4_bias_field_correction-291"><a href="#n4_bias_field_correction-291"><span class="linenos">291</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="n4_bias_field_correction-292"><a href="#n4_bias_field_correction-292"><span class="linenos">292</span></a>    <span class="k">return</span> <span class="n">ret</span>

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">LONG_STATS_TPS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b6247c9fde392acc04e225fb54b14a0f1e35bb16.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3c998e4141922d2e9f28423b9a83ce90663efcfb.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;long_stats_tps&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -167,7 +167,7 @@
 </span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cross&quot;</span><span class="p">)</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LongStatsTpsOutputs</span><span class="p">(</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">stacked_results</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">stacked_results</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT]&quot;</span><span class="p">),</span>
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="p">)</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -186,7 +186,7 @@
                     <div class="attr variable">
             <span class="name">LONG_STATS_TPS_METADATA</span>        =
 <input id="LONG_STATS_TPS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="LONG_STATS_TPS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b6247c9fde392acc04e225fb54b14a0f1e35bb16.boutiques&#39;, name=&#39;long_stats_tps&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="LONG_STATS_TPS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3c998e4141922d2e9f28423b9a83ce90663efcfb.boutiques&#39;, name=&#39;long_stats_tps&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -342,7 +342,7 @@
 </span><span id="long_stats_tps-94"><a href="#long_stats_tps-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cross&quot;</span><span class="p">)</span>
 </span><span id="long_stats_tps-95"><a href="#long_stats_tps-95"><span class="linenos"> 95</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LongStatsTpsOutputs</span><span class="p">(</span>
 </span><span id="long_stats_tps-96"><a href="#long_stats_tps-96"><span class="linenos"> 96</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="long_stats_tps-97"><a href="#long_stats_tps-97"><span class="linenos"> 97</span></a>        <span class="n">stacked_results</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">),</span>
+</span><span id="long_stats_tps-97"><a href="#long_stats_tps-97"><span class="linenos"> 97</span></a>        <span class="n">stacked_results</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT]&quot;</span><span class="p">),</span>
 </span><span id="long_stats_tps-98"><a href="#long_stats_tps-98"><span class="linenos"> 98</span></a>    <span class="p">)</span>
 </span><span id="long_stats_tps-99"><a href="#long_stats_tps-99"><span class="linenos"> 99</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="long_stats_tps-100"><a href="#long_stats_tps-100"><span class="linenos">100</span></a>    <span class="k">return</span> <span class="n">ret</span>

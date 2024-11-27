@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_COR2LABEL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ba706e8b4fff683247f518575534cdcc2fbe2507.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ffd30478cad4b58f147647a24967e0d5b296f13f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_cor2label&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -99,7 +99,7 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_label_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generated label file.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">output_volume_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">output_volume_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Written volume label if specified.&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
@@ -210,7 +210,7 @@
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriCor2labelOutputs</span><span class="p">(</span>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">output_label_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">label_file</span><span class="p">),</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">output_volume_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">volume_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">output_volume_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[VOLUME_FLAG]&quot;</span><span class="p">),</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="p">)</span>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -229,7 +229,7 @@
                     <div class="attr variable">
             <span class="name">MRI_COR2LABEL_METADATA</span>        =
 <input id="MRI_COR2LABEL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_COR2LABEL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ba706e8b4fff683247f518575534cdcc2fbe2507.boutiques&#39;, name=&#39;mri_cor2label&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_COR2LABEL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ffd30478cad4b58f147647a24967e0d5b296f13f.boutiques&#39;, name=&#39;mri_cor2label&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -257,7 +257,7 @@
 </span><span id="MriCor2labelOutputs-23"><a href="#MriCor2labelOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="MriCor2labelOutputs-24"><a href="#MriCor2labelOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_label_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriCor2labelOutputs-25"><a href="#MriCor2labelOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generated label file.&quot;&quot;&quot;</span>
-</span><span id="MriCor2labelOutputs-26"><a href="#MriCor2labelOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_volume_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="MriCor2labelOutputs-26"><a href="#MriCor2labelOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_volume_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriCor2labelOutputs-27"><a href="#MriCor2labelOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Written volume label if specified.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -269,7 +269,7 @@
                             <div id="MriCor2labelOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MriCor2labelOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_volume_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">MriCor2labelOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_volume_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -308,7 +308,7 @@
                             </div>
                             <div id="MriCor2labelOutputs.output_volume_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_volume_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_volume_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -438,7 +438,7 @@
 </span><span id="mri_cor2label-134"><a href="#mri_cor2label-134"><span class="linenos">134</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriCor2labelOutputs</span><span class="p">(</span>
 </span><span id="mri_cor2label-135"><a href="#mri_cor2label-135"><span class="linenos">135</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="mri_cor2label-136"><a href="#mri_cor2label-136"><span class="linenos">136</span></a>        <span class="n">output_label_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">label_file</span><span class="p">),</span>
-</span><span id="mri_cor2label-137"><a href="#mri_cor2label-137"><span class="linenos">137</span></a>        <span class="n">output_volume_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">volume_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_cor2label-137"><a href="#mri_cor2label-137"><span class="linenos">137</span></a>        <span class="n">output_volume_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[VOLUME_FLAG]&quot;</span><span class="p">),</span>
 </span><span id="mri_cor2label-138"><a href="#mri_cor2label-138"><span class="linenos">138</span></a>    <span class="p">)</span>
 </span><span id="mri_cor2label-139"><a href="#mri_cor2label-139"><span class="linenos">139</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mri_cor2label-140"><a href="#mri_cor2label-140"><span class="linenos">140</span></a>    <span class="k">return</span> <span class="n">ret</span>

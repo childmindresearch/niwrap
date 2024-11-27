@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">FIND_THE_BIGGEST_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8ada9ac0c696889c29ca1c7bf70443341e6cd439.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6fc80c5cc06c6614eddcb6ff2d4bd656f8098490.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;find_the_biggest&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -125,7 +125,7 @@
 </span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_index</span><span class="p">)</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FindTheBiggestOutputs</span><span class="p">(</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_index</span><span class="p">),</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT]&quot;</span><span class="p">),</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="p">)</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -144,7 +144,7 @@
                     <div class="attr variable">
             <span class="name">FIND_THE_BIGGEST_METADATA</span>        =
 <input id="FIND_THE_BIGGEST_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FIND_THE_BIGGEST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8ada9ac0c696889c29ca1c7bf70443341e6cd439.boutiques&#39;, name=&#39;find_the_biggest&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FIND_THE_BIGGEST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6fc80c5cc06c6614eddcb6ff2d4bd656f8098490.boutiques&#39;, name=&#39;find_the_biggest&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -258,7 +258,7 @@
 </span><span id="find_the_biggest-52"><a href="#find_the_biggest-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_index</span><span class="p">)</span>
 </span><span id="find_the_biggest-53"><a href="#find_the_biggest-53"><span class="linenos">53</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FindTheBiggestOutputs</span><span class="p">(</span>
 </span><span id="find_the_biggest-54"><a href="#find_the_biggest-54"><span class="linenos">54</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="find_the_biggest-55"><a href="#find_the_biggest-55"><span class="linenos">55</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_index</span><span class="p">),</span>
+</span><span id="find_the_biggest-55"><a href="#find_the_biggest-55"><span class="linenos">55</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT]&quot;</span><span class="p">),</span>
 </span><span id="find_the_biggest-56"><a href="#find_the_biggest-56"><span class="linenos">56</span></a>    <span class="p">)</span>
 </span><span id="find_the_biggest-57"><a href="#find_the_biggest-57"><span class="linenos">57</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="find_the_biggest-58"><a href="#find_the_biggest-58"><span class="linenos">58</span></a>    <span class="k">return</span> <span class="n">ret</span>

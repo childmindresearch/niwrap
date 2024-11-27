@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FEAT2SEGSTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;114184bb1194b9afe4e61335055b6aca221f94fc.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f497314b17f14b01ac598216e1b2359e25f16e24.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;feat2segstats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">segstats_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">segstats_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output segmentation statistics file&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>
@@ -226,7 +226,7 @@
 </span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
 </span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Feat2segstatsOutputs</span><span class="p">(</span>
 </span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">segstats_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">feat_dir</span> <span class="o">+</span> <span class="s2">&quot;/freesurfer/segstats/&quot;</span> <span class="o">+</span> <span class="n">seg_vol</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">stat_</span> <span class="o">+</span> <span class="s2">&quot;.dat&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">seg_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">segstats_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">feat_dir</span> <span class="o">+</span> <span class="s2">&quot;/freesurfer/segstats/[SEG]/&quot;</span> <span class="o">+</span> <span class="n">stat_</span> <span class="o">+</span> <span class="s2">&quot;.dat&quot;</span><span class="p">),</span>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="p">)</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -245,7 +245,7 @@
                     <div class="attr variable">
             <span class="name">FEAT2SEGSTATS_METADATA</span>        =
 <input id="FEAT2SEGSTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FEAT2SEGSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;114184bb1194b9afe4e61335055b6aca221f94fc.boutiques&#39;, name=&#39;feat2segstats&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FEAT2SEGSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f497314b17f14b01ac598216e1b2359e25f16e24.boutiques&#39;, name=&#39;feat2segstats&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -271,7 +271,7 @@
 </span><span id="Feat2segstatsOutputs-21"><a href="#Feat2segstatsOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="Feat2segstatsOutputs-22"><a href="#Feat2segstatsOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="Feat2segstatsOutputs-23"><a href="#Feat2segstatsOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="Feat2segstatsOutputs-24"><a href="#Feat2segstatsOutputs-24"><span class="linenos">24</span></a>    <span class="n">segstats_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="Feat2segstatsOutputs-24"><a href="#Feat2segstatsOutputs-24"><span class="linenos">24</span></a>    <span class="n">segstats_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="Feat2segstatsOutputs-25"><a href="#Feat2segstatsOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output segmentation statistics file&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -283,7 +283,7 @@
                             <div id="Feat2segstatsOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">Feat2segstatsOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">segstats_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">Feat2segstatsOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">segstats_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -309,7 +309,7 @@
                             </div>
                             <div id="Feat2segstatsOutputs.segstats_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">segstats_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">segstats_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -460,7 +460,7 @@
 </span><span id="feat2segstats-153"><a href="#feat2segstats-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--nolog&quot;</span><span class="p">)</span>
 </span><span id="feat2segstats-154"><a href="#feat2segstats-154"><span class="linenos">154</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Feat2segstatsOutputs</span><span class="p">(</span>
 </span><span id="feat2segstats-155"><a href="#feat2segstats-155"><span class="linenos">155</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="feat2segstats-156"><a href="#feat2segstats-156"><span class="linenos">156</span></a>        <span class="n">segstats_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">feat_dir</span> <span class="o">+</span> <span class="s2">&quot;/freesurfer/segstats/&quot;</span> <span class="o">+</span> <span class="n">seg_vol</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">stat_</span> <span class="o">+</span> <span class="s2">&quot;.dat&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">seg_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="feat2segstats-156"><a href="#feat2segstats-156"><span class="linenos">156</span></a>        <span class="n">segstats_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">feat_dir</span> <span class="o">+</span> <span class="s2">&quot;/freesurfer/segstats/[SEG]/&quot;</span> <span class="o">+</span> <span class="n">stat_</span> <span class="o">+</span> <span class="s2">&quot;.dat&quot;</span><span class="p">),</span>
 </span><span id="feat2segstats-157"><a href="#feat2segstats-157"><span class="linenos">157</span></a>    <span class="p">)</span>
 </span><span id="feat2segstats-158"><a href="#feat2segstats-158"><span class="linenos">158</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="feat2segstats-159"><a href="#feat2segstats-159"><span class="linenos">159</span></a>    <span class="k">return</span> <span class="n">ret</span>

@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FNIRTFILEUTILS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;daf26808d66305cf0e17f7215cc4cc9c5c8e821a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2d3f6189e4ab53e704dd472819cabbbd40fc2856.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -100,11 +100,11 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_field_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_field_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output field or coefficient volume&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">jacobian_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output jacobian determinant map volume&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">jacobian_matrix_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">jacobian_matrix_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output full jacobian matrix 4D-map volume&quot;&quot;&quot;</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
@@ -201,9 +201,9 @@
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FnirtfileutilsOutputs</span><span class="p">(</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_field</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[FIELD_OUTPUT].nii.gz&quot;</span><span class="p">),</span>
 </span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">jacobian_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[JACOBIAN_MATRIX].nii.gz&quot;</span><span class="p">),</span>
 </span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">)</span>
 </span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -222,7 +222,7 @@
                     <div class="attr variable">
             <span class="name">FNIRTFILEUTILS_METADATA</span>        =
 <input id="FNIRTFILEUTILS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FNIRTFILEUTILS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;daf26808d66305cf0e17f7215cc4cc9c5c8e821a.boutiques&#39;, name=&#39;fnirtfileutils&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FNIRTFILEUTILS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2d3f6189e4ab53e704dd472819cabbbd40fc2856.boutiques&#39;, name=&#39;fnirtfileutils&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -248,11 +248,11 @@
 </span><span id="FnirtfileutilsOutputs-21"><a href="#FnirtfileutilsOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="FnirtfileutilsOutputs-22"><a href="#FnirtfileutilsOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FnirtfileutilsOutputs-23"><a href="#FnirtfileutilsOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="FnirtfileutilsOutputs-24"><a href="#FnirtfileutilsOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_field_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="FnirtfileutilsOutputs-24"><a href="#FnirtfileutilsOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_field_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FnirtfileutilsOutputs-25"><a href="#FnirtfileutilsOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output field or coefficient volume&quot;&quot;&quot;</span>
 </span><span id="FnirtfileutilsOutputs-26"><a href="#FnirtfileutilsOutputs-26"><span class="linenos">26</span></a>    <span class="n">jacobian_output_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="FnirtfileutilsOutputs-27"><a href="#FnirtfileutilsOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output jacobian determinant map volume&quot;&quot;&quot;</span>
-</span><span id="FnirtfileutilsOutputs-28"><a href="#FnirtfileutilsOutputs-28"><span class="linenos">28</span></a>    <span class="n">jacobian_matrix_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="FnirtfileutilsOutputs-28"><a href="#FnirtfileutilsOutputs-28"><span class="linenos">28</span></a>    <span class="n">jacobian_matrix_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FnirtfileutilsOutputs-29"><a href="#FnirtfileutilsOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output full jacobian matrix 4D-map volume&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -264,7 +264,7 @@
                             <div id="FnirtfileutilsOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">FnirtfileutilsOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_field_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_matrix_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">FnirtfileutilsOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_field_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">jacobian_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_matrix_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -290,7 +290,7 @@
                             </div>
                             <div id="FnirtfileutilsOutputs.output_field_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_field_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_field_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -316,7 +316,7 @@
                             </div>
                             <div id="FnirtfileutilsOutputs.jacobian_matrix_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">jacobian_matrix_file</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">jacobian_matrix_file</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -432,9 +432,9 @@
 </span><span id="fnirtfileutils-122"><a href="#fnirtfileutils-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
 </span><span id="fnirtfileutils-123"><a href="#fnirtfileutils-123"><span class="linenos">123</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FnirtfileutilsOutputs</span><span class="p">(</span>
 </span><span id="fnirtfileutils-124"><a href="#fnirtfileutils-124"><span class="linenos">124</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fnirtfileutils-125"><a href="#fnirtfileutils-125"><span class="linenos">125</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_field</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fnirtfileutils-125"><a href="#fnirtfileutils-125"><span class="linenos">125</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[FIELD_OUTPUT].nii.gz&quot;</span><span class="p">),</span>
 </span><span id="fnirtfileutils-126"><a href="#fnirtfileutils-126"><span class="linenos">126</span></a>        <span class="n">jacobian_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fnirtfileutils-127"><a href="#fnirtfileutils-127"><span class="linenos">127</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fnirtfileutils-127"><a href="#fnirtfileutils-127"><span class="linenos">127</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[JACOBIAN_MATRIX].nii.gz&quot;</span><span class="p">),</span>
 </span><span id="fnirtfileutils-128"><a href="#fnirtfileutils-128"><span class="linenos">128</span></a>    <span class="p">)</span>
 </span><span id="fnirtfileutils-129"><a href="#fnirtfileutils-129"><span class="linenos">129</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="fnirtfileutils-130"><a href="#fnirtfileutils-130"><span class="linenos">130</span></a>    <span class="k">return</span> <span class="n">ret</span>

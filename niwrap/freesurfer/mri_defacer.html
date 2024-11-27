@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_DEFACER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;60b1530510c97ea1b3bc72d2d9a99ad0bdb19732.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;46f94f77407f2c0b404818493966409a1d748b0f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_defacer&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -101,84 +101,89 @@
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="n">templabel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">watermark</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>    <span class="n">facemask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">exclude_mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriDefacerOutputs</span><span class="p">:</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">    Tool for defacing MRI images to remove facial features.</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    Args:</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">        input_volume: Input volume.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        headmask: Head mask volume.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        tempsurf: Template surface file.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        defaced_volume: Output defaced volume.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        templabel: Template label, specify one or multiple labels.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        watermark: Watermark density.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        facemask: Face mask volume.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        exclude_mask: Mask to exclude from defacing.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Returns:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        NamedTuple of outputs (described in `MriDefacerOutputs`).</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_DEFACER_METADATA</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_defacer&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="p">])</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="s2">&quot;-hm&quot;</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">headmask</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="p">])</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;-ts&quot;</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tempsurf</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">if</span> <span class="n">templabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>            <span class="s2">&quot;--l&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">templabel</span><span class="p">]</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="p">])</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">watermark</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;--w&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">watermark</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="p">])</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">defaced_volume</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="p">])</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">facemask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">facemask</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[CONST_IN]&quot;</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[CONST_OUT]&quot;</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">exclude_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">fill_constants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">exclude_mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriDefacerOutputs</span><span class="p">:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    Tool for defacing MRI images to remove facial features.</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    </span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    </span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    Args:</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        input_volume: Input volume.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        headmask: Head mask volume.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        tempsurf: Template surface file.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        defaced_volume: Output defaced volume.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        templabel: Template label, specify one or multiple labels.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        watermark: Watermark density.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        facemask: Face mask volume.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        fill_constants: Constants for filling within/outside the mask.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        exclude_mask: Mask to exclude from defacing.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Returns:</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        NamedTuple of outputs (described in `MriDefacerOutputs`).</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_DEFACER_METADATA</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_defacer&quot;</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="p">])</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;-hm&quot;</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">headmask</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="p">])</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;-ts&quot;</span><span class="p">,</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tempsurf</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="p">])</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="k">if</span> <span class="n">templabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>            <span class="s2">&quot;--l&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">templabel</span><span class="p">]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="p">])</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">watermark</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;--w&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">watermark</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">defaced_volume</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="p">])</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">facemask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">facemask</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">fill_constants</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;--xmask&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclude_mask</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;--fill-const&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fill_constants</span><span class="p">)</span>
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriDefacerOutputs</span><span class="p">(</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="s2">&quot;MRI_DEFACER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="s2">&quot;MriDefacerOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="s2">&quot;mri_defacer&quot;</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="p">]</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">exclude_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="s2">&quot;--xmask&quot;</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclude_mask</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriDefacerOutputs</span><span class="p">(</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="s2">&quot;MRI_DEFACER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="s2">&quot;MriDefacerOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="s2">&quot;mri_defacer&quot;</span><span class="p">,</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -187,7 +192,7 @@
                     <div class="attr variable">
             <span class="name">MRI_DEFACER_METADATA</span>        =
 <input id="MRI_DEFACER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_DEFACER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;60b1530510c97ea1b3bc72d2d9a99ad0bdb19732.boutiques&#39;, name=&#39;mri_defacer&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_DEFACER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;46f94f77407f2c0b404818493966409a1d748b0f.boutiques&#39;, name=&#39;mri_defacer&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -253,7 +258,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_defacer</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">headmask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tempsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">defaced_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">templabel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">watermark</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">facemask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriDefacerOutputs">MriDefacerOutputs</a></span>:</span></span>
+        <span class="name">mri_defacer</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">headmask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tempsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">defaced_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">templabel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">watermark</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">facemask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill_constants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriDefacerOutputs">MriDefacerOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_defacer-view-source"><span>View Source</span></label>
 
@@ -267,77 +272,82 @@
 </span><span id="mri_defacer-31"><a href="#mri_defacer-31"><span class="linenos"> 31</span></a>    <span class="n">templabel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="mri_defacer-32"><a href="#mri_defacer-32"><span class="linenos"> 32</span></a>    <span class="n">watermark</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="mri_defacer-33"><a href="#mri_defacer-33"><span class="linenos"> 33</span></a>    <span class="n">facemask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_defacer-34"><a href="#mri_defacer-34"><span class="linenos"> 34</span></a>    <span class="n">exclude_mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_defacer-35"><a href="#mri_defacer-35"><span class="linenos"> 35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_defacer-36"><a href="#mri_defacer-36"><span class="linenos"> 36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriDefacerOutputs</span><span class="p">:</span>
-</span><span id="mri_defacer-37"><a href="#mri_defacer-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mri_defacer-38"><a href="#mri_defacer-38"><span class="linenos"> 38</span></a><span class="sd">    Tool for defacing MRI images to remove facial features.</span>
-</span><span id="mri_defacer-39"><a href="#mri_defacer-39"><span class="linenos"> 39</span></a><span class="sd">    </span>
-</span><span id="mri_defacer-40"><a href="#mri_defacer-40"><span class="linenos"> 40</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="mri_defacer-41"><a href="#mri_defacer-41"><span class="linenos"> 41</span></a><span class="sd">    </span>
-</span><span id="mri_defacer-42"><a href="#mri_defacer-42"><span class="linenos"> 42</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="mri_defacer-43"><a href="#mri_defacer-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
-</span><span id="mri_defacer-44"><a href="#mri_defacer-44"><span class="linenos"> 44</span></a><span class="sd">    Args:</span>
-</span><span id="mri_defacer-45"><a href="#mri_defacer-45"><span class="linenos"> 45</span></a><span class="sd">        input_volume: Input volume.</span>
-</span><span id="mri_defacer-46"><a href="#mri_defacer-46"><span class="linenos"> 46</span></a><span class="sd">        headmask: Head mask volume.</span>
-</span><span id="mri_defacer-47"><a href="#mri_defacer-47"><span class="linenos"> 47</span></a><span class="sd">        tempsurf: Template surface file.</span>
-</span><span id="mri_defacer-48"><a href="#mri_defacer-48"><span class="linenos"> 48</span></a><span class="sd">        defaced_volume: Output defaced volume.</span>
-</span><span id="mri_defacer-49"><a href="#mri_defacer-49"><span class="linenos"> 49</span></a><span class="sd">        templabel: Template label, specify one or multiple labels.</span>
-</span><span id="mri_defacer-50"><a href="#mri_defacer-50"><span class="linenos"> 50</span></a><span class="sd">        watermark: Watermark density.</span>
-</span><span id="mri_defacer-51"><a href="#mri_defacer-51"><span class="linenos"> 51</span></a><span class="sd">        facemask: Face mask volume.</span>
-</span><span id="mri_defacer-52"><a href="#mri_defacer-52"><span class="linenos"> 52</span></a><span class="sd">        exclude_mask: Mask to exclude from defacing.</span>
-</span><span id="mri_defacer-53"><a href="#mri_defacer-53"><span class="linenos"> 53</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mri_defacer-54"><a href="#mri_defacer-54"><span class="linenos"> 54</span></a><span class="sd">    Returns:</span>
-</span><span id="mri_defacer-55"><a href="#mri_defacer-55"><span class="linenos"> 55</span></a><span class="sd">        NamedTuple of outputs (described in `MriDefacerOutputs`).</span>
-</span><span id="mri_defacer-56"><a href="#mri_defacer-56"><span class="linenos"> 56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mri_defacer-57"><a href="#mri_defacer-57"><span class="linenos"> 57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mri_defacer-58"><a href="#mri_defacer-58"><span class="linenos"> 58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_DEFACER_METADATA</span><span class="p">)</span>
-</span><span id="mri_defacer-59"><a href="#mri_defacer-59"><span class="linenos"> 59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="mri_defacer-60"><a href="#mri_defacer-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_defacer&quot;</span><span class="p">)</span>
-</span><span id="mri_defacer-61"><a href="#mri_defacer-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-62"><a href="#mri_defacer-62"><span class="linenos"> 62</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-63"><a href="#mri_defacer-63"><span class="linenos"> 63</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
-</span><span id="mri_defacer-64"><a href="#mri_defacer-64"><span class="linenos"> 64</span></a>    <span class="p">])</span>
-</span><span id="mri_defacer-65"><a href="#mri_defacer-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-66"><a href="#mri_defacer-66"><span class="linenos"> 66</span></a>        <span class="s2">&quot;-hm&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-67"><a href="#mri_defacer-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">headmask</span><span class="p">)</span>
-</span><span id="mri_defacer-68"><a href="#mri_defacer-68"><span class="linenos"> 68</span></a>    <span class="p">])</span>
-</span><span id="mri_defacer-69"><a href="#mri_defacer-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-70"><a href="#mri_defacer-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;-ts&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-71"><a href="#mri_defacer-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tempsurf</span><span class="p">)</span>
-</span><span id="mri_defacer-72"><a href="#mri_defacer-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
-</span><span id="mri_defacer-73"><a href="#mri_defacer-73"><span class="linenos"> 73</span></a>    <span class="k">if</span> <span class="n">templabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mri_defacer-74"><a href="#mri_defacer-74"><span class="linenos"> 74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-75"><a href="#mri_defacer-75"><span class="linenos"> 75</span></a>            <span class="s2">&quot;--l&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-76"><a href="#mri_defacer-76"><span class="linenos"> 76</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">templabel</span><span class="p">]</span>
-</span><span id="mri_defacer-77"><a href="#mri_defacer-77"><span class="linenos"> 77</span></a>        <span class="p">])</span>
-</span><span id="mri_defacer-78"><a href="#mri_defacer-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">watermark</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mri_defacer-79"><a href="#mri_defacer-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-80"><a href="#mri_defacer-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;--w&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-81"><a href="#mri_defacer-81"><span class="linenos"> 81</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">watermark</span><span class="p">)</span>
-</span><span id="mri_defacer-82"><a href="#mri_defacer-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
-</span><span id="mri_defacer-83"><a href="#mri_defacer-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-84"><a href="#mri_defacer-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-85"><a href="#mri_defacer-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">defaced_volume</span>
-</span><span id="mri_defacer-86"><a href="#mri_defacer-86"><span class="linenos"> 86</span></a>    <span class="p">])</span>
-</span><span id="mri_defacer-87"><a href="#mri_defacer-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">facemask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mri_defacer-88"><a href="#mri_defacer-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-89"><a href="#mri_defacer-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-90"><a href="#mri_defacer-90"><span class="linenos"> 90</span></a>            <span class="n">facemask</span>
-</span><span id="mri_defacer-91"><a href="#mri_defacer-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="mri_defacer-92"><a href="#mri_defacer-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[CONST_IN]&quot;</span><span class="p">)</span>
-</span><span id="mri_defacer-93"><a href="#mri_defacer-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[CONST_OUT]&quot;</span><span class="p">)</span>
-</span><span id="mri_defacer-94"><a href="#mri_defacer-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">exclude_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mri_defacer-34"><a href="#mri_defacer-34"><span class="linenos"> 34</span></a>    <span class="n">fill_constants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_defacer-35"><a href="#mri_defacer-35"><span class="linenos"> 35</span></a>    <span class="n">exclude_mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_defacer-36"><a href="#mri_defacer-36"><span class="linenos"> 36</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_defacer-37"><a href="#mri_defacer-37"><span class="linenos"> 37</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriDefacerOutputs</span><span class="p">:</span>
+</span><span id="mri_defacer-38"><a href="#mri_defacer-38"><span class="linenos"> 38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mri_defacer-39"><a href="#mri_defacer-39"><span class="linenos"> 39</span></a><span class="sd">    Tool for defacing MRI images to remove facial features.</span>
+</span><span id="mri_defacer-40"><a href="#mri_defacer-40"><span class="linenos"> 40</span></a><span class="sd">    </span>
+</span><span id="mri_defacer-41"><a href="#mri_defacer-41"><span class="linenos"> 41</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="mri_defacer-42"><a href="#mri_defacer-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
+</span><span id="mri_defacer-43"><a href="#mri_defacer-43"><span class="linenos"> 43</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="mri_defacer-44"><a href="#mri_defacer-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
+</span><span id="mri_defacer-45"><a href="#mri_defacer-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
+</span><span id="mri_defacer-46"><a href="#mri_defacer-46"><span class="linenos"> 46</span></a><span class="sd">        input_volume: Input volume.</span>
+</span><span id="mri_defacer-47"><a href="#mri_defacer-47"><span class="linenos"> 47</span></a><span class="sd">        headmask: Head mask volume.</span>
+</span><span id="mri_defacer-48"><a href="#mri_defacer-48"><span class="linenos"> 48</span></a><span class="sd">        tempsurf: Template surface file.</span>
+</span><span id="mri_defacer-49"><a href="#mri_defacer-49"><span class="linenos"> 49</span></a><span class="sd">        defaced_volume: Output defaced volume.</span>
+</span><span id="mri_defacer-50"><a href="#mri_defacer-50"><span class="linenos"> 50</span></a><span class="sd">        templabel: Template label, specify one or multiple labels.</span>
+</span><span id="mri_defacer-51"><a href="#mri_defacer-51"><span class="linenos"> 51</span></a><span class="sd">        watermark: Watermark density.</span>
+</span><span id="mri_defacer-52"><a href="#mri_defacer-52"><span class="linenos"> 52</span></a><span class="sd">        facemask: Face mask volume.</span>
+</span><span id="mri_defacer-53"><a href="#mri_defacer-53"><span class="linenos"> 53</span></a><span class="sd">        fill_constants: Constants for filling within/outside the mask.</span>
+</span><span id="mri_defacer-54"><a href="#mri_defacer-54"><span class="linenos"> 54</span></a><span class="sd">        exclude_mask: Mask to exclude from defacing.</span>
+</span><span id="mri_defacer-55"><a href="#mri_defacer-55"><span class="linenos"> 55</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mri_defacer-56"><a href="#mri_defacer-56"><span class="linenos"> 56</span></a><span class="sd">    Returns:</span>
+</span><span id="mri_defacer-57"><a href="#mri_defacer-57"><span class="linenos"> 57</span></a><span class="sd">        NamedTuple of outputs (described in `MriDefacerOutputs`).</span>
+</span><span id="mri_defacer-58"><a href="#mri_defacer-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mri_defacer-59"><a href="#mri_defacer-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mri_defacer-60"><a href="#mri_defacer-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_DEFACER_METADATA</span><span class="p">)</span>
+</span><span id="mri_defacer-61"><a href="#mri_defacer-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="mri_defacer-62"><a href="#mri_defacer-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_defacer&quot;</span><span class="p">)</span>
+</span><span id="mri_defacer-63"><a href="#mri_defacer-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-64"><a href="#mri_defacer-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-65"><a href="#mri_defacer-65"><span class="linenos"> 65</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
+</span><span id="mri_defacer-66"><a href="#mri_defacer-66"><span class="linenos"> 66</span></a>    <span class="p">])</span>
+</span><span id="mri_defacer-67"><a href="#mri_defacer-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-68"><a href="#mri_defacer-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;-hm&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-69"><a href="#mri_defacer-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">headmask</span><span class="p">)</span>
+</span><span id="mri_defacer-70"><a href="#mri_defacer-70"><span class="linenos"> 70</span></a>    <span class="p">])</span>
+</span><span id="mri_defacer-71"><a href="#mri_defacer-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-72"><a href="#mri_defacer-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-ts&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-73"><a href="#mri_defacer-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tempsurf</span><span class="p">)</span>
+</span><span id="mri_defacer-74"><a href="#mri_defacer-74"><span class="linenos"> 74</span></a>    <span class="p">])</span>
+</span><span id="mri_defacer-75"><a href="#mri_defacer-75"><span class="linenos"> 75</span></a>    <span class="k">if</span> <span class="n">templabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mri_defacer-76"><a href="#mri_defacer-76"><span class="linenos"> 76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-77"><a href="#mri_defacer-77"><span class="linenos"> 77</span></a>            <span class="s2">&quot;--l&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-78"><a href="#mri_defacer-78"><span class="linenos"> 78</span></a>            <span class="o">*</span><span class="p">[</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">templabel</span><span class="p">]</span>
+</span><span id="mri_defacer-79"><a href="#mri_defacer-79"><span class="linenos"> 79</span></a>        <span class="p">])</span>
+</span><span id="mri_defacer-80"><a href="#mri_defacer-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">watermark</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mri_defacer-81"><a href="#mri_defacer-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-82"><a href="#mri_defacer-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;--w&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-83"><a href="#mri_defacer-83"><span class="linenos"> 83</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">watermark</span><span class="p">)</span>
+</span><span id="mri_defacer-84"><a href="#mri_defacer-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
+</span><span id="mri_defacer-85"><a href="#mri_defacer-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-86"><a href="#mri_defacer-86"><span class="linenos"> 86</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-87"><a href="#mri_defacer-87"><span class="linenos"> 87</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">defaced_volume</span>
+</span><span id="mri_defacer-88"><a href="#mri_defacer-88"><span class="linenos"> 88</span></a>    <span class="p">])</span>
+</span><span id="mri_defacer-89"><a href="#mri_defacer-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">facemask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mri_defacer-90"><a href="#mri_defacer-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-91"><a href="#mri_defacer-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;--m&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-92"><a href="#mri_defacer-92"><span class="linenos"> 92</span></a>            <span class="n">facemask</span>
+</span><span id="mri_defacer-93"><a href="#mri_defacer-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="mri_defacer-94"><a href="#mri_defacer-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">fill_constants</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="mri_defacer-95"><a href="#mri_defacer-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_defacer-96"><a href="#mri_defacer-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;--xmask&quot;</span><span class="p">,</span>
-</span><span id="mri_defacer-97"><a href="#mri_defacer-97"><span class="linenos"> 97</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclude_mask</span><span class="p">)</span>
+</span><span id="mri_defacer-96"><a href="#mri_defacer-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;--fill-const&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-97"><a href="#mri_defacer-97"><span class="linenos"> 97</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fill_constants</span><span class="p">)</span>
 </span><span id="mri_defacer-98"><a href="#mri_defacer-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="mri_defacer-99"><a href="#mri_defacer-99"><span class="linenos"> 99</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="mri_defacer-100"><a href="#mri_defacer-100"><span class="linenos">100</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriDefacerOutputs</span><span class="p">(</span>
-</span><span id="mri_defacer-101"><a href="#mri_defacer-101"><span class="linenos">101</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mri_defacer-102"><a href="#mri_defacer-102"><span class="linenos">102</span></a>    <span class="p">)</span>
-</span><span id="mri_defacer-103"><a href="#mri_defacer-103"><span class="linenos">103</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="mri_defacer-104"><a href="#mri_defacer-104"><span class="linenos">104</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="mri_defacer-99"><a href="#mri_defacer-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">exclude_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mri_defacer-100"><a href="#mri_defacer-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_defacer-101"><a href="#mri_defacer-101"><span class="linenos">101</span></a>            <span class="s2">&quot;--xmask&quot;</span><span class="p">,</span>
+</span><span id="mri_defacer-102"><a href="#mri_defacer-102"><span class="linenos">102</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exclude_mask</span><span class="p">)</span>
+</span><span id="mri_defacer-103"><a href="#mri_defacer-103"><span class="linenos">103</span></a>        <span class="p">])</span>
+</span><span id="mri_defacer-104"><a href="#mri_defacer-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
+</span><span id="mri_defacer-105"><a href="#mri_defacer-105"><span class="linenos">105</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriDefacerOutputs</span><span class="p">(</span>
+</span><span id="mri_defacer-106"><a href="#mri_defacer-106"><span class="linenos">106</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="mri_defacer-107"><a href="#mri_defacer-107"><span class="linenos">107</span></a>    <span class="p">)</span>
+</span><span id="mri_defacer-108"><a href="#mri_defacer-108"><span class="linenos">108</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="mri_defacer-109"><a href="#mri_defacer-109"><span class="linenos">109</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -357,6 +367,7 @@
 <li><strong>templabel:</strong>  Template label, specify one or multiple labels.</li>
 <li><strong>watermark:</strong>  Watermark density.</li>
 <li><strong>facemask:</strong>  Face mask volume.</li>
+<li><strong>fill_constants:</strong>  Constants for filling within/outside the mask.</li>
 <li><strong>exclude_mask:</strong>  Mask to exclude from defacing.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>

@@ -810,7 +810,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">   7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">   8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">   9</span></a><span class="n">ANTS_REGISTRATION_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">  10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4acaef29989a404d5d21fd8f132f21f4fc28563d.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">  10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;948c47aac653eca2f02cabf08d297668e21e54ce.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">  11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;antsRegistration&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">  12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;ants&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">  13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;antsx/ants:v2.5.3&quot;</span><span class="p">,</span>
@@ -1669,15 +1669,15 @@
 </span><span id="L-866"><a href="#L-866"><span class="linenos"> 866</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-867"><a href="#L-867"><span class="linenos"> 867</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-868"><a href="#L-868"><span class="linenos"> 868</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-869"><a href="#L-869"><span class="linenos"> 869</span></a>    <span class="n">generic_affine</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-869"><a href="#L-869"><span class="linenos"> 869</span></a>    <span class="n">generic_affine</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-870"><a href="#L-870"><span class="linenos"> 870</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the generic affine transformation matrix.&quot;&quot;&quot;</span>
-</span><span id="L-871"><a href="#L-871"><span class="linenos"> 871</span></a>    <span class="n">inverse_warped</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-871"><a href="#L-871"><span class="linenos"> 871</span></a>    <span class="n">inverse_warped</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-872"><a href="#L-872"><span class="linenos"> 872</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the warped fixed image.&quot;&quot;&quot;</span>
-</span><span id="L-873"><a href="#L-873"><span class="linenos"> 873</span></a>    <span class="n">inverse_warp</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-873"><a href="#L-873"><span class="linenos"> 873</span></a>    <span class="n">inverse_warp</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-874"><a href="#L-874"><span class="linenos"> 874</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the inverse warp field.&quot;&quot;&quot;</span>
-</span><span id="L-875"><a href="#L-875"><span class="linenos"> 875</span></a>    <span class="n">warped</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-875"><a href="#L-875"><span class="linenos"> 875</span></a>    <span class="n">warped</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-876"><a href="#L-876"><span class="linenos"> 876</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the warped moving image.&quot;&quot;&quot;</span>
-</span><span id="L-877"><a href="#L-877"><span class="linenos"> 877</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-877"><a href="#L-877"><span class="linenos"> 877</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-878"><a href="#L-878"><span class="linenos"> 878</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the warp field.&quot;&quot;&quot;</span>
 </span><span id="L-879"><a href="#L-879"><span class="linenos"> 879</span></a>
 </span><span id="L-880"><a href="#L-880"><span class="linenos"> 880</span></a>
@@ -1927,11 +1927,11 @@
 </span><span id="L-1124"><a href="#L-1124"><span class="linenos">1124</span></a>        <span class="p">])</span>
 </span><span id="L-1125"><a href="#L-1125"><span class="linenos">1125</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AntsRegistrationOutputs</span><span class="p">(</span>
 </span><span id="L-1126"><a href="#L-1126"><span class="linenos">1126</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-1127"><a href="#L-1127"><span class="linenos">1127</span></a>        <span class="n">generic_affine</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;0GenericAffine.mat&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1128"><a href="#L-1128"><span class="linenos">1128</span></a>        <span class="n">inverse_warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;InverseWarped.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1129"><a href="#L-1129"><span class="linenos">1129</span></a>        <span class="n">inverse_warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;1InverseWarp.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1130"><a href="#L-1130"><span class="linenos">1130</span></a>        <span class="n">warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;Warped.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1131"><a href="#L-1131"><span class="linenos">1131</span></a>        <span class="n">warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;1Warp.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1127"><a href="#L-1127"><span class="linenos">1127</span></a>        <span class="n">generic_affine</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]0GenericAffine.mat&quot;</span><span class="p">),</span>
+</span><span id="L-1128"><a href="#L-1128"><span class="linenos">1128</span></a>        <span class="n">inverse_warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]InverseWarped.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-1129"><a href="#L-1129"><span class="linenos">1129</span></a>        <span class="n">inverse_warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]1InverseWarp.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-1130"><a href="#L-1130"><span class="linenos">1130</span></a>        <span class="n">warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]Warped.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-1131"><a href="#L-1131"><span class="linenos">1131</span></a>        <span class="n">warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]1Warp.nii.gz&quot;</span><span class="p">),</span>
 </span><span id="L-1132"><a href="#L-1132"><span class="linenos">1132</span></a>    <span class="p">)</span>
 </span><span id="L-1133"><a href="#L-1133"><span class="linenos">1133</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-1134"><a href="#L-1134"><span class="linenos">1134</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -1981,7 +1981,7 @@
                     <div class="attr variable">
             <span class="name">ANTS_REGISTRATION_METADATA</span>        =
 <input id="ANTS_REGISTRATION_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="ANTS_REGISTRATION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4acaef29989a404d5d21fd8f132f21f4fc28563d.boutiques&#39;, name=&#39;antsRegistration&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
+            <label class="view-value-button pdoc-button" for="ANTS_REGISTRATION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;948c47aac653eca2f02cabf08d297668e21e54ce.boutiques&#39;, name=&#39;antsRegistration&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
 
         
     </div>
@@ -4350,15 +4350,15 @@ separately to enforce this constraint.</p>
 </span><span id="AntsRegistrationOutputs-867"><a href="#AntsRegistrationOutputs-867"><span class="linenos">867</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="AntsRegistrationOutputs-868"><a href="#AntsRegistrationOutputs-868"><span class="linenos">868</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="AntsRegistrationOutputs-869"><a href="#AntsRegistrationOutputs-869"><span class="linenos">869</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="AntsRegistrationOutputs-870"><a href="#AntsRegistrationOutputs-870"><span class="linenos">870</span></a>    <span class="n">generic_affine</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="AntsRegistrationOutputs-870"><a href="#AntsRegistrationOutputs-870"><span class="linenos">870</span></a>    <span class="n">generic_affine</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="AntsRegistrationOutputs-871"><a href="#AntsRegistrationOutputs-871"><span class="linenos">871</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the generic affine transformation matrix.&quot;&quot;&quot;</span>
-</span><span id="AntsRegistrationOutputs-872"><a href="#AntsRegistrationOutputs-872"><span class="linenos">872</span></a>    <span class="n">inverse_warped</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="AntsRegistrationOutputs-872"><a href="#AntsRegistrationOutputs-872"><span class="linenos">872</span></a>    <span class="n">inverse_warped</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="AntsRegistrationOutputs-873"><a href="#AntsRegistrationOutputs-873"><span class="linenos">873</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the warped fixed image.&quot;&quot;&quot;</span>
-</span><span id="AntsRegistrationOutputs-874"><a href="#AntsRegistrationOutputs-874"><span class="linenos">874</span></a>    <span class="n">inverse_warp</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="AntsRegistrationOutputs-874"><a href="#AntsRegistrationOutputs-874"><span class="linenos">874</span></a>    <span class="n">inverse_warp</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="AntsRegistrationOutputs-875"><a href="#AntsRegistrationOutputs-875"><span class="linenos">875</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the inverse warp field.&quot;&quot;&quot;</span>
-</span><span id="AntsRegistrationOutputs-876"><a href="#AntsRegistrationOutputs-876"><span class="linenos">876</span></a>    <span class="n">warped</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="AntsRegistrationOutputs-876"><a href="#AntsRegistrationOutputs-876"><span class="linenos">876</span></a>    <span class="n">warped</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="AntsRegistrationOutputs-877"><a href="#AntsRegistrationOutputs-877"><span class="linenos">877</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the warped moving image.&quot;&quot;&quot;</span>
-</span><span id="AntsRegistrationOutputs-878"><a href="#AntsRegistrationOutputs-878"><span class="linenos">878</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="AntsRegistrationOutputs-878"><a href="#AntsRegistrationOutputs-878"><span class="linenos">878</span></a>    <span class="n">warp</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="AntsRegistrationOutputs-879"><a href="#AntsRegistrationOutputs-879"><span class="linenos">879</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The output is the warp field.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -4370,7 +4370,7 @@ separately to enforce this constraint.</p>
                             <div id="AntsRegistrationOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">AntsRegistrationOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">generic_affine</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_warped</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">warped</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">AntsRegistrationOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">generic_affine</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">inverse_warped</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">inverse_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">warped</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -4396,7 +4396,7 @@ separately to enforce this constraint.</p>
                             </div>
                             <div id="AntsRegistrationOutputs.generic_affine" class="classattr">
                                 <div class="attr variable">
-            <span class="name">generic_affine</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">generic_affine</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -4409,7 +4409,7 @@ separately to enforce this constraint.</p>
                             </div>
                             <div id="AntsRegistrationOutputs.inverse_warped" class="classattr">
                                 <div class="attr variable">
-            <span class="name">inverse_warped</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">inverse_warped</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -4422,7 +4422,7 @@ separately to enforce this constraint.</p>
                             </div>
                             <div id="AntsRegistrationOutputs.inverse_warp" class="classattr">
                                 <div class="attr variable">
-            <span class="name">inverse_warp</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">inverse_warp</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -4435,7 +4435,7 @@ separately to enforce this constraint.</p>
                             </div>
                             <div id="AntsRegistrationOutputs.warped" class="classattr">
                                 <div class="attr variable">
-            <span class="name">warped</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">warped</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -4448,7 +4448,7 @@ separately to enforce this constraint.</p>
                             </div>
                             <div id="AntsRegistrationOutputs.warp" class="classattr">
                                 <div class="attr variable">
-            <span class="name">warp</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">warp</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -6937,11 +6937,11 @@ image) at each level.</p>
 </span><span id="ants_registration-1125"><a href="#ants_registration-1125"><span class="linenos">1125</span></a>        <span class="p">])</span>
 </span><span id="ants_registration-1126"><a href="#ants_registration-1126"><span class="linenos">1126</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AntsRegistrationOutputs</span><span class="p">(</span>
 </span><span id="ants_registration-1127"><a href="#ants_registration-1127"><span class="linenos">1127</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="ants_registration-1128"><a href="#ants_registration-1128"><span class="linenos">1128</span></a>        <span class="n">generic_affine</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;0GenericAffine.mat&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="ants_registration-1129"><a href="#ants_registration-1129"><span class="linenos">1129</span></a>        <span class="n">inverse_warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;InverseWarped.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="ants_registration-1130"><a href="#ants_registration-1130"><span class="linenos">1130</span></a>        <span class="n">inverse_warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;1InverseWarp.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="ants_registration-1131"><a href="#ants_registration-1131"><span class="linenos">1131</span></a>        <span class="n">warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;Warped.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="ants_registration-1132"><a href="#ants_registration-1132"><span class="linenos">1132</span></a>        <span class="n">warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;1Warp.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="ants_registration-1128"><a href="#ants_registration-1128"><span class="linenos">1128</span></a>        <span class="n">generic_affine</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]0GenericAffine.mat&quot;</span><span class="p">),</span>
+</span><span id="ants_registration-1129"><a href="#ants_registration-1129"><span class="linenos">1129</span></a>        <span class="n">inverse_warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]InverseWarped.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="ants_registration-1130"><a href="#ants_registration-1130"><span class="linenos">1130</span></a>        <span class="n">inverse_warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]1InverseWarp.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="ants_registration-1131"><a href="#ants_registration-1131"><span class="linenos">1131</span></a>        <span class="n">warped</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]Warped.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="ants_registration-1132"><a href="#ants_registration-1132"><span class="linenos">1132</span></a>        <span class="n">warp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_TRANSFORM_PREFIX]1Warp.nii.gz&quot;</span><span class="p">),</span>
 </span><span id="ants_registration-1133"><a href="#ants_registration-1133"><span class="linenos">1133</span></a>    <span class="p">)</span>
 </span><span id="ants_registration-1134"><a href="#ants_registration-1134"><span class="linenos">1134</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="ants_registration-1135"><a href="#ants_registration-1135"><span class="linenos">1135</span></a>    <span class="k">return</span> <span class="n">ret</span>

@@ -93,7 +93,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FSLREGISTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;385a2a600cd9af0368eb6eb02a84773b379061b6.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;bfe0dbf3fd2f8c6b49cdb27e6484d3377aa1763f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fslregister&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -108,13 +108,13 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_reg_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output registration file.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">output_resliced_volume</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">output_resliced_volume</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Resliced output volume.&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">output_fsl_matrix</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">output_fsl_matrix</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;FSL format output registration matrix.&quot;&quot;&quot;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>    <span class="n">lta_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>    <span class="n">lta_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Registration output in LTA format.&quot;&quot;&quot;</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">output_template</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">output_template</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output template.&quot;&quot;&quot;</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>
@@ -313,10 +313,10 @@
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslregisterOutputs</span><span class="p">(</span>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">output_reg_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">reg_file</span><span class="p">),</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fsl_matrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">lta_format</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">template_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT_VOL]&quot;</span><span class="p">),</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[FSL_MAT]&quot;</span><span class="p">),</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[LTA]&quot;</span><span class="p">),</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[TEMPLATE_OUT]&quot;</span><span class="p">),</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="p">)</span>
 </span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -335,7 +335,7 @@
                     <div class="attr variable">
             <span class="name">FSLREGISTER_METADATA</span>        =
 <input id="FSLREGISTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSLREGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;385a2a600cd9af0368eb6eb02a84773b379061b6.boutiques&#39;, name=&#39;fslregister&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSLREGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;bfe0dbf3fd2f8c6b49cdb27e6484d3377aa1763f.boutiques&#39;, name=&#39;fslregister&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -363,13 +363,13 @@
 </span><span id="FslregisterOutputs-23"><a href="#FslregisterOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="FslregisterOutputs-24"><a href="#FslregisterOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_reg_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FslregisterOutputs-25"><a href="#FslregisterOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output registration file.&quot;&quot;&quot;</span>
-</span><span id="FslregisterOutputs-26"><a href="#FslregisterOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_resliced_volume</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="FslregisterOutputs-26"><a href="#FslregisterOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_resliced_volume</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FslregisterOutputs-27"><a href="#FslregisterOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Resliced output volume.&quot;&quot;&quot;</span>
-</span><span id="FslregisterOutputs-28"><a href="#FslregisterOutputs-28"><span class="linenos">28</span></a>    <span class="n">output_fsl_matrix</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="FslregisterOutputs-28"><a href="#FslregisterOutputs-28"><span class="linenos">28</span></a>    <span class="n">output_fsl_matrix</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FslregisterOutputs-29"><a href="#FslregisterOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;FSL format output registration matrix.&quot;&quot;&quot;</span>
-</span><span id="FslregisterOutputs-30"><a href="#FslregisterOutputs-30"><span class="linenos">30</span></a>    <span class="n">lta_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="FslregisterOutputs-30"><a href="#FslregisterOutputs-30"><span class="linenos">30</span></a>    <span class="n">lta_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FslregisterOutputs-31"><a href="#FslregisterOutputs-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Registration output in LTA format.&quot;&quot;&quot;</span>
-</span><span id="FslregisterOutputs-32"><a href="#FslregisterOutputs-32"><span class="linenos">32</span></a>    <span class="n">output_template</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="FslregisterOutputs-32"><a href="#FslregisterOutputs-32"><span class="linenos">32</span></a>    <span class="n">output_template</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="FslregisterOutputs-33"><a href="#FslregisterOutputs-33"><span class="linenos">33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output template.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -381,7 +381,7 @@
                             <div id="FslregisterOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">FslregisterOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_reg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_resliced_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_fsl_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">FslregisterOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_reg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_resliced_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_fsl_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">lta_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -420,7 +420,7 @@
                             </div>
                             <div id="FslregisterOutputs.output_resliced_volume" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_resliced_volume</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_resliced_volume</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -433,7 +433,7 @@
                             </div>
                             <div id="FslregisterOutputs.output_fsl_matrix" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_fsl_matrix</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_fsl_matrix</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -446,7 +446,7 @@
                             </div>
                             <div id="FslregisterOutputs.lta_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">lta_output</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">lta_output</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -459,7 +459,7 @@
                             </div>
                             <div id="FslregisterOutputs.output_template" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_template</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_template</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -677,10 +677,10 @@
 </span><span id="fslregister-228"><a href="#fslregister-228"><span class="linenos">228</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslregisterOutputs</span><span class="p">(</span>
 </span><span id="fslregister-229"><a href="#fslregister-229"><span class="linenos">229</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="fslregister-230"><a href="#fslregister-230"><span class="linenos">230</span></a>        <span class="n">output_reg_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">reg_file</span><span class="p">),</span>
-</span><span id="fslregister-231"><a href="#fslregister-231"><span class="linenos">231</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-232"><a href="#fslregister-232"><span class="linenos">232</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fsl_matrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fsl_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-233"><a href="#fslregister-233"><span class="linenos">233</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">lta_format</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">lta_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fslregister-234"><a href="#fslregister-234"><span class="linenos">234</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">template_output</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">template_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fslregister-231"><a href="#fslregister-231"><span class="linenos">231</span></a>        <span class="n">output_resliced_volume</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUT_VOL]&quot;</span><span class="p">),</span>
+</span><span id="fslregister-232"><a href="#fslregister-232"><span class="linenos">232</span></a>        <span class="n">output_fsl_matrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[FSL_MAT]&quot;</span><span class="p">),</span>
+</span><span id="fslregister-233"><a href="#fslregister-233"><span class="linenos">233</span></a>        <span class="n">lta_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[LTA]&quot;</span><span class="p">),</span>
+</span><span id="fslregister-234"><a href="#fslregister-234"><span class="linenos">234</span></a>        <span class="n">output_template</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[TEMPLATE_OUT]&quot;</span><span class="p">),</span>
 </span><span id="fslregister-235"><a href="#fslregister-235"><span class="linenos">235</span></a>    <span class="p">)</span>
 </span><span id="fslregister-236"><a href="#fslregister-236"><span class="linenos">236</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="fslregister-237"><a href="#fslregister-237"><span class="linenos">237</span></a>    <span class="k">return</span> <span class="n">ret</span>

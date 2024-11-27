@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V_3D_PERIODOGRAM_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;14a644a1a26ab708ddcace9516dff73c6c2b3ad6.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;fcf2c00547216b273c4fa3311c0b5b73dec63fc0.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dPeriodogram&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -97,9 +97,9 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_header</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_header</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset header file&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">output_brick</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">output_brick</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset brick file&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
@@ -151,8 +151,8 @@
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dPeriodogramOutputs</span><span class="p">(</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">output_header</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">output_brick</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.BRIK&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">output_header</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX_OPTION].HEAD&quot;</span><span class="p">),</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">output_brick</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX_OPTION].BRIK&quot;</span><span class="p">),</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="p">)</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -184,9 +184,9 @@
 </span><span id="V3dPeriodogramOutputs-21"><a href="#V3dPeriodogramOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="V3dPeriodogramOutputs-22"><a href="#V3dPeriodogramOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dPeriodogramOutputs-23"><a href="#V3dPeriodogramOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="V3dPeriodogramOutputs-24"><a href="#V3dPeriodogramOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_header</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dPeriodogramOutputs-24"><a href="#V3dPeriodogramOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_header</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dPeriodogramOutputs-25"><a href="#V3dPeriodogramOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset header file&quot;&quot;&quot;</span>
-</span><span id="V3dPeriodogramOutputs-26"><a href="#V3dPeriodogramOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_brick</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dPeriodogramOutputs-26"><a href="#V3dPeriodogramOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_brick</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dPeriodogramOutputs-27"><a href="#V3dPeriodogramOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset brick file&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -198,7 +198,7 @@
                             <div id="V3dPeriodogramOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">V3dPeriodogramOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_header</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_brick</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">V3dPeriodogramOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_header</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_brick</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
 
         
     </div>
@@ -224,7 +224,7 @@
                             </div>
                             <div id="V3dPeriodogramOutputs.output_header" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_header</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_header</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -237,7 +237,7 @@
                             </div>
                             <div id="V3dPeriodogramOutputs.output_brick" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_brick</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">output_brick</span><span class="annotation">: pathlib.Path</span>
 
         
     </div>
@@ -253,7 +253,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_PERIODOGRAM_METADATA</span>        =
 <input id="V_3D_PERIODOGRAM_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_PERIODOGRAM_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;14a644a1a26ab708ddcace9516dff73c6c2b3ad6.boutiques&#39;, name=&#39;3dPeriodogram&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_PERIODOGRAM_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;fcf2c00547216b273c4fa3311c0b5b73dec63fc0.boutiques&#39;, name=&#39;3dPeriodogram&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -321,8 +321,8 @@
 </span><span id="v_3d_periodogram-75"><a href="#v_3d_periodogram-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
 </span><span id="v_3d_periodogram-76"><a href="#v_3d_periodogram-76"><span class="linenos">76</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dPeriodogramOutputs</span><span class="p">(</span>
 </span><span id="v_3d_periodogram-77"><a href="#v_3d_periodogram-77"><span class="linenos">77</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_periodogram-78"><a href="#v_3d_periodogram-78"><span class="linenos">78</span></a>        <span class="n">output_header</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_periodogram-79"><a href="#v_3d_periodogram-79"><span class="linenos">79</span></a>        <span class="n">output_brick</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.BRIK&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_periodogram-78"><a href="#v_3d_periodogram-78"><span class="linenos">78</span></a>        <span class="n">output_header</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX_OPTION].HEAD&quot;</span><span class="p">),</span>
+</span><span id="v_3d_periodogram-79"><a href="#v_3d_periodogram-79"><span class="linenos">79</span></a>        <span class="n">output_brick</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX_OPTION].BRIK&quot;</span><span class="p">),</span>
 </span><span id="v_3d_periodogram-80"><a href="#v_3d_periodogram-80"><span class="linenos">80</span></a>    <span class="p">)</span>
 </span><span id="v_3d_periodogram-81"><a href="#v_3d_periodogram-81"><span class="linenos">81</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v_3d_periodogram-82"><a href="#v_3d_periodogram-82"><span class="linenos">82</span></a>    <span class="k">return</span> <span class="n">ret</span>
