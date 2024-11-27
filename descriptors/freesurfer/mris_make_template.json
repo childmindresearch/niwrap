@@ -3,7 +3,7 @@
   "name": "mris_make_template",
   "author": "FreeSurfer Developers",
   "description": "This program will add a template into an average surface.",
-  "command-line": "mris_make_template [HEMI] [SURFACE_NAME] [SUBJECTS] [OUTPUT_NAME] [ADD_FRAME] [VECTOR_FLAG] [NO_ROT_FLAG] [ROT_FLAG] [ANNOT_FLAG] [OVERLAY] [OVERLAY_DIR] [SCALE] [SURF_DIR] [SMOOTH_ITERATIONS] [SUBJECTS_DIR]",
+  "command-line": "mris_make_template [HEMI] [SURFACE_NAME] [SUBJECTS] [OUTPUT_NAME] [ADDFRAME_PARAMETERS] [VECTOR] [NOROT] [ROT] [ANNOT] [OVERLAY_PARAMETERS] [OVERLAY_DIR] [SCALE] [SURF_DIR] [SMOOTH_ITERATIONS] [SUBJECTS_DIR]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-addframe",
       "description": "Add a frame with specific field and location in atlas",
-      "value-key": "[ADD_FRAME]",
+      "value-key": "[ADDFRAME_PARAMETERS]",
       "list": true,
       "type": "String",
       "optional": true,
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-vector",
       "description": "Print additional information for addframe",
-      "value-key": "[VECTOR_FLAG]",
+      "value-key": "[VECTOR]",
       "type": "Flag",
       "optional": true,
       "id": "vector",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "-norot",
       "description": "Not aligning hemispheres before averaging (default)",
-      "value-key": "[NO_ROT_FLAG]",
+      "value-key": "[NOROT]",
       "type": "Flag",
       "optional": true,
       "id": "norot",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-rot",
       "description": "Rough rigid alignment of hemispheres before averaging",
-      "value-key": "[ROT_FLAG]",
+      "value-key": "[ROT]",
       "type": "Flag",
       "optional": true,
       "id": "rot",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-annot",
       "description": "Zero medial wall",
-      "value-key": "[ANNOT_FLAG]",
+      "value-key": "[ANNOT]",
       "type": "Flag",
       "optional": true,
       "id": "annot",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-overlay",
       "description": "Read overlay from file, specify number of averages",
-      "value-key": "[OVERLAY]",
+      "value-key": "[OVERLAY_PARAMETERS]",
       "list": true,
       "type": "String",
       "optional": true,

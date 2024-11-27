@@ -2,7 +2,7 @@
   "name": "exportGcam",
   "author": "FreeSurfer Developers",
   "description": "A tool for exporting GCAM (Geodesic Coordinate-based Anatomic Mapping) morphs.",
-  "command-line": "exportGcam [FIXED] [MOVING] [MORPH] [OUT_GCAM] [ZLIB_BUFFER] [BBOX_THRESHOLD] [INTERP] [TEST_FLAG]",
+  "command-line": "exportGcam [FIXED] [MOVING] [MORPH] [OUT_GCAM] [ZLIB_BUFFER] [BBOX_THRESHOLD] [INTERP_METHOD] [TEST]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--interp",
       "description": "Interpolation method. Choices: linear, nearest. Default is linear.",
-      "value-key": "[INTERP]",
+      "value-key": "[INTERP_METHOD]",
       "type": "String",
       "optional": true,
       "id": "interp_method",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--test",
       "description": "Write out test files to verify the equivalence of tm3d and gcam morphs.",
-      "value-key": "[TEST_FLAG]",
+      "value-key": "[TEST]",
       "type": "Flag",
       "optional": true,
       "id": "test",

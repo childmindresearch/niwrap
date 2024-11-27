@@ -1,7 +1,7 @@
 {
   "name": "mri_paint",
   "description": "This program will paint average Talairach stats onto a surface",
-  "command-line": "mri_paint [INPUT_VOLUME] [INPUT_SURFACE] [REGISTRATION_FILE] [OUTPUT_FLOAT_FILE] [IMAGE_OFFSET] [PAINT_SURF_COORDS_FLAG]",
+  "command-line": "mri_paint [INPUT_VOLUME] [INPUT_SURFACE] [REGISTRATION_FILE] [OUTPUT_FLOAT_FILE] [IMAGE_OFFSET] [PAINT_SURF_COORDS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -54,7 +54,7 @@
       "name": "Paint Using Surface Coordinates",
       "description": "Paint using surface coordinates",
       "type": "Flag",
-      "value-key": "[PAINT_SURF_COORDS_FLAG]",
+      "value-key": "[PAINT_SURF_COORDS]",
       "command-line-flag": "-S",
       "optional": true
     }

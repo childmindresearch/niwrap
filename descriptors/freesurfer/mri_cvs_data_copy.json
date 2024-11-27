@@ -1,12 +1,12 @@
 {
   "name": "mri_cvs_data_copy",
   "description": "Packs and copies files that are required for mri_cvs_register.",
-  "command-line": "mri_cvs_data_copy [SUBJECT_ID] [OLD_DIRECTORY] [NEW_DIRECTORY] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_cvs_data_copy [SUBJID] [OLDDIR] [NEWDIR] [VERSION] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Subject ID of the subject to be moved/registered.",
-      "value-key": "[SUBJECT_ID]",
+      "value-key": "[SUBJID]",
       "type": "String",
       "command-line-flag": "--subjid",
       "optional": false,
@@ -15,7 +15,7 @@
     },
     {
       "description": "Directory where data (FS reconned output files for the subject) is currently located. Use full path.",
-      "value-key": "[OLD_DIRECTORY]",
+      "value-key": "[OLDDIR]",
       "type": "String",
       "command-line-flag": "--olddir",
       "optional": false,
@@ -24,7 +24,7 @@
     },
     {
       "description": "Directory where data (FS reconned output files for the subject) should be moved to. Use full path.",
-      "value-key": "[NEW_DIRECTORY]",
+      "value-key": "[NEWDIR]",
       "type": "String",
       "command-line-flag": "--newdir",
       "optional": false,
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

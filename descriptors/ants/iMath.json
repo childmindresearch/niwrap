@@ -1,6 +1,6 @@
 {
   "name": "iMath",
-  "command-line": "iMath [IMAGEDIMENSION] [OUTPUT_IMAGE] [OPERATIONS] [IMAGE1] [IMAGE2]",
+  "command-line": "iMath [IMAGE_DIMENSION] [OUTPUT_IMAGE] [OPERATIONS] [IMAGE1] [IMAGE2]",
   "author": "ANTs Developers",
   "description": "iMath is a tool for performing various image mathematical operations on medical images, specifically supporting operations on 2D, 3D, and 4D data.",
   "url": "https://github.com/ANTsX/ANTs",
@@ -10,7 +10,7 @@
     {
       "id": "image_dimension",
       "name": "Image Dimension",
-      "value-key": "[IMAGEDIMENSION]",
+      "value-key": "[IMAGE_DIMENSION]",
       "type": "Number",
       "integer": true,
       "description": "Dimensionality of the image, either 2, 3, or 4.",

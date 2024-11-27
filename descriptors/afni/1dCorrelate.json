@@ -3,7 +3,7 @@
   "name": "1dCorrelate",
   "author": "AFNI Developers",
   "description": "1dCorrelate calculates the correlation coefficients between columns of input 1D files along with confidence intervals via a bootstrap procedure.",
-  "command-line": "1dCorrelate [METHOD] [BOOTSTRAP_REPLICATES] [CONFIDENCE_INTERVAL] [BLOCK_RESAMPLING] [INPUT_FILES]",
+  "command-line": "1dCorrelate [KTAUB] [NBOOT] [ALPHA] [BLK] [INPUT_FILES]",
   "inputs": [
     {
       "description": "Input 1D files",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-Pearson",
       "description": "Pearson correlation (the default method)",
-      "value-key": "[METHOD]",
+      "value-key": "[PEARSON]",
       "type": "Flag",
       "optional": true,
       "id": "pearson",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-Spearman",
       "description": "Spearman (rank) correlation (more robust versus outliers)",
-      "value-key": "[METHOD]",
+      "value-key": "[SPEARMAN]",
       "type": "Flag",
       "optional": true,
       "id": "spearman",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-Quadrant",
       "description": "Quadrant (binarized) correlation (most robust, but weaker)",
-      "value-key": "[METHOD]",
+      "value-key": "[QUADRANT]",
       "type": "Flag",
       "optional": true,
       "id": "quadrant",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-Ktaub",
       "description": "Kendall's tau_b correlation (popular somewhere, maybe)",
-      "value-key": "[METHOD]",
+      "value-key": "[KTAUB]",
       "type": "Flag",
       "optional": true,
       "id": "ktaub",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-nboot",
       "description": "Set the number of bootstrap replicates",
-      "value-key": "[BOOTSTRAP_REPLICATES]",
+      "value-key": "[NBOOT]",
       "type": "Number",
       "optional": true,
       "id": "nboot",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-alpha",
       "description": "Set the 2-sided confidence interval width to '100-A' percent.",
-      "value-key": "[CONFIDENCE_INTERVAL]",
+      "value-key": "[ALPHA]",
       "type": "Number",
       "minimum": 1,
       "maximum": 20,
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-block",
       "description": "Use variable-length block resampling to account for serial correlation",
-      "value-key": "[BLOCK_RESAMPLING]",
+      "value-key": "[BLOCK]",
       "type": "Flag",
       "optional": true,
       "id": "block",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "-blk",
       "description": "Alternate flag for variable-length block resampling",
-      "value-key": "[BLOCK_RESAMPLING]",
+      "value-key": "[BLK]",
       "type": "Flag",
       "optional": true,
       "id": "blk",

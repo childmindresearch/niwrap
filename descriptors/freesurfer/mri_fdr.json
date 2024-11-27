@@ -3,13 +3,13 @@
   "name": "mri_fdr",
   "author": "FreeSurfer Developers",
   "description": "A program that performs False Discovery Rate correction.",
-  "command-line": "mri_fdr [INPUT] [FDR] [DEFAULT_FRAME] [POSITIVE_ONLY_FLAG] [NEGATIVE_ONLY_FLAG] [ALL_VOXELS_FLAG] [RAW_P_VALUES_FLAG] [THRESHOLD_FILE] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "mri_fdr [INPUT_FILES] [FDR_VALUE] [DEFAULT_FRAME] [POSITIVE_ONLY] [NEGATIVE_ONLY] [ALL_VOXELS] [RAW_P_VALUES] [THRESHOLD_FILE] [DEBUG] [CHECK_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--i",
       "description": "Input source volume or surface overlay. Specify mask, output, and frame as needed.",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_FILES]",
       "type": "String",
       "list": true,
       "min-list-entries": 1,
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "--fdr",
       "description": "FDR value between 0 and 1, typically .05",
-      "value-key": "[FDR]",
+      "value-key": "[FDR_VALUE]",
       "type": "Number",
       "minimum": 0,
       "maximum": 1,
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--pos",
       "description": "Only consider positive voxels",
-      "value-key": "[POSITIVE_ONLY_FLAG]",
+      "value-key": "[POSITIVE_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "positive_only",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "--neg",
       "description": "Only consider negative voxels",
-      "value-key": "[NEGATIVE_ONLY_FLAG]",
+      "value-key": "[NEGATIVE_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "negative_only",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "--abs",
       "description": "Consider all voxels regardless of sign (default)",
-      "value-key": "[ALL_VOXELS_FLAG]",
+      "value-key": "[ALL_VOXELS]",
       "type": "Flag",
       "optional": true,
       "id": "all_voxels",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "--no-log10p",
       "description": "Input is raw p-values, not -log10(p)",
-      "value-key": "[RAW_P_VALUES_FLAG]",
+      "value-key": "[RAW_P_VALUES]",
       "type": "Flag",
       "optional": true,
       "id": "raw_p_values",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",

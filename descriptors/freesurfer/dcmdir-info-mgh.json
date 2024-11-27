@@ -1,7 +1,7 @@
 {
   "name": "dcmdir-info-mgh",
   "description": "Scans a DICOM directory and extracts information about each series.",
-  "command-line": "dcmdir-info[DICOMDIR] [UNPACKDIR] [VERSION_FLAG] [HELP_FLAG] [NOPRE_FLAG]",
+  "command-line": "dcmdir-info[DICOMDIR] [UNPACKDIR] [VERSION] [HELP] [NOPRE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -24,7 +24,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--nopre",
       "description": "Do not assume filenames use the NNNNNN- prefix convention",
-      "value-key": "[NOPRE_FLAG]",
+      "value-key": "[NOPRE]",
       "type": "Flag",
       "optional": true,
       "id": "nopre",

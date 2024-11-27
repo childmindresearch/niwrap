@@ -3,7 +3,7 @@
   "name": "mri_surf2volseg",
   "author": "FreeSurfer Developers",
   "description": "Tool that cleans up presurf aseg cortex and WM, maps cortical labels from an annotation into a volume, and labels cerebral WM with closest cortical label.",
-  "command-line": "mri_surf2volseg [INPUT_SEGMENTATION] [OUTPUT_SEGMENTATION] [SOURCE_SEGMENTATION] [LH_WHITE_SURF] [LH_PIAL_SURF] [RH_WHITE_SURF] [RH_PIAL_SURF] [LH_CORTEX_MASK] [RH_CORTEX_MASK] [FIX_CORTICAL_WM_LABELS_FLAG] [LABEL_CORTEX_FLAG] [LABEL_WM_FLAG] [LABEL_WM_UNKNOWN] [LH_ANNOTATION] [RH_ANNOTATION] [WMPARC_DMAX] [RIP_UNKNOWN_FLAG] [HYPO_AS_WM_FLAG] [HASHRES] [NHOPS] [HELP_FLAG] [VERSION_FLAG] [CRS_TEST] [CTAB_FILE] [THREADS]",
+  "command-line": "mri_surf2volseg [INPUT_SEGMENTATION] [OUTPUT_SEGMENTATION] [SOURCE_SEGMENTATION] [LH_WHITE_SURF] [LH_PIAL_SURF] [RH_WHITE_SURF] [RH_PIAL_SURF] [LH_CORTEX_MASK] [RH_CORTEX_MASK] [FIX_PRESURF_RIBBON] [LABEL_CORTEX] [LABEL_WM] [LABEL_WM_UNKNOWN] [LH_ANNOTATION] [RH_ANNOTATION] [WMPARC_DMAX] [RIP_UNKNOWN] [HYPO_AS_WM] [HASHRES] [NHOPS] [HELP_FLAG] [VERSION_FLAG] [CRS_TEST] [CTAB_FILE] [THREADS_NUMBER]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -94,7 +94,7 @@
     {
       "command-line-flag": "--fix-presurf-with-ribbon",
       "description": "Fix the cortical and WM labels in the input segmentation using ribbon file.",
-      "value-key": "[FIX_CORTICAL_WM_LABELS_FLAG]",
+      "value-key": "[FIX_PRESURF_RIBBON]",
       "type": "File",
       "optional": true,
       "id": "fix_presurf_ribbon",
@@ -103,7 +103,7 @@
     {
       "command-line-flag": "--label-cortex",
       "description": "Relabel cortex in the input segmentation with surface annotation.",
-      "value-key": "[LABEL_CORTEX_FLAG]",
+      "value-key": "[LABEL_CORTEX]",
       "type": "Flag",
       "optional": true,
       "id": "label_cortex",
@@ -112,7 +112,7 @@
     {
       "command-line-flag": "--label-wm",
       "description": "Relabel cerebral WM in the input segmentation with surface annotation.",
-      "value-key": "[LABEL_WM_FLAG]",
+      "value-key": "[LABEL_WM]",
       "type": "Flag",
       "optional": true,
       "id": "label_wm",
@@ -160,7 +160,7 @@
     {
       "command-line-flag": "--rip-unknown",
       "description": "Do not label WM based on 'unknown' cortical label.",
-      "value-key": "[RIP_UNKNOWN_FLAG]",
+      "value-key": "[RIP_UNKNOWN]",
       "type": "Flag",
       "optional": true,
       "id": "rip_unknown",
@@ -169,7 +169,7 @@
     {
       "command-line-flag": "--hypo-as-wm",
       "description": "Label hypointensities as WM (when fixing with ribbon).",
-      "value-key": "[HYPO_AS_WM_FLAG]",
+      "value-key": "[HYPO_AS_WM]",
       "type": "Flag",
       "optional": true,
       "id": "hypo_as_wm",
@@ -235,7 +235,7 @@
     {
       "command-line-flag": "--threads",
       "description": "Run in parallel with the specified number of threads.",
-      "value-key": "[THREADS]",
+      "value-key": "[THREADS_NUMBER]",
       "type": "Number",
       "optional": true,
       "id": "threads_number",

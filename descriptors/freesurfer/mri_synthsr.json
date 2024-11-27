@@ -1,7 +1,7 @@
 {
   "name": "mri_synthsr",
   "description": "Implementation of SynthSR that generates a synthetic 1mm MP-RAGE from a scan of any contrast and resolution.",
-  "command-line": "mri_synthsr [INPUT] [OUTPUT] [CT_FLAG] [DISABLE_SHARPENING_FLAG] [DISABLE_FLIPPING_FLAG] [LOWFIELD_FLAG] [V1_FLAG] [THREADS] [CPU_FLAG] [MODEL]",
+  "command-line": "mri_synthsr [INPUT] [OUTPUT] [CT] [DISABLE_SHARPENING] [DISABLE_FLIPPING] [LOWFIELD] [V1] [THREADS] [CPU] [MODEL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "--ct",
       "description": "Use this flag for CT scans in Hounsfield scale, it clips intensities to [0,80].",
-      "value-key": "[CT_FLAG]",
+      "value-key": "[CT]",
       "type": "Flag",
       "optional": true,
       "id": "ct",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "--disable_sharpening",
       "description": "Use this flag to disable unsharp masking.",
-      "value-key": "[DISABLE_SHARPENING_FLAG]",
+      "value-key": "[DISABLE_SHARPENING]",
       "type": "Flag",
       "optional": true,
       "id": "disable_sharpening",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "--disable_flipping",
       "description": "Use this flag to disable flipping augmentation at test time.",
-      "value-key": "[DISABLE_FLIPPING_FLAG]",
+      "value-key": "[DISABLE_FLIPPING]",
       "type": "Flag",
       "optional": true,
       "id": "disable_flipping",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--lowfield",
       "description": "Use model for low-field scans (e.g., acquired with Hyperfine's Swoop scanner).",
-      "value-key": "[LOWFIELD_FLAG]",
+      "value-key": "[LOWFIELD]",
       "type": "Flag",
       "optional": true,
       "id": "lowfield",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--v1",
       "description": "Use version 1 model from July 2021.",
-      "value-key": "[V1_FLAG]",
+      "value-key": "[V1]",
       "type": "Flag",
       "optional": true,
       "id": "v1",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--cpu",
       "description": "Enforce running with CPU rather than GPU.",
-      "value-key": "[CPU_FLAG]",
+      "value-key": "[CPU]",
       "type": "Flag",
       "optional": true,
       "id": "cpu",

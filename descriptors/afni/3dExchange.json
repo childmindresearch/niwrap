@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Replaces voxel values using a mapping file with specified columns",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dExchange [PREFIX] [DATASET] [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "3dExchange [PREFIX] [INFILE] [MAPFILE] [VERSION] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input dataset. Acceptable data types are byte, short, and floats.",
-      "value-key": "[DATASET]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Mapping columns. Input values in the first column, output values in the second column",
-      "value-key": "[MAPCOLS_FILE]",
+      "value-key": "[MAPFILE]",
       "type": "File",
       "optional": false,
       "id": "mapfile",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Print author and version info",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-help",
       "description": "Print this help screen",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

@@ -2,7 +2,7 @@
   "tool-version": "6.0.4",
   "name": "perfusion_subtract",
   "description": "Subtract control images from tag images in 4D perfusion data.",
-  "command-line": "perfusion_subtract [4D_INPUT] [4D_OUTPUT] [CONTROL_FIRST_FLAG]",
+  "command-line": "perfusion_subtract [FOUR_D_INPUT] [FOUR_D_OUTPUT] [CONTROL_FIRST_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -10,7 +10,7 @@
   "inputs": [
     {
       "description": "Input 4D perfusion image (e.g. perfusion.nii.gz)",
-      "value-key": "[4D_INPUT]",
+      "value-key": "[FOUR_D_INPUT]",
       "type": "File",
       "optional": false,
       "id": "four_d_input",
@@ -18,7 +18,7 @@
     },
     {
       "description": "Output 4D image with subtraction results (e.g. perfusion_subtracted.nii.gz)",
-      "value-key": "[4D_OUTPUT]",
+      "value-key": "[FOUR_D_OUTPUT]",
       "type": "String",
       "optional": false,
       "id": "four_d_output",

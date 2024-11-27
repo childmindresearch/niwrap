@@ -3,7 +3,7 @@
   "name": "@afni_R_package_install",
   "author": "AFNI Developers",
   "description": "Helper script to install R packages for various afni-ish purposes.",
-  "command-line": "@afni_R_package_install [AFNI_FLAG] [SHINY_FLAG] [BAYES_VIEW_FLAG] [CIRCOS_FLAG] [CUSTOM_PACKAGES] [MIRROR] [HELP_FLAG]",
+  "command-line": "@afni_R_package_install [AFNI] [SHINY] [BAYES_VIEW] [CIRCOS] [CUSTOM_PACKAGES] [MIRROR] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-afni",
       "description": "Install AFNI related R packages.",
-      "value-key": "[AFNI_FLAG]",
+      "value-key": "[AFNI]",
       "type": "Flag",
       "optional": true,
       "id": "afni",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-shiny",
       "description": "Install AFNI related shiny app packages.",
-      "value-key": "[SHINY_FLAG]",
+      "value-key": "[SHINY]",
       "type": "Flag",
       "optional": true,
       "id": "shiny",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-bayes_view",
       "description": "Install R packages for bayes_view.",
-      "value-key": "[BAYES_VIEW_FLAG]",
+      "value-key": "[BAYES_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "bayes_view",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-circos",
       "description": "Install OmicCircos for FATCAT_matplot.",
-      "value-key": "[CIRCOS_FLAG]",
+      "value-key": "[CIRCOS]",
       "type": "Flag",
       "optional": true,
       "id": "circos",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help message.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

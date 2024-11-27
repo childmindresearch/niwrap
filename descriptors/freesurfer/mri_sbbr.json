@@ -3,7 +3,7 @@
   "name": "mri_sbbr",
   "author": "FreeSurfer Developers",
   "description": "Special implementation of boundary-based registration for a single slice.",
-  "command-line": "mri_sbbr [TEMPLATE_VOLUME] [SURFACE_FILE] [INIT_REG_FILE] [T1_FLAG] [T2_FLAG] [OPTIMIZATION_TYPE] [DISTANCE_IN] [DISTANCE_OUT] [SLOPE] [FTOL] [LINMINTOL] [NITERS_MAX] [SEARCH] [SEARCH1D] [PARAMETER] [INCREMENT] [SLICE] [THREADS] [OUTPUT_REGISTRATION] [INVERTED_OUTPUT_REGISTRATION] [OUTPUT_SURFACE] [DEBUG_FLAG] [DIAGNOSTIC_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "mri_sbbr [TEMPLATE_VOLUME] [SURFACE_FILE] [INIT_REG_FILE] [T1] [T2] [OPTIMIZATION_TYPE] [DISTANCE_IN] [DISTANCE_OUT] [SLOPE] [FTOL] [LINMINTOL] [NITERS_MAX] [SEARCH] [SEARCH1D] [PARAMETER_SET] [INCREMENT] [SLICE_NUMBER] [THREADS] [OUTPUT_REGISTRATION] [INVERTED_OUTPUT_REGISTRATION] [OUTPUT_SURFACE] [DEBUG] [DIAGNOSTIC] [CHECK_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--t1",
       "description": "Use T1-weighted image.",
-      "value-key": "[T1_FLAG]",
+      "value-key": "[T1]",
       "type": "Flag",
       "optional": true,
       "id": "t1",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--t2",
       "description": "Use T2-weighted image.",
-      "value-key": "[T2_FLAG]",
+      "value-key": "[T2]",
       "type": "Flag",
       "optional": true,
       "id": "t2",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "--p",
       "description": "Set initial parameter.",
-      "value-key": "[PARAMETER]",
+      "value-key": "[PARAMETER_SET]",
       "type": "String",
       "optional": true,
       "id": "parameter_set",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "--slice",
       "description": "Slice number (defaults to 0).",
-      "value-key": "[SLICE]",
+      "value-key": "[SLICE_NUMBER]",
       "type": "Number",
       "optional": true,
       "id": "slice_number",
@@ -198,7 +198,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -207,7 +207,7 @@
     {
       "command-line-flag": "--diag",
       "description": "Turn on diagnostics.",
-      "value-key": "[DIAGNOSTIC_FLAG]",
+      "value-key": "[DIAGNOSTIC]",
       "type": "Flag",
       "optional": true,
       "id": "diagnostic",
@@ -216,7 +216,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit.",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",

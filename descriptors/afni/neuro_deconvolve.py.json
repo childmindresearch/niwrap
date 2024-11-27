@@ -3,7 +3,7 @@
   "name": "neuro_deconvolve.py",
   "author": "AFNI Developers",
   "description": "Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response curve) into a neuro response curve.",
-  "command-line": "neuro_deconvolve.py [INPUT_FILE] [OUTPUT_PREFIX] [SCRIPT_NAME] [KERNEL] [KERNEL_FILE] [MASK_DSET] [OLD_STYLE] [TR] [TR_NUP] [VERBOSITY]",
+  "command-line": "neuro_deconvolve.py [INPUT_FILE] [PREFIX] [SCRIPT] [KERNEL] [KERNEL_FILE] [MASK_DSET] [OLD_STYLE] [TR] [TR_NUP] [VERBOSITY]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -19,7 +19,7 @@
     },
     {
       "description": "Set the prefix for output filenames",
-      "value-key": "[OUTPUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -27,7 +27,7 @@
     },
     {
       "description": "Specify the name of the output script",
-      "value-key": "[SCRIPT_NAME]",
+      "value-key": "[SCRIPT]",
       "type": "String",
       "optional": false,
       "id": "script",

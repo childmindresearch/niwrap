@@ -1,12 +1,12 @@
 {
   "name": "mri_threshold",
   "description": "This program will lower threshold an input volume",
-  "command-line": "mri_threshold [INPUT_VOLUME] [THRESHOLD] [OUTPUT_VOLUME] [BINARIZE_FLAG] [UPPER_THRESHOLD_FLAG] [FRAME_NUMBER]",
+  "command-line": "mri_threshold [INPUT_VOL] [THRESHOLD] [OUTPUT_VOL] [BINARIZE] [UPPER_THRESHOLD] [FRAME_NUMBER]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input volume file",
-      "value-key": "[INPUT_VOLUME]",
+      "value-key": "[INPUT_VOL]",
       "type": "File",
       "optional": false,
       "id": "input_vol",
@@ -22,7 +22,7 @@
     },
     {
       "description": "Output volume file",
-      "value-key": "[OUTPUT_VOLUME]",
+      "value-key": "[OUTPUT_VOL]",
       "type": "String",
       "optional": false,
       "id": "output_vol",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-B",
       "description": "Binarize the output volume with specified bval",
-      "value-key": "[BINARIZE_FLAG]",
+      "value-key": "[BINARIZE]",
       "type": "Number",
       "optional": true,
       "id": "binarize",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-U",
       "description": "Upper threshold the volume instead of lower thresholding",
-      "value-key": "[UPPER_THRESHOLD_FLAG]",
+      "value-key": "[UPPER_THRESHOLD]",
       "type": "Flag",
       "optional": true,
       "id": "upper_threshold",

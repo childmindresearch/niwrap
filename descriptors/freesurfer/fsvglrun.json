@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "fsvglrun",
   "description": "A tool to execute a command, replacing the shell with the specified program, typically used within FreeSurfer environment.",
-  "command-line": "fsvglrun [ZEROTH_ARG_NAME] [EMPTY_ENV_FLAG] [DASHED_ARG_FLAG] [COMMAND] [COMMAND_ARGS]",
+  "command-line": "fsvglrun [ZEROTH_ARG_NAME] [EMPTY_ENV] [DASHED_ARG] [COMMAND] [COMMAND_ARGS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-c",
       "description": "Execute COMMAND with an empty environment",
-      "value-key": "[EMPTY_ENV_FLAG]",
+      "value-key": "[EMPTY_ENV]",
       "type": "Flag",
       "optional": true,
       "id": "empty_env",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-l",
       "description": "Place a dash in the zeroth argument to COMMAND",
-      "value-key": "[DASHED_ARG_FLAG]",
+      "value-key": "[DASHED_ARG]",
       "type": "Flag",
       "optional": true,
       "id": "dashed_arg",

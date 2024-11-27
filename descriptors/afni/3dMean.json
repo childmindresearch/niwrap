@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Takes the voxel-by-voxel mean of all input datasets; designed to be faster than 3dcalc.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dMean [INPUT_FILES] [VERBOSE_FLAG] [PREFIX] [DATUM] [FORCE_SCALE_FLAG] [GLOBAL_SCALE_FLAG] [NO_SCALE_FLAG] [NON_ZERO_FLAG] [STANDARD_DEVIATION_FLAG] [AVERAGE_SQUARES_FLAG] [SUM_FLAG] [COUNT_FLAG] [MAX_FLAG] [MIN_FLAG] [ABS_MAX_FLAG] [SIGNED_ABS_MAX_FLAG] [MASK_INTER_FLAG] [MASK_UNION_FLAG] [WEIGHTSET]",
+  "command-line": "3dMean [INPUT_FILES] [VERBOSE] [PREFIX] [DATUM] [FSCALE] [GSCALE] [NSCALE] [NON_ZERO] [STDEV] [SQR] [SUM] [COUNT] [MAX] [MIN] [ABSMAX] [SIGNED_ABSMAX] [MASK_INTER] [MASK_UNION] [WEIGHTSET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-verbose",
       "description": "Print out some information along the way",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-fscale",
       "description": "Force scaling of the output to the maximum integer range",
-      "value-key": "[FORCE_SCALE_FLAG]",
+      "value-key": "[FSCALE]",
       "type": "Flag",
       "optional": true,
       "id": "fscale",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-gscale",
       "description": "Force scaling of the output to the maximum integer range, with uniform scaling factor for each sub-brick",
-      "value-key": "[GLOBAL_SCALE_FLAG]",
+      "value-key": "[GSCALE]",
       "type": "Flag",
       "optional": true,
       "id": "gscale",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-nscale",
       "description": "Don't do any scaling on output to byte or short datasets. Only use if you want the output dataset to be integer-valued.",
-      "value-key": "[NO_SCALE_FLAG]",
+      "value-key": "[NSCALE]",
       "type": "Flag",
       "optional": true,
       "id": "nscale",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-non_zero",
       "description": "Use only non-zero values for calculation of mean, min, max, sum, squares",
-      "value-key": "[NON_ZERO_FLAG]",
+      "value-key": "[NON_ZERO]",
       "type": "Flag",
       "optional": true,
       "id": "non_zero",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "-sd",
       "description": "Calculate the standard deviation, sqrt(variance), instead of the mean (cannot be used with -sqr, -sum or -non_zero)",
-      "value-key": "[STANDARD_DEVIATION_FLAG]",
+      "value-key": "[STDEV]",
       "type": "Flag",
       "optional": true,
       "id": "stdev",
@@ -94,7 +94,7 @@
     {
       "command-line-flag": "-sqr",
       "description": "Average the squares, instead of the values",
-      "value-key": "[AVERAGE_SQUARES_FLAG]",
+      "value-key": "[SQR]",
       "type": "Flag",
       "optional": true,
       "id": "sqr",
@@ -103,7 +103,7 @@
     {
       "command-line-flag": "-sum",
       "description": "Just take the sum (don't divide by number of datasets)",
-      "value-key": "[SUM_FLAG]",
+      "value-key": "[SUM]",
       "type": "Flag",
       "optional": true,
       "id": "sum",
@@ -112,7 +112,7 @@
     {
       "command-line-flag": "-count",
       "description": "Compute only the count of non-zero voxels",
-      "value-key": "[COUNT_FLAG]",
+      "value-key": "[COUNT]",
       "type": "Flag",
       "optional": true,
       "id": "count",
@@ -121,7 +121,7 @@
     {
       "command-line-flag": "-max",
       "description": "Find the maximum at each voxel",
-      "value-key": "[MAX_FLAG]",
+      "value-key": "[MAX]",
       "type": "Flag",
       "optional": true,
       "id": "max",
@@ -130,7 +130,7 @@
     {
       "command-line-flag": "-min",
       "description": "Find the minimum at each voxel",
-      "value-key": "[MIN_FLAG]",
+      "value-key": "[MIN]",
       "type": "Flag",
       "optional": true,
       "id": "min",
@@ -139,7 +139,7 @@
     {
       "command-line-flag": "-absmax",
       "description": "Find maximum absolute value at each voxel",
-      "value-key": "[ABS_MAX_FLAG]",
+      "value-key": "[ABSMAX]",
       "type": "Flag",
       "optional": true,
       "id": "absmax",
@@ -148,7 +148,7 @@
     {
       "command-line-flag": "-signed_absmax",
       "description": "Find extremes with maximum absolute value but preserve sign",
-      "value-key": "[SIGNED_ABS_MAX_FLAG]",
+      "value-key": "[SIGNED_ABSMAX]",
       "type": "Flag",
       "optional": true,
       "id": "signed_absmax",
@@ -157,7 +157,7 @@
     {
       "command-line-flag": "-mask_inter",
       "description": "Create a simple intersection mask",
-      "value-key": "[MASK_INTER_FLAG]",
+      "value-key": "[MASK_INTER]",
       "type": "Flag",
       "optional": true,
       "id": "mask_inter",
@@ -166,7 +166,7 @@
     {
       "command-line-flag": "-mask_union",
       "description": "Create a simple union mask",
-      "value-key": "[MASK_UNION_FLAG]",
+      "value-key": "[MASK_UNION]",
       "type": "Flag",
       "optional": true,
       "id": "mask_union",

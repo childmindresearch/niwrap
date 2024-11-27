@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_fieldsign",
   "description": "Field Sign Mapping Tool from FreeSurfer",
-  "command-line": "mri_fieldsign [FIELDSIGN_FILE] [ECCEN] [POLAR] [SUBJECT] [HEMI] [PATCH_FILE] [OCCIP_FLAG] [SPHERE_FLAG] [FWHM] [NSMOOTH] [REVERSE_FLAG] [OLD_FLAG] [ECCEN_ROT] [POLAR_ROT] [ECCEN_OUT] [POLAR_OUT] [ECCEN_SFA] [POLAR_SFA] [SFA_DIR] [SFA_TRUE_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_fieldsign [FIELDSIGN_FILE] [ECCEN_VALUES] [POLAR_VALUES] [SUBJECT] [HEMISPHERE] [PATCH_FILE] [OCCIP_FLAG] [SPHERE_FLAG] [FWHM] [NSMOOTH] [REVERSE_FLAG] [OLD_FLAG] [ECCEN_ROTATION] [POLAR_ROTATION] [ECCEN_OUTPUT] [POLAR_OUTPUT] [ECCEN_SFA_FILE] [POLAR_SFA_FILE] [SFA_DIR] [SFA_TRUE_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--eccen",
       "description": "Eccentricity values (real and imaginary)",
-      "value-key": "[ECCEN]",
+      "value-key": "[ECCEN_VALUES]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "--polar",
       "description": "Polar values (real and imaginary)",
-      "value-key": "[POLAR]",
+      "value-key": "[POLAR_VALUES]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--hemi",
       "description": "Hemisphere to process",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--eccen-rot",
       "description": "Rotate eccentricity by rotangle degrees",
-      "value-key": "[ECCEN_ROT]",
+      "value-key": "[ECCEN_ROTATION]",
       "type": "Number",
       "optional": true,
       "id": "eccen_rotation",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--polar-rot",
       "description": "Rotate polar by rotangle degrees",
-      "value-key": "[POLAR_ROT]",
+      "value-key": "[POLAR_ROTATION]",
       "type": "Number",
       "optional": true,
       "id": "polar_rotation",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "--eccen-out",
       "description": "Output eccentricity angle",
-      "value-key": "[ECCEN_OUT]",
+      "value-key": "[ECCEN_OUTPUT]",
       "type": "Number",
       "optional": true,
       "id": "eccen_output",
@@ -149,7 +149,7 @@
     {
       "command-line-flag": "--polar-out",
       "description": "Output polar angle",
-      "value-key": "[POLAR_OUT]",
+      "value-key": "[POLAR_OUTPUT]",
       "type": "Number",
       "optional": true,
       "id": "polar_output",
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "--eccen-sfa",
       "description": "Eccentricity self-frequency average file",
-      "value-key": "[ECCEN_SFA]",
+      "value-key": "[ECCEN_SFA_FILE]",
       "type": "File",
       "optional": true,
       "id": "eccen_sfa_file",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "--polar-sfa",
       "description": "Polar self-frequency average file",
-      "value-key": "[POLAR_SFA]",
+      "value-key": "[POLAR_SFA_FILE]",
       "type": "File",
       "optional": true,
       "id": "polar_sfa_file",

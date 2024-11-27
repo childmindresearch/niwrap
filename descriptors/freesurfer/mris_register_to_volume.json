@@ -2,7 +2,7 @@
   "name": "mris_register_to_volume",
   "tool-version": "7.4.1",
   "description": "Aligns cortical surfaces to a volumetric template.",
-  "command-line": "mris_register_to_volume [SURFACE] [PIAL] [PIAL_ONLY] [REG] [NOGLOBAL_FLAG] [MEDIAN_FLAG] [MRI_REG] [TX_MMD] [TY_MMD] [TZ_MMD] [AX_MMD] [AY_MMD] [AZ_MMD] [COST] [INTERP] [NOISE] [SEED] [SKIP] [SIGMA] [CNR_FLAG] [MAX_ROT] [MAX_TRANS] [BORDER] [SUBJECT] [DILATE] [PATCH] [LABEL] [OUT_REG]",
+  "command-line": "mris_register_to_volume [SURFACE] [PIAL] [PIAL_ONLY] [REG] [NOGLOBAL] [MEDIAN] [MRI_REG] [TX_MMD] [TY_MMD] [TZ_MMD] [AX_MMD] [AY_MMD] [AZ_MMD] [COST] [INTERP] [NOISE] [SEED] [SKIP] [SIGMA] [CNR] [MAX_ROT] [MAX_TRANS] [BORDER] [SUBJECT] [DILATE] [PATCH] [LABEL] [OUT_REG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -47,7 +47,7 @@
       "description": "Do not use global optimization.",
       "type": "Flag",
       "command-line-flag": "--noglobal",
-      "value-key": "[NOGLOBAL_FLAG]",
+      "value-key": "[NOGLOBAL]",
       "optional": true
     },
     {
@@ -56,7 +56,7 @@
       "description": "Use median filtering.",
       "type": "Flag",
       "command-line-flag": "--median",
-      "value-key": "[MEDIAN_FLAG]",
+      "value-key": "[MEDIAN]",
       "optional": true
     },
     {
@@ -190,7 +190,7 @@
       "description": "Use CNR-based similarity function.",
       "type": "Flag",
       "command-line-flag": "--CNR",
-      "value-key": "[CNR_FLAG]",
+      "value-key": "[CNR]",
       "optional": true
     },
     {

@@ -3,7 +3,7 @@
   "tool-version": "7.4.1",
   "author": "FreeSurfer Developers",
   "description": "Binarizes an input volume to identify the head's voxels.",
-  "command-line": "mri_seghead [INPUT_VOLUME] [OUTPUT_VOLUME] [FILL_VALUE] [FHI] [THRESH1] [THRESH2] [THRESH] [NHITSMIN] [HVOLDAT] [SIGNAL_BEHIND_HEAD_FLAG] [RESCALE_FLAG] [FILL_HOLES_FLAG] [SEED] [OR_MASK] [GDIAG]",
+  "command-line": "mri_seghead [INPUT_VOLUME] [OUTPUT_VOLUME] [FILL_VALUE] [FHI_VALUE] [THRESH1_VALUE] [THRESH2_VALUE] [THRESHOLD] [NHITSMIN_VALUE] [HVOLDAT_FILE] [SIGNAL_BEHIND_HEAD] [RESCALE] [FILL_HOLES_ISLANDS] [SEED_POINT] [OR_MASK_FILE] [GDIAG_OPTION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--fhi",
       "description": "FHI value used in type change operation (default 0.999).",
-      "value-key": "[FHI]",
+      "value-key": "[FHI_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "fhi_value",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--thresh1",
       "description": "Threshold value for detecting the skin (e.g., 20).",
-      "value-key": "[THRESH1]",
+      "value-key": "[THRESH1_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "thresh1_value",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--thresh2",
       "description": "Threshold value for the final binarization (e.g., 20).",
-      "value-key": "[THRESH2]",
+      "value-key": "[THRESH2_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "thresh2_value",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--thresh",
       "description": "Single threshold value applied to both thresh1 and thresh2.",
-      "value-key": "[THRESH]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "threshold",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--nhitsmin",
       "description": "Minimum number of consecutive hits needed to identify skin (default 2).",
-      "value-key": "[NHITSMIN]",
+      "value-key": "[NHITSMIN_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "nhitsmin_value",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--hvoldat",
       "description": "File to write the volume of the head in mm3 to an ASCII file.",
-      "value-key": "[HVOLDAT]",
+      "value-key": "[HVOLDAT_FILE]",
       "type": "File",
       "optional": true,
       "id": "hvoldat_file",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--get-signal-behind-head",
       "description": "Consider signals behind the head in the binarization process.",
-      "value-key": "[SIGNAL_BEHIND_HEAD_FLAG]",
+      "value-key": "[SIGNAL_BEHIND_HEAD]",
       "type": "Flag",
       "optional": true,
       "id": "signal_behind_head",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--rescale",
       "description": "Rescale the input when converting to uchar.",
-      "value-key": "[RESCALE_FLAG]",
+      "value-key": "[RESCALE]",
       "type": "Flag",
       "optional": true,
       "id": "rescale",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--fill-holes-islands",
       "description": "Fill holes and remove islands in the binary volume.",
-      "value-key": "[FILL_HOLES_FLAG]",
+      "value-key": "[FILL_HOLES_ISLANDS]",
       "type": "Flag",
       "optional": true,
       "id": "fill_holes_islands",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--seed",
       "description": "Seed point specified by column, row, slice for filling operation.",
-      "value-key": "[SEED]",
+      "value-key": "[SEED_POINT]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "--or-mask",
       "description": "Mask file to include voxels in the binarization process.",
-      "value-key": "[OR_MASK]",
+      "value-key": "[OR_MASK_FILE]",
       "type": "File",
       "optional": true,
       "id": "or_mask_file",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "--gdiag",
       "description": "Optional diagnostic option for internal use.",
-      "value-key": "[GDIAG]",
+      "value-key": "[GDIAG_OPTION]",
       "type": "String",
       "optional": true,
       "id": "gdiag_option",

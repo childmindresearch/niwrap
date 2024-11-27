@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/mri_tarball/mris_curvature_stats.c",
   "description": "Tool for calculating statistics on surface curvature values.",
-  "command-line": "mris_curvature_stats [OPTIONS] [SUBJECTNAME] [HEMI] [CURVFILE...]",
+  "command-line": "mris_curvature_stats [OPTIONS] [SUBJECT_NAME] [HEMISPHERE] [CURVFILE...]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Subject name defined in the SUBJECTS_DIR",
-      "value-key": "[SUBJECTNAME]",
+      "value-key": "[SUBJECT_NAME]",
       "type": "String",
       "optional": false,
       "id": "subject_name",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Hemisphere, can be 'lh' or 'rh'",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Optional list of curvature files to process",
-      "value-key": "[CURVFILE]",
+      "value-key": "[CURVATURE_FILES]",
       "type": "File",
       "optional": true,
       "id": "curvature_files",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-a",
       "description": "Average the curvature number of times.",
-      "value-key": "<numberOfAverages>",
+      "value-key": "[NUMBER_OF_AVERAGES]",
       "type": "Number",
       "optional": true,
       "id": "number_of_averages",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "--postScale",
       "description": "Scale the mean and areaNorm integrals by a factor.",
-      "value-key": "<scaleFactor>",
+      "value-key": "[POST_SCALE]",
       "type": "Number",
       "optional": true,
       "id": "post_scale",
@@ -147,7 +147,7 @@
     {
       "command-line-flag": "-o",
       "description": "Output file stem for results.",
-      "value-key": "<outputFileStem>",
+      "value-key": "[OUTPUT_FILE_STEM]",
       "type": "String",
       "optional": true,
       "id": "output_file_stem",
@@ -156,7 +156,7 @@
     {
       "command-line-flag": "-h",
       "description": "Number of bins for curvature histogram.",
-      "value-key": "<numberOfBins>",
+      "value-key": "[HISTOGRAM_BINS]",
       "type": "Number",
       "optional": true,
       "id": "histogram_bins",
@@ -165,7 +165,7 @@
     {
       "command-line-flag": "-p",
       "description": "Number of bins for percentage-based curvature histogram.",
-      "value-key": "<numberOfBins>",
+      "value-key": "[PERCENTAGE_HISTOGRAM_BINS]",
       "type": "Number",
       "optional": true,
       "id": "percentage_histogram_bins",
@@ -174,7 +174,7 @@
     {
       "command-line-flag": "-b",
       "description": "Size of each histogram bin.",
-      "value-key": "<binSize>",
+      "value-key": "[BIN_SIZE]",
       "type": "Number",
       "optional": true,
       "id": "bin_size",
@@ -183,7 +183,7 @@
     {
       "command-line-flag": "-i",
       "description": "Histogram bin start value.",
-      "value-key": "<binStartCurvature>",
+      "value-key": "[BIN_START_CURVATURE]",
       "type": "Number",
       "optional": true,
       "id": "bin_start_curvature",
@@ -192,7 +192,7 @@
     {
       "command-line-flag": "-j",
       "description": "Histogram bin end value.",
-      "value-key": "<binEndCurvature>",
+      "value-key": "[BIN_END_CURVATURE]",
       "type": "Number",
       "optional": true,
       "id": "bin_end_curvature",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "-l",
       "description": "Label file to constrain statistics to a region.",
-      "value-key": "<labelFileName>",
+      "value-key": "[LABEL_FILE]",
       "type": "File",
       "optional": true,
       "id": "label_file",
@@ -219,7 +219,7 @@
     {
       "command-line-flag": "--highPassFilter",
       "description": "High pass filter for curvature values.",
-      "value-key": "<HPvalue>",
+      "value-key": "[HIGH_PASS_FILTER]",
       "type": "Number",
       "optional": true,
       "id": "high_pass_filter",
@@ -228,7 +228,7 @@
     {
       "command-line-flag": "--lowPassFilter",
       "description": "Low pass filter for curvature values.",
-      "value-key": "<LPvalue>",
+      "value-key": "[LOW_PASS_FILTER]",
       "type": "Number",
       "optional": true,
       "id": "low_pass_filter",
@@ -237,7 +237,7 @@
     {
       "command-line-flag": "--highPassFilterGaussian",
       "description": "High pass filter for Gaussian curvature values.",
-      "value-key": "<HPvalue>",
+      "value-key": "[HIGH_PASS_FILTER_GAUSSIAN]",
       "type": "Number",
       "optional": true,
       "id": "high_pass_filter_gaussian",
@@ -246,7 +246,7 @@
     {
       "command-line-flag": "--lowPassFilterGaussian",
       "description": "Low pass filter for Gaussian curvature values.",
-      "value-key": "<LPvalue>",
+      "value-key": "[LOW_PASS_FILTER_GAUSSIAN]",
       "type": "Number",
       "optional": true,
       "id": "low_pass_filter_gaussian",
@@ -255,7 +255,7 @@
     {
       "command-line-flag": "--filterLabel",
       "description": "Store processed surface vertices in a label file.",
-      "value-key": "<labelFile>",
+      "value-key": "[FILTER_LABEL]",
       "type": "File",
       "optional": true,
       "id": "filter_label",
@@ -282,7 +282,7 @@
     {
       "command-line-flag": "-s",
       "description": "Write out stats as a summary condition.",
-      "value-key": "<summaryCondition>",
+      "value-key": "[SUMMARY_CONDITION]",
       "type": "String",
       "optional": true,
       "id": "summary_condition",
@@ -291,7 +291,7 @@
     {
       "command-line-flag": "-d",
       "description": "Scale curvature values between min and max curvature.",
-      "value-key": "<minCurvature>",
+      "value-key": "[MIN_CURVATURE_SCALE]",
       "type": "Number",
       "optional": true,
       "id": "min_curvature_scale",
@@ -300,7 +300,7 @@
     {
       "command-line-flag": "-e",
       "description": "End value for curvature scaling.",
-      "value-key": "<maxCurvature>",
+      "value-key": "[MAX_CURVATURE_SCALE]",
       "type": "Number",
       "optional": true,
       "id": "max_curvature_scale",
@@ -309,7 +309,7 @@
     {
       "command-line-flag": "-c",
       "description": "Scale curvature values with a factor.",
-      "value-key": "<factor>",
+      "value-key": "[SCALE_FACTOR]",
       "type": "Number",
       "optional": true,
       "id": "scale_factor",
@@ -327,7 +327,7 @@
     {
       "command-line-flag": "-z",
       "description": "Sets the curvature values at that index to zero.",
-      "value-key": "<vertexIndex>",
+      "value-key": "[SET_ZERO_VERTEX]",
       "type": "Number",
       "optional": true,
       "id": "set_zero_vertex",
@@ -336,7 +336,7 @@
     {
       "command-line-flag": "-q",
       "description": "Toggle a more rigorous floating point comparison operation.",
-      "value-key": "<maxUlps>",
+      "value-key": "[MAX_ULPS]",
       "type": "Number",
       "optional": true,
       "id": "max_ulps",

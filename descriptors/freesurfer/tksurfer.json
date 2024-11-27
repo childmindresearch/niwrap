@@ -3,7 +3,7 @@
   "name": "tksurfer",
   "author": "FreeSurfer Developers",
   "description": "3D visualization tool for cortical surface models (part of FreeSurfer)",
-  "command-line": "tksurfer [SUBJECT_ID] [HEMISPHERE] [SURF_NAME] [OPTIONS]",
+  "command-line": "tksurfer [SUBJECT_ID] [HEMISPHERE] [SURFACE_NAME] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -28,7 +28,7 @@
     },
     {
       "description": "Surface name (e.g., inflated, sphere, white)",
-      "value-key": "[SURF_NAME]",
+      "value-key": "[SURFACE_NAME]",
       "type": "String",
       "optional": false,
       "id": "surface_name",

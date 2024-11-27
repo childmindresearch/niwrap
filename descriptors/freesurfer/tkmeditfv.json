@@ -3,7 +3,7 @@
   "name": "tkmeditfv",
   "author": "FreeSurfer Developers",
   "description": "A wrapper script to run Freeview with arguments similar to tkmedit, providing both functionalities.",
-  "command-line": "tkmeditfv [SUBJECT] [MAINVOL] [AUX_VOL] [SEG_VOL] [OVERLAY] [TIMECORSE] [OVERLAYREG] [T2_FILE] [SURFACES] [EXTRA_VOLUMES] [CRS] [ZOOM_LEVEL] [ADDITIONAL_SEGS] [LOAD_WHITE] [LOAD_PIAL] [LOAD_ORIG] [LOAD_ORIG_NOFIX] [SMOOTNWM_NOFIX] [LOAD_WHITE_PREAPARC] [LOAD_INFLATED] [ANNOT] [APARC] [SURFEXT] [SEG_OUTLINE] [INTENSITY_MINMAX] [DEFECTS] [DEFECT_POINTSET] [TRILIN_FLAG] [NEURO_FLAG] [ROTATE_AROUND_CURSOR] [VGL] [TKMEDIT_FLAG] [APARC_ASEG_FLAG]",
+  "command-line": "tkmeditfv [SUBJECT] [MAINVOL] [AUX_VOLUME] [SEG_VOLUME] [OVERLAY] [TIMECOURSE] [OVERLAY_REGISTRATION] [T2_FILE] [SURFACE] [EXTRA_VOLUMES] [CRS_LOCATION] [ZOOM_LEVEL] [ADDITIONAL_SEGMENTS] [LOAD_WHITE] [LOAD_PIAL] [LOAD_ORIG] [LOAD_ORIG_NOFIX] [LOAD_SMOOTHWM_NOFIX] [LOAD_WHITE_PREAPARC] [LOAD_INFLATED] [ANNOT] [LOAD_APARC] [SURFEXT] [SEG_OUTLINE] [INTENSITY_MINMAX] [LOAD_DEFECTS] [LOAD_DEFECT_POINTSET] [TRILIN_INTERPOLATION] [NEUROLOGICAL_ORIENTATION] [ROTATE_AROUND_CURSOR] [VGL_DISPLAY] [USE_TKMEDIT] [LOAD_APARC_ASEG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-aux",
       "description": "Auxiliary volume file path",
-      "value-key": "[AUX_VOL]",
+      "value-key": "[AUX_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "aux_volume",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-seg",
       "description": "Segmentation volume file path",
-      "value-key": "[SEG_VOL]",
+      "value-key": "[SEG_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "seg_volume",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-t",
       "description": "Timecourse for overlay",
-      "value-key": "[TIMECORSE]",
+      "value-key": "[TIMECOURSE]",
       "type": "File",
       "optional": true,
       "id": "timecourse",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-reg",
       "description": "Overlay timecourse registration file",
-      "value-key": "[OVERLAYREG]",
+      "value-key": "[OVERLAY_REGISTRATION]",
       "type": "File",
       "optional": true,
       "id": "overlay_registration",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-surf",
       "description": "Load surface with optional color",
-      "value-key": "[SURFACES]",
+      "value-key": "[SURFACE]",
       "type": "String",
       "optional": true,
       "id": "surface",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-crs",
       "description": "Place cursor at given (col, row, slice) location",
-      "value-key": "[CRS]",
+      "value-key": "[CRS_LOCATION]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-seg2",
       "description": "Add additional segmentations",
-      "value-key": "[ADDITIONAL_SEGS]",
+      "value-key": "[ADDITIONAL_SEGMENTS]",
       "type": "File",
       "optional": true,
       "id": "additional_segments",
@@ -157,7 +157,7 @@
     {
       "command-line-flag": "-smoothwm.nofix",
       "description": "Load lh and rh.smoothwm.nofix surfaces",
-      "value-key": "[SMOOTNWM_NOFIX]",
+      "value-key": "[LOAD_SMOOTHWM_NOFIX]",
       "type": "Flag",
       "optional": true,
       "id": "load_smoothwm_nofix",
@@ -193,7 +193,7 @@
     {
       "command-line-flag": "-aparc",
       "description": "Load aparc annotation",
-      "value-key": "[APARC]",
+      "value-key": "[LOAD_APARC]",
       "type": "Flag",
       "optional": true,
       "id": "load_aparc",
@@ -232,7 +232,7 @@
     {
       "command-line-flag": "-defects",
       "description": "Load info needed to evaluate defects",
-      "value-key": "[DEFECTS]",
+      "value-key": "[LOAD_DEFECTS]",
       "type": "Flag",
       "optional": true,
       "id": "load_defects",
@@ -241,7 +241,7 @@
     {
       "command-line-flag": "-defectps",
       "description": "Load defect pointset",
-      "value-key": "[DEFECT_POINTSET]",
+      "value-key": "[LOAD_DEFECT_POINTSET]",
       "type": "Flag",
       "optional": true,
       "id": "load_defect_pointset",
@@ -250,7 +250,7 @@
     {
       "command-line-flag": "-trilin",
       "description": "Use trilinear interpolation for volume overlays",
-      "value-key": "[TRILIN_FLAG]",
+      "value-key": "[TRILIN_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "trilin_interpolation",
@@ -259,7 +259,7 @@
     {
       "command-line-flag": "-neuro",
       "description": "Use neurological orientation instead of radiological",
-      "value-key": "[NEURO_FLAG]",
+      "value-key": "[NEUROLOGICAL_ORIENTATION]",
       "type": "Flag",
       "optional": true,
       "id": "neurological_orientation",
@@ -277,7 +277,7 @@
     {
       "command-line-flag": "-vgl",
       "description": "Set VGL_DISPLAY and run with vglrun",
-      "value-key": "[VGL]",
+      "value-key": "[VGL_DISPLAY]",
       "type": "Flag",
       "optional": true,
       "id": "vgl_display",
@@ -286,7 +286,7 @@
     {
       "command-line-flag": "-tkmedit",
       "description": "Use tkmedit instead of freeview",
-      "value-key": "[TKMEDIT_FLAG]",
+      "value-key": "[USE_TKMEDIT]",
       "type": "Flag",
       "optional": true,
       "id": "use_tkmedit",
@@ -295,7 +295,7 @@
     {
       "command-line-flag": "-aparc+aseg",
       "description": "Load aparc+aseg",
-      "value-key": "[APARC_ASEG_FLAG]",
+      "value-key": "[LOAD_APARC_ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "load_aparc_aseg",

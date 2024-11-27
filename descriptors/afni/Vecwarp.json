@@ -3,7 +3,7 @@
   "name": "Vecwarp",
   "author": "AFNI Developers",
   "description": "Transforms (warps) a list of 3-vectors into another list of 3-vectors according to the specified options.",
-  "command-line": "Vecwarp [APAR | MATVEC] [FORWARD_FLAG | BACKWARD_FLAG] [INPUT] [OUTPUT] [FORCE_FLAG]",
+  "command-line": "Vecwarp [APAR | MATVEC] [FORWARD_FLAG | BACKWARD_FLAG] [INPUT] [OUTPUT] [FORCE]",
   "inputs": [
     {
       "command-line-flag": "-apar",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-forward",
       "description": "To apply the forward transformation. If neither -forward nor -backward is given, -forward is the default.",
-      "value-key": "[FORWARD_FLAG]",
+      "value-key": "[FORWARD]",
       "type": "Flag",
       "optional": true,
       "id": "forward",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-backward",
       "description": "To apply the backward transformation.",
-      "value-key": "[BACKWARD_FLAG]",
+      "value-key": "[BACKWARD]",
       "type": "Flag",
       "optional": true,
       "id": "backward",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-force",
       "description": "If the output file already exists, use -force to overwrite it. If -force is used, it must come before -output on the command line.",
-      "value-key": "[FORCE_FLAG]",
+      "value-key": "[FORCE]",
       "type": "Flag",
       "optional": true,
       "id": "force",

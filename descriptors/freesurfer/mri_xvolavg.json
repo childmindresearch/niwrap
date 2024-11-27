@@ -2,13 +2,13 @@
   "tool-version": "7.4.1",
   "name": "mri_xvolavg",
   "description": "Tool to average multiple volumes together (including 4D volumes).",
-  "command-line": "mri_xvolavg [INPUT_VOLS] [VOL_TYPE] [OUT_VOL] [OUT_TYPE]",
+  "command-line": "mri_xvolavg [INPUT_VOLUMES] [VOL_TYPE] [OUTPUT_VOLUME] [OUTPUT_TYPE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--vol",
       "description": "Path(s) to input volume(s). This option can be repeated for each input volume.",
-      "value-key": "[INPUT_VOLS]",
+      "value-key": "[INPUT_VOLUMES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--out",
       "description": "Path to output volume.",
-      "value-key": "[OUT_VOL]",
+      "value-key": "[OUTPUT_VOLUME]",
       "type": "String",
       "optional": false,
       "id": "output_volume",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--out_type",
       "description": "Format type of the output volume (default is that of input volumes).",
-      "value-key": "[OUT_TYPE]",
+      "value-key": "[OUTPUT_TYPE]",
       "type": "String",
       "optional": true,
       "id": "output_type",

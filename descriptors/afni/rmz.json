@@ -3,12 +3,12 @@
   "name": "rmz",
   "author": "AFNI Developers",
   "description": "Zeros out files before removing them",
-  "command-line": "rmz [QUIET_FLAG] [HASH_FLAG] [KEEP_FLAG] [FILENAMES...]",
+  "command-line": "rmz [QUIET] [HASH_FLAG] [KEEP_FLAG] [FILENAMES]",
   "inputs": [
     {
       "command-line-flag": "-q",
       "description": "Quiet mode",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -34,7 +34,7 @@
     },
     {
       "description": "Files to zero out and remove",
-      "value-key": "[FILENAMES...]",
+      "value-key": "[FILENAMES]",
       "type": "File",
       "optional": false,
       "id": "filenames",

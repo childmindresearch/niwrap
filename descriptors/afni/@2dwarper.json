@@ -3,11 +3,11 @@
   "name": "@2dwarper",
   "author": "AFNI Developers",
   "description": "2D image warping tool",
-  "command-line": "@2dwarper [DATASET]",
+  "command-line": "@2dwarper [INPUT_DATASET]",
   "inputs": [
     {
       "description": "Input dataset (e.g., image to be warped)",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",

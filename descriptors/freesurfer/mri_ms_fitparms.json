@@ -2,7 +2,7 @@
   "name": "mri_ms_fitparms",
   "description": "Tool for estimating T1 and PD values from FLASH images and applying transformations.",
   "author": "FreeSurfer Developers",
-  "command-line": "mri_ms_fitparms [VOLUMES] [OUTPUT_DIR] [AFI_FLAG] [AIT_FLAG] [AT_FLAG] [CONFORM_FLAG] [CORRECT_FLAG] [CUBIC_FLAG] [DEBUG_SLICE_FLAG] [DEBUG_VOXEL_FLAG] [DT] [FA] [FA_SCALE] [FAF] [FSMOOTH] [INVERT_FLAG] [MOMENTUM] [MAX_T2] [N] [NEAREST_FLAG] [NOCOMPRESS_FLAG] [NOSYNTH_FLAG] [RESIDUALS] [SMOOTH] [SCALE] [SINC_FLAG] [TRANSFORM_FLAG] [TE] [TR] [TRILINEAR_FLAG] [TUKEY_FLAG] [HELP_FLAG] [USE_BRAIN_MASK_FLAG] [WRITE_INTERMEDIATE] [EXTRACT] [WINDOW_FLAG]",
+  "command-line": "mri_ms_fitparms [VOLUMES] [OUTPUT_DIR] [AFI_FLAG] [AIT_FLAG] [AT] [CONFORM_FLAG] [CORRECT_FLAG] [CUBIC_FLAG] [DEBUG_SLICE_FLAG] [DEBUG_VOXEL_FLAG] [DT] [FA] [FA_SCALE] [FAF] [FSMOOTH] [INVERT_FLAG] [MOMENTUM] [MAX_T2] [N_ITER] [NEAREST_FLAG] [NOCOMPRESS_FLAG] [NOSYNTH_FLAG] [RESIDUALS] [SMOOTH_SIGMA] [SCALE_FACTOR] [SINC_FLAG] [TRANSFORM_FLAG] [ECHO_TIME] [REPETITION_TIME] [TRILINEAR_FLAG] [TUKEY_FLAG] [HELP_FLAG] [USE_BRAIN_MASK_FLAG] [WRITE_INTERMEDIATE] [EXTRACT_SUBIMAGE] [WINDOW_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-at",
       "description": "Set acquisition time",
-      "value-key": "[AT_FLAG]",
+      "value-key": "[AT]",
       "type": "String",
       "optional": true,
       "id": "at",
@@ -169,7 +169,7 @@
     {
       "command-line-flag": "-n",
       "description": "Perform estimation/motion correction X times",
-      "value-key": "[N]",
+      "value-key": "[N_ITER]",
       "type": "Number",
       "optional": true,
       "id": "n_iter",
@@ -214,7 +214,7 @@
     {
       "command-line-flag": "-s",
       "description": "Smooth faf field with sigma=X",
-      "value-key": "[SMOOTH]",
+      "value-key": "[SMOOTH_SIGMA]",
       "type": "Number",
       "optional": true,
       "id": "smooth_sigma",
@@ -223,7 +223,7 @@
     {
       "command-line-flag": "-scale",
       "description": "Scale volumes by X after reading",
-      "value-key": "[SCALE]",
+      "value-key": "[SCALE_FACTOR]",
       "type": "Number",
       "optional": true,
       "id": "scale_factor",
@@ -250,7 +250,7 @@
     {
       "command-line-flag": "-te",
       "description": "Set echo time (TE) in ms",
-      "value-key": "[TE]",
+      "value-key": "[ECHO_TIME]",
       "type": "Number",
       "optional": true,
       "id": "echo_time",
@@ -259,7 +259,7 @@
     {
       "command-line-flag": "-tr",
       "description": "Set repetition time (TR) in ms",
-      "value-key": "[TR]",
+      "value-key": "[REPETITION_TIME]",
       "type": "Number",
       "optional": true,
       "id": "repetition_time",
@@ -313,7 +313,7 @@
     {
       "command-line-flag": "-extract",
       "description": "Extract a subimage for each input image, specified by x0 y0 z0 dx dy dz",
-      "value-key": "[EXTRACT]",
+      "value-key": "[EXTRACT_SUBIMAGE]",
       "type": "Number",
       "list": true,
       "optional": true,

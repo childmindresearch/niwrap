@@ -2,7 +2,7 @@
   "name": "mris_spherical_average",
   "description": "This tool adds a template into an average surface in FreeSurfer.",
   "author": "FreeSurfer Developers",
-  "command-line": "mris_spherical_average [OPTION] [WHICH] [FNAME] [HEMI] [SPHERICAL_SURF] [SUBJECTS] [OUTPUT]",
+  "command-line": "mris_spherical_average [SUMMARY_STATISTICS] [WHICH] [FNAME] [HEMI] [SPHERICAL_SURF] [SUBJECTS] [OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -63,7 +63,7 @@
       "name": "Segment Flag",
       "type": "Flag",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[SEGMENT]"
     },
     {
       "command-line-flag": "-n",
@@ -72,7 +72,7 @@
       "name": "Normalize Flag",
       "type": "Flag",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[NORMALIZE]"
     },
     {
       "command-line-flag": "-orig",
@@ -81,7 +81,7 @@
       "name": "Original Surface Name",
       "type": "String",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[ORIG]"
     },
     {
       "command-line-flag": "-o",
@@ -90,7 +90,7 @@
       "name": "Output Subject Name",
       "type": "String",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[OUTPUT_SUBJECT_NAME]"
     },
     {
       "command-line-flag": "-osdir",
@@ -99,7 +99,7 @@
       "name": "Output Subject Directory",
       "type": "String",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[OUTPUT_SUBJECT_DIR]"
     },
     {
       "command-line-flag": "-sdir",
@@ -108,7 +108,7 @@
       "name": "Subjects Directory",
       "type": "String",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[SUBJECTS_DIR]"
     },
     {
       "command-line-flag": "-average_area",
@@ -117,7 +117,7 @@
       "name": "Average Area Flag",
       "type": "Flag",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[AVERAGE_AREA]"
     },
     {
       "command-line-flag": "-s",
@@ -126,7 +126,7 @@
       "name": "Summary Statistics",
       "type": "String",
       "optional": true,
-      "value-key": "[OPTION]"
+      "value-key": "[SUMMARY_STATISTICS]"
     }
   ],
   "tool-version": "7.4.1",

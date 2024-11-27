@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Show AFNI updates per user, dates, or levels.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "afni_history [VERB_LEVEL] [CHECK_DATE] [HELP_FLAG] [HIST_FLAG] [LIST_AUTHORS_FLAG] [LIST_TYPES_FLAG] [VERSION_FLAG] [AUTHOR] [LEVEL] [MIN_LEVEL] [PROGRAM] [PAST_ENTRIES] [PAST_DAYS] [PAST_MONTHS] [PAST_YEARS] [TYPE] [HTML_FLAG] [DLINE_FLAG] [REVERSE_FLAG] [SHOW_FIELD] [SHOW_FIELD_NAMES_FLAG]",
+  "command-line": "afni_history [VERB_LEVEL] [CHECK_DATE] [HELP] [HISTORY] [LIST_AUTHORS] [LIST_TYPES] [VERSION] [AUTHOR] [LEVEL] [MIN_LEVEL] [PROGRAM] [PAST_ENTRIES] [PAST_DAYS] [PAST_MONTHS] [PAST_YEARS] [TYPE] [HTML] [DLINE] [REVERSE] [SHOW_FIELD] [SHOW_FIELD_NAMES]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show this program's history",
-      "value-key": "[HIST_FLAG]",
+      "value-key": "[HISTORY]",
       "type": "Flag",
       "optional": true,
       "id": "history",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-list_authors",
       "description": "Show the list of valid authors",
-      "value-key": "[LIST_AUTHORS_FLAG]",
+      "value-key": "[LIST_AUTHORS]",
       "type": "Flag",
       "optional": true,
       "id": "list_authors",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-list_types",
       "description": "Show the list of valid change types",
-      "value-key": "[LIST_TYPES_FLAG]",
+      "value-key": "[LIST_TYPES]",
       "type": "Flag",
       "optional": true,
       "id": "list_types",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show this program's version",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "-html",
       "description": "Add HTML formatting",
-      "value-key": "[HTML_FLAG]",
+      "value-key": "[HTML]",
       "type": "Flag",
       "optional": true,
       "id": "html",
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "-dline",
       "description": "Put a divider line between dates",
-      "value-key": "[DLINE_FLAG]",
+      "value-key": "[DLINE]",
       "type": "Flag",
       "optional": true,
       "id": "dline",
@@ -185,7 +185,7 @@
     {
       "command-line-flag": "-reverse",
       "description": "Reverse the sorting order (sort is by date, author, level, program)",
-      "value-key": "[REVERSE_FLAG]",
+      "value-key": "[REVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "reverse",
@@ -203,7 +203,7 @@
     {
       "command-line-flag": "-show_field_names",
       "description": "List valid FIELD names for -show_field",
-      "value-key": "[SHOW_FIELD_NAMES_FLAG]",
+      "value-key": "[SHOW_FIELD_NAMES]",
       "type": "Flag",
       "optional": true,
       "id": "show_field_names",

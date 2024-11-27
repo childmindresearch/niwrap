@@ -2,13 +2,13 @@
   "name": "lta_convert",
   "tool-version": "7.4.1",
   "description": "This program converts between different linear transform formats.",
-  "command-line": "lta_convert [INPUT_TRANSFORM] [OUTPUT_TRANSFORM] [INVERT_FLAG] [LTAVOX2VOX_FLAG] [LTATKREG_FLAG] [SRC_IMAGE] [TRG_IMAGE] [TRG_CONFORM_FLAG] [SUBJECT_NAME]",
+  "command-line": "lta_convert [IN_VOX] [OUT_VOX] [INVERT] [LTAVOX2VOX] [LTATKREG] [SRC_GEOMETRY] [TRG_GEOMETRY] [TRG_CONFORM] [SUBJECT_NAME]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--inlta",
       "description": "Input transform of LTA type",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_LTA]",
       "type": "File",
       "optional": true,
       "id": "in_lta",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--infsl",
       "description": "Input transform of FSL type",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_FSL]",
       "type": "File",
       "optional": true,
       "id": "in_fsl",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--inmni",
       "description": "Input transform of MNI / XFM type",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_MNI]",
       "type": "File",
       "optional": true,
       "id": "in_mni",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--inreg",
       "description": "Input transform of TK REG type (deprecated format)",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_REG]",
       "type": "File",
       "optional": true,
       "id": "in_reg",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--inniftyreg",
       "description": "Input transform of NiftyReg type (inverse RAS2RAS)",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_NIFTYREG]",
       "type": "File",
       "optional": true,
       "id": "in_niftyreg",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--initk",
       "description": "Input ITK transform (inverse LPS2LPS).",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_ITK]",
       "type": "File",
       "optional": true,
       "id": "in_itk",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--invox",
       "description": "Input transform in source image space (inverse VOX2VOX)",
-      "value-key": "[INPUT_TRANSFORM]",
+      "value-key": "[IN_VOX]",
       "type": "File",
       "optional": true,
       "id": "in_vox",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--outlta",
       "description": "Output linear transform (LTA FreeSurfer format)",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_LTA]",
       "type": "String",
       "optional": true,
       "id": "out_lta",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--outfsl",
       "description": "Output transform in FSL format",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_FSL]",
       "type": "String",
       "optional": true,
       "id": "out_fsl",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "--outmni",
       "description": "Output transform in MNI/XFM format",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_MNI]",
       "type": "String",
       "optional": true,
       "id": "out_mni",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "--outreg",
       "description": "Output transform in REG DAT format",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_REG]",
       "type": "String",
       "optional": true,
       "id": "out_reg",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--outniftyreg",
       "description": "Output transform in NiftyReg format (inverse RAS2RAS)",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_NIFTYREG]",
       "type": "String",
       "optional": true,
       "id": "out_niftyreg",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--outitk",
       "description": "Output transform in ITK TXT format (inverse LPS2LPS)",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_ITK]",
       "type": "String",
       "optional": true,
       "id": "out_itk",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "--outvox",
       "description": "Output transform in source image space (inverse VOX2VOX)",
-      "value-key": "[OUTPUT_TRANSFORM]",
+      "value-key": "[OUT_VOX]",
       "type": "String",
       "optional": true,
       "id": "out_vox",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "--invert",
       "description": "Inverts transform",
-      "value-key": "[INVERT_FLAG]",
+      "value-key": "[INVERT]",
       "type": "Flag",
       "optional": true,
       "id": "invert",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "--ltavox2vox",
       "description": "Output type VOX2VOX (default RAS2RAS) with --ltaout",
-      "value-key": "[LTAVOX2VOX_FLAG]",
+      "value-key": "[LTAVOX2VOX]",
       "type": "Flag",
       "optional": true,
       "id": "ltavox2vox",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "--ltatkreg",
       "description": "Output type REGISTER_DAT (default RAS2RAS) with --ltaout",
-      "value-key": "[LTATKREG_FLAG]",
+      "value-key": "[LTATKREG]",
       "type": "Flag",
       "optional": true,
       "id": "ltatkreg",
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "--src",
       "description": "Specify src image geometry (mov volume for TKREG/register.dat)",
-      "value-key": "[SRC_IMAGE]",
+      "value-key": "[SRC_GEOMETRY]",
       "type": "File",
       "optional": true,
       "id": "src_geometry",
@@ -170,7 +170,7 @@
     {
       "command-line-flag": "--trg",
       "description": "Specify trg image geometry",
-      "value-key": "[TRG_IMAGE]",
+      "value-key": "[TRG_GEOMETRY]",
       "type": "File",
       "optional": true,
       "id": "trg_geometry",
@@ -179,7 +179,7 @@
     {
       "command-line-flag": "--trgconform",
       "description": "Conform trg image geometry (COR standard)",
-      "value-key": "[TRG_CONFORM_FLAG]",
+      "value-key": "[TRG_CONFORM]",
       "type": "Flag",
       "optional": true,
       "id": "trg_conform",

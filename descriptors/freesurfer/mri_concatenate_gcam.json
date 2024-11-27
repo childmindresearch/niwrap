@@ -1,7 +1,7 @@
 {
   "name": "mri_concatenate_gcam",
   "description": "Concatenate a combination of input LTAs (linear transform array) and GCAMs (Gaussian classifier atlas, M3Z).",
-  "command-line": "mri_concatenate_gcam [INPUTS] [OUTPUT] [SOURCE_IMAGE] [TARGET_IMAGE] [REDUCE_FLAG] [INVERT_FLAG] [DOWNSAMPLE_FLAG]",
+  "command-line": "mri_concatenate_gcam [INPUTS] [OUTPUT] [SOURCE_IMAGE] [TARGET_IMAGE] [REDUCE] [INVERT] [DOWNSAMPLE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -46,7 +46,7 @@
       "description": "Reduce output LTA to single LT.",
       "type": "Flag",
       "optional": true,
-      "value-key": "[REDUCE_FLAG]"
+      "value-key": "[REDUCE]"
     },
     {
       "command-line-flag": "-i",
@@ -55,7 +55,7 @@
       "description": "Invert the output transform.",
       "type": "Flag",
       "optional": true,
-      "value-key": "[INVERT_FLAG]"
+      "value-key": "[INVERT]"
     },
     {
       "command-line-flag": "-d",
@@ -64,7 +64,7 @@
       "description": "Downsample output M3Z to spacing of 2; by default, the output spacing is that of the rightmost input M3Z.",
       "type": "Flag",
       "optional": true,
-      "value-key": "[DOWNSAMPLE_FLAG]"
+      "value-key": "[DOWNSAMPLE]"
     }
   ],
   "output-files": [

@@ -3,7 +3,7 @@
   "name": "mri_mcsim",
   "author": "FreeSurfer Developers",
   "description": "Monte Carlo simulation tool for surface-based multiple comparisons",
-  "command-line": "mri_mcsim [TOP_OUTPUT_DIR] [BASE] [SUBJECTNAME] [HEMISPHERE] [NREPS] [FWHM_VALUES] [FWHM_MAX_FLAG] [AVG_VERT_AREA_FLAG] [SEED_VALUE] [LABEL_FILE] [MASK_FILE] [NO_LABEL_FLAG] [NO_SAVE_MASK_FLAG] [SURFACE_NAME] [LOG_FILE] [DONE_FILE] [STOP_FILE] [SAVE_FILE] [SAVE_ITER_FLAG] [SUBJECTS_DIR] [DEBUG_FLAG] [CHECK_OPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_mcsim [TOP_OUTPUT_DIR] [BASE_NAME] [SURFACE] [NUM_REPETITIONS] [FWHM_VALUES] [FWHM_MAX] [AVG_VERTEX_AREA] [RANDOM_SEED] [LABEL_FILE] [MASK_FILE] [NO_LABEL] [NO_SAVE_MASK] [SURFACE_NAME] [LOG_FILE] [DONE_FILE] [STOP_FILE] [SAVE_FILE] [SAVE_ITER] [SUBJECTS_DIR] [DEBUG] [CHECK_OPTS] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--base",
       "description": "Base name for CSD files",
-      "value-key": "[BASE]",
+      "value-key": "[BASE_NAME]",
       "type": "String",
       "optional": false,
       "id": "base_name",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "--surface",
       "description": "Subject name and hemisphere for the surface (e.g., subjectname lh)",
-      "value-key": "[SUBJECTNAME] [HEMISPHERE]",
+      "value-key": "[SURFACE]",
       "type": "String",
       "optional": false,
       "id": "surface",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--nreps",
       "description": "Number of repetitions for the simulation",
-      "value-key": "[NREPS]",
+      "value-key": "[NUM_REPETITIONS]",
       "type": "Number",
       "optional": false,
       "id": "num_repetitions",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--fwhm-max",
       "description": "Maximum FWHM for simulation (default 30)",
-      "value-key": "[FWHM_MAX_FLAG]",
+      "value-key": "[FWHM_MAX]",
       "type": "Number",
       "optional": true,
       "id": "fwhm_max",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--avgvtxarea",
       "description": "Report cluster area based on average vertex area",
-      "value-key": "[AVG_VERT_AREA_FLAG]",
+      "value-key": "[AVG_VERTEX_AREA]",
       "type": "Flag",
       "optional": true,
       "id": "avg_vertex_area",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--seed",
       "description": "Random seed value (default is based on Time of Day)",
-      "value-key": "[SEED_VALUE]",
+      "value-key": "[RANDOM_SEED]",
       "type": "Number",
       "optional": true,
       "id": "random_seed",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--no-label",
       "description": "Do not use a label to mask",
-      "value-key": "[NO_LABEL_FLAG]",
+      "value-key": "[NO_LABEL]",
       "type": "Flag",
       "optional": true,
       "id": "no_label",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--no-save-mask",
       "description": "Do not save mask to output",
-      "value-key": "[NO_SAVE_MASK_FLAG]",
+      "value-key": "[NO_SAVE_MASK]",
       "type": "Flag",
       "optional": true,
       "id": "no_save_mask",
@@ -170,7 +170,7 @@
     {
       "command-line-flag": "--save-iter",
       "description": "Save output after each iteration",
-      "value-key": "[SAVE_ITER_FLAG]",
+      "value-key": "[SAVE_ITER]",
       "type": "Flag",
       "optional": true,
       "id": "save_iter",
@@ -188,7 +188,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -197,7 +197,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options do not run",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "check_opts",
@@ -206,7 +206,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -215,7 +215,7 @@
     {
       "command-line-flag": "--version",
       "description": "Display version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

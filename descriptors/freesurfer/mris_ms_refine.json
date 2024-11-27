@@ -3,7 +3,7 @@
   "name": "mris_ms_refine",
   "author": "FreeSurfer Developers",
   "description": "This program positions the tessellation of the cortical surface at the white matter surface, then the gray matter surface. It generates surface files for these surfaces as well as a 'curvature' file for the cortical thickness, and a surface file which approximates layer IV of the cortical sheet.",
-  "command-line": "mris_ms_refine [SUBJECT_NAME] [HEMISPHERE] [XFORM] [FLASH_FILES] [RESIDUALS] [OMIT_SELF_INTERSECTION_FLAG] [CREATE_CURVATURE_FILES_FLAG] [AVERAGE_CURVATURE_VALUES] [WHITE_ONLY_FLAG]",
+  "command-line": "mris_ms_refine [SUBJECT_NAME] [HEMISPHERE] [XFORM] [FLASH_FILES] [RESIDUALS] [OMIT_SELF_INTERSECTION] [CREATE_CURVATURE_FILES] [AVERAGE_CURVATURE] [WHITE_ONLY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-q",
       "description": "Omit self-intersection and only generate gray/white surface.",
-      "value-key": "[OMIT_SELF_INTERSECTION_FLAG]",
+      "value-key": "[OMIT_SELF_INTERSECTION]",
       "type": "Flag",
       "optional": true,
       "id": "omit_self_intersection",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-c",
       "description": "Create curvature and area files from white matter surface.",
-      "value-key": "[CREATE_CURVATURE_FILES_FLAG]",
+      "value-key": "[CREATE_CURVATURE_FILES]",
       "type": "Flag",
       "optional": true,
       "id": "create_curvature_files",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-a",
       "description": "Average curvature values a specified number of times.",
-      "value-key": "[AVERAGE_CURVATURE_VALUES]",
+      "value-key": "[AVERAGE_CURVATURE]",
       "type": "Number",
       "default-value": 10,
       "optional": true,
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-whiteonly",
       "description": "Only generate white matter surface.",
-      "value-key": "[WHITE_ONLY_FLAG]",
+      "value-key": "[WHITE_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "white_only",

@@ -3,7 +3,7 @@
   "name": "mri_extract_label",
   "author": "FreeSurfer Developers",
   "description": "Extracts a set of labeled voxels from an image.",
-  "command-line": "mri_extract_label [INPUT_VOLUME] [LABELS] [OUTPUT_NAME] [GAUSSIAN_SMOOTHING] [TRANSFORM_FILE] [EXIT_NONE_FOUND_FLAG] [DILATE] [ERODE]",
+  "command-line": "mri_extract_label [INPUT_VOLUME] [LABELS] [OUTPUT_NAME] [GAUSSIAN_SMOOTHING] [TRANSFORM_FILE] [EXIT_NONE_FOUND] [DILATE] [ERODE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-exit_none_found",
       "description": "Exit with error if none of the specified labels are found.",
-      "value-key": "[EXIT_NONE_FOUND_FLAG]",
+      "value-key": "[EXIT_NONE_FOUND]",
       "type": "Flag",
       "optional": true,
       "id": "exit_none_found",

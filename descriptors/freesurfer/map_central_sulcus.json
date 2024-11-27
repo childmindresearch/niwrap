@@ -3,7 +3,7 @@
   "name": "map_central_sulcus",
   "author": "FreeSurfer Developers",
   "description": "Performs all, or any part of, the FreeSurfer cortical reconstruction process.",
-  "command-line": "recon-all [SUBJID] [PROCESS_DIRECTIVE] [HEMI_PROCESS_FLAG] [EXPERT_PREFS_FILE] [EXPERT_OPTS_USE_FLAG] [EXPERT_OPTS_CLEAN_FLAG] [EXPERT_OPTS_OVERWRITE_FLAG] [WATERSHED_CMD] [XMASK_FILE] [WSLESS_FLAG] [WSMORE_FLAG] [WSATLAS_FLAG] [NO_WS_ATLAS_FLAG] [NO_WS_GCAATLAS_FLAG] [WSTHRESH] [WSSEED] [NORM3DITERS] [NORMMAXGRAD] [NORM1_B] [NORM2_B] [NORM1_N] [NORM2_N] [CM_FLAG] [NO_FIX_WITH_GA_FLAG] [FIX_DIAG_ONLY_FLAG] [SEG_WLO] [SEG_GHI] [NOTHICKEN_FLAG] [NO_CA_ALIGN_AFTER_FLAG] [NO_CA_ALIGN_FLAG] [DEFACE_FLAG] [MPRAGE_FLAG] [WASHU_MPRAGE_FLAG] [SCHWARTZYA3T_ATLAS_FLAG] [MAIL_USERNAME] [THREADS]",
+  "command-line": "recon-all [SUBJID] [PROCESS_DIRECTIVE] [HEMI_FLAG] [EXPERT_PREFS_FILE] [XOPTS_USE] [XOPTS_CLEAN] [XOPTS_OVERWRITE] [WATERSHED_CMD] [XMASK_FILE] [WSLESS] [WSMORE] [WSATLAS] [NO_WSATLAS] [NO_WSGCAATLAS] [WSTHRESH] [WSSEED] [NORM3DITERS] [NORMMAXGRAD] [NORM1_B] [NORM2_B] [NORM1_N] [NORM2_N] [CM_FLAG] [NO_FIX_WITH_GA] [FIX_DIAG_ONLY] [SEG_WLO] [SEG_GHI] [NOTHICKEN] [NO_CA_ALIGN_AFTER] [NO_CA_ALIGN] [DEFACE] [MPRAGE] [WASHU_MPRAGE] [SCHWARTZYA3T_ATLAS] [MAIL_USERNAME] [THREADS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-hemi",
       "description": "Specify hemisphere processing (e.g., lh for left hemisphere or rh for right hemisphere)",
-      "value-key": "[HEMI_PROCESS_FLAG]",
+      "value-key": "[HEMI_FLAG]",
       "type": "String",
       "optional": true,
       "id": "hemi_flag",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-xopts-use",
       "description": "Use pre-existing expert options file.",
-      "value-key": "[EXPERT_OPTS_USE_FLAG]",
+      "value-key": "[XOPTS_USE]",
       "type": "Flag",
       "optional": true,
       "id": "xopts_use",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-xopts-clean",
       "description": "Delete pre-existing expert options file.",
-      "value-key": "[EXPERT_OPTS_CLEAN_FLAG]",
+      "value-key": "[XOPTS_CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "xopts_clean",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-xopts-overwrite",
       "description": "Overwrite pre-existing expert options file.",
-      "value-key": "[EXPERT_OPTS_OVERWRITE_FLAG]",
+      "value-key": "[XOPTS_OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "xopts_overwrite",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-wsless",
       "description": "Decrease watershed threshold (leaves less skull, but can strip more brain).",
-      "value-key": "[WSLESS_FLAG]",
+      "value-key": "[WSLESS]",
       "type": "Flag",
       "optional": true,
       "id": "wsless",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-wsmore",
       "description": "Increase watershed threshold (leaves more skull, but can strip less brain).",
-      "value-key": "[WSMORE_FLAG]",
+      "value-key": "[WSMORE]",
       "type": "Flag",
       "optional": true,
       "id": "wsmore",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-wsatlas",
       "description": "Use atlas when skull stripping.",
-      "value-key": "[WSATLAS_FLAG]",
+      "value-key": "[WSATLAS]",
       "type": "Flag",
       "optional": true,
       "id": "wsatlas",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-no-wsatlas",
       "description": "Do not use atlas when skull stripping.",
-      "value-key": "[NO_WS_ATLAS_FLAG]",
+      "value-key": "[NO_WSATLAS]",
       "type": "Flag",
       "optional": true,
       "id": "no_wsatlas",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-no-wsgcaatlas",
       "description": "Do not use GCA atlas when skull stripping.",
-      "value-key": "[NO_WS_GCAATLAS_FLAG]",
+      "value-key": "[NO_WSGCAATLAS]",
       "type": "Flag",
       "optional": true,
       "id": "no_wsgcaatlas",
@@ -219,7 +219,7 @@
     {
       "command-line-flag": "-no-fix-with-ga",
       "description": "Do not use genetic algorithm when fixing topology.",
-      "value-key": "[NO_FIX_WITH_GA_FLAG]",
+      "value-key": "[NO_FIX_WITH_GA]",
       "type": "Flag",
       "optional": true,
       "id": "no_fix_with_ga",
@@ -228,7 +228,7 @@
     {
       "command-line-flag": "-fix-diag-only",
       "description": "Topology fixer runs until ?h.defect_labels files are created, then stops.",
-      "value-key": "[FIX_DIAG_ONLY_FLAG]",
+      "value-key": "[FIX_DIAG_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "fix_diag_only",
@@ -255,7 +255,7 @@
     {
       "command-line-flag": "-nothicken",
       "description": "Pass '-thicken 0' to mri_segment.",
-      "value-key": "[NOTHICKEN_FLAG]",
+      "value-key": "[NOTHICKEN]",
       "type": "Flag",
       "optional": true,
       "id": "nothicken",
@@ -264,7 +264,7 @@
     {
       "command-line-flag": "-no-ca-align-after",
       "description": "Turn off -align-after with mri_ca_register.",
-      "value-key": "[NO_CA_ALIGN_AFTER_FLAG]",
+      "value-key": "[NO_CA_ALIGN_AFTER]",
       "type": "Flag",
       "optional": true,
       "id": "no_ca_align_after",
@@ -273,7 +273,7 @@
     {
       "command-line-flag": "-no-ca-align",
       "description": "Turn off -align with mri_ca_label.",
-      "value-key": "[NO_CA_ALIGN_FLAG]",
+      "value-key": "[NO_CA_ALIGN]",
       "type": "Flag",
       "optional": true,
       "id": "no_ca_align",
@@ -282,7 +282,7 @@
     {
       "command-line-flag": "-deface",
       "description": "Deface subject, written to orig_defaced.mgz.",
-      "value-key": "[DEFACE_FLAG]",
+      "value-key": "[DEFACE]",
       "type": "Flag",
       "optional": true,
       "id": "deface",
@@ -291,7 +291,7 @@
     {
       "command-line-flag": "-mprage",
       "description": "Assume scan parameters are MGH MP-RAGE protocol.",
-      "value-key": "[MPRAGE_FLAG]",
+      "value-key": "[MPRAGE]",
       "type": "Flag",
       "optional": true,
       "id": "mprage",
@@ -300,7 +300,7 @@
     {
       "command-line-flag": "-washu_mprage",
       "description": "Assume scan parameters are Wash.U. MP-RAGE protocol.",
-      "value-key": "[WASHU_MPRAGE_FLAG]",
+      "value-key": "[WASHU_MPRAGE]",
       "type": "Flag",
       "optional": true,
       "id": "washu_mprage",
@@ -309,7 +309,7 @@
     {
       "command-line-flag": "-schwartzya3t-atlas",
       "description": "For tal reg, use special young adult 3T atlas.",
-      "value-key": "[SCHWARTZYA3T_ATLAS_FLAG]",
+      "value-key": "[SCHWARTZYA3T_ATLAS]",
       "type": "Flag",
       "optional": true,
       "id": "schwartzya3t_atlas",

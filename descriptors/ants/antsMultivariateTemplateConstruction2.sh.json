@@ -1,13 +1,13 @@
 {
   "name": "antsMultivariateTemplateConstruction2.sh",
-  "command-line": "antsMultivariateTemplateConstruction2.sh <input-options>",
+  "command-line": "antsMultivariateTemplateConstruction2.sh [INPUT]",
   "description": "The antsMultivariateTemplateConstruction2.sh script is part of the Advanced Normalization Tools (ANTs) suite. It is used for constructing multivariate templates.",
   "schema-version": "0.5",
   "inputs": [
     {
       "id": "input",
       "name": "Input Options",
-      "value-key": "<input-options>",
+      "value-key": "[INPUT]",
       "type": "String",
       "description": "Options for setting up and running the multivariate template construction process.",
       "optional": false

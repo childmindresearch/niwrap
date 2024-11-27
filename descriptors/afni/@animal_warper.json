@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Align a subject structural dataset to a template and perform several post-alignment operations",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@animal_warper [INPUT_FILE] [BASE_TEMPLATE] [OUTPUT_DIR] [BRAINMASK] [ATLAS] [ATLAS_FOLLOWERS] [SEG_FOLLOWERS] [TEMPLATE_FOLLOWERS] [DSET_FOLLOWERS] [ROIDSET_FOLLOWERS] [INPUT_ABBREV] [BASE_ABBREV] [ATLAS_ABBREVS] [TEMPLATE_ABBREVS] [SEG_ABBREVS] [DSET_ABBREVS] [ROIDSET_ABBREVS] [ALIGN_CENTERS_METHOD] [AFFINE_MOVE_OPT] [COST] [MAX_LEV] [NO_SURFACES_FLAG] [FEATURE_SIZE] [SUPERSIZE_FLAG] [INIT_SCALE] [MODE_SMOOTH_SIZE] [MODE_SMOOTH_REPLACEMENT_OFF] [CENTER_OUT] [ALIGN_TYPE] [EXTRA_QW_OPTS] [KEEP_TEMP_FLAG] [VER_FLAG] [OK_TO_EXIST_FLAG] [ECHO_FLAG]",
+  "command-line": "@animal_warper [INPUT_FILE] [BASE_TEMPLATE] [OUTPUT_DIR] [BRAINMASK] [ATLASES] [ATLAS_FOLLOWERS] [SEG_FOLLOWERS] [TEMPLATE_FOLLOWERS] [DSET_FOLLOWERS] [ROIDSET_FOLLOWERS] [INPUT_ABBREV] [BASE_ABBREV] [ATLAS_ABBREVS] [TEMPLATE_ABBREVS] [SEG_ABBREVS] [DSET_ABBREVS] [ROIDSET_ABBREVS] [ALIGN_CENTERS_METH] [AFF_MOVE_OPT] [COST] [MAXLEV] [NO_SURFACES] [FEATURE_SIZE] [SUPERSIZE] [INIT_SCALE] [MODE_SMOOTH_SIZE] [MODE_SMOOTH_REPLACEMENT_OFF] [CENTER_OUT] [ALIGN_TYPE] [EXTRA_QW_OPTS] [KEEP_TEMP] [VERSION] [OK_TO_EXIST] [ECHO]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -45,7 +45,7 @@
     {
       "description": "one or more atlas datasets in the base volume space",
       "command-line-flag": "-atlas",
-      "value-key": "[ATLAS]",
+      "value-key": "[ATLASES]",
       "type": "File",
       "list": true,
       "optional": true,
@@ -173,7 +173,7 @@
     {
       "description": "center alignment method to use",
       "command-line-flag": "-align_centers_meth",
-      "value-key": "[ALIGN_CENTERS_METHOD]",
+      "value-key": "[ALIGN_CENTERS_METH]",
       "type": "String",
       "optional": true,
       "id": "align_centers_meth",
@@ -182,7 +182,7 @@
     {
       "description": "alignment movement options for affine alignment step",
       "command-line-flag": "-aff_move_opt",
-      "value-key": "[AFFINE_MOVE_OPT]",
+      "value-key": "[AFF_MOVE_OPT]",
       "type": "String",
       "optional": true,
       "id": "aff_move_opt",
@@ -200,7 +200,7 @@
     {
       "description": "Max level for nonlinear warping. Final patch size is determined based on this value.",
       "command-line-flag": "-maxlev",
-      "value-key": "[MAX_LEV]",
+      "value-key": "[MAXLEV]",
       "type": "Number",
       "optional": true,
       "id": "maxlev",
@@ -211,7 +211,7 @@
     {
       "description": "Do not make surfaces for atlas regions in native space.",
       "command-line-flag": "-no_surfaces",
-      "value-key": "[NO_SURFACES_FLAG]",
+      "value-key": "[NO_SURFACES]",
       "type": "Flag",
       "optional": true,
       "id": "no_surfaces",
@@ -229,7 +229,7 @@
     {
       "description": "Allow up to 50% size difference between subject and template",
       "command-line-flag": "-supersize",
-      "value-key": "[SUPERSIZE_FLAG]",
+      "value-key": "[SUPERSIZE]",
       "type": "Flag",
       "optional": true,
       "id": "supersize",
@@ -292,7 +292,7 @@
     {
       "description": "Keep temporary files including awpy directory and other intermediate datasets",
       "command-line-flag": "-keep_temp",
-      "value-key": "[KEEP_TEMP_FLAG]",
+      "value-key": "[KEEP_TEMP]",
       "type": "Flag",
       "optional": true,
       "id": "keep_temp",
@@ -301,7 +301,7 @@
     {
       "description": "Display the program version",
       "command-line-flag": "-ver",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -310,7 +310,7 @@
     {
       "description": "Reuse and do not overwrite existing datasets",
       "command-line-flag": "-ok_to_exist",
-      "value-key": "[OK_TO_EXIST_FLAG]",
+      "value-key": "[OK_TO_EXIST]",
       "type": "Flag",
       "optional": true,
       "id": "ok_to_exist",
@@ -319,7 +319,7 @@
     {
       "description": "Copy all commands being run into the terminal",
       "command-line-flag": "-echo",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",

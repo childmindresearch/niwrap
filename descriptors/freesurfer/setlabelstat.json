@@ -2,12 +2,12 @@
   "tool-version": "7.4.1",
   "name": "setlabelstat",
   "description": "Replaces the stat values in a label file with the single stat value supplied on the command-line.",
-  "command-line": "setlabelstat [INPUT_LABEL] [OUTPUT_LABEL] [STAT_VALUE] [HELP_FLAG]",
+  "command-line": "setlabelstat [INLABELFILE] [OUTLABELFILE] [STATVAL] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input label file.",
-      "value-key": "[INPUT_LABEL]",
+      "value-key": "[INLABELFILE]",
       "type": "File",
       "optional": false,
       "id": "inlabelfile",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Output label file.",
-      "value-key": "[OUTPUT_LABEL]",
+      "value-key": "[OUTLABELFILE]",
       "type": "File",
       "optional": false,
       "id": "outlabelfile",
@@ -25,7 +25,7 @@
     },
     {
       "description": "Stat value to replace in the label file.",
-      "value-key": "[STAT_VALUE]",
+      "value-key": "[STATVAL]",
       "type": "Number",
       "optional": false,
       "id": "statval",
@@ -34,7 +34,7 @@
     },
     {
       "description": "Displays help information.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

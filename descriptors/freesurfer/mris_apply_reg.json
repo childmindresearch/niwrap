@@ -3,7 +3,7 @@
   "name": "mris_apply_reg",
   "author": "FreeSurfer Developers",
   "description": "Apply surface registration in FreeSurfer.",
-  "command-line": "mris_apply_reg [SRC_INPUT] [TRG_OUTPUT] [STREG] [STREG_ADDITIONAL...] [SRC_LABEL] [SRC_ANOT] [SRC_XYZ] [JAC_FLAG] [NO_REV_FLAG] [RANDN_FLAG] [ONES_FLAG] [CENTER_FLAG] [CURV_FLAG] [LTA_TRANSFORM] [LTA_PATCH_TRANSFORM] [REVERSE_SURF] [PATCH] [STVPAIR] [M3Z_TRANSFORM] [INV_M3Z_TRANSFORM] [SRC_REG_SCALE] [TRG_REG_SCALE] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "mris_apply_reg [SRC_INPUT] [TRG_OUTPUT] [STREG_PAIR] [STREG_ADDITIONAL...] [SRC_LABEL] [SRC_ANNOTATION] [SRC_XYZ] [JACOBIAN] [NO_REVERSE] [RAND_NOISE] [REPLACE_ONES] [CENTER_OUTPUT] [CURV_FORMAT] [LTA_TRANSFORM] [LTA_PATCH_TRANSFORM] [REVERSE_SURFACE] [PATCH_APPLY] [SAVE_VERTEX_PAIR] [M3Z_TRANSFORM] [INV_M3Z_TRANSFORM] [SRC_REG_SCALE] [TRG_REG_SCALE] [DEBUG_MODE] [CHECK_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--streg",
       "description": "Source and target registration file pair",
-      "value-key": "[STREG]",
+      "value-key": "[STREG_PAIR]",
       "type": "String",
       "optional": false,
       "id": "streg_pair",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--src-annot",
       "description": "Source annotation file (implies --no-rev)",
-      "value-key": "[SRC_ANOT]",
+      "value-key": "[SRC_ANNOTATION]",
       "type": "File",
       "optional": true,
       "id": "src_annotation",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--jac",
       "description": "Use jacobian correction",
-      "value-key": "[JAC_FLAG]",
+      "value-key": "[JACOBIAN]",
       "type": "Flag",
       "optional": true,
       "id": "jacobian",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--no-rev",
       "description": "Do not do reverse mapping",
-      "value-key": "[NO_REV_FLAG]",
+      "value-key": "[NO_REVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "no_reverse",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--randn",
       "description": "Replace input with white Gaussian noise",
-      "value-key": "[RANDN_FLAG]",
+      "value-key": "[RAND_NOISE]",
       "type": "Flag",
       "optional": true,
       "id": "rand_noise",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--ones",
       "description": "Replace input with ones",
-      "value-key": "[ONES_FLAG]",
+      "value-key": "[REPLACE_ONES]",
       "type": "Flag",
       "optional": true,
       "id": "replace_ones",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--center",
       "description": "Place the center of the output surface at (0,0,0)",
-      "value-key": "[CENTER_FLAG]",
+      "value-key": "[CENTER_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "center_output",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--curv",
       "description": "Save output in curvature file format",
-      "value-key": "[CURV_FLAG]",
+      "value-key": "[CURV_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "curv_format",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "--reverse",
       "description": "LR reverse surface with optional patch",
-      "value-key": "[REVERSE_SURF]",
+      "value-key": "[REVERSE_SURFACE]",
       "type": "String",
       "optional": true,
       "id": "reverse_surface",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "--patch",
       "description": "Apply patch for each --streg",
-      "value-key": "[PATCH]",
+      "value-key": "[PATCH_APPLY]",
       "type": "String",
       "optional": true,
       "id": "patch_apply",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "--stvpair",
       "description": "Save vertex pairs from source and target surfaces",
-      "value-key": "[STVPAIR]",
+      "value-key": "[SAVE_VERTEX_PAIR]",
       "type": "File",
       "optional": true,
       "id": "save_vertex_pair",
@@ -198,7 +198,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "debug_mode",
@@ -207,7 +207,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options without executing anything",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",

@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Computes voxelwise multi-scale entropy",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dMSE [POLYNOMIAL_ORDER] [AUTOCLIP_FLAG] [AUTOMASK_FLAG] [MASK] [PREFIX] [SCALES] [ENTWIN] [RTHRESH] [DSET]",
+  "command-line": "3dMSE [POLYNOMIAL_ORDER] [AUTOCLIP] [AUTOMASK] [MASK] [PREFIX] [SCALES] [ENTWIN] [RTHRESH] [DSET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-autoclip",
       "description": "Clip off low-intensity regions in the dataset.",
-      "value-key": "[AUTOCLIP_FLAG]",
+      "value-key": "[AUTOCLIP]",
       "type": "Flag",
       "optional": true,
       "id": "autoclip",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Use automask to clip low-intensity regions.",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",

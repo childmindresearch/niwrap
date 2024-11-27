@@ -3,7 +3,7 @@
   "name": "swi_preprocess",
   "author": "FreeSurfer Developers",
   "description": "Pre-process the Susceptibility-weighted images and write out nifti files for feeding into PRELUDE (Phase Unwrapping Library of FSL).",
-  "command-line": "swi_preprocess [SCANNER] [GE_FILE] [PHILIPS_FILE] [SIEMENS_MAG] [SIEMENS_PHASE] [OUT_MAGNITUDE] [OUT_PHASE]",
+  "command-line": "swi_preprocess [SCANNER] [GE_FILE] [PHILIPS_FILE] [SIEMENS_MAGNITUDE] [SIEMENS_PHASE] [OUT_MAGNITUDE] [OUT_PHASE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--siemens_mag",
       "description": "Name of the input Siemens magnitude file (only compatible with --scanner siemens option)",
-      "value-key": "[SIEMENS_MAG]",
+      "value-key": "[SIEMENS_MAGNITUDE]",
       "type": "File",
       "optional": true,
       "id": "siemens_magnitude",

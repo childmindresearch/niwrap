@@ -3,7 +3,7 @@
   "tool-version": "7.4.1",
   "author": "FreeSurfer Developers",
   "description": "Computes mutual information (mi) between two input volumes.",
-  "command-line": "mri_mi [INPUT_FILE1] [INPUT_FILE2] [BINS] [SILENT_FLAG]",
+  "command-line": "mri_mi [INPUT_FILE1] [INPUT_FILE2] [BINS] [SILENT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "--silent",
       "description": "Write out only the final mutual information result.",
-      "value-key": "[SILENT_FLAG]",
+      "value-key": "[SILENT]",
       "type": "Flag",
       "optional": true,
       "id": "silent",

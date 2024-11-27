@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Catenates datasets spatially.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dXYZcat [DIRECTION] [PREFIX] [VERBOSE] [DATASET+]",
+  "command-line": "3dXYZcat [DIRECTION] [PREFIX] [VERBOSE] [DATASETS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input datasets to concatenate.",
-      "value-key": "[DATASET+]",
+      "value-key": "[DATASETS]",
       "type": "File",
       "list": true,
       "optional": false,

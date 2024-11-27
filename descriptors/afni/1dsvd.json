@@ -3,11 +3,11 @@
   "name": "1dsvd",
   "author": "AFNI Developers",
   "description": "Computes SVD of the matrix formed by the 1D file(s) and outputs the result on stdout.",
-  "command-line": "1dsvd [ONE_FLAG] [VMEAN_FLAG] [VNORM_FLAG] [COND_FLAG] [SING_FLAG] [SORT_FLAG] [NOSORT_FLAG] [ASORT_FLAG] [LEFT_EIGENVECTORS_FLAG] [NUM_EIGENVECTORS] [INPUT_FILE]",
+  "command-line": "1dsvd [ONE] [VMEAN] [VNORM] [COND] [SING] [SORT] [NOSORT] [ASORT] [LEFT_EIGENVECTORS] [NUM_EIGENVECTORS] [INPUT_FILES]",
   "inputs": [
     {
       "description": "Input 1D file(s) for SVD computation",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_FILES]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-one",
       "description": "Make 1st vector be all 1's",
-      "value-key": "[ONE_FLAG]",
+      "value-key": "[ONE]",
       "type": "Flag",
       "optional": true,
       "id": "one",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-vmean",
       "description": "Remove mean from each vector (cannot be used with -one)",
-      "value-key": "[VMEAN_FLAG]",
+      "value-key": "[VMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "vmean",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-vnorm",
       "description": "Make L2-norm of each vector = 1 before SVD",
-      "value-key": "[VNORM_FLAG]",
+      "value-key": "[VNORM]",
       "type": "Flag",
       "optional": true,
       "id": "vnorm",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-cond",
       "description": "Only print condition number (ratio of extremes)",
-      "value-key": "[COND_FLAG]",
+      "value-key": "[COND]",
       "type": "Flag",
       "optional": true,
       "id": "cond",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-sing",
       "description": "Only print singular values",
-      "value-key": "[SING_FLAG]",
+      "value-key": "[SING]",
       "type": "Flag",
       "optional": true,
       "id": "sing",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-sort",
       "description": "Sort singular values in descending order (default)",
-      "value-key": "[SORT_FLAG]",
+      "value-key": "[SORT]",
       "type": "Flag",
       "optional": true,
       "id": "sort",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-nosort",
       "description": "Don't sort singular values",
-      "value-key": "[NOSORT_FLAG]",
+      "value-key": "[NOSORT]",
       "type": "Flag",
       "optional": true,
       "id": "nosort",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-asort",
       "description": "Sort singular values in ascending order",
-      "value-key": "[ASORT_FLAG]",
+      "value-key": "[ASORT]",
       "type": "Flag",
       "optional": true,
       "id": "asort",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-1Dleft",
       "description": "Only output left eigenvectors in .1D format",
-      "value-key": "[LEFT_EIGENVECTORS_FLAG]",
+      "value-key": "[LEFT_EIGENVECTORS]",
       "type": "Flag",
       "optional": true,
       "id": "left_eigenvectors",

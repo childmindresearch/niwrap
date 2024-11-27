@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-BALL",
       "description": "Mask off points outside a ball at the center of the grid",
-      "value-key": "[BALL_FLAG]",
+      "value-key": "[BALL]",
       "type": "Flag",
       "optional": true,
       "name": "Ball Mask",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-OKsmallmask",
       "description": "Allow small masks with less than 128 nonzero voxels",
-      "value-key": "[OKSMALLMASK_FLAG]",
+      "value-key": "[OKSMALLMASK]",
       "type": "Flag",
       "optional": true,
       "name": "Allow Small Mask",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-nopad",
       "description": "Turn off padding slices added for edge effects",
-      "value-key": "[NOPAD_FLAG]",
+      "value-key": "[NOPAD]",
       "type": "Flag",
       "optional": true,
       "name": "No Padding",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "-LOTS",
       "description": "Use a longer list of values for pthr and athr",
-      "value-key": "[LOTS_FLAG]",
+      "value-key": "[LOTS]",
       "type": "Flag",
       "optional": true,
       "name": "Lots of Values",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "-MEGA",
       "description": "Add even more values to the pthr and athr grids",
-      "value-key": "[MEGA_FLAG]",
+      "value-key": "[MEGA]",
       "type": "Flag",
       "optional": true,
       "name": "Mega Values",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "-nodec",
       "description": "Print the cluster size threshold as an integer",
-      "value-key": "[NODEC_FLAG]",
+      "value-key": "[NODEC]",
       "type": "Flag",
       "optional": true,
       "name": "No Decimal",
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "-niml",
       "description": "Output the table in XML/NIML format",
-      "value-key": "[NIML_FLAG]",
+      "value-key": "[NIML]",
       "type": "Flag",
       "optional": true,
       "name": "NIML Output",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "-both",
       "description": "Output the table in both XML/NIML format and in .1D format",
-      "value-key": "[BOTH_FLAG]",
+      "value-key": "[BOTH]",
       "type": "Flag",
       "optional": true,
       "name": "Both Formats",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Don't print out progress reports",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "name": "Quiet Mode",

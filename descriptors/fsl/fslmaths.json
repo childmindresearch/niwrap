@@ -2,7 +2,7 @@
   "name": "fslmaths",
   "tool-version": "6.0.4",
   "description": "FSL utility for image arithmetic, statistics, and mathematical operations",
-  "command-line": "fslmaths [DATATYPE_INTERNAL] [INPUTS] [OPERATIONS] [OUTPUT] [OUTPUT_DATATYPE]",
+  "command-line": "fslmaths [DATATYPE_INTERNAL] [INPUT_FILES] [OPERATIONS] [OUTPUT] [OUTPUT_DATATYPE]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "container-image": {
     "type": "docker",
@@ -22,7 +22,7 @@
       "default-value": "float"
     },
     {
-      "value-key": "[INPUTS]",
+      "value-key": "[INPUT_FILES]",
       "id": "input_files",
       "name": "Input images",
       "type": "File",

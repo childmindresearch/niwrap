@@ -123,7 +123,7 @@
     },
     {
       "description": "Display the help message",
-      "value-key": "help_flag",
+      "value-key": "[HELP_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "help_flag",

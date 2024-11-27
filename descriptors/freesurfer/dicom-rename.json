@@ -2,7 +2,7 @@
   "name": "dicom-rename",
   "description": "Copies dicom file(s) to new path with more meaningful names",
   "schema-version": "0.5",
-  "command-line": "dicom[INPUT_FILES] [OUTBASE]",
+  "command-line": "dicom[INPUT_FILES] [OUTPUT_BASE]",
   "inputs": [
     {
       "id": "input_files",
@@ -21,7 +21,7 @@
       "description": "Base name for output files that includes series and image numbers.",
       "optional": false,
       "command-line-flag": "--o",
-      "value-key": "[OUTBASE]"
+      "value-key": "[OUTPUT_BASE]"
     },
     {
       "id": "version",

@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Cluster-based statistical thresholding tool from FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "easythresh [RAW_ZSTAT] [BRAIN_MASK] [CLUSTER_Z_THRESH] [CLUSTER_PROB_THRESH] [BACKGROUND_IMAGE] [OUTPUT_ROOT] [MM_FLAG]",
+  "command-line": "easythresh [RAW_ZSTAT_INPUT] [BRAIN_MASK_INPUT] [CLUSTER_Z_THRESH_INPUT] [CLUSTER_PROB_THRESH_INPUT] [BACKGROUND_IMAGE_INPUT] [OUTPUT_ROOT] [MM_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input raw z-statistics image",
-      "value-key": "[RAW_ZSTAT]",
+      "value-key": "[RAW_ZSTAT_INPUT]",
       "type": "File",
       "optional": false,
       "id": "raw_zstat_input",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Brain mask image",
-      "value-key": "[BRAIN_MASK]",
+      "value-key": "[BRAIN_MASK_INPUT]",
       "type": "File",
       "optional": false,
       "id": "brain_mask_input",
@@ -28,7 +28,7 @@
     },
     {
       "description": "Cluster z-threshold",
-      "value-key": "[CLUSTER_Z_THRESH]",
+      "value-key": "[CLUSTER_Z_THRESH_INPUT]",
       "type": "Number",
       "optional": false,
       "id": "cluster_z_thresh_input",
@@ -36,7 +36,7 @@
     },
     {
       "description": "Cluster probability threshold",
-      "value-key": "[CLUSTER_PROB_THRESH]",
+      "value-key": "[CLUSTER_PROB_THRESH_INPUT]",
       "type": "Number",
       "optional": false,
       "id": "cluster_prob_thresh_input",
@@ -44,7 +44,7 @@
     },
     {
       "description": "Background image for thresholding",
-      "value-key": "[BACKGROUND_IMAGE]",
+      "value-key": "[BACKGROUND_IMAGE_INPUT]",
       "type": "File",
       "optional": false,
       "id": "background_image_input",

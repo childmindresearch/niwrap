@@ -1,7 +1,7 @@
 {
   "name": "xhemireg",
   "description": "Tool for hemisphere registration in neuroimaging.",
-  "command-line": "xhemireg [SUBJECT] [OUTPUT_DIR] [MAP_LH_FLAG] [MAP_RH_FLAG] [PERFORM_REG_FLAG] [TAL_COMPUTE_FLAG] [NO_TAL_COMPUTE_FLAG] [TAL_ESTIMATE_FLAG] [NO_TAL_ESTIMATE_FLAG] [GCAPREP_SEG_XFM] [THREADS] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "xhemireg [SUBJECT] [OUTPUT_DIR] [MAP_LH] [MAP_RH] [PERFORM_REG] [TAL_COMPUTE] [NO_TAL_COMPUTE] [TAL_ESTIMATE] [NO_TAL_ESTIMATE] [GCAPREP] [THREADS] [VERSION] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "description": "Map from left hemisphere to right hemisphere",
-      "value-key": "[MAP_LH_FLAG]",
+      "value-key": "[MAP_LH]",
       "type": "Flag",
       "optional": true,
       "id": "map_lh",
@@ -33,7 +33,7 @@
     },
     {
       "description": "Map from right hemisphere to left hemisphere",
-      "value-key": "[MAP_RH_FLAG]",
+      "value-key": "[MAP_RH]",
       "type": "Flag",
       "optional": true,
       "id": "map_rh",
@@ -42,7 +42,7 @@
     },
     {
       "description": "Perform registration to create sphere.reg",
-      "value-key": "[PERFORM_REG_FLAG]",
+      "value-key": "[PERFORM_REG]",
       "type": "Flag",
       "optional": true,
       "id": "perform_reg",
@@ -51,7 +51,7 @@
     },
     {
       "description": "Recompute Talairach registration",
-      "value-key": "[TAL_COMPUTE_FLAG]",
+      "value-key": "[TAL_COMPUTE]",
       "type": "Flag",
       "optional": true,
       "id": "tal_compute",
@@ -60,7 +60,7 @@
     },
     {
       "description": "Do not perform Talairach registration",
-      "value-key": "[NO_TAL_COMPUTE_FLAG]",
+      "value-key": "[NO_TAL_COMPUTE]",
       "type": "Flag",
       "optional": true,
       "id": "no_tal_compute",
@@ -69,7 +69,7 @@
     },
     {
       "description": "Compute estimate of Talairach registration from unflipped registration",
-      "value-key": "[TAL_ESTIMATE_FLAG]",
+      "value-key": "[TAL_ESTIMATE]",
       "type": "Flag",
       "optional": true,
       "id": "tal_estimate",
@@ -78,7 +78,7 @@
     },
     {
       "description": "Do not perform estimation of Talairach registration",
-      "value-key": "[NO_TAL_ESTIMATE_FLAG]",
+      "value-key": "[NO_TAL_ESTIMATE]",
       "type": "Flag",
       "optional": true,
       "id": "no_tal_estimate",
@@ -87,7 +87,7 @@
     },
     {
       "description": "Prepare GCA for training symmetrical GCA atlases",
-      "value-key": "[GCAPREP_SEG_XFM]",
+      "value-key": "[GCAPREP]",
       "type": "String",
       "optional": true,
       "id": "gcaprep",
@@ -105,7 +105,7 @@
     },
     {
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -114,7 +114,7 @@
     },
     {
       "description": "Print help and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

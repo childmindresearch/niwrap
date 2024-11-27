@@ -2,7 +2,7 @@
   "tool-version": "24.2.06",
   "name": "rbox",
   "description": "Generate various point distributions. Default is random in cube.",
-  "command-line": "rbox [NUMBER_POINTS] [DIMENSION] [FLAGS] [BOUNDING_BOX] [OFFSET] [SEED] [POINTS]",
+  "command-line": "rbox [NUMBER_POINTS] [DIMENSION] [INTEGER_COORDINATES] [BOUNDING_BOX] [OFFSET] [USER_SEED] [MESH_LATTICE]",
   "inputs": [
     {
       "description": "Number of random points in cube, lens, spiral, sphere or grid",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "c",
       "description": "Add a unit cube to the output (optional: 'c G2.0' sets size)",
-      "value-key": "[FLAGS]",
+      "value-key": "[UNIT_CUBE]",
       "type": "Flag",
       "optional": true,
       "id": "unit_cube",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "d",
       "description": "Add a unit diamond to the output (optional: 'd G2.0' sets size)",
-      "value-key": "[FLAGS]",
+      "value-key": "[UNIT_DIAMOND]",
       "type": "Flag",
       "optional": true,
       "id": "unit_diamond",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "l",
       "description": "Generate a regular 3-d spiral",
-      "value-key": "[FLAGS]",
+      "value-key": "[SPIRAL]",
       "type": "Flag",
       "optional": true,
       "id": "spiral",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "r",
       "description": "Generate a regular polygon (optional: 'r s Z1 G0.1' makes a cone)",
-      "value-key": "[FLAGS]",
+      "value-key": "[REGULAR_POLYGON]",
       "type": "Flag",
       "optional": true,
       "id": "regular_polygon",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "s",
       "description": "Generate cospherical points",
-      "value-key": "[FLAGS]",
+      "value-key": "[COSPHERICAL_POINTS]",
       "type": "Flag",
       "optional": true,
       "id": "cospherical_points",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "x",
       "description": "Generate random points in simplex, may use 'r' or 'Wn'",
-      "value-key": "[FLAGS]",
+      "value-key": "[SIMPLEX_POINTS]",
       "type": "Flag",
       "optional": true,
       "id": "simplex_points",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "y",
       "description": "Same as 'x', plus simplex",
-      "value-key": "[FLAGS]",
+      "value-key": "[SIMPLEX_PLUS_POINTS]",
       "type": "Flag",
       "optional": true,
       "id": "simplex_plus_points",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "P",
       "description": "Add point [n,m,r] first, pads with 0",
-      "value-key": "[POINTS]",
+      "value-key": "[ADD_POINT]",
       "type": "String",
       "optional": true,
       "id": "add_point",
@@ -97,7 +97,7 @@
     {
       "command-line-flag": "L",
       "description": "Lens distribution of radius n. Also 's', 'r', 'G', 'W'.",
-      "value-key": "[FLAGS]",
+      "value-key": "[LENS_DISTRIBUTION]",
       "type": "String",
       "optional": true,
       "id": "lens_distribution",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "M",
       "description": "Lattice (Mesh) rotated by [n,-m,0], [m,n,0], [0,0,r], ...",
-      "value-key": "[POINTS]",
+      "value-key": "[MESH_LATTICE]",
       "type": "String",
       "optional": true,
       "id": "mesh_lattice",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "W",
       "description": "Random distribution within 0.1 of the cube's or sphere's surface",
-      "value-key": "[FLAGS]",
+      "value-key": "[RANDOM_WITHIN]",
       "type": "Flag",
       "optional": true,
       "id": "random_within",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "Z",
       "description": "Random points in a 0.5 disk projected to a sphere, optional gap size (e.g., 'Z0.5 s G0.6')",
-      "value-key": "[FLAGS]",
+      "value-key": "[RANDOM_DISK]",
       "type": "String",
       "optional": true,
       "id": "random_disk",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "h",
       "description": "Output as homogeneous coordinates for cdd",
-      "value-key": "[FLAGS]",
+      "value-key": "[HOMOGENEOUS_COORDINATES]",
       "type": "Flag",
       "optional": true,
       "id": "homogeneous_coordinates",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "n",
       "description": "Remove command line from the first line of output",
-      "value-key": "[FLAGS]",
+      "value-key": "[REMOVE_COMMAND_LINE]",
       "type": "Flag",
       "optional": true,
       "id": "remove_command_line",
@@ -171,7 +171,7 @@
     {
       "command-line-flag": "t",
       "description": "Use time as the random number seed (default is command line)",
-      "value-key": "[FLAGS]",
+      "value-key": "[TIME_SEED]",
       "type": "Flag",
       "optional": true,
       "id": "time_seed",
@@ -180,7 +180,7 @@
     {
       "command-line-flag": "t",
       "description": "Use n as the random number seed",
-      "value-key": "[SEED]",
+      "value-key": "[USER_SEED]",
       "type": "Number",
       "optional": true,
       "id": "user_seed",
@@ -189,7 +189,7 @@
     {
       "command-line-flag": "z",
       "description": "Print integer coordinates, default 'Bn' is 1e+06",
-      "value-key": "[FLAGS]",
+      "value-key": "[INTEGER_COORDINATES]",
       "type": "Flag",
       "optional": true,
       "id": "integer_coordinates",

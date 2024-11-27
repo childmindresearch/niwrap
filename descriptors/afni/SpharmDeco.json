@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Spherical Harmonics Decomposition of a surface's coordinates or data",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "SpharmDeco [<-i_TYPE S>] [<-unit_sph UNIT_SPH_LABEL>] [<-l L>] [<-i_TYPE SD>] [<-data D>] [-bases_prefix BASES] [-prefix PREFIX] [-o_TYPE SDR] [DBG] [s]",
+  "command-line": "SpharmDeco [I_TYPE_S] [UNIT_SPH_LABEL] [ORDER_L] [I_TYPE_SD] [DATA_D] [BASES_PREFIX] [PREFIX] [O_TYPE_SDR] [DEBUG] [SIGMA]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Unit sphere, isotopic to the surface domain over which the data to be decomposed is defined.",
-      "value-key": "[<-i_TYPE S>]",
+      "value-key": "[I_TYPE_S]",
       "type": "File",
       "optional": false,
       "id": "i_type_s",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Label of the unit sphere.",
-      "value-key": "[<-unit_sph UNIT_SPH_LABEL>]",
+      "value-key": "[UNIT_SPH_LABEL]",
       "type": "String",
       "optional": false,
       "id": "unit_sph_label",
@@ -28,7 +28,7 @@
     },
     {
       "description": "Decomposition order.",
-      "value-key": "[<-l L>]",
+      "value-key": "[ORDER_L]",
       "type": "Number",
       "optional": false,
       "id": "order_l",
@@ -36,7 +36,7 @@
     },
     {
       "description": "A surface whose node coordinates provide data vectors (X, Y, Z) to be decomposed or a dataset whose columns are to be individually decomposed. You can specify multiple surfaces to be processed.",
-      "value-key": "[<-i_TYPE SD>]",
+      "value-key": "[I_TYPE_SD]",
       "type": "File",
       "list": true,
       "optional": true,
@@ -45,7 +45,7 @@
     },
     {
       "description": "Data vectors to be decomposed.",
-      "value-key": "[<-data D>]",
+      "value-key": "[DATA_D]",
       "type": "File",
       "optional": true,
       "id": "data_d",
@@ -53,7 +53,7 @@
     },
     {
       "description": "Save the basis functions under the prefix BASES_PREFIX.",
-      "value-key": "[-bases_prefix BASES]",
+      "value-key": "[BASES_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "bases_prefix",
@@ -61,7 +61,7 @@
     },
     {
       "description": "Write out the reconstructed data into dataset PREFIX and write the beta coefficients for each processed data column.",
-      "value-key": "[-prefix PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": true,
       "id": "prefix",
@@ -69,7 +69,7 @@
     },
     {
       "description": "Write out a new surface with reconstructed coordinates.",
-      "value-key": "[-o_TYPE SDR]",
+      "value-key": "[O_TYPE_SDR]",
       "type": "File",
       "list": true,
       "optional": true,
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-debug",
       "description": "Debug levels (1-3)",
-      "value-key": "[DBG]",
+      "value-key": "[DEBUG]",
       "type": "Number",
       "optional": true,
       "id": "debug",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-sigma",
       "description": "Smoothing parameter (0 .. 0.001) which weighs down the contribution of higher order harmonics.",
-      "value-key": "[s]",
+      "value-key": "[SIGMA]",
       "type": "Number",
       "optional": true,
       "id": "sigma",

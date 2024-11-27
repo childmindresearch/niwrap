@@ -3,7 +3,7 @@
   "name": "fsl_histogram",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Histogram plotting tool for FSL",
-  "command-line": "fsl_histogram [INPUT_FILE] [OUTPUT_FILE] [MASK_FILE] [GMMFIT_FILE] [PLOT_TITLE] [LEGEND_FILE] [XLABEL] [YLABEL] [PLOT_HEIGHT] [PLOT_WIDTH] [NUM_BINS] [ZOOM_FACTOR] [USE_GMM_FLAG]",
+  "command-line": "fsl_histogram [INPUT_FILE_DUPLICATE] [OUTPUT_FILE_DUPLICATE] [MASK_FILE_DUPLICATE] [GMMFIT_FILE_DUPLICATE] [PLOT_TITLE_DUPLICATE] [LEGEND_FILE_DUPLICATE] [XLABEL_DUPLICATE] [YLABEL_DUPLICATE] [PLOT_HEIGHT_DUPLICATE] [PLOT_WIDTH_DUPLICATE] [NUM_BINS_DUPLICATE] [ZOOM_FACTOR_DUPLICATE] [USE_GMM_FLAG]",
   "inputs": [
     {
       "command-line-flag": "-i",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--in",
       "description": "Input file name",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_FILE_DUPLICATE]",
       "type": "File",
       "optional": false,
       "id": "input_file_duplicate",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--out",
       "description": "Output filename for the PNG file",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUT_FILE_DUPLICATE]",
       "type": "String",
       "optional": false,
       "id": "output_file_duplicate",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--mask",
       "description": "Mask file name",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASK_FILE_DUPLICATE]",
       "type": "File",
       "optional": true,
       "id": "mask_file_duplicate",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--gmmfit",
       "description": "File name of matrix with parameter estimates of Gaussian/Gamma mixture model (means, variances and proportions per row)",
-      "value-key": "[GMMFIT_FILE]",
+      "value-key": "[GMMFIT_FILE_DUPLICATE]",
       "type": "File",
       "optional": true,
       "id": "gmmfit_file_duplicate",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "--title",
       "description": "Plot title",
-      "value-key": "[PLOT_TITLE]",
+      "value-key": "[PLOT_TITLE_DUPLICATE]",
       "type": "String",
       "optional": true,
       "id": "plot_title_duplicate",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--legend",
       "description": "File name of ASCII text file, one row per legend entry",
-      "value-key": "[LEGEND_FILE]",
+      "value-key": "[LEGEND_FILE_DUPLICATE]",
       "type": "File",
       "optional": true,
       "id": "legend_file_duplicate",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "--xlabel",
       "description": "X-axis label",
-      "value-key": "[XLABEL]",
+      "value-key": "[XLABEL_DUPLICATE]",
       "type": "String",
       "optional": true,
       "id": "xlabel_duplicate",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "--ylabel",
       "description": "Y-axis label",
-      "value-key": "[YLABEL]",
+      "value-key": "[YLABEL_DUPLICATE]",
       "type": "String",
       "optional": true,
       "id": "ylabel_duplicate",
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "--height",
       "description": "Plot height in pixels (default 400)",
-      "value-key": "[PLOT_HEIGHT]",
+      "value-key": "[PLOT_HEIGHT_DUPLICATE]",
       "type": "Number",
       "optional": true,
       "id": "plot_height_duplicate",
@@ -179,7 +179,7 @@
     {
       "command-line-flag": "--width",
       "description": "Plot width in pixels (default 600)",
-      "value-key": "[PLOT_WIDTH]",
+      "value-key": "[PLOT_WIDTH_DUPLICATE]",
       "type": "Number",
       "optional": true,
       "id": "plot_width_duplicate",
@@ -197,7 +197,7 @@
     {
       "command-line-flag": "--bins",
       "description": "Number of histogram bins",
-      "value-key": "[NUM_BINS]",
+      "value-key": "[NUM_BINS_DUPLICATE]",
       "type": "Number",
       "optional": true,
       "id": "num_bins_duplicate",
@@ -215,7 +215,7 @@
     {
       "command-line-flag": "--detail",
       "description": "Zoom factor for y-range (e.g. 2.0)",
-      "value-key": "[ZOOM_FACTOR]",
+      "value-key": "[ZOOM_FACTOR_DUPLICATE]",
       "type": "Number",
       "optional": true,
       "id": "zoom_factor_duplicate",

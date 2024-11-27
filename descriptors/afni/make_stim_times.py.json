@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/make_stim_times/descriptor",
   "description": "Convert a set of 0/1 stim files into a set of stim_times files, or convert real-valued files into those for use with -stim_times_AM2.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "make_stim_times.py [FILES] [PREFIX] [TR] [NRUNS] [NT] [RUN_TRS] [OFFSET] [LABELS] [NO_CONSEC] [AMPLITUDES] [SHOW_VALID_OPTS] [VERBOSE]",
+  "command-line": "make_stim_times.py [FILES] [PREFIX] [TR] [NRUNS] [NT] [RUN_TRS] [OFFSET] [LABELS] [NO_CONSEC_EVENTS] [AMPLITUDES] [SHOW_VALID_OPTS] [VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-no_consec",
       "description": "Do not allow consecutive events",
-      "value-key": "[NO_CONSEC]",
+      "value-key": "[NO_CONSEC_EVENTS]",
       "type": "Flag",
       "optional": true,
       "id": "no_consec_events",

@@ -3,7 +3,7 @@
   "name": "mris_compute_volume_fractions",
   "author": "FreeSurfer Developers",
   "description": "Computes volume fractions based on a given surface and volume.",
-  "command-line": "mris_compute_volume_fractions [VOLUME_FILE] [SURFACE_FILE] [ACCURACY] [OUTPUT_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mris_compute_volume_fractions [VOLUME_FILE] [SURFACE_FILE] [ACCURACY] [OUTPUT_FILE] [DEBUG] [CHECKOPTS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit.",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",

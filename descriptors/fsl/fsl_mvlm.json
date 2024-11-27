@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "description": "Multivariate Linear Model regression on time courses and/or 3D/4D images using SVD (PCA), PLS, normalised PLS, CVA, SVD-CVA or MLM",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fsl_mvlm [INPUT_FILE] [BASENAME_OUTPUT_FILES] [ALGORITHM] [DESIGN_MATRIX] [MASK_IMAGE] [DESIGN_NORMALIZATION] [VN_PERFORM] [DEMEAN] [NMF_DIM] [NMF_ITT] [VERBOSE] [OUT_DATA] [OUT_VNSCALES]",
+  "command-line": "fsl_mvlm [INPUT_FILE] [BASENAME_OUTPUT_FILES] [ALGORITHM] [DESIGN_MATRIX] [MASK_IMAGE] [DESIGN_NORMALIZATION] [VARIANCE_NORMALISATION] [DEMEAN] [NMF_DIM] [NMF_ITERATIONS] [VERBOSE] [OUT_DATA] [OUT_VNSCALES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--vn",
       "description": "Perform MELODIC variance-normalisation on data",
-      "value-key": "[VN_PERFORM]",
+      "value-key": "[VARIANCE_NORMALISATION]",
       "type": "Flag",
       "optional": true,
       "id": "variance_normalisation",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--nmfitt",
       "description": "Number of NMF iterations (default 100)",
-      "value-key": "[NMF_ITT]",
+      "value-key": "[NMF_ITERATIONS]",
       "type": "Number",
       "optional": true,
       "id": "nmf_iterations",

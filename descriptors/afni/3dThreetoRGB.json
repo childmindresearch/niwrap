@@ -3,7 +3,7 @@
   "name": "3dThreetoRGB",
   "author": "AFNI Developers",
   "description": "Converts 3 sub-bricks of input to an RGB-valued dataset.",
-  "command-line": "3dThreetoRGB [PREFIX] [SCALE] [MASK] [FIM_FLAG] [ANAT_FLAG] [DATASET] [DATASET1] [DATASET2] [DATASET3]",
+  "command-line": "3dThreetoRGB [OUTPUT_PREFIX] [SCALE_FACTOR] [MASK_DATASET] [FIM] [ANAT] [INPUT_DATASET] [DATASET1] [INPUT_DATASET2] [INPUT_DATASET3]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset or first dataset if three datasets are provided",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Second dataset, required only if three datasets are provided",
-      "value-key": "[DATASET2]",
+      "value-key": "[INPUT_DATASET2]",
       "type": "File",
       "optional": true,
       "id": "input_dataset2",
@@ -27,7 +27,7 @@
     },
     {
       "description": "Third dataset, required only if three datasets are provided",
-      "value-key": "[DATASET3]",
+      "value-key": "[INPUT_DATASET3]",
       "type": "File",
       "optional": true,
       "id": "input_dataset3",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Write output into dataset with specified prefix",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-scale",
       "description": "Multiply input values by this factor before using as RGB",
-      "value-key": "[SCALE]",
+      "value-key": "[SCALE_FACTOR]",
       "type": "Number",
       "integer": false,
       "optional": true,
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Only output nonzero values where the mask dataset is nonzero",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_DATASET]",
       "type": "File",
       "optional": true,
       "id": "mask_dataset",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-fim",
       "description": "Write result as a 'fim' type dataset (default behavior)",
-      "value-key": "[FIM_FLAG]",
+      "value-key": "[FIM]",
       "type": "Flag",
       "optional": true,
       "id": "fim",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-anat",
       "description": "Write result as a anatomical type dataset",
-      "value-key": "[ANAT_FLAG]",
+      "value-key": "[ANAT]",
       "type": "Flag",
       "optional": true,
       "id": "anat",

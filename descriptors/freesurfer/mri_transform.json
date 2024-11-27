@@ -1,7 +1,7 @@
 {
   "name": "mri_transform",
   "description": "Applies a linear transform to an MRI volume and writes out the result.",
-  "command-line": "mri_transform [INPUT_VOLUME] [LTA_FILE] [OUTPUT_FILE] [OUT_LIKE] [INVERT_FLAG]",
+  "command-line": "mri_transform [INPUT_VOLUME] [LTA_FILE] [OUTPUT_FILE] [OUT_LIKE] [INVERT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-I",
       "description": "Invert transform coordinates",
-      "value-key": "[INVERT_FLAG]",
+      "value-key": "[INVERT]",
       "type": "Flag",
       "optional": true,
       "id": "invert",

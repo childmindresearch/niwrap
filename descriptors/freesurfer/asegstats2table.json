@@ -1,7 +1,7 @@
 {
   "name": "asegstats2table",
   "description": "Converts a subcortical stats file created by recon-all and/or mri_segstats (e.g., aseg.stats) into a table.",
-  "command-line": "asegstats2table [SUBJECTS] [INPUTS] [TABLEFILE] [SUBJECTSFILE] [QDEC] [QDECLONG] [FSGD] [MAXSEGNO] [SEGIDS_FROM_FILE] [SEGNO_INCLUDE] [SEGNO_EXCLUDE] [MEASURE] [DELIMITER] [STATSFILE] [SUBDIR] [SCALE] [WRITE_ETIV] [DEBUG] [TRANSPOSE_FLAG] [COMMON_SEGS_FLAG] [ALL_SEGS_FLAG] [NO_VOL_EXTRAS_FLAG] [SKIP_MISSING_FLAG] [REPLACE53_FLAG]",
+  "command-line": "asegstats2table [SUBJECTS] [INPUTS] [TABLEFILE] [SUBJECTSFILE] [QDEC] [QDEC_LONG] [FSGD] [MAXSEGNO] [SEGIDS_FROM_FILE] [SEGNO_INCLUDE] [SEGNO_EXCLUDE] [MEASURE] [DELIMITER] [STATSFILE] [SUBDIR] [SCALE] [WRITE_ETIV] [DEBUG] [TRANSPOSE_FLAG] [COMMON_SEGS_FLAG] [ALL_SEGS_FLAG] [NO_VOL_EXTRAS_FLAG] [SKIP_MISSING_FLAG] [REPLACE53_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -58,7 +58,7 @@
       "command-line-flag": "--qdec-long",
       "type": "File",
       "optional": true,
-      "value-key": "[QDECLONG]"
+      "value-key": "[QDEC_LONG]"
     },
     {
       "id": "fsgd",
@@ -133,7 +133,7 @@
       "command-line-flag": "--statsfile",
       "type": "String",
       "optional": true,
-      "value-key": "[STATSFNAME]"
+      "value-key": "[STATSFILE]"
     },
     {
       "id": "subdir",

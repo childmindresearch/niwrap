@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "cp-dicom",
   "description": "Copies DICOM files into separate directories for each series based on DICOM headers.",
-  "command-line": "cp-dicom [DICOM_DIR] [OUTPUT_DIR] [DEBUG_FLAG]",
+  "command-line": "cp-dicom [DICOM_DIR] [OUTPUT_DIR] [DEBUG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-debug",
       "description": "Print additional debug information",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

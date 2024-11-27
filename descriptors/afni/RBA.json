@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Region-Based Analysis Program through Bayesian Multilevel Modeling",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "RBA [PREFIX] [DATA_TABLE] [CHAINS] [ITERATIONS] [MODEL] [EOI] [WCP] [TSTAT] [STDZ] [C_VARS] [Q_VARS] [DIST_ROI] [DIST_SUBJ] [DIST_Y] [RIDGE_PLOT] [ROI] [SUBJ] [SCALE] [SE] [PDP] [MEAN] [SIGMA] [DEBUG] [VERBOSE] [MD] [R2Z]",
+  "command-line": "RBA [PREFIX] [DATATABLE] [CHAINS] [ITERATIONS] [MODEL] [EOI] [WCP] [TSTAT] [STDZ] [CVARS] [QVARS] [DISTROI] [DISTSUBJ] [DISTY] [RIDGEPLOT] [ROI] [SUBJ] [SCALE] [SE] [PDP] [MEAN] [SIGMA] [DEBUG] [VERBOSE] [MD] [R2Z]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     },
     {
       "description": "Data table in pure text format.",
-      "value-key": "[DATA_TABLE]",
+      "value-key": "[DATATABLE]",
       "type": "File",
       "optional": false,
       "id": "dataTable",
@@ -93,7 +93,7 @@
     },
     {
       "description": "Identify categorical (qualitative) variables (or factors).",
-      "value-key": "[C_VARS]",
+      "value-key": "[CVARS]",
       "type": "String",
       "optional": true,
       "id": "cVars",
@@ -102,7 +102,7 @@
     },
     {
       "description": "Identify quantitative variables (or covariates).",
-      "value-key": "[Q_VARS]",
+      "value-key": "[QVARS]",
       "type": "String",
       "optional": true,
       "id": "qVars",
@@ -111,7 +111,7 @@
     },
     {
       "description": "Specify the distribution for the ROIs.",
-      "value-key": "[DIST_ROI]",
+      "value-key": "[DISTROI]",
       "type": "String",
       "optional": true,
       "id": "distROI",
@@ -120,7 +120,7 @@
     },
     {
       "description": "Specify the distribution for the subjects.",
-      "value-key": "[DIST_SUBJ]",
+      "value-key": "[DISTSUBJ]",
       "type": "String",
       "optional": true,
       "id": "distSubj",
@@ -129,7 +129,7 @@
     },
     {
       "description": "Specify the distribution for the response variable.",
-      "value-key": "[DIST_Y]",
+      "value-key": "[DISTY]",
       "type": "String",
       "optional": true,
       "id": "distY",
@@ -138,7 +138,7 @@
     },
     {
       "description": "Plot the posterior distributions stacked together.",
-      "value-key": "[RIDGE_PLOT]",
+      "value-key": "[RIDGEPLOT]",
       "type": "String",
       "optional": true,
       "id": "ridgePlot",

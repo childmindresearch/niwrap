@@ -2,11 +2,11 @@
   "name": "run_segmentSubjectT1T2_autoEstimateAlveusML.sh",
   "description": "Automated segmentation tool for T1 and T2 weighted images to estimate the Alveus.",
   "schema-version": "0.5",
-  "command-line": "run_segmentSubjectT1T2_autoEstimateAlveusML.sh [DEPLOYED_MCRROOT] [ARGS]",
+  "command-line": "run_segmentSubjectT1T2_autoEstimateAlveusML.sh [DEPLOYED_MCR_ROOT] [ADDITIONAL_ARGS]",
   "inputs": [
     {
       "description": "Root directory for the deployed MATLAB Compiler Runtime (MCR).",
-      "value-key": "[DEPLOYED_MCRROOT]",
+      "value-key": "[DEPLOYED_MCR_ROOT]",
       "type": "String",
       "optional": false,
       "id": "deployed_mcr_root",
@@ -14,7 +14,7 @@
     },
     {
       "description": "Additional command-line arguments for the underlying processing tool.",
-      "value-key": "[ARGS]",
+      "value-key": "[ADDITIONAL_ARGS]",
       "type": "String",
       "optional": true,
       "id": "additional_args",

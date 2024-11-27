@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-matvec_in2out",
       "description": "Read a 3x4 affine transform matrix+vector from file",
-      "value-key": "[MATVEC_IN2OUT_FILE]",
+      "value-key": "[MATVEC_IN2OUT]",
       "type": "File",
       "id": "matvec_in2out",
       "name": "Matrix File (in2out)",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-matvec_out2in",
       "description": "Read a 3x4 affine transform matrix+vector from file",
-      "value-key": "[MATVEC_OUT2IN_FILE]",
+      "value-key": "[MATVEC_OUT2IN]",
       "type": "File",
       "id": "matvec_out2in",
       "name": "Matrix File (out2in)",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-matparent",
       "description": "Read in the matrix from WARPDRIVE_MATVEC_* attributes in the header of dataset",
-      "value-key": "[MATPARENT_DATASET]",
+      "value-key": "[MATPARENT]",
       "type": "String",
       "id": "matparent",
       "name": "Matrix Parent Dataset",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-card2oblique",
       "description": "Make cardinal dataset oblique to match oblique dataset",
-      "value-key": "[OBLIQUE_DATASET]",
+      "value-key": "[CARD2OBLIQUE]",
       "type": "String",
       "id": "card2oblique",
       "name": "Cardinal to Oblique Dataset",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-oblique_parent",
       "description": "Make cardinal dataset oblique to match oblique dataset",
-      "value-key": "[OBLIQUE_DATASET]",
+      "value-key": "[OBLIQUE_PARENT]",
       "type": "String",
       "id": "oblique_parent",
       "name": "Oblique Parent Dataset",
@@ -164,7 +164,7 @@
     {
       "command-line-flag": "-newgrid",
       "description": "Compute new dataset on a new 3D grid, with specified spacing",
-      "value-key": "[NEWGRID_SPACING]",
+      "value-key": "[NEWGRID]",
       "type": "Number",
       "id": "newgrid",
       "name": "New Grid Spacing",
@@ -173,7 +173,7 @@
     {
       "command-line-flag": "-gridset",
       "description": "Compute new dataset on the same grid as another dataset",
-      "value-key": "[GRIDSET_DATASET]",
+      "value-key": "[GRIDSET]",
       "type": "String",
       "id": "gridset",
       "name": "Gridset Dataset",
@@ -182,7 +182,7 @@
     {
       "command-line-flag": "-zpad",
       "description": "Pad input dataset with specified planes of zeros on all sides before transformation",
-      "value-key": "[ZPAD_VALUE]",
+      "value-key": "[ZPAD]",
       "type": "Number",
       "id": "zpad",
       "name": "Zero Padding",

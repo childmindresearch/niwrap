@@ -3,7 +3,7 @@
   "name": "quantifyHAsubregions.sh",
   "author": "FreeSurfer Developers",
   "description": "Tool to quantify hippocampal subregions using FreeSurfer",
-  "command-line": "quantifyHAsubregions.sh [PREFIX] [SUFFIX] [OUTPUT_FILE] [SUBJECTS_DIR]",
+  "command-line": "quantifyHAsubregions.sh [PREFIX] [SUFFIX] [OUTPUT_FILE] [SUBJECTS_DIRECTORY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "description": "Directory containing the subject data. If not provided, the current directory is used.",
-      "value-key": "[SUBJECTS_DIR]",
+      "value-key": "[SUBJECTS_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "subjects_directory",

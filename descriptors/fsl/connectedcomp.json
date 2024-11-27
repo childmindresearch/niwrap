@@ -3,11 +3,11 @@
   "name": "connectedcomp",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Connected component analysis tool",
-  "command-line": "connectedcomp [INPUT_VOLUME] [OUTPUT_VOLUME] [NUM_CONNECT]",
+  "command-line": "connectedcomp [IN_VOLUME] [OUTPUT_VOLUME] [NUM_CONNECT]",
   "inputs": [
     {
       "description": "Input image volume",
-      "value-key": "[INPUT_VOLUME]",
+      "value-key": "[IN_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "in_volume",

@@ -3,7 +3,7 @@
   "name": "groupstats",
   "author": "FreeSurfer Developers",
   "description": "A script for comprehensive group analysis on both maps and ROI results within FreeSurfer.",
-  "command-line": "groupstats [OUTDIR] [GROUP_FSGD_OR_SUBJECTFILE] [SMOOTHING_LEVELS] [SUBJECTS_DIR] [MAP_NAME] [SRCSURFREG] [OUTPUT_OPTIONS...]",
+  "command-line": "groupstats [OUTDIR] [SUBJECTFILE] [FWHM] [SUBJECT_DIR] [MAPNAME] [SRCSURFREG] [KEEP53]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--fsgd",
       "description": "Specify the FSGD file for the group",
-      "value-key": "[GROUP_FSGD_OR_SUBJECTFILE]",
+      "value-key": "[GROUP_FSGD]",
       "type": "File",
       "optional": true,
       "id": "group_fsgd",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "--f",
       "description": "Subject list file",
-      "value-key": "[GROUP_FSGD_OR_SUBJECTFILE]",
+      "value-key": "[SUBJECTFILE]",
       "type": "File",
       "optional": true,
       "id": "subjectfile",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "--fwhm",
       "description": "Specify smoothing level(s)",
-      "value-key": "[SMOOTHING_LEVELS]",
+      "value-key": "[FWHM]",
       "type": "Number",
       "optional": true,
       "list": true,
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--sd",
       "description": "Subject directory",
-      "value-key": "[SUBJECTS_DIR]",
+      "value-key": "[SUBJECT_DIR]",
       "type": "String",
       "optional": true,
       "id": "subject_dir",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--m",
       "description": "Use the given map name",
-      "value-key": "[MAP_NAME]",
+      "value-key": "[MAPNAME]",
       "type": "String",
       "optional": true,
       "id": "mapname",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--no-maps",
       "description": "Only analyze ROI data",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[NO_MAPS]",
       "type": "Flag",
       "optional": true,
       "id": "no_maps",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Only analyze left hemisphere",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[LH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "lh_only",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Only analyze right hemisphere",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[RH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "rh_only",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--no-aparcstats",
       "description": "Do not compute aparcstats",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[NO_APARCSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_aparcstats",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "--no-asegstats",
       "description": "Do not compute asegstats",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[NO_ASEGSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_asegstats",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--no-wparcstats",
       "description": "Do not compute wmparcstats",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[NO_WPARCSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_wparcstats",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--no-stats",
       "description": "Do not perform any ROI stats",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[NO_STATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_stats",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "--new",
       "description": "Append .new.mris_make_surfaces to map names",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[NEW]",
       "type": "Flag",
       "optional": true,
       "id": "new",
@@ -149,7 +149,7 @@
     {
       "command-line-flag": "--base",
       "description": "Sets measure thickness area volume curvature sulcus (excludes white-gray percentage)",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[BASE]",
       "type": "Flag",
       "optional": true,
       "id": "base",
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "--keep53",
       "description": "Keep 5.3 aseg names (e.g., Thalamus-Proper)",
-      "value-key": "[OUTPUT_OPTIONS...]",
+      "value-key": "[KEEP53]",
       "type": "Flag",
       "optional": true,
       "id": "keep53",

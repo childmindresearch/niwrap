@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "description": "Check for the existence of AFNI datasets.",
   "author": "AFNI Developers",
-  "command-line": "@CheckForAfniDset [NAME]",
+  "command-line": "@CheckForAfniDset [DATASET_NAME]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
       "id": "dataset_name",
       "name": "Dataset Name",
       "type": "String",
-      "value-key": "[NAME]",
+      "value-key": "[DATASET_NAME]",
       "description": "Path to the AFNI dataset (e.g., /Data/stuff/Hello+orig.HEAD)",
       "optional": false
     }

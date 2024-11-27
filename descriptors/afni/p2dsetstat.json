@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Convert a p-value to a statistic of choice with reference to a specific dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "p2dsetstat [DATASET] [PVAL] [SIDEDNESS] [QUIET]",
+  "command-line": "p2dsetstat [DATASET] [PVALUE] [ONESIDED] [QUIET]",
   "inputs": [
     {
       "command-line-flag": "-inset",
@@ -24,7 +24,7 @@
       "minimum": 0,
       "maximum": 1,
       "optional": false,
-      "value-key": "[PVAL]"
+      "value-key": "[PVALUE]"
     },
     {
       "command-line-flag": "-bisided",
@@ -33,7 +33,7 @@
       "name": "Two-sided",
       "type": "Flag",
       "optional": true,
-      "value-key": "[SIDEDNESS]"
+      "value-key": "[BISIDED]"
     },
     {
       "command-line-flag": "-2sided",
@@ -42,7 +42,7 @@
       "name": "Two-sided",
       "type": "Flag",
       "optional": true,
-      "value-key": "[SIDEDNESS]"
+      "value-key": "[TWOSIDED]"
     },
     {
       "command-line-flag": "-1sided",
@@ -51,7 +51,7 @@
       "name": "One-sided",
       "type": "Flag",
       "optional": true,
-      "value-key": "[SIDEDNESS]"
+      "value-key": "[ONESIDED]"
     },
     {
       "command-line-flag": "-quiet",

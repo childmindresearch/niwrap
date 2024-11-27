@@ -3,7 +3,7 @@
   "name": "fvcompare",
   "author": "FreeSurfer Developers",
   "description": "Simultaneously loads volume, segmentation, and surface data from two subjects in freeview, for comparing across time or different analysis methods.",
-  "command-line": "fvcompare [SUBJECT1] [SUBJECT2] [SUBJECT_DIR1] [SUBJECT_DIR2] [NAME1] [NAME2] [COLOR1] [VOLUME] [SEGMENTATION] [ASEG_FLAG] [NO_SEG_FLAG] [HEMI_FLAG] [NO_SURF_FLAG] [GRAY_LEVELS] [CURSOR_POSITION] [ZOOM] [ANNOTATION] [APARC_FLAG] [INFLATED_FLAG] [WHITE_FLAG] [ORIG_FLAG] [SURF_NAME] [POINTSET] [WOT2_FLAG]",
+  "command-line": "fvcompare [SUBJECT1] [SUBJECT2] [SUBJECT_DIR1] [SUBJECT_DIR2] [NAME1] [NAME2] [COLOR1] [VOLUME] [SEGMENTATION] [ASEG] [NO_SEG] [RIGHT_HEMI] [NO_SURF] [GRAY_LEVELS] [CURSOR_POSITION] [ZOOM_LEVEL] [ANNOTATION] [APARC] [INFLATED] [WHITE] [ORIG] [SURF_NAME] [POINTSET] [WOT2]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--aseg",
       "description": "Add aseg.mgz to segmentation list",
-      "value-key": "[ASEG_FLAG]",
+      "value-key": "[ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "aseg",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--no-seg",
       "description": "Do not display segmentations",
-      "value-key": "[NO_SEG_FLAG]",
+      "value-key": "[NO_SEG]",
       "type": "Flag",
       "optional": true,
       "id": "no_seg",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Only display left hemisphere",
-      "value-key": "[HEMI_FLAG]",
+      "value-key": "[LEFT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemi",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Only display right hemisphere",
-      "value-key": "[HEMI_FLAG]",
+      "value-key": "[RIGHT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemi",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "--no-surf",
       "description": "Do not display surfaces",
-      "value-key": "[NO_SURF_FLAG]",
+      "value-key": "[NO_SURF]",
       "type": "Flag",
       "optional": true,
       "id": "no_surf",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "--zoom",
       "description": "Set zoom level",
-      "value-key": "[ZOOM]",
+      "value-key": "[ZOOM_LEVEL]",
       "type": "Number",
       "optional": true,
       "id": "zoom_level",
@@ -177,7 +177,7 @@
     {
       "command-line-flag": "--aparc",
       "description": "Load aparc.annot onto surfaces",
-      "value-key": "[APARC_FLAG]",
+      "value-key": "[APARC]",
       "type": "Flag",
       "optional": true,
       "id": "aparc",
@@ -186,7 +186,7 @@
     {
       "command-line-flag": "--inflated",
       "description": "Load inflated surfaces in addition to white and pial",
-      "value-key": "[INFLATED_FLAG]",
+      "value-key": "[INFLATED]",
       "type": "Flag",
       "optional": true,
       "id": "inflated",
@@ -195,7 +195,7 @@
     {
       "command-line-flag": "--white",
       "description": "Only show white surfaces",
-      "value-key": "[WHITE_FLAG]",
+      "value-key": "[WHITE]",
       "type": "Flag",
       "optional": true,
       "id": "white",
@@ -204,7 +204,7 @@
     {
       "command-line-flag": "--orig",
       "description": "Only show orig.nofix and orig surfaces",
-      "value-key": "[ORIG_FLAG]",
+      "value-key": "[ORIG]",
       "type": "Flag",
       "optional": true,
       "id": "orig",
@@ -231,7 +231,7 @@
     {
       "command-line-flag": "--wot2",
       "description": "Include the ?h.woT2.pial surfs",
-      "value-key": "[WOT2_FLAG]",
+      "value-key": "[WOT2]",
       "type": "Flag",
       "optional": true,
       "id": "wot2",

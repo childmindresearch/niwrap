@@ -3,7 +3,7 @@
   "name": "avscale",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A command line tool for computing affine transformations.",
-  "command-line": "avscale [ALLPARAMS_FLAG] [INVERTED_DDIES_FLAG] [MATRIX_FILE] [NON_REFERENCE_VOLUME] > output.txt",
+  "command-line": "avscale [ALLPARAMS_FLAG] [INVERTEDDIES_FLAG] [MATRIX_FILE] [NON_REFERENCE_VOLUME] > output.txt",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--inverteddies",
       "description": "Flag for inverted eddies.",
-      "value-key": "[INVERTED_DDIES_FLAG]",
+      "value-key": "[INVERTEDDIES_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "inverteddies_flag",

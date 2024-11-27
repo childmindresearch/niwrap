@@ -3,7 +3,7 @@
   "name": "ConvertSurface",
   "author": "AFNI Developers",
   "description": "Reads in a surface and writes it out in another format. Only fields pertinent to SUMA are preserved.",
-  "command-line": "ConvertSurface [INPUT_FILE] [OUTPUT_FILE] [SURFACE_VOLUME_OPTION] [TAL_OPTIONS] [MNI_OPTIONS] [AFFINE_TRANSFORM_OPTIONS] [CONFIG_OPTIONS]",
+  "command-line": "ConvertSurface [INPUT_SURFACE] [OUTPUT_SURFACE] [SURFACE_VOLUME] [TRANSFORM_TLRC] [MNI_LPI] [IXMAT_1D] [NATIVE]",
   "inputs": [
     {
       "command-line-flag": "-i",
@@ -11,7 +11,7 @@
       "id": "input_surface",
       "name": "Input Surface",
       "type": "String",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_SURFACE]",
       "optional": false
     },
     {
@@ -20,7 +20,7 @@
       "id": "output_surface",
       "name": "Output Surface",
       "type": "String",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUT_SURFACE]",
       "optional": false
     },
     {
@@ -29,7 +29,7 @@
       "id": "surface_volume",
       "name": "Surface Volume",
       "type": "String",
-      "value-key": "[SURFACE_VOLUME_OPTION]",
+      "value-key": "[SURFACE_VOLUME]",
       "optional": true
     },
     {
@@ -38,7 +38,7 @@
       "id": "transform_tlrc",
       "name": "Talairach Transform",
       "type": "Flag",
-      "value-key": "[TAL_OPTIONS]",
+      "value-key": "[TRANSFORM_TLRC]",
       "optional": true
     },
     {
@@ -47,7 +47,7 @@
       "id": "mni_rai",
       "name": "MNI RAI",
       "type": "Flag",
-      "value-key": "[MNI_OPTIONS]",
+      "value-key": "[MNI_RAI]",
       "optional": true
     },
     {
@@ -56,7 +56,7 @@
       "id": "mni_lpi",
       "name": "MNI LPI",
       "type": "Flag",
-      "value-key": "[MNI_OPTIONS]",
+      "value-key": "[MNI_LPI]",
       "optional": true
     },
     {
@@ -65,7 +65,7 @@
       "id": "xmat_1D",
       "name": "1D Transformation Matrix",
       "type": "String",
-      "value-key": "[AFFINE_TRANSFORM_OPTIONS]",
+      "value-key": "[XMAT_1D]",
       "optional": true
     },
     {
@@ -74,7 +74,7 @@
       "id": "ixmat_1D",
       "name": "Inverse 1D Transformation Matrix",
       "type": "String",
-      "value-key": "[AFFINE_TRANSFORM_OPTIONS]",
+      "value-key": "[IXMAT_1D]",
       "optional": true
     },
     {
@@ -83,7 +83,7 @@
       "id": "seed",
       "name": "Random Seed",
       "type": "String",
-      "value-key": "[CONFIG_OPTIONS]",
+      "value-key": "[SEED]",
       "optional": true
     },
     {
@@ -92,7 +92,7 @@
       "id": "native",
       "name": "Native Coordinate System",
       "type": "Flag",
-      "value-key": "[CONFIG_OPTIONS]",
+      "value-key": "[NATIVE]",
       "optional": true
     }
   ],

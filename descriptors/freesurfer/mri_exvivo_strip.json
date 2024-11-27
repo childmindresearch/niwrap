@@ -1,12 +1,12 @@
 {
   "name": "mri_exvivo_strip",
   "description": "Tool for processing MRI volumes for ex vivo data",
-  "command-line": "mri_exvivo_strip [INPUT_VOLUME] [OUTPUT_VOLUME] [HEMI] [PRED] [NORM] [FV_FLAG] [UTHRESH] [BORDER] [MULTICHANNEL_FLAG] [MODEL] [WTS] [GPU]",
+  "command-line": "mri_exvivo_strip [INVOL] [OUTVOL] [HEMI] [PRED] [NORM] [FV] [UTHRESH] [BORDER] [MULTICHANNEL] [MODEL] [WTS] [GPU]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input MRI volume",
-      "value-key": "[INPUT_VOLUME]",
+      "value-key": "[INVOL]",
       "type": "File",
       "command-line-flag": "-i",
       "optional": false,
@@ -15,7 +15,7 @@
     },
     {
       "description": "Output MRI volume",
-      "value-key": "[OUTPUT_VOLUME]",
+      "value-key": "[OUTVOL]",
       "type": "String",
       "command-line-flag": "-o",
       "optional": false,
@@ -51,7 +51,7 @@
     },
     {
       "description": "Bring up freeview to show results",
-      "value-key": "[FV_FLAG]",
+      "value-key": "[FV]",
       "type": "Flag",
       "command-line-flag": "--fv",
       "optional": true,
@@ -78,7 +78,7 @@
     },
     {
       "description": "Specify that data has multiple channels",
-      "value-key": "[MULTICHANNEL_FLAG]",
+      "value-key": "[MULTICHANNEL]",
       "type": "Flag",
       "command-line-flag": "--multichannel",
       "optional": true,

@@ -3,7 +3,7 @@
   "name": "fat_proc_convert_dcm_anat",
   "author": "AFNI Developers",
   "description": "Converts an anatomical dataset from DICOM files into a volume, specifically designed to fit in line with other processing such as DTI analysis.",
-  "command-line": "fat_proc_convert_dcm_anat [INPUT_OPTION] [PREFIX] [WORKDIR] [ORIENT] [NO_CLEAN_FLAG] [REORIG_REORIENT_OFF_FLAG] [QC_PREFIX] [NO_CMD_OUT_FLAG] [NO_QC_VIEW_FLAG]",
+  "command-line": "fat_proc_convert_dcm_anat [NIFTI_INPUT] [PREFIX] [WORKDIR] [ORIENT] [NO_CLEAN] [REORIG_REORIENT_OFF] [QC_PREFIX] [NO_CMD_OUT] [NO_QC_VIEW]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-indir",
       "description": "Input as DICOM directory; DIR_IN should contain only DICOM files; all will be selected.",
-      "value-key": "[INPUT_OPTION]",
+      "value-key": "[DICOM_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "dicom_directory",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-innii",
       "description": "Input as NIFTI file (zipped or unzipped fine). Alternative to '-indir ..'.",
-      "value-key": "[INPUT_OPTION]",
+      "value-key": "[NIFTI_INPUT]",
       "type": "File",
       "optional": true,
       "id": "nifti_input",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-no_clean",
       "description": "Prevents removal of working directory.",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NO_CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "no_clean",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-reorig_reorient_off",
       "description": "Turns off the nicety of putting (0, 0, 0) at brain's center of mass (-> 'reorigin' calc) and reorienting data (-> 'reorient' calc).",
-      "value-key": "[REORIG_REORIENT_OFF_FLAG]",
+      "value-key": "[REORIG_REORIENT_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "reorig_reorient_off",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-no_cmd_out",
       "description": "Don't save the command line call and the location where it was run.",
-      "value-key": "[NO_CMD_OUT_FLAG]",
+      "value-key": "[NO_CMD_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "no_cmd_out",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-no_qc_view",
       "description": "Turn off generating QC image files.",
-      "value-key": "[NO_QC_VIEW_FLAG]",
+      "value-key": "[NO_QC_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "no_qc_view",

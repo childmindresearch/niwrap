@@ -4,12 +4,12 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/mergeseg.json",
   "description": "Merges one segmentation into another, replacing the source voxels with those from the merge segmentation where non-zero.",
-  "command-line": "mergeseg [SOURCE_SEG] [MERGE_SEG] [OUT_SEG] [SEGID] [SEGID_ONLY] [SEGID_ERODE] [CTAB]",
+  "command-line": "mergeseg [SRC_SEG] [MERGE_SEG] [OUT_SEG] [SEGID] [SEGID_ONLY] [SEGID_ERODE] [CTAB]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Source segmentation image file",
-      "value-key": "[SOURCE_SEG]",
+      "value-key": "[SRC_SEG]",
       "type": "File",
       "optional": false,
       "id": "src_seg",

@@ -3,7 +3,7 @@
   "name": "mris_expand",
   "author": "FreeSurfer Developers",
   "description": "Expand a given surface by a specified distance",
-  "command-line": "mris_expand [INPUT_SURFACE] [EXPANSION_DISTANCE] [OUTPUT_SURFACE] [THICKNESS_FLAG] [LABEL_FLAG] [TMAP_FLAG] [TMAP_RANDOM_FLAG]",
+  "command-line": "mris_expand [INPUT_SURFACE] [EXPANSION_DISTANCE] [OUTPUT_SURFACE] [THICKNESS] [LABEL] [TMAP] [TMAP_RANDOM]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-thickness",
       "description": "Use thickness for expansion",
-      "value-key": "[THICKNESS_FLAG]",
+      "value-key": "[THICKNESS]",
       "type": "Flag",
       "optional": true,
       "id": "thickness",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-label",
       "description": "Use label file for expansion",
-      "value-key": "[LABEL_FLAG]",
+      "value-key": "[LABEL]",
       "type": "String",
       "optional": true,
       "id": "label",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-tmap",
       "description": "Use a prespecified map of percent thickness to compute the target locations for expansion",
-      "value-key": "[TMAP_FLAG]",
+      "value-key": "[TMAP]",
       "type": "String",
       "optional": true,
       "id": "tmap",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-tmap random",
       "description": "Create a random target distance map with Gaussian sampling for the target locations",
-      "value-key": "[TMAP_RANDOM_FLAG]",
+      "value-key": "[TMAP_RANDOM]",
       "type": "String",
       "optional": true,
       "id": "tmap_random",

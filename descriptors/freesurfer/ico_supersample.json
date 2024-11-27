@@ -2,13 +2,13 @@
   "name": "ico_supersample",
   "tool-version": "7.4.1",
   "description": "A tool for refining icosahedron meshes with user-specified parameters.",
-  "command-line": "ico_supersample [REFINE_FLAG] [RADIUS] [PROJECTION_POINT]",
+  "command-line": "ico_supersample [REFINE] [RADIUS] [PROJECTION_POINT]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-y",
       "description": "Refine the icosahedron mesh",
-      "value-key": "[REFINE_FLAG]",
+      "value-key": "[REFINE]",
       "type": "Flag",
       "optional": true,
       "id": "refine",

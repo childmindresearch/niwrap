@@ -3,7 +3,7 @@
   "name": "mris_sample_parc",
   "author": "FreeSurfer Developers",
   "description": "This program samples a volumetric parcellation onto a surface.",
-  "command-line": "mris_sample_parc [SUBJECT_NAME] [HEMI] [PARC_NAME] [OUTPUT_ANNOT] [SDIR] [SURF] [FIX] [REPLACE] [TRANS] [CORTEX] [PROJMM] [PROJ] [PROJFRAC] [FILE] [CT] [V_LEVEL] [FILTER] [SMOOTH] [W_SIZE] [THICKNESS] [CHANGE_UNKNOWN] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mris_sample_parc [SUBJECT_NAME] [HEMISPHERE] [PARC_NAME] [OUTPUT_ANNOT] [SDIR] [SURF] [FIX] [REPLACE] [TRANS] [CORTEX] [PROJMM] [PROJ] [PROJFRAC] [FILE] [CT] [V_LEVEL] [FILTER] [SMOOTH] [W_SIZE] [THICKNESS] [CHANGE_UNKNOWN] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -20,7 +20,7 @@
     },
     {
       "description": "Hemisphere: rh or lh.",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help info.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -210,7 +210,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version info.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

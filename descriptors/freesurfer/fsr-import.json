@@ -3,7 +3,7 @@
   "name": "fsr-import",
   "author": "FreeSurfer Developers",
   "description": "Copies/converts data into a directory structure for samseg-expected format",
-  "command-line": "fsr-import [OUTDIR] [T1W...] [T2W...] [FLAIR...] [CUSTOM_MODES...] [FORCE_UPDATE_FLAG] [NO_CONFORM_FLAG] [HIRES_FLAG]",
+  "command-line": "fsr-import [OUTDIR] [T1W...] [T2W...] [FLAIR...] [CUSTOM_MODES...] [FORCE_UPDATE] [NO_CONFORM] [HIRES]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--t1w",
       "description": "Input T1-weighted image files",
-      "value-key": "[T1W]",
+      "value-key": "[T1W_INPUT]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "--t2w",
       "description": "Input T2-weighted image files",
-      "value-key": "[T2W]",
+      "value-key": "[T2W_INPUT]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--flair",
       "description": "Input FLAIR image files",
-      "value-key": "[FLAIR]",
+      "value-key": "[FLAIR_INPUT]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--mode",
       "description": "Custom modality image file with specified mode name (not t1w, t2w, or flair)",
-      "value-key": "[CUSTOM_MODES]",
+      "value-key": "[CUSTOM_MODE_INPUT]",
       "type": "String",
       "optional": true,
       "list": true,
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--force-update",
       "description": "Update files regardless of timestamp",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "force_update",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--no-conform",
       "description": "Do not conform inputs to 1mm, 256 dimensions",
-      "value-key": "[NO_CONFORM_FLAG]",
+      "value-key": "[NO_CONFORM]",
       "type": "Flag",
       "optional": true,
       "id": "no_conform",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--hires",
       "description": "Same as --no-conform",
-      "value-key": "[HIRES_FLAG]",
+      "value-key": "[HIRES]",
       "type": "Flag",
       "optional": true,
       "id": "hires",

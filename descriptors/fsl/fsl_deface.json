@@ -3,7 +3,7 @@
   "name": "fsl_deface",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to deface a structural T1w image.",
-  "command-line": "fsl_deface [INPUT_FILE] [OUTPUT_FILE] [CROPPED_DEFACING_FLAG] [DEFACING_MASK] [CROPPED_STRUC] [ORIG_TO_STD_MAT] [ORIG_TO_CROPPED_MAT] [CROPPED_TO_STD_MAT] [SHIFT_NUD] [FRACTIONAL_INTENSITY] [BIAS_CORRECT_FLAG] [CENTER_OF_GRAVITY] [QC_IMAGES]",
+  "command-line": "fsl_deface [INFILE] [OUTFILE] [CROPPED_DEFACING_FLAG] [DEFACING_MASK] [CROPPED_STRUC] [ORIG_TO_STD_MAT] [ORIG_TO_CROPPED_MAT] [CROPPED_TO_STD_MAT] [SHIFT_NUD] [FRACTIONAL_INTENSITY] [BIAS_CORRECT_FLAG] [CENTER_OF_GRAVITY] [QC_IMAGES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input T1w image",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Output defaced T1w image",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",

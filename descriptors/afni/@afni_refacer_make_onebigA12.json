@@ -3,7 +3,7 @@
   "name": "@afni_refacer_make_onebigA12",
   "author": "AFNI Developers",
   "description": "Script to align a single T1w dataset to the MNI template and expand it to a 'big' grid.",
-  "command-line": "@afni_refacer_make_onebigA12 [T1W_DATASET_NAME]",
+  "command-line": "@afni_refacer_make_onebigA12 [T1W_DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input T1w dataset name",
-      "value-key": "[T1W_DATASET_NAME]",
+      "value-key": "[T1W_DATASET]",
       "type": "File",
       "optional": false,
       "id": "t1w_dataset",

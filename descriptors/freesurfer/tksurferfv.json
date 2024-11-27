@@ -3,7 +3,7 @@
   "name": "tksurferfv",
   "description": "A script that runs freeview with arguments similar to tksurfer.",
   "author": "FreeSurfer Developers",
-  "command-line": "tksurferfv [SUBJECT] [HEMI] [SURFACE] [TKSURFER_FLAG] [ALL_FLAG] [VGL_FLAG] [NO_VGL_FLAG] [NO_OUTLINE_FLAG] [NEURO_FLAG] [ROTATE_AROUND_CURSOR_FLAG] [HEAT_SCALE]",
+  "command-line": "tksurferfv [SUBJECT] [HEMI] [SURFACE] [TKSURFER] [ALL_SURFACES] [VGL] [NO_VGL] [NO_OUTLINE] [NEURO_ORIENTATION] [ROTATE_AROUND_CURSOR] [HEAT_SCALE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-tksurfer",
       "description": "Use tksurfer instead of freeview.",
-      "value-key": "[TKSURFER_FLAG]",
+      "value-key": "[TKSURFER]",
       "type": "Flag",
       "id": "tksurfer",
       "name": "Tksurfer Flag",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-all",
       "description": "Load white, pial, and inflated surfaces.",
-      "value-key": "[ALL_FLAG]",
+      "value-key": "[ALL_SURFACES]",
       "type": "Flag",
       "id": "all_surfaces",
       "name": "All Surfaces Flag",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-vgl",
       "description": "Run freeview with /usr/pubsw/bin/vglrun.",
-      "value-key": "[VGL_FLAG]",
+      "value-key": "[VGL]",
       "type": "Flag",
       "id": "vgl",
       "name": "VGL Flag",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-no-vgl",
       "description": "Do not run freeview with /usr/pubsw/bin/vglrun.",
-      "value-key": "[NO_VGL_FLAG]",
+      "value-key": "[NO_VGL]",
       "type": "Flag",
       "id": "no_vgl",
       "name": "No VGL Flag",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "-no-outline",
       "description": "Do not show annotations as outlines.",
-      "value-key": "[NO_OUTLINE_FLAG]",
+      "value-key": "[NO_OUTLINE]",
       "type": "Flag",
       "id": "no_outline",
       "name": "No Outline Flag",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-neuro",
       "description": "Use neurological orientation instead of radiological.",
-      "value-key": "[NEURO_FLAG]",
+      "value-key": "[NEURO_ORIENTATION]",
       "type": "Flag",
       "id": "neuro_orientation",
       "name": "Neuro Orientation Flag",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-rca",
       "description": "Rotate around cursor in 3D view.",
-      "value-key": "[ROTATE_AROUND_CURSOR_FLAG]",
+      "value-key": "[ROTATE_AROUND_CURSOR]",
       "type": "Flag",
       "id": "rotate_around_cursor",
       "name": "Rotate Around Cursor Flag",

@@ -4,14 +4,14 @@
   "author": "AFNI Developers",
   "description": "Script to produce a residual time series cleaned by ANATICOR model",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@ANATICOR [TIME_SERIES_VOL] [POLORT] [MOTION] [ASEG] [OUTPUT] [RADIUS] [VIEW] [NUISANCE] [NO_VENTRICLES] [RSQ_WME] [COVERAGE] [VERB] [DIRTY] [ECHO]",
+  "command-line": "@ANATICOR [TS] [POLORT] [MOTION] [ASEG] [PREFIX] [RADIUS] [VIEW] [NUISANCE] [NO_VENTRICLES] [RSQ_WME] [COVERAGE] [VERB] [DIRTY] [ECHO]",
   "inputs": [
     {
       "id": "ts",
       "name": "TimeSeriesVol",
       "type": "File",
       "command-line-flag": "-ts",
-      "value-key": "[TIME_SERIES_VOL]",
+      "value-key": "[TS]",
       "description": "Time series volume which should have already undergone preprocessing steps such as despiking, RetroIcor, RVT correction, time shifting, and volume registration.",
       "optional": false
     },
@@ -46,7 +46,7 @@
       "name": "output",
       "type": "String",
       "command-line-flag": "-prefix",
-      "value-key": "[OUTPUT]",
+      "value-key": "[PREFIX]",
       "description": "Use output (residual time series) for a prefix",
       "optional": false
     },

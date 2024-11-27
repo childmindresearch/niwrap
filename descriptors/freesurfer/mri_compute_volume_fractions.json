@@ -3,7 +3,7 @@
   "name": "mri_compute_volume_fractions",
   "author": "FreeSurfer Developers",
   "description": "Computes partial volume fractions for cortex, subcortical GM, WM and CSF",
-  "command-line": "mri_compute_volume_fractions [OUTPUT_STEM] [REGISTRATION_FILE] [REGHEADER] [USE_USF] [RESOLUTION] [RESMM] [SEGMENTATION_FILE] [WHITE_SURFACE] [PIAL_SURFACE] [NO_ASEG_FLAG] [STACKFILE] [GMFILE] [NO_FILL_CSF_FLAG] [DILATION] [OUT_SEG] [TTSEG] [TTSEG_CTAB] [MGZ_FORMAT_FLAG] [MGH_FORMAT_FLAG] [NII_FORMAT_FLAG] [NII_GZ_FORMAT_FLAG] [TTYPE_HEAD_FLAG] [VG_THRESH] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_compute_volume_fractions [OUTPUT_STEM] [REGISTRATION_FILE] [REGHEADER] [USF] [RESOLUTION] [RESMM] [SEGMENTATION_FILE] [WSURF] [PSURF] [NO_ASEG] [STACKFILE] [GMFILE] [NO_FILL_CSF] [DILATION] [OUT_SEG] [TTSEG] [TTSEG_CTAB] [MGZ_FORMAT] [MGH_FORMAT] [NII_FORMAT] [NII_GZ_FORMAT] [TTYPE_HEAD] [VG_THRESH] [DEBUG] [CHECKOPTS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--usf",
       "description": "Set anatomical upsample factor (default is 2).",
-      "value-key": "[USE_USF]",
+      "value-key": "[USF]",
       "type": "Number",
       "optional": true,
       "id": "usf",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--wsurf",
       "description": "Specify the white surface (default is 'white').",
-      "value-key": "[WHITE_SURFACE]",
+      "value-key": "[WSURF]",
       "type": "String",
       "optional": true,
       "id": "wsurf",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--psurf",
       "description": "Specify the pial surface (default is 'pial').",
-      "value-key": "[PIAL_SURFACE]",
+      "value-key": "[PSURF]",
       "type": "String",
       "optional": true,
       "id": "psurf",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--no-aseg",
       "description": "Do not include aseg in processing (useful for testing).",
-      "value-key": "[NO_ASEG_FLAG]",
+      "value-key": "[NO_ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "no_aseg",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--no-fill-csf",
       "description": "Do not attempt to fill voxels surrounding segmentation with extracerebral CSF segmentation.",
-      "value-key": "[NO_FILL_CSF_FLAG]",
+      "value-key": "[NO_FILL_CSF]",
       "type": "Flag",
       "optional": true,
       "id": "no_fill_csf",
@@ -162,7 +162,7 @@
     {
       "command-line-flag": "--mgz",
       "description": "Use MGZ format.",
-      "value-key": "[MGZ_FORMAT_FLAG]",
+      "value-key": "[MGZ_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "mgz_format",
@@ -171,7 +171,7 @@
     {
       "command-line-flag": "--mgh",
       "description": "Use MGH format.",
-      "value-key": "[MGH_FORMAT_FLAG]",
+      "value-key": "[MGH_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "mgh_format",
@@ -180,7 +180,7 @@
     {
       "command-line-flag": "--nii",
       "description": "Use NII format.",
-      "value-key": "[NII_FORMAT_FLAG]",
+      "value-key": "[NII_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "nii_format",
@@ -189,7 +189,7 @@
     {
       "command-line-flag": "--nii.gz",
       "description": "Use NII.GZ format.",
-      "value-key": "[NII_GZ_FORMAT_FLAG]",
+      "value-key": "[NII_GZ_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "nii_gz_format",
@@ -198,7 +198,7 @@
     {
       "command-line-flag": "--ttype+head",
       "description": "Use default+head instead of default tissue type info for segmentation.",
-      "value-key": "[TTYPE_HEAD_FLAG]",
+      "value-key": "[TTYPE_HEAD]",
       "type": "Flag",
       "optional": true,
       "id": "ttype_head",
@@ -216,7 +216,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -225,7 +225,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Do not run anything, just check options and exit.",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",

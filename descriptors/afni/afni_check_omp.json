@@ -4,11 +4,11 @@
   "author": "AFNI Developers",
   "description": "Tool to check the OpenMP multi-threading environment for AFNI.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "afni_check_omp [NUM]",
+  "command-line": "afni_check_omp [ITERATIONS]",
   "inputs": [
     {
       "description": "Number of iterations to run",
-      "value-key": "[NUM]",
+      "value-key": "[ITERATIONS]",
       "type": "Number",
       "optional": true,
       "id": "iterations",

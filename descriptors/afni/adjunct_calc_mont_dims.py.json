@@ -3,12 +3,12 @@
   "name": "adjunct_calc_mont_dims.py",
   "author": "AFNI Developers",
   "description": "A helper function for the fat_proc* scripts",
-  "command-line": "adjunct_calc_mont_dims.py [HELP_FLAG]",
+  "command-line": "adjunct_calc_mont_dims.py [HELP]",
   "inputs": [
     {
       "command-line-flag": "-help",
       "description": "Display help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

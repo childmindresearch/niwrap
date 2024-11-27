@@ -3,7 +3,7 @@
   "name": "mri_edit_wm_with_aseg",
   "author": "FreeSurfer Developers",
   "description": "A tool for editing white matter with anatomical segmentation.",
-  "command-line": "mri_edit_wm_with_aseg [INPUT_WM] [INPUT_T1_BRAIN] [ASEG] [OUTPUT_WM] [FILLVEN_FLAG] [FIX_SCM_HA] [FIX_SCM_HA_ONLY] [KEEP_FLAG] [KEEP_IN_FLAG] [LH_FLAG] [RH_FLAG] [FIX_ENTO_WM] [SA_FIX_ENTO_WM] [DEBUG_VOXEL]",
+  "command-line": "mri_edit_wm_with_aseg [INPUT_WM] [INPUT_T1_BRAIN] [ASEG] [OUTPUT_WM] [FILLVEN] [FIX_SCM_HA] [FIX_SCM_HA_ONLY] [KEEP] [KEEP_IN] [LH] [RH] [FIX_ENTO_WM] [SA_FIX_ENTO_WM] [DEBUG_VOXEL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-fillven",
       "description": "Fill ventricular system",
-      "value-key": "[FILLVEN_FLAG]",
+      "value-key": "[FILLVEN]",
       "type": "Flag",
       "optional": true,
       "id": "fillven",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "-keep",
       "description": "Keep edits as found in output volume",
-      "value-key": "[KEEP_FLAG]",
+      "value-key": "[KEEP]",
       "type": "Flag",
       "optional": true,
       "id": "keep",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-keep-in",
       "description": "Keep edits as found in input volume",
-      "value-key": "[KEEP_IN_FLAG]",
+      "value-key": "[KEEP_IN]",
       "type": "Flag",
       "optional": true,
       "id": "keep_in",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-lh",
       "description": "Erase right hemisphere labels from output",
-      "value-key": "[LH_FLAG]",
+      "value-key": "[LH]",
       "type": "Flag",
       "optional": true,
       "id": "lh",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "-rh",
       "description": "Erase left hemisphere labels from output",
-      "value-key": "[RH_FLAG]",
+      "value-key": "[RH]",
       "type": "Flag",
       "optional": true,
       "id": "rh",

@@ -3,7 +3,7 @@
   "name": "train-gcs-atlas",
   "author": "FreeSurfer Developers",
   "description": "Script to train a surface-based gaussian classifier for cortical surface parcellation.",
-  "command-line": "train-gcs-atlas [MANUAL_PARCELLATION] [SUBJECT_LIST_FILE] [HEMI_FLAG] [OUTPUT_FILE] [REG_FLAG] [COLOR_TABLE] [EXCLUDE_SUBJ] [JACKKNIFE_FLAG] [ASEG_NAME] [THREADS_NUM]",
+  "command-line": "train-gcs-atlas [MANUAL_PARCELLATION] [SUBJLIST_FILE] [HEMI_SPEC] [OUTPUT_GCS] [SURF_REG] [COLOR_TABLE] [EXCLUDE_SUBJECT] [JACKKNIFE_FLAG] [ASEG_FILENAME] [THREADS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--f",
       "description": "File containing the list of subjects",
-      "value-key": "[SUBJECT_LIST_FILE]",
+      "value-key": "[SUBJLIST_FILE]",
       "type": "File",
       "optional": true,
       "id": "subjlist_file",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Left hemisphere processing",
-      "value-key": "[HEMI_FLAG]",
+      "value-key": "[LEFT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemi",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Right hemisphere processing",
-      "value-key": "[HEMI_FLAG]",
+      "value-key": "[RIGHT_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemi",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--hemi",
       "description": "Specify hemisphere for processing",
-      "value-key": "[HEMI_FLAG]",
+      "value-key": "[HEMI_SPEC]",
       "type": "String",
       "optional": true,
       "id": "hemi_spec",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--o",
       "description": "Output GCS file",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUT_GCS]",
       "type": "File",
       "optional": false,
       "id": "output_gcs",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--reg",
       "description": "Surface registration file; default is sphere.reg",
-      "value-key": "[REG_FLAG]",
+      "value-key": "[SURF_REG]",
       "type": "File",
       "optional": true,
       "id": "surf_reg",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--x",
       "description": "Exclude a subject from the atlas",
-      "value-key": "[EXCLUDE_SUBJ]",
+      "value-key": "[EXCLUDE_SUBJECT]",
       "type": "String",
       "optional": true,
       "id": "exclude_subject",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--aseg",
       "description": "Aseg filename; default is aseg.auto.mgz",
-      "value-key": "[ASEG_NAME]",
+      "value-key": "[ASEG_FILENAME]",
       "type": "String",
       "optional": true,
       "id": "aseg_filename",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--threads",
       "description": "Number of threads to use",
-      "value-key": "[THREADS_NUM]",
+      "value-key": "[THREADS]",
       "type": "Number",
       "optional": true,
       "id": "threads",

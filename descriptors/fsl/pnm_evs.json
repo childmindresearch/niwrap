@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "PNM EVs: Generates physiological noise regressors for fMRI data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "pnm_evs [INPUT_FILE] [OUTPUT_FILE] [TR] [CARDIAC] [RESPIRATORY] [OC] [OR] [MULTC] [MULTR] [CSF_MASK] [RVT] [HEARTRATE] [RVTSMOOTH] [HEARTRATESMOOTH] [SLICE_DIR] [SLICE_ORDER] [SLICE_TIMING] [DEBUG_FLAG] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "pnm_evs [INPUT_FILE] [OUTPUT_FILE] [TR_VALUE] [CARDIAC_FILE] [RESPIRATORY_FILE] [ORDER_CARDIAC] [ORDER_RESPIRATORY] [ORDER_MULT_CARDIAC] [ORDER_MULT_RESPIRATORY] [CSF_MASK] [RVT_FILE] [HEARTRATE_FILE] [RVT_SMOOTH] [HEARTRATE_SMOOTH] [SLICE_DIRECTION] [SLICE_ORDER] [SLICE_TIMING_FILE] [DEBUG_FLAG] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -30,7 +30,7 @@
     },
     {
       "description": "TR of fMRI volumes (in seconds)",
-      "value-key": "[TR]",
+      "value-key": "[TR_VALUE]",
       "type": "Number",
       "optional": false,
       "id": "tr_value",
@@ -39,7 +39,7 @@
     },
     {
       "description": "Input filename for cardiac values (1 or 2 columns: time [phase])",
-      "value-key": "[CARDIAC]",
+      "value-key": "[CARDIAC_FILE]",
       "type": "File",
       "optional": true,
       "id": "cardiac_file",
@@ -48,7 +48,7 @@
     },
     {
       "description": "Input filename for respiratory phase values (1 or 2 columns: time [phase])",
-      "value-key": "[RESPIRATORY]",
+      "value-key": "[RESPIRATORY_FILE]",
       "type": "File",
       "optional": true,
       "id": "respiratory_file",
@@ -57,7 +57,7 @@
     },
     {
       "description": "Order of basic cardiac regressors (number of Fourier pairs)",
-      "value-key": "[OC]",
+      "value-key": "[ORDER_CARDIAC]",
       "type": "Number",
       "optional": true,
       "default-value": 2,
@@ -67,7 +67,7 @@
     },
     {
       "description": "Order of basic respiratory regressors (number of Fourier pairs)",
-      "value-key": "[OR]",
+      "value-key": "[ORDER_RESPIRATORY]",
       "type": "Number",
       "optional": true,
       "default-value": 1,
@@ -77,7 +77,7 @@
     },
     {
       "description": "Order of multiplicative cardiac terms (also need to set --multr)",
-      "value-key": "[MULTC]",
+      "value-key": "[ORDER_MULT_CARDIAC]",
       "type": "Number",
       "optional": true,
       "default-value": 0,
@@ -87,7 +87,7 @@
     },
     {
       "description": "Order of multiplicative respiratory terms (also need to set --multc)",
-      "value-key": "[MULTR]",
+      "value-key": "[ORDER_MULT_RESPIRATORY]",
       "type": "Number",
       "optional": true,
       "default-value": 0,
@@ -106,7 +106,7 @@
     },
     {
       "description": "Input filename of RVT data (2 columns: time value)",
-      "value-key": "[RVT]",
+      "value-key": "[RVT_FILE]",
       "type": "File",
       "optional": true,
       "id": "rvt_file",
@@ -115,7 +115,7 @@
     },
     {
       "description": "Input filename for heart rate data (2 columns: time value)",
-      "value-key": "[HEARTRATE]",
+      "value-key": "[HEARTRATE_FILE]",
       "type": "File",
       "optional": true,
       "id": "heartrate_file",
@@ -124,7 +124,7 @@
     },
     {
       "description": "Optional smoothing of RVT regressor (in seconds)",
-      "value-key": "[RVTSMOOTH]",
+      "value-key": "[RVT_SMOOTH]",
       "type": "Number",
       "optional": true,
       "default-value": 0,
@@ -134,7 +134,7 @@
     },
     {
       "description": "Optional smoothing of heart rate regressor (in seconds)",
-      "value-key": "[HEARTRATESMOOTH]",
+      "value-key": "[HEARTRATE_SMOOTH]",
       "type": "Number",
       "optional": true,
       "id": "heartrate_smooth",
@@ -143,7 +143,7 @@
     },
     {
       "description": "Specify slice direction (x/y/z)",
-      "value-key": "[SLICE_DIR]",
+      "value-key": "[SLICE_DIRECTION]",
       "type": "String",
       "optional": true,
       "default-value": "z",
@@ -162,7 +162,7 @@
     },
     {
       "description": "Specify slice timing via an external file",
-      "value-key": "[SLICE_TIMING]",
+      "value-key": "[SLICE_TIMING_FILE]",
       "type": "File",
       "optional": true,
       "id": "slice_timing_file",

@@ -1,6 +1,6 @@
 {
   "name": "table2map",
-  "command-line": "table2map [INPUT_TABLE] [OUTPUT_MAP] [SEG_FILE] [PARC_FILE] [TABLE_COLUMNS] [LUT_FILE]",
+  "command-line": "table2map [INPUT_TABLE] [OUTPUT_MAP] [SEGMENTATION] [PARCELLATION] [COLUMNS] [LOOKUP_TABLE]",
   "description": "A tool to map data from a table onto an output map, optionally using segmentation or parcellation files.",
   "schema-version": "0.5",
   "inputs": [
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-s",
       "description": "Segmentation to map to.",
-      "value-key": "[SEG_FILE]",
+      "value-key": "[SEGMENTATION]",
       "type": "File",
       "optional": true,
       "id": "segmentation",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-p",
       "description": "Parcellation to map to.",
-      "value-key": "[PARC_FILE]",
+      "value-key": "[PARCELLATION]",
       "type": "File",
       "optional": true,
       "id": "parcellation",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-c",
       "description": "Table columns to map. All are included by default.",
-      "value-key": "[TABLE_COLUMNS]",
+      "value-key": "[COLUMNS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-l",
       "description": "Alternative lookup table.",
-      "value-key": "[LUT_FILE]",
+      "value-key": "[LOOKUP_TABLE]",
       "type": "File",
       "optional": true,
       "id": "lookup_table",

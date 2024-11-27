@@ -3,7 +3,7 @@
   "name": "samseg",
   "author": "FreeSurfer Developers",
   "description": "SAMSEG (Statistical and Algorithmic Methods for Segmentation) is a tool for segmenting neuroimaging data.",
-  "command-line": "samseg [INPUT_FILES] [T1W_FILES] [T2W_FILES] [FLAIR_FILES] [OTHER_MODALITY_FILES] [OUTPUT_DIRECTORY] [OPTIONS_FILE] [DISSECTION_PHOTO_MODE] [SAVE_HISTORY_FLAG] [SUBJECT] [SAVE_POSTERIORS_FLAG] [SAVE_PROBABILITIES_FLAG] [NO_SAVE_WARP_FLAG] [MRF_FLAG] [NO_MRF_FLAG] [THREADS] [ATLAS_DIRECTORY] [GMM_FILE] [NO_BLOCK_COORDINATE_DESCENT_FLAG] [USE_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR_FLAG] [NO_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR_FLAG] [RECON_FLAG] [FILL_FLAG] [NORMALIZATION2_FLAG] [USE_T2W_FLAG] [USE_FLAIR_FLAG] [HIRES_FLAG] [SUBJECTS_DIRECTORY] [PALLIDUM_SEPARATE_FLAG] [STIFFNESS] [LESION_FLAG] [LESION_MASK_PATTERN] [BIAS_FIELD_SMOOTHING_KERNEL] [REGISTRATION_FILE] [REGMAT_FILE] [INIT_LTA] [REG_ONLY_FLAG] [SAVE_MESH_FLAG] [MAX_ITERS] [DICE_FILE] [IGNORE_UNKNOWN_FLAG] [SMOOTH_WM_CORTEX] [PROFILE_FILE]",
+  "command-line": "samseg [INPUT_FILES] [T1W_FILES] [T2W_FILES] [FLAIR_FILES] [OTHER_MODALITY_FILES] [OUTPUT_DIRECTORY] [OPTIONS_FILE] [DISSECTION_PHOTO_MODE] [SAVE_HISTORY] [SUBJECT] [SAVE_POSTERIORS] [SAVE_PROBABILITIES] [NO_SAVE_WARP] [MRF] [NO_MRF] [THREADS] [ATLAS_DIRECTORY] [GMM_FILE] [NO_BLOCK_COORDINATE_DESCENT] [LOGDOMAIN_COSTANDGRADIENT_CALCULATOR] [NO_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR] [RECON] [FILL] [NORMALIZATION2] [USE_T2W] [USE_FLAIR] [HIRES] [SUBJECTS_DIRECTORY] [PALLIDUM_SEPARATE] [STIFFNESS] [LESION] [LESION_MASK_PATTERN] [BIAS_FIELD_SMOOTHING_KERNEL] [REGISTRATION_FILE] [REGMAT_FILE] [INIT_LTA] [REG_ONLY] [SAVE_MESH] [MAX_ITERS] [DICE_FILE] [IGNORE_UNKNOWN] [SMOOTH_WM_CORTEX] [PROFILE_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--history",
       "description": "Turns on saving of processing history.",
-      "value-key": "[SAVE_HISTORY_FLAG]",
+      "value-key": "[SAVE_HISTORY]",
       "type": "Flag",
       "optional": true,
       "id": "save_history",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--save-posteriors",
       "description": "Save posterior probabilities.",
-      "value-key": "[SAVE_POSTERIORS_FLAG]",
+      "value-key": "[SAVE_POSTERIORS]",
       "type": "Flag",
       "optional": true,
       "id": "save_posteriors",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "--save-probabilities",
       "description": "Save posterior, prior, and likelihood as 3-frame volume for each tissue type.",
-      "value-key": "[SAVE_PROBABILITIES_FLAG]",
+      "value-key": "[SAVE_PROBABILITIES]",
       "type": "Flag",
       "optional": true,
       "id": "save_probabilities",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--no-save-warp",
       "description": "Do not save m3z-style warp.",
-      "value-key": "[NO_SAVE_WARP_FLAG]",
+      "value-key": "[NO_SAVE_WARP]",
       "type": "Flag",
       "optional": true,
       "id": "no_save_warp",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--mrf",
       "description": "Perform Markov Random Field processing.",
-      "value-key": "[MRF_FLAG]",
+      "value-key": "[MRF]",
       "type": "Flag",
       "optional": true,
       "id": "mrf",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "--no-mrf",
       "description": "Do not perform Markov Random Field processing.",
-      "value-key": "[NO_MRF_FLAG]",
+      "value-key": "[NO_MRF]",
       "type": "Flag",
       "optional": true,
       "id": "no_mrf",
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "--no-block-coordinate-descent",
       "description": "Do not use block coordinate descent.",
-      "value-key": "[NO_BLOCK_COORDINATE_DESCENT_FLAG]",
+      "value-key": "[NO_BLOCK_COORDINATE_DESCENT]",
       "type": "Flag",
       "optional": true,
       "id": "no_block_coordinate_descent",
@@ -185,7 +185,7 @@
     {
       "command-line-flag": "--logdomain-costandgradient-calculator",
       "description": "Use log-domain cost and gradient calculator.",
-      "value-key": "[USE_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR_FLAG]",
+      "value-key": "[LOGDOMAIN_COSTANDGRADIENT_CALCULATOR]",
       "type": "Flag",
       "optional": true,
       "id": "logdomain_costandgradient_calculator",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "--no-logdomain-costandgradient-calculator",
       "description": "Do not use log-domain cost and gradient calculator.",
-      "value-key": "[NO_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR_FLAG]",
+      "value-key": "[NO_LOGDOMAIN_COSTANDGRADIENT_CALCULATOR]",
       "type": "Flag",
       "optional": true,
       "id": "no_logdomain_costandgradient_calculator",
@@ -203,7 +203,7 @@
     {
       "command-line-flag": "--recon",
       "description": "Run recon-all.",
-      "value-key": "[RECON_FLAG]",
+      "value-key": "[RECON]",
       "type": "Flag",
       "optional": true,
       "id": "recon",
@@ -212,7 +212,7 @@
     {
       "command-line-flag": "--fill",
       "description": "Use samseg to create filled.mgz instead of recon-all.",
-      "value-key": "[FILL_FLAG]",
+      "value-key": "[FILL]",
       "type": "Flag",
       "optional": true,
       "id": "fill",
@@ -221,7 +221,7 @@
     {
       "command-line-flag": "--normalization2",
       "description": "Use samseg to create brain.mgz instead of recon-all (with --recon).",
-      "value-key": "[NORMALIZATION2_FLAG]",
+      "value-key": "[NORMALIZATION2]",
       "type": "Flag",
       "optional": true,
       "id": "normalization2",
@@ -230,7 +230,7 @@
     {
       "command-line-flag": "--use-t2w",
       "description": "Use the T2-weighted input when running recon-all.",
-      "value-key": "[USE_T2W_FLAG]",
+      "value-key": "[USE_T2W]",
       "type": "Flag",
       "optional": true,
       "id": "use_t2w",
@@ -239,7 +239,7 @@
     {
       "command-line-flag": "--use-flair",
       "description": "Use the FLAIR-weighted input when running recon-all.",
-      "value-key": "[USE_FLAIR_FLAG]",
+      "value-key": "[USE_FLAIR]",
       "type": "Flag",
       "optional": true,
       "id": "use_flair",
@@ -248,7 +248,7 @@
     {
       "command-line-flag": "--hires",
       "description": "Use -hires when running recon-all.",
-      "value-key": "[HIRES_FLAG]",
+      "value-key": "[HIRES]",
       "type": "Flag",
       "optional": true,
       "id": "hires",
@@ -266,7 +266,7 @@
     {
       "command-line-flag": "--pallidum-separate",
       "description": "Move pallidum outside of global white matter class, used for analyzing T2 or FLAIR.",
-      "value-key": "[PALLIDUM_SEPARATE_FLAG]",
+      "value-key": "[PALLIDUM_SEPARATE]",
       "type": "Flag",
       "optional": true,
       "id": "pallidum_separate",
@@ -284,7 +284,7 @@
     {
       "command-line-flag": "--lesion",
       "description": "Turn on lesion segmentation.",
-      "value-key": "[LESION_FLAG]",
+      "value-key": "[LESION]",
       "type": "Flag",
       "optional": true,
       "id": "lesion",
@@ -339,7 +339,7 @@
     {
       "command-line-flag": "--reg-only",
       "description": "Only perform registration.",
-      "value-key": "[REG_ONLY_FLAG]",
+      "value-key": "[REG_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "reg_only",
@@ -357,7 +357,7 @@
     {
       "command-line-flag": "--save-mesh",
       "description": "Save the mesh, useful for longitudinal analysis.",
-      "value-key": "[SAVE_MESH_FLAG]",
+      "value-key": "[SAVE_MESH]",
       "type": "Flag",
       "optional": true,
       "id": "save_mesh",
@@ -384,7 +384,7 @@
     {
       "command-line-flag": "--ignore-unknown",
       "description": "Ignore unknown flags.",
-      "value-key": "[IGNORE_UNKNOWN_FLAG]",
+      "value-key": "[IGNORE_UNKNOWN]",
       "type": "Flag",
       "optional": true,
       "id": "ignore_unknown",

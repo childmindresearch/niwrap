@@ -1,13 +1,13 @@
 {
   "name": "mri_brainvol_stats",
   "description": "Tool for computing brain volume statistics with FreeSurfer",
-  "command-line": "mri_brainvol_stats [SUBJECT] [XML_STRING] [NO_SURFACE] [INCLUDE_SEGMENTATION] [OUTPUT_FILE]",
+  "command-line": "mri_brainvol_stats [SUBJECT_ID] [XML_STRING] [NO_SURFACE] [INCLUDE_SEGMENTATION] [OUTPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--subject",
       "description": "The subject ID for which brain volume statistics are computed",
-      "value-key": "[SUBJECT]",
+      "value-key": "[SUBJECT_ID]",
       "type": "String",
       "optional": false,
       "id": "subject_id",

@@ -1,12 +1,12 @@
 {
   "name": "map_to_base",
   "description": "Maps an image or surface from a time point directory (either cross-sectional or longitudinal) to the base space and outputs it in the appropriate base directory.",
-  "command-line": "map_to_base [BASE_ID] [TP_ID] [INPUT] [RESAMPLE_TYPE] [CROSS_SECTIONAL]",
+  "command-line": "map_to_base [BASEID] [TPID] [INPUT_IMAGE] [RESAMPLE_TYPE] [CROSS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Identifier of the base.",
-      "value-key": "[BASE_ID]",
+      "value-key": "[BASEID]",
       "type": "String",
       "optional": false,
       "id": "baseid",
@@ -14,7 +14,7 @@
     },
     {
       "description": "Identifier of the time point, without the '.long.baseid' suffix.",
-      "value-key": "[TP_ID]",
+      "value-key": "[TPID]",
       "type": "String",
       "optional": false,
       "id": "tpid",
@@ -22,7 +22,7 @@
     },
     {
       "description": "Input image, e.g., norm.mgz, aseg.mgz, lh.white.",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_IMAGE]",
       "type": "String",
       "optional": false,
       "id": "input_image",
@@ -38,7 +38,7 @@
     },
     {
       "description": "If '1', input is from cross sectionals; default is to use longitudinal directories.",
-      "value-key": "[CROSS_SECTIONAL]",
+      "value-key": "[CROSS]",
       "type": "String",
       "optional": true,
       "id": "cross",

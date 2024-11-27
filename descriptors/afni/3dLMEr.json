@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/gangchen_homepage",
   "description": "Program for Voxelwise Linear Mixed-Effects (LME) Analysis",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dLMEr [BOUND_LOWER] [BOUND_UPPER] [USE_CIO] [INPUT_DATA_TABLE] [DEBUG_ARGS] [GLF_CODE] [GLT_CODE] [HELP] [INPUT_FILE_COLUMN] [JOBS] [MASK] [MODEL] [PREFIX] [QVAR_CENTERS] [QVARS] [RESID] [USE_RIO] [SHOW_OPTIONS] [SS_TYPE] [TRR] [VVAR_CENTERS] [VVARS]",
+  "command-line": "3dLMEr [BOUND_LOWER] [BOUND_UPPER] [CIO] [DATA_TABLE] [DEBUG_ARGS] [GLF_CODE] [GLT_CODE] [HELP] [INPUT_FILE_COLUMN] [JOBS] [MASK] [MODEL] [PREFIX] [QVAR_CENTERS] [QVARS] [RESID] [RIO] [SHOW_OPTIONS] [SS_TYPE] [TRR] [VVAR_CENTERS] [VVARS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-cio",
       "description": "Use AFNI's C io functions",
-      "value-key": "[USE_CIO]",
+      "value-key": "[CIO]",
       "type": "Flag",
       "optional": true,
       "id": "cio",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-dataTable",
       "description": "List the data structure with a header as the first line",
-      "value-key": "[INPUT_DATA_TABLE]",
+      "value-key": "[DATA_TABLE]",
       "type": "File",
       "optional": false,
       "id": "data_table",
@@ -156,7 +156,7 @@
     {
       "command-line-flag": "-Rio",
       "description": "Use R's io functions",
-      "value-key": "[USE_RIO]",
+      "value-key": "[RIO]",
       "type": "Flag",
       "optional": true,
       "id": "rio",

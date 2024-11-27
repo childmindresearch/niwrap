@@ -1,7 +1,7 @@
 {
   "name": "tal_compare",
   "description": "Tool for comparing TAL databases",
-  "command-line": "tal_compare [REF_FILE] [MOVING_FILE] [OUTPUT_FILE] [VERBOSE_FLAG]",
+  "command-line": "tal_compare [REF_FILE] [MOVING_FILE] [OUTPUT_FILE] [VERBOSE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-v",
       "description": "Enable verbose output.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

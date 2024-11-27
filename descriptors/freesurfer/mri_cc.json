@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
   "description": "Segments the corpus callosum into five separate labels in the subcortical segmentation volume.",
-  "command-line": "mri_cc [SUBJECT_NAME] [OUTPUT_FLAG] [ASEG_FILE] [NORM_FILE] [SUBJECTS_DIR] [ROTATION_LTA] [FORCE_FLAG] [INCLUDE_FORNIX] [COMPARTMENTS] [THICKNESS] [SKIP_VOXELS] [MAX_ROTATION]",
+  "command-line": "mri_cc [SUBJECT_NAME] [OUTPUT_FILE] [ASEG_FILE] [NORM_FILE] [SDIR] [ROTATION_LTA] [FORCE_FLAG] [INCLUDE_FORNIX] [COMPARTMENTS] [THICKNESS] [SKIP_VOXELS] [MAX_ROTATION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-o",
       "description": "Write aseg including CC to SDIR/mri/<fname>",
-      "value-key": "[OUTPUT_FLAG]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": true,
       "id": "output_file",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-sdir",
       "description": "Set SUBJECTS_DIR to <dname>",
-      "value-key": "[SUBJECTS_DIR]",
+      "value-key": "[SDIR]",
       "type": "String",
       "optional": true,
       "id": "sdir",

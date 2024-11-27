@@ -3,7 +3,7 @@
   "name": "sfa2fieldsign",
   "author": "FreeSurfer Developers",
   "description": "Computes fieldsign map from sfa-sess output. Masks the angle volumes and samples them to the surface.",
-  "command-line": "sfa2fieldsign [SFADIR] [REGISTER_DAT] [THRESH] [FWHM] [PROJ_FRAC] [OCCIP_FLAG] [PATCH] [OSD] [LH_FLAG] [RH_FLAG]",
+  "command-line": "sfa2fieldsign [SFADIR] [REGISTER_DAT] [THRESHOLD] [FWHM] [PROJ_FRAC] [OCCIP] [PATCH] [OSD] [LH] [RH]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--thresh",
       "description": "Sigthresh threshold (Default: 2)",
-      "value-key": "[THRESH]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "threshold",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "--occip",
       "description": "Use ?h.occip.patch.flat",
-      "value-key": "[OCCIP_FLAG]",
+      "value-key": "[OCCIP]",
       "type": "Flag",
       "optional": true,
       "id": "occip",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Process left hemisphere only",
-      "value-key": "[LH_FLAG]",
+      "value-key": "[LH]",
       "type": "Flag",
       "optional": true,
       "id": "lh",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Process right hemisphere only",
-      "value-key": "[RH_FLAG]",
+      "value-key": "[RH]",
       "type": "Flag",
       "optional": true,
       "id": "rh",

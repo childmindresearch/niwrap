@@ -3,7 +3,7 @@
   "name": "3dLRflip",
   "author": "AFNI Developers",
   "description": "Flips the rows of a dataset along one of the three axes to correct dataset direction labeling errors",
-  "command-line": "3dLRflip [FLIP_OPTION] [PREFIX] [INPUT_DATASETS]",
+  "command-line": "3dLRflip [FLIP_Z] [OUTPUT_PREFIX] [DATASETS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Datasets to flip",
-      "value-key": "[INPUT_DATASETS]",
+      "value-key": "[DATASETS]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix to use for output. If multiple datasets are input, the program will choose a prefix for each output.",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-LR",
       "description": "Flip about Left-Right axis",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_LR]",
       "type": "Flag",
       "optional": true,
       "id": "flip_lr",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-AP",
       "description": "Flip about Anterior-Posterior axis",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_AP]",
       "type": "Flag",
       "optional": true,
       "id": "flip_ap",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-IS",
       "description": "Flip about Inferior-Superior axis",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_IS]",
       "type": "Flag",
       "optional": true,
       "id": "flip_is",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-X",
       "description": "Flip about the 1st direction",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_X]",
       "type": "Flag",
       "optional": true,
       "id": "flip_x",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-Y",
       "description": "Flip about the 2nd direction",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_Y]",
       "type": "Flag",
       "optional": true,
       "id": "flip_y",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-Z",
       "description": "Flip about the 3rd direction",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_Z]",
       "type": "Flag",
       "optional": true,
       "id": "flip_z",

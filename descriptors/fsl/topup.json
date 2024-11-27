@@ -3,7 +3,7 @@
   "name": "topup",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "topup is part of FSL and is used to estimate and correct for susceptibility-induced distortions in echo planar imaging (EPI) data.",
-  "command-line": "topup [IMAIN] [DATAIN] [OUT] [FOUT] [IOUT] [LOGOUT] [WARPres] [SUBSAMP] [FWHM] [CONFIG] [MITER] [LAMBDA] [SSQLAMBDA] [REGMOD] [ESTMOV] [MINMET] [SPLINEORDER] [NUMPREC] [INTERP] [SCALE] [REGRID] [NTHR] [VERBOSE]",
+  "command-line": "topup [IMAIN] [DATAIN] [OUT] [FOUT] [IOUT] [LOGOUT] [WARPRES] [SUBSAMP] [FWHM] [CONFIG] [MITER] [LAMBDA] [SSQLAMBDA] [REGMOD] [ESTMOV] [MINMET] [SPLINEORDER] [NUMPREC] [INTERP] [SCALE] [REGRID] [NTHR] [VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -73,7 +73,7 @@
       "command-line-flag": "--warpres",
       "command-line-flag-separator": "=",
       "description": "(Approximate) resolution (in mm) of warp basis for the different sub-sampling levels, default 10",
-      "value-key": "[WARPres]",
+      "value-key": "[WARPRES]",
       "type": "Number",
       "optional": true,
       "id": "warpres",

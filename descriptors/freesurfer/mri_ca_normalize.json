@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "UNKNOWN",
   "description": "This program creates a normalized volume using the brain volume and an input gca file.",
-  "command-line": "mri_ca_normalize [INPUT_VOLUMES] [ATLAS] [XFORM] [OUTPUT_VOLUMES] [SEG_FILE] [SIGMA] [FSAMPLES_FILE] [DILATE_ITERS] [NSAMPLES_FILE] [MASK_VOL] [CONTROL_POINTS_FILE] [FONLY_FILE] [DIAG_FILE] [DEBUG_VOXEL] [DEBUG_NODE] [TR_VALUE] [TE_VALUE] [ALPHA_VALUE] [EXAMPLE_VOL] [EXAMPLE_SEG] [NOVAR_FLAG] [RENORM_FILE] [EXTRA_NORM] [FLASH_FLAG] [PRIOR_THRESHOLD] [WRITE_FLAG] [N_REGIONS] [VERBOSE_VALUE] [TOP_PERCENT]",
+  "command-line": "mri_ca_normalize [INPUT_BRAIN_VOLUMES] [ATLAS_FILE] [XFORM_FILE] [OUTPUT_VOLUMES] [SEG_FILE] [SIGMA_VALUE] [FSAMPLES_FILE] [DILATE_ITERS] [NSAMPLES_FILE] [MASK_VOL] [CONTROL_POINTS_FILE] [FONLY_FILE] [DIAG_FILE] [DEBUG_VOXEL_COORDS] [DEBUG_NODE_COORDS] [TR_VALUE] [TE_VALUE] [ALPHA_VALUE] [EXAMPLE_MRI_VOL] [EXAMPLE_SEG] [NOVAR_FLAG] [RENORM_FILE] [EXTRA_NORM_PCTL] [FLASH_FLAG] [PRIOR_THRESHOLD] [WRITE_FLAG] [N_REGIONS] [VERBOSE_VALUE] [TOP_PERCENT]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input brain volume(s). Can specify multiple inputs.",
-      "value-key": "[INPUT_VOLUMES]",
+      "value-key": "[INPUT_BRAIN_VOLUMES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -22,7 +22,7 @@
     },
     {
       "description": "Atlas file in GCA format.",
-      "value-key": "[ATLAS]",
+      "value-key": "[ATLAS_FILE]",
       "type": "File",
       "optional": false,
       "id": "atlas_file",
@@ -30,7 +30,7 @@
     },
     {
       "description": "Transform file in LTA format.",
-      "value-key": "[XFORM]",
+      "value-key": "[XFORM_FILE]",
       "type": "File",
       "optional": false,
       "id": "xform_file",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-sigma",
       "description": "Smoothing sigma for bias field if control points specified (default=4).",
-      "value-key": "[SIGMA]",
+      "value-key": "[SIGMA_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "sigma_value",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-debug_voxel",
       "description": "Debug voxel. Needs x, y, z coordinates.",
-      "value-key": "[DEBUG_VOXEL]",
+      "value-key": "[DEBUG_VOXEL_COORDS]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -141,7 +141,7 @@
     {
       "command-line-flag": "-debug_node",
       "description": "Debug node. Needs x, y, z coordinates.",
-      "value-key": "[DEBUG_NODE]",
+      "value-key": "[DEBUG_NODE_COORDS]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -180,7 +180,7 @@
     {
       "command-line-flag": "-example",
       "description": "Use T1 (mri_vol) and segmentation as example.",
-      "value-key": "[EXAMPLE_VOL]",
+      "value-key": "[EXAMPLE_MRI_VOL]",
       "type": "File",
       "optional": true,
       "id": "example_mri_vol",
@@ -189,7 +189,7 @@
     {
       "command-line-flag": "-extra_norm",
       "description": "Use 1+pct and 1-pct to widen the range of T1 values.",
-      "value-key": "[EXTRA_NORM]",
+      "value-key": "[EXTRA_NORM_PCTL]",
       "type": "Number",
       "optional": true,
       "id": "extra_norm_pctl",

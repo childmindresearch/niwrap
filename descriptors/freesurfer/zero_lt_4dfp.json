@@ -3,11 +3,11 @@
   "tool-version": "7.4.1",
   "author": "FreeSurfer Developers",
   "description": "A tool to process 4dfp image files by zeroing values less than a given float threshold.",
-  "command-line": "zero_lt_4dfp [FLT] [FILE_4DFP] [OUTROOT] [ENDIANNESS]",
+  "command-line": "zero_lt_4dfp [FLT_VALUE] [FILE_4DFP] [OUTROOT] [ENDIANNESS]",
   "inputs": [
     {
       "description": "Floating point threshold value. Values less than this in the 4dfp file will be zeroed.",
-      "value-key": "[FLT]",
+      "value-key": "[FLT_VALUE]",
       "type": "Number",
       "optional": false,
       "id": "flt_value",

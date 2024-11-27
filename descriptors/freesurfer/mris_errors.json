@@ -2,12 +2,12 @@
   "tool-version": "7.4.1",
   "name": "mris_errors",
   "description": "This program will unfold an MRI on the surface of an ellipsoid.",
-  "command-line": "mris_errors [OPTIONS] [INPUT_FILE]",
+  "command-line": "mris_errors [OPTIONS] [INPUT_IMAGE_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input image file.",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_IMAGE_FILE]",
       "type": "File",
       "optional": false,
       "id": "input_image_file",

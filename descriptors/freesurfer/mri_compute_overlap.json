@@ -3,7 +3,7 @@
   "name": "mri_compute_overlap",
   "author": "FreeSurfer Developers",
   "description": "Computes three different types of overlap measures for labels in input volumes.",
-  "command-line": "mri_compute_overlap [VOLUMES] [LABEL_NUMBERS] [ALL_LABELS_FLAG] [SHOW_LABEL_FLAG] [TOTAL_OVERLAP_FLAG] [NO_SUMMARY_FLAG] [MASK] [OUTPUT_FILE] [QUIET_MODE_FLAG] [TRANSLATE_LABEL] [HELP_FLAG]",
+  "command-line": "mri_compute_overlap [VOLUMES] [LABEL_NUMBERS] [ALL_LABELS] [SHOW_LABEL] [TOTAL_OVERLAP] [NO_SUMMARY] [MASK] [OUTPUT_FILE] [QUIET_MODE] [TRANSLATE_LABEL] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "-a",
       "description": "Compute overlap for all labels.",
-      "value-key": "[ALL_LABELS_FLAG]",
+      "value-key": "[ALL_LABELS]",
       "type": "Flag",
       "optional": true,
       "id": "all_labels",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "-s",
       "description": "Show label name for segmentation.",
-      "value-key": "[SHOW_LABEL_FLAG]",
+      "value-key": "[SHOW_LABEL]",
       "type": "Flag",
       "optional": true,
       "id": "show_label",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-total",
       "description": "Compute the total overlap, which is the number of voxels that are the same among all labels.",
-      "value-key": "[TOTAL_OVERLAP_FLAG]",
+      "value-key": "[TOTAL_OVERLAP]",
       "type": "Flag",
       "optional": true,
       "id": "total_overlap",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-nosummary",
       "description": "Do not compute total label summary.",
-      "value-key": "[NO_SUMMARY_FLAG]",
+      "value-key": "[NO_SUMMARY]",
       "type": "Flag",
       "optional": true,
       "id": "no_summary",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-q",
       "description": "Do not display results on standard display. If -l is specified, this flag is automatically set.",
-      "value-key": "[QUIET_MODE_FLAG]",
+      "value-key": "[QUIET_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "quiet_mode",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-h",
       "description": "Print help.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

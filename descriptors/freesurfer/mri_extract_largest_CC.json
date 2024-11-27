@@ -1,12 +1,12 @@
 {
   "name": "mri_extract_largest_CC",
   "description": "This program extracts the largest connected component of the input volume.",
-  "command-line": "mri_extract_largest_CC [INPUT_VOL] [OUTPUT_VOL] [THRESHOLD] [HEMI] [LARGEST_CC_IN_BG_FLAG] [ORIG_VOLUME] [LABEL_VAL]",
+  "command-line": "mri_extract_largest_CC [INPUT_VOLUME] [OUTPUT_VOLUME] [THRESHOLD] [HEMISPHERE] [LARGEST_CC_IN_BG] [ORIGINAL_VOLUME] [LABEL_VALUE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input volume.",
-      "value-key": "[INPUT_VOL]",
+      "value-key": "[INPUT_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "input_volume",
@@ -14,7 +14,7 @@
     },
     {
       "description": "Output volume.",
-      "value-key": "[OUTPUT_VOL]",
+      "value-key": "[OUTPUT_VOLUME]",
       "type": "String",
       "optional": false,
       "id": "output_volume",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-hemi",
       "description": "Set the target value corresponding to lh (255) or rh (127).",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": true,
       "id": "hemisphere",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-I",
       "description": "Find the largest CC in the background.",
-      "value-key": "[LARGEST_CC_IN_BG_FLAG]",
+      "value-key": "[LARGEST_CC_IN_BG]",
       "type": "Flag",
       "optional": true,
       "id": "largest_cc_in_bg",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-O",
       "description": "Clone values from original volume into output (used with -I).",
-      "value-key": "[ORIG_VOLUME]",
+      "value-key": "[ORIGINAL_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "original_volume",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-L",
       "description": "Perform connected components on voxels with specified label value.",
-      "value-key": "[LABEL_VAL]",
+      "value-key": "[LABEL_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "label_value",

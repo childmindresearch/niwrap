@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "PLACEHOLDER_FOR_DESCRIPTOR_URL",
   "description": "This program computes a number of anatomical properties.",
-  "command-line": "mris_anatomical_stats [SUBJECTNAME] [HEMI] [SURFACENAME] [LOW_THRESH] [HI_THRESH] [LABEL_FILE] [THICKNESS_FILE] [ANNOTATION_FILE] [TABULAR_OUTPUT_FLAG] [TABLEFILE] [LOGFILE] [NSMOOTH] [CTAB_FILE] [NO_GLOBAL_FLAG] [TH3_FLAG]",
+  "command-line": "mris_anatomical_stats [SUBJECTNAME] [HEMISPHERE] [SURFACENAME] [THICKNESS_RANGE] [LABEL_FILE] [THICKNESS_FILE] [ANNOTATION_FILE] [TABULAR_OUTPUT] [TABLEFILE] [LOGFILE] [NSMOOTH] [COLOR_TABLE] [NOGLOBAL] [TH3_COMPUTATION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -21,7 +21,7 @@
     },
     {
       "description": "Hemisphere",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-i",
       "description": "Only consider thicknesses in the specified range.",
-      "value-key": "[LOW_THRESH] [HI_THRESH]",
+      "value-key": "[THICKNESS_RANGE]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-b",
       "description": "Tabular output",
-      "value-key": "[TABULAR_OUTPUT_FLAG]",
+      "value-key": "[TABULAR_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "tabular_output",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "-c",
       "description": "Output annotation file's color table to text file",
-      "value-key": "[CTAB_FILE]",
+      "value-key": "[COLOR_TABLE]",
       "type": "String",
       "optional": true,
       "id": "color_table",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "-noglobal",
       "description": "Do not compute global brain stats",
-      "value-key": "[NO_GLOBAL_FLAG]",
+      "value-key": "[NOGLOBAL]",
       "type": "Flag",
       "optional": true,
       "id": "noglobal",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "-th3",
       "description": "Compute vertex-wise volume by dividing each obliquely truncated trilateral pyramid into three tetrahedra",
-      "value-key": "[TH3_FLAG]",
+      "value-key": "[TH3_COMPUTATION]",
       "type": "Flag",
       "optional": true,
       "id": "th3_computation",

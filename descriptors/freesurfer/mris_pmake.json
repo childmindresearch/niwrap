@@ -1,7 +1,7 @@
 {
   "name": "mris_pmake",
   "description": "Calculates paths and related costs on FreeSurfer surfaces based on an edge cost and Dijkstra's algorithm.",
-  "command-line": "mris_pmake [OPTIONS_FILE] [WORKING_DIR] [LISTEN_FLAG] [LISTEN_ON_PORT] [SUBJECT] [HEMI] [SURFACE0] [SURFACE1] [CURV0] [CURV1] [USE_ABS_CURVS_FLAG] [MPM_PROG] [MPM_ARGS]",
+  "command-line": "mris_pmake [OPTIONS_FILE] [WORKING_DIR] [LISTEN_MODE] [LISTEN_ON_PORT] [SUBJECT] [HEMISPHERE] [SURFACE0] [SURFACE1] [CURVE0] [CURVE1] [USE_ABS_CURVS] [MPM_PROG] [MPM_ARGS]",
   "schema-version": "0.5",
   "tool-version": "7.4.1",
   "inputs": [
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "--listen",
       "description": "Start in LISTEN mode without calculating a path.",
-      "value-key": "[LISTEN_FLAG]",
+      "value-key": "[LISTEN_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "listen_mode",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--hemi",
       "description": "The hemisphere to process.",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "--curve0",
       "description": "The main curvature function maps.",
-      "value-key": "[CURV0]",
+      "value-key": "[CURVE0]",
       "type": "String",
       "optional": true,
       "id": "curve0",
@@ -94,7 +94,7 @@
     {
       "command-line-flag": "--curve1",
       "description": "The aux curvature function maps.",
-      "value-key": "[CURV1]",
+      "value-key": "[CURVE1]",
       "type": "String",
       "optional": true,
       "id": "curve1",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--useAbsCurvs",
       "description": "Use absolute values on each curvature map.",
-      "value-key": "[USE_ABS_CURVS_FLAG]",
+      "value-key": "[USE_ABS_CURVS]",
       "type": "Flag",
       "optional": true,
       "id": "use_abs_curvs",

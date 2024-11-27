@@ -1,6 +1,6 @@
 {
   "name": "fix_subject-rh",
-  "command-line": "fix_subject[INPUT_DIRECTORY] [FLAG]",
+  "command-line": "fix_subject[INPUT_DIRECTORY] [HELP_FLAG]",
   "description": "A tool from FreeSurfer that performs operations on the right hemisphere data within a specified directory.",
   "inputs": [
     {
@@ -18,7 +18,7 @@
       "name": "Help Flag",
       "type": "Flag",
       "description": "Displays help information for fix_subject-rh.",
-      "value-key": "[FLAG]",
+      "value-key": "[HELP_FLAG]",
       "optional": true
     }
   ],

@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "A program to examine element-wise differences between two images.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dDiff [DSET_1] [DSET_2] [TOLERANCE] [MASK] [QUIET_FLAG] [TABULAR_FLAG] [BRUTALIST_FLAG] [LONG_REPORT_FLAG]",
+  "command-line": "3dDiff [DATASET_A] [DATASET_B] [TOLERANCE] [MASK] [QUIET_MODE] [TABULAR_MODE] [BRUTALIST_MODE] [LONG_REPORT_MODE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "First input dataset for comparison.",
-      "value-key": "[DSET_1]",
+      "value-key": "[DATASET_A]",
       "type": "File",
       "optional": false,
       "command-line-flag": "-a",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Second input dataset for comparison.",
-      "value-key": "[DSET_2]",
+      "value-key": "[DATASET_B]",
       "type": "File",
       "optional": false,
       "command-line-flag": "-b",
@@ -48,7 +48,7 @@
     },
     {
       "description": "Quiet mode: 0 for no differences, 1 for differences, -1 for error.",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET_MODE]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-q",
@@ -57,7 +57,7 @@
     },
     {
       "description": "Display a table of differences, mainly for 4D data.",
-      "value-key": "[TABULAR_FLAG]",
+      "value-key": "[TABULAR_MODE]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-tabular",
@@ -66,7 +66,7 @@
     },
     {
       "description": "Display one-liner with summary of differences.",
-      "value-key": "[BRUTALIST_FLAG]",
+      "value-key": "[BRUTALIST_MODE]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-brutalist",
@@ -75,7 +75,7 @@
     },
     {
       "description": "Print a detailed report with more information.",
-      "value-key": "[LONG_REPORT_FLAG]",
+      "value-key": "[LONG_REPORT_MODE]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-long_report",

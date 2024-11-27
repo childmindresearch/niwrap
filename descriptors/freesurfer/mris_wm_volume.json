@@ -1,7 +1,7 @@
 {
   "name": "mris_wm_volume",
   "description": "Computes the volume of the enclosed hemisphere white matter surface, ignoring non-white matter voxels in the aseg.",
-  "command-line": "mris_wm_volume [SUBJECT] [HEMI] [SUBJECTS_DIR_FLAG] [WHITE_SURF_NAME] [ASEG_NAME] [VERBOSE_FLAG]",
+  "command-line": "mris_wm_volume [SUBJECT] [HEMI] [SUBJECTS_DIR] [WHITESURFNAME] [ASEGNAME] [VERBOSE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
       "name": "Subjects directory",
       "description": "The SUBJECTS_DIR where the subject data is stored",
       "type": "String",
-      "value-key": "[SUBJECTS_DIR_FLAG]",
+      "value-key": "[SUBJECTS_DIR]",
       "optional": true
     },
     {
@@ -35,7 +35,7 @@
       "name": "White surface name",
       "description": "Name of the white surface file",
       "type": "String",
-      "value-key": "[WHITE_SURF_NAME]",
+      "value-key": "[WHITESURFNAME]",
       "optional": true
     },
     {
@@ -44,7 +44,7 @@
       "name": "Aseg name",
       "description": "Name of the aseg file",
       "type": "String",
-      "value-key": "[ASEG_NAME]",
+      "value-key": "[ASEGNAME]",
       "optional": true
     },
     {
@@ -53,7 +53,7 @@
       "name": "Verbose Flag",
       "description": "Output more messages",
       "type": "Flag",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "optional": true
     }
   ],

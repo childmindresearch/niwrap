@@ -3,13 +3,13 @@
   "name": "mri_rf_train",
   "author": "FreeSurfer Developers",
   "description": "Trains GCA data with multiple subjects using MRI data.",
-  "command-line": "mri_rf_train [SEG_VOLUME_DIR] [ATLAS_TRANSFORM] [MASK_VOLNAME] [NODE_SPACING] [PRIOR_SPACING] [INPUT_TRAINING_DATA...] [SANITY_CHECK] <SUBJECT1> <SUBJECT2> ... [OUTPUT_RFA_FILENAME]",
+  "command-line": "mri_rf_train [SEG_VOLUME] [ATLAS_TRANSFORM] [MASK_VOLUME] [NODE_SPACING] [PRIOR_SPACING] [INPUT_TRAINING_DATA...] [SANITY_CHECK] [SUBJECTS] <SUBJECT2> ... [OUTPUT_RFA]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-seg",
       "description": "Segmentation volume (path relative to $subject/mri).",
-      "value-key": "[SEG_VOLUME_DIR]",
+      "value-key": "[SEG_VOLUME]",
       "type": "String",
       "optional": false,
       "id": "seg_volume",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Use volname as a mask (path relative to $subject/mri).",
-      "value-key": "[MASK_VOLNAME]",
+      "value-key": "[MASK_VOLUME]",
       "type": "String",
       "optional": true,
       "id": "mask_volume",
@@ -72,7 +72,7 @@
     },
     {
       "description": "Input subjects.",
-      "value-key": "<SUBJECT1>",
+      "value-key": "[SUBJECTS]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -81,7 +81,7 @@
     },
     {
       "description": "Output RFA filename.",
-      "value-key": "[OUTPUT_RFA_FILENAME]",
+      "value-key": "[OUTPUT_RFA]",
       "type": "String",
       "optional": false,
       "id": "output_rfa",

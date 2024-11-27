@@ -8,7 +8,7 @@
   "inputs": [
     {
       "description": "Command has been removed from the current version of FreeSurfer. For further information, please contact the support mailing list.",
-      "value-key": "[REMOVED]",
+      "value-key": "[REMOVED_INFO]",
       "type": "String",
       "optional": true,
       "id": "removed_info",

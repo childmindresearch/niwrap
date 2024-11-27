@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
   "description": "Positions the tessellation of the cortical surface at the white matter surface, then the gray matter surface, generating surface files along with a curvature file and a surface file for cortical thickness.",
-  "command-line": "mris_make_surfaces [SUBJECT_NAME] [HEMISPHERE] [WHITE_OPTION] [PIAL_OPTION] [WHITEONLY_FLAG] [NOWHITE_FLAG] [ORIG_WHITE] [ORIG_PIAL] [Q_FLAG] [MAX_GRAY_SCALE] [C_FLAG] [CORTEX_FLAG] [W_FLAG] [FIRST_WM_PEAK_FLAG] [A_AVGS] [PA_AVGS] [WA_AVGS] [T1_VOL] [W_VOL] [LONG_FLAG] [DURA_THRESH] [SDIR_FLAG] [ERASE_CEREBELLUM_FLAG] [WM_WEIGHT] [NSIGMA_ABOVE] [NSIGMA_BELOW] [T2_MIN_INSIDE] [T2_MAX_INSIDE] [T2_OUTSIDE_MIN] [T2_OUTSIDE_MAX] [MIN_PEAK_PCT] [BORDER_VALS_HIRES_FLAG] [NO_UNITIZE_FLAG] [INTENSITY_COST] [CURV_COST] [TSPRING_COST] [NSPRING_COST] [REPULSE_COST] [SAVE_TARGET_FLAG] [SAVE_RES_FLAG] [V_VERTEXNO] [DIAG_VERTEX] [RIP] [SIGMA_WHITE] [SIGMA_PIAL] [OUTPUT] [MIN_BORDER_WHITE] [MAX_BORDER_WHITE] [MIN_GRAY_AT_WHITE_BORDER] [MAX_GRAY] [MAX_GRAY_AT_CSF_BORDER] [MIN_GRAY_AT_CSF_BORDER] [MAX_CSF]",
+  "command-line": "mris_make_surfaces [SUBJECT_NAME] [HEMISPHERE] [WHITE] [PIAL] [WHITEONLY] [NOWHITE] [ORIG_WHITE] [ORIG_PIAL] [Q] [MAX_GRAY_SCALE] [C] [CORTEX] [W] [FIRST_WM_PEAK] [A_AVGS] [PA_AVGS] [WA_AVGS] [T1_VOL] [W_VOL] [LONG] [DURA_THRESH] [SDIR] [ERASE_CEREBELLUM] [WM_WEIGHT] [NSIGMA_ABOVE] [NSIGMA_BELOW] [T2_MIN_INSIDE] [T2_MAX_INSIDE] [T2_OUTSIDE_MIN] [T2_OUTSIDE_MAX] [MIN_PEAK_PCT] [BORDER_VALS_HIRES] [NO_UNITIZE] [INTENSITY] [CURV] [TSPRING] [NSPRING] [REPULSE] [SAVE_TARGET] [SAVE_RES] [V_VERTEXNO] [DIAG_VERTEX] [RIP] [SIGMA_WHITE] [SIGMA_PIAL] [OUTPUT] [MIN_BORDER_WHITE] [MAX_BORDER_WHITE] [MIN_GRAY_WHITE_BORDER] [MAX_GRAY] [MAX_GRAY_CSF_BORDER] [MIN_GRAY_CSF_BORDER] [MAX_CSF]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-white",
       "description": "Output name for white surface (default is 'white'). Set to NOWHITE to generate but not save white surface.",
-      "value-key": "[WHITE_OPTION]",
+      "value-key": "[WHITE]",
       "type": "String",
       "optional": true,
       "id": "white",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-pial",
       "description": "Output name for pial surface (default is 'pial').",
-      "value-key": "[PIAL_OPTION]",
+      "value-key": "[PIAL]",
       "type": "String",
       "optional": true,
       "id": "pial",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-whiteonly",
       "description": "Only generate white matter surface.",
-      "value-key": "[WHITEONLY_FLAG]",
+      "value-key": "[WHITEONLY]",
       "type": "Flag",
       "optional": true,
       "id": "whiteonly",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-nowhite",
       "description": "Only generate pial surface.",
-      "value-key": "[NOWHITE_FLAG]",
+      "value-key": "[NOWHITE]",
       "type": "Flag",
       "optional": true,
       "id": "nowhite",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-q",
       "description": "Omit self-intersection and only generate gray/white surface.",
-      "value-key": "[Q_FLAG]",
+      "value-key": "[Q]",
       "type": "Flag",
       "optional": true,
       "id": "q",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-c",
       "description": "Do not create curvature and area files from white matter surface.",
-      "value-key": "[C_FLAG]",
+      "value-key": "[C]",
       "type": "Flag",
       "optional": true,
       "id": "c",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-cortex",
       "description": "Set to 0 to turn off creation of cortex label file.",
-      "value-key": "[CORTEX_FLAG]",
+      "value-key": "[CORTEX]",
       "type": "Number",
       "optional": true,
       "id": "cortex",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-first_wm_peak",
       "description": "Settle WM surface at first peak in intensity profile instead of highest.",
-      "value-key": "[FIRST_WM_PEAK_FLAG]",
+      "value-key": "[FIRST_WM_PEAK]",
       "type": "Flag",
       "optional": true,
       "id": "first_wm_peak",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-w",
       "description": "Unused argument",
-      "value-key": "[W_FLAG]",
+      "value-key": "[W]",
       "type": "Number",
       "optional": true,
       "id": "w",
@@ -183,7 +183,7 @@
     {
       "command-line-flag": "-long",
       "description": "Run longitudinal analysis.",
-      "value-key": "[LONG_FLAG]",
+      "value-key": "[LONG]",
       "type": "Flag",
       "optional": true,
       "id": "long",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "-SDIR",
       "description": "Specify SUBJECTS_DIR.",
-      "value-key": "[SDIR_FLAG]",
+      "value-key": "[SDIR]",
       "type": "String",
       "optional": true,
       "id": "sdir",
@@ -210,7 +210,7 @@
     {
       "command-line-flag": "-erase_cerebellum",
       "description": "Erase cerebellar labeled voxels if aseg is loaded.",
-      "value-key": "[ERASE_CEREBELLUM_FLAG]",
+      "value-key": "[ERASE_CEREBELLUM]",
       "type": "Flag",
       "optional": true,
       "id": "erase_cerebellum",
@@ -291,7 +291,7 @@
     {
       "command-line-flag": "-border-vals-hires",
       "description": "Turn on hires options in MRIScomputeBorderValues_new(). May not be helpful.",
-      "value-key": "[BORDER_VALS_HIRES_FLAG]",
+      "value-key": "[BORDER_VALS_HIRES]",
       "type": "Flag",
       "optional": true,
       "id": "border_vals_hires",
@@ -300,7 +300,7 @@
     {
       "command-line-flag": "-no-unitize",
       "description": "Turn off face normal unitization.",
-      "value-key": "[NO_UNITIZE_FLAG]",
+      "value-key": "[NO_UNITIZE]",
       "type": "Flag",
       "optional": true,
       "id": "no_unitize",
@@ -309,7 +309,7 @@
     {
       "command-line-flag": "-intensity",
       "description": "Set weight of intensity cost.",
-      "value-key": "[INTENSITY_COST]",
+      "value-key": "[INTENSITY]",
       "type": "Number",
       "optional": true,
       "id": "intensity",
@@ -318,7 +318,7 @@
     {
       "command-line-flag": "-curv",
       "description": "Set weight of curvature cost.",
-      "value-key": "[CURV_COST]",
+      "value-key": "[CURV]",
       "type": "Number",
       "optional": true,
       "id": "curv",
@@ -327,7 +327,7 @@
     {
       "command-line-flag": "-tspring",
       "description": "Set weight of tangential spring cost.",
-      "value-key": "[TSPRING_COST]",
+      "value-key": "[TSPRING]",
       "type": "Number",
       "optional": true,
       "id": "tspring",
@@ -336,7 +336,7 @@
     {
       "command-line-flag": "-nspring",
       "description": "Set weight of normal spring cost.",
-      "value-key": "[NSPRING_COST]",
+      "value-key": "[NSPRING]",
       "type": "Number",
       "optional": true,
       "id": "nspring",
@@ -345,7 +345,7 @@
     {
       "command-line-flag": "-repulse",
       "description": "Set weight of repulsion force.",
-      "value-key": "[REPULSE_COST]",
+      "value-key": "[REPULSE]",
       "type": "Number",
       "optional": true,
       "id": "repulse",
@@ -354,7 +354,7 @@
     {
       "command-line-flag": "-save-target",
       "description": "Save target surface for debugging.",
-      "value-key": "[SAVE_TARGET_FLAG]",
+      "value-key": "[SAVE_TARGET]",
       "type": "Flag",
       "optional": true,
       "id": "save_target",
@@ -363,7 +363,7 @@
     {
       "command-line-flag": "-save-res",
       "description": "Save residual for debugging.",
-      "value-key": "[SAVE_RES_FLAG]",
+      "value-key": "[SAVE_RES]",
       "type": "Flag",
       "optional": true,
       "id": "save_res",
@@ -444,7 +444,7 @@
     {
       "command-line-flag": "-min_gray_at_white_border",
       "description": "Minimum gray at white border.",
-      "value-key": "[MIN_GRAY_AT_WHITE_BORDER]",
+      "value-key": "[MIN_GRAY_WHITE_BORDER]",
       "type": "Number",
       "optional": true,
       "id": "min_gray_white_border",
@@ -462,7 +462,7 @@
     {
       "command-line-flag": "-max_gray_at_csf_border",
       "description": "Maximum gray at CSF border.",
-      "value-key": "[MAX_GRAY_AT_CSF_BORDER]",
+      "value-key": "[MAX_GRAY_CSF_BORDER]",
       "type": "Number",
       "optional": true,
       "id": "max_gray_csf_border",
@@ -471,7 +471,7 @@
     {
       "command-line-flag": "-min_gray_at_csf_border",
       "description": "Minimum gray at CSF border.",
-      "value-key": "[MIN_GRAY_AT_CSF_BORDER]",
+      "value-key": "[MIN_GRAY_CSF_BORDER]",
       "type": "Number",
       "optional": true,
       "id": "min_gray_csf_border",

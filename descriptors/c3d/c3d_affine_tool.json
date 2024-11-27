@@ -1,6 +1,6 @@
 {
   "name": "c3d_affine_tool",
-  "command-line": "c3d_affine_tool [TRANSFORM_FILE] [REFERENCE_FILE] [SOURCE_FILE] [SFORM_FILE] [INV] [DET] [MULT] [SQRT] [ITK_TRANSFORM] [IRTK_TRANSFORM] [FSL2RAS] [RAS2FSL] [OUT_ITK_TRANSFORM] [OUT_IRTK_TRANSFORM] [OUT_MATFILE] [INFO] [INFO_FULL]",
+  "command-line": "c3d_affine_tool [TRANSFORM_FILE] [REFERENCE_FILE] [SOURCE_FILE] [SFORM_FILE] [INVERT] [DETERMINANT] [MULTIPLY] [SQRT] [ITK_TRANSFORM] [IRTK_TRANSFORM] [FSL2RAS] [RAS2FSL] [OUT_ITK_TRANSFORM] [OUT_IRTK_TRANSFORM] [OUT_MATFILE] [INFO] [INFO_FULL]",
   "author": "Convert3D Developers",
   "description": "RAS affine transform tool",
   "tool-version": "1.1.0",
@@ -58,7 +58,7 @@
       "id": "determinant",
       "name": "Determinant",
       "type": "Flag",
-      "value-key": "[DET]",
+      "value-key": "[DETERMINANT]",
       "command-line-flag": "-det",
       "description": "Print the determinant.",
       "optional": true
@@ -67,7 +67,7 @@
       "id": "invert",
       "name": "Invert",
       "type": "Flag",
-      "value-key": "[INV]",
+      "value-key": "[INVERT]",
       "command-line-flag": "-inv",
       "description": "Invert matrix.",
       "optional": true
@@ -76,7 +76,7 @@
       "id": "multiply",
       "name": "Multiply",
       "type": "Flag",
-      "value-key": "[MULT]",
+      "value-key": "[MULTIPLY]",
       "command-line-flag": "-mult",
       "description": "Multiply matrices.",
       "optional": true

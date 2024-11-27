@@ -3,7 +3,7 @@
   "name": "mri_surf2vol",
   "author": "FreeSurfer Developers",
   "description": "Resamples a surface into a volume using one of two methods.",
-  "command-line": "mri_surf2vol [SURFACE_OVERLAY] [LTAFILE] [OUTFILE] [SUBJECT] [RIBBONFILE] [MERGE_VOLUME] [SURFACE_VALUES] [MASK_FLAG] [HEMI] [SURFNAME] [PROJFRAC] [FILL_RIBBON_FLAG] [FILL_PROJFRACTION] [REG_VOLUME] [IDENTITY_SUBJID] [TEMPLATE_VOLUME] [FSTAL_RES] [VTXVOL] [FLAT2MRI] [SPHPVF] [MASK_TO_CORTEX_FLAG] [MASK_TO_LABEL] [SURFACE_MASK] [ADD_CONST] [COPY_CTAB_FLAG] [SUBJECTS_DIR] [GDIAGNO] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_surf2vol [SURFACE_OVERLAY] [LTAFILE] [OUTFILE] [SUBJECT] [RIBBONFILE] [MERGE_VOLUME] [SURFACE_VALUES] [MKMASK] [HEMI] [SURFNAME] [PROJFRAC] [FILL_RIBBON] [FILL_PROJFRAC] [REG_VOLUME] [IDENTITY] [TEMPLATE_VOLUME] [FSTAL_RES] [VTXVOL] [FLAT2MRI] [SPHPVF] [MASK_TO_CORTEX] [MASK_TO_LABEL] [SURFACE_MASK] [ADD_CONST] [COPY_CTAB] [SUBJECTS_DIR] [GDIAGNO] [VERSION] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--mkmask",
       "description": "Create a binary mask instead of loading surfval",
-      "value-key": "[MASK_FLAG]",
+      "value-key": "[MKMASK]",
       "type": "Flag",
       "optional": true,
       "id": "mkmask",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "--fillribbon",
       "description": "Fill the entire ribbon",
-      "value-key": "[FILL_RIBBON_FLAG]",
+      "value-key": "[FILL_RIBBON]",
       "type": "Flag",
       "optional": true,
       "id": "fill_ribbon",
@@ -123,7 +123,7 @@
     {
       "command-line-flag": "--fill-projfrac",
       "description": "Fill ribbon by iterating projfrac",
-      "value-key": "[FILL_PROJFRACTION]",
+      "value-key": "[FILL_PROJFRAC]",
       "type": "String",
       "optional": true,
       "id": "fill_projfrac",
@@ -141,7 +141,7 @@
     {
       "command-line-flag": "--identity",
       "description": "Use identity matrix for volume registration (requires subject name)",
-      "value-key": "[IDENTITY_SUBJID]",
+      "value-key": "[IDENTITY]",
       "type": "String",
       "optional": true,
       "id": "identity",
@@ -195,7 +195,7 @@
     {
       "command-line-flag": "--mask-to-cortex",
       "description": "Mask to cortex label",
-      "value-key": "[MASK_TO_CORTEX_FLAG]",
+      "value-key": "[MASK_TO_CORTEX]",
       "type": "Flag",
       "optional": true,
       "id": "mask_to_cortex",
@@ -232,7 +232,7 @@
     {
       "command-line-flag": "--copy-ctab",
       "description": "Copy color table header",
-      "value-key": "[COPY_CTAB_FLAG]",
+      "value-key": "[COPY_CTAB]",
       "type": "Flag",
       "optional": true,
       "id": "copy_ctab",
@@ -260,7 +260,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -269,7 +269,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

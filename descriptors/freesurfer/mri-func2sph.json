@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri-func2sph",
   "description": "Maps functional data from volume space to spherical surface space.",
-  "command-line": "mri-func2sph [INSTEM] [OUTSTEM] [HEMI] [FVITDIR] [NITERS] [ICOSIZE] [INTYPE] [UMASK]",
+  "command-line": "mri-func2sph [INSTEM] [OUTSTEM] [HEMISPHERE] [FVITDIR] [HOLE_FILLING_ITERS] [ICOSAHEDRON_SIZE] [INPUT_TYPE] [UMASK]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-hemi",
       "description": "Hemisphere to process, can be 'lh' or 'rh'",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-niters",
       "description": "Number of hole-filling iterations",
-      "value-key": "[NITERS]",
+      "value-key": "[HOLE_FILLING_ITERS]",
       "type": "Number",
       "optional": true,
       "default-value": 100,
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-icosize",
       "description": "Size of the icosahedron",
-      "value-key": "[ICOSIZE]",
+      "value-key": "[ICOSAHEDRON_SIZE]",
       "type": "Number",
       "optional": true,
       "default-value": 10242,
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "-intype",
       "description": "Type of input data, will be auto-detected if not specified",
-      "value-key": "[INTYPE]",
+      "value-key": "[INPUT_TYPE]",
       "type": "String",
       "optional": true,
       "id": "input_type",

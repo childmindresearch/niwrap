@@ -2,7 +2,7 @@
   "name": "mris_volmask_novtk",
   "description": "Computes a volume mask at the same resolution as <subject>/mri/brain.mgz and labels voxels based on the signed-distance function from the surface.",
   "author": "FreeSurfer Developers",
-  "command-line": "mris_volmask_novtk <io> [CAP_DISTANCE] [LABEL_BACKGROUND] [LABEL_LEFT_WHITE] [LABEL_LEFT_RIBBON] [LABEL_RIGHT_WHITE] [LABEL_RIGHT_RIBBON] [SURF_WHITE] [SURF_PIAL] [ASEG_NAME] [OUT_ROOT] [SUBJECTS_DIR] [SAVE_DISTANCE_FLAG] [LH_ONLY_FLAG] [RH_ONLY_FLAG] [PARALLEL_FLAG] [EDIT_ASEG_FLAG] [SAVE_RIBBON_FLAG]",
+  "command-line": "mris_volmask_novtk [IO] [CAP_DISTANCE] [LABEL_BACKGROUND] [LABEL_LEFT_WHITE] [LABEL_LEFT_RIBBON] [LABEL_RIGHT_WHITE] [LABEL_RIGHT_RIBBON] [SURF_WHITE] [SURF_PIAL] [ASEG_NAME] [OUT_ROOT] [SUBJECTS_DIR] [SAVE_DISTANCE] [LH_ONLY] [RH_ONLY] [PARALLEL] [EDIT_ASEG] [SAVE_RIBBON]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,7 @@
       "description": "Positional argument for input/output",
       "type": "String",
       "optional": false,
-      "value-key": "<io>"
+      "value-key": "[IO]"
     },
     {
       "command-line-flag": "--cap_distance",
@@ -116,7 +116,7 @@
       "command-line-flag": "--save_distance",
       "description": "Option to save the signed distance function",
       "type": "Flag",
-      "value-key": "[SAVE_DISTANCE_FLAG]",
+      "value-key": "[SAVE_DISTANCE]",
       "optional": true,
       "id": "save_distance",
       "name": "Save Distance Function"
@@ -125,7 +125,7 @@
       "command-line-flag": "--lh-only",
       "description": "Only process left hemisphere",
       "type": "Flag",
-      "value-key": "[LH_ONLY_FLAG]",
+      "value-key": "[LH_ONLY]",
       "optional": true,
       "id": "lh_only",
       "name": "Left Hemisphere Only"
@@ -134,7 +134,7 @@
       "command-line-flag": "--rh-only",
       "description": "Only process right hemisphere",
       "type": "Flag",
-      "value-key": "[RH_ONLY_FLAG]",
+      "value-key": "[RH_ONLY]",
       "optional": true,
       "id": "rh_only",
       "name": "Right Hemisphere Only"
@@ -143,7 +143,7 @@
       "command-line-flag": "--parallel",
       "description": "Run hemispheres in parallel and combine the result",
       "type": "Flag",
-      "value-key": "[PARALLEL_FLAG]",
+      "value-key": "[PARALLEL]",
       "optional": true,
       "id": "parallel",
       "name": "Run in Parallel"
@@ -152,7 +152,7 @@
       "command-line-flag": "--edit_aseg",
       "description": "Edit the aseg using the ribbons and save to aseg.ribbon.mgz",
       "type": "Flag",
-      "value-key": "[EDIT_ASEG_FLAG]",
+      "value-key": "[EDIT_ASEG]",
       "optional": true,
       "id": "edit_aseg",
       "name": "Edit Aseg"
@@ -161,7 +161,7 @@
       "command-line-flag": "--save_ribbon",
       "description": "Save just the ribbon for the hemispheres",
       "type": "Flag",
-      "value-key": "[SAVE_RIBBON_FLAG]",
+      "value-key": "[SAVE_RIBBON]",
       "optional": true,
       "id": "save_ribbon",
       "name": "Save Ribbon"

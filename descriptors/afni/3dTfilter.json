@@ -3,11 +3,11 @@
   "name": "3dTfilter",
   "author": "AFNI Developers",
   "description": "3dTfilter filters the time series in each voxel according to the user-specified filter functions.",
-  "command-line": "3dTfilter [INPUT_FILE] [OUTPUT_FILE] [FILTERS]",
+  "command-line": "3dTfilter [INPUTDATASET] [OUTPUTDATASET] [FILTERS]",
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUTDATASET]",
       "type": "File",
       "optional": false,
       "id": "inputdataset",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Output dataset",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUTDATASET]",
       "type": "String",
       "optional": false,
       "id": "outputdataset",

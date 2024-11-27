@@ -1,6 +1,6 @@
 {
   "name": "sccan",
-  "command-line": "sccan [OUTPUT] [N_PERMUTATIONS] [SMOOTHER] [ROW_SPARSENESS] [ITERATIONS] [N_EIGENVECTORS] [ROBUSTIFY] [COVERING] [USELONG] [L1] [PCLUSTERTHRESH] [QCLUSTERTHRESH] [RIDGE_CCA] [INITIALIZATION] [INITIALIZATION2] [MASK] [MASK2] [PARTIAL_SCCA_OPTION] [PRIOR_WEIGHT] [GET_SMALL] [VERBOSE] [IMAGES_TO_MATRIX] [TIMESERIES_IMAGE_TO_MATRIX] [VECTOR_TO_IMAGE] [IMAGES_PROJECTIONS] [SCCA] [SVD]",
+  "command-line": "sccan [OUTPUT] [N_PERMUTATIONS] [SMOOTHER] [ROW_SPARSENESS] [ITERATIONS] [N_EIGENVECTORS] [ROBUSTIFY] [COVERING] [USELONG] [L1] [PCLUSTERTHRESH] [QCLUSTERTHRESH] [RIDGE_CCA] [INITIALIZATION] [INITIALIZATION2] [MASK] [MASK2] [PARTIAL_SCCA_OPTION] [PRIOR_WEIGHT] [GET_SMALL] [VERBOSE] [IMAGESET_TO_MATRIX] [TIMESERIESIMAGE_TO_MATRIX] [VECTOR_TO_IMAGE] [IMAGESET_TO_PROJECTIONS] [SCCA] [SVD]",
   "author": "ANTs Developers",
   "description": "A tool for sparse statistical analysis on images : scca, pscca (with options), mscca. Can also convert an imagelist/mask pair to a binary matrix image.",
   "url": "https://github.com/ANTsX/ANTs",
@@ -208,7 +208,7 @@
     {
       "id": "imageset_to_matrix",
       "name": "Imageset to Matrix",
-      "value-key": "[IMAGES_TO_MATRIX]",
+      "value-key": "[IMAGESET_TO_MATRIX]",
       "type": "String",
       "optional": true,
       "command-line-flag": "--imageset-to-matrix",
@@ -217,7 +217,7 @@
     {
       "id": "timeseriesimage_to_matrix",
       "name": "Timeseries Image to Matrix",
-      "value-key": "[TIMESERIES_IMAGE_TO_MATRIX]",
+      "value-key": "[TIMESERIESIMAGE_TO_MATRIX]",
       "type": "String",
       "optional": true,
       "command-line-flag": "--timeseriesimage-to-matrix",
@@ -235,7 +235,7 @@
     {
       "id": "imageset_to_projections",
       "name": "Imageset to Projections",
-      "value-key": "[IMAGES_PROJECTIONS]",
+      "value-key": "[IMAGESET_TO_PROJECTIONS]",
       "type": "String",
       "optional": true,
       "command-line-flag": "--imageset-to-projections",

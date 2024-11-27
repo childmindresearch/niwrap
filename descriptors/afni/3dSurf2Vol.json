@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Map data from a surface domain to an AFNI volume domain",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSurf2Vol [SPEC_FILE] [SURFACE_VOLUME] [SURF_A] [SURF_B] [GRID_PARENT] [MAP_FUNC] [PREFIX] [SURF_XYZ_1D] [SDATA_1D] [SDATA] [F_STEPS] [F_INDEX] [F_P1_FR] [F_PN_FR] [F_P1_MM] [F_PN_MM] [STOP_GAP] [CMASK] [DATA_EXPR] [DATUM] [DEBUG] [DNODE] [DVOXEL] [NOSCALE] [SXYZ_ORIENT_AS_GPAR]",
+  "command-line": "3dSurf2Vol [SPEC] [SURFACE_VOLUME] [SURF_A] [SURF_B] [GRID_PARENT] [MAP_FUNC] [PREFIX] [SURF_XYZ_1D] [SDATA_1D] [SDATA] [F_STEPS] [F_INDEX] [F_P1_FR] [F_PN_FR] [F_P1_MM] [F_PN_MM] [STOP_GAP] [CMASK] [DATA_EXPR] [DATUM] [DEBUG] [DNODE] [DVOXEL] [NOSCALE] [SXYZ_ORIENT_AS_GPAR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "SUMA spec file",
-      "value-key": "[SPEC_FILE]",
+      "value-key": "[SPEC]",
       "type": "File",
       "optional": false,
       "id": "spec",

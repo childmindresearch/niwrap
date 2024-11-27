@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu",
   "description": "Automatic labeling of brain regions using a Gaussian classifier array.",
-  "command-line": "mri_ca_label [BRAIN_MASK] [NORM_VOLUME] [TRANSFORM] [GCA] [ASEG]",
+  "command-line": "mri_ca_label [BRAIN_MASK] [NORM_VOLUME] [TRANSFORM] [GCA_FILE] [ASEG_OUTPUT]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -38,7 +38,7 @@
     },
     {
       "description": "Gaussian classifier array (GCA) file",
-      "value-key": "[GCA]",
+      "value-key": "[GCA_FILE]",
       "type": "File",
       "optional": false,
       "id": "gca_file",
@@ -46,7 +46,7 @@
     },
     {
       "description": "Output aseg file",
-      "value-key": "[ASEG]",
+      "value-key": "[ASEG_OUTPUT]",
       "type": "String",
       "optional": false,
       "id": "aseg_output",

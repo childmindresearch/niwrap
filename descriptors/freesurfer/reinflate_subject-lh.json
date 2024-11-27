@@ -3,7 +3,7 @@
   "name": "reinflate_subject-lh",
   "author": "FreeSurfer Developers",
   "description": "Utility to reinflate cortical surfaces for left hemisphere in FreeSurfer",
-  "command-line": "reinflate_subject[SUBJECT]",
+  "command-line": "reinflate_subject[SUBJECT_ID]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Subject identifier",
-      "value-key": "[SUBJECT]",
+      "value-key": "[SUBJECT_ID]",
       "type": "String",
       "optional": false,
       "id": "subject_id",

@@ -3,7 +3,7 @@
   "name": "@measure_erosion_thick",
   "author": "AFNI Developers",
   "description": "Compute thickness of mask using erosion method.",
-  "command-line": "@measure_erosion_thick [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [SURF_SMOOTH] [VOLUME_SMOOTH] [MAX_THICK] [DEPTH_SEARCH] [KEEP_TEMP] [SURF_SMOOTH_METHOD]",
+  "command-line": "@measure_erosion_thick [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTHSEARCH] [KEEP_TEMP_FILES] [SURFSMOOTH_METHOD]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-surfsmooth",
       "description": "Smooth surface map of thickness by mm millimeters. Default is 8 mm.",
-      "value-key": "[SURF_SMOOTH]",
+      "value-key": "[SURFSMOOTH]",
       "type": "Number",
       "optional": true,
       "id": "surfsmooth",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-smoothmm",
       "description": "Smooth volume by mm FWHM in mask. Default is 2*voxelsize of mask or resampled mask.",
-      "value-key": "[VOLUME_SMOOTH]",
+      "value-key": "[SMOOTHMM]",
       "type": "Number",
       "optional": true,
       "id": "smoothmm",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "-maxthick",
       "description": "Search for maximum thickness value of mm millimeters. Default is 6 mm.",
-      "value-key": "[MAX_THICK]",
+      "value-key": "[MAXTHICK]",
       "type": "Number",
       "optional": true,
       "id": "maxthick",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-depthsearch",
       "description": "Map to surface by looking for max along mm millimeter normal vectors. Default is 3 mm.",
-      "value-key": "[DEPTH_SEARCH]",
+      "value-key": "[DEPTHSEARCH]",
       "type": "Number",
       "optional": true,
       "id": "depthsearch",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-keep_temp_files",
       "description": "Do not delete the intermediate files (for testing).",
-      "value-key": "[KEEP_TEMP]",
+      "value-key": "[KEEP_TEMP_FILES]",
       "type": "Flag",
       "optional": true,
       "id": "keep_temp_files",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-surfsmooth_method",
       "description": "Heat method used for smoothing surfaces. Default is HEAT_07 but HEAT_05 is also useful for models.",
-      "value-key": "[SURF_SMOOTH_METHOD]",
+      "value-key": "[SURFSMOOTH_METHOD]",
       "type": "String",
       "optional": true,
       "id": "surfsmooth_method",

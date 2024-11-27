@@ -3,7 +3,7 @@
   "name": "1dBport",
   "author": "AFNI Developers",
   "description": "Creates a set of columns of sines and cosines for bandpassing via regression.",
-  "command-line": "1dBport [BAND] [INVERT_FLAG] [NOZERO_FLAG] [QUAD_FLAG] [INPUT_DATASET] [INPUT_1D_FILE] [NODATA_OPTION] [TR_VALUE] [CONCAT_FILE]",
+  "command-line": "1dBport [BAND] [INVERT] [NOCONST] [QUAD] [INPUT_DATASET] [INPUT_1D_FILE] [NODATA] [TR] [CONCAT]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -24,7 +24,7 @@
     {
       "command-line-flag": "-invert",
       "description": "Invert the selection after computing which frequency indexes correspond to the input band(s).",
-      "value-key": "[INVERT_FLAG]",
+      "value-key": "[INVERT]",
       "type": "Flag",
       "optional": true,
       "id": "invert",
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-nozero",
       "description": "Do NOT generate the 0 frequency (constant) component when fbot = 0.",
-      "value-key": "[NOZERO_FLAG]",
+      "value-key": "[NOZERO]",
       "type": "Flag",
       "optional": true,
       "id": "nozero",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-noconst",
       "description": "Same as -nozero. Do NOT generate the 0 frequency (constant) component when fbot = 0.",
-      "value-key": "[NOZERO_FLAG]",
+      "value-key": "[NOCONST]",
       "type": "Flag",
       "optional": true,
       "id": "noconst",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-quad",
       "description": "Add regressors for linear and quadratic trends.",
-      "value-key": "[QUAD_FLAG]",
+      "value-key": "[QUAD]",
       "type": "Flag",
       "optional": true,
       "id": "quad",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-nodata",
       "description": "Specify the number of time points and optionally TR value for the simulation.",
-      "value-key": "[NODATA_OPTION]",
+      "value-key": "[NODATA]",
       "type": "Number",
       "list": true,
       "min-list-entries": 1,
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-TR",
       "description": "Set the time step duration.",
-      "value-key": "[TR_VALUE]",
+      "value-key": "[TR]",
       "type": "Number",
       "optional": true,
       "id": "tr",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-concat",
       "description": "Specify the list of start indexes for concatenated runs.",
-      "value-key": "[CONCAT_FILE]",
+      "value-key": "[CONCAT]",
       "type": "File",
       "optional": true,
       "id": "concat",

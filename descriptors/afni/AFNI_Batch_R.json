@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Batch mode for executing R scripts in the AFNI environment",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "AFNI_Batch_R R CMD BATCH [NO_RESTORE] [SAVE] [NO_READLINE] [VANILLA] --args [HELP]",
+  "command-line": "AFNI_Batch_R R CMD BATCH [NO_RESTORE] [SAVE_WORKSPACE] [NO_READLINE] [VANILLA_MODE] --args [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--save",
       "description": "Save the workspace at the end of the script execution",
-      "value-key": "[SAVE]",
+      "value-key": "[SAVE_WORKSPACE]",
       "type": "Flag",
       "optional": true,
       "id": "save_workspace",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "--vanilla",
       "description": "Run R without saving the workspace at the end, restoring anything, reading the site file, or acting on startup files",
-      "value-key": "[VANILLA]",
+      "value-key": "[VANILLA_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "vanilla_mode",

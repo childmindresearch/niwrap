@@ -1,6 +1,6 @@
 {
   "name": "invwarp",
-  "command-line": "invwarp [WARP] [OUT] [REF] [ABSOLUTE] [RELATIVE] [NO_CONSTRAINT] [JACOBIAN_MIN] [JACOBIAN_MAX] [DEBUG]",
+  "command-line": "invwarp [WARP] [OUT_IMG] [REF_IMG] [ABSOLUTE] [RELATIVE] [NOCONSTRAINT] [JACOBIAN_MIN] [JACOBIAN_MAX] [DEBUG]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "\nUse FSL Invwarp to invert a FNIRT warp",
   "inputs": [
@@ -18,7 +18,7 @@
       "id": "out_img",
       "name": "Output image",
       "type": "String",
-      "value-key": "[OUT]",
+      "value-key": "[OUT_IMG]",
       "command-line-flag": "--out",
       "command-line-flag-separator": "=",
       "description": "Filename for output (inverse warped) image.",
@@ -28,7 +28,7 @@
       "id": "ref_img",
       "name": "Reference image",
       "type": "File",
-      "value-key": "[REF]",
+      "value-key": "[REF_IMG]",
       "command-line-flag": "--ref",
       "command-line-flag-separator": "=",
       "description": "Filename for new reference image.",
@@ -76,7 +76,7 @@
       "id": "noconstraint",
       "name": "No constraint",
       "type": "Flag",
-      "value-key": "[NO_CONSTRAINT]",
+      "value-key": "[NOCONSTRAINT]",
       "command-line-flag": "--noconstraint",
       "description": "Do not apply jacobian constraint.",
       "optional": true

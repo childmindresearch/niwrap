@@ -3,7 +3,7 @@
   "name": "convert_cdiflist_to_grads.py",
   "author": "AFNI Developers",
   "description": "This program reads in a GE cdiflist and outputs gradient file and file of bvalues for subsequent processing.",
-  "command-line": "convert_cdiflist_to_grads.py [CDIFLIST] [BVAL_MAX] [PREFIX] [VER_FLAG] [DATE_FLAG] [HELP_FLAG] [HVIEW_FLAG]",
+  "command-line": "convert_cdiflist_to_grads.py [CDIFLIST] [BVAL_MAX] [PREFIX] [VER] [DATE] [HELP] [HVIEW]",
   "inputs": [
     {
       "command-line-flag": "-cdiflist",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Display current version.",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VER]",
       "type": "Flag",
       "optional": true,
       "id": "ver",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-date",
       "description": "Display release/editing date of current version.",
-      "value-key": "[DATE_FLAG]",
+      "value-key": "[DATE]",
       "type": "Flag",
       "optional": true,
       "id": "date",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-help",
       "description": "Display help in terminal.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-h",
       "description": "Display help in terminal.",
-      "value-key": "[HVIEW_FLAG]",
+      "value-key": "[HVIEW]",
       "type": "Flag",
       "optional": true,
       "id": "hview",

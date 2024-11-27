@@ -1,5 +1,5 @@
 {
-  "command-line": "long_mris_slopes [QDEC] [MEAS] [HEMI] [SD] [AVG_FLAG] [RATE_FLAG] [PC1FIT_FLAG] [PC1_FLAG] [SPC_FLAG] [STACK_FLAG] [LABEL_FLAG] [QCACHE] [RESID] [FWHM] [NOSMOOTH_FLAG] [TIME] [GENERIC_TIME_FLAG] [IN_LABEL] [JAC_FLAG] [NAME_AVG] [NAME_RATE] [NAME_PC1FIT] [NAME_PC1] [NAME_SPC] [NAME_RESID] [OUT_STACK] [OUT_LABEL] [ISEC_LABELS] [STACK_AVG] [STACK_RATE] [STACK_PC1FIT] [STACK_PC1] [STACK_SPC] [STACK_RESID]",
+  "command-line": "long_mris_slopes [QDEC] [MEAS] [HEMI] [SD] [DO_AVG] [DO_RATE] [DO_PC1FIT] [DO_PC1] [DO_SPC] [DO_STACK] [DO_LABEL] [QCACHE] [RESID] [FWHM] [NOSMOOTH] [TIME] [GENERIC_TIME] [IN_LABEL] [JAC] [NAME_AVG] [NAME_RATE] [NAME_PC1FIT] [NAME_PC1] [NAME_SPC] [NAME_RESID] [OUT_STACK] [OUT_LABEL] [ISEC_LABELS] [STACK_AVG] [STACK_RATE] [STACK_PC1FIT] [STACK_PC1] [STACK_SPC] [STACK_RESID]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -46,7 +46,7 @@
       "id": "do_avg",
       "name": "Compute Temporal Average",
       "type": "Flag",
-      "value-key": "[AVG_FLAG]",
+      "value-key": "[DO_AVG]",
       "optional": true,
       "description": "Compute and output the temporal average",
       "command-line-flag": "--do-avg"
@@ -55,7 +55,7 @@
       "id": "do_rate",
       "name": "Compute Rate",
       "type": "Flag",
-      "value-key": "[RATE_FLAG]",
+      "value-key": "[DO_RATE]",
       "optional": true,
       "description": "Compute and output the rate",
       "command-line-flag": "--do-rate"
@@ -64,7 +64,7 @@
       "id": "do_pc1fit",
       "name": "Compute Percent Change Fit",
       "type": "Flag",
-      "value-key": "[PC1FIT_FLAG]",
+      "value-key": "[DO_PC1FIT]",
       "optional": true,
       "description": "Compute and output the percent change (w.r.t. tp1 from linear fit)",
       "command-line-flag": "--do-pc1fit"
@@ -73,7 +73,7 @@
       "id": "do_pc1",
       "name": "Compute Percent Change",
       "type": "Flag",
-      "value-key": "[PC1_FLAG]",
+      "value-key": "[DO_PC1]",
       "optional": true,
       "description": "Compute and output the percent change (w.r.t. tp1)",
       "command-line-flag": "--do-pc1"
@@ -82,7 +82,7 @@
       "id": "do_spc",
       "name": "Compute Symmetrized Percent Change",
       "type": "Flag",
-      "value-key": "[SPC_FLAG]",
+      "value-key": "[DO_SPC]",
       "optional": true,
       "description": "Compute and output the symmetrized percent change (w.r.t. temporal average)",
       "command-line-flag": "--do-spc"
@@ -91,7 +91,7 @@
       "id": "do_stack",
       "name": "Save Stacked File",
       "type": "Flag",
-      "value-key": "[STACK_FLAG]",
+      "value-key": "[DO_STACK]",
       "optional": true,
       "description": "Save the stacked within subject file (time series)",
       "command-line-flag": "--do-stack"
@@ -100,7 +100,7 @@
       "id": "do_label",
       "name": "Compute Intersected Cortex Label",
       "type": "Flag",
-      "value-key": "[LABEL_FLAG]",
+      "value-key": "[DO_LABEL]",
       "optional": true,
       "description": "Compute and output intersected cortex label",
       "command-line-flag": "--do-label"
@@ -136,7 +136,7 @@
       "id": "nosmooth",
       "name": "No Smoothing",
       "type": "Flag",
-      "value-key": "[NOSMOOTH_FLAG]",
+      "value-key": "[NOSMOOTH]",
       "optional": true,
       "description": "Do not smooth the data",
       "command-line-flag": "--nosmooth"
@@ -154,7 +154,7 @@
       "id": "generic_time",
       "name": "Generic Time Ordering",
       "type": "Flag",
-      "value-key": "[GENERIC_TIME_FLAG]",
+      "value-key": "[GENERIC_TIME]",
       "optional": true,
       "description": "Time points are ordered in QDEC file, assume time=1,2,3...",
       "command-line-flag": "--generic-time"
@@ -172,7 +172,7 @@
       "id": "jac",
       "name": "Correct Jacobian",
       "type": "Flag",
-      "value-key": "[JAC_FLAG]",
+      "value-key": "[JAC]",
       "optional": true,
       "description": "Use this flag when mapping area or volume maps to correct Jacobian",
       "command-line-flag": "--jac"

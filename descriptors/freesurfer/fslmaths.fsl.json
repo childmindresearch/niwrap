@@ -2,7 +2,7 @@
   "name": "fslmaths.fsl",
   "tool-version": "7.4.1",
   "description": "FSLmaths: part of FMRIB Software Library (FSL) for manipulating images via various mathematical operations.",
-  "command-line": "fslmaths [FIRST_INPUT] [OPERATIONS_AND_INPUTS] [OUTPUT]",
+  "command-line": "fslmaths [FIRST_INPUT] [OPERATIONS_AND_INPUTS] [OUTPUT_IMAGE]",
   "schema-version": "0.5",
   "container-image": {
     "type": "docker",
@@ -35,7 +35,7 @@
       "name": "Operations and Inputs"
     },
     {
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_IMAGE]",
       "description": "Output image file.",
       "type": "String",
       "optional": false,

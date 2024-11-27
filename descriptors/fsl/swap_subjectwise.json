@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Reordering of the dyadic vectors and fsamples according to average inter-subject modal orientations",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "swap_subjectwise [ListOfListOfDyads] [ListOfListOfFsamples] [MASK] [OBASENAME] [XTHRESH] [AVERAGEONLY] [VERBOSE_FLAG]",
+  "command-line": "swap_subjectwise [DYADS] [FMEAN] [MASK] [OBASENAME] [XTHRESH] [AVERAGEONLY_FLAG] [VERBOSE_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-r",
       "description": "List of list of dyads",
-      "value-key": "[ListOfListOfDyads]",
+      "value-key": "[DYADS]",
       "type": "File",
       "optional": false,
       "id": "dyads",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-f",
       "description": "List of list of mean fsamples",
-      "value-key": "[ListOfListOfFsamples]",
+      "value-key": "[FMEAN]",
       "type": "File",
       "optional": false,
       "id": "fmean",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--averageonly",
       "description": "Average only?",
-      "value-key": "[AVERAGEONLY]",
+      "value-key": "[AVERAGEONLY_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "averageonly_flag",

@@ -3,13 +3,13 @@
   "name": "unpackimadir",
   "author": "FreeSurfer Developers",
   "description": "Unpack image directories.",
-  "command-line": "unpackimadir [SOURCE_DIR] [TARGET_DIR]",
+  "command-line": "unpackimadir [SOURCE_DIRECTORY] [TARGET_DIRECTORY]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-src",
       "description": "Source directory containing the images to be unpacked",
-      "value-key": "[SOURCE_DIR]",
+      "value-key": "[SOURCE_DIRECTORY]",
       "type": "String",
       "optional": false,
       "id": "source_directory",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-targ",
       "description": "Target directory where the unpacked images will be stored",
-      "value-key": "[TARGET_DIR]",
+      "value-key": "[TARGET_DIRECTORY]",
       "type": "String",
       "optional": false,
       "id": "target_directory",

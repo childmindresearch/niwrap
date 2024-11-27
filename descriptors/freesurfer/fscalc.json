@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu",
   "description": "A frontend tool to perform mathematical operations on volumes/surfaces of data using mris_calc.",
-  "command-line": "fscalc [INPUT_FILE1] [OPERATION] [INPUT_FILE2] [OUTPUT_FILE] [OUTPUT_DATA_TYPE] [DEBUG_FLAG] [TMP_DIR] [NO_CLEANUP_FLAG] [LOG_FILE]",
+  "command-line": "fscalc [INPUT1] [OPERATION] [INPUT2] [OUTPUT_FILE] [OUTPUT_DATA_TYPE] [DEBUG] [TMPDIR] [NOCLEANUP] [LOG_FILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "First input image or constant.",
-      "value-key": "[INPUT_FILE1]",
+      "value-key": "[INPUT1]",
       "type": "String",
       "optional": false,
       "id": "input1",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Second input image or constant. Optional for some unary operations.",
-      "value-key": "[INPUT_FILE2]",
+      "value-key": "[INPUT2]",
       "type": "String",
       "optional": true,
       "id": "input2",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "--tmpdir",
       "description": "Temporary directory for processing.",
-      "value-key": "[TMP_DIR]",
+      "value-key": "[TMPDIR]",
       "type": "String",
       "optional": true,
       "id": "tmpdir",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "--nocleanup",
       "description": "Prevent cleanup of temporary files.",
-      "value-key": "[NO_CLEANUP_FLAG]",
+      "value-key": "[NOCLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "nocleanup",

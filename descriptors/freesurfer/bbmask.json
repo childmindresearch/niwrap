@@ -4,13 +4,13 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/user/repo/blob/master/path/to/bbmask.json",
   "description": "Tool to create a volume with a smaller field of view by creating a bounding box that encompasses a mask.",
-  "command-line": "bbmask [MASK_INPUT] [MASK_OUTPUT] [SRC] [NPAD] [REG] [REG_HEADER] [SUB2SRC]",
+  "command-line": "bbmask [MASK] [SRC_VOLUMES] [NPAD] [REGISTRATION] [REGHEADER] [SUB2SRC]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--mask",
       "description": "Input and output for the mask volume.",
-      "value-key": "[MASK_INPUT] [MASK_OUTPUT]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--src",
       "description": "Input and output volumes to be reduced to the bounding box.",
-      "value-key": "[SRC]",
+      "value-key": "[SRC_VOLUMES]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--reg",
       "description": "Input and output registration files.",
-      "value-key": "[REG]",
+      "value-key": "[REGISTRATION]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--regheader",
       "description": "Output registration file from header.",
-      "value-key": "[REG_HEADER]",
+      "value-key": "[REGHEADER]",
       "type": "File",
       "optional": true,
       "id": "regheader",

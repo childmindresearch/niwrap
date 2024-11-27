@@ -3,12 +3,12 @@
   "name": "@build_afni_Xlib",
   "author": "AFNI Developers",
   "description": "Compile and install lesstif, openmotif, and/or libXt",
-  "command-line": "@build_afni_Xlib [INSTALL_OPTION] [DEBUG_SYMBOLS] [LIB_DIRECTORY] [PACKAGES...]",
+  "command-line": "@build_afni_Xlib [LOCALINSTALL] [DEBUG_SYMBOLS] [LIB64] [PACKAGES]",
   "inputs": [
     {
       "description": "Install under /usr/local/afniX",
       "command-line-flag": "-afniX",
-      "value-key": "[INSTALL_OPTION]",
+      "value-key": "[AFNIX]",
       "type": "Flag",
       "optional": true,
       "id": "afniX",
@@ -26,7 +26,7 @@
     {
       "description": "Install libs under lib, and force 32-bit compile (on Linux: add --target=i386)",
       "command-line-flag": "-lib32",
-      "value-key": "[LIB_DIRECTORY]",
+      "value-key": "[LIB32]",
       "type": "Flag",
       "optional": true,
       "id": "lib32",
@@ -35,7 +35,7 @@
     {
       "description": "Install libs under lib64 (default is lib)",
       "command-line-flag": "-lib64",
-      "value-key": "[LIB_DIRECTORY]",
+      "value-key": "[LIB64]",
       "type": "Flag",
       "optional": true,
       "id": "lib64",
@@ -44,7 +44,7 @@
     {
       "description": "Install under each package directory",
       "command-line-flag": "-localinstall",
-      "value-key": "[INSTALL_OPTION]",
+      "value-key": "[LOCALINSTALL]",
       "type": "Flag",
       "optional": true,
       "id": "localinstall",
@@ -52,7 +52,7 @@
     },
     {
       "description": "Packages to compile and install (e.g., lesstif, openmotif, libXt)",
-      "value-key": "[PACKAGES...]",
+      "value-key": "[PACKAGES]",
       "type": "String",
       "list": true,
       "optional": false,

@@ -1,6 +1,6 @@
 {
   "name": "long_submit_jobs",
-  "command-line": "long_submit_jobs [--qdec] [--cdir] [--bdir] [--ldir] [--scriptsdir] [--cross] [--base] [--long] [--cflags] [--bflags] [--lflags] [--affine] [--force] [--simulate] [--simfiles] [--skip] [--skiperror] [--check] [--update-recon-all] [--use-recon-all] [--pause] [--max] [--queue] [--cmem] [--bmem] [--lmem] [--cnodes] [--bnodes] [--lnodes]",
+  "command-line": "long_submit_jobs [QDEC] [CDIR] [BDIR] [LDIR] [SCRIPTSDIR] [CROSS] [BASE] [LONG] [CFLAGS] [BFLAGS] [LFLAGS] [AFFINE] [FORCE] [SIMULATE] [SIMFILES] [--skip] [--skiperror] [CHECK] [--update-recon-all] [--use-recon-all] [PAUSE] [MAX] [QUEUE] [CMEM] [BMEM] [LMEM] [CNODES] [BNODES] [LNODES]",
   "description": "Submits longitudinal processing jobs to the NMR cluster (seychelles or launchpad).",
   "schema-version": "0.5",
   "inputs": [
@@ -8,7 +8,7 @@
       "id": "qdec",
       "name": "QDEC Table File",
       "type": "File",
-      "value-key": "[--qdec]",
+      "value-key": "[QDEC]",
       "description": "QDEC table file specifying the subjects and time points.",
       "command-line-flag": "--qdec",
       "optional": false
@@ -17,7 +17,7 @@
       "id": "cdir",
       "name": "Cross Subjects Directory",
       "type": "String",
-      "value-key": "[--cdir]",
+      "value-key": "[CDIR]",
       "description": "Directory for cross-sectional subjects (inherited by base and long).",
       "command-line-flag": "--cdir",
       "optional": false
@@ -26,7 +26,7 @@
       "id": "bdir",
       "name": "Base Subjects Directory",
       "type": "String",
-      "value-key": "[--bdir]",
+      "value-key": "[BDIR]",
       "description": "Directory for base runs (default: inherit from cross).",
       "command-line-flag": "--bdir",
       "optional": true
@@ -35,7 +35,7 @@
       "id": "ldir",
       "name": "Longitudinal Subjects Directory",
       "type": "String",
-      "value-key": "[--ldir]",
+      "value-key": "[LDIR]",
       "description": "Directory for longitudinal runs (default: inherit from base).",
       "command-line-flag": "--ldir",
       "optional": true
@@ -44,7 +44,7 @@
       "id": "scriptsdir",
       "name": "Scripts Directory",
       "type": "String",
-      "value-key": "[--scriptsdir]",
+      "value-key": "[SCRIPTSDIR]",
       "description": "Location to save submitted scripts (default: <cdir,bdir,ldir>/scripts_submitted).",
       "command-line-flag": "--scriptsdir",
       "optional": true
@@ -53,7 +53,7 @@
       "id": "cross",
       "name": "Cross Sectionals",
       "type": "Flag",
-      "value-key": "[--cross]",
+      "value-key": "[CROSS]",
       "description": "Process cross-sectional streams.",
       "command-line-flag": "--cross",
       "optional": true
@@ -62,7 +62,7 @@
       "id": "base",
       "name": "Base",
       "type": "Flag",
-      "value-key": "[--base]",
+      "value-key": "[BASE]",
       "description": "Process base streams.",
       "command-line-flag": "--base",
       "optional": true
@@ -71,7 +71,7 @@
       "id": "long",
       "name": "Longitudinals",
       "type": "Flag",
-      "value-key": "[--long]",
+      "value-key": "[LONG]",
       "description": "Process longitudinal streams.",
       "command-line-flag": "--long",
       "optional": true
@@ -80,7 +80,7 @@
       "id": "cflags",
       "name": "Cross Flags",
       "type": "String",
-      "value-key": "[--cflags]",
+      "value-key": "[CFLAGS]",
       "description": "Manual flags for cross processing (e.g., '-all -cw256').",
       "command-line-flag": "--cflags",
       "optional": true
@@ -89,7 +89,7 @@
       "id": "bflags",
       "name": "Base Flags",
       "type": "String",
-      "value-key": "[--bflags]",
+      "value-key": "[BFLAGS]",
       "description": "Manual flags for base processing (default: '-all').",
       "command-line-flag": "--bflags",
       "optional": true
@@ -98,7 +98,7 @@
       "id": "lflags",
       "name": "Long Flags",
       "type": "String",
-      "value-key": "[--lflags]",
+      "value-key": "[LFLAGS]",
       "description": "Manual flags for long processing (default: '-all').",
       "command-line-flag": "--lflags",
       "optional": true
@@ -107,7 +107,7 @@
       "id": "affine",
       "name": "Affine Registration",
       "type": "Flag",
-      "value-key": "[--affine]",
+      "value-key": "[AFFINE]",
       "description": "Use affine registration for base.",
       "command-line-flag": "--affine",
       "optional": true
@@ -116,7 +116,7 @@
       "id": "force",
       "name": "Force Reprocessing",
       "type": "Flag",
-      "value-key": "[--force]",
+      "value-key": "[FORCE]",
       "description": "Force reprocessing of jobs even if marked as done.",
       "command-line-flag": "--force",
       "optional": true
@@ -125,7 +125,7 @@
       "id": "simulate",
       "name": "Simulate Submission",
       "type": "Flag",
-      "value-key": "[--simulate]",
+      "value-key": "[SIMULATE]",
       "description": "Simulate submission only, without executing.",
       "command-line-flag": "--simulate",
       "optional": true
@@ -134,7 +134,7 @@
       "id": "simfiles",
       "name": "Simulate Command Files",
       "type": "Flag",
-      "value-key": "[--simfiles]",
+      "value-key": "[SIMFILES]",
       "description": "Simulate command file creation only, without executing.",
       "command-line-flag": "--simfiles",
       "optional": true
@@ -143,7 +143,7 @@
       "id": "check",
       "name": "Check Completion",
       "type": "Flag",
-      "value-key": "[--check]",
+      "value-key": "[CHECK]",
       "description": "Check if all longitudinal processing is complete.",
       "command-line-flag": "--check",
       "optional": true
@@ -152,7 +152,7 @@
       "id": "pause",
       "name": "Pause Between Submissions",
       "type": "Number",
-      "value-key": "[--pause]",
+      "value-key": "[PAUSE]",
       "description": "Pause duration (in seconds) between submissions (default: 13).",
       "command-line-flag": "--pause",
       "optional": true
@@ -161,7 +161,7 @@
       "id": "max",
       "name": "Max Jobs",
       "type": "Number",
-      "value-key": "[--max]",
+      "value-key": "[MAX]",
       "description": "Maximum number of jobs per user (default: 100).",
       "command-line-flag": "--max",
       "optional": true
@@ -170,7 +170,7 @@
       "id": "queue",
       "name": "Queue",
       "type": "String",
-      "value-key": "[--queue]",
+      "value-key": "[QUEUE]",
       "description": "Queue to submit jobs.",
       "command-line-flag": "--queue",
       "optional": true
@@ -179,7 +179,7 @@
       "id": "cmem",
       "name": "Cross RAM",
       "type": "Number",
-      "value-key": "[--cmem]",
+      "value-key": "[CMEM]",
       "description": "RAM (in GB) requested for cross (default: 7).",
       "command-line-flag": "--cmem",
       "optional": true
@@ -188,7 +188,7 @@
       "id": "bmem",
       "name": "Base RAM",
       "type": "Number",
-      "value-key": "[--bmem]",
+      "value-key": "[BMEM]",
       "description": "RAM (in GB) requested for base (default: 7).",
       "command-line-flag": "--bmem",
       "optional": true
@@ -197,7 +197,7 @@
       "id": "lmem",
       "name": "Long RAM",
       "type": "Number",
-      "value-key": "[--lmem]",
+      "value-key": "[LMEM]",
       "description": "RAM (in GB) requested for long (default: 7).",
       "command-line-flag": "--lmem",
       "optional": true
@@ -206,7 +206,7 @@
       "id": "cnodes",
       "name": "Cross Nodes",
       "type": "Number",
-      "value-key": "[--cnodes]",
+      "value-key": "[CNODES]",
       "description": "Number of nodes for cross runs (default: 1).",
       "command-line-flag": "--cnodes",
       "optional": true
@@ -215,7 +215,7 @@
       "id": "bnodes",
       "name": "Base Nodes",
       "type": "Number",
-      "value-key": "[--bnodes]",
+      "value-key": "[BNODES]",
       "description": "Number of nodes for base runs (default: 1).",
       "command-line-flag": "--bnodes",
       "optional": true
@@ -224,7 +224,7 @@
       "id": "lnodes",
       "name": "Long Nodes",
       "type": "Number",
-      "value-key": "[--lnodes]",
+      "value-key": "[LNODES]",
       "description": "Number of nodes for long runs (default: 1).",
       "command-line-flag": "--lnodes",
       "optional": true

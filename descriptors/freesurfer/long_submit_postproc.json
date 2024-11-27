@@ -2,7 +2,7 @@
   "name": "long_submit_postproc",
   "description": "Submits jobs to the cluster (either seychelles or launchpad at NMR) for longitudinal post-processing.",
   "author": "FreeSurfer Developers",
-  "command-line": "long_submit_postproc [QDEC] [PROG] [FLAGS] [DIR] [SIMULATE_FLAG] [PAUSE] [MAX] [QUEUE]",
+  "command-line": "long_submit_postproc [QDEC] [PROG] [FLAGS] [DIR] [SIMULATE] [PAUSE] [MAX] [QUEUE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -47,7 +47,7 @@
       "description": "Do not submit anything, just print commands",
       "type": "Flag",
       "command-line-flag": "--simulate",
-      "value-key": "[SIMULATE_FLAG]",
+      "value-key": "[SIMULATE]",
       "optional": true
     },
     {

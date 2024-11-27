@@ -3,7 +3,7 @@
   "name": "mris_fix_topology",
   "author": "FreeSurfer Developers",
   "description": "Computes a mapping from the unit sphere onto the cortical surface, ensuring a topologically correct surface.",
-  "command-line": "mris_fix_topology [SUBJECT_NAME] [HEMISPHERE] [ORIG_NAME] [SPHERE_NAME] [INFLATED_NAME] [OUTPUT_NAME] [DEFECT_BASE_NAME] [WRITE_FIXED_INFLATED_FLAG] [VERBOSE_FLAG] [VERBOSE_LOW_FLAG] [WARNINGS_FLAG] [ERRORS_FLAG] [MOVIES_FLAG] [INTERSECT_FLAG] [MAPPINGS_FLAG] [CORRECT_DEFECT] [NITERS] [GENETIC_FLAG] [OPTIMIZE_FLAG] [RANDOM] [SEED] [DIAG_FLAG] [MGZ_FLAG] [SMOOTH] [DIAGNOSTIC_LEVEL] [THREADS]",
+  "command-line": "mris_fix_topology [SUBJECT_NAME] [HEMISPHERE] [ORIG_NAME] [SPHERE_NAME] [INFLATED_NAME] [OUTPUT_NAME] [DEFECT_BASE_NAME] [WRITE_FIXED_INFLATED] [VERBOSE] [VERBOSE_LOW] [WARNINGS] [ERRORS] [MOVIES] [INTERSECT] [MAPPINGS] [CORRECT_DEFECT] [NITERS] [GENETIC] [OPTIMIZE] [RANDOM] [SEED] [DIAG] [MGZ] [SMOOTH] [DIAGNOSTIC_LEVEL] [THREADS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-wi",
       "description": "Write fixed inflated",
-      "value-key": "[WRITE_FIXED_INFLATED_FLAG]",
+      "value-key": "[WRITE_FIXED_INFLATED]",
       "type": "Flag",
       "optional": true,
       "id": "write_fixed_inflated",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-verbose",
       "description": "Increase verbosity",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-verbose_low",
       "description": "Low verbosity",
-      "value-key": "[VERBOSE_LOW_FLAG]",
+      "value-key": "[VERBOSE_LOW]",
       "type": "Flag",
       "optional": true,
       "id": "verbose_low",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-warnings",
       "description": "Show warnings",
-      "value-key": "[WARNINGS_FLAG]",
+      "value-key": "[WARNINGS]",
       "type": "Flag",
       "optional": true,
       "id": "warnings",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-errors",
       "description": "Show errors",
-      "value-key": "[ERRORS_FLAG]",
+      "value-key": "[ERRORS]",
       "type": "Flag",
       "optional": true,
       "id": "errors",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-movies",
       "description": "Generate movies",
-      "value-key": "[MOVIES_FLAG]",
+      "value-key": "[MOVIES]",
       "type": "Flag",
       "optional": true,
       "id": "movies",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-intersect",
       "description": "Check if the final surface self-intersects",
-      "value-key": "[INTERSECT_FLAG]",
+      "value-key": "[INTERSECT]",
       "type": "Flag",
       "optional": true,
       "id": "intersect",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-mappings",
       "description": "Generate several different mappings",
-      "value-key": "[MAPPINGS_FLAG]",
+      "value-key": "[MAPPINGS]",
       "type": "Flag",
       "optional": true,
       "id": "mappings",
@@ -165,7 +165,7 @@
     {
       "command-line-flag": "-genetic",
       "description": "Use genetic search",
-      "value-key": "[GENETIC_FLAG]",
+      "value-key": "[GENETIC]",
       "type": "Flag",
       "optional": true,
       "id": "genetic",
@@ -174,7 +174,7 @@
     {
       "command-line-flag": "-optimize",
       "description": "Optimize genetic search",
-      "value-key": "[OPTIMIZE_FLAG]",
+      "value-key": "[OPTIMIZE]",
       "type": "Flag",
       "optional": true,
       "id": "optimize",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "-diag",
       "description": "Sets DIAG_SAVE_DIAGS",
-      "value-key": "[DIAG_FLAG]",
+      "value-key": "[DIAG]",
       "type": "Flag",
       "optional": true,
       "id": "diag",
@@ -210,7 +210,7 @@
     {
       "command-line-flag": "-mgz",
       "description": "Assume volumes are in mgz format",
-      "value-key": "[MGZ_FLAG]",
+      "value-key": "[MGZ]",
       "type": "Flag",
       "optional": true,
       "id": "mgz",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/GetAfniView.json",
   "description": "A tool to retrieve the AFNI view of a given dataset name",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@GetAfniView [NAME]",
+  "command-line": "@GetAfniView [DATASET_NAME]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Name of the dataset (including path) from which to retrieve the AFNI view (+orig, +acpc, etc.)",
-      "value-key": "[NAME]",
+      "value-key": "[DATASET_NAME]",
       "type": "String",
       "optional": false,
       "id": "dataset_name",

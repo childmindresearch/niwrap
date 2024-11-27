@@ -1,6 +1,6 @@
 {
   "name": "run_SegmentSubject.sh",
-  "command-line": "run_SegmentSubject.sh [MCRROOT] [ARGS]",
+  "command-line": "run_SegmentSubject.sh [DEPLOYEDMCRROOT] [ARGUMENTS]",
   "description": "A command-line tool for subject segmentation in Freesurfer.",
   "schema-version": "0.5",
   "inputs": [
@@ -9,7 +9,7 @@
       "name": "Deployed MCR Root",
       "type": "String",
       "description": "The root directory of the deployed MATLAB Compiler Runtime.",
-      "value-key": "[MCRROOT]",
+      "value-key": "[DEPLOYEDMCRROOT]",
       "optional": false
     },
     {
@@ -17,7 +17,7 @@
       "name": "Arguments",
       "type": "String",
       "description": "Additional arguments to be passed to the SegmentSubject script.",
-      "value-key": "[ARGS]",
+      "value-key": "[ARGUMENTS]",
       "optional": true
     }
   ],

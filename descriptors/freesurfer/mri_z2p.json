@@ -3,7 +3,7 @@
   "name": "mri_z2p",
   "author": "FreeSurfer Developers",
   "description": "Converts Z-statistic volumes to P-value volumes.",
-  "command-line": "mri_z2p [Z_VOLUME] [P_VOLUME] [SIG_VOLUME] [MASK_VOLUME] [TWO_SIDED_FLAG] [ONE_SIDED_FLAG] [SIGNED_FLAG] [FEATDIR] [FEAT_EXT] [FORMAT_FLAG] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "mri_z2p [Z_VOLUME] [P_VOLUME] [SIG_VOLUME] [MASK_VOLUME] [TWO_SIDED] [ONE_SIDED] [SIGNED] [FEAT] [FEAT_FORMAT] [IMG_FORMAT] [DEBUG] [CHECK_OPTS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--two-sided",
       "description": "Assume a two-sided, unsigned test (keeps sign of input).",
-      "value-key": "[TWO_SIDED_FLAG]",
+      "value-key": "[TWO_SIDED]",
       "type": "Flag",
       "optional": true,
       "id": "two_sided",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--one-sided",
       "description": "Assume a one-sided, signed test.",
-      "value-key": "[ONE_SIDED_FLAG]",
+      "value-key": "[ONE_SIDED]",
       "type": "Flag",
       "optional": true,
       "id": "one_sided",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--signed",
       "description": "Two-sided/signed p-value (p = 2*(1-p)).",
-      "value-key": "[SIGNED_FLAG]",
+      "value-key": "[SIGNED]",
       "type": "Flag",
       "optional": true,
       "id": "signed",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--feat",
       "description": "Convert all z-stats and zf-stats to sigs in the specified directory.",
-      "value-key": "[FEATDIR]",
+      "value-key": "[FEAT]",
       "type": "String",
       "optional": true,
       "id": "feat",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--featfmt",
       "description": "Use specified format for output (e.g., nii, nii.gz, mgh).",
-      "value-key": "[FEAT_EXT]",
+      "value-key": "[FEAT_FORMAT]",
       "type": "String",
       "optional": true,
       "id": "feat_format",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--nii",
       "description": "Use NIfTI output format.",
-      "value-key": "[FORMAT_FLAG]",
+      "value-key": "[NII_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "nii_format",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--nii.gz",
       "description": "Use compressed NIfTI output format.",
-      "value-key": "[FORMAT_FLAG]",
+      "value-key": "[NIIGZ_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "niigz_format",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--mgh",
       "description": "Use MGH output format.",
-      "value-key": "[FORMAT_FLAG]",
+      "value-key": "[MGH_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "mgh_format",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--mgz",
       "description": "Use MGZ output format.",
-      "value-key": "[FORMAT_FLAG]",
+      "value-key": "[MGZ_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "mgz_format",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "--img",
       "description": "Use Analyze output format.",
-      "value-key": "[FORMAT_FLAG]",
+      "value-key": "[IMG_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "img_format",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit.",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "check_opts",

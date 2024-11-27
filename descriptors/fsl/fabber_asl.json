@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fabber is a tool for automated model fitting of time series data.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fabber_asl [--listmethods] [--listmodels] [--listparams] [--descparams] [--listoutputs] [--evaluate] [--evaluate-params] [--evaluate-nt] [--simple-output] [--output] [--overwrite] [--link-to-latest] [--method] [--model] [--loadmodels] [--data] [--mask] [--suppdata] [--dump-param-names] [--save-model-fit] [--save-residuals] [--save-model-extras] [--save-mvn] [--save-mean] [--save-std] [--save-var] [--save-zstat] [--save-noise-mean] [--save-noise-std] [--save-free-energy] [--optfile] [--debug]",
+  "command-line": "fabber_asl [LISTMETHODS] [LISTMODELS] [LISTPARAMS] [DESCPARAMS] [LISTOUTPUTS] [EVALUATE] [EVALUATE_PARAMS] [EVALUATE_NT] [SIMPLE_OUTPUT] [OUTPUT] [OVERWRITE] [LINK_TO_LATEST] [METHOD] [MODEL] [LOADMODELS] [DATA] [MASK] [SUPPDATA] [DUMP_PARAM_NAMES] [SAVE_MODEL_FIT] [SAVE_RESIDUALS] [SAVE_MODEL_EXTRAS] [SAVE_MVN] [SAVE_MEAN] [SAVE_STD] [SAVE_VAR] [SAVE_ZSTAT] [SAVE_NOISE_MEAN] [SAVE_NOISE_STD] [SAVE_FREE_ENERGY] [OPTFILE] [DEBUG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "List all known inference methods",
-      "value-key": "[--listmethods]",
+      "value-key": "[LISTMETHODS]",
       "type": "Flag",
       "command-line-flag": "--listmethods",
       "optional": true,
@@ -21,7 +21,7 @@
     },
     {
       "description": "List all known forward models",
-      "value-key": "[--listmodels]",
+      "value-key": "[LISTMODELS]",
       "type": "Flag",
       "command-line-flag": "--listmodels",
       "optional": true,
@@ -30,7 +30,7 @@
     },
     {
       "description": "List model parameters (requires model configuration options to be given)",
-      "value-key": "[--listparams]",
+      "value-key": "[LISTPARAMS]",
       "type": "Flag",
       "command-line-flag": "--listparams",
       "optional": true,
@@ -39,7 +39,7 @@
     },
     {
       "description": "Describe model parameters (name, description, units) - requires model configuration options to be given. Note that not all models provide parameter descriptions",
-      "value-key": "[--descparams]",
+      "value-key": "[DESCPARAMS]",
       "type": "Flag",
       "command-line-flag": "--descparams",
       "optional": true,
@@ -48,7 +48,7 @@
     },
     {
       "description": "List additional model outputs (requires model configuration options to be given)",
-      "value-key": "[--listoutputs]",
+      "value-key": "[LISTOUTPUTS]",
       "type": "Flag",
       "command-line-flag": "--listoutputs",
       "optional": true,
@@ -57,7 +57,7 @@
     },
     {
       "description": "Evaluate model. Set to name of output required or blank for default output. Requires model configuration options, --evaluate-params and --evaluate-nt",
-      "value-key": "[--evaluate]",
+      "value-key": "[EVALUATE]",
       "type": "String",
       "optional": true,
       "id": "evaluate",
@@ -65,7 +65,7 @@
     },
     {
       "description": "List of parameter values for evaluation",
-      "value-key": "[--evaluate-params]",
+      "value-key": "[EVALUATE_PARAMS]",
       "type": "String",
       "optional": true,
       "id": "evaluate_params",
@@ -73,7 +73,7 @@
     },
     {
       "description": "Number of time points for evaluation - must be consistent with model options where appropriate",
-      "value-key": "[--evaluate-nt]",
+      "value-key": "[EVALUATE_NT]",
       "type": "Number",
       "optional": true,
       "id": "evaluate_nt",
@@ -81,7 +81,7 @@
     },
     {
       "description": "Instead of usual standard output, simply output series of lines each giving progress as percentage",
-      "value-key": "[--simple-output]",
+      "value-key": "[SIMPLE_OUTPUT]",
       "type": "Flag",
       "command-line-flag": "--simple-output",
       "optional": true,
@@ -90,7 +90,7 @@
     },
     {
       "description": "Directory for output files (including logfile)",
-      "value-key": "[--output]",
+      "value-key": "[OUTPUT]",
       "type": "String",
       "optional": false,
       "id": "output",
@@ -98,7 +98,7 @@
     },
     {
       "description": "If set will overwrite existing output. If not set, new output directories will be created by appending '+' to the directory name",
-      "value-key": "[--overwrite]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "command-line-flag": "--overwrite",
       "optional": true,
@@ -107,7 +107,7 @@
     },
     {
       "description": "Try to create a link to the most recent output directory with the prefix _latest",
-      "value-key": "[--link-to-latest]",
+      "value-key": "[LINK_TO_LATEST]",
       "type": "Flag",
       "command-line-flag": "--link-to-latest",
       "optional": true,
@@ -116,7 +116,7 @@
     },
     {
       "description": "Use this inference method",
-      "value-key": "[--method]",
+      "value-key": "[METHOD]",
       "type": "String",
       "optional": false,
       "id": "method",
@@ -124,7 +124,7 @@
     },
     {
       "description": "Use this forward model",
-      "value-key": "[--model]",
+      "value-key": "[MODEL]",
       "type": "String",
       "optional": false,
       "id": "model",
@@ -132,7 +132,7 @@
     },
     {
       "description": "Load models dynamically from the specified filename, which should be a DLL/shared library",
-      "value-key": "[--loadmodels]",
+      "value-key": "[LOADMODELS]",
       "type": "File",
       "optional": true,
       "id": "loadmodels",
@@ -140,7 +140,7 @@
     },
     {
       "description": "Specify a single input data file",
-      "value-key": "[--data]",
+      "value-key": "[DATA]",
       "type": "File",
       "optional": false,
       "id": "data",
@@ -148,7 +148,7 @@
     },
     {
       "description": "Mask file. Inference will only be performed where mask value > 0",
-      "value-key": "[--mask]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -156,7 +156,7 @@
     },
     {
       "description": "'Supplemental' timeseries data, required for some models",
-      "value-key": "[--suppdata]",
+      "value-key": "[SUPPDATA]",
       "type": "File",
       "optional": true,
       "id": "suppdata",
@@ -164,7 +164,7 @@
     },
     {
       "description": "Write the file paramnames.txt containing the names of the model parameters",
-      "value-key": "[--dump-param-names]",
+      "value-key": "[DUMP_PARAM_NAMES]",
       "type": "Flag",
       "command-line-flag": "--dump-param-names",
       "optional": true,
@@ -173,7 +173,7 @@
     },
     {
       "description": "Output the model prediction as a 4d volume",
-      "value-key": "[--save-model-fit]",
+      "value-key": "[SAVE_MODEL_FIT]",
       "type": "Flag",
       "command-line-flag": "--save-model-fit",
       "optional": true,
@@ -182,7 +182,7 @@
     },
     {
       "description": "Output the residuals (difference between the data and the model prediction)",
-      "value-key": "[--save-residuals]",
+      "value-key": "[SAVE_RESIDUALS]",
       "type": "Flag",
       "command-line-flag": "--save-residuals",
       "optional": true,
@@ -191,7 +191,7 @@
     },
     {
       "description": "Output any additional model-specific timeseries data",
-      "value-key": "[--save-model-extras]",
+      "value-key": "[SAVE_MODEL_EXTRAS]",
       "type": "Flag",
       "command-line-flag": "--save-model-extras",
       "optional": true,
@@ -200,7 +200,7 @@
     },
     {
       "description": "Output the final MVN distributions.",
-      "value-key": "[--save-mvn]",
+      "value-key": "[SAVE_MVN]",
       "type": "Flag",
       "command-line-flag": "--save-mvn",
       "optional": true,
@@ -209,7 +209,7 @@
     },
     {
       "description": "Output the parameter means.",
-      "value-key": "[--save-mean]",
+      "value-key": "[SAVE_MEAN]",
       "type": "Flag",
       "command-line-flag": "--save-mean",
       "optional": true,
@@ -218,7 +218,7 @@
     },
     {
       "description": "Output the parameter standard deviations.",
-      "value-key": "[--save-std]",
+      "value-key": "[SAVE_STD]",
       "type": "Flag",
       "command-line-flag": "--save-std",
       "optional": true,
@@ -227,7 +227,7 @@
     },
     {
       "description": "Output the parameter variances.",
-      "value-key": "[--save-var]",
+      "value-key": "[SAVE_VAR]",
       "type": "Flag",
       "command-line-flag": "--save-var",
       "optional": true,
@@ -236,7 +236,7 @@
     },
     {
       "description": "Output the parameter Zstats.",
-      "value-key": "[--save-zstat]",
+      "value-key": "[SAVE_ZSTAT]",
       "type": "Flag",
       "command-line-flag": "--save-zstat",
       "optional": true,
@@ -245,7 +245,7 @@
     },
     {
       "description": "Output the noise means. The noise distribution inferred is the precision of a Gaussian noise source",
-      "value-key": "[--save-noise-mean]",
+      "value-key": "[SAVE_NOISE_MEAN]",
       "type": "Flag",
       "command-line-flag": "--save-noise-mean",
       "optional": true,
@@ -254,7 +254,7 @@
     },
     {
       "description": "Output the noise standard deviations.",
-      "value-key": "[--save-noise-std]",
+      "value-key": "[SAVE_NOISE_STD]",
       "type": "Flag",
       "command-line-flag": "--save-noise-std",
       "optional": true,
@@ -263,7 +263,7 @@
     },
     {
       "description": "Output the free energy, if calculated.",
-      "value-key": "[--save-free-energy]",
+      "value-key": "[SAVE_FREE_ENERGY]",
       "type": "Flag",
       "command-line-flag": "--save-free-energy",
       "optional": true,
@@ -272,7 +272,7 @@
     },
     {
       "description": "File containing additional options, one per line, in the same form as specified on the command line",
-      "value-key": "[--optfile]",
+      "value-key": "[OPTFILE]",
       "type": "String",
       "optional": true,
       "id": "optfile",
@@ -280,7 +280,7 @@
     },
     {
       "description": "Output large amounts of debug information. ONLY USE WITH VERY SMALL NUMBERS OF VOXELS",
-      "value-key": "[--debug]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "command-line-flag": "--debug",
       "optional": true,
