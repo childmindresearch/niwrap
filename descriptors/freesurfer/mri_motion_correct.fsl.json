@@ -1,12 +1,12 @@
 {
   "name": "mri_motion_correct.fsl",
   "description": "Tool for motion correction of MRI images using FSL",
-  "command-line": "mri_motion_correct.fsl [INPUT] [OUTPUT] [OPTIONS]",
+  "command-line": "mri_motion_correct.fsl [INPUT_IMAGE] [OUTPUT_IMAGE] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input MRI image to be motion corrected",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "input_image",
@@ -14,7 +14,7 @@
     },
     {
       "description": "Output corrected MRI image",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_IMAGE]",
       "type": "String",
       "optional": false,
       "id": "output_image",

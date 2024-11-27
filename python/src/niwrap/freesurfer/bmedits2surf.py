@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BMEDITS2SURF_METADATA = Metadata(
-    id="72726dc1b0f9d2d8cad243bd75a4708a76dffcec.boutiques",
+    id="be18624e39ce9efc3a4eb4744be1016b11c9fa5f.boutiques",
     name="bmedits2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

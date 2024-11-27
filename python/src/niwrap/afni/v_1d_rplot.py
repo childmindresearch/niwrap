@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_RPLOT_METADATA = Metadata(
-    id="c9aa3010cca9653f0537f0f1895ec50024c5afb8.boutiques",
+    id="1def472c459dde1820745927eb2a1f6b82799f26.boutiques",
     name="1dRplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

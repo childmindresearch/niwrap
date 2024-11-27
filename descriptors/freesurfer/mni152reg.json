@@ -3,7 +3,7 @@
   "name": "mni152reg",
   "author": "FreeSurfer Developers",
   "description": "Registers the FreeSurfer subject to the FSL MNI 152 brain to create a tkregister-style registration matrix.",
-  "command-line": "mni152reg -[SUBJECT] [REGISTER_1MM_FLAG] [OUTPUT_FLAG] [SYMMETRIC_FLAG] [SAVE_VOLUME_FLAG]",
+  "command-line": "mni152reg -[SUBJECT] [REGISTER_1MM] [OUTPUT] [SYMMETRIC] [SAVE_VOLUME]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--1",
       "description": "Register to 1mm target (instead of 2mm)",
-      "value-key": "[REGISTER_1MM_FLAG]",
+      "value-key": "[REGISTER_1MM]",
       "type": "Flag",
       "optional": true,
       "id": "register_1mm",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--o",
       "description": "Explicitly set output registration file",
-      "value-key": "[OUTPUT_FLAG]",
+      "value-key": "[OUTPUT]",
       "type": "String",
       "optional": true,
       "id": "output",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--sym",
       "description": "Register to FSL symmetric target",
-      "value-key": "[SYMMETRIC_FLAG]",
+      "value-key": "[SYMMETRIC]",
       "type": "Flag",
       "optional": true,
       "id": "symmetric",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--save-vol",
       "description": "Sample original to output space",
-      "value-key": "[SAVE_VOLUME_FLAG]",
+      "value-key": "[SAVE_VOLUME]",
       "type": "Flag",
       "optional": true,
       "id": "save_volume",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_COMPUTE_VOLUME_FRACTIONS_METADATA = Metadata(
-    id="8bbb9a9e16707cb877d9f4e227162cc3e61b8cdf.boutiques",
+    id="02961ba1db8b265f07c25a08461891b1caa9c54c.boutiques",
     name="mris_compute_volume_fractions",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

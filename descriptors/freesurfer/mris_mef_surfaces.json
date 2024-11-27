@@ -1,6 +1,6 @@
 {
   "name": "mris_mef_surfaces",
-  "command-line": "mris_mef_surfaces [SUBJECT_NAME] [HEMISPHERE] [OMIT_SELF_INTERSECTION_FLAG] [CURVATURE_FLAG] [AVERAGE_CURVATURE_TIMES] [WHITE_ONLY_FLAG]",
+  "command-line": "mris_mef_surfaces [SUBJECT_NAME] [HEMISPHERE] [OMIT_SELF_INTERSECTION] [CURVATURE] [AVERAGE_CURVATURE] [WHITE_ONLY]",
   "description": "Positions the tessellation of the cortical surface at the white matter surface, then the gray matter surface and generates surface files for these surfaces. Also generates 'curvature' file for cortical thickness and a surface file approximating layer IV of the cortical sheet.",
   "schema-version": "0.5",
   "inputs": [
@@ -26,7 +26,7 @@
       "name": "Omit Self-Intersection",
       "type": "Flag",
       "description": "Omit self-intersection and only generate gray/white surface.",
-      "value-key": "[OMIT_SELF_INTERSECTION_FLAG]",
+      "value-key": "[OMIT_SELF_INTERSECTION]",
       "optional": true
     },
     {
@@ -35,7 +35,7 @@
       "name": "Create Curvature and Area Files",
       "type": "Flag",
       "description": "Create curvature and area files from the white matter surface.",
-      "value-key": "[CURVATURE_FLAG]",
+      "value-key": "[CURVATURE]",
       "optional": true
     },
     {
@@ -44,7 +44,7 @@
       "name": "Average Curvature Values",
       "type": "Number",
       "description": "Average curvature values specified number of times, default is 10.",
-      "value-key": "[AVERAGE_CURVATURE_TIMES]",
+      "value-key": "[AVERAGE_CURVATURE]",
       "optional": true
     },
     {
@@ -53,7 +53,7 @@
       "name": "Generate White Matter Surface Only",
       "type": "Flag",
       "description": "Only generate the white matter surface.",
-      "value-key": "[WHITE_ONLY_FLAG]",
+      "value-key": "[WHITE_ONLY]",
       "optional": true
     }
   ],

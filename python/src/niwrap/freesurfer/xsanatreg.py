@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XSANATREG_METADATA = Metadata(
-    id="d332ddf2b547fd5900eda14d22036aea804a058b.boutiques",
+    id="fa7d0e1f8dd94e54884aa8dac608dad32d5de507.boutiques",
     name="xsanatreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

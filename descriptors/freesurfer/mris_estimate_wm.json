@@ -1,13 +1,13 @@
 {
   "name": "mris_estimate_wm",
-  "command-line": "mris_estimate_wm --subjs [SUBJECTS] [HEMI] [SDIR] [MODEL] [SUFFIX] [GPU_FLAG] [RSI_FLAG] [SINGLE_ITER_FLAG] [VOL]",
+  "command-line": "mris_estimate_wm --subjs [SUBJS] [HEMI] [SDIR] [MODEL] [SUFFIX] [GPU] [RSI] [SINGLE_ITER] [VOL]",
   "description": "Tool to estimate white matter surfaces using MRI data.",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-s",
       "description": "List of subjects to process.",
-      "value-key": "[SUBJECTS]",
+      "value-key": "[SUBJS]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-g",
       "description": "Use the GPU.",
-      "value-key": "[GPU_FLAG]",
+      "value-key": "[GPU]",
       "type": "Flag",
       "optional": true,
       "id": "gpu",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--rsi",
       "description": "Remove self-intersecting faces during the deformation.",
-      "value-key": "[RSI_FLAG]",
+      "value-key": "[RSI]",
       "type": "Flag",
       "optional": true,
       "id": "rsi",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--single-iter",
       "description": "Prevent deformation steps from running more than once.",
-      "value-key": "[SINGLE_ITER_FLAG]",
+      "value-key": "[SINGLE_ITER]",
       "type": "Flag",
       "optional": true,
       "id": "single_iter",

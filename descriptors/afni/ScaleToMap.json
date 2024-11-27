@@ -3,7 +3,7 @@
   "name": "ScaleToMap",
   "author": "AFNI Developers",
   "description": "Tool to scale values to a color map",
-  "command-line": "ScaleToMap [INPUT_FILE] [ICOL] [VCOL] [MAP_TYPE] [MAPFILE] [PALFILE] [FRF] [CLP_RANGE] [PERC_CLP_RANGE] [APR_RANGE] [ANR_RANGE] [INTERP] [NOINTERP] [DIRECT] [MSK_ZERO] [MSK_RANGE] [MSK_COLOR] [NOMSK_COL] [BRIGHT_FACT] [HELP] [VERBOSE] [SHOWMAP] [SHOWDB] [NOVOLREG] [NOXFORM] [SETENV] [TRACE] [TRACE] [NOMALL] [YESMALL]",
+  "command-line": "ScaleToMap [INPUT_FILE] [ICOL] [VCOL] [CMAP] [CMAPFILE] [CMAPDB] [FRF] [CLP] [PERC_CLP] [APR] [ANR] [INTERP] [NOINTERP] [DIRECT] [MSK_ZERO] [MSK] [MSK_COL] [NOMSK_COL] [BR] [HELP] [VERBOSE] [SHOWMAP] [SHOWDB] [NOVOLREG] [NOXFORM] [SETENV] [TRACE] [TRACE] [NOMALL] [YESMALL]",
   "inputs": [
     {
       "description": "Input file in 1D formatted ascii containing node values",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-cmap",
       "description": "Choose one of the standard colormaps available with SUMA",
-      "value-key": "[MAP_TYPE]",
+      "value-key": "[CMAP]",
       "type": "String",
       "optional": true,
       "id": "cmap",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-cmapfile",
       "description": "Read color map from a Mapfile",
-      "value-key": "[MAPFILE]",
+      "value-key": "[CMAPFILE]",
       "type": "File",
       "optional": true,
       "id": "cmapfile",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-cmapdb",
       "description": "Read color maps from an AFNI .pal file",
-      "value-key": "[PALFILE]",
+      "value-key": "[CMAPDB]",
       "type": "File",
       "optional": true,
       "id": "cmapdb",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-clp",
       "description": "Clip values in IntVect to specified range",
-      "value-key": "[CLP_RANGE]",
+      "value-key": "[CLP]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-perc_clp",
       "description": "Percentile clip values in IntVect to specified range",
-      "value-key": "[PERC_CLP_RANGE]",
+      "value-key": "[PERC_CLP]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-apr",
       "description": "Clip values in IntVect to [0 range]",
-      "value-key": "[APR_RANGE]",
+      "value-key": "[APR]",
       "type": "Number",
       "optional": true,
       "id": "apr",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-anr",
       "description": "Clip values in IntVect to [-range range]",
-      "value-key": "[ANR_RANGE]",
+      "value-key": "[ANR]",
       "type": "Number",
       "optional": true,
       "id": "anr",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "-msk",
       "description": "Mask values in vcol between specified range",
-      "value-key": "[MSK_RANGE]",
+      "value-key": "[MSK]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "-msk_col",
       "description": "Set color of masked voxels",
-      "value-key": "[MSK_COLOR]",
+      "value-key": "[MSK_COL]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "-br",
       "description": "Apply a brightness factor to colormap and mask color",
-      "value-key": "[BRIGHT_FACT]",
+      "value-key": "[BR]",
       "type": "Number",
       "optional": true,
       "id": "br",

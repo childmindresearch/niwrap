@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_LAYERS_METADATA = Metadata(
-    id="3f46cd6dc74745711c02167e428a901a79f7affc.boutiques",
+    id="e966c2d7b51c012df1e75b107d18f44f83eac9a4.boutiques",
     name="SurfLayers",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

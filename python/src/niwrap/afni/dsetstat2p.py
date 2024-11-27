@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DSETSTAT2P_METADATA = Metadata(
-    id="c5c1a464fb7aea2f28d11cf8382423aa8937d801.boutiques",
+    id="b07011bb5bdd8084543d33f9a06e2ddf0d7fd9f2.boutiques",
     name="dsetstat2p",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

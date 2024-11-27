@@ -5,12 +5,12 @@
   "descriptor-url": "example.com",
   "description": "Catenates 3D rotation+shift matrix+vector transformations.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "cat_matvec [OUTPUT_FORMAT] [MATVEC_SPEC]",
+  "command-line": "cat_matvec [FOUR_BY_FOUR_FORMAT] [MATVEC_SPEC]",
   "inputs": [
     {
       "command-line-flag": "-MATRIX",
       "description": "Indicates that the resulting matrix will be written in the 'MATRIX(...)' format (FORM 3).",
-      "value-key": "[OUTPUT_FORMAT]",
+      "value-key": "[MATRIX_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "matrix_format",
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "-ONELINE",
       "description": "Option indicates that the resulting matrix will simply be written as 12 numbers on one line.",
-      "value-key": "[OUTPUT_FORMAT]",
+      "value-key": "[ONELINE_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "oneline_format",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-4x4",
       "description": "Output matrix in augmented form (last row is 0 0 0 1). This option does not work with -MATRIX or -ONELINE.",
-      "value-key": "[OUTPUT_FORMAT]",
+      "value-key": "[FOUR_BY_FOUR_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "four_by_four_format",

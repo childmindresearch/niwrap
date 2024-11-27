@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_MRIS_SLOPES_METADATA = Metadata(
-    id="7cc108910d6b330796394e5bafcb8d88bdc0e257.boutiques",
+    id="5ba2dca61a52a3d9141cc6cd000056f304bcba66.boutiques",
     name="long_mris_slopes",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

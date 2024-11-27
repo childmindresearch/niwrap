@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RELABEL_NONWM_HYPOS_METADATA = Metadata(
-    id="1cc7b46473097a60baa45f3b766a22abb0dbdb86.boutiques",
+    id="3a851ece6e931be630a0b02c50b2ffa2012877c2.boutiques",
     name="mri_relabel_nonwm_hypos",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -78,7 +78,7 @@ def mri_relabel_nonwm_hypos(
         cargs.append("--checkopts")
     ret = MriRelabelNonwmHyposOutputs(
         root=execution.output_file("."),
-        out_segmentation=execution.output_file(outputseg),
+        out_segmentation=execution.output_file("[OUTPUT_SEGMENTATION]"),
     )
     execution.run(cargs)
     return ret

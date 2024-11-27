@@ -3,12 +3,12 @@
   "tool-version": "7.4.1",
   "author": "FreeSurfer Developers",
   "description": "rca-config2csh is a utility to convert configuration files into C-shell syntax.",
-  "command-line": "rca[CONFIG_FILE]",
+  "command-line": "rca[CONFIGFILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Configuration file to be converted",
-      "value-key": "[CONFIG_FILE]",
+      "value-key": "[CONFIGFILE]",
       "type": "File",
       "optional": false,
       "id": "configfile",

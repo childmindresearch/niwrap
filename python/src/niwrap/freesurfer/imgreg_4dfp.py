@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMGREG_4DFP_METADATA = Metadata(
-    id="b4c9f8a2468ee44d115e36ff6f5e3a7d61c1f146.boutiques",
+    id="56f755f16ccfb6ca990d0bdefae3bf38a4194227.boutiques",
     name="imgreg_4dfp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -3,7 +3,7 @@
   "name": "2perm",
   "author": "AFNI Developers",
   "description": "Generates two random non-overlapping subsets of a given set of integers.",
-  "command-line": "2perm [PREFIX] [COMMA_FLAG] [BOTTOM_INT] [TOP_INT] [SUBSET1_SIZE] [SUBSET2_SIZE]",
+  "command-line": "2perm [PREFIX] [COMMA] [BOTTOM_INT] [TOP_INT] [SUBSET1_SIZE] [SUBSET2_SIZE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -20,7 +20,7 @@
     },
     {
       "description": "Write each file as a single row of comma-separated numbers",
-      "value-key": "[COMMA_FLAG]",
+      "value-key": "[COMMA]",
       "command-line-flag": "-comma",
       "type": "Flag",
       "optional": true,

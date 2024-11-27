@@ -3,7 +3,7 @@
   "name": "mris_skeletonize",
   "author": "FreeSurfer Developers",
   "description": "Computes the skeleton of gyri (ie, the crowns) or sulci (ie, the fundi).",
-  "command-line": "mris_skeletonize [SURFACE] [SURFVALS] [MASK] [K1_FLAG] [CURV_NONMAXSUP_FLAG] [GYRUS_FLAG] [SULCUS_FLAG] [OUTDIR] [SPHERE] [PS] [LABEL] [NBRSIZE] [THRESHOLD] [CLUSTER] [FWHM]",
+  "command-line": "mris_skeletonize [SURFACE] [SURFVALS] [MASK] [K1] [CURV_NONMAXSUP] [GYRUS] [SULCUS] [OUTDIR] [SPHERE] [POINTSET] [LABEL] [NBRSIZE] [THRESHOLD] [CLUSTER] [FWHM]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--k1",
       "description": "Use k1 from surface (not with --curv-nonmaxsup).",
-      "value-key": "[K1_FLAG]",
+      "value-key": "[K1]",
       "type": "Flag",
       "optional": false,
       "id": "k1",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--curv-nonmaxsup",
       "description": "Use curvature H computed from surface with non-max suppression (not with --k1).",
-      "value-key": "[CURV_NONMAXSUP_FLAG]",
+      "value-key": "[CURV_NONMAXSUP]",
       "type": "Flag",
       "optional": false,
       "id": "curv_nonmaxsup",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--gyrus",
       "description": "Skeletonize the crowns of the gyri.",
-      "value-key": "[GYRUS_FLAG]",
+      "value-key": "[GYRUS]",
       "type": "Flag",
       "optional": false,
       "id": "gyrus",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--sulcus",
       "description": "Skeletonize the fundi of the sulci.",
-      "value-key": "[SULCUS_FLAG]",
+      "value-key": "[SULCUS]",
       "type": "Flag",
       "optional": false,
       "id": "sulcus",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--ps",
       "description": "Point set of the skeleton (PointSet.json).",
-      "value-key": "[PS]",
+      "value-key": "[POINTSET]",
       "type": "String",
       "optional": true,
       "id": "pointset",

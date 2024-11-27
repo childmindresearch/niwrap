@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLIRT_NEWDEFAULT_20080811_SCH_METADATA = Metadata(
-    id="75584889f8be373be998c30f3e006c0642e6e4a7.boutiques",
+    id="0d9d4a730463f50ed6f5eaf534671e8d5ad1f460.boutiques",
     name="flirt.newdefault.20080811.sch",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

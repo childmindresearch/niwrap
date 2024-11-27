@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to estimate brain tissue volume from a single MR image and to compare it to an external standard.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "sienax [INPUT_FILE] [OUTPUT_DIR] [DEBUG_FLAG] [BET_OPTIONS] [TWOCLASS_SEGMENT] [T2FLAG] [TOP_THRESHOLD] [BOTTOM_THRESHOLD] [REGIONAL_FLAG] [LESION_MASK] [FAST_OPTIONS]",
+  "command-line": "sienax [INFILE] [OUTPUT_DIR] [DEBUG_FLAG] [BET_OPTIONS] [TWOCLASS_SEGMENT_FLAG] [T2_FLAG] [TOP_THRESHOLD] [BOTTOM_THRESHOLD] [REGIONAL_FLAG] [LESION_MASK] [FAST_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input image (e.g. img.nii.gz)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-2",
       "description": "Two-class segmentation (don't segment grey and white matter separately)",
-      "value-key": "[TWOCLASS_SEGMENT]",
+      "value-key": "[TWOCLASS_SEGMENT_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "twoclass_segment_flag",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-t2",
       "description": "Input image is T2-weighted (default is T1-weighted)",
-      "value-key": "[T2FLAG]",
+      "value-key": "[T2_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "t2_flag",

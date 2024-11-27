@@ -3,7 +3,7 @@
   "name": "@surf_to_vol_spackle",
   "author": "AFNI Developers",
   "description": "Project data from a surface dataset into a volume primarily using 3dSurf2Vol but then filling any holes with an iterative smoothing procedure.",
-  "command-line": "@surf_to_vol_spackle [MASKSET] [SPEC] [SURFA] [SURFB] [SURFSET] [PREFIX] [NORMAL_VECTOR_LENGTH] [SEARCH_RADIUS] [NUM_STEPS] [KEEP_TEMP_FILES_FLAG] [MAX_ITERS] [USE_MODE_FLAG] [DATUM_TYPE] [IGNORE_UNKNOWN_OPTIONS_FLAG]",
+  "command-line": "@surf_to_vol_spackle [MASKSET] [SPEC] [SURFA] [SURFB] [SURFSET] [PREFIX] [NORMAL_VECTOR_LENGTH] [SEARCH_RADIUS] [NUM_STEPS] [KEEP_TEMP_FILES] [MAX_ITERS] [USE_MODE] [DATUM_TYPE] [IGNORE_UNKNOWN_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-keep_temp_files",
       "description": "Do not remove any of the temporary files (default is to remove them).",
-      "value-key": "[KEEP_TEMP_FILES_FLAG]",
+      "value-key": "[KEEP_TEMP_FILES]",
       "type": "Flag",
       "optional": true,
       "id": "keep_temp_files",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "-mode",
       "description": "Use mode instead of non-zero median (appropriate for ROIs).",
-      "value-key": "[USE_MODE_FLAG]",
+      "value-key": "[USE_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "use_mode",
@@ -123,7 +123,7 @@
     {
       "command-line-flag": "-ignore_unknown_options",
       "description": "Ignore additional options that are not needed.",
-      "value-key": "[IGNORE_UNKNOWN_OPTIONS_FLAG]",
+      "value-key": "[IGNORE_UNKNOWN_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "ignore_unknown_options",

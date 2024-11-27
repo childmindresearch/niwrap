@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANNOT2STD_METADATA = Metadata(
-    id="da6908bba70906156b526b7c73f0a7bb27ad1958.boutiques",
+    id="fcdd66f979c54df988b9364c89c1d5056e322ab6.boutiques",
     name="annot2std",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

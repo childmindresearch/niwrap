@@ -1,7 +1,7 @@
 {
   "name": "predict_v1.sh",
   "description": "A script for predicting brain images using registration",
-  "command-line": "predict_v1.sh [TEMPLATE] [INFLATED_FLAG] [HEMI] [PRINT_MODE_FLAG] [SUBJECTS]...",
+  "command-line": "predict_v1.sh [TEMPLATE] [INFLATED_SURFACE_FLAG] [HEMISPHERE] [PRINT_MODE_FLAG] [SUBJECTS]...",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "-i",
       "description": "Don't use inflated surface as initial registration (backward compatibility)",
-      "value-key": "[INFLATED_FLAG]",
+      "value-key": "[INFLATED_SURFACE_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "inflated_surface_flag",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-h",
       "description": "Hemisphere (rh or lh) default is both hemispheres",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": true,
       "id": "hemisphere",

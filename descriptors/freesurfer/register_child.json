@@ -1,7 +1,7 @@
 {
   "name": "register_child",
   "description": "A tool used for registering MR volumes with a child's atlas in Freesurfer.",
-  "command-line": "register_child [INPUT_VOLUME] [OUTPUT_DIR]",
+  "command-line": "register_child [INPUT_VOLUME] [OUTPUT_DIRECTORY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "description": "Directory where output files will be written.",
-      "value-key": "[OUTPUT_DIR]",
+      "value-key": "[OUTPUT_DIRECTORY]",
       "type": "String",
       "optional": false,
       "id": "output_directory",

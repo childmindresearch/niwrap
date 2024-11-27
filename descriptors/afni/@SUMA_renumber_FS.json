@@ -3,11 +3,11 @@
   "name": "@SUMA_renumber_FS",
   "author": "AFNI Developers",
   "description": "This script processes FreeSurfer-generated parcellation files and produces various derived datasets and segmentation maps.",
-  "command-line": "@SUMA_renumber_FS [SUMA_DIR]",
+  "command-line": "@SUMA_renumber_FS [SUMADIR]",
   "inputs": [
     {
       "description": "Path to the 'SUMA/' directory created by @SUMA_Make_Spec_FS.",
-      "value-key": "[SUMA_DIR]",
+      "value-key": "[SUMADIR]",
       "type": "String",
       "optional": false,
       "id": "sumadir",

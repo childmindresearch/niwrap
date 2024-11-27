@@ -3,12 +3,12 @@
   "name": "imstat",
   "author": "AFNI Developers",
   "description": "Calculation of statistics of one or more images",
-  "command-line": "imstat [NO_LABEL_FLAG] [QUIET_FLAG] [PIXSTAT_PREFIX] [IMAGE_FILE]",
+  "command-line": "imstat [NO_LABEL] [QUIET] [PIXSTAT_PREFIX] [IMAGE_FILES]",
   "inputs": [
     {
       "command-line-flag": "-nolabel",
       "description": "Don't write labels on each file's summary line",
-      "value-key": "[NO_LABEL_FLAG]",
+      "value-key": "[NO_LABEL]",
       "type": "Flag",
       "optional": true,
       "id": "no_label",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Don't print statistics for each file",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -34,7 +34,7 @@
     },
     {
       "description": "Input image file(s)",
-      "value-key": "[IMAGE_FILE]",
+      "value-key": "[IMAGE_FILES]",
       "type": "File",
       "optional": false,
       "list": true,

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_COMPUTE_OVERLAP_METADATA = Metadata(
-    id="57c7757ba80a3fa99b705603c4d28479167e2263.boutiques",
+    id="a5b5b5d3058860c230b1e6a107208c5201cd453b.boutiques",
     name="mris_compute_overlap",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

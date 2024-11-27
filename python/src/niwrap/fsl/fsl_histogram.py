@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_HISTOGRAM_METADATA = Metadata(
-    id="c15026d1a4733cc592a71fc31c5c3fb869c981c0.boutiques",
+    id="574d62ed2a96707a8b0178fbacd753480a64e3fa.boutiques",
     name="fsl_histogram",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -134,7 +134,7 @@ def fsl_histogram(
         cargs.append("--gmm")
     ret = FslHistogramOutputs(
         root=execution.output_file("."),
-        png_file=execution.output_file(output_file_duplicate),
+        png_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

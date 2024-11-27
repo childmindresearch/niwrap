@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CHECK_FOR_AFNI_DSET_METADATA = Metadata(
-    id="fe3233871c90874d4e2c2e24abac6304db035192.boutiques",
+    id="6359fb78057e9865fad11fd666a7a241e44e414f.boutiques",
     name="@CheckForAfniDset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,7 +49,7 @@ def v__check_for_afni_dset(
     cargs.append(dataset_name)
     ret = VCheckForAfniDsetOutputs(
         root=execution.output_file("."),
-        output_status=execution.output_file(dataset_name + "_status.txt"),
+        output_status=execution.output_file("[NAME]_status.txt"),
     )
     execution.run(cargs)
     return ret

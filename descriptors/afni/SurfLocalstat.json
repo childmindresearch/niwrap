@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Compute local statistics on a surface mesh",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "SurfLocalstat [HOOD] [NBHD_RAD] [PREFIX] [STAT] [INPUT] [SURFACE]",
+  "command-line": "SurfLocalstat [HOOD] [NBHD_RAD] [PREFIX] [STAT] [INPUT_DATASET] [SURFACE]",
   "inputs": [
     {
       "command-line-flag": "-hood",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-input",
       "description": "Input dataset.",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",

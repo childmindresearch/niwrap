@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_GTMPVC_METADATA = Metadata(
-    id="17d1e033ff27fd98e5b881ace96a388e011247c8.boutiques",
+    id="86602295b61a9188ddf6c549b1a4c750ead5561d.boutiques",
     name="mri_gtmpvc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -394,18 +394,18 @@ def mri_gtmpvc(
         cargs.append("--version")
     ret = MriGtmpvcOutputs(
         root=execution.output_file("."),
-        synthesized_volume=execution.output_file(output_directory + "/synth.nii.gz"),
-        rescaled_input=execution.output_file(output_directory + "/input.rescaled.nii.gz"),
-        eresiduals=execution.output_file(output_directory + "/eresiduals.nii.gz"),
-        yhat=execution.output_file(output_directory + "/yhat.nii.gz"),
-        yhat_with_noise=execution.output_file(output_directory + "/yhat_with_noise.nii.gz"),
-        yhat_full_fov=execution.output_file(output_directory + "/yhat_full_fov.nii.gz"),
-        yhat_prior=execution.output_file(output_directory + "/yhat_prior.nii.gz"),
-        x_matrix=execution.output_file(output_directory + "/X.mat"),
-        y_matrix=execution.output_file(output_directory + "/y.mat"),
-        beta_matrix=execution.output_file(output_directory + "/beta.mat"),
-        x0_matrix=execution.output_file(output_directory + "/X0.mat"),
-        gtm_values_text=execution.output_file(output_directory + "/gtm_values.txt"),
+        synthesized_volume=execution.output_file("[OUTPUT_DIR]/synth.nii.gz"),
+        rescaled_input=execution.output_file("[OUTPUT_DIR]/input.rescaled.nii.gz"),
+        eresiduals=execution.output_file("[OUTPUT_DIR]/eresiduals.nii.gz"),
+        yhat=execution.output_file("[OUTPUT_DIR]/yhat.nii.gz"),
+        yhat_with_noise=execution.output_file("[OUTPUT_DIR]/yhat_with_noise.nii.gz"),
+        yhat_full_fov=execution.output_file("[OUTPUT_DIR]/yhat_full_fov.nii.gz"),
+        yhat_prior=execution.output_file("[OUTPUT_DIR]/yhat_prior.nii.gz"),
+        x_matrix=execution.output_file("[OUTPUT_DIR]/X.mat"),
+        y_matrix=execution.output_file("[OUTPUT_DIR]/y.mat"),
+        beta_matrix=execution.output_file("[OUTPUT_DIR]/beta.mat"),
+        x0_matrix=execution.output_file("[OUTPUT_DIR]/X0.mat"),
+        gtm_values_text=execution.output_file("[OUTPUT_DIR]/gtm_values.txt"),
     )
     execution.run(cargs)
     return ret

@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/your-org/your-repo/blob/master/descriptors/mris_distance_transform.json",
   "description": "Computes the distance transform of a label on the surface.",
-  "command-line": "mris_distance_transform [SURFACE] [LABEL] [MODE] [OUTPUT_FILE] [ANTERIOR_DIST] [POSTERIOR_DIST] [DIVIDE_UNITS] [OLABEL_FLAG]",
+  "command-line": "mris_distance_transform [SURFACE] [LABEL] [MODE] [OUTPUT_FILE] [ANTERIOR] [POSTERIOR] [DIVIDE] [OLABEL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-anterior",
       "description": "Only use anteriormost <dist> portion of the label.",
-      "value-key": "[ANTERIOR_DIST]",
+      "value-key": "[ANTERIOR]",
       "type": "Number",
       "optional": true,
       "id": "anterior",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-posterior",
       "description": "Only use posteriormost <dist> portion of the label.",
-      "value-key": "[POSTERIOR_DIST]",
+      "value-key": "[POSTERIOR]",
       "type": "Number",
       "optional": true,
       "id": "posterior",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-divide",
       "description": "Divide label into <n> units along primary eigendirection.",
-      "value-key": "[DIVIDE_UNITS]",
+      "value-key": "[DIVIDE]",
       "type": "Number",
       "optional": true,
       "id": "divide",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-olabel",
       "description": "Output label subdivisions.",
-      "value-key": "[OLABEL_FLAG]",
+      "value-key": "[OLABEL]",
       "type": "Flag",
       "optional": true,
       "id": "olabel",

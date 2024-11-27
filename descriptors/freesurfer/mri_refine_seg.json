@@ -1,7 +1,7 @@
 {
   "name": "mri_refine_seg",
   "description": "Refines a messy segmentation by recoding stray voxels.",
-  "command-line": "mri_refine_seg [INPUT_SEGMENTATION] [OUTPUT_SEGMENTATION] [DEBUG_FLAG]",
+  "command-line": "mri_refine_seg [INPUT_SEGMENTATION] [OUTPUT_SEGMENTATION] [DEBUG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Save the original segmentation, a mask of the refined voxels, and a pointset of the refined clusters to the output directory.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

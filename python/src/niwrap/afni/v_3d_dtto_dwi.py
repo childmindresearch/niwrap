@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DTTO_DWI_METADATA = Metadata(
-    id="7152649faabf944b7f991d88bc2a8df46f5b5bd7.boutiques",
+    id="8beaedb6788e8fe37fedcd5e934874b19b134b28.boutiques",
     name="3dDTtoDWI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

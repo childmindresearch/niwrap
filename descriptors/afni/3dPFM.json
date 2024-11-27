@@ -10,7 +10,7 @@
       "id": "input",
       "name": "Input dataset",
       "type": "File",
-      "value-key": "[INPUT_DATASET]",
+      "value-key": "[INPUT]",
       "optional": false,
       "command-line-flag": "-input",
       "description": "Specify the dataset to analyze (e.g., epi.nii)."
@@ -19,7 +19,7 @@
       "id": "mask",
       "name": "Mask dataset",
       "type": "File",
-      "value-key": "[MASK_DATASET]",
+      "value-key": "[MASK]",
       "optional": true,
       "command-line-flag": "-mask",
       "description": "Process voxels inside this mask only. Default is no masking."
@@ -55,7 +55,7 @@
       "id": "maxiter",
       "name": "Maximum Iterations",
       "type": "Number",
-      "value-key": "[MAX_ITER]",
+      "value-key": "[MAXITER]",
       "optional": true,
       "command-line-flag": "-maxiter",
       "description": "Maximum number of iterations in the homotopy procedure (absolute value)."
@@ -64,7 +64,7 @@
       "id": "maxiterfactor",
       "name": "Maximum Iterations Factor",
       "type": "Number",
-      "value-key": "[MAX_ITER_FACTOR]",
+      "value-key": "[MAXITERFACTOR]",
       "optional": true,
       "command-line-flag": "-maxiterfactor",
       "description": "Maximum number of iterations relative to the number of volumes."

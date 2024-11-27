@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
   "description": "FMRIB's Linear Image Registration Tool",
-  "command-line": "flirt [INPUT_VOL] [REF_VOL] [OUTPUT_VOL] [MATRIX_FILE] [INITIAL_MATRIX] [DATA_TYPE] [COST_FUNCTION] [SEARCH_COST_FUNCTION] [USE_SFORM_QFORM] [DISPLAY_INIT_MATRIX] [ANGLE_REP] [INTERPOLATION_METHOD] [SINC_WIDTH] [SINC_WINDOW] [NUM_BINS] [DEG_FREEDOM] [NO_RESAMPLE] [FORCE_SCALING] [MIN_VOX_DIM] [APPLY_XFM] [APPLY_ISO_XFM_SCALE] [PADDING_SIZE] [SEARCH_RX] [SEARCH_RY] [SEARCH_RZ] [NO_SEARCH] [COARSE_SEARCH] [FINE_SEARCH] [SCHEDULE_FILE] [REF_WEIGHT] [IN_WEIGHT] [NO_CLAMP] [NO_RESAMP_BLUR] [RIGID_BODY_MODE] [VERBOSE] [VERBOSE_LEVEL] [PAUSE_STAGES] [VERSION_FLAG]",
+  "command-line": "flirt [INPUT_VOLUME] [REFERENCE_VOLUME] [OUTPUT_VOLUME] [OUTPUT_MATRIX] [INITIAL_MATRIX] [DATA_TYPE] [COST_FUNCTION] [SEARCH_COST_FUNCTION] [USE_SFORM_QFORM] [DISPLAY_INITIAL_MATRIX] [ANGLE_REPRESENTATION] [INTERPOLATION_METHOD] [SINC_WIDTH] [SINC_WINDOW] [HISTOGRAM_BINS] [DEGREES_OF_FREEDOM] [NO_RESAMPLE] [FORCE_SCALING] [MIN_VOXEL_DIMENSION] [APPLY_TRANSFORM] [APPLY_ISOTROPIC_TRANSFORM] [PADDING_SIZE] [SEARCH_RANGE_X] [SEARCH_RANGE_Y] [SEARCH_RANGE_Z] [NO_SEARCH] [COARSE_SEARCH_ANGLE] [FINE_SEARCH_ANGLE] [SCHEDULE_FILE] [REFERENCE_WEIGHT] [INPUT_WEIGHT] [NO_CLAMP] [NO_RESAMPLE_BLUR] [RIGID_BODY_MODE] [VERBOSE] [VERBOSE_LEVEL] [PAUSE_STAGES] [VERSION_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input volume",
-      "value-key": "[INPUT_VOL]",
+      "value-key": "[INPUT_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "input_volume",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Reference volume",
-      "value-key": "[REF_VOL]",
+      "value-key": "[REFERENCE_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "reference_volume",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Output volume",
-      "value-key": "[OUTPUT_VOL]",
+      "value-key": "[OUTPUT_VOLUME]",
       "type": "String",
       "optional": true,
       "id": "output_volume",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-omat",
       "description": "Output matrix filename (4x4 ASCII format)",
-      "value-key": "[MATRIX_FILE]",
+      "value-key": "[OUTPUT_MATRIX]",
       "type": "String",
       "optional": true,
       "id": "output_matrix",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-displayinit",
       "description": "Display initial matrix",
-      "value-key": "[DISPLAY_INIT_MATRIX]",
+      "value-key": "[DISPLAY_INITIAL_MATRIX]",
       "type": "Flag",
       "optional": true,
       "id": "display_initial_matrix",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-anglerep",
       "description": "Set angle representation",
-      "value-key": "[ANGLE_REP]",
+      "value-key": "[ANGLE_REPRESENTATION]",
       "type": "String",
       "optional": true,
       "id": "angle_representation",
@@ -162,7 +162,7 @@
     {
       "command-line-flag": "-bins",
       "description": "Number of histogram bins",
-      "value-key": "[NUM_BINS]",
+      "value-key": "[HISTOGRAM_BINS]",
       "type": "Number",
       "optional": true,
       "id": "histogram_bins",
@@ -172,7 +172,7 @@
     {
       "command-line-flag": "-dof",
       "description": "Degrees of freedom",
-      "value-key": "[DEG_FREEDOM]",
+      "value-key": "[DEGREES_OF_FREEDOM]",
       "type": "Number",
       "optional": true,
       "id": "degrees_of_freedom",
@@ -200,7 +200,7 @@
     {
       "command-line-flag": "-minsampling",
       "description": "Minimum voxel dimension for sampling (in mm)",
-      "value-key": "[MIN_VOX_DIM]",
+      "value-key": "[MIN_VOXEL_DIMENSION]",
       "type": "Number",
       "optional": true,
       "id": "min_voxel_dimension",
@@ -209,7 +209,7 @@
     {
       "command-line-flag": "-applyxfm",
       "description": "Apply transform (no optimisation), requires -init",
-      "value-key": "[APPLY_XFM]",
+      "value-key": "[APPLY_TRANSFORM]",
       "type": "Flag",
       "optional": true,
       "id": "apply_transform",
@@ -218,7 +218,7 @@
     {
       "command-line-flag": "-applyisoxfm",
       "description": "Apply transform with isotropic resampling",
-      "value-key": "[APPLY_ISO_XFM_SCALE]",
+      "value-key": "[APPLY_ISOTROPIC_TRANSFORM]",
       "type": "Number",
       "optional": true,
       "id": "apply_isotropic_transform",
@@ -236,7 +236,7 @@
     {
       "command-line-flag": "-searchrx",
       "description": "Search range for rotation around x-axis",
-      "value-key": "[SEARCH_RX]",
+      "value-key": "[SEARCH_RANGE_X]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -249,7 +249,7 @@
     {
       "command-line-flag": "-searchry",
       "description": "Search range for rotation around y-axis",
-      "value-key": "[SEARCH_RY]",
+      "value-key": "[SEARCH_RANGE_Y]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -262,7 +262,7 @@
     {
       "command-line-flag": "-searchrz",
       "description": "Search range for rotation around z-axis",
-      "value-key": "[SEARCH_RZ]",
+      "value-key": "[SEARCH_RANGE_Z]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -284,7 +284,7 @@
     {
       "command-line-flag": "-coarsesearch",
       "description": "Coarse search angle in degrees",
-      "value-key": "[COARSE_SEARCH]",
+      "value-key": "[COARSE_SEARCH_ANGLE]",
       "type": "Number",
       "optional": true,
       "id": "coarse_search_angle",
@@ -294,7 +294,7 @@
     {
       "command-line-flag": "-finesearch",
       "description": "Fine search angle in degrees",
-      "value-key": "[FINE_SEARCH]",
+      "value-key": "[FINE_SEARCH_ANGLE]",
       "type": "Number",
       "optional": true,
       "id": "fine_search_angle",
@@ -313,7 +313,7 @@
     {
       "command-line-flag": "-refweight",
       "description": "Weights for reference volume",
-      "value-key": "[REF_WEIGHT]",
+      "value-key": "[REFERENCE_WEIGHT]",
       "type": "File",
       "optional": true,
       "id": "reference_weight",
@@ -322,7 +322,7 @@
     {
       "command-line-flag": "-inweight",
       "description": "Weights for input volume",
-      "value-key": "[IN_WEIGHT]",
+      "value-key": "[INPUT_WEIGHT]",
       "type": "File",
       "optional": true,
       "id": "input_weight",
@@ -340,7 +340,7 @@
     {
       "command-line-flag": "-noresampblur",
       "description": "Do not use blurring on downsampling",
-      "value-key": "[NO_RESAMP_BLUR]",
+      "value-key": "[NO_RESAMPLE_BLUR]",
       "type": "Flag",
       "optional": true,
       "id": "no_resample_blur",

@@ -1,12 +1,15 @@
 {
   "name": "N4BiasFieldCorrection",
-  "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [SHRINK_FACTOR] [MASK_IMAGE] [RESCALE_INTENSITIES] [WEIGHT_IMAGE] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [VERBOSE] [INPUT_IMAGE] --output [[CORRECTED_IMAGE][BIAS_FIELD]]",
+  "command-line": "N4BiasFieldCorrection [IMAGE_DIMENSIONALITY] [SHRINK_FACTOR] [MASK_IMAGE] [RESCALE_INTENSITIES] [WEIGHT_IMAGE] [CONVERGENCE] [BSPLINE_FITTING] [HISTOGRAM_SHARPENING] [VERBOSE] [INPUT_IMAGE] --output [[CORRECTED_IMAGE_PATH][BIAS_FIELD_PATH]]",
   "author": "ANTs Developers",
   "description": "N4 is a variant of the popular N3 (nonparameteric nonuniform normalization) retrospective bias correction algorithm. Based on the assumption that the corruption of the low frequency bias field can be modeled as a convolution of the intensity histogram by a Gaussian, the basic algorithmic protocol is to iterate between deconvolving the intensity histogram by a Gaussian, remapping the intensities, and then spatially smoothing this result by a B-spline modeling of the bias field itself.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
-  "container-image": { "type": "docker", "image": "antsx/ants:v2.5.3" },
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
   "inputs": [
     {
       "id": "image_dimensionality",
@@ -191,7 +194,7 @@
     {
       "id": "corrected_image_path",
       "name": "Corrected image path",
-      "value-key": "[CORRECTED_IMAGE]",
+      "value-key": "[CORRECTED_IMAGE_PATH]",
       "type": "String",
       "optional": false,
       "description": "The bias corrected version of the input image."
@@ -199,7 +202,7 @@
     {
       "id": "bias_field_path",
       "name": "Bias field path",
-      "value-key": "[BIAS_FIELD]",
+      "value-key": "[BIAS_FIELD_PATH]",
       "command-line-flag": ",",
       "command-line-flag-separator": "",
       "type": "String",

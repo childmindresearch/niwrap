@@ -2,7 +2,7 @@
   "name": "mri_seg_diff",
   "tool-version": "7.4.1",
   "description": "This program computes and merges differences in segmentation volumes, primarily for managing manual edits in FreeSurfer's aseg.mgz.",
-  "command-line": "mri_seg_diff [SEG1] [SEG2] [SEGIN] [DIFF] [MERGED] [DIFF-FORCE] [DEBUG] [CHECKOPTS] [VERSION]",
+  "command-line": "mri_seg_diff [SEG1] [SEG2] [SEG] [DIFF] [MERGED] [DIFF_FORCE] [DEBUG] [CHECKOPTS] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--seg",
       "description": "Source segmentation file (e.g., unedited).",
-      "value-key": "[SEGIN]",
+      "value-key": "[SEG]",
       "type": "File",
       "optional": true,
       "id": "seg",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--diff-in",
       "description": "Input diff segmentation volume.",
-      "value-key": "[DIFFIN]",
+      "value-key": "[DIFF_IN]",
       "type": "File",
       "optional": true,
       "id": "diff_in",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--diff-force",
       "description": "Force creation of a diff even if no diff is detected.",
-      "value-key": "[DIFF-FORCE]",
+      "value-key": "[DIFF_FORCE]",
       "type": "Flag",
       "optional": true,
       "id": "diff_force",

@@ -3,7 +3,7 @@
   "name": "mkheadsurf",
   "author": "FreeSurfer Developers",
   "description": "Segment and create a surface representation of the head for visualization and further processing",
-  "command-line": "mkheadsurf [INPUT_VOL] [OUTPUT_VOL] [OUTPUT_SURF] [SUBJECT_ID] [NSMOOTH] [NOSEGHEAD_FLAG] [THRESH1] [THRESH2] [NHITSMIN] [NDILATE] [NERODE] [FILLVAL] [FHI] [NO_RESCALE_FLAG] [NO_FILL_HOLES_ISLANDS_FLAG] [OR_MASK] [TESSELLATION_METHOD] [INFLATE_FLAG] [CURV_FLAG] [SRCVOL] [HEADVOL] [HEADSURF] [SMHEADSURF] [HEMI] [SUBJECTS_DIR] [UMASK] [LOG_FILE]",
+  "command-line": "mkheadsurf [INPUT_VOL] [OUTPUT_VOL] [OUTPUT_SURF] [SUBJECT_ID] [NSMOOTH] [NOSEGHEAD] [THRESH1] [THRESH2] [NHITSMIN] [NDILATE] [NERODE] [FILLVAL] [FHI] [NO_RESCALE] [NO_FILL_HOLES_ISLANDS] [OR_MASK] [TESSELLATION_METHOD] [INFLATE] [CURV] [SRCVOL] [HEADVOL] [HEADSURF] [SMHEADSURF] [HEMI] [SUBJECTS_DIR] [UMASK] [LOGFILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-noseghead",
       "description": "Do not segment the head, only tessellate and smooth existing",
-      "value-key": "[NOSEGHEAD_FLAG]",
+      "value-key": "[NOSEGHEAD]",
       "type": "Flag",
       "optional": true,
       "id": "noseghead",
@@ -130,7 +130,7 @@
     {
       "command-line-flag": "-no-rescale",
       "description": "Do not rescale input when converting to uchar",
-      "value-key": "[NO_RESCALE_FLAG]",
+      "value-key": "[NO_RESCALE]",
       "type": "Flag",
       "optional": true,
       "id": "no_rescale",
@@ -139,7 +139,7 @@
     {
       "command-line-flag": "-no-fill-holes-islands",
       "description": "Do not fill holes and remove islands",
-      "value-key": "[NO_FILL_HOLES_ISLANDS_FLAG]",
+      "value-key": "[NO_FILL_HOLES_ISLANDS]",
       "type": "Flag",
       "optional": true,
       "id": "no_fill_holes_islands",
@@ -166,7 +166,7 @@
     {
       "command-line-flag": "-inflate",
       "description": "Inflate and compute sulc",
-      "value-key": "[INFLATE_FLAG]",
+      "value-key": "[INFLATE]",
       "type": "Flag",
       "optional": true,
       "id": "inflate",
@@ -175,7 +175,7 @@
     {
       "command-line-flag": "-curv",
       "description": "Compute curv with smoothing",
-      "value-key": "[CURV_FLAG]",
+      "value-key": "[CURV]",
       "type": "Flag",
       "optional": true,
       "id": "curv",
@@ -247,7 +247,7 @@
     {
       "command-line-flag": "-log",
       "description": "Log file",
-      "value-key": "[LOG_FILE]",
+      "value-key": "[LOGFILE]",
       "type": "String",
       "optional": true,
       "id": "logfile",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRACTSTATS2TABLE_METADATA = Metadata(
-    id="e755623bf058bfea7af0842bc31a4768e50ec22d.boutiques",
+    id="38161452219ff5617b56510006b0303c43a0164f.boutiques",
     name="tractstats2table",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

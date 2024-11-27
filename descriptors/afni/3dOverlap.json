@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "First input dataset (e.g. dset1+orig)",
-      "value-key": "[<DSET1>]",
+      "value-key": "[DATASET1]",
       "type": "File",
       "optional": false,
       "id": "dataset1",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Second input dataset (e.g. dset2+orig)",
-      "value-key": "[<DSET2>]",
+      "value-key": "[DATASET2]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-save",
       "description": "Save the count of overlaps at each voxel into a dataset with the given prefix",
-      "value-key": "[PREFIX]",
+      "value-key": "[SAVE_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "save_prefix",

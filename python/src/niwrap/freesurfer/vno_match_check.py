@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VNO_MATCH_CHECK_METADATA = Metadata(
-    id="067ae6b48e08b4ea03d3dcd34c19361379e6a862.boutiques",
+    id="d1efb9fab3c72ba5b84a4f1cb65492e1bcaadf76.boutiques",
     name="vno_match_check",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

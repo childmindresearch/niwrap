@@ -3,7 +3,7 @@
   "name": "sfim",
   "author": "AFNI Developers",
   "description": "Stepwise Functional IMages",
-  "command-line": "sfim [SFINT] [BASELINE] [LOCAL_BASE] [PREFIX] [INPUT_FILES...]",
+  "command-line": "sfim [SFINT_FILE] [BASELINE_STATE] [LOCAL_BASE_OPTION] [OUTPUT_PREFIX] [INPUT_FILES...]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input image files in formats accepted by AFNI",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[INPUT_IMAGES]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-sfint",
       "description": "Filename which contains the interval definitions. Default is 'sfint'. Example: '3*# 5*rest 4*A 5*rest 4*B 5*rest 4*A 5*rest'",
-      "value-key": "[SFINT]",
+      "value-key": "[SFINT_FILE]",
       "type": "String",
       "optional": true,
       "id": "sfint_file",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-base",
       "description": "Task state name to use as the baseline. Default is 'rest'.",
-      "value-key": "[BASELINE]",
+      "value-key": "[BASELINE_STATE]",
       "type": "String",
       "optional": true,
       "id": "baseline_state",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-localbase",
       "description": "Flag to indicate if each non-base task state interval should have the mean of the two nearest base intervals subtracted instead of the grand mean of all the base task intervals.",
-      "value-key": "[LOCAL_BASE]",
+      "value-key": "[LOCAL_BASE_OPTION]",
       "type": "Flag",
       "optional": true,
       "id": "local_base_option",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix for output image filenames for all states. The i'th interval with task state name 'fred' will be written to file 'pname.fred.i'. Default is 'sfim'.",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",

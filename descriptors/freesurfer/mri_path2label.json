@@ -1,12 +1,12 @@
 {
   "name": "mri_path2label",
   "description": "Converts a path file to a label or a label file to a path file.",
-  "command-line": "mri_path2label [INPUT] [OUTPUT] [SINGLE_FLAG] [PATH_TO_LABEL_FLAG] [LABEL_TO_PATH_FLAG] [CONNECT_FLAG] [FILL_FLAG] [CONFILLX_FLAG] [CONFILL_FLAG] [SOURCE_FILE_FLAG] [DEST_FILE_FLAG]",
+  "command-line": "mri_path2label [INPUT_FILE] [OUTPUT_FILE] [SINGLE] [PATH_TO_LABEL] [LABEL_TO_PATH] [CONNECT] [FILL] [CONFILLX] [CONFILL] [SOURCE_FILE] [DEST_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input file, either a path or label file.",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_FILE]",
       "type": "String",
       "optional": false,
       "id": "input_file",
@@ -14,7 +14,7 @@
     },
     {
       "description": "Output file, either a path or label file.",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": false,
       "id": "output_file",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "--single",
       "description": "Only convert a single path, and do not use sentinel values.",
-      "value-key": "[SINGLE_FLAG]",
+      "value-key": "[SINGLE]",
       "type": "Flag",
       "optional": true,
       "id": "single",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "--path2label",
       "description": "Treat input as a path and output a label.",
-      "value-key": "[PATH_TO_LABEL_FLAG]",
+      "value-key": "[PATH_TO_LABEL]",
       "type": "Flag",
       "optional": true,
       "id": "path_to_label",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "--label2path",
       "description": "Treat input as a label and output a path.",
-      "value-key": "[LABEL_TO_PATH_FLAG]",
+      "value-key": "[LABEL_TO_PATH]",
       "type": "Flag",
       "optional": true,
       "id": "label_to_path",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--connect",
       "description": "Connect path; input and output must be paths; requires subject and hemi.",
-      "value-key": "[CONNECT_FLAG]",
+      "value-key": "[CONNECT]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "--fill",
       "description": "Fill already closed, connected path; input must be a path, output must be a label; requires subject, hemi, and seedvtx.",
-      "value-key": "[FILL_FLAG]",
+      "value-key": "[FILL]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "--confillx",
       "description": "Connect and fill path; input must be a path, output must be a label; requires surface_fname and seedvtx.",
-      "value-key": "[CONFILLX_FLAG]",
+      "value-key": "[CONFILLX]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--confill",
       "description": "Connect and fill path; input must be a path, output must be a label; requires subject, hemi, and seedvtx.",
-      "value-key": "[CONFILL_FLAG]",
+      "value-key": "[CONFILL]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--i",
       "description": "The path file, if path2label.",
-      "value-key": "[SOURCE_FILE_FLAG]",
+      "value-key": "[SOURCE_FILE]",
       "type": "String",
       "optional": true,
       "id": "source_file",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--o",
       "description": "The label file, if path2label.",
-      "value-key": "[DEST_FILE_FLAG]",
+      "value-key": "[DEST_FILE]",
       "type": "String",
       "optional": true,
       "id": "dest_file",

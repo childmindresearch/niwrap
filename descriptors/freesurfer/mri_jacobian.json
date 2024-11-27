@@ -1,7 +1,7 @@
 {
   "name": "mri_jacobian",
   "description": "Compute the Jacobian of a morph with FreeSurfer",
-  "command-line": "mri_jacobian [MORPH] [TEMPLATE_VOL] [OUTPUT_VOL] [ATLAS_COORD_FLAG] [WRITE_AREA_VOLS_FLAG] [LOG_JACOBIAN_FLAG] [SMOOTH_SIGMA] [ZERO_MEAN_LOG_FLAG] [TM3D_FLAG] [HELP_FLAG] [DT_FLAG] [DEBUG_VOXEL] [REMOVE_FLAG]",
+  "command-line": "mri_jacobian [MORPH_FILE] [TEMPLATE_VOL] [OUTPUT_VOL] [ATLAS_COORD] [WRITE_AREA_VOLS] [LOG_JACOBIAN] [SMOOTH_SIGMA] [ZERO_MEAN_LOG] [TM3D] [HELP2] [DT] [DEBUG_VOXEL] [REMOVE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -10,7 +10,7 @@
   "inputs": [
     {
       "description": "3D morph input file",
-      "value-key": "[MORPH]",
+      "value-key": "[MORPH_FILE]",
       "type": "File",
       "optional": false,
       "id": "morph_file",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-a",
       "description": "Output is written in atlas coordinate system",
-      "value-key": "[ATLAS_COORD_FLAG]",
+      "value-key": "[ATLAS_COORD]",
       "type": "Flag",
       "optional": true,
       "id": "atlas_coord",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-w",
       "description": "Writing area volumes",
-      "value-key": "[WRITE_AREA_VOLS_FLAG]",
+      "value-key": "[WRITE_AREA_VOLS]",
       "type": "Flag",
       "optional": true,
       "id": "write_area_vols",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-l",
       "description": "Taking log of Jacobian values before saving",
-      "value-key": "[LOG_JACOBIAN_FLAG]",
+      "value-key": "[LOG_JACOBIAN]",
       "type": "Flag",
       "optional": true,
       "id": "log_jacobian",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-z",
       "description": "Make log Jacobian zero mean",
-      "value-key": "[ZERO_MEAN_LOG_FLAG]",
+      "value-key": "[ZERO_MEAN_LOG]",
       "type": "Flag",
       "optional": true,
       "id": "zero_mean_log",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-tm3d",
       "description": "The input morph (m3z) originated from tm3d (mri_cvs_register)",
-      "value-key": "[TM3D_FLAG]",
+      "value-key": "[TM3D]",
       "type": "Flag",
       "optional": true,
       "id": "tm3d",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-?",
       "description": "Writing out help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP1]",
       "type": "Flag",
       "optional": true,
       "id": "help1",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-u",
       "description": "Writing out help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP2]",
       "type": "Flag",
       "optional": true,
       "id": "help2",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-dt",
       "description": "DT option (description not provided in help text)",
-      "value-key": "[DT_FLAG]",
+      "value-key": "[DT]",
       "type": "Flag",
       "optional": true,
       "id": "dt",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "-remove",
       "description": "Remove option (description not provided in help text)",
-      "value-key": "[REMOVE_FLAG]",
+      "value-key": "[REMOVE]",
       "type": "Flag",
       "optional": true,
       "id": "remove",

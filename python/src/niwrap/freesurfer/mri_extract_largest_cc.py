@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_EXTRACT_LARGEST_CC_METADATA = Metadata(
-    id="6d8f5f7d45a3d40328e211ab038ce31abd5ebd4a.boutiques",
+    id="374883a7f9ed7df9bb8b21e87d1e950410aaa90d.boutiques",
     name="mri_extract_largest_CC",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -85,7 +85,7 @@ def mri_extract_largest_cc(
         ])
     ret = MriExtractLargestCcOutputs(
         root=execution.output_file("."),
-        output_volume_file=execution.output_file(output_volume),
+        output_volume_file=execution.output_file("[OUTPUT_VOL]"),
     )
     execution.run(cargs)
     return ret

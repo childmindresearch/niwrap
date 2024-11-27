@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MKHEADSURF_METADATA = Metadata(
-    id="bc7ac5d022946bfb07f233162d973611d136f8b0.boutiques",
+    id="d268c25e144e66d66d451c811baf8b76c969e6ec.boutiques",
     name="mkheadsurf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

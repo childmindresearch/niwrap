@@ -2,12 +2,12 @@
   "name": "imgreg_4dfp",
   "author": "FreeSurfer Developers",
   "description": "Image registration utility using 4dfp",
-  "command-line": "imgreg_4dfp [TARGET_IMAG] [TARGET_MASK] [SOURCE_IMAG] [SOURCE_MASK] [T4FILE] [MODE]",
+  "command-line": "imgreg_4dfp [TARGET_IMAGE] [TARGET_MASK] [SOURCE_IMAGE] [SOURCE_MASK] [T4FILE] [MODE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Target image",
-      "value-key": "[TARGET_IMAG]",
+      "value-key": "[TARGET_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "target_image",
@@ -24,7 +24,7 @@
     },
     {
       "description": "Source image",
-      "value-key": "[SOURCE_IMAG]",
+      "value-key": "[SOURCE_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "source_image",

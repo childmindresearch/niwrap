@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLIRT_FSL_METADATA = Metadata(
-    id="d485dacafa8668bf59100a0c699ff5744abf367d.boutiques",
+    id="e17aba2696e49dd6a5adeb6cd12bd8c54ed7711c.boutiques",
     name="flirt.fsl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,9 +20,9 @@ class FlirtFslOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    registered_volume: OutputPathType | None
+    registered_volume: OutputPathType
     """Resulting registered volume"""
-    transformation_matrix: OutputPathType | None
+    transformation_matrix: OutputPathType
     """Resulting transformation matrix in ASCII format"""
 
 
@@ -266,8 +266,8 @@ def flirt_fsl(
         cargs.append("-version")
     ret = FlirtFslOutputs(
         root=execution.output_file("."),
-        registered_volume=execution.output_file(output_volume + ".nii") if (output_volume is not None) else None,
-        transformation_matrix=execution.output_file(output_matrix) if (output_matrix is not None) else None,
+        registered_volume=execution.output_file("[OUTPUT_VOL].nii"),
+        transformation_matrix=execution.output_file("[MATRIX_FILE]"),
     )
     execution.run(cargs)
     return ret

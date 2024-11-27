@@ -9,7 +9,7 @@
   "inputs": [
     {
       "description": "Subject list in parenthesis",
-      "value-key": "[SUBJECT_LIST]",
+      "value-key": "[SUBJLIST]",
       "type": "String",
       "optional": true,
       "id": "subjlist",

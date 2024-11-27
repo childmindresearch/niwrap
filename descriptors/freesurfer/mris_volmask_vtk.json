@@ -1,7 +1,7 @@
 {
   "name": "mris_volmask_vtk",
   "description": "Computes a volume mask at the resolution of the brain.mgz file, containing labels for various brain structures using surface files.",
-  "command-line": "mris_volmask [CAP_DISTANCE] [LABEL_BACKGROUND] [LABEL_LEFT_WHITE] [LABEL_LEFT_RIBBON] [LABEL_RIGHT_WHITE] [LABEL_RIGHT_RIBBON] [SURF_WHITE] [SURF_PIAL] [ASEG_NAME] [OUT_ROOT] [SUBJECTS_DIR] [SAVE_DISTANCE_FLAG] [LH_ONLY_FLAG] [RH_ONLY_FLAG] [PARALLEL_FLAG] [EDIT_ASEG_FLAG] [SAVE_RIBBON_FLAG] <io>",
+  "command-line": "mris_volmask [CAP_DISTANCE] [LABEL_BACKGROUND] [LABEL_LEFT_WHITE] [LABEL_LEFT_RIBBON] [LABEL_RIGHT_WHITE] [LABEL_RIGHT_RIBBON] [SURF_WHITE] [SURF_PIAL] [ASEG_NAME] [OUT_ROOT] [SUBJECTS_DIR] [SAVE_DISTANCE] [LH_ONLY] [RH_ONLY] [PARALLEL] [EDIT_ASEG] [SAVE_RIBBON] [IO_PARAM]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "--save_distance",
       "description": "Option to save the signed distance function.",
-      "value-key": "[SAVE_DISTANCE_FLAG]",
+      "value-key": "[SAVE_DISTANCE]",
       "type": "Flag",
       "optional": true,
       "id": "save_distance",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "--lh-only",
       "description": "Only process left hemisphere.",
-      "value-key": "[LH_ONLY_FLAG]",
+      "value-key": "[LH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "lh_only",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "--rh-only",
       "description": "Only process right hemisphere.",
-      "value-key": "[RH_ONLY_FLAG]",
+      "value-key": "[RH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "rh_only",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "--parallel",
       "description": "Run hemispheres in parallel and combine the result.",
-      "value-key": "[PARALLEL_FLAG]",
+      "value-key": "[PARALLEL]",
       "type": "Flag",
       "optional": true,
       "id": "parallel",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "--edit_aseg",
       "description": "Edit the aseg using the ribbons and save it.",
-      "value-key": "[EDIT_ASEG_FLAG]",
+      "value-key": "[EDIT_ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "edit_aseg",
@@ -151,7 +151,7 @@
     {
       "command-line-flag": "--save_ribbon",
       "description": "Save only the ribbon for the hemispheres.",
-      "value-key": "[SAVE_RIBBON_FLAG]",
+      "value-key": "[SAVE_RIBBON]",
       "type": "Flag",
       "optional": true,
       "id": "save_ribbon",
@@ -159,7 +159,7 @@
     },
     {
       "description": "Input-Output parameter as positional argument",
-      "value-key": "<io>",
+      "value-key": "[IO_PARAM]",
       "type": "String",
       "optional": false,
       "id": "io_param",

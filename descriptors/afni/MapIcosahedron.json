@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Creates new versions of original-mesh surfaces using the mesh of an icosahedron.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "MapIcosahedron [SPEC_FILE] [REC_DEPTH] [LIN_DEPTH] [MORPH_SURF] [NUM_IT] [PREFIX] [NN_DSET] [DSET] [FIX_CUT_SURFACES] [VERB] [HELP]",
+  "command-line": "MapIcosahedron [SPEC_FILE] [REC_DEPTH] [LIN_DEPTH] [MORPH_SURF] [NUM_IT] [PREFIX] [NN_DSET] [DSET] [FIX_CUT_SURFACES] [VERBOSITY] [HELP]",
   "inputs": [
     {
       "description": "Spec file containing original-mesh surfaces.",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Enable verbose output.",
-      "value-key": "[VERB]",
+      "value-key": "[VERBOSITY]",
       "type": "Flag",
       "optional": true,
       "id": "verbosity",

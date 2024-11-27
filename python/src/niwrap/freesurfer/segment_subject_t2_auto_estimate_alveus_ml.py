@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_METADATA = Metadata(
-    id="8f4b8648e4f87b433d2aa2115e0fbc319ca6131d.boutiques",
+    id="8a6a12eb1eae4567d49625f69155e84f68466b3c.boutiques",
     name="segmentSubjectT2_autoEstimateAlveusML",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

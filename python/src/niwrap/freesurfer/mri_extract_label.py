@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_EXTRACT_LABEL_METADATA = Metadata(
-    id="f219d7073a55ef7eb8d88742931472a6c42072bd.boutiques",
+    id="0b9620a7206508bacb4685ef0d5ac119a68d3dd9.boutiques",
     name="mri_extract_label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

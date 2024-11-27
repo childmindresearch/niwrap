@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SUMA_FS_ROI_INFO_METADATA = Metadata(
-    id="88ddfb0a9b419a5d6b16e3d7b3d95644d89bfd80.boutiques",
+    id="779dea93198c9c27ce2d88ef43623927b9130d07.boutiques",
     name="adjunct_suma_fs_roi_info",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

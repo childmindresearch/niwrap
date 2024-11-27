@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DO_EXAMPLES_METADATA = Metadata(
-    id="538eacefe9e5af2072fbb4d26ece78b45d00afab.boutiques",
+    id="a9216d6bc30f6cf096b83a22a6cc899b517e504e.boutiques",
     name="@DO.examples",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

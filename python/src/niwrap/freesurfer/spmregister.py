@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPMREGISTER_METADATA = Metadata(
-    id="48c39df6adb290bff10bc7c09ab9ffe94274c400.boutiques",
+    id="f04847924393c8dd412a6711f383105c39a90534.boutiques",
     name="spmregister",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

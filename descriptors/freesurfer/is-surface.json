@@ -2,12 +2,12 @@
   "tool-version": "7.4.1",
   "name": "is-surface",
   "description": "Determines whether a file is a volume-encoded surface file by examining its dimensions.",
-  "command-line": "is[INPUT_FILE]",
+  "command-line": "is[INFILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input file to check if it's a surface",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",

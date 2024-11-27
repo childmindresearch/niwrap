@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSWAPDIM_EXE_METADATA = Metadata(
-    id="07a8a43b1c6704b4ec110dfd361a0d3e6ce9f330.boutiques",
+    id="72ded16979df7d063ce343f7fc0651267e23f096.boutiques",
     name="fslswapdim_exe",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

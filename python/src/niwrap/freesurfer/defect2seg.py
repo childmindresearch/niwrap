@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DEFECT2SEG_METADATA = Metadata(
-    id="8c22477e53adb68181bb2fb5d5fb31d31e79b42d.boutiques",
+    id="8cc085b9f5ac3b7cb657915baccb8e34277b70f2.boutiques",
     name="defect2seg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,6 +27,8 @@ class Defect2segOutputs(typing.NamedTuple):
 def defect2seg(
     output_seg: InputPathType,
     template: InputPathType,
+    left_hemisphere: list[str] | None = None,
+    right_hemisphere: list[str] | None = None,
     subject: str | None = None,
     lh_only: bool = False,
     rh_only: bool = False,
@@ -44,6 +46,10 @@ def defect2seg(
     Args:
         output_seg: Output segmentation volume.
         template: Template for segmentation.
+        left_hemisphere: Left hemisphere inputs: surface, defect labels,\
+            pointset, and offset.
+        right_hemisphere: Right hemisphere inputs: surface, defect labels,\
+            pointset, and offset.
         subject: Subject identifier, sets default values for other parameters.
         lh_only: Consider only left hemisphere defects.
         rh_only: Consider only right hemisphere defects.
@@ -53,6 +59,10 @@ def defect2seg(
     Returns:
         NamedTuple of outputs (described in `Defect2segOutputs`).
     """
+    if left_hemisphere is not None and not (len(left_hemisphere) <= 4): 
+        raise ValueError(f"Length of 'left_hemisphere' must be less than 4 but was {len(left_hemisphere)}")
+    if right_hemisphere is not None and not (len(right_hemisphere) <= 4): 
+        raise ValueError(f"Length of 'right_hemisphere' must be less than 4 but was {len(right_hemisphere)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(DEFECT2SEG_METADATA)
     cargs = []
@@ -65,14 +75,16 @@ def defect2seg(
         "--t",
         execution.input_file(template)
     ])
-    cargs.append("[LH_SURF]")
-    cargs.append("[LH_DEFECT_LABELS]")
-    cargs.append("[LH_POINTSET]")
-    cargs.append("[LH_OFFSET]")
-    cargs.append("[RH_SURF]")
-    cargs.append("[RH_DEFECT_LABELS]")
-    cargs.append("[RH_POINTSET]")
-    cargs.append("[RH_OFFSET]")
+    if left_hemisphere is not None:
+        cargs.extend([
+            "--lh",
+            *left_hemisphere
+        ])
+    if right_hemisphere is not None:
+        cargs.extend([
+            "--rh",
+            *right_hemisphere
+        ])
     if subject is not None:
         cargs.extend([
             "--s",

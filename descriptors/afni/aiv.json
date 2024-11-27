@@ -3,7 +3,7 @@
   "name": "aiv",
   "author": "AFNI Developers",
   "description": "AFNI Image Viewer program. Shows the 2D images on the command line in an AFNI-like image viewer.",
-  "command-line": "aiv [VERBOSE_FLAG] [QUIET_FLAG] [TITLE] [PORT] [PAD] [INPUT_IMAGES]",
+  "command-line": "aiv [VERBOSE] [QUIET] [TITLE] [PORT] [PAD] [INPUT_IMAGES]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-v",
       "description": "Print out the image filenames for progress tracking.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-q",
       "description": "Run the program in quiet mode.",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",

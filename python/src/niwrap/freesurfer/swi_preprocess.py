@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWI_PREPROCESS_METADATA = Metadata(
-    id="72a97f2279e67f54799c89c3dc8f30a05677ad79.boutiques",
+    id="9c092f99975ad21400c19882fe546f899bd6d1ce.boutiques",
     name="swi_preprocess",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

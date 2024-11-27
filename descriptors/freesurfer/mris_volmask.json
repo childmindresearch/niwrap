@@ -1,6 +1,6 @@
 {
   "name": "mris_volmask",
-  "command-line": "mris_volmask [CAP_DISTANCE] [LABEL_BACKGROUND] [LABEL_LEFT_WHITE] [LABEL_LEFT_RIBBON] [LABEL_RIGHT_WHITE] [LABEL_RIGHT_RIBBON] [SURF_WHITE] [SURF_PIAL] [ASEG_NAME] [OUT_ROOT] [SUBJECTS_DIR] [SAVE_DISTANCE_FLAG] [LH_ONLY_FLAG] [RH_ONLY_FLAG] [PARALLEL_FLAG] [EDIT_ASEG_FLAG] [SAVE_RIBBON_FLAG] [IO]",
+  "command-line": "mris_volmask [CAP_DISTANCE] [LABEL_BACKGROUND] [LABEL_LEFT_WHITE] [LABEL_LEFT_RIBBON] [LABEL_RIGHT_WHITE] [LABEL_RIGHT_RIBBON] [SURF_WHITE] [SURF_PIAL] [ASEG_NAME] [OUT_ROOT] [SUBJECTS_DIR] [SAVE_DISTANCE] [LH_ONLY] [RH_ONLY] [PARALLEL] [EDIT_ASEG] [SAVE_RIBBON] [IO]",
   "tool-version": "7.4.1",
   "description": "Computes a volume mask, at the same resolution as the <subject>/mri/brain.mgz. The volume mask contains 4 values: LH_WM (default 10), LH_GM (default 100), RH_WM (default 20), RH_GM (default 200).",
   "schema-version": "0.5",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "--save_distance",
       "description": "Save the signed distance function as ?h.dwhite.mgz and ?h.dpial.mgz.",
-      "value-key": "[SAVE_DISTANCE_FLAG]",
+      "value-key": "[SAVE_DISTANCE]",
       "type": "Flag",
       "optional": true,
       "id": "save_distance",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "--lh-only",
       "description": "Only process left hemisphere.",
-      "value-key": "[LH_ONLY_FLAG]",
+      "value-key": "[LH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "lh_only",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "--rh-only",
       "description": "Only process right hemisphere.",
-      "value-key": "[RH_ONLY_FLAG]",
+      "value-key": "[RH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "rh_only",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "--parallel",
       "description": "Run hemispheres in parallel and combine the result.",
-      "value-key": "[PARALLEL_FLAG]",
+      "value-key": "[PARALLEL]",
       "type": "Flag",
       "optional": true,
       "id": "parallel",
@@ -151,7 +151,7 @@
     {
       "command-line-flag": "--edit_aseg",
       "description": "Edit the aseg using the ribbons and save to aseg.ribbon.mgz.",
-      "value-key": "[EDIT_ASEG_FLAG]",
+      "value-key": "[EDIT_ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "edit_aseg",
@@ -160,7 +160,7 @@
     {
       "command-line-flag": "--save_ribbon",
       "description": "Save just the ribbon for the hemispheres - in the format ?h.ribbon.mgz.",
-      "value-key": "[SAVE_RIBBON_FLAG]",
+      "value-key": "[SAVE_RIBBON]",
       "type": "Flag",
       "optional": true,
       "id": "save_ribbon",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WM_ANAT_SNR_METADATA = Metadata(
-    id="bc76bbfe5bc73f815ba252ba2ec1d2b82838940c.boutiques",
+    id="8df82e78354c9dc463da4f9e7e5dd619c20d563a.boutiques",
     name="wm-anat-snr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

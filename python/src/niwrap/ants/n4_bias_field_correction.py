@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="965245408dc0b827f930de3c006ee5451bc69733.boutiques",
+    id="a09e8915f493f1422a58d845ae14da69329b8182.boutiques",
     name="N4BiasFieldCorrection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -120,7 +120,7 @@ class N4BiasFieldCorrectionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     corrected_image: OutputPathType
     """The bias corrected version of the input image."""
-    bias_field: OutputPathType | None
+    bias_field: OutputPathType
     """Estimated bias field image."""
 
 
@@ -284,8 +284,8 @@ def n4_bias_field_correction(
         cargs.append("[" + corrected_image_path + "," + bias_field_path + "]")
     ret = N4BiasFieldCorrectionOutputs(
         root=execution.output_file("."),
-        corrected_image=execution.output_file(corrected_image_path),
-        bias_field=execution.output_file(bias_field_path) if (bias_field_path is not None) else None,
+        corrected_image=execution.output_file("[CORRECTED_IMAGE]"),
+        bias_field=execution.output_file("[BIAS_FIELD]"),
     )
     execution.run(cargs)
     return ret

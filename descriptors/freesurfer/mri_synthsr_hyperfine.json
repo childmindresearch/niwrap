@@ -3,13 +3,13 @@
   "name": "mri_synthsr_hyperfine",
   "author": "FreeSurfer Developers",
   "description": "Implementation of SynthSR that generates a synthetic 1mm MP-RAGE from a pair of T1-T2 standard Hyperfine scans (1.5x1.5x5mm axial)",
-  "command-line": "mri_synthsr_hyperfine [T1] [T2] [OUTPUT] [THREADS] [CPU_FLAG]",
+  "command-line": "mri_synthsr_hyperfine [T1_IMAGE] [T2_IMAGE] [OUTPUT] [THREADS] [CPU]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--t1",
       "description": "T1 image(s) to super-resolve, at native 1.5x1.5x5 axial resolution. Can be a path to an image or to a folder.",
-      "value-key": "[T1]",
+      "value-key": "[T1_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "t1_image",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--t2",
       "description": "T2 image(s). Must be a folder if --t1 designates a folder. These must be registered to the T1s, in physical coordinates (i.e., with the headers, do NOT resample when registering; see instructions on FreeSurfer wiki)",
-      "value-key": "[T2]",
+      "value-key": "[T2_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "t2_image",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "--cpu",
       "description": "(optional) Enforce running with CPU rather than GPU.",
-      "value-key": "[CPU_FLAG]",
+      "value-key": "[CPU]",
       "type": "Flag",
       "optional": true,
       "id": "cpu",

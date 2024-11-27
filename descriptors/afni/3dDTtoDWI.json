@@ -39,7 +39,7 @@
       "description": "Prefix for the output dataset name.",
       "command-line-flag": "-prefix",
       "type": "String",
-      "value-key": "[PREFIX_NAME]",
+      "value-key": "[PREFIX]",
       "optional": true
     },
     {
@@ -48,7 +48,7 @@
       "description": "Compute gradient images only for high-intensity (brain) voxels.",
       "command-line-flag": "-automask",
       "type": "Flag",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "optional": true
     },
     {
@@ -66,7 +66,7 @@
       "description": "Match with 3dDWItoDT's '-scale_out_1000' functionality.",
       "command-line-flag": "-scale_out_1000",
       "type": "Flag",
-      "value-key": "[SCALE_OUT_1000_FLAG]",
+      "value-key": "[SCALE_OUT_1000]",
       "optional": true
     },
     {
@@ -75,7 +75,7 @@
       "description": "Show help message.",
       "command-line-flag": "-help",
       "type": "Flag",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "optional": true
     }
   ],

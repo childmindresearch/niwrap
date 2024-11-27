@@ -4,12 +4,12 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/mri_vol2vol.c",
   "description": "Resamples a volume into another field-of-view using various types of matrices (FreeSurfer, FSL, SPM, and MNI).",
-  "command-line": "mri_vol2vol [MOV] [TARG] [OUTVOL] [DISP] [DOWNSAMPLE] [REGISTER] [LTA] [LTA_INV] [FSL] [XFM] [INV_FLAG] [TAL_FLAG] [TALRES] [TALXFM] [M3Z] [INV_MORPH_FLAG] [FSTARG] [CROP] [SLICE_CROP] [SLICE_REVERSE_FLAG] [SLICE_BIAS] [INTERP] [FILL_AVG_FLAG] [FILL_CONS_FLAG] [FILL_US] [MUL] [PRECISION] [KEEP_PRECISION_FLAG] [KERNEL_FLAG] [COPY_CTAB_FLAG] [GCAM] [SPM_WARP] [MAP_POINT] [MAP_POINT_INV_LTA] [NO_RESAMPLE_FLAG] [ROT] [TRANS] [SHEAR] [REG_FINAL] [SYTH_FLAG] [SEED] [SAVE_REG_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_vol2vol [MOVVOL] [TARGVOL] [OUTVOL] [DISPVOL] [DOWNSAMPLE] [REGISTER_DAT] [LTA] [LTA_INV] [FSL] [XFM] [INV] [TAL] [TALRES] [TALXFM] [M3Z] [INV_MORPH] [FSTARG] [CROP] [SLICE_CROP] [SLICE_REVERSE] [SLICE_BIAS] [INTERP] [FILL_AVERAGE] [FILL_CONSERVE] [FILL_UP] [MUL] [PRECISION] [KEEP_PRECISION] [KERNEL] [COPY_CTAB] [GCAM] [SPM_WARP] [MAP_POINT] [MAP_POINT_INV_LTA] [NO_RESAMPLE] [ROT] [TRANS] [SHEAR] [REG_FINAL] [SYNTH] [SEED] [SAVE_REG] [DEBUG] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input volume (or output template with --inv)",
-      "value-key": "[MOV]",
+      "value-key": "[MOVVOL]",
       "type": "File",
       "optional": false,
       "id": "movvol",
@@ -17,7 +17,7 @@
     },
     {
       "description": "Output template (or input with --inv)",
-      "value-key": "[TARG]",
+      "value-key": "[TARGVOL]",
       "type": "File",
       "optional": false,
       "id": "targvol",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "--disp",
       "description": "Displacement volume",
-      "value-key": "[DISP]",
+      "value-key": "[DISPVOL]",
       "type": "File",
       "optional": true,
       "id": "dispvol",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--reg",
       "description": "tkRAS-to-tkRAS matrix (tkregister2 format)",
-      "value-key": "[REGISTER]",
+      "value-key": "[REGISTER_DAT]",
       "type": "File",
       "optional": true,
       "id": "register_dat",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "--inv",
       "description": "Sample from targ to mov",
-      "value-key": "[INV_FLAG]",
+      "value-key": "[INV]",
       "type": "Flag",
       "optional": true,
       "id": "inv",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--tal",
       "description": "Map to a sub FOV of MNI305 (with --reg only)",
-      "value-key": "[TAL_FLAG]",
+      "value-key": "[TAL]",
       "type": "Flag",
       "optional": true,
       "id": "tal",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "--inv-morph",
       "description": "Compute and use the inverse of the m3z morph",
-      "value-key": "[INV_MORPH_FLAG]",
+      "value-key": "[INV_MORPH]",
       "type": "Flag",
       "optional": true,
       "id": "inv_morph",
@@ -181,7 +181,7 @@
     {
       "command-line-flag": "--slice-reverse",
       "description": "Reverse order of slices, update vox2ras",
-      "value-key": "[SLICE_REVERSE_FLAG]",
+      "value-key": "[SLICE_REVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "slice_reverse",
@@ -208,7 +208,7 @@
     {
       "command-line-flag": "--fill-average",
       "description": "Compute mean of all source voxels in a given target voxel",
-      "value-key": "[FILL_AVG_FLAG]",
+      "value-key": "[FILL_AVERAGE]",
       "type": "Flag",
       "optional": true,
       "id": "fill_average",
@@ -217,7 +217,7 @@
     {
       "command-line-flag": "--fill-conserve",
       "description": "Compute sum of all source voxels in a given target voxel",
-      "value-key": "[FILL_CONS_FLAG]",
+      "value-key": "[FILL_CONSERVE]",
       "type": "Flag",
       "optional": true,
       "id": "fill_conserve",
@@ -226,7 +226,7 @@
     {
       "command-line-flag": "--fill-upsample",
       "description": "Source upsampling factor for --fill-{avg,cons} (default is 2)",
-      "value-key": "[FILL_US]",
+      "value-key": "[FILL_UP]",
       "type": "Number",
       "optional": true,
       "id": "fill_up",
@@ -253,7 +253,7 @@
     {
       "command-line-flag": "--keep-precision",
       "description": "Set output precision to that of the input",
-      "value-key": "[KEEP_PRECISION_FLAG]",
+      "value-key": "[KEEP_PRECISION]",
       "type": "Flag",
       "optional": true,
       "id": "keep_precision",
@@ -262,7 +262,7 @@
     {
       "command-line-flag": "--kernel",
       "description": "Save the trilinear interpolation kernel at each voxel instead of the interpolated image",
-      "value-key": "[KERNEL_FLAG]",
+      "value-key": "[KERNEL]",
       "type": "Flag",
       "optional": true,
       "id": "kernel",
@@ -271,7 +271,7 @@
     {
       "command-line-flag": "--copy-ctab",
       "description": "Setenv FS_COPY_HEADER_CTAB to copy any ctab in the mov header",
-      "value-key": "[COPY_CTAB_FLAG]",
+      "value-key": "[COPY_CTAB]",
       "type": "Flag",
       "optional": true,
       "id": "copy_ctab",
@@ -316,7 +316,7 @@
     {
       "command-line-flag": "--no-resample",
       "description": "Do not resample, just change vox2ras matrix",
-      "value-key": "[NO_RESAMPLE_FLAG]",
+      "value-key": "[NO_RESAMPLE]",
       "type": "Flag",
       "optional": true,
       "id": "no_resample",
@@ -370,7 +370,7 @@
     {
       "command-line-flag": "--synth",
       "description": "Replace input with white Gaussian noise",
-      "value-key": "[SYTH_FLAG]",
+      "value-key": "[SYNTH]",
       "type": "Flag",
       "optional": true,
       "id": "synth",
@@ -388,7 +388,7 @@
     {
       "command-line-flag": "--save-reg",
       "description": "Write out output volume registration matrix",
-      "value-key": "[SAVE_REG_FLAG]",
+      "value-key": "[SAVE_REG]",
       "type": "Flag",
       "optional": true,
       "id": "save_reg",
@@ -397,7 +397,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging output",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -406,7 +406,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version string and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICETIMER_FSL_METADATA = Metadata(
-    id="2422b162921f2286640fb84cc8529bb007919444.boutiques",
+    id="c24b3d30a245943645ee51870beab802244816b6.boutiques",
     name="slicetimer.fsl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class SlicetimerFslOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    corrected_timeseries: OutputPathType | None
+    corrected_timeseries: OutputPathType
     """Corrected output timeseries"""
 
 
@@ -109,7 +109,7 @@ def slicetimer_fsl(
         cargs.append("-v")
     ret = SlicetimerFslOutputs(
         root=execution.output_file("."),
-        corrected_timeseries=execution.output_file(outfile) if (outfile is not None) else None,
+        corrected_timeseries=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

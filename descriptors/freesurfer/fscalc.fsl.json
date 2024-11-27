@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "N/A",
   "description": "A Freesurfer wrapper around fslmaths, allowing input and output formats compatible with Freesurfer.",
-  "command-line": "fscalc.fsl [INPUT_FILE] [OUTPUT_FILE] [OPTIONS]",
+  "command-line": "fscalc.fsl [INPUT_FILE] [OUTPUT_FILE] [ADDITIONAL_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "--surf",
       "description": "Run mri_surf2surf to reshape the data into a dimension that can fit into nifti. Requires specifying the subject and hemisphere.",
-      "value-key": "[SUBJECT_HEMI]",
+      "value-key": "[SURF_OPTION]",
       "type": "String",
       "optional": true,
       "id": "surf_option",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "--reshape1d",
       "description": "Convert back to 1D spatial dimensions after reshaping to fit nifti.",
-      "value-key": "[RESHAPE1D_FLAG]",
+      "value-key": "[RESHAPE1D]",
       "type": "Flag",
       "optional": true,
       "id": "reshape1d",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Additional fslmaths-specific options",
-      "value-key": "[OPTIONS]",
+      "value-key": "[ADDITIONAL_OPTIONS]",
       "type": "String",
       "optional": true,
       "id": "additional_options",

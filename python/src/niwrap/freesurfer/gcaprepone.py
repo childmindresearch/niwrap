@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GCAPREPONE_METADATA = Metadata(
-    id="741c4bda602473f967c94c59509a130b345d5cc7.boutiques",
+    id="2e14a31362a677b265992815008f70a18a14c39c.boutiques",
     name="gcaprepone",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

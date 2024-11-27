@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSORT_METADATA = Metadata(
-    id="9582bd99d8599dfb4a866ed6cf00ba5f5a847ebe.boutiques",
+    id="28c28b79e328ac59d8297a59e0298ad19fb48796.boutiques",
     name="3dTsort",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

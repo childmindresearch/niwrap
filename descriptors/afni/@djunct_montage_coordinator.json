@@ -3,7 +3,7 @@
   "name": "@djunct_montage_coordinator",
   "author": "AFNI Developers",
   "description": "Small program to calculate how to evenly space a certain number of slices within each view plane of a dataset.",
-  "command-line": "@djunct_montage_coordinator [INPUT_FILE] [MONTX] [MONTY] [OUT_COORDS] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "@djunct_montage_coordinator [INPUT_FILE] [MONTX] [MONTY] [OUT_XYZ] [HELP] [VERSION]",
   "inputs": [
     {
       "command-line-flag": "-inset",
@@ -35,7 +35,7 @@
     {
       "description": "Make program output 'I J K' values.",
       "command-line-flag": "-out_ijk",
-      "value-key": "[OUT_COORDS]",
+      "value-key": "[OUT_IJK]",
       "type": "Flag",
       "optional": true,
       "id": "out_ijk",
@@ -44,7 +44,7 @@
     {
       "description": "Make program output 'X Y Z' values.",
       "command-line-flag": "-out_xyz",
-      "value-key": "[OUT_COORDS]",
+      "value-key": "[OUT_XYZ]",
       "type": "Flag",
       "optional": true,
       "id": "out_xyz",
@@ -53,7 +53,7 @@
     {
       "description": "See helpfile.",
       "command-line-flag": "-help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -62,7 +62,7 @@
     {
       "description": "See version number.",
       "command-line-flag": "-ver",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

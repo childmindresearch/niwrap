@@ -3,7 +3,7 @@
   "name": "aparcstats2table",
   "author": "FreeSurfer Developers",
   "description": "Converts a cortical stats file into a table format with subjects as rows and parcellations as columns.",
-  "command-line": "aparcstats2table [SUBJECTS] [SUBJECTSFILE] [QDEC] [QDEC_LONG] [H] [OUTPUTFILE] [PARC] [MEASURE] [DELIMITER] [SKIP_FLAG] [PARCID_ONLY_FLAG] [COMMON_PARCS_FLAG] [PARCS_FROM_FILE] [REPORT_ROIS_FLAG] [TRANSPOSE_FLAG] [DEBUG_FLAG] [ETIV_FLAG] [SCALE]",
+  "command-line": "aparcstats2table [SUBJECTS] [SUBJECTSFILE] [QDEC] [QDEC_LONG] [HEMI] [TABLEFILE] [PARCELLATION] [MEASURE] [DELIMITER] [SKIP_MISSING] [PARCID_ONLY] [COMMON_PARCS] [PARCS_FILE] [REPORT_ROIS] [TRANSPOSE] [DEBUG] [ETIV] [SCALE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--hemi",
       "description": "Hemisphere being analyzed (lh or rh required).",
-      "value-key": "[H]",
+      "value-key": "[HEMI]",
       "type": "String",
       "optional": false,
       "id": "hemi",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-t",
       "description": "Output table file.",
-      "value-key": "[OUTPUTFILE]",
+      "value-key": "[TABLEFILE]",
       "type": "File",
       "optional": false,
       "id": "tablefile",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--parc",
       "description": "Parcellation atlas (default: aparc).",
-      "value-key": "[PARC]",
+      "value-key": "[PARCELLATION]",
       "type": "String",
       "optional": true,
       "default-value": "aparc",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "--skip",
       "description": "Skip subjects if input is not found.",
-      "value-key": "[SKIP_FLAG]",
+      "value-key": "[SKIP_MISSING]",
       "type": "Flag",
       "optional": true,
       "id": "skip_missing",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--parcid-only",
       "description": "Write only ROI names without pre/appended hemi/measure.",
-      "value-key": "[PARCID_ONLY_FLAG]",
+      "value-key": "[PARCID_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "parcid_only",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--common-parcs",
       "description": "Output only common parcellations across all subjects.",
-      "value-key": "[COMMON_PARCS_FLAG]",
+      "value-key": "[COMMON_PARCS]",
       "type": "Flag",
       "optional": true,
       "id": "common_parcs",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "--parcs-from-file",
       "description": "File specifying which parcellations to output.",
-      "value-key": "[PARCS_FROM_FILE]",
+      "value-key": "[PARCS_FILE]",
       "type": "File",
       "optional": true,
       "id": "parcs_file",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "--report-rois",
       "description": "Print ROI information for each subject.",
-      "value-key": "[REPORT_ROIS_FLAG]",
+      "value-key": "[REPORT_ROIS]",
       "type": "Flag",
       "optional": true,
       "id": "report_rois",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "--transpose",
       "description": "Transpose the table (subjects in columns).",
-      "value-key": "[TRANSPOSE_FLAG]",
+      "value-key": "[TRANSPOSE]",
       "type": "Flag",
       "optional": true,
       "id": "transpose",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-v",
       "description": "Increase verbosity.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "--etiv",
       "description": "Report volume as percent estimated total intracranial volume.",
-      "value-key": "[ETIV_FLAG]",
+      "value-key": "[ETIV]",
       "type": "Flag",
       "optional": true,
       "id": "etiv",

@@ -2,7 +2,7 @@
   "name": "mris_warp",
   "tool-version": "7.4.1",
   "description": "This program will warp a surface using a specified deformation field.",
-  "command-line": "mris_warp [DEFORMVOL] [M3Z] [REGFILE] [SURF] [OUT] [ABS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mris_warp [DEFORMVOL] [M3Z] [REGFILE] [SURF] [OUT] [ABS] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--abs",
       "description": "Absolute coordinate displacement convention (default)",
-      "value-key": "[ABS_FLAG]",
+      "value-key": "[ABS]",
       "type": "Flag",
       "optional": true,
       "id": "abs",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print out information on how to use this program",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASEGSTATS2TABLE_METADATA = Metadata(
-    id="a6366bd1a3fbea7c814a2f861c88f2c459ca843e.boutiques",
+    id="75e1aab6262bf11a4bb07f90323b14452beb59b8.boutiques",
     name="asegstats2table",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -38,6 +38,7 @@ def asegstats2table(
     segno_exclude: list[str] | None = None,
     measure: str | None = None,
     delimiter: str | None = None,
+    statsfile: str | None = None,
     subdir: str | None = None,
     scale: float | None = None,
     write_etiv: bool = False,
@@ -77,6 +78,7 @@ def asegstats2table(
         measure: Measure to report: default is volume (alternative: mean, std).
         delimiter: Delimiter between measures in the table. Default is tab\
             (alternative: comma, space, semicolon).
+        statsfile: Use specified stats file instead of 'aseg.stats'.
         subdir: Use specified subdir instead of 'stats/'.
         scale: Scale factor for all values written to output file. Default is\
             1.
@@ -164,7 +166,11 @@ def asegstats2table(
             "--delimiter",
             delimiter
         ])
-    cargs.append("[STATSFILE]")
+    if statsfile is not None:
+        cargs.extend([
+            "--statsfile",
+            statsfile
+        ])
     if subdir is not None:
         cargs.extend([
             "--subdir",

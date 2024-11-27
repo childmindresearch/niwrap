@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_BRAIN_VOLUME_METADATA = Metadata(
-    id="0a2cbaafc64346c0de2d387b66cb4abd03424413.boutiques",
+    id="2918ea0c5a20422d8241bcf06406d8027e4e4dae.boutiques",
     name="mri_brain_volume",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

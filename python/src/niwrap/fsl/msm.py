@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MSM_METADATA = Metadata(
-    id="30ae423d0e1c4c062ca830eea21f14936e31129d.boutiques",
+    id="bfab58a91ee8e696e19e1066e4388d1ee9bd9338.boutiques",
     name="msm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -159,7 +159,7 @@ def msm(
         cargs.append("-p")
     ret = MsmOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(out + "_output.ext"),
+        output_file=execution.output_file("[OUTPUT_BASENAME]_output.ext"),
     )
     execution.run(cargs)
     return ret

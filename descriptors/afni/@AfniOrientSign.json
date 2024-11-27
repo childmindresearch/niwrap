@@ -4,11 +4,11 @@
   "author": "AFNI Developers",
   "description": "A tool within the AFNI suite to determine the orientation signs of datasets",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@AfniOrientSign [INPUT_FILE]",
+  "command-line": "@AfniOrientSign [INFILE]",
   "inputs": [
     {
       "description": "Input image file to determine orientation",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",

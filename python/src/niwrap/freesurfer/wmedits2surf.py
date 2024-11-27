@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WMEDITS2SURF_METADATA = Metadata(
-    id="96b1528718db0d82b5e8a12fdda61f9e86dac15e.boutiques",
+    id="e8eb1a9b712eb53b8fd7c00668424bc559f7cff6.boutiques",
     name="wmedits2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

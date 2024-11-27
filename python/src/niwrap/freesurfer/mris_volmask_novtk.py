@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_VOLMASK_NOVTK_METADATA = Metadata(
-    id="a000baa6b80f00e321ab82972550a5773290cda1.boutiques",
+    id="cbd19c74730136999fd3325b2d680e2b4bbb3842.boutiques",
     name="mris_volmask_novtk",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

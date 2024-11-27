@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RECON_ALL_METADATA = Metadata(
-    id="ab17d5e676eb3ccc4691a058379b4eff9f537cd6.boutiques",
+    id="c1c2316938ea73b8e6cef2b1ffa4eb1740823bb4.boutiques",
     name="recon-all",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -390,8 +390,8 @@ def recon_all(
         cargs.append("-help")
     ret = ReconAllOutputs(
         root=execution.output_file("."),
-        logfile=execution.output_file(subjid + "/scripts/recon-all.log"),
-        statusfile=execution.output_file(subjid + "/scripts/recon-all-status.log"),
+        logfile=execution.output_file("[SUBJECT_ID]/scripts/recon-all.log"),
+        statusfile=execution.output_file("[SUBJECT_ID]/scripts/recon-all-status.log"),
     )
     execution.run(cargs)
     return ret

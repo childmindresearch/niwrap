@@ -8,7 +8,7 @@
     {
       "command-line-flag": "-match",
       "description": "Looks for occurrence of each word in the list in the help file. For a match with multiple words, all the words must be on the same line of text in the help file.",
-      "value-key": "[WORD_LIST]",
+      "value-key": "[MATCH]",
       "type": "String",
       "optional": true,
       "id": "match",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-lynx",
       "description": "Set viewer to lynx",
-      "value-key": "[LYNX_FLAG]",
+      "value-key": "[LYNX]",
       "type": "Flag",
       "optional": true,
       "id": "lynx",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-vi",
       "description": "Set viewer to vi",
-      "value-key": "[VI_FLAG]",
+      "value-key": "[VI]",
       "type": "Flag",
       "optional": true,
       "id": "vi",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-less",
       "description": "Set viewer to less (default)",
-      "value-key": "[LESS_FLAG]",
+      "value-key": "[LESS]",
       "type": "Flag",
       "optional": true,
       "id": "less",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-nedit",
       "description": "Set viewer to nedit",
-      "value-key": "[NEDIT_FLAG]",
+      "value-key": "[NEDIT]",
       "type": "Flag",
       "optional": true,
       "id": "nedit",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-noview",
       "description": "Set viewer to no view",
-      "value-key": "[NOVIEW_FLAG]",
+      "value-key": "[NOVIEW]",
       "type": "Flag",
       "optional": true,
       "id": "noview",

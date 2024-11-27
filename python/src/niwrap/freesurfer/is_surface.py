@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IS_SURFACE_METADATA = Metadata(
-    id="45c9687496cf309c65ba4d9e2e07872900cc3d36.boutiques",
+    id="6cb9d1446618fbf43c51093ee6543e6c01436b21.boutiques",
     name="is-surface",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

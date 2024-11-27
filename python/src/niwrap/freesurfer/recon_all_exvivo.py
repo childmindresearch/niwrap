@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RECON_ALL_EXVIVO_METADATA = Metadata(
-    id="9e770b1feb777b296d2521353f2b9c4b9c4f3d68.boutiques",
+    id="ab8a5243b725eb3269bc328c28f826e76302edba.boutiques",
     name="recon-all-exvivo",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "A program for mapping data sets into DWI space, suitable for aligning anatomical ROI maps or EPI data to a DWI reference volume.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "fat_proc_map_to_dti [SOURCE_FILE] [BASE_FILE] [PREFIX] [FOLLOWERS_NN] [FOLLOWERS_WSINC5] [FOLLOWERS_SURF] [FOLLOWERS_NDSET] [FOLLOWERS_SPEC] [MATRIX] [WORKDIR] [NO_CMD_OUT_FLAG] [NO_CLEAN_FLAG]",
+  "command-line": "fat_proc_map_to_dti [SOURCE] [BASE] [PREFIX] [FOLLOWERS_NN] [FOLLOWERS_WSINC5] [FOLLOWERS_SURF] [FOLLOWERS_NDSET] [FOLLOWERS_SPEC] [MATRIX] [WORKDIR] [NO_CMD_OUT] [NO_CLEAN]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "T1w volume file (source volume)",
-      "value-key": "[SOURCE_FILE]",
+      "value-key": "[SOURCE]",
       "type": "File",
       "optional": false,
       "id": "source",
@@ -21,7 +21,7 @@
     },
     {
       "description": "DWI reference volume file",
-      "value-key": "[BASE_FILE]",
+      "value-key": "[BASE]",
       "type": "File",
       "optional": false,
       "id": "base",
@@ -107,7 +107,7 @@
     },
     {
       "description": "Don't save the command line call of this program",
-      "value-key": "[NO_CMD_OUT_FLAG]",
+      "value-key": "[NO_CMD_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "no_cmd_out",
@@ -116,7 +116,7 @@
     },
     {
       "description": "Do not delete temporary working directory",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NO_CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "no_clean",

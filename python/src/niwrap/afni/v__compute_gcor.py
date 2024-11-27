@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__COMPUTE_GCOR_METADATA = Metadata(
-    id="d9410dfe3cb0b268e03a4b833a2d567c23593843.boutiques",
+    id="13b8c868c93ec23df099263bf986463739795de3.boutiques",
     name="@compute_gcor",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class VComputeGcorOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    corr_vol_brik: OutputPathType | None
+    corr_vol_brik: OutputPathType
     """Output correlation volume BRIK file"""
-    corr_vol_head: OutputPathType | None
+    corr_vol_head: OutputPathType
     """Output correlation volume HEAD file"""
 
 
@@ -85,8 +85,8 @@ def v__compute_gcor(
         ])
     ret = VComputeGcorOutputs(
         root=execution.output_file("."),
-        corr_vol_brik=execution.output_file(corr_vol_prefix + "+tlrc.BRIK") if (corr_vol_prefix is not None) else None,
-        corr_vol_head=execution.output_file(corr_vol_prefix + "+tlrc.HEAD") if (corr_vol_prefix is not None) else None,
+        corr_vol_brik=execution.output_file("[CORR_VOL_PREF]+tlrc.BRIK"),
+        corr_vol_head=execution.output_file("[CORR_VOL_PREF]+tlrc.HEAD"),
     )
     execution.run(cargs)
     return ret

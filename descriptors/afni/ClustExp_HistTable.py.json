@@ -3,12 +3,12 @@
   "name": "ClustExp_HistTable.py",
   "author": "AFNI Developers",
   "description": "Script to extract the data table from history of datasets from 3dttest++, 3dMVM, or 3dLME.",
-  "command-line": "ClustExp_HistTable.py [STATDSET] [PREFIX] [SESSION] [OVERWRITE]",
+  "command-line": "ClustExp_HistTable.py [STAT_DSET] [PREFIX] [SESSION] [OVERWRITE]",
   "inputs": [
     {
       "command-line-flag": "-StatDSET",
       "description": "Statistics dataset.",
-      "value-key": "[STATDSET]",
+      "value-key": "[STAT_DSET]",
       "type": "File",
       "optional": false,
       "id": "stat_dset",

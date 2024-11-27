@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/scripts/vol2subfield.help",
   "description": "A tool for integrating arbitrary volumes with volumes that share a RAS space with the orig volume in the FreeSurfer mri folder.",
-  "command-line": "vol2subfield [INPUT_VOLUME] [SUBFIELD_VOLUME] [REGISTRATION_FILE] [OUTPUT_VOLUME] [OUTPUT_REGISTRATION] [STATS_OUTPUT] [AVGWF_OUTPUT] [AVGWFVOL_OUTPUT] [COLOR_TABLE] [INTERPOLATION_FLAG] [TMP_DIRECTORY] [PRESET_SUBFIELD]",
+  "command-line": "vol2subfield [INPUT_VOLUME] [SUBFIELD_VOLUME] [REGISTRATION_FILE] [OUTPUT_VOLUME] [OUTPUT_REGISTRATION] [STATS_OUTPUT] [AVGWF_OUTPUT] [AVGWFVOL_OUTPUT] [COLOR_TABLE] [INTERPOLATION_CUBIC] [TMP_DIRECTORY] [PRESET_SUBFIELD_BRAINSTEM]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "--nearest",
       "description": "Use nearest neighbor interpolation",
-      "value-key": "[INTERPOLATION_FLAG]",
+      "value-key": "[INTERPOLATION_NEAREST]",
       "type": "Flag",
       "optional": true,
       "id": "interpolation_nearest",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "--trilin",
       "description": "Use triliear interpolation",
-      "value-key": "[INTERPOLATION_FLAG]",
+      "value-key": "[INTERPOLATION_TRILIN]",
       "type": "Flag",
       "optional": true,
       "id": "interpolation_trilin",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "--cubic",
       "description": "Use cubic interpolation",
-      "value-key": "[INTERPOLATION_FLAG]",
+      "value-key": "[INTERPOLATION_CUBIC]",
       "type": "Flag",
       "optional": true,
       "id": "interpolation_cubic",
@@ -132,7 +132,7 @@
     {
       "command-line-flag": "--lh.hippoamyg",
       "description": "Set subfield to lh.hippoAmygLabels-T1.v21.mgz",
-      "value-key": "[PRESET_SUBFIELD]",
+      "value-key": "[PRESET_SUBFIELD_LH_HIPPOAMYG]",
       "type": "Flag",
       "optional": true,
       "id": "preset_subfield_lh_hippoamyg",
@@ -141,7 +141,7 @@
     {
       "command-line-flag": "--rh.hippoamyg",
       "description": "Set subfield to rh.hippoAmygLabels-T1.v21.mgz",
-      "value-key": "[PRESET_SUBFIELD]",
+      "value-key": "[PRESET_SUBFIELD_RH_HIPPOAMYG]",
       "type": "Flag",
       "optional": true,
       "id": "preset_subfield_rh_hippoamyg",
@@ -150,7 +150,7 @@
     {
       "command-line-flag": "--lh.hbt",
       "description": "Set subfield to lh.hippoAmygLabels-T1.v21.HBT.mgz",
-      "value-key": "[PRESET_SUBFIELD]",
+      "value-key": "[PRESET_SUBFIELD_LH_HBT]",
       "type": "Flag",
       "optional": true,
       "id": "preset_subfield_lh_hbt",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "--rh.hbt",
       "description": "Set subfield to rh.hippoAmygLabels-T1.v21.HBT.mgz",
-      "value-key": "[PRESET_SUBFIELD]",
+      "value-key": "[PRESET_SUBFIELD_RH_HBT]",
       "type": "Flag",
       "optional": true,
       "id": "preset_subfield_rh_hbt",
@@ -168,7 +168,7 @@
     {
       "command-line-flag": "--thalamus",
       "description": "Set subfield to ThalamicNuclei.v10.T1.mgz",
-      "value-key": "[PRESET_SUBFIELD]",
+      "value-key": "[PRESET_SUBFIELD_THALAMUS]",
       "type": "Flag",
       "optional": true,
       "id": "preset_subfield_thalamus",
@@ -177,7 +177,7 @@
     {
       "command-line-flag": "--brainstem",
       "description": "Set subfield to brainstemSsLabels.v12.mgz",
-      "value-key": "[PRESET_SUBFIELD]",
+      "value-key": "[PRESET_SUBFIELD_BRAINSTEM]",
       "type": "Flag",
       "optional": true,
       "id": "preset_subfield_brainstem",

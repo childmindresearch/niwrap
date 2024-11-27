@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_REMLFIT_METADATA = Metadata(
-    id="90e07df8872d257e94b52e0a2439cbfa1131aa4d.boutiques",
+    id="847ea79f5b61b9773e10438597e56d4e78c62c2e.boutiques",
     name="3dREMLfit",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

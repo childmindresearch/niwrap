@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_CORTEX_LABEL_METADATA = Metadata(
-    id="316c1e178674030b5597d810ae4e32e3e0990c23.boutiques",
+    id="f144e3d1e0fdf022a6e2282c867ba8f46fafc1cb.boutiques",
     name="make_cortex_label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

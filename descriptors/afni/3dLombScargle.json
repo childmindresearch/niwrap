@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Make a periodogram or amplitude-spectrum of a time series that has a non-constant sampling rate",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dLombScargle [PREFIX] [INPUT_FILE] [CENSOR_FILE] [CENSOR_STRING] [MASK_FILE] [OUT_POW_SPEC_FLAG] [NYQUIST_MULTIPLIER] [NIFTI_FLAG]",
+  "command-line": "3dLombScargle [PREFIX] [INSET] [CENSOR_1D] [CENSOR_STRING] [MASK_FILE] [OUT_POW_SPEC] [NYQUIST_MULTIPLIER] [NIFTI]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     },
     {
       "description": "Time series of volumes, a 4D volumetric data set",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INSET]",
       "type": "File",
       "optional": false,
       "id": "inset",
@@ -31,7 +31,7 @@
     {
       "description": "Single row or column of 1s (keep) and 0s (censored) describing which volumes of FILE are kept in the sampling and which are censored out, respectively. The length of the list of numbers must be of the same length as the number of volumes in FILE. If not entered, then the program will look for subbricks of all-zeros and assume those are censored out.",
       "command-line-flag": "-censor_1D",
-      "value-key": "[CENSOR_FILE]",
+      "value-key": "[CENSOR_1D]",
       "type": "File",
       "optional": true,
       "id": "censor_1d",
@@ -58,7 +58,7 @@
     {
       "description": "Switch to output the amplitude spectrum of the freqs instead of the periodogram. In the formulation used here, for a time series of length N, the power spectral value S is related to the amplitude value X as: S = (X)**2. (Without this opt, default output is amplitude spectrum.)",
       "command-line-flag": "-out_pow_spec",
-      "value-key": "[OUT_POW_SPEC_FLAG]",
+      "value-key": "[OUT_POW_SPEC]",
       "type": "Flag",
       "optional": true,
       "id": "out_pow_spec",
@@ -77,7 +77,7 @@
     {
       "description": "Switch to output *.nii.gz volume file (default format is BRIK/HEAD).",
       "command-line-flag": "-nifti",
-      "value-key": "[NIFTI_FLAG]",
+      "value-key": "[NIFTI]",
       "type": "Flag",
       "optional": true,
       "id": "nifti",

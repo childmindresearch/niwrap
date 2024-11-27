@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEAT2SEGSTATS_METADATA = Metadata(
-    id="114184bb1194b9afe4e61335055b6aca221f94fc.boutiques",
+    id="f497314b17f14b01ac598216e1b2359e25f16e24.boutiques",
     name="feat2segstats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class Feat2segstatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    segstats_output: OutputPathType | None
+    segstats_output: OutputPathType
     """Output segmentation statistics file"""
 
 
@@ -152,7 +152,7 @@ def feat2segstats(
         cargs.append("--nolog")
     ret = Feat2segstatsOutputs(
         root=execution.output_file("."),
-        segstats_output=execution.output_file(feat_dir + "/freesurfer/segstats/" + seg_vol + "/" + stat_ + ".dat") if (seg_vol is not None) else None,
+        segstats_output=execution.output_file(feat_dir + "/freesurfer/segstats/[SEG]/" + stat_ + ".dat"),
     )
     execution.run(cargs)
     return ret

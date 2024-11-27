@@ -3,7 +3,7 @@
   "name": "mris_flatten",
   "author": "FreeSurfer Developers",
   "description": "This program will flatten a surface patch",
-  "command-line": "mris_flatten [INPUT_PATCH] [OUTPUT_PATCH] [ITERATIONS] [NEIGHBORHOOD] [RIP_DILATIONS] [RANDOM_SEED] [COPY_COORDS_FLAG] [NORAND_FLAG]",
+  "command-line": "mris_flatten [INPUT_PATCH] [OUTPUT_PATCH] [ITERATIONS] [DISTANCES] [DILATIONS] [RANDOM_SEED] [COPY_COORDS] [NORAND]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-distances",
       "description": "Specify size of neighborhood and number of vertices at each distance to be used in the optimization.",
-      "value-key": "[NEIGHBORHOOD]",
+      "value-key": "[DISTANCES]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-dilate",
       "description": "Specify the number of times to dilate the ripped edges to ensure a clean cut",
-      "value-key": "[RIP_DILATIONS]",
+      "value-key": "[DILATIONS]",
       "type": "Number",
       "optional": true,
       "id": "dilations",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-norand",
       "description": "Set the random seed to 0 so that flattening is repeatable",
-      "value-key": "[NORAND_FLAG]",
+      "value-key": "[NORAND]",
       "type": "Flag",
       "optional": true,
       "id": "norand",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-copy-coords",
       "description": "Copy xyz coords from surface before flattening.",
-      "value-key": "[COPY_COORDS_FLAG]",
+      "value-key": "[COPY_COORDS]",
       "type": "String",
       "optional": true,
       "id": "copy_coords",

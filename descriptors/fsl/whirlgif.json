@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "GIF animation tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "whirlgif [OUTFILE] [LOOP_COUNT] [DELAY_TIME] [DISP_FLAG] [LIST_FILE] [FILES]",
+  "command-line": "whirlgif [OUTFILE] [LOOP_COUNT] [DELAY_TIME] [DISP_FLAG] [LIST_FILE] [INPUT_FILES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -60,7 +60,7 @@
     },
     {
       "description": "Input image files for the animation",
-      "value-key": "[FILES]",
+      "value-key": "[INPUT_FILES]",
       "type": "File",
       "list": true,
       "optional": false,

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="17b6d29218eb923971c21a154d6dbacaa0642f82.boutiques",
+    id="8209354b35fca6222f53525ec72fc9f4429a7c4a.boutiques",
     name="antsApplyTransforms",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

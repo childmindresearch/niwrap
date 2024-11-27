@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_AVERAGE_METADATA = Metadata(
-    id="3b815cdee593ef1228d75db79a3212915649d7ec.boutiques",
+    id="9f634edc8e7e1a23500b288fecc20c4dd605a410.boutiques",
     name="mri_average",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

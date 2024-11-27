@@ -3,7 +3,7 @@
   "name": "mris_remove_intersection",
   "author": "FreeSurfer Developers",
   "description": "Tool to remove intersections in surface files.",
-  "command-line": "mris_remove_intersection [SURFACE_IN_FILE] [CORRECTED_SURFACE_OUT_FILE] [FILL_HOLES_FLAG] [MAP_OPTION] [DIST_MM]",
+  "command-line": "mris_remove_intersection [SURFACE_IN_FILE] [CORRECTED_SURFACE_OUT_FILE] [FILL_HOLES] [MAP_OPTION] [PROJDISTMM]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-fill-holes",
       "description": "Fill any holes in the intersection mark map and include them in the fix.",
-      "value-key": "[FILL_HOLES_FLAG]",
+      "value-key": "[FILL_HOLES]",
       "type": "Flag",
       "optional": true,
       "id": "fill_holes",
@@ -42,7 +42,7 @@
     },
     {
       "description": "Projection distance in mm when using -map option.",
-      "value-key": "[DIST_MM]",
+      "value-key": "[PROJDISTMM]",
       "type": "Number",
       "optional": true,
       "id": "projdistmm",

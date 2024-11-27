@@ -3,7 +3,7 @@
   "name": "make-segvol-table",
   "author": "FreeSurfer Developers",
   "description": "Creates a table of volumes of subcortical structures for a given list of subjects using FreeSurfer.",
-  "command-line": "make-segvol-table [SUBJECTS] [SUBJECT_FILE] [OUTFILE] [IDMAP] [STRUCTURE_IDS] [SEGDIR] [SUBJECTS_DIR] [UMASK_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "make-segvol-table [SUBJECTS] [SUBJECT_FILE] [OUTFILE] [IDMAP] [STRUCTURE_IDS] [SEGDIR] [SUBJECTS_DIR] [UMASK] [VERSION] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-umask",
       "description": "Set UNIX file permission mask.",
-      "value-key": "[UMASK_FLAG]",
+      "value-key": "[UMASK]",
       "type": "String",
       "optional": true,
       "id": "umask",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "-version",
       "description": "Print version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "-help",
       "description": "Display help information.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

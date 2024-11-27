@@ -3,7 +3,7 @@
   "name": "@ExamineGenFeatDists",
   "author": "AFNI Developers",
   "description": "Examine histograms produced by 3dGenFeatDists",
-  "command-line": "@ExamineGenFeatDists [FEATURES_DIR] [WILDCARDS] [SUFFIX] [EXCLUDE_FEATURES] [EXCLUDE_CLASSES] [OUTPUT_DIR] [NX] [ECHO] [HELP]",
+  "command-line": "@ExamineGenFeatDists [FEATURES_DIR] [WILDCARDS] [OUTPUT_SUFFIX] [EXCLUDE_FEATURES] [EXCLUDE_CLASSES] [OUTPUT_DIR] [PANELS_HORIZONTAL] [ECHO] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-suffix",
       "description": "Output suffix, added to output images. Default is 'nosuff'.",
-      "value-key": "[SUFFIX]",
+      "value-key": "[OUTPUT_SUFFIX]",
       "type": "String",
       "optional": true,
       "id": "output_suffix",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "-nx",
       "description": "Set number of panels along the horizontal direction.",
-      "value-key": "[NX]",
+      "value-key": "[PANELS_HORIZONTAL]",
       "type": "Number",
       "optional": true,
       "id": "panels_horizontal",

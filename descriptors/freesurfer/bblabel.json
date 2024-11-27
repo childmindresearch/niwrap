@@ -3,13 +3,13 @@
   "name": "bblabel",
   "author": "FreeSurfer Developers",
   "description": "Applies a bounding box to a label, copying only the label points within the specified box to the output.",
-  "command-line": "bblabel [LABEL_FILE] [X_MIN] [X_MAX] [Y_MIN] [Y_MAX] [Z_MIN] [Z_MAX] [OUTPUT_FILE] [DEBUG_FLAG] [UMASK]",
+  "command-line": "bblabel [LABELFILE] [XMIN] [XMAX] [YMIN] [YMAX] [ZMIN] [ZMAX] [OUTLABELFILE] [DEBUG] [UMASK]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--l",
       "description": "Input label file.",
-      "value-key": "[LABEL_FILE]",
+      "value-key": "[LABELFILE]",
       "type": "File",
       "optional": false,
       "id": "labelfile",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--xmin",
       "description": "Minimum x-coordinate for bounding box.",
-      "value-key": "[X_MIN]",
+      "value-key": "[XMIN]",
       "type": "Number",
       "optional": true,
       "id": "xmin",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--xmax",
       "description": "Maximum x-coordinate for bounding box.",
-      "value-key": "[X_MAX]",
+      "value-key": "[XMAX]",
       "type": "Number",
       "optional": true,
       "id": "xmax",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--ymin",
       "description": "Minimum y-coordinate for bounding box.",
-      "value-key": "[Y_MIN]",
+      "value-key": "[YMIN]",
       "type": "Number",
       "optional": true,
       "id": "ymin",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--ymax",
       "description": "Maximum y-coordinate for bounding box.",
-      "value-key": "[Y_MAX]",
+      "value-key": "[YMAX]",
       "type": "Number",
       "optional": true,
       "id": "ymax",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--zmin",
       "description": "Minimum z-coordinate for bounding box.",
-      "value-key": "[Z_MIN]",
+      "value-key": "[ZMIN]",
       "type": "Number",
       "optional": true,
       "id": "zmin",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--zmax",
       "description": "Maximum z-coordinate for bounding box.",
-      "value-key": "[Z_MAX]",
+      "value-key": "[ZMAX]",
       "type": "Number",
       "optional": true,
       "id": "zmax",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--o",
       "description": "Output label file.",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTLABELFILE]",
       "type": "String",
       "optional": false,
       "id": "outlabelfile",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

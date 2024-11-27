@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_EXTREMA_METADATA = Metadata(
-    id="878c450ead99de06c9173d0159c8e69a49c74d62.boutiques",
+    id="84b854a87242a5d67c86897020fb70cd6c8e1945.boutiques",
     name="SurfExtrema",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

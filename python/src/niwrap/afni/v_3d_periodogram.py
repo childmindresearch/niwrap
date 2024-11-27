@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PERIODOGRAM_METADATA = Metadata(
-    id="14a644a1a26ab708ddcace9516dff73c6c2b3ad6.boutiques",
+    id="fcf2c00547216b273c4fa3311c0b5b73dec63fc0.boutiques",
     name="3dPeriodogram",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class V3dPeriodogramOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_header: OutputPathType | None
+    output_header: OutputPathType
     """Output dataset header file"""
-    output_brick: OutputPathType | None
+    output_brick: OutputPathType
     """Output dataset brick file"""
 
 
@@ -74,8 +74,8 @@ def v_3d_periodogram(
     cargs.append(execution.input_file(dataset))
     ret = V3dPeriodogramOutputs(
         root=execution.output_file("."),
-        output_header=execution.output_file(prefix + ".HEAD") if (prefix is not None) else None,
-        output_brick=execution.output_file(prefix + ".BRIK") if (prefix is not None) else None,
+        output_header=execution.output_file("[PREFIX_OPTION].HEAD"),
+        output_brick=execution.output_file("[PREFIX_OPTION].BRIK"),
     )
     execution.run(cargs)
     return ret

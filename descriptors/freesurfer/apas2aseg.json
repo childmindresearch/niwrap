@@ -3,7 +3,7 @@
   "name": "apas2aseg",
   "author": "FreeSurfer Developers",
   "description": "Converts aparc+aseg.mgz into aseg.mgz-like format by replacing specific cortical segmentations.",
-  "command-line": "apas2aseg [SUBJECT] [APARC_ASEG] [OUTPUT_SEG]",
+  "command-line": "apas2aseg [SUBJECT] [INPUT_APARC_ASEG] [OUTPUT_SEG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--i",
       "description": "Input aparc+aseg.mgz file to be converted.",
-      "value-key": "[APARC_ASEG]",
+      "value-key": "[INPUT_APARC_ASEG]",
       "type": "File",
       "optional": true,
       "id": "input_aparc_aseg",

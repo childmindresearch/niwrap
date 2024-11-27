@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CP_DICOM_METADATA = Metadata(
-    id="261a9f402f9e40ad104ad8b514f936cf178431f9.boutiques",
+    id="e87057efacb16ed69de0523e99719b16d1c3fb64.boutiques",
     name="cp-dicom",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

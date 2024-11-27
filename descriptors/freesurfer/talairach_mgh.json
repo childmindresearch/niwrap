@@ -3,12 +3,12 @@
   "name": "talairach_mgh",
   "author": "FreeSurfer Developers",
   "description": "A tool for aligning brain volume with Talairach reference brain",
-  "command-line": "talairach_mgh [INPUT] [OUTPUT] [OPTIONS]",
+  "command-line": "talairach_mgh [INPUT_VOLUME] [OUTPUT_VOLUME] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input volume file for the talairach transformation",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "input_volume",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Output volume file for the talairach transformation",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_VOLUME]",
       "type": "String",
       "optional": false,
       "id": "output_volume",

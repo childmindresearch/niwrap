@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RF_TRAIN_METADATA = Metadata(
-    id="6c5095a98c3c20255b1b3bd109f05d8ee64b4328.boutiques",
+    id="b4295c01773ba4db075d8d5007717eaffac797b7.boutiques",
     name="mri_rf_train",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

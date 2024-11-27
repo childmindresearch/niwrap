@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_RENUMBER_FS_METADATA = Metadata(
-    id="8a49623824c67c6e033a941294f1334c45b7499b.boutiques",
+    id="c19b88d98568eb300b3deddf6a92cffe231ec7b8.boutiques",
     name="@SUMA_renumber_FS",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

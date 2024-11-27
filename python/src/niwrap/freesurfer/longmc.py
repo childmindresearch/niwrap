@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONGMC_METADATA = Metadata(
-    id="29883e3bcac4243d91ad002d12fb421f330edf15.boutiques",
+    id="51a04d5ffd0bb81591249e8acfb084306bc3edcb.boutiques",
     name="longmc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

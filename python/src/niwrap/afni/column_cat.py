@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COLUMN_CAT_METADATA = Metadata(
-    id="3a134043c87d0163c9100245c6b67189ec396c2d.boutiques",
+    id="22f92393a4504948631931c183a528c1437f87dc.boutiques",
     name="column_cat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

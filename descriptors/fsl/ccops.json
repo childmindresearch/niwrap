@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "description": "ccops - Clustering of Connectomes Using Probabilistic Tractography",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "ccops [basename] [infile] [tract_dir] [exclusion_mask] [reorder_seedspace] [reorder_tractspace] [tract_reord] [connexity_constraint] [binarise_val] [matrix_power] [brain_mask] [scheme] [nclusters] [--help]",
+  "command-line": "ccops [BASENAME] [INFILE] [TRACT_DIR] [EXCLUSION_MASK] [REORDER_SEEDSPACE] [REORDER_TRACTSPACE] [TRACT_REORD] [CONNEXITY_CONSTRAINT] [BINARISE_VAL] [MATRIX_POWER] [BRAIN_MASK] [SCHEME] [NCLUSTERS] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Output basename",
-      "value-key": "[basename]",
+      "value-key": "[BASENAME]",
       "command-line-flag": "--basename",
       "type": "String",
       "optional": false,
@@ -22,7 +22,7 @@
     },
     {
       "description": "Input matrix",
-      "value-key": "[infile]",
+      "value-key": "[INFILE]",
       "command-line-flag": "--in",
       "type": "File",
       "optional": true,
@@ -31,7 +31,7 @@
     },
     {
       "description": "Tractography Results Directory",
-      "value-key": "[tract_dir]",
+      "value-key": "[TRACT_DIR]",
       "command-line-flag": "--dir",
       "type": "String",
       "optional": true,
@@ -40,7 +40,7 @@
     },
     {
       "description": "Exclusion mask (in tract space)",
-      "value-key": "[exclusion_mask]",
+      "value-key": "[EXCLUSION_MASK]",
       "command-line-flag": "-x",
       "type": "File",
       "optional": true,
@@ -49,7 +49,7 @@
     },
     {
       "description": "Do seedspace reordering (default no)",
-      "value-key": "[reorder_seedspace]",
+      "value-key": "[REORDER_SEEDSPACE]",
       "command-line-flag": "--r1",
       "type": "Flag",
       "optional": true,
@@ -58,7 +58,7 @@
     },
     {
       "description": "Do tractspace reordering (default no)",
-      "value-key": "[reorder_tractspace]",
+      "value-key": "[REORDER_TRACTSPACE]",
       "command-line-flag": "--r2",
       "type": "Flag",
       "optional": true,
@@ -67,7 +67,7 @@
     },
     {
       "description": "Propagate seed reordering onto tract space",
-      "value-key": "[tract_reord]",
+      "value-key": "[TRACT_REORD]",
       "command-line-flag": "--tractreord",
       "type": "Flag",
       "optional": true,
@@ -76,7 +76,7 @@
     },
     {
       "description": "Add connexity constraint - value between 0 and 1 (0 is no constraint). Default is 0",
-      "value-key": "[connexity_constraint]",
+      "value-key": "[CONNEXITY_CONSTRAINT]",
       "command-line-flag": "--con",
       "type": "Number",
       "maximum": 1,
@@ -89,7 +89,7 @@
     },
     {
       "description": "Binarise at (default 0 - no binarisation)",
-      "value-key": "[binarise_val]",
+      "value-key": "[BINARISE_VAL]",
       "command-line-flag": "--bin",
       "type": "Number",
       "optional": true,
@@ -99,7 +99,7 @@
     },
     {
       "description": "Power to raise the correlation matrix to (default 1)",
-      "value-key": "[matrix_power]",
+      "value-key": "[MATRIX_POWER]",
       "command-line-flag": "--power",
       "type": "Number",
       "optional": true,
@@ -109,7 +109,7 @@
     },
     {
       "description": "Brain mask used to output the clustered ROI mask (not necessary if --dir set)",
-      "value-key": "[brain_mask]",
+      "value-key": "[BRAIN_MASK]",
       "command-line-flag": "--mask",
       "type": "File",
       "optional": true,
@@ -118,7 +118,7 @@
     },
     {
       "description": "Reordering algorithm. Can be either spectral (default), kmeans or fuzzy",
-      "value-key": "[scheme]",
+      "value-key": "[SCHEME]",
       "command-line-flag": "--scheme",
       "type": "String",
       "optional": true,
@@ -128,7 +128,7 @@
     },
     {
       "description": "Number of clusters to be used in kmeans or fuzzy",
-      "value-key": "[nclusters]",
+      "value-key": "[NCLUSTERS]",
       "command-line-flag": "--nclusters",
       "type": "Number",
       "optional": true,
@@ -137,7 +137,7 @@
     },
     {
       "description": "Display this help message",
-      "value-key": "[--help]",
+      "value-key": "[HELP]",
       "command-line-flag": "--help",
       "type": "Flag",
       "optional": true,

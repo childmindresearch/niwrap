@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_TESSELLATE_METADATA = Metadata(
-    id="1082bb2da5da1608fb56cbeea9e3a0b87e7ebcf7.boutiques",
+    id="9dcf92c1d5089255feba7b2627ab0237e0be1c67.boutiques",
     name="mri_tessellate",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

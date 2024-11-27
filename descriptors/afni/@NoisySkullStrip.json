@@ -3,7 +3,7 @@
   "name": "@NoisySkullStrip",
   "author": "AFNI Developers",
   "description": "Strips the skull of anatomical datasets with low SNR.",
-  "command-line": "@NoisySkullStrip [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
+  "command-line": "@NoisySkullStrip [INPUT_FILE] [KEEP_TMP] [3DSKULLSTRIP_OPTS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "The anatomical dataset",
-      "value-key": "[ANAT]",
+      "value-key": "[INPUT_FILE]",
       "type": "File",
       "optional": false,
       "id": "input_file",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-keep_tmp",
       "description": "Do not erase temporary files at the end.",
-      "value-key": "[KEEP_TMP_FLAG]",
+      "value-key": "[KEEP_TMP]",
       "type": "Flag",
       "optional": true,
       "id": "keep_tmp",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-3dSkullStrip_opts",
       "description": "Anything following this option is passed to 3dSkullStrip",
-      "value-key": "[SKULLSTRIP_OPTS]",
+      "value-key": "[3DSKULLSTRIP_OPTS]",
       "type": "String",
       "optional": true,
       "id": "3dskullstrip_opts",

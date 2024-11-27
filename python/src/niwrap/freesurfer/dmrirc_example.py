@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRIRC_EXAMPLE_METADATA = Metadata(
-    id="826786cb87aa325721cea94d4b8ca2bed3f5b212.boutiques",
+    id="3b56132329ec22d5152bbcbe76cbdc776e79df6c.boutiques",
     name="dmrirc.example",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

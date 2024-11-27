@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSVGLRUN_METADATA = Metadata(
-    id="e50fdbeefca52e64cc7436586029b7fbf5d0f109.boutiques",
+    id="5ac643a495dfd3b7b90655e3aff808accc7f76dd.boutiques",
     name="fsvglrun",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

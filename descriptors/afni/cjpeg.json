@@ -3,7 +3,7 @@
   "name": "cjpeg",
   "author": "AFNI Developers",
   "description": "Compresses an image file to a JPEG file",
-  "command-line": "cjpeg [QUALITY] [GRAYSCALE] [OPTIMIZE] [BASENAME] [PROGRESSIVE] [OUTPUT_FILE] [INPUT_FILE]",
+  "command-line": "cjpeg [QUALITY] [GRAYSCALE] [OPTIMIZE] [BASELINE] [PROGRESSIVE] [OUTFILE] [INFILE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input image file",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Output JPEG file",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-baseline",
       "description": "Create a baseline JPEG file",
-      "value-key": "[BASENAME]",
+      "value-key": "[BASELINE]",
       "type": "Flag",
       "optional": true,
       "id": "baseline",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GCATRAIN_METADATA = Metadata(
-    id="8a524082082e4f968f28186735c00fe70016505d.boutiques",
+    id="eee9b89002e0f2e263128edc3af126a1ada69cbf.boutiques",
     name="gcatrain",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -25,6 +25,7 @@ class GcatrainOutputs(typing.NamedTuple):
 def gcatrain(
     gcadir: str,
     subjectlistfile: InputPathType,
+    init_subject_transform: list[str],
     seg_file: InputPathType,
     source_subjects_dir: str,
     num_iters: float | None = None,
@@ -53,6 +54,8 @@ def gcatrain(
     Args:
         gcadir: Directory for the new SUBJECTS_DIR.
         subjectlistfile: The list of subjects to include.
+        init_subject_transform: Initialization subject and its talairach\
+            transform.
         seg_file: Segmentation file (e.g. seg_edited.mgz).
         source_subjects_dir: Source SUBJECTS_DIR for data.
         num_iters: Number of iterations.
@@ -73,6 +76,8 @@ def gcatrain(
     Returns:
         NamedTuple of outputs (described in `GcatrainOutputs`).
     """
+    if (len(init_subject_transform) != 2): 
+        raise ValueError(f"Length of 'init_subject_transform' must be 2 but was {len(init_subject_transform)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(GCATRAIN_METADATA)
     cargs = []
@@ -85,8 +90,10 @@ def gcatrain(
         "--f",
         execution.input_file(subjectlistfile)
     ])
-    cargs.append("[INIT_SUBJECT]")
-    cargs.append("[INITIAL_TRANSFORM]")
+    cargs.extend([
+        "--init",
+        *init_subject_transform
+    ])
     cargs.extend([
         "--seg",
         execution.input_file(seg_file)

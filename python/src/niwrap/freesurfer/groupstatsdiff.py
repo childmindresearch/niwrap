@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GROUPSTATSDIFF_METADATA = Metadata(
-    id="894320848d548ae41dd7014996c729f7b0ed34c5.boutiques",
+    id="474a0a73a03ccd5e8c25186fbb8a8f0ccde75dd7.boutiques",
     name="groupstatsdiff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

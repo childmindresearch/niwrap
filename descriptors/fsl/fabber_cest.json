@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Directory for output files",
-      "value-key": "[--output]",
+      "value-key": "[OUTPUT]",
       "type": "String",
       "optional": false,
       "id": "output",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Inference method",
-      "value-key": "[--method]",
+      "value-key": "[METHOD]",
       "type": "String",
       "optional": false,
       "id": "method",
@@ -28,7 +28,7 @@
     },
     {
       "description": "Forward model",
-      "value-key": "[--model]",
+      "value-key": "[MODEL]",
       "type": "String",
       "optional": false,
       "id": "model",
@@ -36,7 +36,7 @@
     },
     {
       "description": "Input data file",
-      "value-key": "[--data]",
+      "value-key": "[DATA]",
       "type": "File",
       "optional": false,
       "id": "data",
@@ -44,7 +44,7 @@
     },
     {
       "description": "Print usage help",
-      "value-key": "[--help]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -52,7 +52,7 @@
     },
     {
       "description": "List all known inference methods",
-      "value-key": "[--listmethods]",
+      "value-key": "[LISTMETHODS]",
       "type": "Flag",
       "optional": true,
       "id": "listmethods",
@@ -60,7 +60,7 @@
     },
     {
       "description": "List all known forward models",
-      "value-key": "[--listmodels]",
+      "value-key": "[LISTMODELS]",
       "type": "Flag",
       "optional": true,
       "id": "listmodels",
@@ -68,7 +68,7 @@
     },
     {
       "description": "List model parameters",
-      "value-key": "[--listparams]",
+      "value-key": "[LISTPARAMS]",
       "type": "Flag",
       "optional": true,
       "id": "listparams",
@@ -76,7 +76,7 @@
     },
     {
       "description": "Describe model parameters",
-      "value-key": "[--descparams]",
+      "value-key": "[DESCPARAMS]",
       "type": "Flag",
       "optional": true,
       "id": "descparams",
@@ -84,7 +84,7 @@
     },
     {
       "description": "List additional model outputs",
-      "value-key": "[--listoutputs]",
+      "value-key": "[LISTOUTPUTS]",
       "type": "Flag",
       "optional": true,
       "id": "listoutputs",
@@ -92,7 +92,7 @@
     },
     {
       "description": "Evaluate model and set to name of output required",
-      "value-key": "[--evaluate]",
+      "value-key": "[EVALUATE]",
       "type": "String",
       "optional": true,
       "id": "evaluate",
@@ -100,7 +100,7 @@
     },
     {
       "description": "List of parameter values for evaluation",
-      "value-key": "[--evaluate-params]",
+      "value-key": "[EVALUATE_PARAMS]",
       "type": "String",
       "optional": true,
       "id": "evaluate_params",
@@ -108,7 +108,7 @@
     },
     {
       "description": "Number of time points for evaluation",
-      "value-key": "[--evaluate-nt]",
+      "value-key": "[EVALUATE_NT]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -117,7 +117,7 @@
     },
     {
       "description": "Simple output series of lines each giving progress as percentage",
-      "value-key": "[--simple-output]",
+      "value-key": "[SIMPLE_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "simple_output",
@@ -125,7 +125,7 @@
     },
     {
       "description": "Overwrite existing output",
-      "value-key": "[--overwrite]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -133,7 +133,7 @@
     },
     {
       "description": "Create a link to the most recent output directory with the prefix _latest",
-      "value-key": "[--link-to-latest]",
+      "value-key": "[LINK_TO_LATEST]",
       "type": "Flag",
       "optional": true,
       "id": "link_to_latest",
@@ -141,7 +141,7 @@
     },
     {
       "description": "Load models dynamically from the specified filename",
-      "value-key": "[--loadmodels]",
+      "value-key": "[LOADMODELS]",
       "type": "File",
       "optional": true,
       "id": "loadmodels",
@@ -149,7 +149,7 @@
     },
     {
       "description": "Specify multiple data files (data<n>)",
-      "value-key": "--data<n>",
+      "value-key": "[DATA_MULTI]",
       "type": "File",
       "optional": true,
       "id": "data_multi",
@@ -157,7 +157,7 @@
     },
     {
       "description": "Handling of multiple data files (concatenate or interleave)",
-      "value-key": "[--data-order]",
+      "value-key": "[DATA_ORDER]",
       "type": "String",
       "optional": true,
       "id": "data_order",
@@ -166,7 +166,7 @@
     },
     {
       "description": "Mask file. Inference performed where mask value > 0",
-      "value-key": "[--mask]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -174,7 +174,7 @@
     },
     {
       "description": "List of masked time points to ignore (mt<n>)",
-      "value-key": "--mt<n>",
+      "value-key": "[MASKED_TIMEPOINTS]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -183,7 +183,7 @@
     },
     {
       "description": "Supplemental timeseries data required for some models",
-      "value-key": "[--suppdata]",
+      "value-key": "[SUPPDATA]",
       "type": "File",
       "optional": true,
       "id": "suppdata",
@@ -191,7 +191,7 @@
     },
     {
       "description": "Write the file paramnames.txt containing the names of the model parameters",
-      "value-key": "[--dump-param-names]",
+      "value-key": "[DUMP_PARAM_NAMES]",
       "type": "Flag",
       "optional": true,
       "id": "dump_param_names",
@@ -199,7 +199,7 @@
     },
     {
       "description": "Output the model prediction as a 4d volume",
-      "value-key": "[--save-model-fit]",
+      "value-key": "[SAVE_MODEL_FIT]",
       "type": "Flag",
       "optional": true,
       "id": "save_model_fit",
@@ -207,7 +207,7 @@
     },
     {
       "description": "Output the residuals (difference between the data and the model prediction)",
-      "value-key": "[--save-residuals]",
+      "value-key": "[SAVE_RESIDUALS]",
       "type": "Flag",
       "optional": true,
       "id": "save_residuals",
@@ -215,7 +215,7 @@
     },
     {
       "description": "Output additional model-specific timeseries data",
-      "value-key": "[--save-model-extras]",
+      "value-key": "[SAVE_MODEL_EXTRAS]",
       "type": "Flag",
       "optional": true,
       "id": "save_model_extras",
@@ -223,7 +223,7 @@
     },
     {
       "description": "Output the final MVN distributions.",
-      "value-key": "[--save-mvn]",
+      "value-key": "[SAVE_MVN]",
       "type": "Flag",
       "optional": true,
       "id": "save_mvn",
@@ -231,7 +231,7 @@
     },
     {
       "description": "Output the parameter means.",
-      "value-key": "[--save-mean]",
+      "value-key": "[SAVE_MEAN]",
       "type": "Flag",
       "optional": true,
       "id": "save_mean",
@@ -239,7 +239,7 @@
     },
     {
       "description": "Output the parameter standard deviations.",
-      "value-key": "[--save-std]",
+      "value-key": "[SAVE_STD]",
       "type": "Flag",
       "optional": true,
       "id": "save_std",
@@ -247,7 +247,7 @@
     },
     {
       "description": "Output the parameter variances.",
-      "value-key": "[--save-var]",
+      "value-key": "[SAVE_VAR]",
       "type": "Flag",
       "optional": true,
       "id": "save_var",
@@ -255,7 +255,7 @@
     },
     {
       "description": "Output the parameter Zstats.",
-      "value-key": "[--save-zstat]",
+      "value-key": "[SAVE_ZSTAT]",
       "type": "Flag",
       "optional": true,
       "id": "save_zstat",
@@ -263,7 +263,7 @@
     },
     {
       "description": "Output the noise means.",
-      "value-key": "[--save-noise-mean]",
+      "value-key": "[SAVE_NOISE_MEAN]",
       "type": "Flag",
       "optional": true,
       "id": "save_noise_mean",
@@ -271,7 +271,7 @@
     },
     {
       "description": "Output the noise standard deviations.",
-      "value-key": "[--save-noise-std]",
+      "value-key": "[SAVE_NOISE_STD]",
       "type": "Flag",
       "optional": true,
       "id": "save_noise_std",
@@ -279,7 +279,7 @@
     },
     {
       "description": "Output the free energy, if calculated.",
-      "value-key": "[--save-free-energy]",
+      "value-key": "[SAVE_FREE_ENERGY]",
       "type": "Flag",
       "optional": true,
       "id": "save_free_energy",
@@ -287,7 +287,7 @@
     },
     {
       "description": "File containing additional options, one per line, in the same form as specified on the command line",
-      "value-key": "[--optfile]",
+      "value-key": "[OPTFILE]",
       "type": "File",
       "optional": true,
       "id": "optfile",
@@ -295,7 +295,7 @@
     },
     {
       "description": "Output large amounts of debug information. ONLY USE WITH VERY SMALL NUMBERS OF VOXELS",
-      "value-key": "[--debug]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

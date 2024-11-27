@@ -1,7 +1,7 @@
 {
   "name": "mris_annot_diff",
   "description": "Compare two surface annotation files. The program works with .annot only.",
-  "command-line": "mris_annot_diff [ANNOT1] [ANNOT2] [DIFF_CTAB_FLAG] [VERBOSE_FLAG]",
+  "command-line": "mris_annot_diff [ANNOT1] [ANNOT2] [DIFF_CTAB] [VERBOSE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "--diff-ctab",
       "description": "Diff colortable included in .annot",
-      "value-key": "[DIFF_CTAB_FLAG]",
+      "value-key": "[DIFF_CTAB]",
       "type": "Flag",
       "optional": true,
       "id": "diff_ctab",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "--verbose",
       "description": "Print details of annotation/colortable differences",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

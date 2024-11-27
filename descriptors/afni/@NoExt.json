@@ -3,11 +3,11 @@
   "name": "@NoExt",
   "author": "AFNI Developers",
   "description": "Tool for removing specified extensions from filenames",
-  "command-line": "@NoExt <inputfile> [extensions...]",
+  "command-line": "@NoExt <inputfile> [EXTENSIONS]",
   "inputs": [
     {
       "description": "Input file name with extension",
-      "value-key": "[<inputfile>]",
+      "value-key": "[INPUTFILE]",
       "type": "String",
       "optional": false,
       "id": "inputfile",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Extensions to be removed",
-      "value-key": "[extensions...]",
+      "value-key": "[EXTENSIONS]",
       "type": "String",
       "list": true,
       "optional": true,

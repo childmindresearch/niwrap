@@ -3,13 +3,13 @@
   "name": "fixup_mni_paths",
   "author": "FreeSurfer Developers",
   "description": "A utility for patching MNI tools to ensure correct paths are used.",
-  "command-line": "fixup_mni_paths [VERBOSE_FLAG]",
+  "command-line": "fixup_mni_paths [VERBOSE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-v",
       "description": "Provide verbose output during the patch process",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

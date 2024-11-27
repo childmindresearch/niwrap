@@ -31,7 +31,7 @@
     {
       "command-line-flag": "--version",
       "description": "Show the current version",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

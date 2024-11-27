@@ -304,7 +304,7 @@
       "description": "Renormalize class means iter times after initial label with window of wsize",
       "id": "renormalize",
       "name": "Renormalize Class",
-      "value-key": "[RENORMALIZE_CLASS]",
+      "value-key": "[RENORMALIZE]",
       "type": "String",
       "optional": true
     },

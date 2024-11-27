@@ -3,11 +3,11 @@
   "name": "gen_ss_review_table.py",
   "author": "AFNI Developers",
   "description": "Generate a table from ss_review_basic output files",
-  "command-line": "gen_ss_review_table.py [INPUT_FILES] [WRITE_TABLE] [WRITE_OUTLIERS] [OVERWRITE_FLAG] [EMPTY_IS_OUTLIER_FLAG] [OUTLIER_SEP] [SEPARATOR] [SHOWLABS_FLAG] [SHOW_INFILES_FLAG] [SHOW_KEEPERS_FLAG] [REPORT_OUTLIERS] [REPORT_OUTLIERS_FILL_STYLE] [SHOW_MISSING_FLAG] [VERB]",
+  "command-line": "gen_ss_review_table.py [INFILES] [WRITE_TABLE] [WRITE_OUTLIERS] [OVERWRITE] [EMPTY_IS_OUTLIER] [OUTLIER_SEP] [SEPARATOR] [SHOWLABS] [SHOW_INFILES] [SHOW_KEEPERS] [REPORT_OUTLIERS] [REPORT_OUTLIERS_FILL_STYLE] [SHOW_MISSING] [VERBOSITY]",
   "inputs": [
     {
       "description": "Input ss_review_basic output text files to process",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[INFILES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-overwrite",
       "description": "Overwrite the output -write_table, if it exists",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-empty_is_outlier",
       "description": "Treat empty tests as outliers",
-      "value-key": "[EMPTY_IS_OUTLIER_FLAG]",
+      "value-key": "[EMPTY_IS_OUTLIER]",
       "type": "Flag",
       "optional": true,
       "id": "empty_is_outlier",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-showlabs",
       "description": "Display counts of all labels found, with parents",
-      "value-key": "[SHOWLABS_FLAG]",
+      "value-key": "[SHOWLABS]",
       "type": "Flag",
       "optional": true,
       "id": "showlabs",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-show_infiles",
       "description": "Include input files in reviewtable result",
-      "value-key": "[SHOW_INFILES_FLAG]",
+      "value-key": "[SHOW_INFILES]",
       "type": "Flag",
       "optional": true,
       "id": "show_infiles",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-show_keepers",
       "description": "Show a table of subjects kept rather than dropped",
-      "value-key": "[SHOW_KEEPERS_FLAG]",
+      "value-key": "[SHOW_KEEPERS]",
       "type": "Flag",
       "optional": true,
       "id": "show_keepers",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "-show_missing",
       "description": "Display all missing keys",
-      "value-key": "[SHOW_MISSING_FLAG]",
+      "value-key": "[SHOW_MISSING]",
       "type": "Flag",
       "optional": true,
       "id": "show_missing",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Verbosity level",
-      "value-key": "[VERB]",
+      "value-key": "[VERBOSITY]",
       "type": "Number",
       "integer": true,
       "optional": true,

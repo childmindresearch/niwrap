@@ -1,6 +1,6 @@
 {
   "name": "3dresample",
-  "command-line": "3dresample [IN_FILE] [MASTER] [ORIENTATION] [OUT_FILE] [OUTPUTTYPE] [RESAMPLE_MODE] [VOXEL_SIZE]",
+  "command-line": "3dresample [IN_FILE] [MASTER] [ORIENTATION] [PREFIX] [OUTPUTTYPE] [RESAMPLE_MODE] [VOXEL_SIZE]",
   "author": "AFNI Developers",
   "description": "Resample or reorient an image using AFNI 3dresample command",
   "url": "https://afni.nimh.nih.gov/",
@@ -17,7 +17,7 @@
     {
       "id": "prefix",
       "name": "Output prefix",
-      "value-key": "[OUT_FILE]",
+      "value-key": "[PREFIX]",
       "command-line-flag": "-prefix",
       "description": "required prefix for output dataset",
       "type": "String"

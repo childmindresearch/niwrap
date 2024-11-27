@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_TO_BASE_METADATA = Metadata(
-    id="fb85ef4d82eb73622b126113871ef99cc22c4fc6.boutiques",
+    id="3d269bbfc0e14161183e3191d406ce215efd7086.boutiques",
     name="map_to_base",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -75,10 +75,10 @@ def map_to_base(
         cargs.append(cross)
     ret = MapToBaseOutputs(
         root=execution.output_file("."),
-        output_long_mri=execution.output_file(baseid + "/mri/" + tpid + "-long." + input_image),
-        output_long_surf=execution.output_file(baseid + "/surf/" + tpid + "-long." + input_image),
-        output_cross_mri=execution.output_file(baseid + "/mri/" + tpid + "-cross." + input_image),
-        output_cross_surf=execution.output_file(baseid + "/surf/" + tpid + "-cross." + input_image),
+        output_long_mri=execution.output_file("[BASE_ID]/mri/[TP_ID]-long.[INPUT]"),
+        output_long_surf=execution.output_file("[BASE_ID]/surf/[TP_ID]-long.[INPUT]"),
+        output_cross_mri=execution.output_file("[BASE_ID]/mri/[TP_ID]-cross.[INPUT]"),
+        output_cross_surf=execution.output_file("[BASE_ID]/surf/[TP_ID]-cross.[INPUT]"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VERTEXVOL_METADATA = Metadata(
-    id="2e5fab9eeec85c3372c55b5443b9170250c9e581.boutiques",
+    id="5b46b0b1a45436a8d62b70881e95c41e52ee25a6.boutiques",
     name="vertexvol",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class VertexvolOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_volume_file: OutputPathType | None
+    output_volume_file: OutputPathType
     """Output file containing vertex-wise volume"""
 
 
@@ -66,7 +66,7 @@ def vertexvol(
         cargs.append("--no-th3")
     ret = VertexvolOutputs(
         root=execution.output_file("."),
-        output_volume_file=execution.output_file(output_file) if (output_file is not None) else None,
+        output_volume_file=execution.output_file("[OUTPUT]"),
     )
     execution.run(cargs)
     return ret

@@ -1,7 +1,7 @@
 {
   "name": "mri_exvivo_norm",
   "description": "MRI Ex Vivo Normalization Tool",
-  "command-line": "mri_exvivo_norm [INPUT_VOLUME] [OUTPUT_VOLUME] [HEMI] [PREDICTION_VOLUME] [NORMALIZED_VOLUME] [FREEVIEW_FLAG] [NORMALIZE_OUTPUT_MEAN_FLAG] [WRITE_NORMALIZATION_ROUNDS_FLAG] [UPPER_THRESHOLD] [BIAS_FIELD_SIGMA] [NORMALIZATION_ROUNDS] [MULTICHANNEL_FLAG] [MODEL_FILE] [WEIGHTS_FILE] [GPU_NUMBER]",
+  "command-line": "mri_exvivo_norm [INPUT_VOLUME] [OUTPUT_VOLUME] [HEMI] [PREDICTION_VOLUME] [NORMALIZED_VOLUME] [FREEVIEW] [NORMALIZE_OUTPUT_MEAN] [WRITE_NORMALIZATION_ROUNDS] [UPPER_THRESHOLD] [BIAS_FIELD_SIGMA] [NORMALIZATION_ROUNDS] [MULTICHANNEL] [MODEL_FILE] [WEIGHTS_FILE] [GPU_NUMBER]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--fv",
       "description": "Bring up freeview to show results",
-      "value-key": "[FREEVIEW_FLAG]",
+      "value-key": "[FREEVIEW]",
       "type": "Flag",
       "optional": true,
       "id": "freeview",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "--norm_mean",
       "description": "Normalize output mean to match input mean",
-      "value-key": "[NORMALIZE_OUTPUT_MEAN_FLAG]",
+      "value-key": "[NORMALIZE_OUTPUT_MEAN]",
       "type": "Flag",
       "optional": true,
       "id": "normalize_output_mean",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "--write_rounds",
       "description": "Write normalization results after each round",
-      "value-key": "[WRITE_NORMALIZATION_ROUNDS_FLAG]",
+      "value-key": "[WRITE_NORMALIZATION_ROUNDS]",
       "type": "Flag",
       "optional": true,
       "id": "write_normalization_rounds",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "--multichannel",
       "description": "Specify that data has multiple channels",
-      "value-key": "[MULTICHANNEL_FLAG]",
+      "value-key": "[MULTICHANNEL]",
       "type": "Flag",
       "optional": true,
       "id": "multichannel",

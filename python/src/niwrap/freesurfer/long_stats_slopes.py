@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_STATS_SLOPES_METADATA = Metadata(
-    id="6ba67a6e2f6272e921657a88c1960fa027cebd75.boutiques",
+    id="c2f3a04515aabb1b936d652c2eb0e27439e032e8.boutiques",
     name="long_stats_slopes",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

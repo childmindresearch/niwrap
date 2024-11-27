@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to run FSL's FIRST for subcortical segmentation",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "run_first [INPUT_IMAGE] [TRANSFORMATION_MATRIX] [N_MODES] [OUTPUT_BASENAME] [MODEL_NAME] [VERBOSE] [INTREF] [LOADBVARS] [MULTIPLE_IMAGES]",
+  "command-line": "run_first [INPUT_IMAGE] [TRANSFORMATION_MATRIX] [N_MODES] [OUTPUT_BASENAME] [MODEL_NAME] [VERBOSE_FLAG] [INTREF_MODEL_NAME] [LOAD_BVARS] [MULTIPLE_IMAGES_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-v",
       "description": "Verbose mode",
-      "value-key": "[VERBOSE]",
+      "value-key": "[VERBOSE_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "verbose_flag",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-intref",
       "description": "Reference structure for the local intensity normalization",
-      "value-key": "[INTREF]",
+      "value-key": "[INTREF_MODEL_NAME]",
       "type": "String",
       "optional": true,
       "id": "intref_model_name",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-loadBvars",
       "description": "Initializes FIRST with a previous estimate of the structure",
-      "value-key": "[LOADBVARS]",
+      "value-key": "[LOAD_BVARS]",
       "type": "File",
       "optional": true,
       "id": "load_bvars",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "-multipleImages",
       "description": "Run FIRST on multiple images; provide a list of images, transformation matrices, and output names",
-      "value-key": "[MULTIPLE_IMAGES]",
+      "value-key": "[MULTIPLE_IMAGES_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "multiple_images_flag",

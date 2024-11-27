@@ -2,7 +2,7 @@
   "name": "mris_transform",
   "description": "A tool to transform surfaces from one space to another using image transforms.",
   "author": "FreeSurfer Developers",
-  "command-line": "mris_transform [INPUT_SURFACE] [TRANSFORM] [OUTPUT_SURFACE] [SRC_IMAGE] [DST_IMAGE] [INVERSE_FLAG]",
+  "command-line": "mris_transform [INPUT_SURFACE] [TRANSFORM] [OUTPUT_SURFACE] [TRX_SRC] [TRX_DST] [IS_INVERSE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -35,7 +35,7 @@
       "type": "File",
       "command-line-flag": "--trx-src",
       "description": "Specify the source geometry if the transform was created by MNI/mritotal or FSL/flirt.",
-      "value-key": "[SRC_IMAGE]",
+      "value-key": "[TRX_SRC]",
       "optional": true
     },
     {
@@ -44,7 +44,7 @@
       "type": "File",
       "command-line-flag": "--trx-dst",
       "description": "Specify the destination geometry if the transform does not include this information or the path in the M3Z is invalid.",
-      "value-key": "[DST_IMAGE]",
+      "value-key": "[TRX_DST]",
       "optional": true
     },
     {
@@ -53,7 +53,7 @@
       "type": "Flag",
       "command-line-flag": "--is-inverse",
       "description": "Use this option when using a transform from destination to source space.",
-      "value-key": "[INVERSE_FLAG]",
+      "value-key": "[IS_INVERSE]",
       "optional": true
     }
   ],

@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-qVarCenters",
       "description": "Specify centering values for quantitative variables identified under -qVars. Multiple centers are separated by commas and should be surrounded within quotes.",
-      "value-key": "[QVARS_CENTERS]",
+      "value-key": "[QVARCENTERS]",
       "type": "String",
       "optional": true,
       "id": "qVarCenters",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-IF",
       "description": "Specify the last column name that is designated for input files of effect estimate.",
-      "value-key": "[IF]",
+      "value-key": "[INPUT_FILE_COLUMN]",
       "type": "String",
       "optional": true,
       "id": "input_file_column",
@@ -109,7 +109,7 @@
     {
       "command-line-flag": "-dbgArgs",
       "description": "Enable R to save the parameters in a file called .3dICC.dbg.AFNI.args in the current directory for debugging.",
-      "value-key": "[DBGARGS_FLAG]",
+      "value-key": "[DBGARGS]",
       "type": "Flag",
       "optional": true,
       "id": "dbgArgs",
@@ -118,7 +118,7 @@
     {
       "command-line-flag": "-cio",
       "description": "Use AFNI's C io functions. Default is -cio.",
-      "value-key": "[CIO_FLAG]",
+      "value-key": "[CIO]",
       "type": "Flag",
       "optional": true,
       "id": "cio",
@@ -127,7 +127,7 @@
     {
       "command-line-flag": "-Rio",
       "description": "Use R's io functions.",
-      "value-key": "[RIO_FLAG]",
+      "value-key": "[RIO]",
       "type": "Flag",
       "optional": true,
       "id": "rio",

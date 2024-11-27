@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_TRK2TRK_METADATA = Metadata(
-    id="32f2ff7402623edac036b0c2d9f59bfb593b242c.boutiques",
+    id="7065b499ec2cb8133b9197d9f36d138deaee55a7.boutiques",
     name="dmri_trk2trk",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

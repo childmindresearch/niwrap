@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TAL_COMPARE_METADATA = Metadata(
-    id="310058842c3383ad5e03025bee500e88f75146cc.boutiques",
+    id="bd1f3a28d4c8c84481961fd651bc3318b4c7368c.boutiques",
     name="tal_compare",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

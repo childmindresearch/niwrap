@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TKREGISTER2_METADATA = Metadata(
-    id="3353439d51377eb469f4afa76a77785eef2763ae.boutiques",
+    id="467cfd3b94291cc451eff665644f60f8c785bfdf.boutiques",
     name="tkregister2",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

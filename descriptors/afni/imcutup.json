@@ -3,7 +3,7 @@
   "name": "imcutup",
   "author": "AFNI Developers",
   "description": "Breaks up larger images into smaller image files of user-defined size.",
-  "command-line": "imcutup [PREFIX_FLAG] [XYNUM_FLAG] [YXNUM_FLAG] [X_YNUM_FLAG] [Y_XNUM_FLAG] [NX] [NY] [INPUT_FILE]",
+  "command-line": "imcutup [PREFIX] [XYNUM] [YXNUM] [XYNUM_FORMAT] [YXNUM_FORMAT] [NX] [NY] [INPUT_FILE]",
   "inputs": [
     {
       "description": "Number of pixels along the x-dimension for the smaller images.",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix the output files with the provided string",
-      "value-key": "[PREFIX_FLAG]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": true,
       "id": "prefix",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-xynum",
       "description": "Number the output images in x-first, then y (default behavior)",
-      "value-key": "[XYNUM_FLAG]",
+      "value-key": "[XYNUM]",
       "type": "Flag",
       "optional": true,
       "id": "xynum",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-yxnum",
       "description": "Number the output images in y-first, then x",
-      "value-key": "[YXNUM_FLAG]",
+      "value-key": "[YXNUM]",
       "type": "Flag",
       "optional": true,
       "id": "yxnum",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-x.ynum",
       "description": "2D numbering in x.y format",
-      "value-key": "[X_YNUM_FLAG]",
+      "value-key": "[XYNUM_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "xynum_format",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-y.xnum",
       "description": "2D numbering in y.x format",
-      "value-key": "[Y_XNUM_FLAG]",
+      "value-key": "[YXNUM_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "yxnum_format",

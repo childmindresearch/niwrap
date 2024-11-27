@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGMENT_SUBREGIONS_METADATA = Metadata(
-    id="7540f977ff79eb1c198db681d8eb4ef5b0e5339f.boutiques",
+    id="979b0a18dd6ab667938e69e0395fa4e8339bd23a.boutiques",
     name="segment_subregions",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASL_FILE_METADATA = Metadata(
-    id="599fa85da5b9bb8377d07b1caaeed39e6b3d783e.boutiques",
+    id="06307f2e91832e041ca3ad0e3de519feb82f6251.boutiques",
     name="asl_file",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -210,8 +210,8 @@ def asl_file(
         ])
     ret = AslFileOutputs(
         root=execution.output_file("."),
-        output_data=execution.output_file(outfile + ".nii.gz"),
-        output_mean=execution.output_file(outfile + "_mean.nii.gz"),
+        output_data=execution.output_file("[OUT].nii.gz"),
+        output_mean=execution.output_file("[OUT]_mean.nii.gz"),
     )
     execution.run(cargs)
     return ret

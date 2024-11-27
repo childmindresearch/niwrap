@@ -3,7 +3,7 @@
   "name": "3dUpsample",
   "author": "AFNI Developers",
   "description": "Upsamples a 3D+time dataset in the time direction by a specified factor.",
-  "command-line": "3dUpsample [N] [DATASET] [LINEAR_FLAG] [PREFIX] [VERBOSE_FLAG] [DATATYPE]",
+  "command-line": "3dUpsample [UPSAMPLE_FACTOR] [INPUT_DATASET] [LINEAR_INTERPOLATION] [OUTPUT_PREFIX] [VERBOSE_FLAG] [DATATYPE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-n",
       "description": "Upsampling factor; must be between 2 and 320 (inclusive)",
-      "value-key": "[N]",
+      "value-key": "[UPSAMPLE_FACTOR]",
       "type": "Number",
       "maximum": 320,
       "minimum": 2,
@@ -24,7 +24,7 @@
     {
       "command-line-flag": "-input",
       "description": "Input dataset",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "String",
       "optional": false,
       "id": "input_dataset",
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-1",
       "description": "Use linear interpolation instead of 7th order polynomial interpolation",
-      "value-key": "[LINEAR_FLAG]",
+      "value-key": "[LINEAR_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "linear_interpolation",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Define the prefix name of the output dataset; default is 'Upsam'",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",

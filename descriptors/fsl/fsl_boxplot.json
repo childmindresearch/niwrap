@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/fsl_boxplot.json",
   "description": "Tool for creating boxplot images from ASCII text matrices",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fsl_boxplot [INPUT_FILES] [OUTPUT_IMAGE] [TITLE] [LEGEND_FILE] [XLABEL] [YLABEL] [PLOT_HEIGHT] [PLOT_WIDTH]",
+  "command-line": "fsl_boxplot [INPUT_FILES] [OUTPUT_IMAGE] [TITLE] [LEGEND_FILE] [X_LABEL] [Y_LABEL] [PLOT_HEIGHT] [PLOT_WIDTH]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "--xlabel",
       "description": "X-axis label",
-      "value-key": "[XLABEL]",
+      "value-key": "[X_LABEL]",
       "type": "String",
       "optional": true,
       "id": "x_label",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "--ylabel",
       "description": "Y-axis label",
-      "value-key": "[YLABEL]",
+      "value-key": "[Y_LABEL]",
       "type": "String",
       "optional": true,
       "id": "y_label",

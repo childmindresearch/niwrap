@@ -1,7 +1,7 @@
 {
   "name": "mri_normalize",
   "description": "Normalize the white-matter, optionally based on control points. The input volume is converted into a new volume where white matter image values all range around 110.",
-  "command-line": "mri_normalize [INPUT_VOL] [OUTPUT_VOL] [NORM_ITERS] [DISABLE_1D_FLAG] [NONMAX_SUPPRESS_FLAG] [CONFORM_FLAG] [NONCONFORM_FLAG] [GENTLE_FLAG] [CONTROL_POINTS] [FONLY_CONTROL_POINTS] [LONLY_LABELS] [LABELS] [WRITE_VOLUMES] [INTENSITY_ABOVE] [INTENSITY_BELOW] [INTENSITY_GRADIENT] [PRUNE_FLAG] [NO_GENTLE_CP_FLAG] [MASK_FILE] [ATLAS_TRANSFORM] [NOSKULL_FLAG] [MONKEY_FLAG] [NOSNR_FLAG] [SIGMA_SMOOTH] [ASEG_FILE] [DEBUG_V_FLAG] [DEBUG_D_FLAG] [RENORM_VOL] [CHECKNORM_VOL] [LOAD_READ_CP] [CP_OUTPUT_VOL] [SURFACE_TRANSFORM] [SEED_VALUE] [PRINT_HELP_FLAG]",
+  "command-line": "mri_normalize [INPUT_VOL] [OUTPUT_VOL] [NORM_ITERS] [DISABLE_1D] [NONMAX_SUPPRESS] [CONFORM] [NONCONFORM] [GENTLE] [CONTROL_POINTS] [FONLY_CONTROL_POINTS] [LONLY_LABELS] [LABELS] [WRITE_VOLUMES] [INTENSITY_ABOVE] [INTENSITY_BELOW] [INTENSITY_GRADIENT] [PRUNE] [NO_GENTLE_CP] [MASK_FILE] [ATLAS_TRANSFORM] [NOSKULL] [MONKEY] [NOSNR] [SIGMA_SMOOTH] [ASEG_FILE] [DEBUG_V] [DEBUG_D] [RENORM_VOL] [CHECKNORM_VOL] [LOAD_READ_CP] [CP_OUTPUT_VOL] [SURFACE_TRANSFORM] [SEED_VALUE] [PRINT_HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
       "optional": true,
       "description": "Disable 1D normalization",
       "command-line-flag": "-no1d",
-      "value-key": "[DISABLE_1D_FLAG]"
+      "value-key": "[DISABLE_1D]"
     },
     {
       "id": "nonmax_suppress",
@@ -45,7 +45,7 @@
       "optional": true,
       "description": "Turn non-maximum suppression on (1) or off (0) when using interior of surfaces",
       "command-line-flag": "-nonmax_suppress",
-      "value-key": "[NONMAX_SUPPRESS_FLAG]"
+      "value-key": "[NONMAX_SUPPRESS]"
     },
     {
       "id": "conform",
@@ -54,7 +54,7 @@
       "optional": true,
       "description": "Interpolate and embed volume to be 256^3",
       "command-line-flag": "-conform",
-      "value-key": "[CONFORM_FLAG]"
+      "value-key": "[CONFORM]"
     },
     {
       "id": "nonconform",
@@ -63,7 +63,7 @@
       "optional": true,
       "description": "Do not conform the volume",
       "command-line-flag": "-noconform",
-      "value-key": "[NONCONFORM_FLAG]"
+      "value-key": "[NONCONFORM]"
     },
     {
       "id": "gentle",
@@ -72,7 +72,7 @@
       "optional": true,
       "description": "Perform kinder gentler normalization",
       "command-line-flag": "-gentle",
-      "value-key": "[GENTLE_FLAG]"
+      "value-key": "[GENTLE]"
     },
     {
       "id": "control_points",
@@ -153,7 +153,7 @@
       "optional": true,
       "description": "Turn pruning of control points on/off (default=off)",
       "command-line-flag": "-prune",
-      "value-key": "[PRUNE_FLAG]"
+      "value-key": "[PRUNE]"
     },
     {
       "id": "no_gentle_cp",
@@ -162,7 +162,7 @@
       "optional": true,
       "description": "Do not use gentle normalization with control points file",
       "command-line-flag": "-no-gentle-cp",
-      "value-key": "[NO_GENTLE_CP_FLAG]"
+      "value-key": "[NO_GENTLE_CP]"
     },
     {
       "id": "mask_file",
@@ -189,7 +189,7 @@
       "optional": true,
       "description": "Do not consider skull regions",
       "command-line-flag": "-noskull",
-      "value-key": "[NOSKULL_FLAG]"
+      "value-key": "[NOSKULL]"
     },
     {
       "id": "monkey",
@@ -198,7 +198,7 @@
       "optional": true,
       "description": "Turns off 1D, sets num_3d_iter=1",
       "command-line-flag": "-monkey",
-      "value-key": "[MONKEY_FLAG]"
+      "value-key": "[MONKEY]"
     },
     {
       "id": "nosnr",
@@ -207,7 +207,7 @@
       "optional": true,
       "description": "Disable SNR normalization",
       "command-line-flag": "-nosnr",
-      "value-key": "[NOSNR_FLAG]"
+      "value-key": "[NOSNR]"
     },
     {
       "id": "sigma_smooth",
@@ -234,7 +234,7 @@
       "optional": true,
       "description": "For debugging",
       "command-line-flag": "-v",
-      "value-key": "[DEBUG_V_FLAG]"
+      "value-key": "[DEBUG_V]"
     },
     {
       "id": "debug_d",
@@ -243,7 +243,7 @@
       "optional": true,
       "description": "For debugging",
       "command-line-flag": "-d",
-      "value-key": "[DEBUG_D_FLAG]"
+      "value-key": "[DEBUG_D]"
     },
     {
       "id": "renorm_vol",
@@ -306,7 +306,7 @@
       "optional": true,
       "description": "Print usage",
       "command-line-flag": "-u",
-      "value-key": "[PRINT_HELP_FLAG]"
+      "value-key": "[PRINT_HELP]"
     }
   ],
   "output-files": [

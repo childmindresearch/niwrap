@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEAT2SURF_METADATA = Metadata(
-    id="470484160f35305380e418e8513cf141bd3564e2.boutiques",
+    id="be15d960d93994c2cb0682a168cc725aea64ceb3.boutiques",
     name="feat2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,13 +20,13 @@ class Feat2surfOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    lh_output: OutputPathType | None
+    lh_output: OutputPathType
     """Output statistics on the left hemisphere for the subject"""
-    rh_output: OutputPathType | None
+    rh_output: OutputPathType
     """Output statistics on the right hemisphere for the subject"""
-    lh_target_output: OutputPathType | None
+    lh_target_output: OutputPathType
     """Output statistics on the left hemisphere for the target subject"""
-    rh_target_output: OutputPathType | None
+    rh_target_output: OutputPathType
     """Output statistics on the right hemisphere for the target subject"""
 
 
@@ -117,10 +117,10 @@ def feat2surf(
         ])
     ret = Feat2surfOutputs(
         root=execution.output_file("."),
-        lh_output=execution.output_file(out_dir + "/reg_surf-lh-Subject/stats") if (out_dir is not None) else None,
-        rh_output=execution.output_file(out_dir + "/reg_surf-rh-Subject/stats") if (out_dir is not None) else None,
-        lh_target_output=execution.output_file(out_dir + "/reg_surf-lh-targid/stats") if (out_dir is not None) else None,
-        rh_target_output=execution.output_file(out_dir + "/reg_surf-rh-targid/stats") if (out_dir is not None) else None,
+        lh_output=execution.output_file("[OUTDIR]/reg_surf-lh-Subject/stats"),
+        rh_output=execution.output_file("[OUTDIR]/reg_surf-rh-Subject/stats"),
+        lh_target_output=execution.output_file("[OUTDIR]/reg_surf-lh-targid/stats"),
+        rh_target_output=execution.output_file("[OUTDIR]/reg_surf-rh-targid/stats"),
     )
     execution.run(cargs)
     return ret

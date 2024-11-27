@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/3dSliceNDice",
   "description": "Calculates the Dice coefficient between two volumes on a slice-by-slice basis.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSliceNDice [INPUT_FILE_A] [INPUT_FILE_B] [OUTPUT_PREFIX] [OUT_DOMAIN_FLAG] [NO_CMD_ECHO_FLAG]",
+  "command-line": "3dSliceNDice [INFILE_A] [INFILE_B] [OUTPUT_PREFIX] [OUT_DOMAIN] [NO_CMD_ECHO]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input dataset A (e.g. mask_1.nii.gz)",
-      "value-key": "[INPUT_FILE_A]",
+      "value-key": "[INFILE_A]",
       "type": "File",
       "optional": false,
       "id": "infile_a",
@@ -22,7 +22,7 @@
     },
     {
       "description": "Input dataset B (e.g. mask_2.nii.gz)",
-      "value-key": "[INPUT_FILE_B]",
+      "value-key": "[INFILE_B]",
       "type": "File",
       "optional": false,
       "id": "infile_b",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-out_domain",
       "description": "Specify which slices to include in the Dice coefficient report. Options are: all (default), AorB, AandB, Amask, Bmask.",
-      "value-key": "[OUT_DOMAIN_FLAG]",
+      "value-key": "[OUT_DOMAIN]",
       "type": "String",
       "optional": true,
       "id": "out_domain",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-no_cmd_echo",
       "description": "Turn OFF recording the command line call in the output *.1D files. Default is to do the recording.",
-      "value-key": "[NO_CMD_ECHO_FLAG]",
+      "value-key": "[NO_CMD_ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "no_cmd_echo",

@@ -3,7 +3,7 @@
   "name": "mris_seg2annot",
   "author": "FreeSurfer Developers",
   "description": "Converts a surface-based segmentation into a custom annotation file.",
-  "command-line": "mris_seg2annot [SURFSEG] [COLORTABLE] [AUTO_CTAB] [SUBJECT] [HEMI] [ANNOT] [SURFACE] [DEBUG] [DEBUG_VERTEX] [CHECKOPTS] [VERSION]",
+  "command-line": "mris_seg2annot [SURFSEG] [COLORTABLE] [AUTO_CTAB] [SUBJECT] [HEMI] [OUTPUT_ANNOTATION] [SURF] [DEBUG] [DEBUG_VERTEX] [CHECKOPTS] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--o",
       "description": "Output annotation file. E.g., lh.aparc.annot",
-      "value-key": "[ANNOT]",
+      "value-key": "[OUTPUT_ANNOTATION]",
       "type": "File",
       "optional": false,
       "id": "output_annotation",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--surf",
       "description": "Surface name, default is white.",
-      "value-key": "[SURFACE]",
+      "value-key": "[SURF]",
       "type": "String",
       "optional": true,
       "id": "surf",

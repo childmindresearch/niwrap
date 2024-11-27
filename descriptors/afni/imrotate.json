@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/descriptors/imrotate.json",
   "description": "Shifts and rotates an image",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "imrotate [INTERPOLATION_METHOD] [DX] [DY] [PHI] [INPUT_IMAGE] [OUTPUT_IMAGE]",
+  "command-line": "imrotate [FOURIER_INTERPOLATION] [DX] [DY] [PHI] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-linear",
       "description": "Use bilinear interpolation (default is bicubic)",
-      "value-key": "[INTERPOLATION_METHOD]",
+      "value-key": "[LINEAR_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "linear_interpolation",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "-Fourier",
       "description": "Use Fourier interpolation",
-      "value-key": "[INTERPOLATION_METHOD]",
+      "value-key": "[FOURIER_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "fourier_interpolation",

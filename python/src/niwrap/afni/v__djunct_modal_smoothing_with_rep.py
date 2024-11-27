@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA = Metadata(
-    id="48dc1b5524804bba87c6d83bc663f26d6dab2418.boutiques",
+    id="3dfe64fe4b416974b4aa2cc3b180143c7a5ada1d.boutiques",
     name="@djunct_modal_smoothing_with_rep",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

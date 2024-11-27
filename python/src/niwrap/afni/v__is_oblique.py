@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__IS_OBLIQUE_METADATA = Metadata(
-    id="54857cd8a0a9212b334725fe8970cb7791379363.boutiques",
+    id="2e3c80c4806683277ce568a5d838cb3d495df099.boutiques",
     name="@isOblique",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

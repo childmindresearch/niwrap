@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA = Metadata(
-    id="a47e394ab20e3256a8c14213b58e4244be08780c.boutiques",
+    id="58c7623548d514cfc3a6445924c9c49471329b52.boutiques",
     name="run_SegmentThalamicNuclei.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMROTATE_METADATA = Metadata(
-    id="b624ef735952148868b7e81bfcbe37097f08c38e.boutiques",
+    id="91ce2622ebf37f0ee8816748397e7f0cf65a832b.boutiques",
     name="imrotate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

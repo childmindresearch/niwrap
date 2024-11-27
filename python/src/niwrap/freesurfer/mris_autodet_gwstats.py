@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_AUTODET_GWSTATS_METADATA = Metadata(
-    id="726c4d7ad4ae7938c4f048bbe4bf3c367a33cca4.boutiques",
+    id="2408fc8252de26e31ffbcec5b0f37d3113618a46.boutiques",
     name="mris_autodet_gwstats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

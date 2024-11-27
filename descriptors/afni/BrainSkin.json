@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "A program to create an unfolded surface that wraps the brain (skin) and Gyrification Indices.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "BrainSkin [SURF] [VOL] [PREFIX] [PLIM] [DLIM] [SEGDO] [VOXMETH] [INFILLMETH] [FILE] [MASK] [NO_ZERO_ATTRACTION] [N]",
+  "command-line": "BrainSkin [SURFACE] [SKINGRID_VOLUME] [PREFIX] [PLIMIT] [DLIMIT] [SEGDO] [VOXELIZE] [INFILL] [OUT_FILE] [VOL_HULL] [NO_ZERO_ATTRACTION] [NODE_DBG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Surface to smooth or the domain over which DSET is defined.",
-      "value-key": "[SURF]",
+      "value-key": "[SURFACE]",
       "type": "String",
       "optional": false,
       "id": "surface",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-skingrid",
       "description": "A high-res volume to provide a grid for voxelization steps.",
-      "value-key": "[VOL]",
+      "value-key": "[SKINGRID_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "skingrid_volume",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-plimit",
       "description": "Maximum length of path along surface in mm for node pairing.",
-      "value-key": "[PLIM]",
+      "value-key": "[PLIMIT]",
       "type": "Number",
       "optional": true,
       "id": "plimit",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-dlimit",
       "description": "Maximum length of Euclidean distance in mm for node pairing.",
-      "value-key": "[DLIM]",
+      "value-key": "[DLIMIT]",
       "type": "Number",
       "optional": true,
       "id": "dlimit",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-voxelize",
       "description": "Voxelization method. Choose from: slow: Sure footed but slow, fast: Faster and works OK, mask: Fastest and works OK too (default).",
-      "value-key": "[VOXMETH]",
+      "value-key": "[VOXELIZE]",
       "type": "String",
       "optional": true,
       "id": "voxelize",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-infill",
       "description": "Infill method. Choose from: slow: proper infill, but not needed, fast: brutish infill, all we need (default).",
-      "value-key": "[INFILLMETH]",
+      "value-key": "[INFILL]",
       "type": "String",
       "optional": true,
       "id": "infill",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-out",
       "description": "Output intermediary results from skin forming step.",
-      "value-key": "[FILE]",
+      "value-key": "[OUT_FILE]",
       "type": "File",
       "optional": true,
       "id": "out_file",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-vol_skin",
       "description": "Deform an Icosahedron to match the outer boundary of a mask volume.",
-      "value-key": "[MASK]",
+      "value-key": "[VOL_SKIN]",
       "type": "File",
       "optional": true,
       "id": "vol_skin",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-vol_hull",
       "description": "Deform an Icosahedron to match the convex hull of a mask volume.",
-      "value-key": "[MASK]",
+      "value-key": "[VOL_HULL]",
       "type": "File",
       "optional": true,
       "id": "vol_hull",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-node_dbg",
       "description": "Output debugging information for node N for -vol_skin and -vol_hull options.",
-      "value-key": "[N]",
+      "value-key": "[NODE_DBG]",
       "type": "Number",
       "optional": true,
       "id": "node_dbg",

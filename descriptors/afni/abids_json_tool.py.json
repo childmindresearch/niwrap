@@ -3,7 +3,7 @@
   "name": "abids_json_tool.py",
   "author": "AFNI Developers",
   "description": "This script helps to manipulate json files in various ways.",
-  "command-line": "abids_json_tool.py [INPUT_FILE] [PREFIX] [TASK] [OPTIONS]",
+  "command-line": "abids_json_tool.py [INPUT_FILE] [PREFIX] [DEL_JSON] [VALUES_STAY_STR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-txt2json",
       "description": "Convert from ':' separated text file to json formatted file.",
-      "value-key": "[TASK]",
+      "value-key": "[TXT2JSON]",
       "type": "Flag",
       "optional": true,
       "id": "txt2json",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-json2txt",
       "description": "Convert from json formatted file to ':' separated text file.",
-      "value-key": "[TASK]",
+      "value-key": "[JSON2TXT]",
       "type": "Flag",
       "optional": true,
       "id": "json2txt",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-add_json",
       "description": "Add an attribute to the end of the specified json file.",
-      "value-key": "[TASK]",
+      "value-key": "[ADD_JSON]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-del_json",
       "description": "Remove attribute (KEY) from the -input json file.",
-      "value-key": "[TASK]",
+      "value-key": "[DEL_JSON]",
       "type": "String",
       "optional": true,
       "id": "del_json",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-f",
       "description": "Use with -add_json to overwrite an existing attribute in the specified json file.",
-      "value-key": "[OPTIONS]",
+      "value-key": "[FORCE_ADD]",
       "type": "Flag",
       "optional": true,
       "id": "force_add",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-overwrite",
       "description": "Use caution as this will overwrite the -prefix file if it exists!!",
-      "value-key": "[OPTIONS]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show this help and exit.",
-      "value-key": "[OPTIONS]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "-delimiter_major",
       "description": "Specify the new (major) delimiter to separate keys and values when using '-txt2json' opt.",
-      "value-key": "[OPTIONS]",
+      "value-key": "[DELIMITER_MAJOR]",
       "type": "String",
       "optional": true,
       "id": "delimiter_major",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "-delimiter_minor",
       "description": "Specify the new (minor) delimiter to separate value items when using '-txt2json' opt.",
-      "value-key": "[OPTIONS]",
+      "value-key": "[DELIMITER_MINOR]",
       "type": "String",
       "optional": true,
       "id": "delimiter_minor",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "-literal_keys",
       "description": "Do not replace spaces with '_', nor parentheses and brackets with ''.",
-      "value-key": "[OPTIONS]",
+      "value-key": "[LITERAL_KEYS]",
       "type": "Flag",
       "optional": true,
       "id": "literal_keys",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "-values_stay_str",
       "description": "Each numeric or str item gets saved as a str; otherwise, guess at int and float.",
-      "value-key": "[OPTIONS]",
+      "value-key": "[VALUES_STAY_STR]",
       "type": "Flag",
       "optional": true,
       "id": "values_stay_str",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_NLFILTER_METADATA = Metadata(
-    id="d3dfceb1a6cbacd0800d717bc9c25ad25148c0de.boutiques",
+    id="e40f684ec0014e6637f833ced624127373e048cd.boutiques",
     name="mri_nlfilter",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -105,7 +105,7 @@ def mri_nlfilter(
         cargs.append("--help")
     ret = MriNlfilterOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(output_image),
+        output_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

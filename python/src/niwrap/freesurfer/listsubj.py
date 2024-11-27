@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LISTSUBJ_METADATA = Metadata(
-    id="3333e3d0fd8a178df0ab91617d68fa2b69b90a00.boutiques",
+    id="e9369381138405e14a70273bc76d2a91dd2f8045.boutiques",
     name="listsubj",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

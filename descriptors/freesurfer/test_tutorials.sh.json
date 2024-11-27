@@ -1,13 +1,13 @@
 {
   "name": "test_tutorials.sh",
   "description": "A script to run various tutorial commands, with options for skipping GUI components and focusing on specific tutorials.",
-  "command-line": "test_tutorials.sh [ALL_FLAG] [QUICK_FLAG] [AUTO_QUIT_FREEVIEW_FLAG] [SKIP_ALL_GUIS_FLAG] [SKIP_TK_GUIS_FLAG] [SKIP_QDEC_GUIS_FLAG] [INDIVIDUAL_SUBJECT_FLAG] [TROUBLESHOOTING_FLAG] [GROUP_ANALYSIS_FLAG] [QDEC_FLAG] [LONGITUDINAL_FLAG] [ROI_ANALYSIS_FLAG] [DIFFUSION_FLAG] [TRACULA_FLAG] [FSFAST_FLAG] [MULTIMODAL_FLAG]",
+  "command-line": "test_tutorials.sh [ALL_TUTORIALS] [QUICK_TEST] [AUTO_QUIT_FREEVIEW] [SKIP_ALL_GUIS] [SKIP_TK_GUIS] [SKIP_QDEC_GUIS] [INDIVIDUAL_SUBJECT] [TROUBLESHOOTING] [GROUP_ANALYSIS] [QDEC] [LONGITUDINAL] [ROI_ANALYSIS] [DIFFUSION] [TRACULA] [FSFAST] [MULTIMODAL]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-all",
       "description": "Run all tutorials",
-      "value-key": "[ALL_FLAG]",
+      "value-key": "[ALL_TUTORIALS]",
       "type": "Flag",
       "optional": true,
       "id": "all_tutorials",
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "-quick",
       "description": "Perform a quick subset of commands",
-      "value-key": "[QUICK_FLAG]",
+      "value-key": "[QUICK_TEST]",
       "type": "Flag",
       "optional": true,
       "id": "quick_test",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-auto_quit_freeview",
       "description": "Automatically closes freeview after opening",
-      "value-key": "[AUTO_QUIT_FREEVIEW_FLAG]",
+      "value-key": "[AUTO_QUIT_FREEVIEW]",
       "type": "Flag",
       "optional": true,
       "id": "auto_quit_freeview",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-skip_all_guis",
       "description": "Skips all commands that open a GUI",
-      "value-key": "[SKIP_ALL_GUIS_FLAG]",
+      "value-key": "[SKIP_ALL_GUIS]",
       "type": "Flag",
       "optional": true,
       "id": "skip_all_guis",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-skip_tk_guis",
       "description": "Skips commands that open a tk GUI (tkmedit, tksurfer, etc)",
-      "value-key": "[SKIP_TK_GUIS_FLAG]",
+      "value-key": "[SKIP_TK_GUIS]",
       "type": "Flag",
       "optional": true,
       "id": "skip_tk_guis",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-skip_qdec_guis",
       "description": "Skips commands that open qdec",
-      "value-key": "[SKIP_QDEC_GUIS_FLAG]",
+      "value-key": "[SKIP_QDEC_GUIS]",
       "type": "Flag",
       "optional": true,
       "id": "skip_qdec_guis",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-individual_subject",
       "description": "Do Interaction with Individual Subject Data tutorial",
-      "value-key": "[INDIVIDUAL_SUBJECT_FLAG]",
+      "value-key": "[INDIVIDUAL_SUBJECT]",
       "type": "Flag",
       "optional": true,
       "id": "individual_subject",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-troubleshooting",
       "description": "Do Troubleshooting tutorial",
-      "value-key": "[TROUBLESHOOTING_FLAG]",
+      "value-key": "[TROUBLESHOOTING]",
       "type": "Flag",
       "optional": true,
       "id": "troubleshooting",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-group_analysis",
       "description": "Do Group Analysis tutorial",
-      "value-key": "[GROUP_ANALYSIS_FLAG]",
+      "value-key": "[GROUP_ANALYSIS]",
       "type": "Flag",
       "optional": true,
       "id": "group_analysis",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-qdec",
       "description": "Do QDEC tutorial",
-      "value-key": "[QDEC_FLAG]",
+      "value-key": "[QDEC]",
       "type": "Flag",
       "optional": true,
       "id": "qdec",
@@ -97,7 +97,7 @@
     {
       "command-line-flag": "-longitudinal",
       "description": "Do Longitudinal tutorial",
-      "value-key": "[LONGITUDINAL_FLAG]",
+      "value-key": "[LONGITUDINAL]",
       "type": "Flag",
       "optional": true,
       "id": "longitudinal",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "-roi_analysis",
       "description": "Do ROI Analysis tutorial",
-      "value-key": "[ROI_ANALYSIS_FLAG]",
+      "value-key": "[ROI_ANALYSIS]",
       "type": "Flag",
       "optional": true,
       "id": "roi_analysis",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-diffusion",
       "description": "Do Diffusion tutorial",
-      "value-key": "[DIFFUSION_FLAG]",
+      "value-key": "[DIFFUSION]",
       "type": "Flag",
       "optional": true,
       "id": "diffusion",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-tracula",
       "description": "Do TRACULA tutorial",
-      "value-key": "[TRACULA_FLAG]",
+      "value-key": "[TRACULA]",
       "type": "Flag",
       "optional": true,
       "id": "tracula",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "-fsfast",
       "description": "Do FSFASt tutorial",
-      "value-key": "[FSFAST_FLAG]",
+      "value-key": "[FSFAST]",
       "type": "Flag",
       "optional": true,
       "id": "fsfast",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "-multimodal",
       "description": "Do Mulimodal tutorial",
-      "value-key": "[MULTIMODAL_FLAG]",
+      "value-key": "[MULTIMODAL]",
       "type": "Flag",
       "optional": true,
       "id": "multimodal",

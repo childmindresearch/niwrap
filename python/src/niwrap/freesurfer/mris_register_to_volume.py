@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REGISTER_TO_VOLUME_METADATA = Metadata(
-    id="23b53c8d10d84220662197062db981732e582d28.boutiques",
+    id="9bdc925a77ef7d3c8dc9cd1fecb43c21110eb66b.boutiques",
     name="mris_register_to_volume",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

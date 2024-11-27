@@ -1,12 +1,12 @@
 {
   "name": "t4imgs_4dfp",
   "description": "Freesurfer tool for transforming images according to a specified T4 file.",
-  "command-line": "t4imgs_4dfp [OPTIONS] <inlist> <outfile>",
+  "command-line": "t4imgs_4dfp [OPTIONS] [INPUT_IMAGES] [OUTPUT_IMAGE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input list of 4dfp images.",
-      "value-key": "<inlist>",
+      "value-key": "[INPUT_IMAGES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -15,7 +15,7 @@
     },
     {
       "description": "Output file name for the transformed image.",
-      "value-key": "<outfile>",
+      "value-key": "[OUTPUT_IMAGE]",
       "type": "String",
       "optional": false,
       "id": "output_image",
@@ -24,7 +24,7 @@
     {
       "command-line-flag": "-z",
       "description": "Normalize by sqrt(n) rather than n (for z images).",
-      "value-key": "[SQRT_NORMALIZE_FLAG]",
+      "value-key": "[SQRT_NORMALIZE]",
       "type": "Flag",
       "optional": true,
       "id": "sqrt_normalize",
@@ -33,7 +33,7 @@
     {
       "command-line-flag": "-s",
       "description": "Interpolate by 3D cubic spline (default is 3D linear).",
-      "value-key": "[CUBIC_SPLINE_FLAG]",
+      "value-key": "[CUBIC_SPLINE]",
       "type": "Flag",
       "optional": true,
       "id": "cubic_spline",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-N",
       "description": "Output NaN (default 0.0) for undefined values.",
-      "value-key": "[OUTPUT_NAN_FLAG]",
+      "value-key": "[OUTPUT_NAN]",
       "type": "Flag",
       "optional": true,
       "id": "output_nan",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-B",
       "description": "Internally convert to_711-2A_t4->to_711-2B_t4.",
-      "value-key": "[CONVERT_T4_FLAG]",
+      "value-key": "[CONVERT_T4]",
       "type": "Flag",
       "optional": true,
       "id": "convert_t4",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-n",
       "description": "Use nearest neighbor interpolation.",
-      "value-key": "[NEAREST_NEIGHBOR_FLAG]",
+      "value-key": "[NEAREST_NEIGHBOR]",
       "type": "Flag",
       "optional": true,
       "id": "nearest_neighbor",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "-O111",
       "description": "Output in 111 space instead of default 333.0 space.",
-      "value-key": "[OUTPUT_111_SPACE_FLAG]",
+      "value-key": "[OUTPUT_111_SPACE]",
       "type": "Flag",
       "optional": true,
       "id": "output_111_space",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-O222",
       "description": "Output in 222 space instead of default 333.0 space.",
-      "value-key": "[OUTPUT_222_SPACE_FLAG]",
+      "value-key": "[OUTPUT_222_SPACE]",
       "type": "Flag",
       "optional": true,
       "id": "output_222_space",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-O333.n",
       "description": "Output in 333.n space (y shifted up by n pixels).",
-      "value-key": "[OUTPUT_333N_SPACE_FLAG]",
+      "value-key": "[OUTPUT_333N_SPACE]",
       "type": "String",
       "optional": true,
       "id": "output_333n_space",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "-O",
       "description": "Duplicate dimensions of specified image.",
-      "value-key": "[DUPLICATE_DIMENSIONS_IMAGE]",
+      "value-key": "[DUPLICATE_DIMENSIONS]",
       "type": "String",
       "optional": true,
       "id": "duplicate_dimensions",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "-@b",
       "description": "Output in big endian format.",
-      "value-key": "[BIG_ENDIAN_FLAG]",
+      "value-key": "[BIG_ENDIAN]",
       "type": "Flag",
       "optional": true,
       "id": "big_endian",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "-@l",
       "description": "Output in little endian format.",
-      "value-key": "[LITTLE_ENDIAN_FLAG]",
+      "value-key": "[LITTLE_ENDIAN]",
       "type": "Flag",
       "optional": true,
       "id": "little_endian",

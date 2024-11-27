@@ -1,7 +1,7 @@
 {
   "name": "mri_stopmask",
   "description": "This program creates a mask used to stop the search for the maximum gradient in mris_place_surface, preventing the surface from wandering into areas it should not.",
-  "command-line": "mri_stopmask [OUTPUT_MASK] [FILLED_AUTO_MGZ] [FILLED_MGZ] [ASEG_PRESURF_MGZ] [LATERAL_VENTRICLES_FLAG] [WMSA_ERODE_MM] [WM_MGZ] [BRAIN_FINALSURFS_MGZ] [NO_FILLED_FLAG] [NO_LV_FLAG] [NO_WMSA_FLAG] [NO_WM_FLAG] [NO_BFS_FLAG]",
+  "command-line": "mri_stopmask [OUTPUT_MASK] [FILLED] [ASEG_PRESURF] [LATERAL_VENTRICLES] [WMSA] [WM_VOXELS] [BRAIN_FINAL_SURFS] [NO_FILLED] [NO_LV] [NO_WMSA] [NO_WM] [NO_BFS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "--filled",
       "description": "Include voxels edited fill voxels that are set in the filled.mgz",
-      "value-key": "[FILLED_AUTO_MGZ] [FILLED_MGZ]",
+      "value-key": "[FILLED]",
       "type": "File",
       "list": true,
       "max-list-entries": 2,
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--aseg",
       "description": "Used with --lv and/or --wmsa; Note: must be aseg.presurf.mgz, not aseg.mgz",
-      "value-key": "[ASEG_PRESURF_MGZ]",
+      "value-key": "[ASEG_PRESURF]",
       "type": "File",
       "optional": false,
       "id": "aseg_presurf",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--lv",
       "description": "Add lateral ventricles and choroid plexus to the mask (needs --aseg)",
-      "value-key": "[LATERAL_VENTRICLES_FLAG]",
+      "value-key": "[LATERAL_VENTRICLES]",
       "type": "Flag",
       "optional": true,
       "id": "lateral_ventricles",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--wmsa",
       "description": "Add WM hypointensities to the mask (needs --aseg); erode by given distance away from any adjacent cortex",
-      "value-key": "[WMSA_ERODE_MM]",
+      "value-key": "[WMSA]",
       "type": "Number",
       "optional": true,
       "id": "wmsa",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--wm",
       "description": "Include voxels that =255 from wm.mgz",
-      "value-key": "[WM_MGZ]",
+      "value-key": "[WM_VOXELS]",
       "type": "File",
       "optional": true,
       "id": "wm_voxels",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--bfs",
       "description": "Include voxels that =255 from brain.finalsurfs.mgz",
-      "value-key": "[BRAIN_FINALSURFS_MGZ]",
+      "value-key": "[BRAIN_FINAL_SURFS]",
       "type": "File",
       "optional": true,
       "id": "brain_final_surfs",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--no-filled",
       "description": "Turns off --filled option",
-      "value-key": "[NO_FILLED_FLAG]",
+      "value-key": "[NO_FILLED]",
       "type": "Flag",
       "optional": true,
       "id": "no_filled",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--no-lv",
       "description": "Turns off --lv option",
-      "value-key": "[NO_LV_FLAG]",
+      "value-key": "[NO_LV]",
       "type": "Flag",
       "optional": true,
       "id": "no_lv",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--no-wmsa",
       "description": "Turns off --wmsa option",
-      "value-key": "[NO_WMSA_FLAG]",
+      "value-key": "[NO_WMSA]",
       "type": "Flag",
       "optional": true,
       "id": "no_wmsa",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--no-wm",
       "description": "Turns off --wm option",
-      "value-key": "[NO_WM_FLAG]",
+      "value-key": "[NO_WM]",
       "type": "Flag",
       "optional": true,
       "id": "no_wm",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--no-bfs",
       "description": "Turns off --bfs option",
-      "value-key": "[NO_BFS_FLAG]",
+      "value-key": "[NO_BFS]",
       "type": "Flag",
       "optional": true,
       "id": "no_bfs",

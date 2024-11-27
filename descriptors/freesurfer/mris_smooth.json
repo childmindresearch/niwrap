@@ -1,7 +1,7 @@
 {
   "name": "mris_smooth",
   "description": "This program smooths the tessellation of a cortical surface and writes out the mean curvature and area files.",
-  "command-line": "mris_smooth [INPUT_SURFACE] [OUTPUT_SURFACE] [AVERAGE_ITERS] [SMOOTHING_ITERS] [NO_WRITE_FLAG] [CURVATURE_NAME] [AREA_NAME] [GAUSSIAN_PARAMS] [NORMALIZE_FLAG] [MOMENTUM] [SNAPSHOT_INTERVAL]",
+  "command-line": "mris_smooth [INPUT_SURFACE] [OUTPUT_SURFACE] [AVERAGE_ITERS] [SMOOTHING_ITERS] [NO_WRITE] [CURVATURE_NAME] [AREA_NAME] [GAUSSIAN_PARAMS] [NORMALIZE_AREA] [MOMENTUM] [SNAPSHOT_INTERVAL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-nw",
       "description": "Disable writing of curvature and area estimates.",
-      "value-key": "[NO_WRITE_FLAG]",
+      "value-key": "[NO_WRITE]",
       "type": "Flag",
       "optional": true,
       "id": "no_write",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-area",
       "description": "Normalize area after smoothing.",
-      "value-key": "[NORMALIZE_FLAG]",
+      "value-key": "[NORMALIZE_AREA]",
       "type": "Flag",
       "optional": true,
       "id": "normalize_area",

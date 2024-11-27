@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMDRLE_FS_METADATA = Metadata(
-    id="ddac2f86854cb8055e84a370e9ec50e5a02b94ec.boutiques",
+    id="1c6fdec3b4ee16a344e1e0d5d4e1bcbc79b17f47.boutiques",
     name="dcmdrle.fs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

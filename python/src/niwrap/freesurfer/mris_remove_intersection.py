@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REMOVE_INTERSECTION_METADATA = Metadata(
-    id="0eadff7ccb02bf5863f8c6fefed00ccf5b760de2.boutiques",
+    id="96ab5df1b694c34b019d2062381f43e1e69cf9b2.boutiques",
     name="mris_remove_intersection",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

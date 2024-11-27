@@ -3,7 +3,7 @@
   "name": "prompt_popup",
   "author": "AFNI Developers",
   "description": "A command-line tool that pops up a window prompting user interaction with a message and buttons.",
-  "command-line": "prompt_popup [MESSAGE] [BUTTONS] [TIMEOUT]",
+  "command-line": "prompt_popup [MESSAGE_PAUSE] [BUTTONS_B] [TIMEOUT_TO]",
   "inputs": [
     {
       "command-line-flag": "-message",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-pause",
       "description": "Same as -message to match the old prompt_user.",
-      "value-key": "[MESSAGE]",
+      "value-key": "[MESSAGE_PAUSE]",
       "optional": true,
       "type": "String",
       "id": "message_pause",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "-b",
       "description": "Same as -button.",
-      "value-key": "[BUTTONS]",
+      "value-key": "[BUTTONS_B]",
       "optional": true,
       "type": "String",
       "list": true,
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-to",
       "description": "Same as -timeout TT.",
-      "value-key": "[TIMEOUT]",
+      "value-key": "[TIMEOUT_TO]",
       "optional": true,
       "type": "Number",
       "id": "timeout_to",

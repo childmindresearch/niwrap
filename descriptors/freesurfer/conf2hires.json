@@ -3,7 +3,7 @@
   "name": "conf2hires",
   "author": "FreeSurfer Developers",
   "description": "Places the surfaces on high resolution T1 (and maybe T2) volumes based on an initial placement on a conformed volume.",
-  "command-line": "conf2hires [SUBJECT] [T2_FLAG] [MM_NORM_SIGMA] [FLAIR_FLAG] [THREADS] [COPY_BIAS_FLAG] [NORM_OPTS_RCA_FLAG] [CUBIC_FLAG] [DEV_FLAG] [BBR_CON_TYPE] [FIRST_PEAK_D1_FLAG] [FIRST_PEAK_D2_FLAG] [STOPMASK] [EXPERT] [FORCE_UPDATE_FLAG]",
+  "command-line": "conf2hires [SUBJECT] [NO_T2] [MM_NORM_SIGMA] [NO_FLAIR] [THREADS] [COPY_BIAS_FROM_CONF] [NORM_OPTS_RCA] [TRILIN] [NO_DEV] [BBR_T2] [FIRST_PEAK_D1] [FIRST_PEAK_D2] [STOPMASK] [EXPERT] [FORCE_UPDATE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--t2",
       "description": "Enable T2 processing",
-      "value-key": "[T2_FLAG]",
+      "value-key": "[T2]",
       "type": "Flag",
       "optional": true,
       "id": "t2",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "--no-t2",
       "description": "Disable T2 processing (default)",
-      "value-key": "[T2_FLAG]",
+      "value-key": "[NO_T2]",
       "type": "Flag",
       "optional": true,
       "id": "no_t2",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--flair",
       "description": "Enable FLAIR processing",
-      "value-key": "[FLAIR_FLAG]",
+      "value-key": "[FLAIR]",
       "type": "Flag",
       "optional": true,
       "id": "flair",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--no-flair",
       "description": "Disable FLAIR processing (default)",
-      "value-key": "[FLAIR_FLAG]",
+      "value-key": "[NO_FLAIR]",
       "type": "Flag",
       "optional": true,
       "id": "no_flair",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--copy-bias-from-conf",
       "description": "Copy bias field from conformed instead of computing directly",
-      "value-key": "[COPY_BIAS_FLAG]",
+      "value-key": "[COPY_BIAS_FROM_CONF]",
       "type": "Flag",
       "optional": true,
       "id": "copy_bias_from_conf",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--norm-opts-rca",
       "description": "Compute bias directly using recon-all opts to mri_normalize",
-      "value-key": "[NORM_OPTS_RCA_FLAG]",
+      "value-key": "[NORM_OPTS_RCA]",
       "type": "Flag",
       "optional": true,
       "id": "norm_opts_rca",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--cubic",
       "description": "Use cubic normalization (applies with --copy-bias-from-conf)",
-      "value-key": "[CUBIC_FLAG]",
+      "value-key": "[CUBIC]",
       "type": "Flag",
       "optional": true,
       "id": "cubic",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--trilin",
       "description": "Use trilinear normalization (default, applies with --copy-bias-from-conf)",
-      "value-key": "[CUBIC_FLAG]",
+      "value-key": "[TRILIN]",
       "type": "Flag",
       "optional": true,
       "id": "trilin",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "--dev",
       "description": "Use mris_make_surfaces.dev",
-      "value-key": "[DEV_FLAG]",
+      "value-key": "[DEV]",
       "type": "Flag",
       "optional": true,
       "id": "dev",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--no-dev",
       "description": "Do not use mris_make_surfaces.dev (default)",
-      "value-key": "[DEV_FLAG]",
+      "value-key": "[NO_DEV]",
       "type": "Flag",
       "optional": true,
       "id": "no_dev",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--bbr-con",
       "description": "Set BBR contrast type (default t2)",
-      "value-key": "[BBR_CON_TYPE]",
+      "value-key": "[BBR_CON]",
       "type": "String",
       "optional": true,
       "id": "bbr_con",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "--bbr-t1",
       "description": "Set BBR contrast type to t1",
-      "value-key": "[BBR_CON_TYPE]",
+      "value-key": "[BBR_T1]",
       "type": "Flag",
       "optional": true,
       "id": "bbr_t1",
@@ -149,7 +149,7 @@
     {
       "command-line-flag": "--bbr-t2",
       "description": "Set BBR contrast type to t2",
-      "value-key": "[BBR_CON_TYPE]",
+      "value-key": "[BBR_T2]",
       "type": "Flag",
       "optional": true,
       "id": "bbr_t2",
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "--first-peak-d1",
       "description": "Refine surface targets in MRIScomputeBorderValues() using first peak method D1",
-      "value-key": "[FIRST_PEAK_D1_FLAG]",
+      "value-key": "[FIRST_PEAK_D1]",
       "type": "Flag",
       "optional": true,
       "id": "first_peak_d1",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "--first-peak-d2",
       "description": "Refine surface targets in MRIScomputeBorderValues() using first peak method D2",
-      "value-key": "[FIRST_PEAK_D2_FLAG]",
+      "value-key": "[FIRST_PEAK_D2]",
       "type": "Flag",
       "optional": true,
       "id": "first_peak_d2",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "--force-update",
       "description": "Force update of final surfaces",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "force_update",

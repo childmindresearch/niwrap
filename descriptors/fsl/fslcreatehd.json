@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fslcreatehd.json",
   "description": "Tool to create a new NIfTI header.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fslcreatehd [XSIZE] [YSIZE] [ZSIZE] [TSIZE] [XVOXSIZE] [YVOXSIZE] [ZVOXSIZE] [TR] [XORIGIN] [YORIGIN] [ZORIGIN] [DATATYPE] [HEADERNAME] [XML_FILE]",
+  "command-line": "fslcreatehd [XSIZE] [YSIZE] [ZSIZE] [TSIZE] [XVOXSIZE] [YVOXSIZE] [ZVOXSIZE] [TR] [XORIGIN] [YORIGIN] [ZORIGIN] [DATATYPE] [HEADERNAME] [NIFTI_XML_FILE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -117,7 +117,7 @@
     },
     {
       "description": "NIfTI XML file describing the header configuration (Mutually exclusive with other inputs)",
-      "value-key": "[XML_FILE]",
+      "value-key": "[NIFTI_XML_FILE]",
       "type": "File",
       "optional": true,
       "id": "nifti_xml_file",

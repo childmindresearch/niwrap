@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LMER_METADATA = Metadata(
-    id="13444732534ac79fb85190ab7da824160851b3be.boutiques",
+    id="02e68dcb59ede0c18ce18893dd5aa84a50513efe.boutiques",
     name="3dLMEr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

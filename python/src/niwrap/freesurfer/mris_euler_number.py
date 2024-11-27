@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_EULER_NUMBER_METADATA = Metadata(
-    id="c6959a3ddbcc53d7a9d17697cdd6451293f391bf.boutiques",
+    id="b892fc606509c85e053ea2a4eeed1f9b6df671ee.boutiques",
     name="mris_euler_number",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class MrisEulerNumberOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    outfile: OutputPathType | None
+    outfile: OutputPathType
     """File where the number of holes is written"""
 
 
@@ -55,7 +55,7 @@ def mris_euler_number(
         ])
     ret = MrisEulerNumberOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(output_file) if (output_file is not None) else None,
+        outfile=execution.output_file("[OUTFILE_FLAG]"),
     )
     execution.run(cargs)
     return ret

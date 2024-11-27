@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_IMAGE2VTK_METADATA = Metadata(
-    id="3a08bd2f36a3b28159141e1b2abc5ed50162d39d.boutiques",
+    id="b63bec3c4397f32efc170272339f9d8c28e86c18.boutiques",
     name="mris_image2vtk",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -66,7 +66,7 @@ def mris_image2vtk(
     cargs.append(str(reduction_percent))
     ret = MrisImage2vtkOutputs(
         root=execution.output_file("."),
-        output_vtk_file=execution.output_file(output_filename),
+        output_vtk_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

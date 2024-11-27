@@ -1,12 +1,12 @@
 {
   "name": "flip_4dfp",
   "description": "A tool to flip 4dfp images along specified axes.",
-  "command-line": "flip_4dfp [IMAGE] [OUTPUT] [FLIP_X_FLAG] [FLIP_Y_FLAG] [FLIP_Z_FLAG] [ENDIANNESS]",
+  "command-line": "flip_4dfp [INPUT_IMAGE] [OUTPUT_IMAGE] [FLIP_X] [FLIP_Y] [FLIP_Z] [ENDIANNESS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input 4dfp image file",
-      "value-key": "[IMAGE]",
+      "value-key": "[INPUT_IMAGE]",
       "type": "File",
       "optional": false,
       "name": "Input image",
@@ -14,7 +14,7 @@
     },
     {
       "description": "Output 4dfp image file. Default is input image root with '_flip' suffix.",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_IMAGE]",
       "type": "String",
       "optional": true,
       "name": "Output image",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-x",
       "description": "Flip along x-axis",
-      "value-key": "[FLIP_X_FLAG]",
+      "value-key": "[FLIP_X]",
       "type": "Flag",
       "optional": true,
       "name": "Flip X",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-y",
       "description": "Flip along y-axis",
-      "value-key": "[FLIP_Y_FLAG]",
+      "value-key": "[FLIP_Y]",
       "type": "Flag",
       "optional": true,
       "name": "Flip Y",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-z",
       "description": "Flip along z-axis",
-      "value-key": "[FLIP_Z_FLAG]",
+      "value-key": "[FLIP_Z]",
       "type": "Flag",
       "optional": true,
       "name": "Flip Z",

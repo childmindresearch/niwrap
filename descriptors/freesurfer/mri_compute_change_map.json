@@ -1,7 +1,7 @@
 {
   "name": "mri_compute_change_map",
   "description": "Compute the change map between two MRI volumes",
-  "command-line": "mri_compute_change_map [MEAN_FILTER_FLAG] [GAUSSIAN_SIGMA] [VOLUME1] [VOLUME2] [TRANSFORM] [OUT_VOLUME]",
+  "command-line": "mri_compute_change_map [MEAN_FILTER] [GAUSSIAN_SIGMA] [VOLUME1] [VOLUME2] [TRANSFORM] [OUTVOLUME]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -30,7 +30,7 @@
     },
     {
       "description": "Output change map volume (e.g. change_map.mgz)",
-      "value-key": "[OUT_VOLUME]",
+      "value-key": "[OUTVOLUME]",
       "type": "String",
       "optional": false,
       "id": "outvolume",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-m",
       "description": "Apply mean filter to the output before writing",
-      "value-key": "[MEAN_FILTER_FLAG]",
+      "value-key": "[MEAN_FILTER]",
       "type": "Flag",
       "optional": true,
       "id": "mean_filter",

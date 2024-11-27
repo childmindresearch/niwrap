@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Decompress a JPEG file to an image file",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "djpeg [INPUT_FILE] [OUTPUT_FILE] [GRAY_FLAG] [FAST_DCT_FLAG] [ONE_PIXEL_HEIGHT_FLAG] [PSEUDO_PIXEL_RATIO_FLAG] [CROP_REGION]",
+  "command-line": "djpeg [INPUT_FILE] [OUTPUT_FILE] [GRAY] [FAST_DCT] [ONE_PIXEL_HEIGHT] [PSEUDO_PIXEL_RATIO] [CROP_REGION]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-grayscale",
       "description": "Force grayscale output",
-      "value-key": "[GRAY_FLAG]",
+      "value-key": "[GRAY]",
       "type": "Flag",
       "optional": true,
       "id": "gray",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-fast",
       "description": "Prevent dithering of output",
-      "value-key": "[FAST_DCT_FLAG]",
+      "value-key": "[FAST_DCT]",
       "type": "Flag",
       "optional": true,
       "id": "fast_dct",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-onepixel",
       "description": "Force one-pixel modulation flag",
-      "value-key": "[ONE_PIXEL_HEIGHT_FLAG]",
+      "value-key": "[ONE_PIXEL_HEIGHT]",
       "type": "Flag",
       "optional": true,
       "id": "one_pixel_height",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-236",
       "description": "Force pseudo-pixel ratio flag",
-      "value-key": "[PSEUDO_PIXEL_RATIO_FLAG]",
+      "value-key": "[PSEUDO_PIXEL_RATIO]",
       "type": "Flag",
       "optional": true,
       "id": "pseudo_pixel_ratio",

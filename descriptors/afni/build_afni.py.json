@@ -3,7 +3,7 @@
   "name": "build_afni.py",
   "author": "AFNI Developers",
   "description": "Compile an AFNI package from the git repository.",
-  "command-line": "build_afni.py [BUILD_ROOT] [CLEAN_ROOT_FLAG] [GIT_BRANCH] [GIT_TAG] [GIT_UPDATE_FLAG] [MAKE_TARGET] [MAKEFILE] [PACKAGE] [PREP_ONLY_FLAG] [RUN_CMAKE_FLAG] [RUN_MAKE_FLAG] [VERBOSE_LEVEL_FLAG] [TERMINAL_OPTION]",
+  "command-line": "build_afni.py [BUILD_ROOT] [CLEAN_ROOT] [GIT_BRANCH] [GIT_TAG] [GIT_UPDATE] [MAKE_TARGET] [MAKEFILE] [PACKAGE] [PREP_ONLY] [RUN_CMAKE] [RUN_MAKE] [VERBOSE_LEVEL] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-clean_root",
       "description": "Specify whether to clean up the build_root. Default is yes.",
-      "value-key": "[CLEAN_ROOT_FLAG]",
+      "value-key": "[CLEAN_ROOT]",
       "type": "String",
       "optional": true,
       "id": "clean_root",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-git_update",
       "description": "Specify whether to update git repo. Default is yes.",
-      "value-key": "[GIT_UPDATE_FLAG]",
+      "value-key": "[GIT_UPDATE]",
       "type": "String",
       "optional": true,
       "id": "git_update",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-prep_only",
       "description": "Prepare to but do not run (c)make.",
-      "value-key": "[PREP_ONLY_FLAG]",
+      "value-key": "[PREP_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "prep_only",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-run_cmake",
       "description": "Choose whether to run a cmake build. Default is no.",
-      "value-key": "[RUN_CMAKE_FLAG]",
+      "value-key": "[RUN_CMAKE]",
       "type": "String",
       "optional": true,
       "id": "run_cmake",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-run_make",
       "description": "Choose whether to run a make build. Default is yes.",
-      "value-key": "[RUN_MAKE_FLAG]",
+      "value-key": "[RUN_MAKE]",
       "type": "String",
       "optional": true,
       "id": "run_make",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Set the verbosity level. Default is 1.",
-      "value-key": "[VERBOSE_LEVEL_FLAG]",
+      "value-key": "[VERBOSE_LEVEL]",
       "type": "Number",
       "optional": true,
       "id": "verbose_level",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help message",
-      "value-key": "[TERMINAL_OPTION]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show module history",
-      "value-key": "[TERMINAL_OPTION]",
+      "value-key": "[HISTORY]",
       "type": "Flag",
       "optional": true,
       "id": "history",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "-show_valid_opts",
       "description": "List valid options",
-      "value-key": "[TERMINAL_OPTION]",
+      "value-key": "[SHOW_VALID_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "show_valid_opts",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show the current version",
-      "value-key": "[TERMINAL_OPTION]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_NU_CORRECT_MNI_METADATA = Metadata(
-    id="cd9d0cddf25451a50015bcc15a19587583722482.boutiques",
+    id="4aed4300ad41fe97f4d8b814e65b6654469e83cc.boutiques",
     name="mri_nu_correct.mni",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

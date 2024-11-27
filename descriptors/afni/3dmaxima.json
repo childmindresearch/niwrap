@@ -3,7 +3,7 @@
   "name": "3dmaxima",
   "author": "AFNI Developers",
   "description": "Locate extrema in a functional dataset",
-  "command-line": "3dmaxima [INPUT_DATASET] [PREFIX] [THRESHOLD] [MIN_DIST] [OUT_RAD] [INPUT_FLAG] [SPHERES_1_FLAG] [SPHERES_1TON_FLAG] [SPHERES_NTO1_FLAG] [NEG_EXT_FLAG] [TRUE_MAX_FLAG] [DSET_COORDS_FLAG] [NO_TEXT_FLAG] [COORDS_ONLY_FLAG] [N_STYLE_SORT_FLAG] [N_STYLE_WEIGHT_AVE_FLAG] [DEBUG_LEVEL] [HELP_FLAG] [HIST_FLAG] [VER_FLAG]",
+  "command-line": "3dmaxima [INPUT_DATASET] [OUTPUT_PREFIX] [THRESHOLD] [MIN_DIST] [OUT_RAD] [INPUT_FLAG] [SPHERES_1_FLAG] [SPHERES_1TON_FLAG] [SPHERES_NTO1_FLAG] [NEG_EXT_FLAG] [TRUE_MAX_FLAG] [DSET_COORDS_FLAG] [NO_TEXT_FLAG] [COORDS_ONLY_FLAG] [N_STYLE_SORT_FLAG] [N_STYLE_WEIGHT_AVE_FLAG] [DEBUG_LEVEL] [HELP_FLAG] [HIST_FLAG] [VER_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix for an output mask dataset (e.g. -prefix maskNto1)",
-      "value-key": "[PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",

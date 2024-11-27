@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_POLYFIT_METADATA = Metadata(
-    id="2a45fc385abe30812b6c5994dee4e52581730825.boutiques",
+    id="71d806c929428c9ef4f179dbd4ad3511aa5ac59a.boutiques",
     name="3dPolyfit",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

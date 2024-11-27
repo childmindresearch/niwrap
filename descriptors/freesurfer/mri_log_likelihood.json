@@ -3,12 +3,12 @@
   "name": "mri_log_likelihood",
   "author": "FreeSurfer Developers",
   "description": "MRI log likelihood calculation tool for brain images.",
-  "command-line": "mri_log_likelihood [INPUT_IMAGES] [ATLAS] [TRANSFORM_FILE]",
+  "command-line": "mri_log_likelihood [INPUT_BRAIN_IMAGES] [ATLAS_FILE] [TRANSFORM_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "List of input brain images",
-      "value-key": "[INPUT_IMAGES]",
+      "value-key": "[INPUT_BRAIN_IMAGES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -17,7 +17,7 @@
     },
     {
       "description": "Atlas image file",
-      "value-key": "[ATLAS]",
+      "value-key": "[ATLAS_FILE]",
       "type": "File",
       "optional": false,
       "id": "atlas_file",

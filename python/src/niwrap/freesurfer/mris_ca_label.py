@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_CA_LABEL_METADATA = Metadata(
-    id="0249b0743a1eb52957e13f4cff1f663c2ca74e33.boutiques",
+    id="2f8449c959553824821e094d83f024564539a65c.boutiques",
     name="mris_ca_label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -41,6 +41,7 @@ def mris_ca_label(
     t: InputPathType | None = None,
     p: str | None = None,
     v: float | None = None,
+    w: str | None = None,
     help_flag: bool = False,
     version_flag: bool = False,
     runner: Runner | None = None,
@@ -75,6 +76,8 @@ def mris_ca_label(
         t: Specify parcellation table input file (default: none).
         p: Output file containing label probability for each vertex.
         v: Diagnostic level (default=0).
+        w: Writes-out snapshots of gibbs process every <number> iterations to\
+            <filename> (default=disabled).
         help_flag: Print help information.
         version_flag: Print version information.
         runner: Command runner.
@@ -139,8 +142,11 @@ def mris_ca_label(
             "-v",
             str(v)
         ])
-    cargs.append("[W_NUMBER]")
-    cargs.append("[W_FILENAME]")
+    if w is not None:
+        cargs.extend([
+            "-w",
+            w
+        ])
     if help_flag:
         cargs.append("--help")
     if version_flag:

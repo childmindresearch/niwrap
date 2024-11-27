@@ -3,7 +3,7 @@
   "name": "fslnvols",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Retrieve the number of volumes in a 4D NIfTI file",
-  "command-line": "fslnvols [INPUT_FILE]",
+  "command-line": "fslnvols [INFILE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input NIfTI file (e.g., fmri.nii.gz)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",

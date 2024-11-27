@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AMP_TO_RSFC_METADATA = Metadata(
-    id="1b972d09397cc07e89b2326e9fbee9d199f7bbee.boutiques",
+    id="27e3a8435ad8a4458d62e5fc746c88a2665d19fa.boutiques",
     name="3dAmpToRSFC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,6 +38,7 @@ class V3dAmpToRsfcOutputs(typing.NamedTuple):
 
 def v_3d_amp_to_rsfc(
     prefix: str,
+    band: list[float],
     in_amp: InputPathType | None = None,
     in_pow: InputPathType | None = None,
     mask: InputPathType | None = None,
@@ -53,6 +54,8 @@ def v_3d_amp_to_rsfc(
     Args:
         prefix: Output file prefix; file names will be: PREFIX_ALFF,\
             PREFIX_FALFF, etc.
+        band: Lower and upper boundaries of the low frequency fluctuations\
+            (LFFs), within the interval [FBOT, FTOP].
         in_amp: Input file of one-sided spectral amplitudes, such as output by\
             3dLombScargle.
         in_pow: Input file of a one-sided power spectrum, such as output by\
@@ -83,8 +86,10 @@ def v_3d_amp_to_rsfc(
         "-prefix",
         prefix
     ])
-    cargs.append("[FBOT]")
-    cargs.append("[FTOP]")
+    cargs.extend([
+        "-band",
+        *map(str, band)
+    ])
     cargs.append("{")
     if mask is not None:
         cargs.extend([

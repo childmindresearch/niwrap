@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_VOX2VOX_METADATA = Metadata(
-    id="a8f23ea6e4c73bc38944055574e4312aec481b89.boutiques",
+    id="c170241b240c3ff4893542415ea2cb91ac0b3c6c.boutiques",
     name="dmri_vox2vox",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

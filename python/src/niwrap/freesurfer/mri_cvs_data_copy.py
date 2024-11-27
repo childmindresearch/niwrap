@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CVS_DATA_COPY_METADATA = Metadata(
-    id="f74fd952da63fda95266802c4057acc89307b164.boutiques",
+    id="b73336351ee9c11ffda39c6ee8b2af17a54695d1.boutiques",
     name="mri_cvs_data_copy",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

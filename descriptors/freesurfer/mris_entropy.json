@@ -3,7 +3,7 @@
   "name": "mris_entropy",
   "author": "FreeSurfer Developers",
   "description": "Computes the entropy of a surface activation pattern for FreeSurfer",
-  "command-line": "mris_entropy [SUBJECT] [HEMI] [WFILE] [CURV_FILE] [AVERAGE_FLAG] [NORMALIZE_FLAG]",
+  "command-line": "mris_entropy [SUBJECT] [HEMI] [WFILE] [CURVFILE] [AVERAGE_ITERATIONS] [NORMALIZE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "description": "Curvature file for input",
-      "value-key": "[CURV_FILE]",
+      "value-key": "[CURVFILE]",
       "type": "File",
       "optional": false,
       "id": "curvfile",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-a",
       "description": "Specify number of curvature averaging iterations (default=0)",
-      "value-key": "[AVERAGE_FLAG]",
+      "value-key": "[AVERAGE_ITERATIONS]",
       "type": "Number",
       "optional": true,
       "id": "average_iterations",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-n",
       "description": "Normalize curvature before writing",
-      "value-key": "[NORMALIZE_FLAG]",
+      "value-key": "[NORMALIZE]",
       "type": "Flag",
       "optional": true,
       "id": "normalize",

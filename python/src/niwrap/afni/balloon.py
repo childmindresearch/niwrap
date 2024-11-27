@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BALLOON_METADATA = Metadata(
-    id="d51a9a16b7b5ef48e2f34c8e205b9eb2d6df6b2a.boutiques",
+    id="d38a0b74f4c93d5365bdded27c362f4ddc6e6b5f.boutiques",
     name="balloon",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

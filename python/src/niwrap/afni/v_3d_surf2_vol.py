@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SURF2_VOL_METADATA = Metadata(
-    id="cea1a70189199505281359212683a7a695d294f2.boutiques",
+    id="d846efb04834ca6fcc9a5960307e8d15eacf8fd2.boutiques",
     name="3dSurf2Vol",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

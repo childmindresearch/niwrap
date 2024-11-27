@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHARM_RECO_METADATA = Metadata(
-    id="e4694e60cf190079bd5bcd5ea95b7f710798b83c.boutiques",
+    id="33f63f74ec6a7870069eec599fbb3c35bec65ba8.boutiques",
     name="SpharmReco",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

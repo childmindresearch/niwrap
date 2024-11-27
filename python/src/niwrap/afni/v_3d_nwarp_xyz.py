@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_XYZ_METADATA = Metadata(
-    id="4315d32044436ed76f66a6f11a8a6a58677a9969.boutiques",
+    id="5a16d2bee46238f64451cbe6e0fea267dd5ecf53.boutiques",
     name="3dNwarpXYZ",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,7 @@ class V3dNwarpXyzOutputs(typing.NamedTuple):
 
 
 def v_3d_nwarp_xyz(
+    warp_spec: str,
     xyzfile: InputPathType,
     runner: Runner | None = None,
 ) -> V3dNwarpXyzOutputs:
@@ -37,6 +38,7 @@ def v_3d_nwarp_xyz(
     URL: https://afni.nimh.nih.gov/
     
     Args:
+        warp_spec: Warp specification as in 3dNwarpApply.
         xyzfile: XYZ coordinate file containing 3 columns.
         runner: Command runner.
     Returns:
@@ -48,7 +50,10 @@ def v_3d_nwarp_xyz(
     cargs.append("3dNwarpXYZ")
     cargs.append("[OPTIONS]")
     cargs.append("-nwarp")
-    cargs.append("[WARP_SPEC]")
+    cargs.extend([
+        "-nwarp",
+        warp_spec
+    ])
     cargs.append(execution.input_file(xyzfile))
     cargs.append(">")
     cargs.append("[OUTPUT_FILE]")

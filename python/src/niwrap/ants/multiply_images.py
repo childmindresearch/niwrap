@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MULTIPLY_IMAGES_METADATA = Metadata(
-    id="c6da8ec5d4fa8b085a1135287a18f750b9fc74b7.boutiques",
+    id="0c15a892ea70ccb7239e328f570abae381e01ba6.boutiques",
     name="MultiplyImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POST_RECON_ALL_METADATA = Metadata(
-    id="691e08f4a56cf4d7db4bcd51aa89d62a6ea0e207.boutiques",
+    id="043904c04e1a7c309fb6aa5cb7234831a996fdf4.boutiques",
     name="post-recon-all",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

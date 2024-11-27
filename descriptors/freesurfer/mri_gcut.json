@@ -4,12 +4,12 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://freesurfer.net/fswiki/mri_gcut",
   "description": "Skull stripping algorithm based on graph cuts.",
-  "command-line": "mri_gcut [WHITE_MATTER_MASK_FLAG] [MULT_FILENAME] [THRESHOLD_VALUE] [INPUT_FILE] [OUTPUT_FILE]",
+  "command-line": "mri_gcut [WMMASK_110] [MULT_FILE] [THRESHOLD_VALUE] [INFILE] [OUTFILE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input brain volume file, e.g. T1.mgz",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -17,7 +17,7 @@
     },
     {
       "description": "Output file name, e.g. brainmask.auto.mgz",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-110",
       "description": "Use voxels with intensity 110 as white matter mask (when applied on T1.mgz, FreeSurfer only)",
-      "value-key": "[WHITE_MATTER_MASK_FLAG]",
+      "value-key": "[WMMASK_110]",
       "type": "Flag",
       "optional": true,
       "id": "wmmask_110",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-mult",
       "description": "Intersect the skull-stripped 'in_filename' and an existing skull-stripped volume specified by 'filename', storing the result in 'out_filename'.",
-      "value-key": "[MULT_FILENAME]",
+      "value-key": "[MULT_FILE]",
       "type": "File",
       "optional": true,
       "id": "mult_file",

@@ -3,7 +3,7 @@
   "name": "mri_cvs_check",
   "author": "FreeSurfer Developers",
   "description": "Checks whether the files required for mri_cvs_register all exist.",
-  "command-line": "mri_cvs_check [MOV_SUBJID] [TEMPLATE_SUBJID] [HEMI_OPTION] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_cvs_check [MOV_SUBJID] [TEMPLATE_SUBJID] [HEMI] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "--hemi",
       "description": "The hemisphere that is going to be processed. It can be 'lh' or 'rh'.",
-      "value-key": "[HEMI_OPTION]",
+      "value-key": "[HEMI]",
       "type": "String",
       "optional": true,
       "id": "hemi",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

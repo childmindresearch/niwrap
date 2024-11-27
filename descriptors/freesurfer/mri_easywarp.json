@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "N/A",
   "description": "EasyReg: deep learning registration simple and easy",
-  "command-line": "mri_easywarp [INPUT_IMAGE] [OUTPUT_IMAGE] [DEFORMATION_FIELD] [NEAREST_FLAG] [THREADS]",
+  "command-line": "mri_easywarp [INPUT_IMAGE] [OUTPUT_IMAGE] [DEFORMATION_FIELD] [NEAREST_NEIGHBOR] [NUM_THREADS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "--nearest",
       "description": "Use nearest neighbor (rather than linear) interpolation",
-      "value-key": "[NEAREST_FLAG]",
+      "value-key": "[NEAREST_NEIGHBOR]",
       "type": "Flag",
       "optional": true,
       "id": "nearest_neighbor",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--threads",
       "description": "Number of cores to be used. Default is 1. You can use -1 to use all available cores",
-      "value-key": "[THREADS]",
+      "value-key": "[NUM_THREADS]",
       "type": "Number",
       "optional": true,
       "id": "num_threads",

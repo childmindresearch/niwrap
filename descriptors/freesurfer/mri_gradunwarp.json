@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://freesurfer.net/",
   "description": "Tool to correct gradient non-linearity distortions in MRI images.",
-  "command-line": "mri_gradunwarp [GRADIENT_COEFF] [LOAD_TRANSTBL] [INPUT_FILE] [OUTPUT_FILE] [OUT_TRANSTBL] [SAVE_TRANSTBL_FLAG] [INTERPOLATION_TYPE] [NTHREADS] [CHECK_OPTS_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_gradunwarp [GRADIENT_COEFF] [LOAD_TRANSTBL] [INPUT_FILE] [OUTPUT_FILE] [OUT_TRANSTBL] [SAVE_TRANSTBL_ONLY] [INTERPOLATION_TYPE] [NTHREADS] [CHECKOPTS] [VERSION] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--save_transtbl_only",
       "description": "Just save unwarp transform table in m3z format, requires --gradcoeff",
-      "value-key": "[SAVE_TRANSTBL_FLAG]",
+      "value-key": "[SAVE_TRANSTBL_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "save_transtbl_only",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print out information on how to use this program",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

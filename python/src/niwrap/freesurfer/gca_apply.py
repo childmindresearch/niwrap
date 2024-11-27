@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GCA_APPLY_METADATA = Metadata(
-    id="f4bd4a615b7c50d10e14f661f965b2406ad3cd26.boutiques",
+    id="004863971f906d9a0b7892c9101381a0f012a5c2.boutiques",
     name="gca-apply",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

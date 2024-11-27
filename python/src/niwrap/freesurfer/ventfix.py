@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VENTFIX_METADATA = Metadata(
-    id="6078f8fdef3285ea1af571bc8b74f69d88c2c638.boutiques",
+    id="6168063cf3610f25b84854e501fcd4f1bf642f43.boutiques",
     name="ventfix",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

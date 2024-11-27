@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ENTROPY_METADATA = Metadata(
-    id="96975acc0702b2b912016ada5d7b678c623e094f.boutiques",
+    id="5707967e94407108591e9f09a18741e3c81c9aed.boutiques",
     name="mris_entropy",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

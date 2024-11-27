@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHERE_SUBJECT_METADATA = Metadata(
-    id="44d85c3811d73ecdcdce776884da34b5bd3f4568.boutiques",
+    id="1b01c8e4cff0b051c46d47179ad938955066fe57.boutiques",
     name="sphere_subject",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

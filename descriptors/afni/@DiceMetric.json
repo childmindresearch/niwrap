@@ -3,7 +3,7 @@
   "name": "@DiceMetric",
   "author": "AFNI Developers",
   "description": "Computes Dice Metric between BASE and each of the DSET volumes",
-  "command-line": "@DiceMetric [BASE] [DSET1] [MAX_ROI] [LTFILE] [LTFILE] [-echo] [-save_match] [-save_diff] [-do_not_mask_by_base] [-mask_by_base] [PREFIX] [-ignore_bad] [-keep_tmp]",
+  "command-line": "@DiceMetric [BASE] [DSETS] [MAX_ROI] [FORCEOUTPUT] [FORCEOUTPUT] [ECHO] [SAVE_MATCH] [SAVE_DIFF] [DO_NOT_MASK_BY_BASE] [MASK_BY_BASE] [PREFIX] [IGNORE_BAD] [KEEP_TMP]",
   "inputs": [
     {
       "description": "Name of base (reference) segmentation",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Data sets for which the Dice Metric with BASE is computed. This should be the last option on the command line.",
-      "value-key": "[DSET1]",
+      "value-key": "[DSETS]",
       "command-line-flag": "-dsets",
       "type": "File",
       "list": true,
@@ -35,7 +35,7 @@
     },
     {
       "description": "If given, the labeltable is used to set the default MAX_ROI parameter. Also, this option forces an output for each key in the LTFILE.",
-      "value-key": "[LTFILE]",
+      "value-key": "[LABELTABLE]",
       "command-line-flag": "-labeltable",
       "type": "File",
       "optional": true,
@@ -44,7 +44,7 @@
     },
     {
       "description": "If given, force output for each class in LTFILE.",
-      "value-key": "[LTFILE]",
+      "value-key": "[FORCEOUTPUT]",
       "command-line-flag": "-forceoutput",
       "type": "File",
       "optional": true,
@@ -53,7 +53,7 @@
     },
     {
       "description": "Set echo.",
-      "value-key": "[-echo]",
+      "value-key": "[ECHO]",
       "command-line-flag": "-echo",
       "type": "Flag",
       "optional": true,
@@ -62,7 +62,7 @@
     },
     {
       "description": "Save volume showing BASE*equals(BASE,DSET).",
-      "value-key": "[-save_match]",
+      "value-key": "[SAVE_MATCH]",
       "command-line-flag": "-save_match",
       "type": "Flag",
       "optional": true,
@@ -71,7 +71,7 @@
     },
     {
       "description": "Save volume showing BASE*(1-equals(BASE,DSET)).",
-      "value-key": "[-save_diff]",
+      "value-key": "[SAVE_DIFF]",
       "command-line-flag": "-save_diff",
       "type": "Flag",
       "optional": true,
@@ -80,7 +80,7 @@
     },
     {
       "description": "Do not mask dset by step(base) before computing Dice coefficient.",
-      "value-key": "[-do_not_mask_by_base]",
+      "value-key": "[DO_NOT_MASK_BY_BASE]",
       "command-line-flag": "-do_not_mask_by_base",
       "type": "Flag",
       "optional": true,
@@ -89,7 +89,7 @@
     },
     {
       "description": "Mask dset by the step(base) before computing Dice coefficient.",
-      "value-key": "[-mask_by_base]",
+      "value-key": "[MASK_BY_BASE]",
       "command-line-flag": "-mask_by_base",
       "type": "Flag",
       "optional": true,
@@ -107,7 +107,7 @@
     },
     {
       "description": "Warn if encountering bad scenarios, but do not create a zero entry.",
-      "value-key": "[-ignore_bad]",
+      "value-key": "[IGNORE_BAD]",
       "command-line-flag": "-ignore_bad",
       "type": "Flag",
       "optional": true,
@@ -116,7 +116,7 @@
     },
     {
       "description": "Keep temporary files for debugging. Note that you should delete temporary files before rerunning the script.",
-      "value-key": "[-keep_tmp]",
+      "value-key": "[KEEP_TMP]",
       "command-line-flag": "-keep_tmp",
       "type": "Flag",
       "optional": true,

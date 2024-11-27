@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MS_FITPARMS_METADATA = Metadata(
-    id="2e2f4b8c675cc71a9ee5ffbd11dba9b891495384.boutiques",
+    id="b0347aaf3a59e1d2a9709a64ffe1e9cfa1594acd.boutiques",
     name="mri_ms_fitparms",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

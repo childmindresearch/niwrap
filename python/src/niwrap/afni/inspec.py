@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSPEC_METADATA = Metadata(
-    id="ac68ea5451eb1e5a829cefef7c709de41948f32a.boutiques",
+    id="6a13b0f30f764b4a293786927f7b9ec71eacbd6c.boutiques",
     name="inspec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

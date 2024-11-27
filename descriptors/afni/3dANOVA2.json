@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA2.html",
   "description": "This program performs a two-factor Analysis of Variance (ANOVA) on 3D datasets.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dANOVA2 [TYPE] [ALEVELS] [BLEVELS] [DSET] [VOXEL_NUM] [DISKSPACE_FLAG] [MASK] [FTR_PREFIX] [FA_PREFIX] [FB_PREFIX] [FAB_PREFIX] [AMEAN_PREFIX] [BMEAN_PREFIX] [XMEAN_PREFIX] [ADIFF_PREFIX] [BDIFF_PREFIX] [XDIFF_PREFIX] [ACONTR_PREFIX] [BCONTR_PREFIX] [XCONTR_PREFIX] [BUCKET_PREFIX] [OLD_METHOD_FLAG] [OK_FLAG] [ASSUME_SPH_FLAG]",
+  "command-line": "3dANOVA2 [TYPE] [ALEVELS] [BLEVELS] [DATASET] [VOXEL] [DISKSPACE] [MASK] [FTR] [FA] [FB] [FAB] [AMEAN] [BMEAN] [XMEAN] [ADIFF] [BDIFF] [XDIFF] [ACONTR] [BCONTR] [XCONTR] [BUCKET] [OLD_METHOD] [OK] [ASSUME_SPH]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-dset",
       "description": "Data set for levels of factor A and factor B",
-      "value-key": "[DSET]",
+      "value-key": "[DATASET]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-voxel",
       "description": "Screen output for voxel number",
-      "value-key": "[VOXEL_NUM]",
+      "value-key": "[VOXEL]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-diskspace",
       "description": "Print out disk space required for program execution",
-      "value-key": "[DISKSPACE_FLAG]",
+      "value-key": "[DISKSPACE]",
       "type": "Flag",
       "optional": true,
       "id": "diskspace",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "-ftr",
       "description": "F-statistic for treatment effect",
-      "value-key": "[FTR_PREFIX]",
+      "value-key": "[FTR]",
       "type": "String",
       "optional": true,
       "id": "ftr",
@@ -94,7 +94,7 @@
     {
       "command-line-flag": "-fa",
       "description": "F-statistic for factor A effect",
-      "value-key": "[FA_PREFIX]",
+      "value-key": "[FA]",
       "type": "String",
       "optional": true,
       "id": "fa",
@@ -103,7 +103,7 @@
     {
       "command-line-flag": "-fb",
       "description": "F-statistic for factor B effect",
-      "value-key": "[FB_PREFIX]",
+      "value-key": "[FB]",
       "type": "String",
       "optional": true,
       "id": "fb",
@@ -112,7 +112,7 @@
     {
       "command-line-flag": "-fab",
       "description": "F-statistic for interaction",
-      "value-key": "[FAB_PREFIX]",
+      "value-key": "[FAB]",
       "type": "String",
       "optional": true,
       "id": "fab",
@@ -121,7 +121,7 @@
     {
       "command-line-flag": "-amean",
       "description": "Estimate mean of factor A level",
-      "value-key": "[AMEAN_PREFIX]",
+      "value-key": "[AMEAN]",
       "type": "String",
       "optional": true,
       "id": "amean",
@@ -130,7 +130,7 @@
     {
       "command-line-flag": "-bmean",
       "description": "Estimate mean of factor B level",
-      "value-key": "[BMEAN_PREFIX]",
+      "value-key": "[BMEAN]",
       "type": "String",
       "optional": true,
       "id": "bmean",
@@ -139,7 +139,7 @@
     {
       "command-line-flag": "-xmean",
       "description": "Estimate mean of cell at level i of factor A and level j of factor B",
-      "value-key": "[XMEAN_PREFIX]",
+      "value-key": "[XMEAN]",
       "type": "String",
       "optional": true,
       "id": "xmean",
@@ -148,7 +148,7 @@
     {
       "command-line-flag": "-adiff",
       "description": "Difference between levels i and j of factor A",
-      "value-key": "[ADIFF_PREFIX]",
+      "value-key": "[ADIFF]",
       "type": "String",
       "optional": true,
       "id": "adiff",
@@ -157,7 +157,7 @@
     {
       "command-line-flag": "-bdiff",
       "description": "Difference between levels i and j of factor B",
-      "value-key": "[BDIFF_PREFIX]",
+      "value-key": "[BDIFF]",
       "type": "String",
       "optional": true,
       "id": "bdiff",
@@ -166,7 +166,7 @@
     {
       "command-line-flag": "-xdiff",
       "description": "Difference between cell mean at A=i, B=j and cell mean at A=k, B=l",
-      "value-key": "[XDIFF_PREFIX]",
+      "value-key": "[XDIFF]",
       "type": "String",
       "optional": true,
       "id": "xdiff",
@@ -175,7 +175,7 @@
     {
       "command-line-flag": "-acontr",
       "description": "Contrast in factor A levels",
-      "value-key": "[ACONTR_PREFIX]",
+      "value-key": "[ACONTR]",
       "type": "String",
       "optional": true,
       "id": "acontr",
@@ -184,7 +184,7 @@
     {
       "command-line-flag": "-bcontr",
       "description": "Contrast in factor B levels",
-      "value-key": "[BCONTR_PREFIX]",
+      "value-key": "[BCONTR]",
       "type": "String",
       "optional": true,
       "id": "bcontr",
@@ -193,7 +193,7 @@
     {
       "command-line-flag": "-xcontr",
       "description": "Contrast in cell means",
-      "value-key": "[XCONTR_PREFIX]",
+      "value-key": "[XCONTR]",
       "type": "String",
       "optional": true,
       "id": "xcontr",
@@ -202,7 +202,7 @@
     {
       "command-line-flag": "-bucket",
       "description": "Create one AFNI 'bucket' dataset whose sub-bricks are obtained by concatenating the above output files",
-      "value-key": "[BUCKET_PREFIX]",
+      "value-key": "[BUCKET]",
       "type": "String",
       "optional": true,
       "id": "bucket",
@@ -211,7 +211,7 @@
     {
       "command-line-flag": "-old_method",
       "description": "Request to perform ANOVA using the previous functionality (requires -OK, also)",
-      "value-key": "[OLD_METHOD_FLAG]",
+      "value-key": "[OLD_METHOD]",
       "type": "Flag",
       "optional": true,
       "id": "old_method",
@@ -220,7 +220,7 @@
     {
       "command-line-flag": "-OK",
       "description": "Confirm understanding that contrasts that do not sum to zero have inflated t-stats, and contrasts that do sum to zero assume sphericity (to be used with -old_method)",
-      "value-key": "[OK_FLAG]",
+      "value-key": "[OK]",
       "type": "Flag",
       "optional": true,
       "id": "ok",
@@ -229,7 +229,7 @@
     {
       "command-line-flag": "-assume_sph",
       "description": "Assume sphericity (zero-sum contrasts, only). This allows use of the old_method for computing contrasts which sum to zero",
-      "value-key": "[ASSUME_SPH_FLAG]",
+      "value-key": "[ASSUME_SPH]",
       "type": "Flag",
       "optional": true,
       "id": "assume_sph",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROBTRACKX_METADATA = Metadata(
-    id="bfa2364cac387a2d15fc57ac1c69644ff79c3700.boutiques",
+    id="053d5bf02cc2ecddcdfc27a671338716940fbabe.boutiques",
     name="probtrackx",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

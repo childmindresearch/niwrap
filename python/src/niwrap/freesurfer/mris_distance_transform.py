@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_DISTANCE_TRANSFORM_METADATA = Metadata(
-    id="6a2e7ab09d2bebc0f45bc3df95999b526417cf5d.boutiques",
+    id="26094bdcfe452c9a39b8df3e9a0e8773e3b9085f.boutiques",
     name="mris_distance_transform",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

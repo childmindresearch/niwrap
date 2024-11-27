@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DEFACER_METADATA = Metadata(
-    id="60b1530510c97ea1b3bc72d2d9a99ad0bdb19732.boutiques",
+    id="46f94f77407f2c0b404818493966409a1d748b0f.boutiques",
     name="mri_defacer",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -30,6 +30,7 @@ def mri_defacer(
     templabel: list[InputPathType] | None = None,
     watermark: float | None = None,
     facemask: str | None = None,
+    fill_constants: list[float] | None = None,
     exclude_mask: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> MriDefacerOutputs:
@@ -48,6 +49,7 @@ def mri_defacer(
         templabel: Template label, specify one or multiple labels.
         watermark: Watermark density.
         facemask: Face mask volume.
+        fill_constants: Constants for filling within/outside the mask.
         exclude_mask: Mask to exclude from defacing.
         runner: Command runner.
     Returns:
@@ -88,8 +90,11 @@ def mri_defacer(
             "--m",
             facemask
         ])
-    cargs.append("[CONST_IN]")
-    cargs.append("[CONST_OUT]")
+    if fill_constants is not None:
+        cargs.extend([
+            "--fill-const",
+            *map(str, fill_constants)
+        ])
     if exclude_mask is not None:
         cargs.extend([
             "--xmask",

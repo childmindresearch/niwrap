@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ENTROPY_METADATA = Metadata(
-    id="17b92837a5e015c4028579e4399a89934e214cb1.boutiques",
+    id="65268d877950e23f9bd06dfb7ede10b57050e1e9.boutiques",
     name="3dEntropy",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

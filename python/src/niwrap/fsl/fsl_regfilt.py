@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_REGFILT_METADATA = Metadata(
-    id="a9f10caa9156fed6096e14e9c58b1e94e7627073.boutiques",
+    id="4735bf955b868dc5966c0bba37c734f92fcb1a7e.boutiques",
     name="fsl_regfilt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -156,7 +156,7 @@ def fsl_regfilt(
         ])
     ret = FslRegfiltOutputs(
         root=execution.output_file("."),
-        filtered_data=execution.output_file(outfile + ".nii.gz"),
+        filtered_data=execution.output_file("[OUTPUT_FILE].nii.gz"),
         preprocessed_data=execution.output_file(out_data + ".nii.gz") if (out_data is not None) else None,
         mixing_matrix=execution.output_file(out_mix + ".nii.gz") if (out_mix is not None) else None,
         vnscales=execution.output_file(out_vnscales + ".nii.gz") if (out_vnscales is not None) else None,

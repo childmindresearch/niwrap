@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ORIENT_LAS_METADATA = Metadata(
-    id="54c27203e1ccdc5e14b8212b9d503829bf0057cf.boutiques",
+    id="c8cbae7a0ae48bc5ff23e10ecc70110ddd8919ae.boutiques",
     name="orientLAS",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

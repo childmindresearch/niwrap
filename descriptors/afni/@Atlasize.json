@@ -3,7 +3,7 @@
   "name": "@Atlasize",
   "author": "AFNI Developers",
   "description": "Script to turn a volumetric dataset into an AFNI atlas",
-  "command-line": "@Atlasize [DSET] [SPACE] [LAB_FILE] [LAB_FILE_DELIM] [LONGNAMES] [LAST_LONGNAME_COL] [ATLAS_TYPE] [ATLAS_DESCRIPTION] [ATLAS_NAME] [AUTO_BACKUP] [CENTERS] [CENTERTYPE] [CENTERMASK] [SKIP_NOVOXELS] [H_WEB] [H_VIEW] [ALL_OPTS] [H_FIND_WORD]",
+  "command-line": "@Atlasize [DSET] [SPACE] [LAB_FILE] [LAB_FILE_DELIM] [LONGNAMES] [LAST_LONGNAME_COL] [ATLAS_TYPE] [ATLAS_DESCRIPTION] [ATLAS_NAME] [AUTO_BACKUP] [CENTERS] [CENTERTYPE] [CENTERMASK] [SKIP_NOVOXELS] [H_WEB] [H_VIEW] [ALL_OPTS] [H_FIND]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "-h_find",
       "description": "Search for lines containing WORD in -help output. Search is approximate.",
-      "value-key": "[H_FIND_WORD]",
+      "value-key": "[H_FIND]",
       "type": "String",
       "optional": true,
       "id": "h_find",

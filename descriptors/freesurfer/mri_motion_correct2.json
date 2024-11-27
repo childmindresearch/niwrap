@@ -3,7 +3,7 @@
   "name": "mri_motion_correct2",
   "author": "FreeSurfer Developers",
   "description": "Aligns and averages two or more volumes using minctracc for alignment and mincresample and mincaverage for resampling.",
-  "command-line": "mri_motion_correct2 [OUTPUT_SPEC] [INPUT_FILES] [TARGET] [WILD_FLAG] [TMPDIR] [NOCLEANUP_FLAG] [UMASK] [CM_FLAG] [VERSION_FLAG] [DEBUG_FLAG]",
+  "command-line": "mri_motion_correct2 [OUTPUT_SPEC] [INPUT_FILES] [TARGET] [WILD] [TMP_DIR] [NOCLEANUP] [UMASK] [CM] [VERSION] [DEBUG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-wild",
       "description": "Assume unmatched arguments are input files",
-      "value-key": "[WILD_FLAG]",
+      "value-key": "[WILD]",
       "type": "Flag",
       "optional": true,
       "id": "wild",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-tmpdir",
       "description": "Directory for temporary files",
-      "value-key": "[TMPDIR]",
+      "value-key": "[TMP_DIR]",
       "type": "String",
       "optional": true,
       "id": "tmp_dir",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-nocleanup",
       "description": "Do not delete temporary files",
-      "value-key": "[NOCLEANUP_FLAG]",
+      "value-key": "[NOCLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "nocleanup",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-cm",
       "description": "Make COR volumes conform to minimum voxel size",
-      "value-key": "[CM_FLAG]",
+      "value-key": "[CM]",
       "type": "Flag",
       "optional": true,
       "id": "cm",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "-version",
       "description": "Print version information and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-debug",
       "description": "Print detailed debug information to screen",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

@@ -3,7 +3,7 @@
   "name": "abids_tool.py",
   "author": "AFNI Developers",
   "description": "A tool to work with BIDS formatted datasets created with dcm2niix_afni or dcm2niix, mainly to pull information from the matching JSON file and refit the input dataset using 3drefit.",
-  "command-line": "abids_tool.py [INPUT_FILES] [TASKS]",
+  "command-line": "abids_tool.py [INPUT_FILES] [COPY_PREFIX]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-TR_match",
       "description": "Check if the TR in the json file matches the TR from input dataset header. (Returns 1 if match)",
-      "value-key": "[TASKS]",
+      "value-key": "[TR_MATCH]",
       "type": "Flag",
       "optional": true,
       "id": "tr_match",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-add_TR",
       "description": "Add the TR from the BIDS json file to the input dataset using 3drefit.",
-      "value-key": "[TASKS]",
+      "value-key": "[ADD_TR]",
       "type": "Flag",
       "optional": true,
       "id": "add_tr",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-add_slice_times",
       "description": "Add the slice times from the BIDS json file to the input dataset using 3drefit.",
-      "value-key": "[TASKS]",
+      "value-key": "[ADD_SLICE_TIMES]",
       "type": "Flag",
       "optional": true,
       "id": "add_slice_times",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-copy",
       "description": "Copy both the NIFTI dataset(s) and matching .json file(s) to PREFIX. Must have the same number of prefixes as datasets.",
-      "value-key": "[TASKS]",
+      "value-key": "[COPY_PREFIX]",
       "type": "String",
       "list": true,
       "optional": true,

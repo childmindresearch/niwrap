@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CRUISETO_AFNI_METADATA = Metadata(
-    id="4e08f5a3a9cbf98ac93af642e1c17b50a9c78a24.boutiques",
+    id="4b72eb1971f7fa8dc1755dacfa39929795432071.boutiques",
     name="3dCRUISEtoAFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,8 +49,7 @@ def v_3d_cruiseto_afni(
         noxform: Same as -novolreg.
         setenv: Set environment variable ENVname to be ENVvalue. Quotes are\
             necessary. Example: suma -setenv "'SUMA_BackgroundColor = 1 0 1'".
-        trace_: Turns on In/Out debug and Memory tracing. It's recommended to\
-            redirect stdout to a file when using this option.
+        trace_: Turns on extreme tracing.
         trace_2: Turns on extreme tracing.
         nomall: Turn off memory tracing.
         yesmall: Turn on memory tracing (default).
@@ -78,7 +77,7 @@ def v_3d_cruiseto_afni(
             setenv
         ])
     if trace_:
-        cargs.append("-trace")
+        cargs.append("-TRACE")
     if trace_2:
         cargs.append("-TRACE")
     if nomall:

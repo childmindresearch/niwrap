@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Apply a matrix to a dataset, voxel-by-voxel, to produce a new dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dmatcalc [INPUT_DATASET] [MATRIX] [OUTPUT_DATASET] [MASK]",
+  "command-line": "3dmatcalc [INPUT_DATASET] [INPUT_MATRIX] [OUTPUT_DATASET] [MASK]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     },
     {
       "description": "The matrix to be applied, specified as a .1D file or as an expression in the syntax of 1dmatcalc.",
-      "value-key": "[MATRIX]",
+      "value-key": "[INPUT_MATRIX]",
       "type": "File",
       "optional": false,
       "id": "input_matrix",

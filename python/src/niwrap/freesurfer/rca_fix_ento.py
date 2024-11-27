@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RCA_FIX_ENTO_METADATA = Metadata(
-    id="b29070f743683020bd3be3f932ff08e117b86cde.boutiques",
+    id="725928069924e15046c579341a8967c86bc221a8.boutiques",
     name="rca-fix-ento",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

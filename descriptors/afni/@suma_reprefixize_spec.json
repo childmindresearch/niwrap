@@ -3,7 +3,7 @@
   "name": "@suma_reprefixize_spec",
   "author": "AFNI Developers",
   "description": "A tool for prefixing and working with SUMA specification files.",
-  "command-line": "@suma_reprefixize_spec [INPUT_FILE] [PREFIX] [OUTPUT_DIR] [WORK_DIR] [NO_CLEAN_FLAG]",
+  "command-line": "@suma_reprefixize_spec [INPUT_FILE] [PREFIX] [OUTPUT_DIR] [WORK_DIR] [NO_CLEAN]",
   "inputs": [
     {
       "description": "Input SUMA specification file",
@@ -43,7 +43,7 @@
     },
     {
       "description": "Flag to avoid cleaning temporary files",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NO_CLEAN]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-no_clean",

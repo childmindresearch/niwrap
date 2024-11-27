@@ -3,7 +3,7 @@
   "name": "mkmnc_index.tcl",
   "author": "FreeSurfer Developers",
   "description": "A tool for creating MINC indices.",
-  "command-line": "mkmnc_index.tcl [INPUT_FILE] [OUTPUT_INDEX]",
+  "command-line": "mkmnc_index.tcl [INFILE] [OUTFILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input MINC file",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Output index file",
-      "value-key": "[OUTPUT_INDEX]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",

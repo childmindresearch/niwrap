@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_LABEL2ANNOT_METADATA = Metadata(
-    id="59e49ff6cbbaf0d71f17134eac97a483503970a4.boutiques",
+    id="a82c00ba82352f53292ae978047e8a771f66064b.boutiques",
     name="mris_label2annot",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FFT_METADATA = Metadata(
-    id="129f53095c989415a22c05c680edc2acfb61ba7f.boutiques",
+    id="346ceaa099cde8147ff4ea8529349b8671ac8691.boutiques",
     name="3dFFT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

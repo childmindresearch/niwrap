@@ -3,7 +3,7 @@
   "name": "mri_cvs_register",
   "author": "FreeSurfer Developers",
   "description": "Combined Volume and Surface Registration",
-  "command-line": "mri_cvs_register [MOVING_SUBJECT] [TEMPLATE_SUBJECT] [TEMPLATE_DIRECTORY] [MNI_FLAG] [OUTDIR] [ASEG_FNAME] [VOLTYPE] [STEP1_FLAG] [STEP2_FLAG] [STEP3_FLAG] [NOASEG_FLAG] [NOINTENSITY_FLAG] [HEMI_FLAG] [MASKTARGETHEMI_FLAG] [MASKMOVINGHEMI_FLAG] [NOCLEANUP_FLAG] [KEEPELREG_FLAG] [KEEPALLM3Z_FLAG] [CLEANALL_FLAG] [CLEANSURFREG_FLAG] [CLEANELREG_FLAG] [CLEANVOLREG_FLAG] [M3D_FLAG] [OPENMP] [NOLOG_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_cvs_register [MOV_SUBJID] [TEMPLATE_SUBJID] [TEMPLATEDIR] [MNI_FLAG] [OUTDIR] [ASEGFNAME] [VOLTYPE] [STEP1_FLAG] [STEP2_FLAG] [STEP3_FLAG] [NOASEG_FLAG] [NOINTENSITY_FLAG] [HEMI_FLAG] [MASKTARGETHEMI_FLAG] [MASKMOVINGHEMI_FLAG] [NOCLEANUP_FLAG] [KEEPELREG_FLAG] [KEEPALLM3Z_FLAG] [CLEANALL_FLAG] [CLEANSURFREG_FLAG] [CLEANELREG_FLAG] [CLEANVOLREG_FLAG] [M3D_FLAG] [OPENMP] [NOLOG_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "--mov",
       "description": "FreeSurfer subject name as found in $SUBJECTS_DIR. This identifies the subject that is to be moved / registered to the target.",
-      "value-key": "[MOVING_SUBJECT]",
+      "value-key": "[MOV_SUBJID]",
       "type": "String",
       "optional": false,
       "id": "mov_subjid",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--template",
       "description": "FreeSurfer subject name as found in $SUBJECTS_DIR (or --templatedir). This identifies the subject that is to be kept fixed (template).",
-      "value-key": "[TEMPLATE_SUBJECT]",
+      "value-key": "[TEMPLATE_SUBJID]",
       "type": "String",
       "optional": true,
       "id": "template_subjid",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "--templatedir",
       "description": "Directory of the template subject's SUBJECTS_DIR if different from that of the moving subject.",
-      "value-key": "[TEMPLATE_DIRECTORY]",
+      "value-key": "[TEMPLATEDIR]",
       "type": "String",
       "optional": true,
       "id": "templatedir",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--asegfname",
       "description": "Name of the segmentation volume used in volumetric registration step. Do not use the file extension.",
-      "value-key": "[ASEG_FNAME]",
+      "value-key": "[ASEGFNAME]",
       "type": "String",
       "optional": true,
       "id": "asegfname",

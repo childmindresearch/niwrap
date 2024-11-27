@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_WARP_CONVERT_METADATA = Metadata(
-    id="81a617f11d0feeee60da12d955fce5ebd395e531.boutiques",
+    id="df0f0e45c3ce5353b9afe602127eca935642dbef.boutiques",
     name="mri_warp_convert",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class MriWarpConvertOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    outwarp: OutputPathType | None
+    outwarp: OutputPathType
     """Converted output warp file"""
 
 
@@ -70,7 +70,7 @@ def mri_warp_convert(
         cargs.append("--downsample")
     ret = MriWarpConvertOutputs(
         root=execution.output_file("."),
-        outwarp=execution.output_file(outvox) if (outvox is not None) else None,
+        outwarp=execution.output_file("[OUTPUT_WARP]"),
     )
     execution.run(cargs)
     return ret

@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
   "description": "MRI vessel segmentation tool",
-  "command-line": "mri_vessel_segment [T1_IMAGE] [T2_IMAGE] [ASEG] [OUTPUT] [SHAPE_FLAG]",
+  "command-line": "mri_vessel_segment [T1_IMAGE] [T2_IMAGE] [ASEG_FILE] [OUTPUT_FILE] [SHAPE_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-aseg",
       "description": "Anatomical segmentation file",
-      "value-key": "[ASEG]",
+      "value-key": "[ASEG_FILE]",
       "type": "File",
       "optional": false,
       "id": "aseg_file",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-o",
       "description": "Output file",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": false,
       "id": "output_file",

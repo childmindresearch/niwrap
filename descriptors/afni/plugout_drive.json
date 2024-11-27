@@ -3,7 +3,7 @@
   "name": "plugout_drive",
   "author": "AFNI Developers",
   "description": "This program connects to AFNI and sends commands that the user specifies interactively or on command line over to AFNI to be executed.",
-  "command-line": "plugout_drive [HOST] [VERBOSE] [PORT] [MAXWAIT] [NAME] [COMMANDS] [QUIT]",
+  "command-line": "plugout_drive [HOST] [VERBOSE] [PORT] [MAXWAIT] [NAME] [COMMAND] [QUIT]",
   "inputs": [
     {
       "command-line-flag": "-host",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-shm",
       "description": "Connect to the current host using shared memory for large data transfers.",
-      "value-key": "[SHM_FLAG]",
+      "value-key": "[SHM]",
       "type": "Flag",
       "optional": true,
       "id": "shm",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-com",
       "description": "Command to be executed on AFNI. Example: '-com \"SET_FUNCTION SomeFunction\"'.",
-      "value-key": "[COMMANDS]",
+      "value-key": "[COMMAND]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-np",
       "description": "Provide a port offset to allow multiple instances of AFNI <--> SUMA, etc., on the same machine.",
-      "value-key": "[PORT_OFFSET]",
+      "value-key": "[NP]",
       "type": "Number",
       "optional": true,
       "id": "np",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-npq",
       "description": "Like -np but quieter in the face of adversity.",
-      "value-key": "[PORT_OFFSET_QUIET]",
+      "value-key": "[NPQ]",
       "type": "Number",
       "optional": true,
       "id": "npq",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-npb",
       "description": "Similar to -np, but using a block for easier usage.",
-      "value-key": "[PORT_OFFSET_BLOCK]",
+      "value-key": "[NPB]",
       "type": "Number",
       "optional": true,
       "id": "npb",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "-max_port_bloc",
       "description": "Print the current value of MAX_BLOC and exit.",
-      "value-key": "[MAX_BLOC]",
+      "value-key": "[MAX_PORT_BLOC]",
       "type": "Flag",
       "optional": true,
       "id": "max_port_bloc",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "-max_port_bloc_quiet",
       "description": "Print MAX_BLOC value and exit quietly.",
-      "value-key": "[MAX_BLOC_QUIET]",
+      "value-key": "[MAX_PORT_BLOC_QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "max_port_bloc_quiet",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "-num_assigned_ports",
       "description": "Print the number of assigned ports used by AFNI and exit.",
-      "value-key": "[NUM_PORTS]",
+      "value-key": "[NUM_ASSIGNED_PORTS]",
       "type": "Flag",
       "optional": true,
       "id": "num_assigned_ports",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "-num_assigned_ports_quiet",
       "description": "Print the number of assigned ports used by AFNI and exit quietly.",
-      "value-key": "[NUM_PORTS_QUIET]",
+      "value-key": "[NUM_ASSIGNED_PORTS_QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "num_assigned_ports_quiet",

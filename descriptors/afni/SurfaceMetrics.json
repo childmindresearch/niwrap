@@ -3,12 +3,12 @@
   "name": "SurfaceMetrics",
   "author": "AFNI Developers",
   "description": "Outputs information about a surface's mesh",
-  "command-line": "SurfaceMetrics [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [SURF_1] [TLRC] [PREFIX]",
+  "command-line": "SurfaceMetrics [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [INTERNAL_NODES] [SURF1] [TLRC] [PREFIX]",
   "inputs": [
     {
       "command-line-flag": "-vol",
       "description": "Calculates the volume of a surface.",
-      "value-key": "[METRIC]",
+      "value-key": "[VOLUME]",
       "type": "Flag",
       "optional": true,
       "id": "volume",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-conv",
       "description": "Output surface convexity at each node.",
-      "value-key": "[METRIC]",
+      "value-key": "[CONVEXITY]",
       "type": "Flag",
       "optional": true,
       "id": "convexity",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-closest_node",
       "description": "Find the closest node to each XYZ triplet in XYZ_LIST.1D.",
-      "value-key": "[METRIC]",
+      "value-key": "[CLOSEST_NODE]",
       "type": "File",
       "optional": true,
       "id": "closest_node",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-area",
       "description": "Output area of each triangle.",
-      "value-key": "[METRIC]",
+      "value-key": "[AREA]",
       "type": "Flag",
       "optional": true,
       "id": "area",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-tri_sines",
       "description": "Output sine of angles at nodes forming triangles.",
-      "value-key": "[METRIC]",
+      "value-key": "[TRI_SINES]",
       "type": "Flag",
       "optional": true,
       "id": "tri_sines",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-tri_cosines",
       "description": "Output cosine of angles at nodes forming triangles.",
-      "value-key": "[METRIC]",
+      "value-key": "[TRI_COSINES]",
       "type": "Flag",
       "optional": true,
       "id": "tri_cosines",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-tri_CoSines",
       "description": "Output both cosines and sines of angles at nodes forming triangles.",
-      "value-key": "[METRIC]",
+      "value-key": "[TRI_COSINES]",
       "type": "Flag",
       "optional": true,
       "id": "tri_CoSines",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-tri_angles",
       "description": "Unsigned angles in radians of triangles.",
-      "value-key": "[METRIC]",
+      "value-key": "[TRI_ANGLES]",
       "type": "Flag",
       "optional": true,
       "id": "tri_angles",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-node_angles",
       "description": "Unsigned angles in radians at nodes of surface.",
-      "value-key": "[METRIC]",
+      "value-key": "[NODE_ANGLES]",
       "type": "Flag",
       "optional": true,
       "id": "node_angles",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-curv",
       "description": "Output curvature at each node.",
-      "value-key": "[METRIC]",
+      "value-key": "[CURVATURE]",
       "type": "Flag",
       "optional": true,
       "id": "curvature",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-edges",
       "description": "Outputs info on each edge.",
-      "value-key": "[METRIC]",
+      "value-key": "[EDGES]",
       "type": "Flag",
       "optional": true,
       "id": "edges",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-node_normals",
       "description": "Outputs segments along node normals.",
-      "value-key": "[METRIC]",
+      "value-key": "[NODE_NORMALS]",
       "type": "Flag",
       "optional": true,
       "id": "node_normals",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "-face_normals",
       "description": "Outputs segments along triangle normals.",
-      "value-key": "[METRIC]",
+      "value-key": "[FACE_NORMALS]",
       "type": "Flag",
       "optional": true,
       "id": "face_normals",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "-normals_scale",
       "description": "Scale the normals by a given factor.",
-      "value-key": "[METRIC]",
+      "value-key": "[NORMALS_SCALE]",
       "type": "Number",
       "optional": true,
       "id": "normals_scale",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "-coords",
       "description": "Output coordinates of each node after any transformation.",
-      "value-key": "[METRIC]",
+      "value-key": "[COORDS]",
       "type": "Flag",
       "optional": true,
       "id": "coords",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "-sph_coords",
       "description": "Output spherical coordinates of each node.",
-      "value-key": "[METRIC]",
+      "value-key": "[SPH_COORDS]",
       "type": "Flag",
       "optional": true,
       "id": "sph_coords",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-sph_coords_center",
       "description": "Shift each node by x y z before calculating spherical coordinates.",
-      "value-key": "[METRIC]",
+      "value-key": "[SPH_COORDS_CENTER]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -163,7 +163,7 @@
     {
       "command-line-flag": "-boundary_nodes",
       "description": "Output nodes that form a boundary of a surface.",
-      "value-key": "[METRIC]",
+      "value-key": "[BOUNDARY_NODES]",
       "type": "Flag",
       "optional": true,
       "id": "boundary_nodes",
@@ -172,7 +172,7 @@
     {
       "command-line-flag": "-boundary_triangles",
       "description": "Output triangles that form a boundary of a surface.",
-      "value-key": "[METRIC]",
+      "value-key": "[BOUNDARY_TRIANGLES]",
       "type": "Flag",
       "optional": true,
       "id": "boundary_triangles",
@@ -181,7 +181,7 @@
     {
       "command-line-flag": "-internal_nodes",
       "description": "Output nodes that are not a boundary.",
-      "value-key": "[METRIC]",
+      "value-key": "[INTERNAL_NODES]",
       "type": "Flag",
       "optional": true,
       "id": "internal_nodes",
@@ -190,7 +190,7 @@
     {
       "command-line-flag": "-SURF_1",
       "description": "Specifies the input surface.",
-      "value-key": "[SURF_1]",
+      "value-key": "[SURF1]",
       "type": "String",
       "optional": false,
       "id": "surf1",

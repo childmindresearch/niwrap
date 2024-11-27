@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXPORT_GCAM_METADATA = Metadata(
-    id="9cf2f88c411f4d3534896a3d95eb47d2af74b6f4.boutiques",
+    id="71849e2de237c64059ec889d31c3f9a65e91dede.boutiques",
     name="exportGcam",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

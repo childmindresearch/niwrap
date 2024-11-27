@@ -3,7 +3,7 @@
   "name": "mris_refine_surfaces",
   "author": "FreeSurfer Developers",
   "description": "Refines cortical surfaces around the region specified by the label file",
-  "command-line": "mris_refine_surfaces [SUBJECT_NAME] [HEMI] [HIRES_VOLUME] [LABEL_FILE] [LOW_TO_HIRES_XFM] [SDIR_FLAG] [MGZ_FLAG] [SUFFIX_FLAG]",
+  "command-line": "mris_refine_surfaces [SUBJECT_NAME] [HEMI] [HIRES_VOLUME] [LABEL_FILE] [LOW_TO_HIRES_XFM] [SDIR] [USE_MGZ] [SUFFIX]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-sdir",
       "description": "Specify the SUBJECTS_DIR",
-      "value-key": "[SDIR_FLAG]",
+      "value-key": "[SDIR]",
       "type": "String",
       "optional": true,
       "id": "sdir",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-mgz",
       "description": "Use .mgz volumes",
-      "value-key": "[MGZ_FLAG]",
+      "value-key": "[USE_MGZ]",
       "type": "Flag",
       "optional": true,
       "id": "use_mgz",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-suffix",
       "description": "Add specified suffix to the final surfaces",
-      "value-key": "[SUFFIX_FLAG]",
+      "value-key": "[SUFFIX]",
       "type": "String",
       "optional": true,
       "id": "suffix",

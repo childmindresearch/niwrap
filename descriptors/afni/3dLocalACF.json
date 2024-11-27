@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Estimate the spatial AutoCorrelation Function (ACF) locally in a neighborhood around each voxel",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dLocalACF [PREFIX] [INPUT_FILE] [NEIGHBORHOOD] [MASK_FILE] [AUTO_MASK_FLAG]",
+  "command-line": "3dLocalACF [PREFIX] [INPUT_FILE] [NEIGHBORHOOD] [MASK_FILE] [AUTO_MASK]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Automatically generate brain mask from input dataset",
-      "value-key": "[AUTO_MASK_FLAG]",
+      "value-key": "[AUTO_MASK]",
       "type": "Flag",
       "optional": true,
       "id": "auto_mask",

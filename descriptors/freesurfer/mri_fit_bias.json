@@ -3,13 +3,13 @@
   "name": "mri_fit_bias",
   "author": "FreeSurfer Developers",
   "description": "A tool for intensity normalization and bias correction in MRI images.",
-  "command-line": "mri_fit_bias [INPUT_VOL] [LPF_CUTOFF] [SEG_VOL] [MASK_VOL] [OUT_VOL] [BIAS_FIELD] [DCT_VOL] [THRESH_VAL] [N_ERODE] [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_fit_bias [INPUTVOL] [LPF_CUTOFF] [SEGVOL] [MASKVOL] [OUTVOL] [BIASFIELD] [DCTVOL] [THRESHOLD] [NERODE] [NTHREADS] [DEBUG] [CHECKOPTS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--i",
       "description": "Input volume for intensity normalization",
-      "value-key": "[INPUT_VOL]",
+      "value-key": "[INPUTVOL]",
       "type": "File",
       "optional": false,
       "id": "inputvol",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "--seg",
       "description": "Segmentation volume to define WM and Cortex (e.g., aseg.presurf.mgz)",
-      "value-key": "[SEG_VOL]",
+      "value-key": "[SEGVOL]",
       "type": "File",
       "optional": false,
       "id": "segvol",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--mask",
       "description": "Mask volume; zero everything outside of the mask (e.g., brainmask.mgz)",
-      "value-key": "[MASK_VOL]",
+      "value-key": "[MASKVOL]",
       "type": "File",
       "optional": false,
       "id": "maskvol",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "--o",
       "description": "Bias corrected output volume",
-      "value-key": "[OUT_VOL]",
+      "value-key": "[OUTVOL]",
       "type": "String",
       "optional": false,
       "id": "outvol",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--bias",
       "description": "Output bias field",
-      "value-key": "[BIAS_FIELD]",
+      "value-key": "[BIASFIELD]",
       "type": "String",
       "optional": false,
       "id": "biasfield",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "--dct",
       "description": "DCT fields file for debugging",
-      "value-key": "[DCT_VOL]",
+      "value-key": "[DCTVOL]",
       "type": "String",
       "optional": true,
       "id": "dctvol",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--thresh",
       "description": "Mask out anything <= threshold value",
-      "value-key": "[THRESH_VAL]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "threshold",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "--erode",
       "description": "3D erode segmentation by n steps (default is 1)",
-      "value-key": "[N_ERODE]",
+      "value-key": "[NERODE]",
       "type": "Number",
       "optional": true,
       "default-value": 1,
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "--threads",
       "description": "Number of threads to use",
-      "value-key": "[THREADS]",
+      "value-key": "[NTHREADS]",
       "type": "Number",
       "optional": true,
       "id": "nthreads",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging mode",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",

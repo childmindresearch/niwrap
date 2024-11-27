@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_PARSE_SDCMDIR_METADATA = Metadata(
-    id="f3d470b7a78fa0f268a69d903a640c95fe56c7b9.boutiques",
+    id="7b3e6193afc93ee99689a8a78865b9a043556c85.boutiques",
     name="mri_parse_sdcmdir",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PRINT_UNIQUE_LABELS_CSH_METADATA = Metadata(
-    id="2a0dd075863667f5124528281b65bb3ad9773dc2.boutiques",
+    id="e9fb80f03f3d4d6c2fbe65561d9c32f6e16bc580.boutiques",
     name="print_unique_labels.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_BISTAT_METADATA = Metadata(
-    id="5b350e2de3b46f339f4193bdf88828d0f13c5833.boutiques",
+    id="e90dc29ecfbe470e814874e0a612f6a2f98a8350.boutiques",
     name="3dLocalBistat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

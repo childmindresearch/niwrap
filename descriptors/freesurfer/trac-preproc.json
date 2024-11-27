@@ -3,7 +3,7 @@
   "name": "trac-preproc",
   "author": "FreeSurfer Developers",
   "description": "Tractography pre-processing for a single subject.",
-  "command-line": "trac-preproc [DMRIRC_FILE] [LOG_FILE] [NOLOG_FLAG] [CMD_FILE] [NOCMD_FLAG] [NO_ISRUNNING_FLAG] [UMASK] [GROUP_ID] [ALLOWCORE_DUMP_FLAG] [DEBUG_FLAG] [DONTRUN_FLAG] [VERSION_FLAG]",
+  "command-line": "trac-preproc [DMRIRC_FILE] [LOG_FILE] [NOLOG] [CMD_FILE] [NOCMD] [NO_ISRUNNING] [UMASK] [GROUP_ID] [ALLOW_CORE_DUMP] [DEBUG] [DONTRUN] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "-nolog",
       "description": "Do not save a log file",
-      "value-key": "[NOLOG_FLAG]",
+      "value-key": "[NOLOG]",
       "type": "Flag",
       "optional": true,
       "id": "nolog",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-nocmd",
       "description": "Do not save a cmd file",
-      "value-key": "[NOCMD_FLAG]",
+      "value-key": "[NOCMD]",
       "type": "Flag",
       "optional": true,
       "id": "nocmd",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-no-isrunning",
       "description": "Do not check whether this subject is currently being processed",
-      "value-key": "[NO_ISRUNNING_FLAG]",
+      "value-key": "[NO_ISRUNNING]",
       "type": "Flag",
       "optional": true,
       "id": "no_isrunning",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "-allowcoredump",
       "description": "Set coredump limit to unlimited",
-      "value-key": "[ALLOWCORE_DUMP_FLAG]",
+      "value-key": "[ALLOW_CORE_DUMP]",
       "type": "Flag",
       "optional": true,
       "id": "allow_core_dump",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-debug",
       "description": "Generate much more output",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-dontrun",
       "description": "Do everything but execute each command",
-      "value-key": "[DONTRUN_FLAG]",
+      "value-key": "[DONTRUN]",
       "type": "Flag",
       "optional": true,
       "id": "dontrun",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "-version",
       "description": "Print version of this script and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

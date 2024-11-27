@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRR_METADATA = Metadata(
-    id="1b3c1e99291c33c3c4ba5b8a06a1cdc93b98a900.boutiques",
+    id="9675a33a650bccf2f38cabb937b9b11e9c6b765f.boutiques",
     name="TRR",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -3,7 +3,7 @@
   "name": "annot2std",
   "author": "FreeSurfer Developers",
   "description": "Creates an average annotation in a standard space based on transforming the annotations of the individual subjects to the standard space through the surface registration.",
-  "command-line": "annot2std [OUTPUT_ANNOT_PATH] [SUBJECTS] [FSGD_FILE] [SUBJECT_LIST_FILE] [TARGET] [HEMISPHERE_FLAG] [XHEMI_FLAG] [SURFREG] [SRCSURFREG] [TRGSURFREG] [ANNOTNAME] [SEGMENTATION] [STACK] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "annot2std [OUTPUT_ANNOT_PATH] [SUBJECTS] [FSGD_FILE] [SUBJECT_LIST_FILE] [TARGET] [RIGHT_HEMISPHERE] [XHEMI] [SURFREG] [SRCSURFREG] [TRGSURFREG] [A2009S] [SEGMENTATION] [STACK] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Use left hemisphere",
-      "value-key": "[HEMISPHERE_FLAG]",
+      "value-key": "[LEFT_HEMISPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "left_hemisphere",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Use right hemisphere",
-      "value-key": "[HEMISPHERE_FLAG]",
+      "value-key": "[RIGHT_HEMISPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "right_hemisphere",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--xhemi",
       "description": "For interhemispheric analysis",
-      "value-key": "[XHEMI_FLAG]",
+      "value-key": "[XHEMI]",
       "type": "Flag",
       "optional": true,
       "id": "xhemi",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--aparc",
       "description": "Annotation name set to aparc",
-      "value-key": "[ANNOTNAME]",
+      "value-key": "[APARC]",
       "type": "Flag",
       "optional": true,
       "id": "aparc",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--a2009s",
       "description": "Annotation name set to aparc.a2009s",
-      "value-key": "[ANNOTNAME]",
+      "value-key": "[A2009S]",
       "type": "Flag",
       "optional": true,
       "id": "a2009s",
@@ -158,7 +158,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "--version",
       "description": "Display version",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

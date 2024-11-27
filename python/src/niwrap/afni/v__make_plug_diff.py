@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MAKE_PLUG_DIFF_METADATA = Metadata(
-    id="200b2bad7859588d6da46076583215217ba300d1.boutiques",
+    id="ed24df6f541e54eb4e1231d905483a763eecd72f.boutiques",
     name="@make_plug_diff",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

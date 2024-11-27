@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/gangchen_homepage",
   "description": "Test-Retest Reliability Program through Bayesian Multilevel Modeling",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "TRR [PREFIX] [CHAINS] [ITERATIONS] [RESPONSE_VAR] [SUBJECT_VAR] [REPETITION_VAR] [CONDITION_VAR] [DATA_TABLE] [CATEGORICAL_VARS] [QUANTITATIVE_VARS] [DIST_Y] [MODEL] [PLOT_SIZE] [STANDARD_ERROR] [T_STAT] [WITHIN_CHAIN_PARA] [DEBUG] [VERBOSE]",
+  "command-line": "TRR [PREFIX] [CHAINS] [ITERATIONS] [RESPONSE_VAR] [SUBJECT_VAR] [REPETITION_VAR] [CONDITION_VAR] [DATA_TABLE] [CATEGORICAL_VARS] [QUANTITATIVE_VARS] [RESPONSE_DIST] [MODEL] [PLOT_SIZE] [STANDARD_ERROR] [T_STAT] [WITHIN_CHAIN_PARALLELIZATION] [DEBUG] [VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "-distY",
       "description": "Specify the distribution for the response variable (e.g., 'gaussian', 'student', 'exgaussian')",
-      "value-key": "[DIST_Y]",
+      "value-key": "[RESPONSE_DIST]",
       "type": "String",
       "optional": true,
       "id": "response_dist",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-WCP",
       "description": "Invoke within-chain parallelization; specify number of threads per chain",
-      "value-key": "[WITHIN_CHAIN_PARA]",
+      "value-key": "[WITHIN_CHAIN_PARALLELIZATION]",
       "type": "Number",
       "optional": true,
       "id": "within_chain_parallelization",

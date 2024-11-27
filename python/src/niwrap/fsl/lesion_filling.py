@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LESION_FILLING_METADATA = Metadata(
-    id="fa4ce204c80d9d08126a2809318fb1f6f654f80b.boutiques",
+    id="c69922cd55d4c8a7bd9067b95471767815e2510e.boutiques",
     name="lesion_filling",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -78,7 +78,7 @@ def lesion_filling(
         cargs.append("-c")
     ret = LesionFillingOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
+        outfile=execution.output_file("[OUTPUT_IMAGE]"),
     )
     execution.run(cargs)
     return ret

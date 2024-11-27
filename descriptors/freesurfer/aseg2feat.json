@@ -3,7 +3,7 @@
   "name": "aseg2feat",
   "author": "FreeSurfer Developers",
   "description": "Resamples the FreeSurfer automatic subcortical segmentation (aseg) to the FEAT functional space.",
-  "command-line": "aseg2feat [FEAT] [FEATDIRFILE] [SEG] [APARC_ASEG_FLAG] [SVSTATS_FLAG] [STANDARD_FLAG] [DEBUG_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "aseg2feat [FEAT] [FEATDIRFILE] [SEG] [APARC_ASEG] [SVSTATS] [STANDARD] [DEBUG] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--aparc+aseg",
       "description": "Use aparc+aseg.mgz. Same as --seg aparc+aseg.mgz.",
-      "value-key": "[APARC_ASEG_FLAG]",
+      "value-key": "[APARC_ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "aparc_aseg",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "--svstats",
       "description": "Save result in featdir/stats instead of featdir/reg/freesurfer",
-      "value-key": "[SVSTATS_FLAG]",
+      "value-key": "[SVSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "svstats",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "--standard",
       "description": "Map results to standard space instead of native functional space. Implies --svstats.",
-      "value-key": "[STANDARD_FLAG]",
+      "value-key": "[STANDARD]",
       "type": "Flag",
       "optional": true,
       "id": "standard",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

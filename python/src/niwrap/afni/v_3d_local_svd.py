@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_SVD_METADATA = Metadata(
-    id="df03ecf9b4836f00f741d76bea167e7316c57057.boutiques",
+    id="f516773aa7b46fb72ce0ada8217322e26f4ccee2.boutiques",
     name="3dLocalSVD",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

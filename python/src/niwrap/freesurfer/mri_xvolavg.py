@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_XVOLAVG_METADATA = Metadata(
-    id="e2b387da93b7e43f34900f7a401a357632dd8603.boutiques",
+    id="735c5fce8b6e5d1e58834c8f1260333f21550abe.boutiques",
     name="mri_xvolavg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -72,7 +72,7 @@ def mri_xvolavg(
         ])
     ret = MriXvolavgOutputs(
         root=execution.output_file("."),
-        averaged_output=execution.output_file(output_volume),
+        averaged_output=execution.output_file("[OUT_VOL]"),
     )
     execution.run(cargs)
     return ret

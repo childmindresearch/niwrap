@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GEN_PRIORS_METADATA = Metadata(
-    id="a128f767b532e1cfac48dcd88ac61c173a14841f.boutiques",
+    id="845d9172d4ae6f1eca3fec82fab483b9e0b7907b.boutiques",
     name="3dGenPriors",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

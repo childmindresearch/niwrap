@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BETA2SXA_METADATA = Metadata(
-    id="6b0353447b195d21d189f68effce9f722fc5ed50.boutiques",
+    id="715f661699d8a42e26b57d5896f55ec5edf8d5d2.boutiques",
     name="beta2sxa",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

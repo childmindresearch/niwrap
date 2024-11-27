@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Sends volumes from the dataset to AFNI via the NIML socket interface.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "niml_feedme [HOST] [INTERVAL] [VERBOSE_FLAG] [ACCUM_FLAG] [TARGET_DATASET] [DRIVE_CMDS] [DATASET]",
+  "command-line": "niml_feedme [HOST] [INTERVAL] [VERBOSE] [ACCUM] [TARGET_DATASET] [DRIVE_CMDS] [DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -31,7 +31,7 @@
     {
       "description": "Be (very) talkative about actions.",
       "command-line-flag": "-verb",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -40,7 +40,7 @@
     {
       "description": "Send sub-bricks so that they accumulate in AFNI. The default is to create only a 1 volume dataset inside AFNI, and each sub-brick just replaces that one volume when it is received.",
       "command-line-flag": "-accum",
-      "value-key": "[ACCUM_FLAG]",
+      "value-key": "[ACCUM]",
       "type": "Flag",
       "optional": true,
       "id": "accum",

@@ -3,7 +3,7 @@
   "name": "mri_make_uchar",
   "author": "FreeSurfer Developers",
   "description": "Tool to adjust intensity of brain MRI images using a Talairach transformation.",
-  "command-line": "mri_make_uchar [INPUT_VOLUME] [TALAIRACH_XFORM] [OUTPUT_VOLUME] [FIRST_PERCENTILE] [WM_PERCENTILE] [MAX_R] [CUMULATIVE_HISTO] [VRADVOL]",
+  "command-line": "mri_make_uchar [INPUT_VOLUME] [TALAIRACH_XFORM] [OUTPUT_VOLUME] [FIRST_PERCENTILE] [WM_PERCENTILE] [MAX_RADIUS] [CUMULATIVE_HISTO] [VRADVOL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-r",
       "description": "Maximum radius for voxel consideration (default 50).",
-      "value-key": "[MAX_R]",
+      "value-key": "[MAX_RADIUS]",
       "type": "Number",
       "default-value": 50,
       "optional": true,

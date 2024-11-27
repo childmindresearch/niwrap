@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNPACKMINCDIR_METADATA = Metadata(
-    id="9df48ed15a644762c650695fdc52b0dc9908d837.boutiques",
+    id="665926cbe3f5b98854ac7511f567b75246bc682e.boutiques",
     name="unpackmincdir",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

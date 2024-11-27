@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSR_COREG_METADATA = Metadata(
-    id="f7ce052295ee7434c51f0c52a401aed2e5d22d1b.boutiques",
+    id="b0e85054bb91348e85b4424dfeba924eb15f6a43.boutiques",
     name="fsr-coreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

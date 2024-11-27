@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Performs Discrete Fourier Transform (DFT) along the time axis of a complex- or float-valued dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dDFT [INPUT_FILE] [OUTPUT_PREFIX] [OUTPUT_TYPE] [NFFT] [DETREND_FLAG] [TAPER] [INVERSE_FLAG]",
+  "command-line": "3dDFT [INFILE] [PREFIX] [ABS_OUTPUT] [NFFT] [DETREND] [TAPER] [INVERSE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input dataset (complex- or float-valued)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix for the output file",
-      "value-key": "[OUTPUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-abs",
       "description": "Output float dataset = abs(DFT)",
-      "value-key": "[OUTPUT_TYPE]",
+      "value-key": "[ABS_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "abs_output",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-detrend",
       "description": "Least-squares remove linear drift before DFT",
-      "value-key": "[DETREND_FLAG]",
+      "value-key": "[DETREND]",
       "type": "Flag",
       "optional": true,
       "id": "detrend",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-inverse",
       "description": "Perform the inverse DFT",
-      "value-key": "[INVERSE_FLAG]",
+      "value-key": "[INVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "inverse",

@@ -2,12 +2,12 @@
   "tool-version": "7.4.1",
   "name": "mris_image2vtk",
   "description": "Convert image to VTK format with specified thresholds and smoothing parameters",
-  "command-line": "mris_image2vtk [INPUT_FILE] [OUTPUT_FILE] [LOWER_THRESHOLD] [UPPER_THRESHOLD] [VTK_SMOOTH_ITERS] [IMAGE_SMOOTH_SIZE] [REDUCTION_PERCENT]",
+  "command-line": "mris_image2vtk [INPUT_FILENAME] [OUTPUT_FILENAME] [LOWER_THRESHOLD] [UPPER_THRESHOLD] [VTK_SMOOTHING_ITERS] [IMAGE_SMOOTHING_SIZE] [REDUCTION_PERCENT]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input image file name",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_FILENAME]",
       "type": "File",
       "optional": false,
       "id": "input_filename",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Output VTK file name",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUT_FILENAME]",
       "type": "String",
       "optional": false,
       "id": "output_filename",
@@ -39,7 +39,7 @@
     },
     {
       "description": "Number of VTK smoothing iterations",
-      "value-key": "[VTK_SMOOTH_ITERS]",
+      "value-key": "[VTK_SMOOTHING_ITERS]",
       "type": "Number",
       "optional": false,
       "id": "vtk_smoothing_iters",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Image smoothing size",
-      "value-key": "[IMAGE_SMOOTH_SIZE]",
+      "value-key": "[IMAGE_SMOOTHING_SIZE]",
       "type": "Number",
       "optional": false,
       "id": "image_smoothing_size",

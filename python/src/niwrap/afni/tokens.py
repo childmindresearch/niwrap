@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TOKENS_METADATA = Metadata(
-    id="3ea97bfd7ad70145baf8725309d723e73b54f8c9.boutiques",
+    id="fa203a3c21c39761a0f8e237a33304c1ff4334e3.boutiques",
     name="tokens",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

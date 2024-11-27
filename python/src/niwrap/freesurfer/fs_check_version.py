@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FS_CHECK_VERSION_METADATA = Metadata(
-    id="cbe1d01718e01f20a4da7f7d14f102e6ed2724fa.boutiques",
+    id="1bb29df8432be8183122dba0b74d19ba214f7751.boutiques",
     name="fs-check-version",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

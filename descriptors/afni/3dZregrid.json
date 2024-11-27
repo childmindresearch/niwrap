@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZregrid.html",
   "description": "Alters the input dataset's slice thickness and/or number.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dZregrid [Z_THICKNESS] [SLICE_COUNT] [Z_SIZE] [PREFIX] [INPUT_FILE] [VERBOSE_FLAG]",
+  "command-line": "3dZregrid [Z_THICKNESS] [SLICE_COUNT] [Z_SIZE] [PREFIX] [INFILE] [VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Write progress reports to stderr",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

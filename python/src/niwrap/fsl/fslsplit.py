@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSPLIT_METADATA = Metadata(
-    id="d2c3ae39a3a4b878b44457625c99d6c3fc974d77.boutiques",
+    id="658e257df4d731ba6d8f8df4c93d615133ab9854.boutiques",
     name="fslsplit",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -2,7 +2,7 @@
   "name": "mri_pretess",
   "author": "FreeSurfer Developers",
   "description": "Tool to modify WM segmentation so that all neighbors of WM voxels have a common face.",
-  "command-line": "mri_pretess [FILLEDVOL] [LABELSTRING] [NORMVOL] [NEWFILLEDVOL] [DEBUG_VOXEL] [NOCORNERS_FLAG] [WRITE_FLAG] [KEEP_FLAG] [TEST_FLAG]",
+  "command-line": "mri_pretess [FILLEDVOL] [LABELSTRING] [NORMVOL] [NEWFILLEDVOL] [DEBUG_VOXEL] [NOCORNERS] [WRITE] [KEEP] [TEST]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-nocorners",
       "description": "No removal of corner configurations in addition to edge ones",
-      "value-key": "[NOCORNERS_FLAG]",
+      "value-key": "[NOCORNERS]",
       "type": "Flag",
       "optional": true,
       "id": "nocorners",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-w",
       "description": "Turn on diagnostic writing",
-      "value-key": "[WRITE_FLAG]",
+      "value-key": "[WRITE]",
       "type": "Flag",
       "optional": true,
       "id": "write",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-keep",
       "description": "Keep WM edits",
-      "value-key": "[KEEP_FLAG]",
+      "value-key": "[KEEP]",
       "type": "Flag",
       "optional": true,
       "id": "keep",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-test",
       "description": "Adds a voxel to test removal by mri_pretess, retained with -keep. Output not saved.",
-      "value-key": "[TEST_FLAG]",
+      "value-key": "[TEST]",
       "type": "Flag",
       "optional": true,
       "id": "test",

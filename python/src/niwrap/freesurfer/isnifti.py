@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ISNIFTI_METADATA = Metadata(
-    id="2fff62a86335a675ee9cf1353fe5c519ca3a88c9.boutiques",
+    id="0ec07279947545d1155748f4d9a448ee304204a0.boutiques",
     name="isnifti",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

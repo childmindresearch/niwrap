@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "This program makes a directionally encoded color (DEC) map for DTI results.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "fat_proc_decmap [IFA] [IV1] [PREFIX] [MASK] [FA_THR] [FA_SCA] [WORKDIR] [NO_CLEAN] [QC_PREFIX] [NO_CMD_OUT] [NO_QC_VIEW]",
+  "command-line": "fat_proc_decmap [IN_FA] [IN_V1] [PREFIX] [MASK] [FA_THR] [FA_SCA] [WORKDIR] [NO_CLEAN] [QC_PREFIX] [NO_CMD_OUT] [NO_QC_VIEW]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input FA (scalar) map.",
-      "value-key": "[IFA]",
+      "value-key": "[IN_FA]",
       "type": "File",
       "optional": false,
       "id": "in_fa",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Input first eigenvector (3-vector) map.",
-      "value-key": "[IV1]",
+      "value-key": "[IN_V1]",
       "type": "File",
       "optional": false,
       "id": "in_v1",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/fsl_mean_descriptor.json",
   "description": "Diagnostic tool for analyzing and computing mean values for FSL data.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "mean [DATA_FILE] [MASK_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_FLAG] [LOG_DIR] [FORCEDIR_FLAG] [INFERENCE_TECH] [NUM_JUMPS] [NUM_BURNIN] [NUM_SAMPLE_EVERY] [NUM_UPDATE_PROPOSALEVERY] [ACCEPTANCE_RATE] [SEED] [ERROR_PREC] [NOAMP_FLAG] [PRIOR_MEAN] [PRIOR_STD]",
+  "command-line": "mean [DATAFILE] [MASKFILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_FLAG] [LOG_DIR] [FORCEDIR_FLAG] [INFERENCE_TECH] [NUM_JUMPS] [NUM_BURNIN] [NUM_SAMPLE_EVERY] [NUM_UPDATE_PROPOSALEVERY] [ACCEPTANCE_RATE] [SEED] [ERROR_PRECISION] [NOAMP_FLAG] [PRIOR_MEAN] [PRIOR_STD]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "--data",
       "description": "Regressor data file",
-      "value-key": "[DATA_FILE]",
+      "value-key": "[DATAFILE]",
       "type": "File",
       "optional": false,
       "id": "datafile",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "--mask",
       "description": "Mask file",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASKFILE]",
       "type": "File",
       "optional": false,
       "id": "maskfile",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "--prec",
       "description": "Value to fix error precision to (default is -1, which means error precision is not fixed)",
-      "value-key": "[ERROR_PREC]",
+      "value-key": "[ERROR_PRECISION]",
       "type": "Number",
       "optional": true,
       "id": "error_precision",

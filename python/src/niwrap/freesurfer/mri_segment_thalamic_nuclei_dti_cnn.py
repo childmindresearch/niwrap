@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SEGMENT_THALAMIC_NUCLEI_DTI_CNN_METADATA = Metadata(
-    id="da783b314542a44586cf03f49de9c668b54ea81a.boutiques",
+    id="0d6b3980cf69cb76b17660e3b5ddbf899684c85e.boutiques",
     name="mri_segment_thalamic_nuclei_dti_cnn",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

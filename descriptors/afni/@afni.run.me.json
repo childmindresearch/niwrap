@@ -3,7 +3,7 @@
   "name": "@afni.run.me",
   "author": "AFNI Developers",
   "description": "A tool to execute a specific command",
-  "command-line": "@afni.run.me [GO_FLAG] [CURL_FLAG] [HELP_FLAG]",
+  "command-line": "@afni.run.me [GO] [CURL] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-go",
       "description": "Execute the work",
-      "value-key": "[GO_FLAG]",
+      "value-key": "[GO]",
       "type": "Flag",
       "optional": true,
       "id": "go",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-curl",
       "description": "Default to curl instead of wget",
-      "value-key": "[CURL_FLAG]",
+      "value-key": "[CURL]",
       "type": "Flag",
       "optional": true,
       "id": "curl",

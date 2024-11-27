@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XCORR_METADATA = Metadata(
-    id="047ade2b11c0b16dea3f8cd306b385e1b4e1bf9b.boutiques",
+    id="9e4522b49e6cabe069fc758dd70b99c8feb9830e.boutiques",
     name="xcorr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

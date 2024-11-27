@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_EXVIVO_NORM_METADATA = Metadata(
-    id="34de9e487580e2962990faa3df6c9e1b22054e19.boutiques",
+    id="a88bc50afe4bde5d431a45ef570ba7c5a89a8c36.boutiques",
     name="mri_exvivo_norm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

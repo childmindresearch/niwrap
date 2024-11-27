@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILM_GLS_METADATA = Metadata(
-    id="85a4306e93a90a6eac28feb207307adc7ad464ae.boutiques",
+    id="f39dd7c8e81740062ca1452d21d0bb5ced20f4aa.boutiques",
     name="film_gls",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--verbose",
       "description": "Enable verbose output.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

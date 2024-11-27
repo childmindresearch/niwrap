@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NEURO_DECONVOLVE_PY_METADATA = Metadata(
-    id="7deab2368a36fa0ebe35904371306494cb49280c.boutiques",
+    id="30075f7fc0782acd2a0f9251df2b4402184e39a7.boutiques",
     name="neuro_deconvolve.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -107,8 +107,8 @@ def neuro_deconvolve_py(
         ])
     ret = NeuroDeconvolvePyOutputs(
         root=execution.output_file("."),
-        output_head=execution.output_file(prefix + "+orig.HEAD"),
-        output_brik=execution.output_file(prefix + "+orig.BRIK"),
+        output_head=execution.output_file("[OUTPUT_PREFIX]+orig.HEAD"),
+        output_brik=execution.output_file("[OUTPUT_PREFIX]+orig.BRIK"),
         kernel_file_out=execution.output_file(kernel_file) if (kernel_file is not None) else None,
     )
     execution.run(cargs)

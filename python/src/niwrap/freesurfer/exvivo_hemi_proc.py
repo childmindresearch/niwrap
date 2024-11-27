@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXVIVO_HEMI_PROC_METADATA = Metadata(
-    id="9b19f1c49b133c1291ef66da28454ef0609695ae.boutiques",
+    id="9ef40c3f2cab9928f235df79043cbc38b92918d6.boutiques",
     name="exvivo-hemi-proc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

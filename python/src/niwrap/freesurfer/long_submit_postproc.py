@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_SUBMIT_POSTPROC_METADATA = Metadata(
-    id="63f8f61731672e4c8a00c412dd8728cc2dae415a.boutiques",
+    id="f5d6d8fc46443ea959ac2b4347964b2a0edf8163.boutiques",
     name="long_submit_postproc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

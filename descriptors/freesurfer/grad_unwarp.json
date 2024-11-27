@@ -3,7 +3,7 @@
   "name": "grad_unwarp",
   "author": "FreeSurfer Developers",
   "description": "Convert, dewarp, and resample DICOM files to MGH files.",
-  "command-line": "grad_unwarp [INFILE] [SERIESNO] [UNWARP_TYPE] [NOJAC_FLAG] [CORFOV_FLAG] [COR_FLAG] [INTERP_METHOD] [OUTFILE] [MATLAB_BINARY]",
+  "command-line": "grad_unwarp [INFILE] [SERIESNO] [UNWARP_TYPE] [NOJAC] [CORFOV] [COR] [INTERP] [OUTFILE] [MATLAB_BINARY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-nojac",
       "description": "Do not perform jacobian correction when unwarping",
-      "value-key": "[NOJAC_FLAG]",
+      "value-key": "[NOJAC]",
       "type": "Flag",
       "optional": true,
       "id": "nojac",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-corfov",
       "description": "Resample to Coronal FOV",
-      "value-key": "[CORFOV_FLAG]",
+      "value-key": "[CORFOV]",
       "type": "Flag",
       "optional": true,
       "id": "corfov",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-cor",
       "description": "Output in COR format instead of MGH",
-      "value-key": "[COR_FLAG]",
+      "value-key": "[COR]",
       "type": "Flag",
       "optional": true,
       "id": "cor",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-interp",
       "description": "Interpolation method (cubic, linear, nearest, spline)",
-      "value-key": "[INTERP_METHOD]",
+      "value-key": "[INTERP]",
       "type": "String",
       "optional": true,
       "id": "interp",

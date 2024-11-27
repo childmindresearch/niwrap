@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_CENTRAL_SULCUS_METADATA = Metadata(
-    id="ca8aeea364b75a5e16c0b6eafcdb6e7f1c756d05.boutiques",
+    id="13b958f09713b9767ab00695cb856a93c2ef9725.boutiques",
     name="map_central_sulcus",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

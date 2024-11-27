@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEDIANFILTER_METADATA = Metadata(
-    id="78b38d971dc71365ed3894d5bb7f83c2dee92ce5.boutiques",
+    id="ac2875bd695573360c9b7d186670920722717011.boutiques",
     name="medianfilter",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -52,7 +52,7 @@ def medianfilter(
     cargs.append(execution.input_file(outfile))
     ret = MedianfilterOutputs(
         root=execution.output_file("."),
-        filtered_file=execution.output_file(pathlib.Path(outfile).name),
+        filtered_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

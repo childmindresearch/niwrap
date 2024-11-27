@@ -2,13 +2,13 @@
   "tool-version": "7.4.1",
   "name": "long_stats_tps",
   "description": "Stack results for individual time points based on longitudinal qdec table.",
-  "command-line": "long_stats_tps --qdec=[QDEC] --stats=[STATS] --meas=[MEAS] --sd=[SD] --tp=[TP] --out=[OUT] [QCOLUMN] [CROSS_FLAG]",
+  "command-line": "long_stats_tps --qdec=[QDEC_TABLE] --stats=[STATS_FILE] --meas=[MEASURE] --sd=[SUBJECTS_DIR] --tp=[TIME_POINT] --out=[OUTPUT_FILE] [QCOLUMN] [CROSS_SECTIONAL]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--qdec",
       "description": "qdec.table.dat file with first columns: fsid  fsid-base",
-      "value-key": "[QDEC]",
+      "value-key": "[QDEC_TABLE]",
       "type": "File",
       "optional": false,
       "id": "qdec_table",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--stats",
       "description": "Stats file without path: e.g. aseg.stats or lh.aparc.stats",
-      "value-key": "[STATS]",
+      "value-key": "[STATS_FILE]",
       "type": "String",
       "optional": false,
       "id": "stats_file",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--meas",
       "description": "Stats measure, e.g. volume, thickness, mean, std",
-      "value-key": "[MEAS]",
+      "value-key": "[MEASURE]",
       "type": "String",
       "optional": false,
       "id": "measure",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--sd",
       "description": "Full path to FreeSurfer subjects directory",
-      "value-key": "[SD]",
+      "value-key": "[SUBJECTS_DIR]",
       "type": "String",
       "optional": false,
       "id": "subjects_dir",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--tp",
       "description": "Time point number",
-      "value-key": "[TP]",
+      "value-key": "[TIME_POINT]",
       "type": "Number",
       "optional": false,
       "id": "time_point",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--out",
       "description": "File name of output",
-      "value-key": "[OUT]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "String",
       "optional": false,
       "id": "output_file",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--cross",
       "description": "Use cross sectional results (for testing only)",
-      "value-key": "[CROSS_FLAG]",
+      "value-key": "[CROSS_SECTIONAL]",
       "type": "Flag",
       "optional": true,
       "id": "cross_sectional",

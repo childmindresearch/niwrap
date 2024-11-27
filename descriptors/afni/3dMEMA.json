@@ -30,7 +30,7 @@
     },
     {
       "description": "Set data for one of the test variables",
-      "value-key": "[SET_DATA]",
+      "value-key": "[SET]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -40,7 +40,7 @@
     },
     {
       "description": "Specify the name of a text file containing a table for the covariate(s).",
-      "value-key": "[COVAR_FILE]",
+      "value-key": "[COVARIATES]",
       "type": "File",
       "optional": true,
       "id": "covariates",
@@ -214,7 +214,7 @@
     },
     {
       "description": "Specify verbosity level",
-      "value-key": "[VERBOSITY]",
+      "value-key": "[VERB]",
       "type": "Number",
       "optional": true,
       "id": "verb",

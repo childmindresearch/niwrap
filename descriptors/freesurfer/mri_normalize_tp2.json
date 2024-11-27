@@ -1,6 +1,6 @@
 {
   "name": "mri_normalize_tp2",
-  "command-line": "mri_normalize_tp2 [INPUT_VOL] [NORMALIZED_VOL] [T1] [MASK1] [MASK2] [THRESHOLD] [CTRL] [XFORM] [INVERT_FLAG] [LTA_SRC] [LTA_DST]",
+  "command-line": "mri_normalize_tp2 [INPUT_VOL] [NORMALIZED_VOL] [T1_VOLUME] [MASK1] [MASK2] [THRESHOLD] [CTRL] [XFORM] [INVERT_FLAG] [LTA_SRC] [LTA_DST]",
   "description": "Normalize the input volume using control points of tp1 to help normalize tp2.",
   "schema-version": "0.5",
   "inputs": [
@@ -25,7 +25,7 @@
       "id": "t1_volume",
       "name": "T1 Volume for tp1",
       "type": "File",
-      "value-key": "[T1]",
+      "value-key": "[T1_VOLUME]",
       "description": "T1 volume for tp1 where normalization is applied",
       "optional": true
     },

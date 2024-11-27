@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "wmedits2surf",
   "author": "FreeSurfer Developers",
-  "command-line": "wmedits2surf [SUBJECT] [SELF_FLAG] [OVERWRITE_FLAG] [TMP_DIR] [CLEANUP_FLAG] [NO_CLEANUP_FLAG] [DEBUG_FLAG] [LH_FLAG] [RH_FLAG] [NO_SURFS_FLAG]",
+  "command-line": "wmedits2surf [SUBJECT] [SELF] [OVERWRITE] [TMP_DIR] [CLEANUP] [NO_CLEANUP] [DEBUG] [LH] [RH] [NO_SURFS]",
   "description": "Computes binary maps of surface locations where the wm.mgz has been edited. Creates files for each hemisphere for each type of edit.",
   "schema-version": "0.5",
   "inputs": [
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--self",
       "description": "Output will be on self instead of fsaverage.",
-      "value-key": "[SELF_FLAG]",
+      "value-key": "[SELF]",
       "type": "Flag",
       "optional": true,
       "id": "self",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--overwrite",
       "description": "Force overwriting of existing results.",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--cleanup",
       "description": "Cleanup temporary files after execution.",
-      "value-key": "[CLEANUP_FLAG]",
+      "value-key": "[CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "cleanup",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--no-cleanup",
       "description": "Do not cleanup temporary files after execution.",
-      "value-key": "[NO_CLEANUP_FLAG]",
+      "value-key": "[NO_CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cleanup",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Debug mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Only do left hemisphere.",
-      "value-key": "[LH_FLAG]",
+      "value-key": "[LH]",
       "type": "Flag",
       "optional": true,
       "id": "lh",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Only do right hemisphere.",
-      "value-key": "[RH_FLAG]",
+      "value-key": "[RH]",
       "type": "Flag",
       "optional": true,
       "id": "rh",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--no-surfs",
       "description": "Do not compute surfaces, only count stats.",
-      "value-key": "[NO_SURFS_FLAG]",
+      "value-key": "[NO_SURFS]",
       "type": "Flag",
       "optional": true,
       "id": "no_surfs",

@@ -3,7 +3,7 @@
   "name": "mri_synthstrip",
   "author": "FreeSurfer Developers",
   "description": "Robust, universal skull-stripping for brain images of any type.",
-  "command-line": "mri_synthstrip [IMAGE] [[OUT]] [[MASK]] [[GPU_FLAG]] [[BORDER]] [[NO_CSF_FLAG]] [[MODEL]]",
+  "command-line": "mri_synthstrip [IMAGE] [[OUTPUT_IMAGE]] [[MASK]] [[GPU]] [[BORDER]] [[EXCLUDE_CSF]] [[MODEL_WEIGHTS]]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-o",
       "description": "Save stripped image to path.",
-      "value-key": "[OUT]",
+      "value-key": "[OUTPUT_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "output_image",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "-g",
       "description": "Use the GPU.",
-      "value-key": "[GPU_FLAG]",
+      "value-key": "[GPU]",
       "type": "Flag",
       "optional": true,
       "id": "gpu",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--no-csf",
       "description": "Exclude CSF from brain border.",
-      "value-key": "[NO_CSF_FLAG]",
+      "value-key": "[EXCLUDE_CSF]",
       "type": "Flag",
       "optional": true,
       "id": "exclude_csf",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "--model",
       "description": "Alternative model weights.",
-      "value-key": "[MODEL]",
+      "value-key": "[MODEL_WEIGHTS]",
       "type": "File",
       "optional": true,
       "id": "model_weights",

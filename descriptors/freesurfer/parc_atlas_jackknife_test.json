@@ -1,13 +1,13 @@
 {
   "name": "parc_atlas_jackknife_test",
   "description": "Tool for conducting a jackknife accuracy test using FreeSurfer atlases.",
-  "command-line": "parc_atlas_jackknife_test [REGISTER_FLAG] [REG_DIST] [REG_APPEND] [REG_COPY] [TRAIN_FLAG] [CLASSIFY_FLAG] [TEST_FLAG] [ALL_FLAG] [SUBJECTS_DIR] [FREESURFER_HOME] [BINARIES_PATH] [DONTRUN_FLAG]",
+  "command-line": "parc_atlas_jackknife_test [REGISTER] [REG_DIST] [REG_APPEND] [REG_COPY] [TRAIN] [CLASSIFY] [TEST] [ALL] [SUBJECTS_DIR] [FREESURFER_HOME] [BINARIES_PATH] [DONTRUN]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-register",
       "description": "Run mris_register: creates .sphere.reg files",
-      "value-key": "[REGISTER_FLAG]",
+      "value-key": "[REGISTER]",
       "type": "Flag",
       "optional": true,
       "id": "register",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-train",
       "description": "Run mris_ca_train: creates .gcs files",
-      "value-key": "[TRAIN_FLAG]",
+      "value-key": "[TRAIN]",
       "type": "Flag",
       "optional": true,
       "id": "train",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-classify",
       "description": "Run mris_ca_label: creates .annot files",
-      "value-key": "[CLASSIFY_FLAG]",
+      "value-key": "[CLASSIFY]",
       "type": "Flag",
       "optional": true,
       "id": "classify",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-test",
       "description": "Run mris_compute_parc_overlap",
-      "value-key": "[TEST_FLAG]",
+      "value-key": "[TEST]",
       "type": "Flag",
       "optional": true,
       "id": "test",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-all",
       "description": "Run train, classify, and test",
-      "value-key": "[ALL_FLAG]",
+      "value-key": "[ALL]",
       "type": "Flag",
       "optional": true,
       "id": "all",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "-dontrun",
       "description": "Don't execute the commands",
-      "value-key": "[DONTRUN_FLAG]",
+      "value-key": "[DONTRUN]",
       "type": "Flag",
       "optional": true,
       "id": "dontrun",

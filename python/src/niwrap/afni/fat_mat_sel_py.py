@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT_SEL_PY_METADATA = Metadata(
-    id="2dbd312d736f7cb02342c5c6ae41fc2d1aac7035.boutiques",
+    id="507d4511ca162d3a004cc7ca58b188298e3eea66.boutiques",
     name="fat_mat_sel.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

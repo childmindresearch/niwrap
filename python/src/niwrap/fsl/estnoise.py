@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ESTNOISE_METADATA = Metadata(
-    id="308f65a83e0993da4d250868c86b884c45e9b67f.boutiques",
+    id="bac23422fb853090843f27687afc6c5f426bdf2c.boutiques",
     name="estnoise",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

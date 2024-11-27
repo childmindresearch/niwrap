@@ -3,7 +3,7 @@
   "name": "GLTsymtest",
   "author": "AFNI Developers",
   "description": "A tool to test the validity of '-gltsym' strings for use with 3dDeconvolve or 3dREMLfit.",
-  "command-line": "GLTsymtest [BADONLY_FLAG] [VARS] [EXPR]",
+  "command-line": "GLTsymtest [BADONLY] [VARLIST] [EXPR]",
   "inputs": [
     {
       "description": "A flag to only output BAD messages rather than all messages",
@@ -11,7 +11,7 @@
       "type": "Flag",
       "id": "badonly",
       "name": "Badonly Flag",
-      "value-key": "[BADONLY_FLAG]",
+      "value-key": "[BADONLY]",
       "optional": true
     },
     {
@@ -19,7 +19,7 @@
       "type": "String",
       "id": "varlist",
       "name": "Variable List",
-      "value-key": "[VARS]",
+      "value-key": "[VARLIST]",
       "optional": false
     },
     {

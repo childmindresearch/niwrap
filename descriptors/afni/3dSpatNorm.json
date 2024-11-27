@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "An obsolete tool for spatial normalization",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSpatNorm [DATASET] [PREFIX] [ORIG_SPACE_FLAG] [VERBOSE_FLAG] [MONKEY_FLAG] [MARMOT_FLAG] [RAT_FLAG] [HUMAN_FLAG] [BOTTOM_CUTS]",
+  "command-line": "3dSpatNorm [DATASET] [PREFIX] [ORIG_SPACE] [VERBOSE] [MONKEY] [MARMOT] [RAT] [HUMAN] [BOTTOM_CUTS]",
   "schema-version": "0.5",
   "container-image": {
     "type": "docker",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-orig_space",
       "description": "Write output dataset using the same grid as dataset",
-      "value-key": "[ORIG_SPACE_FLAG]",
+      "value-key": "[ORIG_SPACE]",
       "type": "Flag",
       "optional": true,
       "id": "orig_space",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Write out progress reports",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-monkey",
       "description": "Monkey business",
-      "value-key": "[MONKEY_FLAG]",
+      "value-key": "[MONKEY]",
       "type": "Flag",
       "optional": true,
       "id": "monkey",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-marmost",
       "description": "Marmoset head",
-      "value-key": "[MARMOT_FLAG]",
+      "value-key": "[MARMOT]",
       "type": "Flag",
       "optional": true,
       "id": "marmot",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-rat",
       "description": "Rat head",
-      "value-key": "[RAT_FLAG]",
+      "value-key": "[RAT]",
       "type": "Flag",
       "optional": true,
       "id": "rat",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-human",
       "description": "Bone head (default)",
-      "value-key": "[HUMAN_FLAG]",
+      "value-key": "[HUMAN]",
       "type": "Flag",
       "optional": true,
       "id": "human",

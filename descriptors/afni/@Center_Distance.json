@@ -3,11 +3,11 @@
   "name": "@Center_Distance",
   "author": "AFNI Developers",
   "description": "Tool to calculate the distance between the centers of two datasets",
-  "command-line": "@Center_Distance [DSET_1] [DSET_2]",
+  "command-line": "@Center_Distance [DSET1] [DSET2]",
   "inputs": [
     {
       "description": "First dataset file (e.g. file1.nii.gz)",
-      "value-key": "[DSET_1]",
+      "value-key": "[DSET1]",
       "type": "File",
       "optional": false,
       "id": "dset1",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Second dataset file (e.g. file2.nii.gz)",
-      "value-key": "[DSET_2]",
+      "value-key": "[DSET2]",
       "type": "File",
       "optional": false,
       "id": "dset2",

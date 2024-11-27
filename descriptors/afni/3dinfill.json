@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/3dinfill_descriptor",
   "description": "A program to fill holes in volumes.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dinfill [INPUT] [PREFIX] [NITER] [BLEND] [MINHITS] [ED_VALUES] [MASK] [MASK_RANGE] [MRANGE] [CMASK]",
+  "command-line": "3dinfill [INPUT] [PREFIX] [NITER] [BLEND] [MINHITS] [ED] [MASK] [MASK_RANGE] [MRANGE] [CMASK]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -59,7 +59,7 @@
     },
     {
       "description": "Erode N times then dilate N times to get rid of hanging chunks. Values filled in by this process get value V.",
-      "value-key": "[ED_VALUES]",
+      "value-key": "[ED]",
       "type": "Number",
       "optional": true,
       "list": true,

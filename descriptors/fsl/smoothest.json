@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to estimate smoothness of data from FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "smoothest [DEGREES_OF_FREEDOM] [RES_FILE] [ZSTAT_FILE] [MASK] [VERBOSE_FLAG]",
+  "command-line": "smoothest [DOF] [RESIDUAL_FIT_IMAGE] [ZSTAT_IMAGE] [MASK] [VERBOSE_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-d",
       "description": "Number of degrees of freedom",
-      "value-key": "[DEGREES_OF_FREEDOM]",
+      "value-key": "[DOF]",
       "type": "Number",
       "optional": true,
       "id": "dof",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-r",
       "description": "Filename of `residual-fit` image (use -d)",
-      "value-key": "[RES_FILE]",
+      "value-key": "[RESIDUAL_FIT_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "residual_fit_image",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-z",
       "description": "Filename of zstat image (not with -d)",
-      "value-key": "[ZSTAT_FILE]",
+      "value-key": "[ZSTAT_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "zstat_image",
