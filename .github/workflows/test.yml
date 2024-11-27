@@ -23,12 +23,56 @@ jobs:
           pytest --tb=no --html=report.html --self-contained-html --json-report --json-report-file=report.json tests
         continue-on-error: true
 
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v4
+      - name: Checkout pages repo
+        uses: actions/checkout@v4
         with:
-          name: test-report-${{ github.sha }}
-          path: report.html
-          retention-days: 30  # adjust as needed
+          repository: childmindresearch/niwrap-test-report
+          token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          path: pages-repo
+
+      - name: Copy report to pages repo
+        run: |
+          timestamp=$(date +%Y%m%d_%H%M%S)
+          mkdir -p pages-repo/test-reports
+          cp report.html pages-repo/test-reports/latest.html
+          cp report.html "pages-repo/test-reports/report-${timestamp}-${GITHUB_SHA}.html"
+
+      - name: Clean old reports
+        run: |
+          cd pages-repo/test-reports
+          # Keep latest 30 reports plus latest.html
+          ls -t report-* | tail -n +31 | xargs -r rm
+
+      - name: Update index
+        run: |
+          cd pages-repo
+          cat > test-reports/index.md << EOF
+          # Test Report History
+          
+          ## Latest Report
+          - [Latest Test Results](latest.html)
+          
+          ## Historical Reports
+          | Date | Commit | Report |
+          |------|--------|--------|
+          EOF
+          
+          ls -t test-reports/report-* | while read file; do
+            filename=$(basename "$file")
+            date=$(echo $filename | cut -d'-' -f2,3)
+            formatted_date=$(date -d "${date:0:8}" "+%Y-%m-%d %H:%M:%S")
+            commit=$(echo $filename | cut -d'-' -f4 | cut -d'.' -f1)
+            echo "| $formatted_date | ${commit:0:7} | [View Report]($filename) |" >> test-reports/index.md
+          done
+
+      - name: Commit and push to pages repo
+        run: |
+          cd pages-repo
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add test-reports/
+          git commit -m "Update test report from ${{ github.repository }} @ ${{ github.sha }}"
+          git push
 
       - name: Update Report Issue
         uses: actions/github-script@v7
@@ -44,10 +88,22 @@ jobs:
               return failed > 0 ? '❌' : '✅';
             }
             
+            function getTrendEmoji(current, previous) {
+              if (!previous) return '➖';
+              return current > previous ? '📈' : current < previous ? '📉' : '➡️';
+            }
+            
+            const timestamp = new Date().toISOString();
+            const dateFormatted = new Date().toLocaleString('en-US', {
+              timeZone: 'UTC',
+              dateStyle: 'full',
+              timeStyle: 'long'
+            });
+            
             const summary = `
             # Test Report ${getStatusEmoji(report.summary.failed)}
             
-            Last updated: ${new Date().toISOString()}
+            Last updated: ${dateFormatted} (UTC)
             
             ## Summary
             - Total: ${report.summary.total}
@@ -55,10 +111,16 @@ jobs:
             - Failed: ${report.summary.failed}
             - Duration: ${Math.floor(report.duration * 100) / 100}s
             
-            ## Detailed Report
-            📊 [View Full HTML Report](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}/artifacts)
+            ## Reports
+            - 📊 [View Latest Report](https://${context.repo.owner}.github.io/niwrap-test-report/test-reports/latest.html)
+            - 📚 [View Report History](https://${context.repo.owner}.github.io/niwrap-test-report/test-reports/index.html)
+            - 🔍 [View This Run's Report](https://${context.repo.owner}.github.io/niwrap-test-report/test-reports/report-${timestamp.split('T')[0].replace(/-/g, '')}_${timestamp.split('T')[1].split('.')[0].replace(/:/g, '')}-${context.sha}.html)
             
-            Commit: ${context.sha.substring(0, 7)}
+            ## Build Information
+            - Commit: [\`${context.sha.substring(0, 7)}\`](https://github.com/${context.repo.owner}/${context.repo.repo}/commit/${context.sha})
+            - Workflow: [View Run Details](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
+            
+            <sub>🤖 This report is automatically generated on changes to the main branch.</sub>
             `;
             
             await github.rest.issues.update({
