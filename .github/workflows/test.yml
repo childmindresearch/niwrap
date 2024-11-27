@@ -1,0 +1,70 @@
+name: Update Test Report Issue
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+
+      - name: Install dependencies
+        run: |
+          pip install pytest pytest-html pytest-json-report
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest --html=report.html --self-contained-html --json-report --json-report-file=report.json
+        continue-on-error: true
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report-${{ github.sha }}
+          path: report.html
+          retention-days: 30  # adjust as needed
+
+      - name: Update Report Issue
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('report.json', 'utf8'));
+            
+            const ISSUE_NUMBER = 186;
+            
+            function getStatusEmoji(failed) {
+              return failed > 0 ? '❌' : '✅';
+            }
+            
+            const summary = `
+            # Test Report ${getStatusEmoji(report.summary.failed)}
+            
+            Last updated: ${new Date().toISOString()}
+            
+            ## Summary
+            - Total: ${report.summary.total}
+            - Passed: ${report.summary.passed}
+            - Failed: ${report.summary.failed}
+            - Duration: ${Math.floor(report.duration * 100) / 100}s
+            
+            ## Detailed Report
+            📊 [View Full HTML Report](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}/artifacts)
+            
+            Commit: ${context.sha.substring(0, 7)}
+            `;
+            
+            await github.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ISSUE_NUMBER,
+              body: summary
+            });
