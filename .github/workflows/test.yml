@@ -200,3 +200,10 @@ jobs:
             
             <sub>🤖 Auto-generated on main branch updates | [View Test Configuration](https://github.com/${context.repo.owner}/${context.repo.repo}/tree/main/tests)</sub>
             `;
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ISSUE_NUMBER,
+              body: summary
+            });
