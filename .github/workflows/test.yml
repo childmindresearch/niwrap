@@ -9,30 +9,29 @@ jobs:
   update-report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
 
       - name: Install dependencies
         run: |
           pip install pytest pytest-html pytest-json-report
-          pip install -r requirements.txt
 
       - name: Run tests
         run: |
-          pytest --html=report.html --self-contained-html --json-report --json-report-file=report.json
+          pytest --html=report.html --self-contained-html --json-report --json-report-file=report.json tests
         continue-on-error: true
 
       - name: Upload HTML report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: test-report-${{ github.sha }}
           path: report.html
           retention-days: 30  # adjust as needed
 
       - name: Update Report Issue
-        uses: actions/github-script@v4
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
