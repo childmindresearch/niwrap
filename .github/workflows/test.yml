@@ -116,10 +116,22 @@ jobs:
           
           ls -t test-reports/report-* | while read file; do
             filename=$(basename "$file")
-            date=$(echo $filename | cut -d'-' -f2,3)
-            formatted_date=$(date -d "${date:0:8}" "+%Y-%m-%d %H:%M:%S")
-            commit=$(echo $filename | cut -d'-' -f4 | cut -d'.' -f1)
-            echo "<tr><td>$formatted_date</td><td>${commit:0:7}</td><td><a href=\"$filename\">View Report</a></td></tr>" >> test-reports/index.html
+            # Extract date and time parts (assuming format: report-YYYYMMDD_HHMMSS-COMMIT.html)
+            datetime_part=$(echo $filename | cut -d'-' -f2)
+            commit=$(echo $filename | cut -d'-' -f3 | cut -d'.' -f1)
+            
+            # Parse date and time
+            year=${datetime_part:0:4}
+            month=${datetime_part:4:2}
+            day=${datetime_part:6:2}
+            hour=${datetime_part:9:2}
+            minute=${datetime_part:11:2}
+            second=${datetime_part:13:2}
+            
+            # Format date
+            formatted_date="$year-$month-$day $hour:$minute:$second"
+            
+            echo "<tr><td>$formatted_date</td><td><a href='https://github.com/${GITHUB_REPOSITORY}/commit/$commit'>${commit:0:7}</a></td><td><a href=\"$filename\">View Report</a></td></tr>" >> test-reports/index.html
           done
           
           cat >> test-reports/index.html << EOF
@@ -179,15 +191,7 @@ jobs:
             - Commit: [\`${context.sha.substring(0, 7)}\`](https://github.com/${context.repo.owner}/${context.repo.repo}/commit/${context.sha})
             - Run: [View in Actions](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
             
-            <details>
-            <summary>ℹ️ About Test Status</summary>
-            
-            This project currently maintains approximately 9,000 tests, with an expected subset of failures due to ongoing development and compatibility work.
-            
-            Refer to [issue #XX](link-to-tracking-issue) for details about known test failures.
-            </details>
-            
-            <sub>🤖 Auto-generated on main branch updates | [View Test Configuration](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/pytest.ini)</sub>
+            <sub>🤖 Auto-generated on main branch updates | [View Test Configuration](https://github.com/${context.repo.owner}/${context.repo.repo}/tree/main/tests)</sub>
             `;
             
             await github.rest.issues.update({
