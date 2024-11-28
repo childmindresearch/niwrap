@@ -25,6 +25,7 @@
 | [MRTrix3](https://www.mrtrix.org/) | Well tested | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 115/121 (95.0%) |
 | [MRTrix3Tissue](https://3tissue.github.io/) | Well tested | [`5.2.8`](https://hub.docker.com/r/brainlife/3tissue) | 1/1 (100% 🎉) |
 | [NiftyReg](http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg) | Experimental | [`1.4.0`](https://hub.docker.com/r/vnmd/niftyreg_1.4.0) | 7/7 (100% 🎉) |
+| [dcm2niix](https://github.com/rordenlab/dcm2niix) | Experimental | [`1.0.20240202`](https://hub.docker.com/r/vnmd/dcm2niix_v1.0.20240202) | 1/1 (100% 🎉) |
 
 <!-- END_PACKAGES_TABLE -->
 
