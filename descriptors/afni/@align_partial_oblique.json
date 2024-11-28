@@ -3,7 +3,7 @@
   "name": "@align_partial_oblique",
   "author": "AFNI Developers",
   "description": "A script to align a full coverage T1 weighted non-oblique dataset to match a partial coverage T1 weighted non-oblique dataset. Alignment is done with a rotation and shift (6 parameters) transform only.",
-  "command-line": "@align_partial_oblique [BASE] [INPUT] [SUFFIX] [KEEP_TMP_FLAG] [CLEAN_FLAG] [DXYZ] [DX] [DY] [DZ]",
+  "command-line": "@align_partial_oblique [BASE] [INPUT] [SUFFIX] [KEEP_TMP] [CLEAN] [DXYZ] [DX] [DY] [DZ]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -38,7 +38,7 @@
     },
     {
       "description": "Keep temporary files.",
-      "value-key": "[KEEP_TMP_FLAG]",
+      "value-key": "[KEEP_TMP]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-keep_tmp",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Clean all temp files, likely left from -keep_tmp option then exit.",
-      "value-key": "[CLEAN_FLAG]",
+      "value-key": "[CLEAN]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-clean",

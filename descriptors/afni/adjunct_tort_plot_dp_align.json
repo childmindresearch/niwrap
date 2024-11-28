@@ -3,7 +3,7 @@
   "name": "adjunct_tort_plot_dp_align",
   "author": "AFNI Developers",
   "description": "Tool to display the rigid-body alignment parameters from TORTOISE's DIFFPREP, useful for analyzing subject motion in DWI data.",
-  "command-line": "adjunct_tort_plot_dp_align [INPUT_FILE] [OUTPUT_PREFIX] [ENORM_MAX] [ENORM_HLINE] [NO_SVG_FLAG]",
+  "command-line": "adjunct_tort_plot_dp_align [INPUT_FILE] [OUTPUT_PREFIX] [ENORM_MAX] [ENORM_HLINE] [NO_SVG]",
   "inputs": [
     {
       "id": "input_file",
@@ -47,7 +47,7 @@
       "type": "Flag",
       "description": "Opt to turn off even checking to plot an SVG version of the figure.",
       "command-line-flag": "-no_svg",
-      "value-key": "[NO_SVG_FLAG]",
+      "value-key": "[NO_SVG]",
       "optional": true
     }
   ],

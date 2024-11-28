@@ -1,6 +1,6 @@
 {
   "name": "antsBrainExtraction.sh",
-  "command-line": "antsBrainExtraction.sh [DIMENSION] [ANATOMICAL_IMAGE] [BRAIN_EXTRACTION_TEMPLATE] [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] [OUTPUT_PREFIX]",
+  "command-line": "antsBrainExtraction.sh [IMAGE_DIMENSION] [ANATOMICAL_IMAGE] [TEMPLATE] [PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMPORARY_FILES] [SINGLE_FLOATING_POINT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH_PARAMS] [IMAGE_FILE_SUFFIX] [TRANSLATION_SEARCH_PARAMS] [RANDOM_SEEDING] [DEBUG_MODE] [OUTPUT_PREFIX]",
   "author": "ANTs Developers",
   "description": "antsBrainExtraction.sh performs template-based brain extraction.",
   "url": "https://github.com/ANTsX/ANTs",
@@ -23,7 +23,7 @@
     },
     {
       "description": "Image dimension (2 or 3)",
-      "value-key": "[DIMENSION]",
+      "value-key": "[IMAGE_DIMENSION]",
       "type": "Number",
       "optional": false,
       "id": "image_dimension",
@@ -43,7 +43,7 @@
     },
     {
       "description": "Brain extraction template (Anatomical template)",
-      "value-key": "[BRAIN_EXTRACTION_TEMPLATE]",
+      "value-key": "[TEMPLATE]",
       "type": "File",
       "optional": false,
       "id": "template",
@@ -52,7 +52,7 @@
     },
     {
       "description": "Brain extraction probability mask",
-      "value-key": "[BRAIN_EXTRACTION_PROBABILITY_MASK]",
+      "value-key": "[PROBABILITY_MASK]",
       "type": "File",
       "optional": false,
       "id": "probability_mask",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-k",
       "description": "Keep temporary files",
-      "value-key": "[KEEP_TEMP]",
+      "value-key": "[KEEP_TEMPORARY_FILES]",
       "type": "Flag",
       "optional": true,
       "id": "keep_temporary_files",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-q",
       "description": "Use single floating point precision",
-      "value-key": "[SINGLE_FLOAT_PRECISION]",
+      "value-key": "[SINGLE_FLOATING_POINT_PRECISION]",
       "type": "Flag",
       "optional": true,
       "id": "single_floating_point_precision",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-R",
       "description": "Rotation search parameters",
-      "value-key": "[ROTATION_SEARCH]",
+      "value-key": "[ROTATION_SEARCH_PARAMS]",
       "type": "String",
       "optional": true,
       "id": "rotation_search_params",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "-s",
       "description": "Image file suffix",
-      "value-key": "[IMAGE_SUFFIX]",
+      "value-key": "[IMAGE_FILE_SUFFIX]",
       "type": "String",
       "optional": true,
       "id": "image_file_suffix",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "-T",
       "description": "Translation search parameters",
-      "value-key": "[TRANSLATION_SEARCH]",
+      "value-key": "[TRANSLATION_SEARCH_PARAMS]",
       "type": "String",
       "optional": true,
       "id": "translation_search_params",

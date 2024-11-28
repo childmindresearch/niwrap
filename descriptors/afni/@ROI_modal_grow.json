@@ -3,7 +3,7 @@
   "name": "@ROI_modal_grow",
   "author": "AFNI Developers",
   "description": "Script to grow a set of regions in a volumetric dataset using modal smoothing.",
-  "command-line": "@ROI_modal_grow [INPUT_DATASET] [NUM_ITERATIONS] [OUTPUT_DIR] [MASK_DATASET] [OUTPUT_PREFIX] [NEIGHBORHOOD_TYPE]",
+  "command-line": "@ROI_modal_grow [INPUT_DSET] [NITERS] [OUTDIR] [MASK] [PREFIX] [NEIGHBORHOOD_TYPE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-input",
       "description": "Required input dataset. This dataset should be a set of integer values, assuming approximate isotropic voxels.",
-      "value-key": "[INPUT_DATASET]",
+      "value-key": "[INPUT_DSET]",
       "type": "File",
       "optional": false,
       "id": "input_dset",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-niters",
       "description": "Number of iterations for modal growth, generally making sense for values from about 1-10.",
-      "value-key": "[NUM_ITERATIONS]",
+      "value-key": "[NITERS]",
       "type": "Number",
       "optional": false,
       "id": "niters",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-outdir",
       "description": "Directory name for output. All output goes to this directory. Default is rmgrow.",
-      "value-key": "[OUTPUT_DIR]",
+      "value-key": "[OUTDIR]",
       "type": "String",
       "optional": true,
       "id": "outdir",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Mask dataset at the same grid as the input dataset. Could be a dilated version of the original mask or a larger region like a cortical ribbon mask. Not required but often desirable.",
-      "value-key": "[MASK_DATASET]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Base name of the final output dataset, i.e., baseprefix.nii.gz. Default is rmg, so output would be rmg.nii.gz.",
-      "value-key": "[OUTPUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": true,
       "id": "prefix",
@@ -70,7 +70,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_DIR]/[OUTPUT_PREFIX].nii.gz",
+      "path-template": "[OUTDIR]/[PREFIX].nii.gz",
       "description": "Final output dataset",
       "optional": false,
       "id": "output_file",

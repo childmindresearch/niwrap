@@ -5,11 +5,11 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/index.html",
   "description": "Generate a tcsh script for an AFNI single subject processing stream",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "afni_proc.py [INPUT_FILES] [SUBJ_ID] [OUT_DIR] [BLOCKS] [ANAT] [ECHO_TIMES] [STIM_TIMES] [STIM_FILES] [COPY_FILES] [COPY_ANAT] [REGRESS_PARAMS]",
+  "command-line": "afni_proc.py [DSETS] [SUBJ_ID] [OUT_DIR] [BLOCKS] [ANAT] [ECHO_TIMES] [STIM_TIMES] [STIM_FILES] [COPY_FILES] [COPY_ANAT] [REGRESS_PARAMS]",
   "inputs": [
     {
       "description": "Specify the EPI dataset files. (e.g. epi_run1+orig, epi_run2+orig)",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[DSETS]",
       "type": "File",
       "optional": false,
       "list": true,

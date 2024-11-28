@@ -3,7 +3,7 @@
   "name": "fslregister",
   "author": "FreeSurfer Developers",
   "description": "Registers a volume to its FreeSurfer anatomical using FSL's FLIRT and creates a FreeSurfer register.dat file.",
-  "command-line": "fslregister [SUBJ_ID] [MOV_VOL] [REG_FILE] [FSL_MAT] [INIT_FSL_MAT] [NO_INIT_XFM] [NITERS] [DOF] [BINS] [COST] [MAXANGLE] [NO_NEW_SCHEDULE] [NO_ALLOW_SWAP] [NO_TRANS] [BET_MOV] [BET_FVALUE] [BET_FUNC] [BET_REF] [FRAME] [MID_FRAME] [FSVOL] [TEMPLATE_OUT] [OUT_VOL] [VERBOSE] [TMP_DIR] [NO_CLEANUP] [NO_LOG] [VERSION] [HELP] [LTA]",
+  "command-line": "fslregister [SUBJID] [MOV_VOL] [REG_FILE] [FSL_MATRIX] [INIT_FSL_MATRIX] [NO_INIT_XFM] [NITERS] [DOF] [BINS] [COST] [MAX_ANGLE] [NO_NEW_SCHEDULE] [NO_ALLOW_SWAP] [NO_TRANS] [BET_MOV] [BET_FVALUE] [BET_FUNC] [BET_REF] [FRAME] [MID_FRAME] [FREESURFER_VOLUME] [TEMPLATE_OUTPUT] [OUTPUT_VOLUME] [VERBOSE] [TMP_DIR] [NO_CLEANUP] [NO_LOG] [VERSION] [HELP] [LTA_FORMAT]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "--s",
       "description": "Id of the subject as found in SUBJECTS_DIR.",
-      "value-key": "[SUBJ_ID]",
+      "value-key": "[SUBJID]",
       "type": "String",
       "optional": false,
       "id": "subjid",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "--fslmat",
       "description": "Output registration matrix in FSL format.",
-      "value-key": "[FSL_MAT]",
+      "value-key": "[FSL_MATRIX]",
       "type": "String",
       "optional": true,
       "id": "fsl_matrix",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--initfslmat",
       "description": "Supply initial FSL matrix file.",
-      "value-key": "[INIT_FSL_MAT]",
+      "value-key": "[INIT_FSL_MATRIX]",
       "type": "String",
       "optional": true,
       "id": "init_fsl_matrix",
@@ -103,7 +103,7 @@
     {
       "command-line-flag": "--maxangle",
       "description": "Maximum search angle for FLIRT.",
-      "value-key": "[MAXANGLE]",
+      "value-key": "[MAX_ANGLE]",
       "type": "Number",
       "optional": true,
       "id": "max_angle",
@@ -193,7 +193,7 @@
     {
       "command-line-flag": "--fsvol",
       "description": "Use FreeSurfer volid as reference volume.",
-      "value-key": "[FSVOL]",
+      "value-key": "[FREESURFER_VOLUME]",
       "type": "String",
       "optional": true,
       "id": "freesurfer_volume",
@@ -202,7 +202,7 @@
     {
       "command-line-flag": "--template-out",
       "description": "Save template.",
-      "value-key": "[TEMPLATE_OUT]",
+      "value-key": "[TEMPLATE_OUTPUT]",
       "type": "String",
       "optional": true,
       "id": "template_output",
@@ -211,7 +211,7 @@
     {
       "command-line-flag": "--out",
       "description": "Have FLIRT reslice movable volume to target.",
-      "value-key": "[OUT_VOL]",
+      "value-key": "[OUTPUT_VOLUME]",
       "type": "String",
       "optional": true,
       "id": "output_volume",
@@ -274,7 +274,7 @@
     {
       "command-line-flag": "--lta",
       "description": "Output registration in LTA format.",
-      "value-key": "[LTA]",
+      "value-key": "[LTA_FORMAT]",
       "type": "String",
       "optional": true,
       "id": "lta_format",
@@ -290,28 +290,28 @@
       "name": "Output Registration File"
     },
     {
-      "path-template": "[OUT_VOL]",
+      "path-template": "[OUTPUT_VOLUME]",
       "description": "Resliced output volume.",
       "optional": true,
       "id": "output_resliced_volume",
       "name": "Output Resliced Volume"
     },
     {
-      "path-template": "[FSL_MAT]",
+      "path-template": "[FSL_MATRIX]",
       "description": "FSL format output registration matrix.",
       "optional": true,
       "id": "output_fsl_matrix",
       "name": "Output FSL Matrix"
     },
     {
-      "path-template": "[LTA]",
+      "path-template": "[LTA_FORMAT]",
       "description": "Registration output in LTA format.",
       "optional": true,
       "id": "lta_output",
       "name": "LTA Output"
     },
     {
-      "path-template": "[TEMPLATE_OUT]",
+      "path-template": "[TEMPLATE_OUTPUT]",
       "description": "Output template.",
       "optional": true,
       "id": "output_template",

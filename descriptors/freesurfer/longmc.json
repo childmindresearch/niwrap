@@ -3,7 +3,7 @@
   "name": "longmc",
   "author": "FreeSurfer Developers",
   "description": "Perform motion correction for the longitudinal recon-all stream when creating the longitudinal timepoint of a subject.",
-  "command-line": "longmc [CROSS_TP_NAME] [BASE_NAME] [CONFORM_TO_HIRES_FLAG] [SUBJECTS_DIR] [SUBJECT_NAME] [FORCE_UPDATE_FLAG]",
+  "command-line": "longmc [CROSS_TP_NAME] [BASE_NAME] [CONFORM_TO_HIRES] [SUBJECTS_DIR] [SUBJECT_NAME] [NO_FORCE_UPDATE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-conf2hires",
       "description": "Option to conform input to high-resolution",
-      "value-key": "[CONFORM_TO_HIRES_FLAG]",
+      "value-key": "[CONFORM_TO_HIRES]",
       "type": "Flag",
       "optional": true,
       "id": "conform_to_hires",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "-no-conf2hires",
       "description": "Option to not conform input to high-resolution",
-      "value-key": "[NO_CONFORM_TO_HIRES_FLAG]",
+      "value-key": "[NO_CONFORM_TO_HIRES]",
       "type": "Flag",
       "optional": true,
       "id": "no_conform_to_hires",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-no-force-update",
       "description": "Do not force update",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[NO_FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "no_force_update",

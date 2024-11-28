@@ -1,12 +1,12 @@
 {
   "name": "isolate_labels.csh",
   "description": "Tool to separate out a particular or all labels into individual binary files for subsequent shape analysis.",
-  "command-line": "isolate_labels [LABELVOL] [OUTPREFIX] [LABEL_OPTION] [VERSION_FLAG] [KEEPVAL_FLAG] [HELP_FLAG]",
+  "command-line": "isolate_labels [LABEL_VOLUME] [OUTPUT_PREFIX] [LOWERCASE_LABEL_OPTION] [VERSION] [KEEPVAL] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Label volume to be analyzed",
-      "value-key": "[LABELVOL]",
+      "value-key": "[LABEL_VOLUME]",
       "type": "File",
       "command-line-flag": "--vol",
       "optional": false,
@@ -15,7 +15,7 @@
     },
     {
       "description": "Prefix of binary label file(s)",
-      "value-key": "[OUTPREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "command-line-flag": "--outprefix",
       "optional": false,
@@ -33,7 +33,7 @@
     },
     {
       "description": "The particular label to be analyzed; default is all labels.",
-      "value-key": "[LABEL_OPTION]",
+      "value-key": "[LOWERCASE_LABEL_OPTION]",
       "type": "String",
       "command-line-flag": "--l",
       "optional": true,
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--keepval",
       "description": "Keeps original label values",
-      "value-key": "[KEEPVAL_FLAG]",
+      "value-key": "[KEEPVAL]",
       "type": "Flag",
       "optional": true,
       "id": "keepval",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

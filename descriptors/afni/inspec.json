@@ -3,11 +3,11 @@
   "name": "inspec",
   "author": "AFNI Developers",
   "description": "Outputs information found from specfile.",
-  "command-line": "inspec [SPEC_FILE] [NEW_SPEC_NAME] [DETAIL] [LEFT_SPEC] [RIGHT_SPEC] [STATE_RM] [HELP]",
+  "command-line": "inspec [SPECFILE] [NEWSPECNAME] [DETAIL] [LEFTSPEC] [RIGHTSPEC] [STATE_RM] [HELP]",
   "inputs": [
     {
       "description": "Spec file to be read",
-      "value-key": "[SPEC_FILE]",
+      "value-key": "[SPECFILE]",
       "type": "File",
       "optional": false,
       "id": "specfile",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Rewrite spec file",
-      "value-key": "[NEW_SPEC_NAME]",
+      "value-key": "[NEWSPECNAME]",
       "type": "String",
       "optional": true,
       "id": "newspecname",
@@ -36,7 +36,7 @@
     },
     {
       "description": "Merge two spec files in a way that makes sense for viewing in SUMA",
-      "value-key": "[LEFT_SPEC]",
+      "value-key": "[LEFTSPEC]",
       "type": "File",
       "optional": true,
       "id": "leftspec",
@@ -45,7 +45,7 @@
     },
     {
       "description": "Merge two spec files in a way that makes sense for viewing in SUMA",
-      "value-key": "[RIGHT_SPEC]",
+      "value-key": "[RIGHTSPEC]",
       "type": "File",
       "optional": true,
       "id": "rightspec",

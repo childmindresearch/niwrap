@@ -3,7 +3,7 @@
   "name": "@FindAfniDsetPath",
   "author": "AFNI Developers",
   "description": "Searches various AFNI directories for a specified dataset and returns its path.",
-  "command-line": "@FindAfniDsetPath [DSETNAME] [APPEND_FILE] [FULL_PATH_FLAG] [HELP_FLAG]",
+  "command-line": "@FindAfniDsetPath [DSETNAME] [APPEND_FILE] [FULL_PATH] [HELP]",
   "inputs": [
     {
       "description": "Name of the dataset to search for",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-full_path",
       "description": "Print full path instead of '.'",
-      "value-key": "[FULL_PATH_FLAG]",
+      "value-key": "[FULL_PATH]",
       "type": "Flag",
       "optional": true,
       "id": "full_path",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-help",
       "description": "Display help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

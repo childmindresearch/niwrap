@@ -1,6 +1,6 @@
 {
   "name": "SurfaceCurvature",
-  "command-line": "SurfaceCurvature[FILENAMEIN][FILENAMEOUT][SIGMA][OPTION]",
+  "command-line": "SurfaceCurvature[FILENAME_IN][FILENAME_OUT][SIGMA][OPTION]",
   "author": "ANTs Developers",
   "description": "The Shape Operator for Differential Analysis of Images. It can operate on binary or gray scale images with various modes to see different effects.",
   "url": "https://github.com/ANTsX/ANTs",
@@ -10,7 +10,7 @@
     {
       "id": "filename_in",
       "name": "Input Image",
-      "value-key": "[FILENAMEIN]",
+      "value-key": "[FILENAME_IN]",
       "type": "File",
       "optional": false,
       "description": "The input image file in .nii format.",
@@ -19,7 +19,7 @@
     {
       "id": "filename_out",
       "name": "Output Image",
-      "value-key": "[FILENAMEOUT]",
+      "value-key": "[FILENAME_OUT]",
       "type": "File",
       "optional": false,
       "description": "The output image file in .nii format.",
@@ -50,7 +50,7 @@
       "id": "output_image",
       "name": "Processed image",
       "description": "The processed image file.",
-      "path-template": "[FILENAMEOUT]"
+      "path-template": "[FILENAME_OUT]"
     }
   ],
   "container-image": {

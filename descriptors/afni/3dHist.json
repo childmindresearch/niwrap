@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Computes histograms using functions for generating priors",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dHist [INPUT_FILE] [MASK_DSET] [MASK_RANGE] [CMASK_EXPR] [HIST_FILE] [PREFIX] [EQUALIZED] [NBIN] [MIN] [MAX] [BINWIDTH] [IGNORE_OUT] [RANGE_HIST] [SHOWHIST] [AT_VAL] [GET_PARAMS] [VOXVOL] [VAL_AT] [QUIET]",
+  "command-line": "3dHist [INPUT] [MASK_DSET] [MASK_RANGE] [CMASK] [HIST_FILE] [PREFIX] [EQUALIZED] [NBIN] [MIN] [MAX] [BINWIDTH] [IGNORE_OUT] [RANGE_HIST] [SHOWHIST] [AT_VAL] [GET_PARAMS] [VOXVOL] [VAL_AT] [QUIET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Dataset providing values for histogram.",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-dind",
       "description": "Use sub-brick SB from the input rather than 0",
-      "value-key": "[DIND_SB]",
+      "value-key": "[DIND_SUBBRICK]",
       "type": "Number",
       "optional": true,
       "id": "dind_subbrick",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-cmask",
       "description": "Provide cmask expression. Voxels where expression is 0 are excluded from computations.",
-      "value-key": "[CMASK_EXPR]",
+      "value-key": "[CMASK]",
       "type": "String",
       "optional": true,
       "id": "cmask",

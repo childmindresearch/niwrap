@@ -1,6 +1,6 @@
 {
   "name": "mri_segment_thalamic_nuclei_dti_cnn",
-  "command-line": "mri_segment_thalamic_nuclei_dti_cnn [T1_IMAGES] [ASEG] [FA] [V1] [OUTPUT] [VOLUME_OUTPUT] [POSTERIORS_OUTPUT] [THREADS] [FORCE_CPU_FLAG] [MODEL]",
+  "command-line": "mri_segment_thalamic_nuclei_dti_cnn [T1_IMAGES] [ASEG] [FA] [V1] [OUTPUT] [VOLUME_OUTPUT] [POSTERIORS_OUTPUT] [THREADS] [FORCE_CPU] [MODEL]",
   "description": "Thalamic segmentation tool providing 0.7mm isotropic thalamus segmentation from registered T1, FA, and V1 volumes.",
   "schema-version": "0.5",
   "inputs": [
@@ -81,7 +81,7 @@
       "name": "Force CPU",
       "type": "Flag",
       "optional": true,
-      "value-key": "[FORCE_CPU_FLAG]",
+      "value-key": "[FORCE_CPU]",
       "description": "Enforce running with CPU rather than GPU.",
       "command-line-flag": "--cpu"
     },

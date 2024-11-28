@@ -1,7 +1,7 @@
 {
   "name": "mris_surface_to_vol_distances",
   "description": "Tool from FreeSurfer to calculate surface-to-volume distances",
-  "command-line": "mris_surface_to_vol_distances [AVERAGE_SUBJECT] [HEMI] [SUBJECTS] [OUTPUT_PREFIX]",
+  "command-line": "mris_surface_to_vol_distances [AVERAGE_SUBJECT] [HEMISPHERE] [SUBJECTS] [OUTPUT_PREFIX]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "description": "Hemisphere identifier (e.g., lh or rh).",
-      "value-key": "[HEMI]",
+      "value-key": "[HEMISPHERE]",
       "type": "String",
       "optional": false,
       "id": "hemisphere",

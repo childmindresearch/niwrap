@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Demo script to create a graph dataset to show names of individuals and groups, potentially useful for acknowledgements in a talk.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@suma_acknowledge [INPUT_FILE] [SURFACE_FILE] [OUTPUT_PREFIX] [CENTER_FLAG] [SUBSURF_FILE] [SCALE_FACTOR] [REDUCE_FACTOR]",
+  "command-line": "@suma_acknowledge [INPUT_FILE] [SURFACE_FILE] [OUTPUT_PREFIX] [CENTER_FLAG] [SUBSURFACE_FILE] [SCALE_FACTOR] [REDUCE_FACTOR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-subsurf",
       "description": "Surface for surrounding members of group (use ld2, ld4, ld5, ld6, .... default is ld5).",
-      "value-key": "[SUBSURF_FILE]",
+      "value-key": "[SUBSURFACE_FILE]",
       "type": "String",
       "optional": true,
       "id": "subsurface_file",

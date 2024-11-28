@@ -2,12 +2,12 @@
   "name": "dmri_ac.sh",
   "tool-version": "7.4.1",
   "description": "A script related to diffusion MRI processing in FreeSurfer.",
-  "command-line": "dmri_ac.sh [ARGS]",
+  "command-line": "dmri_ac.sh [ADDITIONAL_ARGS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Additional arguments for dmri_ac.sh script.",
-      "value-key": "[ARGS]",
+      "value-key": "[ADDITIONAL_ARGS]",
       "type": "String",
       "optional": true,
       "id": "additional_args",

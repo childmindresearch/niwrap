@@ -3,7 +3,7 @@
   "name": "parse_fs_lt_log.py",
   "author": "AFNI Developers",
   "description": "Parses FreeSurfer labeltable log file and retrieves labeltable indices.",
-  "command-line": "parse_fs_lt_log.py [LOGFILE] [LABELS] [SHOW_ORIG] [SHOW_ALL_ORIG] [VERBOSE]",
+  "command-line": "parse_fs_lt_log.py [LOGFILE] [LABELS] [SHOW_ORIG] [SHOW_ALL_ORIG] [VERBOSITY]",
   "inputs": [
     {
       "description": "Specify rank log file.",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Specify verbosity level.",
-      "value-key": "[VERBOSE]",
+      "value-key": "[VERBOSITY]",
       "type": "Number",
       "optional": true,
       "id": "verbosity",

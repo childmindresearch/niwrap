@@ -1,11 +1,11 @@
 {
   "name": "mris_label_area",
   "description": "Compute the area of specific labels on a surface of a brain hemisphere in FreeSurfer.",
-  "command-line": "mris_label_area [PCT] [LOG_FILE] [BRAIN_VOL] <subject_name> <hemi> <surf_name> <annot_name> [LABELS...]",
+  "command-line": "mris_label_area [PCT_FLAG] [LOG_FILE] [BRAIN_VOL] [SUBJECT_NAME] [HEMI] [SURF_NAME] [ANNOT_NAME] [LABELS]",
   "inputs": [
     {
       "description": "Name of the subject",
-      "value-key": "<subject_name>",
+      "value-key": "[SUBJECT_NAME]",
       "type": "String",
       "optional": false,
       "id": "subject_name",
@@ -13,7 +13,7 @@
     },
     {
       "description": "Hemisphere, typically 'lh' or 'rh'",
-      "value-key": "<hemi>",
+      "value-key": "[HEMI]",
       "type": "String",
       "optional": false,
       "id": "hemi",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Surface name",
-      "value-key": "<surf_name>",
+      "value-key": "[SURF_NAME]",
       "type": "String",
       "optional": false,
       "id": "surf_name",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Annotation name",
-      "value-key": "<annot_name>",
+      "value-key": "[ANNOT_NAME]",
       "type": "String",
       "optional": false,
       "id": "annot_name",
@@ -37,7 +37,7 @@
     },
     {
       "description": "Labels to calculate area for",
-      "value-key": "[LABELS...]",
+      "value-key": "[LABELS]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-p",
       "description": "Compute brain area as a percentage of all brain labels",
-      "value-key": "[PCT]",
+      "value-key": "[PCT_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "pct_flag",

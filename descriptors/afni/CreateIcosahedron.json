@@ -3,7 +3,7 @@
   "name": "CreateIcosahedron",
   "author": "AFNI Developers",
   "description": "Tool to create an icosahedron with optional tessellation.",
-  "command-line": "CreateIcosahedron [RAD] [RECURSIVE_DEPTH] [LINEAR_DEPTH] [MIN_NODES] [NUMS_FLAG] [NUMS_QUIET_FLAG] [CTR] [TOSPHERE_FLAG] [OUTPUT_PREFIX] [HELP_FLAG]",
+  "command-line": "CreateIcosahedron [RAD] [REC_DEPTH] [LIN_DEPTH] [MIN_NODES] [NUMS] [NUMS_QUIET] [CENTER_COORDINATES] [TO_SPHERE] [OUTPUT_PREFIX] [HELP]",
   "inputs": [
     {
       "description": "Size of icosahedron.",
@@ -17,7 +17,7 @@
     {
       "description": "Recursive tessellation depth for icosahedron.",
       "command-line-flag": "-rd",
-      "value-key": "[RECURSIVE_DEPTH]",
+      "value-key": "[REC_DEPTH]",
       "type": "Number",
       "optional": true,
       "id": "rec_depth",
@@ -26,7 +26,7 @@
     {
       "description": "Number of edge divides for linear icosahedron tessellation.",
       "command-line-flag": "-ld",
-      "value-key": "[LINEAR_DEPTH]",
+      "value-key": "[LIN_DEPTH]",
       "type": "Number",
       "optional": true,
       "id": "lin_depth",
@@ -44,7 +44,7 @@
     {
       "description": "Output the number of nodes (vertices), triangles, edges, total volume, and total area then quit.",
       "command-line-flag": "-nums",
-      "value-key": "[NUMS_FLAG]",
+      "value-key": "[NUMS]",
       "type": "Flag",
       "optional": true,
       "id": "nums",
@@ -53,7 +53,7 @@
     {
       "description": "Output numbers in a less verbose manner.",
       "command-line-flag": "-nums_quiet",
-      "value-key": "[NUMS_QUIET_FLAG]",
+      "value-key": "[NUMS_QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "nums_quiet",
@@ -62,7 +62,7 @@
     {
       "description": "Coordinates of the center of the icosahedron.",
       "command-line-flag": "-ctr",
-      "value-key": "[CTR]",
+      "value-key": "[CENTER_COORDINATES]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -74,7 +74,7 @@
     {
       "description": "Project nodes to sphere.",
       "command-line-flag": "-tosphere",
-      "value-key": "[TOSPHERE_FLAG]",
+      "value-key": "[TO_SPHERE]",
       "type": "Flag",
       "optional": true,
       "id": "to_sphere",
@@ -92,7 +92,7 @@
     {
       "description": "Display help message.",
       "command-line-flag": "-help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

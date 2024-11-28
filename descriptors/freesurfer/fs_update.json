@@ -3,7 +3,7 @@
   "name": "fs_update",
   "author": "FreeSurfer Developers",
   "description": "Utility to update the FreeSurfer installation",
-  "command-line": "fs_update [UPDATE_PATH] [HELP_FLAG]",
+  "command-line": "fs_update [UPDATE_PATH] [HELP_LONG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -21,7 +21,7 @@
     {
       "description": "Show help",
       "command-line-flag": "-h",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP_SHORT]",
       "type": "Flag",
       "optional": true,
       "id": "help_short",
@@ -29,7 +29,7 @@
     },
     {
       "command-line-flag": "-help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP_MEDIUM]",
       "type": "Flag",
       "optional": true,
       "id": "help_medium",
@@ -37,7 +37,7 @@
     },
     {
       "command-line-flag": "--help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP_LONG]",
       "type": "Flag",
       "optional": true,
       "id": "help_long",

@@ -2,12 +2,12 @@
   "name": "mri_correct_segmentations",
   "tool-version": "7.4.1",
   "description": "Tool for correcting automated infant segmentations.",
-  "command-line": "mri_correct_segmentations [INPUT_FILE1] [INPUT_FILE2]",
+  "command-line": "mri_correct_segmentations [INPUT_FILE_1] [INPUT_FILE_2]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "First input file for correction (e.g. segmentation file).",
-      "value-key": "[INPUT_FILE1]",
+      "value-key": "[INPUT_FILE_1]",
       "type": "File",
       "optional": false,
       "id": "input_file_1",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Second input file for correction (e.g. reference file).",
-      "value-key": "[INPUT_FILE2]",
+      "value-key": "[INPUT_FILE_2]",
       "type": "File",
       "optional": false,
       "id": "input_file_2",

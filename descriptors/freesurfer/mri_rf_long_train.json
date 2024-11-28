@@ -3,7 +3,7 @@
   "name": "mri_rf_long_train",
   "author": "FreeSurfer Developers",
   "description": "Trains GCA data with multiple subjects for FreeSurfer",
-  "command-line": "mri_rf_long_train [SEG_DIR] [XFORM] [MASK] [NODE_SPACING] [PRIOR_SPACING] [INPUT] [CHECK_FLAG] [SUBJECTS] [OUTPUT_RFA]",
+  "command-line": "mri_rf_long_train [SEG_DIR] [XFORM] [MASK] [NODE_SPACING] [PRIOR_SPACING] [INPUT_DATA] [CHECK] [SUBJECTS] [OUTPUT_RFA]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-input",
       "description": "Specify training data, path relative to $subject/mri. Can specify multiple inputs. Defaults to 'orig' if not specified.",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_DATA]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-check",
       "description": "Conduct sanity-check of labels for obvious edit errors.",
-      "value-key": "[CHECK_FLAG]",
+      "value-key": "[CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "check",

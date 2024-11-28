@@ -27,7 +27,7 @@
     {
       "command-line-flag": "-doall",
       "description": "Apply the algorithm to each sub-brick separately.",
-      "value-key": "[DOALL_FLAG]",
+      "value-key": "[DOALL]",
       "type": "Flag",
       "optional": true,
       "id": "doall",

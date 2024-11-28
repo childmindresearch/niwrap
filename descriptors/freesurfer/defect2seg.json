@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
   "description": "Converts surface defect labels into a segmentation volume and pointsets",
-  "command-line": "defect2seg [OUTPUT_SEG] [TEMPLATE] [LH_SURF] [LH_DEFECT_LABELS] [LH_POINTSET] [LH_OFFSET] [RH_SURF] [RH_DEFECT_LABELS] [RH_POINTSET] [RH_OFFSET] [SUBJECT] [LH_ONLY_FLAG] [RH_ONLY_FLAG] [CORTEX_FLAG] [NO_CORTEX_FLAG]",
+  "command-line": "defect2seg [OUTPUT_SEG] [TEMPLATE] [LEFT_HEMISPHERE] [RIGHT_HEMISPHERE] [SUBJECT] [LH_ONLY] [RH_ONLY] [CORTEX] [NO_CORTEX]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Left hemisphere inputs: surface, defect labels, pointset, and offset",
-      "value-key": "[LH_SURF] [LH_DEFECT_LABELS] [LH_POINTSET] [LH_OFFSET]",
+      "value-key": "[LEFT_HEMISPHERE]",
       "type": "String",
       "list": true,
       "max-list-entries": 4,
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Right hemisphere inputs: surface, defect labels, pointset, and offset",
-      "value-key": "[RH_SURF] [RH_DEFECT_LABELS] [RH_POINTSET] [RH_OFFSET]",
+      "value-key": "[RIGHT_HEMISPHERE]",
       "type": "String",
       "list": true,
       "max-list-entries": 4,
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--lh-only",
       "description": "Consider only left hemisphere defects",
-      "value-key": "[LH_ONLY_FLAG]",
+      "value-key": "[LH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "lh_only",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--rh-only",
       "description": "Consider only right hemisphere defects",
-      "value-key": "[RH_ONLY_FLAG]",
+      "value-key": "[RH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "rh_only",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--cortex",
       "description": "Constrain defects to within cortex",
-      "value-key": "[CORTEX_FLAG]",
+      "value-key": "[CORTEX]",
       "type": "Flag",
       "optional": true,
       "id": "cortex",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--no-cortex",
       "description": "Allow defects outside of cortex",
-      "value-key": "[NO_CORTEX_FLAG]",
+      "value-key": "[NO_CORTEX]",
       "type": "Flag",
       "optional": true,
       "id": "no_cortex",

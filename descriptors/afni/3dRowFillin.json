@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Fills in blank regions in 1D rows extracted from a 3D dataset",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dRowFillin [MAX_GAP] [DIRECTION] [BINARY_FLAG] [PREFIX] [INPUT_DATASET]",
+  "command-line": "3dRowFillin [MAXGAP] [DIR] [BINARY] [PREFIX] [INPUT_DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-maxgap",
       "description": "Set the maximum length of a blank region that will be filled in",
-      "value-key": "[MAX_GAP]",
+      "value-key": "[MAXGAP]",
       "type": "Number",
       "optional": true,
       "id": "maxgap",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-dir",
       "description": "Set the direction of fill, e.g., A-P, P-A, I-S, S-I, L-R, R-L, x, y, z, XYZ.OR, XYZ.AND",
-      "value-key": "[DIRECTION]",
+      "value-key": "[DIR]",
       "type": "String",
       "optional": true,
       "id": "dir",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-binary",
       "description": "Turn input dataset to binary (0 and 1) before filling in. Output will also be binary.",
-      "value-key": "[BINARY_FLAG]",
+      "value-key": "[BINARY]",
       "type": "Flag",
       "optional": true,
       "id": "binary",

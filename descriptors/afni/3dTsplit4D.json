@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Convert a 3D+time dataset into multiple 3D single-brick files.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dTsplit4D [PREFIX] [INPUT_FILE] [KEEP_DATUM_FLAG] [DIGITS]",
+  "command-line": "3dTsplit4D [PREFIX] [INFILE] [KEEP_DATUM] [DIGITS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input 3D+time dataset (e.g., epi_r1+orig)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Output uses original datum (no conversion to float)",
-      "value-key": "[KEEP_DATUM_FLAG]",
+      "value-key": "[KEEP_DATUM]",
       "command-line-flag": "-keep_datum",
       "type": "Flag",
       "optional": true,

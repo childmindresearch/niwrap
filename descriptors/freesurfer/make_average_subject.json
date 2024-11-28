@@ -3,7 +3,7 @@
   "name": "make_average_subject",
   "author": "FreeSurfer Developers",
   "description": "Creates an average subject by averaging surfaces, curvatures, and volumes from a set of subjects.",
-  "command-line": "make_average_subject [SUBJECTS] [FSGD_FILE] [SUBJECT_LIST_FILE] [OUTPUT_NAME] [SD_OUT] [NO_LINK_FLAG] [SDIR] [ICO_ORDER] [XFORM_FILE] [SURF_REG] [NO_SURF_FLAG] [NO_VOL_FLAG] [FORCE_FLAG] [KEEP_ALL_ORIG_FLAG] [NO_SYMLINK_FLAG] [NO_RIBBON_FLAG] [NO_SURF2SURF_FLAG] [RCA_THREADS] [HELP_FLAG] [VERSION_FLAG] [ECHO_FLAG] [DEBUG_FLAG]",
+  "command-line": "make_average_subject [SUBJECTS] [FSGD_FILE] [SUBJECT_LIST_FILE] [AVERAGE_SUBJECT_NAME] [SD_OUT] [NO_LINK] [SDIR] [ICO_ORDER] [TRANSFORM_FILE] [SURFACE_REGISTRATION] [NO_SURFACES] [NO_VOLUMES] [FORCE] [KEEP_ALL_ORIG] [NO_SYMLINK] [NO_RIBBON] [NO_SURF2SURF] [RCA_THREADS] [HELP] [VERSION] [ECHO] [DEBUG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--out",
       "description": "Name of the average subject",
-      "value-key": "[OUTPUT_NAME]",
+      "value-key": "[AVERAGE_SUBJECT_NAME]",
       "type": "String",
       "optional": false,
       "id": "average_subject_name",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--no-link",
       "description": "Do not link back to the original SUBJECTS_DIR with --sd-out",
-      "value-key": "[NO_LINK_FLAG]",
+      "value-key": "[NO_LINK]",
       "type": "Flag",
       "optional": true,
       "id": "no_link",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "--xform",
       "description": "Filename of transform file",
-      "value-key": "[XFORM_FILE]",
+      "value-key": "[TRANSFORM_FILE]",
       "type": "File",
       "optional": true,
       "id": "transform_file",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "--surf-reg",
       "description": "Alternative registration surface name",
-      "value-key": "[SURF_REG]",
+      "value-key": "[SURFACE_REGISTRATION]",
       "type": "String",
       "optional": true,
       "id": "surface_registration",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "--no-surf",
       "description": "Do not make average surfaces",
-      "value-key": "[NO_SURF_FLAG]",
+      "value-key": "[NO_SURFACES]",
       "type": "Flag",
       "optional": true,
       "id": "no_surfaces",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "--no-vol",
       "description": "Do not make average volumes",
-      "value-key": "[NO_VOL_FLAG]",
+      "value-key": "[NO_VOLUMES]",
       "type": "Flag",
       "optional": true,
       "id": "no_volumes",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "--force",
       "description": "Overwrite existing average subject data",
-      "value-key": "[FORCE_FLAG]",
+      "value-key": "[FORCE]",
       "type": "Flag",
       "optional": true,
       "id": "force",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "--keep-all-orig",
       "description": "Concatenate all original volumes into mri/orig.all.mgz",
-      "value-key": "[KEEP_ALL_ORIG_FLAG]",
+      "value-key": "[KEEP_ALL_ORIG]",
       "type": "Flag",
       "optional": true,
       "id": "keep_all_orig",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "--no-symlink",
       "description": "Do not use symbolic links with surfaces, copy files instead",
-      "value-key": "[NO_SYMLINK_FLAG]",
+      "value-key": "[NO_SYMLINK]",
       "type": "Flag",
       "optional": true,
       "id": "no_symlink",
@@ -147,7 +147,7 @@
     {
       "command-line-flag": "--no-ribbon",
       "description": "Do not create ribbon.mgz and aparc+aseg.mgz files",
-      "value-key": "[NO_RIBBON_FLAG]",
+      "value-key": "[NO_RIBBON]",
       "type": "Flag",
       "optional": true,
       "id": "no_ribbon",
@@ -156,7 +156,7 @@
     {
       "command-line-flag": "--no-surf2surf",
       "description": "Use old parametric surface mapping method",
-      "value-key": "[NO_SURF2SURF_FLAG]",
+      "value-key": "[NO_SURF2SURF]",
       "type": "Flag",
       "optional": true,
       "id": "no_surf2surf",
@@ -174,7 +174,7 @@
     {
       "command-line-flag": "--help",
       "description": "Show short descriptive help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -183,7 +183,7 @@
     {
       "command-line-flag": "--version",
       "description": "Show script version info",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -192,7 +192,7 @@
     {
       "command-line-flag": "--echo",
       "description": "Enable command echo for debugging",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug mode, same as --echo",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",

@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "author": "AFNI Developers",
   "description": "This program makes a *.spec file after a set of intermediate surfaces have been generated with SurfLayers. It can also make a *.spec file that relates inflated surfaces to anatomically-correct surfaces.",
-  "command-line": "quickspecSL [surf_A] [surf_B] [surf_intermed_pref] [infl_surf_A] [infl_surf_B] [infl_surf_intermed_pref] [both_lr_flag] [out_spec]",
+  "command-line": "quickspecSL [SURF_A] [SURF_B] [SURF_INTERMED_PREF] [INFL_SURF_A] [INFL_SURF_B] [INFL_SURF_INTERMED_PREF] [BOTH_LR_FLAG] [OUT_SPEC]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Inner (anatomically-correct) boundary surface dataset (e.g. smoothwm.gii)",
-      "value-key": "[surf_A]",
+      "value-key": "[SURF_A]",
       "type": "File",
       "optional": false,
       "id": "surf_A",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Outer (anatomically-correct) boundary surface dataset (e.g. pial.gii)",
-      "value-key": "[surf_B]",
+      "value-key": "[SURF_B]",
       "type": "File",
       "optional": false,
       "id": "surf_B",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-surf_intermed_pref",
       "description": "Prefix for (anatomically-correct) intermediate surfaces, typically output by SurfLayers (default: isurf)",
-      "value-key": "[surf_intermed_pref]",
+      "value-key": "[SURF_INTERMED_PREF]",
       "type": "String",
       "optional": true,
       "id": "surf_intermed_pref",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-infl_surf_A",
       "description": "Inner (inflated) boundary surface dataset (e.g. infl.smoothwm.gii)",
-      "value-key": "[infl_surf_A]",
+      "value-key": "[INFL_SURF_A]",
       "type": "File",
       "optional": true,
       "id": "infl_surf_A",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-infl_surf_B",
       "description": "Outer (inflated) boundary surface dataset (e.g. infl.pial.gii)",
-      "value-key": "[infl_surf_B]",
+      "value-key": "[INFL_SURF_B]",
       "type": "File",
       "optional": true,
       "id": "infl_surf_B",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-infl_surf_intermed_pref",
       "description": "Prefix for (inflated) intermediate surfaces, typically output by SurfLayers (default: infl.isurf)",
-      "value-key": "[infl_surf_intermed_pref]",
+      "value-key": "[INFL_SURF_INTERMED_PREF]",
       "type": "String",
       "optional": true,
       "id": "infl_surf_intermed_pref",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-both_lr",
       "description": "Specify an output spec for both hemispheres if surfaces for both exist",
-      "value-key": "[both_lr_flag]",
+      "value-key": "[BOTH_LR_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "both_lr_flag",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-out_spec",
       "description": "Name for output *.spec file (default: newspec.spec)",
-      "value-key": "[out_spec]",
+      "value-key": "[OUT_SPEC]",
       "type": "String",
       "optional": true,
       "id": "out_spec",
@@ -84,7 +84,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[out_spec]",
+      "path-template": "[OUT_SPEC]",
       "description": "Output spec file",
       "optional": false,
       "id": "output_spec_file",

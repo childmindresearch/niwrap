@@ -3,7 +3,7 @@
   "name": "long_stats_combine",
   "author": "FreeSurfer Developers",
   "description": "Adds columns from stats into longitudinal qdec table, using longitudinally processed results.",
-  "command-line": "long_stats_combine [QDEC] [STATS] [MEAS] [SD] --out [OUTQDEC] [OUTSTATS] [INSTATS] [CROSS_FLAG]",
+  "command-line": "long_stats_combine [QDEC] [STATS] [MEASURE] [SUBJECT_DIR] --out [OUTPUT_QDEC] [OUTPUT_STATS] [INPUT_STATS] [CROSS_SECTIONAL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--meas",
       "description": "The stats measure (e.g. volume, thickness, mean, std)",
-      "value-key": "[MEAS]",
+      "value-key": "[MEASURE]",
       "type": "String",
       "optional": false,
       "id": "measure",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--sd",
       "description": "Full path to FreeSurfer subjects directory",
-      "value-key": "[SD]",
+      "value-key": "[SUBJECT_DIR]",
       "type": "String",
       "optional": false,
       "id": "subject_dir",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--outqdec",
       "description": "File name of output long qdec table",
-      "value-key": "[OUTQDEC]",
+      "value-key": "[OUTPUT_QDEC]",
       "type": "String",
       "optional": false,
       "id": "output_qdec",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--outstats",
       "description": "File name to output stacked stats table (all subjects, all time points)",
-      "value-key": "[OUTSTATS]",
+      "value-key": "[OUTPUT_STATS]",
       "type": "String",
       "optional": true,
       "id": "output_stats",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--instats",
       "description": "File name of stacked stats table (same order as qdec), instead of using --stats and --meas",
-      "value-key": "[INSTATS]",
+      "value-key": "[INPUT_STATS]",
       "type": "File",
       "optional": true,
       "id": "input_stats",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--cross",
       "description": "Use cross sectional results (for testing only)",
-      "value-key": "[CROSS_FLAG]",
+      "value-key": "[CROSS_SECTIONAL]",
       "type": "Flag",
       "optional": true,
       "id": "cross_sectional",
@@ -81,14 +81,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTQDEC]",
+      "path-template": "[OUTPUT_QDEC]",
       "description": "Output long qdec table",
       "optional": false,
       "id": "output_qdec_file",
       "name": "Output QDEC Table File"
     },
     {
-      "path-template": "[OUTSTATS]",
+      "path-template": "[OUTPUT_STATS]",
       "description": "Stacked stats table for all subjects, all time points",
       "optional": true,
       "id": "output_stacked_stats_file",

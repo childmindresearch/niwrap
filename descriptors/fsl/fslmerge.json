@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL tool to concatenate images in various dimensions",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fslmerge [MERGE_DIRECTION] [OUTPUT_FILE] [INPUT_FILES] [TR_VALUE]",
+  "command-line": "fslmerge [MERGE_SET_TR] [OUTPUT_FILE] [INPUT_FILES] [TR_VALUE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-t",
       "description": "Concatenate images in time (4th dimension)",
-      "value-key": "[MERGE_DIRECTION]",
+      "value-key": "[MERGE_TIME]",
       "type": "Flag",
       "optional": false,
       "id": "merge_time",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-x",
       "description": "Concatenate images in the x direction",
-      "value-key": "[MERGE_DIRECTION]",
+      "value-key": "[MERGE_X]",
       "type": "Flag",
       "optional": false,
       "id": "merge_x",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-y",
       "description": "Concatenate images in the y direction",
-      "value-key": "[MERGE_DIRECTION]",
+      "value-key": "[MERGE_Y]",
       "type": "Flag",
       "optional": false,
       "id": "merge_y",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-z",
       "description": "Concatenate images in the z direction",
-      "value-key": "[MERGE_DIRECTION]",
+      "value-key": "[MERGE_Z]",
       "type": "Flag",
       "optional": false,
       "id": "merge_z",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-a",
       "description": "Auto-choose: single slices -> volume, volumes -> 4D (time series)",
-      "value-key": "[MERGE_DIRECTION]",
+      "value-key": "[AUTO_CHOOSE]",
       "type": "Flag",
       "optional": false,
       "id": "auto_choose",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-tr",
       "description": "Concatenate images in time and set the output image tr to the provided value",
-      "value-key": "[MERGE_DIRECTION]",
+      "value-key": "[MERGE_SET_TR]",
       "type": "Flag",
       "optional": false,
       "id": "merge_set_tr",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-n",
       "description": "Only use volume <N> from each input file (first volume is 0 not 1)",
-      "value-key": "<N>",
+      "value-key": "[VOLUME_NUMBER]",
       "type": "Number",
       "optional": true,
       "id": "volume_number",

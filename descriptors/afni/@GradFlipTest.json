@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Script to test the correct flip for a data set when using 1dDW_Grad_o_Mat++.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@GradFlipTest [DWI] [GRAD_FILE] [GRAD_FILE] [GRAD_FILE] [GRAD_FILE] [MASK] [BVALS] [THRESH_FA] [THRESH_LEN] [PREFIX] [CHECK_ABS_MIN] [SCALE_OUT_1000] [WDIR] [DO_CLEAN]",
+  "command-line": "@GradFlipTest [DWI] [GRAD_COL_MATT] [GRAD_COL_MATT] [GRAD_COL_MATT] [GRAD_COL_MATT] [MASK] [BVALS] [THRESH_FA] [THRESH_LEN] [PREFIX] [CHECK_ABS_MIN] [SCALE_OUT_1000] [WDIR] [DO_CLEAN]",
   "inputs": [
     {
       "command-line-flag": "-in_dwi",
@@ -18,7 +18,7 @@
     {
       "description": "Set of row-wise gradient vectors",
       "command-line-flag": "-in_row_vec",
-      "value-key": "[GRAD_FILE]",
+      "value-key": "[GRAD_ROW_VEC]",
       "type": "File",
       "optional": true,
       "id": "grad_row_vec",
@@ -27,7 +27,7 @@
     {
       "description": "Set of column-wise gradient vectors",
       "command-line-flag": "-in_col_vec",
-      "value-key": "[GRAD_FILE]",
+      "value-key": "[GRAD_COL_VEC]",
       "type": "File",
       "optional": true,
       "id": "grad_col_vec",
@@ -36,7 +36,7 @@
     {
       "description": "Set of column-wise g- or b-matrix elements (\"AFNI\"-style format, \"diagonal-first\")",
       "command-line-flag": "-in_col_matA",
-      "value-key": "[GRAD_FILE]",
+      "value-key": "[GRAD_COL_MATA]",
       "type": "File",
       "optional": true,
       "id": "grad_col_matA",
@@ -45,7 +45,7 @@
     {
       "description": "Set of column-wise g- or b-matrix elements (\"TORTOISE\"-style format, \"row-first\")",
       "command-line-flag": "-in_col_matT",
-      "value-key": "[GRAD_FILE]",
+      "value-key": "[GRAD_COL_MATT]",
       "type": "File",
       "optional": true,
       "id": "grad_col_matT",

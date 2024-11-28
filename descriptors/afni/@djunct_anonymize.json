@@ -3,12 +3,12 @@
   "name": "@djunct_anonymize",
   "author": "AFNI Developers",
   "description": "Helper program to anonymize files",
-  "command-line": "@djunct_anonymize [INPUT_FILE] [ADD_NOTE] [COPY_TO] [OVERWRITE]",
+  "command-line": "@djunct_anonymize [INPUT] [ADD_NOTE] [COPY_TO] [OVERWRITE]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",

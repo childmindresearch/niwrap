@@ -9,7 +9,7 @@
   "inputs": [
     {
       "description": "Placeholder input to indicate the tool is not functional.",
-      "value-key": "[PLACEHOLDER_INPUT]",
+      "value-key": "[PLACEHOLDER]",
       "type": "String",
       "optional": false,
       "id": "placeholder",

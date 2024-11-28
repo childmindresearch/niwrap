@@ -3,13 +3,13 @@
   "name": "spmregister",
   "author": "FreeSurfer Developers",
   "description": "Registers a volume to its FreeSurfer anatomical using SPM's spm_coreg",
-  "command-line": "spmregister [SUBJ_ID] [MOV] [REG] [FRAME] [MID_FRAME_FLAG] [TEMPLATE_OUT] [FSVOL] [FORCE_RAS_FLAG] [OUTVOL] [TMP] [NOCLEANUP_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "spmregister [SUBJID] [MOV] [REG] [FRAME] [MID_FRAME] [TEMPLATE_OUT] [FSVOL] [FORCE_RAS] [OUTVOL] [TMPDIR] [NOCLEANUP] [VERSION] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--s",
       "description": "Id of the subject as found in SUBJECTS_DIR. This is converted to analyze using mri_convert.",
-      "value-key": "[SUBJ_ID]",
+      "value-key": "[SUBJID]",
       "type": "String",
       "optional": false,
       "id": "subjid",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--mid-frame",
       "description": "Use the middle frame of the mov volume as the template.",
-      "value-key": "[MID_FRAME_FLAG]",
+      "value-key": "[MID_FRAME]",
       "type": "Flag",
       "optional": true,
       "id": "mid_frame",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--force-ras",
       "description": "Force input geometry to be RAS.",
-      "value-key": "[FORCE_RAS_FLAG]",
+      "value-key": "[FORCE_RAS]",
       "type": "Flag",
       "optional": true,
       "id": "force_ras",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--tmp",
       "description": "Temporary directory (implies --nocleanup).",
-      "value-key": "[TMP]",
+      "value-key": "[TMPDIR]",
       "type": "String",
       "optional": true,
       "id": "tmpdir",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--nocleanup",
       "description": "Do not delete temporary files.",
-      "value-key": "[NOCLEANUP_FLAG]",
+      "value-key": "[NOCLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "nocleanup",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print help and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

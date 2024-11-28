@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "The tool could not be executed due to a missing shared library: libmwlaunchermain.so",
-      "value-key": "[MISSING_LIBRARY_ERROR]",
+      "value-key": "[MISSING_LIBRARY]",
       "type": "String",
       "optional": false,
       "id": "missing_library",

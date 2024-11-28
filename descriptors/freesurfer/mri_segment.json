@@ -3,7 +3,7 @@
   "name": "mri_segment",
   "author": "FreeSurfer Developers",
   "description": "Segments white matter from the input volume.",
-  "command-line": "mri_segment [IN_VOL] [OUT_VOL] [NO1D_REMOVE] [SLOPE] [PSLOPE] [NSLOPE] [DEBUG_VOXEL] [AUTO_FLAG] [NOAUTO_FLAG] [LOG_FLAG] [KEEP_FLAG] [GRAY_HI] [WM_LOW] [WM_LOW_FACTOR] [WM_HI] [NSEG] [THICKEN_FLAG] [FILLBG_FLAG] [FILLV_FLAG] [BLUR_SIGMA] [ITERATIONS] [THIN_STRAND_LIMIT] [VERBOSE_FLAG] [THRESHOLD] [EXTRACT_OPTIONS] [WSIZE] [WSIZEMM] [PLVW_SIZE] [PLV_LEN] [DATFILE] [SEGMENTATION] [DIAGNO] [DIAG_WRITE_FLAG] [DIAG_VERBOSE_FLAG]",
+  "command-line": "mri_segment [IN_VOL] [OUT_VOL] [NO1D_REMOVE] [SLOPE] [PSLOPE] [NSLOPE] [DEBUG_VOXEL] [AUTO] [NOAUTO] [LOG] [KEEP] [GRAY_HI] [WM_LOW] [WM_LOW_FACTOR] [WM_HI] [NSEG] [THICKEN] [FILLBG] [FILLV] [BLUR_SIGMA] [ITERATIONS] [THIN_STRAND_LIMIT] [VERBOSE] [THRESHOLD] [EXTRACT_OPTIONS] [WSIZE] [WSIZEMM] [POLVW_SIZE] [POLV_LEN] [DATFILE] [SEGMENTATION] [DIAGNO] [DIAG_WRITE] [DIAG_VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -82,7 +82,7 @@
       "name": "Auto Detection",
       "type": "Flag",
       "optional": true,
-      "value-key": "[AUTO_FLAG]",
+      "value-key": "[AUTO]",
       "description": "Automatically detect class statistics (default)"
     },
     {
@@ -91,7 +91,7 @@
       "name": "No Auto Detection",
       "type": "Flag",
       "optional": true,
-      "value-key": "[NOAUTO_FLAG]",
+      "value-key": "[NOAUTO]",
       "description": "Don't automatically detect class statistics"
     },
     {
@@ -100,7 +100,7 @@
       "name": "Log",
       "type": "Flag",
       "optional": true,
-      "value-key": "[LOG_FLAG]",
+      "value-key": "[LOG]",
       "description": "Log to ./segment.dat"
     },
     {
@@ -109,7 +109,7 @@
       "name": "Keep WM Edits",
       "type": "Flag",
       "optional": true,
-      "value-key": "[KEEP_FLAG]",
+      "value-key": "[KEEP]",
       "description": "Keep wm edits, maintains all values of 1 and 255"
     },
     {
@@ -167,7 +167,7 @@
       "name": "Thickening Step",
       "type": "Flag",
       "optional": true,
-      "value-key": "[THICKEN_FLAG]",
+      "value-key": "[THICKEN]",
       "description": "Toggle thickening step (default=ON)"
     },
     {
@@ -176,7 +176,7 @@
       "name": "Fill Basal Ganglia",
       "type": "Flag",
       "optional": true,
-      "value-key": "[FILLBG_FLAG]",
+      "value-key": "[FILLBG]",
       "description": "Toggle filling of the basal ganglia (default=OFF)"
     },
     {
@@ -185,7 +185,7 @@
       "name": "Fill Ventricles",
       "type": "Flag",
       "optional": true,
-      "value-key": "[FILLV_FLAG]",
+      "value-key": "[FILLV]",
       "description": "Toggle filling of the ventricles (default=OFF)"
     },
     {
@@ -224,7 +224,7 @@
       "name": "Verbose",
       "type": "Flag",
       "optional": true,
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "description": "Verbose"
     },
     {
@@ -272,7 +272,7 @@
       "type": "Number",
       "optional": true,
       "default-value": 5,
-      "value-key": "[PLVW_SIZE]",
+      "value-key": "[POLVW_SIZE]",
       "description": "Set wsize for plane of least variance (default=5)"
     },
     {
@@ -282,7 +282,7 @@
       "type": "Number",
       "optional": true,
       "default-value": 3,
-      "value-key": "[PLV_LEN]",
+      "value-key": "[POLV_LEN]",
       "description": "Set length for plane of least variance (default=3)"
     },
     {
@@ -318,7 +318,7 @@
       "name": "Diagnostic Write",
       "type": "Flag",
       "optional": true,
-      "value-key": "[DIAG_WRITE_FLAG]",
+      "value-key": "[DIAG_WRITE]",
       "description": "Set diagnostic write"
     },
     {
@@ -327,7 +327,7 @@
       "name": "Diagnostic Verbose",
       "type": "Flag",
       "optional": true,
-      "value-key": "[DIAG_VERBOSE_FLAG]",
+      "value-key": "[DIAG_VERBOSE]",
       "description": "Set diagnostic verbose"
     }
   ],

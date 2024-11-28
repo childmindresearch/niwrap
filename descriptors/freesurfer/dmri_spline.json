@@ -3,13 +3,13 @@
   "name": "dmri_spline",
   "author": "FreeSurfer Developers",
   "description": "Tool for interpolating and analyzing splines within a defined mask",
-  "command-line": "dmri_spline [CPTS] [MASK] [OUTPUT_VOLUME] [SHOW_FLAG] [OUTPUT_POINTS_FILE] [OUTPUT_VECTORS_BASE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "dmri_spline [CONTROL_POINTS_FILE] [MASK_VOLUME] [OUTPUT_VOLUME] [SHOW_POINTS] [OUTPUT_POINTS] [OUTPUT_VECTORS_BASE] [DEBUG] [CHECK_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--cpts",
       "description": "Input text file containing control points",
-      "value-key": "[CPTS]",
+      "value-key": "[CONTROL_POINTS_FILE]",
       "type": "File",
       "optional": false,
       "id": "control_points_file",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--mask",
       "description": "Input mask volume (spline is not allowed to stray off mask)",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "mask_volume",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--show",
       "description": "Highlight control points in output volume (default: no)",
-      "value-key": "[SHOW_FLAG]",
+      "value-key": "[SHOW_POINTS]",
       "type": "Flag",
       "optional": true,
       "id": "show_points",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--outpts",
       "description": "Output text file containing all interpolated spline points",
-      "value-key": "[OUTPUT_POINTS_FILE]",
+      "value-key": "[OUTPUT_POINTS]",
       "type": "File",
       "optional": true,
       "id": "output_points",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",
@@ -88,7 +88,7 @@
       "name": "Output Volume"
     },
     {
-      "path-template": "[OUTPUT_POINTS_FILE]",
+      "path-template": "[OUTPUT_POINTS]",
       "description": "Output text file with interpolated spline points",
       "optional": true,
       "id": "out_points_file",

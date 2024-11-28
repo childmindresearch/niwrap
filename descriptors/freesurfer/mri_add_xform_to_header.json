@@ -3,7 +3,7 @@
   "name": "mri_add_xform_to_header",
   "author": "FreeSurfer Developers",
   "description": "Program to add specified transformation to the volume header.",
-  "command-line": "mri_add_xform_to_header [XFM_FILE] [INPUT_VOLUME] [OUTPUT_VOLUME] [VERBOSE_FLAG] [COPY_NAME_FLAG]",
+  "command-line": "mri_add_xform_to_header [XFM_FILE] [INPUT_VOLUME] [OUTPUT_VOLUME] [VERBOSE] [COPY_NAME]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-v",
       "description": "Enable verbose output for more detailed logging.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-c",
       "description": "Copy the name of the xfm file without loading it.",
-      "value-key": "[COPY_NAME_FLAG]",
+      "value-key": "[COPY_NAME]",
       "type": "Flag",
       "optional": true,
       "id": "copy_name",

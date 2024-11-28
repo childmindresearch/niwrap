@@ -3,7 +3,7 @@
   "name": "balloon",
   "author": "AFNI Developers",
   "description": "Simulation of haemodynamic response using the balloon model. Based on the theoretical model proposed by Buxton et al. (1998).",
-  "command-line": "balloon [TR] [N] [EVENT_TIMES] [HAEMODYNAMIC_PARAMETERS]",
+  "command-line": "balloon [TR] [NUM_SCANS] [EVENT_TIMES] [T_FALL]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -20,7 +20,7 @@
     },
     {
       "description": "Number of scans (N), the output curve will comprise this number of samples.",
-      "value-key": "[N]",
+      "value-key": "[NUM_SCANS]",
       "type": "Number",
       "optional": false,
       "id": "num_scans",
@@ -37,7 +37,7 @@
     },
     {
       "description": "Haemodynamic rise time in seconds (typically between 4s and 6s).",
-      "value-key": "[HAEMODYNAMIC_PARAMETERS]",
+      "value-key": "[T_RISE]",
       "type": "Number",
       "optional": true,
       "id": "t_rise",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Haemodynamic sustain time in seconds (typically between 0s and 4s).",
-      "value-key": "[HAEMODYNAMIC_PARAMETERS]",
+      "value-key": "[T_SUSTAIN]",
       "type": "Number",
       "optional": true,
       "id": "t_sustain",
@@ -57,7 +57,7 @@
     },
     {
       "description": "Haemodynamic fall time in seconds (typically between 4s and 6s).",
-      "value-key": "[HAEMODYNAMIC_PARAMETERS]",
+      "value-key": "[T_FALL]",
       "type": "Number",
       "optional": true,
       "id": "t_fall",

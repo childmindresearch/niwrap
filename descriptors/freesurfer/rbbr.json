@@ -3,7 +3,7 @@
   "name": "rbbr",
   "author": "FreeSurfer Developers",
   "description": "Robust version of bbregister",
-  "command-line": "rbbr [SUBJECT] [MOV] [TISSUE_CONTRAST] [INIT_METHOD] [COST_THRESHOLD] [SYNTHESIZE_GTM] [REDUCE_TT] [NUM_ITERS] [OUTPUT_REG] [OUTPUT_LTA] [LEFT_HEMI] [RIGHT_HEMI] [GM_PROJ_FRAC] [GM_PROJ_ABS] [WM_PROJ_ABS] [FRAME_NO] [OUTPUT_TEMPLATE] [NO_MERGE]",
+  "command-line": "rbbr [SUBJECT] [MOVING_IMAGE] [T2_CONTRAST] [INIT_HEADER] [COST_THRESHOLD] [GTM_SYNTHESIZE] [TT_REDUCE] [ITERATIONS] [OUTPUT_REG] [OUTPUT_LTA] [LEFT_HEMI] [RIGHT_HEMI] [GM_PROJ_FRAC] [GM_PROJ_ABS] [WM_PROJ_ABS] [FRAME_NO] [OUTPUT_TEMPLATE] [NO_MERGE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--mov",
       "description": "Input moving image",
-      "value-key": "[MOV]",
+      "value-key": "[MOVING_IMAGE]",
       "type": "String",
       "optional": false,
       "id": "moving_image",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--t1",
       "description": "Use T1 tissue contrast",
-      "value-key": "[TISSUE_CONTRAST]",
+      "value-key": "[T1_CONTRAST]",
       "type": "Flag",
       "optional": true,
       "id": "t1_contrast",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--t2",
       "description": "Use T2 tissue contrast",
-      "value-key": "[TISSUE_CONTRAST]",
+      "value-key": "[T2_CONTRAST]",
       "type": "Flag",
       "optional": true,
       "id": "t2_contrast",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--init-reg",
       "description": "Initialize registration",
-      "value-key": "[INIT_METHOD]",
+      "value-key": "[INIT_REG]",
       "type": "Flag",
       "optional": true,
       "id": "init_reg",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--init-spm",
       "description": "Initialize with SPM",
-      "value-key": "[INIT_METHOD]",
+      "value-key": "[INIT_SPM]",
       "type": "Flag",
       "optional": true,
       "id": "init_spm",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--init-fsl",
       "description": "Initialize with FSL",
-      "value-key": "[INIT_METHOD]",
+      "value-key": "[INIT_FSL]",
       "type": "Flag",
       "optional": true,
       "id": "init_fsl",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--init-header",
       "description": "Initialize using header",
-      "value-key": "[INIT_METHOD]",
+      "value-key": "[INIT_HEADER]",
       "type": "Flag",
       "optional": true,
       "id": "init_header",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--gtm",
       "description": "Use GTM to synthesize",
-      "value-key": "[SYNTHESIZE_GTM]",
+      "value-key": "[GTM_SYNTHESIZE]",
       "type": "String",
       "optional": true,
       "id": "gtm_synthesize",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--tt-reduce",
       "description": "Reduce GTM Seg to tissue types for faster processing",
-      "value-key": "[REDUCE_TT]",
+      "value-key": "[TT_REDUCE]",
       "type": "Flag",
       "optional": true,
       "id": "tt_reduce",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--iters",
       "description": "Number of iterations",
-      "value-key": "[NUM_ITERS]",
+      "value-key": "[ITERATIONS]",
       "type": "Number",
       "optional": true,
       "id": "iterations",

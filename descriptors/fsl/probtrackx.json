@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide/",
   "description": "Streamlines tracking algorithm for probabilistic tractography",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "probtrackx [SAMPLES] [MASK] [SEED] [OUT] [VERBOSE] [TARGETMASKS] [MASK2] [WAYPOINTS] [NETWORK] [MESH] [SEEDREF] [DIR] [FORCEDIR] [OPD] [PD] [OS2T] [AVOID] [STOP] [XFM] [INVXFM] [NSAMPLES] [NSTEPS] [DISTTHRESH] [CTHR] [FIBTHRESH] [SAMPVOX] [STEPLENGTH] [LOOPCHECK] [USEF] [RANDFIB] [FIBST] [MODEULER] [RSEED] [S2TASTTEXT]",
+  "command-line": "probtrackx [SAMPLES] [MASK] [SEED] [OUT] [VERBOSE] [TARGETMASKS] [MASK2] [WAYPOINTS] [NETWORK] [MESH] [SEEDREF] [DIR] [FORCEDIR] [OPD] [PD] [OS2T] [AVOID] [STOP] [XFM] [INVXFM] [NSAMPLES] [NSTEPS] [DISTTHRESH] [CTHR] [FIBTHRESH] [SAMPVOX] [STEPLENGTH] [LOOPCHECK] [USEF] [RANDFIB] [FIBST] [MODEULER] [RSEED] [S2TASTEXT]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -333,7 +333,7 @@
     {
       "command-line-flag": "--s2tastext",
       "description": "Output seed-to-target counts as a text file (useful when seeding from a mesh)",
-      "value-key": "[S2TASTTEXT]",
+      "value-key": "[S2TASTEXT]",
       "type": "Flag",
       "optional": true,
       "id": "s2tastext",

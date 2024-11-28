@@ -101,7 +101,7 @@
       "id": "num_bins_joint_histogram",
       "name": "Number of Bins for Joint Histogram",
       "type": "Number",
-      "value-key": "[NUM_BINS]",
+      "value-key": "[NUM_BINS_JOINT_HISTOGRAM]",
       "command-line-flag": "--rbn",
       "description": "Number of bins to use for the joint histogram (reference)",
       "optional": true
@@ -110,7 +110,7 @@
       "id": "num_bins_floating_joint_histogram",
       "name": "Number of Bins for Floating Joint Histogram",
       "type": "Number",
-      "value-key": "[NUM_BINS_FLOAT]",
+      "value-key": "[NUM_BINS_FLOATING_JOINT_HISTOGRAM]",
       "command-line-flag": "--fbn",
       "description": "Number of bins to use for the joint histogram (floating)",
       "optional": true

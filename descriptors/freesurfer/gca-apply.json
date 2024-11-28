@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/gca-apply.json",
   "description": "Applies a GCA, performing the steps of mri_em_register, mri_ca_normalize, mri_ca_register, and mri_ca_label. This script replicates the stages in recon-all without overwriting files.",
-  "command-line": "gca[GCAFILE] [SUBJECT] [NTHREADS] [BASE] [NO_SEGSTATS_FLAG] [SD] [DICE_SEG] [DICE_FILE] [LTA] [NORM] [INPUT] [BRAINMASK] [OUTPUT_DIR] [NO_V6LABOPTS_FLAG] [M3Z_FILE] [GCA_RB_2016_FLAG] [FORCE_UPDATE_FLAG] [GCAREG_ITERS]",
+  "command-line": "gca[GCAFILE] [SUBJECT] [NTHREADS] [BASE] [NO_SEGSTATS] [SUBJECTS_DIR] [DICE_SEG] [DICE_FILE] [LTA] [NORM] [INPUT_MGZ] [BRAINMASK] [OUTPUT_DIR] [NO_V6LABOPTS] [M3Z_FILE] [GCA_RB_2016] [FORCE_UPDATE] [GCAREG_ITERS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--no-segstats",
       "description": "Do not compute segstats",
-      "value-key": "[NO_SEGSTATS_FLAG]",
+      "value-key": "[NO_SEGSTATS]",
       "type": "Flag",
       "optional": true,
       "id": "no_segstats",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--sd",
       "description": "Subjects directory",
-      "value-key": "[SD]",
+      "value-key": "[SUBJECTS_DIR]",
       "type": "String",
       "optional": true,
       "id": "subjects_dir",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "--input",
       "description": "Input file, default is nu.mgz",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_MGZ]",
       "type": "File",
       "optional": true,
       "id": "input_mgz",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "--no-v6labopts",
       "description": "Do not include v6 command line options",
-      "value-key": "[NO_V6LABOPTS_FLAG]",
+      "value-key": "[NO_V6LABOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "no_v6labopts",
@@ -147,7 +147,7 @@
     {
       "command-line-flag": "--gca-rb-2016",
       "description": "Use RB_all_2016-05-10.vc700.gca",
-      "value-key": "[GCA_RB_2016_FLAG]",
+      "value-key": "[GCA_RB_2016]",
       "type": "Flag",
       "optional": true,
       "id": "gca_rb_2016",
@@ -156,7 +156,7 @@
     {
       "command-line-flag": "--force-update",
       "description": "Force recreation of a file even if it is younger than its parents",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "force_update",

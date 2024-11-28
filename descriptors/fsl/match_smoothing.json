@@ -2,7 +2,7 @@
   "tool-version": "6.0.4",
   "name": "match_smoothing",
   "description": "Computes the smoothing sigma needed to be applied to structural data to match a given functional data smoothing level.",
-  "command-line": "match_smoothing <example_func> <func_smoothing_FWHM_in_mm> <example_structural> <standard_space_resolution>",
+  "command-line": "match_smoothing [EXAMPLE_FUNC] [FUNC_SMOOTHING_FWHM] [EXAMPLE_STRUCTURAL] [STANDARD_SPACE_RESOLUTION]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -10,7 +10,7 @@
   "inputs": [
     {
       "description": "Path to the example functional image file.",
-      "value-key": "<example_func>",
+      "value-key": "[EXAMPLE_FUNC]",
       "type": "File",
       "optional": false,
       "id": "example_func",
@@ -18,7 +18,7 @@
     },
     {
       "description": "Full-width at half maximum (FWHM) of the smoothing kernel applied to the functional data, in millimeters.",
-      "value-key": "<func_smoothing_FWHM_in_mm>",
+      "value-key": "[FUNC_SMOOTHING_FWHM]",
       "type": "Number",
       "optional": false,
       "id": "func_smoothing_FWHM",
@@ -26,7 +26,7 @@
     },
     {
       "description": "Path to the example structural image file.",
-      "value-key": "<example_structural>",
+      "value-key": "[EXAMPLE_STRUCTURAL]",
       "type": "File",
       "optional": false,
       "id": "example_structural",
@@ -34,7 +34,7 @@
     },
     {
       "description": "Resolution of the standard space, in millimeters.",
-      "value-key": "<standard_space_resolution>",
+      "value-key": "[STANDARD_SPACE_RESOLUTION]",
       "type": "Number",
       "optional": false,
       "id": "standard_space_resolution",

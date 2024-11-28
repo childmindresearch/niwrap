@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Prints the value of the attribute 'aname' from the header of the dataset 'dset'.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dAttribute [ALL_FLAG] [NAME_FLAG] [CENTER_FLAG] [SSEP] [SPREP] [QUOTE_FLAG] [ANAME] [DSET]",
+  "command-line": "3dAttribute [ALL] [NAME] [CENTER] [SSEP] [SPREP] [QUOTE] [ANAME] [DSET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-all",
       "description": "Print all attributes from the dataset",
-      "value-key": "[ALL_FLAG]",
+      "value-key": "[ALL]",
       "type": "Flag",
       "optional": true,
       "id": "all",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-name",
       "description": "Include attribute name in the output",
-      "value-key": "[NAME_FLAG]",
+      "value-key": "[NAME]",
       "type": "Flag",
       "optional": true,
       "id": "name",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-center",
       "description": "Print the center of volume in RAI coordinates",
-      "value-key": "[CENTER_FLAG]",
+      "value-key": "[CENTER]",
       "type": "Flag",
       "optional": true,
       "id": "center",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-quote",
       "description": "Use single quote around each string",
-      "value-key": "[QUOTE_FLAG]",
+      "value-key": "[QUOTE]",
       "type": "Flag",
       "optional": true,
       "id": "quote",

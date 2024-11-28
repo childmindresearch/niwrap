@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/",
   "description": "Creates a segmentation that can be used with the geometric transfer matrix (GTM).",
-  "command-line": "mri_gtmseg [OUTPUT_VOLUME] [SOURCE_SUBJECT] [INTERNAL_USF] [APAS_FILE] [CONTEXT_ANNOTATION] [SUBSEG_WM_FLAG] [WM_ANNOTATION] [DMAX] [KEEP_HYPO_FLAG] [KEEP_CC_FLAG] [CTAB] [LHMINMAX] [RHMINMAX] [OUTPUT_USF] [THREADS] [THREADS_MAX_FLAG] [THREADS_MAX_1_FLAG] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "mri_gtmseg [OUTPUT_VOLUME] [SOURCE_SUBJECT] [INTERNAL_USF] [APAS_FILE] [CONTEXT_ANNOTATION] [SUBSEG_WM] [WM_ANNOTATION] [DMAX] [KEEP_HYPO] [KEEP_CC] [CTAB] [LHMINMAX] [RHMINMAX] [OUTPUT_USF] [THREADS] [THREADS_MAX] [THREADS_MAX_1] [DEBUG] [CHECK_OPTS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--subseg-wm",
       "description": "Turn on segmenting of WM into smaller parts (off by default)",
-      "value-key": "[SUBSEG_WM_FLAG]",
+      "value-key": "[SUBSEG_WM]",
       "type": "Flag",
       "optional": true,
       "id": "subseg_wm",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "--keep-hypo",
       "description": "Do not convert white matter hypointensities to a white matter label",
-      "value-key": "[KEEP_HYPO_FLAG]",
+      "value-key": "[KEEP_HYPO]",
       "type": "Flag",
       "optional": true,
       "id": "keep_hypo",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "--keep-cc",
       "description": "Do not convert corpus callosum to a white matter label",
-      "value-key": "[KEEP_CC_FLAG]",
+      "value-key": "[KEEP_CC]",
       "type": "Flag",
       "optional": true,
       "id": "keep_cc",
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "--threads-max",
       "description": "Use the maximum allowable number of threads for this computer",
-      "value-key": "[THREADS_MAX_FLAG]",
+      "value-key": "[THREADS_MAX]",
       "type": "Flag",
       "optional": true,
       "id": "threads_max",
@@ -170,7 +170,7 @@
     {
       "command-line-flag": "--threads-max-1",
       "description": "Use one less than the maximum allowable number of threads for this computer",
-      "value-key": "[THREADS_MAX_1_FLAG]",
+      "value-key": "[THREADS_MAX_1]",
       "type": "Flag",
       "optional": true,
       "id": "threads_max_1",
@@ -179,7 +179,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -188,7 +188,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Don't run anything, just check options and exit",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "check_opts",

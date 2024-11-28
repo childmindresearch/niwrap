@@ -1,7 +1,7 @@
 {
   "name": "defect-seg",
   "description": "This program creates some files that allows the user to visualize and evaluate the surface defects that were automatically detected and fixed by the topology correction program.",
-  "command-line": "defect-seg [SUBJECT] [LH_ONLY_FLAG] [RH_ONLY_FLAG]",
+  "command-line": "defect-seg [SUBJECT] [LH_ONLY] [RH_ONLY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "--lh-only",
       "description": "Only process the left hemisphere.",
-      "value-key": "[LH_ONLY_FLAG]",
+      "value-key": "[LH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "lh_only",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "--rh-only",
       "description": "Only process the right hemisphere.",
-      "value-key": "[RH_ONLY_FLAG]",
+      "value-key": "[RH_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "rh_only",

@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Non-linear noise reduction filtering tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "susan [INPUT_FILE] [BT] [DT] [DIM] [USE_MEDIAN] [N_USANS] [USAN1] [BT1] [USAN2] [BT2] [OUTPUT_FILE]",
+  "command-line": "susan [INPUT_FILE] [BRIGHTNESS_THRESHOLD] [SPATIAL_SIZE] [DIMENSIONALITY] [USE_MEDIAN_FILTER] [N_USANS] [USAN1] [BRIGHTNESS_THRESHOLD1] [USAN2] [BRIGHTNESS_THRESHOLD2] [OUTPUT_FILE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -20,7 +20,7 @@
     },
     {
       "description": "Brightness threshold; should be greater than noise level and less than contrast of edges to be preserved",
-      "value-key": "[BT]",
+      "value-key": "[BRIGHTNESS_THRESHOLD]",
       "type": "Number",
       "optional": false,
       "id": "brightness_threshold",
@@ -28,7 +28,7 @@
     },
     {
       "description": "Spatial size (sigma, i.e., half-width) of smoothing, in mm",
-      "value-key": "[DT]",
+      "value-key": "[SPATIAL_SIZE]",
       "type": "Number",
       "optional": false,
       "id": "spatial_size",
@@ -36,7 +36,7 @@
     },
     {
       "description": "Dimensionality (2 or 3), for within-plane (2) or fully 3D (3) smoothing",
-      "value-key": "[DIM]",
+      "value-key": "[DIMENSIONALITY]",
       "type": "Number",
       "optional": false,
       "id": "dimensionality",
@@ -46,7 +46,7 @@
     },
     {
       "description": "Use median filter for cases where single-point noise is detected (0 or 1)",
-      "value-key": "[USE_MEDIAN]",
+      "value-key": "[USE_MEDIAN_FILTER]",
       "type": "Number",
       "optional": false,
       "id": "use_median_filter",
@@ -74,7 +74,7 @@
     },
     {
       "description": "Brightness threshold for first USAN image",
-      "value-key": "[BT1]",
+      "value-key": "[BRIGHTNESS_THRESHOLD1]",
       "type": "Number",
       "optional": true,
       "id": "brightness_threshold1",
@@ -90,7 +90,7 @@
     },
     {
       "description": "Brightness threshold for second USAN image",
-      "value-key": "[BT2]",
+      "value-key": "[BRIGHTNESS_THRESHOLD2]",
       "type": "Number",
       "optional": true,
       "id": "brightness_threshold2",

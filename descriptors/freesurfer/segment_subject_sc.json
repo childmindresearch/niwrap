@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://freesurfer.net/fswiki/segment_subject_sc",
   "description": "Front-end for MINC's mritotal. Computes the Talairach transform for mapping the input volume to the MNI305 space.",
-  "command-line": "mri_nu_correct.mni -[INPUT_VOLUME] -[OUTPUT_XFM] [LOG_FILE] [DEBUG_FLAG]",
+  "command-line": "mri_nu_correct.mni -[INVOL] -[OUTXFM] [LOG] [DEBUG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input volume",
-      "value-key": "[INPUT_VOLUME]",
+      "value-key": "[INVOL]",
       "type": "File",
       "optional": false,
       "id": "invol",
@@ -22,7 +22,7 @@
     },
     {
       "description": "Output xfm file",
-      "value-key": "[OUTPUT_XFM]",
+      "value-key": "[OUTXFM]",
       "type": "File",
       "optional": false,
       "id": "outxfm",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "--log",
       "description": "Log file. Default is outdir/talarach.log",
-      "value-key": "[LOG_FILE]",
+      "value-key": "[LOG]",
       "type": "String",
       "optional": true,
       "id": "log",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -51,7 +51,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_XFM]",
+      "path-template": "[OUTXFM]",
       "description": "Output transform file (xfm)",
       "optional": false,
       "id": "output_xfm_file",

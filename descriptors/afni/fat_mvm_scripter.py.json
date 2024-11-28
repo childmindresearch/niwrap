@@ -3,7 +3,7 @@
   "name": "fat_mvm_scripter.py",
   "author": "AFNI Developers",
   "description": "Automated tool to create command scripts for 3dMVM statistical modeling.",
-  "command-line": "fat_mvm_scripter.py [PREFIX] [TABLE_FILE] [LOG_FILE] [VARS] [VAR_FILE] [PARS] [PAR_FILE] [ROIS] [ROI_FILE] [NO_POSTHOC] [NA_WARN_OFF] [SUBPR] [CAT_PAIR_OFF]",
+  "command-line": "fat_mvm_scripter.py [PREFIX] [TABLE] [LOG] [VARS] [FILE_VARS] [PARS] [FILE_PARS] [ROIS] [FILE_ROIS] [NO_POSTHOC] [NA_WARN_OFF] [SUBNET_PREF] [CAT_PAIR_OFF]",
   "inputs": [
     {
       "command-line-flag": "--prefix",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "--table",
       "description": "Text file containing columns of subject data, one subject per row, formatted as a *_MVMtbl.txt output by fat_mvm_prep.py.",
-      "value-key": "[TABLE_FILE]",
+      "value-key": "[TABLE]",
       "type": "File",
       "optional": false,
       "id": "table",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--log",
       "description": "File formatted according to fat_mvm_prep.py containing commented headings and lists of cross-group ROIs and parameters.",
-      "value-key": "[LOG_FILE]",
+      "value-key": "[LOG]",
       "type": "File",
       "optional": false,
       "id": "log",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--file_vars",
       "description": "Second method for supplying a list of variables for 3dMVM. VAR_FILE is a text file with a single column of variable names.",
-      "value-key": "[VAR_FILE]",
+      "value-key": "[FILE_VARS]",
       "type": "File",
       "optional": true,
       "id": "file_vars",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--File_Pars",
       "description": "Second method for supplying a list of parameters for 3dMVM runs. PAR_FILE is a text file with a single column of parameter names.",
-      "value-key": "[PAR_FILE]",
+      "value-key": "[FILE_PARS]",
       "type": "File",
       "optional": true,
       "id": "file_Pars",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--file_rois",
       "description": "Second method for supplying a subset of ROIs for 3dMVM runs. ROI_FILE is a text file with a single column of variable names.",
-      "value-key": "[ROI_FILE]",
+      "value-key": "[FILE_ROIS]",
       "type": "File",
       "optional": true,
       "id": "file_rois",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--subnet_pref",
       "description": "Name SUBPR for the new table file that is created when a subnetwork list of ROIs is used.",
-      "value-key": "[SUBPR]",
+      "value-key": "[SUBNET_PREF]",
       "type": "String",
       "optional": true,
       "id": "subnet_pref",

@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "description": "Make tables for AFNI group analysis programs from 3dNetCorr (*.netcc) and 3dTrackID (*.grid) outputs, with optional additional subject information from CSV files.",
   "author": "AFNI Developers",
-  "command-line": "fat_mat_tableize.py [INPUT_MATRICES] [INPUT_CSV] [INPUT_LIST] [OUTPUT_PREFIX] [PARAMETERS] [VER_FLAG] [DATE_FLAG] [HELP_FLAG] [H_FLAG] [HVIEW_FLAG]",
+  "command-line": "fat_mat_tableize.py [INPUT_MATRICES] [INPUT_CSV] [INPUT_LIST] [OUTPUT_PREFIX] [PARAMETERS] [VERSION] [DATE] [HELP] [HELP_SHORT] [HELP_VIEW]",
   "inputs": [
     {
       "id": "input_matrices",
@@ -58,7 +58,7 @@
       "type": "Flag",
       "description": "Display current version.",
       "command-line-flag": "-ver",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VERSION]",
       "optional": true
     },
     {
@@ -67,7 +67,7 @@
       "type": "Flag",
       "description": "Display release/editing date of current version.",
       "command-line-flag": "-date",
-      "value-key": "[DATE_FLAG]",
+      "value-key": "[DATE]",
       "optional": true
     },
     {
@@ -76,7 +76,7 @@
       "type": "Flag",
       "description": "Display help in terminal.",
       "command-line-flag": "-help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "optional": true
     },
     {
@@ -85,7 +85,7 @@
       "type": "Flag",
       "description": "Display help in terminal (short flag).",
       "command-line-flag": "-h",
-      "value-key": "[H_FLAG]",
+      "value-key": "[HELP_SHORT]",
       "optional": true
     },
     {
@@ -94,7 +94,7 @@
       "type": "Flag",
       "description": "Display help in a separate text editor.",
       "command-line-flag": "-hview",
-      "value-key": "[HVIEW_FLAG]",
+      "value-key": "[HELP_VIEW]",
       "optional": true
     }
   ],

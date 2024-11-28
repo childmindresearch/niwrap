@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--satit",
       "description": "Auto-detect good sensitivity for robust cost functions.",
-      "value-key": "[SATIT_FLAG]",
+      "value-key": "[SATIT]",
       "type": "Flag",
       "optional": true,
       "id": "satit",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "--weights",
       "description": "Output weights (outlier probabilities) in destination space (0=regular,1=outlier).",
-      "value-key": "[WEIGHTS_OUTPUT]",
+      "value-key": "[WEIGHTS]",
       "type": "String",
       "optional": true,
       "id": "weights",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--oneminusw",
       "description": "Weights (outlier) map will be inverted (0=outlier), as in earlier versions.",
-      "value-key": "[ONEMINUSW_FLAG]",
+      "value-key": "[ONEMINUS_W]",
       "type": "Flag",
       "optional": true,
       "id": "oneminus_w",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "--iscale",
       "description": "Estimate intensity scale factor.",
-      "value-key": "[ISCALE_FLAG]",
+      "value-key": "[ISCALE]",
       "type": "Flag",
       "optional": true,
       "id": "iscale",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--iscaleonly",
       "description": "Only perform intensity scaling (no transformation).",
-      "value-key": "[ISCALEONLY_FLAG]",
+      "value-key": "[ISCALE_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "iscale_only",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--iscaleout",
       "description": "Output text file for iscale value.",
-      "value-key": "[ISCALEOUT_FILE]",
+      "value-key": "[ISCALE_OUT]",
       "type": "String",
       "optional": true,
       "id": "iscale_out",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "--iscalein",
       "description": "Initial input text file for iscale value.",
-      "value-key": "[ISCALEIN_FILE]",
+      "value-key": "[ISCALE_IN]",
       "type": "String",
       "optional": true,
       "id": "iscale_in",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "--transonly",
       "description": "Find 3 parameter translation only.",
-      "value-key": "[TRANSONLY_FLAG]",
+      "value-key": "[TRANS_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "trans_only",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "--affine",
       "description": "Find 12 parameter affine transform.",
-      "value-key": "[AFFINE_FLAG]",
+      "value-key": "[AFFINE]",
       "type": "Flag",
       "optional": true,
       "id": "affine",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "--ixform",
       "description": "Use initial transform LTA on source.",
-      "value-key": "[IXFORM_FILE]",
+      "value-key": "[IXFORM]",
       "type": "String",
       "optional": true,
       "id": "ixform",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "--initorient",
       "description": "Use moments for orientation initialization.",
-      "value-key": "[INITORIENT_FLAG]",
+      "value-key": "[INIT_ORIENT]",
       "type": "Flag",
       "optional": true,
       "id": "init_orient",
@@ -162,7 +162,7 @@
     {
       "command-line-flag": "--noinit",
       "description": "Skip automatic transform initialization.",
-      "value-key": "[NOINIT_FLAG]",
+      "value-key": "[NO_INIT]",
       "type": "Flag",
       "optional": true,
       "id": "no_init",
@@ -171,7 +171,7 @@
     {
       "command-line-flag": "--vox2vox",
       "description": "Output VOX2VOX LTA file.",
-      "value-key": "[VOX2VOX_FLAG]",
+      "value-key": "[VOX2VOX]",
       "type": "Flag",
       "optional": true,
       "id": "vox2vox",
@@ -180,7 +180,7 @@
     {
       "command-line-flag": "--cost",
       "description": "Set cost function for registration.",
-      "value-key": "[COST_FUNCTION]",
+      "value-key": "[COST]",
       "type": "String",
       "optional": true,
       "id": "cost",
@@ -189,7 +189,7 @@
     {
       "command-line-flag": "--entradius",
       "description": "With ROBENT: specify box radius for entropy computation.",
-      "value-key": "[ENTRADIUS_VALUE]",
+      "value-key": "[ENT_RADIUS]",
       "type": "Number",
       "optional": true,
       "id": "ent_radius",
@@ -198,7 +198,7 @@
     {
       "command-line-flag": "--entcorrection",
       "description": "With ROBENT: use better entropy computation that works on smaller boxes.",
-      "value-key": "[ENTCORRECTION_FLAG]",
+      "value-key": "[ENT_CORRECTION]",
       "type": "Flag",
       "optional": true,
       "id": "ent_correction",
@@ -207,7 +207,7 @@
     {
       "command-line-flag": "--entball",
       "description": "With ROBENT: use ball around voxel instead of box.",
-      "value-key": "[ENTBALL_FLAG]",
+      "value-key": "[ENT_BALL]",
       "type": "Flag",
       "optional": true,
       "id": "ent_ball",
@@ -216,7 +216,7 @@
     {
       "command-line-flag": "--entmov",
       "description": "With ROBENT: write movable entropy image.",
-      "value-key": "[ENTMOV_FILE]",
+      "value-key": "[ENT_MOV]",
       "type": "String",
       "optional": true,
       "id": "ent_mov",
@@ -234,7 +234,7 @@
     {
       "command-line-flag": "--sobel",
       "description": "Register Sobel magnitude images.",
-      "value-key": "[SOBEL_FLAG]",
+      "value-key": "[SOBEL]",
       "type": "Flag",
       "optional": true,
       "id": "sobel",
@@ -243,7 +243,7 @@
     {
       "command-line-flag": "--nosym",
       "description": "Do not map to half way space.",
-      "value-key": "[NOSYM_FLAG]",
+      "value-key": "[NO_SYM]",
       "type": "Flag",
       "optional": true,
       "id": "no_sym",
@@ -252,7 +252,7 @@
     {
       "command-line-flag": "--maxit",
       "description": "Maximum number of iterations on each resolution.",
-      "value-key": "[MAX_IT_BIN]",
+      "value-key": "[MAXIMUM_ITERATIONS]",
       "type": "Number",
       "optional": true,
       "id": "maximum_iterations",
@@ -261,7 +261,7 @@
     {
       "command-line-flag": "--entdst",
       "description": "With ROBENT: write target entropy image.",
-      "value-key": "[ENTDST_FILE]",
+      "value-key": "[ENT_DST]",
       "type": "String",
       "optional": true,
       "id": "ent_dst",
@@ -270,7 +270,7 @@
     {
       "command-line-flag": "--highit",
       "description": "Maximum number of iterations on highest resolution.",
-      "value-key": "[HIGH_IT_BIN]",
+      "value-key": "[HIGH_ITER]",
       "type": "Number",
       "optional": true,
       "id": "high_iter",
@@ -279,7 +279,7 @@
     {
       "command-line-flag": "--epsit",
       "description": "Stop iterations when transform update falls below specified RMS distance.",
-      "value-key": "[EPS_IT_BIN]",
+      "value-key": "[EPS_ITERATION]",
       "type": "Number",
       "optional": true,
       "id": "eps_iteration",
@@ -288,7 +288,7 @@
     {
       "command-line-flag": "--nomulti",
       "description": "Process highest resolution only (no multiscale).",
-      "value-key": "[NOMULTI_FLAG]",
+      "value-key": "[NO_MULTISCALE]",
       "type": "Flag",
       "optional": true,
       "id": "no_multiscale",
@@ -297,7 +297,7 @@
     {
       "command-line-flag": "--maxsize",
       "description": "Specify largest voxel dimension for gaussian pyramid.",
-      "value-key": "[MAXSIZE_VALUE]",
+      "value-key": "[MAX_SIZE]",
       "type": "Number",
       "optional": true,
       "id": "max_size",
@@ -306,7 +306,7 @@
     {
       "command-line-flag": "--minsize",
       "description": "Specify smallest voxel dimension for gaussian pyramid.",
-      "value-key": "[MINSIZE_VALUE]",
+      "value-key": "[MIN_SIZE]",
       "type": "Number",
       "optional": true,
       "id": "min_size",
@@ -315,7 +315,7 @@
     {
       "command-line-flag": "--wlimit",
       "description": "(Expert) sets maximal outlier limit for --satit.",
-      "value-key": "[WLIMIT_VALUE]",
+      "value-key": "[W_LIMIT]",
       "type": "Number",
       "optional": true,
       "id": "w_limit",
@@ -324,7 +324,7 @@
     {
       "command-line-flag": "--subsample",
       "description": "Subsample if dimension is greater than the specified value on all axes.",
-      "value-key": "[SUBSAMPLE_VALUE]",
+      "value-key": "[SUB_SAMPLE]",
       "type": "Number",
       "optional": true,
       "id": "sub_sample",
@@ -333,7 +333,7 @@
     {
       "command-line-flag": "--floattype",
       "description": "Convert images to float internally.",
-      "value-key": "[FLOATTYPE_FLAG]",
+      "value-key": "[FLOAT_TYPE]",
       "type": "Flag",
       "optional": true,
       "id": "float_type",
@@ -342,7 +342,7 @@
     {
       "command-line-flag": "--whitebgmov",
       "description": "Assume white background in MOV for padding.",
-      "value-key": "[WHITEBGMOV_FLAG]",
+      "value-key": "[WHITE_BG_MOV]",
       "type": "Flag",
       "optional": true,
       "id": "white_bg_mov",
@@ -351,7 +351,7 @@
     {
       "command-line-flag": "--whitebgdst",
       "description": "Assume white background in DST for padding.",
-      "value-key": "[WHITEBGDST_FLAG]",
+      "value-key": "[WHITE_BG_DST]",
       "type": "Flag",
       "optional": true,
       "id": "white_bg_dst",
@@ -360,7 +360,7 @@
     {
       "command-line-flag": "--uchar",
       "description": "Convert inputs to UCHAR with rescale and histogram cropping.",
-      "value-key": "[UCHAR_FLAG]",
+      "value-key": "[UCHAR]",
       "type": "Flag",
       "optional": true,
       "id": "uchar",
@@ -369,7 +369,7 @@
     {
       "command-line-flag": "--maskmov",
       "description": "Mask movable image with mask file.",
-      "value-key": "[MASKMOV_FILE]",
+      "value-key": "[MASK_MOV]",
       "type": "File",
       "optional": true,
       "id": "mask_mov",
@@ -378,7 +378,7 @@
     {
       "command-line-flag": "--maskdst",
       "description": "Mask destination image with mask file.",
-      "value-key": "[MASKDST_FILE]",
+      "value-key": "[MASK_DST]",
       "type": "File",
       "optional": true,
       "id": "mask_dst",
@@ -387,7 +387,7 @@
     {
       "command-line-flag": "--halfmov",
       "description": "Outputs half-way movable (resampled in halfway space).",
-      "value-key": "[HALFMOV_FILE]",
+      "value-key": "[HALF_MOV]",
       "type": "String",
       "optional": true,
       "id": "half_mov",
@@ -396,7 +396,7 @@
     {
       "command-line-flag": "--halfdst",
       "description": "Outputs half-way destination (resampled in halfway space).",
-      "value-key": "[HALFDST_FILE]",
+      "value-key": "[HALF_DST]",
       "type": "String",
       "optional": true,
       "id": "half_dst",
@@ -405,7 +405,7 @@
     {
       "command-line-flag": "--halfweights",
       "description": "Outputs half-way weights (resampled in halfway space).",
-      "value-key": "[HALFWEIGHTS_FILE]",
+      "value-key": "[HALF_WEIGHTS]",
       "type": "String",
       "optional": true,
       "id": "half_weights",
@@ -414,7 +414,7 @@
     {
       "command-line-flag": "--halfmovlta",
       "description": "Outputs transform from movable to half-way space.",
-      "value-key": "[HALFMOVLTA_FILE]",
+      "value-key": "[HALF_MOV_LTA]",
       "type": "String",
       "optional": true,
       "id": "half_mov_lta",
@@ -423,7 +423,7 @@
     {
       "command-line-flag": "--halfdstlta",
       "description": "Outputs transform from destination to half-way space.",
-      "value-key": "[HALFDSTLTA_FILE]",
+      "value-key": "[HALF_DST_LTA]",
       "type": "String",
       "optional": true,
       "id": "half_dst_lta",
@@ -432,7 +432,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Show debug output.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -441,7 +441,7 @@
     {
       "command-line-flag": "--verbose",
       "description": "Verbosity level: 0 (quiet), 1 (normal), 2 (detail).",
-      "value-key": "[VERBOSE_LEVEL]",
+      "value-key": "[VERBOSE]",
       "type": "Number",
       "optional": true,
       "id": "verbose",
@@ -471,63 +471,63 @@
       "name": "Mapped Movable Header Output"
     },
     {
-      "path-template": "[WEIGHTS_OUTPUT]",
+      "path-template": "[WEIGHTS]",
       "description": "Weights indicating outlier probabilities in destination space.",
       "optional": true,
       "id": "weights_output_file",
       "name": "Weights Output File"
     },
     {
-      "path-template": "[ISCALEOUT_FILE]",
+      "path-template": "[ISCALE_OUT]",
       "description": "Output text file containing the intensity scale value.",
       "optional": true,
       "id": "iscale_out_file",
       "name": "Intensity Scale Output File"
     },
     {
-      "path-template": "[HALFMOV_FILE]",
+      "path-template": "[HALF_MOV]",
       "description": "Half-way movable volume resampled.",
       "optional": true,
       "id": "half_mov_file",
       "name": "Half Movable Volume"
     },
     {
-      "path-template": "[HALFDST_FILE]",
+      "path-template": "[HALF_DST]",
       "description": "Half-way destination volume resampled.",
       "optional": true,
       "id": "half_dst_file",
       "name": "Half Destination Volume"
     },
     {
-      "path-template": "[HALFWEIGHTS_FILE]",
+      "path-template": "[HALF_WEIGHTS]",
       "description": "Half-way weights resampled in halfway space.",
       "optional": true,
       "id": "half_weights_file",
       "name": "Half Weights File"
     },
     {
-      "path-template": "[HALFMOVLTA_FILE]",
+      "path-template": "[HALF_MOV_LTA]",
       "description": "Transform output from movable to half-way space.",
       "optional": true,
       "id": "half_mov_lta_file",
       "name": "Half Movable LTA File"
     },
     {
-      "path-template": "[HALFDSTLTA_FILE]",
+      "path-template": "[HALF_DST_LTA]",
       "description": "Transform output from destination to half-way space.",
       "optional": true,
       "id": "half_dst_lta_file",
       "name": "Half Destination LTA File"
     },
     {
-      "path-template": "[ENTMOV_FILE]",
+      "path-template": "[ENT_MOV]",
       "description": "Movable entropy image for ROBENT cost function.",
       "optional": true,
       "id": "ent_mov_file",
       "name": "Movable Entropy Image"
     },
     {
-      "path-template": "[ENTDST_FILE]",
+      "path-template": "[ENT_DST]",
       "description": "Target entropy image for ROBENT cost function.",
       "optional": true,
       "id": "ent_dst_file",

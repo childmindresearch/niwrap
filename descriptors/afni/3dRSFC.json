@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRSFC.html",
   "description": "Program to calculate common resting state functional connectivity (RSFC) parameters.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dRSFC [OPTIONS] [FBOT] [FTOP] [DATASET]",
+  "command-line": "3dRSFC [OPTIONS] [FBOT] [FTOP] [INPUT_DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input dataset (3D+time sequence of volumes)",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-despike",
       "description": "Despike each time series before other processing.",
-      "value-key": "[DESPIKE_FLAG]",
+      "value-key": "[DESPIKE]",
       "type": "Flag",
       "optional": true,
       "id": "despike",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-nodetrend",
       "description": "Skip the quadratic detrending of input before FFT-based bandpassing.",
-      "value-key": "[NODETREND_FLAG]",
+      "value-key": "[NODETREND]",
       "type": "Flag",
       "optional": true,
       "id": "nodetrend",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-nfft",
       "description": "Set the FFT length to specified value.",
-      "value-key": "[NFFT_VAL]",
+      "value-key": "[NFFT]",
       "type": "Number",
       "optional": true,
       "id": "nfft",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "-norm",
       "description": "Make all output time series have L2 norm = 1.",
-      "value-key": "[NORM_FLAG]",
+      "value-key": "[NORM]",
       "type": "Flag",
       "optional": true,
       "id": "norm",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Specify mask dataset.",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Create a mask from the input dataset.",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -123,7 +123,7 @@
     {
       "command-line-flag": "-blur",
       "description": "Blur inside the mask only with specified FWHM in mm.",
-      "value-key": "[BLUR_FWHM]",
+      "value-key": "[BLUR]",
       "type": "Number",
       "optional": true,
       "id": "blur",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "-localPV",
       "description": "Replace each vector by the local Principal Vector from a neighborhood radius.",
-      "value-key": "[LOCALPV_RADIUS]",
+      "value-key": "[LOCALPV]",
       "type": "Number",
       "optional": true,
       "id": "localpv",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "-input",
       "description": "Alternative way to specify input dataset.",
-      "value-key": "[INPUT_ALT_DATASET]",
+      "value-key": "[INPUT_ALT]",
       "type": "File",
       "optional": true,
       "id": "input_alt",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-band",
       "description": "Alternative way to specify passband frequencies.",
-      "value-key": "[ALT_FBOT, ALT_FTOP]",
+      "value-key": "[BAND]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -173,7 +173,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Turn off the fun and informative messages.",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -182,7 +182,7 @@
     {
       "command-line-flag": "-no_rs_out",
       "description": "Don't output processed time series, just output parameters.",
-      "value-key": "[NO_RS_OUT_FLAG]",
+      "value-key": "[NO_RS_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "no_rs_out",
@@ -191,7 +191,7 @@
     {
       "command-line-flag": "-un_bp_out",
       "description": "Output the un-bandpassed series as well.",
-      "value-key": "[UN_BANDPASS_OUT_FLAG]",
+      "value-key": "[UN_BANDPASS_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "un_bandpass_out",
@@ -200,7 +200,7 @@
     {
       "command-line-flag": "-no_rsfa",
       "description": "Exclude RSFA output (default is to include).",
-      "value-key": "[NO_RSFA_FLAG]",
+      "value-key": "[NO_RSFA]",
       "type": "Flag",
       "optional": true,
       "id": "no_rsfa",
@@ -209,7 +209,7 @@
     {
       "command-line-flag": "-bp_at_end",
       "description": "Bandpassing as the last step in the processing sequence.",
-      "value-key": "[BP_AT_END_FLAG]",
+      "value-key": "[BP_AT_END]",
       "type": "Flag",
       "optional": true,
       "id": "bp_at_end",
@@ -218,7 +218,7 @@
     {
       "command-line-flag": "-notrans",
       "description": "Don't check for initial positive transients in the data.",
-      "value-key": "[NO_TRANS_FLAG]",
+      "value-key": "[NOTRANS]",
       "type": "Flag",
       "optional": true,
       "id": "notrans",
@@ -227,7 +227,7 @@
     {
       "command-line-flag": "-nosat",
       "description": "Equivalent to -notrans, skips checking for initial transients.",
-      "value-key": "[NO_SAT_FLAG]",
+      "value-key": "[NOSAT]",
       "type": "Flag",
       "optional": true,
       "id": "nosat",

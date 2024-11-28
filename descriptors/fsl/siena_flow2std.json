@@ -3,7 +3,7 @@
   "name": "siena_flow2std",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Convert edge flow to standard space",
-  "command-line": "siena_flow2std [FILEROUT1] [FILEROUT2] [SIGMA] [DEBUG_FLAG]",
+  "command-line": "siena_flow2std [FILEROOT1] [FILEROOT2] [SIGMA] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input file root 1",
-      "value-key": "[FILEROUT1]",
+      "value-key": "[FILEROOT1]",
       "type": "String",
       "optional": false,
       "id": "fileroot1",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Input file root 2",
-      "value-key": "[FILEROUT2]",
+      "value-key": "[FILEROOT2]",
       "type": "String",
       "optional": false,
       "id": "fileroot2",

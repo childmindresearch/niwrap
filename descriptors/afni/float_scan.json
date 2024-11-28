@@ -3,7 +3,7 @@
   "name": "float_scan",
   "author": "AFNI Developers",
   "description": "Scans the input file of IEEE floating point numbers for illegal values: infinities and not-a-number (NaN) values.",
-  "command-line": "float_scan [FIX_FLAG] [VERBOSE_FLAG] [SKIP_COUNT] [INPUT_FILE]",
+  "command-line": "float_scan [FIX_ILLEGAL_VALUES] [VERBOSE_MODE] [SKIP_COUNT] [INPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-fix",
       "description": "Writes a copy of the input file to stdout, replacing illegal values with 0.",
-      "value-key": "[FIX_FLAG]",
+      "value-key": "[FIX_ILLEGAL_VALUES]",
       "type": "Flag",
       "optional": true,
       "id": "fix_illegal_values",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-v",
       "description": "Verbose mode: print out index of each illegal value.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE_MODE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose_mode",

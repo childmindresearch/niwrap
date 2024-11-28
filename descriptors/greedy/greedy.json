@@ -2,7 +2,7 @@
   "name": "greedy",
   "tool-version": "1.0.1",
   "description": "Paul's greedy diffeomorphic registration implementation",
-  "command-line": "greedy [DIMENSIONS] [INPUTS] [OUTPUT] [AFFINE] [BRUTE] [MOMENTS] [RESLICE] [INVERT] [ROOT] [JACOBIAN] [METRIC_MODE] [DEFOPT] [WEIGHT] [METRIC] [STEP_SIZE] [ITERATIONS] [THREADS] [FIXED_MASK] [GM_TRIM] [MOVING_MASK] [WNCC_MASK_DILATE] [REFERENCE_IMAGE] [REF_PAD] [BACKGROUND] [IT] [ZERO_LAST_DIMENSION] [TIME_STEP_MODE] [SMOOTHING] [INVERSE_WARP] [ROOT_WARP] [WARP_PRECISION] [NOISE] [EXPONENT] [SVF_MODE] [SVLB] [SV_INCOMPR] [INITIAL_WARP] [TJR] [WR] [INITIAL_AFFINE] [AFFINE_IDENTITY] [IA_VOXEL_GRID] [IA_IMAGE_CENTERS] [IA_IMAGE_SIDE] [IA_MOMENTS] [AFFINE_DOF] [JITTER] [SEARCH] [DET] [COV_ID] [RESLICE_INPUT_IMG] [RESLICE_MOVING_IMAGE] [RESLICE_SURFACE] [INTERPOLATION] [RESLICE_BACKGROUND] [RESLICE_DATATYPE] [RESLICE_COMPOSITE] [RESLICE_JACOBIAN] [RESLICE_SIMPLEX_JACOBIAN] [RESLICE_MASK] [METRIC_GRADIENT] [DEBUG_DERIV] [DEBUG_DERIV_EPS] [DEBUG_AFF_OBJ] [DUMP_PYRAMID] [DUMP_MOVING] [DUMP_FREQUENCY] [DUMP_PREFIX] [POWELL] [FLOAT] [VERSION] [VERBOSE]",
+  "command-line": "greedy [DIMENSIONS] [INPUT_IMAGES] [OUTPUT] [AFFINE] [BRUTE] [MOMENTS] [RESLICE] [INVERT] [ROOT] [JACOBIAN] [METRIC_MODE] [DEFOPT] [WEIGHT] [METRIC] [STEP_SIZE] [ITERATIONS] [THREADS] [FIXED_MASK] [GM_TRIM] [MOVING_MASK] [WNCC_MASK_DILATE] [REFERENCE_IMAGE] [REF_PAD] [BACKGROUND] [INPUT_TRANSFORM] [ZERO_LAST_DIMENSION] [TIME_STEP_MODE] [SMOOTHING] [INVERSE_WARP] [ROOT_WARP] [WARP_PRECISION] [NOISE] [EXPONENT] [SVF_MODE] [SVLB] [SV_INCOMPR] [INITIAL_WARP] [TJR] [WR] [INITIAL_AFFINE] [IA_IDENTITY] [IA_VOXEL_GRID] [IA_IMAGE_CENTERS] [IA_IMAGE_SIDE] [IA_MOMENTS] [AFFINE_DOF] [JITTER] [SEARCH] [DET] [COV_ID] [FIXED_RESLICING_IMAGE] [RESLICE_MOVING_IMAGE] [RESLICE_SURFACE] [INTERPOLATION] [RESLICE_BACKGROUND] [RESLICE_DATATYPE] [RESLICE_COMPOSITE] [RESLICE_JACOBIAN] [RESLICE_SIMPLEX_JACOBIAN] [RESLICE_MASK] [METRIC_GRADIENT] [DEBUG_DERIV] [DEBUG_DERIV_EPS] [DEBUG_AFF_OBJ] [DUMP_PYRAMID] [DUMP_MOVING] [DUMP_FREQUENCY] [DUMP_PREFIX] [POWELL] [FLOAT] [VERSION] [VERBOSITY]",
   "schema-version": "0.5",
   "container-image": {
     "image": "pyushkevich/itksnap:v3.8.2",
@@ -23,7 +23,7 @@
       "id": "input_images",
       "name": "Input Images",
       "command-line-flag": "-i",
-      "value-key": "[INPUTS]",
+      "value-key": "[INPUT_IMAGES]",
       "optional": true,
       "description": "Image pair (may be repeated)",
       "type": {
@@ -364,7 +364,7 @@
       "name": "Input Transform",
       "type": "File",
       "command-line-flag": "-it",
-      "value-key": "[IT]",
+      "value-key": "[INPUT_TRANSFORM]",
       "optional": true,
       "description": "Specify transforms (matrices, warps) that map moving image to reference space"
     },
@@ -527,7 +527,7 @@
       "id": "ia_identity",
       "name": "Nifti Header Affine initialization",
       "type": "Flag",
-      "value-key": "[AFFINE_IDENTITY]",
+      "value-key": "[IA_IDENTITY]",
       "command-line-flag": "-ia-identity",
       "optional": true,
       "description": "Initialize affine matrix based on NIFTI headers"
@@ -650,7 +650,7 @@
       "id": "fixed_reslicing_image",
       "name": "Reslice Fixed Image",
       "type": "File",
-      "value-key": "[RESLICE_INPUT_IMG]",
+      "value-key": "[FIXED_RESLICING_IMAGE]",
       "command-line-flag": "-rf",
       "optional": true,
       "description": "Fixed image for reslicing"
@@ -932,7 +932,7 @@
       "id": "verbosity",
       "name": "Verbosity",
       "type": "Number",
-      "value-key": "[VERBOSE]",
+      "value-key": "[VERBOSITY]",
       "integer": true,
       "command-line-flag": "-V",
       "optional": true,

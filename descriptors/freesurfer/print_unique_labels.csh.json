@@ -2,7 +2,7 @@
   "name": "print_unique_labels.csh",
   "tool-version": "7.4.1",
   "description": "Prints the list of unique labels (with structure name) in the input volume.",
-  "command-line": "print_unique_labels.csh [LABEL_VOLUME] [OUTPUT_TYPE]",
+  "command-line": "print_unique_labels.csh [LABEL_VOLUME] [LIST_ONLY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -19,7 +19,7 @@
       "name": "Output File",
       "type": "String",
       "optional": true,
-      "value-key": "[OUTPUT_TYPE]",
+      "value-key": "[OUTPUT_FILE]",
       "description": "Text file where the results are written",
       "command-line-flag": "--out"
     },
@@ -28,7 +28,7 @@
       "name": "List Only",
       "type": "Flag",
       "optional": true,
-      "value-key": "[OUTPUT_TYPE]",
+      "value-key": "[LIST_ONLY]",
       "description": "Only list the labels",
       "command-line-flag": "--list"
     },
@@ -37,7 +37,7 @@
       "name": "Print Version",
       "type": "Flag",
       "optional": true,
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "description": "Print version and exit",
       "command-line-flag": "--version"
     },
@@ -46,7 +46,7 @@
       "name": "Print Help",
       "type": "Flag",
       "optional": true,
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "description": "Print help and exit",
       "command-line-flag": "--help"
     }

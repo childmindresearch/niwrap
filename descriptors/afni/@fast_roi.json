@@ -3,7 +3,7 @@
   "name": "@fast_roi",
   "author": "AFNI Developers",
   "description": "Creates Atlas-based ROI masked in ANAT's original space. The script executes rapidly for realtime fMRI applications.",
-  "command-line": "@fast_roi [REGION] [DRAWN_ROI] [ANAT] [ANAT_NS] [TLRC_BASE] [GRID] [PREFIX] [TIME_FLAG] [TWOPASS_FLAG] [HELP_FLAG]",
+  "command-line": "@fast_roi [REGION] [DRAWN_ROI] [ANAT] [ANAT_NS] [BASE] [ROI_GRID] [PREFIX] [TIME] [TWOPASS] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-base",
       "description": "Name of the reference TLRC volume.",
-      "value-key": "[TLRC_BASE]",
+      "value-key": "[BASE]",
       "type": "File",
       "optional": false,
       "id": "base",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-roi_grid",
       "description": "The volume that defines the final ROI's grid.",
-      "value-key": "[GRID]",
+      "value-key": "[ROI_GRID]",
       "type": "File",
       "optional": false,
       "id": "roi_grid",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--time",
       "description": "Output elapsed time reports.",
-      "value-key": "[TIME_FLAG]",
+      "value-key": "[TIME]",
       "type": "Flag",
       "optional": true,
       "id": "time",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "--twopass",
       "description": "Make TLRC transformation more robust. Use it if TLRC transform step fails.",
-      "value-key": "[TWOPASS_FLAG]",
+      "value-key": "[TWOPASS]",
       "type": "Flag",
       "optional": true,
       "id": "twopass",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "--help",
       "description": "Output help message.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

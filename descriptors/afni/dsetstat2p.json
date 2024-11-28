@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Converts a statistic to a p-value with reference to a particular dataset",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "dsetstat2p [DATASET] [STATVAL] [SIDEDNESS] [QUIET_FLAG]",
+  "command-line": "dsetstat2p [DATASET] [STATVAL] [ONE_SIDED] [QUIET]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     },
     {
       "description": "Choose one-sided or bi-sided/two-sided testing",
-      "value-key": "[SIDEDNESS]",
+      "value-key": "[BISIDED]",
       "command-line-flag": "-bisided",
       "optional": true,
       "id": "bisided",
@@ -36,7 +36,7 @@
     },
     {
       "description": "Choose one-sided or bi-sided/two-sided testing",
-      "value-key": "[SIDEDNESS]",
+      "value-key": "[TWO_SIDED]",
       "command-line-flag": "-2sided",
       "optional": true,
       "id": "two_sided",
@@ -45,7 +45,7 @@
     },
     {
       "description": "Choose one-sided or bi-sided/two-sided testing",
-      "value-key": "[SIDEDNESS]",
+      "value-key": "[ONE_SIDED]",
       "command-line-flag": "-1sided",
       "optional": true,
       "id": "one_sided",
@@ -54,7 +54,7 @@
     },
     {
       "description": "An optional flag so that output ONLY the final statistic value output to standard output; this can be then be viewed, redirected to a text file or saved as a shell variable. (Default: display supplementary text.)",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "command-line-flag": "-quiet",
       "optional": true,
       "id": "quiet",

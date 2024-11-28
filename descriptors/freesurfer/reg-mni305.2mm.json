@@ -3,7 +3,7 @@
   "name": "reg-mni305.2mm",
   "author": "FreeSurfer Developers",
   "description": "Computes the registration between the FreeSurfer MNI305 2mm space and a subject's FreeSurfer anatomical space.",
-  "command-line": "reg-mni305.2mm [SUBJECT] [REGFILE]",
+  "command-line": "reg-mni305.2mm [SUBJECT_ID] [REGFILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "--s",
       "description": "Subject ID for the FreeSurfer anatomical space.",
-      "value-key": "[SUBJECT]",
+      "value-key": "[SUBJECT_ID]",
       "type": "String",
       "optional": false,
       "id": "subject_id",

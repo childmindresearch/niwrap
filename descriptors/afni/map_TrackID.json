@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "description": "Maps the track file (*.trk) output of 3dTrackID to another space using the 1Dmatrix_save info of 3dAllineate.",
   "author": "AFNI Developers",
-  "command-line": "map_TrackID [PREFIX] [IN_TRK] [IN_MAP] [REFERENCE] [VERBOSE_FLAG] [ORIG_ZERO_FLAG] [LINE_ONLY_NUM_FLAG] [ALREADY_INV_FLAG]",
+  "command-line": "map_TrackID [PREFIX] [IN_TRK] [IN_MAP] [REFERENCE] [VERBOSE] [ORIG_ZERO] [LINE_ONLY_NUM] [ALREADY_INV]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -51,7 +51,7 @@
       "description": "Verbose output.",
       "type": "Flag",
       "command-line-flag": "-verb",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "optional": true
     },
     {
@@ -60,7 +60,7 @@
       "description": "Put (0,0,0) as the origin in the output *.trk file.",
       "type": "Flag",
       "command-line-flag": "-orig_zero",
-      "value-key": "[ORIG_ZERO_FLAG]",
+      "value-key": "[ORIG_ZERO]",
       "optional": true
     },
     {
@@ -69,7 +69,7 @@
       "description": "If your 1D_MATR file is just 12 numbers in a row.",
       "type": "Flag",
       "command-line-flag": "-line_only_num",
-      "value-key": "[LINE_ONLY_NUM_FLAG]",
+      "value-key": "[LINE_ONLY_NUM]",
       "optional": true
     },
     {
@@ -78,7 +78,7 @@
       "description": "If you have inverted the mapping or use another program than 3dAllineate.",
       "type": "Flag",
       "command-line-flag": "-already_inv",
-      "value-key": "[ALREADY_INV_FLAG]",
+      "value-key": "[ALREADY_INV]",
       "optional": true
     }
   ],

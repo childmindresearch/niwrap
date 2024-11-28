@@ -3,7 +3,7 @@
   "name": "SampBias",
   "author": "AFNI Developers",
   "description": "SampBias is a tool for sampling bias resultant segments between paired nodes on anatomical surfaces.",
-  "command-line": "SampBias [SPECFILE] [SURFNAME] [PLIMIT] [DLIMIT] [OUT_FILE] [PREFIX]",
+  "command-line": "SampBias [SPECFILE] [SURFNAME] [PLIMIT] [DLIMIT] [OUTFILE] [PREFIX]",
   "inputs": [
     {
       "command-line-flag": "-spec",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-out",
       "description": "Output results in .1D format.",
-      "value-key": "[OUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -76,7 +76,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUT_FILE].1D",
+      "path-template": "[OUTFILE].1D",
       "description": "Output results in .1D format",
       "optional": false,
       "id": "out_1D",

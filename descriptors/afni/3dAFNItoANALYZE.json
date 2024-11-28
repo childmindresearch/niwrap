@@ -3,7 +3,7 @@
   "name": "3dAFNItoANALYZE",
   "author": "AFNI Developers",
   "description": "Writes AFNI dataset to ANALYZE 7.5 format .hdr/.img file pairs.",
-  "command-line": "3dAFNItoANALYZE [4D_FLAG] [ORIENT_FLAG] [OUTPUT_NAME] [DSET]",
+  "command-line": "3dAFNItoANALYZE [4D_OPTION] [ORIENT_OPTION] [OUTPUT_NAME] [AFNI_DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -19,7 +19,7 @@
     },
     {
       "description": "Input AFNI dataset",
-      "value-key": "[DSET]",
+      "value-key": "[AFNI_DATASET]",
       "type": "File",
       "optional": false,
       "id": "afni_dataset",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-4D",
       "description": "Write all data to one big ANALYZE file pair named aname.hdr/aname.img",
-      "value-key": "[4D_FLAG]",
+      "value-key": "[4D_OPTION]",
       "type": "Flag",
       "optional": true,
       "id": "4d_option",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-orient",
       "description": "Flip the dataset to a different orientation when writing to ANALYZE files (e.g., LPI)",
-      "value-key": "[ORIENT_FLAG]",
+      "value-key": "[ORIENT_OPTION]",
       "type": "String",
       "optional": true,
       "id": "orient_option",

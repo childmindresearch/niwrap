@@ -3,7 +3,7 @@
   "name": "fsr-getxopts",
   "author": "FreeSurfer Developers",
   "description": "Tool to retrieve extended options for a specific context or configuration",
-  "command-line": "fsr-getxopts [HELP_FLAG]",
+  "command-line": "fsr-getxopts [HELP]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display the help message and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

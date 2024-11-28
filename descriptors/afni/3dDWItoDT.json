@@ -28,7 +28,7 @@
       "name": "Output prefix",
       "type": "String",
       "description": "Output dataset prefix name. Default is 'DT'.",
-      "value-key": "[<P_PREFIX>]",
+      "value-key": "[PREFIX]",
       "optional": true
     },
     {
@@ -46,7 +46,7 @@
       "name": "Mask dataset",
       "type": "File",
       "description": "Use this dataset as mask to include/exclude voxels.",
-      "value-key": "[<MASK_DSET>]",
+      "value-key": "[MASK]",
       "optional": true
     },
     {
@@ -55,7 +55,7 @@
       "name": "B-matrix NZ",
       "type": "File",
       "description": "Input dataset is b-matrix, not gradient directions, and there is no row of zeros at the top of the file.",
-      "value-key": "[<B_MATRIX_NZ>]",
+      "value-key": "[BMATRIX_NZ]",
       "optional": true
     },
     {
@@ -64,7 +64,7 @@
       "name": "B-matrix Z",
       "type": "File",
       "description": "Similar to '-bmatrix_NZ' but first row of the file is all zeros.",
-      "value-key": "[<B_MATRIX_Z>]",
+      "value-key": "[BMATRIX_Z]",
       "optional": true
     },
     {
@@ -73,7 +73,7 @@
       "name": "B-matrix FULL",
       "type": "File",
       "description": "Same as '-bmatrix_Z' but with a more intuitive name.",
-      "value-key": "[<B_MATRIX_FULL>]",
+      "value-key": "[BMATRIX_FULL]",
       "optional": true
     },
     {
@@ -91,7 +91,7 @@
       "name": "Reference b-value",
       "type": "Number",
       "description": "Flag the reference b-value if it is greater than zero.",
-      "value-key": "[<THR>]",
+      "value-key": "[BMAX_REF]",
       "integer": false,
       "optional": true
     },
@@ -128,7 +128,7 @@
       "name": "Maximum iterations",
       "type": "Number",
       "description": "Maximum number of iterations for convergence. Default is 10.",
-      "value-key": "[<N>]",
+      "value-key": "[MAX_ITER]",
       "integer": true,
       "optional": true
     },
@@ -138,7 +138,7 @@
       "name": "Max iterations after reweighting",
       "type": "Number",
       "description": "Max number of iterations after reweighting. Default is 5.",
-      "value-key": "[<N>]",
+      "value-key": "[MAX_ITER_RW]",
       "integer": true,
       "optional": true
     },
@@ -175,7 +175,7 @@
       "name": "Verbose",
       "type": "Number",
       "description": "Print convergence steps every nnnnn voxels.",
-      "value-key": "[<NNNNN>]",
+      "value-key": "[VERBOSE]",
       "integer": true,
       "optional": true
     },
@@ -185,7 +185,7 @@
       "name": "AFNI drive",
       "type": "Number",
       "description": "Show convergence graphs every nnnnn voxels. AFNI must have NIML communications on.",
-      "value-key": "[<NNNNN>]",
+      "value-key": "[DRIVE_AFNI]",
       "integer": true,
       "optional": true
     },
@@ -204,7 +204,7 @@
       "name": "CSF diffusivity",
       "type": "Number",
       "description": "Assign diffusivity value to DWI data where the mean values for b=0 volumes is less than the mean of the remaining volumes at each voxel.",
-      "value-key": "[<N.NNN>]",
+      "value-key": "[CSF_VAL]",
       "integer": false,
       "optional": true
     },
@@ -214,7 +214,7 @@
       "name": "Minimum bad MD value",
       "type": "Number",
       "description": "Change the min MD value used as a 'badness check' for tensor fits.",
-      "value-key": "[<N>]",
+      "value-key": "[MIN_BAD_MD]",
       "integer": true,
       "optional": true
     },
@@ -224,7 +224,7 @@
       "name": "CSF FA value",
       "type": "Number",
       "description": "Assign a specific FA value to CSF voxels.",
-      "value-key": "[<N.NNN>]",
+      "value-key": "[CSF_FA]",
       "integer": false,
       "optional": true
     },
@@ -234,7 +234,7 @@
       "name": "Optimization method",
       "type": "String",
       "description": "Optimization method: 'powell', 'gradient', or 'hybrid'.",
-      "value-key": "[<MNAME>]",
+      "value-key": "[OPT]",
       "optional": true
     },
     {

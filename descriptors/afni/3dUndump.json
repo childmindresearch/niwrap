@@ -3,7 +3,7 @@
   "name": "3dUndump",
   "author": "AFNI Developers",
   "description": "Assembles a 3D dataset from an ASCII list of coordinates and optionally values.",
-  "command-line": "3dUndump [INPUT_FILE] [PREFIX] [MASTER] [DIMENSIONS] [MASK] [DATATYPE] [DVAL] [FVAL] [COORD_TYPE] [SPHERE_RADIUS] [CUBE_MODE] [ORIENT] [HEAD_ONLY] [ROIMASK] [ALLOW_NAN]",
+  "command-line": "3dUndump [INPUT_FILES] [PREFIX] [MASTER] [DIMENSIONS] [MASK] [DATATYPE] [DVAL] [FVAL] [XYZ] [SPHERE_RADIUS] [CUBE_MODE] [ORIENT] [HEAD_ONLY] [ROIMASK] [ALLOW_NAN]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input ASCII file(s), with one voxel specification per line.",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_FILES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-ijk",
       "description": "Coordinates in the input file are (i,j,k) index triples.",
-      "value-key": "[COORD_TYPE]",
+      "value-key": "[IJK]",
       "type": "Flag",
       "optional": true,
       "id": "ijk",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "-xyz",
       "description": "Coordinates in the input file are (x,y,z) spatial coordinates, in mm.",
-      "value-key": "[COORD_TYPE]",
+      "value-key": "[XYZ]",
       "type": "Flag",
       "optional": true,
       "id": "xyz",

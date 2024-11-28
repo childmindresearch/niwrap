@@ -1,6 +1,6 @@
 {
   "name": "mri_label2label",
-  "command-line": "mri_label2label [SRC_LABEL] [TRG_LABEL] [ERODE] [OPEN] [CLOSE] [DILATE] [RING] [SRC_SUBJECT] [TRG_SUBJECT] [SUBJECT] [OUT_MASK] [OUT_STAT] [SAMPLE] [REG_METHOD] [USE_PATH_FILES] [HEMI] [SRC_HEMI] [TRG_HEMI] [SRC_ICO_ORDER] [TRG_ICO_ORDER] [DIRECT] [TRG_SURF] [SURF_REG] [SRC_SURF_REG] [TRG_SURF_REG] [SRC_SURF_REG_FILE] [TRG_SURF_REG_FILE] [PAINT] [DMINDMIN] [BARYFILL] [LABEL_CORTEX] [SURF_LABEL2MASK] [SRC_MASK] [SRC_MASK_SIGN] [SRC_MASK_FRAME] [XFM] [REG] [XFM_INVERT] [PROJ_ABS] [PROJ_FRAC] [SD] [NO_HASH] [NO_REV_MAP] [TO_SCANNER] [TO_TKR] [SCANNER]",
+  "command-line": "mri_label2label [SRC_LABEL] [TRG_LABEL] [ERODE] [OPEN] [CLOSE] [DILATE] [RING] [SRC_SUBJECT] [TRG_SUBJECT] [SUBJECT] [OUTMASK] [OUTSTAT] [SAMPLE] [REGMETHOD] [USEPATHFILES] [HEMI] [SRC_HEMI] [TRG_HEMI] [SRC_ICO_ORDER] [TRG_ICO_ORDER] [DIRECT] [TRGSURF] [SURFREG] [SRCSURFREG] [TRGSURFREG] [SRCSURFREG_FILE] [TRGSURFREG_FILE] [PAINT] [DMINDMIN] [BARYFILL] [LABEL_CORTEX] [SURF_LABEL2MASK] [SRCMASK] [SRCMASKSIGN] [SRCMASKFRAME] [XFM] [REG] [XFM_INVERT] [PROJABS] [PROJFRAC] [SD] [NOHASH] [NOREVMAP] [TO_SCANNER] [TO_TKR] [SCANNER]",
   "inputs": [
     {
       "command-line-flag": "--srclabel",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--outmask",
       "description": "Save output label as a binary mask (surf only)",
-      "value-key": "[OUT_MASK]",
+      "value-key": "[OUTMASK]",
       "type": "String",
       "optional": true,
       "id": "outmask",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--outstat",
       "description": "Save output label stat as a mask (surf only)",
-      "value-key": "[OUT_STAT]",
+      "value-key": "[OUTSTAT]",
       "type": "String",
       "optional": true,
       "id": "outstat",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "--regmethod",
       "description": "Registration method (surface, volume)",
-      "value-key": "[REG_METHOD]",
+      "value-key": "[REGMETHOD]",
       "type": "String",
       "optional": true,
       "id": "regmethod",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--usepathfiles",
       "description": "Read from and write to a path file",
-      "value-key": "[USE_PATH_FILES]",
+      "value-key": "[USEPATHFILES]",
       "type": "Flag",
       "optional": true,
       "id": "usepathfiles",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "--trgsurf",
       "description": "Get xyz from this surface (white)",
-      "value-key": "[TRG_SURF]",
+      "value-key": "[TRGSURF]",
       "type": "String",
       "optional": true,
       "id": "trgsurf",
@@ -203,7 +203,7 @@
     {
       "command-line-flag": "--surfreg",
       "description": "Surface registration (sphere.reg)",
-      "value-key": "[SURF_REG]",
+      "value-key": "[SURFREG]",
       "type": "String",
       "optional": true,
       "id": "surfreg",
@@ -212,7 +212,7 @@
     {
       "command-line-flag": "--srcsurfreg",
       "description": "Source surface registration (sphere.reg)",
-      "value-key": "[SRC_SURF_REG]",
+      "value-key": "[SRCSURFREG]",
       "type": "String",
       "optional": true,
       "id": "srcsurfreg",
@@ -221,7 +221,7 @@
     {
       "command-line-flag": "--trgsurfreg",
       "description": "Target surface registration (sphere.reg)",
-      "value-key": "[TRG_SURF_REG]",
+      "value-key": "[TRGSURFREG]",
       "type": "String",
       "optional": true,
       "id": "trgsurfreg",
@@ -230,7 +230,7 @@
     {
       "command-line-flag": "--srcsurfreg-file",
       "description": "Specify full path to source reg",
-      "value-key": "[SRC_SURF_REG_FILE]",
+      "value-key": "[SRCSURFREG_FILE]",
       "type": "String",
       "optional": true,
       "id": "srcsurfreg_file",
@@ -239,7 +239,7 @@
     {
       "command-line-flag": "--trgsurfreg-file",
       "description": "Specify full path to target reg",
-      "value-key": "[TRG_SURF_REG_FILE]",
+      "value-key": "[TRGSURFREG_FILE]",
       "type": "String",
       "optional": true,
       "id": "trgsurfreg_file",
@@ -293,7 +293,7 @@
     {
       "command-line-flag": "--srcmask",
       "description": "Source mask surfvalfile thresh <format>",
-      "value-key": "[SRC_MASK]",
+      "value-key": "[SRCMASK]",
       "type": "String",
       "optional": true,
       "id": "srcmask",
@@ -302,7 +302,7 @@
     {
       "command-line-flag": "--srcmasksign",
       "description": "Source mask sign (<abs>, pos, neg)",
-      "value-key": "[SRC_MASK_SIGN]",
+      "value-key": "[SRCMASKSIGN]",
       "type": "String",
       "optional": true,
       "id": "srcmasksign",
@@ -311,7 +311,7 @@
     {
       "command-line-flag": "--srcmaskframe",
       "description": "Source mask frame number (0-based)",
-      "value-key": "[SRC_MASK_FRAME]",
+      "value-key": "[SRCMASKFRAME]",
       "type": "Number",
       "optional": true,
       "id": "srcmaskframe",
@@ -347,7 +347,7 @@
     {
       "command-line-flag": "--projabs",
       "description": "Project dist mm along surf normal",
-      "value-key": "[PROJ_ABS]",
+      "value-key": "[PROJABS]",
       "type": "String",
       "optional": true,
       "id": "projabs",
@@ -356,7 +356,7 @@
     {
       "command-line-flag": "--projfrac",
       "description": "Project frac of thickness along surf normal",
-      "value-key": "[PROJ_FRAC]",
+      "value-key": "[PROJFRAC]",
       "type": "String",
       "optional": true,
       "id": "projfrac",
@@ -374,7 +374,7 @@
     {
       "command-line-flag": "--nohash",
       "description": "Don't use hash table when regmethod is surface",
-      "value-key": "[NO_HASH]",
+      "value-key": "[NOHASH]",
       "type": "Flag",
       "optional": true,
       "id": "nohash",
@@ -383,7 +383,7 @@
     {
       "command-line-flag": "--norevmap",
       "description": "Don't use reverse mapping when regmethod is surface",
-      "value-key": "[NO_REV_MAP]",
+      "value-key": "[NOREVMAP]",
       "type": "Flag",
       "optional": true,
       "id": "norevmap",

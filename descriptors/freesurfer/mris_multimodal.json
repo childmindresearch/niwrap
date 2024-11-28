@@ -1,7 +1,7 @@
 {
   "name": "mris_multimodal",
   "description": "A FreeSurfer tool for processing multimodal surface data.",
-  "command-line": "mris_multimodal [INPUT_SURFACE] [TARGET_SURFACE] [OUTPUT_SURFACE] [FILL_HOLES_FLAG] [CURVATURE_FLAG] [THICKNESS_FLAG] [ANNOTATION_OUTPUT] [OVERLAY_OUTPUT] [CSV_OUTPUT] [VTK_FLAG]",
+  "command-line": "mris_multimodal [INPUT_SURFACE] [TARGET_SURFACE] [OUTPUT_SURFACE] [FILL_HOLES] [CURVATURE] [THICKNESS] [ANNOTATION_OUTPUT] [OVERLAY_OUTPUT] [CSV_OUTPUT] [VTK_OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-fillHoles",
       "description": "Flag to fill holes in the surface.",
-      "value-key": "[FILL_HOLES_FLAG]",
+      "value-key": "[FILL_HOLES]",
       "type": "Flag",
       "optional": true,
       "id": "fill_holes",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "--curvature",
       "description": "Flag to process curvature data.",
-      "value-key": "[CURVATURE_FLAG]",
+      "value-key": "[CURVATURE]",
       "type": "Flag",
       "optional": true,
       "id": "curvature",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "--thickness",
       "description": "Flag to process thickness data.",
-      "value-key": "[THICKNESS_FLAG]",
+      "value-key": "[THICKNESS]",
       "type": "Flag",
       "optional": true,
       "id": "thickness",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-vtk",
       "description": "Flag to output VTK file format.",
-      "value-key": "[VTK_FLAG]",
+      "value-key": "[VTK_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "vtk_output",

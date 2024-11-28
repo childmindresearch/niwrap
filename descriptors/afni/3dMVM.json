@@ -5,7 +5,7 @@
   "descriptor-url": "#",
   "description": "AFNI Group Analysis Program with Multi-Variate Modeling Approach",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dMVM [PARAM_FLAGS] [PREFIX] [JOBS] [MASK] [BSVARS] [WSVARS] [QVARS] [Q_VAR_CENTERS] [NUM_GLT] [GLT_LABEL] [GLT_CODE] [NUM_GLF] [GLF_LABEL] [GLF_CODE] [DATA_TABLE]",
+  "command-line": "3dMVM [DBGARGS] [PREFIX] [JOBS] [MASK] [BSVARS] [WSVARS] [QVARS] [QVARCENTERS] [NUM_GLT] [GLTLABEL] [GLTCODE] [NUM_GLF] [GLFLABEL] [GLFCODE] [DATATABLE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -68,7 +68,7 @@
     },
     {
       "description": "Comma-separated centering values for quantitative variables",
-      "value-key": "[Q_VAR_CENTERS]",
+      "value-key": "[QVARCENTERS]",
       "type": "String",
       "optional": true,
       "id": "qVarCenters",
@@ -87,7 +87,7 @@
     },
     {
       "description": "Label for each general linear t-test (GLT)",
-      "value-key": "[GLT_LABEL]",
+      "value-key": "[GLTLABEL]",
       "type": "String",
       "optional": true,
       "id": "gltLabel",
@@ -96,7 +96,7 @@
     },
     {
       "description": "Coding for each general linear t-test (GLT)",
-      "value-key": "[GLT_CODE]",
+      "value-key": "[GLTCODE]",
       "type": "String",
       "optional": true,
       "id": "gltCode",
@@ -115,7 +115,7 @@
     },
     {
       "description": "Label for each general linear F-test (GLF)",
-      "value-key": "[GLF_LABEL]",
+      "value-key": "[GLFLABEL]",
       "type": "String",
       "optional": true,
       "id": "glfLabel",
@@ -124,7 +124,7 @@
     },
     {
       "description": "Coding for each general linear F-test (GLF)",
-      "value-key": "[GLF_CODE]",
+      "value-key": "[GLFCODE]",
       "type": "String",
       "optional": true,
       "id": "glfCode",
@@ -133,7 +133,7 @@
     },
     {
       "description": "Data table for analysis",
-      "value-key": "[DATA_TABLE]",
+      "value-key": "[DATATABLE]",
       "type": "String",
       "optional": false,
       "id": "dataTable",
@@ -142,7 +142,7 @@
     },
     {
       "description": "Enable R to save parameters in a file for debugging",
-      "value-key": "[PARAM_FLAGS]",
+      "value-key": "[DBGARGS]",
       "type": "String",
       "optional": true,
       "id": "dbgArgs",

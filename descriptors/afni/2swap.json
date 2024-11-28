@@ -3,11 +3,11 @@
   "name": "2swap",
   "author": "AFNI Developers",
   "description": "Swaps byte pairs on the files listed",
-  "command-line": "2swap [QUIET_FLAG] [FILES...]",
+  "command-line": "2swap [QUIET] [INPUT_FILES]",
   "inputs": [
     {
       "description": "Input files",
-      "value-key": "[FILES...]",
+      "value-key": "[INPUT_FILES]",
       "type": "File",
       "id": "input_files",
       "name": "Input files",
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-q",
       "description": "Work quietly",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",

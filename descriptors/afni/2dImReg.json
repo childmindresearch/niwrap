@@ -3,7 +3,7 @@
   "author": "AFNI Developers",
   "description": "2D image registration tool for 3D+time datasets, aligning images on a slice-by-slice basis to a specified base image.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "2dImReg [INPUT_FILE] [BASE_FILE] [BASE] [NO_FINE] [FINE_BLUR] [FINE_DXY] [FINE_DPHI] [PREFIX] [DPREFIX] [DMM_FLAG] [RPREFIX] [DEBUG_FLAG]",
+  "command-line": "2dImReg [INPUT_FILE] [BASE_FILE] [BASE] [NOFINE] [FINE_BLUR] [FINE_DXY] [FINE_DPHI] [PREFIX] [DPREFIX] [DMM] [RPREFIX] [DEBUG]",
   "tool-version": "24.2.06",
   "schema-version": "0.5",
   "inputs": [
@@ -37,7 +37,7 @@
       "type": "Flag",
       "command-line-flag": "-nofine",
       "description": "Deactivate fine fit phase of image registration (default: fine fit is active)",
-      "value-key": "[NO_FINE]",
+      "value-key": "[NOFINE]",
       "optional": true
     },
     {
@@ -86,7 +86,7 @@
       "type": "Flag",
       "command-line-flag": "-dmm",
       "description": "Change dx and dy output format from pixels to mm",
-      "value-key": "[DMM_FLAG]",
+      "value-key": "[DMM]",
       "optional": true
     },
     {
@@ -103,7 +103,7 @@
       "type": "Flag",
       "command-line-flag": "-debug",
       "description": "Lots of additional output to screen",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "optional": true
     }
   ],

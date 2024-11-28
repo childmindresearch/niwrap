@@ -3,12 +3,12 @@
   "name": "mri_compute_seg_overlap",
   "author": "FreeSurfer Developers",
   "description": "Compute coefficients of overlap between segmentation volumes.",
-  "command-line": "mri_compute_seg_overlap [INPUT_SEG1] [INPUT_SEG2] [LOG_FILE] [MEAN_LOG_FILE] [STD_LOG_FILE] [OVERALL_LOG_FLAG] [EXCLUDE_CORTEX_FLAG] [EXCLUDE_WM_FLAG] [ALL_LABELS_FLAG] [DICE_PARAMS]",
+  "command-line": "mri_compute_seg_overlap [SEGVOL1] [SEGVOL2] [LOG_FILE] [MEAN_LOG_FILE] [STD_LOG_FILE] [OVERALL_LOG_FLAG] [EXCLUDE_CORTEX_FLAG] [EXCLUDE_WM_FLAG] [ALL_LABELS_FLAG] [DICE_PARAMS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "First segmentation volume.",
-      "value-key": "[INPUT_SEG1]",
+      "value-key": "[SEGVOL1]",
       "type": "File",
       "optional": false,
       "id": "segvol1",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Second segmentation volume.",
-      "value-key": "[INPUT_SEG2]",
+      "value-key": "[SEGVOL2]",
       "type": "File",
       "optional": false,
       "id": "segvol2",

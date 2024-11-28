@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/mksubjdirs_descriptor.json",
   "description": "A command-line tool to create subject directories.",
-  "command-line": "mksubjdirs [SUBJ_NAME] [MODE] [PARENTS_FLAG] [VERBOSE_FLAG] [SELINUX_CONTEXT] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mksubjdirs [SUBJ_NAME] [MODE] [PARENTS] [VERBOSE] [SELINUX_CONTEXT] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-p",
       "description": "No error if existing, make parent directories as needed",
-      "value-key": "[PARENTS_FLAG]",
+      "value-key": "[PARENTS]",
       "type": "Flag",
       "optional": true,
       "id": "parents",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-v",
       "description": "Print a message for each created directory",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "--version",
       "description": "Output version information and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

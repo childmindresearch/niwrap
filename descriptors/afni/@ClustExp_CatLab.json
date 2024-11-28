@@ -3,7 +3,7 @@
   "name": "@ClustExp_CatLab",
   "author": "AFNI Developers",
   "description": "Helper script to concatenate and label a group of data sets.",
-  "command-line": "@ClustExp_CatLab [PREFIX] [INPUT_FILE] [HELP_FLAG]",
+  "command-line": "@ClustExp_CatLab [PREFIX] [INPUT_FILE] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

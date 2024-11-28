@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT/UserGuide",
   "description": "Tool to extract statistics and/or time series from FEAT directories",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "featquery [N_FEATDIRS] [FEATDIRS] [N_STATS] [STATS] [OUTPUT_ROOTNAME] [ATLAS_FLAG] [PERCENT_CONVERT_FLAG] [THRESH_FLAG] [INTERP_THRESH] [TIMESERIES_FLAG] [WEIGHT_FLAG] [BROWSER_FLAG] [MASK] [COORDS]",
+  "command-line": "featquery [N_FEATDIRS] [FEATDIRS] [N_STATS] [STATS] [OUTPUT_ROOTNAME] [ATLAS_FLAG] [PERCENT_CONVERT_FLAG] [THRESH_FLAG] [INTERP_THRESH] [TIMESERIES_FLAG] [WEIGHT_FLAG] [BROWSER_FLAG] [MASK_FILE] [COORDS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -117,7 +117,7 @@
     },
     {
       "description": "Mask file used as a reference for coordinates; if relative, searched within each FEAT directory",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_FILE]",
       "type": "File",
       "optional": false,
       "id": "mask_file",

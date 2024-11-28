@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/afni_3dPval.json",
   "description": "Convert a dataset's statistical sub-bricks to p-values or other statistical representations.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dPval [INPUT_DATASET] [ZSCORE_FLAG] [LOG2_FLAG] [LOG10_FLAG] [QVAL_FLAG] [PREFIX]",
+  "command-line": "3dPval [INPUT_DATASET] [ZSCORE] [LOG2] [LOG10] [QVAL] [PREFIX]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-zscore",
       "description": "Convert statistic to a z-score instead, an N(0,1) deviate that represents the same p-value.",
-      "value-key": "[ZSCORE_FLAG]",
+      "value-key": "[ZSCORE]",
       "type": "Flag",
       "optional": true,
       "id": "zscore",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-log2",
       "description": "Convert statistic to -log2(p).",
-      "value-key": "[LOG2_FLAG]",
+      "value-key": "[LOG2]",
       "type": "Flag",
       "optional": true,
       "id": "log2",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-log10",
       "description": "Convert statistic to -log10(p).",
-      "value-key": "[LOG10_FLAG]",
+      "value-key": "[LOG10]",
       "type": "Flag",
       "optional": true,
       "id": "log10",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-qval",
       "description": "Convert statistic to a q-value (FDR) instead. This option only works with datasets that have FDR curves inserted in their headers.",
-      "value-key": "[QVAL_FLAG]",
+      "value-key": "[QVAL]",
       "type": "Flag",
       "optional": true,
       "id": "qval",

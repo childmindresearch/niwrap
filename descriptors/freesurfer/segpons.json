@@ -3,7 +3,7 @@
   "name": "segpons",
   "author": "FreeSurfer Developers",
   "description": "Approximate segmentation of pons using MNI152 space registration.",
-  "command-line": "segpons -[SUBJECT] [ASEG_FLAG] [APAS_FLAG] [SEG_FILE] [NO_REFINE_FLAG] [PONS152_MASK]",
+  "command-line": "segpons -[SUBJECT] [ASEG] [APAS] [SEG] [NO_REFINE] [PONS152_MASK]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--aseg",
       "description": "Use and refine aseg (default, output will be aseg+pons.mgz).",
-      "value-key": "[ASEG_FLAG]",
+      "value-key": "[ASEG]",
       "type": "Flag",
       "optional": true,
       "id": "aseg",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--apas",
       "description": "Use aparc+aseg.mgz (output will be apas+pons.mgz).",
-      "value-key": "[APAS_FLAG]",
+      "value-key": "[APAS]",
       "type": "Flag",
       "optional": true,
       "id": "apas",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--seg",
       "description": "Specify your own segmentation file.",
-      "value-key": "[SEG_FILE]",
+      "value-key": "[SEG]",
       "type": "File",
       "optional": true,
       "id": "seg",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--no-refine",
       "description": "Do not refine when using aseg.",
-      "value-key": "[NO_REFINE_FLAG]",
+      "value-key": "[NO_REFINE]",
       "type": "Flag",
       "optional": true,
       "id": "no_refine",

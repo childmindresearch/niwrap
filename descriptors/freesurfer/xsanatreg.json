@@ -1,13 +1,13 @@
 {
   "name": "xsanatreg",
   "description": "A tool for registering source and target COR volumes.",
-  "command-line": "xsanatreg [SRC_DIR] [TARG_DIR] [XFM_FILE] [TEMP_DIR] [SOURCE_MINC] [TARGET_MINC] [NO_CLEANUP_FLAG] [VERSION_FLAG] [UMASK_OPTION]",
+  "command-line": "xsanatreg [SRC_CORDIR] [TARG_CORDIR] [TRANSFORM_FILE] [TEMP_DIRECTORY] [SOURCE_MINC] [TARGET_MINC] [NO_CLEANUP] [VERSION] [UMASK]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-src",
       "description": "Directory of source COR volume",
-      "value-key": "[SRC_DIR]",
+      "value-key": "[SRC_CORDIR]",
       "type": "String",
       "optional": false,
       "id": "src_cordir",
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "-targ",
       "description": "Directory of target COR volume",
-      "value-key": "[TARG_DIR]",
+      "value-key": "[TARG_CORDIR]",
       "type": "String",
       "optional": false,
       "id": "targ_cordir",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-xfm",
       "description": "File in which to store the transformation",
-      "value-key": "[XFM_FILE]",
+      "value-key": "[TRANSFORM_FILE]",
       "type": "String",
       "optional": false,
       "id": "transform_file",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-tmpdir",
       "description": "Directory for temporary storage, defaults to /tmp",
-      "value-key": "[TEMP_DIR]",
+      "value-key": "[TEMP_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "temp_directory",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-nocleanup",
       "description": "Do not delete temporary minc files",
-      "value-key": "[NO_CLEANUP_FLAG]",
+      "value-key": "[NO_CLEANUP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cleanup",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-version",
       "description": "Print version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-umask",
       "description": "Set file mode creation mask",
-      "value-key": "[UMASK_OPTION]",
+      "value-key": "[UMASK]",
       "type": "String",
       "optional": true,
       "id": "umask",

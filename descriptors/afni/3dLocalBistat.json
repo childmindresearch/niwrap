@@ -3,7 +3,7 @@
   "name": "3dLocalBistat",
   "author": "AFNI Developers",
   "description": "Compute statistics between 2 datasets at each voxel based on a local neighborhood.",
-  "command-line": "3dLocalBistat [NBHD] [STATS] [MASK_FLAG] [AUTOMASK_FLAG] [WEIGHT] [PREFIX] [HISTPOW] [HISTBIN] [HCLIP1] [HCLIP2] [DATASET1] [DATASET2]",
+  "command-line": "3dLocalBistat [NBHD] [STATS] [MASK] [AUTOMASK] [WEIGHT] [PREFIX] [HISTPOW] [HISTBIN] [HCLIP1] [HCLIP2] [DATASET1] [DATASET2]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Read in a dataset to use as a mask. Non-zero voxels define the mask region.",
-      "value-key": "[MASK_FLAG]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Compute the mask as in program 3dAutomask. Mutually exclusive with -mask.",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",

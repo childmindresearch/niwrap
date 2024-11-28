@@ -3,7 +3,7 @@
   "name": "mri_glmfit",
   "author": "FreeSurfer Developers",
   "description": "Performs general linear model (GLM) analysis in the volume or the surface.",
-  "command-line": "mri_glmfit [GLMDIR] [Y_INPUT] [TABLE] [FSGD] [DESIGN_MATRIX] [CONTRAST_MATRIX] [ONE_SAMPLE_GROUP_MEAN] [NO_CONTRASTS_OK] [DTI] [DTI_MATRIX] [PVR] [SELFREG] [WLS] [YFFXVAR] [FFXDOF] [FFXDOFDAT] [WEIGHT] [WEIGHT_INV_FLAG] [WEIGHT_SQRT_FLAG] [FWHM] [VAR_FWHM] [NO_MASK_SMOOTH_FLAG] [NO_EST_FWHM_FLAG] [MASK] [LABEL] [NO_MASK_FLAG] [NO_CORTEX_FLAG] [MASK_INV_FLAG] [PRUNE_FLAG] [NO_PRUNE_FLAG] [LOGY_FLAG] [NO_LOGY_FLAG] [RM_SPATIAL_MEAN_FLAG] [YHAT_SAVE_FLAG] [ERES_SAVE_FLAG] [ERES_SCM_FLAG] [SAVE_FWHM_MAP_FLAG] [Y_OUT] [SURFACE] [SKEW_FLAG] [KURTOSIS_FLAG] [SIM] [SIM_SIGN] [UNIFORM] [PERMUTE_INPUT_FLAG] [PCA_FLAG] [TAR1_FLAG] [SAVE_YHAT_FLAG] [SAVE_COND_FLAG] [VOXDUMP] [SEED] [SYNTH_FLAG] [RESYNTHTEST] [PROFILE] [MRTM1] [MRTM2] [LOGAN] [BP_CLIP_NEG_FLAG] [BP_CLIP_MAX] [PERM_FORCE_FLAG] [DIAG] [DIAG_CLUSTER_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG] [NO_FIX_VERTEX_AREA_FLAG] [ALLOWSUBJREP_FLAG] [ALLOW_ZERO_DOF_FLAG] [ILLCOND_FLAG] [SIM_DONE] [NO_SIG_DOUBLE_FLAG]",
+  "command-line": "mri_glmfit [GLMDIR] [Y_INPUT] [TABLE_INPUT] [FSGD] [DESIGN_MATRIX] [CONTRAST_MATRIX] [OSGM_FLAG] [NO_CONTRASTS_OK_FLAG] [DTI_PARAMS] [DTI_MATRIX] [PVR] [SELFREG] [WLS] [YFFXVAR] [FFXDOF] [FFXDOFDAT] [WEIGHT] [WEIGHT_INV_FLAG] [WEIGHT_SQRT_FLAG] [FWHM] [VAR_FWHM] [NO_MASK_SMOOTH_FLAG] [NO_EST_FWHM_FLAG] [MASK] [LABEL] [NO_MASK_FLAG] [NO_CORTEX_FLAG] [MASK_INV_FLAG] [PRUNE_FLAG] [NO_PRUNE_FLAG] [LOGY_FLAG] [NO_LOGY_FLAG] [RM_SPATIAL_MEAN_FLAG] [YHAT_SAVE_FLAG] [ERES_SAVE_FLAG] [ERES_SCM_FLAG] [SAVE_FWHM_MAP_FLAG] [Y_OUT] [SURFACE] [SKEW_FLAG] [KURTOSIS_FLAG] [SIM_PARAMS] [SIM_SIGN] [UNIFORM_PARAMS] [PERMUTE_INPUT_FLAG] [PCA_FLAG] [TAR1_FLAG] [SAVE_YHAT_FLAG] [SAVE_COND_FLAG] [VOXDUMP] [SEED] [SYNTH_FLAG] [RESYNTHTEST_IT] [PROFILE_IT] [MRTM1_PARAMS] [MRTM2_PARAMS] [LOGAN_PARAMS] [BP_CLIP_NEG_FLAG] [BP_CLIP_MAX] [PERM_FORCE_FLAG] [DIAG_LEVEL] [DIAG_CLUSTER_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG] [NO_FIX_VERTEX_AREA_FLAG] [ALLOWSUBJREP_FLAG] [ALLOW_ZERO_DOF_FLAG] [ILLCOND_FLAG] [SIM_DONE_FILE] [NO_SIG_DOUBLE_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--table",
       "description": "Use text table as input instead of --y. Table should be of form produced by asegstats2table or aparcstats2table.",
-      "value-key": "[TABLE]",
+      "value-key": "[TABLE_INPUT]",
       "type": "File",
       "optional": true,
       "id": "table_input",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "--osgm",
       "description": "Construct X and C as a one-sample group mean.",
-      "value-key": "[ONE_SAMPLE_GROUP_MEAN]",
+      "value-key": "[OSGM_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "osgm_flag",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--no-contrasts-ok",
       "description": "Do not fail if no contrasts are specified.",
-      "value-key": "[NO_CONTRASTS_OK]",
+      "value-key": "[NO_CONTRASTS_OK_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "no_contrasts_ok_flag",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "--dti",
       "description": "Do DTI analysis using bvals and bvecs.",
-      "value-key": "[DTI]",
+      "value-key": "[DTI_PARAMS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -384,7 +384,7 @@
     {
       "command-line-flag": "--sim",
       "description": "Simulate data for statistical testing. Specify nulltype, number of simulations, threshold and csd basename.",
-      "value-key": "[SIM]",
+      "value-key": "[SIM_PARAMS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -403,7 +403,7 @@
     {
       "command-line-flag": "--uniform",
       "description": "Use uniform distribution for mc-full, specify min and max.",
-      "value-key": "[UNIFORM]",
+      "value-key": "[UNIFORM_PARAMS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -488,7 +488,7 @@
     {
       "command-line-flag": "--resynthtest",
       "description": "Test GLM by resynthsis with the number of iterations specified.",
-      "value-key": "[RESYNTHTEST]",
+      "value-key": "[RESYNTHTEST_IT]",
       "type": "Number",
       "optional": true,
       "id": "resynthtest_it",
@@ -497,7 +497,7 @@
     {
       "command-line-flag": "--profile",
       "description": "Test speed with specified number of iterations.",
-      "value-key": "[PROFILE]",
+      "value-key": "[PROFILE_IT]",
       "type": "Number",
       "optional": true,
       "id": "profile_it",
@@ -506,7 +506,7 @@
     {
       "command-line-flag": "--mrtm1",
       "description": "Perform MRTM1 kinetic modeling with specified reference tissue activity and time in seconds.",
-      "value-key": "[MRTM1]",
+      "value-key": "[MRTM1_PARAMS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -516,7 +516,7 @@
     {
       "command-line-flag": "--mrtm2",
       "description": "Perform MRTM2 kinetic modeling with specified parameters.",
-      "value-key": "[MRTM2]",
+      "value-key": "[MRTM2_PARAMS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -526,7 +526,7 @@
     {
       "command-line-flag": "--logan",
       "description": "Perform Logan kinetic modeling with specified parameters.",
-      "value-key": "[LOGAN]",
+      "value-key": "[LOGAN_PARAMS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -563,7 +563,7 @@
     {
       "command-line-flag": "--diag",
       "description": "Set diagnostic level.",
-      "value-key": "[DIAG]",
+      "value-key": "[DIAG_LEVEL]",
       "type": "Number",
       "optional": true,
       "id": "diag_level",
@@ -653,7 +653,7 @@
     {
       "command-line-flag": "--sim-done",
       "description": "Create done file when simulation finishes.",
-      "value-key": "[SIM_DONE]",
+      "value-key": "[SIM_DONE_FILE]",
       "type": "File",
       "optional": true,
       "id": "sim_done_file",

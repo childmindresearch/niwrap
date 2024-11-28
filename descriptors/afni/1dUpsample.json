@@ -3,7 +3,7 @@
   "name": "1dUpsample",
   "author": "AFNI Developers",
   "description": "Upsamples a 1D time series to a finer time grid.",
-  "command-line": "1dUpsample [UPSAMPLE_FACTOR] [INPUT_FILE] [INTERPOLATION]",
+  "command-line": "1dUpsample [UPSAMPLE_FACTOR] [INPUT_FILE] [LINEAR_INTERPOLATION]",
   "inputs": [
     {
       "description": "Upsample factor (integer from 2..32)",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-one",
       "description": "Use 1st order polynomials (i.e., linear interpolation) instead of 7th order polynomials",
-      "value-key": "[INTERPOLATION]",
+      "value-key": "[LINEAR_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "linear_interpolation",

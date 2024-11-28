@@ -1,7 +1,7 @@
 {
   "name": "stattablediff",
   "description": "Creates a table of the differences between two stats tables.",
-  "command-line": "stattablediff [T1] [T2] [OUTPUT] [PERCENT_DIFF_FLAG] [PERCENT_DIFF_T1_FLAG] [PERCENT_DIFF_T2_FLAG] [MULTIPLY_VALUE] [DIVIDE_VALUE] [COMMON_FLAG] [REMOVE_EXVIVO_FLAG] [DIFF_SUBJECTS_FLAG] [NOREPLACE53_FLAG]",
+  "command-line": "stattablediff [T1] [T2] [OUTPUT] [PERCENT_DIFF] [PERCENT_DIFF_T1] [PERCENT_DIFF_T2] [MULTIPLY] [DIVIDE] [COMMON] [REMOVE_EXVIVO] [DIFF_SUBJECTS] [NOREPLACE53]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -33,7 +33,7 @@
       "name": "Percent Difference",
       "command-line-flag": "--percent",
       "description": "Compute percent difference with respect to mean of tables",
-      "value-key": "[PERCENT_DIFF_FLAG]",
+      "value-key": "[PERCENT_DIFF]",
       "type": "Flag",
       "optional": true
     },
@@ -42,7 +42,7 @@
       "name": "Percent Difference Table 1",
       "command-line-flag": "--percent1",
       "description": "Compute percent difference with respect to table 1",
-      "value-key": "[PERCENT_DIFF_T1_FLAG]",
+      "value-key": "[PERCENT_DIFF_T1]",
       "type": "Flag",
       "optional": true
     },
@@ -51,7 +51,7 @@
       "name": "Percent Difference Table 2",
       "command-line-flag": "--percent2",
       "description": "Compute percent difference with respect to table 2",
-      "value-key": "[PERCENT_DIFF_T2_FLAG]",
+      "value-key": "[PERCENT_DIFF_T2]",
       "type": "Flag",
       "optional": true
     },
@@ -60,7 +60,7 @@
       "name": "Multiply",
       "command-line-flag": "--mul",
       "description": "Multiply by mulval",
-      "value-key": "[MULTIPLY_VALUE]",
+      "value-key": "[MULTIPLY]",
       "type": "Number",
       "optional": true
     },
@@ -69,7 +69,7 @@
       "name": "Divide",
       "command-line-flag": "--div",
       "description": "Divide by divval",
-      "value-key": "[DIVIDE_VALUE]",
+      "value-key": "[DIVIDE]",
       "type": "Number",
       "optional": true
     },
@@ -78,7 +78,7 @@
       "name": "Common Segments",
       "command-line-flag": "--common",
       "description": "Compute difference on common segments (may reorder)",
-      "value-key": "[COMMON_FLAG]",
+      "value-key": "[COMMON]",
       "type": "Flag",
       "optional": true
     },
@@ -87,7 +87,7 @@
       "name": "Remove Exvivo",
       "command-line-flag": "--rm-exvivo",
       "description": "Remove the string '_exvivo' from the column header",
-      "value-key": "[REMOVE_EXVIVO_FLAG]",
+      "value-key": "[REMOVE_EXVIVO]",
       "type": "Flag",
       "optional": true
     },
@@ -96,7 +96,7 @@
       "name": "Different Subjects",
       "command-line-flag": "--diff-subjs",
       "description": "Compare subjects with different names",
-      "value-key": "[DIFF_SUBJECTS_FLAG]",
+      "value-key": "[DIFF_SUBJECTS]",
       "type": "Flag",
       "optional": true
     },
@@ -105,7 +105,7 @@
       "name": "No Replace 5.3 Names",
       "command-line-flag": "--noreplace53",
       "description": "Do not replace 5.3 structure names with later names",
-      "value-key": "[NOREPLACE53_FLAG]",
+      "value-key": "[NOREPLACE53]",
       "type": "Flag",
       "optional": true
     }

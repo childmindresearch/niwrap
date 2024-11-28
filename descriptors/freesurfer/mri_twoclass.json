@@ -1,7 +1,7 @@
 {
   "name": "mri_twoclass",
   "description": "Compute cross-subject statistics of two sets of labels",
-  "command-line": "mri_twoclass [SEGMENTATION_VOLUME] [OUTPUT_SUBJECT] [OUTPUT_VOLUME] [C1_SUBJECTS] : [C2_SUBJECTS] [F_THRESHOLD] [BONFERRONI_FLAG]",
+  "command-line": "mri_twoclass [SEGMENTATION_VOLUME] [OUTPUT_SUBJECT] [OUTPUT_VOLUME] [C1_SUBJECTS] : [C2_SUBJECTS] [F_THRESHOLD] [BONFERRONI_CORRECTION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-b",
       "description": "Perform Bonferroni correction",
-      "value-key": "[BONFERRONI_FLAG]",
+      "value-key": "[BONFERRONI_CORRECTION]",
       "type": "Flag",
       "optional": true,
       "id": "bonferroni_correction",

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "dmri_vox2vox",
   "description": "Tool for voxel-to-voxel transformations in diffusion MRI data processing",
-  "command-line": "dmri_vox2vox [INPUT_FILES] [INPUT_DIR] [OUTPUT_FILES] [OUTPUT_DIR] [INPUT_REF] [OUTPUT_REF] [AFFINE_REG] [NONLINEAR_REG] [INVERSE_NL_FLAG] [DEBUG_FLAG] [CHECK_OPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "dmri_vox2vox [INPUT_FILES] [INPUT_DIRECTORY] [OUTPUT_FILES] [OUTPUT_DIRECTORY] [INPUT_REFERENCE] [OUTPUT_REFERENCE] [AFFINE_REGISTRATION] [NONLINEAR_REGISTRATION] [INVERSE_NONLINEAR] [DEBUG] [CHECK_OPTIONS] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "--indir",
       "description": "Input directory, if specified, names of input text files are relative to this",
-      "value-key": "[INPUT_DIR]",
+      "value-key": "[INPUT_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "input_directory",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--outdir",
       "description": "Output directory, if specified, names of output text files are relative to this",
-      "value-key": "[OUTPUT_DIR]",
+      "value-key": "[OUTPUT_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "output_directory",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "--inref",
       "description": "Input reference volume",
-      "value-key": "[INPUT_REF]",
+      "value-key": "[INPUT_REFERENCE]",
       "type": "File",
       "optional": false,
       "id": "input_reference",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--outref",
       "description": "Output reference volume",
-      "value-key": "[OUTPUT_REF]",
+      "value-key": "[OUTPUT_REFERENCE]",
       "type": "File",
       "optional": false,
       "id": "output_reference",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "--reg",
       "description": "Affine registration file (.mat) to be applied first",
-      "value-key": "[AFFINE_REG]",
+      "value-key": "[AFFINE_REGISTRATION]",
       "type": "File",
       "optional": false,
       "id": "affine_registration",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--regnl",
       "description": "Nonlinear registration file (.m3z) to be applied second",
-      "value-key": "[NONLINEAR_REG]",
+      "value-key": "[NONLINEAR_REGISTRATION]",
       "type": "File",
       "optional": false,
       "id": "nonlinear_registration",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "--invnl",
       "description": "Apply inverse of nonlinear warp when --regnl is used",
-      "value-key": "[INVERSE_NL_FLAG]",
+      "value-key": "[INVERSE_NONLINEAR]",
       "type": "Flag",
       "optional": true,
       "id": "inverse_nonlinear",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options and exit without running",
-      "value-key": "[CHECK_OPTS_FLAG]",
+      "value-key": "[CHECK_OPTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "check_options",
@@ -109,7 +109,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print out information on how to use this program",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -118,7 +118,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version and exit",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

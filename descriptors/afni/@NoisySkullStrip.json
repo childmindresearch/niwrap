@@ -3,7 +3,7 @@
   "name": "@NoisySkullStrip",
   "author": "AFNI Developers",
   "description": "Strips the skull of anatomical datasets with low SNR.",
-  "command-line": "@NoisySkullStrip [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
+  "command-line": "@NoisySkullStrip [INPUT_FILE] [KEEP_TMP] [3DSKULLSTRIP_OPTS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "The anatomical dataset",
-      "value-key": "[ANAT]",
+      "value-key": "[INPUT_FILE]",
       "type": "File",
       "optional": false,
       "id": "input_file",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-keep_tmp",
       "description": "Do not erase temporary files at the end.",
-      "value-key": "[KEEP_TMP_FLAG]",
+      "value-key": "[KEEP_TMP]",
       "type": "Flag",
       "optional": true,
       "id": "keep_tmp",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-3dSkullStrip_opts",
       "description": "Anything following this option is passed to 3dSkullStrip",
-      "value-key": "[SKULLSTRIP_OPTS]",
+      "value-key": "[3DSKULLSTRIP_OPTS]",
       "type": "String",
       "optional": true,
       "id": "3dskullstrip_opts",
@@ -40,28 +40,28 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[ANAT].ns",
+      "path-template": "[INPUT_FILE].ns",
       "description": "Skull stripped version of ANAT",
       "optional": false,
       "id": "anat_ns",
       "name": "Stripped Anatomical Dataset"
     },
     {
-      "path-template": "[ANAT].air",
+      "path-template": "[INPUT_FILE].air",
       "description": "Special mask output - air",
       "optional": true,
       "id": "anat_air",
       "name": "Air Mask"
     },
     {
-      "path-template": "[ANAT].skl",
+      "path-template": "[INPUT_FILE].skl",
       "description": "Special mask output - skull",
       "optional": true,
       "id": "anat_skl",
       "name": "Skull Mask"
     },
     {
-      "path-template": "[ANAT].lsp",
+      "path-template": "[INPUT_FILE].lsp",
       "description": "Volume used to threshold 'air' out of the volume to be stripped",
       "optional": true,
       "id": "anat_lsp",

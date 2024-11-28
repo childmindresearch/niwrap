@@ -3,7 +3,7 @@
   "name": "3dZipperZapper",
   "author": "AFNI Developers",
   "description": "A basic program to highlight problematic volumes in data sets, especially EPI/DWI data sets with interleaved acquisition.",
-  "command-line": "3dZipperZapper [INPUT_FILE] [OUTPUT_PREFIX] [MASK] [MIN_SLICE_NVOX] [MIN_STREAK_LEN] [DO_OUT_SLICE_PARAM_FLAG] [NO_OUT_BAD_MASK_FLAG] [NO_OUT_TEXT_VALS_FLAG] [DONT_USE_STREAK_FLAG] [DONT_USE_DROP_FLAG] [DONT_USE_CORR_FLAG] [MIN_STREAK_VAL] [MIN_DROP_FRAC] [MIN_DROP_DIFF] [MIN_CORR_LEN] [MIN_CORR_CORR]",
+  "command-line": "3dZipperZapper [INPUT_FILE] [OUTPUT_PREFIX] [MASK_FILE] [MIN_SLICE_NVOX] [MIN_STREAK_LEN] [DO_OUT_SLICE_PARAM] [NO_OUT_BAD_MASK] [NO_OUT_TEXT_VALS] [DONT_USE_STREAK] [DONT_USE_DROP] [DONT_USE_CORR] [MIN_STREAK_VAL] [MIN_DROP_FRAC] [MIN_DROP_DIFF] [MIN_CORR_LEN] [MIN_CORR_CORR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Optional input of a single volume mask file, which gets applied to each volume in the input file.",
-      "value-key": "[MASK]",
+      "value-key": "[MASK_FILE]",
       "type": "File",
       "optional": true,
       "id": "mask_file",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-do_out_slice_param",
       "description": "Output the map of slice parameters.",
-      "value-key": "[DO_OUT_SLICE_PARAM_FLAG]",
+      "value-key": "[DO_OUT_SLICE_PARAM]",
       "type": "Flag",
       "optional": true,
       "id": "do_out_slice_param",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-no_out_bad_mask",
       "description": "Do not output the mask of 'bad' slices.",
-      "value-key": "[NO_OUT_BAD_MASK_FLAG]",
+      "value-key": "[NO_OUT_BAD_MASK]",
       "type": "Flag",
       "optional": true,
       "id": "no_out_bad_mask",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-no_out_text_vals",
       "description": "Do not output the 1D files of the slice parameter values.",
-      "value-key": "[NO_OUT_TEXT_VALS_FLAG]",
+      "value-key": "[NO_OUT_TEXT_VALS]",
       "type": "Flag",
       "optional": true,
       "id": "no_out_text_vals",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-dont_use_streak",
       "description": "Turn off the 'streak' criterion for identifying bad slices.",
-      "value-key": "[DONT_USE_STREAK_FLAG]",
+      "value-key": "[DONT_USE_STREAK]",
       "type": "Flag",
       "optional": true,
       "id": "dont_use_streak",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-dont_use_drop",
       "description": "Turn off the 'drop' criterion for identifying bad slices.",
-      "value-key": "[DONT_USE_DROP_FLAG]",
+      "value-key": "[DONT_USE_DROP]",
       "type": "Flag",
       "optional": true,
       "id": "dont_use_drop",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-dont_use_corr",
       "description": "Turn off the 'corr' criterion for identifying bad slices.",
-      "value-key": "[DONT_USE_CORR_FLAG]",
+      "value-key": "[DONT_USE_CORR]",
       "type": "Flag",
       "optional": true,
       "id": "dont_use_corr",

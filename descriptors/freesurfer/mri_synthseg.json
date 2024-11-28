@@ -3,7 +3,7 @@
   "name": "mri_synthseg",
   "author": "FreeSurfer Developers",
   "description": "SynthSeg is a tool for brain image segmentation.",
-  "command-line": "mri_synthseg [INPUT_IMAGE] [OUTPUT_SEGMENTATION] [CORTEX_PARCELLATION_FLAG] [ROBUST_PREDICTION_FLAG] [FAST_PREDICTION_FLAG] [CLIP_CT_FLAG] [OUTPUT_VOLUME] [OUTPUT_QC] [OUTPUT_POSTERIORS] [RESAMPLED_IMAGES] [IMAGE_PATCH_SIZE] [THREADS] [CPU_FLAG] [VERSION_1_FLAG] [PHOTO_SYNTHSEG]",
+  "command-line": "mri_synthseg [INPUT_IMAGE] [OUTPUT_SEGMENTATION] [CORTEX_PARCELLATION] [ROBUST_PREDICTION] [FAST_PREDICTION] [CLIP_CT] [OUTPUT_VOLUME] [OUTPUT_QC] [OUTPUT_POSTERIORS] [RESAMPLED_IMAGES] [IMAGE_PATCH_SIZE] [THREADS] [CPU] [VERSION_1] [PHOTO_SYNTHSEG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "--parc",
       "description": "Perform cortex parcellation.",
-      "value-key": "[CORTEX_PARCELLATION_FLAG]",
+      "value-key": "[CORTEX_PARCELLATION]",
       "type": "Flag",
       "optional": true,
       "id": "cortex_parcellation",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "--robust",
       "description": "Use robust predictions (slower).",
-      "value-key": "[ROBUST_PREDICTION_FLAG]",
+      "value-key": "[ROBUST_PREDICTION]",
       "type": "Flag",
       "optional": true,
       "id": "robust_prediction",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "--fast",
       "description": "Bypass some processing for faster prediction.",
-      "value-key": "[FAST_PREDICTION_FLAG]",
+      "value-key": "[FAST_PREDICTION]",
       "type": "Flag",
       "optional": true,
       "id": "fast_prediction",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "--ct",
       "description": "Clip CT scans in Hounsfield scale to [0, 80].",
-      "value-key": "[CLIP_CT_FLAG]",
+      "value-key": "[CLIP_CT]",
       "type": "Flag",
       "optional": true,
       "id": "clip_ct",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "--cpu",
       "description": "Enforce running with CPU rather than GPU.",
-      "value-key": "[CPU_FLAG]",
+      "value-key": "[CPU]",
       "type": "Flag",
       "optional": true,
       "id": "cpu",
@@ -123,7 +123,7 @@
     {
       "command-line-flag": "--v1",
       "description": "Use SynthSeg 1.0 (updated 25/06/22).",
-      "value-key": "[VERSION_1_FLAG]",
+      "value-key": "[VERSION_1]",
       "type": "Flag",
       "optional": true,
       "id": "version_1",

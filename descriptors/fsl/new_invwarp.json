@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Inverse warp tool from FSL suite",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "invwarp [WARP_VOL] [OUT_VOL] [REF_VOL] [REL_FLAG] [ABS_FLAG] [NOCONSTRAINT_FLAG] [JMIN] [JMAX] [DEBUG_FLAG] [VERBOSE_FLAG]",
+  "command-line": "invwarp [WARPVOL] [OUTVOL] [REFVOL] [RELFLAG] [ABSFLAG] [NOCONSTRAINTFLAG] [JMIN] [JMAX] [DEBUGFLAG] [VERBOSEFLAG]",
   "container-image": {
     "image": "brainlife/fsl:6.0.4-patched2",
     "type": "docker"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-w",
       "description": "Filename for warp/shiftmap transform (volume)",
-      "value-key": "[WARP_VOL]",
+      "value-key": "[WARPVOL]",
       "type": "File",
       "optional": false,
       "id": "warpvol",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-o",
       "description": "Filename for output (inverse warped) image",
-      "value-key": "[OUT_VOL]",
+      "value-key": "[OUTVOL]",
       "type": "String",
       "optional": false,
       "id": "outvol",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-r",
       "description": "Filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)",
-      "value-key": "[REF_VOL]",
+      "value-key": "[REFVOL]",
       "type": "File",
       "optional": false,
       "id": "refvol",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "--rel",
       "description": "Use relative warp convention: x' = x + w(x)",
-      "value-key": "[REL_FLAG]",
+      "value-key": "[RELFLAG]",
       "type": "Flag",
       "optional": true,
       "id": "relflag",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--abs",
       "description": "Use absolute warp convention (default): x' = w(x)",
-      "value-key": "[ABS_FLAG]",
+      "value-key": "[ABSFLAG]",
       "type": "Flag",
       "optional": true,
       "id": "absflag",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--noconstraint",
       "description": "Do not apply the Jacobian constraint",
-      "value-key": "[NOCONSTRAINT_FLAG]",
+      "value-key": "[NOCONSTRAINTFLAG]",
       "type": "Flag",
       "optional": true,
       "id": "noconstraintflag",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Turn on debugging output",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUGFLAG]",
       "type": "Flag",
       "optional": true,
       "id": "debugflag",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "-v",
       "description": "Switch on diagnostic messages",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSEFLAG]",
       "type": "Flag",
       "optional": true,
       "id": "verboseflag",
@@ -106,7 +106,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUT_VOL]",
+      "path-template": "[OUTVOL]",
       "description": "Output inverse warped volume",
       "optional": false,
       "id": "out_volume",

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_register_to_label",
   "description": "Register a surface to a volume using a label",
-  "command-line": "mris_register_to_label [SURFACE] [REGFILE] [MRI_REG] [MOV] [RESOLUTION] [MAX_ROT] [MAX_TRANS] [SUBJECT] [LABEL] [OUT_REG] [DOWNSAMPLE] [COSTFILE]",
+  "command-line": "mris_register_to_label [SURFACE] [REGFILE] [MRI_REG] [MOV_VOLUME] [RESOLUTION] [MAX_ROT] [MAX_TRANS] [SUBJECT] [LABEL] [OUT_REG] [DOWNSAMPLE] [COST_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--mov",
       "description": "Volume on which label points are specified",
-      "value-key": "[MOV]",
+      "value-key": "[MOV_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "mov_volume",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--cost",
       "description": "Cost file for registration",
-      "value-key": "[COSTFILE]",
+      "value-key": "[COST_FILE]",
       "type": "File",
       "optional": true,
       "id": "cost_file",

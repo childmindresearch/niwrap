@@ -5,7 +5,7 @@
   "descriptor-url": "URL not provided",
   "description": "A script to create composite edge-enhanced datasets and drive the AFNI interface to display the results",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@AddEdge [INPUT_FILES] [EXAMINE_LIST] [AX_MONTAGE] [AX_GEOM] [SAG_GEOM] [LAYOUT_FILE] [NO_LAYOUT_FLAG] [EDGE_PERCENTILE] [SINGLE_EDGE_FLAG] [OPACITY] [KEEP_TEMP_FLAG] [NO_DEOBLIQUE_FLAG] [AUTO_RECORD_FLAG] [AUTO_FLAG] [NO_AUTO_FLAG]",
+  "command-line": "@AddEdge [INPUT_FILES] [EXAMINE_LIST] [AX_MONT] [AX_GEOM] [SAG_GEOM] [LAYOUT_FILE] [NO_LAYOUT] [EDGE_PERCENTILE] [SINGLE_EDGE] [OPACITY] [KEEP_TEMP] [NO_DEOBLIQUE] [AUTO_RECORD] [AUTO] [NO_AUTO]",
   "inputs": [
     {
       "description": "Input datasets",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-ax_mont",
       "description": "Axial montage string (default='2x2:24')",
-      "value-key": "[AX_MONTAGE]",
+      "value-key": "[AX_MONT]",
       "type": "String",
       "optional": true,
       "id": "ax_mont",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-no_layout",
       "description": "Do not use layout. Use AFNI as it is open.",
-      "value-key": "[NO_LAYOUT_FLAG]",
+      "value-key": "[NO_LAYOUT]",
       "type": "Flag",
       "optional": true,
       "id": "no_layout",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "-single_edge",
       "description": "Show only a single edge in composite image",
-      "value-key": "[SINGLE_EDGE_FLAG]",
+      "value-key": "[SINGLE_EDGE]",
       "type": "Flag",
       "optional": true,
       "id": "single_edge",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-keep_temp",
       "description": "Do not remove temporary files",
-      "value-key": "[KEEP_TEMP_FLAG]",
+      "value-key": "[KEEP_TEMP]",
       "type": "Flag",
       "optional": true,
       "id": "keep_temp",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-no_deoblique",
       "description": "Do not deoblique any data to show overlap",
-      "value-key": "[NO_DEOBLIQUE_FLAG]",
+      "value-key": "[NO_DEOBLIQUE]",
       "type": "Flag",
       "optional": true,
       "id": "no_deoblique",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-auto_record",
       "description": "Save JPEG files of current slices without prompting",
-      "value-key": "[AUTO_RECORD_FLAG]",
+      "value-key": "[AUTO_RECORD]",
       "type": "Flag",
       "optional": true,
       "id": "auto_record",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-auto",
       "description": "Closes old AFNI sessions and relaunches a new one ready to listen to @AddEdge in review mode.",
-      "value-key": "[AUTO_FLAG]",
+      "value-key": "[AUTO]",
       "type": "Flag",
       "optional": true,
       "id": "auto",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-no_auto",
       "description": "Opposite of -auto",
-      "value-key": "[NO_AUTO_FLAG]",
+      "value-key": "[NO_AUTO]",
       "type": "Flag",
       "optional": true,
       "id": "no_auto",

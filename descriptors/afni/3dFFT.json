@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Performs the FFT of the input dataset in 3 directions (x, y, z) and produces the output dataset.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dFFT [DATASET] [ABS_FLAG] [PHASE_FLAG] [COMPLEX_FLAG] [INVERSE_FLAG] [X_LENGTH] [Y_LENGTH] [Z_LENGTH] [ALT_IN_FLAG] [ALT_OUT_FLAG] [INPUT_FILE] [PREFIX]",
+  "command-line": "3dFFT [DATASET] [ABS] [PHASE] [COMPLEX] [INVERSE] [LX] [LY] [LZ] [ALTIN] [ALTOUT] [INPUT] [PREFIX]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "--abs",
       "description": "Outputs the magnitude of the FFT (default)",
-      "value-key": "[ABS_FLAG]",
+      "value-key": "[ABS]",
       "type": "Flag",
       "optional": true,
       "id": "abs",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "--phase",
       "description": "Outputs the phase of the FFT (-PI..PI)",
-      "value-key": "[PHASE_FLAG]",
+      "value-key": "[PHASE]",
       "type": "Flag",
       "optional": true,
       "id": "phase",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "--complex",
       "description": "Outputs the complex-valued FFT",
-      "value-key": "[COMPLEX_FLAG]",
+      "value-key": "[COMPLEX]",
       "type": "Flag",
       "optional": true,
       "id": "complex",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "--inverse",
       "description": "Does the inverse FFT instead of the forward FFT",
-      "value-key": "[INVERSE_FLAG]",
+      "value-key": "[INVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "inverse",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "--Lx",
       "description": "Use FFT of length 'xx' in the x-direction",
-      "value-key": "[X_LENGTH]",
+      "value-key": "[LX]",
       "type": "Number",
       "optional": true,
       "id": "Lx",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "--Ly",
       "description": "Use FFT of length 'yy' in the y-direction",
-      "value-key": "[Y_LENGTH]",
+      "value-key": "[LY]",
       "type": "Number",
       "optional": true,
       "id": "Ly",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "--Lz",
       "description": "Use FFT of length 'zz' in the z-direction",
-      "value-key": "[Z_LENGTH]",
+      "value-key": "[LZ]",
       "type": "Number",
       "optional": true,
       "id": "Lz",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "--altIN",
       "description": "Alternate signs of input data before FFT to bring zero frequency from edge of FFT-space to center of grid for cosmetic purposes.",
-      "value-key": "[ALT_IN_FLAG]",
+      "value-key": "[ALTIN]",
       "type": "Flag",
       "optional": true,
       "id": "altIN",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "--altOUT",
       "description": "Alternate signs of output data after FFT. Use '-altOUT' with '-altIN' on the forward transform to get the signs of the recovered image correct.",
-      "value-key": "[ALT_OUT_FLAG]",
+      "value-key": "[ALTOUT]",
       "type": "Flag",
       "optional": true,
       "id": "altOUT",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "--input",
       "description": "Read the input dataset from specified file instead of from the last argument on the command line.",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": true,
       "id": "input",

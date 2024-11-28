@@ -3,7 +3,7 @@
   "name": "3dAmpToRSFC",
   "author": "AFNI Developers",
   "description": "Convert spectral amplitudes into standard RSFC parameters.",
-  "command-line": "3dAmpToRSFC { [INPUT_AMPS] | [INPUT_POWS] } [PREFIX] [FBOT] [FTOP] { [MASK] } { -nifti }",
+  "command-line": "3dAmpToRSFC { [IN_AMP] | [IN_POW] } [PREFIX] [BAND] { [MASK] } { -nifti }",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-in_amp",
       "description": "Input file of one-sided spectral amplitudes, such as output by 3dLombScargle.",
-      "value-key": "[INPUT_AMPS]",
+      "value-key": "[IN_AMP]",
       "type": "File",
       "optional": true,
       "id": "in_amp",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-in_pow",
       "description": "Input file of a one-sided power spectrum, such as output by 3dLombScargle.",
-      "value-key": "[INPUT_POWS]",
+      "value-key": "[IN_POW]",
       "type": "File",
       "optional": true,
       "id": "in_pow",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-band",
       "description": "Lower and upper boundaries of the low frequency fluctuations (LFFs), within the interval [FBOT, FTOP].",
-      "value-key": "[FBOT] [FTOP]",
+      "value-key": "[BAND]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,

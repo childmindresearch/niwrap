@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/fswiki/PetSurfer",
   "description": "mri_gtmpvc performs partial volume correction on PET data using anatomical segmentation.",
-  "command-line": "mri_gtmpvc [INPUT_VOL] [FRAME] [PSF] [SEGMENTATION] [REGISTRATION] [OUTPUT_DIR] [MASK] [AUTO_MASK] [NO_REDUCE_FOV] [REDUCE_FOV_EQODD] [CONTRAST_MATRIX] [DEFAULT_SEG_MERGE] [MERGE_HYPOS] [MERGE_CBLUM_WM_GYRI] [TT_REDUCE] [REPLACE_SEG] [REPLACE_FILE] [RESCALE] [NO_RESCALE] [SCALE_REFVAL] [CTAB] [CTAB_DEFAULT] [TT_UPDATE] [LATERALIZATION] [NO_TFE] [NO_PVC] [SEGPVFRES] [RBV] [RBV_RES] [MUELLER_PVC] [MG_REF_CEREBRAL_WM] [MG_REF_LOBES_WM] [GLM_MG_PVC] [KM_REF] [KM_HB] [STEADY_STATE] [SAVE_X] [SAVE_Y] [SAVE_BETA] [SAVE_X0] [SAVE_INPUT] [SAVE_ERES] [SAVE_YHAT] [SAVE_YHAT_NOISE] [SAVE_YHAT_FOL_FOV] [SAVE_YHAT0] [SYNTH] [SYNTH_ONLY] [SYNTH_SAVE] [SAVE_TEXT] [THREADS] [MAX_THREADS] [MAX_THREADS_MINUS_ONE] [SUBJECTS_DIR] [VG_THRESH] [GDIAG] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
+  "command-line": "mri_gtmpvc [INPUT_VOLUME] [FRAME] [PSF] [SEGMENTATION] [REGISTRATION] [OUTPUT_DIRECTORY] [MASK] [AUTO_MASK] [NO_REDUCE_FOV] [REDUCE_FOV_EQODD] [CONTRAST_MATRIX] [DEFAULT_SEG_MERGE] [MERGE_HYPOS] [MERGE_CBLUM_WM_GYRI] [TT_REDUCE] [REPLACE_SEG] [REPLACE_FILE] [RESCALE] [NO_RESCALE] [SCALE_REFVAL] [CTAB] [CTAB_DEFAULT] [TT_UPDATE] [LATERALIZATION] [NO_TFE] [NO_PVC] [SEGPVFRES] [RBV] [RBV_RES] [MUELLER_PVC] [MG_REF_CEREBRAL_WM] [MG_REF_LOBES_WM] [GLM_MG_PVC] [KM_REF] [KM_HB] [STEADY_STATE] [SAVE_X] [SAVE_Y] [SAVE_BETA] [SAVE_X0] [SAVE_INPUT] [SAVE_ERES] [SAVE_YHAT] [SAVE_YHAT_NOISE] [SAVE_YHAT_FULL_FOV] [SAVE_YHAT0] [SYNTH] [SYNTH_ONLY] [SYNTH_SAVE] [SAVE_TEXT] [THREADS] [MAX_THREADS] [MAX_THREADS_MINUS_ONE] [SUBJECTS_DIR] [VG_THRESH] [GDIAG] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "--i",
       "description": "Input volume: source data to PVC",
-      "value-key": "[INPUT_VOL]",
+      "value-key": "[INPUT_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "input_volume",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--regheader",
       "description": "Assume input and seg share scanner space",
-      "value-key": "[REGHEADER_FLAG]",
+      "value-key": "[REGHEADER]",
       "type": "Flag",
       "optional": true,
       "id": "regheader",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--reg-identity",
       "description": "Assume that input is in anatomical space",
-      "value-key": "[REG_IDENTITY_FLAG]",
+      "value-key": "[REG_IDENTITY]",
       "type": "Flag",
       "optional": true,
       "id": "reg_identity",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--o",
       "description": "Output directory",
-      "value-key": "[OUTPUT_DIR]",
+      "value-key": "[OUTPUT_DIRECTORY]",
       "type": "String",
       "optional": false,
       "id": "output_directory",
@@ -429,7 +429,7 @@
     {
       "command-line-flag": "--save-yhat-full-fov",
       "description": "Saves yhat in full FoV (if FoV was reduced)",
-      "value-key": "[SAVE_YHAT_FOL_FOV]",
+      "value-key": "[SAVE_YHAT_FULL_FOV]",
       "type": "Flag",
       "optional": true,
       "id": "save_yhat_full_fov",
@@ -573,84 +573,84 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_DIR]/synth.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/synth.nii.gz",
       "description": "Synthesized volume",
       "optional": true,
       "id": "synthesized_volume",
       "name": "Synthesized Volume"
     },
     {
-      "path-template": "[OUTPUT_DIR]/input.rescaled.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/input.rescaled.nii.gz",
       "description": "Rescaled input volume",
       "optional": true,
       "id": "rescaled_input",
       "name": "Rescaled Input"
     },
     {
-      "path-template": "[OUTPUT_DIR]/eresiduals.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/eresiduals.nii.gz",
       "description": "Residual errors volume",
       "optional": true,
       "id": "eresiduals",
       "name": "Residual Errors"
     },
     {
-      "path-template": "[OUTPUT_DIR]/yhat.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/yhat.nii.gz",
       "description": "Yhat volume",
       "optional": true,
       "id": "yhat",
       "name": "Yhat"
     },
     {
-      "path-template": "[OUTPUT_DIR]/yhat_with_noise.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/yhat_with_noise.nii.gz",
       "description": "Yhat with noise volume",
       "optional": true,
       "id": "yhat_with_noise",
       "name": "Yhat with Noise"
     },
     {
-      "path-template": "[OUTPUT_DIR]/yhat_full_fov.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/yhat_full_fov.nii.gz",
       "description": "Yhat full FoV volume",
       "optional": true,
       "id": "yhat_full_fov",
       "name": "Yhat Full FoV"
     },
     {
-      "path-template": "[OUTPUT_DIR]/yhat_prior.nii.gz",
+      "path-template": "[OUTPUT_DIRECTORY]/yhat_prior.nii.gz",
       "description": "Yhat prior to smoothing volume",
       "optional": true,
       "id": "yhat_prior",
       "name": "Yhat Prior"
     },
     {
-      "path-template": "[OUTPUT_DIR]/X.mat",
+      "path-template": "[OUTPUT_DIRECTORY]/X.mat",
       "description": "X matrix in matlab4 format",
       "optional": true,
       "id": "x_matrix",
       "name": "X Matrix"
     },
     {
-      "path-template": "[OUTPUT_DIR]/y.mat",
+      "path-template": "[OUTPUT_DIRECTORY]/y.mat",
       "description": "Y matrix in matlab4 format",
       "optional": true,
       "id": "y_matrix",
       "name": "Y Matrix"
     },
     {
-      "path-template": "[OUTPUT_DIR]/beta.mat",
+      "path-template": "[OUTPUT_DIRECTORY]/beta.mat",
       "description": "Beta matrix in matlab4 format",
       "optional": true,
       "id": "beta_matrix",
       "name": "Beta Matrix"
     },
     {
-      "path-template": "[OUTPUT_DIR]/X0.mat",
+      "path-template": "[OUTPUT_DIRECTORY]/X0.mat",
       "description": "X0 matrix in matlab4 format",
       "optional": true,
       "id": "x0_matrix",
       "name": "X0 Matrix"
     },
     {
-      "path-template": "[OUTPUT_DIR]/gtm_values.txt",
+      "path-template": "[OUTPUT_DIRECTORY]/gtm_values.txt",
       "description": "Demeaned GTM values as text file",
       "optional": true,
       "id": "gtm_values_text",

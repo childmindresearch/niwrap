@@ -1,6 +1,6 @@
 {
   "name": "dmri_paths",
-  "command-line": "dmri_paths [INDIR] [OUTDIR] [DWI] [GRAD] [BVAL] [MASK] [BP_DIR] [NTR] [FMIN] [BASEREG] [BASEMASK] [ROI1] [ROI2] [ROIMESH1] [ROIMESH2] [ROIREF1] [ROIREF2] [PRIOR] [NPRIOR] [NSET] [LPRIOR] [LSET] [SEG] [TPRIOR] [CPRIOR] [REG] [REGNL] [INIT] [NB] [NS] [NK] [NU] [SDP] [DEBUG] [CHECKOPTS] [VERSION]",
+  "command-line": "dmri_paths [INDIR] [OUTDIR] [DWI] [GRAD] [BVAL] [MASK] [BPDIR] [NTR] [FMIN] [BASEREG] [BASEMASK] [ROI1] [ROI2] [ROIMESH1] [ROIMESH2] [ROIREF1] [ROIREF2] [PRIOR] [NPRIOR] [NSET] [LPRIOR] [LSET] [SEG] [TPRIOR] [CPRIOR] [REG] [REGNL] [INIT] [NB] [NS] [NK] [NU] [SDP] [DEBUG] [CHECKOPTS] [VERSION]",
   "description": "Tool for diffusion MRI path analysis.",
   "schema-version": "0.5",
   "inputs": [
@@ -62,7 +62,7 @@
       "id": "bpdir",
       "name": "BEDPOST Directory",
       "description": "BEDPOST directory.",
-      "value-key": "[BP_DIR]",
+      "value-key": "[BPDIR]",
       "type": "String",
       "optional": true,
       "command-line-flag": "--bpdir"

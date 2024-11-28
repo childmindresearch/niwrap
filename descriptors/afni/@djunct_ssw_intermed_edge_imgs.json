@@ -3,7 +3,7 @@
   "name": "@djunct_ssw_intermed_edge_imgs",
   "author": "AFNI Developers",
   "description": "Helper script to generate intermediate edge images for SSW-related processing.",
-  "command-line": "@djunct_ssw_intermed_edge_imgs [OUTPUT_PREFIX] [UNDERLAY] [OVERLAY] [BOX_FOCUS_SLICES] [MONTGAP] [COLORBAR] [ULAY_RANGE] [MONTX] [MONTY] [HELP_VIEW] [HELP_FLAG] [VERSION_FLAG] [NO_CLEAN_FLAG]",
+  "command-line": "@djunct_ssw_intermed_edge_imgs [PREFIX] [ULAY] [OLAY] [BOX_FOCUS_SLICES] [MONTGAP] [CBAR] [ULAY_RANGE] [MONTX] [MONTY] [HELP_VIEW] [HELP] [VERSION] [NO_CLEAN]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Prefix for generated output files",
-      "value-key": "[OUTPUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Underlay dataset",
-      "value-key": "[UNDERLAY]",
+      "value-key": "[ULAY]",
       "type": "File",
       "optional": false,
       "id": "ulay",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Overlay dataset",
-      "value-key": "[OVERLAY]",
+      "value-key": "[OLAY]",
       "type": "File",
       "optional": false,
       "id": "olay",
@@ -56,7 +56,7 @@
     },
     {
       "description": "Color bar specification for AFNI",
-      "value-key": "[COLORBAR]",
+      "value-key": "[CBAR]",
       "type": "String",
       "optional": true,
       "id": "cbar",
@@ -101,7 +101,7 @@
     },
     {
       "description": "Displays help information",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -110,7 +110,7 @@
     },
     {
       "description": "Displays version information",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -119,7 +119,7 @@
     },
     {
       "description": "Don't clean up intermediate files",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NO_CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "no_clean",

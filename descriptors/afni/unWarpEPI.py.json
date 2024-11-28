@@ -3,7 +3,7 @@
   "name": "unWarpEPI.py",
   "author": "AFNI Developers",
   "description": "Routine to unwarp EPI data set using another data set with opposite polarity",
-  "command-line": "unWarpEPI.py [FORWARD] [REVERSE] [ANAT4WARP] [DATA] [SUBJID] [GIANT_MOVE_FLAG]",
+  "command-line": "unWarpEPI.py [FORWARD] [REVERSE] [ANAT4WARP] [DATA] [SUBJID] [GIANT_MOVE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -59,7 +59,7 @@
       "id": "giant_move",
       "name": "Giant Move",
       "type": "Flag",
-      "value-key": "[GIANT_MOVE_FLAG]",
+      "value-key": "[GIANT_MOVE]",
       "command-line-flag": "-g",
       "optional": true
     }

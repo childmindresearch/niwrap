@@ -2,7 +2,7 @@
   "name": "fslorient.fsl",
   "tool-version": "7.4.1",
   "description": "A tool for managing the orientations and orientation headers of NIFTI images.",
-  "command-line": "fslorient [MAIN_OPTION] [FILENAME] [MATRIX_VALUES] [CODE]",
+  "command-line": "fslorient [SWAP_ORIENT] [FILENAME] [SET_QFORM] [SET_QFORM_CODE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -23,7 +23,7 @@
       "id": "get_orient",
       "name": "Get orientation",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_ORIENT]",
       "optional": true
     },
     {
@@ -32,7 +32,7 @@
       "id": "get_sform",
       "name": "Get sform matrix",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_SFORM]",
       "optional": true
     },
     {
@@ -41,7 +41,7 @@
       "id": "get_qform",
       "name": "Get qform matrix",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_QFORM]",
       "optional": true
     },
     {
@@ -53,7 +53,7 @@
       "list": true,
       "min-list-entries": 16,
       "max-list-entries": 16,
-      "value-key": "[MATRIX_VALUES]",
+      "value-key": "[SET_SFORM]",
       "optional": true
     },
     {
@@ -65,7 +65,7 @@
       "list": true,
       "min-list-entries": 16,
       "max-list-entries": 16,
-      "value-key": "[MATRIX_VALUES]",
+      "value-key": "[SET_QFORM]",
       "optional": true
     },
     {
@@ -74,7 +74,7 @@
       "id": "get_sform_code",
       "name": "Get sform code",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_SFORM_CODE]",
       "optional": true
     },
     {
@@ -83,7 +83,7 @@
       "id": "get_qform_code",
       "name": "Get qform code",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_QFORM_CODE]",
       "optional": true
     },
     {
@@ -92,7 +92,7 @@
       "id": "set_sform_code",
       "name": "Set sform code",
       "type": "String",
-      "value-key": "[CODE]",
+      "value-key": "[SET_SFORM_CODE]",
       "optional": true
     },
     {
@@ -101,7 +101,7 @@
       "id": "set_qform_code",
       "name": "Set qform code",
       "type": "String",
-      "value-key": "[CODE]",
+      "value-key": "[SET_QFORM_CODE]",
       "optional": true
     },
     {
@@ -110,7 +110,7 @@
       "id": "copy_sform_to_qform",
       "name": "Copy sform to qform",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[COPY_SFORM_TO_QFORM]",
       "optional": true
     },
     {
@@ -119,7 +119,7 @@
       "id": "copy_qform_to_sform",
       "name": "Copy qform to sform",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[COPY_QFORM_TO_SFORM]",
       "optional": true
     },
     {
@@ -128,7 +128,7 @@
       "id": "delete_orient",
       "name": "Delete orientation",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[DELETE_ORIENT]",
       "optional": true
     },
     {
@@ -137,7 +137,7 @@
       "id": "force_radiological",
       "name": "Force radiological",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[FORCE_RADIOLOGICAL]",
       "optional": true
     },
     {
@@ -146,7 +146,7 @@
       "id": "force_neurological",
       "name": "Force neurological",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[FORCE_NEUROLOGICAL]",
       "optional": true
     },
     {
@@ -155,7 +155,7 @@
       "id": "swap_orient",
       "name": "Swap orientation",
       "type": "Flag",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[SWAP_ORIENT]",
       "optional": true
     }
   ],

@@ -3,7 +3,7 @@
   "name": "imglob",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for generating image lists with specific extensions.",
-  "command-line": "imglob [EXTENSION_OPTION] [INPUT_LIST]",
+  "command-line": "imglob [MULTIPLE_EXTENSIONS] [INPUT_LIST]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-extension",
       "description": "Output one image with full extension",
-      "value-key": "[EXTENSION_OPTION]",
+      "value-key": "[SINGLE_EXTENSION]",
       "type": "Flag",
       "optional": true,
       "id": "single_extension",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-extensions",
       "description": "Output list of images with full extensions",
-      "value-key": "[EXTENSION_OPTION]",
+      "value-key": "[MULTIPLE_EXTENSIONS]",
       "type": "Flag",
       "optional": true,
       "id": "multiple_extensions",

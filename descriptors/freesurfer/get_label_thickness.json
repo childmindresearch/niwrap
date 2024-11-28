@@ -2,12 +2,12 @@
   "name": "get_label_thickness",
   "tool-version": "7.4.1",
   "description": "Tool to calculate label thickness.",
-  "command-line": "get_label_thickness [INPUT_FILE] [OPTIONS]",
+  "command-line": "get_label_thickness [INFILE] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input file",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",

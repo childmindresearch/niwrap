@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Multiply AFNI datasets slice-by-slice as matrices.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dmatmult [INPUT_A] [INPUT_B] [PREFIX] [DATUM] [VERB]",
+  "command-line": "3dmatmult [INPUTA] [INPUTB] [PREFIX] [DATUM] [VERB]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -16,7 +16,7 @@
       "id": "inputA",
       "name": "Input dataset A",
       "type": "File",
-      "value-key": "[INPUT_A]",
+      "value-key": "[INPUTA]",
       "optional": false
     },
     {
@@ -25,7 +25,7 @@
       "id": "inputB",
       "name": "Input dataset B",
       "type": "File",
-      "value-key": "[INPUT_B]",
+      "value-key": "[INPUTB]",
       "optional": false
     },
     {

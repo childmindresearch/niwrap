@@ -38,7 +38,7 @@
     {
       "command-line-flag": "--noedit",
       "description": "Run in no-edit mode, useful for scripting.",
-      "value-key": "[NO_EDIT_FLAG]",
+      "value-key": "[NOEDIT]",
       "type": "Flag",
       "optional": true,
       "id": "noedit",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "--lta",
       "description": "Use LTA format for registration file.",
-      "value-key": "[LTA_FLAG]",
+      "value-key": "[LTA]",
       "type": "Flag",
       "optional": true,
       "id": "lta",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "--surf",
       "description": "Use surface registration.",
-      "value-key": "[SURF_REG_FLAG]",
+      "value-key": "[SURF_REG]",
       "type": "Flag",
       "optional": true,
       "id": "surf_reg",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "--regonly",
       "description": "Don't show GUI, just save registration.",
-      "value-key": "[REG_ONLY_FLAG]",
+      "value-key": "[REG_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "reg_only",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help information.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

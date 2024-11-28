@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/gangchen_homepage",
   "description": "A tool for installing, checking, updating, or removing R packages for AFNI.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "rPkgsInstall [PACKAGES] [SITE] [CHECK_FLAG] [UPDATE_FLAG] [REMOVE_FLAG]",
+  "command-line": "rPkgsInstall [PACKAGES] [DOWNLOAD_SITE] [CHECK] [UPDATE] [REMOVE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-site",
       "description": "Specify the package repository website. Default is 'http://cloud.r-project.org'.",
-      "value-key": "[SITE]",
+      "value-key": "[DOWNLOAD_SITE]",
       "type": "String",
       "optional": true,
       "id": "download_site",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-check",
       "description": "Verify whether the specified R packages are installed on the computer without installing/updating/removing them.",
-      "value-key": "[CHECK_FLAG]",
+      "value-key": "[CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "check",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-update",
       "description": "Update the specified R packages. If packages are not installed, they will be installed.",
-      "value-key": "[UPDATE_FLAG]",
+      "value-key": "[UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "update",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-remove",
       "description": "Remove the specified R packages from the system.",
-      "value-key": "[REMOVE_FLAG]",
+      "value-key": "[REMOVE]",
       "type": "Flag",
       "optional": true,
       "id": "remove",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/descriptors/pairreg.json",
   "description": "Pairwise registration tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "pairreg [BRAIN1] [BRAIN2] [SKULL1] [SKULL2] [OUTPUTMATRIX] [FLIRT_ARGS]",
+  "command-line": "pairreg [BRAIN1] [BRAIN2] [SKULL1] [SKULL2] [OUTPUTMATRIX] [EXTRA_FLIRT_ARGS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -53,7 +53,7 @@
     },
     {
       "description": "Extra arguments to pass to flirt",
-      "value-key": "[FLIRT_ARGS]",
+      "value-key": "[EXTRA_FLIRT_ARGS]",
       "type": "String",
       "optional": true,
       "id": "extra_flirt_args",

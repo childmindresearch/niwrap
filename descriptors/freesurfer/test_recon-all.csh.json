@@ -1,6 +1,6 @@
 {
   "name": "test_recon-all.csh",
-  "command-line": "test_recon-all.csh [REFERENCE_SUBJ_SOURCE_DIR] [REFERENCE_SUBJID] [TEST_SUBJECT_DEST_DIR] [TEST_SUBJID] [FREESURFER_HOME] [NORECON_FLAG]",
+  "command-line": "test_recon-all.csh [REFERENCE_SUBJ_SOURCE_DIR] [REFERENCE_SUBJID] [TEST_SUBJECT_DEST_DIR] [TEST_SUBJID] [FREESURFER_HOME] [NORECON]",
   "description": "Script for testing recon-all and other utilities with FreeSurfer.",
   "schema-version": "0.5",
   "inputs": [
@@ -59,7 +59,7 @@
       "name": "No Recon Flag",
       "description": "Flag to indicate that recon-all should not be run.",
       "type": "Flag",
-      "value-key": "[NORECON_FLAG]",
+      "value-key": "[NORECON]",
       "command-line-flag": "-norecon",
       "optional": true
     }

@@ -283,7 +283,7 @@
     },
     {
       "description": "Specify the output file for the interaction contrast results between A and B (case-sensitive).",
-      "value-key": "[OUTFILE_ABCONTR_CASE]",
+      "value-key": "[OUTFILE_ABCONTR]",
       "command-line-flag": "-Abcontr",
       "type": "String",
       "list": false,
@@ -303,7 +303,7 @@
     },
     {
       "description": "Specify the output file for the interaction difference results between A and B (case-sensitive).",
-      "value-key": "[OUTFILE_ABDIFF_CASE]",
+      "value-key": "[OUTFILE_ABDIFF]",
       "command-line-flag": "-Abdiff",
       "type": "String",
       "list": false,

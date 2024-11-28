@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/mri_coreg/cbsd.json",
   "description": "mri_coreg performs a linear registration between two volumes using the method compatible with spm_coreg.",
-  "command-line": "mri_coreg -[MOV_VOLUME] -[REF_VOLUME] -[REGISTRATION] [ADDITIONAL_PARAMETERS]",
+  "command-line": "mri_coreg -[MOVVOL] -[REFVOL] -[REG] [ADDITIONAL_PARAMETERS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Source volume (mov)",
-      "value-key": "[MOV_VOLUME]",
+      "value-key": "[MOVVOL]",
       "type": "File",
       "optional": false,
       "id": "movvol",
@@ -22,7 +22,7 @@
     },
     {
       "description": "Target volume (ref or targ)",
-      "value-key": "[REF_VOLUME]",
+      "value-key": "[REFVOL]",
       "type": "File",
       "optional": false,
       "id": "refvol",
@@ -31,7 +31,7 @@
     },
     {
       "description": "Output registration file",
-      "value-key": "[REGISTRATION]",
+      "value-key": "[REG]",
       "type": "String",
       "optional": false,
       "id": "reg",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "--zscale",
       "description": "Enable 7 dof registration with scaling in Z.",
-      "value-key": "[ZSCALE_FLAG]",
+      "value-key": "[ZSCALE]",
       "type": "Flag",
       "optional": true,
       "id": "zscale",
@@ -69,7 +69,7 @@
     {
       "command-line-flag": "--xztrans+yrot",
       "description": "For 2D images: uses shifts in x and z and rotation about y (no scale).",
-      "value-key": "[XZTRANS_YROT_FLAG]",
+      "value-key": "[XZTRANS_YROT]",
       "type": "Flag",
       "optional": true,
       "id": "xztrans_yrot",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "--xytrans+zrot",
       "description": "For 2D images: uses shifts in x and y and rotation about z (no scale).",
-      "value-key": "[XYTRANS_ZROT_FLAG]",
+      "value-key": "[XYTRANS_ZROT]",
       "type": "Flag",
       "optional": true,
       "id": "xytrans_zrot",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "--xytrans+zrot+xyscale+xyshear",
       "description": "For 2D images: uses shifts in x and y, rotation about z, scale in xy, and xy shear.",
-      "value-key": "[XYTRANS_ZROT_XYSCALE_XYSHEAR_FLAG]",
+      "value-key": "[XYTRANS_ZROT_XYSCALE_XYSHEAR]",
       "type": "Flag",
       "optional": true,
       "id": "xytrans_zrot_xyscale_xyshear",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "--ref-mask",
       "description": "Mask reference volume with specified mask volume.",
-      "value-key": "[REF_MASK_VOLUME]",
+      "value-key": "[REF_MASKVOL]",
       "type": "File",
       "optional": true,
       "id": "ref_maskvol",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "--no-ref-mask",
       "description": "Do not mask reference volume.",
-      "value-key": "[NO_REF_MASK_FLAG]",
+      "value-key": "[NO_REF_MASK]",
       "type": "Flag",
       "optional": true,
       "id": "no_ref_mask",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "--mov-mask",
       "description": "Mask moving volume with specified mask volume.",
-      "value-key": "[MOV_MASK_VOLUME]",
+      "value-key": "[MOV_MASKVOL]",
       "type": "File",
       "optional": true,
       "id": "mov_maskvol",
@@ -151,7 +151,7 @@
     {
       "command-line-flag": "--no-coord-dither",
       "description": "Turn off coordinate dithering.",
-      "value-key": "[NO_COORD_DITHER_FLAG]",
+      "value-key": "[NO_COORD_DITHER]",
       "type": "Flag",
       "optional": true,
       "id": "no_coord_dither",
@@ -160,7 +160,7 @@
     {
       "command-line-flag": "--no-intensity-dither",
       "description": "Turn off intensity dithering.",
-      "value-key": "[NO_INTENSITY_DITHER_FLAG]",
+      "value-key": "[NO_INTENSITY_DITHER]",
       "type": "Flag",
       "optional": true,
       "id": "no_intensity_dither",
@@ -181,7 +181,7 @@
     {
       "command-line-flag": "--trans",
       "description": "Initial translation in mm.",
-      "value-key": "[TRANS_VECTOR]",
+      "value-key": "[TRANS]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -193,7 +193,7 @@
     {
       "command-line-flag": "--rot",
       "description": "Initial rotation in degrees.",
-      "value-key": "[ROT_VECTOR]",
+      "value-key": "[ROT]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -205,7 +205,7 @@
     {
       "command-line-flag": "--scale",
       "description": "Initial scale.",
-      "value-key": "[SCALE_VECTOR]",
+      "value-key": "[SCALE]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -217,7 +217,7 @@
     {
       "command-line-flag": "--shear",
       "description": "Initial shear.",
-      "value-key": "[SHEAR_VECTOR]",
+      "value-key": "[SHEAR]",
       "type": "Number",
       "list": true,
       "min-list-entries": 3,
@@ -256,7 +256,7 @@
     {
       "command-line-flag": "--no-cras0",
       "description": "Do not set translation parameters to align centers of mov and ref.",
-      "value-key": "[NO_CRAS0_FLAG]",
+      "value-key": "[NO_CRAS0]",
       "type": "Flag",
       "optional": true,
       "id": "no_cras0",
@@ -265,7 +265,7 @@
     {
       "command-line-flag": "--centroid",
       "description": "Initialize by aligning centroids of mov and ref.",
-      "value-key": "[CENTROID_FLAG]",
+      "value-key": "[CENTROID]",
       "type": "Flag",
       "optional": true,
       "id": "centroid",
@@ -274,7 +274,7 @@
     {
       "command-line-flag": "--ras2ras",
       "description": "Save output LTA as RAS2RAS.",
-      "value-key": "[RAS2RAS_FLAG]",
+      "value-key": "[RAS2RAS]",
       "type": "Flag",
       "optional": true,
       "id": "ras2ras",
@@ -330,7 +330,7 @@
     {
       "command-line-flag": "--conf-ref",
       "description": "Conform the reference without rescaling.",
-      "value-key": "[CONF_REF_FLAG]",
+      "value-key": "[CONF_REF]",
       "type": "Flag",
       "optional": true,
       "id": "conf_ref",
@@ -339,7 +339,7 @@
     {
       "command-line-flag": "--no-bf",
       "description": "Do not perform brute force search.",
-      "value-key": "[NO_BF_FLAG]",
+      "value-key": "[NO_BF]",
       "type": "Flag",
       "optional": true,
       "id": "no_bf",
@@ -367,7 +367,7 @@
     {
       "command-line-flag": "--no-smooth",
       "description": "Do not apply smoothing to either ref or mov.",
-      "value-key": "[NO_SMOOTH_FLAG]",
+      "value-key": "[NO_SMOOTH]",
       "type": "Flag",
       "optional": true,
       "id": "no_smooth",
@@ -385,7 +385,7 @@
     {
       "command-line-flag": "--mov-oob",
       "description": "Count mov voxels that are out-of-bounds as 0.",
-      "value-key": "[MOV_OOB_FLAG]",
+      "value-key": "[MOV_OOB]",
       "type": "Flag",
       "optional": true,
       "id": "mov_oob",
@@ -412,7 +412,7 @@
     {
       "command-line-flag": "--mat2par",
       "description": "Extract parameters out of registration.",
-      "value-key": "[REG_LTA]",
+      "value-key": "[MAT2PAR]",
       "type": "File",
       "optional": true,
       "id": "mat2par",
@@ -421,7 +421,7 @@
     {
       "command-line-flag": "--mat2rot",
       "description": "Convert registration to a pure rotation.",
-      "value-key": "[ROT_REG_LTA]",
+      "value-key": "[MAT2ROT]",
       "type": "File",
       "optional": true,
       "id": "mat2rot",
@@ -430,7 +430,7 @@
     {
       "command-line-flag": "--par2mat",
       "description": "Convert parameters to a registration.",
-      "value-key": "[PAR2MAT_PARAMETERS]",
+      "value-key": "[PAR2MAT]",
       "type": "String",
       "optional": true,
       "id": "par2mat",
@@ -439,7 +439,7 @@
     {
       "command-line-flag": "--lrrev",
       "description": "Approximate registration if you were to left-right reverse the pixels of the input image.",
-      "value-key": "[LRREV_REG]",
+      "value-key": "[LRREV]",
       "type": "File",
       "optional": true,
       "id": "lrrev",
@@ -448,7 +448,7 @@
     {
       "command-line-flag": "--landmarks",
       "description": "Convert landmarks to a registration.",
-      "value-key": "[LANDMARK_PARAMETERS]",
+      "value-key": "[LANDMARKS]",
       "type": "String",
       "list": true,
       "min-list-entries": 6,
@@ -459,7 +459,7 @@
     {
       "command-line-flag": "--rms",
       "description": "Compute RMS difference between two registrations.",
-      "value-key": "[RMS_PARAMETERS]",
+      "value-key": "[RMS]",
       "type": "String",
       "list": true,
       "min-list-entries": 4,
@@ -470,7 +470,7 @@
     {
       "command-line-flag": "--movout",
       "description": "Save the mov after all preprocessing steps.",
-      "value-key": "[MOVOUT_VOLUME]",
+      "value-key": "[MOVOUT]",
       "type": "File",
       "optional": true,
       "id": "movout",
@@ -479,7 +479,7 @@
     {
       "command-line-flag": "--mov-idither",
       "description": "Save the mov intensity dither volume.",
-      "value-key": "[MOV_IDITHER_VOLUME]",
+      "value-key": "[MOV_IDITHER]",
       "type": "File",
       "optional": true,
       "id": "mov_idither",
@@ -488,7 +488,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debugging mode.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -497,7 +497,7 @@
     {
       "command-line-flag": "--checkopts",
       "description": "Check options and exit without running.",
-      "value-key": "[CHECKOPTS_FLAG]",
+      "value-key": "[CHECKOPTS]",
       "type": "Flag",
       "optional": true,
       "id": "checkopts",
@@ -506,7 +506,7 @@
     {
       "command-line-flag": "--version",
       "description": "Print out version and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -515,7 +515,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[REGISTRATION]",
+      "path-template": "[REG]",
       "description": "Output registration (LTA format)",
       "optional": false,
       "id": "out_registration",
@@ -550,14 +550,14 @@
       "name": "Saved Initial Registration Only"
     },
     {
-      "path-template": "[MOVOUT_VOLUME]",
+      "path-template": "[MOVOUT]",
       "description": "Preprocessed moving volume",
       "optional": true,
       "id": "movout_volume",
       "name": "Preprocessed Mov Volume"
     },
     {
-      "path-template": "[MOV_IDITHER_VOLUME]",
+      "path-template": "[MOV_IDITHER]",
       "description": "Moving intensity dither volume",
       "optional": true,
       "id": "mov_idither_volume",

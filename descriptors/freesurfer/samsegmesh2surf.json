@@ -3,7 +3,7 @@
   "name": "samsegmesh2surf",
   "author": "FreeSurfer Developers",
   "description": "Generate Freesurfer surface from a SAMSEG atlas mesh file and generate priors at each vertex as overlay MRI volume.",
-  "command-line": "samsegmesh2surf [ATLAS_MESH] ([TEMPLATE] | [LTA]) ([OSURF] | [OPRIORS]) [INVERT_FLAG]",
+  "command-line": "samsegmesh2surf [ATLAS_MESH] ([TEMPLATE] | [LTA_TRANSFORM]) ([OUTPUT_SURFACE] | [OUTPUT_PRIORS]) [INVERT_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--lta",
       "description": "Input LTA transform to be applied to surface",
-      "value-key": "[LTA]",
+      "value-key": "[LTA_TRANSFORM]",
       "type": "File",
       "optional": true,
       "id": "lta_transform",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--osurf",
       "description": "Output FreeSurfer surface file",
-      "value-key": "[OSURF]",
+      "value-key": "[OUTPUT_SURFACE]",
       "type": "String",
       "optional": true,
       "id": "output_surface",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--opriors",
       "description": "Output priors as MRI volume",
-      "value-key": "[OPRIORS]",
+      "value-key": "[OUTPUT_PRIORS]",
       "type": "String",
       "optional": true,
       "id": "output_priors",
@@ -63,14 +63,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OSURF]",
+      "path-template": "[OUTPUT_SURFACE]",
       "description": "FreeSurfer surface file generated from SAMSEG atlas mesh",
       "optional": true,
       "id": "output_surface_file",
       "name": "Surface File"
     },
     {
-      "path-template": "[OPRIORS]",
+      "path-template": "[OUTPUT_PRIORS]",
       "description": "Priors MRI volume at each vertex",
       "optional": true,
       "id": "output_priors_file",

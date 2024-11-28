@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html",
   "description": "Normalizes each voxel time series by multiplicative scaling",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dTnorm [PREFIX] [L2_NORM_FLAG] [SUM_SQUARES_NORM_FLAG] [L1_NORM_FLAG] [MAX_NORM_FLAG] [POLORT] [L1FIT_FLAG] [DATASET]",
+  "command-line": "3dTnorm [PREFIX] [NORM2] [NORMR] [NORM1] [NORMX] [POLORT] [L1FIT] [INPUT_DATASET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input dataset (e.g. data.nii)",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-norm2",
       "description": "L2 normalize (sum of squares = 1)",
-      "value-key": "[L2_NORM_FLAG]",
+      "value-key": "[NORM2]",
       "type": "Flag",
       "optional": true,
       "id": "norm2",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-normR",
       "description": "Normalize so sum of squares = number of time points",
-      "value-key": "[SUM_SQUARES_NORM_FLAG]",
+      "value-key": "[NORMR]",
       "type": "Flag",
       "optional": true,
       "id": "normR",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-norm1",
       "description": "L1 normalize (sum of absolute values = 1)",
-      "value-key": "[L1_NORM_FLAG]",
+      "value-key": "[NORM1]",
       "type": "Flag",
       "optional": true,
       "id": "norm1",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-normx",
       "description": "Scale so max absolute value = 1 (L_infinity norm)",
-      "value-key": "[MAX_NORM_FLAG]",
+      "value-key": "[NORMX]",
       "type": "Flag",
       "optional": true,
       "id": "normx",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-L1fit",
       "description": "Detrend with L1 regression (L2 is default)",
-      "value-key": "[L1FIT_FLAG]",
+      "value-key": "[L1FIT]",
       "type": "Flag",
       "optional": true,
       "id": "L1fit",

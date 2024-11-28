@@ -1,6 +1,6 @@
 {
   "name": "analyzeto4dfp",
-  "command-line": "analyzeto4dfp [ANALYZE_IMAGE] [ROIS_SCALE_FLAG] [FLIP_X_FLAG] [FLIP_Y_FLAG] [FLIP_Z_FLAG] [ENDIANNESS] [ORIENTATION]",
+  "command-line": "analyzeto4dfp [ANALYZE_IMAGE] [ROIS_SCALE] [FLIP_X] [FLIP_Y] [FLIP_Z] [ENDIAN] [ORIENTATION]",
   "description": "Convert ANALYZE image format to 4dfp format with various options",
   "schema-version": "0.5",
   "inputs": [
@@ -17,7 +17,7 @@
       "id": "rois_scale",
       "name": "ROIS Scale Factor",
       "type": "Flag",
-      "value-key": "[ROIS_SCALE_FLAG]",
+      "value-key": "[ROIS_SCALE]",
       "description": "Apply ROIScaleFactor",
       "optional": true
     },
@@ -26,7 +26,7 @@
       "id": "flip_x",
       "name": "Flip First Axis",
       "type": "Flag",
-      "value-key": "[FLIP_X_FLAG]",
+      "value-key": "[FLIP_X]",
       "description": "Flip first axis",
       "optional": true
     },
@@ -35,7 +35,7 @@
       "id": "flip_y",
       "name": "Flip Second Axis",
       "type": "Flag",
-      "value-key": "[FLIP_Y_FLAG]",
+      "value-key": "[FLIP_Y]",
       "description": "Flip second axis",
       "optional": true
     },
@@ -44,7 +44,7 @@
       "id": "flip_z",
       "name": "Flip Third Axis",
       "type": "Flag",
-      "value-key": "[FLIP_Z_FLAG]",
+      "value-key": "[FLIP_Z]",
       "description": "Flip third axis",
       "optional": true
     },
@@ -53,7 +53,7 @@
       "id": "endian",
       "name": "Output Endianness",
       "type": "String",
-      "value-key": "[ENDIANNESS]",
+      "value-key": "[ENDIAN]",
       "description": "Output big or little endian (default CPU endian)",
       "optional": true
     },

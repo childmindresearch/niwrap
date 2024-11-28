@@ -3,7 +3,7 @@
   "name": "mri_tessellate",
   "author": "FreeSurfer Developers",
   "description": "This program creates a surface by tessellating a given input volume.",
-  "command-line": "mri_tessellate [INPUT_VOLUME] [LABEL_VALUE] [OUTPUT_SURF] [DIFFERENT_LABELS_FLAG] [MAX_VERTICES] [REAL_RAS_FLAG]",
+  "command-line": "mri_tessellate [INPUT_VOLUME] [LABEL_VALUE] [OUTPUT_SURF] [DIFFERENT_LABELS] [MAX_VERTICES] [REAL_RAS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-a",
       "description": "Tessellate the surface of all voxels with different labels.",
-      "value-key": "[DIFFERENT_LABELS_FLAG]",
+      "value-key": "[DIFFERENT_LABELS]",
       "type": "Flag",
       "optional": true,
       "id": "different_labels",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-n",
       "description": "Save surface with real RAS coordinates where c_(r,a,s) != 0.",
-      "value-key": "[REAL_RAS_FLAG]",
+      "value-key": "[REAL_RAS]",
       "type": "Flag",
       "optional": true,
       "id": "real_ras",

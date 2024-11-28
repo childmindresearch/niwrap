@@ -1,7 +1,7 @@
 {
   "name": "@djunct_edgy_align_check",
   "description": "Helper script for various tasks, heavily modeled on RW Cox's '@snapshot_volreg' script",
-  "command-line": "@djunct_edgy_align_check [ULAY] [OLAY] [PREFIX] [XX,YY,ZZ] [DSET_BFS] [MG] [MC] [CBAR] [FTYPE] [UF] [MX] [MY] [INTERP] [LM] [help_flag] [ver_flag] [echo_flag] [sharpen_ulay_off_flag] [mask_olay_edges_flag] [no_cor_flag] [no_sag_flag] [no_axi_flag] [no_clean_flag] [ULAY_RANGE] [ULAY_RANGE_NZ] [ULAY_RANGE_AM]",
+  "command-line": "@djunct_edgy_align_check [ULAY] [OLAY] [PREFIX] [SET_DICOM_XYZ] [BOX_FOCUS_SLICES] [MONTGAP] [MONTCOLOR] [CBAR] [SAVE_FTYPE] [UMIN_FAC] [MONTX] [MONTY] [USE_OLAY_GRID] [LABEL_MODE] [help_flag] [ver_flag] [echo_flag] [sharpen_ulay_off_flag] [mask_olay_edges_flag] [no_cor_flag] [no_sag_flag] [no_axi_flag] [no_clean_flag] [ULAY_RANGE] [ULAY_RANGE_NZ] [ULAY_RANGE_AM]",
   "tool-version": "24.2.06",
   "schema-version": "0.5",
   "inputs": [
@@ -35,7 +35,7 @@
       "type": "Number",
       "description": "DICOM coordinates {XX YY ZZ}",
       "list": true,
-      "value-key": "[XX,YY,ZZ]",
+      "value-key": "[SET_DICOM_XYZ]",
       "optional": true,
       "min-list-entries": 3,
       "max-list-entries": 3
@@ -45,7 +45,7 @@
       "name": "Focus Slices Dataset",
       "type": "String",
       "description": "Dataset to focus slices",
-      "value-key": "[DSET_BFS]",
+      "value-key": "[BOX_FOCUS_SLICES]",
       "optional": true
     },
     {
@@ -53,7 +53,7 @@
       "name": "Montage Gap",
       "type": "Number",
       "description": "Gap between slices in montage",
-      "value-key": "[MG]",
+      "value-key": "[MONTGAP]",
       "optional": true
     },
     {
@@ -61,7 +61,7 @@
       "name": "Montage Color",
       "type": "String",
       "description": "Color for montage",
-      "value-key": "[MC]",
+      "value-key": "[MONTCOLOR]",
       "optional": true
     },
     {
@@ -77,7 +77,7 @@
       "name": "Save File Type",
       "type": "String",
       "description": "File type to save",
-      "value-key": "[FTYPE]",
+      "value-key": "[SAVE_FTYPE]",
       "optional": true
     },
     {
@@ -85,7 +85,7 @@
       "name": "Underlay Min Factor",
       "type": "Number",
       "description": "Scaling factor for underlay minimum",
-      "value-key": "[UF]",
+      "value-key": "[UMIN_FAC]",
       "optional": true
     },
     {
@@ -93,7 +93,7 @@
       "name": "Montage X Slices",
       "type": "Number",
       "description": "Number of slices in X-direction for montage",
-      "value-key": "[MX]",
+      "value-key": "[MONTX]",
       "optional": true
     },
     {
@@ -101,7 +101,7 @@
       "name": "Montage Y Slices",
       "type": "Number",
       "description": "Number of slices in Y-direction for montage",
-      "value-key": "[MY]",
+      "value-key": "[MONTY]",
       "optional": true
     },
     {
@@ -109,7 +109,7 @@
       "name": "Overlay Grid Interpolation",
       "type": "String",
       "description": "Grid interpolation method for overlay",
-      "value-key": "[INTERP]",
+      "value-key": "[USE_OLAY_GRID]",
       "optional": true
     },
     {
@@ -117,7 +117,7 @@
       "name": "Label Mode",
       "type": "String",
       "description": "Mode for labeling",
-      "value-key": "[LM]",
+      "value-key": "[LABEL_MODE]",
       "optional": true
     },
     {

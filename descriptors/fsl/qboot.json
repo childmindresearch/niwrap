@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for computing q-ball ODFs using bootstrap samples",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "qboot [DATA_FILE] [MASK_FILE] [BVECS] [BVALS] [LOGDIR] [FORCEDIR_FLAG] [Q_FILE] [MODEL] [LMAX] [NPEAKS] [THR] [NSAMPLES] [LAMBDA] [DELTA] [ALPHA] [SEED] [GFA_FLAG] [SAVECOEFF_FLAG] [SAVEMEANCOEFF_FLAG] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "qboot [DATA_FILE] [MASK_FILE] [BVECS_FILE] [BVALS_FILE] [LOG_DIR] [FORCEDIR_FLAG] [Q_FILE] [MODEL_TYPE] [LMAX_ORDER] [NPEAKS] [THRESHOLD] [NUM_SAMPLES] [LAMBDA_PARAM] [DELTA_PARAM] [ALPHA_PARAM] [SEED_PARAM] [GFA_FLAG] [SAVECOEFF_FLAG] [SAVEMEANCOEFF_FLAG] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-r",
       "description": "b vectors file",
-      "value-key": "[BVECS]",
+      "value-key": "[BVECS_FILE]",
       "type": "File",
       "optional": false,
       "id": "bvecs_file",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-b",
       "description": "b values file",
-      "value-key": "[BVALS]",
+      "value-key": "[BVALS_FILE]",
       "type": "File",
       "optional": false,
       "id": "bvals_file",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--ld",
       "description": "Output directory (default is logdir)",
-      "value-key": "[LOGDIR]",
+      "value-key": "[LOG_DIR]",
       "type": "String",
       "optional": true,
       "id": "log_dir",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "--model",
       "description": "Which model to use. 1=Tuch's ODFs, 2=CSA ODFs (default), 3=multi-shell CSA ODFs",
-      "value-key": "[MODEL]",
+      "value-key": "[MODEL_TYPE]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--lmax",
       "description": "Maximum spherical harmonic order employed (must be even, default=4)",
-      "value-key": "[LMAX]",
+      "value-key": "[LMAX_ORDER]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "--thr",
       "description": "Minimum threshold for a local maxima to be considered an ODF peak. Expressed as a fraction of the maximum ODF value (default 0.4)",
-      "value-key": "[THR]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "threshold",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "--ns",
       "description": "Number of bootstrap samples (default is 50)",
-      "value-key": "[NSAMPLES]",
+      "value-key": "[NUM_SAMPLES]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "--lambda",
       "description": "Laplace-Beltrami regularization parameter (default is 0)",
-      "value-key": "[LAMBDA]",
+      "value-key": "[LAMBDA_PARAM]",
       "type": "Number",
       "integer": false,
       "optional": true,
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "--delta",
       "description": "Signal attenuation regularization parameter for models=2,3 (default is 0.01)",
-      "value-key": "[DELTA]",
+      "value-key": "[DELTA_PARAM]",
       "type": "Number",
       "integer": false,
       "optional": true,
@@ -145,7 +145,7 @@
     {
       "command-line-flag": "--alpha",
       "description": "Laplacian sharpening parameter for model=1 (default is 0, should be smaller than 1)",
-      "value-key": "[ALPHA]",
+      "value-key": "[ALPHA_PARAM]",
       "type": "Number",
       "integer": false,
       "optional": true,
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "--seed",
       "description": "Seed for pseudo-random number generator",
-      "value-key": "[SEED]",
+      "value-key": "[SEED_PARAM]",
       "type": "Number",
       "integer": true,
       "optional": true,

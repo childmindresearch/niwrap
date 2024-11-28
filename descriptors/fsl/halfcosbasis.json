@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for handling half-cosine basis functions in FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "halfcosbasis [HRF_PARAM_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_ON_FLAG] [LOG_DIR] [NUM_HRF_SAMPLES] [NUM_HRF_BASIS_FUNCS] [NUM_SECS] [TEMP_RES]",
+  "command-line": "halfcosbasis [HRF_PARAM_FILE_HF] [VERBOSE_FLAG] [DEBUG_LEVEL_DEBUGLEVEL] [TIMING_ON_FLAG] [LOG_DIR_LOGDIR] [NUM_HRF_SAMPLES] [NUM_HRF_BASIS_FUNCS] [NUM_SECS_NSECS] [TEMP_RES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "--hf",
       "description": "Half cosine HRF parameter ranges file",
-      "value-key": "[HRF_PARAM_FILE]",
+      "value-key": "[HRF_PARAM_FILE_HF]",
       "type": "File",
       "optional": false,
       "id": "hrf_param_file_hf",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Set debug level",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG_LEVEL_DEBUG]",
       "type": "Number",
       "optional": true,
       "id": "debug_level_debug",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "--debuglevel",
       "description": "Set debug level",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG_LEVEL_DEBUGLEVEL]",
       "type": "Number",
       "optional": true,
       "id": "debug_level_debuglevel",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "--ld",
       "description": "Log directory",
-      "value-key": "[LOG_DIR]",
+      "value-key": "[LOG_DIR_LD]",
       "type": "String",
       "optional": true,
       "id": "log_dir_ld",
@@ -94,7 +94,7 @@
     {
       "command-line-flag": "--logdir",
       "description": "Log directory",
-      "value-key": "[LOG_DIR]",
+      "value-key": "[LOG_DIR_LOGDIR]",
       "type": "String",
       "optional": true,
       "id": "log_dir_logdir",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "--nsecs",
       "description": "Number of seconds (default is 40)",
-      "value-key": "[NUM_SECS]",
+      "value-key": "[NUM_SECS_NSECS]",
       "type": "Number",
       "default-value": 40,
       "optional": true,
@@ -162,7 +162,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP_FLAG_LONG]",
       "type": "Flag",
       "optional": true,
       "id": "help_flag_long",

@@ -3,7 +3,7 @@
   "name": "samseg2recon",
   "author": "FreeSurfer Developers",
   "description": "Creates and populates a subjects directory for use with recon-all from SAMSEG outputs.",
-  "command-line": "samseg2recon [SUBJECT] [SAMSEG_DIR] [NO_CC_FLAG] [FILL_FLAG] [NORMALIZATION2_FLAG] [UCHAR_FLAG] [NO_KEEP_EXC_FLAG] [LONG_TP] [BASE_FLAG] [MASK_FILE] [FROM_RECON_ALL_FLAG] [FORCE_UPDATE_FLAG]",
+  "command-line": "samseg2recon [SUBJECT] [SAMSEG_DIR] [NO_CC] [FILL] [NORMALIZATION2] [UCHAR] [NO_KEEP_EXC] [LONG_TP] [BASE] [MASK_FILE] [FROM_RECON_ALL] [FORCE_UPDATE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "--no-cc",
       "description": "Do not do corpus callosum segmentation",
-      "value-key": "[NO_CC_FLAG]",
+      "value-key": "[NO_CC]",
       "type": "Flag",
       "optional": true,
       "id": "no_cc",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "--fill",
       "description": "Use samseg to create the filled.mgz used for tessellation",
-      "value-key": "[FILL_FLAG]",
+      "value-key": "[FILL]",
       "type": "Flag",
       "optional": true,
       "id": "fill",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "--normalization2",
       "description": "Seg brain.mgz to norm.mgz",
-      "value-key": "[NORMALIZATION2_FLAG]",
+      "value-key": "[NORMALIZATION2]",
       "type": "Flag",
       "optional": true,
       "id": "normalization2",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "--uchar",
       "description": "Convert to uchar",
-      "value-key": "[UCHAR_FLAG]",
+      "value-key": "[UCHAR]",
       "type": "Flag",
       "optional": true,
       "id": "uchar",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "--no-keep-exc",
       "description": "Do not keep extracerebral segmentations",
-      "value-key": "[NO_KEEP_EXC_FLAG]",
+      "value-key": "[NO_KEEP_EXC]",
       "type": "Flag",
       "optional": true,
       "id": "no_keep_exc",
@@ -81,7 +81,7 @@
     {
       "command-line-flag": "--base",
       "description": "Process base, will find folder called base in samsegdir",
-      "value-key": "[BASE_FLAG]",
+      "value-key": "[BASE]",
       "type": "Flag",
       "optional": true,
       "id": "base",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "--from-recon-all",
       "description": "Indicates execution from recon-all, preventing overwrite of rawavg.mgz and orig.mgz",
-      "value-key": "[FROM_RECON_ALL_FLAG]",
+      "value-key": "[FROM_RECON_ALL]",
       "type": "Flag",
       "optional": true,
       "id": "from_recon_all",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "--force-update",
       "description": "Force update of the subject directory",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "force_update",

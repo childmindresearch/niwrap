@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "surfreg",
   "description": "Performs surface registration (mris_register) between a subject and a target average subject based on the hemi.reg.template.tif atlas in the average subject.",
-  "command-line": "surfreg [SUBJECT] [TARGET] [CROSS_HEMI_FLAG] [REG_LH_FLAG] [REG_RH_FLAG] [REG_BOTH_FLAG] [NO_ANNOT_FLAG] [ANNOTNAME] [APARC_FLAG] [NONEG_FLAG] [INIT_REG_NAME] [LTA_REG] [INIT_FROM_TAL_FLAG] [OUTSURF_NAME] [NO_SET_VOL_GEOM_FLAG] [THREADS]",
+  "command-line": "surfreg [SUBJECT] [TARGET] [CROSS_HEMI] [REG_LH] [REG_RH] [REG_BOTH] [NO_ANNOT] [ANNOT] [APARC] [NONEG] [INIT_REG] [LTA] [INIT_FROM_TAL] [OUTSURF] [NO_SET_VOL_GEOM] [THREADS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--xhemi",
       "description": "Perform cross-hemi registration",
-      "value-key": "[CROSS_HEMI_FLAG]",
+      "value-key": "[CROSS_HEMI]",
       "type": "Flag",
       "optional": true,
       "id": "cross_hemi",
@@ -35,7 +35,7 @@
     {
       "command-line-flag": "--lh",
       "description": "Register left hemisphere only",
-      "value-key": "[REG_LH_FLAG]",
+      "value-key": "[REG_LH]",
       "type": "Flag",
       "optional": true,
       "id": "reg_lh",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "--rh",
       "description": "Register right hemisphere only",
-      "value-key": "[REG_RH_FLAG]",
+      "value-key": "[REG_RH]",
       "type": "Flag",
       "optional": true,
       "id": "reg_rh",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "--lhrh",
       "description": "Register both left and right hemispheres",
-      "value-key": "[REG_BOTH_FLAG]",
+      "value-key": "[REG_BOTH]",
       "type": "Flag",
       "optional": true,
       "id": "reg_both",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "--no-annot",
       "description": "Do not use annot to rip",
-      "value-key": "[NO_ANNOT_FLAG]",
+      "value-key": "[NO_ANNOT]",
       "type": "Flag",
       "optional": true,
       "id": "no_annot",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "--annot",
       "description": "Use specified annotation name",
-      "value-key": "[ANNOTNAME]",
+      "value-key": "[ANNOT]",
       "type": "String",
       "optional": true,
       "id": "annot",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "--aparc",
       "description": "Set annotation name to aparc.annot",
-      "value-key": "[APARC_FLAG]",
+      "value-key": "[APARC]",
       "type": "Flag",
       "optional": true,
       "id": "aparc",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "--noneg",
       "description": "Option flag with unspecified behavior in the provided help text",
-      "value-key": "[NONEG_FLAG]",
+      "value-key": "[NONEG]",
       "type": "Flag",
       "optional": true,
       "id": "noneg",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "--init-reg",
       "description": "Initial registration name, default is sphere",
-      "value-key": "[INIT_REG_NAME]",
+      "value-key": "[INIT_REG]",
       "type": "String",
       "optional": true,
       "id": "init_reg",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "--lta",
       "description": "Apply rotational components of affine registration",
-      "value-key": "[LTA_REG]",
+      "value-key": "[LTA]",
       "type": "String",
       "optional": true,
       "id": "lta",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "--init-from-tal",
       "description": "Use talaiach.xfm.lta for initial spherical registration",
-      "value-key": "[INIT_FROM_TAL_FLAG]",
+      "value-key": "[INIT_FROM_TAL]",
       "type": "Flag",
       "optional": true,
       "id": "init_from_tal",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "--o",
       "description": "Output surface name, default depends on the target",
-      "value-key": "[OUTSURF_NAME]",
+      "value-key": "[OUTSURF]",
       "type": "String",
       "optional": true,
       "id": "outsurf",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "--no-set-vol-geom",
       "description": "Do not set volume geometry and center the sphere",
-      "value-key": "[NO_SET_VOL_GEOM_FLAG]",
+      "value-key": "[NO_SET_VOL_GEOM]",
       "type": "Flag",
       "optional": true,
       "id": "no_set_vol_geom",

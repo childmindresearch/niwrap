@@ -3,7 +3,7 @@
   "name": "3dmaxdisp",
   "author": "AFNI Developers",
   "description": "Reads in a 3D dataset and a DICOM-based affine matrix to output the average and maximum displacement applied to the edge voxels of the 3D dataset's automask.",
-  "command-line": "3dmaxdisp [INPUT_DATASET] [MATRIX_FILE] [VERBOSE_FLAG]",
+  "command-line": "3dmaxdisp [INSET] [MATRIX] [VERBOSE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset file used to form the mask over which displacements will be computed.",
-      "value-key": "[INPUT_DATASET]",
+      "value-key": "[INSET]",
       "type": "File",
       "optional": false,
       "id": "inset",
@@ -20,7 +20,7 @@
     },
     {
       "description": "3x4 affine transformation matrix file applied to the coordinates of the voxels in the dataset mask.",
-      "value-key": "[MATRIX_FILE]",
+      "value-key": "[MATRIX]",
       "type": "File",
       "optional": false,
       "id": "matrix",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Print a few progress reports.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL tool to manipulate NIfTI header orientation information",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fslorient [MAIN_OPTION] [FILENAME]",
+  "command-line": "fslorient [SWAP_ORIENT] [FILENAME]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-getorient",
       "description": "Prints FSL left-right orientation",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_ORIENT]",
       "type": "Flag",
       "optional": true,
       "id": "get_orient",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-getsform",
       "description": "Prints the 16 elements of the sform matrix",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_SFORM]",
       "type": "Flag",
       "optional": true,
       "id": "get_sform",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-getqform",
       "description": "Prints the 16 elements of the qform matrix",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_QFORM]",
       "type": "Flag",
       "optional": true,
       "id": "get_qform",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-setsform",
       "description": "Sets the 16 elements of the sform matrix",
-      "value-key": "[MAIN_OPTION] [SF_MATRIX]",
+      "value-key": "[SET_SFORM]",
       "type": "String",
       "optional": true,
       "id": "set_sform",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-setqform",
       "description": "Sets the 16 elements of the qform matrix",
-      "value-key": "[MAIN_OPTION] [QF_MATRIX]",
+      "value-key": "[SET_QFORM]",
       "type": "String",
       "optional": true,
       "id": "set_qform",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-getsformcode",
       "description": "Prints the sform integer code",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_SFORM_CODE]",
       "type": "Flag",
       "optional": true,
       "id": "get_sform_code",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-getqformcode",
       "description": "Prints the qform integer code",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[GET_QFORM_CODE]",
       "type": "Flag",
       "optional": true,
       "id": "get_qform_code",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-setsformcode",
       "description": "Sets sform integer code",
-      "value-key": "[MAIN_OPTION] [SFORM_CODE]",
+      "value-key": "[SET_SFORM_CODE]",
       "type": "String",
       "optional": true,
       "id": "set_sform_code",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-setqformcode",
       "description": "Sets qform integer code",
-      "value-key": "[MAIN_OPTION] [QFORM_CODE]",
+      "value-key": "[SET_QFORM_CODE]",
       "type": "String",
       "optional": true,
       "id": "set_qform_code",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-copysform2qform",
       "description": "Sets the qform equal to the sform - code and matrix",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[COPY_SFORM_TO_QFORM]",
       "type": "Flag",
       "optional": true,
       "id": "copy_sform_to_qform",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-copyqform2sform",
       "description": "Sets the sform equal to the qform - code and matrix",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[COPY_QFORM_TO_SFORM]",
       "type": "Flag",
       "optional": true,
       "id": "copy_qform_to_sform",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-deleteorient",
       "description": "Removes orient info from header",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[DELETE_ORIENT]",
       "type": "Flag",
       "optional": true,
       "id": "delete_orient",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-forceradiological",
       "description": "Makes FSL radiological header",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[FORCE_RADIOLOGICAL]",
       "type": "Flag",
       "optional": true,
       "id": "force_radiological",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-forceneurological",
       "description": "Makes FSL neurological header - not Analyze",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[FORCE_NEUROLOGICAL]",
       "type": "Flag",
       "optional": true,
       "id": "force_neurological",
@@ -147,7 +147,7 @@
     {
       "command-line-flag": "-swaporient",
       "description": "Swaps FSL radiological and FSL neurological",
-      "value-key": "[MAIN_OPTION]",
+      "value-key": "[SWAP_ORIENT]",
       "type": "Flag",
       "optional": true,
       "id": "swap_orient",

@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-B",
       "description": "Don't write .pyc files on import.",
-      "value-key": "[NO_BYTECODE_FLAG]",
+      "value-key": "[NO_BYTECODE]",
       "type": "Flag",
       "optional": true,
       "id": "no_bytecode",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "-d",
       "description": "Debug output from parser.",
-      "value-key": "[DEBUG_OUTPUT_FLAG]",
+      "value-key": "[DEBUG_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "debug_output",
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-E",
       "description": "Ignore PYTHON* environment variables.",
-      "value-key": "[IGNORE_ENV_FLAG]",
+      "value-key": "[IGNORE_ENV]",
       "type": "Flag",
       "optional": true,
       "id": "ignore_env",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-h",
       "description": "Print help message and exit.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -63,7 +63,7 @@
     {
       "command-line-flag": "-i",
       "description": "Inspect interactively after running script.",
-      "value-key": "[INTERACT_FLAG]",
+      "value-key": "[INTERACT]",
       "type": "Flag",
       "optional": true,
       "id": "interact",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-I",
       "description": "Isolate Python from the user's environment.",
-      "value-key": "[ISOLATE_ENV_FLAG]",
+      "value-key": "[ISOLATE_ENV]",
       "type": "Flag",
       "optional": true,
       "id": "isolate_env",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-O",
       "description": "Remove assert and __debug__-dependent statements.",
-      "value-key": "[OPT_FLAG]",
+      "value-key": "[OPTIMIZE]",
       "type": "Flag",
       "optional": true,
       "id": "optimize",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-OO",
       "description": "Remove assert, __debug__-dependent statements and docstrings.",
-      "value-key": "[FULL_OPT_FLAG]",
+      "value-key": "[FULL_OPTIMIZE]",
       "type": "Flag",
       "optional": true,
       "id": "full_optimize",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "-q",
       "description": "Don't print version and copyright messages on startup.",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -117,7 +117,7 @@
     {
       "command-line-flag": "-s",
       "description": "Don't add user site directory to sys.path.",
-      "value-key": "[NO_USER_SITE_FLAG]",
+      "value-key": "[NO_USER_SITE]",
       "type": "Flag",
       "optional": true,
       "id": "no_user_site",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "-S",
       "description": "Don't imply 'import site' on initialization.",
-      "value-key": "[NO_SITE_FLAG]",
+      "value-key": "[NO_SITE]",
       "type": "Flag",
       "optional": true,
       "id": "no_site",
@@ -135,7 +135,7 @@
     {
       "command-line-flag": "-u",
       "description": "Force the stdout and stderr streams to be unbuffered.",
-      "value-key": "[UNBUFFERED_FLAG]",
+      "value-key": "[UNBUFFERED]",
       "type": "Flag",
       "optional": true,
       "id": "unbuffered",
@@ -144,7 +144,7 @@
     {
       "command-line-flag": "-v",
       "description": "Verbose (trace import statements).",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "-V",
       "description": "Print the Python version number and exit.",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",
@@ -162,7 +162,7 @@
     {
       "command-line-flag": "-W",
       "description": "Warning control; arg is action:message:category:module:lineno.",
-      "value-key": "[WARNING_ARG]",
+      "value-key": "[WARNING_CONTROL_ARG]",
       "type": "String",
       "optional": true,
       "id": "warning_control_arg",
@@ -171,7 +171,7 @@
     {
       "command-line-flag": "-x",
       "description": "Skip first line of source, allowing non-Unix forms of #!cmd.",
-      "value-key": "[SKIP_FIRST_LINE_FLAG]",
+      "value-key": "[SKIP_FIRST_LINE]",
       "type": "Flag",
       "optional": true,
       "id": "skip_first_line",
@@ -205,7 +205,7 @@
     },
     {
       "description": "Program read from stdin.",
-      "value-key": "[STDIN_FLAG]",
+      "value-key": "[STDIN]",
       "type": "Flag",
       "optional": true,
       "id": "stdin",

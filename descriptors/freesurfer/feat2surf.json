@@ -3,7 +3,7 @@
   "name": "feat2surf",
   "author": "FreeSurfer Developers",
   "description": "Resamples Feat statistics onto the surface of the subject and onto a stereo-taxic surface atlas.",
-  "command-line": "feat2surf [FEAT_DIRS] [FEATDIRFILE] [PROJFRAC] [HEMI] [TARGET] [SURF] [COPE_ONLY_FLAG] [DEBUG_FLAG] [NOLOG_FLAG] [OUTDIR]",
+  "command-line": "feat2surf [FEAT_DIRS] [FEAT_DIRFILE] [PROJ_FRAC] [HEMI] [TARGET] [SURF] [COPE_ONLY] [DEBUG_FLAG] [NOLOG_FLAG] [OUT_DIR]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "--featdirfile",
       "description": "File with a list of Feat directories.",
-      "value-key": "[FEATDIRFILE]",
+      "value-key": "[FEAT_DIRFILE]",
       "type": "File",
       "optional": true,
       "id": "feat_dirfile",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "--projfrac",
       "description": "Sample functional a fraction of the cortical thickness normal to the surface. Default is 0.",
-      "value-key": "[PROJFRAC]",
+      "value-key": "[PROJ_FRAC]",
       "type": "Number",
       "optional": true,
       "id": "proj_frac",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "--cope-only",
       "description": "Only map the copes and varcopes to the common surface space",
-      "value-key": "[COPE_ONLY_FLAG]",
+      "value-key": "[COPE_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "cope_only",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "--out",
       "description": "Output directory to use instead of default feat/reg_surf-?h/stats.",
-      "value-key": "[OUTDIR]",
+      "value-key": "[OUT_DIR]",
       "type": "String",
       "optional": true,
       "id": "out_dir",
@@ -100,28 +100,28 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTDIR]/reg_surf-lh-Subject/stats",
+      "path-template": "[OUT_DIR]/reg_surf-lh-Subject/stats",
       "description": "Output statistics on the left hemisphere for the subject",
       "optional": true,
       "id": "lh_output",
       "name": "Left hemisphere output"
     },
     {
-      "path-template": "[OUTDIR]/reg_surf-rh-Subject/stats",
+      "path-template": "[OUT_DIR]/reg_surf-rh-Subject/stats",
       "description": "Output statistics on the right hemisphere for the subject",
       "optional": true,
       "id": "rh_output",
       "name": "Right hemisphere output"
     },
     {
-      "path-template": "[OUTDIR]/reg_surf-lh-targid/stats",
+      "path-template": "[OUT_DIR]/reg_surf-lh-targid/stats",
       "description": "Output statistics on the left hemisphere for the target subject",
       "optional": true,
       "id": "lh_target_output",
       "name": "Left hemisphere target output"
     },
     {
-      "path-template": "[OUTDIR]/reg_surf-rh-targid/stats",
+      "path-template": "[OUT_DIR]/reg_surf-rh-targid/stats",
       "description": "Output statistics on the right hemisphere for the target subject",
       "optional": true,
       "id": "rh_target_output",

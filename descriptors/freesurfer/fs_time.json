@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/fs_time.json",
   "description": "A frontend for the unix /usr/bin/time program to track resource usage by a process.",
-  "command-line": "fs_time [OUTPUT_FILE] [KEY] [LOAD_AVG_FLAG] [COMMAND] [ARGS]",
+  "command-line": "fs_time [OUTPUT_FILE] [KEY] [LOAD_AVG] [COMMAND] [ARGS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-l",
       "description": "Report on load averages as from uptime.",
-      "value-key": "[LOAD_AVG_FLAG]",
+      "value-key": "[LOAD_AVG]",
       "type": "Flag",
       "optional": true,
       "id": "load_avg",

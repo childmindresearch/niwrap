@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "A script to illustrate the use of Displayable Objects in SUMA.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@DO.examples [AUTO_TEST_FLAG]",
+  "command-line": "@DO.examples [AUTO_TEST]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-auto_test",
       "description": "Run this script in test mode where user prompts are timed out at 2 seconds, and the command output log is preserved in a file called __testlog.txt",
-      "value-key": "[AUTO_TEST_FLAG]",
+      "value-key": "[AUTO_TEST]",
       "type": "Flag",
       "optional": true,
       "id": "auto_test",

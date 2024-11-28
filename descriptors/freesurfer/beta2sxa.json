@@ -3,13 +3,13 @@
   "name": "beta2sxa",
   "author": "FreeSurfer Developers",
   "description": "A script to create files for plotting in tkmedit or tksurfer based on tabular data.",
-  "command-line": "beta2sxa [BETA] [NC] [NPER] [SXA_OUTPUT]",
+  "command-line": "beta2sxa [BETA_FILES] [NUMBER_OF_CONDITIONS] [NUMBER_OF_PER_SUBJECTS] [SXA_OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "--b",
       "description": "Input beta files, e.g., data.nii",
-      "value-key": "[BETA]",
+      "value-key": "[BETA_FILES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "--nc",
       "description": "Number of groups or conditions",
-      "value-key": "[NC]",
+      "value-key": "[NUMBER_OF_CONDITIONS]",
       "type": "Number",
       "optional": false,
       "id": "number_of_conditions",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "--nper",
       "description": "Number of subjects per group",
-      "value-key": "[NPER]",
+      "value-key": "[NUMBER_OF_PER_SUBJECTS]",
       "type": "Number",
       "optional": false,
       "id": "number_of_per_subjects",

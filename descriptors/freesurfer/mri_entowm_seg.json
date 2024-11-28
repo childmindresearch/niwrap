@@ -3,7 +3,7 @@
   "name": "mri_entowm_seg",
   "author": "FreeSurfer Developers",
   "description": "Segment white matter near gyrus ambiens entorhinal cortex using a deep learning model.",
-  "command-line": "mri_entowm_seg [INPUT_IMAGE] [OUTPUT_SEGMENTATION] [RECON_SUBJECTS] [SUBJECTS_DIR] [OTHER_OPTIONS]",
+  "command-line": "mri_entowm_seg [INPUT_IMAGE] [OUTPUT_SEGMENTATION] [RECON_SUBJECTS] [SUBJECTS_DIRECTORY] [OTHER_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "--sd",
       "description": "Set the subjects directory, overrides the SUBJECTS_DIR env variable.",
-      "value-key": "[SUBJECTS_DIR]",
+      "value-key": "[SUBJECTS_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "subjects_directory",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "--conform",
       "description": "Resample input to 1mm-iso; results will be put back in native resolution.",
-      "value-key": "[CONFORM_FLAG]",
+      "value-key": "[CONFORM]",
       "type": "Flag",
       "optional": true,
       "id": "conform",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "--etiv",
       "description": "Include eTIV in volume stats (enabled by default in subject-mode and with --tal).",
-      "value-key": "[ETIV_FLAG]",
+      "value-key": "[ETIV]",
       "type": "Flag",
       "optional": true,
       "id": "etiv",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "--write_posteriors",
       "description": "Save the label posteriors.",
-      "value-key": "[WRITE_POSTERIORS_FLAG]",
+      "value-key": "[WRITE_POSTERIORS]",
       "type": "Flag",
       "optional": true,
       "id": "write_posteriors",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "--write_volumes",
       "description": "Save label volume stats (enabled by default in subject-mode).",
-      "value-key": "[WRITE_VOLUMES_FLAG]",
+      "value-key": "[WRITE_VOLUMES]",
       "type": "Flag",
       "optional": true,
       "id": "write_volumes",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "--write_qa_stats",
       "description": "Save QA stats (z and confidence).",
-      "value-key": "[WRITE_QA_STATS_FLAG]",
+      "value-key": "[WRITE_QA_STATS]",
       "type": "Flag",
       "optional": true,
       "id": "write_qa_stats",
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "--exclude",
       "description": "List of label IDs to exclude in any output stats files.",
-      "value-key": "[EXCLUDE]",
+      "value-key": "[EXCLUDE_LABELS]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "--keep_ac",
       "description": "Explicitly keep anterior commissure in the volume/QA files.",
-      "value-key": "[KEEP_AC_FLAG]",
+      "value-key": "[KEEP_AC]",
       "type": "Flag",
       "optional": true,
       "id": "keep_ac",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "--vox-count-volumes",
       "description": "Use discrete voxel count for label volumes.",
-      "value-key": "[VOX_COUNT_VOLUMES_FLAG]",
+      "value-key": "[VOX_COUNT_VOLUMES]",
       "type": "Flag",
       "optional": true,
       "id": "vox_count_volumes",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "--model",
       "description": "Alternative model weights to load.",
-      "value-key": "[MODEL]",
+      "value-key": "[MODEL_WEIGHTS]",
       "type": "String",
       "optional": true,
       "id": "model_weights",
@@ -137,7 +137,7 @@
     {
       "command-line-flag": "--ctab",
       "description": "Alternative color lookup table to embed in segmentation. Must be minimal, including 0, and sorted.",
-      "value-key": "[CTAB]",
+      "value-key": "[COLOR_TABLE]",
       "type": "String",
       "optional": true,
       "id": "color_table",
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "--debug",
       "description": "Enable debug logging.",
-      "value-key": "[DEBUG_FLAG]",
+      "value-key": "[DEBUG]",
       "type": "Flag",
       "optional": true,
       "id": "debug",
@@ -164,7 +164,7 @@
     {
       "command-line-flag": "--vmp",
       "description": "Enable printing of vmpeak at the end.",
-      "value-key": "[VMP_FLAG]",
+      "value-key": "[VMP]",
       "type": "Flag",
       "optional": true,
       "id": "vmp",
@@ -182,7 +182,7 @@
     {
       "command-line-flag": "--7T",
       "description": "Preprocess 7T images (just sets percentile to 99.9).",
-      "value-key": "[7T_FLAG]",
+      "value-key": "[SEVEN_TESLA]",
       "type": "Flag",
       "optional": true,
       "id": "seven_tesla",
@@ -218,7 +218,7 @@
     {
       "command-line-flag": "--no-cite-sclimbic",
       "description": "Do not cite sclimbic paper at the end.",
-      "value-key": "[NO_CITE_SCLIMBIC_FLAG]",
+      "value-key": "[NO_CITE_SCLIMBIC]",
       "type": "Flag",
       "optional": true,
       "id": "no_cite_sclimbic",

@@ -3,11 +3,11 @@
   "name": "@GetAfniDims",
   "author": "AFNI Developers",
   "description": "A utility tool to return dimensions of AFNI dataset",
-  "command-line": "@GetAfniDims [DSET]",
+  "command-line": "@GetAfniDims [INPUT_DSET]",
   "inputs": [
     {
       "description": "Input AFNI dataset",
-      "value-key": "[DSET]",
+      "value-key": "[INPUT_DSET]",
       "type": "File",
       "optional": false,
       "id": "input_dset",

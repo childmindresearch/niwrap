@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni/blob/master/src/1dMarry.c",
   "description": "Joins together 2 (or more) ragged-right .1D files, for use with 3dDeconvolve -stim_times_AM2, or breaks up 1 married file into 2 (or more) single-valued files.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "1dMarry [SEPARATORS] [DIVORCE_FLAG] [FILE1] [FILE2]",
+  "command-line": "1dMarry [SEP] [DIVORCE] [FILES] [FILE2]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input file(s) to be married or divorced.",
-      "value-key": "[FILE1]",
+      "value-key": "[FILES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-sep",
       "description": "Separator(s) for marrying files. The first character is used as the separator between values 1 and 2, the second character between values 2 and 3, etc.",
-      "value-key": "[SEPARATORS]",
+      "value-key": "[SEP]",
       "type": "String",
       "optional": true,
       "id": "sep",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-divorce",
       "description": "Divorce mode: splits married file into separate files.",
-      "value-key": "[DIVORCE_FLAG]",
+      "value-key": "[DIVORCE]",
       "type": "Flag",
       "optional": true,
       "id": "divorce",

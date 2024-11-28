@@ -1,7 +1,7 @@
 {
   "name": "lta_diff",
   "description": "A tool to compute different distance norms for a single transform or for the difference between two transforms.",
-  "command-line": "lta_diff [TRANSFORM1] [TRANSFORM2] [DIST_TYPE] [INVERT1_FLAG] [INVERT2_FLAG] [VOX_FLAG] [NORMDIV] [RADIUS]",
+  "command-line": "lta_diff [TRANSFORM1] [TRANSFORM2] [DIST_TYPE] [INVERT1] [INVERT2] [VOX] [NORMDIV] [RADIUS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -36,7 +36,7 @@
       "id": "invert1",
       "name": "Invert First Transform",
       "type": "Flag",
-      "value-key": "[INVERT1_FLAG]",
+      "value-key": "[INVERT1]",
       "optional": true
     },
     {
@@ -45,7 +45,7 @@
       "id": "invert2",
       "name": "Invert Second Transform",
       "type": "Flag",
-      "value-key": "[INVERT2_FLAG]",
+      "value-key": "[INVERT2]",
       "optional": true
     },
     {
@@ -54,7 +54,7 @@
       "id": "vox",
       "name": "Vox Coordinates",
       "type": "Flag",
-      "value-key": "[VOX_FLAG]",
+      "value-key": "[VOX]",
       "optional": true
     },
     {

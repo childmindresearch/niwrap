@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Tool description goes here",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@djunct_4d_slices_to_3d_vol [VERBOSE_FLAG]",
+  "command-line": "@djunct_4d_slices_to_3d_vol [DO_SOMETHING]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-do-something",
       "description": "Do something really useful",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[DO_SOMETHING]",
       "type": "Flag",
       "optional": true,
       "id": "do_something",

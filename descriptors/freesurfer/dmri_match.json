@@ -1,7 +1,7 @@
 {
   "name": "dmri_match",
   "description": "Tool for matching diffusion MRI parcellations",
-  "command-line": "dmri_match [PARCELLATION1] [PARCELLATION2] [NUM_CLUSTERS] [CLUSTERING_PATH1] [CLUSTERING_PATH2] [LABELS] [EUCLIDEAN_FLAG] [BB_FLAG] [SYM_FLAG] [INTER_HEMI_RATIO_REMOVAL] [OUTPUT]",
+  "command-line": "dmri_match [PARCELLATION1] [PARCELLATION2] [NUM_CLUSTERS] [CLUSTERING_PATH1] [CLUSTERING_PATH2] [LABELS] [EUCLIDEAN] [BOUNDING_BOX] [SYMMETRY] [INTER_HEMI_RATIO_REMOVAL] [OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-euclid",
       "description": "Use Euclidean distance for matching",
-      "value-key": "[EUCLIDEAN_FLAG]",
+      "value-key": "[EUCLIDEAN]",
       "type": "Flag",
       "optional": true,
       "id": "euclidean",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-bb",
       "description": "Use bounding box constraint (no additional input expected)",
-      "value-key": "[BB_FLAG]",
+      "value-key": "[BOUNDING_BOX]",
       "type": "Flag",
       "optional": true,
       "id": "bounding_box",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-sym",
       "description": "Use symmetry constraint (no additional input expected)",
-      "value-key": "[SYM_FLAG]",
+      "value-key": "[SYMMETRY]",
       "type": "Flag",
       "optional": true,
       "id": "symmetry",

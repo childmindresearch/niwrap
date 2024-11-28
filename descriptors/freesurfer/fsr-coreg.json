@@ -2,7 +2,7 @@
   "name": "fsr-coreg",
   "tool-version": "7.4.1",
   "description": "Co-registers input data in preparation for FreeSurfer analysis",
-  "command-line": "fsr-coreg [IMPORT_DIR] [REFERENCE_MODE] [NTHREADS] [FORCE_UPDATE_FLAG] [OUTPUT_DIR] [EXPERT_FILE]",
+  "command-line": "fsr-coreg [IMPORT_DIR] [REFERENCE_MODE] [NUM_THREADS] [FORCE_UPDATE] [OUTPUT_DIR] [EXPERT_OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -25,7 +25,7 @@
     },
     {
       "description": "Number of threads to use",
-      "value-key": "[NTHREADS]",
+      "value-key": "[NUM_THREADS]",
       "type": "Number",
       "optional": true,
       "id": "num_threads",
@@ -34,7 +34,7 @@
     },
     {
       "description": "Force update of files regardless of time stamp",
-      "value-key": "[FORCE_UPDATE_FLAG]",
+      "value-key": "[FORCE_UPDATE]",
       "type": "Flag",
       "optional": true,
       "id": "force_update",
@@ -52,7 +52,7 @@
     },
     {
       "description": "Expert options file",
-      "value-key": "[EXPERT_FILE]",
+      "value-key": "[EXPERT_OPTIONS]",
       "type": "File",
       "optional": true,
       "id": "expert_options",

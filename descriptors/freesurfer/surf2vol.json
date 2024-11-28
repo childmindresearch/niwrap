@@ -3,7 +3,7 @@
   "name": "surf2vol",
   "author": "FreeSurfer Developers",
   "description": "Diffuse surface deformation to volumes using surface and MRI data.",
-  "command-line": "surf2vol [FIXED_SURF] [MOVING_SURF] [FIXED_MRI] [MOVING_MRI] [OUTPUT_FILE] [OUTPUT_FIELD] [OUTPUT_AFFINE] [OUTPUT_SURF] [OUTPUT_SURF_AFFINE] [OUTPUT_MESH] [SPACING_X] [SPACING_Y] [SPACING_Z] [POISSON] [DIRTY_FACTOR] [DBG_OUTPUT] [CACHE_TRANSFORM]",
+  "command-line": "surf2vol [FIXED_SURFACE] [MOVING_SURFACE] [FIXED_MRI] [MOVING_MRI] [OUTPUT_FILE] [OUTPUT_FIELD] [OUTPUT_AFFINE] [OUTPUT_SURF] [OUTPUT_SURF_AFFINE] [OUTPUT_MESH] [SPACING_X] [SPACING_Y] [SPACING_Z] [POISSON_RATIO] [DIRTY_FACTOR] [DEBUG_OUTPUT] [CACHE_TRANSFORM]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -13,7 +13,7 @@
     {
       "command-line-flag": "-fixed_surf",
       "description": "File path for the main fixed surface.",
-      "value-key": "[FIXED_SURF]",
+      "value-key": "[FIXED_SURFACE]",
       "type": "File",
       "optional": false,
       "id": "fixed_surface",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-moving_surf",
       "description": "File path for the main moving surface.",
-      "value-key": "[MOVING_SURF]",
+      "value-key": "[MOVING_SURFACE]",
       "type": "File",
       "optional": false,
       "id": "moving_surface",
@@ -132,7 +132,7 @@
     {
       "command-line-flag": "-poisson",
       "description": "Poisson ratio for material properties, default is 0.3.",
-      "value-key": "[POISSON]",
+      "value-key": "[POISSON_RATIO]",
       "type": "Number",
       "maximum": 0.5,
       "optional": true,
@@ -153,7 +153,7 @@
     {
       "command-line-flag": "-dbg_output",
       "description": "Enable debug output, writing a morph file at each iteration.",
-      "value-key": "[DBG_OUTPUT]",
+      "value-key": "[DEBUG_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "debug_output",

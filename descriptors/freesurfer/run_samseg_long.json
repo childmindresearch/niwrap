@@ -1,7 +1,7 @@
 {
   "name": "run_samseg_long",
   "description": "Longitudinal image segmentation using SAMSEG.",
-  "command-line": "run_samseg_long [TIMEPOINT] [OUTPUT] [LESION_FLAG] [THRESHOLD] [SAMPLES] [BURNIN] [LESION_MASK_STRUCTURE] [LESION_MASK_PATTERN] [MODE] [ATLAS_DIR] [DEFORMATION_HYPERPRIOR] [GMM_HYPERPRIOR] [SAVE_WARP_FLAG] [SAVE_MESH_FLAG] [SAVE_POSTERIORS] [PALLIDUM_SEPARATE_FLAG] [THREADS] [TP_TO_BASE_TRANSFORM] [FORCE_DIFFERENT_RESOLUTIONS_FLAG] [HISTORY_FLAG] [SHOWFIGS_FLAG] [MOVIE_FLAG]",
+  "command-line": "run_samseg_long [TIMEPOINT] [OUTPUT] [LESION] [THRESHOLD] [SAMPLES] [BURNIN] [LESION_MASK_STRUCTURE] [LESION_MASK_PATTERN] [MODE] [ATLAS] [DEFORMATION_HYPERPRIOR] [GMM_HYPERPRIOR] [SAVE_WARP] [SAVE_MESH] [SAVE_POSTERIORS] [PALLIDUM_SEPARATE] [THREADS] [TP_TO_BASE_TRANSFORM] [FORCE_DIFFERENT_RESOLUTIONS] [HISTORY] [SHOWFIGS] [MOVIE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "--lesion",
       "description": "Enable lesion segmentation (requires tensorflow).",
-      "value-key": "[LESION_FLAG]",
+      "value-key": "[LESION]",
       "type": "Flag",
       "optional": true,
       "id": "lesion",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-a",
       "description": "Point to an alternative atlas directory.",
-      "value-key": "[ATLAS_DIR]",
+      "value-key": "[ATLAS]",
       "type": "String",
       "optional": true,
       "id": "atlas",
@@ -118,7 +118,7 @@
     {
       "command-line-flag": "--save-warp",
       "description": "Save the image->template warp fields.",
-      "value-key": "[SAVE_WARP_FLAG]",
+      "value-key": "[SAVE_WARP]",
       "type": "Flag",
       "optional": true,
       "id": "save_warp",
@@ -127,7 +127,7 @@
     {
       "command-line-flag": "--save-mesh",
       "description": "Save the final mesh of each timepoint in template space.",
-      "value-key": "[SAVE_MESH_FLAG]",
+      "value-key": "[SAVE_MESH]",
       "type": "Flag",
       "optional": true,
       "id": "save_mesh",
@@ -146,7 +146,7 @@
     {
       "command-line-flag": "--pallidum-separate",
       "description": "Move pallidum outside of global white matter class. Use with T2/flair.",
-      "value-key": "[PALLIDUM_SEPARATE_FLAG]",
+      "value-key": "[PALLIDUM_SEPARATE]",
       "type": "Flag",
       "optional": true,
       "id": "pallidum_separate",
@@ -174,7 +174,7 @@
     {
       "command-line-flag": "--force-different-resolutions",
       "description": "Force run even if time points have different resolutions.",
-      "value-key": "[FORCE_DIFFERENT_RESOLUTIONS_FLAG]",
+      "value-key": "[FORCE_DIFFERENT_RESOLUTIONS]",
       "type": "Flag",
       "optional": true,
       "id": "force_different_resolutions",
@@ -183,7 +183,7 @@
     {
       "command-line-flag": "--history",
       "description": "Save history.",
-      "value-key": "[HISTORY_FLAG]",
+      "value-key": "[HISTORY]",
       "type": "Flag",
       "optional": true,
       "id": "history",
@@ -192,7 +192,7 @@
     {
       "command-line-flag": "--showfigs",
       "description": "Show figures during run.",
-      "value-key": "[SHOWFIGS_FLAG]",
+      "value-key": "[SHOWFIGS]",
       "type": "Flag",
       "optional": true,
       "id": "showfigs",
@@ -201,7 +201,7 @@
     {
       "command-line-flag": "--movie",
       "description": "Show history as arrow key controlled time sequence.",
-      "value-key": "[MOVIE_FLAG]",
+      "value-key": "[MOVIE]",
       "type": "Flag",
       "optional": true,
       "id": "movie",

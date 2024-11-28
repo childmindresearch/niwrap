@@ -1,7 +1,7 @@
 {
   "name": "mri_rf_label",
   "description": "MRI automatic tissue labeling using a Gaussian Classifier Atlas (GCA).",
-  "command-line": "mri_ca_label [INPUT_VOLUMES] [TRANSFORM_FILE] [GCAFILE] [OUTPUT_VOLUME] [CROSS_SEQUENCE_FLAG] [NOGIBBS_FLAG] [WM_PATH] [CONFORM_FLAG] [NORMPD_FLAG] [GLA_TL] [DEBUG_VOXEL] [DEBUG_NODE] [DEBUG_LABEL] [TR] [TE] [ALPHA] [EXAMPLE_MRIVOL] [EXAMPLE_SEGMENTATION] [PTHRESH] [NITER] [NOVAR_FLAG] [REGULARIZE] [NOHIPPO_FLAG] [FWM] [MRI_VOL] [HEQ] [RENORM] [FLASH_FLAG] [FLASH_PARAMS] [RENORMALIZE_WSIZE] [RENORMALIZE_ITER] [SET_INPUT] [HISTOGRAM_FLAG] [COND_DENSITY_MEAN] [SNAPSHOTS] [MASK] [EXPAND] [MAX_ITER] [FILTER_MODE] [LONGITUDINAL_VOL] [LONGITUDINAL_LTA] [RELABEL_UNLIKELY_FLAG]",
+  "command-line": "mri_ca_label [INPUT_VOLUMES] [TRANSFORM_FILE] [GCAFILE] [OUTPUT_VOLUME] [CROSS_SEQUENCE_FLAG] [NOGIBBS_FLAG] [WM_PATH] [CONFORM_FLAG] [NORMPD_FLAG] [GLA_TL] [DEBUG_VOXEL] [DEBUG_NODE] [DEBUG_LABEL] [TR] [TE] [ALPHA] [EXAMPLE] [PTHRESH] [NITER] [NOVAR_FLAG] [REGULARIZE] [NOHIPPO_FLAG] [FWM] [MRI_VOL] [HEQ] [RENORM] [FLASH_FLAG] [FLASH_PARAMS] [RENORMALIZE] [SET_INPUT] [HISTOGRAM_FLAG] [COND_DENSITY_MEAN] [SNAPSHOTS] [MASK] [EXPAND] [MAX_ITER] [FILTER_MODE] [LONGITUDINAL_VOL] [LONGITUDINAL_LTA] [RELABEL_UNLIKELY_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -156,7 +156,7 @@
       "description": "Use T1 (mri_vol) and segmentation as example",
       "id": "example",
       "name": "Example T1 and segmentation",
-      "value-key": "[EXAMPLE_MRIVOL] [EXAMPLE_SEGMENTATION]",
+      "value-key": "[EXAMPLE]",
       "type": "File",
       "list": true,
       "optional": true
@@ -267,7 +267,7 @@
       "description": "Renorm class means iter times after initial label with window of wsize",
       "id": "renormalize",
       "name": "Renormalize class means",
-      "value-key": "[RENORMALIZE_WSIZE] [RENORMALIZE_ITER]",
+      "value-key": "[RENORMALIZE]",
       "type": "Number",
       "list": true,
       "optional": true

@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Verbose output messages",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",

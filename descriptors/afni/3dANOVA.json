@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Performs single-factor Analysis of Variance (ANOVA) on 3D datasets",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dANOVA [LEVELS] [DATASETS] [VOXEL] [DISKSPACE_FLAG] [MASK] [DEBUG_LEVEL] [FTR_PREFIX] [MEAN_PREFIX] [DIFF_PREFIX] [CONTR_PREFIX] [OLD_METHOD_FLAG] [OK_FLAG] [ASSUME_SPH_FLAG] [BUCKET_PREFIX]",
+  "command-line": "3dANOVA [LEVELS] [DATASETS] [VOXEL] [DISKSPACE] [MASK] [DEBUG] [FTR] [MEAN] [DIFF] [CONTR] [OLD_METHOD] [OK] [ASSUME_SPH] [BUCKET]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -42,7 +42,7 @@
     },
     {
       "description": "Print out the required disk space for program execution",
-      "value-key": "[DISKSPACE_FLAG]",
+      "value-key": "[DISKSPACE]",
       "type": "Flag",
       "optional": true,
       "id": "diskspace",
@@ -60,7 +60,7 @@
     },
     {
       "description": "Request extra output verbosity",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -70,7 +70,7 @@
     },
     {
       "description": "F-statistic for treatment effect",
-      "value-key": "[FTR_PREFIX]",
+      "value-key": "[FTR]",
       "type": "String",
       "optional": true,
       "id": "ftr",
@@ -79,7 +79,7 @@
     },
     {
       "description": "Estimate of factor level mean",
-      "value-key": "[MEAN_PREFIX]",
+      "value-key": "[MEAN]",
       "type": "String",
       "optional": true,
       "id": "mean",
@@ -88,7 +88,7 @@
     },
     {
       "description": "Difference between factor levels",
-      "value-key": "[DIFF_PREFIX]",
+      "value-key": "[DIFF]",
       "type": "String",
       "optional": true,
       "id": "diff",
@@ -97,7 +97,7 @@
     },
     {
       "description": "Contrast in factor levels",
-      "value-key": "[CONTR_PREFIX]",
+      "value-key": "[CONTR]",
       "type": "String",
       "optional": true,
       "id": "contr",
@@ -106,7 +106,7 @@
     },
     {
       "description": "Perform ANOVA using the previous functionality",
-      "value-key": "[OLD_METHOD_FLAG]",
+      "value-key": "[OLD_METHOD]",
       "type": "Flag",
       "optional": true,
       "id": "old_method",
@@ -115,7 +115,7 @@
     },
     {
       "description": "Confirm understanding of t-stats and sphericity assumptions with old method",
-      "value-key": "[OK_FLAG]",
+      "value-key": "[OK]",
       "type": "Flag",
       "optional": true,
       "id": "ok",
@@ -124,7 +124,7 @@
     },
     {
       "description": "Assume sphericity (zero-sum contrasts only)",
-      "value-key": "[ASSUME_SPH_FLAG]",
+      "value-key": "[ASSUME_SPH]",
       "type": "Flag",
       "optional": true,
       "id": "assume_sph",
@@ -133,7 +133,7 @@
     },
     {
       "description": "Create one AFNI 'bucket' dataset",
-      "value-key": "[BUCKET_PREFIX]",
+      "value-key": "[BUCKET]",
       "type": "String",
       "optional": true,
       "id": "bucket",
@@ -144,70 +144,70 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[FTR_PREFIX].HEAD",
+      "path-template": "[FTR].HEAD",
       "description": "Output F-statistic dataset file",
       "optional": true,
       "id": "ftr_output",
       "name": "F-statistic output file"
     },
     {
-      "path-template": "[FTR_PREFIX].BRIK",
+      "path-template": "[FTR].BRIK",
       "description": "Output F-statistic BRIK file",
       "optional": true,
       "id": "ftr_brick_output",
       "name": "F-statistic BRIK output file"
     },
     {
-      "path-template": "[MEAN_PREFIX]_mean.HEAD",
+      "path-template": "[MEAN]_mean.HEAD",
       "description": "Output mean dataset file",
       "optional": true,
       "id": "mean_output",
       "name": "Mean output file"
     },
     {
-      "path-template": "[MEAN_PREFIX]_mean.BRIK",
+      "path-template": "[MEAN]_mean.BRIK",
       "description": "Output mean BRIK file",
       "optional": true,
       "id": "mean_brick_output",
       "name": "Mean BRIK output file"
     },
     {
-      "path-template": "[DIFF_PREFIX]_diff.HEAD",
+      "path-template": "[DIFF]_diff.HEAD",
       "description": "Output difference dataset file",
       "optional": true,
       "id": "diff_output",
       "name": "Difference output file"
     },
     {
-      "path-template": "[DIFF_PREFIX]_diff.BRIK",
+      "path-template": "[DIFF]_diff.BRIK",
       "description": "Output difference BRIK file",
       "optional": true,
       "id": "diff_brick_output",
       "name": "Difference BRIK output file"
     },
     {
-      "path-template": "[CONTR_PREFIX]_contr.HEAD",
+      "path-template": "[CONTR]_contr.HEAD",
       "description": "Output contrast dataset file",
       "optional": true,
       "id": "contr_output",
       "name": "Contrast output file"
     },
     {
-      "path-template": "[CONTR_PREFIX]_contr.BRIK",
+      "path-template": "[CONTR]_contr.BRIK",
       "description": "Output contrast BRIK file",
       "optional": true,
       "id": "contr_brick_output",
       "name": "Contrast BRIK output file"
     },
     {
-      "path-template": "[BUCKET_PREFIX].HEAD",
+      "path-template": "[BUCKET].HEAD",
       "description": "Output bucket dataset file",
       "optional": true,
       "id": "bucket_output",
       "name": "Bucket output file"
     },
     {
-      "path-template": "[BUCKET_PREFIX].BRIK",
+      "path-template": "[BUCKET].BRIK",
       "description": "Output bucket BRIK file",
       "optional": true,
       "id": "bucket_brick_output",
