@@ -59,7 +59,7 @@
       "id": "output_image",
       "name": "Output Image",
       "description": "The resulting image after processing.",
-      "path-template": "[OutputImage]"
+      "path-template": "[OUTPUT_IMAGE]"
     }
   ]
 }

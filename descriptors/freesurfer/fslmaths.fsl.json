@@ -54,7 +54,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT].nii.gz",
+      "path-template": "[OUTPUT_IMAGE].nii.gz",
       "description": "The resultant output image after applying the specified operations.",
       "optional": false,
       "id": "output_file",

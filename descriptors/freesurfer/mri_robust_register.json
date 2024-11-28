@@ -471,63 +471,63 @@
       "name": "Mapped Movable Header Output"
     },
     {
-      "path-template": "[WEIGHTS_OUTPUT]",
+      "path-template": "[WEIGHTS]",
       "description": "Weights indicating outlier probabilities in destination space.",
       "optional": true,
       "id": "weights_output_file",
       "name": "Weights Output File"
     },
     {
-      "path-template": "[ISCALEOUT_FILE]",
+      "path-template": "[ISCALE_OUT]",
       "description": "Output text file containing the intensity scale value.",
       "optional": true,
       "id": "iscale_out_file",
       "name": "Intensity Scale Output File"
     },
     {
-      "path-template": "[HALFMOV_FILE]",
+      "path-template": "[HALF_MOV]",
       "description": "Half-way movable volume resampled.",
       "optional": true,
       "id": "half_mov_file",
       "name": "Half Movable Volume"
     },
     {
-      "path-template": "[HALFDST_FILE]",
+      "path-template": "[HALF_DST]",
       "description": "Half-way destination volume resampled.",
       "optional": true,
       "id": "half_dst_file",
       "name": "Half Destination Volume"
     },
     {
-      "path-template": "[HALFWEIGHTS_FILE]",
+      "path-template": "[HALF_WEIGHTS]",
       "description": "Half-way weights resampled in halfway space.",
       "optional": true,
       "id": "half_weights_file",
       "name": "Half Weights File"
     },
     {
-      "path-template": "[HALFMOVLTA_FILE]",
+      "path-template": "[HALF_MOV_LTA]",
       "description": "Transform output from movable to half-way space.",
       "optional": true,
       "id": "half_mov_lta_file",
       "name": "Half Movable LTA File"
     },
     {
-      "path-template": "[HALFDSTLTA_FILE]",
+      "path-template": "[HALF_DST_LTA]",
       "description": "Transform output from destination to half-way space.",
       "optional": true,
       "id": "half_dst_lta_file",
       "name": "Half Destination LTA File"
     },
     {
-      "path-template": "[ENTMOV_FILE]",
+      "path-template": "[ENT_MOV]",
       "description": "Movable entropy image for ROBENT cost function.",
       "optional": true,
       "id": "ent_mov_file",
       "name": "Movable Entropy Image"
     },
     {
-      "path-template": "[ENTDST_FILE]",
+      "path-template": "[ENT_DST]",
       "description": "Target entropy image for ROBENT cost function.",
       "optional": true,
       "id": "ent_dst_file",

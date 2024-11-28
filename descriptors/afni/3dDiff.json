@@ -86,7 +86,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[DSET_1]_vs_[DSET_2].log",
+      "path-template": "[DATASET_A]_vs_[DATASET_B].log",
       "description": "Log file containing the element-wise differences.",
       "optional": true,
       "id": "output_log",

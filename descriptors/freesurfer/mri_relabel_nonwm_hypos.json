@@ -64,7 +64,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_SEGMENTATION]",
+      "path-template": "[OUTPUTSEG]",
       "description": "Output segmentation with non-WM hypointensities relabeled.",
       "optional": false,
       "id": "out_segmentation",

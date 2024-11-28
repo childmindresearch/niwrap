@@ -137,7 +137,7 @@
       "name": "Output difference file"
     },
     {
-      "path-template": "[OUT_RESAMPLED_FLAG]",
+      "path-template": "[OUT_RESAMPLED]",
       "description": "Resampled output thickness file",
       "optional": true,
       "id": "output_resampled",

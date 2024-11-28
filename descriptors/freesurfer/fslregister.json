@@ -290,28 +290,28 @@
       "name": "Output Registration File"
     },
     {
-      "path-template": "[OUT_VOL]",
+      "path-template": "[OUTPUT_VOLUME]",
       "description": "Resliced output volume.",
       "optional": true,
       "id": "output_resliced_volume",
       "name": "Output Resliced Volume"
     },
     {
-      "path-template": "[FSL_MAT]",
+      "path-template": "[FSL_MATRIX]",
       "description": "FSL format output registration matrix.",
       "optional": true,
       "id": "output_fsl_matrix",
       "name": "Output FSL Matrix"
     },
     {
-      "path-template": "[LTA]",
+      "path-template": "[LTA_FORMAT]",
       "description": "Registration output in LTA format.",
       "optional": true,
       "id": "lta_output",
       "name": "LTA Output"
     },
     {
-      "path-template": "[TEMPLATE_OUT]",
+      "path-template": "[TEMPLATE_OUTPUT]",
       "description": "Output template.",
       "optional": true,
       "id": "output_template",

@@ -55,7 +55,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[ASEG]",
+      "path-template": "[ASEG_OUTPUT]",
       "description": "Labeled segmentation output",
       "optional": false,
       "id": "output_aseg",

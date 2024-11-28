@@ -197,7 +197,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_TRANSFORM]",
+      "path-template": "[OUT_VOX]",
       "description": "Output transformed file.",
       "optional": false,
       "id": "output_transform_file",

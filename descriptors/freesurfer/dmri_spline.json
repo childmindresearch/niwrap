@@ -88,7 +88,7 @@
       "name": "Output Volume"
     },
     {
-      "path-template": "[OUTPUT_POINTS_FILE]",
+      "path-template": "[OUTPUT_POINTS]",
       "description": "Output text file with interpolated spline points",
       "optional": true,
       "id": "out_points_file",

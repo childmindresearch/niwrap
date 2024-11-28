@@ -290,21 +290,21 @@
   ],
   "output-files": [
     {
-      "path-template": "[LOG]",
+      "path-template": "[LOG_FILE]",
       "description": "Log file containing difference information.",
       "optional": true,
       "id": "log_output",
       "name": "Log File Output"
     },
     {
-      "path-template": "[DIFF]",
+      "path-template": "[DIFFERENCE_IMAGE]",
       "description": "Difference image output file.",
       "optional": true,
       "id": "difference_image_output",
       "name": "Difference Image Output"
     },
     {
-      "path-template": "[SUSPICIOUS_DIFF_VOL]",
+      "path-template": "[SUSPICIOUS_DIFF_VOLUME]",
       "description": "Volume with suspicious differences labeled.",
       "optional": true,
       "id": "suspicious_difference_output",

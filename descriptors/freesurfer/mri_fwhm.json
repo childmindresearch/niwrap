@@ -324,7 +324,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_VOLUME]",
+      "path-template": "[OUTPUTVOL]",
       "description": "Output volume after smoothing.",
       "optional": false,
       "id": "output_volume_file",

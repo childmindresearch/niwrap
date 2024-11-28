@@ -59,7 +59,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]",
+      "path-template": "[OUTPUT_FILE]",
       "description": "Segmented vessel output file",
       "optional": false,
       "id": "segmented_output",

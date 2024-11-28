@@ -38,7 +38,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[WARP]",
+      "path-template": "[WARP_FILE]",
       "description": "Output warp from the alignment process",
       "optional": false,
       "id": "output_warp",

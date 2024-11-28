@@ -108,7 +108,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTFILE]",
       "description": "Output file containing the extracted ROI",
       "optional": false,
       "id": "outfile",

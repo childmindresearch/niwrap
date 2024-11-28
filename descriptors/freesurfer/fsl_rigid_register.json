@@ -208,7 +208,7 @@
       "id": "fslmat_output",
       "name": "FSL Matrix Output",
       "description": "The registration matrix in FSL format.",
-      "path-template": "[OUTPUT_VOLUME].fslmat",
+      "path-template": "[OUTPUTVOL].fslmat",
       "optional": true
     }
   ],

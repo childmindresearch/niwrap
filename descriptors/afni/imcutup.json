@@ -80,7 +80,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX_FLAG]*",
+      "path-template": "[PREFIX]*",
       "description": "Output smaller images with the specified prefix numbering format.",
       "optional": true,
       "id": "output_files",

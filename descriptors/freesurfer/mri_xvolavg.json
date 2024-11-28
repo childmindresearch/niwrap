@@ -45,7 +45,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT_VOL]",
+      "path-template": "[OUTPUT_VOLUME]",
       "description": "The averaged output volume.",
       "optional": false,
       "id": "averaged_output",

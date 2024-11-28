@@ -39,7 +39,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT_VOL]",
+      "path-template": "[OUTPUT_VOLUME]",
       "description": "The resulting fused intensity image",
       "optional": false,
       "id": "fused_intensity_image",

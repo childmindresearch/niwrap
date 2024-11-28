@@ -123,7 +123,7 @@
   ],
   "output-files": [
     {
-      "path-template": "<outfile>.4dfp.img",
+      "path-template": "[OUTPUT_IMAGE].4dfp.img",
       "description": "Transformed 4dfp image as output.",
       "optional": false,
       "id": "transformed_image",

@@ -21,14 +21,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[INPUT_FILE]_minpercchange.nii.gz",
+      "path-template": "[INFILE]_minpercchange.nii.gz",
       "description": "Dataset showing the percent signal change that an increment of 1 digitized value in the time series corresponds to.",
       "optional": true,
       "id": "minpercchange_file",
       "name": "Percent signal change dataset"
     },
     {
-      "path-template": "[INPUT_FILE].range.nii.gz",
+      "path-template": "[INFILE].range.nii.gz",
       "description": "Dataset showing the number of discrete levels used to represent the time series.",
       "optional": true,
       "id": "range_file",

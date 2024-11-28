@@ -133,7 +133,7 @@
       "optional": false
     },
     {
-      "path-template": "[VOLUME_FLAG]",
+      "path-template": "[VOLUME_FILE]",
       "description": "Written volume label if specified.",
       "id": "output_volume_file",
       "name": "Output Volume File",

@@ -57,7 +57,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT_VOLUME]",
+      "path-template": "[OUTVOLUME]",
       "description": "Output change map registered with Volume 1",
       "optional": false,
       "id": "out_change_map",

@@ -23,7 +23,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT].nii.gz",
+      "path-template": "[OUTPUT_IMAGE].nii.gz",
       "description": "Motion corrected output MRI image",
       "optional": false,
       "id": "corrected_output",

@@ -52,7 +52,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_IMG]",
+      "path-template": "[OUTPUT_IMAGE]",
       "description": "Masked output image",
       "optional": false,
       "id": "output_file",

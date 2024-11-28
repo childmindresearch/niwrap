@@ -305,14 +305,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT].nii.gz",
+      "path-template": "[OUTFILE].nii.gz",
       "description": "Primary output data file",
       "optional": false,
       "id": "output_data",
       "name": "Output data file"
     },
     {
-      "path-template": "[OUT]_mean.nii.gz",
+      "path-template": "[OUTFILE]_mean.nii.gz",
       "description": "Mean output data file",
       "optional": true,
       "id": "output_mean",

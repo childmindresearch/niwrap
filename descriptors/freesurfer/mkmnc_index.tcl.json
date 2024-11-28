@@ -29,7 +29,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_INDEX]",
+      "path-template": "[OUTFILE]",
       "description": "Generated index file",
       "optional": false,
       "id": "indexfile",

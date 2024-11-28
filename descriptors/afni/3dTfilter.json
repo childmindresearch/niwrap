@@ -41,7 +41,7 @@
   },
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTPUTDATASET]",
       "description": "Filtered output dataset",
       "optional": false,
       "id": "output_dataset",

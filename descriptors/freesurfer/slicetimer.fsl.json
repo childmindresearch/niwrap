@@ -100,7 +100,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTFILE]",
       "description": "Corrected output timeseries",
       "optional": true,
       "id": "corrected_timeseries",

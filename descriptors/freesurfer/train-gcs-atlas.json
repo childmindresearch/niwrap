@@ -117,7 +117,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTPUT_GCS]",
       "description": "Output GCS file produced by training",
       "optional": false,
       "id": "output_gcs_file",

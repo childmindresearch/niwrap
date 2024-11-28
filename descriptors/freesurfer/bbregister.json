@@ -163,7 +163,7 @@
       "id": "out_volume",
       "name": "Output Resampled Volume",
       "description": "Resampled moveable volume.",
-      "path-template": "[OUTPUT_VOLUME]",
+      "path-template": "[O_OUTVOL]",
       "optional": true
     }
   ],

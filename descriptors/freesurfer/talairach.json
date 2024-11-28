@@ -50,7 +50,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_XFM]",
+      "path-template": "[OUTPUT_TRANSFORM]",
       "description": "Output transformation file.",
       "optional": false,
       "id": "xfm_output",

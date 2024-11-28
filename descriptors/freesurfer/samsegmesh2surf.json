@@ -63,14 +63,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OSURF]",
+      "path-template": "[OUTPUT_SURFACE]",
       "description": "FreeSurfer surface file generated from SAMSEG atlas mesh",
       "optional": true,
       "id": "output_surface_file",
       "name": "Surface File"
     },
     {
-      "path-template": "[OPRIORS]",
+      "path-template": "[OUTPUT_PRIORS]",
       "description": "Priors MRI volume at each vertex",
       "optional": true,
       "id": "output_priors_file",

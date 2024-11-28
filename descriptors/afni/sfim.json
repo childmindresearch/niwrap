@@ -58,7 +58,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX].*.i",
+      "path-template": "[OUTPUT_PREFIX].*.i",
       "description": "Output image file for interval 'i' with task state name.",
       "optional": false,
       "id": "output_files",

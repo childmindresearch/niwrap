@@ -59,7 +59,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX]",
+      "path-template": "[OUTPUT_PREFIX]",
       "description": "Estimated population delta and Wilcoxon signed-rank statistics",
       "optional": false,
       "id": "output_file",

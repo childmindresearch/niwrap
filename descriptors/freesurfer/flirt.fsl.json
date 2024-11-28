@@ -395,14 +395,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_VOL].nii",
+      "path-template": "[OUTPUT_VOLUME].nii",
       "description": "Resulting registered volume",
       "optional": true,
       "id": "registered_volume",
       "name": "Registered Volume"
     },
     {
-      "path-template": "[MATRIX_FILE]",
+      "path-template": "[OUTPUT_MATRIX]",
       "description": "Resulting transformation matrix in ASCII format",
       "optional": true,
       "id": "transformation_matrix",

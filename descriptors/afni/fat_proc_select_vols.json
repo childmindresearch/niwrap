@@ -87,7 +87,7 @@
       "id": "output_selector_string",
       "name": "Output Selector String",
       "description": "Text file with AFNI-usable selector string",
-      "path-template": "[OUTPUT_PREFIX]_bads.txt",
+      "path-template": "[PREFIX]_bads.txt",
       "optional": true
     }
   ],

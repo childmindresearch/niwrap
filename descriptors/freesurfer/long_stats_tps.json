@@ -80,7 +80,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT]",
+      "path-template": "[OUTPUT_FILE]",
       "description": "File containing stacked results for individual time points.",
       "optional": false,
       "id": "stacked_results",

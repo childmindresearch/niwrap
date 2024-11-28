@@ -28,7 +28,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]/unpacked_data",
+      "path-template": "[OUTPUT_DIRECTORY]/unpacked_data",
       "description": "The directory that will contain the unpacked data.",
       "optional": false,
       "id": "unpacked_data",

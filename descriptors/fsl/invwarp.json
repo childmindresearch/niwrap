@@ -98,7 +98,7 @@
       "id": "inverse_warp",
       "optional": true,
       "description": "Name of output file, containing warps that are the \"reverse\" of those in --warp. this will be a field-file (rather than a file of spline coefficients), and it will have any affine component included as part of the displacements.",
-      "path-template": "[OUT]"
+      "path-template": "[OUT_IMG]"
     }
   ],
   "groups": [

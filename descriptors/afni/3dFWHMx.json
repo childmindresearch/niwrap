@@ -130,14 +130,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUT_FILE].1D",
+      "path-template": "[OUT].1D",
       "description": "Output file containing FWHM/ACF estimates",
       "optional": true,
       "id": "out_file",
       "name": "Output file"
     },
     {
-      "path-template": "[DTPREFIX].nii.gz",
+      "path-template": "[DETPREFIX].nii.gz",
       "description": "Detrended dataset file",
       "optional": true,
       "id": "detrended_dataset",

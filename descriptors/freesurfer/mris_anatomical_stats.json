@@ -154,7 +154,7 @@
       "name": "Output Table File"
     },
     {
-      "path-template": "[CTAB_FILE].txt",
+      "path-template": "[COLOR_TABLE].txt",
       "description": "Output annotation color table file",
       "optional": true,
       "id": "output_ctab_file",

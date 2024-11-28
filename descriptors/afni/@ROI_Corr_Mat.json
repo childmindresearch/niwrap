@@ -103,14 +103,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[output]_matrix.1D",
+      "path-template": "[PREFIX]_matrix.1D",
       "description": "Correlation matrix in .1D format",
       "optional": true,
       "id": "matrix_1d",
       "name": "Output 1D Matrix"
     },
     {
-      "path-template": "[output]_matrix.BRIK",
+      "path-template": "[PREFIX]_matrix.BRIK",
       "description": "Correlation matrix in .BRIK format",
       "optional": true,
       "id": "matrix_brick",

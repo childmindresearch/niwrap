@@ -115,7 +115,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[FIELD_OUTPUT].nii.gz",
+      "path-template": "[OUT_FIELD].nii.gz",
       "description": "Output field or coefficient volume",
       "optional": true,
       "id": "output_field_file",
@@ -129,7 +129,7 @@
       "name": "Jacobian Determinant Map File"
     },
     {
-      "path-template": "[JACOBIAN_MATRIX].nii.gz",
+      "path-template": "[JACOBIAN_MATRIX_OUTPUT].nii.gz",
       "description": "Output full jacobian matrix 4D-map volume",
       "optional": true,
       "id": "jacobian_matrix_file",

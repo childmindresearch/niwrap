@@ -31,7 +31,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[INPUT]_index_output",
+      "path-template": "[INPUT_FILE]_index_output",
       "description": "Output file resulting from mkima index operations.",
       "optional": true,
       "id": "output_file",

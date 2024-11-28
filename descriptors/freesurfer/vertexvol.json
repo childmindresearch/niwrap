@@ -63,7 +63,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]",
+      "path-template": "[OUTPUT_FILE]",
       "description": "Output file containing vertex-wise volume",
       "optional": true,
       "id": "output_volume_file",

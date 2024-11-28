@@ -56,7 +56,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTFILE]",
       "description": "The output file containing the skull-stripped brain volume.",
       "optional": false,
       "id": "output_mask_file",

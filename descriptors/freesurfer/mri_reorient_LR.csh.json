@@ -70,7 +70,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTPUT_VOL]",
       "description": "Reoriented volume",
       "optional": false,
       "id": "reoriented_vol",

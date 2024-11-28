@@ -148,21 +148,21 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_ADJUSTED_IMAGE].nii.gz",
+      "path-template": "[ADJUSTEDIMAGE].nii.gz",
       "description": "Output FDR-adjusted p-values image",
       "optional": true,
       "id": "output_adjusted",
       "name": "Output adjusted p-value image"
     },
     {
-      "path-template": "[INPUT_FILE]_thr.nii.gz",
+      "path-template": "[INFILE]_thr.nii.gz",
       "description": "Thresholded output p-value image",
       "optional": true,
       "id": "output_thresholded",
       "name": "Output thresholded p-value image"
     },
     {
-      "path-template": "[INPUT_FILE]_order.nii.gz",
+      "path-template": "[INFILE]_order.nii.gz",
       "description": "Output order values image",
       "optional": true,
       "id": "output_order",

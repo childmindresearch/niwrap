@@ -49,7 +49,7 @@
       "id": "slicedelayfile",
       "name": "Slice Delay Output File",
       "description": "The generated slice delay file",
-      "path-template": "[SLICE_DELAY_FILE]",
+      "path-template": "[SLICEDELAYFILE]",
       "optional": false
     }
   ],

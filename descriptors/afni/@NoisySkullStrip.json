@@ -40,28 +40,28 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[ANAT].ns",
+      "path-template": "[INPUT_FILE].ns",
       "description": "Skull stripped version of ANAT",
       "optional": false,
       "id": "anat_ns",
       "name": "Stripped Anatomical Dataset"
     },
     {
-      "path-template": "[ANAT].air",
+      "path-template": "[INPUT_FILE].air",
       "description": "Special mask output - air",
       "optional": true,
       "id": "anat_air",
       "name": "Air Mask"
     },
     {
-      "path-template": "[ANAT].skl",
+      "path-template": "[INPUT_FILE].skl",
       "description": "Special mask output - skull",
       "optional": true,
       "id": "anat_skl",
       "name": "Skull Mask"
     },
     {
-      "path-template": "[ANAT].lsp",
+      "path-template": "[INPUT_FILE].lsp",
       "description": "Volume used to threshold 'air' out of the volume to be stripped",
       "optional": true,
       "id": "anat_lsp",

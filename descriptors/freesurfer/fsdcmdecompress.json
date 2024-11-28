@@ -67,7 +67,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_DCM]",
+      "path-template": "[OUTDCMFILE]",
       "description": "The decompressed DICOM file",
       "optional": false,
       "id": "out_file",

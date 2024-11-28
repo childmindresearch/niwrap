@@ -224,7 +224,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[TOP_OUTPUT_DIR]/[BASE].csd",
+      "path-template": "[TOP_OUTPUT_DIR]/[BASE_NAME].csd",
       "description": "Output CSD files based on the base name",
       "optional": true,
       "id": "csd_output",

@@ -276,7 +276,7 @@
     {
       "id": "output_dir",
       "name": "Output Directory",
-      "path-template": "<output_dir_name>",
+      "path-template": "[OUTPUT_DIR_NAME]",
       "description": "Directory containing the output files",
       "optional": false
     }

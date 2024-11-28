@@ -180,7 +180,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUTFILE]",
+      "path-template": "[TABLEFILE]",
       "description": "Output table file with processed data.",
       "optional": false,
       "id": "output_table",

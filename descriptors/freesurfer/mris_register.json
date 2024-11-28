@@ -580,7 +580,7 @@
       "name": "Output surface file"
     },
     {
-      "path-template": "[JACOBIAN_FILENAME]",
+      "path-template": "[JACOBIAN_FNAME]",
       "description": "Jacobian output file if specified.",
       "optional": true,
       "id": "jacobian_output",

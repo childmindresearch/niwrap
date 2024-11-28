@@ -119,14 +119,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT_VOL]",
+      "path-template": "[OUTVOL]",
       "description": "Bias corrected output volume",
       "optional": false,
       "id": "corrected_output",
       "name": "Corrected Output Volume"
     },
     {
-      "path-template": "[BIAS_FIELD]",
+      "path-template": "[BIASFIELD]",
       "description": "Generated bias field",
       "optional": false,
       "id": "generated_bias_field",

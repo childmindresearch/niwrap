@@ -44,7 +44,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTBASE]-SSS-IIIII.dcm",
+      "path-template": "[OUTPUT_BASE]-SSS-IIIII.dcm",
       "description": "Renamed output DICOM file with series and image numbers.",
       "optional": true,
       "id": "renamed_dicom",

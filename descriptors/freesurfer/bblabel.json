@@ -99,7 +99,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTLABELFILE]",
       "description": "Output file with the label points within the specified bounding box.",
       "optional": false,
       "id": "output_file",

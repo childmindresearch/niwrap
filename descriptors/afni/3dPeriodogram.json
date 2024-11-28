@@ -52,14 +52,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX_OPTION].HEAD",
+      "path-template": "[PREFIX].HEAD",
       "description": "Output dataset header file",
       "optional": false,
       "id": "output_header",
       "name": "Output header file"
     },
     {
-      "path-template": "[PREFIX_OPTION].BRIK",
+      "path-template": "[PREFIX].BRIK",
       "description": "Output dataset brick file",
       "optional": false,
       "id": "output_brick",

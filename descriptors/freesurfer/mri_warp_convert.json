@@ -136,7 +136,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_WARP]",
+      "path-template": "[OUTVOX]",
       "description": "Converted output warp file",
       "optional": false,
       "id": "outwarp",

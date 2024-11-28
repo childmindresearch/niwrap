@@ -145,7 +145,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]",
+      "path-template": "[OUTPUT_FILE]",
       "description": "Output file containing the computed average",
       "optional": false,
       "id": "output_file",

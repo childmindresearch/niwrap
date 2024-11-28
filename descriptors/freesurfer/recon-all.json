@@ -650,14 +650,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[SUBJECT_ID]/scripts/recon-all.log",
+      "path-template": "[SUBJID]/scripts/recon-all.log",
       "description": "Log file of the recon-all process",
       "optional": true,
       "id": "logfile",
       "name": "Recon-all Log File"
     },
     {
-      "path-template": "[SUBJECT_ID]/scripts/recon-all-status.log",
+      "path-template": "[SUBJID]/scripts/recon-all-status.log",
       "description": "Status file of the recon-all process",
       "optional": true,
       "id": "statusfile",

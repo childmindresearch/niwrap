@@ -85,7 +85,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX]*",
+      "path-template": "[OUTPUT_PREFIX]*",
       "description": "Output dataset after flipping",
       "optional": true,
       "id": "flipped_output",

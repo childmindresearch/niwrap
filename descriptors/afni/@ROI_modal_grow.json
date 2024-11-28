@@ -70,7 +70,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_DIR]/[OUTPUT_PREFIX].nii.gz",
+      "path-template": "[OUTDIR]/[PREFIX].nii.gz",
       "description": "Final output dataset",
       "optional": false,
       "id": "output_file",

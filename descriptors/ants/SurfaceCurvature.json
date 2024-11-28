@@ -50,7 +50,7 @@
       "id": "output_image",
       "name": "Processed image",
       "description": "The processed image file.",
-      "path-template": "[FILENAMEOUT]"
+      "path-template": "[FILENAME_OUT]"
     }
   ],
   "container-image": {

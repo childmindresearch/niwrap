@@ -36,7 +36,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[4D_OUTPUT].nii.gz",
+      "path-template": "[FOUR_D_OUTPUT].nii.gz",
       "description": "Output 4D image with subtraction results",
       "optional": false,
       "id": "output_file",

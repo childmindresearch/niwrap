@@ -54,7 +54,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]",
+      "path-template": "[OUTPUT_FILE]",
       "description": "Output of the dMRI statistical analysis",
       "optional": false,
       "id": "output_file",

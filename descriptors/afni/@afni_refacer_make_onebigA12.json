@@ -21,7 +21,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[T1W_DATASET_NAME]_aligned_to_MNI.nii.gz",
+      "path-template": "[T1W_DATASET]_aligned_to_MNI.nii.gz",
       "description": "Aligned T1w dataset to MNI template with expanded 'big' grid",
       "optional": true,
       "id": "aligned_output",

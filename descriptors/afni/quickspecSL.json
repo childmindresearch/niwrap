@@ -84,7 +84,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[out_spec]",
+      "path-template": "[OUT_SPEC]",
       "description": "Output spec file",
       "optional": false,
       "id": "output_spec_file",

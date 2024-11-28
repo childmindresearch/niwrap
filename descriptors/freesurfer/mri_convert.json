@@ -182,7 +182,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_VOLUME]",
+      "path-template": "[OUT_VOLUME]",
       "description": "Converted volume output file",
       "optional": false,
       "id": "converted_volume",

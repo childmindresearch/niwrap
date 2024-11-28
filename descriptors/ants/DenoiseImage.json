@@ -110,14 +110,14 @@
     {
       "id": "corrected_image",
       "name": "Corrected image",
-      "path-template": "[CORRECTED_IMAGE]",
+      "path-template": "[CORRECTED_IMAGE_PATH]",
       "description": "The noise corrected version of the input image.",
       "optional": false
     },
     {
       "id": "noise_image",
       "name": "Noise image",
-      "path-template": "[NOISE_IMAGE]",
+      "path-template": "[NOISE_IMAGE_PATH]",
       "description": "Estimated noise image.",
       "optional": false
     }

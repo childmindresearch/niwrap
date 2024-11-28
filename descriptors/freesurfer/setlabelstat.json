@@ -44,7 +44,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_LABEL]",
+      "path-template": "[OUTLABELFILE]",
       "description": "The resulting label file with updated stat values.",
       "optional": false,
       "id": "output_label_file",

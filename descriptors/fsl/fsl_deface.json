@@ -156,7 +156,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE].nii.gz",
+      "path-template": "[OUTFILE].nii.gz",
       "description": "Defaced T1w image",
       "optional": false,
       "id": "outfile",

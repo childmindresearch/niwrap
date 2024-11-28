@@ -58,7 +58,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_VOLUME]",
+      "path-template": "[OUTPUT_VOL]",
       "description": "Thresholded output volume",
       "optional": false,
       "id": "output_vol_file",

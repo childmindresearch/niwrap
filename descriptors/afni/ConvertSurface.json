@@ -98,7 +98,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTPUT_SURFACE]",
       "description": "The converted output surface file.",
       "optional": false,
       "id": "output_surface_file",

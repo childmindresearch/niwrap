@@ -70,7 +70,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_PREFIX].nii.gz",
+      "path-template": "[PREFIX].nii.gz",
       "description": "Shifted output dataset.",
       "optional": false,
       "id": "output_file",

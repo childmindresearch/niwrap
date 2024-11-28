@@ -73,7 +73,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUT]",
+      "path-template": "[OUTPUT_IMAGE]",
       "description": "Stripped brain image output.",
       "optional": true,
       "id": "output_image_file",

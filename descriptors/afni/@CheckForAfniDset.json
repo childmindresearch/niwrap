@@ -22,7 +22,7 @@
     {
       "id": "output_status",
       "name": "Output Status",
-      "path-template": "[NAME]_status.txt",
+      "path-template": "[DATASET_NAME]_status.txt",
       "description": "Text file containing the status code of the dataset",
       "optional": true
     }

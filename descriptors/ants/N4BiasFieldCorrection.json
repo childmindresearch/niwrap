@@ -214,14 +214,14 @@
     {
       "id": "corrected_image",
       "name": "Corrected image",
-      "path-template": "[CORRECTED_IMAGE]",
+      "path-template": "[CORRECTED_IMAGE_PATH]",
       "description": "The bias corrected version of the input image.",
       "optional": false
     },
     {
       "id": "bias_field",
       "name": "Bias field",
-      "path-template": "[BIAS_FIELD]",
+      "path-template": "[BIAS_FIELD_PATH]",
       "description": "Estimated bias field image.",
       "optional": true
     }

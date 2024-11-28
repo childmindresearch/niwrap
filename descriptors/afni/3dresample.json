@@ -128,7 +128,7 @@
       "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[OUT_FILE]"
+      "path-template": "[PREFIX]"
     }
   ],
   "tool-version": "24.2.06",

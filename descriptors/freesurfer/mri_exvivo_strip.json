@@ -115,7 +115,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_VOLUME]",
+      "path-template": "[OUTVOL]",
       "description": "Processed output MRI volume",
       "optional": false,
       "id": "output_file",

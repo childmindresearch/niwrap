@@ -84,7 +84,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_PREFIX].nii.gz",
+      "path-template": "[PREFIX].nii.gz",
       "description": "Output data set with space-time correlation coefficients.",
       "optional": false,
       "id": "output",

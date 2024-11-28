@@ -83,14 +83,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX]+rgb.HEAD",
+      "path-template": "[OUTPUT_PREFIX]+rgb.HEAD",
       "description": "RGB-valued dataset output",
       "optional": false,
       "id": "output_dataset_head",
       "name": "Output dataset (HEAD)"
     },
     {
-      "path-template": "[PREFIX]+rgb.BRIK",
+      "path-template": "[OUTPUT_PREFIX]+rgb.BRIK",
       "description": "RGB-valued dataset output",
       "optional": false,
       "id": "output_dataset_brik",

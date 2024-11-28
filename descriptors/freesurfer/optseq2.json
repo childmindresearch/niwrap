@@ -346,7 +346,7 @@
       "name": "Output Log"
     },
     {
-      "path-template": "[SVITER]",
+      "path-template": "[SVITERFILE]",
       "description": "Output per-iteration information",
       "optional": true,
       "id": "output_sviter",

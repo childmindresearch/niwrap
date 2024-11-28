@@ -69,7 +69,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_VOL]",
+      "path-template": "[OUTPUT_VOLUME]",
       "description": "The output volume with the largest connected component extracted.",
       "optional": false,
       "id": "output_volume_file",

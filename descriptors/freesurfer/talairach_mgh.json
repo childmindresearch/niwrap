@@ -25,7 +25,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]",
+      "path-template": "[OUTPUT_VOLUME]",
       "description": "Transformed output volume aligned with Talairach reference brain",
       "optional": false,
       "id": "transformed_output",

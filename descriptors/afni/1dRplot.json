@@ -203,7 +203,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX]*.jpg",
+      "path-template": "[OUTPUT_PREFIX]*.jpg",
       "description": "Output plot file",
       "optional": true,
       "id": "output_plot",

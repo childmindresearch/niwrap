@@ -198,7 +198,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE].nii.gz",
+      "path-template": "[OUTFILE].nii.gz",
       "description": "Filtered data output",
       "optional": false,
       "id": "filtered_data",

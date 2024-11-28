@@ -345,7 +345,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[SUBJECTNAME]/surf/[HEMI].[CURVFILE].scaled.crv",
+      "path-template": "[SUBJECT_NAME]/surf/[HEMISPHERE].[CURVATURE_FILES].scaled.crv",
       "description": "Scaled curvature file.",
       "optional": true,
       "id": "scaled_curvature_file",

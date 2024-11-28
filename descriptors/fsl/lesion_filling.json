@@ -85,7 +85,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_IMAGE]",
+      "path-template": "[OUTFILE]",
       "description": "Lesion filled output image",
       "optional": false,
       "id": "outfile",
