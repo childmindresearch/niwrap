@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_THRESHOLD_METADATA = Metadata(
-    id="7526aa91ca2ab0c7267f2eb430b7d8d4b1558ba4.boutiques",
+    id="18dd783d6c61c6360f3439c48e74d88d1a862887.boutiques",
     name="mri_threshold",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -73,7 +73,7 @@ def mri_threshold(
         ])
     ret = MriThresholdOutputs(
         root=execution.output_file("."),
-        output_vol_file=execution.output_file("[OUTPUT_VOLUME]"),
+        output_vol_file=execution.output_file(output_vol),
     )
     execution.run(cargs)
     return ret

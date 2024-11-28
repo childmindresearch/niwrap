@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TALAIRACH_MGH_METADATA = Metadata(
-    id="2ee16efc607e27a1b379c0fe5d93ee15f292ac85.boutiques",
+    id="8cbf9e3ecbb893dba16a521fe51fff06813455a4.boutiques",
     name="talairach_mgh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def talairach_mgh(
     cargs.append("[OPTIONS]")
     ret = TalairachMghOutputs(
         root=execution.output_file("."),
-        transformed_output=execution.output_file("[OUTPUT]"),
+        transformed_output=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

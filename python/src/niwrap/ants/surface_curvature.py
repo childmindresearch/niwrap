@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="189807bb821410995e6bca8dfe3ccd2fc6707c7d.boutiques",
+    id="53a3b6f741f93ffb1d3ca64e3b70f76507df8aa9.boutiques",
     name="SurfaceCurvature",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -55,7 +55,7 @@ def surface_curvature(
     cargs.append("SurfaceCurvature" + execution.input_file(filename_in) + execution.input_file(filename_out) + str(sigma) + str(option))
     ret = SurfaceCurvatureOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file("[FILENAMEOUT]"),
+        output_image=execution.output_file(pathlib.Path(filename_out).name),
     )
     execution.run(cargs)
     return ret

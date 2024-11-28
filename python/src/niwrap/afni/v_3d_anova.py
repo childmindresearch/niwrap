@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANOVA_METADATA = Metadata(
-    id="a7ee4f2993ca8c6f15a37e2fdb7ce42014116596.boutiques",
+    id="a6b18c124721654a7ec2ffc70584424d3b14a440.boutiques",
     name="3dANOVA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,25 +20,25 @@ class V3dAnovaOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    ftr_output: OutputPathType
+    ftr_output: OutputPathType | None
     """Output F-statistic dataset file"""
-    ftr_brick_output: OutputPathType
+    ftr_brick_output: OutputPathType | None
     """Output F-statistic BRIK file"""
-    mean_output: OutputPathType
+    mean_output: OutputPathType | None
     """Output mean dataset file"""
-    mean_brick_output: OutputPathType
+    mean_brick_output: OutputPathType | None
     """Output mean BRIK file"""
-    diff_output: OutputPathType
+    diff_output: OutputPathType | None
     """Output difference dataset file"""
-    diff_brick_output: OutputPathType
+    diff_brick_output: OutputPathType | None
     """Output difference BRIK file"""
-    contr_output: OutputPathType
+    contr_output: OutputPathType | None
     """Output contrast dataset file"""
-    contr_brick_output: OutputPathType
+    contr_brick_output: OutputPathType | None
     """Output contrast BRIK file"""
-    bucket_output: OutputPathType
+    bucket_output: OutputPathType | None
     """Output bucket dataset file"""
-    bucket_brick_output: OutputPathType
+    bucket_brick_output: OutputPathType | None
     """Output bucket BRIK file"""
 
 
@@ -148,16 +148,16 @@ def v_3d_anova(
         ])
     ret = V3dAnovaOutputs(
         root=execution.output_file("."),
-        ftr_output=execution.output_file("[FTR_PREFIX].HEAD"),
-        ftr_brick_output=execution.output_file("[FTR_PREFIX].BRIK"),
-        mean_output=execution.output_file("[MEAN_PREFIX]_mean.HEAD"),
-        mean_brick_output=execution.output_file("[MEAN_PREFIX]_mean.BRIK"),
-        diff_output=execution.output_file("[DIFF_PREFIX]_diff.HEAD"),
-        diff_brick_output=execution.output_file("[DIFF_PREFIX]_diff.BRIK"),
-        contr_output=execution.output_file("[CONTR_PREFIX]_contr.HEAD"),
-        contr_brick_output=execution.output_file("[CONTR_PREFIX]_contr.BRIK"),
-        bucket_output=execution.output_file("[BUCKET_PREFIX].HEAD"),
-        bucket_brick_output=execution.output_file("[BUCKET_PREFIX].BRIK"),
+        ftr_output=execution.output_file(ftr + ".HEAD") if (ftr is not None) else None,
+        ftr_brick_output=execution.output_file(ftr + ".BRIK") if (ftr is not None) else None,
+        mean_output=execution.output_file(mean + "_mean.HEAD") if (mean is not None) else None,
+        mean_brick_output=execution.output_file(mean + "_mean.BRIK") if (mean is not None) else None,
+        diff_output=execution.output_file(diff + "_diff.HEAD") if (diff is not None) else None,
+        diff_brick_output=execution.output_file(diff + "_diff.BRIK") if (diff is not None) else None,
+        contr_output=execution.output_file(contr + "_contr.HEAD") if (contr is not None) else None,
+        contr_brick_output=execution.output_file(contr + "_contr.BRIK") if (contr is not None) else None,
+        bucket_output=execution.output_file(bucket + ".HEAD") if (bucket is not None) else None,
+        bucket_brick_output=execution.output_file(bucket + ".BRIK") if (bucket is not None) else None,
     )
     execution.run(cargs)
     return ret

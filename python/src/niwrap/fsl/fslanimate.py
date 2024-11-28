@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLANIMATE_METADATA = Metadata(
-    id="34cf353ecea155e49cce150ddf0ff5a33ee31d16.boutiques",
+    id="9c584c848682c3342403e26b38b71bebf6c12536.boutiques",
     name="fslanimate",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -55,7 +55,7 @@ def fslanimate(
         cargs.append(tmp_dir)
     ret = FslanimateOutputs(
         root=execution.output_file("."),
-        output_animation=execution.output_file("[OUTPUT]"),
+        output_animation=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

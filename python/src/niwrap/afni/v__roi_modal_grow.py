@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_MODAL_GROW_METADATA = Metadata(
-    id="a717544c0515cdd54f72389e876ae926a35bce90.boutiques",
+    id="d33815ad6bfc8ff7ac694bacf23eb5bed10577bf.boutiques",
     name="@ROI_modal_grow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class VRoiModalGrowOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """Final output dataset"""
 
 
@@ -94,7 +94,7 @@ def v__roi_modal_grow(
         ])
     ret = VRoiModalGrowOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_DIR]/[OUTPUT_PREFIX].nii.gz"),
+        output_file=execution.output_file(outdir + "/" + prefix + ".nii.gz") if (outdir is not None and prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

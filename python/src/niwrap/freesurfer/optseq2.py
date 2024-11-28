@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OPTSEQ2_METADATA = Metadata(
-    id="f5a782e2ed100a1f5d1145c015243dda721c541b.boutiques",
+    id="0f4e820b7a3fa22c2de66e83252857cc8c403a78.boutiques",
     name="optseq2",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -30,7 +30,7 @@ class Optseq2Outputs(typing.NamedTuple):
     """Output search summary"""
     output_log: OutputPathType | None
     """Output log file"""
-    output_sviter: OutputPathType
+    output_sviter: OutputPathType | None
     """Output per-iteration information"""
 
 
@@ -278,7 +278,7 @@ def optseq2(
         output_contrast_matrix=execution.output_file(cmtxfile) if (cmtxfile is not None) else None,
         output_summary=execution.output_file(summaryfile) if (summaryfile is not None) else None,
         output_log=execution.output_file(logfile) if (logfile is not None) else None,
-        output_sviter=execution.output_file("[SVITER]"),
+        output_sviter=execution.output_file(sviterfile) if (sviterfile is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ROBUST_REGISTER_METADATA = Metadata(
-    id="7c85c7ae69206411ccba5a939b197065c2055267.boutiques",
+    id="373d793a10eb4f57de992e22e874b3a12c04e4ce.boutiques",
     name="mri_robust_register",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -92,15 +92,15 @@ def mri_robust_register(
         reg_output=execution.output_file(output_registration),
         mapped_output=execution.output_file("[MAPPED_MOVABLE]"),
         mapped_hdr_output=execution.output_file("[MAPPED_MOVABLE_HDR]"),
-        weights_output_file=execution.output_file("[WEIGHTS_OUTPUT]"),
-        iscale_out_file=execution.output_file("[ISCALEOUT_FILE]"),
-        half_mov_file=execution.output_file("[HALFMOV_FILE]"),
-        half_dst_file=execution.output_file("[HALFDST_FILE]"),
-        half_weights_file=execution.output_file("[HALFWEIGHTS_FILE]"),
-        half_mov_lta_file=execution.output_file("[HALFMOVLTA_FILE]"),
-        half_dst_lta_file=execution.output_file("[HALFDSTLTA_FILE]"),
-        ent_mov_file=execution.output_file("[ENTMOV_FILE]"),
-        ent_dst_file=execution.output_file("[ENTDST_FILE]"),
+        weights_output_file=execution.output_file("[WEIGHTS]"),
+        iscale_out_file=execution.output_file("[ISCALE_OUT]"),
+        half_mov_file=execution.output_file("[HALF_MOV]"),
+        half_dst_file=execution.output_file("[HALF_DST]"),
+        half_weights_file=execution.output_file("[HALF_WEIGHTS]"),
+        half_mov_lta_file=execution.output_file("[HALF_MOV_LTA]"),
+        half_dst_lta_file=execution.output_file("[HALF_DST_LTA]"),
+        ent_mov_file=execution.output_file("[ENT_MOV]"),
+        ent_dst_file=execution.output_file("[ENT_DST]"),
     )
     execution.run(cargs)
     return ret

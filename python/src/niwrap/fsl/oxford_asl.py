@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OXFORD_ASL_METADATA = Metadata(
-    id="787ee5028791b164d33d42e9927c5260c93bcd84.boutiques",
+    id="eadb081312f49bbddc149e22fee8be8a141e4596.boutiques",
     name="oxford_asl",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -58,7 +58,7 @@ def oxford_asl(
     cargs.append("[options]")
     ret = OxfordAslOutputs(
         root=execution.output_file("."),
-        output_dir=execution.output_file("<output_dir_name>"),
+        output_dir=execution.output_file(output_dir_name),
     )
     execution.run(cargs)
     return ret

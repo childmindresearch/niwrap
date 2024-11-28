@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DTTO_DWI_METADATA = Metadata(
-    id="8beaedb6788e8fe37fedcd5e934874b19b134b28.boutiques",
+    id="0f0fbb0dc2b7d522416ef673b66be8d6a5895cef.boutiques",
     name="3dDTtoDWI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,7 +58,7 @@ def v_3d_dtto_dwi(
     cargs.append(execution.input_file(dt_dataset))
     ret = V3dDttoDwiOutputs(
         root=execution.output_file("."),
-        output_dwi=execution.output_file("[PREFIX_NAME]*.HEAD"),
+        output_dwi=execution.output_file("[PREFIX]*.HEAD"),
     )
     execution.run(cargs)
     return ret

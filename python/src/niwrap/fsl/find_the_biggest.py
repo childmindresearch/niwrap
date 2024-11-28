@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIND_THE_BIGGEST_METADATA = Metadata(
-    id="6fc80c5cc06c6614eddcb6ff2d4bd656f8098490.boutiques",
+    id="3dbb5859444668bef5d4d2dc4f26feb48bfc1655.boutiques",
     name="find_the_biggest",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -51,7 +51,7 @@ def find_the_biggest(
     cargs.append(output_index)
     ret = FindTheBiggestOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT]"),
+        output_file=execution.output_file(output_index),
     )
     execution.run(cargs)
     return ret

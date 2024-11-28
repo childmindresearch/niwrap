@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SNAPSHOT_VOLREG_METADATA = Metadata(
-    id="6dd91661ca8e979aafef773137405b89356badf0.boutiques",
+    id="edc900ca58d61107bee2b644d2625f19238f5714.boutiques",
     name="@snapshot_volreg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class VSnapshotVolregOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_jpeg: OutputPathType
+    output_jpeg: OutputPathType | None
     """JPEG image showing the edges of the EPI dataset overlayed on the
     anatomical dataset"""
 
@@ -61,7 +61,7 @@ def v__snapshot_volreg(
         cargs.append(xdisplay)
     ret = VSnapshotVolregOutputs(
         root=execution.output_file("."),
-        output_jpeg=execution.output_file("[jname].jpg"),
+        output_jpeg=execution.output_file(jname + ".jpg") if (jname is not None) else None,
     )
     execution.run(cargs)
     return ret

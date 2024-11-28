@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SPACE_TIME_CORR_METADATA = Metadata(
-    id="4814bf096ff466e54811cb676a4fbe4de1173bcf.boutiques",
+    id="8dd159ea37a52b08625a393a1f0450d03271fcfd.boutiques",
     name="3dSpaceTimeCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -96,7 +96,7 @@ def v_3d_space_time_corr(
         ])
     ret = V3dSpaceTimeCorrOutputs(
         root=execution.output_file("."),
-        output=execution.output_file("[OUTPUT_PREFIX].nii.gz"),
+        output=execution.output_file(prefix + ".nii.gz"),
     )
     execution.run(cargs)
     return ret

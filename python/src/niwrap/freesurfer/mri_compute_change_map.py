@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COMPUTE_CHANGE_MAP_METADATA = Metadata(
-    id="d601cf7bab8b78e33a99751ac000c279e73adc23.boutiques",
+    id="4cf0713520dd67c2b0f360d78cb6a13011d05e50.boutiques",
     name="mri_compute_change_map",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -71,7 +71,7 @@ def mri_compute_change_map(
     cargs.append(outvolume)
     ret = MriComputeChangeMapOutputs(
         root=execution.output_file("."),
-        out_change_map=execution.output_file("[OUT_VOLUME]"),
+        out_change_map=execution.output_file(outvolume),
     )
     execution.run(cargs)
     return ret

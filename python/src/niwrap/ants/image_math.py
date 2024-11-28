@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_MATH_METADATA = Metadata(
-    id="9d75874ee43e66e17e895079992b1c3399855848.boutiques",
+    id="f5740d314a9baf77fb8fa3899fa5f569f4daee75.boutiques",
     name="ImageMath",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -64,7 +64,7 @@ def image_math(
         cargs.append(execution.input_file(image2))
     ret = ImageMathOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file("[OutputImage]"),
+        output_image=execution.output_file(pathlib.Path(output_image).name),
     )
     execution.run(cargs)
     return ret

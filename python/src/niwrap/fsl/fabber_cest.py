@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_CEST_METADATA = Metadata(
-    id="f12f0f88acf2d9d2ccbfc26472ea792933fd49ef.boutiques",
+    id="02b8cdea1646edd376c3e6590fd5b1de7b4522ff.boutiques",
     name="fabber_cest",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -71,18 +71,18 @@ def fabber_cest(
     cargs.append("...]")
     ret = FabberCestOutputs(
         root=execution.output_file("."),
-        logfile=execution.output_file("[--output]/logfile.log"),
-        modelfit_out=execution.output_file("[--output]/model_fit.nii.gz"),
-        residuals_out=execution.output_file("[--output]/residuals.nii.gz"),
-        modelextras_out=execution.output_file("[--output]/model_extras.nii.gz"),
-        mvn_out=execution.output_file("[--output]/mvn.nii.gz"),
-        mean_out=execution.output_file("[--output]/mean.nii.gz"),
-        std_out=execution.output_file("[--output]/std.nii.gz"),
-        var_out=execution.output_file("[--output]/var.nii.gz"),
-        zstat_out=execution.output_file("[--output]/zstat.nii.gz"),
-        noise_mean_out=execution.output_file("[--output]/noise_mean.nii.gz"),
-        noise_std_out=execution.output_file("[--output]/noise_std.nii.gz"),
-        free_energy_out=execution.output_file("[--output]/free_energy.nii.gz"),
+        logfile=execution.output_file("[OUTPUT]/logfile.log"),
+        modelfit_out=execution.output_file("[OUTPUT]/model_fit.nii.gz"),
+        residuals_out=execution.output_file("[OUTPUT]/residuals.nii.gz"),
+        modelextras_out=execution.output_file("[OUTPUT]/model_extras.nii.gz"),
+        mvn_out=execution.output_file("[OUTPUT]/mvn.nii.gz"),
+        mean_out=execution.output_file("[OUTPUT]/mean.nii.gz"),
+        std_out=execution.output_file("[OUTPUT]/std.nii.gz"),
+        var_out=execution.output_file("[OUTPUT]/var.nii.gz"),
+        zstat_out=execution.output_file("[OUTPUT]/zstat.nii.gz"),
+        noise_mean_out=execution.output_file("[OUTPUT]/noise_mean.nii.gz"),
+        noise_std_out=execution.output_file("[OUTPUT]/noise_std.nii.gz"),
+        free_energy_out=execution.output_file("[OUTPUT]/free_energy.nii.gz"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NEW_INVWARP_METADATA = Metadata(
-    id="0a71350e49bfe3ff5d47af3c36dd8600c81e30c9.boutiques",
+    id="c1339243d2b878297e61fc1b6693396e5c46a980.boutiques",
     name="new_invwarp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -98,7 +98,7 @@ def new_invwarp(
         cargs.append("-v")
     ret = NewInvwarpOutputs(
         root=execution.output_file("."),
-        out_volume=execution.output_file("[OUT_VOL]"),
+        out_volume=execution.output_file(outvol),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMAXIMA_METADATA = Metadata(
-    id="1d39fe71b05cbe6682800629be87a886bec8d709.boutiques",
+    id="f8ba8da054bfe915efd0d6532d6b8fe26bfcc7a9.boutiques",
     name="3dmaxima",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class V3dmaximaOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_mask: OutputPathType
+    output_mask: OutputPathType | None
     """Output mask dataset with extrema locations"""
 
 
@@ -142,7 +142,7 @@ def v_3dmaxima(
         cargs.append("-ver")
     ret = V3dmaximaOutputs(
         root=execution.output_file("."),
-        output_mask=execution.output_file("[PREFIX]_mask+orig.[HEAD | BRIK]"),
+        output_mask=execution.output_file(output_prefix + "_mask+orig.[HEAD | BRIK]") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_REORIENT_LR_CSH_METADATA = Metadata(
-    id="45134f5d604a06de693a6213a6552fa5bf882871.boutiques",
+    id="44b9d6ba4983462289bb74a35e46ca2bc4fb3a6c.boutiques",
     name="mri_reorient_LR.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -78,7 +78,7 @@ def mri_reorient_lr_csh(
         cargs.append("--help")
     ret = MriReorientLrCshOutputs(
         root=execution.output_file("."),
-        reoriented_vol=execution.output_file("[OUTPUT_FILE]"),
+        reoriented_vol=execution.output_file(output_vol),
     )
     execution.run(cargs)
     return ret

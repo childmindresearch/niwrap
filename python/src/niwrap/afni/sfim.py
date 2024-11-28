@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SFIM_METADATA = Metadata(
-    id="c268a573c2f59491457aa513f02590c3c7e8c148.boutiques",
+    id="62032460073e6537145dc05bebbde2400a1cbdbc.boutiques",
     name="sfim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class SfimOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_files: OutputPathType
+    output_files: OutputPathType | None
     """Output image file for interval 'i' with task state name."""
 
 
@@ -77,7 +77,7 @@ def sfim(
     cargs.append("[INPUT_FILES...]")
     ret = SfimOutputs(
         root=execution.output_file("."),
-        output_files=execution.output_file("[PREFIX].*.i"),
+        output_files=execution.output_file(output_prefix + ".*.i") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

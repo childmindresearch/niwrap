@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LSS_METADATA = Metadata(
-    id="0fa6c47c9ebbf90857b95bed313e7619407a6190.boutiques",
+    id="d793e92300ed18c69c7d31223293711fdbbfaaf7.boutiques",
     name="3dLSS",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,7 +51,7 @@ def v_3d_lss(
     ret = V3dLssOutputs(
         root=execution.output_file("."),
         output_dataset=execution.output_file("LSSout+orig.HEAD"),
-        save1_d_output=execution.output_file("[QQQ]"),
+        save1_d_output=execution.output_file("[SAVE1D]"),
     )
     execution.run(cargs)
     return ret

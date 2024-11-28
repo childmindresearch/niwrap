@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DENOISE_IMAGE_METADATA = Metadata(
-    id="93ede0118a2ae5e40f8336a78b3ec01f687eea7d.boutiques",
+    id="510d45985961f8069b7889eeca0f9b9d13f57a86.boutiques",
     name="DenoiseImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -121,8 +121,8 @@ def denoise_image(
     cargs.append("[" + corrected_image_path + "," + noise_image_path + "]")
     ret = DenoiseImageOutputs(
         root=execution.output_file("."),
-        corrected_image=execution.output_file("[CORRECTED_IMAGE]"),
-        noise_image=execution.output_file("[NOISE_IMAGE]"),
+        corrected_image=execution.output_file(corrected_image_path),
+        noise_image=execution.output_file(noise_image_path),
     )
     execution.run(cargs)
     return ret

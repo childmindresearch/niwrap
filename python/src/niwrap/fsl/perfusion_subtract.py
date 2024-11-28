@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PERFUSION_SUBTRACT_METADATA = Metadata(
-    id="2bc46d84a2965107f9bcd55c93cb568762a59fb5.boutiques",
+    id="8a0b5c252cd2198e9f3ba22398f35e5e42e86246.boutiques",
     name="perfusion_subtract",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -57,7 +57,7 @@ def perfusion_subtract(
         cargs.append("-c")
     ret = PerfusionSubtractOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[4D_OUTPUT].nii.gz"),
+        output_file=execution.output_file(four_d_output + ".nii.gz"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MARK_TEMPORAL_LOBE_METADATA = Metadata(
-    id="27dbde61265e07c8d179ab732b55040372088e42.boutiques",
+    id="a5a020bc6a51cd99fe31227a0a5e948147e247bf.boutiques",
     name="mri_mark_temporal_lobe",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -60,7 +60,7 @@ def mri_mark_temporal_lobe(
         cargs.append("-gradient" + "".join([execution.input_file(f) for f in subjects]) + output_file)
     ret = MriMarkTemporalLobeOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT]"),
+        output_file=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

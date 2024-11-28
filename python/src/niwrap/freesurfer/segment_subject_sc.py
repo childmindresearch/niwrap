@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGMENT_SUBJECT_SC_METADATA = Metadata(
-    id="7ef38e74b64cd360459b4e6d21acb9861982b04a.boutiques",
+    id="02733a36fda91e4ab91ac726bedcbf25c9c93313.boutiques",
     name="segment_subject_sc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -69,7 +69,7 @@ def segment_subject_sc(
         cargs.append("--debug")
     ret = SegmentSubjectScOutputs(
         root=execution.output_file("."),
-        output_xfm_file=execution.output_file("[OUTPUT_XFM]"),
+        output_xfm_file=execution.output_file(pathlib.Path(outxfm).name),
     )
     execution.run(cargs)
     return ret

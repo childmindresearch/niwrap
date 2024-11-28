@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WMSASEG_METADATA = Metadata(
-    id="5f46c88f51dcc313e1d4bcef072465dd970d48b9.boutiques",
+    id="70413a8a1c01bd4a41bdede39664427061f28431.boutiques",
     name="wmsaseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,9 +20,9 @@ class WmsasegOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    t1_canorm: OutputPathType
+    t1_canorm: OutputPathType | None
     """CA normalized T1 output"""
-    wmsa_lta: OutputPathType
+    wmsa_lta: OutputPathType | None
     """Linear transform to average space"""
 
 
@@ -102,8 +102,8 @@ def wmsaseg(
         cargs.append("--halo2")
     ret = WmsasegOutputs(
         root=execution.output_file("."),
-        t1_canorm=execution.output_file("[OUTPUT_SUB_DIR]/T1.canorm.mgz"),
-        wmsa_lta=execution.output_file("[OUTPUT_SUB_DIR]/wmsa.lta"),
+        t1_canorm=execution.output_file(output_subdir + "/T1.canorm.mgz") if (output_subdir is not None) else None,
+        wmsa_lta=execution.output_file(output_subdir + "/wmsa.lta") if (output_subdir is not None) else None,
     )
     execution.run(cargs)
     return ret

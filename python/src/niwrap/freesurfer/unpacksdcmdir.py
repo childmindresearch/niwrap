@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNPACKSDCMDIR_METADATA = Metadata(
-    id="ccbdc9d69fb2e9b0b3f0d1ebfc9affa27a0a362d.boutiques",
+    id="874ca0580e83acbaad099d815a81e39d50b1ac26.boutiques",
     name="unpacksdcmdir",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,7 +54,7 @@ def unpacksdcmdir(
     cargs.append(output_directory)
     ret = UnpacksdcmdirOutputs(
         root=execution.output_file("."),
-        unpacked_data=execution.output_file("[OUTPUT]/unpacked_data"),
+        unpacked_data=execution.output_file(output_directory + "/unpacked_data"),
     )
     execution.run(cargs)
     return ret

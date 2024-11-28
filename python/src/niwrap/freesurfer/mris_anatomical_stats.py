@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ANATOMICAL_STATS_METADATA = Metadata(
-    id="79d9ac554c4b0f873f92544cb3131a838a6cad81.boutiques",
+    id="26651665f8aa89f4302f7661390895c29f6b22f4.boutiques",
     name="mris_anatomical_stats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -24,7 +24,7 @@ class MrisAnatomicalStatsOutputs(typing.NamedTuple):
     """Output log file of the statistics"""
     output_table_file: OutputPathType | None
     """Tabular output stored in a table file"""
-    output_ctab_file: OutputPathType
+    output_ctab_file: OutputPathType | None
     """Output annotation color table file"""
 
 
@@ -132,7 +132,7 @@ def mris_anatomical_stats(
         root=execution.output_file("."),
         output_log_file=execution.output_file(logfile + ".txt") if (logfile is not None) else None,
         output_table_file=execution.output_file(tablefile + ".txt") if (tablefile is not None) else None,
-        output_ctab_file=execution.output_file("[CTAB_FILE].txt"),
+        output_ctab_file=execution.output_file(color_table + ".txt") if (color_table is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROIGROW_METADATA = Metadata(
-    id="c874ce32a32426653db25a3011ac18e8a3470a58.boutiques",
+    id="12bb44f9721e85ea23d86fcfc727735d33f56b50.boutiques",
     name="ROIgrow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class RoigrowOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """1D output dataset."""
 
 
@@ -101,7 +101,7 @@ def roigrow(
         ])
     ret = RoigrowOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[PREFIX].1D"),
+        output_file=execution.output_file(output_prefix + ".1D") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

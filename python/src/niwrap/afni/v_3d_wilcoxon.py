@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WILCOXON_METADATA = Metadata(
-    id="9df724debbffe371b716a53743d25fab41ca0499.boutiques",
+    id="463bd0c7f172cd1b8be0a6f1adaeefb51a0010ea.boutiques",
     name="3dWilcoxon",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -78,7 +78,7 @@ def v_3d_wilcoxon(
     ])
     ret = V3dWilcoxonOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[PREFIX]"),
+        output_file=execution.output_file(output_prefix),
     )
     execution.run(cargs)
     return ret

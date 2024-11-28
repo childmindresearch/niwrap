@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CC_METADATA = Metadata(
-    id="97dc9669d0fe1929cc4249d820444ec0f5581ef1.boutiques",
+    id="15e13320aa7ce00fbf8db493c28c6884f3b1ec76.boutiques",
     name="mri_cc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class MriCcOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_volume: OutputPathType
+    output_volume: OutputPathType | None
     """Output volume including CC segmentation results."""
 
 
@@ -120,7 +120,7 @@ def mri_cc(
         ])
     ret = MriCcOutputs(
         root=execution.output_file("."),
-        output_volume=execution.output_file("SDIR/mri/[OUTPUT_FLAG]"),
+        output_volume=execution.output_file("SDIR/mri/" + output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

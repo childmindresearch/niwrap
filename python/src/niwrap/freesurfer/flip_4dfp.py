@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLIP_4DFP_METADATA = Metadata(
-    id="feb4f1cf034b2e27db1149e15b9918f183e36375.boutiques",
+    id="546744c4be37b8dfd459146df7ba1a0232818b0d.boutiques",
     name="flip_4dfp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class Flip4dfpOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    flipped_image: OutputPathType
+    flipped_image: OutputPathType | None
     """Flipped output 4dfp image"""
 
 
@@ -73,7 +73,7 @@ def flip_4dfp(
         ])
     ret = Flip4dfpOutputs(
         root=execution.output_file("."),
-        flipped_image=execution.output_file("[OUTPUT].4dfp.img"),
+        flipped_image=execution.output_file(output_image + ".4dfp.img") if (output_image is not None) else None,
     )
     execution.run(cargs)
     return ret

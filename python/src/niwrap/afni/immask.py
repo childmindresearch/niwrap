@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMMASK_METADATA = Metadata(
-    id="a98fb193c36cdbba4842d50c5425b5db6040ca92.boutiques",
+    id="9c1f93c0cb09202023e9490b9f3feb5a319f6f59.boutiques",
     name="immask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -71,7 +71,7 @@ def immask(
     cargs.append(output_image)
     ret = ImmaskOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_IMG]"),
+        output_file=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

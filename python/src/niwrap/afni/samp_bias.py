@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMP_BIAS_METADATA = Metadata(
-    id="653bb46ad474c90f1683174b234f883bce0cd197.boutiques",
+    id="6e470934bf7282b84b4830d0577fb44d56bf39e3.boutiques",
     name="SampBias",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -87,7 +87,7 @@ def samp_bias(
         ])
     ret = SampBiasOutputs(
         root=execution.output_file("."),
-        out_1_d=execution.output_file("[OUT_FILE].1D"),
+        out_1_d=execution.output_file(outfile + ".1D"),
         out_prefix=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)

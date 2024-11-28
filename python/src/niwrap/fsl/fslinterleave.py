@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLINTERLEAVE_METADATA = Metadata(
-    id="85be75fc34e4d451a447e293c41acf3a6130c2de.boutiques",
+    id="93b8da65cc073c4d0bd4a959fb87a8823f01227a.boutiques",
     name="fslinterleave",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -58,7 +58,7 @@ def fslinterleave(
         cargs.append("-i")
     ret = FslinterleaveOutputs(
         root=execution.output_file("."),
-        interleaved_output=execution.output_file("[OUT].nii.gz"),
+        interleaved_output=execution.output_file(outfile + ".nii.gz"),
     )
     execution.run(cargs)
     return ret

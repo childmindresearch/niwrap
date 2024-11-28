@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_NL_ALIGN_BINARY_METADATA = Metadata(
-    id="30eb7de7bc51af1662fe590bfb998bb2959b3e4b.boutiques",
+    id="ef5528a0517700c40ec5c8c97d382ea8956dfbf8.boutiques",
     name="mri_nl_align_binary",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,7 +54,7 @@ def mri_nl_align_binary(
     cargs.append(warp_file)
     ret = MriNlAlignBinaryOutputs(
         root=execution.output_file("."),
-        output_warp=execution.output_file("[WARP]"),
+        output_warp=execution.output_file(warp_file),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DIFF_METADATA = Metadata(
-    id="25f194ad71f142307e423c2ecb9f6efab14f7279.boutiques",
+    id="e29e7f056291727390ed03afe0470b3873fe4e24.boutiques",
     name="mri_diff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,11 +20,11 @@ class MriDiffOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    log_output: OutputPathType
+    log_output: OutputPathType | None
     """Log file containing difference information."""
-    difference_image_output: OutputPathType
+    difference_image_output: OutputPathType | None
     """Difference image output file."""
-    suspicious_difference_output: OutputPathType
+    suspicious_difference_output: OutputPathType | None
     """Volume with suspicious differences labeled."""
 
 
@@ -203,9 +203,9 @@ def mri_diff(
         cargs.append("--checkopts")
     ret = MriDiffOutputs(
         root=execution.output_file("."),
-        log_output=execution.output_file("[LOG]"),
-        difference_image_output=execution.output_file("[DIFF]"),
-        suspicious_difference_output=execution.output_file("[SUSPICIOUS_DIFF_VOL]"),
+        log_output=execution.output_file(log_file) if (log_file is not None) else None,
+        difference_image_output=execution.output_file(pathlib.Path(difference_image).name) if (difference_image is not None) else None,
+        suspicious_difference_output=execution.output_file(pathlib.Path(suspicious_diff_volume).name) if (suspicious_diff_volume is not None) else None,
     )
     execution.run(cargs)
     return ret

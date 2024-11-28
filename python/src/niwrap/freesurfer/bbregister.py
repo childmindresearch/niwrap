@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BBREGISTER_METADATA = Metadata(
-    id="95ef42511f6cfbce2fb40dcd5cdd047e2e1ac39b.boutiques",
+    id="06a9a3d42999005484cd3e30d110e491b2d7dca8.boutiques",
     name="bbregister",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -75,7 +75,7 @@ def bbregister(
     ret = BbregisterOutputs(
         root=execution.output_file("."),
         reg_output=execution.output_file(reg_file),
-        out_volume=execution.output_file("[OUTPUT_VOLUME]"),
+        out_volume=execution.output_file("[O_OUTVOL]"),
     )
     execution.run(cargs)
     return ret

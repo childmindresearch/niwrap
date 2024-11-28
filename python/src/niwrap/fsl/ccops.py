@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CCOPS_METADATA = Metadata(
-    id="a2861104ed0d594b4060851bd8f55ecc8ccc4b6f.boutiques",
+    id="15f914d7513b2d71d9d54891eb8992cdb8593e4a.boutiques",
     name="ccops",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -135,7 +135,7 @@ def ccops(
         cargs.append("--help")
     ret = CcopsOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file("[basename]_output.nii.gz"),
+        outfile=execution.output_file(basename + "_output.nii.gz"),
     )
     execution.run(cargs)
     return ret

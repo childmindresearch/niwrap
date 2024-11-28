@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APARCSTATS2TABLE_METADATA = Metadata(
-    id="ecf9646bba97fe81fc75c40e3f047c4232811380.boutiques",
+    id="7b7bfbf1a3b6bd57ebf50cd28aa6878555458f68.boutiques",
     name="aparcstats2table",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -149,7 +149,7 @@ def aparcstats2table(
         ])
     ret = Aparcstats2tableOutputs(
         root=execution.output_file("."),
-        output_table=execution.output_file("[OUTPUTFILE]"),
+        output_table=execution.output_file(pathlib.Path(tablefile).name),
     )
     execution.run(cargs)
     return ret

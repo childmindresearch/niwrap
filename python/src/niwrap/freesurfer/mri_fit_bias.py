@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FIT_BIAS_METADATA = Metadata(
-    id="dbc7b4a918415c0135e06478ff062038cee7a37e.boutiques",
+    id="5cfc424aa0f54308ca89e9fae020adbc05a2f8ca.boutiques",
     name="mri_fit_bias",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -122,8 +122,8 @@ def mri_fit_bias(
         cargs.append("--checkopts")
     ret = MriFitBiasOutputs(
         root=execution.output_file("."),
-        corrected_output=execution.output_file("[OUT_VOL]"),
-        generated_bias_field=execution.output_file("[BIAS_FIELD]"),
+        corrected_output=execution.output_file(outvol),
+        generated_bias_field=execution.output_file(biasfield),
     )
     execution.run(cargs)
     return ret

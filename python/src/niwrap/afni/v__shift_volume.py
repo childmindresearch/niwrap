@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SHIFT_VOLUME_METADATA = Metadata(
-    id="9224163ec50fb052e5433a09480dec89e5b0c7f4.boutiques",
+    id="8632323dd36a0ba5f059c998ffcd7826b058d4be.boutiques",
     name="@Shift_Volume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -81,7 +81,7 @@ def v__shift_volume(
     ])
     ret = VShiftVolumeOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_PREFIX].nii.gz"),
+        output_file=execution.output_file(prefix + ".nii.gz"),
     )
     execution.run(cargs)
     return ret

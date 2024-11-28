@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LRFLIP_METADATA = Metadata(
-    id="f5fb5c24267d6a937ff2b7766ab5fb355973e781.boutiques",
+    id="b3e8fe43a4546f9996744e159107df5ff817046b.boutiques",
     name="3dLRflip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class V3dLrflipOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    flipped_output: OutputPathType
+    flipped_output: OutputPathType | None
     """Output dataset after flipping"""
 
 
@@ -61,7 +61,7 @@ def v_3d_lrflip(
     cargs.extend([execution.input_file(f) for f in datasets])
     ret = V3dLrflipOutputs(
         root=execution.output_file("."),
-        flipped_output=execution.output_file("[PREFIX]*"),
+        flipped_output=execution.output_file(output_prefix + "*") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

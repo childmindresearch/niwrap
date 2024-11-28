@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLREGISTER_METADATA = Metadata(
-    id="bfe0dbf3fd2f8c6b49cdb27e6484d3377aa1763f.boutiques",
+    id="81e352f9cdac0df3ddc26c66eafd2de97cd00277.boutiques",
     name="fslregister",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,13 +22,13 @@ class FslregisterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_reg_file: OutputPathType
     """Output registration file."""
-    output_resliced_volume: OutputPathType
+    output_resliced_volume: OutputPathType | None
     """Resliced output volume."""
-    output_fsl_matrix: OutputPathType
+    output_fsl_matrix: OutputPathType | None
     """FSL format output registration matrix."""
-    lta_output: OutputPathType
+    lta_output: OutputPathType | None
     """Registration output in LTA format."""
-    output_template: OutputPathType
+    output_template: OutputPathType | None
     """Output template."""
 
 
@@ -227,10 +227,10 @@ def fslregister(
     ret = FslregisterOutputs(
         root=execution.output_file("."),
         output_reg_file=execution.output_file(reg_file),
-        output_resliced_volume=execution.output_file("[OUT_VOL]"),
-        output_fsl_matrix=execution.output_file("[FSL_MAT]"),
-        lta_output=execution.output_file("[LTA]"),
-        output_template=execution.output_file("[TEMPLATE_OUT]"),
+        output_resliced_volume=execution.output_file(output_volume) if (output_volume is not None) else None,
+        output_fsl_matrix=execution.output_file(fsl_matrix) if (fsl_matrix is not None) else None,
+        lta_output=execution.output_file(lta_format) if (lta_format is not None) else None,
+        output_template=execution.output_file(template_output) if (template_output is not None) else None,
     )
     execution.run(cargs)
     return ret

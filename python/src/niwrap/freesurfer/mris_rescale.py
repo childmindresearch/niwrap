@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_RESCALE_METADATA = Metadata(
-    id="1f0a5c2b091dfe101425de5fa0a02939d522526c.boutiques",
+    id="dc82fd3ed28ce8af91d50743abd00b226c549b2e.boutiques",
     name="mris_rescale",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,7 @@ def mris_rescale(
     cargs.append(output_surface)
     ret = MrisRescaleOutputs(
         root=execution.output_file("."),
-        rescaled_output_surface=execution.output_file("[OUTPUT_SURF]"),
+        rescaled_output_surface=execution.output_file(output_surface),
     )
     execution.run(cargs)
     return ret

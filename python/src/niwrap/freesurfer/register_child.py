@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REGISTER_CHILD_METADATA = Metadata(
-    id="605dca8f2351a2947069059787f2878020583ef2.boutiques",
+    id="9e8cb1a2f3c7d3f5cb4a97d68638d4d529a433fd.boutiques",
     name="register_child",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,8 +53,8 @@ def register_child(
     cargs.append(output_directory)
     ret = RegisterChildOutputs(
         root=execution.output_file("."),
-        transformed_control_points=execution.output_file("[OUTPUT_DIR]/fsamples"),
-        intensity_normalized_volume=execution.output_file("[OUTPUT_DIR]/norm"),
+        transformed_control_points=execution.output_file(output_directory + "/fsamples"),
+        intensity_normalized_volume=execution.output_file(output_directory + "/norm"),
     )
     execution.run(cargs)
     return ret

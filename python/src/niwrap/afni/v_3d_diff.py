@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DIFF_METADATA = Metadata(
-    id="8bc21edc968960fb0f8c3693529f9d376b9e886b.boutiques",
+    id="310e8ce2db4e828d08b7d1bb6c0af6eff1fa85cd.boutiques",
     name="3dDiff",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -88,7 +88,7 @@ def v_3d_diff(
         cargs.append("-long_report")
     ret = V3dDiffOutputs(
         root=execution.output_file("."),
-        output_log=execution.output_file("[DSET_1]_vs_[DSET_2].log"),
+        output_log=execution.output_file(pathlib.Path(dataset_a).name + "_vs_" + pathlib.Path(dataset_b).name + ".log"),
     )
     execution.run(cargs)
     return ret

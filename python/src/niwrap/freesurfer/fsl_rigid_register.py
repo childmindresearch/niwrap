@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_RIGID_REGISTER_METADATA = Metadata(
-    id="d0132be9030531b5927bb6a94641b3b22d5a18af.boutiques",
+    id="86ae5f77c79298b854bf775bed382049d793e4ae.boutiques",
     name="fsl_rigid_register",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -183,7 +183,7 @@ def fsl_rigid_register(
         cargs.append("-help")
     ret = FslRigidRegisterOutputs(
         root=execution.output_file("."),
-        fslmat_output=execution.output_file("[OUTPUT_VOLUME].fslmat"),
+        fslmat_output=execution.output_file(outputvol + ".fslmat"),
     )
     execution.run(cargs)
     return ret

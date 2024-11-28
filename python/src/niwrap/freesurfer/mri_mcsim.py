@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MCSIM_METADATA = Metadata(
-    id="73012f283531e93870961626ae4aa0e9482975e1.boutiques",
+    id="c93d6e308a5345c3826d6a5f805dbcd44a658fe1.boutiques",
     name="mri_mcsim",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -187,7 +187,7 @@ def mri_mcsim(
         cargs.append("--version")
     ret = MriMcsimOutputs(
         root=execution.output_file("."),
-        csd_output=execution.output_file(top_output_dir + "/[BASE].csd"),
+        csd_output=execution.output_file(top_output_dir + "/" + base_name + ".csd"),
         done_output=execution.output_file(top_output_dir + "/done/" + done_file) if (done_file is not None) else None,
         iteration_save=execution.output_file(top_output_dir + "/" + save_file) if (save_file is not None) else None,
         log_output=execution.output_file(top_output_dir + "/log/" + log_file) if (log_file is not None) else None,

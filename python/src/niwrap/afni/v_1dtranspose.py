@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DTRANSPOSE_METADATA = Metadata(
-    id="ac37a576e097c27f6ebd4f09c62706d442afc4e4.boutiques",
+    id="8aeb8ffe1bc2def81876ed4d22208279a8077957.boutiques",
     name="1dtranspose",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class V1dtransposeOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    outfile: OutputPathType
+    outfile: OutputPathType | None
     """Transposed output file"""
 
 
@@ -53,7 +53,7 @@ def v_1dtranspose(
         cargs.append(outfile)
     ret = V1dtransposeOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file("[OUTPUT_FILE]"),
+        outfile=execution.output_file(outfile) if (outfile is not None) else None,
     )
     execution.run(cargs)
     return ret

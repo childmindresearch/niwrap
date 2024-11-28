@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FWHM_METADATA = Metadata(
-    id="2513be5243d2efe8e068d73395f91b6c572e71a8.boutiques",
+    id="d03adb51c2f77acaf364735a5ea7ff81b4be91ea.boutiques",
     name="mri_fwhm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -273,7 +273,7 @@ def mri_fwhm(
         cargs.append("--version")
     ret = MriFwhmOutputs(
         root=execution.output_file("."),
-        output_volume_file=execution.output_file("[OUTPUT_VOLUME]"),
+        output_volume_file=execution.output_file(outputvol),
         final_mask_output_file=execution.output_file(out_mask) if (out_mask is not None) else None,
         summary_log_file=execution.output_file(summary_file) if (summary_file is not None) else None,
         final_fwhm_estimate_file=execution.output_file(dat_file) if (dat_file is not None) else None,

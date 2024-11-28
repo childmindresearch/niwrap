@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SETLABELSTAT_METADATA = Metadata(
-    id="bb8ca8c755eb61c79cc103b01b838dfbb8e565c9.boutiques",
+    id="4886639a09879a1b6f761d93393746968357bada.boutiques",
     name="setlabelstat",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -68,7 +68,7 @@ def setlabelstat(
         cargs.append("-help")
     ret = SetlabelstatOutputs(
         root=execution.output_file("."),
-        output_label_file=execution.output_file("[OUTPUT_LABEL]"),
+        output_label_file=execution.output_file(pathlib.Path(outlabelfile).name),
     )
     execution.run(cargs)
     return ret

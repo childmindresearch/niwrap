@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MKIMA_INDEX_TCL_METADATA = Metadata(
-    id="974d5b4d5ca09509f47cfad3fed14a2750384a83.boutiques",
+    id="c105809b402206036812e673c076cf9989e47ed5.boutiques",
     name="mkima_index.tcl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mkima_index_tcl(
         cargs.append("-o")
     ret = MkimaIndexTclOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[INPUT]_index_output"),
+        output_file=execution.output_file(pathlib.Path(input_file).name + "_index_output"),
     )
     execution.run(cargs)
     return ret

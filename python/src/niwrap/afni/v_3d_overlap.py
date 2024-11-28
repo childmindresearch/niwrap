@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_OVERLAP_METADATA = Metadata(
-    id="4440bc696db88baacf3e47d87d818dc09880f58d.boutiques",
+    id="a1bc040d8dc7e5b89536a75a10ba6ad55a1ecc95.boutiques",
     name="3dOverlap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,8 +54,8 @@ def v_3d_overlap(
     cargs.extend([execution.input_file(f) for f in dataset2])
     ret = V3dOverlapOutputs(
         root=execution.output_file("."),
-        output_brik=execution.output_file("[PREFIX]+orig.BRIK"),
-        output_head=execution.output_file("[PREFIX]+orig.HEAD"),
+        output_brik=execution.output_file("[SAVE_PREFIX]+orig.BRIK"),
+        output_head=execution.output_file("[SAVE_PREFIX]+orig.HEAD"),
     )
     execution.run(cargs)
     return ret

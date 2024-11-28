@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DFT_METADATA = Metadata(
-    id="a5ea1ad1c09d56eb7cc443d199379aa5cf342f81.boutiques",
+    id="a3b7d9976a6067e83188d375554ab6efc38583c7.boutiques",
     name="3dDFT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -85,8 +85,8 @@ def v_3d_dft(
         cargs.append("-inverse")
     ret = V3dDftOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file("[OUTPUT_PREFIX]+orig.BRIK"),
-        outheader=execution.output_file("[OUTPUT_PREFIX]+orig.HEAD"),
+        outfile=execution.output_file(prefix + "+orig.BRIK"),
+        outheader=execution.output_file(prefix + "+orig.HEAD"),
     )
     execution.run(cargs)
     return ret

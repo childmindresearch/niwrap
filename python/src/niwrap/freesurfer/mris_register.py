@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REGISTER_METADATA = Metadata(
-    id="71bb9adc1f4aed94938e55990498c71c387f4326.boutiques",
+    id="01ac3575a4acd8aa600baa6d27fee615f0a862c6.boutiques",
     name="mris_register",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,7 +22,7 @@ class MrisRegisterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_surface_file: OutputPathType
     """Output surface file after registration."""
-    jacobian_output: OutputPathType
+    jacobian_output: OutputPathType | None
     """Jacobian output file if specified."""
 
 
@@ -436,7 +436,7 @@ def mris_register(
     ret = MrisRegisterOutputs(
         root=execution.output_file("."),
         output_surface_file=execution.output_file(out_fname),
-        jacobian_output=execution.output_file("[JACOBIAN_FILENAME]"),
+        jacobian_output=execution.output_file(jacobian_fname) if (jacobian_fname is not None) else None,
     )
     execution.run(cargs)
     return ret

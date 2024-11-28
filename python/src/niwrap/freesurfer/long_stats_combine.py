@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_STATS_COMBINE_METADATA = Metadata(
-    id="0d340216188db7f22afc5a0e93c0fbb3c31d0d6c.boutiques",
+    id="44c43a96c18b3f3b72a80aed68ec585e7b861c9d.boutiques",
     name="long_stats_combine",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,7 +22,7 @@ class LongStatsCombineOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_qdec_file: OutputPathType
     """Output long qdec table"""
-    output_stacked_stats_file: OutputPathType
+    output_stacked_stats_file: OutputPathType | None
     """Stacked stats table for all subjects, all time points"""
 
 
@@ -100,8 +100,8 @@ def long_stats_combine(
         cargs.append("--cross")
     ret = LongStatsCombineOutputs(
         root=execution.output_file("."),
-        output_qdec_file=execution.output_file("[OUTQDEC]"),
-        output_stacked_stats_file=execution.output_file("[OUTSTATS]"),
+        output_qdec_file=execution.output_file(output_qdec),
+        output_stacked_stats_file=execution.output_file(output_stats) if (output_stats is not None) else None,
     )
     execution.run(cargs)
     return ret

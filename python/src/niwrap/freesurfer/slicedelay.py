@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICEDELAY_METADATA = Metadata(
-    id="a9d3a1fdb81dcd7330d4aa6bdd422c6e9cedddd8.boutiques",
+    id="e0e78eeb6a32014e4f62ce730e136633e9ef9494.boutiques",
     name="slicedelay",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -70,7 +70,7 @@ def slicedelay(
     ])
     ret = SlicedelayOutputs(
         root=execution.output_file("."),
-        slicedelayfile=execution.output_file("[SLICE_DELAY_FILE]"),
+        slicedelayfile=execution.output_file(slicedelayfile),
     )
     execution.run(cargs)
     return ret

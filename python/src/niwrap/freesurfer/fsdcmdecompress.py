@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSDCMDECOMPRESS_METADATA = Metadata(
-    id="18fc72ca21bcdb4e64f8ed84229281614b2229e5.boutiques",
+    id="1c245eb1f1f4a476626056075ca7b223ab9946b1.boutiques",
     name="fsdcmdecompress",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -73,7 +73,7 @@ def fsdcmdecompress(
         cargs.append("--gdcm")
     ret = FsdcmdecompressOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file("[OUTPUT_DCM]"),
+        out_file=execution.output_file(outdcmfile),
     )
     execution.run(cargs)
     return ret

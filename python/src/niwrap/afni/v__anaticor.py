@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ANATICOR_METADATA = Metadata(
-    id="3a0c3611072ac0583f25c0a373d1a41e0413e355.boutiques",
+    id="48ef68fd2da1d36a9c97f8ae28f53b818a2fe8ee.boutiques",
     name="@ANATICOR",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -122,7 +122,7 @@ def v__anaticor(
         cargs.append("-echo")
     ret = VAnaticorOutputs(
         root=execution.output_file("."),
-        output_files=execution.output_file("[OUTPUT]"),
+        output_files=execution.output_file(prefix),
     )
     execution.run(cargs)
     return ret

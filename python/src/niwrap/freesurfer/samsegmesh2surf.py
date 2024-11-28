@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMSEGMESH2SURF_METADATA = Metadata(
-    id="6743776e7ff5a0b1ea3e7e3b4d0de26e4939514d.boutiques",
+    id="d985be1373714eb0aff1a308730598604fe9d68c.boutiques",
     name="samsegmesh2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,9 +20,9 @@ class Samsegmesh2surfOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_surface_file: OutputPathType
+    output_surface_file: OutputPathType | None
     """FreeSurfer surface file generated from SAMSEG atlas mesh"""
-    output_priors_file: OutputPathType
+    output_priors_file: OutputPathType | None
     """Priors MRI volume at each vertex"""
 
 
@@ -88,8 +88,8 @@ def samsegmesh2surf(
         cargs.append("--invert")
     ret = Samsegmesh2surfOutputs(
         root=execution.output_file("."),
-        output_surface_file=execution.output_file("[OSURF]"),
-        output_priors_file=execution.output_file("[OPRIORS]"),
+        output_surface_file=execution.output_file(output_surface) if (output_surface is not None) else None,
+        output_priors_file=execution.output_file(output_priors) if (output_priors is not None) else None,
     )
     execution.run(cargs)
     return ret

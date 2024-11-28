@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CONVOLVE_METADATA = Metadata(
-    id="a91640a9cad55b5202f3834c3f89e41c0651fc61.boutiques",
+    id="98f37303338db7321cbe065f60581ee844d011e4.boutiques",
     name="3dConvolve",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,7 +58,7 @@ def v_3d_convolve(
         ])
     ret = V3dConvolveOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file("[OUTPUT_FILE]"),
+        outfile=execution.output_file(outfile),
     )
     execution.run(cargs)
     return ret

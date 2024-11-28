@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_SURFACE_METADATA = Metadata(
-    id="656d469acbf0e07740df790fe24b348948aba172.boutiques",
+    id="2b7452b8bf057bc43ac7efc4c5a01abd5236749c.boutiques",
     name="ConvertSurface",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -85,7 +85,7 @@ def convert_surface(
         cargs.append("-native")
     ret = ConvertSurfaceOutputs(
         root=execution.output_file("."),
-        output_surface_file=execution.output_file("[OUTPUT_FILE]"),
+        output_surface_file=execution.output_file(output_surface),
     )
     execution.run(cargs)
     return ret

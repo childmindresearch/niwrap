@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_RPLOT_METADATA = Metadata(
-    id="1def472c459dde1820745927eb2a1f6b82799f26.boutiques",
+    id="97370e286ceee3c0b1e0eb62c1b51f85396f905d.boutiques",
     name="1dRplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,7 +52,7 @@ def v_1d_rplot(
     cargs.append("[OPTIONS]")
     ret = V1dRplotOutputs(
         root=execution.output_file("."),
-        output_plot=execution.output_file("[PREFIX]*.jpg"),
+        output_plot=execution.output_file("[OUTPUT_PREFIX]*.jpg"),
     )
     execution.run(cargs)
     return ret

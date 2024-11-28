@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_RENAME_METADATA = Metadata(
-    id="294ad0fa8b4a255a870d093168864b25d9ecc5cd.boutiques",
+    id="2eb87845c3a6be71bcd6bb57089f0cd879da57d4.boutiques",
     name="dicom-rename",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,7 +57,7 @@ def dicom_rename(
     ])
     ret = DicomRenameOutputs(
         root=execution.output_file("."),
-        renamed_dicom=execution.output_file("[OUTBASE]-SSS-IIIII.dcm"),
+        renamed_dicom=execution.output_file(output_base + "-SSS-IIIII.dcm"),
     )
     execution.run(cargs)
     return ret
