@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">MRI_WARP_CONVERT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;df0f0e45c3ce5353b9afe602127eca935642dbef.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;36b7f6d3b0edf16e088ad567445e656a71a7dd89.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_warp_convert&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">outwarp</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">outwarp</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Converted output warp file&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
@@ -144,7 +144,7 @@
 </span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--downsample&quot;</span><span class="p">)</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriWarpConvertOutputs</span><span class="p">(</span>
 </span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">outwarp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_WARP]&quot;</span><span class="p">),</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">outwarp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvox</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="p">)</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -163,7 +163,7 @@
                     <div class="attr variable">
             <span class="name">MRI_WARP_CONVERT_METADATA</span>        =
 <input id="MRI_WARP_CONVERT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_WARP_CONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;df0f0e45c3ce5353b9afe602127eca935642dbef.boutiques&#39;, name=&#39;mri_warp_convert&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_WARP_CONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;36b7f6d3b0edf16e088ad567445e656a71a7dd89.boutiques&#39;, name=&#39;mri_warp_convert&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -189,7 +189,7 @@
 </span><span id="MriWarpConvertOutputs-21"><a href="#MriWarpConvertOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="MriWarpConvertOutputs-22"><a href="#MriWarpConvertOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriWarpConvertOutputs-23"><a href="#MriWarpConvertOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="MriWarpConvertOutputs-24"><a href="#MriWarpConvertOutputs-24"><span class="linenos">24</span></a>    <span class="n">outwarp</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="MriWarpConvertOutputs-24"><a href="#MriWarpConvertOutputs-24"><span class="linenos">24</span></a>    <span class="n">outwarp</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="MriWarpConvertOutputs-25"><a href="#MriWarpConvertOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Converted output warp file&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -201,7 +201,7 @@
                             <div id="MriWarpConvertOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MriWarpConvertOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">outwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">MriWarpConvertOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">outwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -227,7 +227,7 @@
                             </div>
                             <div id="MriWarpConvertOutputs.outwarp" class="classattr">
                                 <div class="attr variable">
-            <span class="name">outwarp</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">outwarp</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -296,7 +296,7 @@
 </span><span id="mri_warp_convert-71"><a href="#mri_warp_convert-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--downsample&quot;</span><span class="p">)</span>
 </span><span id="mri_warp_convert-72"><a href="#mri_warp_convert-72"><span class="linenos">72</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriWarpConvertOutputs</span><span class="p">(</span>
 </span><span id="mri_warp_convert-73"><a href="#mri_warp_convert-73"><span class="linenos">73</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mri_warp_convert-74"><a href="#mri_warp_convert-74"><span class="linenos">74</span></a>        <span class="n">outwarp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_WARP]&quot;</span><span class="p">),</span>
+</span><span id="mri_warp_convert-74"><a href="#mri_warp_convert-74"><span class="linenos">74</span></a>        <span class="n">outwarp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outvox</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outvox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="mri_warp_convert-75"><a href="#mri_warp_convert-75"><span class="linenos">75</span></a>    <span class="p">)</span>
 </span><span id="mri_warp_convert-76"><a href="#mri_warp_convert-76"><span class="linenos">76</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mri_warp_convert-77"><a href="#mri_warp_convert-77"><span class="linenos">77</span></a>    <span class="k">return</span> <span class="n">ret</span>

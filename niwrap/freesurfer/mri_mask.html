@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_MASK_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8756814e96d81683a87fee6c496ab7fc63143b44.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c88d984dd58588f37c7a7cb282d5f5381d82b1e6.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_mask&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -243,7 +243,7 @@
 </span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-samseg&quot;</span><span class="p">)</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriMaskOutputs</span><span class="p">(</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_VOL]&quot;</span><span class="p">),</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">),</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="p">)</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -262,7 +262,7 @@
                     <div class="attr variable">
             <span class="name">MRI_MASK_METADATA</span>        =
 <input id="MRI_MASK_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_MASK_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8756814e96d81683a87fee6c496ab7fc63143b44.boutiques&#39;, name=&#39;mri_mask&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_MASK_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c88d984dd58588f37c7a7cb282d5f5381d82b1e6.boutiques&#39;, name=&#39;mri_mask&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -494,7 +494,7 @@
 </span><span id="mri_mask-170"><a href="#mri_mask-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-samseg&quot;</span><span class="p">)</span>
 </span><span id="mri_mask-171"><a href="#mri_mask-171"><span class="linenos">171</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriMaskOutputs</span><span class="p">(</span>
 </span><span id="mri_mask-172"><a href="#mri_mask-172"><span class="linenos">172</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mri_mask-173"><a href="#mri_mask-173"><span class="linenos">173</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_VOL]&quot;</span><span class="p">),</span>
+</span><span id="mri_mask-173"><a href="#mri_mask-173"><span class="linenos">173</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_volume</span><span class="p">),</span>
 </span><span id="mri_mask-174"><a href="#mri_mask-174"><span class="linenos">174</span></a>    <span class="p">)</span>
 </span><span id="mri_mask-175"><a href="#mri_mask-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mri_mask-176"><a href="#mri_mask-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>

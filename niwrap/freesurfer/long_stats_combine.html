@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">LONG_STATS_COMBINE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0d340216188db7f22afc5a0e93c0fbb3c31d0d6c.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;44c43a96c18b3f3b72a80aed68ec585e7b861c9d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;long_stats_combine&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -99,7 +99,7 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_qdec_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output long qdec table&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">output_stacked_stats_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">output_stacked_stats_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Stacked stats table for all subjects, all time points&quot;&quot;&quot;</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
@@ -177,8 +177,8 @@
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cross&quot;</span><span class="p">)</span>
 </span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LongStatsCombineOutputs</span><span class="p">(</span>
 </span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">output_qdec_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTQDEC]&quot;</span><span class="p">),</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">output_stacked_stats_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTSTATS]&quot;</span><span class="p">),</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">output_qdec_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_qdec</span><span class="p">),</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">output_stacked_stats_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_stats</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="p">)</span>
 </span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -197,7 +197,7 @@
                     <div class="attr variable">
             <span class="name">LONG_STATS_COMBINE_METADATA</span>        =
 <input id="LONG_STATS_COMBINE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="LONG_STATS_COMBINE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0d340216188db7f22afc5a0e93c0fbb3c31d0d6c.boutiques&#39;, name=&#39;long_stats_combine&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="LONG_STATS_COMBINE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;44c43a96c18b3f3b72a80aed68ec585e7b861c9d.boutiques&#39;, name=&#39;long_stats_combine&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -225,7 +225,7 @@
 </span><span id="LongStatsCombineOutputs-23"><a href="#LongStatsCombineOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="LongStatsCombineOutputs-24"><a href="#LongStatsCombineOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_qdec_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="LongStatsCombineOutputs-25"><a href="#LongStatsCombineOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output long qdec table&quot;&quot;&quot;</span>
-</span><span id="LongStatsCombineOutputs-26"><a href="#LongStatsCombineOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_stacked_stats_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="LongStatsCombineOutputs-26"><a href="#LongStatsCombineOutputs-26"><span class="linenos">26</span></a>    <span class="n">output_stacked_stats_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="LongStatsCombineOutputs-27"><a href="#LongStatsCombineOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Stacked stats table for all subjects, all time points&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -237,7 +237,7 @@
                             <div id="LongStatsCombineOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">LongStatsCombineOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_qdec_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_stacked_stats_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">LongStatsCombineOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_qdec_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">output_stacked_stats_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -276,7 +276,7 @@
                             </div>
                             <div id="LongStatsCombineOutputs.output_stacked_stats_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_stacked_stats_file</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">output_stacked_stats_file</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -373,8 +373,8 @@
 </span><span id="long_stats_combine-101"><a href="#long_stats_combine-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--cross&quot;</span><span class="p">)</span>
 </span><span id="long_stats_combine-102"><a href="#long_stats_combine-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LongStatsCombineOutputs</span><span class="p">(</span>
 </span><span id="long_stats_combine-103"><a href="#long_stats_combine-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="long_stats_combine-104"><a href="#long_stats_combine-104"><span class="linenos">104</span></a>        <span class="n">output_qdec_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTQDEC]&quot;</span><span class="p">),</span>
-</span><span id="long_stats_combine-105"><a href="#long_stats_combine-105"><span class="linenos">105</span></a>        <span class="n">output_stacked_stats_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTSTATS]&quot;</span><span class="p">),</span>
+</span><span id="long_stats_combine-104"><a href="#long_stats_combine-104"><span class="linenos">104</span></a>        <span class="n">output_qdec_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_qdec</span><span class="p">),</span>
+</span><span id="long_stats_combine-105"><a href="#long_stats_combine-105"><span class="linenos">105</span></a>        <span class="n">output_stacked_stats_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_stats</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="long_stats_combine-106"><a href="#long_stats_combine-106"><span class="linenos">106</span></a>    <span class="p">)</span>
 </span><span id="long_stats_combine-107"><a href="#long_stats_combine-107"><span class="linenos">107</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="long_stats_combine-108"><a href="#long_stats_combine-108"><span class="linenos">108</span></a>    <span class="k">return</span> <span class="n">ret</span>

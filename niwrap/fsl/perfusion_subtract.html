@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">PERFUSION_SUBTRACT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2bc46d84a2965107f9bcd55c93cb568762a59fb5.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8a0b5c252cd2198e9f3ba22398f35e5e42e86246.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;perfusion_subtract&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -131,7 +131,7 @@
 </span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">)</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">PerfusionSubtractOutputs</span><span class="p">(</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[4D_OUTPUT].nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">four_d_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="p">)</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -150,7 +150,7 @@
                     <div class="attr variable">
             <span class="name">PERFUSION_SUBTRACT_METADATA</span>        =
 <input id="PERFUSION_SUBTRACT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="PERFUSION_SUBTRACT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2bc46d84a2965107f9bcd55c93cb568762a59fb5.boutiques&#39;, name=&#39;perfusion_subtract&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="PERFUSION_SUBTRACT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8a0b5c252cd2198e9f3ba22398f35e5e42e86246.boutiques&#39;, name=&#39;perfusion_subtract&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -270,7 +270,7 @@
 </span><span id="perfusion_subtract-58"><a href="#perfusion_subtract-58"><span class="linenos">58</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">)</span>
 </span><span id="perfusion_subtract-59"><a href="#perfusion_subtract-59"><span class="linenos">59</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">PerfusionSubtractOutputs</span><span class="p">(</span>
 </span><span id="perfusion_subtract-60"><a href="#perfusion_subtract-60"><span class="linenos">60</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="perfusion_subtract-61"><a href="#perfusion_subtract-61"><span class="linenos">61</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[4D_OUTPUT].nii.gz&quot;</span><span class="p">),</span>
+</span><span id="perfusion_subtract-61"><a href="#perfusion_subtract-61"><span class="linenos">61</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">four_d_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
 </span><span id="perfusion_subtract-62"><a href="#perfusion_subtract-62"><span class="linenos">62</span></a>    <span class="p">)</span>
 </span><span id="perfusion_subtract-63"><a href="#perfusion_subtract-63"><span class="linenos">63</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="perfusion_subtract-64"><a href="#perfusion_subtract-64"><span class="linenos">64</span></a>    <span class="k">return</span> <span class="n">ret</span>

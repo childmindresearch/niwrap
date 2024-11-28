@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">FSLASCII2IMG_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6768aae906ca7835522a36aed200f9dcb3132620.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;455b60034fcd79aee64e723bd7bf1924556401c9.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fslascii2img&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -149,7 +149,7 @@
 </span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fslascii2imgOutputs</span><span class="p">(</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_FILE]&quot;</span><span class="p">),</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span><span class="p">),</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="p">)</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -168,7 +168,7 @@
                     <div class="attr variable">
             <span class="name">FSLASCII2IMG_METADATA</span>        =
 <input id="FSLASCII2IMG_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSLASCII2IMG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6768aae906ca7835522a36aed200f9dcb3132620.boutiques&#39;, name=&#39;fslascii2img&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSLASCII2IMG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;455b60034fcd79aee64e723bd7bf1924556401c9.boutiques&#39;, name=&#39;fslascii2img&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -306,7 +306,7 @@
 </span><span id="fslascii2img-76"><a href="#fslascii2img-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 </span><span id="fslascii2img-77"><a href="#fslascii2img-77"><span class="linenos">77</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fslascii2imgOutputs</span><span class="p">(</span>
 </span><span id="fslascii2img-78"><a href="#fslascii2img-78"><span class="linenos">78</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fslascii2img-79"><a href="#fslascii2img-79"><span class="linenos">79</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_FILE]&quot;</span><span class="p">),</span>
+</span><span id="fslascii2img-79"><a href="#fslascii2img-79"><span class="linenos">79</span></a>        <span class="n">outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span><span class="p">),</span>
 </span><span id="fslascii2img-80"><a href="#fslascii2img-80"><span class="linenos">80</span></a>    <span class="p">)</span>
 </span><span id="fslascii2img-81"><a href="#fslascii2img-81"><span class="linenos">81</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="fslascii2img-82"><a href="#fslascii2img-82"><span class="linenos">82</span></a>    <span class="k">return</span> <span class="n">ret</span>

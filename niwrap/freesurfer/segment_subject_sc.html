@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">SEGMENT_SUBJECT_SC_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7ef38e74b64cd360459b4e6d21acb9861982b04a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;02733a36fda91e4ab91ac726bedcbf25c9c93313.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;segment_subject_sc&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -143,7 +143,7 @@
 </span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SegmentSubjectScOutputs</span><span class="p">(</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">output_xfm_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_XFM]&quot;</span><span class="p">),</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">output_xfm_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">outxfm</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="p">)</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -162,7 +162,7 @@
                     <div class="attr variable">
             <span class="name">SEGMENT_SUBJECT_SC_METADATA</span>        =
 <input id="SEGMENT_SUBJECT_SC_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SEGMENT_SUBJECT_SC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7ef38e74b64cd360459b4e6d21acb9861982b04a.boutiques&#39;, name=&#39;segment_subject_sc&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SEGMENT_SUBJECT_SC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;02733a36fda91e4ab91ac726bedcbf25c9c93313.boutiques&#39;, name=&#39;segment_subject_sc&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -294,7 +294,7 @@
 </span><span id="segment_subject_sc-70"><a href="#segment_subject_sc-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
 </span><span id="segment_subject_sc-71"><a href="#segment_subject_sc-71"><span class="linenos">71</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SegmentSubjectScOutputs</span><span class="p">(</span>
 </span><span id="segment_subject_sc-72"><a href="#segment_subject_sc-72"><span class="linenos">72</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="segment_subject_sc-73"><a href="#segment_subject_sc-73"><span class="linenos">73</span></a>        <span class="n">output_xfm_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_XFM]&quot;</span><span class="p">),</span>
+</span><span id="segment_subject_sc-73"><a href="#segment_subject_sc-73"><span class="linenos">73</span></a>        <span class="n">output_xfm_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">outxfm</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
 </span><span id="segment_subject_sc-74"><a href="#segment_subject_sc-74"><span class="linenos">74</span></a>    <span class="p">)</span>
 </span><span id="segment_subject_sc-75"><a href="#segment_subject_sc-75"><span class="linenos">75</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="segment_subject_sc-76"><a href="#segment_subject_sc-76"><span class="linenos">76</span></a>    <span class="k">return</span> <span class="n">ret</span>

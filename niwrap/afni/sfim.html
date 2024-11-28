@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">SFIM_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c268a573c2f59491457aa513f02590c3c7e8c148.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;62032460073e6537145dc05bebbde2400a1cbdbc.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sfim&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_files</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_files</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output image file for interval &#39;i&#39; with task state name.&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
@@ -151,7 +151,7 @@
 </span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[INPUT_FILES...]&quot;</span><span class="p">)</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SfimOutputs</span><span class="p">(</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX].*.i&quot;</span><span class="p">),</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;.*.i&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="p">)</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -170,7 +170,7 @@
                     <div class="attr variable">
             <span class="name">SFIM_METADATA</span>        =
 <input id="SFIM_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SFIM_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c268a573c2f59491457aa513f02590c3c7e8c148.boutiques&#39;, name=&#39;sfim&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SFIM_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;62032460073e6537145dc05bebbde2400a1cbdbc.boutiques&#39;, name=&#39;sfim&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -196,7 +196,7 @@
 </span><span id="SfimOutputs-21"><a href="#SfimOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="SfimOutputs-22"><a href="#SfimOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="SfimOutputs-23"><a href="#SfimOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="SfimOutputs-24"><a href="#SfimOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_files</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="SfimOutputs-24"><a href="#SfimOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_files</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="SfimOutputs-25"><a href="#SfimOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output image file for interval &#39;i&#39; with task state name.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -208,7 +208,7 @@
                             <div id="SfimOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SfimOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_files</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">SfimOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_files</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -234,7 +234,7 @@
                             </div>
                             <div id="SfimOutputs.output_files" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_files</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">output_files</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -310,7 +310,7 @@
 </span><span id="sfim-78"><a href="#sfim-78"><span class="linenos">78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[INPUT_FILES...]&quot;</span><span class="p">)</span>
 </span><span id="sfim-79"><a href="#sfim-79"><span class="linenos">79</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SfimOutputs</span><span class="p">(</span>
 </span><span id="sfim-80"><a href="#sfim-80"><span class="linenos">80</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="sfim-81"><a href="#sfim-81"><span class="linenos">81</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX].*.i&quot;</span><span class="p">),</span>
+</span><span id="sfim-81"><a href="#sfim-81"><span class="linenos">81</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;.*.i&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="sfim-82"><a href="#sfim-82"><span class="linenos">82</span></a>    <span class="p">)</span>
 </span><span id="sfim-83"><a href="#sfim-83"><span class="linenos">83</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="sfim-84"><a href="#sfim-84"><span class="linenos">84</span></a>    <span class="k">return</span> <span class="n">ret</span>

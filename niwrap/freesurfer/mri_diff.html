@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_DIFF_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;25f194ad71f142307e423c2ecb9f6efab14f7279.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e29e7f056291727390ed03afe0470b3873fe4e24.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_diff&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -100,11 +100,11 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">log_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">log_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Log file containing difference information.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">difference_image_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">difference_image_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Difference image output file.&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">suspicious_difference_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">suspicious_difference_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Volume with suspicious differences labeled.&quot;&quot;&quot;</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
@@ -283,9 +283,9 @@
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriDiffOutputs</span><span class="p">(</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">log_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[LOG]&quot;</span><span class="p">),</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">difference_image_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[DIFF]&quot;</span><span class="p">),</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">suspicious_difference_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[SUSPICIOUS_DIFF_VOL]&quot;</span><span class="p">),</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">log_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">log_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">difference_image_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">difference_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">difference_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">suspicious_difference_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">suspicious_diff_volume</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">suspicious_diff_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="p">)</span>
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -304,7 +304,7 @@
                     <div class="attr variable">
             <span class="name">MRI_DIFF_METADATA</span>        =
 <input id="MRI_DIFF_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_DIFF_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;25f194ad71f142307e423c2ecb9f6efab14f7279.boutiques&#39;, name=&#39;mri_diff&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_DIFF_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e29e7f056291727390ed03afe0470b3873fe4e24.boutiques&#39;, name=&#39;mri_diff&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -330,11 +330,11 @@
 </span><span id="MriDiffOutputs-21"><a href="#MriDiffOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="MriDiffOutputs-22"><a href="#MriDiffOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="MriDiffOutputs-23"><a href="#MriDiffOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="MriDiffOutputs-24"><a href="#MriDiffOutputs-24"><span class="linenos">24</span></a>    <span class="n">log_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="MriDiffOutputs-24"><a href="#MriDiffOutputs-24"><span class="linenos">24</span></a>    <span class="n">log_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="MriDiffOutputs-25"><a href="#MriDiffOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Log file containing difference information.&quot;&quot;&quot;</span>
-</span><span id="MriDiffOutputs-26"><a href="#MriDiffOutputs-26"><span class="linenos">26</span></a>    <span class="n">difference_image_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="MriDiffOutputs-26"><a href="#MriDiffOutputs-26"><span class="linenos">26</span></a>    <span class="n">difference_image_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="MriDiffOutputs-27"><a href="#MriDiffOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Difference image output file.&quot;&quot;&quot;</span>
-</span><span id="MriDiffOutputs-28"><a href="#MriDiffOutputs-28"><span class="linenos">28</span></a>    <span class="n">suspicious_difference_output</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="MriDiffOutputs-28"><a href="#MriDiffOutputs-28"><span class="linenos">28</span></a>    <span class="n">suspicious_difference_output</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="MriDiffOutputs-29"><a href="#MriDiffOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Volume with suspicious differences labeled.&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -346,7 +346,7 @@
                             <div id="MriDiffOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MriDiffOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">log_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">difference_image_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">suspicious_difference_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">MriDiffOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">log_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">difference_image_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">suspicious_difference_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -372,7 +372,7 @@
                             </div>
                             <div id="MriDiffOutputs.log_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">log_output</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">log_output</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -385,7 +385,7 @@
                             </div>
                             <div id="MriDiffOutputs.difference_image_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">difference_image_output</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">difference_image_output</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -398,7 +398,7 @@
                             </div>
                             <div id="MriDiffOutputs.suspicious_difference_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">suspicious_difference_output</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">suspicious_difference_output</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -596,9 +596,9 @@
 </span><span id="mri_diff-204"><a href="#mri_diff-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
 </span><span id="mri_diff-205"><a href="#mri_diff-205"><span class="linenos">205</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriDiffOutputs</span><span class="p">(</span>
 </span><span id="mri_diff-206"><a href="#mri_diff-206"><span class="linenos">206</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mri_diff-207"><a href="#mri_diff-207"><span class="linenos">207</span></a>        <span class="n">log_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[LOG]&quot;</span><span class="p">),</span>
-</span><span id="mri_diff-208"><a href="#mri_diff-208"><span class="linenos">208</span></a>        <span class="n">difference_image_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[DIFF]&quot;</span><span class="p">),</span>
-</span><span id="mri_diff-209"><a href="#mri_diff-209"><span class="linenos">209</span></a>        <span class="n">suspicious_difference_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[SUSPICIOUS_DIFF_VOL]&quot;</span><span class="p">),</span>
+</span><span id="mri_diff-207"><a href="#mri_diff-207"><span class="linenos">207</span></a>        <span class="n">log_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">log_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_diff-208"><a href="#mri_diff-208"><span class="linenos">208</span></a>        <span class="n">difference_image_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">difference_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">difference_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_diff-209"><a href="#mri_diff-209"><span class="linenos">209</span></a>        <span class="n">suspicious_difference_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">suspicious_diff_volume</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">suspicious_diff_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="mri_diff-210"><a href="#mri_diff-210"><span class="linenos">210</span></a>    <span class="p">)</span>
 </span><span id="mri_diff-211"><a href="#mri_diff-211"><span class="linenos">211</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mri_diff-212"><a href="#mri_diff-212"><span class="linenos">212</span></a>    <span class="k">return</span> <span class="n">ret</span>

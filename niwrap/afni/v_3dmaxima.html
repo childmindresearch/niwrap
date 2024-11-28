@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V_3DMAXIMA_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1d39fe71b05cbe6682800629be87a886bec8d709.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f8ba8da054bfe915efd0d6532d6b8fe26bfcc7a9.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dmaxima&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_mask</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">output_mask</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output mask dataset with extrema locations&quot;&quot;&quot;</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>
@@ -216,7 +216,7 @@
 </span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dmaximaOutputs</span><span class="p">(</span>
 </span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">output_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]_mask+orig.[HEAD | BRIK]&quot;</span><span class="p">),</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">output_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_mask+orig.[HEAD | BRIK]&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="p">)</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -248,7 +248,7 @@
 </span><span id="V3dmaximaOutputs-21"><a href="#V3dmaximaOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="V3dmaximaOutputs-22"><a href="#V3dmaximaOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dmaximaOutputs-23"><a href="#V3dmaximaOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="V3dmaximaOutputs-24"><a href="#V3dmaximaOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_mask</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="V3dmaximaOutputs-24"><a href="#V3dmaximaOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_mask</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="V3dmaximaOutputs-25"><a href="#V3dmaximaOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output mask dataset with extrema locations&quot;&quot;&quot;</span>
 </span></pre></div>
 
@@ -260,7 +260,7 @@
                             <div id="V3dmaximaOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">V3dmaximaOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">V3dmaximaOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -286,7 +286,7 @@
                             </div>
                             <div id="V3dmaximaOutputs.output_mask" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_mask</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">output_mask</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -302,7 +302,7 @@
                     <div class="attr variable">
             <span class="name">V_3DMAXIMA_METADATA</span>        =
 <input id="V_3DMAXIMA_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3DMAXIMA_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1d39fe71b05cbe6682800629be87a886bec8d709.boutiques&#39;, name=&#39;3dmaxima&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3DMAXIMA_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f8ba8da054bfe915efd0d6532d6b8fe26bfcc7a9.boutiques&#39;, name=&#39;3dmaxima&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -440,7 +440,7 @@
 </span><span id="v_3dmaxima-143"><a href="#v_3dmaxima-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
 </span><span id="v_3dmaxima-144"><a href="#v_3dmaxima-144"><span class="linenos">144</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dmaximaOutputs</span><span class="p">(</span>
 </span><span id="v_3dmaxima-145"><a href="#v_3dmaxima-145"><span class="linenos">145</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3dmaxima-146"><a href="#v_3dmaxima-146"><span class="linenos">146</span></a>        <span class="n">output_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[PREFIX]_mask+orig.[HEAD | BRIK]&quot;</span><span class="p">),</span>
+</span><span id="v_3dmaxima-146"><a href="#v_3dmaxima-146"><span class="linenos">146</span></a>        <span class="n">output_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_mask+orig.[HEAD | BRIK]&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">output_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="v_3dmaxima-147"><a href="#v_3dmaxima-147"><span class="linenos">147</span></a>    <span class="p">)</span>
 </span><span id="v_3dmaxima-148"><a href="#v_3dmaxima-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v_3dmaxima-149"><a href="#v_3dmaxima-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V__SNAPSHOT_VOLREG_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6dd91661ca8e979aafef773137405b89356badf0.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;edc900ca58d61107bee2b644d2625f19238f5714.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@snapshot_volreg&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -94,7 +94,7 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_jpeg</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">output_jpeg</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;JPEG image showing the edges of the EPI dataset overlayed on the</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">    anatomical dataset&quot;&quot;&quot;</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
@@ -135,7 +135,7 @@
 </span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdisplay</span><span class="p">)</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSnapshotVolregOutputs</span><span class="p">(</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[jname].jpg&quot;</span><span class="p">),</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jname</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="p">)</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -167,7 +167,7 @@
 </span><span id="VSnapshotVolregOutputs-21"><a href="#VSnapshotVolregOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="VSnapshotVolregOutputs-22"><a href="#VSnapshotVolregOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="VSnapshotVolregOutputs-23"><a href="#VSnapshotVolregOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="VSnapshotVolregOutputs-24"><a href="#VSnapshotVolregOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_jpeg</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="VSnapshotVolregOutputs-24"><a href="#VSnapshotVolregOutputs-24"><span class="linenos">24</span></a>    <span class="n">output_jpeg</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="VSnapshotVolregOutputs-25"><a href="#VSnapshotVolregOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;JPEG image showing the edges of the EPI dataset overlayed on the</span>
 </span><span id="VSnapshotVolregOutputs-26"><a href="#VSnapshotVolregOutputs-26"><span class="linenos">26</span></a><span class="sd">    anatomical dataset&quot;&quot;&quot;</span>
 </span></pre></div>
@@ -180,7 +180,7 @@
                             <div id="VSnapshotVolregOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">VSnapshotVolregOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_jpeg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">VSnapshotVolregOutputs</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">output_jpeg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -206,7 +206,7 @@
                             </div>
                             <div id="VSnapshotVolregOutputs.output_jpeg" class="classattr">
                                 <div class="attr variable">
-            <span class="name">output_jpeg</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">output_jpeg</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
@@ -223,7 +223,7 @@ anatomical dataset</p>
                     <div class="attr variable">
             <span class="name">V__SNAPSHOT_VOLREG_METADATA</span>        =
 <input id="V__SNAPSHOT_VOLREG_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__SNAPSHOT_VOLREG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6dd91661ca8e979aafef773137405b89356badf0.boutiques&#39;, name=&#39;@snapshot_volreg&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__SNAPSHOT_VOLREG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;edc900ca58d61107bee2b644d2625f19238f5714.boutiques&#39;, name=&#39;@snapshot_volreg&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -279,7 +279,7 @@ anatomical dataset</p>
 </span><span id="v__snapshot_volreg-62"><a href="#v__snapshot_volreg-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdisplay</span><span class="p">)</span>
 </span><span id="v__snapshot_volreg-63"><a href="#v__snapshot_volreg-63"><span class="linenos">63</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSnapshotVolregOutputs</span><span class="p">(</span>
 </span><span id="v__snapshot_volreg-64"><a href="#v__snapshot_volreg-64"><span class="linenos">64</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__snapshot_volreg-65"><a href="#v__snapshot_volreg-65"><span class="linenos">65</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[jname].jpg&quot;</span><span class="p">),</span>
+</span><span id="v__snapshot_volreg-65"><a href="#v__snapshot_volreg-65"><span class="linenos">65</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jname</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="v__snapshot_volreg-66"><a href="#v__snapshot_volreg-66"><span class="linenos">66</span></a>    <span class="p">)</span>
 </span><span id="v__snapshot_volreg-67"><a href="#v__snapshot_volreg-67"><span class="linenos">67</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="v__snapshot_volreg-68"><a href="#v__snapshot_volreg-68"><span class="linenos">68</span></a>    <span class="k">return</span> <span class="n">ret</span>

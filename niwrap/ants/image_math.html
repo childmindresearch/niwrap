@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">IMAGE_MATH_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9d75874ee43e66e17e895079992b1c3399855848.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f5740d314a9baf77fb8fa3899fa5f569f4daee75.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ImageMath&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;ants&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;antsx/ants:v2.5.3&quot;</span><span class="p">,</span>
@@ -138,7 +138,7 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image2</span><span class="p">))</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ImageMathOutputs</span><span class="p">(</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">output_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OutputImage]&quot;</span><span class="p">),</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">output_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="p">)</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -157,7 +157,7 @@
                     <div class="attr variable">
             <span class="name">IMAGE_MATH_METADATA</span>        =
 <input id="IMAGE_MATH_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="IMAGE_MATH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9d75874ee43e66e17e895079992b1c3399855848.boutiques&#39;, name=&#39;ImageMath&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
+            <label class="view-value-button pdoc-button" for="IMAGE_MATH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f5740d314a9baf77fb8fa3899fa5f569f4daee75.boutiques&#39;, name=&#39;ImageMath&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
 
         
     </div>
@@ -284,7 +284,7 @@
 </span><span id="image_math-65"><a href="#image_math-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image2</span><span class="p">))</span>
 </span><span id="image_math-66"><a href="#image_math-66"><span class="linenos">66</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ImageMathOutputs</span><span class="p">(</span>
 </span><span id="image_math-67"><a href="#image_math-67"><span class="linenos">67</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="image_math-68"><a href="#image_math-68"><span class="linenos">68</span></a>        <span class="n">output_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OutputImage]&quot;</span><span class="p">),</span>
+</span><span id="image_math-68"><a href="#image_math-68"><span class="linenos">68</span></a>        <span class="n">output_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
 </span><span id="image_math-69"><a href="#image_math-69"><span class="linenos">69</span></a>    <span class="p">)</span>
 </span><span id="image_math-70"><a href="#image_math-70"><span class="linenos">70</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="image_math-71"><a href="#image_math-71"><span class="linenos">71</span></a>    <span class="k">return</span> <span class="n">ret</span>

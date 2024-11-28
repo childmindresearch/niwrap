@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FSL_RIGID_REGISTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d0132be9030531b5927bb6a94641b3b22d5a18af.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;86ae5f77c79298b854bf775bed382049d793e4ae.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fsl_rigid_register&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -257,7 +257,7 @@
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
 </span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslRigidRegisterOutputs</span><span class="p">(</span>
 </span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">fslmat_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_VOLUME].fslmat&quot;</span><span class="p">),</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">fslmat_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outputvol</span> <span class="o">+</span> <span class="s2">&quot;.fslmat&quot;</span><span class="p">),</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="p">)</span>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -276,7 +276,7 @@
                     <div class="attr variable">
             <span class="name">FSL_RIGID_REGISTER_METADATA</span>        =
 <input id="FSL_RIGID_REGISTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSL_RIGID_REGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d0132be9030531b5927bb6a94641b3b22d5a18af.boutiques&#39;, name=&#39;fsl_rigid_register&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSL_RIGID_REGISTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;86ae5f77c79298b854bf775bed382049d793e4ae.boutiques&#39;, name=&#39;fsl_rigid_register&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -522,7 +522,7 @@
 </span><span id="fsl_rigid_register-184"><a href="#fsl_rigid_register-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
 </span><span id="fsl_rigid_register-185"><a href="#fsl_rigid_register-185"><span class="linenos">185</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslRigidRegisterOutputs</span><span class="p">(</span>
 </span><span id="fsl_rigid_register-186"><a href="#fsl_rigid_register-186"><span class="linenos">186</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fsl_rigid_register-187"><a href="#fsl_rigid_register-187"><span class="linenos">187</span></a>        <span class="n">fslmat_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_VOLUME].fslmat&quot;</span><span class="p">),</span>
+</span><span id="fsl_rigid_register-187"><a href="#fsl_rigid_register-187"><span class="linenos">187</span></a>        <span class="n">fslmat_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outputvol</span> <span class="o">+</span> <span class="s2">&quot;.fslmat&quot;</span><span class="p">),</span>
 </span><span id="fsl_rigid_register-188"><a href="#fsl_rigid_register-188"><span class="linenos">188</span></a>    <span class="p">)</span>
 </span><span id="fsl_rigid_register-189"><a href="#fsl_rigid_register-189"><span class="linenos">189</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="fsl_rigid_register-190"><a href="#fsl_rigid_register-190"><span class="linenos">190</span></a>    <span class="k">return</span> <span class="n">ret</span>

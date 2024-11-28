@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">MRI_GCUT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c5249bb02ffa774a12c2ba2999c969936e366408.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2d7a317ffc88d0aa0b30756aff0cdbaa297fc3a1.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_gcut&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -149,7 +149,7 @@
 </span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriGcutOutputs</span><span class="p">(</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">output_mask_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_FILE]&quot;</span><span class="p">),</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">output_mask_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span><span class="p">),</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="p">)</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -168,7 +168,7 @@
                     <div class="attr variable">
             <span class="name">MRI_GCUT_METADATA</span>        =
 <input id="MRI_GCUT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_GCUT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c5249bb02ffa774a12c2ba2999c969936e366408.boutiques&#39;, name=&#39;mri_gcut&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_GCUT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2d7a317ffc88d0aa0b30756aff0cdbaa297fc3a1.boutiques&#39;, name=&#39;mri_gcut&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -306,7 +306,7 @@
 </span><span id="mri_gcut-76"><a href="#mri_gcut-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 </span><span id="mri_gcut-77"><a href="#mri_gcut-77"><span class="linenos">77</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriGcutOutputs</span><span class="p">(</span>
 </span><span id="mri_gcut-78"><a href="#mri_gcut-78"><span class="linenos">78</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mri_gcut-79"><a href="#mri_gcut-79"><span class="linenos">79</span></a>        <span class="n">output_mask_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[OUTPUT_FILE]&quot;</span><span class="p">),</span>
+</span><span id="mri_gcut-79"><a href="#mri_gcut-79"><span class="linenos">79</span></a>        <span class="n">output_mask_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span><span class="p">),</span>
 </span><span id="mri_gcut-80"><a href="#mri_gcut-80"><span class="linenos">80</span></a>    <span class="p">)</span>
 </span><span id="mri_gcut-81"><a href="#mri_gcut-81"><span class="linenos">81</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mri_gcut-82"><a href="#mri_gcut-82"><span class="linenos">82</span></a>    <span class="k">return</span> <span class="n">ret</span>

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRIS_SEG2ANNOT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;02c2933faf06bf35df0cebb056df7d2c7bbddc79.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4bbdc9d57b691b8f7d4b0333b1d194fbe54c8e5b.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mris_seg2annot&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -185,7 +185,7 @@
 </span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
 </span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisSeg2annotOutputs</span><span class="p">(</span>
 </span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">annotation_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[ANNOT]&quot;</span><span class="p">),</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">annotation_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">output_annotation</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="p">)</span>
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">return</span> <span class="n">ret</span>
@@ -204,7 +204,7 @@
                     <div class="attr variable">
             <span class="name">MRIS_SEG2ANNOT_METADATA</span>        =
 <input id="MRIS_SEG2ANNOT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRIS_SEG2ANNOT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;02c2933faf06bf35df0cebb056df7d2c7bbddc79.boutiques&#39;, name=&#39;mris_seg2annot&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRIS_SEG2ANNOT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4bbdc9d57b691b8f7d4b0333b1d194fbe54c8e5b.boutiques&#39;, name=&#39;mris_seg2annot&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -378,7 +378,7 @@
 </span><span id="mris_seg2annot-112"><a href="#mris_seg2annot-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--version&quot;</span><span class="p">)</span>
 </span><span id="mris_seg2annot-113"><a href="#mris_seg2annot-113"><span class="linenos">113</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrisSeg2annotOutputs</span><span class="p">(</span>
 </span><span id="mris_seg2annot-114"><a href="#mris_seg2annot-114"><span class="linenos">114</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mris_seg2annot-115"><a href="#mris_seg2annot-115"><span class="linenos">115</span></a>        <span class="n">annotation_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[ANNOT]&quot;</span><span class="p">),</span>
+</span><span id="mris_seg2annot-115"><a href="#mris_seg2annot-115"><span class="linenos">115</span></a>        <span class="n">annotation_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">output_annotation</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
 </span><span id="mris_seg2annot-116"><a href="#mris_seg2annot-116"><span class="linenos">116</span></a>    <span class="p">)</span>
 </span><span id="mris_seg2annot-117"><a href="#mris_seg2annot-117"><span class="linenos">117</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
 </span><span id="mris_seg2annot-118"><a href="#mris_seg2annot-118"><span class="linenos">118</span></a>    <span class="k">return</span> <span class="n">ret</span>
