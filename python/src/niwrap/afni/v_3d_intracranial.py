@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_INTRACRANIAL_METADATA = Metadata(
-    id="7db670af0f7c48d8939167bf8be7fb82517885c7.boutiques",
+    id="ea8145ebdfe6804031df6749fa5d0cbc04870c58.boutiques",
     name="3dIntracranial",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MINC2SEQINFO_METADATA = Metadata(
-    id="2618cc94af668f6fd1cbbcc8660cef2e1128d429.boutiques",
+    id="30fbf462a54b5ca1f7c6f0f4e71bda9dbde0712d.boutiques",
     name="minc2seqinfo",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

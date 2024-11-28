@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_POLV_METADATA = Metadata(
-    id="5b2e1dfad71b72d62e5550dacd56c30b855b9f8b.boutiques",
+    id="ee8644189f031978bc3740be0222cfee554fee9b.boutiques",
     name="mri_polv",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -23,6 +23,8 @@ class MriPolvOutputs(typing.NamedTuple):
 
 
 def mri_polv(
+    input_image: InputPathType,
+    output_image: InputPathType,
     window_size: float | None = None,
     runner: Runner | None = None,
 ) -> MriPolvOutputs:
@@ -35,6 +37,9 @@ def mri_polv(
     URL: https://github.com/freesurfer/freesurfer
     
     Args:
+        input_image: The input image file for processing.
+        output_image: The output image file specifying the plane of least\
+            variance.
         window_size: Specify the window size to be used in the calculation of\
             the central plane of least variance (default=5).
         runner: Command runner.
@@ -50,10 +55,8 @@ def mri_polv(
             "-w",
             str(window_size)
         ])
-    cargs.append("<input")
-    cargs.append("image>")
-    cargs.append("<output")
-    cargs.append("image>")
+    cargs.append(execution.input_file(input_image))
+    cargs.append(execution.input_file(output_image))
     ret = MriPolvOutputs(
         root=execution.output_file("."),
     )

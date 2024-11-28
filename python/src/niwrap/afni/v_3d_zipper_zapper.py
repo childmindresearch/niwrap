@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZIPPER_ZAPPER_METADATA = Metadata(
-    id="59bf83e360ae4ac1e37861ff59c471a75dc9046f.boutiques",
+    id="345c0ab457fab3fd59e06829b589145ef0e78581.boutiques",
     name="3dZipperZapper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

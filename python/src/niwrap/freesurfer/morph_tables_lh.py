@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MORPH_TABLES_LH_METADATA = Metadata(
-    id="42dd91a2f6c5e895c6cc64ec8042494b62d44616.boutiques",
+    id="e50487cf18790588cbef4e2983a79d88589f3cc3.boutiques",
     name="morph_tables-lh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

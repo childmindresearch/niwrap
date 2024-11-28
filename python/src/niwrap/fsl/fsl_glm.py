@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GLM_METADATA = Metadata(
-    id="8925400855341d346d1fb96ca644c8aaa7967a1b.boutiques",
+    id="9648bffbdbeee6a2ce3b715781acb1cab13affd4.boutiques",
     name="fsl_glm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -22,28 +22,28 @@ class FslGlmOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file_out: OutputPathType | None
     """Output file name for GLM parameter estimates (GLM betas)"""
-    output_copes_out: OutputPathType | None
+    output_copes_out: OutputPathType
     """Output file name for COPEs (either as text file or image)"""
-    output_zstats_out: OutputPathType | None
+    output_zstats_out: OutputPathType
     """Output file name for Z-stats (either as text file or image)"""
-    output_tstats_out: OutputPathType | None
+    output_tstats_out: OutputPathType
     """Output file name for t-stats (either as text file or image)"""
-    output_pvals_out: OutputPathType | None
+    output_pvals_out: OutputPathType
     """Output file name for p-values of Z-stats (either as text file or
     image)"""
-    output_fvals_out: OutputPathType | None
+    output_fvals_out: OutputPathType
     """Output file name for F-value of full model fit"""
-    output_pfvals_out: OutputPathType | None
+    output_pfvals_out: OutputPathType
     """Output file name for p-value for full model fit"""
-    output_residuals_out: OutputPathType | None
+    output_residuals_out: OutputPathType
     """Output file name for residuals"""
-    output_varcb_out: OutputPathType | None
+    output_varcb_out: OutputPathType
     """Output file name for variance of COPEs"""
-    output_sigsq_out: OutputPathType | None
+    output_sigsq_out: OutputPathType
     """Output file name for residual noise variance sigma-square"""
-    output_data_out: OutputPathType | None
+    output_data_out: OutputPathType
     """Output file name for pre-processed data"""
-    output_vnscales_out: OutputPathType | None
+    output_vnscales_out: OutputPathType
     """Output file name for scaling factors for variance normalisation"""
 
 
@@ -230,17 +230,17 @@ def fsl_glm(
     ret = FslGlmOutputs(
         root=execution.output_file("."),
         output_file_out=execution.output_file(pathlib.Path(output_file).name + ".nii.gz") if (output_file is not None) else None,
-        output_copes_out=execution.output_file(pathlib.Path(output_copes).name + ".nii.gz") if (output_copes is not None) else None,
-        output_zstats_out=execution.output_file(pathlib.Path(output_zstats).name + ".nii.gz") if (output_zstats is not None) else None,
-        output_tstats_out=execution.output_file(pathlib.Path(output_tstats).name + ".nii.gz") if (output_tstats is not None) else None,
-        output_pvals_out=execution.output_file(pathlib.Path(output_pvals).name + ".nii.gz") if (output_pvals is not None) else None,
-        output_fvals_out=execution.output_file(pathlib.Path(output_fvals).name + ".nii.gz") if (output_fvals is not None) else None,
-        output_pfvals_out=execution.output_file(pathlib.Path(output_pfvals).name + ".nii.gz") if (output_pfvals is not None) else None,
-        output_residuals_out=execution.output_file(pathlib.Path(output_residuals).name + ".nii.gz") if (output_residuals is not None) else None,
-        output_varcb_out=execution.output_file(pathlib.Path(output_varcb).name + ".nii.gz") if (output_varcb is not None) else None,
-        output_sigsq_out=execution.output_file(pathlib.Path(output_sigsq).name + ".nii.gz") if (output_sigsq is not None) else None,
-        output_data_out=execution.output_file(pathlib.Path(output_data).name + ".nii.gz") if (output_data is not None) else None,
-        output_vnscales_out=execution.output_file(pathlib.Path(output_vnscales).name + ".nii.gz") if (output_vnscales is not None) else None,
+        output_copes_out=execution.output_file("[OUT_COPE].nii.gz"),
+        output_zstats_out=execution.output_file("[OUT_Z].nii.gz"),
+        output_tstats_out=execution.output_file("[OUT_T].nii.gz"),
+        output_pvals_out=execution.output_file("[OUT_P].nii.gz"),
+        output_fvals_out=execution.output_file("[OUT_F].nii.gz"),
+        output_pfvals_out=execution.output_file("[OUT_PF].nii.gz"),
+        output_residuals_out=execution.output_file("[OUT_RESIDUALS].nii.gz"),
+        output_varcb_out=execution.output_file("[OUT_VARCB].nii.gz"),
+        output_sigsq_out=execution.output_file("[OUT_SIGSQ].nii.gz"),
+        output_data_out=execution.output_file("[OUT_DATA].nii.gz"),
+        output_vnscales_out=execution.output_file("[OUT_VNSCALES].nii.gz"),
     )
     execution.run(cargs)
     return ret

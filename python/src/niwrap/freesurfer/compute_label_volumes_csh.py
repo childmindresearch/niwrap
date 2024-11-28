@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COMPUTE_LABEL_VOLUMES_CSH_METADATA = Metadata(
-    id="418b0d6958bf1f657603e092ed61025fd745fccb.boutiques",
+    id="82638ae4faa0eb9506df9c2f3a56c833cb5de288.boutiques",
     name="compute_label_volumes.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

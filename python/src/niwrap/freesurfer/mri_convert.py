@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CONVERT_METADATA = Metadata(
-    id="4e9818fdd5e94a050ea171ca49257702767a8d61.boutiques",
+    id="91d346800f64f183251863d16ea75e605c4bea76.boutiques",
     name="mri_convert",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,7 +53,7 @@ def mri_convert(
     cargs.append("[OPTIONS]")
     ret = MriConvertOutputs(
         root=execution.output_file("."),
-        converted_volume=execution.output_file(out_volume),
+        converted_volume=execution.output_file("[OUTPUT_VOLUME]"),
     )
     execution.run(cargs)
     return ret

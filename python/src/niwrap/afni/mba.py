@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MBA_METADATA = Metadata(
-    id="cee08b6858733246df01cc8fbb1acb20fffe47a7.boutiques",
+    id="059fc53a2cd6a388de1ea8621432513816e71ccc.boutiques",
     name="MBA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

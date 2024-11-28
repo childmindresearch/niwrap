@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONF2HIRES_METADATA = Metadata(
-    id="d88c415cfe7710022489b0fde82db6245d2ed466.boutiques",
+    id="0daec93cecaaf674dbbc3d770b70999cf8bff082.boutiques",
     name="conf2hires",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

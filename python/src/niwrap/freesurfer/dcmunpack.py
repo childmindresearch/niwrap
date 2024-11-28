@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMUNPACK_METADATA = Metadata(
-    id="1ee2d465c05d76547f4d9c2da842a4cadec0a48d.boutiques",
+    id="01d871981fcfe7211d8f4250bbd352a2a097e2e7.boutiques",
     name="dcmunpack",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

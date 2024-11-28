@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_AVERAGE_SURFACE_METADATA = Metadata(
-    id="d8f4d30d12c54b84a501bdd27b5de0f49fe3cde0.boutiques",
+    id="f27d1881cb0ec462784332cf8519b93ee957748e.boutiques",
     name="make_average_surface",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

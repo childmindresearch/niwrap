@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_ASL_METADATA = Metadata(
-    id="647be30118b780fbc6ab5e74dac57d1cebe1cb75.boutiques",
+    id="20d3077b2c09a69a00a157fe9c75eb08363a8fcf.boutiques",
     name="fabber_asl",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -208,18 +208,18 @@ def fabber_asl(
         cargs.append("--debug")
     ret = FabberAslOutputs(
         root=execution.output_file("."),
-        logfile=execution.output_file(output + "/logfile.txt"),
-        modelfit=execution.output_file(output + "/model_fit.nii.gz"),
-        residuals=execution.output_file(output + "/residuals.nii.gz"),
-        model_extras=execution.output_file(output + "/extras.nii.gz"),
-        mvn=execution.output_file(output + "/mvn.nii.gz"),
-        means=execution.output_file(output + "/means.nii.gz"),
-        stds=execution.output_file(output + "/stds.nii.gz"),
-        variances=execution.output_file(output + "/variances.nii.gz"),
-        zstats=execution.output_file(output + "/zstats.nii.gz"),
-        noise_means=execution.output_file(output + "/noise_means.nii.gz"),
-        noise_stds=execution.output_file(output + "/noise_stds.nii.gz"),
-        free_energy=execution.output_file(output + "/free_energy.nii.gz"),
+        logfile=execution.output_file("[--output]/logfile.txt"),
+        modelfit=execution.output_file("[--output]/model_fit.nii.gz"),
+        residuals=execution.output_file("[--output]/residuals.nii.gz"),
+        model_extras=execution.output_file("[--output]/extras.nii.gz"),
+        mvn=execution.output_file("[--output]/mvn.nii.gz"),
+        means=execution.output_file("[--output]/means.nii.gz"),
+        stds=execution.output_file("[--output]/stds.nii.gz"),
+        variances=execution.output_file("[--output]/variances.nii.gz"),
+        zstats=execution.output_file("[--output]/zstats.nii.gz"),
+        noise_means=execution.output_file("[--output]/noise_means.nii.gz"),
+        noise_stds=execution.output_file("[--output]/noise_stds.nii.gz"),
+        free_energy=execution.output_file("[--output]/free_energy.nii.gz"),
     )
     execution.run(cargs)
     return ret

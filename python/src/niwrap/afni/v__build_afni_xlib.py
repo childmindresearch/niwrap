@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__BUILD_AFNI_XLIB_METADATA = Metadata(
-    id="121cbb94304d7b6be810fff619244ff26d2a3235.boutiques",
+    id="335ac2386eff0dba38cfaae81dacca730457f4a7.boutiques",
     name="@build_afni_Xlib",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

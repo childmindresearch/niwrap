@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMATHS_FSL_METADATA = Metadata(
-    id="c5d098aeabe3f4d6cddc0fbe5624ad590734fe4d.boutiques",
+    id="0fc1dcc63dcca8ded5c692ed26e97be92efb68cf.boutiques",
     name="fslmaths.fsl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,7 +56,7 @@ def fslmaths_fsl(
     cargs.append(output_image)
     ret = FslmathsFslOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(output_image + ".nii.gz"),
+        output_file=execution.output_file("[OUTPUT].nii.gz"),
     )
     execution.run(cargs)
     return ret

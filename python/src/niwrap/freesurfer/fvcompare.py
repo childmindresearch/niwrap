@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FVCOMPARE_METADATA = Metadata(
-    id="7fa76b45e5c4f68bd511d32e7865bc3cf9e5d624.boutiques",
+    id="84e27ef54cc73075db70cca3ebbdd40631c9472d.boutiques",
     name="fvcompare",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

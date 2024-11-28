@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUICKSPEC_SL_METADATA = Metadata(
-    id="709c9014405509633a9c09650fc2fcd19e49e093.boutiques",
+    id="25906cfa619866947e348b53b2e212694192bdac.boutiques",
     name="quickspecSL",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class QuickspecSlOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_spec_file: OutputPathType | None
+    output_spec_file: OutputPathType
     """Output spec file"""
 
 
@@ -105,7 +105,7 @@ def quickspec_sl(
         ])
     ret = QuickspecSlOutputs(
         root=execution.output_file("."),
-        output_spec_file=execution.output_file(out_spec) if (out_spec is not None) else None,
+        output_spec_file=execution.output_file("[out_spec]"),
     )
     execution.run(cargs)
     return ret

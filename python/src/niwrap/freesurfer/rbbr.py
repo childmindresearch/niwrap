@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RBBR_METADATA = Metadata(
-    id="4b521df5d260eef774b777205fa0b7feecebbc20.boutiques",
+    id="6f8461b7fae6d16cb41c5377c9a0a117f94c76da.boutiques",
     name="rbbr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

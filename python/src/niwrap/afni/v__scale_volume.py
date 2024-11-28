@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SCALE_VOLUME_METADATA = Metadata(
-    id="6e46cf21f8a20a776ceb86c492abbe680f609ab9.boutiques",
+    id="4000996fdc6423040b991fc320209305f64cb474.boutiques",
     name="@ScaleVolume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,8 @@ class VScaleVolumeOutputs(typing.NamedTuple):
 
 
 def v__scale_volume(
+    input_dset: InputPathType,
+    prefix: str,
     val_clip: list[float] | None = None,
     perc_clip: list[float] | None = None,
     scale_by_mean: bool = False,
@@ -41,6 +43,8 @@ def v__scale_volume(
     URL: https://afni.nimh.nih.gov/
     
     Args:
+        input_dset: Dataset to scale.
+        prefix: Prefix of output.
         val_clip: Min and Max of output dataset. Default V0 = 0 and V1 = 255.
         perc_clip: Set lowest P0 percentile to Min and highest P1 percentile to\
             Max. Default P0 = 2 and P1 = 98.
@@ -56,10 +60,8 @@ def v__scale_volume(
     execution = runner.start_execution(V__SCALE_VOLUME_METADATA)
     cargs = []
     cargs.append("@ScaleVolume")
-    cargs.append("[<-input")
-    cargs.append("DSET>]")
-    cargs.append("[<-prefix")
-    cargs.append("PREFIX>]")
+    cargs.append(execution.input_file(input_dset))
+    cargs.append(prefix)
     if val_clip is not None:
         cargs.extend([
             "-val_clip",

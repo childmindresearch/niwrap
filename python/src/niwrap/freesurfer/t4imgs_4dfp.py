@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 T4IMGS_4DFP_METADATA = Metadata(
-    id="a154bb5e4aacadb2e39707827d23586655ffa48d.boutiques",
+    id="2cb1011e6ca0db115fe257bbe87f3ef35e7c409a.boutiques",
     name="t4imgs_4dfp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def t4imgs_4dfp(
     cargs.append(output_image)
     ret = T4imgs4dfpOutputs(
         root=execution.output_file("."),
-        transformed_image=execution.output_file(output_image + ".4dfp.img"),
+        transformed_image=execution.output_file("<outfile>.4dfp.img"),
     )
     execution.run(cargs)
     return ret

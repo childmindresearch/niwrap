@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_SEM_METADATA = Metadata(
-    id="5e2db5b8050b3ebdeb052af73814a070e4f66f50.boutiques",
+    id="22951ac5931e28304cde031a44c651e57c4e4a1e.boutiques",
     name="1dSEM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

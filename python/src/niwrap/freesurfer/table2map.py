@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TABLE2MAP_METADATA = Metadata(
-    id="0d6ae0c89d189ffeba6b927be0f918cdb263bd3c.boutiques",
+    id="a1a6b6fb84c32df9b568c86f461d163ba6cbfca6.boutiques",
     name="table2map",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

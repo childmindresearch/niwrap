@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LTA_CONVERT_METADATA = Metadata(
-    id="fda8f8408326eb507d1403fd991850135d27088a.boutiques",
+    id="a92453bfca499bd5b5d27b5bd925100c1196d856.boutiques",
     name="lta_convert",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class LtaConvertOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_transform_file: OutputPathType | None
+    output_transform_file: OutputPathType
     """Output transformed file."""
 
 
@@ -98,7 +98,7 @@ def lta_convert(
         ])
     ret = LtaConvertOutputs(
         root=execution.output_file("."),
-        output_transform_file=execution.output_file(out_vox) if (out_vox is not None) else None,
+        output_transform_file=execution.output_file("[OUTPUT_TRANSFORM]"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCUTUP_METADATA = Metadata(
-    id="763cc3153f2643aeee624c066590a03d172b8915.boutiques",
+    id="c6720883b035e5563db58f224b753e6f36859ae7.boutiques",
     name="imcutup",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class ImcutupOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_files: OutputPathType | None
+    output_files: OutputPathType
     """Output smaller images with the specified prefix numbering format."""
 
 
@@ -77,7 +77,7 @@ def imcutup(
     cargs.append(execution.input_file(input_file))
     ret = ImcutupOutputs(
         root=execution.output_file("."),
-        output_files=execution.output_file(prefix + "*") if (prefix is not None) else None,
+        output_files=execution.output_file("[PREFIX_FLAG]*"),
     )
     execution.run(cargs)
     return ret

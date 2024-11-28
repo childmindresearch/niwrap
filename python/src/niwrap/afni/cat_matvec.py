@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CAT_MATVEC_METADATA = Metadata(
-    id="a2e1e224a82974ccf7750fe559ce685c6d44f16c.boutiques",
+    id="ea044673965ec2f3a89f325814e9677a680c6cec.boutiques",
     name="cat_matvec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

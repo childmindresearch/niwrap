@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_FOLDING_ATLAS_METADATA = Metadata(
-    id="258d2f12890981af480063e6bb0152538296681c.boutiques",
+    id="cd742cf69eb865650042165331953a619d588ea9.boutiques",
     name="make_folding_atlas",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 JKGCATRAIN_METADATA = Metadata(
-    id="3158dd4cb56a36f410666a46376fa363ddf463ff.boutiques",
+    id="9a38b64221a25b990a7d0af6bcb52cf21f4a0120.boutiques",
     name="jkgcatrain",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_SELECT_VOLS_METADATA = Metadata(
-    id="c27364c2adba5f1c68b5b334c56a2d42011c5882.boutiques",
+    id="cb31e14381a19fc82fcd6af91248956f88712afa.boutiques",
     name="fat_proc_select_vols",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -96,7 +96,7 @@ def fat_proc_select_vols(
         cargs.append("-no_cmd_out")
     ret = FatProcSelectVolsOutputs(
         root=execution.output_file("."),
-        output_selector_string=execution.output_file(prefix + "_bads.txt"),
+        output_selector_string=execution.output_file("[OUTPUT_PREFIX]_bads.txt"),
     )
     execution.run(cargs)
     return ret

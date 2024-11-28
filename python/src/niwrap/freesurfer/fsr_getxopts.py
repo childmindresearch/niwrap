@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSR_GETXOPTS_METADATA = Metadata(
-    id="68ba1519eb47ec41d2bbfc2ab9381f55a11f22b3.boutiques",
+    id="224fcae72cefe1195f88d86eb1986d98d2293a58.boutiques",
     name="fsr-getxopts",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

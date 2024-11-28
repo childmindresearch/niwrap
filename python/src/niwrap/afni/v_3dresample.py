@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="94e15f46ce6ba2bb69ccbaccf69cb04ca18e26a5.boutiques",
+    id="cfa06d6b7e49c85c06bf4bb7a0543eefa0c72d03.boutiques",
     name="3dresample",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -91,7 +91,7 @@ def v_3dresample(
         ])
     ret = V3dresampleOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(prefix),
+        out_file=execution.output_file("[OUT_FILE]"),
     )
     execution.run(cargs)
     return ret

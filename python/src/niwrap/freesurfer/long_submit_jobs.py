@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_SUBMIT_JOBS_METADATA = Metadata(
-    id="5f8846c0261e40453390f2ca0aad8e2017ed8e49.boutiques",
+    id="d9fdcdcc044b4b6a583cb8d7681940ebbb389e10.boutiques",
     name="long_submit_jobs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

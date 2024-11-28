@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOL2SEGAVG_METADATA = Metadata(
-    id="0313ef15be91b8f73e686c40e2c62c6dc4ee36b5.boutiques",
+    id="7b297a30e1b7361d1fbe10f65a97238aae9a6a82.boutiques",
     name="vol2segavg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -130,7 +130,7 @@ def vol2segavg(
         cargs.append("--remove-mean")
     ret = Vol2segavgOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(output_file),
+        output_file=execution.output_file("[OUTPUT]"),
     )
     execution.run(cargs)
     return ret

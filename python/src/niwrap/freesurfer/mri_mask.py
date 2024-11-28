@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MASK_METADATA = Metadata(
-    id="07397e391a54faffcda8d36a1570b71ba60400db.boutiques",
+    id="8756814e96d81683a87fee6c496ab7fc63143b44.boutiques",
     name="mri_mask",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -169,7 +169,7 @@ def mri_mask(
         cargs.append("-samseg")
     ret = MriMaskOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(output_volume),
+        output_file=execution.output_file("[OUTPUT_VOL]"),
     )
     execution.run(cargs)
     return ret

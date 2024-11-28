@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COR_TO_MINC_METADATA = Metadata(
-    id="99efcdfdd85cbc062c42edfcf64733e68b808f56.boutiques",
+    id="40b8ba63752dc024cdd4c61323a6a2c0ec2b41fb.boutiques",
     name="cor_to_minc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

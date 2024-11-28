@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DSVM_LINPREDICT_METADATA = Metadata(
-    id="14a78538db163a43a9541ef88dc8c18dcef61d1a.boutiques",
+    id="162a26d7cd1e95514fe2260fa414829582d88bd4.boutiques",
     name="3dsvm_linpredict",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

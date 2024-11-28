@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WHIRLGIF_METADATA = Metadata(
-    id="fbd3d46256780f562676a0024fa2a9e248f8b152.boutiques",
+    id="5014f57fafa702ba3b19014ba3566e92f5e47369.boutiques",
     name="whirlgif",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

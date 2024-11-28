@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZREGRID_METADATA = Metadata(
-    id="b6a8ac20dbb69c9f1827ab515948687aad33cc26.boutiques",
+    id="2597cdebba8fe75de8a28bb8bff140590938cb2b.boutiques",
     name="3dZregrid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

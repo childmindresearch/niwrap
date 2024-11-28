@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEICA_PY_METADATA = Metadata(
-    id="f74f0b9a38cf84a2df2e531cd3a5940642daf32d.boutiques",
+    id="4f8853ae256f37ea17513108bcc3c27cb471dc45.boutiques",
     name="meica.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

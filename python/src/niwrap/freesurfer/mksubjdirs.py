@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MKSUBJDIRS_METADATA = Metadata(
-    id="65f9ba8754dfb3aae4558d4ee9d3c745ee1d118c.boutiques",
+    id="19b08b172da5b6336a32dd0488cf331beb47bbc0.boutiques",
     name="mksubjdirs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

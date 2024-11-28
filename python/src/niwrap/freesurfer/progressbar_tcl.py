@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROGRESSBAR_TCL_METADATA = Metadata(
-    id="3bb02d81db727c9c91e48884c41be0e86b9ee875.boutiques",
+    id="fcbd1c23035db965ccfd3953fbe51d59bf699dbf.boutiques",
     name="progressbar.tcl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

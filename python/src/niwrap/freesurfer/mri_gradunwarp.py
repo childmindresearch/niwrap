@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_GRADUNWARP_METADATA = Metadata(
-    id="31e06eb21eb3eb1926aa92ac10dc09ee2ef8736d.boutiques",
+    id="b0cc1536d78ca9cef5fa233e1c04b509599e2a82.boutiques",
     name="mri_gradunwarp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

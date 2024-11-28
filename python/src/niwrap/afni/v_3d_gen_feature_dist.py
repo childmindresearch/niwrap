@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GEN_FEATURE_DIST_METADATA = Metadata(
-    id="da95cd4ad99ed473c7cd10c18b299096e78c2557.boutiques",
+    id="306602359a0090c4e74a2cc38f89a25555f89cc6.boutiques",
     name="3dGenFeatureDist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

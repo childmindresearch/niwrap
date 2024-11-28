@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FS_TIME_METADATA = Metadata(
-    id="0e7e873373a242f32a0c31984065f30fcd9998d8.boutiques",
+    id="ca61b3d7c09ab70471b0b19e87ec76f60e282835.boutiques",
     name="fs_time",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

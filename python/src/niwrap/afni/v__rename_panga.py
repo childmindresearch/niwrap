@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__RENAME_PANGA_METADATA = Metadata(
-    id="914311314765b2437055f3aa454e935f0c2186ed.boutiques",
+    id="fc436284e4d19008103d6e31378b12da7948cb1f.boutiques",
     name="@RenamePanga",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

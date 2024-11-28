@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TALAIRACH_AVI_METADATA = Metadata(
-    id="1dbadba2e86a11425d27beb758722c54eec8864d.boutiques",
+    id="678baef5e6c260dfc7bf384b2e8261c153d14240.boutiques",
     name="talairach_avi",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

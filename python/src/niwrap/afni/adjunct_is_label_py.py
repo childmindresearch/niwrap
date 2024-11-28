@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_IS_LABEL_PY_METADATA = Metadata(
-    id="3e0e8d04a186b3f9ae56d87ca56ef42ac5b38c81.boutiques",
+    id="fd161fa6ffe35fb86b826e60d07e867baeceef7c.boutiques",
     name="adjunct_is_label.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

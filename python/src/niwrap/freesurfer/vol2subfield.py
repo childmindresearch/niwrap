@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOL2SUBFIELD_METADATA = Metadata(
-    id="54d37afbbc3b9baca02fe7ef43cece72402ac5e1.boutiques",
+    id="ec503af3368509aa5b191ee5f77a6d7c5a57bc38.boutiques",
     name="vol2subfield",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

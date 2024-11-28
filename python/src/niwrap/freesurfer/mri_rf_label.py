@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RF_LABEL_METADATA = Metadata(
-    id="b58ef9f84b1b78f4c220ace3f87cc3538957148d.boutiques",
+    id="99758d7616ca4f61f65200c8a30bd05f887b17bb.boutiques",
     name="mri_rf_label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -40,6 +40,7 @@ def mri_rf_label(
     tr: float | None = None,
     te: float | None = None,
     alpha: float | None = None,
+    example: list[InputPathType] | None = None,
     pthresh: float | None = 0.7,
     niter: float | None = 2,
     novar_flag: bool = False,
@@ -51,6 +52,7 @@ def mri_rf_label(
     renorm: InputPathType | None = None,
     flash_flag: bool = False,
     flash_params: InputPathType | None = None,
+    renormalize: list[float] | None = None,
     set_input: InputPathType | None = None,
     histogram_flag: bool = False,
     cond_density_mean: float | None = None,
@@ -88,6 +90,7 @@ def mri_rf_label(
         tr: Set TR in msec.
         te: Set TE in msec.
         alpha: Set alpha in radians.
+        example: Use T1 (mri_vol) and segmentation as example.
         pthresh: Use p threshold for adaptive renormalization.
         niter: Apply max likelihood for n iterations.
         novar_flag: Do not use variance in classification.
@@ -99,6 +102,8 @@ def mri_rf_label(
         renorm: Renormalize using predicted intensity values.
         flash_flag: Use FLASH forward model to predict intensity values.
         flash_params: Use FLASH forward model and tissue params from file.
+        renormalize: Renorm class means iter times after initial label with\
+            window of wsize.
         set_input: Set input volume.
         histogram_flag: Use GCA to histogram normalize input image.
         cond_density_mean: Mean filter n times to conditional densities.
@@ -170,8 +175,11 @@ def mri_rf_label(
             "-alpha",
             str(alpha)
         ])
-    cargs.append("[EXAMPLE_MRIVOL]")
-    cargs.append("[EXAMPLE_SEGMENTATION]")
+    if example is not None:
+        cargs.extend([
+            "-example",
+            *[execution.input_file(f) for f in example]
+        ])
     if pthresh is not None:
         cargs.extend([
             "-pthresh",
@@ -218,8 +226,11 @@ def mri_rf_label(
             "-flash_params",
             execution.input_file(flash_params)
         ])
-    cargs.append("[RENORMALIZE_WSIZE]")
-    cargs.append("[RENORMALIZE_ITER]")
+    if renormalize is not None:
+        cargs.extend([
+            "-renormalize",
+            *map(str, renormalize)
+        ])
     if set_input is not None:
         cargs.extend([
             "-r",

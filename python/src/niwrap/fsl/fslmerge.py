@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMERGE_METADATA = Metadata(
-    id="fb100402e5330aaf5914fd90b099d50911fd8f63.boutiques",
+    id="ead9f2d7da12c2e1f5607f9cc152da2017eddc87.boutiques",
     name="fslmerge",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

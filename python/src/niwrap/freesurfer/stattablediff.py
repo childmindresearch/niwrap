@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STATTABLEDIFF_METADATA = Metadata(
-    id="da2be9a7f84a137a62df316b44d86990950378e4.boutiques",
+    id="1700b5a4affda702434ee9916d498190f06c350c.boutiques",
     name="stattablediff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

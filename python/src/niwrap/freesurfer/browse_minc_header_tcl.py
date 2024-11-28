@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BROWSE_MINC_HEADER_TCL_METADATA = Metadata(
-    id="be1959aa9203c517963cb45f5dfad38d946d11ab.boutiques",
+    id="d9e64b68673469631420a82f8e3342cb78163bcc.boutiques",
     name="browse-minc-header.tcl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

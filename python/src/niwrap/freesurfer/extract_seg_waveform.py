@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXTRACT_SEG_WAVEFORM_METADATA = Metadata(
-    id="a80fcb36d991ff89ee73362f1c7c3fcc19788c4a.boutiques",
+    id="871847f8fc6a902c317b011804ed6c2c847d8460.boutiques",
     name="extract_seg_waveform",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

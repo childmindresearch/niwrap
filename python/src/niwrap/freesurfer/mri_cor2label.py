@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COR2LABEL_METADATA = Metadata(
-    id="ba706e8b4fff683247f518575534cdcc2fbe2507.boutiques",
+    id="ffd30478cad4b58f147647a24967e0d5b296f13f.boutiques",
     name="mri_cor2label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,7 +22,7 @@ class MriCor2labelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_label_file: OutputPathType
     """Generated label file."""
-    output_volume_file: OutputPathType | None
+    output_volume_file: OutputPathType
     """Written volume label if specified."""
 
 
@@ -133,7 +133,7 @@ def mri_cor2label(
     ret = MriCor2labelOutputs(
         root=execution.output_file("."),
         output_label_file=execution.output_file(label_file),
-        output_volume_file=execution.output_file(volume_file) if (volume_file is not None) else None,
+        output_volume_file=execution.output_file("[VOLUME_FLAG]"),
     )
     execution.run(cargs)
     return ret

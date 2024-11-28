@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_STATS_AC_METADATA = Metadata(
-    id="4bb501f42e946abde325bf18956648552280d71b.boutiques",
+    id="c10a24e19943ae5d908800afb0b5234587f2df44.boutiques",
     name="dmri_stats_ac",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -77,7 +77,7 @@ def dmri_stats_ac(
     ])
     ret = DmriStatsAcOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(output_file),
+        output_file=execution.output_file("[OUTPUT]"),
     )
     execution.run(cargs)
     return ret

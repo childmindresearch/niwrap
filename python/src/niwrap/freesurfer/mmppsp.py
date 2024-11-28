@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MMPPSP_METADATA = Metadata(
-    id="daa297d5819cc2a0b9822e3d8dba8f2c0cf6ddec.boutiques",
+    id="f81f47b918a5f8423b269d5eccc58eb98d9d2e6f.boutiques",
     name="mmppsp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

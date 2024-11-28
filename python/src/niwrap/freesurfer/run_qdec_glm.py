@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_QDEC_GLM_METADATA = Metadata(
-    id="4f2eed57743006c12b9800229fab017b4a60e025.boutiques",
+    id="b83d7c50b5137b0f5530f2c1776edefd9de98fa2.boutiques",
     name="run-qdec-glm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

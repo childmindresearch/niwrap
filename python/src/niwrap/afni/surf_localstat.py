@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_LOCALSTAT_METADATA = Metadata(
-    id="9e3561e89dfa2eba26d8a89cd6cd2dd67777d004.boutiques",
+    id="5a51275b28d3b9824220c99fed994126246f2f36.boutiques",
     name="SurfLocalstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

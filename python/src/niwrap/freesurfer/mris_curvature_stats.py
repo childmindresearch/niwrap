@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_CURVATURE_STATS_METADATA = Metadata(
-    id="6cd091bc49651c76f3ef664e5903a05bf06c81b8.boutiques",
+    id="c1ffe9cc9c6ed791ed2699ef7dba8b20658a30c9.boutiques",
     name="mris_curvature_stats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,7 +53,7 @@ def mris_curvature_stats(
     cargs.append("[CURVFILE...]")
     ret = MrisCurvatureStatsOutputs(
         root=execution.output_file("."),
-        scaled_curvature_file=execution.output_file(subject_name + "/surf/" + hemisphere + ".[CURVFILE].scaled.crv"),
+        scaled_curvature_file=execution.output_file("[SUBJECTNAME]/surf/[HEMI].[CURVFILE].scaled.crv"),
     )
     execution.run(cargs)
     return ret

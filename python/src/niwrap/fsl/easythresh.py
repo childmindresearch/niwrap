@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EASYTHRESH_METADATA = Metadata(
-    id="8a372abdd3823f16b6c17eedf3ee1731f666679e.boutiques",
+    id="98fe51731b5eb29a261a330f299532a959122300.boutiques",
     name="easythresh",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

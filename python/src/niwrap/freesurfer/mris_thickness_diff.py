@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_THICKNESS_DIFF_METADATA = Metadata(
-    id="3fa91831cb39f33a59618e63fade9adb6db1b926.boutiques",
+    id="92fae51c2a1793013f6670dff3c2254a7d947d89.boutiques",
     name="mris_thickness_diff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,7 +22,7 @@ class MrisThicknessDiffOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_difference: OutputPathType
     """Output file with the difference mapped onto the surface"""
-    output_resampled: OutputPathType | None
+    output_resampled: OutputPathType
     """Resampled output thickness file"""
 
 
@@ -133,7 +133,7 @@ def mris_thickness_diff(
     ret = MrisThicknessDiffOutputs(
         root=execution.output_file("."),
         output_difference=execution.output_file(pathlib.Path(out_file).name),
-        output_resampled=execution.output_file(pathlib.Path(out_resampled).name) if (out_resampled is not None) else None,
+        output_resampled=execution.output_file("[OUT_RESAMPLED_FLAG]"),
     )
     execution.run(cargs)
     return ret

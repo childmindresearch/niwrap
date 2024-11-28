@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BBMASK_METADATA = Metadata(
-    id="d1f6a1107eff9dd729951405f5620685e73e6809.boutiques",
+    id="064153f645343fa44a6da922e9a35232f8ea8522.boutiques",
     name="bbmask",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -33,6 +33,7 @@ class BbmaskOutputs(typing.NamedTuple):
 
 
 def bbmask(
+    mask: list[InputPathType],
     src_volumes: list[InputPathType] | None = None,
     npad: float | None = None,
     registration: list[InputPathType] | None = None,
@@ -49,6 +50,7 @@ def bbmask(
     URL: https://github.com/freesurfer/freesurfer
     
     Args:
+        mask: Input and output for the mask volume.
         src_volumes: Input and output volumes to be reduced to the bounding\
             box.
         npad: Number of voxels to expand the bounding box.
@@ -59,6 +61,8 @@ def bbmask(
     Returns:
         NamedTuple of outputs (described in `BbmaskOutputs`).
     """
+    if (len(mask) != 2): 
+        raise ValueError(f"Length of 'mask' must be 2 but was {len(mask)}")
     if src_volumes is not None and not (2 <= len(src_volumes)): 
         raise ValueError(f"Length of 'src_volumes' must be greater than 2 but was {len(src_volumes)}")
     if registration is not None and (len(registration) != 2): 
@@ -67,8 +71,10 @@ def bbmask(
     execution = runner.start_execution(BBMASK_METADATA)
     cargs = []
     cargs.append("bbmask")
-    cargs.append("[MASK_INPUT]")
-    cargs.append("[MASK_OUTPUT]")
+    cargs.extend([
+        "--mask",
+        *[execution.input_file(f) for f in mask]
+    ])
     if src_volumes is not None:
         cargs.extend([
             "--src",

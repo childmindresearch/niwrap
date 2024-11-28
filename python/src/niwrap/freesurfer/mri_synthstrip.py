@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHSTRIP_METADATA = Metadata(
-    id="a3e46af4690b18c95daf964ac99735b6aa4b42a6.boutiques",
+    id="dc76302a3c118616253b4b18ed9b1f72ae753291.boutiques",
     name="mri_synthstrip",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,7 +20,7 @@ class MriSynthstripOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_image_file: OutputPathType | None
+    output_image_file: OutputPathType
     """Stripped brain image output."""
     output_mask_file: OutputPathType | None
     """Binary brain mask output."""
@@ -89,7 +89,7 @@ def mri_synthstrip(
         ])
     ret = MriSynthstripOutputs(
         root=execution.output_file("."),
-        output_image_file=execution.output_file(pathlib.Path(output_image).name) if (output_image is not None) else None,
+        output_image_file=execution.output_file("[OUT]"),
         output_mask_file=execution.output_file(pathlib.Path(mask).name) if (mask is not None) else None,
     )
     execution.run(cargs)

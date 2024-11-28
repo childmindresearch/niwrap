@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MERGESEG_METADATA = Metadata(
-    id="74ddcb18be83a291f9d0f9a1d44c7ee43d5d3f95.boutiques",
+    id="8df8bb8db74182788b29b00177c93fd3d1402bd4.boutiques",
     name="mergeseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

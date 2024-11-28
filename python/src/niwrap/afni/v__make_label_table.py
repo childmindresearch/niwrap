@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MAKE_LABEL_TABLE_METADATA = Metadata(
-    id="ed5ca968ee83794fda1307ebaf226a6eedebf580.boutiques",
+    id="3bf9ce6538a25af7886fa89d9a87679836df84b2.boutiques",
     name="@MakeLabelTable",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -22,11 +22,11 @@ class VMakeLabelTableOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_labeltable: OutputPathType
     """Output label table file"""
-    output_atlas_pointlist: OutputPathType | None
+    output_atlas_pointlist: OutputPathType
     """Output atlas point list file"""
-    output_csv: OutputPathType | None
+    output_csv: OutputPathType
     """Output CSV file from label table"""
-    output_niml_atlas: OutputPathType | None
+    output_niml_atlas: OutputPathType
     """Output NIML file after atlasizing labeled dataset"""
 
 
@@ -267,10 +267,10 @@ def v__make_label_table(
         ])
     ret = VMakeLabelTableOutputs(
         root=execution.output_file("."),
-        output_labeltable=execution.output_file(labeltable + ".niml.lt"),
-        output_atlas_pointlist=execution.output_file(atlas_pointlist + ".niml.atlas") if (atlas_pointlist is not None) else None,
-        output_csv=execution.output_file(pathlib.Path(lt_to_csv).name + ".csv") if (lt_to_csv is not None) else None,
-        output_niml_atlas=execution.output_file(pathlib.Path(atlasize_labeled_dset).name + ".niml") if (atlasize_labeled_dset is not None) else None,
+        output_labeltable=execution.output_file("[LABELTABLE_FLAG].niml.lt"),
+        output_atlas_pointlist=execution.output_file("[ATLAS_POINTLIST_FLAG].niml.atlas"),
+        output_csv=execution.output_file("[LT_TO_CSV_FLAG].csv"),
+        output_niml_atlas=execution.output_file("[ATLASIZE_LABELED_DSET_FLAG].niml"),
     )
     execution.run(cargs)
     return ret

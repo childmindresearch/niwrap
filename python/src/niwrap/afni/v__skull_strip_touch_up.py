@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SKULL_STRIP_TOUCH_UP_METADATA = Metadata(
-    id="c0f64458c20c581941a642ca8dc8fd97621c38dd.boutiques",
+    id="b6fb601a41c80b9729bd9c95da0d4f3540060f61.boutiques",
     name="@SkullStrip_TouchUp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLROI_METADATA = Metadata(
-    id="8038f7b9cabee1ffb9682b2ec9c0a7a71a7d1496.boutiques",
+    id="85b40cf1c24468f3015ac02dd2297527a2c87aa3.boutiques",
     name="fslroi",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -83,7 +83,7 @@ def fslroi(
         cargs.append(str(tsize))
     ret = FslroiOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
+        outfile=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

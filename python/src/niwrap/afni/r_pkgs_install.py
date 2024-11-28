@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 R_PKGS_INSTALL_METADATA = Metadata(
-    id="2bb05babb0a5ddfa993973f35b1e4cabcb308e30.boutiques",
+    id="9c9d4c7ec7df54a4bd835bc8c7156ea51895da44.boutiques",
     name="rPkgsInstall",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

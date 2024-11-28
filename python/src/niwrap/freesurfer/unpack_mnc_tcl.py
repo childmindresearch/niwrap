@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNPACK_MNC_TCL_METADATA = Metadata(
-    id="9464bf0c600c04854f668e4f01ddfe8905579dac.boutiques",
+    id="ddccb7b8f243714f63150a7c3173102bfcc88be1.boutiques",
     name="unpack_mnc.tcl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

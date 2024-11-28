@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXAMINE_XMAT_METADATA = Metadata(
-    id="c3ca745374e5b2ec795b4eaa035b59e875ce2c61.boutiques",
+    id="5dc4f1bb85e99556ff1ac2fbae72bb95c00b5ac2.boutiques",
     name="ExamineXmat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

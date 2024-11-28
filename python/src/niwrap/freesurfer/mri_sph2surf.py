@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SPH2SURF_METADATA = Metadata(
-    id="27c6bab7024fa0cb4f72bf3eda729dd5efa83c17.boutiques",
+    id="527b07854c2c693db94b586724ac645153390f46.boutiques",
     name="mri-sph2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -104,7 +104,7 @@ def mri_sph2surf(
         cargs.append("-version")
     ret = MriSph2surfOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(outstem + "-" + hemi + ".w"),
+        output_file=execution.output_file("[OUTPUT_STEM]-" + hemi + ".w"),
     )
     execution.run(cargs)
     return ret

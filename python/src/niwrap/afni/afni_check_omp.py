@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_CHECK_OMP_METADATA = Metadata(
-    id="6453e60521723604a0b8ebb13d5840014b923b27.boutiques",
+    id="32dd1aee513bc5242efdf26e5514ec120679a8b1.boutiques",
     name="afni_check_omp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

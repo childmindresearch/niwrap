@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCCAN_METADATA = Metadata(
-    id="71a35247d8acdc6b81550ffbec697f0dc7665a22.boutiques",
+    id="26f604003de4aee5a1d0df471af2893515e5b091.boutiques",
     name="sccan",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIDEFACE_METADATA = Metadata(
-    id="36a7d454ada9fa09051ef88bbd7c7c5232a0051c.boutiques",
+    id="38b6a923ce22638bd0e6fc77f68e3ac76360f9d7.boutiques",
     name="mideface",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

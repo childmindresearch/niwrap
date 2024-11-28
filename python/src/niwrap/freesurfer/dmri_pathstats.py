@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_PATHSTATS_METADATA = Metadata(
-    id="8a5d7db01ddb1259dcab3450e3473d7e24986a5d.boutiques",
+    id="3cf7857fd656594e3f36154a5aa26eddfa493bdf.boutiques",
     name="dmri_pathstats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,11 +20,11 @@ class DmriPathstatsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType | None
+    out_file: OutputPathType
     """Text file for overall path measures"""
-    out_vox_file: OutputPathType | None
+    out_vox_file: OutputPathType
     """Text file for voxel-by-voxel measures along path"""
-    median_file: OutputPathType | None
+    median_file: OutputPathType
     """.trk file of median streamline"""
 
 
@@ -181,9 +181,9 @@ def dmri_pathstats(
         cargs.append("--version")
     ret = DmriPathstatsOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(out) if (out is not None) else None,
-        out_vox_file=execution.output_file(outvox) if (outvox is not None) else None,
-        median_file=execution.output_file(pathlib.Path(median).name) if (median is not None) else None,
+        out_file=execution.output_file("[OUT_FILE]"),
+        out_vox_file=execution.output_file("[OUT_VOX_FILE]"),
+        median_file=execution.output_file("[MEDIAN_FILE]"),
     )
     execution.run(cargs)
     return ret

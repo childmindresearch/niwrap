@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXCHANGE_METADATA = Metadata(
-    id="3e408bc5aa20050eef4fda53573169bbdd9f90f3.boutiques",
+    id="5e04c8d2b1860f0ec51964e8b982b73eaddf8469.boutiques",
     name="3dExchange",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

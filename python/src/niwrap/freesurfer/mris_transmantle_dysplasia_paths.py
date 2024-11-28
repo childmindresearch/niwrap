@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA = Metadata(
-    id="a0d49abb5e72fedfaf6c2308b6671ddc28e87b8d.boutiques",
+    id="effcf060042c53596ed252e67dbd78f3fd8cbd8e.boutiques",
     name="mris_transmantle_dysplasia_paths",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -30,6 +30,7 @@ def mris_transmantle_dysplasia_paths(
     intensity_volume: InputPathType,
     xform: InputPathType,
     output_volume: str,
+    filter_: list[float] | None = None,
     noise_sensitivity: bool = False,
     runner: Runner | None = None,
 ) -> MrisTransmantleDysplasiaPathsOutputs:
@@ -46,6 +47,8 @@ def mris_transmantle_dysplasia_paths(
         intensity_volume: Intensity volume file.
         xform: Transformation file.
         output_volume: Output volume file.
+        filter_: Apply specified filter with low and high values (not\
+            implemented yet).
         noise_sensitivity: Noise-sensitivity normalize inverse (default=1).
         runner: Command runner.
     Returns:
@@ -60,8 +63,11 @@ def mris_transmantle_dysplasia_paths(
     cargs.append(execution.input_file(intensity_volume))
     cargs.append(execution.input_file(xform))
     cargs.append(output_volume)
-    cargs.append("[FILTER_LOW]")
-    cargs.append("[FILTER_HIGH]")
+    if filter_ is not None:
+        cargs.extend([
+            "-f",
+            *map(str, filter_)
+        ])
     if noise_sensitivity:
         cargs.append("-n")
     ret = MrisTransmantleDysplasiaPathsOutputs(

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_SUBJECT_MIXED_METADATA = Metadata(
-    id="b0af601f9670390b601ab4abcb346bca0b71025c.boutiques",
+    id="143e688d23fdfb338716836e1f95b9ba4189af90.boutiques",
     name="label_subject_mixed",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -63,7 +63,7 @@ def label_subject_mixed(
     cargs.append(aseg_output)
     ret = LabelSubjectMixedOutputs(
         root=execution.output_file("."),
-        output_aseg=execution.output_file(aseg_output),
+        output_aseg=execution.output_file("[ASEG]"),
     )
     execution.run(cargs)
     return ret

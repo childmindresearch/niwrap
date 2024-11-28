@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DEBLANK_FILE_NAMES_METADATA = Metadata(
-    id="f8ade1cbfe9a1ee930f5bb24bfe83955ccad0cf1.boutiques",
+    id="da8da0abd18b50263679955b0ea74ae940b81571.boutiques",
     name="@DeblankFileNames",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

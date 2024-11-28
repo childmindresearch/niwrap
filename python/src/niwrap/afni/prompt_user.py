@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROMPT_USER_METADATA = Metadata(
-    id="782279d082f08241e6d04420d5c1a420777073d0.boutiques",
+    id="eeffbea4e522408c1d4978572830a23c9b27d7fb.boutiques",
     name="prompt_user",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

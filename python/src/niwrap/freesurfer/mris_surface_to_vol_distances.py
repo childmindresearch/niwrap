@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SURFACE_TO_VOL_DISTANCES_METADATA = Metadata(
-    id="31d81a61da76ec85ea595cfb388051ce2fcce6df.boutiques",
+    id="b436cdee4792f571a6fb7c9b7311696958c3dc2d.boutiques",
     name="mris_surface_to_vol_distances",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

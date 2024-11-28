@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_REFACER_MAKE_ONEBIG_A12_METADATA = Metadata(
-    id="385413dfddf67125c769d1505e8d24529d5a0ed5.boutiques",
+    id="40e799612e4cfd1f181d2ca93341b6d416efa87b.boutiques",
     name="@afni_refacer_make_onebigA12",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,7 +49,7 @@ def v__afni_refacer_make_onebig_a12(
     cargs.append(execution.input_file(t1w_dataset))
     ret = VAfniRefacerMakeOnebigA12Outputs(
         root=execution.output_file("."),
-        aligned_output=execution.output_file(pathlib.Path(t1w_dataset).name + "_aligned_to_MNI.nii.gz"),
+        aligned_output=execution.output_file("[T1W_DATASET_NAME]_aligned_to_MNI.nii.gz"),
     )
     execution.run(cargs)
     return ret

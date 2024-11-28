@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_EPI_REVIEW_PY_METADATA = Metadata(
-    id="4fec13541e12c24be0f1212f2da80b15e3aa36b4.boutiques",
+    id="d8d2bfa4cbebb23bdbab47bb389c8686d9524ec8.boutiques",
     name="gen_epi_review.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

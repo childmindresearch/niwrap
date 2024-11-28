@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_METADATA = Metadata(
-    id="4acaef29989a404d5d21fd8f132f21f4fc28563d.boutiques",
+    id="948c47aac653eca2f02cabf08d297668e21e54ce.boutiques",
     name="antsRegistration",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -866,15 +866,15 @@ class AntsRegistrationOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    generic_affine: OutputPathType | None
+    generic_affine: OutputPathType
     """The output is the generic affine transformation matrix."""
-    inverse_warped: OutputPathType | None
+    inverse_warped: OutputPathType
     """The output is the warped fixed image."""
-    inverse_warp: OutputPathType | None
+    inverse_warp: OutputPathType
     """The output is the inverse warp field."""
-    warped: OutputPathType | None
+    warped: OutputPathType
     """The output is the warped moving image."""
-    warp: OutputPathType | None
+    warp: OutputPathType
     """The output is the warp field."""
 
 
@@ -1124,11 +1124,11 @@ def ants_registration(
         ])
     ret = AntsRegistrationOutputs(
         root=execution.output_file("."),
-        generic_affine=execution.output_file(output + "0GenericAffine.mat") if (output is not None) else None,
-        inverse_warped=execution.output_file(output + "InverseWarped.nii.gz") if (output is not None) else None,
-        inverse_warp=execution.output_file(output + "1InverseWarp.nii.gz") if (output is not None) else None,
-        warped=execution.output_file(output + "Warped.nii.gz") if (output is not None) else None,
-        warp=execution.output_file(output + "1Warp.nii.gz") if (output is not None) else None,
+        generic_affine=execution.output_file("[OUTPUT_TRANSFORM_PREFIX]0GenericAffine.mat"),
+        inverse_warped=execution.output_file("[OUTPUT_TRANSFORM_PREFIX]InverseWarped.nii.gz"),
+        inverse_warp=execution.output_file("[OUTPUT_TRANSFORM_PREFIX]1InverseWarp.nii.gz"),
+        warped=execution.output_file("[OUTPUT_TRANSFORM_PREFIX]Warped.nii.gz"),
+        warp=execution.output_file("[OUTPUT_TRANSFORM_PREFIX]1Warp.nii.gz"),
     )
     execution.run(cargs)
     return ret

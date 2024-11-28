@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_PARCELLATE_CONNECTIVITY_METADATA = Metadata(
-    id="7f4872181c9b5f9c3d284d1943232527052b3bfb.boutiques",
+    id="0c3b840a03cfbf5cf09f4768e47a63ba51235eb2.boutiques",
     name="mris_parcellate_connectivity",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

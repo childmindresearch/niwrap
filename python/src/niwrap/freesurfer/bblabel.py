@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BBLABEL_METADATA = Metadata(
-    id="4031d219fd56ff1b3d47d5b1ebd06de0963ca1a5.boutiques",
+    id="614f0361168586830828f0fa186e4510af601dff.boutiques",
     name="bblabel",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -111,7 +111,7 @@ def bblabel(
         ])
     ret = BblabelOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(outlabelfile),
+        output_file=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

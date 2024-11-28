@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GET_LABEL_THICKNESS_METADATA = Metadata(
-    id="aa8755f545c064ceedcb25ceb86f87fd13c52240.boutiques",
+    id="dee540c5d6addffa9eea35a7fd1572afd491a587.boutiques",
     name="get_label_thickness",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

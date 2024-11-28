@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APAS2ASEG_METADATA = Metadata(
-    id="8806d0a9a931ebc89bca7c0f50ff920c8fb95b4d.boutiques",
+    id="3dc0c23b67aed06f4f6b85f8abfcfff2224cf026.boutiques",
     name="apas2aseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

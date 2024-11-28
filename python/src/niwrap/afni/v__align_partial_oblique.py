@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ALIGN_PARTIAL_OBLIQUE_METADATA = Metadata(
-    id="6972a40122eb255cb7faab42312dcbea8ad1c3c1.boutiques",
+    id="8266c2389908e7353d0356e57b5059a88cdc6548.boutiques",
     name="@align_partial_oblique",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

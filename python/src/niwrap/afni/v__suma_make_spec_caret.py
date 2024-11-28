@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_MAKE_SPEC_CARET_METADATA = Metadata(
-    id="cc316fd47ad9021f3421b2de0b8443b137383b41.boutiques",
+    id="950a20d0f240b4840873e5b78497c9b7e5e19277.boutiques",
     name="@SUMA_Make_Spec_Caret",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

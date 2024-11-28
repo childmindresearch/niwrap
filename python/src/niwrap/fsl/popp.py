@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POPP_METADATA = Metadata(
-    id="5aef8a45d9db1934610cc15431dce8dcf396ed1d.boutiques",
+    id="29bde353620add34cd7a90603c61465fa385c87a.boutiques",
     name="popp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

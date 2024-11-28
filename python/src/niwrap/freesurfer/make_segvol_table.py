@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_SEGVOL_TABLE_METADATA = Metadata(
-    id="71732228665f808e28ea8ab6d56f52393e6c83c4.boutiques",
+    id="584e18cf5964aa90ad96025eab578f07dcec865b.boutiques",
     name="make-segvol-table",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

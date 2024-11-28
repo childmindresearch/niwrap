@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_MATH_METADATA = Metadata(
-    id="2c72bece75928eecfab8863dce2bbf80261ecbe6.boutiques",
+    id="9d75874ee43e66e17e895079992b1c3399855848.boutiques",
     name="ImageMath",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,6 +27,7 @@ class ImageMathOutputs(typing.NamedTuple):
 def image_math(
     image_dimension: typing.Literal[2, 3, 4],
     output_image: InputPathType,
+    operations_and_inputs: str,
     image1: InputPathType,
     image2: InputPathType | None = None,
     runner: Runner | None = None,
@@ -43,6 +44,8 @@ def image_math(
         image_dimension: The dimensionality of the image. Use 2 or 3 for\
             spatial images, and 4 for 4D images like time-series data.
         output_image: The output image file resulting from the operations.
+        operations_and_inputs: Mathematical operations and inputs to be applied\
+            on the images.
         image1: The first input image for the operation.
         image2: The second input image for the operation, if required.
         runner: Command runner.
@@ -55,15 +58,13 @@ def image_math(
     cargs.append("ImageMath")
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(output_image))
-    cargs.append("[operations")
-    cargs.append("and")
-    cargs.append("inputs]")
+    cargs.append(operations_and_inputs)
     cargs.append(execution.input_file(image1))
     if image2 is not None:
         cargs.append(execution.input_file(image2))
     ret = ImageMathOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(output_image).name),
+        output_image=execution.output_file("[OutputImage]"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FNIRTFILEUTILS_METADATA = Metadata(
-    id="daf26808d66305cf0e17f7215cc4cc9c5c8e821a.boutiques",
+    id="2d3f6189e4ab53e704dd472819cabbbd40fc2856.boutiques",
     name="fnirtfileutils",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -20,11 +20,11 @@ class FnirtfileutilsOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_field_file: OutputPathType | None
+    output_field_file: OutputPathType
     """Output field or coefficient volume"""
     jacobian_output_file: OutputPathType | None
     """Output jacobian determinant map volume"""
-    jacobian_matrix_file: OutputPathType | None
+    jacobian_matrix_file: OutputPathType
     """Output full jacobian matrix 4D-map volume"""
 
 
@@ -121,9 +121,9 @@ def fnirtfileutils(
         cargs.append("--help")
     ret = FnirtfileutilsOutputs(
         root=execution.output_file("."),
-        output_field_file=execution.output_file(out_field + ".nii.gz") if (out_field is not None) else None,
+        output_field_file=execution.output_file("[FIELD_OUTPUT].nii.gz"),
         jacobian_output_file=execution.output_file(jacobian_output + ".nii.gz") if (jacobian_output is not None) else None,
-        jacobian_matrix_file=execution.output_file(jacobian_matrix_output + ".nii.gz") if (jacobian_matrix_output is not None) else None,
+        jacobian_matrix_file=execution.output_file("[JACOBIAN_MATRIX].nii.gz"),
     )
     execution.run(cargs)
     return ret

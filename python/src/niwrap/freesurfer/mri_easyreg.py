@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_EASYREG_METADATA = Metadata(
-    id="11398f5c5d88735f7ede02ae5aedd42929907f7c.boutiques",
+    id="a8597c7c31eb3d0db090b8c58b2eb2709f8b9b2d.boutiques",
     name="mri_easyreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMSEG_LONG_METADATA = Metadata(
-    id="eac8108ca1e4e277b6a40dca5a0e7aaee302877f.boutiques",
+    id="686e2f45cf8bcf8f37552255f101cc1d16f93f40.boutiques",
     name="samseg-long",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

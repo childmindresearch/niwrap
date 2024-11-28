@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_ORIENT_METADATA = Metadata(
-    id="eb6a37f8f5592ce57e59b803920fbfd554fdd7f2.boutiques",
+    id="2c4d2fbded9b0c9c674a01cee1072cfe881e7fff.boutiques",
     name="@GetAfniOrient",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,7 +52,7 @@ def v__get_afni_orient(
     cargs.append(execution.input_file(infile))
     ret = VGetAfniOrientOutputs(
         root=execution.output_file("."),
-        output_orient_code=execution.output_file(pathlib.Path(infile).name + "_orient_code.txt"),
+        output_orient_code=execution.output_file("[INPUT_FILE]_orient_code.txt"),
     )
     execution.run(cargs)
     return ret

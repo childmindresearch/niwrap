@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
-    id="beba71e71e9ec183cbebde5e199f2a85b1324501.boutiques",
+    id="1f8c451b98f93c105aed231bb6898634ea958829.boutiques",
     name="antsBrainExtraction.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

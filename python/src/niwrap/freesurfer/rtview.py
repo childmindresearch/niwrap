@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RTVIEW_METADATA = Metadata(
-    id="6d615f64f13388d3b5a98cd046528cc88cd2e82f.boutiques",
+    id="bbfc6a7778d4c734c212389406f89e8b0c6cbe09.boutiques",
     name="rtview",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

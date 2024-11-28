@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWAP_SUBJECTWISE_METADATA = Metadata(
-    id="cba7139360838bd3ee999955a172ec36a1bbee24.boutiques",
+    id="bf7096e8cee698d846878d13e1f8e94c40f80ba1.boutiques",
     name="swap_subjectwise",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

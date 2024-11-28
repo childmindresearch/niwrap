@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_BB_THICK_METADATA = Metadata(
-    id="4067aaab94ddd866b5b5e3bdd4111236448a5019.boutiques",
+    id="261dd15d9b87b8820a89a7b2a53c5bb9a97c42a1.boutiques",
     name="@measure_bb_thick",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

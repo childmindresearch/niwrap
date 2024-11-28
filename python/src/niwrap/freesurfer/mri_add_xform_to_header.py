@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ADD_XFORM_TO_HEADER_METADATA = Metadata(
-    id="9210b26db2a9849240481e01beacbf5ccc757e19.boutiques",
+    id="a352e8c6ada4a640929cf21a7797106f093df774.boutiques",
     name="mri_add_xform_to_header",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

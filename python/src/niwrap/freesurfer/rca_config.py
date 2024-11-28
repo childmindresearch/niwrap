@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RCA_CONFIG_METADATA = Metadata(
-    id="6cfb13c58a6e3665562ed5bd92ff1e348a15b9ab.boutiques",
+    id="51c0aae9a34d0b770555399cc01f066ce00769c7.boutiques",
     name="rca-config",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

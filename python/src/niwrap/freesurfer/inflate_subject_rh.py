@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INFLATE_SUBJECT_RH_METADATA = Metadata(
-    id="3fd26fd419e9bde6c056be3335829177984b044e.boutiques",
+    id="c870a2dd4beffc1dccf8c6c63c1951a8bb440f30.boutiques",
     name="inflate_subject-rh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

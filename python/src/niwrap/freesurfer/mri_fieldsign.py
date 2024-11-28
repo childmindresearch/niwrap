@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FIELDSIGN_METADATA = Metadata(
-    id="9bc16b1bb19ca4514e704bfb53dbd978d525d69a.boutiques",
+    id="ab824af01a699004ad68775dafe2a065f72a9634.boutiques",
     name="mri_fieldsign",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

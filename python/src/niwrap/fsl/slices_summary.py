@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICES_SUMMARY_METADATA = Metadata(
-    id="ce13f0ad5ad5304b0d9aaf06457b13e897fbaee1.boutiques",
+    id="e717d0a64aaf67a5df047c5962c7b22f42e009ff.boutiques",
     name="slices_summary",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -85,7 +85,7 @@ def slices_summary(
     cargs.append(timepoints)
     ret = SlicesSummaryOutputs(
         root=execution.output_file("."),
-        summary_images_directory=execution.output_file(pictures_sum_second_),
+        summary_images_directory=execution.output_file("[PICTURES_SUM]"),
         combined_summary_image=execution.output_file(output_png),
     )
     execution.run(cargs)

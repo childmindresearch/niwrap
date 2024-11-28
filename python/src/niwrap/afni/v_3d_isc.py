@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ISC_METADATA = Metadata(
-    id="6c9916869e62ba9cb0b03f15916de7329295e2a7.boutiques",
+    id="5ec196b28884a98c45f141e84c3872a3f6ed1ac9.boutiques",
     name="3dISC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -114,8 +114,8 @@ def v_3d_isc(
     ])
     ret = V3dIscOutputs(
         root=execution.output_file("."),
-        isc_output=execution.output_file(outfile_prefix + "_ISC.nii"),
-        tstat_output=execution.output_file(outfile_prefix + "_tstat.nii"),
+        isc_output=execution.output_file("[PREFIX_FLAG]_ISC.nii"),
+        tstat_output=execution.output_file("[PREFIX_FLAG]_tstat.nii"),
     )
     execution.run(cargs)
     return ret

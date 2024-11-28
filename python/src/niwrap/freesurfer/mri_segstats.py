@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SEGSTATS_METADATA = Metadata(
-    id="8b0beadf5bf66cf63e623f92792c7f78eee97153.boutiques",
+    id="300e7b0601c055d2b615b67b314f5a1fa64fc1f6.boutiques",
     name="mri_segstats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,15 +22,15 @@ class MriSegstatsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     summary_output_file: OutputPathType
     """Output file for summary statistics."""
-    avg_waveform_output: OutputPathType | None
+    avg_waveform_output: OutputPathType
     """Average waveform output text file."""
-    sum_waveform_output: OutputPathType | None
+    sum_waveform_output: OutputPathType
     """Sum waveform output text file."""
-    avg_waveform_vol_output: OutputPathType | None
+    avg_waveform_vol_output: OutputPathType
     """Average waveform volume output file."""
-    spatial_frame_avg_output: OutputPathType | None
+    spatial_frame_avg_output: OutputPathType
     """Spatial frame average output file."""
-    ctab_output_file: OutputPathType | None
+    ctab_output_file: OutputPathType
     """Output color table with the reported segmentations."""
 
 
@@ -418,11 +418,11 @@ def mri_segstats(
     ret = MriSegstatsOutputs(
         root=execution.output_file("."),
         summary_output_file=execution.output_file(output_file),
-        avg_waveform_output=execution.output_file(avg_waveform) if (avg_waveform is not None) else None,
-        sum_waveform_output=execution.output_file(sum_waveform) if (sum_waveform is not None) else None,
-        avg_waveform_vol_output=execution.output_file(avg_waveform_vol) if (avg_waveform_vol is not None) else None,
-        spatial_frame_avg_output=execution.output_file(spatial_frame_avg) if (spatial_frame_avg is not None) else None,
-        ctab_output_file=execution.output_file(ctab_output) if (ctab_output is not None) else None,
+        avg_waveform_output=execution.output_file("[AVG_WF]"),
+        sum_waveform_output=execution.output_file("[SUM_WF]"),
+        avg_waveform_vol_output=execution.output_file("[AVG_WF_VOL]"),
+        spatial_frame_avg_output=execution.output_file("[SFAVG]"),
+        ctab_output_file=execution.output_file("[CTAB_OUT]"),
     )
     execution.run(cargs)
     return ret

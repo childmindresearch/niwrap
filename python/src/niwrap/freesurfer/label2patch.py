@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2PATCH_METADATA = Metadata(
-    id="8601a1e893cb65aeeb33fb8c7d1708008a1a6062.boutiques",
+    id="8785c2dbe1c1b6e295f643297a4b281d53553dd6.boutiques",
     name="label2patch",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

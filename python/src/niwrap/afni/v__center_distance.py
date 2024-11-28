@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CENTER_DISTANCE_METADATA = Metadata(
-    id="1d659f1aeb1c85a99a848965d05e925995c940eb.boutiques",
+    id="e8ff28117986ef062e78754067cfab3c33d4cd86.boutiques",
     name="@Center_Distance",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

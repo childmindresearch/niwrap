@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VESSEL_SEGMENT_METADATA = Metadata(
-    id="8d336038e3044e2504c30a4bf723c3c41501d3b7.boutiques",
+    id="75fd55e12ed4e38846754abd9733a57ccb04fd2a.boutiques",
     name="mri_vessel_segment",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -73,7 +73,7 @@ def mri_vessel_segment(
         cargs.append("--shape")
     ret = MriVesselSegmentOutputs(
         root=execution.output_file("."),
-        segmented_output=execution.output_file(output_file),
+        segmented_output=execution.output_file("[OUTPUT]"),
     )
     execution.run(cargs)
     return ret

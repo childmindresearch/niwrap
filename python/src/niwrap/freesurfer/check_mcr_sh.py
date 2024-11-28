@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CHECK_MCR_SH_METADATA = Metadata(
-    id="59a6677ff67c3683aeb94053dddf83cc010ae701.boutiques",
+    id="791978a63c49f038efea95973ac807e32f4fd537.boutiques",
     name="checkMCR.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

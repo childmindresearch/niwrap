@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLASCII2IMG_METADATA = Metadata(
-    id="030b2128434530d7eeef092ecb68dc9626ed1074.boutiques",
+    id="6768aae906ca7835522a36aed200f9dcb3132620.boutiques",
     name="fslascii2img",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -75,7 +75,7 @@ def fslascii2img(
     cargs.append(outfile)
     ret = Fslascii2imgOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
+        outfile=execution.output_file("[OUTPUT_FILE]"),
     )
     execution.run(cargs)
     return ret

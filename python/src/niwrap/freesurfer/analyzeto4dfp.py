@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANALYZETO4DFP_METADATA = Metadata(
-    id="404cdbface96fbae2fae5c55f0831c9a6e252f58.boutiques",
+    id="68ba555395398681b7b2f785a91ccbac22cbddc9.boutiques",
     name="analyzeto4dfp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

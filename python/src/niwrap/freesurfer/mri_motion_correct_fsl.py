@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MOTION_CORRECT_FSL_METADATA = Metadata(
-    id="8b6f2d0a0e70900d860b936b23fd6b9b767ec05b.boutiques",
+    id="43d624b79c58a0ad1c2bb44664db266ee165625f.boutiques",
     name="mri_motion_correct.fsl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mri_motion_correct_fsl(
     cargs.append("[OPTIONS]")
     ret = MriMotionCorrectFslOutputs(
         root=execution.output_file("."),
-        corrected_output=execution.output_file(output_image + ".nii.gz"),
+        corrected_output=execution.output_file("[OUTPUT].nii.gz"),
     )
     execution.run(cargs)
     return ret

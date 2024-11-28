@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEDANA_WRAPPER_PY_METADATA = Metadata(
-    id="e2c7a15939ce625753fa86861a1e32ee93aeb877.boutiques",
+    id="2a5d2d42a60628be534dad0f8a18d103f5db8377.boutiques",
     name="tedana_wrapper.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

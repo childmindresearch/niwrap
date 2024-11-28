@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GTMSEG_METADATA = Metadata(
-    id="9b6f7181c5beb8781cb3df8a1cad8c5f58cdb324.boutiques",
+    id="29e1c1370e446a18137bbf4e9561c7972ac57725.boutiques",
     name="gtmseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

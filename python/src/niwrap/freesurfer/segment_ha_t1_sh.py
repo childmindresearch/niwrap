@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGMENT_HA_T1_SH_METADATA = Metadata(
-    id="bed85b99eff2ff7fed59731877a9169d35e6c880.boutiques",
+    id="b8b0eaf34697181c6d9e12ad309ef99fd50109b5.boutiques",
     name="segmentHA_T1.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TNORM_METADATA = Metadata(
-    id="3ab7928628832800408347f169adeb33cff9fd8f.boutiques",
+    id="2f017fb0846acaa4d9cf83666f160e4cc99d7998.boutiques",
     name="3dTnorm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

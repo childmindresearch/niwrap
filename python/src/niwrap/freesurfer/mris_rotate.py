@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ROTATE_METADATA = Metadata(
-    id="426e3c6a4d9db019355c54683b71e81146bc1e52.boutiques",
+    id="ef8f8112c666b20f57f67d98677ecae66ab493de.boutiques",
     name="mris_rotate",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
