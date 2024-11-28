@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "unknown",
   "description": "tkregister2 is a tool from FreeSurfer used for registration of MRI images.",
-  "command-line": "tkregister2 [FIXED_VOLUME] [MOVING_VOLUME] [REG_FILE] [COMMAND_OPTIONS]",
+  "command-line": "tkregister2 [FIXED_VOLUME] [MOVING_VOLUME] [REG_FILE] [NOEDIT] [LTA] [SURF_REG] [REG_ONLY] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

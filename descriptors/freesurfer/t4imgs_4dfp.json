@@ -1,7 +1,7 @@
 {
   "name": "t4imgs_4dfp",
   "description": "Freesurfer tool for transforming images according to a specified T4 file.",
-  "command-line": "t4imgs_4dfp [OPTIONS] [INPUT_IMAGES] [OUTPUT_IMAGE]",
+  "command-line": "t4imgs_4dfp [SQRT_NORMALIZE] [CUBIC_SPLINE] [OUTPUT_NAN] [CONVERT_T4] [NEAREST_NEIGHBOR] [OUTPUT_111_SPACE] [OUTPUT_222_SPACE] [OUTPUT_333N_SPACE] [DUPLICATE_DIMENSIONS] [BIG_ENDIAN] [LITTLE_ENDIAN] [INPUT_IMAGES] [OUTPUT_IMAGE]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -2,9 +2,8 @@
   "tool-version": "7.4.1",
   "name": "unpack_mnc.tcl",
   "author": "FreeSurfer Developers",
-  "descriptor-url": "http://example.com/unpack_mnc_descriptor.json",
   "description": "A tool for unpacking MINC format images",
-  "command-line": "unpack_mnc.tcl [OPTIONS]",
+  "command-line": "unpack_mnc.tcl [VERBOSE] [OUTPUT_DIR] [INPUT_FILE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

@@ -2745,8 +2745,7 @@
       },
       {
         "target": "mris_make_map_surfaces",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/mris_make_map_surfaces.json"
+        "status": "ignore"
       },
       {
         "target": "mris_make_surfaces",
@@ -3192,8 +3191,7 @@
       },
       {
         "target": "progressbar.tcl",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/progressbar.tcl.json"
+        "status": "ignore"
       },
       {
         "target": "qatools.py",

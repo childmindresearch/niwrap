@@ -1,7 +1,7 @@
 {
   "name": "mri_compile_edits",
   "description": "Program to create a single volume showing all the volumetric edits made to a subject.",
-  "command-line": "mri_compile_edits [OPTIONS] [SUBJECT_NAME] [OUTPUT_VOLUME]",
+  "command-line": "mri_compile_edits [SUBJECT_NAME] [OUTPUT_VOLUME]",
   "schema-version": "0.5",
   "inputs": [
     {
