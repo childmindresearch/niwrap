@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "unknown",
   "description": "Performs a logical voxel-wise OR on a series of volumes",
-  "command-line": "mri_or [OPTIONS] [INPUT_FILES]",
+  "command-line": "mri_or [ORIGINAL_LABELS] [INPUT_FILES]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

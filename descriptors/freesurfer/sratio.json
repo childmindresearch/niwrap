@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "sratio",
   "description": "Tool to compute ratio A/B if A>B, -B/A if B>A, with options for absolute computation and threshold masking.",
-  "command-line": "sratio [ABS_FLAG] [MASK_THRESHOLD] [VALUE_A] [VALUE_B] [SRATIO_RESULT]",
+  "command-line": "sratio [VALUE_A] [VALUE_B] [ABS_FLAG] [MASK_THRESHOLD]",
   "schema-version": "0.5",
   "inputs": [
     {

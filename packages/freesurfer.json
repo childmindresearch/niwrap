@@ -427,23 +427,19 @@
       },
       {
         "target": "dmrirc.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.example.json"
+        "status": "ignore"
       },
       {
         "target": "dmrirc.long.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.long.example.json"
+        "status": "ignore"
       },
       {
         "target": "dmrirc.long.multiscan.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.long.multiscan.example.json"
+        "status": "ignore"
       },
       {
         "target": "dmrirc.multiscan.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.multiscan.example.json"
+        "status": "ignore"
       },
       {
         "target": "dt_recon",

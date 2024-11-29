@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/",
   "description": "Utility to probe DICOM files for information.",
-  "command-line": "mri_probedicom [DICOM_FILE] [OPTIONS]",
+  "command-line": "mri_probedicom [DICOM_FILE] [OPTION1] [OPTION2]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

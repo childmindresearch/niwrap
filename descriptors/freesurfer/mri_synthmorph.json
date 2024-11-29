@@ -1,7 +1,7 @@
 {
   "name": "mri_synthmorph",
   "tool-version": "7.4.1",
-  "command-line": "mri_synthmorph [MOVING] [FIXED] [MOVED_OUTPUT] [TRANS_OUTPUT] [HEADER_ONLY_FLAG] [MODEL] [INIT_TRANSFORM] [THREADS] [GPU_FLAG] [SMOOTH] [EXTENT] [MODEL_WEIGHTS] [INSPECT_DIR]",
+  "command-line": "mri_synthmorph [MOVING_IMAGE] [FIXED_IMAGE] [MOVED_OUTPUT] [TRANSFORM_OUTPUT] [HEADER_ONLY] [TRANSFORMATION_MODEL] [INIT_TRANSFORM] [THREADS] [GPU_FLAG] [SMOOTH] [EXTENT] [MODEL_WEIGHTS] [INSPECT_DIRECTORY]",
   "description": "SynthMorph is a deep-learning tool for brain-specific MRI image registration without preprocessing.",
   "author": "FreeSurfer Developers",
   "schema-version": "0.5",
@@ -54,7 +54,11 @@
       "id": "transformation_model",
       "name": "Transformation Model",
       "type": "String",
-      "value-choices": ["deform", "affine", "rigid"],
+      "value-choices": [
+        "deform",
+        "affine",
+        "rigid"
+      ],
       "default-value": "deform",
       "optional": true,
       "description": "Specifies the registration transformation model. Options include 'deform', 'affine', and 'rigid'.",
@@ -102,7 +106,10 @@
       "id": "extent",
       "name": "Extent",
       "type": "Number",
-      "value-choices": [192, 256],
+      "value-choices": [
+        192,
+        256
+      ],
       "optional": true,
       "description": "Isotropic extent of the registration space in unit voxels.",
       "default-value": 256,
