@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MBA_METADATA = Metadata(
-    id="059fc53a2cd6a388de1ea8621432513816e71ccc.boutiques",
+    id="eb3770a45e9a9a1d951dda7cc20331a2afd73cf7.boutiques",
     name="MBA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -140,7 +140,6 @@ def mba(
             "-se",
             se
         ])
-    cargs.append("[RPREFIX]")
     if dbg_args:
         cargs.append("-dbgArgs")
     if help_:

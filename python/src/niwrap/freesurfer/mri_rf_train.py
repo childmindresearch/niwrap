@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RF_TRAIN_METADATA = Metadata(
-    id="b4295c01773ba4db075d8d5007717eaffac797b7.boutiques",
+    id="399c028f38b3c5c7b4be87e2dc94d14eb2c8a525.boutiques",
     name="mri_rf_train",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -30,6 +30,7 @@ def mri_rf_train(
     mask_volume: str | None = None,
     node_spacing: float | None = None,
     prior_spacing: float | None = None,
+    input_training_data: list[str] | None = None,
     sanity_check: bool = False,
     runner: Runner | None = None,
 ) -> MriRfTrainOutputs:
@@ -49,6 +50,9 @@ def mri_rf_train(
         mask_volume: Use volname as a mask (path relative to $subject/mri).
         node_spacing: Spacing of classifiers in canonical space.
         prior_spacing: Spacing of class priors in canonical space.
+        input_training_data: Specifying training data (path relative to\
+            $subject/mri). Can specify multiple inputs. If not specified, 'orig' is\
+            used.
         sanity_check: Conduct sanity-check of labels for obvious edit errors.
         runner: Command runner.
     Returns:
@@ -81,12 +85,14 @@ def mri_rf_train(
             "-prior_spacing",
             str(prior_spacing)
         ])
-    cargs.append("[INPUT_TRAINING_DATA...]")
+    if input_training_data is not None:
+        cargs.extend([
+            "-input",
+            *input_training_data
+        ])
     if sanity_check:
         cargs.append("-check")
     cargs.extend(subjects)
-    cargs.append("<SUBJECT2>")
-    cargs.append("...")
     cargs.append(output_rfa)
     ret = MriRfTrainOutputs(
         root=execution.output_file("."),

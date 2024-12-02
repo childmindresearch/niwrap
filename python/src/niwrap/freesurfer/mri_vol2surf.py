@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VOL2SURF_METADATA = Metadata(
-    id="e5d8639cf9b9f730b0828fdeda81c44ccc8ec6f2.boutiques",
+    id="9b1f4f0a610312351db96a33b3de116be9ef57ae.boutiques",
     name="mri_vol2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,6 +28,12 @@ def mri_vol2surf(
     input_volume: InputPathType,
     registration_file: InputPathType,
     output_path: str,
+    reference_volume: str | None = None,
+    regheader_subject: str | None = None,
+    mni152reg_flag: bool = False,
+    target_subject: str | None = None,
+    hemisphere: typing.Literal["lh", "rh"] | None = None,
+    surface: str | None = None,
     runner: Runner | None = None,
 ) -> MriVol2surfOutputs:
     """
@@ -44,6 +50,16 @@ def mri_vol2surf(
         registration_file: Registration file as computed by tkregister,\
             spmregister, bbregister, etc.
         output_path: Output path for the resampled volume.
+        reference_volume: Reference volume name, default is orig.mgz.
+        regheader_subject: Compute registration from header information,\
+            aligning the current volume with the subject/mri/orig.mgz.
+        mni152reg_flag: Use MNI152 registration:\
+            $FREESURFER_HOME/average/mni152.register.dat.
+        target_subject: Target subject for resampling, can be a subject name or\
+            'ico' for icosahedron.
+        hemisphere: Hemisphere to process: lh = left hemisphere or rh = right\
+            hemisphere.
+        surface: Target surface on which to resample, default is 'white'.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriVol2surfOutputs`).
@@ -64,7 +80,33 @@ def mri_vol2surf(
         "--o",
         output_path
     ])
-    cargs.append("[OPTIONS]")
+    if reference_volume is not None:
+        cargs.extend([
+            "--ref",
+            reference_volume
+        ])
+    if regheader_subject is not None:
+        cargs.extend([
+            "--regheader",
+            regheader_subject
+        ])
+    if mni152reg_flag:
+        cargs.append("--mni152reg")
+    if target_subject is not None:
+        cargs.extend([
+            "--trgsubject",
+            target_subject
+        ])
+    if hemisphere is not None:
+        cargs.extend([
+            "--hemi",
+            hemisphere
+        ])
+    if surface is not None:
+        cargs.extend([
+            "--surf",
+            surface
+        ])
     ret = MriVol2surfOutputs(
         root=execution.output_file("."),
         resampled_volume_output=execution.output_file(output_path),

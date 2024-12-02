@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_COMPUTE_ACORR_METADATA = Metadata(
-    id="6d5eaa2d94724e88d103421aa1d4198df4fecc2a.boutiques",
+    id="c87ef9e1a360bff02be52c7cd358fb4259d79971.boutiques",
     name="mris_compute_acorr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -62,7 +62,6 @@ def mris_compute_acorr(
     cargs.append(execution.input_file(surf))
     cargs.append(execution.input_file(curv))
     cargs.extend(c1_subjects)
-    cargs.append(":")
     cargs.extend(c2_subjects)
     ret = MrisComputeAcorrOutputs(
         root=execution.output_file("."),

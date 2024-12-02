@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_F3D_METADATA = Metadata(
-    id="0bff34c2d804187d43112228069f9f0f0148283c.boutiques",
+    id="1e4f335840b8035582d36ee0767618d0b14f496c.boutiques",
     name="reg_f3d",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -20,15 +20,53 @@ class RegF3dOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_cpp_file: OutputPathType
+    output_cpp_file: OutputPathType | None
     """File containing the output control point grid"""
-    output_resampled_image_file: OutputPathType
+    output_resampled_image_file: OutputPathType | None
     """File containing the resampled image"""
 
 
 def reg_f3d(
     reference_image: InputPathType,
     floating_image: InputPathType,
+    affine_transform: InputPathType | None = None,
+    flirt_affine_transform: InputPathType | None = None,
+    control_point_grid_input: InputPathType | None = None,
+    output_cpp: str | None = None,
+    output_resampled_image: str | None = None,
+    reference_mask: InputPathType | None = None,
+    smooth_reference: float | None = None,
+    smooth_floating: float | None = None,
+    num_bins_joint_histogram: float | None = None,
+    num_bins_floating_joint_histogram: float | None = None,
+    lower_threshold_reference: float | None = None,
+    upper_threshold_reference: float | None = None,
+    lower_threshold_floating: float | None = None,
+    upper_threshold_floating: float | None = None,
+    spacing_x: float | None = None,
+    spacing_y: float | None = None,
+    spacing_z: float | None = None,
+    bending_energy: float | None = None,
+    linear_elasticity: list[float] | None = None,
+    l2_norm_displacement: float | None = None,
+    jacobian_determinant: float | None = None,
+    no_approx_jl: bool = False,
+    no_conj: bool = False,
+    ssd: bool = False,
+    kld: bool = False,
+    amc: bool = False,
+    max_iterations: float | None = None,
+    num_levels: float | None = None,
+    first_levels: float | None = None,
+    no_pyramid: bool = False,
+    symmetric: bool = False,
+    floating_mask: InputPathType | None = None,
+    inverse_consistency: float | None = None,
+    velocity_field: bool = False,
+    composition_steps: float | None = None,
+    smooth_gradient: float | None = None,
+    padding_value: float | None = None,
+    verbose_off: bool = False,
     runner: Runner | None = None,
 ) -> RegF3dOutputs:
     """
@@ -42,6 +80,60 @@ def reg_f3d(
     Args:
         reference_image: Filename of the reference image.
         floating_image: Filename of the floating image.
+        affine_transform: Filename which contains an affine transformation.
+        flirt_affine_transform: Filename which contains a flirt affine\
+            transformation.
+        control_point_grid_input: Filename of control point grid input.
+        output_cpp: Filename of control point grid.
+        output_resampled_image: Filename of the resampled image.
+        reference_mask: Filename of a mask image in the reference space.
+        smooth_reference: Smooth the reference image using the specified sigma\
+            (mm).
+        smooth_floating: Smooth the floating image using the specified sigma\
+            (mm).
+        num_bins_joint_histogram: Number of bins to use for the joint histogram\
+            (reference).
+        num_bins_floating_joint_histogram: Number of bins to use for the joint\
+            histogram (floating).
+        lower_threshold_reference: Lower threshold to apply to the reference\
+            image intensities.
+        upper_threshold_reference: Upper threshold to apply to the reference\
+            image intensities.
+        lower_threshold_floating: Lower threshold to apply to the floating\
+            image intensities.
+        upper_threshold_floating: Upper threshold to apply to the floating\
+            image intensities.
+        spacing_x: Final grid spacing along the x axis in mm (or in voxel if\
+            negative value).
+        spacing_y: Final grid spacing along the y axis in mm (or in voxel if\
+            negative value).
+        spacing_z: Final grid spacing along the z axis in mm (or in voxel if\
+            negative value).
+        bending_energy: Weight of the bending energy penalty term.
+        linear_elasticity: Weights of linear elasticity penalty term.
+        l2_norm_displacement: Weight of L2 norm displacement penalty term.
+        jacobian_determinant: Weight of log of the Jacobian determinant penalty\
+            term.
+        no_approx_jl: Do not approximate the JL value only at the control point\
+            position.
+        no_conj: Do not use the conjugate gradient optimization but a simple\
+            gradient ascent.
+        ssd: Use the SSD as the similarity measure instead of NMI.
+        kld: Use the KL divergence as the similarity measure instead of NMI.
+        amc: Use the additive NMI for multichannel data.
+        max_iterations: Maximal number of iterations per level.
+        num_levels: Number of levels to perform.
+        first_levels: Only perform the first levels.
+        no_pyramid: Do not use a pyramidal approach.
+        symmetric: Use symmetric approach.
+        floating_mask: Filename of a mask image in the floating space.
+        inverse_consistency: Weight of the inverse consistency penalty term.
+        velocity_field: Use velocity field integration to generate the\
+            deformation.
+        composition_steps: Number of composition steps.
+        smooth_gradient: Smooth the metric derivative (in mm).
+        padding_value: Padding value.
+        verbose_off: Turn verbose off.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegF3dOutputs`).
@@ -58,11 +150,173 @@ def reg_f3d(
         "-flo",
         execution.input_file(floating_image)
     ])
-    cargs.append("[OPTIONS]")
+    if affine_transform is not None:
+        cargs.extend([
+            "-aff",
+            execution.input_file(affine_transform)
+        ])
+    if flirt_affine_transform is not None:
+        cargs.extend([
+            "-affFlirt",
+            execution.input_file(flirt_affine_transform)
+        ])
+    if control_point_grid_input is not None:
+        cargs.extend([
+            "-incpp",
+            execution.input_file(control_point_grid_input)
+        ])
+    if output_cpp is not None:
+        cargs.extend([
+            "-cpp",
+            output_cpp
+        ])
+    if output_resampled_image is not None:
+        cargs.extend([
+            "-res",
+            output_resampled_image
+        ])
+    if reference_mask is not None:
+        cargs.extend([
+            "-rmask",
+            execution.input_file(reference_mask)
+        ])
+    if smooth_reference is not None:
+        cargs.extend([
+            "-smooR",
+            str(smooth_reference)
+        ])
+    if smooth_floating is not None:
+        cargs.extend([
+            "-smooF",
+            str(smooth_floating)
+        ])
+    if num_bins_joint_histogram is not None:
+        cargs.extend([
+            "--rbn",
+            str(num_bins_joint_histogram)
+        ])
+    if num_bins_floating_joint_histogram is not None:
+        cargs.extend([
+            "--fbn",
+            str(num_bins_floating_joint_histogram)
+        ])
+    if lower_threshold_reference is not None:
+        cargs.extend([
+            "--rLwTh",
+            str(lower_threshold_reference)
+        ])
+    if upper_threshold_reference is not None:
+        cargs.extend([
+            "--rUpTh",
+            str(upper_threshold_reference)
+        ])
+    if lower_threshold_floating is not None:
+        cargs.extend([
+            "--fLwTh",
+            str(lower_threshold_floating)
+        ])
+    if upper_threshold_floating is not None:
+        cargs.extend([
+            "--fUpTh",
+            str(upper_threshold_floating)
+        ])
+    if spacing_x is not None:
+        cargs.extend([
+            "-sx",
+            str(spacing_x)
+        ])
+    if spacing_y is not None:
+        cargs.extend([
+            "-sy",
+            str(spacing_y)
+        ])
+    if spacing_z is not None:
+        cargs.extend([
+            "-sz",
+            str(spacing_z)
+        ])
+    if bending_energy is not None:
+        cargs.extend([
+            "-be",
+            str(bending_energy)
+        ])
+    if linear_elasticity is not None:
+        cargs.extend([
+            "-le",
+            *map(str, linear_elasticity)
+        ])
+    if l2_norm_displacement is not None:
+        cargs.extend([
+            "-l2",
+            str(l2_norm_displacement)
+        ])
+    if jacobian_determinant is not None:
+        cargs.extend([
+            "-jl",
+            str(jacobian_determinant)
+        ])
+    if no_approx_jl:
+        cargs.append("-noAppJL")
+    if no_conj:
+        cargs.append("-noConj")
+    if ssd:
+        cargs.append("-ssd")
+    if kld:
+        cargs.append("-kld")
+    if amc:
+        cargs.append("-amc")
+    if max_iterations is not None:
+        cargs.extend([
+            "-maxit",
+            str(max_iterations)
+        ])
+    if num_levels is not None:
+        cargs.extend([
+            "-ln",
+            str(num_levels)
+        ])
+    if first_levels is not None:
+        cargs.extend([
+            "-lp",
+            str(first_levels)
+        ])
+    if no_pyramid:
+        cargs.append("-nopy")
+    if symmetric:
+        cargs.append("-sym")
+    if floating_mask is not None:
+        cargs.extend([
+            "-fmask",
+            execution.input_file(floating_mask)
+        ])
+    if inverse_consistency is not None:
+        cargs.extend([
+            "-ic",
+            str(inverse_consistency)
+        ])
+    if velocity_field:
+        cargs.append("-vel")
+    if composition_steps is not None:
+        cargs.extend([
+            "-step",
+            str(composition_steps)
+        ])
+    if smooth_gradient is not None:
+        cargs.extend([
+            "-smoothGrad",
+            str(smooth_gradient)
+        ])
+    if padding_value is not None:
+        cargs.extend([
+            "-pad",
+            str(padding_value)
+        ])
+    if verbose_off:
+        cargs.append("-voff")
     ret = RegF3dOutputs(
         root=execution.output_file("."),
-        output_cpp_file=execution.output_file("[OUTPUT_CPP]"),
-        output_resampled_image_file=execution.output_file("[OUTPUT_RESAMPLED_IMAGE]"),
+        output_cpp_file=execution.output_file(output_cpp) if (output_cpp is not None) else None,
+        output_resampled_image_file=execution.output_file(output_resampled_image) if (output_resampled_image is not None) else None,
     )
     execution.run(cargs)
     return ret

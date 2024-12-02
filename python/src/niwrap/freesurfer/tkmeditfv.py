@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TKMEDITFV_METADATA = Metadata(
-    id="21672ed2f495671db02b280b0d48365d1f496aa1.boutiques",
+    id="c54cb02c761041c3c2bd1fa2a8964899175b9969.boutiques",
     name="tkmeditfv",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -135,7 +135,6 @@ def tkmeditfv(
             "-reg",
             execution.input_file(overlay_registration)
         ])
-    cargs.append("[T2_FILE]")
     if surface is not None:
         cargs.extend([
             "-surf",

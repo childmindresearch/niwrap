@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VOLDIFF_METADATA = Metadata(
-    id="ffbb97583e5b1d5df187fa9f9126f53cb96614c1.boutiques",
+    id="049ba42a8da17fa9e060b046adb2f02031ce75c5.boutiques",
     name="mri_voldiff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -62,11 +62,11 @@ def mri_voldiff(
     cargs.append("mri_voldiff")
     cargs.extend([
         "-v1",
-        "-" + execution.input_file(volume1)
+        execution.input_file(volume1)
     ])
     cargs.extend([
         "-v2",
-        "-" + execution.input_file(volume2)
+        execution.input_file(volume2)
     ])
     if vox2ras_thresh is not None:
         cargs.extend([

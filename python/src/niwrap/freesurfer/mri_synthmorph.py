@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHMORPH_METADATA = Metadata(
-    id="4ad8493a581d5747e29206723591f18bb45ae13f.boutiques",
+    id="cca34624b81822a73cc5fffde808c9e91f121f25.boutiques",
     name="mri_synthmorph",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,13 +27,19 @@ class MriSynthmorphOutputs(typing.NamedTuple):
 
 
 def mri_synthmorph(
+    moving_image: InputPathType,
+    fixed_image: InputPathType,
     moved_output: InputPathType | None = None,
+    transform_output: InputPathType | None = None,
+    header_only: bool = False,
+    transformation_model: typing.Literal["deform", "affine", "rigid"] | None = "deform",
     init_transform: InputPathType | None = None,
     threads: float | None = None,
     gpu_flag: bool = False,
     smooth: float | None = 1,
     extent: float | None = 256,
     model_weights: InputPathType | None = None,
+    inspect_directory: str | None = None,
     runner: Runner | None = None,
 ) -> MriSynthmorphOutputs:
     """
@@ -45,7 +51,17 @@ def mri_synthmorph(
     URL: https://github.com/freesurfer/freesurfer
     
     Args:
+        moving_image: The moving input image, which will be registered to the\
+            fixed image.
+        fixed_image: The fixed input image, which is used as the reference for\
+            registration.
         moved_output: The resulting image after registration.
+        transform_output: Output transform file for registration. Can be a text\
+            file for linear or an image file for deformable registration.
+        header_only: Adjust the voxel-to-world matrix instead of resampling.\
+            Linear registration only.
+        transformation_model: Specifies the registration transformation model.\
+            Options include 'deform', 'affine', and 'rigid'.
         init_transform: Initial linear transform for registration.
         threads: Number of TensorFlow threads to utilize. Defaults to the\
             number of cores.
@@ -55,6 +71,8 @@ def mri_synthmorph(
             values indicate smoother displacement fields.
         extent: Isotropic extent of the registration space in unit voxels.
         model_weights: Alternative model weights as an H5 file.
+        inspect_directory: Save model inputs resampled into network space for\
+            inspection.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriSynthmorphOutputs`).
@@ -63,16 +81,25 @@ def mri_synthmorph(
     execution = runner.start_execution(MRI_SYNTHMORPH_METADATA)
     cargs = []
     cargs.append("mri_synthmorph")
-    cargs.append("[MOVING]")
-    cargs.append("[FIXED]")
+    cargs.append(execution.input_file(moving_image))
+    cargs.append(execution.input_file(fixed_image))
     if moved_output is not None:
         cargs.extend([
             "-o",
             execution.input_file(moved_output)
         ])
-    cargs.append("[TRANS_OUTPUT]")
-    cargs.append("[HEADER_ONLY_FLAG]")
-    cargs.append("[MODEL]")
+    if transform_output is not None:
+        cargs.extend([
+            "-t",
+            execution.input_file(transform_output)
+        ])
+    if header_only:
+        cargs.append("-H")
+    if transformation_model is not None:
+        cargs.extend([
+            "-m",
+            transformation_model
+        ])
     if init_transform is not None:
         cargs.extend([
             "-i",
@@ -100,7 +127,11 @@ def mri_synthmorph(
             "-w",
             execution.input_file(model_weights)
         ])
-    cargs.append("[INSPECT_DIR]")
+    if inspect_directory is not None:
+        cargs.extend([
+            "--inspect",
+            inspect_directory
+        ])
     ret = MriSynthmorphOutputs(
         root=execution.output_file("."),
         moved_output_file=execution.output_file(pathlib.Path(moved_output).name) if (moved_output is not None) else None,

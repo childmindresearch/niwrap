@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SRATIO_METADATA = Metadata(
-    id="99330df181ff0ec567ae50e6ed0306b21e695793.boutiques",
+    id="b9e1c106ac7eb065c902d7e719b87ca6cd2c12c5.boutiques",
     name="sratio",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,6 +52,8 @@ def sratio(
     execution = runner.start_execution(SRATIO_METADATA)
     cargs = []
     cargs.append("sratio")
+    cargs.append(str(value_a))
+    cargs.append(str(value_b))
     if abs_flag:
         cargs.append("--abs")
     if mask_threshold is not None:
@@ -59,9 +61,6 @@ def sratio(
             "--mask-thresh",
             str(mask_threshold)
         ])
-    cargs.append(str(value_a))
-    cargs.append(str(value_b))
-    cargs.append("[SRATIO_RESULT]")
     ret = SratioOutputs(
         root=execution.output_file("."),
         sratio_result=execution.output_file("[SRATIO_RESULT]"),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COREG_METADATA = Metadata(
-    id="dddabd34246081963290bedfee1c179e39db1e70.boutiques",
+    id="057f6d3fb653672744b9e6411c4faf5cf046f03e.boutiques",
     name="mri_coreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -22,17 +22,17 @@ class MriCoregOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_registration: OutputPathType
     """Output registration (LTA format)"""
-    out_params: OutputPathType
+    out_params: OutputPathType | None
     """File with output parameters"""
-    out_cost: OutputPathType
+    out_cost: OutputPathType | None
     """Final cost value file"""
-    saved_init_reg: OutputPathType
+    saved_init_reg: OutputPathType | None
     """Saved initial registration"""
-    saved_init_reg_only: OutputPathType
+    saved_init_reg_only: OutputPathType | None
     """Saved initial registration (exit after save)"""
-    movout_volume: OutputPathType
+    movout_volume: OutputPathType | None
     """Preprocessed moving volume"""
-    mov_idither_volume: OutputPathType
+    mov_idither_volume: OutputPathType | None
     """Moving intensity dither volume"""
 
 
@@ -40,6 +40,56 @@ def mri_coreg(
     movvol: InputPathType,
     refvol: InputPathType,
     reg: str,
+    subject: str | None = None,
+    dof: int | None = None,
+    zscale: bool = False,
+    xztrans_yrot: bool = False,
+    xytrans_zrot: bool = False,
+    xytrans_zrot_xyscale_xyshear: bool = False,
+    ref_maskvol: InputPathType | None = None,
+    no_ref_mask: bool = False,
+    mov_maskvol: InputPathType | None = None,
+    threads: int | None = None,
+    subjects_dir: str | None = None,
+    regdat: str | None = None,
+    no_coord_dither: bool = False,
+    no_intensity_dither: bool = False,
+    spatial_scales: list[str] | None = None,
+    trans: list[float] | None = None,
+    rot: list[float] | None = None,
+    scale: list[float] | None = None,
+    shear: list[float] | None = None,
+    init_reg: InputPathType | None = None,
+    out_param_file: str | None = None,
+    out_cost_file: str | None = None,
+    no_cras0: bool = False,
+    centroid: bool = False,
+    ras2ras: bool = False,
+    nitersmax: int | None = None,
+    ftol: float | None = None,
+    linmintol: float | None = None,
+    seed: int | None = None,
+    sat: float | None = None,
+    conf_ref: bool = False,
+    no_bf: bool = False,
+    bf_lim: float | None = None,
+    bf_nsamp: int | None = None,
+    no_smooth: bool = False,
+    ref_fwhm: float | None = None,
+    mov_oob: bool = False,
+    init_reg_save: InputPathType | None = None,
+    init_reg_save_only: InputPathType | None = None,
+    mat2par: InputPathType | None = None,
+    mat2rot: InputPathType | None = None,
+    par2mat: str | None = None,
+    lrrev: InputPathType | None = None,
+    landmarks: list[str] | None = None,
+    rms: list[str] | None = None,
+    movout: InputPathType | None = None,
+    mov_idither: InputPathType | None = None,
+    debug: bool = False,
+    checkopts: bool = False,
+    version: bool = False,
     runner: Runner | None = None,
 ) -> MriCoregOutputs:
     """
@@ -54,36 +104,295 @@ def mri_coreg(
         movvol: Source volume (mov).
         refvol: Target volume (ref or targ).
         reg: Output registration file.
+        subject: Subject ID, forces --ref-mask aparc+aseg.mgz.
+        dof: Degrees of freedom. Default is 6.
+        zscale: Enable 7 dof registration with scaling in Z.
+        xztrans_yrot: For 2D images: uses shifts in x and z and rotation about\
+            y (no scale).
+        xytrans_zrot: For 2D images: uses shifts in x and y and rotation about\
+            z (no scale).
+        xytrans_zrot_xyscale_xyshear: For 2D images: uses shifts in x and y,\
+            rotation about z, scale in xy, and xy shear.
+        ref_maskvol: Mask reference volume with specified mask volume.
+        no_ref_mask: Do not mask reference volume.
+        mov_maskvol: Mask moving volume with specified mask volume.
+        threads: Number of threads to use.
+        subjects_dir: Freesurfer SUBJECTS_DIR.
+        regdat: Specify registration data file.
+        no_coord_dither: Turn off coordinate dithering.
+        no_intensity_dither: Turn off intensity dithering.
+        spatial_scales: Set spatial scales.
+        trans: Initial translation in mm.
+        rot: Initial rotation in degrees.
+        scale: Initial scale.
+        shear: Initial shear.
+        init_reg: Initialize with given registration file.
+        out_param_file: Save parameters in specified file.
+        out_cost_file: Save final cost value in specified file.
+        no_cras0: Do not set translation parameters to align centers of mov and\
+            ref.
+        centroid: Initialize by aligning centroids of mov and ref.
+        ras2ras: Save output LTA as RAS2RAS.
+        nitersmax: Set maximum number of iterations.
+        ftol: Set function tolerance.
+        linmintol: Set line minimum tolerance.
+        seed: Set random seed for dithering.
+        sat: Set saturation threshold.
+        conf_ref: Conform the reference without rescaling.
+        no_bf: Do not perform brute force search.
+        bf_lim: Set constraint limits for brute force search.
+        bf_nsamp: Set number of samples for brute force search.
+        no_smooth: Do not apply smoothing to either ref or mov.
+        ref_fwhm: Apply smoothing to ref with specified FWHM.
+        mov_oob: Count mov voxels that are out-of-bounds as 0.
+        init_reg_save: Save initial registration.
+        init_reg_save_only: Save initial registration and exit.
+        mat2par: Extract parameters out of registration.
+        mat2rot: Convert registration to a pure rotation.
+        par2mat: Convert parameters to a registration.
+        lrrev: Approximate registration if you were to left-right reverse the\
+            pixels of the input image.
+        landmarks: Convert landmarks to a registration.
+        rms: Compute RMS difference between two registrations.
+        movout: Save the mov after all preprocessing steps.
+        mov_idither: Save the mov intensity dither volume.
+        debug: Enable debugging mode.
+        checkopts: Check options and exit without running.
+        version: Print out version and exit.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriCoregOutputs`).
     """
+    if spatial_scales is not None and not (1 <= len(spatial_scales) <= 2): 
+        raise ValueError(f"Length of 'spatial_scales' must be between 1 and 2 but was {len(spatial_scales)}")
+    if landmarks is not None and not (6 <= len(landmarks)): 
+        raise ValueError(f"Length of 'landmarks' must be greater than 6 but was {len(landmarks)}")
+    if rms is not None and not (4 <= len(rms)): 
+        raise ValueError(f"Length of 'rms' must be greater than 4 but was {len(rms)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COREG_METADATA)
     cargs = []
     cargs.append("mri_coreg")
     cargs.extend([
         "-mov",
-        "-" + execution.input_file(movvol)
+        execution.input_file(movvol)
     ])
     cargs.extend([
         "-ref",
-        "-" + execution.input_file(refvol)
+        execution.input_file(refvol)
     ])
     cargs.extend([
         "-reg",
-        "-" + reg
+        reg
     ])
-    cargs.append("[ADDITIONAL_PARAMETERS]")
+    if subject is not None:
+        cargs.extend([
+            "--s",
+            subject
+        ])
+    if dof is not None:
+        cargs.extend([
+            "--dof",
+            str(dof)
+        ])
+    if zscale:
+        cargs.append("--zscale")
+    if xztrans_yrot:
+        cargs.append("--xztrans+yrot")
+    if xytrans_zrot:
+        cargs.append("--xytrans+zrot")
+    if xytrans_zrot_xyscale_xyshear:
+        cargs.append("--xytrans+zrot+xyscale+xyshear")
+    if ref_maskvol is not None:
+        cargs.extend([
+            "--ref-mask",
+            execution.input_file(ref_maskvol)
+        ])
+    if no_ref_mask:
+        cargs.append("--no-ref-mask")
+    if mov_maskvol is not None:
+        cargs.extend([
+            "--mov-mask",
+            execution.input_file(mov_maskvol)
+        ])
+    if threads is not None:
+        cargs.extend([
+            "--threads",
+            str(threads)
+        ])
+    if subjects_dir is not None:
+        cargs.extend([
+            "--sd",
+            subjects_dir
+        ])
+    if regdat is not None:
+        cargs.extend([
+            "--regdat",
+            regdat
+        ])
+    if no_coord_dither:
+        cargs.append("--no-coord-dither")
+    if no_intensity_dither:
+        cargs.append("--no-intensity-dither")
+    if spatial_scales is not None:
+        cargs.extend([
+            "--sep",
+            *spatial_scales
+        ])
+    if trans is not None:
+        cargs.extend([
+            "--trans",
+            *map(str, trans)
+        ])
+    if rot is not None:
+        cargs.extend([
+            "--rot",
+            *map(str, rot)
+        ])
+    if scale is not None:
+        cargs.extend([
+            "--scale",
+            *map(str, scale)
+        ])
+    if shear is not None:
+        cargs.extend([
+            "--shear",
+            *map(str, shear)
+        ])
+    if init_reg is not None:
+        cargs.extend([
+            "--init-reg",
+            execution.input_file(init_reg)
+        ])
+    if out_param_file is not None:
+        cargs.extend([
+            "--params",
+            out_param_file
+        ])
+    if out_cost_file is not None:
+        cargs.extend([
+            "--final-cost",
+            out_cost_file
+        ])
+    if no_cras0:
+        cargs.append("--no-cras0")
+    if centroid:
+        cargs.append("--centroid")
+    if ras2ras:
+        cargs.append("--ras2ras")
+    if nitersmax is not None:
+        cargs.extend([
+            "--nitersmax",
+            str(nitersmax)
+        ])
+    if ftol is not None:
+        cargs.extend([
+            "--ftol",
+            str(ftol)
+        ])
+    if linmintol is not None:
+        cargs.extend([
+            "--linmintol",
+            str(linmintol)
+        ])
+    if seed is not None:
+        cargs.extend([
+            "--seed",
+            str(seed)
+        ])
+    if sat is not None:
+        cargs.extend([
+            "--sat",
+            str(sat)
+        ])
+    if conf_ref:
+        cargs.append("--conf-ref")
+    if no_bf:
+        cargs.append("--no-bf")
+    if bf_lim is not None:
+        cargs.extend([
+            "--bf-lim",
+            str(bf_lim)
+        ])
+    if bf_nsamp is not None:
+        cargs.extend([
+            "--bf-nsamp",
+            str(bf_nsamp)
+        ])
+    if no_smooth:
+        cargs.append("--no-smooth")
+    if ref_fwhm is not None:
+        cargs.extend([
+            "--ref-fwhm",
+            str(ref_fwhm)
+        ])
+    if mov_oob:
+        cargs.append("--mov-oob")
+    if init_reg_save is not None:
+        cargs.extend([
+            "--init-reg-save",
+            execution.input_file(init_reg_save)
+        ])
+    if init_reg_save_only is not None:
+        cargs.extend([
+            "--init-reg-save-only",
+            execution.input_file(init_reg_save_only)
+        ])
+    if mat2par is not None:
+        cargs.extend([
+            "--mat2par",
+            execution.input_file(mat2par)
+        ])
+    if mat2rot is not None:
+        cargs.extend([
+            "--mat2rot",
+            execution.input_file(mat2rot)
+        ])
+    if par2mat is not None:
+        cargs.extend([
+            "--par2mat",
+            par2mat
+        ])
+    if lrrev is not None:
+        cargs.extend([
+            "--lrrev",
+            execution.input_file(lrrev)
+        ])
+    if landmarks is not None:
+        cargs.extend([
+            "--landmarks",
+            *landmarks
+        ])
+    if rms is not None:
+        cargs.extend([
+            "--rms",
+            *rms
+        ])
+    if movout is not None:
+        cargs.extend([
+            "--movout",
+            execution.input_file(movout)
+        ])
+    if mov_idither is not None:
+        cargs.extend([
+            "--mov-idither",
+            execution.input_file(mov_idither)
+        ])
+    if debug:
+        cargs.append("--debug")
+    if checkopts:
+        cargs.append("--checkopts")
+    if version:
+        cargs.append("--version")
     ret = MriCoregOutputs(
         root=execution.output_file("."),
         out_registration=execution.output_file(reg),
-        out_params=execution.output_file("[OUT_PARAM_FILE]"),
-        out_cost=execution.output_file("[OUT_COST_FILE]"),
-        saved_init_reg=execution.output_file("[INIT_REG_SAVE]"),
-        saved_init_reg_only=execution.output_file("[INIT_REG_SAVE_ONLY]"),
-        movout_volume=execution.output_file("[MOVOUT]"),
-        mov_idither_volume=execution.output_file("[MOV_IDITHER]"),
+        out_params=execution.output_file(out_param_file) if (out_param_file is not None) else None,
+        out_cost=execution.output_file(out_cost_file) if (out_cost_file is not None) else None,
+        saved_init_reg=execution.output_file(pathlib.Path(init_reg_save).name) if (init_reg_save is not None) else None,
+        saved_init_reg_only=execution.output_file(pathlib.Path(init_reg_save_only).name) if (init_reg_save_only is not None) else None,
+        movout_volume=execution.output_file(pathlib.Path(movout).name) if (movout is not None) else None,
+        mov_idither_volume=execution.output_file(pathlib.Path(mov_idither).name) if (mov_idither is not None) else None,
     )
     execution.run(cargs)
     return ret

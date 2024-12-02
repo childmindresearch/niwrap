@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MULTISCALE_STATS_METADATA = Metadata(
-    id="4bbca3dec8db48457e1eff4dd76bda5e15c6dee2.boutiques",
+    id="70485123c5f0182ca6af11b7463e3a674edf9419.boutiques",
     name="mris_multiscale_stats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,12 +58,10 @@ def mris_multiscale_stats(
         "-o",
         output_subject
     ])
-    cargs.append("[OPTIONS]")
     cargs.append(hemi)
     cargs.append(execution.input_file(surf))
     cargs.append(execution.input_file(curv))
     cargs.extend(class1_subjects)
-    cargs.append(":")
     cargs.extend(class2_subjects)
     ret = MrisMultiscaleStatsOutputs(
         root=execution.output_file("."),

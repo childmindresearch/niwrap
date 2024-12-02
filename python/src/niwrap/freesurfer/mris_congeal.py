@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_CONGEAL_METADATA = Metadata(
-    id="ba5021e3b1141464dc8a5c263f58d575b5cf1498.boutiques",
+    id="f68a7b50f081a50aa62c0826055ec17d488357b5.boutiques",
     name="mris_congeal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -82,7 +82,7 @@ def mris_congeal(
     cargs.append("mris_congeal")
     cargs.append(input_surface_name)
     cargs.append(hemi)
-    cargs.append("".join(subjects) + "...")
+    cargs.extend(subjects)
     cargs.append(output_surface_name)
     if subjects_dir is not None:
         cargs.extend([

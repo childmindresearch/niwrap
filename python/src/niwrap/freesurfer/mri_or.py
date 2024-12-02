@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_OR_METADATA = Metadata(
-    id="ddfe459ed096acba7b4ac6f76194b8b6adb5cc13.boutiques",
+    id="23de8af32e672952c619b947417102b41f7a6636.boutiques",
     name="mri_or",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -24,6 +24,7 @@ class MriOrOutputs(typing.NamedTuple):
 
 def mri_or(
     input_files: list[InputPathType],
+    original_labels: bool = False,
     runner: Runner | None = None,
 ) -> MriOrOutputs:
     """
@@ -36,6 +37,8 @@ def mri_or(
     Args:
         input_files: Input image files on which to perform the logical OR\
             operation.
+        original_labels: Keeps the original label values in the input files\
+            when creating the output.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriOrOutputs`).
@@ -44,7 +47,8 @@ def mri_or(
     execution = runner.start_execution(MRI_OR_METADATA)
     cargs = []
     cargs.append("mri_or")
-    cargs.append("[OPTIONS]")
+    if original_labels:
+        cargs.append("-o")
     cargs.extend([execution.input_file(f) for f in input_files])
     ret = MriOrOutputs(
         root=execution.output_file("."),

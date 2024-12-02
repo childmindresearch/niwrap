@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNPACK_MNC_TCL_METADATA = Metadata(
-    id="ddccb7b8f243714f63150a7c3173102bfcc88be1.boutiques",
+    id="54eec142d994829a43977ef77cc7f837f8d06635.boutiques",
     name="unpack_mnc.tcl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,11 +20,14 @@ class UnpackMncTclOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    unpacked_file: OutputPathType
+    unpacked_file: OutputPathType | None
     """Unpacked output MINC file"""
 
 
 def unpack_mnc_tcl(
+    verbose: bool = False,
+    output_dir: str | None = None,
+    input_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> UnpackMncTclOutputs:
     """
@@ -35,6 +38,9 @@ def unpack_mnc_tcl(
     URL: https://github.com/freesurfer/freesurfer
     
     Args:
+        verbose: Verbose output messages.
+        output_dir: Output directory for unpacked files.
+        input_file: Specify a custom input file for unpacking.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `UnpackMncTclOutputs`).
@@ -43,10 +49,21 @@ def unpack_mnc_tcl(
     execution = runner.start_execution(UNPACK_MNC_TCL_METADATA)
     cargs = []
     cargs.append("unpack_mnc.tcl")
-    cargs.append("[OPTIONS]")
+    if verbose:
+        cargs.append("-v")
+    if output_dir is not None:
+        cargs.extend([
+            "-o",
+            output_dir
+        ])
+    if input_file is not None:
+        cargs.extend([
+            "-i",
+            execution.input_file(input_file)
+        ])
     ret = UnpackMncTclOutputs(
         root=execution.output_file("."),
-        unpacked_file=execution.output_file("[OUTPUT_DIR]/unpacked_data.mnc"),
+        unpacked_file=execution.output_file(output_dir + "/unpacked_data.mnc") if (output_dir is not None) else None,
     )
     execution.run(cargs)
     return ret

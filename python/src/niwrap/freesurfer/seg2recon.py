@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEG2RECON_METADATA = Metadata(
-    id="d3b02cc1c7335494bf4689568b19e0fd4d4715aa.boutiques",
+    id="36dfabf1fcfdc6c0dea237cf9f3d8968bf6ef6bc.boutiques",
     name="seg2recon",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -82,20 +82,20 @@ def seg2recon(
     cargs.append("seg2recon")
     cargs.extend([
         "-s",
-        "-" + subject
+        subject
     ])
     cargs.extend([
         "-seg",
-        "-" + execution.input_file(segvol)
+        execution.input_file(segvol)
     ])
     cargs.extend([
         "-i",
-        "-" + execution.input_file(inputvol)
+        execution.input_file(inputvol)
     ])
     if ctab is not None:
         cargs.extend([
             "-ctab",
-            "-" + execution.input_file(ctab)
+            execution.input_file(ctab)
         ])
     if ndilate is not None:
         cargs.extend([

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEGMENT_HA_T1_SH_METADATA = Metadata(
-    id="b8b0eaf34697181c6d9e12ad309ef99fd50109b5.boutiques",
+    id="33c1985d7e603bd0c84961ad260a84289d2bd93f.boutiques",
     name="segmentHA_T1.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -29,6 +29,9 @@ class SegmentHaT1ShOutputs(typing.NamedTuple):
 def segment_ha_t1_sh(
     input_image: InputPathType,
     output_directory: str,
+    brain_mask: InputPathType | None = None,
+    verbose: bool = False,
+    debug: bool = False,
     runner: Runner | None = None,
 ) -> SegmentHaT1ShOutputs:
     """
@@ -42,6 +45,9 @@ def segment_ha_t1_sh(
         input_image: The input T1-weighted MRI image for hippocampal/amygdalar\
             segmentation.
         output_directory: The directory where the output will be saved.
+        brain_mask: Use a specific brain mask for segmentation.
+        verbose: Increase the verbosity of the output.
+        debug: Enable debugging mode.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SegmentHaT1ShOutputs`).
@@ -52,7 +58,15 @@ def segment_ha_t1_sh(
     cargs.append("segmentHA_T1.sh")
     cargs.append(execution.input_file(input_image))
     cargs.append(output_directory)
-    cargs.append("[OPTIONS]")
+    if brain_mask is not None:
+        cargs.extend([
+            "--brainmask",
+            execution.input_file(brain_mask)
+        ])
+    if verbose:
+        cargs.append("--verbose")
+    if debug:
+        cargs.append("--debug")
     ret = SegmentHaT1ShOutputs(
         root=execution.output_file("."),
         hippocampus_aseg=execution.output_file(output_directory + "/hippocampus_aseg.mgz"),

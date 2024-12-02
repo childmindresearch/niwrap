@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COR2LABEL_METADATA = Metadata(
-    id="f5370a19dfdea99e0e5e8c6f686d9669b01b4c82.boutiques",
+    id="af9da52f4b4f506776cedf44bf8558f6771cc4d7.boutiques",
     name="mri_cor2label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -81,15 +81,15 @@ def mri_cor2label(
     cargs.append("mri_cor2label")
     cargs.extend([
         "-i",
-        "-" + execution.input_file(input_file)
+        execution.input_file(input_file)
     ])
     cargs.extend([
         "-id",
-        "-" + str(label_id)
+        str(label_id)
     ])
     cargs.extend([
         "-l",
-        "-" + label_file
+        label_file
     ])
     if threshold is not None:
         cargs.extend([

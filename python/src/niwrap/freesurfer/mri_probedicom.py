@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_PROBEDICOM_METADATA = Metadata(
-    id="64586dfbb8a147b28c877a7e3bd732e2c61fb1d7.boutiques",
+    id="e881c56e43ccca97c6f0346fbb32f30273bb1fbf.boutiques",
     name="mri_probedicom",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,6 +26,8 @@ class MriProbedicomOutputs(typing.NamedTuple):
 
 def mri_probedicom(
     dicom_file: InputPathType,
+    option1: str | None = None,
+    option2: str | None = None,
     runner: Runner | None = None,
 ) -> MriProbedicomOutputs:
     """
@@ -37,6 +39,8 @@ def mri_probedicom(
     
     Args:
         dicom_file: DICOM file to be probed.
+        option1: Description for option1.
+        option2: Description for option2.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriProbedicomOutputs`).
@@ -46,7 +50,16 @@ def mri_probedicom(
     cargs = []
     cargs.append("mri_probedicom")
     cargs.append(execution.input_file(dicom_file))
-    cargs.append("[OPTIONS]")
+    if option1 is not None:
+        cargs.extend([
+            "-option1",
+            option1
+        ])
+    if option2 is not None:
+        cargs.extend([
+            "-option2",
+            option2
+        ])
     ret = MriProbedicomOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file("[OUTPUT].txt"),

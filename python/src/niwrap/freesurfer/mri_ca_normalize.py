@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CA_NORMALIZE_METADATA = Metadata(
-    id="d494d3dfbeba740a188d22fe73b4e75a688690e7.boutiques",
+    id="822a8e4a63033035b2c8f0da0858f4e52e7344bd.boutiques",
     name="mri_ca_normalize",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -44,14 +44,14 @@ def mri_ca_normalize(
     te_value: float | None = None,
     alpha_value: float | None = None,
     example_mri_vol: InputPathType | None = None,
-    novar_flag: bool = False,
-    renorm_file: InputPathType | None = None,
     extra_norm_pctl: float | None = None,
-    flash_flag: bool = False,
     prior_threshold: float | None = None,
     n_regions: float | None = None,
     verbose_value: float | None = None,
     top_percent: float | None = None,
+    novar_flag: bool = False,
+    renorm_file: InputPathType | None = None,
+    flash_flag: bool = False,
     runner: Runner | None = None,
 ) -> MriCaNormalizeOutputs:
     """
@@ -86,15 +86,15 @@ def mri_ca_normalize(
         te_value: Set TE in msec.
         alpha_value: Set alpha in radians.
         example_mri_vol: Use T1 (mri_vol) and segmentation as example.
-        novar_flag: Do not use variance estimates.
-        renorm_file: Renormalize using predicted intensity values in mri_vol.
         extra_norm_pctl: Use 1+pct and 1-pct to widen the range of T1 values.
-        flash_flag: Use FLASH forward model to predict intensity values.
         prior_threshold: Use prior threshold t (default=.6).
         n_regions: Use n regions/struct for normalization.
         verbose_value: Used for debugging and diagnostics.
         top_percent: Use top p percent (default=.25) white matter points as\
             control points.
+        novar_flag: Do not use variance estimates.
+        renorm_file: Renormalize using predicted intensity values in mri_vol.
+        flash_flag: Use FLASH forward model to predict intensity values.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriCaNormalizeOutputs`).
@@ -182,27 +182,16 @@ def mri_ca_normalize(
             "-example",
             execution.input_file(example_mri_vol)
         ])
-    cargs.append("[EXAMPLE_SEG]")
-    if novar_flag:
-        cargs.append("-novar")
-    if renorm_file is not None:
-        cargs.extend([
-            "-renorm",
-            execution.input_file(renorm_file)
-        ])
     if extra_norm_pctl is not None:
         cargs.extend([
             "-extra_norm",
             str(extra_norm_pctl)
         ])
-    if flash_flag:
-        cargs.append("-flash")
     if prior_threshold is not None:
         cargs.extend([
             "-prior",
             str(prior_threshold)
         ])
-    cargs.append("[WRITE_FLAG]")
     if n_regions is not None:
         cargs.extend([
             "-n",
@@ -218,6 +207,15 @@ def mri_ca_normalize(
             "-p",
             str(top_percent)
         ])
+    if novar_flag:
+        cargs.append("-novar")
+    if renorm_file is not None:
+        cargs.extend([
+            "-renorm",
+            execution.input_file(renorm_file)
+        ])
+    if flash_flag:
+        cargs.append("-flash")
     ret = MriCaNormalizeOutputs(
         root=execution.output_file("."),
         normalized_output=execution.output_file("output.mgh"),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VECWARP_METADATA = Metadata(
-    id="566a742579ceebf3aa373d3e802507135b8258f9.boutiques",
+    id="b6a386dcbdfb7b07edd1e2d0325362df44cdb19e.boutiques",
     name="Vecwarp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,10 @@ class VecwarpOutputs(typing.NamedTuple):
 
 
 def vecwarp(
+    apar: InputPathType | None = None,
+    matvec: InputPathType | None = None,
+    forward: bool = False,
+    backward: bool = False,
     input_: InputPathType | None = None,
     output: str | None = None,
     force: bool = False,
@@ -39,6 +43,15 @@ def vecwarp(
     URL: https://afni.nimh.nih.gov/
     
     Args:
+        apar: Use the AFNI dataset 'aaa' as the source of the transformation;\
+            this dataset must be in +acpc or +tlrc coordinates, and must contain\
+            the attributes WARP_TYPE and WARP_DATA which describe the forward\
+            transformation from +orig coordinates to the 'aaa' coordinate system.
+        matvec: Read an affine transformation matrix-vector from file 'mmm',\
+            which must be in the specified format.
+        forward: To apply the forward transformation. If neither -forward nor\
+            -backward is given, -forward is the default.
+        backward: To apply the backward transformation.
         input_: Read input 3-vectors from the file 'iii' (from stdin if 'iii'\
             is '-' or the -input option is missing).
         output: Write the output to file 'ooo' (to stdout if 'ooo' is '-', or\
@@ -53,12 +66,20 @@ def vecwarp(
     execution = runner.start_execution(VECWARP_METADATA)
     cargs = []
     cargs.append("Vecwarp")
-    cargs.append("[APAR")
-    cargs.append("|")
-    cargs.append("MATVEC]")
-    cargs.append("[FORWARD_FLAG")
-    cargs.append("|")
-    cargs.append("BACKWARD_FLAG]")
+    if apar is not None:
+        cargs.extend([
+            "-apar",
+            execution.input_file(apar)
+        ])
+    if matvec is not None:
+        cargs.extend([
+            "-matvec",
+            execution.input_file(matvec)
+        ])
+    if forward:
+        cargs.append("-forward")
+    if backward:
+        cargs.append("-backward")
     if input_ is not None:
         cargs.extend([
             "-input",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 T4IMGS_4DFP_METADATA = Metadata(
-    id="884cfb2307fabdf5b88d13e5ef5fd712f1a4c4c6.boutiques",
+    id="ff1e1b6a51149ecedfe8127fd7944168fd2882ae.boutiques",
     name="t4imgs_4dfp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,6 +27,17 @@ class T4imgs4dfpOutputs(typing.NamedTuple):
 def t4imgs_4dfp(
     input_images: list[InputPathType],
     output_image: str,
+    sqrt_normalize: bool = False,
+    cubic_spline: bool = False,
+    output_nan: bool = False,
+    convert_t4: bool = False,
+    nearest_neighbor: bool = False,
+    output_111_space: bool = False,
+    output_222_space: bool = False,
+    output_333n_space: str | None = None,
+    duplicate_dimensions: str | None = None,
+    big_endian: bool = False,
+    little_endian: bool = False,
     runner: Runner | None = None,
 ) -> T4imgs4dfpOutputs:
     """
@@ -39,6 +50,17 @@ def t4imgs_4dfp(
     Args:
         input_images: Input list of 4dfp images.
         output_image: Output file name for the transformed image.
+        sqrt_normalize: Normalize by sqrt(n) rather than n (for z images).
+        cubic_spline: Interpolate by 3D cubic spline (default is 3D linear).
+        output_nan: Output NaN (default 0.0) for undefined values.
+        convert_t4: Internally convert to_711-2A_t4->to_711-2B_t4.
+        nearest_neighbor: Use nearest neighbor interpolation.
+        output_111_space: Output in 111 space instead of default 333.0 space.
+        output_222_space: Output in 222 space instead of default 333.0 space.
+        output_333n_space: Output in 333.n space (y shifted up by n pixels).
+        duplicate_dimensions: Duplicate dimensions of specified image.
+        big_endian: Output in big endian format.
+        little_endian: Output in little endian format.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `T4imgs4dfpOutputs`).
@@ -47,7 +69,34 @@ def t4imgs_4dfp(
     execution = runner.start_execution(T4IMGS_4DFP_METADATA)
     cargs = []
     cargs.append("t4imgs_4dfp")
-    cargs.append("[OPTIONS]")
+    if sqrt_normalize:
+        cargs.append("-z")
+    if cubic_spline:
+        cargs.append("-s")
+    if output_nan:
+        cargs.append("-N")
+    if convert_t4:
+        cargs.append("-B")
+    if nearest_neighbor:
+        cargs.append("-n")
+    if output_111_space:
+        cargs.append("-O111")
+    if output_222_space:
+        cargs.append("-O222")
+    if output_333n_space is not None:
+        cargs.extend([
+            "-O333.n",
+            output_333n_space
+        ])
+    if duplicate_dimensions is not None:
+        cargs.extend([
+            "-O",
+            duplicate_dimensions
+        ])
+    if big_endian:
+        cargs.append("-@b")
+    if little_endian:
+        cargs.append("-@l")
     cargs.extend([execution.input_file(f) for f in input_images])
     cargs.append(output_image)
     ret = T4imgs4dfpOutputs(

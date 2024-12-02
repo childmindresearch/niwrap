@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RF_LABEL_METADATA = Metadata(
-    id="99758d7616ca4f61f65200c8a30bd05f887b17bb.boutiques",
+    id="4696827fae4b209c83ac56d628b74442e0fa9ece.boutiques",
     name="mri_rf_label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -34,6 +34,7 @@ def mri_rf_label(
     wm_path: InputPathType | None = None,
     conform_flag: bool = False,
     normpd_flag: bool = False,
+    gca_tl: InputPathType | None = None,
     debug_voxel: list[float] | None = None,
     debug_node: list[float] | None = None,
     debug_label: float | None = None,
@@ -84,6 +85,7 @@ def mri_rf_label(
         wm_path: Use WM segmentation from provided file.
         conform_flag: Interpolate volume to be isotropic 1mm^3.
         normpd_flag: Normalize PD image to GCA means.
+        gca_tl: Use file to label the thin temporal lobe.
         debug_voxel: Debug voxel at specified coordinates.
         debug_node: Debug node at specified coordinates.
         debug_label: Debug label at specified index.
@@ -126,7 +128,7 @@ def mri_rf_label(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_LABEL_METADATA)
     cargs = []
-    cargs.append("mri_ca_label")
+    cargs.append("mri_rf_label")
     cargs.extend([execution.input_file(f) for f in input_volumes])
     cargs.append(execution.input_file(transform_file))
     cargs.append(execution.input_file(gcafile))
@@ -144,7 +146,11 @@ def mri_rf_label(
         cargs.append("-conform")
     if normpd_flag:
         cargs.append("-normpd")
-    cargs.append("[GLA_TL]")
+    if gca_tl is not None:
+        cargs.extend([
+            "-tl",
+            execution.input_file(gca_tl)
+        ])
     if debug_voxel is not None:
         cargs.extend([
             "-debug_voxel",

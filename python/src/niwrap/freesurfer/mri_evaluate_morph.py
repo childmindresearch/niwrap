@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_EVALUATE_MORPH_METADATA = Metadata(
-    id="f678f940e17b71a66c4b99ca2e39b996966acffe.boutiques",
+    id="80d2aca899795eab8a40cb4bb8b3d34e4bf9970e.boutiques",
     name="mri_evaluate_morph",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,6 @@ def mri_evaluate_morph(
     execution = runner.start_execution(MRI_EVALUATE_MORPH_METADATA)
     cargs = []
     cargs.append("mri_evaluate_morph")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(xform_name))
     cargs.extend([execution.input_file(f) for f in segmentation_files])
     cargs.append(output_file)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_TOPOLOGYCORRECTION_METADATA = Metadata(
-    id="dcdd9e01fdcc4804e6a57923dcfc3e74d22d3518.boutiques",
+    id="fb398c893ff0a9507f05f5c97dc95a403a3121a3.boutiques",
     name="mri_topologycorrection",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,7 +27,6 @@ class MriTopologycorrectionOutputs(typing.NamedTuple):
 def mri_topologycorrection(
     input_orig_file: InputPathType,
     input_segmented_file: InputPathType,
-    options: list[str] | None = None,
     runner: Runner | None = None,
 ) -> MriTopologycorrectionOutputs:
     """
@@ -40,7 +39,6 @@ def mri_topologycorrection(
     Args:
         input_orig_file: Path to the original image file.
         input_segmented_file: Path to the segmented image file.
-        options: Additional options for the mri_topologycorrection command.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriTopologycorrectionOutputs`).
@@ -49,11 +47,8 @@ def mri_topologycorrection(
     execution = runner.start_execution(MRI_TOPOLOGYCORRECTION_METADATA)
     cargs = []
     cargs.append("mri_topologycorrection")
-    if options is not None:
-        cargs.extend(options)
     cargs.append(execution.input_file(input_orig_file))
     cargs.append(execution.input_file(input_segmented_file))
-    cargs.append("[OUTPUT_FOLDER]")
     ret = MriTopologycorrectionOutputs(
         root=execution.output_file("."),
         output_folder=execution.output_file("[OUTPUT_FOLDER]"),

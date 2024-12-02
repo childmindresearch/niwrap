@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_RESAMPLE_METADATA = Metadata(
-    id="19210b37dbbae177e286437544751ca3c5a0e1ec.boutiques",
+    id="2ccb8532ef070b252ef142cb969c94469f490a69.boutiques",
     name="reg_resample",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -20,15 +20,23 @@ class RegResampleOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_resampled_image: OutputPathType
+    output_resampled_image: OutputPathType | None
     """File containing the resampled image"""
-    output_resampled_blank: OutputPathType
+    output_resampled_blank: OutputPathType | None
     """File containing the resampled blank grid"""
 
 
 def reg_resample(
     reference_image: InputPathType,
     floating_image: InputPathType,
+    affine_transform: InputPathType | None = None,
+    flirt_affine_transform: InputPathType | None = None,
+    control_point_grid: InputPathType | None = None,
+    deformation_field: InputPathType | None = None,
+    resampled_image: str | None = None,
+    resampled_blank: str | None = None,
+    nearest_neighbor: bool = False,
+    linear_interpolation: bool = False,
     runner: Runner | None = None,
 ) -> RegResampleOutputs:
     """
@@ -42,6 +50,20 @@ def reg_resample(
     Args:
         reference_image: Filename of the reference image.
         floating_image: Filename of the floating image.
+        affine_transform: Filename which contains an affine transformation\
+            (Affine*Reference=Floating).
+        flirt_affine_transform: Filename which contains a radiological flirt\
+            affine transformation.
+        control_point_grid: Filename of the control point grid image (from\
+            reg_f3d).
+        deformation_field: Filename of the deformation field image (from\
+            reg_transform).
+        resampled_image: Filename of the resampled image.
+        resampled_blank: Filename of the resampled blank grid.
+        nearest_neighbor: Use a Nearest Neighbor interpolation for the source\
+            resampling (cubic spline by default).
+        linear_interpolation: Use a Linear interpolation for the source\
+            resampling (cubic spline by default).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegResampleOutputs`).
@@ -58,13 +80,44 @@ def reg_resample(
         "-flo",
         execution.input_file(floating_image)
     ])
-    cargs.append("[TRANSFORMATION_OPTION]")
-    cargs.append("[OUTPUT_OPTIONS]")
-    cargs.append("[INTERPOLATION_OPTIONS]")
+    if affine_transform is not None:
+        cargs.extend([
+            "-aff",
+            execution.input_file(affine_transform)
+        ])
+    if flirt_affine_transform is not None:
+        cargs.extend([
+            "-affFlirt",
+            execution.input_file(flirt_affine_transform)
+        ])
+    if control_point_grid is not None:
+        cargs.extend([
+            "-cpp",
+            execution.input_file(control_point_grid)
+        ])
+    if deformation_field is not None:
+        cargs.extend([
+            "-def",
+            execution.input_file(deformation_field)
+        ])
+    if resampled_image is not None:
+        cargs.extend([
+            "-res",
+            resampled_image
+        ])
+    if resampled_blank is not None:
+        cargs.extend([
+            "-blank",
+            resampled_blank
+        ])
+    if nearest_neighbor:
+        cargs.append("-NN")
+    if linear_interpolation:
+        cargs.append("-LIN")
     ret = RegResampleOutputs(
         root=execution.output_file("."),
-        output_resampled_image=execution.output_file("[RESAMPLED_IMAGE]"),
-        output_resampled_blank=execution.output_file("[RESAMPLED_BLANK]"),
+        output_resampled_image=execution.output_file(resampled_image) if (resampled_image is not None) else None,
+        output_resampled_blank=execution.output_file(resampled_blank) if (resampled_blank is not None) else None,
     )
     execution.run(cargs)
     return ret

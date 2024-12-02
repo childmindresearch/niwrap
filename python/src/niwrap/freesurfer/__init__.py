@@ -89,10 +89,6 @@ from .dmri_train import *
 from .dmri_trk2trk import *
 from .dmri_violin_plots import *
 from .dmri_vox2vox import *
-from .dmrirc_example import *
-from .dmrirc_long_example import *
-from .dmrirc_long_multiscan_example import *
-from .dmrirc_multiscan_example import *
 from .dt_recon import *
 from .epidewarp_fsl import *
 from .export_gcam import *
@@ -504,7 +500,6 @@ from .mris_label_mode import *
 from .mris_left_right_register import *
 from .mris_make_average_surface import *
 from .mris_make_face_parcellation import *
-from .mris_make_map_surfaces import *
 from .mris_make_surfaces import *
 from .mris_make_template import *
 from .mris_map_cuts import *
@@ -587,7 +582,6 @@ from .polyorder import *
 from .post_recon_all import *
 from .predict_v1_sh import *
 from .print_unique_labels_csh import *
-from .progressbar_tcl import *
 from .qatools_py import *
 from .quantify_brainstem_structures_sh import *
 from .quantify_hasubregions_sh import *

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_TOOLS_METADATA = Metadata(
-    id="3e18e50b235aa655b72adf47cc036da50a6b041c.boutiques",
+    id="f395b2a3b7977bc04bd46c3a00a35e8d43532b2f.boutiques",
     name="reg_tools",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -27,6 +27,16 @@ class RegToolsOutputs(typing.NamedTuple):
 def reg_tools(
     input_image: InputPathType,
     output_image: str | None = None,
+    add_value_or_image: str | None = None,
+    sub_value_or_image: str | None = None,
+    mul_value_or_image: str | None = None,
+    div_value_or_image: str | None = None,
+    smooth_value: float | None = None,
+    smooth_gaussian: list[float] | None = None,
+    rms_image: InputPathType | None = None,
+    binarize: bool = False,
+    threshold_value: float | None = None,
+    nan_mask_image: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> RegToolsOutputs:
     """
@@ -39,6 +49,17 @@ def reg_tools(
     Args:
         input_image: Filename of the input image.
         output_image: Filename of the output image.
+        add_value_or_image: This image (or value) is added to the input.
+        sub_value_or_image: This image (or value) is subtracted from the input.
+        mul_value_or_image: This image (or value) is multiplied with the input.
+        div_value_or_image: This image (or value) is divided by the input.
+        smooth_value: The input image is smoothed using a B-spline curve.
+        smooth_gaussian: The input image is smoothed using a Gaussian kernel.
+        rms_image: Compute the mean RMS between the input image and this image.
+        binarize: Binarize the input image (val!=0?val=1:val=0).
+        threshold_value: Threshold the input image (val<thr?val=0:val=1).
+        nan_mask_image: This image is used to mask the input image. Voxels\
+            outside of the mask are set to NaN.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegToolsOutputs`).
@@ -56,7 +77,53 @@ def reg_tools(
             "-out",
             output_image
         ])
-    cargs.append("[OPTIONS]")
+    if add_value_or_image is not None:
+        cargs.extend([
+            "-add",
+            add_value_or_image
+        ])
+    if sub_value_or_image is not None:
+        cargs.extend([
+            "-sub",
+            sub_value_or_image
+        ])
+    if mul_value_or_image is not None:
+        cargs.extend([
+            "-mul",
+            mul_value_or_image
+        ])
+    if div_value_or_image is not None:
+        cargs.extend([
+            "-div",
+            div_value_or_image
+        ])
+    if smooth_value is not None:
+        cargs.extend([
+            "-smo",
+            str(smooth_value)
+        ])
+    if smooth_gaussian is not None:
+        cargs.extend([
+            "-smoG",
+            *map(str, smooth_gaussian)
+        ])
+    if rms_image is not None:
+        cargs.extend([
+            "-rms",
+            execution.input_file(rms_image)
+        ])
+    if binarize:
+        cargs.append("-bin")
+    if threshold_value is not None:
+        cargs.extend([
+            "-thr",
+            str(threshold_value)
+        ])
+    if nan_mask_image is not None:
+        cargs.extend([
+            "-nan",
+            execution.input_file(nan_mask_image)
+        ])
     ret = RegToolsOutputs(
         root=execution.output_file("."),
         output_image_file=execution.output_file(output_image) if (output_image is not None) else None,

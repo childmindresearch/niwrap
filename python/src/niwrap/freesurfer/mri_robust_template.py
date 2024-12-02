@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ROBUST_TEMPLATE_METADATA = Metadata(
-    id="4657aee9954448e4db764886f82366d77a63d11b.boutiques",
+    id="e6d86749b113688755af2fc89adaf79f55c6735f.boutiques",
     name="mri_robust_template",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -33,10 +33,41 @@ class MriRobustTemplateOutputs(typing.NamedTuple):
 def mri_robust_template(
     mov_files: list[InputPathType],
     template_file: str,
+    sat_value: float | None = None,
+    satit_flag: bool = False,
     lta_files: list[str] | None = None,
     mapmov_files: list[str] | None = None,
     mapmovhdr_files: list[str] | None = None,
     weights_files: list[str] | None = None,
+    oneminusw_flag: bool = False,
+    average_type: int | None = None,
+    inittp: int | None = None,
+    fixtp_flag: bool = False,
+    iscale_flag: bool = False,
+    iscaleonly_flag: bool = False,
+    iscalein_files: list[str] | None = None,
+    iscaleout_files: list[str] | None = None,
+    transonly_flag: bool = False,
+    affine_flag: bool = False,
+    ixforms_files: list[str] | None = None,
+    masks_files: list[str] | None = None,
+    vox2vox_flag: bool = False,
+    leastsquares_flag: bool = False,
+    noit_flag: bool = False,
+    maxit: int | None = None,
+    highit: int | None = None,
+    epsit: float | None = None,
+    pairmaxit: int | None = None,
+    pairepsit: float | None = None,
+    subsample: int | None = None,
+    nomulti_flag: bool = False,
+    floattype_flag: bool = False,
+    finalnearest_flag: bool = False,
+    doubleprec_flag: bool = False,
+    cras_flag: bool = False,
+    res_thresh: float | None = None,
+    frobnorm_thresh: float | None = None,
+    debug_flag: bool = False,
     runner: Runner | None = None,
 ) -> MriRobustTemplateOutputs:
     """
@@ -51,11 +82,55 @@ def mri_robust_template(
         mov_files: Input movable volumes to be aligned to common mean/median\
             template.
         template_file: Output template volume (final mean/median image).
+        sat_value: Set outlier sensitivity manually. Higher values mean less\
+            sensitivity.
+        satit_flag: Auto-detect good sensitivity (recommended for head or full\
+            brain scans).
         lta_files: Output transforms to template (for each input).
         mapmov_files: Output images: map and resample each input to template.
         mapmovhdr_files: Output images: header-adjusted movables (no\
             resampling).
         weights_files: Output weights (outliers) in target space.
+        oneminusw_flag: Weights (outlier) map will be inverted (0=outlier), as\
+            in earlier versions.
+        average_type: Construct template from: 0 Mean, 1 Median (default).
+        inittp: Use TP# for spatial init (default random), 0: no init.
+        fixtp_flag: Map everything to init TP# (init TP is not resampled).
+        iscale_flag: Allow also intensity scaling (default off).
+        iscaleonly_flag: Only perform iscale (no transformation, default off).
+        iscalein_files: Use initial intensity scales.
+        iscaleout_files: Output final intensity scales (will activate\
+            --iscale).
+        transonly_flag: Find 3 parameter translation only.
+        affine_flag: Find 12 parameter affine transform.
+        ixforms_files: Use initial transforms (lta) on source ('id'=identity).
+        masks_files: Input masks applied to movables.
+        vox2vox_flag: Output VOX2VOX lta file (default is RAS2RAS).
+        leastsquares_flag: Use least squares instead of robust M-estimator (for\
+            testing only).
+        noit_flag: Do not iterate, just create first template.
+        maxit: Iterate max # times (if #tp>2 default 6, else 5 for 2tp reg.).
+        highit: Iterate max # times on highest resolution (default 5).
+        epsit: Stop iterations when all transform updates fall below the\
+            specified value.
+        pairmaxit: Iterate max # times (default 5) for individual pairwise\
+            registrations.
+        pairepsit: Stop individual pairwise registration iterations when\
+            transform updates fall below the specified value.
+        subsample: Subsample if dimension > specified value on all axes\
+            (default no subsampling).
+        nomulti_flag: Do not use multi-resolution (only highest resolution).
+        floattype_flag: Convert images to float internally (default: keep input\
+            type).
+        finalnearest_flag: Use nearest neighbor in final interpolation when\
+            creating average.
+        doubleprec_flag: Use double precision instead of float internally\
+            (large memory usage).
+        cras_flag: Center template at average CRAS, instead of average\
+            barycenter.
+        res_thresh: Volume resolution threshold (default is 0.01 mm).
+        frobnorm_thresh: Matrix frobenius norm threshold (default is 0.0001).
+        debug_flag: Show debug output (default no debug output).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriRobustTemplateOutputs`).
@@ -66,13 +141,19 @@ def mri_robust_template(
     cargs.append("mri_robust_template")
     cargs.extend([
         "-mov",
-        "-" + "".join([execution.input_file(f) for f in mov_files])
+        *[execution.input_file(f) for f in mov_files]
     ])
     cargs.extend([
         "-template",
-        "-" + template_file
+        template_file
     ])
-    cargs.append("[SENSITIVITY_OPTION]")
+    if sat_value is not None:
+        cargs.extend([
+            "--sat",
+            str(sat_value)
+        ])
+    if satit_flag:
+        cargs.append("--satit")
     if lta_files is not None:
         cargs.extend([
             "--lta",
@@ -93,7 +174,106 @@ def mri_robust_template(
             "--weights",
             *weights_files
         ])
-    cargs.append("[OPTIONS]")
+    if oneminusw_flag:
+        cargs.append("--oneminusw")
+    if average_type is not None:
+        cargs.extend([
+            "--average",
+            str(average_type)
+        ])
+    if inittp is not None:
+        cargs.extend([
+            "--inittp",
+            str(inittp)
+        ])
+    if fixtp_flag:
+        cargs.append("--fixtp")
+    if iscale_flag:
+        cargs.append("--iscale")
+    if iscaleonly_flag:
+        cargs.append("--iscaleonly")
+    if iscalein_files is not None:
+        cargs.extend([
+            "--iscalein",
+            *iscalein_files
+        ])
+    if iscaleout_files is not None:
+        cargs.extend([
+            "--iscaleout",
+            *iscaleout_files
+        ])
+    if transonly_flag:
+        cargs.append("--transonly")
+    if affine_flag:
+        cargs.append("--affine")
+    if ixforms_files is not None:
+        cargs.extend([
+            "--ixforms",
+            *ixforms_files
+        ])
+    if masks_files is not None:
+        cargs.extend([
+            "--masks",
+            *masks_files
+        ])
+    if vox2vox_flag:
+        cargs.append("--vox2vox")
+    if leastsquares_flag:
+        cargs.append("--leastsquares")
+    if noit_flag:
+        cargs.append("--noit")
+    if maxit is not None:
+        cargs.extend([
+            "--maxit",
+            str(maxit)
+        ])
+    if highit is not None:
+        cargs.extend([
+            "--highit",
+            str(highit)
+        ])
+    if epsit is not None:
+        cargs.extend([
+            "--epsit",
+            str(epsit)
+        ])
+    if pairmaxit is not None:
+        cargs.extend([
+            "--pairmaxit",
+            str(pairmaxit)
+        ])
+    if pairepsit is not None:
+        cargs.extend([
+            "--pairepsit",
+            str(pairepsit)
+        ])
+    if subsample is not None:
+        cargs.extend([
+            "--subsample",
+            str(subsample)
+        ])
+    if nomulti_flag:
+        cargs.append("--nomulti")
+    if floattype_flag:
+        cargs.append("--floattype")
+    if finalnearest_flag:
+        cargs.append("--finalnearest")
+    if doubleprec_flag:
+        cargs.append("--doubleprec")
+    if cras_flag:
+        cargs.append("--cras")
+    if res_thresh is not None:
+        cargs.extend([
+            "--res-thresh",
+            str(res_thresh)
+        ])
+    if frobnorm_thresh is not None:
+        cargs.extend([
+            "--frobnorm-thresh",
+            str(frobnorm_thresh)
+        ])
+    if debug_flag:
+        cargs.append("--debug")
     ret = MriRobustTemplateOutputs(
         root=execution.output_file("."),
         output_template=execution.output_file(template_file),

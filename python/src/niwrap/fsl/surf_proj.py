@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_PROJ_METADATA = Metadata(
-    id="bcdbd79d479f7d8fbb6e9d605f085f344966b038.boutiques",
+    id="2dac5339b324d77b7304374911753059963206c9.boutiques",
     name="surf_proj",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -69,15 +69,15 @@ def surf_proj(
     cargs.append("surf_proj")
     cargs.extend([
         "-data",
-        "-" + execution.input_file(data)
+        execution.input_file(data)
     ])
     cargs.extend([
         "-surf",
-        "-" + execution.input_file(surface)
+        execution.input_file(surface)
     ])
     cargs.extend([
         "-out",
-        "-" + output_file
+        output_file
     ])
     if surface_reference is not None:
         cargs.extend([

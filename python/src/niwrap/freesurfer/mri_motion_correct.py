@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MOTION_CORRECT_METADATA = Metadata(
-    id="3ca86d1be637b885001d67cb091e8dbb354d3637.boutiques",
+    id="3cfbb0cc88f7a83298127f974e5ce214fa8cdbf7.boutiques",
     name="mri_motion_correct",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def mri_motion_correct(
     cargs = []
     cargs.append("mri_motion_correct")
     cargs.append(outfile)
-    cargs.append("".join([execution.input_file(f) for f in infiles]) + "...")
+    cargs.extend([execution.input_file(f) for f in infiles])
     ret = MriMotionCorrectOutputs(
         root=execution.output_file("."),
         corrected_outfile=execution.output_file(outfile),

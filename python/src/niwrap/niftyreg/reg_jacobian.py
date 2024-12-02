@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_JACOBIAN_METADATA = Metadata(
-    id="235ec9ff93ed75c965eca2bf21da45d4db1dc09d.boutiques",
+    id="d9f34948bab197070a574d5681291e414546dcaa.boutiques",
     name="reg_jacobian",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -20,16 +20,22 @@ class RegJacobianOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_jacobian_file: OutputPathType
+    output_jacobian_file: OutputPathType | None
     """File containing the Jacobian determinant map"""
-    output_jacobian_matrix_file: OutputPathType
+    output_jacobian_matrix_file: OutputPathType | None
     """File containing the Jacobian matrix map"""
-    output_log_jacobian_file: OutputPathType
+    output_log_jacobian_file: OutputPathType | None
     """File containing the log of the Jacobian determinant map"""
 
 
 def reg_jacobian(
     reference_image: InputPathType,
+    deformation_field: InputPathType | None = None,
+    control_point_lattice: InputPathType | None = None,
+    output_jacobian: str | None = None,
+    output_jacobian_matrix: str | None = None,
+    output_log_jacobian: str | None = None,
+    affine_matrix: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> RegJacobianOutputs:
     """
@@ -42,6 +48,17 @@ def reg_jacobian(
     
     Args:
         reference_image: Filename of the reference image.
+        deformation_field: Filename of the deformation field (from\
+            reg_transform).
+        control_point_lattice: Filename of the control point position lattice\
+            (from reg_f3d).
+        output_jacobian: Filename of the Jacobian determinant map.
+        output_jacobian_matrix: Filename of the Jacobian matrix map (9 or 4\
+            values stored as a 5D nifti).
+        output_log_jacobian: Filename of the Log of the Jacobian determinant\
+            map.
+        affine_matrix: Filename of the affine matrix to modulate the Jacobian\
+            determinant map.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegJacobianOutputs`).
@@ -50,19 +67,45 @@ def reg_jacobian(
     execution = runner.start_execution(REG_JACOBIAN_METADATA)
     cargs = []
     cargs.append("reg_jacobian")
-    cargs.append("-ref")
     cargs.extend([
-        "-target",
+        "-ref",
         execution.input_file(reference_image)
     ])
-    cargs.append("[INPUT_TYPE]")
-    cargs.append("[OUTPUT_OPTIONS]")
-    cargs.append("[EXTRA_OPTIONS]")
+    if deformation_field is not None:
+        cargs.extend([
+            "-def",
+            execution.input_file(deformation_field)
+        ])
+    if control_point_lattice is not None:
+        cargs.extend([
+            "-cpp",
+            execution.input_file(control_point_lattice)
+        ])
+    if output_jacobian is not None:
+        cargs.extend([
+            "-jac",
+            output_jacobian
+        ])
+    if output_jacobian_matrix is not None:
+        cargs.extend([
+            "-jacM",
+            output_jacobian_matrix
+        ])
+    if output_log_jacobian is not None:
+        cargs.extend([
+            "-jacL",
+            output_log_jacobian
+        ])
+    if affine_matrix is not None:
+        cargs.extend([
+            "-aff",
+            execution.input_file(affine_matrix)
+        ])
     ret = RegJacobianOutputs(
         root=execution.output_file("."),
-        output_jacobian_file=execution.output_file("[OUTPUT_JACOBIAN]"),
-        output_jacobian_matrix_file=execution.output_file("[OUTPUT_JACOBIAN_MATRIX]"),
-        output_log_jacobian_file=execution.output_file("[OUTPUT_LOG_JACOBIAN]"),
+        output_jacobian_file=execution.output_file(output_jacobian) if (output_jacobian is not None) else None,
+        output_jacobian_matrix_file=execution.output_file(output_jacobian_matrix) if (output_jacobian_matrix is not None) else None,
+        output_log_jacobian_file=execution.output_file(output_log_jacobian) if (output_log_jacobian is not None) else None,
     )
     execution.run(cargs)
     return ret

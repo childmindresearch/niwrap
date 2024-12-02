@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COMPILE_EDITS_METADATA = Metadata(
-    id="806321ae310212a26af7aedb288ffacc2c400736.boutiques",
+    id="2f294d33e927de222c7f1e4b43430f1f824c2840.boutiques",
     name="mri_compile_edits",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,6 @@ def mri_compile_edits(
     execution = runner.start_execution(MRI_COMPILE_EDITS_METADATA)
     cargs = []
     cargs.append("mri_compile_edits")
-    cargs.append("[OPTIONS]")
     cargs.append(subject_name)
     cargs.append(output_volume)
     ret = MriCompileEditsOutputs(

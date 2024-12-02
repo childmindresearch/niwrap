@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TKREGISTER2_METADATA = Metadata(
-    id="467cfd3b94291cc451eff665644f60f8c785bfdf.boutiques",
+    id="5b91df2c41f022fb3500d5826ced751292eade8d.boutiques",
     name="tkregister2",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,6 +28,11 @@ def tkregister2(
     fixed_volume: InputPathType,
     moving_volume: InputPathType,
     reg_file: InputPathType,
+    noedit: bool = False,
+    lta: bool = False,
+    surf_reg: bool = False,
+    reg_only: bool = False,
+    help_: bool = False,
     runner: Runner | None = None,
 ) -> Tkregister2Outputs:
     """
@@ -41,6 +46,11 @@ def tkregister2(
         fixed_volume: Fixed volume (e.g., anatomical image).
         moving_volume: Moving volume (e.g., functional image).
         reg_file: Registration file to be saved or loaded.
+        noedit: Run in no-edit mode, useful for scripting.
+        lta: Use LTA format for registration file.
+        surf_reg: Use surface registration.
+        reg_only: Don't show GUI, just save registration.
+        help_: Display help information.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tkregister2Outputs`).
@@ -52,7 +62,16 @@ def tkregister2(
     cargs.append(execution.input_file(fixed_volume))
     cargs.append(execution.input_file(moving_volume))
     cargs.append(execution.input_file(reg_file))
-    cargs.append("[COMMAND_OPTIONS]")
+    if noedit:
+        cargs.append("--noedit")
+    if lta:
+        cargs.append("--lta")
+    if surf_reg:
+        cargs.append("--surf")
+    if reg_only:
+        cargs.append("--regonly")
+    if help_:
+        cargs.append("--help")
     ret = Tkregister2Outputs(
         root=execution.output_file("."),
         output_reg_file=execution.output_file(pathlib.Path(reg_file).name),

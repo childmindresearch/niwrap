@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_TRANSFORM_METADATA = Metadata(
-    id="ddabbbe3bc51c15b180593a6f3f6221e3e012919.boutiques",
+    id="2cbca47da628de2939f9479c528fef081a7988fd.boutiques",
     name="reg_transform",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -20,36 +20,63 @@ class RegTransformOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    cpp2def_output_file: OutputPathType
+    cpp2def_output_file: OutputPathType | None
     """File containing the CPP to DEF converted deformation field."""
-    comp1_output_file: OutputPathType
+    comp1_output_file: OutputPathType | None
     """File containing the composed deformation field from two control point
     lattices."""
-    comp2_output_file: OutputPathType
+    comp2_output_file: OutputPathType | None
     """File containing the composed deformation field from a deformation field
     and a control point lattice."""
-    comp3_output_file: OutputPathType
+    comp3_output_file: OutputPathType | None
     """File containing the composed deformation field from two deformation
     fields."""
-    def2disp_output_file: OutputPathType
+    def2disp_output_file: OutputPathType | None
     """File containing the converted displacement field from a deformation
     field."""
-    disp2def_output_file: OutputPathType
+    disp2def_output_file: OutputPathType | None
     """File containing the converted deformation field from a displacement
     field."""
-    upd_sform_output_file: OutputPathType
+    upd_sform_output_file: OutputPathType | None
     """File containing the updated image with modified sform."""
-    aff2def_output_file: OutputPathType
+    aff2def_output_file: OutputPathType | None
     """File containing the composed deformation field from a non-rigid and an
     affine transformation."""
-    inv_affine_output_file: OutputPathType
+    inv_affine_output_file: OutputPathType | None
     """File containing the inverted affine matrix."""
-    comp_aff_output_file: OutputPathType
+    comp_aff_output_file: OutputPathType | None
     """File containing the composed affine matrix."""
 
 
 def reg_transform(
     reference_image: InputPathType,
+    cpp2def_input: InputPathType | None = None,
+    cpp2def_output: InputPathType | None = None,
+    comp1_cpp2: InputPathType | None = None,
+    comp1_cpp1: InputPathType | None = None,
+    comp1_output: InputPathType | None = None,
+    comp2_cpp: InputPathType | None = None,
+    comp2_def: InputPathType | None = None,
+    comp2_output: InputPathType | None = None,
+    comp3_def2: InputPathType | None = None,
+    comp3_def1: InputPathType | None = None,
+    comp3_output: InputPathType | None = None,
+    def2disp_input: InputPathType | None = None,
+    def2disp_output: InputPathType | None = None,
+    disp2def_input: InputPathType | None = None,
+    disp2def_output: InputPathType | None = None,
+    upd_sform_image: InputPathType | None = None,
+    upd_sform_affine: InputPathType | None = None,
+    upd_sform_output: InputPathType | None = None,
+    aff2def_affine: InputPathType | None = None,
+    aff2def_target: InputPathType | None = None,
+    aff2def_cpp_or_def: InputPathType | None = None,
+    aff2def_output: InputPathType | None = None,
+    inv_affine_input: InputPathType | None = None,
+    inv_affine_output: InputPathType | None = None,
+    comp_aff_1st: InputPathType | None = None,
+    comp_aff_2nd: InputPathType | None = None,
+    comp_aff_output: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> RegTransformOutputs:
     """
@@ -63,6 +90,49 @@ def reg_transform(
     
     Args:
         reference_image: Filename of the reference image.
+        cpp2def_input: Conversion from control point position to deformation\
+            field. Filename of input lattice of control point positions (CPP).
+        cpp2def_output: Filename of the output deformation field image (DEF).
+        comp1_cpp2: Composition of two lattices of control points.\
+            CPP2(CPP1(x)). Filename of lattice of control point that contains the\
+            second deformation (CPP2).
+        comp1_cpp1: Filename of lattice of control point that contains the\
+            initial deformation (CPP1).
+        comp1_output: Filename of the output deformation field.
+        comp2_cpp: Composition of a deformation field with a lattice of control\
+            points. CPP(DEF(x)). Filename of lattice of control point that contains\
+            the second deformation (CPP).
+        comp2_def: Filename of the deformation field to be used as initial\
+            deformation (DEF).
+        comp2_output: Filename of the output deformation field.
+        comp3_def2: Composition of two deformation fields. DEF2(DEF1(x)).\
+            Filename of the second deformation field (DEF2).
+        comp3_def1: Filename of the first deformation field (DEF1).
+        comp3_output: Filename of the output deformation field.
+        def2disp_input: Convert a deformation field into a displacement field.\
+            Filename of deformation field x'=T(x).
+        def2disp_output: Filename of displacement field x'=x+T(x).
+        disp2def_input: Convert a displacement field into a deformation field.\
+            Filename of displacement field x'=x+T(x).
+        disp2def_output: Filename of deformation field x'=T(x).
+        upd_sform_image: Update the sform of a floating (source) image using an\
+            affine transformation. Filename of image to be updated.
+        upd_sform_affine: Affine transformation defined as Affine x Reference =\
+            Floating. Filename of affine transformation.
+        upd_sform_output: Updated image filename.
+        aff2def_affine: Compose a non-rigid with an affine. Filename of affine\
+            transformation.
+        aff2def_target: Image used as a target for the non-rigid step.
+        aff2def_cpp_or_def: Reference image (B). Filename of control point\
+            position or deformation field.
+        aff2def_output: Output deformation field filename.
+        inv_affine_input: Invert an affine transformation matrix. Filename of\
+            input affine matrix.
+        inv_affine_output: Filename of inverted affine matrix.
+        comp_aff_1st: Compose two affine transformation matrices. Filename of\
+            first affine matrix.
+        comp_aff_2nd: Filename of second affine matrix.
+        comp_aff_output: Filename of composed affine matrix result.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RegTransformOutputs`).
@@ -75,19 +145,102 @@ def reg_transform(
         "-ref",
         execution.input_file(reference_image)
     ])
-    cargs.append("[OPTIONS]")
+    if cpp2def_input is not None:
+        cargs.extend([
+            "-cpp2def",
+            execution.input_file(cpp2def_input)
+        ])
+    if cpp2def_output is not None:
+        cargs.append(execution.input_file(cpp2def_output))
+    if comp1_cpp2 is not None:
+        cargs.extend([
+            "-comp1",
+            execution.input_file(comp1_cpp2)
+        ])
+    if comp1_cpp1 is not None:
+        cargs.append(execution.input_file(comp1_cpp1))
+    if comp1_output is not None:
+        cargs.append(execution.input_file(comp1_output))
+    if comp2_cpp is not None:
+        cargs.extend([
+            "-comp2",
+            execution.input_file(comp2_cpp)
+        ])
+    if comp2_def is not None:
+        cargs.append(execution.input_file(comp2_def))
+    if comp2_output is not None:
+        cargs.append(execution.input_file(comp2_output))
+    if comp3_def2 is not None:
+        cargs.extend([
+            "-comp3",
+            execution.input_file(comp3_def2)
+        ])
+    if comp3_def1 is not None:
+        cargs.append(execution.input_file(comp3_def1))
+    if comp3_output is not None:
+        cargs.append(execution.input_file(comp3_output))
+    if def2disp_input is not None:
+        cargs.extend([
+            "-def2disp",
+            execution.input_file(def2disp_input)
+        ])
+    if def2disp_output is not None:
+        cargs.append(execution.input_file(def2disp_output))
+    if disp2def_input is not None:
+        cargs.extend([
+            "-disp2def",
+            execution.input_file(disp2def_input)
+        ])
+    if disp2def_output is not None:
+        cargs.append(execution.input_file(disp2def_output))
+    if upd_sform_image is not None:
+        cargs.extend([
+            "-updSform",
+            execution.input_file(upd_sform_image)
+        ])
+    if upd_sform_affine is not None:
+        cargs.append(execution.input_file(upd_sform_affine))
+    if upd_sform_output is not None:
+        cargs.append(execution.input_file(upd_sform_output))
+    if aff2def_affine is not None:
+        cargs.extend([
+            "-aff2def",
+            execution.input_file(aff2def_affine)
+        ])
+    if aff2def_target is not None:
+        cargs.append(execution.input_file(aff2def_target))
+    if aff2def_cpp_or_def is not None:
+        cargs.append(execution.input_file(aff2def_cpp_or_def))
+    if aff2def_output is not None:
+        cargs.append(execution.input_file(aff2def_output))
+    if inv_affine_input is not None:
+        cargs.extend([
+            "-invAffine",
+            execution.input_file(inv_affine_input)
+        ])
+    if inv_affine_output is not None:
+        cargs.append(execution.input_file(inv_affine_output))
+    if comp_aff_1st is not None:
+        cargs.extend([
+            "-compAff",
+            execution.input_file(comp_aff_1st)
+        ])
+    if comp_aff_2nd is not None:
+        cargs.append(execution.input_file(comp_aff_2nd))
+    if comp_aff_output is not None:
+        cargs.append(execution.input_file(comp_aff_output))
     ret = RegTransformOutputs(
         root=execution.output_file("."),
-        cpp2def_output_file=execution.output_file("[CPP2DEF_OUTPUT]"),
-        comp1_output_file=execution.output_file("[COMP1_OUTPUT]"),
-        comp2_output_file=execution.output_file("[COMP2_OUTPUT]"),
-        comp3_output_file=execution.output_file("[COMP3_OUTPUT]"),
-        def2disp_output_file=execution.output_file("[DEF2DISP_OUTPUT]"),
-        disp2def_output_file=execution.output_file("[DISP2DEF_OUTPUT]"),
-        upd_sform_output_file=execution.output_file("[UPD_SFORM_OUTPUT]"),
-        aff2def_output_file=execution.output_file("[AFF2DEF_OUTPUT]"),
-        inv_affine_output_file=execution.output_file("[INV_AFFINE_OUTPUT]"),
-        comp_aff_output_file=execution.output_file("[COMP_AFF_OUTPUT]"),
+        cpp2def_output_file=execution.output_file(pathlib.Path(cpp2def_output).name) if (cpp2def_output is not None) else None,
+        comp1_output_file=execution.output_file(pathlib.Path(comp1_output).name) if (comp1_output is not None) else None,
+        comp2_output_file=execution.output_file(pathlib.Path(comp2_output).name) if (comp2_output is not None) else None,
+        comp3_output_file=execution.output_file(pathlib.Path(comp3_output).name) if (comp3_output is not None) else None,
+        def2disp_output_file=execution.output_file(pathlib.Path(def2disp_output).name) if (def2disp_output is not None) else None,
+        disp2def_output_file=execution.output_file(pathlib.Path(disp2def_output).name) if (disp2def_output is not None) else None,
+        upd_sform_output_file=execution.output_file(pathlib.Path(upd_sform_output).name) if (upd_sform_output is not None) else None,
+        aff2def_output_file=execution.output_file(pathlib.Path(aff2def_output).name) if (aff2def_output is not None) else None,
+        inv_affine_output_file=execution.output_file(pathlib.Path(inv_affine_output).name) if (inv_affine_output is not None) else None,
+        comp_aff_output_file=execution.output_file(pathlib.Path(comp_aff_output).name) if (comp_aff_output is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_LABEL2ANNOT_METADATA = Metadata(
-    id="a82c00ba82352f53292ae978047e8a771f66064b.boutiques",
+    id="67f30d66c4a858ea344c43f9704f2d647b6aa35d.boutiques",
     name="mris_label2annot",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -29,6 +29,16 @@ def mris_label2annot(
     hemi: str,
     ctabfile: InputPathType,
     annotname: str,
+    index_offset: float | None = None,
+    label_files: list[InputPathType] | None = None,
+    annot_path: str | None = None,
+    labeldir: str | None = None,
+    ldir_default: bool = False,
+    no_unknown: bool = False,
+    thresh: float | None = None,
+    maxstatwinner: bool = False,
+    surf: str | None = None,
+    subjects_dir: str | None = None,
     runner: Runner | None = None,
 ) -> MrisLabel2annotOutputs:
     """
@@ -43,6 +53,16 @@ def mris_label2annot(
         hemi: Hemisphere (lh or rh).
         ctabfile: Colortable file (like FreeSurferColorLUT.txt).
         annotname: Output annotation name.
+        index_offset: Add to label number to get CTAB index.
+        label_files: Label file(s).
+        annot_path: Full name/path of annotation file.
+        labeldir: Directory with label files when not using --l.
+        ldir_default: Use subject/labels as label directory.
+        no_unknown: Do not map unhit labels to index 0.
+        thresh: Threshold label by stats field.
+        maxstatwinner: Keep label with highest 'stat' value.
+        surf: Surface name, default is orig.
+        subjects_dir: Subjects Directory.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MrisLabel2annotOutputs`).
@@ -53,21 +73,61 @@ def mris_label2annot(
     cargs.append("mris_label2annot")
     cargs.extend([
         "-s",
-        "-" + subject
+        subject
     ])
     cargs.extend([
         "-h",
-        "-" + hemi
+        hemi
     ])
     cargs.extend([
         "-ctab",
-        "-" + execution.input_file(ctabfile)
+        execution.input_file(ctabfile)
     ])
     cargs.extend([
         "-a",
-        "-" + annotname
+        annotname
     ])
-    cargs.append("[OPTIONAL_ARGS]")
+    if index_offset is not None:
+        cargs.extend([
+            "--offset",
+            str(index_offset)
+        ])
+    if label_files is not None:
+        cargs.extend([
+            "--l",
+            *[execution.input_file(f) for f in label_files]
+        ])
+    if annot_path is not None:
+        cargs.extend([
+            "--annot-path",
+            annot_path
+        ])
+    if labeldir is not None:
+        cargs.extend([
+            "--ldir",
+            labeldir
+        ])
+    if ldir_default:
+        cargs.append("--ldir-default")
+    if no_unknown:
+        cargs.append("--no-unknown")
+    if thresh is not None:
+        cargs.extend([
+            "--thresh",
+            str(thresh)
+        ])
+    if maxstatwinner:
+        cargs.append("--maxstatwinner")
+    if surf is not None:
+        cargs.extend([
+            "--surf",
+            surf
+        ])
+    if subjects_dir is not None:
+        cargs.extend([
+            "--sd",
+            subjects_dir
+        ])
     ret = MrisLabel2annotOutputs(
         root=execution.output_file("."),
         annot_file=execution.output_file(hemi + "." + annotname + ".annot"),
