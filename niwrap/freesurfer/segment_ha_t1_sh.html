@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">SEGMENT_HA_T1_SH_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b8b0eaf34697181c6d9e12ad309ef99fd50109b5.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;33c1985d7e603bd0c84961ad260a84289d2bd93f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;segmentHA_T1.sh&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -106,44 +106,58 @@
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="k">def</span> <span class="nf">segment_ha_t1_sh</span><span class="p">(</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">:</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Tool for hippocampal/amygdalar subfield segmentation.</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    </span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    Args:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        input_image: The input T1-weighted MRI image for hippocampal/amygdalar\</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">            segmentation.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        output_directory: The directory where the output will be saved.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">    Returns:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        NamedTuple of outputs (described in `SegmentHaT1ShOutputs`).</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SEGMENT_HA_T1_SH_METADATA</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;segmentHA_T1.sh&quot;</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_directory</span><span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">(</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="n">hippocampus_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/hippocampus_aseg.mgz&quot;</span><span class="p">),</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">amygdala_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/amygdala_aseg.mgz&quot;</span><span class="p">),</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;SEGMENT_HA_T1_SH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;SegmentHaT1ShOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="s2">&quot;segment_ha_t1_sh&quot;</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="p">]</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">brain_mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Tool for hippocampal/amygdalar subfield segmentation.</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        input_image: The input T1-weighted MRI image for hippocampal/amygdalar\</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            segmentation.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        output_directory: The directory where the output will be saved.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        brain_mask: Use a specific brain mask for segmentation.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        verbose: Increase the verbosity of the output.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        debug: Enable debugging mode.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    Returns:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        NamedTuple of outputs (described in `SegmentHaT1ShOutputs`).</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SEGMENT_HA_T1_SH_METADATA</span><span class="p">)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;segmentHA_T1.sh&quot;</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_directory</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="n">brain_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>            <span class="s2">&quot;--brainmask&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="p">])</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">(</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">hippocampus_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/hippocampus_aseg.mgz&quot;</span><span class="p">),</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">amygdala_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/amygdala_aseg.mgz&quot;</span><span class="p">),</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="s2">&quot;SEGMENT_HA_T1_SH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="s2">&quot;SegmentHaT1ShOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="s2">&quot;segment_ha_t1_sh&quot;</span><span class="p">,</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -152,7 +166,7 @@
                     <div class="attr variable">
             <span class="name">SEGMENT_HA_T1_SH_METADATA</span>        =
 <input id="SEGMENT_HA_T1_SH_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SEGMENT_HA_T1_SH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b8b0eaf34697181c6d9e12ad309ef99fd50109b5.boutiques&#39;, name=&#39;segmentHA_T1.sh&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SEGMENT_HA_T1_SH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;33c1985d7e603bd0c84961ad260a84289d2bd93f.boutiques&#39;, name=&#39;segmentHA_T1.sh&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -248,7 +262,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">segment_ha_t1_sh</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SegmentHaT1ShOutputs">SegmentHaT1ShOutputs</a></span>:</span></span>
+        <span class="name">segment_ha_t1_sh</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">brain_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SegmentHaT1ShOutputs">SegmentHaT1ShOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="segment_ha_t1_sh-view-source"><span>View Source</span></label>
 
@@ -257,37 +271,51 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="segment_ha_t1_sh-30"><a href="#segment_ha_t1_sh-30"><span class="linenos">30</span></a><span class="k">def</span> <span class="nf">segment_ha_t1_sh</span><span class="p">(</span>
 </span><span id="segment_ha_t1_sh-31"><a href="#segment_ha_t1_sh-31"><span class="linenos">31</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="segment_ha_t1_sh-32"><a href="#segment_ha_t1_sh-32"><span class="linenos">32</span></a>    <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="segment_ha_t1_sh-33"><a href="#segment_ha_t1_sh-33"><span class="linenos">33</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="segment_ha_t1_sh-34"><a href="#segment_ha_t1_sh-34"><span class="linenos">34</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">:</span>
-</span><span id="segment_ha_t1_sh-35"><a href="#segment_ha_t1_sh-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="segment_ha_t1_sh-36"><a href="#segment_ha_t1_sh-36"><span class="linenos">36</span></a><span class="sd">    Tool for hippocampal/amygdalar subfield segmentation.</span>
-</span><span id="segment_ha_t1_sh-37"><a href="#segment_ha_t1_sh-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="segment_ha_t1_sh-38"><a href="#segment_ha_t1_sh-38"><span class="linenos">38</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="segment_ha_t1_sh-39"><a href="#segment_ha_t1_sh-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="segment_ha_t1_sh-40"><a href="#segment_ha_t1_sh-40"><span class="linenos">40</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="segment_ha_t1_sh-41"><a href="#segment_ha_t1_sh-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="segment_ha_t1_sh-42"><a href="#segment_ha_t1_sh-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
-</span><span id="segment_ha_t1_sh-43"><a href="#segment_ha_t1_sh-43"><span class="linenos">43</span></a><span class="sd">        input_image: The input T1-weighted MRI image for hippocampal/amygdalar\</span>
-</span><span id="segment_ha_t1_sh-44"><a href="#segment_ha_t1_sh-44"><span class="linenos">44</span></a><span class="sd">            segmentation.</span>
-</span><span id="segment_ha_t1_sh-45"><a href="#segment_ha_t1_sh-45"><span class="linenos">45</span></a><span class="sd">        output_directory: The directory where the output will be saved.</span>
-</span><span id="segment_ha_t1_sh-46"><a href="#segment_ha_t1_sh-46"><span class="linenos">46</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="segment_ha_t1_sh-47"><a href="#segment_ha_t1_sh-47"><span class="linenos">47</span></a><span class="sd">    Returns:</span>
-</span><span id="segment_ha_t1_sh-48"><a href="#segment_ha_t1_sh-48"><span class="linenos">48</span></a><span class="sd">        NamedTuple of outputs (described in `SegmentHaT1ShOutputs`).</span>
-</span><span id="segment_ha_t1_sh-49"><a href="#segment_ha_t1_sh-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="segment_ha_t1_sh-50"><a href="#segment_ha_t1_sh-50"><span class="linenos">50</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="segment_ha_t1_sh-51"><a href="#segment_ha_t1_sh-51"><span class="linenos">51</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SEGMENT_HA_T1_SH_METADATA</span><span class="p">)</span>
-</span><span id="segment_ha_t1_sh-52"><a href="#segment_ha_t1_sh-52"><span class="linenos">52</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="segment_ha_t1_sh-53"><a href="#segment_ha_t1_sh-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;segmentHA_T1.sh&quot;</span><span class="p">)</span>
-</span><span id="segment_ha_t1_sh-54"><a href="#segment_ha_t1_sh-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
-</span><span id="segment_ha_t1_sh-55"><a href="#segment_ha_t1_sh-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_directory</span><span class="p">)</span>
-</span><span id="segment_ha_t1_sh-56"><a href="#segment_ha_t1_sh-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="segment_ha_t1_sh-57"><a href="#segment_ha_t1_sh-57"><span class="linenos">57</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">(</span>
-</span><span id="segment_ha_t1_sh-58"><a href="#segment_ha_t1_sh-58"><span class="linenos">58</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="segment_ha_t1_sh-59"><a href="#segment_ha_t1_sh-59"><span class="linenos">59</span></a>        <span class="n">hippocampus_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/hippocampus_aseg.mgz&quot;</span><span class="p">),</span>
-</span><span id="segment_ha_t1_sh-60"><a href="#segment_ha_t1_sh-60"><span class="linenos">60</span></a>        <span class="n">amygdala_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/amygdala_aseg.mgz&quot;</span><span class="p">),</span>
-</span><span id="segment_ha_t1_sh-61"><a href="#segment_ha_t1_sh-61"><span class="linenos">61</span></a>    <span class="p">)</span>
-</span><span id="segment_ha_t1_sh-62"><a href="#segment_ha_t1_sh-62"><span class="linenos">62</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="segment_ha_t1_sh-63"><a href="#segment_ha_t1_sh-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="segment_ha_t1_sh-33"><a href="#segment_ha_t1_sh-33"><span class="linenos">33</span></a>    <span class="n">brain_mask</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="segment_ha_t1_sh-34"><a href="#segment_ha_t1_sh-34"><span class="linenos">34</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="segment_ha_t1_sh-35"><a href="#segment_ha_t1_sh-35"><span class="linenos">35</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="segment_ha_t1_sh-36"><a href="#segment_ha_t1_sh-36"><span class="linenos">36</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="segment_ha_t1_sh-37"><a href="#segment_ha_t1_sh-37"><span class="linenos">37</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">:</span>
+</span><span id="segment_ha_t1_sh-38"><a href="#segment_ha_t1_sh-38"><span class="linenos">38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="segment_ha_t1_sh-39"><a href="#segment_ha_t1_sh-39"><span class="linenos">39</span></a><span class="sd">    Tool for hippocampal/amygdalar subfield segmentation.</span>
+</span><span id="segment_ha_t1_sh-40"><a href="#segment_ha_t1_sh-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="segment_ha_t1_sh-41"><a href="#segment_ha_t1_sh-41"><span class="linenos">41</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="segment_ha_t1_sh-42"><a href="#segment_ha_t1_sh-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="segment_ha_t1_sh-43"><a href="#segment_ha_t1_sh-43"><span class="linenos">43</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="segment_ha_t1_sh-44"><a href="#segment_ha_t1_sh-44"><span class="linenos">44</span></a><span class="sd">    </span>
+</span><span id="segment_ha_t1_sh-45"><a href="#segment_ha_t1_sh-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
+</span><span id="segment_ha_t1_sh-46"><a href="#segment_ha_t1_sh-46"><span class="linenos">46</span></a><span class="sd">        input_image: The input T1-weighted MRI image for hippocampal/amygdalar\</span>
+</span><span id="segment_ha_t1_sh-47"><a href="#segment_ha_t1_sh-47"><span class="linenos">47</span></a><span class="sd">            segmentation.</span>
+</span><span id="segment_ha_t1_sh-48"><a href="#segment_ha_t1_sh-48"><span class="linenos">48</span></a><span class="sd">        output_directory: The directory where the output will be saved.</span>
+</span><span id="segment_ha_t1_sh-49"><a href="#segment_ha_t1_sh-49"><span class="linenos">49</span></a><span class="sd">        brain_mask: Use a specific brain mask for segmentation.</span>
+</span><span id="segment_ha_t1_sh-50"><a href="#segment_ha_t1_sh-50"><span class="linenos">50</span></a><span class="sd">        verbose: Increase the verbosity of the output.</span>
+</span><span id="segment_ha_t1_sh-51"><a href="#segment_ha_t1_sh-51"><span class="linenos">51</span></a><span class="sd">        debug: Enable debugging mode.</span>
+</span><span id="segment_ha_t1_sh-52"><a href="#segment_ha_t1_sh-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="segment_ha_t1_sh-53"><a href="#segment_ha_t1_sh-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
+</span><span id="segment_ha_t1_sh-54"><a href="#segment_ha_t1_sh-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `SegmentHaT1ShOutputs`).</span>
+</span><span id="segment_ha_t1_sh-55"><a href="#segment_ha_t1_sh-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="segment_ha_t1_sh-56"><a href="#segment_ha_t1_sh-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="segment_ha_t1_sh-57"><a href="#segment_ha_t1_sh-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SEGMENT_HA_T1_SH_METADATA</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-58"><a href="#segment_ha_t1_sh-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="segment_ha_t1_sh-59"><a href="#segment_ha_t1_sh-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;segmentHA_T1.sh&quot;</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-60"><a href="#segment_ha_t1_sh-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
+</span><span id="segment_ha_t1_sh-61"><a href="#segment_ha_t1_sh-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_directory</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-62"><a href="#segment_ha_t1_sh-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">brain_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="segment_ha_t1_sh-63"><a href="#segment_ha_t1_sh-63"><span class="linenos">63</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="segment_ha_t1_sh-64"><a href="#segment_ha_t1_sh-64"><span class="linenos">64</span></a>            <span class="s2">&quot;--brainmask&quot;</span><span class="p">,</span>
+</span><span id="segment_ha_t1_sh-65"><a href="#segment_ha_t1_sh-65"><span class="linenos">65</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-66"><a href="#segment_ha_t1_sh-66"><span class="linenos">66</span></a>        <span class="p">])</span>
+</span><span id="segment_ha_t1_sh-67"><a href="#segment_ha_t1_sh-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span id="segment_ha_t1_sh-68"><a href="#segment_ha_t1_sh-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-69"><a href="#segment_ha_t1_sh-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="segment_ha_t1_sh-70"><a href="#segment_ha_t1_sh-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-71"><a href="#segment_ha_t1_sh-71"><span class="linenos">71</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SegmentHaT1ShOutputs</span><span class="p">(</span>
+</span><span id="segment_ha_t1_sh-72"><a href="#segment_ha_t1_sh-72"><span class="linenos">72</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="segment_ha_t1_sh-73"><a href="#segment_ha_t1_sh-73"><span class="linenos">73</span></a>        <span class="n">hippocampus_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/hippocampus_aseg.mgz&quot;</span><span class="p">),</span>
+</span><span id="segment_ha_t1_sh-74"><a href="#segment_ha_t1_sh-74"><span class="linenos">74</span></a>        <span class="n">amygdala_aseg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_directory</span> <span class="o">+</span> <span class="s2">&quot;/amygdala_aseg.mgz&quot;</span><span class="p">),</span>
+</span><span id="segment_ha_t1_sh-75"><a href="#segment_ha_t1_sh-75"><span class="linenos">75</span></a>    <span class="p">)</span>
+</span><span id="segment_ha_t1_sh-76"><a href="#segment_ha_t1_sh-76"><span class="linenos">76</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="segment_ha_t1_sh-77"><a href="#segment_ha_t1_sh-77"><span class="linenos">77</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -302,6 +330,9 @@
 <ul>
 <li><strong>input_image:</strong>  The input T1-weighted MRI image for hippocampal/amygdalar            segmentation.</li>
 <li><strong>output_directory:</strong>  The directory where the output will be saved.</li>
+<li><strong>brain_mask:</strong>  Use a specific brain mask for segmentation.</li>
+<li><strong>verbose:</strong>  Increase the verbosity of the output.</li>
+<li><strong>debug:</strong>  Enable debugging mode.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>
 

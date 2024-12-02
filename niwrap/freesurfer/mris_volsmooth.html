@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRIS_VOLSMOOTH_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f339337d5f5aef19f10f65233d87b0ff9c8a8900.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e771a27b746ea9fefc370e231755f9773a9c0720.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mris_volsmooth&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -162,15 +162,15 @@
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_volsmooth&quot;</span><span class="p">)</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="p">])</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">output_volume</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">output_volume</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="p">])</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="s2">&quot;-reg&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">registration</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">registration</span><span class="p">)</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">])</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">projfrac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
@@ -236,7 +236,7 @@
                     <div class="attr variable">
             <span class="name">MRIS_VOLSMOOTH_METADATA</span>        =
 <input id="MRIS_VOLSMOOTH_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRIS_VOLSMOOTH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f339337d5f5aef19f10f65233d87b0ff9c8a8900.boutiques&#39;, name=&#39;mris_volsmooth&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRIS_VOLSMOOTH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e771a27b746ea9fefc370e231755f9773a9c0720.boutiques&#39;, name=&#39;mris_volsmooth&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -407,15 +407,15 @@
 </span><span id="mris_volsmooth-83"><a href="#mris_volsmooth-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_volsmooth&quot;</span><span class="p">)</span>
 </span><span id="mris_volsmooth-84"><a href="#mris_volsmooth-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_volsmooth-85"><a href="#mris_volsmooth-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
-</span><span id="mris_volsmooth-86"><a href="#mris_volsmooth-86"><span class="linenos"> 86</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
+</span><span id="mris_volsmooth-86"><a href="#mris_volsmooth-86"><span class="linenos"> 86</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_volume</span><span class="p">)</span>
 </span><span id="mris_volsmooth-87"><a href="#mris_volsmooth-87"><span class="linenos"> 87</span></a>    <span class="p">])</span>
 </span><span id="mris_volsmooth-88"><a href="#mris_volsmooth-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_volsmooth-89"><a href="#mris_volsmooth-89"><span class="linenos"> 89</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="mris_volsmooth-90"><a href="#mris_volsmooth-90"><span class="linenos"> 90</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">output_volume</span>
+</span><span id="mris_volsmooth-90"><a href="#mris_volsmooth-90"><span class="linenos"> 90</span></a>        <span class="n">output_volume</span>
 </span><span id="mris_volsmooth-91"><a href="#mris_volsmooth-91"><span class="linenos"> 91</span></a>    <span class="p">])</span>
 </span><span id="mris_volsmooth-92"><a href="#mris_volsmooth-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_volsmooth-93"><a href="#mris_volsmooth-93"><span class="linenos"> 93</span></a>        <span class="s2">&quot;-reg&quot;</span><span class="p">,</span>
-</span><span id="mris_volsmooth-94"><a href="#mris_volsmooth-94"><span class="linenos"> 94</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">registration</span><span class="p">)</span>
+</span><span id="mris_volsmooth-94"><a href="#mris_volsmooth-94"><span class="linenos"> 94</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">registration</span><span class="p">)</span>
 </span><span id="mris_volsmooth-95"><a href="#mris_volsmooth-95"><span class="linenos"> 95</span></a>    <span class="p">])</span>
 </span><span id="mris_volsmooth-96"><a href="#mris_volsmooth-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">projfrac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="mris_volsmooth-97"><a href="#mris_volsmooth-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>

@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRIS_RESAMPLE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7fcc33d6d1beef644ca132fe8d9dba14913ed890.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;58c882ffaf4fe37d2d5aa57751a90cb1600aab80.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mris_resample&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -138,19 +138,19 @@
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_resample&quot;</span><span class="p">)</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="s2">&quot;-atlas_reg&quot;</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">atlas_reg</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">atlas_reg</span><span class="p">)</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="p">])</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;-subject_reg&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_reg</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_reg</span><span class="p">)</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="p">])</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;-subject_surf&quot;</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_surf</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_surf</span><span class="p">)</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="p">])</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-out&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">annot_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
@@ -184,7 +184,7 @@
                     <div class="attr variable">
             <span class="name">MRIS_RESAMPLE_METADATA</span>        =
 <input id="MRIS_RESAMPLE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRIS_RESAMPLE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7fcc33d6d1beef644ca132fe8d9dba14913ed890.boutiques&#39;, name=&#39;mris_resample&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRIS_RESAMPLE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;58c882ffaf4fe37d2d5aa57751a90cb1600aab80.boutiques&#39;, name=&#39;mris_resample&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -321,19 +321,19 @@
 </span><span id="mris_resample-62"><a href="#mris_resample-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_resample&quot;</span><span class="p">)</span>
 </span><span id="mris_resample-63"><a href="#mris_resample-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_resample-64"><a href="#mris_resample-64"><span class="linenos">64</span></a>        <span class="s2">&quot;-atlas_reg&quot;</span><span class="p">,</span>
-</span><span id="mris_resample-65"><a href="#mris_resample-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">atlas_reg</span><span class="p">)</span>
+</span><span id="mris_resample-65"><a href="#mris_resample-65"><span class="linenos">65</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">atlas_reg</span><span class="p">)</span>
 </span><span id="mris_resample-66"><a href="#mris_resample-66"><span class="linenos">66</span></a>    <span class="p">])</span>
 </span><span id="mris_resample-67"><a href="#mris_resample-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_resample-68"><a href="#mris_resample-68"><span class="linenos">68</span></a>        <span class="s2">&quot;-subject_reg&quot;</span><span class="p">,</span>
-</span><span id="mris_resample-69"><a href="#mris_resample-69"><span class="linenos">69</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_reg</span><span class="p">)</span>
+</span><span id="mris_resample-69"><a href="#mris_resample-69"><span class="linenos">69</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_reg</span><span class="p">)</span>
 </span><span id="mris_resample-70"><a href="#mris_resample-70"><span class="linenos">70</span></a>    <span class="p">])</span>
 </span><span id="mris_resample-71"><a href="#mris_resample-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_resample-72"><a href="#mris_resample-72"><span class="linenos">72</span></a>        <span class="s2">&quot;-subject_surf&quot;</span><span class="p">,</span>
-</span><span id="mris_resample-73"><a href="#mris_resample-73"><span class="linenos">73</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_surf</span><span class="p">)</span>
+</span><span id="mris_resample-73"><a href="#mris_resample-73"><span class="linenos">73</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subject_surf</span><span class="p">)</span>
 </span><span id="mris_resample-74"><a href="#mris_resample-74"><span class="linenos">74</span></a>    <span class="p">])</span>
 </span><span id="mris_resample-75"><a href="#mris_resample-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mris_resample-76"><a href="#mris_resample-76"><span class="linenos">76</span></a>        <span class="s2">&quot;-out&quot;</span><span class="p">,</span>
-</span><span id="mris_resample-77"><a href="#mris_resample-77"><span class="linenos">77</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="mris_resample-77"><a href="#mris_resample-77"><span class="linenos">77</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 </span><span id="mris_resample-78"><a href="#mris_resample-78"><span class="linenos">78</span></a>    <span class="p">])</span>
 </span><span id="mris_resample-79"><a href="#mris_resample-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">annot_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="mris_resample-80"><a href="#mris_resample-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>

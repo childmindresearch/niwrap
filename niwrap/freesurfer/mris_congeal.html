@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRIS_CONGEAL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ba5021e3b1141464dc8a5c263f58d575b5cf1498.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f68a7b50f081a50aa62c0826055ec17d488357b5.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mris_congeal&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -156,7 +156,7 @@
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_congeal&quot;</span><span class="p">)</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_surface_name</span><span class="p">)</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hemi</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_surface_name</span><span class="p">)</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">subjects_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
@@ -222,7 +222,7 @@
                     <div class="attr variable">
             <span class="name">MRIS_CONGEAL_METADATA</span>        =
 <input id="MRIS_CONGEAL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRIS_CONGEAL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ba5021e3b1141464dc8a5c263f58d575b5cf1498.boutiques&#39;, name=&#39;mris_congeal&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRIS_CONGEAL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f68a7b50f081a50aa62c0826055ec17d488357b5.boutiques&#39;, name=&#39;mris_congeal&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -367,7 +367,7 @@
 </span><span id="mris_congeal-83"><a href="#mris_congeal-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mris_congeal&quot;</span><span class="p">)</span>
 </span><span id="mris_congeal-84"><a href="#mris_congeal-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_surface_name</span><span class="p">)</span>
 </span><span id="mris_congeal-85"><a href="#mris_congeal-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hemi</span><span class="p">)</span>
-</span><span id="mris_congeal-86"><a href="#mris_congeal-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span>
+</span><span id="mris_congeal-86"><a href="#mris_congeal-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
 </span><span id="mris_congeal-87"><a href="#mris_congeal-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_surface_name</span><span class="p">)</span>
 </span><span id="mris_congeal-88"><a href="#mris_congeal-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">subjects_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="mris_congeal-89"><a href="#mris_congeal-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>

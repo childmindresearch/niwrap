@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">T4IMG_4DFP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;730860fa42461d977d01ffbcbd5e2e9e25e4f5df.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;57020555f03db47bd822a3164b665430a2020fd9.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;t4img_4dfp&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -128,20 +128,19 @@
 </span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">imgfile</span><span class="p">))</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="k">if</span> <span class="n">outfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">T4img4dfpOutputs</span><span class="p">(</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="n">transformed_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;.4dfp.img&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">T4img4dfpOutputs</span><span class="p">(</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">transformed_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;.4dfp.img&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>
 </span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;T4IMG_4DFP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="s2">&quot;T4img4dfpOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="s2">&quot;t4img_4dfp&quot;</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a><span class="p">]</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;T4IMG_4DFP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;T4img4dfpOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="s2">&quot;t4img_4dfp&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -150,7 +149,7 @@
                     <div class="attr variable">
             <span class="name">T4IMG_4DFP_METADATA</span>        =
 <input id="T4IMG_4DFP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="T4IMG_4DFP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;730860fa42461d977d01ffbcbd5e2e9e25e4f5df.boutiques&#39;, name=&#39;t4img_4dfp&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="T4IMG_4DFP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;57020555f03db47bd822a3164b665430a2020fd9.boutiques&#39;, name=&#39;t4img_4dfp&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -267,13 +266,12 @@
 </span><span id="t4img_4dfp-55"><a href="#t4img_4dfp-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">imgfile</span><span class="p">))</span>
 </span><span id="t4img_4dfp-56"><a href="#t4img_4dfp-56"><span class="linenos">56</span></a>    <span class="k">if</span> <span class="n">outfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="t4img_4dfp-57"><a href="#t4img_4dfp-57"><span class="linenos">57</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
-</span><span id="t4img_4dfp-58"><a href="#t4img_4dfp-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="t4img_4dfp-59"><a href="#t4img_4dfp-59"><span class="linenos">59</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">T4img4dfpOutputs</span><span class="p">(</span>
-</span><span id="t4img_4dfp-60"><a href="#t4img_4dfp-60"><span class="linenos">60</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="t4img_4dfp-61"><a href="#t4img_4dfp-61"><span class="linenos">61</span></a>        <span class="n">transformed_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;.4dfp.img&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="t4img_4dfp-62"><a href="#t4img_4dfp-62"><span class="linenos">62</span></a>    <span class="p">)</span>
-</span><span id="t4img_4dfp-63"><a href="#t4img_4dfp-63"><span class="linenos">63</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="t4img_4dfp-64"><a href="#t4img_4dfp-64"><span class="linenos">64</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="t4img_4dfp-58"><a href="#t4img_4dfp-58"><span class="linenos">58</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">T4img4dfpOutputs</span><span class="p">(</span>
+</span><span id="t4img_4dfp-59"><a href="#t4img_4dfp-59"><span class="linenos">59</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="t4img_4dfp-60"><a href="#t4img_4dfp-60"><span class="linenos">60</span></a>        <span class="n">transformed_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;.4dfp.img&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="t4img_4dfp-61"><a href="#t4img_4dfp-61"><span class="linenos">61</span></a>    <span class="p">)</span>
+</span><span id="t4img_4dfp-62"><a href="#t4img_4dfp-62"><span class="linenos">62</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="t4img_4dfp-63"><a href="#t4img_4dfp-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
