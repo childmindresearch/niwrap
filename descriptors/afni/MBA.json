@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/mba_descriptor.json",
   "description": "Matrix-Based Analysis Program through Bayesian Multilevel Modeling",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "MBA [PREFIX] [CHAINS] [ITERATIONS] [MODEL] [EOI] [DATA_TABLE] [CVARS] [QVARS] [QCVAR] [STDZ] [WCP] [DISTY] [SE] [RPREFIX] [DBGARGS] [HELP]",
+  "command-line": "MBA [PREFIX] [CHAINS] [ITERATIONS] [MODEL] [EOI] [DATA_TABLE] [CVARS] [QVARS] [QCVAR] [STDZ] [WCP] [DISTY] [SE] [DBGARGS] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

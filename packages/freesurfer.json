@@ -427,23 +427,19 @@
       },
       {
         "target": "dmrirc.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.example.json"
+        "status": "ignore"
       },
       {
         "target": "dmrirc.long.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.long.example.json"
+        "status": "ignore"
       },
       {
         "target": "dmrirc.long.multiscan.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.long.multiscan.example.json"
+        "status": "ignore"
       },
       {
         "target": "dmrirc.multiscan.example",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/dmrirc.multiscan.example.json"
+        "status": "ignore"
       },
       {
         "target": "dt_recon",
@@ -2745,8 +2741,7 @@
       },
       {
         "target": "mris_make_map_surfaces",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/mris_make_map_surfaces.json"
+        "status": "ignore"
       },
       {
         "target": "mris_make_surfaces",
@@ -3192,8 +3187,7 @@
       },
       {
         "target": "progressbar.tcl",
-        "status": "done",
-        "descriptor": "descriptors/freesurfer/progressbar.tcl.json"
+        "status": "ignore"
       },
       {
         "target": "qatools.py",

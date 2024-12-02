@@ -1,7 +1,7 @@
 {
   "name": "rca-fix-ento",
   "description": "A tool to fix the entorhinal white matter in FreeSurfer using a deep learning network.",
-  "command-line": "rca-fix-ento -[SUBJECT] [THREADS] [SUBMIT] [ACCOUNT] [BRAIN_MASK]",
+  "command-line": "rca-fix-ento [SUBJECT] [THREADS] [SUBMIT] [ACCOUNT] [BRAIN_MASK]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -2,7 +2,7 @@
   "name": "mris_resample",
   "tool-version": "7.4.1",
   "description": "Resample cortical surfaces in FreeSurfer",
-  "command-line": "mris_resample -[ATLAS_REG] -[SUBJECT_REG] -[SUBJECT_SURF] -[OUTPUT] [ANNOT_IN] [ANNOT_OUT]",
+  "command-line": "mris_resample [ATLAS_REG] [SUBJECT_REG] [SUBJECT_SURF] [OUTPUT] [ANNOT_IN] [ANNOT_OUT]",
   "schema-version": "0.5",
   "inputs": [
     {

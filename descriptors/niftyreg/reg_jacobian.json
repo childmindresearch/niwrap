@@ -4,7 +4,7 @@
   "author": "NiftyReg Developers",
   "description": "Tool to compute the Jacobian determinant map from a deformation field or control point lattice.",
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
-  "command-line": "reg_jacobian -ref [REFERENCE_IMAGE] [INPUT_TYPE] [OUTPUT_OPTIONS] [EXTRA_OPTIONS]",
+  "command-line": "reg_jacobian [REFERENCE_IMAGE] [DEFORMATION_FIELD] [CONTROL_POINT_LATTICE] [OUTPUT_JACOBIAN] [OUTPUT_JACOBIAN_MATRIX] [OUTPUT_LOG_JACOBIAN] [AFFINE_MATRIX]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,7 @@
       "name": "Reference Image",
       "type": "File",
       "value-key": "[REFERENCE_IMAGE]",
-      "command-line-flag": "-target",
+      "command-line-flag": "-ref",
       "description": "Filename of the reference image",
       "optional": false
     },

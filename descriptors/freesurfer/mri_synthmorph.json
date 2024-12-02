@@ -1,7 +1,7 @@
 {
   "name": "mri_synthmorph",
   "tool-version": "7.4.1",
-  "command-line": "mri_synthmorph [MOVING] [FIXED] [MOVED_OUTPUT] [TRANS_OUTPUT] [HEADER_ONLY_FLAG] [MODEL] [INIT_TRANSFORM] [THREADS] [GPU_FLAG] [SMOOTH] [EXTENT] [MODEL_WEIGHTS] [INSPECT_DIR]",
+  "command-line": "mri_synthmorph [MOVING_IMAGE] [FIXED_IMAGE] [MOVED_OUTPUT] [TRANSFORM_OUTPUT] [HEADER_ONLY] [TRANSFORMATION_MODEL] [INIT_TRANSFORM] [THREADS] [GPU_FLAG] [SMOOTH] [EXTENT] [MODEL_WEIGHTS] [INSPECT_DIRECTORY]",
   "description": "SynthMorph is a deep-learning tool for brain-specific MRI image registration without preprocessing.",
   "author": "FreeSurfer Developers",
   "schema-version": "0.5",

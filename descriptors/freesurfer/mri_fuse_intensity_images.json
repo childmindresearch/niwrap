@@ -1,7 +1,7 @@
 {
   "name": "mri_fuse_intensity_images",
   "description": "Fuses intensity images based on given transforms",
-  "command-line": "mri_fuse_intensity_images [OPTIONS] [LONGITUDINAL_TIME_POINT_FILE] [INPUT_VOLUME] [TRANSFORM_FILE] [OUTPUT_VOLUME]",
+  "command-line": "mri_fuse_intensity_images [LONGITUDINAL_TIME_POINT_FILE] [INPUT_VOLUME] [TRANSFORM_FILE] [OUTPUT_VOLUME]",
   "schema-version": "0.5",
   "inputs": [
     {

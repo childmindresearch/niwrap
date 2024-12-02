@@ -2,7 +2,7 @@
   "name": "mri_evaluate_morph",
   "tool-version": "7.4.1",
   "description": "This program computes the overlap of a set of segmentations for a given morph using an xform file.",
-  "command-line": "mri_evaluate_morph [OPTIONS] [XFORM_NAME] [SEGMENTATION_FILES] [OUTPUT_FILE]",
+  "command-line": "mri_evaluate_morph [XFORM_NAME] [SEGMENTATION_FILES] [OUTPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
