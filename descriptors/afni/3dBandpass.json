@@ -1,10 +1,19 @@
 {
   "name": "3dBandpass",
-  "command-line": "3dBandpass [AUTOMASK] [BLUR] [DESPIKE] [HIGHPASS] [IN_FILE] [LOCALPV] [LOWPASS] [MASK] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
+  "command-line": "3dBandpass [PREFIX] [AUTOMASK] [BLUR] [DESPIKE] [HIGHPASS] [LOWPASS] [IN_FILE] [LOCALPV] [MASK] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
   "author": "AFNI Developers",
   "description": "Program to lowpass and/or highpass each voxel time series in a dataset, offering more/different options than Fourier.",
   "url": "https://afni.nimh.nih.gov/",
   "inputs": [
+    {
+      "id": "prefix",
+      "name": "Prefix",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "description": "Prefix for output file.",
+      "optional": true
+    },
     {
       "id": "automask",
       "name": "Automask",
@@ -155,16 +164,8 @@
       "id": "out_file",
       "optional": true,
       "description": "Output file from 3dbandpass.",
-      "path-template": "[IN_FILE]_bp",
-      "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "Output file."
+      "path-template": "[PREFIX]",
+      "value-key": "[PREFIX]"
     }
   ],
   "tool-version": "24.2.06",
