@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="c70317bd402feee3b10b4b0a4bdd6a544f0ec629.boutiques",
+    id="cff0fd5c98147d66e1386a8d92bd67c38c9b9fa7.boutiques",
     name="3dBandpass",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,16 +20,15 @@ class V3dBandpassOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output file from 3dbandpass."""
-    out_file_: OutputPathType
-    """Output file."""
 
 
 def v_3d_bandpass(
     highpass: float,
-    in_file: InputPathType,
     lowpass: float,
+    in_file: InputPathType,
+    prefix: str | None = None,
     automask: bool = False,
     blur: float | None = None,
     despike: bool = False,
@@ -55,8 +54,9 @@ def v_3d_bandpass(
     
     Args:
         highpass: Highpass.
-        in_file: Input file to 3dbandpass.
         lowpass: Lowpass.
+        in_file: Input file to 3dbandpass.
+        prefix: Prefix for output file.
         automask: Create a mask from the input dataset.
         blur: Blur (inside the mask only) with a filter width (fwhm) of 'fff'\
             millimeters.
@@ -92,6 +92,11 @@ def v_3d_bandpass(
     execution = runner.start_execution(V_3D_BANDPASS_METADATA)
     cargs = []
     cargs.append("3dBandpass")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     if automask:
         cargs.append("-automask")
     if blur is not None:
@@ -102,13 +107,13 @@ def v_3d_bandpass(
     if despike:
         cargs.append("-despike")
     cargs.append(str(highpass))
+    cargs.append(str(lowpass))
     cargs.append(execution.input_file(in_file))
     if local_pv is not None:
         cargs.extend([
             "-localPV",
             str(local_pv)
         ])
-    cargs.append(str(lowpass))
     if mask is not None:
         cargs.extend([
             "-mask",
@@ -144,8 +149,7 @@ def v_3d_bandpass(
         ])
     ret = V3dBandpassOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_bp"),
-        out_file_=execution.output_file("out_file"),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret
