@@ -1,6 +1,6 @@
 {
   "name": "3dUnifize",
-  "command-line": "3dUnifize [CL_FRAC] [EPI] [GM] [IN_FILE] [NO_DUPLO] [NUM_THREADS] [OUTPUTTYPE] [QUIET] [RBT] [SCALE_FILE] [T2] [T2_UP] [URAD]",
+  "command-line": "3dUnifize [CL_FRAC] [EPI] [GM] [NO_DUPLO] [NUM_THREADS] [OUTPUTTYPE] [QUIET] [RBT] [PREFIX] [SCALE_FILE] [T2] [T2_UP] [URAD] [IN_FILE]",
   "author": "AFNI Developers",
   "description": "3dUnifize - for uniformizing image intensity\n* The input dataset is supposed to be a T1-weighted volume, possibly already skull-stripped (e.g., via 3dSkullStrip). However, this program can be a useful step to take BEFORE 3dSkullStrip, since the latter program can fail if the input volume is strongly shaded -- 3dUnifize will (mostly) remove such shading artifacts.\n* The output dataset has the white matter (WM) intensity approximately uniformized across space, and scaled to peak at about 1000.\n* The output dataset is always stored in float format!\n* If the input dataset has more than 1 sub-brick, only sub-brick #0 will be processed!\n* Want to correct EPI datasets for nonuniformity? You can try the new and experimental [Mar 2017] '-EPI' option.\n* The principal motive for this program is for use in an image registration script, and it may or may not be useful otherwise.\n* This program replaces the older (and very different) 3dUniformize, which is no longer maintained and may sublimate at any moment. (In other words, we do not recommend the use of 3dUniformize.)",
   "url": "https://afni.nimh.nih.gov/",
@@ -125,6 +125,15 @@
       "command-line-flag": "-Urad",
       "description": "Sets the radius (in voxels) of the ball used for the sneaky trick. default value is 18.3, and should be changed proportionally if the dataset voxel size differs significantly from 1 mm.",
       "optional": true
+    },
+    {
+      "id": "prefix",
+      "name": "Prefix",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "description": "Output image file name.",
+      "optional": true
     }
   ],
   "output-files": [
@@ -133,16 +142,8 @@
       "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_unifized",
-      "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "Unifized file."
+      "path-template": "[PREFIX]",
+      "value-key": "[PREFIX]"
     },
     {
       "name": "Scale file",
