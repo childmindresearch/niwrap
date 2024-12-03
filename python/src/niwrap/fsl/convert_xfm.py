@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_XFM_METADATA = Metadata(
-    id="127d125afed88eb2adf17b570fe6b260197271fd.boutiques",
+    id="b079bee0db4c9532ed2211cab0dd571d7a59ebde.boutiques",
     name="convert_xfm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,10 +26,10 @@ class ConvertXfmOutputs(typing.NamedTuple):
 
 def convert_xfm(
     in_file: InputPathType,
+    out_file: str | None = None,
     invert_xfm: bool = False,
     concat_xfm: InputPathType | None = None,
     fix_scale_skew: InputPathType | None = None,
-    out_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> ConvertXfmOutputs:
     """
@@ -44,10 +44,10 @@ def convert_xfm(
     
     Args:
         in_file: Input transformation matrix.
+        out_file: Final transformation matrix.
         invert_xfm: Invert input transformation.
         concat_xfm: A File. Write joint transformation of two input matrices.
         fix_scale_skew: A File. Use secondary matrix to fix scale and skew.
-        out_file: Final transformation matrix.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertXfmOutputs`).
@@ -56,7 +56,11 @@ def convert_xfm(
     execution = runner.start_execution(CONVERT_XFM_METADATA)
     cargs = []
     cargs.append("convert_xfm")
-    cargs.append(execution.input_file(in_file))
+    if out_file is not None:
+        cargs.extend([
+            "-omat",
+            out_file
+        ])
     if invert_xfm:
         cargs.append("-inverse")
     if concat_xfm is not None:
@@ -69,14 +73,10 @@ def convert_xfm(
             "-fixscaleskew",
             execution.input_file(fix_scale_skew)
         ])
-    if out_file is not None:
-        cargs.extend([
-            "-omat",
-            execution.input_file(out_file)
-        ])
+    cargs.append(execution.input_file(in_file))
     ret = ConvertXfmOutputs(
         root=execution.output_file("."),
-        output_trasnformation=execution.output_file(pathlib.Path(out_file).name) if (out_file is not None) else None,
+        output_trasnformation=execution.output_file(out_file) if (out_file is not None) else None,
     )
     execution.run(cargs)
     return ret

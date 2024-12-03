@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DESPIKE_METADATA = Metadata(
-    id="8f18218a5319eef4d610e78223fa66e963614328.boutiques",
+    id="724be608ea12115bb59f6e6981f0905bfd860c95.boutiques",
     name="3dDespike",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,12 +20,13 @@ class V3dDespikeOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output file."""
 
 
 def v_3d_despike(
     in_file: InputPathType,
+    prefix: str | None = None,
     runner: Runner | None = None,
 ) -> V3dDespikeOutputs:
     """
@@ -38,6 +39,7 @@ def v_3d_despike(
     
     Args:
         in_file: Input file to 3ddespike.
+        prefix: Prefix for output file.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dDespikeOutputs`).
@@ -46,10 +48,15 @@ def v_3d_despike(
     execution = runner.start_execution(V_3D_DESPIKE_METADATA)
     cargs = []
     cargs.append("3dDespike")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     cargs.append(execution.input_file(in_file))
     ret = V3dDespikeOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret
