@@ -43,9 +43,6 @@
                                 <a class="variable" href="#V3dUnifizeOutputs.out_file">out_file</a>
                         </li>
                         <li>
-                                <a class="variable" href="#V3dUnifizeOutputs.out_file_">out_file_</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#V3dUnifizeOutputs.scale_file_outfile">scale_file_outfile</a>
                         </li>
                 </ul>
@@ -87,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V_3D_UNIFIZE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;276f427e83c08d7c9c7cacb63c3a6a2de1b3abd4.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f384aca7310e07ceca93f58ec17ea0b68b11373d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dUnifize&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -100,77 +97,77 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output image file name.&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">out_file_</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Unifized file.&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">scale_file_outfile</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Scale factor file.&quot;&quot;&quot;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="k">def</span> <span class="nf">v_3d_unifize</span><span class="p">(</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>    <span class="n">in_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">cl_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="n">gm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="n">no_duplo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>    <span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>    <span class="n">outputtype</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;NIFTI&quot;</span><span class="p">,</span> <span class="s2">&quot;AFNI&quot;</span><span class="p">,</span> <span class="s2">&quot;NIFTI_GZ&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>    <span class="n">rbt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="n">scale_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>    <span class="n">t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>    <span class="n">t2_up</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="n">urad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dUnifizeOutputs</span><span class="p">:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    3dUnifize - for uniformizing image intensity</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    * The input dataset is supposed to be a T1-weighted volume, possibly already</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    skull-stripped (e.g., via 3dSkullStrip). However, this program can be a</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    useful step to take BEFORE 3dSkullStrip, since the latter program can fail</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    if the input volume is strongly shaded -- 3dUnifize will (mostly) remove</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    such shading artifacts.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    * The output dataset has the white matter (WM) intensity approximately</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    uniformized across space, and scaled to peak at about 1000.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    * The output dataset is always stored in float format!</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    * If the input dataset has more than 1 sub-brick, only sub-brick #0 will be</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    processed!</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    * Want to correct EPI datasets for nonuniformity? You can try the new and</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    experimental [Mar 2017] &#39;-EPI&#39; option.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    * The principal motive for this program is for use in an image registration</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    script, and it may or may not be useful otherwise.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    * This program replaces the older (and very different) 3dUniformize, which</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    is no longer maintained and may sublimate at any moment. (In other words, we</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    do not recommend the use of 3dUniformize.).</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    </span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    </span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    </span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    Args:</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        in_file: Input file to 3dunifize.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        cl_frac: Option for afni experts only.set the automask &#39;clip level\</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">            fraction&#39;. must be between 0.1 and 0.9. a small fraction means to make\</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            the initial threshold for clipping (a la 3dcliplevel) smaller, which\</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">            will tend to make the mask larger. [default=0.1].</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        epi: Assume the input dataset is a t2 (or t2\\*) weighted epi time\</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            series. after computing the scaling, apply it to all volumes (trs) in\</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            the input dataset. that is, a given voxel will be scaled by the same\</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">            factor at each tr. this option also implies &#39;-noduplo&#39; and &#39;-t2&#39;.this\</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            option turns off &#39;-gm&#39; if you turned it on.</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        gm: Also scale to unifize &#39;gray matter&#39; = lower intensity voxels (to\</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            aid in registering images from different scanners).</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        no_duplo: Do not use the &#39;duplo down&#39; step; this can be useful for\</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">            lower resolution datasets.</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        num_threads: Set number of threads.</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        outputtype: &#39;nifti&#39; or &#39;afni&#39; or &#39;nifti_gz&#39;. Afni output filetype.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        quiet: Don&#39;t print the progress messages.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        rbt: (a float, a float, a float). Option for afni experts only.specify\</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            the 3 parameters for the algorithm:r = radius; same as given by option\</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            &#39;-urad&#39;, [default=18.3]b = bottom percentile of normalizing data range,\</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            [default=70.0]r = top percentile of normalizing data range,\</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            [default=80.0].</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">scale_file_outfile</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Scale factor file.&quot;&quot;&quot;</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="k">def</span> <span class="nf">v_3d_unifize</span><span class="p">(</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="n">in_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">cl_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>    <span class="n">epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="n">gm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">no_duplo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="n">outputtype</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;NIFTI&quot;</span><span class="p">,</span> <span class="s2">&quot;AFNI&quot;</span><span class="p">,</span> <span class="s2">&quot;NIFTI_GZ&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>    <span class="n">rbt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>    <span class="n">scale_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="n">t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>    <span class="n">t2_up</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>    <span class="n">urad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dUnifizeOutputs</span><span class="p">:</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    3dUnifize - for uniformizing image intensity</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    * The input dataset is supposed to be a T1-weighted volume, possibly already</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    skull-stripped (e.g., via 3dSkullStrip). However, this program can be a</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    useful step to take BEFORE 3dSkullStrip, since the latter program can fail</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    if the input volume is strongly shaded -- 3dUnifize will (mostly) remove</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    such shading artifacts.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    * The output dataset has the white matter (WM) intensity approximately</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    uniformized across space, and scaled to peak at about 1000.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    * The output dataset is always stored in float format!</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    * If the input dataset has more than 1 sub-brick, only sub-brick #0 will be</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    processed!</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    * Want to correct EPI datasets for nonuniformity? You can try the new and</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    experimental [Mar 2017] &#39;-EPI&#39; option.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    * The principal motive for this program is for use in an image registration</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    script, and it may or may not be useful otherwise.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    * This program replaces the older (and very different) 3dUniformize, which</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    is no longer maintained and may sublimate at any moment. (In other words, we</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    do not recommend the use of 3dUniformize.).</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    </span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    </span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    </span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Args:</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        in_file: Input file to 3dunifize.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        cl_frac: Option for afni experts only.set the automask &#39;clip level\</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            fraction&#39;. must be between 0.1 and 0.9. a small fraction means to make\</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">            the initial threshold for clipping (a la 3dcliplevel) smaller, which\</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            will tend to make the mask larger. [default=0.1].</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        epi: Assume the input dataset is a t2 (or t2\\*) weighted epi time\</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            series. after computing the scaling, apply it to all volumes (trs) in\</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            the input dataset. that is, a given voxel will be scaled by the same\</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            factor at each tr. this option also implies &#39;-noduplo&#39; and &#39;-t2&#39;.this\</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">            option turns off &#39;-gm&#39; if you turned it on.</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        gm: Also scale to unifize &#39;gray matter&#39; = lower intensity voxels (to\</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">            aid in registering images from different scanners).</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        no_duplo: Do not use the &#39;duplo down&#39; step; this can be useful for\</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">            lower resolution datasets.</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        num_threads: Set number of threads.</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        outputtype: &#39;nifti&#39; or &#39;afni&#39; or &#39;nifti_gz&#39;. Afni output filetype.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        quiet: Don&#39;t print the progress messages.</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        rbt: (a float, a float, a float). Option for afni experts only.specify\</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            the 3 parameters for the algorithm:r = radius; same as given by option\</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            &#39;-urad&#39;, [default=18.3]b = bottom percentile of normalizing data range,\</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            [default=70.0]r = top percentile of normalizing data range,\</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            [default=80.0].</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        prefix: Output image file name.</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        scale_file: Output file name to save the scale factor used at each\</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            voxel .</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        t2: Treat the input as if it were t2-weighted, rather than t1-weighted.\</span>
@@ -201,55 +198,59 @@
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-EPI&quot;</span><span class="p">)</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">gm</span><span class="p">:</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-GM&quot;</span><span class="p">)</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">no_duplo</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noduplo&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">num_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num_threads</span><span class="p">))</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">outputtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outputtype</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">rbt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="s2">&quot;-rbt&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">rbt</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="p">])</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>            <span class="s2">&quot;-ssave&quot;</span><span class="p">,</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="p">])</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">t2</span><span class="p">:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-T2&quot;</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">t2_up</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-T2up&quot;</span><span class="p">,</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_up</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="p">])</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">urad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-Urad&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">urad</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dUnifizeOutputs</span><span class="p">(</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_unifized&quot;</span><span class="p">),</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">out_file_</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;out_file&quot;</span><span class="p">),</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">scale_file_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;V3dUnifizeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;V_3D_UNIFIZE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;v_3d_unifize&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="p">]</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">no_duplo</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noduplo&quot;</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">num_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num_threads</span><span class="p">))</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">outputtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outputtype</span><span class="p">)</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">rbt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="s2">&quot;-rbt&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">rbt</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="p">])</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="n">prefix</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="p">])</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="s2">&quot;-ssave&quot;</span><span class="p">,</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="p">])</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">t2</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-T2&quot;</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">t2_up</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-T2up&quot;</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_up</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="p">])</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">urad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-Urad&quot;</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">urad</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="p">])</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="p">])</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dUnifizeOutputs</span><span class="p">(</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">scale_file_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="p">)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="s2">&quot;V3dUnifizeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="s2">&quot;V_3D_UNIFIZE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="s2">&quot;v_3d_unifize&quot;</span><span class="p">,</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -271,12 +272,10 @@
 </span><span id="V3dUnifizeOutputs-21"><a href="#V3dUnifizeOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="V3dUnifizeOutputs-22"><a href="#V3dUnifizeOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="V3dUnifizeOutputs-23"><a href="#V3dUnifizeOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="V3dUnifizeOutputs-24"><a href="#V3dUnifizeOutputs-24"><span class="linenos">24</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="V3dUnifizeOutputs-24"><a href="#V3dUnifizeOutputs-24"><span class="linenos">24</span></a>    <span class="n">out_file</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="V3dUnifizeOutputs-25"><a href="#V3dUnifizeOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output image file name.&quot;&quot;&quot;</span>
-</span><span id="V3dUnifizeOutputs-26"><a href="#V3dUnifizeOutputs-26"><span class="linenos">26</span></a>    <span class="n">out_file_</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="V3dUnifizeOutputs-27"><a href="#V3dUnifizeOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Unifized file.&quot;&quot;&quot;</span>
-</span><span id="V3dUnifizeOutputs-28"><a href="#V3dUnifizeOutputs-28"><span class="linenos">28</span></a>    <span class="n">scale_file_outfile</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="V3dUnifizeOutputs-29"><a href="#V3dUnifizeOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Scale factor file.&quot;&quot;&quot;</span>
+</span><span id="V3dUnifizeOutputs-26"><a href="#V3dUnifizeOutputs-26"><span class="linenos">26</span></a>    <span class="n">scale_file_outfile</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dUnifizeOutputs-27"><a href="#V3dUnifizeOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Scale factor file.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -287,13 +286,13 @@
                             <div id="V3dUnifizeOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">V3dUnifizeOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">out_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">out_file_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">scale_file_outfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">V3dUnifizeOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">out_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_file_outfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#V3dUnifizeOutputs.__init__"></a>
     
-            <div class="docstring"><p>Create new instance of V3dUnifizeOutputs(root, out_file, out_file_, scale_file_outfile)</p>
+            <div class="docstring"><p>Create new instance of V3dUnifizeOutputs(root, out_file, scale_file_outfile)</p>
 </div>
 
 
@@ -313,26 +312,13 @@
                             </div>
                             <div id="V3dUnifizeOutputs.out_file" class="classattr">
                                 <div class="attr variable">
-            <span class="name">out_file</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">out_file</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
     <a class="headerlink" href="#V3dUnifizeOutputs.out_file"></a>
     
             <div class="docstring"><p>Output image file name.</p>
-</div>
-
-
-                            </div>
-                            <div id="V3dUnifizeOutputs.out_file_" class="classattr">
-                                <div class="attr variable">
-            <span class="name">out_file_</span><span class="annotation">: pathlib.Path</span>
-
-        
-    </div>
-    <a class="headerlink" href="#V3dUnifizeOutputs.out_file_"></a>
-    
-            <div class="docstring"><p>Unifized file.</p>
 </div>
 
 
@@ -355,7 +341,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_UNIFIZE_METADATA</span>        =
 <input id="V_3D_UNIFIZE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_UNIFIZE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;276f427e83c08d7c9c7cacb63c3a6a2de1b3abd4.boutiques&#39;, name=&#39;3dUnifize&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_UNIFIZE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f384aca7310e07ceca93f58ec17ea0b68b11373d.boutiques&#39;, name=&#39;3dUnifize&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -369,75 +355,77 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_unifize</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cl_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_duplo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outputtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;NIFTI&#39;</span><span class="p">,</span> <span class="s1">&#39;AFNI&#39;</span><span class="p">,</span> <span class="s1">&#39;NIFTI_GZ&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rbt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">t2_up</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">urad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dUnifizeOutputs">V3dUnifizeOutputs</a></span>:</span></span>
+        <span class="name">v_3d_unifize</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cl_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_duplo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outputtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;NIFTI&#39;</span><span class="p">,</span> <span class="s1">&#39;AFNI&#39;</span><span class="p">,</span> <span class="s1">&#39;NIFTI_GZ&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rbt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">t2_up</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">urad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dUnifizeOutputs">V3dUnifizeOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_unifize-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#v_3d_unifize"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_unifize-32"><a href="#v_3d_unifize-32"><span class="linenos"> 32</span></a><span class="k">def</span> <span class="nf">v_3d_unifize</span><span class="p">(</span>
-</span><span id="v_3d_unifize-33"><a href="#v_3d_unifize-33"><span class="linenos"> 33</span></a>    <span class="n">in_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="v_3d_unifize-34"><a href="#v_3d_unifize-34"><span class="linenos"> 34</span></a>    <span class="n">cl_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-35"><a href="#v_3d_unifize-35"><span class="linenos"> 35</span></a>    <span class="n">epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_unifize-36"><a href="#v_3d_unifize-36"><span class="linenos"> 36</span></a>    <span class="n">gm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_unifize-37"><a href="#v_3d_unifize-37"><span class="linenos"> 37</span></a>    <span class="n">no_duplo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_unifize-38"><a href="#v_3d_unifize-38"><span class="linenos"> 38</span></a>    <span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-39"><a href="#v_3d_unifize-39"><span class="linenos"> 39</span></a>    <span class="n">outputtype</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;NIFTI&quot;</span><span class="p">,</span> <span class="s2">&quot;AFNI&quot;</span><span class="p">,</span> <span class="s2">&quot;NIFTI_GZ&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-40"><a href="#v_3d_unifize-40"><span class="linenos"> 40</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_unifize-41"><a href="#v_3d_unifize-41"><span class="linenos"> 41</span></a>    <span class="n">rbt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-42"><a href="#v_3d_unifize-42"><span class="linenos"> 42</span></a>    <span class="n">scale_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-43"><a href="#v_3d_unifize-43"><span class="linenos"> 43</span></a>    <span class="n">t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_unifize-44"><a href="#v_3d_unifize-44"><span class="linenos"> 44</span></a>    <span class="n">t2_up</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-45"><a href="#v_3d_unifize-45"><span class="linenos"> 45</span></a>    <span class="n">urad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-46"><a href="#v_3d_unifize-46"><span class="linenos"> 46</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-47"><a href="#v_3d_unifize-47"><span class="linenos"> 47</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dUnifizeOutputs</span><span class="p">:</span>
-</span><span id="v_3d_unifize-48"><a href="#v_3d_unifize-48"><span class="linenos"> 48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v_3d_unifize-49"><a href="#v_3d_unifize-49"><span class="linenos"> 49</span></a><span class="sd">    3dUnifize - for uniformizing image intensity</span>
-</span><span id="v_3d_unifize-50"><a href="#v_3d_unifize-50"><span class="linenos"> 50</span></a><span class="sd">    * The input dataset is supposed to be a T1-weighted volume, possibly already</span>
-</span><span id="v_3d_unifize-51"><a href="#v_3d_unifize-51"><span class="linenos"> 51</span></a><span class="sd">    skull-stripped (e.g., via 3dSkullStrip). However, this program can be a</span>
-</span><span id="v_3d_unifize-52"><a href="#v_3d_unifize-52"><span class="linenos"> 52</span></a><span class="sd">    useful step to take BEFORE 3dSkullStrip, since the latter program can fail</span>
-</span><span id="v_3d_unifize-53"><a href="#v_3d_unifize-53"><span class="linenos"> 53</span></a><span class="sd">    if the input volume is strongly shaded -- 3dUnifize will (mostly) remove</span>
-</span><span id="v_3d_unifize-54"><a href="#v_3d_unifize-54"><span class="linenos"> 54</span></a><span class="sd">    such shading artifacts.</span>
-</span><span id="v_3d_unifize-55"><a href="#v_3d_unifize-55"><span class="linenos"> 55</span></a><span class="sd">    * The output dataset has the white matter (WM) intensity approximately</span>
-</span><span id="v_3d_unifize-56"><a href="#v_3d_unifize-56"><span class="linenos"> 56</span></a><span class="sd">    uniformized across space, and scaled to peak at about 1000.</span>
-</span><span id="v_3d_unifize-57"><a href="#v_3d_unifize-57"><span class="linenos"> 57</span></a><span class="sd">    * The output dataset is always stored in float format!</span>
-</span><span id="v_3d_unifize-58"><a href="#v_3d_unifize-58"><span class="linenos"> 58</span></a><span class="sd">    * If the input dataset has more than 1 sub-brick, only sub-brick #0 will be</span>
-</span><span id="v_3d_unifize-59"><a href="#v_3d_unifize-59"><span class="linenos"> 59</span></a><span class="sd">    processed!</span>
-</span><span id="v_3d_unifize-60"><a href="#v_3d_unifize-60"><span class="linenos"> 60</span></a><span class="sd">    * Want to correct EPI datasets for nonuniformity? You can try the new and</span>
-</span><span id="v_3d_unifize-61"><a href="#v_3d_unifize-61"><span class="linenos"> 61</span></a><span class="sd">    experimental [Mar 2017] &#39;-EPI&#39; option.</span>
-</span><span id="v_3d_unifize-62"><a href="#v_3d_unifize-62"><span class="linenos"> 62</span></a><span class="sd">    * The principal motive for this program is for use in an image registration</span>
-</span><span id="v_3d_unifize-63"><a href="#v_3d_unifize-63"><span class="linenos"> 63</span></a><span class="sd">    script, and it may or may not be useful otherwise.</span>
-</span><span id="v_3d_unifize-64"><a href="#v_3d_unifize-64"><span class="linenos"> 64</span></a><span class="sd">    * This program replaces the older (and very different) 3dUniformize, which</span>
-</span><span id="v_3d_unifize-65"><a href="#v_3d_unifize-65"><span class="linenos"> 65</span></a><span class="sd">    is no longer maintained and may sublimate at any moment. (In other words, we</span>
-</span><span id="v_3d_unifize-66"><a href="#v_3d_unifize-66"><span class="linenos"> 66</span></a><span class="sd">    do not recommend the use of 3dUniformize.).</span>
-</span><span id="v_3d_unifize-67"><a href="#v_3d_unifize-67"><span class="linenos"> 67</span></a><span class="sd">    </span>
-</span><span id="v_3d_unifize-68"><a href="#v_3d_unifize-68"><span class="linenos"> 68</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="v_3d_unifize-69"><a href="#v_3d_unifize-69"><span class="linenos"> 69</span></a><span class="sd">    </span>
-</span><span id="v_3d_unifize-70"><a href="#v_3d_unifize-70"><span class="linenos"> 70</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="v_3d_unifize-71"><a href="#v_3d_unifize-71"><span class="linenos"> 71</span></a><span class="sd">    </span>
-</span><span id="v_3d_unifize-72"><a href="#v_3d_unifize-72"><span class="linenos"> 72</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_unifize-73"><a href="#v_3d_unifize-73"><span class="linenos"> 73</span></a><span class="sd">        in_file: Input file to 3dunifize.</span>
-</span><span id="v_3d_unifize-74"><a href="#v_3d_unifize-74"><span class="linenos"> 74</span></a><span class="sd">        cl_frac: Option for afni experts only.set the automask &#39;clip level\</span>
-</span><span id="v_3d_unifize-75"><a href="#v_3d_unifize-75"><span class="linenos"> 75</span></a><span class="sd">            fraction&#39;. must be between 0.1 and 0.9. a small fraction means to make\</span>
-</span><span id="v_3d_unifize-76"><a href="#v_3d_unifize-76"><span class="linenos"> 76</span></a><span class="sd">            the initial threshold for clipping (a la 3dcliplevel) smaller, which\</span>
-</span><span id="v_3d_unifize-77"><a href="#v_3d_unifize-77"><span class="linenos"> 77</span></a><span class="sd">            will tend to make the mask larger. [default=0.1].</span>
-</span><span id="v_3d_unifize-78"><a href="#v_3d_unifize-78"><span class="linenos"> 78</span></a><span class="sd">        epi: Assume the input dataset is a t2 (or t2\\*) weighted epi time\</span>
-</span><span id="v_3d_unifize-79"><a href="#v_3d_unifize-79"><span class="linenos"> 79</span></a><span class="sd">            series. after computing the scaling, apply it to all volumes (trs) in\</span>
-</span><span id="v_3d_unifize-80"><a href="#v_3d_unifize-80"><span class="linenos"> 80</span></a><span class="sd">            the input dataset. that is, a given voxel will be scaled by the same\</span>
-</span><span id="v_3d_unifize-81"><a href="#v_3d_unifize-81"><span class="linenos"> 81</span></a><span class="sd">            factor at each tr. this option also implies &#39;-noduplo&#39; and &#39;-t2&#39;.this\</span>
-</span><span id="v_3d_unifize-82"><a href="#v_3d_unifize-82"><span class="linenos"> 82</span></a><span class="sd">            option turns off &#39;-gm&#39; if you turned it on.</span>
-</span><span id="v_3d_unifize-83"><a href="#v_3d_unifize-83"><span class="linenos"> 83</span></a><span class="sd">        gm: Also scale to unifize &#39;gray matter&#39; = lower intensity voxels (to\</span>
-</span><span id="v_3d_unifize-84"><a href="#v_3d_unifize-84"><span class="linenos"> 84</span></a><span class="sd">            aid in registering images from different scanners).</span>
-</span><span id="v_3d_unifize-85"><a href="#v_3d_unifize-85"><span class="linenos"> 85</span></a><span class="sd">        no_duplo: Do not use the &#39;duplo down&#39; step; this can be useful for\</span>
-</span><span id="v_3d_unifize-86"><a href="#v_3d_unifize-86"><span class="linenos"> 86</span></a><span class="sd">            lower resolution datasets.</span>
-</span><span id="v_3d_unifize-87"><a href="#v_3d_unifize-87"><span class="linenos"> 87</span></a><span class="sd">        num_threads: Set number of threads.</span>
-</span><span id="v_3d_unifize-88"><a href="#v_3d_unifize-88"><span class="linenos"> 88</span></a><span class="sd">        outputtype: &#39;nifti&#39; or &#39;afni&#39; or &#39;nifti_gz&#39;. Afni output filetype.</span>
-</span><span id="v_3d_unifize-89"><a href="#v_3d_unifize-89"><span class="linenos"> 89</span></a><span class="sd">        quiet: Don&#39;t print the progress messages.</span>
-</span><span id="v_3d_unifize-90"><a href="#v_3d_unifize-90"><span class="linenos"> 90</span></a><span class="sd">        rbt: (a float, a float, a float). Option for afni experts only.specify\</span>
-</span><span id="v_3d_unifize-91"><a href="#v_3d_unifize-91"><span class="linenos"> 91</span></a><span class="sd">            the 3 parameters for the algorithm:r = radius; same as given by option\</span>
-</span><span id="v_3d_unifize-92"><a href="#v_3d_unifize-92"><span class="linenos"> 92</span></a><span class="sd">            &#39;-urad&#39;, [default=18.3]b = bottom percentile of normalizing data range,\</span>
-</span><span id="v_3d_unifize-93"><a href="#v_3d_unifize-93"><span class="linenos"> 93</span></a><span class="sd">            [default=70.0]r = top percentile of normalizing data range,\</span>
-</span><span id="v_3d_unifize-94"><a href="#v_3d_unifize-94"><span class="linenos"> 94</span></a><span class="sd">            [default=80.0].</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_unifize-30"><a href="#v_3d_unifize-30"><span class="linenos"> 30</span></a><span class="k">def</span> <span class="nf">v_3d_unifize</span><span class="p">(</span>
+</span><span id="v_3d_unifize-31"><a href="#v_3d_unifize-31"><span class="linenos"> 31</span></a>    <span class="n">in_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="v_3d_unifize-32"><a href="#v_3d_unifize-32"><span class="linenos"> 32</span></a>    <span class="n">cl_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-33"><a href="#v_3d_unifize-33"><span class="linenos"> 33</span></a>    <span class="n">epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_unifize-34"><a href="#v_3d_unifize-34"><span class="linenos"> 34</span></a>    <span class="n">gm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_unifize-35"><a href="#v_3d_unifize-35"><span class="linenos"> 35</span></a>    <span class="n">no_duplo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_unifize-36"><a href="#v_3d_unifize-36"><span class="linenos"> 36</span></a>    <span class="n">num_threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-37"><a href="#v_3d_unifize-37"><span class="linenos"> 37</span></a>    <span class="n">outputtype</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;NIFTI&quot;</span><span class="p">,</span> <span class="s2">&quot;AFNI&quot;</span><span class="p">,</span> <span class="s2">&quot;NIFTI_GZ&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-38"><a href="#v_3d_unifize-38"><span class="linenos"> 38</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_unifize-39"><a href="#v_3d_unifize-39"><span class="linenos"> 39</span></a>    <span class="n">rbt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-40"><a href="#v_3d_unifize-40"><span class="linenos"> 40</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-41"><a href="#v_3d_unifize-41"><span class="linenos"> 41</span></a>    <span class="n">scale_file</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-42"><a href="#v_3d_unifize-42"><span class="linenos"> 42</span></a>    <span class="n">t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_unifize-43"><a href="#v_3d_unifize-43"><span class="linenos"> 43</span></a>    <span class="n">t2_up</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-44"><a href="#v_3d_unifize-44"><span class="linenos"> 44</span></a>    <span class="n">urad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-45"><a href="#v_3d_unifize-45"><span class="linenos"> 45</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-46"><a href="#v_3d_unifize-46"><span class="linenos"> 46</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dUnifizeOutputs</span><span class="p">:</span>
+</span><span id="v_3d_unifize-47"><a href="#v_3d_unifize-47"><span class="linenos"> 47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v_3d_unifize-48"><a href="#v_3d_unifize-48"><span class="linenos"> 48</span></a><span class="sd">    3dUnifize - for uniformizing image intensity</span>
+</span><span id="v_3d_unifize-49"><a href="#v_3d_unifize-49"><span class="linenos"> 49</span></a><span class="sd">    * The input dataset is supposed to be a T1-weighted volume, possibly already</span>
+</span><span id="v_3d_unifize-50"><a href="#v_3d_unifize-50"><span class="linenos"> 50</span></a><span class="sd">    skull-stripped (e.g., via 3dSkullStrip). However, this program can be a</span>
+</span><span id="v_3d_unifize-51"><a href="#v_3d_unifize-51"><span class="linenos"> 51</span></a><span class="sd">    useful step to take BEFORE 3dSkullStrip, since the latter program can fail</span>
+</span><span id="v_3d_unifize-52"><a href="#v_3d_unifize-52"><span class="linenos"> 52</span></a><span class="sd">    if the input volume is strongly shaded -- 3dUnifize will (mostly) remove</span>
+</span><span id="v_3d_unifize-53"><a href="#v_3d_unifize-53"><span class="linenos"> 53</span></a><span class="sd">    such shading artifacts.</span>
+</span><span id="v_3d_unifize-54"><a href="#v_3d_unifize-54"><span class="linenos"> 54</span></a><span class="sd">    * The output dataset has the white matter (WM) intensity approximately</span>
+</span><span id="v_3d_unifize-55"><a href="#v_3d_unifize-55"><span class="linenos"> 55</span></a><span class="sd">    uniformized across space, and scaled to peak at about 1000.</span>
+</span><span id="v_3d_unifize-56"><a href="#v_3d_unifize-56"><span class="linenos"> 56</span></a><span class="sd">    * The output dataset is always stored in float format!</span>
+</span><span id="v_3d_unifize-57"><a href="#v_3d_unifize-57"><span class="linenos"> 57</span></a><span class="sd">    * If the input dataset has more than 1 sub-brick, only sub-brick #0 will be</span>
+</span><span id="v_3d_unifize-58"><a href="#v_3d_unifize-58"><span class="linenos"> 58</span></a><span class="sd">    processed!</span>
+</span><span id="v_3d_unifize-59"><a href="#v_3d_unifize-59"><span class="linenos"> 59</span></a><span class="sd">    * Want to correct EPI datasets for nonuniformity? You can try the new and</span>
+</span><span id="v_3d_unifize-60"><a href="#v_3d_unifize-60"><span class="linenos"> 60</span></a><span class="sd">    experimental [Mar 2017] &#39;-EPI&#39; option.</span>
+</span><span id="v_3d_unifize-61"><a href="#v_3d_unifize-61"><span class="linenos"> 61</span></a><span class="sd">    * The principal motive for this program is for use in an image registration</span>
+</span><span id="v_3d_unifize-62"><a href="#v_3d_unifize-62"><span class="linenos"> 62</span></a><span class="sd">    script, and it may or may not be useful otherwise.</span>
+</span><span id="v_3d_unifize-63"><a href="#v_3d_unifize-63"><span class="linenos"> 63</span></a><span class="sd">    * This program replaces the older (and very different) 3dUniformize, which</span>
+</span><span id="v_3d_unifize-64"><a href="#v_3d_unifize-64"><span class="linenos"> 64</span></a><span class="sd">    is no longer maintained and may sublimate at any moment. (In other words, we</span>
+</span><span id="v_3d_unifize-65"><a href="#v_3d_unifize-65"><span class="linenos"> 65</span></a><span class="sd">    do not recommend the use of 3dUniformize.).</span>
+</span><span id="v_3d_unifize-66"><a href="#v_3d_unifize-66"><span class="linenos"> 66</span></a><span class="sd">    </span>
+</span><span id="v_3d_unifize-67"><a href="#v_3d_unifize-67"><span class="linenos"> 67</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="v_3d_unifize-68"><a href="#v_3d_unifize-68"><span class="linenos"> 68</span></a><span class="sd">    </span>
+</span><span id="v_3d_unifize-69"><a href="#v_3d_unifize-69"><span class="linenos"> 69</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v_3d_unifize-70"><a href="#v_3d_unifize-70"><span class="linenos"> 70</span></a><span class="sd">    </span>
+</span><span id="v_3d_unifize-71"><a href="#v_3d_unifize-71"><span class="linenos"> 71</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_unifize-72"><a href="#v_3d_unifize-72"><span class="linenos"> 72</span></a><span class="sd">        in_file: Input file to 3dunifize.</span>
+</span><span id="v_3d_unifize-73"><a href="#v_3d_unifize-73"><span class="linenos"> 73</span></a><span class="sd">        cl_frac: Option for afni experts only.set the automask &#39;clip level\</span>
+</span><span id="v_3d_unifize-74"><a href="#v_3d_unifize-74"><span class="linenos"> 74</span></a><span class="sd">            fraction&#39;. must be between 0.1 and 0.9. a small fraction means to make\</span>
+</span><span id="v_3d_unifize-75"><a href="#v_3d_unifize-75"><span class="linenos"> 75</span></a><span class="sd">            the initial threshold for clipping (a la 3dcliplevel) smaller, which\</span>
+</span><span id="v_3d_unifize-76"><a href="#v_3d_unifize-76"><span class="linenos"> 76</span></a><span class="sd">            will tend to make the mask larger. [default=0.1].</span>
+</span><span id="v_3d_unifize-77"><a href="#v_3d_unifize-77"><span class="linenos"> 77</span></a><span class="sd">        epi: Assume the input dataset is a t2 (or t2\\*) weighted epi time\</span>
+</span><span id="v_3d_unifize-78"><a href="#v_3d_unifize-78"><span class="linenos"> 78</span></a><span class="sd">            series. after computing the scaling, apply it to all volumes (trs) in\</span>
+</span><span id="v_3d_unifize-79"><a href="#v_3d_unifize-79"><span class="linenos"> 79</span></a><span class="sd">            the input dataset. that is, a given voxel will be scaled by the same\</span>
+</span><span id="v_3d_unifize-80"><a href="#v_3d_unifize-80"><span class="linenos"> 80</span></a><span class="sd">            factor at each tr. this option also implies &#39;-noduplo&#39; and &#39;-t2&#39;.this\</span>
+</span><span id="v_3d_unifize-81"><a href="#v_3d_unifize-81"><span class="linenos"> 81</span></a><span class="sd">            option turns off &#39;-gm&#39; if you turned it on.</span>
+</span><span id="v_3d_unifize-82"><a href="#v_3d_unifize-82"><span class="linenos"> 82</span></a><span class="sd">        gm: Also scale to unifize &#39;gray matter&#39; = lower intensity voxels (to\</span>
+</span><span id="v_3d_unifize-83"><a href="#v_3d_unifize-83"><span class="linenos"> 83</span></a><span class="sd">            aid in registering images from different scanners).</span>
+</span><span id="v_3d_unifize-84"><a href="#v_3d_unifize-84"><span class="linenos"> 84</span></a><span class="sd">        no_duplo: Do not use the &#39;duplo down&#39; step; this can be useful for\</span>
+</span><span id="v_3d_unifize-85"><a href="#v_3d_unifize-85"><span class="linenos"> 85</span></a><span class="sd">            lower resolution datasets.</span>
+</span><span id="v_3d_unifize-86"><a href="#v_3d_unifize-86"><span class="linenos"> 86</span></a><span class="sd">        num_threads: Set number of threads.</span>
+</span><span id="v_3d_unifize-87"><a href="#v_3d_unifize-87"><span class="linenos"> 87</span></a><span class="sd">        outputtype: &#39;nifti&#39; or &#39;afni&#39; or &#39;nifti_gz&#39;. Afni output filetype.</span>
+</span><span id="v_3d_unifize-88"><a href="#v_3d_unifize-88"><span class="linenos"> 88</span></a><span class="sd">        quiet: Don&#39;t print the progress messages.</span>
+</span><span id="v_3d_unifize-89"><a href="#v_3d_unifize-89"><span class="linenos"> 89</span></a><span class="sd">        rbt: (a float, a float, a float). Option for afni experts only.specify\</span>
+</span><span id="v_3d_unifize-90"><a href="#v_3d_unifize-90"><span class="linenos"> 90</span></a><span class="sd">            the 3 parameters for the algorithm:r = radius; same as given by option\</span>
+</span><span id="v_3d_unifize-91"><a href="#v_3d_unifize-91"><span class="linenos"> 91</span></a><span class="sd">            &#39;-urad&#39;, [default=18.3]b = bottom percentile of normalizing data range,\</span>
+</span><span id="v_3d_unifize-92"><a href="#v_3d_unifize-92"><span class="linenos"> 92</span></a><span class="sd">            [default=70.0]r = top percentile of normalizing data range,\</span>
+</span><span id="v_3d_unifize-93"><a href="#v_3d_unifize-93"><span class="linenos"> 93</span></a><span class="sd">            [default=80.0].</span>
+</span><span id="v_3d_unifize-94"><a href="#v_3d_unifize-94"><span class="linenos"> 94</span></a><span class="sd">        prefix: Output image file name.</span>
 </span><span id="v_3d_unifize-95"><a href="#v_3d_unifize-95"><span class="linenos"> 95</span></a><span class="sd">        scale_file: Output file name to save the scale factor used at each\</span>
 </span><span id="v_3d_unifize-96"><a href="#v_3d_unifize-96"><span class="linenos"> 96</span></a><span class="sd">            voxel .</span>
 </span><span id="v_3d_unifize-97"><a href="#v_3d_unifize-97"><span class="linenos"> 97</span></a><span class="sd">        t2: Treat the input as if it were t2-weighted, rather than t1-weighted.\</span>
@@ -468,48 +456,52 @@
 </span><span id="v_3d_unifize-122"><a href="#v_3d_unifize-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-EPI&quot;</span><span class="p">)</span>
 </span><span id="v_3d_unifize-123"><a href="#v_3d_unifize-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">gm</span><span class="p">:</span>
 </span><span id="v_3d_unifize-124"><a href="#v_3d_unifize-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-GM&quot;</span><span class="p">)</span>
-</span><span id="v_3d_unifize-125"><a href="#v_3d_unifize-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_unifize-126"><a href="#v_3d_unifize-126"><span class="linenos">126</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
-</span><span id="v_3d_unifize-127"><a href="#v_3d_unifize-127"><span class="linenos">127</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
-</span><span id="v_3d_unifize-128"><a href="#v_3d_unifize-128"><span class="linenos">128</span></a>    <span class="p">])</span>
-</span><span id="v_3d_unifize-129"><a href="#v_3d_unifize-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">no_duplo</span><span class="p">:</span>
-</span><span id="v_3d_unifize-130"><a href="#v_3d_unifize-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noduplo&quot;</span><span class="p">)</span>
-</span><span id="v_3d_unifize-131"><a href="#v_3d_unifize-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">num_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_unifize-132"><a href="#v_3d_unifize-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num_threads</span><span class="p">))</span>
-</span><span id="v_3d_unifize-133"><a href="#v_3d_unifize-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">outputtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_unifize-134"><a href="#v_3d_unifize-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outputtype</span><span class="p">)</span>
-</span><span id="v_3d_unifize-135"><a href="#v_3d_unifize-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="v_3d_unifize-136"><a href="#v_3d_unifize-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="v_3d_unifize-137"><a href="#v_3d_unifize-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">rbt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_unifize-138"><a href="#v_3d_unifize-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_unifize-139"><a href="#v_3d_unifize-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-rbt&quot;</span><span class="p">,</span>
-</span><span id="v_3d_unifize-140"><a href="#v_3d_unifize-140"><span class="linenos">140</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">rbt</span><span class="p">)</span>
-</span><span id="v_3d_unifize-141"><a href="#v_3d_unifize-141"><span class="linenos">141</span></a>        <span class="p">])</span>
-</span><span id="v_3d_unifize-142"><a href="#v_3d_unifize-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_unifize-143"><a href="#v_3d_unifize-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_unifize-144"><a href="#v_3d_unifize-144"><span class="linenos">144</span></a>            <span class="s2">&quot;-ssave&quot;</span><span class="p">,</span>
-</span><span id="v_3d_unifize-145"><a href="#v_3d_unifize-145"><span class="linenos">145</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span>
-</span><span id="v_3d_unifize-146"><a href="#v_3d_unifize-146"><span class="linenos">146</span></a>        <span class="p">])</span>
-</span><span id="v_3d_unifize-147"><a href="#v_3d_unifize-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">t2</span><span class="p">:</span>
-</span><span id="v_3d_unifize-148"><a href="#v_3d_unifize-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-T2&quot;</span><span class="p">)</span>
-</span><span id="v_3d_unifize-149"><a href="#v_3d_unifize-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">t2_up</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_unifize-150"><a href="#v_3d_unifize-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_unifize-151"><a href="#v_3d_unifize-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-T2up&quot;</span><span class="p">,</span>
-</span><span id="v_3d_unifize-152"><a href="#v_3d_unifize-152"><span class="linenos">152</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_up</span><span class="p">)</span>
-</span><span id="v_3d_unifize-153"><a href="#v_3d_unifize-153"><span class="linenos">153</span></a>        <span class="p">])</span>
-</span><span id="v_3d_unifize-154"><a href="#v_3d_unifize-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">urad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_unifize-155"><a href="#v_3d_unifize-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_unifize-156"><a href="#v_3d_unifize-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-Urad&quot;</span><span class="p">,</span>
-</span><span id="v_3d_unifize-157"><a href="#v_3d_unifize-157"><span class="linenos">157</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">urad</span><span class="p">)</span>
-</span><span id="v_3d_unifize-158"><a href="#v_3d_unifize-158"><span class="linenos">158</span></a>        <span class="p">])</span>
-</span><span id="v_3d_unifize-159"><a href="#v_3d_unifize-159"><span class="linenos">159</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dUnifizeOutputs</span><span class="p">(</span>
-</span><span id="v_3d_unifize-160"><a href="#v_3d_unifize-160"><span class="linenos">160</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_unifize-161"><a href="#v_3d_unifize-161"><span class="linenos">161</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_unifized&quot;</span><span class="p">),</span>
-</span><span id="v_3d_unifize-162"><a href="#v_3d_unifize-162"><span class="linenos">162</span></a>        <span class="n">out_file_</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;out_file&quot;</span><span class="p">),</span>
-</span><span id="v_3d_unifize-163"><a href="#v_3d_unifize-163"><span class="linenos">163</span></a>        <span class="n">scale_file_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_unifize-164"><a href="#v_3d_unifize-164"><span class="linenos">164</span></a>    <span class="p">)</span>
-</span><span id="v_3d_unifize-165"><a href="#v_3d_unifize-165"><span class="linenos">165</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v_3d_unifize-166"><a href="#v_3d_unifize-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v_3d_unifize-125"><a href="#v_3d_unifize-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">no_duplo</span><span class="p">:</span>
+</span><span id="v_3d_unifize-126"><a href="#v_3d_unifize-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noduplo&quot;</span><span class="p">)</span>
+</span><span id="v_3d_unifize-127"><a href="#v_3d_unifize-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">num_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-128"><a href="#v_3d_unifize-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num_threads</span><span class="p">))</span>
+</span><span id="v_3d_unifize-129"><a href="#v_3d_unifize-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">outputtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-130"><a href="#v_3d_unifize-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outputtype</span><span class="p">)</span>
+</span><span id="v_3d_unifize-131"><a href="#v_3d_unifize-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="v_3d_unifize-132"><a href="#v_3d_unifize-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="v_3d_unifize-133"><a href="#v_3d_unifize-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">rbt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-134"><a href="#v_3d_unifize-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_unifize-135"><a href="#v_3d_unifize-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-rbt&quot;</span><span class="p">,</span>
+</span><span id="v_3d_unifize-136"><a href="#v_3d_unifize-136"><span class="linenos">136</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">rbt</span><span class="p">)</span>
+</span><span id="v_3d_unifize-137"><a href="#v_3d_unifize-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="v_3d_unifize-138"><a href="#v_3d_unifize-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-139"><a href="#v_3d_unifize-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_unifize-140"><a href="#v_3d_unifize-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="v_3d_unifize-141"><a href="#v_3d_unifize-141"><span class="linenos">141</span></a>            <span class="n">prefix</span>
+</span><span id="v_3d_unifize-142"><a href="#v_3d_unifize-142"><span class="linenos">142</span></a>        <span class="p">])</span>
+</span><span id="v_3d_unifize-143"><a href="#v_3d_unifize-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-144"><a href="#v_3d_unifize-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_unifize-145"><a href="#v_3d_unifize-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-ssave&quot;</span><span class="p">,</span>
+</span><span id="v_3d_unifize-146"><a href="#v_3d_unifize-146"><span class="linenos">146</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span>
+</span><span id="v_3d_unifize-147"><a href="#v_3d_unifize-147"><span class="linenos">147</span></a>        <span class="p">])</span>
+</span><span id="v_3d_unifize-148"><a href="#v_3d_unifize-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">t2</span><span class="p">:</span>
+</span><span id="v_3d_unifize-149"><a href="#v_3d_unifize-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-T2&quot;</span><span class="p">)</span>
+</span><span id="v_3d_unifize-150"><a href="#v_3d_unifize-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">t2_up</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-151"><a href="#v_3d_unifize-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_unifize-152"><a href="#v_3d_unifize-152"><span class="linenos">152</span></a>            <span class="s2">&quot;-T2up&quot;</span><span class="p">,</span>
+</span><span id="v_3d_unifize-153"><a href="#v_3d_unifize-153"><span class="linenos">153</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_up</span><span class="p">)</span>
+</span><span id="v_3d_unifize-154"><a href="#v_3d_unifize-154"><span class="linenos">154</span></a>        <span class="p">])</span>
+</span><span id="v_3d_unifize-155"><a href="#v_3d_unifize-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">urad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_unifize-156"><a href="#v_3d_unifize-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_unifize-157"><a href="#v_3d_unifize-157"><span class="linenos">157</span></a>            <span class="s2">&quot;-Urad&quot;</span><span class="p">,</span>
+</span><span id="v_3d_unifize-158"><a href="#v_3d_unifize-158"><span class="linenos">158</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">urad</span><span class="p">)</span>
+</span><span id="v_3d_unifize-159"><a href="#v_3d_unifize-159"><span class="linenos">159</span></a>        <span class="p">])</span>
+</span><span id="v_3d_unifize-160"><a href="#v_3d_unifize-160"><span class="linenos">160</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_unifize-161"><a href="#v_3d_unifize-161"><span class="linenos">161</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="v_3d_unifize-162"><a href="#v_3d_unifize-162"><span class="linenos">162</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+</span><span id="v_3d_unifize-163"><a href="#v_3d_unifize-163"><span class="linenos">163</span></a>    <span class="p">])</span>
+</span><span id="v_3d_unifize-164"><a href="#v_3d_unifize-164"><span class="linenos">164</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dUnifizeOutputs</span><span class="p">(</span>
+</span><span id="v_3d_unifize-165"><a href="#v_3d_unifize-165"><span class="linenos">165</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v_3d_unifize-166"><a href="#v_3d_unifize-166"><span class="linenos">166</span></a>        <span class="n">out_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-167"><a href="#v_3d_unifize-167"><span class="linenos">167</span></a>        <span class="n">scale_file_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">scale_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_unifize-168"><a href="#v_3d_unifize-168"><span class="linenos">168</span></a>    <span class="p">)</span>
+</span><span id="v_3d_unifize-169"><a href="#v_3d_unifize-169"><span class="linenos">169</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v_3d_unifize-170"><a href="#v_3d_unifize-170"><span class="linenos">170</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -551,6 +543,7 @@ do not recommend the use of 3dUniformize.).</li>
 <li><strong>outputtype:</strong>  'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.</li>
 <li><strong>quiet:</strong>  Don't print the progress messages.</li>
 <li><strong>rbt:</strong>  (a float, a float, a float). Option for afni experts only.specify            the 3 parameters for the algorithm:r = radius; same as given by option            '-urad', [default=18.3]b = bottom percentile of normalizing data range,            [default=70.0]r = top percentile of normalizing data range,            [default=80.0].</li>
+<li><strong>prefix:</strong>  Output image file name.</li>
 <li><strong>scale_file:</strong>  Output file name to save the scale factor used at each            voxel .</li>
 <li><strong>t2:</strong>  Treat the input as if it were t2-weighted, rather than t1-weighted.            this processing is done simply by inverting the image contrast,            processing it as if that result were t1-weighted, and then re-inverting            the results counts of voxel overlap, i.e., each voxel will contain the            number of masks that it is set in.</li>
 <li><strong>t2_up:</strong>  Option for afni experts only.set the upper percentile point used            for t2-t1 inversion. allowed to be anything between 90 and 100            (inclusive), with default to 98.5 (for no good reason).</li>
