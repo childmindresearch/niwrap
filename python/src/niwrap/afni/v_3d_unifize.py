@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="276f427e83c08d7c9c7cacb63c3a6a2de1b3abd4.boutiques",
+    id="f384aca7310e07ceca93f58ec17ea0b68b11373d.boutiques",
     name="3dUnifize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,10 +20,8 @@ class V3dUnifizeOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output image file name."""
-    out_file_: OutputPathType
-    """Unifized file."""
     scale_file_outfile: OutputPathType | None
     """Scale factor file."""
 
@@ -38,6 +36,7 @@ def v_3d_unifize(
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     quiet: bool = False,
     rbt: list[float] | None = None,
+    prefix: str | None = None,
     scale_file: InputPathType | None = None,
     t2: bool = False,
     t2_up: float | None = None,
@@ -91,6 +90,7 @@ def v_3d_unifize(
             '-urad', [default=18.3]b = bottom percentile of normalizing data range,\
             [default=70.0]r = top percentile of normalizing data range,\
             [default=80.0].
+        prefix: Output image file name.
         scale_file: Output file name to save the scale factor used at each\
             voxel .
         t2: Treat the input as if it were t2-weighted, rather than t1-weighted.\
@@ -121,10 +121,6 @@ def v_3d_unifize(
         cargs.append("-EPI")
     if gm:
         cargs.append("-GM")
-    cargs.extend([
-        "-input",
-        execution.input_file(in_file)
-    ])
     if no_duplo:
         cargs.append("-noduplo")
     if num_threads is not None:
@@ -137,6 +133,11 @@ def v_3d_unifize(
         cargs.extend([
             "-rbt",
             *map(str, rbt)
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
         ])
     if scale_file is not None:
         cargs.extend([
@@ -155,10 +156,13 @@ def v_3d_unifize(
             "-Urad",
             str(urad)
         ])
+    cargs.extend([
+        "-input",
+        execution.input_file(in_file)
+    ])
     ret = V3dUnifizeOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_unifized"),
-        out_file_=execution.output_file("out_file"),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
         scale_file_outfile=execution.output_file(pathlib.Path(scale_file).name) if (scale_file is not None) else None,
     )
     execution.run(cargs)

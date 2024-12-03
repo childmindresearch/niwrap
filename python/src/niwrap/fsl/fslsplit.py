@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSPLIT_METADATA = Metadata(
-    id="658e257df4d731ba6d8f8df4c93d615133ab9854.boutiques",
+    id="588ee0f4afcc0ecee61fd388fbeb58790d2471e2.boutiques",
     name="fslsplit",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -20,7 +20,7 @@ class FslsplitOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    outfiles: OutputPathType | None
+    out_files: OutputPathType | None
     """Output volumes/slices"""
 
 
@@ -28,6 +28,7 @@ def fslsplit(
     infile: InputPathType,
     output_basename: str | None = "vol",
     separation_z: bool = False,
+    separation_time: bool = False,
     runner: Runner | None = None,
 ) -> FslsplitOutputs:
     """
@@ -41,6 +42,7 @@ def fslsplit(
         infile: Input image (e.g. img.nii.gz).
         output_basename: Output basename (default: vol).
         separation_z: Separate images in the z direction.
+        separation_time: Separate images in time (default behaviour).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslsplitOutputs`).
@@ -54,9 +56,11 @@ def fslsplit(
         cargs.append(output_basename)
     if separation_z:
         cargs.append("-z")
+    if separation_time:
+        cargs.append("-t")
     ret = FslsplitOutputs(
         root=execution.output_file("."),
-        outfiles=execution.output_file(output_basename + ".nii.gz") if (output_basename is not None) else None,
+        out_files=execution.output_file(output_basename) if (output_basename is not None) else None,
     )
     execution.run(cargs)
     return ret
