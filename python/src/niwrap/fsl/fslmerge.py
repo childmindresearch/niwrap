@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMERGE_METADATA = Metadata(
-    id="ead9f2d7da12c2e1f5607f9cc152da2017eddc87.boutiques",
+    id="5d8ea7aca79fd0b196c00441d4f31c201a3f63e6.boutiques",
     name="fslmerge",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -20,13 +20,14 @@ class FslmergeOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    outfile: OutputPathType
+    out_file: OutputPathType
     """Output concatenated image file"""
 
 
 def fslmerge(
     output_file: str,
     input_files: list[InputPathType],
+    merge_time: bool = False,
     merge_set_tr: bool = False,
     tr_value: float | None = None,
     runner: Runner | None = None,
@@ -41,6 +42,7 @@ def fslmerge(
     Args:
         output_file: Output concatenated image file.
         input_files: Input image files to concatenate.
+        merge_time: Concatenate images in time (4th dimension).
         merge_set_tr: Concatenate images in time and set the output image tr to\
             the provided value.
         tr_value: TR value in seconds, used with the -tr flag.
@@ -52,6 +54,8 @@ def fslmerge(
     execution = runner.start_execution(FSLMERGE_METADATA)
     cargs = []
     cargs.append("fslmerge")
+    if merge_time:
+        cargs.append("-t")
     if merge_set_tr:
         cargs.append("-tr")
     cargs.append(output_file)
@@ -60,7 +64,7 @@ def fslmerge(
         cargs.append(str(tr_value))
     ret = FslmergeOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(output_file + ".nii.gz"),
+        out_file=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret
