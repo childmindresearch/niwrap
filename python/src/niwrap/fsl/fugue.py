@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FUGUE_METADATA = Metadata(
-    id="d264261226a39feda65ebd1686c5c1c1076e293f.boutiques",
+    id="e92886e40bebff1fca6ad036e63b3a6f487c4e4c.boutiques",
     name="fugue",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -37,7 +37,7 @@ def fugue(
     dwell_time: float | None = None,
     dwell_to_asym_ratio: float | None = None,
     fmap_in_file: InputPathType | None = None,
-    fmap_out_file: InputPathType | None = None,
+    fmap_out_file: str | None = None,
     forward_warping: bool = False,
     fourier_order: int | None = None,
     icorr: bool = False,
@@ -58,12 +58,12 @@ def fugue(
     save_unmasked_fmap: bool = False,
     save_unmasked_shift: bool = False,
     shift_in_file: InputPathType | None = None,
-    shift_out_file: InputPathType | None = None,
+    shift_out_file: str | None = None,
     smooth2d: float | None = None,
     smooth3d: float | None = None,
     unwarp_direction: typing.Literal["x", "y", "z", "x-", "y-", "z-"] | None = None,
-    unwarped_file: InputPathType | None = None,
-    warped_file: InputPathType | None = None,
+    unwarped_file: str | None = None,
+    warped_file: str | None = None,
     runner: Runner | None = None,
 ) -> FugueOutputs:
     """
@@ -133,7 +133,7 @@ def fugue(
     if fmap_in_file is not None:
         cargs.append("--loadfmap=" + execution.input_file(fmap_in_file))
     if fmap_out_file is not None:
-        cargs.append("--savefmap=" + execution.input_file(fmap_out_file))
+        cargs.append("--savefmap=" + fmap_out_file)
     if forward_warping:
         cargs.append("--forward_warping")
     if fourier_order is not None:
@@ -175,7 +175,7 @@ def fugue(
     if shift_in_file is not None:
         cargs.append("--loadshift=" + execution.input_file(shift_in_file))
     if shift_out_file is not None:
-        cargs.append("--saveshift=" + execution.input_file(shift_out_file))
+        cargs.append("--saveshift=" + shift_out_file)
     if smooth2d is not None:
         cargs.append("--smooth2=" + str(smooth2d))
     if smooth3d is not None:
@@ -183,15 +183,15 @@ def fugue(
     if unwarp_direction is not None:
         cargs.append("--unwarpdir=" + unwarp_direction)
     if unwarped_file is not None:
-        cargs.append("--unwarp=" + execution.input_file(unwarped_file))
+        cargs.append("--unwarp=" + unwarped_file)
     if warped_file is not None:
-        cargs.append("--warp=" + execution.input_file(warped_file))
+        cargs.append("--warp=" + warped_file)
     ret = FugueOutputs(
         root=execution.output_file("."),
-        fmap_out_file_outfile=execution.output_file(pathlib.Path(fmap_out_file).name) if (fmap_out_file is not None) else None,
-        shift_out_file_outfile=execution.output_file(pathlib.Path(shift_out_file).name) if (shift_out_file is not None) else None,
-        unwarped_file_outfile=execution.output_file(pathlib.Path(unwarped_file).name) if (unwarped_file is not None) else None,
-        warped_file_outfile=execution.output_file(pathlib.Path(warped_file).name) if (warped_file is not None) else None,
+        fmap_out_file_outfile=execution.output_file(fmap_out_file) if (fmap_out_file is not None) else None,
+        shift_out_file_outfile=execution.output_file(shift_out_file) if (shift_out_file is not None) else None,
+        unwarped_file_outfile=execution.output_file(unwarped_file) if (unwarped_file is not None) else None,
+        warped_file_outfile=execution.output_file(warped_file) if (warped_file is not None) else None,
     )
     execution.run(cargs)
     return ret

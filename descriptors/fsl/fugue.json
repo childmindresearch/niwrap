@@ -67,7 +67,7 @@
     {
       "id": "fmap_out_file",
       "name": "Fmap out file",
-      "type": "File",
+      "type": "String",
       "value-key": "[FMAP_OUT_FILE]",
       "command-line-flag": "--savefmap",
       "command-line-flag-separator": "=",
@@ -103,7 +103,9 @@
       "command-line-flag": "--icorr",
       "description": "Apply intensity correction to unwarping (pixel shift method only).",
       "optional": true,
-      "requires-inputs": ["shift_in_file"]
+      "requires-inputs": [
+        "shift_in_file"
+      ]
     },
     {
       "id": "icorr_only",
@@ -113,7 +115,9 @@
       "command-line-flag": "--icorronly",
       "description": "Apply intensity correction only.",
       "optional": true,
-      "requires-inputs": ["unwarped_file"]
+      "requires-inputs": [
+        "unwarped_file"
+      ]
     },
     {
       "id": "in_file",
@@ -178,7 +182,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "pava",
@@ -268,7 +277,7 @@
     {
       "id": "shift_out_file",
       "name": "Shift out file",
-      "type": "File",
+      "type": "String",
       "value-key": "[SHIFT_OUT_FILE]",
       "command-line-flag": "--saveshift",
       "command-line-flag-separator": "=",
@@ -304,29 +313,40 @@
       "command-line-flag-separator": "=",
       "description": "'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies direction of warping (default y).",
       "optional": true,
-      "value-choices": ["x", "y", "z", "x-", "y-", "z-"]
+      "value-choices": [
+        "x",
+        "y",
+        "z",
+        "x-",
+        "y-",
+        "z-"
+      ]
     },
     {
       "id": "unwarped_file",
       "name": "Unwarped file",
-      "type": "File",
+      "type": "String",
       "value-key": "[UNWARPED_FILE]",
       "command-line-flag": "--unwarp",
       "command-line-flag-separator": "=",
       "description": "Apply unwarping and save as filename.",
       "optional": true,
-      "requires-inputs": ["in_file"]
+      "requires-inputs": [
+        "in_file"
+      ]
     },
     {
       "id": "warped_file",
       "name": "Warped file",
-      "type": "File",
+      "type": "String",
       "value-key": "[WARPED_FILE]",
       "command-line-flag": "--warp",
       "command-line-flag-separator": "=",
       "description": "Apply forward warping and save as filename.",
       "optional": true,
-      "requires-inputs": ["in_file"]
+      "requires-inputs": [
+        "in_file"
+      ]
     }
   ],
   "output-files": [
@@ -363,19 +383,28 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["warped_file", "unwarped_file"],
+      "members": [
+        "warped_file",
+        "unwarped_file"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": ["save_unmasked_shift", "save_shift"],
+      "members": [
+        "save_unmasked_shift",
+        "save_shift"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_3",
       "name": "Mutex group 3",
-      "members": ["save_fmap", "save_unmasked_fmap"],
+      "members": [
+        "save_fmap",
+        "save_unmasked_fmap"
+      ],
       "mutually-exclusive": true
     }
   ],
