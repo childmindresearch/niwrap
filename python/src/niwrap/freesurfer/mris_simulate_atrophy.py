@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SIMULATE_ATROPHY_METADATA = Metadata(
-    id="9e01b9ada9b0b4569fbd5e16610a336ed0c78036.boutiques",
+    id="47f609b6ee1597e2511ad3ae3d7e6ccd53da3483.boutiques",
     name="mris_simulate_atrophy",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -29,7 +29,7 @@ def mris_simulate_atrophy(
     hemi: str,
     label: str,
     atrophy_fraction: float,
-    output_volume: InputPathType,
+    output_volume: str,
     atrophy_percent: float | None = None,
     noise_level: float | None = None,
     runner: Runner | None = None,
@@ -61,7 +61,7 @@ def mris_simulate_atrophy(
     cargs.append(hemi)
     cargs.append(label)
     cargs.append(str(atrophy_fraction))
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     if atrophy_percent is not None:
         cargs.extend([
             "-a",
@@ -74,7 +74,7 @@ def mris_simulate_atrophy(
         ])
     ret = MrisSimulateAtrophyOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_volume).name),
+        output_file=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHSTRIP_METADATA = Metadata(
-    id="404296260cedea4c55948a117336310c162854c6.boutiques",
+    id="b76a61f5aba0de9ca4cafed66778de7469902685.boutiques",
     name="mri_synthstrip",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ class MriSynthstripOutputs(typing.NamedTuple):
 
 def mri_synthstrip(
     image: InputPathType,
-    output_image: InputPathType | None = None,
+    output_image: str | None = None,
     mask: InputPathType | None = None,
     gpu: bool = False,
     border: float | None = 1,
@@ -66,7 +66,7 @@ def mri_synthstrip(
     if output_image is not None:
         cargs.extend([
             "-o",
-            "[" + execution.input_file(output_image) + "]"
+            "[" + output_image + "]"
         ])
     if mask is not None:
         cargs.extend([
@@ -89,7 +89,7 @@ def mri_synthstrip(
         ])
     ret = MriSynthstripOutputs(
         root=execution.output_file("."),
-        output_image_file=execution.output_file(pathlib.Path(output_image).name) if (output_image is not None) else None,
+        output_image_file=execution.output_file(output_image) if (output_image is not None) else None,
         output_mask_file=execution.output_file(pathlib.Path(mask).name) if (mask is not None) else None,
     )
     execution.run(cargs)

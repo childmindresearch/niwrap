@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MVLM_METADATA = Metadata(
-    id="154c52f3fe6b8e8a5efedcc4503099b570dc9d4b.boutiques",
+    id="90a5c14953576771eb514a02ee62df8dd4d9aa71.boutiques",
     name="fsl_mvlm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -40,8 +40,8 @@ def fsl_mvlm(
     nmf_dim: float | None = None,
     nmf_iterations: float | None = None,
     verbose: bool = False,
-    out_data: InputPathType | None = None,
-    out_vnscales: InputPathType | None = None,
+    out_data: str | None = None,
+    out_vnscales: str | None = None,
     runner: Runner | None = None,
 ) -> FslMvlmOutputs:
     """
@@ -122,18 +122,18 @@ def fsl_mvlm(
     if out_data is not None:
         cargs.extend([
             "--out_data",
-            execution.input_file(out_data)
+            out_data
         ])
     if out_vnscales is not None:
         cargs.extend([
             "--out_vnscales",
-            execution.input_file(out_vnscales)
+            out_vnscales
         ])
     ret = FslMvlmOutputs(
         root=execution.output_file("."),
         outfile=execution.output_file(basename_output_files + "_out.nii.gz"),
-        outdata=execution.output_file(pathlib.Path(out_data).name + ".nii.gz") if (out_data is not None) else None,
-        vnscales=execution.output_file(pathlib.Path(out_vnscales).name + ".txt") if (out_vnscales is not None) else None,
+        outdata=execution.output_file(out_data + ".nii.gz") if (out_data is not None) else None,
+        vnscales=execution.output_file(out_vnscales + ".txt") if (out_vnscales is not None) else None,
     )
     execution.run(cargs)
     return ret

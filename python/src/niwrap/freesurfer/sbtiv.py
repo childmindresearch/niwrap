@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SBTIV_METADATA = Metadata(
-    id="a7417d0462b1e0c51153427b6aeb6a3ba11a4eb6.boutiques",
+    id="f635fd3b0d71913a55d64eab8618d5ffd1066300.boutiques",
     name="sbtiv",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class SbtivOutputs(typing.NamedTuple):
 
 def sbtiv(
     input_file: InputPathType,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     labels_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> SbtivOutputs:
@@ -55,7 +55,7 @@ def sbtiv(
     if output_file is not None:
         cargs.extend([
             "-o",
-            execution.input_file(output_file)
+            output_file
         ])
     if labels_file is not None:
         cargs.extend([
@@ -64,7 +64,7 @@ def sbtiv(
         ])
     ret = SbtivOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        out_file=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

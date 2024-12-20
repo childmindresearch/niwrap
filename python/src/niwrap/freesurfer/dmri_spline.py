@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_SPLINE_METADATA = Metadata(
-    id="4353558de4079bf74ac843d967ea19386bdf663f.boutiques",
+    id="7d3ca3a45eadd41a58c1c4e8f7cf2661b9cc81d4.boutiques",
     name="dmri_spline",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -35,9 +35,9 @@ class DmriSplineOutputs(typing.NamedTuple):
 def dmri_spline(
     control_points_file: InputPathType,
     mask_volume: InputPathType,
-    output_volume: InputPathType | None = None,
+    output_volume: str | None = None,
     show_points: bool = False,
-    output_points: InputPathType | None = None,
+    output_points: str | None = None,
     output_vectors_base: str | None = None,
     debug: bool = False,
     check_options: bool = False,
@@ -81,14 +81,14 @@ def dmri_spline(
     if output_volume is not None:
         cargs.extend([
             "--out",
-            execution.input_file(output_volume)
+            output_volume
         ])
     if show_points:
         cargs.append("--show")
     if output_points is not None:
         cargs.extend([
             "--outpts",
-            execution.input_file(output_points)
+            output_points
         ])
     if output_vectors_base is not None:
         cargs.extend([
@@ -101,8 +101,8 @@ def dmri_spline(
         cargs.append("--checkopts")
     ret = DmriSplineOutputs(
         root=execution.output_file("."),
-        out_volume=execution.output_file(pathlib.Path(output_volume).name) if (output_volume is not None) else None,
-        out_points_file=execution.output_file(pathlib.Path(output_points).name) if (output_points is not None) else None,
+        out_volume=execution.output_file(output_volume) if (output_volume is not None) else None,
+        out_points_file=execution.output_file(output_points) if (output_points is not None) else None,
         out_tangent_vectors=execution.output_file(output_vectors_base + "_tangent.txt") if (output_vectors_base is not None) else None,
         out_normal_vectors=execution.output_file(output_vectors_base + "_normal.txt") if (output_vectors_base is not None) else None,
         out_curvature=execution.output_file(output_vectors_base + "_curvature.txt") if (output_vectors_base is not None) else None,

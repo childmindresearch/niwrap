@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MULTIPLY_IMAGES_METADATA = Metadata(
-    id="0c15a892ea70ccb7239e328f570abae381e01ba6.boutiques",
+    id="3421bb6ea5f44c4d4eb0d2dd002f4de6f489cf86.boutiques",
     name="MultiplyImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class MultiplyImagesOutputs(typing.NamedTuple):
 def multiply_images(
     dimension: typing.Literal[3, 2],
     first_input: InputPathType,
-    output_product_image: InputPathType,
+    output_product_image: str,
     second_input_2: float | None = None,
     num_threads: int | None = 1,
     runner: Runner | None = None,
@@ -61,12 +61,12 @@ def multiply_images(
     cargs.append(execution.input_file(first_input))
     if second_input_2 is not None:
         cargs.append(str(second_input_2))
-    cargs.append(execution.input_file(output_product_image))
+    cargs.append(output_product_image)
     if num_threads is not None:
         cargs.append(str(num_threads))
     ret = MultiplyImagesOutputs(
         root=execution.output_file("."),
-        output_product_image_outfile=execution.output_file(pathlib.Path(output_product_image).name),
+        output_product_image_outfile=execution.output_file(output_product_image),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MORPHOLOGY_METADATA = Metadata(
-    id="f01b6fc71ec054526271073daced052e1a34a01b.boutiques",
+    id="d08cdae88f7fdc7545935fe63ed76b00861cc7e6.boutiques",
     name="mri_morphology",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ def mri_morphology(
     input_volume: InputPathType,
     operation: typing.Literal["open", "close", "dilate", "erode", "mode", "fill_holes", "erode_bottom", "dilate_thresh", "erode_thresh"],
     number_iter: int,
-    output_volume: InputPathType,
+    output_volume: str,
     label_option: float | None = None,
     runner: Runner | None = None,
 ) -> MriMorphologyOutputs:
@@ -60,7 +60,7 @@ def mri_morphology(
     cargs.append(execution.input_file(input_volume))
     cargs.append(operation)
     cargs.append(str(number_iter))
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     if label_option is not None:
         cargs.extend([
             "-l",
@@ -68,7 +68,7 @@ def mri_morphology(
         ])
     ret = MriMorphologyOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_volume).name),
+        output_file=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

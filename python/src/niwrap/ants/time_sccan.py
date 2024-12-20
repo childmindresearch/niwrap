@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TIME_SCCAN_METADATA = Metadata(
-    id="c29edfffbdbeee9e02e8801bed3cb5f939e9ea50.boutiques",
+    id="75ab8260eac7574e05f9bdb079e92eb801de348f.boutiques",
     name="TimeSCCAN",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -96,7 +96,7 @@ class TimeSccanOutputs(typing.NamedTuple):
 
 
 def time_sccan(
-    output: InputPathType,
+    output: str,
     number_consecutive_labels: int | None = 0,
     minimum_region_size: int | None = 1,
     iterations: int | None = 20,
@@ -153,7 +153,7 @@ def time_sccan(
     cargs.append("TimeSCCAN")
     cargs.extend([
         "--output",
-        execution.input_file(output)
+        output
     ])
     if number_consecutive_labels is not None:
         cargs.extend([
@@ -222,7 +222,7 @@ def time_sccan(
         ])
     ret = TimeSccanOutputs(
         root=execution.output_file("."),
-        correlation_matrix=execution.output_file(pathlib.Path(output).name),
+        correlation_matrix=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

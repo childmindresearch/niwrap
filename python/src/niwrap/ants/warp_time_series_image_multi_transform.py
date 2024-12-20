@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARP_TIME_SERIES_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
-    id="6ce7851c544e610fc5a77e4703824ad332c7d885.boutiques",
+    id="02d7706a3d3c92924bed3c01a243b77e5b1a013b.boutiques",
     name="WarpTimeSeriesImageMultiTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class WarpTimeSeriesImageMultiTransformOutputs(typing.NamedTuple):
 def warp_time_series_image_multi_transform(
     image_dimension: typing.Literal[3, 4],
     moving_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     reference_image: InputPathType,
     transforms: list[str],
     interpolation: typing.Literal["NearestNeighbor", "BSpline"] | None = None,
@@ -64,7 +64,7 @@ def warp_time_series_image_multi_transform(
     cargs.append("WarpTimeSeriesImageMultiTransform")
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(moving_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.extend([
         "-R",
         execution.input_file(reference_image)
@@ -74,7 +74,7 @@ def warp_time_series_image_multi_transform(
         cargs.append(interpolation)
     ret = WarpTimeSeriesImageMultiTransformOutputs(
         root=execution.output_file("."),
-        output_image_result=execution.output_file(pathlib.Path(output_image).name),
+        output_image_result=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

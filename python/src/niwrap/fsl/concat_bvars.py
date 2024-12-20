@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONCAT_BVARS_METADATA = Metadata(
-    id="5283f97ed637a2315c5de4abba7730176df76ea8.boutiques",
+    id="328d9c324b79e0289369cb9b2b4e758cac2f1131.boutiques",
     name="concat_bvars",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -25,7 +25,7 @@ class ConcatBvarsOutputs(typing.NamedTuple):
 
 
 def concat_bvars(
-    output_bvars: InputPathType,
+    output_bvars: str,
     runner: Runner | None = None,
 ) -> ConcatBvarsOutputs:
     """
@@ -45,11 +45,11 @@ def concat_bvars(
     execution = runner.start_execution(CONCAT_BVARS_METADATA)
     cargs = []
     cargs.append("concat_bvars")
-    cargs.append(execution.input_file(output_bvars))
+    cargs.append(output_bvars)
     cargs.append("[INPUT_BVARS...]")
     ret = ConcatBvarsOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_bvars).name),
+        output_file=execution.output_file(output_bvars),
     )
     execution.run(cargs)
     return ret

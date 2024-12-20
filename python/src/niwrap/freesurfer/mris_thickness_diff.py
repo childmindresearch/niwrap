@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_THICKNESS_DIFF_METADATA = Metadata(
-    id="b447d6439b11ea7d939b51502ae54f028c61e756.boutiques",
+    id="fbc123e8965a3bb3509ca33036327b032bbd57be.boutiques",
     name="mris_thickness_diff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,10 +27,10 @@ class MrisThicknessDiffOutputs(typing.NamedTuple):
 
 
 def mris_thickness_diff(
-    out_file: InputPathType,
+    out_file: str,
     src_type: str | None = None,
     trg_type: str | None = None,
-    out_resampled: InputPathType | None = None,
+    out_resampled: str | None = None,
     nsmooth: float | None = None,
     register: bool = False,
     xform: InputPathType | None = None,
@@ -87,12 +87,12 @@ def mris_thickness_diff(
         ])
     cargs.extend([
         "-out",
-        execution.input_file(out_file)
+        out_file
     ])
     if out_resampled is not None:
         cargs.extend([
             "-out_resampled",
-            execution.input_file(out_resampled)
+            out_resampled
         ])
     if nsmooth is not None:
         cargs.extend([
@@ -132,8 +132,8 @@ def mris_thickness_diff(
         ])
     ret = MrisThicknessDiffOutputs(
         root=execution.output_file("."),
-        output_difference=execution.output_file(pathlib.Path(out_file).name),
-        output_resampled=execution.output_file(pathlib.Path(out_resampled).name) if (out_resampled is not None) else None,
+        output_difference=execution.output_file(out_file),
+        output_resampled=execution.output_file(out_resampled) if (out_resampled is not None) else None,
     )
     execution.run(cargs)
     return ret

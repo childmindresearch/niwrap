@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MERGESEG_METADATA = Metadata(
-    id="8df8bb8db74182788b29b00177c93fd3d1402bd4.boutiques",
+    id="e04b3424de0fa2092fe3065091e43e9ee626b75c.boutiques",
     name="mergeseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,7 +27,7 @@ class MergesegOutputs(typing.NamedTuple):
 def mergeseg(
     src_seg: InputPathType,
     merge_seg: InputPathType,
-    out_seg: InputPathType,
+    out_seg: str,
     segid: float | None = None,
     segid_only: float | None = None,
     segid_erode: float | None = None,
@@ -64,7 +64,7 @@ def mergeseg(
     cargs.append(execution.input_file(merge_seg))
     cargs.extend([
         "--o",
-        execution.input_file(out_seg)
+        out_seg
     ])
     if segid is not None:
         cargs.extend([
@@ -88,7 +88,7 @@ def mergeseg(
         ])
     ret = MergesegOutputs(
         root=execution.output_file("."),
-        output_seg=execution.output_file(pathlib.Path(out_seg).name),
+        output_seg=execution.output_file(out_seg),
     )
     execution.run(cargs)
     return ret

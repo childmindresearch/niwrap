@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLFFT_METADATA = Metadata(
-    id="0c7496964edeca751d97ecb126121bfa61f6295b.boutiques",
+    id="9f1b4eeecb3974eba1e02795f230f59822625396.boutiques",
     name="fslfft",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class FslfftOutputs(typing.NamedTuple):
 
 def fslfft(
     input_volume: InputPathType,
-    output_volume: InputPathType,
+    output_volume: str,
     inverse_flag: bool = False,
     runner: Runner | None = None,
 ) -> FslfftOutputs:
@@ -51,12 +51,12 @@ def fslfft(
     cargs = []
     cargs.append("fslfft")
     cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     if inverse_flag:
         cargs.append("-inv")
     ret = FslfftOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_volume).name + ".nii.gz"),
+        output_file=execution.output_file(output_volume + ".nii.gz"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_GCA_AMBIGUOUS_METADATA = Metadata(
-    id="8e1f7ad27bb8e2945f700929ab50960c8ad52f74.boutiques",
+    id="cdd8244223ec0fbd63686859a42564580f8c6dee.boutiques",
     name="mri_gca_ambiguous",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class MriGcaAmbiguousOutputs(typing.NamedTuple):
 
 def mri_gca_ambiguous(
     gca_file: InputPathType,
-    output_volume: InputPathType,
+    output_volume: str,
     runner: Runner | None = None,
 ) -> MriGcaAmbiguousOutputs:
     """
@@ -49,10 +49,10 @@ def mri_gca_ambiguous(
     cargs = []
     cargs.append("mri_gca_ambiguous")
     cargs.append(execution.input_file(gca_file))
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     ret = MriGcaAmbiguousOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(output_volume).name),
+        output_image=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

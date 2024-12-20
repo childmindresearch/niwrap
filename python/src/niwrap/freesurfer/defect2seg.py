@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DEFECT2SEG_METADATA = Metadata(
-    id="8cc085b9f5ac3b7cb657915baccb8e34277b70f2.boutiques",
+    id="a0c3f2a6d8ce1bf2e14e38a191f684088ba5acc6.boutiques",
     name="defect2seg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -25,7 +25,7 @@ class Defect2segOutputs(typing.NamedTuple):
 
 
 def defect2seg(
-    output_seg: InputPathType,
+    output_seg: str,
     template: InputPathType,
     left_hemisphere: list[str] | None = None,
     right_hemisphere: list[str] | None = None,
@@ -69,7 +69,7 @@ def defect2seg(
     cargs.append("defect2seg")
     cargs.extend([
         "--o",
-        execution.input_file(output_seg)
+        output_seg
     ])
     cargs.extend([
         "--t",
@@ -100,7 +100,7 @@ def defect2seg(
         cargs.append("--no-cortex")
     ret = Defect2segOutputs(
         root=execution.output_file("."),
-        output_segmentation=execution.output_file(pathlib.Path(output_seg).name),
+        output_segmentation=execution.output_file(output_seg),
     )
     execution.run(cargs)
     return ret

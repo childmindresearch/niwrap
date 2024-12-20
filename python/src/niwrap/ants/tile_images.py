@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TILE_IMAGES_METADATA = Metadata(
-    id="11f704401de392cf34f685f833e7073a2d69b714.boutiques",
+    id="d25b8eb520a9f772e1be8a0571d47dff47f48e49.boutiques",
     name="TileImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -26,7 +26,7 @@ class TileImagesOutputs(typing.NamedTuple):
 
 def tile_images(
     image_dimension: int,
-    output_image: InputPathType,
+    output_image: str,
     layout: str,
     input_images: list[InputPathType],
     runner: Runner | None = None,
@@ -59,12 +59,12 @@ def tile_images(
     cargs = []
     cargs.append("TileImages")
     cargs.append(str(image_dimension))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(layout)
     cargs.extend([execution.input_file(f) for f in input_images])
     ret = TileImagesOutputs(
         root=execution.output_file("."),
-        tiled_image=execution.output_file(pathlib.Path(output_image).name),
+        tiled_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

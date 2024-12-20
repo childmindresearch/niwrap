@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_APPLY_REG_METADATA = Metadata(
-    id="40a2e3c6f81394afec96eee658a860b6f21b85f5.boutiques",
+    id="cba2fa7ec9ece7dd7da7631135e083c0bc5bc503.boutiques",
     name="mris_apply_reg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class MrisApplyRegOutputs(typing.NamedTuple):
 
 def mris_apply_reg(
     src_input: InputPathType,
-    trg_output: InputPathType,
+    trg_output: str,
     streg_pair: str,
     src_label: InputPathType | None = None,
     src_annotation: InputPathType | None = None,
@@ -95,7 +95,7 @@ def mris_apply_reg(
     ])
     cargs.extend([
         "--trg",
-        execution.input_file(trg_output)
+        trg_output
     ])
     cargs.extend([
         "--streg",
@@ -180,7 +180,7 @@ def mris_apply_reg(
         cargs.append("--checkopts")
     ret = MrisApplyRegOutputs(
         root=execution.output_file("."),
-        output_result=execution.output_file(pathlib.Path(trg_output).name),
+        output_result=execution.output_file(trg_output),
     )
     execution.run(cargs)
     return ret

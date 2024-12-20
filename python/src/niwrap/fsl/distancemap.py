@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DISTANCEMAP_METADATA = Metadata(
-    id="76f81ca05221fbcd3ffc81e3e036b1d68137e2bd.boutiques",
+    id="9c4305e764cc37b8781416bc4fb2490a6c6bb7a4.boutiques",
     name="distancemap",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -30,7 +30,7 @@ class DistancemapOutputs(typing.NamedTuple):
 
 def distancemap(
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     mask_image: InputPathType | None = None,
     second_image: InputPathType | None = None,
     local_maxima_image: InputPathType | None = None,
@@ -77,7 +77,7 @@ def distancemap(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output_image)
+        output_image
     ])
     if mask_image is not None:
         cargs.extend([
@@ -112,7 +112,7 @@ def distancemap(
         cargs.append("-h")
     ret = DistancemapOutputs(
         root=execution.output_file("."),
-        output_distancemap=execution.output_file(pathlib.Path(output_image).name),
+        output_distancemap=execution.output_file(output_image),
         output_local_maxima=execution.output_file(pathlib.Path(local_maxima_image).name) if (local_maxima_image is not None) else None,
         output_segmented_image=execution.output_file(pathlib.Path(segmented_image).name) if (segmented_image is not None) else None,
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GLM_METADATA = Metadata(
-    id="13323bbac119e1e50fc454f4295b97cfbae335c5.boutiques",
+    id="4f59ccd23b698a9da212c3ce9e31ba8b42732486.boutiques",
     name="fsl_glm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -50,7 +50,7 @@ class FslGlmOutputs(typing.NamedTuple):
 def fsl_glm(
     input_file: InputPathType,
     design_matrix: InputPathType,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     contrasts: InputPathType | None = None,
     mask_file: InputPathType | None = None,
     dof: float | None = None,
@@ -58,17 +58,17 @@ def fsl_glm(
     data_norm_flag: bool = False,
     vn_flag: bool = False,
     demean_flag: bool = False,
-    output_copes: InputPathType | None = None,
-    output_zstats: InputPathType | None = None,
-    output_tstats: InputPathType | None = None,
-    output_pvals: InputPathType | None = None,
-    output_fvals: InputPathType | None = None,
-    output_pfvals: InputPathType | None = None,
-    output_residuals: InputPathType | None = None,
-    output_varcb: InputPathType | None = None,
-    output_sigsq: InputPathType | None = None,
-    output_data: InputPathType | None = None,
-    output_vnscales: InputPathType | None = None,
+    output_copes: str | None = None,
+    output_zstats: str | None = None,
+    output_tstats: str | None = None,
+    output_pvals: str | None = None,
+    output_fvals: str | None = None,
+    output_pfvals: str | None = None,
+    output_residuals: str | None = None,
+    output_varcb: str | None = None,
+    output_sigsq: str | None = None,
+    output_data: str | None = None,
+    output_vnscales: str | None = None,
     vx_text: list[str] | None = None,
     vx_images: list[InputPathType] | None = None,
     help_flag: bool = False,
@@ -135,7 +135,7 @@ def fsl_glm(
     if output_file is not None:
         cargs.extend([
             "-o",
-            execution.input_file(output_file)
+            output_file
         ])
     if contrasts is not None:
         cargs.extend([
@@ -163,57 +163,57 @@ def fsl_glm(
     if output_copes is not None:
         cargs.extend([
             "--out_cope",
-            execution.input_file(output_copes)
+            output_copes
         ])
     if output_zstats is not None:
         cargs.extend([
             "--out_z",
-            execution.input_file(output_zstats)
+            output_zstats
         ])
     if output_tstats is not None:
         cargs.extend([
             "--out_t",
-            execution.input_file(output_tstats)
+            output_tstats
         ])
     if output_pvals is not None:
         cargs.extend([
             "--out_p",
-            execution.input_file(output_pvals)
+            output_pvals
         ])
     if output_fvals is not None:
         cargs.extend([
             "--out_f",
-            execution.input_file(output_fvals)
+            output_fvals
         ])
     if output_pfvals is not None:
         cargs.extend([
             "--out_pf",
-            execution.input_file(output_pfvals)
+            output_pfvals
         ])
     if output_residuals is not None:
         cargs.extend([
             "--out_res",
-            execution.input_file(output_residuals)
+            output_residuals
         ])
     if output_varcb is not None:
         cargs.extend([
             "--out_varcb",
-            execution.input_file(output_varcb)
+            output_varcb
         ])
     if output_sigsq is not None:
         cargs.extend([
             "--out_sigsq",
-            execution.input_file(output_sigsq)
+            output_sigsq
         ])
     if output_data is not None:
         cargs.extend([
             "--out_data",
-            execution.input_file(output_data)
+            output_data
         ])
     if output_vnscales is not None:
         cargs.extend([
             "--out_vnscales",
-            execution.input_file(output_vnscales)
+            output_vnscales
         ])
     if vx_text is not None:
         cargs.extend([
@@ -229,18 +229,18 @@ def fsl_glm(
         cargs.append("-h")
     ret = FslGlmOutputs(
         root=execution.output_file("."),
-        output_file_out=execution.output_file(pathlib.Path(output_file).name + ".nii.gz") if (output_file is not None) else None,
-        output_copes_out=execution.output_file(pathlib.Path(output_copes).name + ".nii.gz") if (output_copes is not None) else None,
-        output_zstats_out=execution.output_file(pathlib.Path(output_zstats).name + ".nii.gz") if (output_zstats is not None) else None,
-        output_tstats_out=execution.output_file(pathlib.Path(output_tstats).name + ".nii.gz") if (output_tstats is not None) else None,
-        output_pvals_out=execution.output_file(pathlib.Path(output_pvals).name + ".nii.gz") if (output_pvals is not None) else None,
-        output_fvals_out=execution.output_file(pathlib.Path(output_fvals).name + ".nii.gz") if (output_fvals is not None) else None,
-        output_pfvals_out=execution.output_file(pathlib.Path(output_pfvals).name + ".nii.gz") if (output_pfvals is not None) else None,
-        output_residuals_out=execution.output_file(pathlib.Path(output_residuals).name + ".nii.gz") if (output_residuals is not None) else None,
-        output_varcb_out=execution.output_file(pathlib.Path(output_varcb).name + ".nii.gz") if (output_varcb is not None) else None,
-        output_sigsq_out=execution.output_file(pathlib.Path(output_sigsq).name + ".nii.gz") if (output_sigsq is not None) else None,
-        output_data_out=execution.output_file(pathlib.Path(output_data).name + ".nii.gz") if (output_data is not None) else None,
-        output_vnscales_out=execution.output_file(pathlib.Path(output_vnscales).name + ".nii.gz") if (output_vnscales is not None) else None,
+        output_file_out=execution.output_file(output_file + ".nii.gz") if (output_file is not None) else None,
+        output_copes_out=execution.output_file(output_copes + ".nii.gz") if (output_copes is not None) else None,
+        output_zstats_out=execution.output_file(output_zstats + ".nii.gz") if (output_zstats is not None) else None,
+        output_tstats_out=execution.output_file(output_tstats + ".nii.gz") if (output_tstats is not None) else None,
+        output_pvals_out=execution.output_file(output_pvals + ".nii.gz") if (output_pvals is not None) else None,
+        output_fvals_out=execution.output_file(output_fvals + ".nii.gz") if (output_fvals is not None) else None,
+        output_pfvals_out=execution.output_file(output_pfvals + ".nii.gz") if (output_pfvals is not None) else None,
+        output_residuals_out=execution.output_file(output_residuals + ".nii.gz") if (output_residuals is not None) else None,
+        output_varcb_out=execution.output_file(output_varcb + ".nii.gz") if (output_varcb is not None) else None,
+        output_sigsq_out=execution.output_file(output_sigsq + ".nii.gz") if (output_sigsq is not None) else None,
+        output_data_out=execution.output_file(output_data + ".nii.gz") if (output_data is not None) else None,
+        output_vnscales_out=execution.output_file(output_vnscales + ".nii.gz") if (output_vnscales is not None) else None,
     )
     execution.run(cargs)
     return ret

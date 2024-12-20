@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_TILED_MOSAIC_METADATA = Metadata(
-    id="62ba9b499dd56904d0e9344bc41632c426e55fc9.boutiques",
+    id="3d9613f574ee8ff2d48c4509a9a508bfd56f8d3d.boutiques",
     name="CreateTiledMosaic",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -26,7 +26,7 @@ class CreateTiledMosaicOutputs(typing.NamedTuple):
 
 def create_tiled_mosaic(
     input_image: InputPathType,
-    output: InputPathType,
+    output: str,
     rgb_image: InputPathType | None = None,
     mask_image: InputPathType | None = None,
     alpha: float | None = None,
@@ -109,7 +109,7 @@ def create_tiled_mosaic(
         ])
     cargs.extend([
         "-o",
-        execution.input_file(output)
+        output
     ])
     if tile_geometry is not None:
         cargs.extend([
@@ -143,7 +143,7 @@ def create_tiled_mosaic(
         ])
     ret = CreateTiledMosaicOutputs(
         root=execution.output_file("."),
-        tiled_mosaic_image=execution.output_file(pathlib.Path(output).name),
+        tiled_mosaic_image=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

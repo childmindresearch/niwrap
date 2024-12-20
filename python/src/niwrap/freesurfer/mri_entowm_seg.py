@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ENTOWM_SEG_METADATA = Metadata(
-    id="1006528a783aba45037e74965263293e175c5f7f.boutiques",
+    id="40109605e55188f3737d75a9e36af58709374335.boutiques",
     name="mri_entowm_seg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -32,7 +32,7 @@ class MriEntowmSegOutputs(typing.NamedTuple):
 
 def mri_entowm_seg(
     input_image: InputPathType | None = None,
-    output_segmentation: InputPathType | None = None,
+    output_segmentation: str | None = None,
     recon_subjects: list[str] | None = None,
     subjects_directory: str | None = None,
     conform: bool = False,
@@ -117,7 +117,7 @@ def mri_entowm_seg(
     if output_segmentation is not None:
         cargs.extend([
             "-o",
-            execution.input_file(output_segmentation)
+            output_segmentation
         ])
     if recon_subjects is not None:
         cargs.extend([
@@ -203,7 +203,7 @@ def mri_entowm_seg(
         ])
     ret = MriEntowmSegOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_segmentation).name) if (output_segmentation is not None) else None,
+        output_file=execution.output_file(output_segmentation) if (output_segmentation is not None) else None,
         label_posteriors=execution.output_file(output_base + "_posterior.mgz") if (output_base is not None) else None,
         volume_stats=execution.output_file(output_base + "_volumes.txt") if (output_base is not None) else None,
         qa_stats=execution.output_file(output_base + "_qa_stats.txt") if (output_base is not None) else None,

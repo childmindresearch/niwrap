@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSWAPDIM_EXE_METADATA = Metadata(
-    id="72ded16979df7d063ce343f7fc0651267e23f096.boutiques",
+    id="b3d5149ea6ef114112b7c05873140dfebf0deead.boutiques",
     name="fslswapdim_exe",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -29,7 +29,7 @@ def fslswapdim_exe(
     axis_a: str,
     axis_b: str,
     axis_c: str,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     check_lr_flag: bool = False,
     runner: Runner | None = None,
 ) -> FslswapdimExeOutputs:
@@ -62,12 +62,12 @@ def fslswapdim_exe(
     cargs.append(axis_b)
     cargs.append(axis_c)
     if output_file is not None:
-        cargs.append(execution.input_file(output_file))
+        cargs.append(output_file)
     if check_lr_flag:
         cargs.append("--checkLR")
     ret = FslswapdimExeOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        outfile=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

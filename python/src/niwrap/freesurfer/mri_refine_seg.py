@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_REFINE_SEG_METADATA = Metadata(
-    id="e3e44731d7475ba42bf997ea5583c4a788afb781.boutiques",
+    id="cb7729fa49160d260ecc58552917a2760053175e.boutiques",
     name="mri_refine_seg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class MriRefineSegOutputs(typing.NamedTuple):
 
 def mri_refine_seg(
     input_segmentation: InputPathType,
-    output_segmentation: InputPathType,
+    output_segmentation: str,
     debug: bool = False,
     runner: Runner | None = None,
 ) -> MriRefineSegOutputs:
@@ -56,13 +56,13 @@ def mri_refine_seg(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output_segmentation)
+        output_segmentation
     ])
     if debug:
         cargs.append("--debug")
     ret = MriRefineSegOutputs(
         root=execution.output_file("."),
-        refined_output=execution.output_file(pathlib.Path(output_segmentation).name),
+        refined_output=execution.output_file(output_segmentation),
     )
     execution.run(cargs)
     return ret

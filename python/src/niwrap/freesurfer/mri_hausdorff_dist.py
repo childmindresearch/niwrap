@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_HAUSDORFF_DIST_METADATA = Metadata(
-    id="3bfc7962f48ea4f5a174be4b80f4251d364d4270.boutiques",
+    id="44ae0e98e23c4f3e6ba34eebfe000f22002a6a97.boutiques",
     name="mri_hausdorff_dist",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ class MriHausdorffDistOutputs(typing.NamedTuple):
 def mri_hausdorff_dist(
     vol1: InputPathType,
     vol2: InputPathType,
-    output_text_file: InputPathType,
+    output_text_file: str,
     threshold: float | None = None,
     input_file_flag: bool = False,
     blur_sigma: float | None = None,
@@ -65,7 +65,7 @@ def mri_hausdorff_dist(
     cargs.append("mri_hausdorff_dist")
     cargs.append(execution.input_file(vol1))
     cargs.append(execution.input_file(vol2))
-    cargs.append(execution.input_file(output_text_file))
+    cargs.append(output_text_file)
     cargs.append("[BINARIZE_FLAG]")
     if threshold is not None:
         cargs.extend([
@@ -88,7 +88,7 @@ def mri_hausdorff_dist(
         ])
     ret = MriHausdorffDistOutputs(
         root=execution.output_file("."),
-        output_text=execution.output_file(pathlib.Path(output_text_file).name),
+        output_text=execution.output_file(output_text_file),
     )
     execution.run(cargs)
     return ret

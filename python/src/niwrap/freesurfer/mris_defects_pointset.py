@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_DEFECTS_POINTSET_METADATA = Metadata(
-    id="83e333d1259fc372d991cc353b27693763bfdd37.boutiques",
+    id="c8af85590fa0a0f9b7b5b8d2fa658f96e7b162ba.boutiques",
     name="mris_defects_pointset",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,7 +27,7 @@ class MrisDefectsPointsetOutputs(typing.NamedTuple):
 def mris_defects_pointset(
     surface: InputPathType,
     defects: InputPathType,
-    out: InputPathType,
+    out: str,
     label: InputPathType | None = None,
     control: bool = False,
     runner: Runner | None = None,
@@ -64,7 +64,7 @@ def mris_defects_pointset(
     ])
     cargs.extend([
         "--out",
-        execution.input_file(out)
+        out
     ])
     if label is not None:
         cargs.extend([
@@ -75,7 +75,7 @@ def mris_defects_pointset(
         cargs.append("--control")
     ret = MrisDefectsPointsetOutputs(
         root=execution.output_file("."),
-        pointset_output=execution.output_file(pathlib.Path(out).name),
+        pointset_output=execution.output_file(out),
     )
     execution.run(cargs)
     return ret

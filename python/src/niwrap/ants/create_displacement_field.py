@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="802911687fe6024ba5b40503dd2ac46f0ca9b56b.boutiques",
+    id="4dbaa9ddf35cec6b6f78e7c9efdb17f6f5f6d1e2.boutiques",
     name="CreateDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -29,7 +29,7 @@ def create_displacement_field(
     image_dimension: int,
     enforce_zero_boundary_flag: typing.Literal[0, 1],
     component_images: list[InputPathType],
-    output_image: InputPathType,
+    output_image: str,
     runner: Runner | None = None,
 ) -> CreateDisplacementFieldOutputs:
     """
@@ -68,10 +68,10 @@ def create_displacement_field(
     cargs.append(str(image_dimension))
     cargs.append(str(enforce_zero_boundary_flag))
     cargs.extend([execution.input_file(f) for f in component_images])
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     ret = CreateDisplacementFieldOutputs(
         root=execution.output_file("."),
-        output_displacement_field=execution.output_file(pathlib.Path(output_image).name),
+        output_displacement_field=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

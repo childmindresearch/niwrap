@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_HIRES_REGISTER_METADATA = Metadata(
-    id="e2724f458ab078f29f7dd2a2e7a3af466b56cbb8.boutiques",
+    id="6971a2770a2fb8afa234ab525393bacd1cd86c4e.boutiques",
     name="mri_hires_register",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ def mri_hires_register(
     hires_labeling: InputPathType,
     input_intensity: InputPathType,
     input_aseg: InputPathType,
-    output_xform: InputPathType,
+    output_xform: str,
     runner: Runner | None = None,
 ) -> MriHiresRegisterOutputs:
     """
@@ -54,10 +54,10 @@ def mri_hires_register(
     cargs.append(execution.input_file(hires_labeling))
     cargs.append(execution.input_file(input_intensity))
     cargs.append(execution.input_file(input_aseg))
-    cargs.append(execution.input_file(output_xform))
+    cargs.append(output_xform)
     ret = MriHiresRegisterOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_xform).name),
+        output_file=execution.output_file(output_xform),
     )
     execution.run(cargs)
     return ret

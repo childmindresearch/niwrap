@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIDEFACE_METADATA = Metadata(
-    id="38b6a923ce22638bd0e6fc77f68e3ac76360f9d7.boutiques",
+    id="78ed8c9b1bc484046f26f89a611375e8c4e503a1.boutiques",
     name="mideface",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ class MidefaceOutputs(typing.NamedTuple):
 
 def mideface(
     input_volume: InputPathType,
-    output_volume: InputPathType,
+    output_volume: str,
     facemask: InputPathType | None = None,
     output_dir: str | None = None,
     exclusion_mask: InputPathType | None = None,
@@ -89,7 +89,7 @@ def mideface(
     ])
     cargs.extend([
         "--o",
-        execution.input_file(output_volume)
+        output_volume
     ])
     if facemask is not None:
         cargs.extend([
@@ -178,7 +178,7 @@ def mideface(
         ])
     ret = MidefaceOutputs(
         root=execution.output_file("."),
-        defaced_output=execution.output_file(pathlib.Path(output_volume).name),
+        defaced_output=execution.output_file(output_volume),
         facemask_output=execution.output_file(pathlib.Path(facemask).name) if (facemask is not None) else None,
     )
     execution.run(cargs)

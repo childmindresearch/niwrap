@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REMOVE_INTERSECTION_METADATA = Metadata(
-    id="96ab5df1b694c34b019d2062381f43e1e69cf9b2.boutiques",
+    id="1ca3bd6841297be89ed7859d4b42f39e0a47e3de.boutiques",
     name="mris_remove_intersection",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ class MrisRemoveIntersectionOutputs(typing.NamedTuple):
 
 def mris_remove_intersection(
     surface_in_file: InputPathType,
-    corrected_surface_out_file: InputPathType,
+    corrected_surface_out_file: str,
     fill_holes: bool = False,
     map_option: InputPathType | None = None,
     projdistmm: float | None = None,
@@ -57,7 +57,7 @@ def mris_remove_intersection(
     cargs = []
     cargs.append("mris_remove_intersection")
     cargs.append(execution.input_file(surface_in_file))
-    cargs.append(execution.input_file(corrected_surface_out_file))
+    cargs.append(corrected_surface_out_file)
     if fill_holes:
         cargs.append("-fill-holes")
     if map_option is not None:
@@ -69,7 +69,7 @@ def mris_remove_intersection(
         cargs.append(str(projdistmm))
     ret = MrisRemoveIntersectionOutputs(
         root=execution.output_file("."),
-        out_corrected_surface=execution.output_file(pathlib.Path(corrected_surface_out_file).name),
+        out_corrected_surface=execution.output_file(corrected_surface_out_file),
         out_map_file=execution.output_file(pathlib.Path(map_option).name) if (map_option is not None) else None,
     )
     execution.run(cargs)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FUSE_INTENSITY_IMAGES_METADATA = Metadata(
-    id="b44314c2289888a92cbc6fcb500d2dc0bdb27bc9.boutiques",
+    id="22ecf33c78a1fc7ec78703d7b49001464fb5a595.boutiques",
     name="mri_fuse_intensity_images",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ def mri_fuse_intensity_images(
     longitudinal_time_point_file: InputPathType,
     input_volume: InputPathType,
     transform_file: InputPathType,
-    output_volume: InputPathType,
+    output_volume: str,
     runner: Runner | None = None,
 ) -> MriFuseIntensityImagesOutputs:
     """
@@ -55,10 +55,10 @@ def mri_fuse_intensity_images(
     cargs.append(execution.input_file(longitudinal_time_point_file))
     cargs.append(execution.input_file(input_volume))
     cargs.append(execution.input_file(transform_file))
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     ret = MriFuseIntensityImagesOutputs(
         root=execution.output_file("."),
-        fused_intensity_image=execution.output_file(pathlib.Path(output_volume).name),
+        fused_intensity_image=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

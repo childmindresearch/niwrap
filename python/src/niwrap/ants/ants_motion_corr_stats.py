@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MOTION_CORR_STATS_METADATA = Metadata(
-    id="d29996fec64fd395bafc8947a76eea2b5d1ba04c.boutiques",
+    id="ae93cc3983b8309bee22c105a3b82c9e97354cf5.boutiques",
     name="antsMotionCorrStats",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class AntsMotionCorrStatsOutputs(typing.NamedTuple):
 def ants_motion_corr_stats(
     mask: InputPathType,
     moco_params: InputPathType,
-    output: InputPathType,
+    output: str,
     transform_index: int | None = None,
     framewise: typing.Literal[0, 1] | None = None,
     spatial_map: bool = False,
@@ -72,7 +72,7 @@ def ants_motion_corr_stats(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output)
+        output
     ])
     if transform_index is not None:
         cargs.extend([
@@ -90,7 +90,7 @@ def ants_motion_corr_stats(
         cargs.append("-d")
     ret = AntsMotionCorrStatsOutputs(
         root=execution.output_file("."),
-        corrected_csv=execution.output_file(pathlib.Path(output).name),
+        corrected_csv=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

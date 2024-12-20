@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POINTFLIRT_METADATA = Metadata(
-    id="368f2a336f608f93bc76775007d95b1130fa4565.boutiques",
+    id="460b6d9bdf4517e6ada68203b2bdc3886e4c92c3.boutiques",
     name="pointflirt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -27,7 +27,7 @@ class PointflirtOutputs(typing.NamedTuple):
 def pointflirt(
     invol_coords: InputPathType,
     refvol_coords: InputPathType,
-    out_matrix: InputPathType | None = None,
+    out_matrix: str | None = None,
     use_vox: bool = False,
     vol_input: InputPathType | None = None,
     vol_ref: InputPathType | None = None,
@@ -69,7 +69,7 @@ def pointflirt(
     if out_matrix is not None:
         cargs.extend([
             "-o",
-            execution.input_file(out_matrix)
+            out_matrix
         ])
     if use_vox:
         cargs.append("--vox")
@@ -87,7 +87,7 @@ def pointflirt(
         cargs.append("-v")
     ret = PointflirtOutputs(
         root=execution.output_file("."),
-        output_matrix_file=execution.output_file(pathlib.Path(out_matrix).name) if (out_matrix is not None) else None,
+        output_matrix_file=execution.output_file(out_matrix) if (out_matrix is not None) else None,
     )
     execution.run(cargs)
     return ret

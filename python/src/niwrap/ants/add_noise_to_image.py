@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADD_NOISE_TO_IMAGE_METADATA = Metadata(
-    id="e8efbf11871081a5ad3301baf672f8de93471bd0.boutiques",
+    id="5da8ee75f74c156a91ae2c476ce7533d884a9bda.boutiques",
     name="AddNoiseToImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class AddNoiseToImageOutputs(typing.NamedTuple):
 def add_noise_to_image(
     input_image: InputPathType,
     noise_model: typing.Literal["AdditiveGaussian", "SaltAndPepper", "Shot", "Speckle"],
-    output: InputPathType,
+    output: str,
     image_dimensionality: typing.Literal[2, 3, 4] | None = None,
     verbose: typing.Literal[0, 1] | None = None,
     runner: Runner | None = None,
@@ -72,7 +72,7 @@ def add_noise_to_image(
     ])
     cargs.extend([
         "--output",
-        execution.input_file(output)
+        output
     ])
     if verbose is not None:
         cargs.extend([
@@ -81,7 +81,7 @@ def add_noise_to_image(
         ])
     ret = AddNoiseToImageOutputs(
         root=execution.output_file("."),
-        noise_corrupted_image=execution.output_file(pathlib.Path(output).name),
+        noise_corrupted_image=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

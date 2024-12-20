@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SET_SPACING_METADATA = Metadata(
-    id="b77674b8a0a6a1121f61d0814da8fcf1ba54b3f8.boutiques",
+    id="5a66a083de7d100e80817b6862541b3b2eb2b1ed.boutiques",
     name="SetSpacing",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class SetSpacingOutputs(typing.NamedTuple):
 def set_spacing(
     dimension: int,
     input_file: InputPathType,
-    output_file: InputPathType,
+    output_file: str,
     spacing: list[float],
     runner: Runner | None = None,
 ) -> SetSpacingOutputs:
@@ -54,11 +54,11 @@ def set_spacing(
     cargs.append("SetSpacing")
     cargs.append(str(dimension))
     cargs.append(execution.input_file(input_file))
-    cargs.append(execution.input_file(output_file))
+    cargs.append(output_file)
     cargs.extend(map(str, spacing))
     ret = SetSpacingOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(output_file).name),
+        output_image=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

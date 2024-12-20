@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APSEARCH_METADATA = Metadata(
-    id="daa8fa19d4d15fe37e1fd44af2f41bbb1e0649d7.boutiques",
+    id="d759bc178b2620ea44d398387e0405f577daa6c5.boutiques",
     name="apsearch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,7 +26,7 @@ class ApsearchOutputs(typing.NamedTuple):
 
 def apsearch(
     search_term: str,
-    file_output: InputPathType | None = None,
+    file_output: str | None = None,
     verbose: bool = False,
     runner: Runner | None = None,
 ) -> ApsearchOutputs:
@@ -51,12 +51,12 @@ def apsearch(
     cargs.append("apsearch")
     cargs.append(search_term)
     if file_output is not None:
-        cargs.append(execution.input_file(file_output))
+        cargs.append(file_output)
     if verbose:
         cargs.append("-v")
     ret = ApsearchOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(file_output).name) if (file_output is not None) else None,
+        output_file=execution.output_file(file_output) if (file_output is not None) else None,
     )
     execution.run(cargs)
     return ret

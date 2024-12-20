@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_TWOCLASS_METADATA = Metadata(
-    id="427d89171227769404d91a8705196b0fd4c94fb1.boutiques",
+    id="717cefa4d525f9af2426548e3f53f0a54c018c15.boutiques",
     name="mri_twoclass",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,7 +27,7 @@ class MriTwoclassOutputs(typing.NamedTuple):
 def mri_twoclass(
     segmentation_volume: InputPathType,
     output_subject: str,
-    output_volume: InputPathType,
+    output_volume: str,
     c1_subjects: list[str],
     c2_subjects: list[str],
     f_threshold: float | None = None,
@@ -59,7 +59,7 @@ def mri_twoclass(
     cargs.append("mri_twoclass")
     cargs.append(execution.input_file(segmentation_volume))
     cargs.append(output_subject)
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     cargs.extend(c1_subjects)
     cargs.append(":")
     cargs.extend(c2_subjects)
@@ -72,7 +72,7 @@ def mri_twoclass(
         cargs.append("-b")
     ret = MriTwoclassOutputs(
         root=execution.output_file("."),
-        result_volume=execution.output_file(pathlib.Path(output_volume).name),
+        result_volume=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

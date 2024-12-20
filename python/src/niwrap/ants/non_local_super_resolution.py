@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NON_LOCAL_SUPER_RESOLUTION_METADATA = Metadata(
-    id="6ff1af6734242879ff8b30bf0db9b599017faa19.boutiques",
+    id="51aada9b4dbce0b9d25369841901cb709639d1e3.boutiques",
     name="NonLocalSuperResolution",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -26,7 +26,7 @@ class NonLocalSuperResolutionOutputs(typing.NamedTuple):
 
 def non_local_super_resolution(
     input_image: InputPathType,
-    output: InputPathType,
+    output: str,
     image_dimensionality: typing.Literal[2, 3, 4] | None = None,
     interpolated_image: InputPathType | None = None,
     reference_image: InputPathType | None = None,
@@ -126,7 +126,7 @@ def non_local_super_resolution(
         ])
     cargs.extend([
         "-o",
-        execution.input_file(output)
+        output
     ])
     if verbose is not None:
         cargs.extend([
@@ -135,7 +135,7 @@ def non_local_super_resolution(
         ])
     ret = NonLocalSuperResolutionOutputs(
         root=execution.output_file("."),
-        superresoluted_output=execution.output_file(pathlib.Path(output).name),
+        superresoluted_output=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

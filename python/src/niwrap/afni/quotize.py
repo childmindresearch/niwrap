@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUOTIZE_METADATA = Metadata(
-    id="6c4eed808717d714bfc54617b8f18dc0c60724e7.boutiques",
+    id="d23de9ba9a8a0ec51eec10d409b73d3f766156d0.boutiques",
     name="quotize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,7 +27,7 @@ class QuotizeOutputs(typing.NamedTuple):
 def quotize(
     name: str,
     input_file: InputPathType,
-    output_file: InputPathType,
+    output_file: str,
     runner: Runner | None = None,
 ) -> QuotizeOutputs:
     """
@@ -52,10 +52,10 @@ def quotize(
     cargs.append("quotize")
     cargs.append(name)
     cargs.append(execution.input_file(input_file))
-    cargs.append(execution.input_file(output_file))
+    cargs.append(output_file)
     ret = QuotizeOutputs(
         root=execution.output_file("."),
-        array_output=execution.output_file(pathlib.Path(output_file).name),
+        array_output=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

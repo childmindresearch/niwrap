@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFMATHS_METADATA = Metadata(
-    id="3fb64dc8a05d264e95b0869695c3ad8acebe30d6.boutiques",
+    id="0c06587bdc6b2f6011719cc92c36318d59f130d9.boutiques",
     name="surfmaths",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class SurfmathsOutputs(typing.NamedTuple):
 
 def surfmaths(
     first_input: InputPathType,
-    output: InputPathType,
+    output: str,
     operations_inputs: list[str] | None = None,
     runner: Runner | None = None,
 ) -> SurfmathsOutputs:
@@ -53,10 +53,10 @@ def surfmaths(
     cargs.append(execution.input_file(first_input))
     if operations_inputs is not None:
         cargs.extend(operations_inputs)
-    cargs.append(execution.input_file(output))
+    cargs.append(output)
     ret = SurfmathsOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output).name),
+        output_file=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

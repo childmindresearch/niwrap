@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PASTE_IMAGE_INTO_IMAGE_METADATA = Metadata(
-    id="473380596b87ce0da9928dabd1961225e23dd0a4.boutiques",
+    id="84fede77ce1571671d2df31a0ca7da2716107704.boutiques",
     name="PasteImageIntoImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -28,7 +28,7 @@ def paste_image_into_image(
     image_dimension: int,
     input_canvas_image: InputPathType,
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     start_index: str,
     background_label: int | None = 0,
     paint_over_non_background_voxels: typing.Literal[0, 1, 2] | None = 0,
@@ -69,7 +69,7 @@ def paste_image_into_image(
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(input_canvas_image))
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(start_index)
     if background_label is not None:
         cargs.append(str(background_label))
@@ -79,7 +79,7 @@ def paste_image_into_image(
         cargs.append(str(conflict_label))
     ret = PasteImageIntoImageOutputs(
         root=execution.output_file("."),
-        output_image_file=execution.output_file(pathlib.Path(output_image).name),
+        output_image_file=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

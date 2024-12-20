@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_N4_BIAS_FIELD_CORRECTION_FS_METADATA = Metadata(
-    id="8e3aa79a90f40d521916471804f2c3ad2b5aa209.boutiques",
+    id="40f0127eb4c39998d72b36223ec17bf7255ab2c2.boutiques",
     name="AntsN4BiasFieldCorrectionFs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class AntsN4BiasFieldCorrectionFsOutputs(typing.NamedTuple):
 
 def ants_n4_bias_field_correction_fs(
     input_file: InputPathType,
-    output_file: InputPathType,
+    output_file: str,
     mask_file: InputPathType | None = None,
     shrink_factor: int | None = 4,
     iterations: list[float] | None = None,
@@ -70,7 +70,7 @@ def ants_n4_bias_field_correction_fs(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output_file)
+        output_file
     ])
     if mask_file is not None:
         cargs.extend([
@@ -99,7 +99,7 @@ def ants_n4_bias_field_correction_fs(
         ])
     ret = AntsN4BiasFieldCorrectionFsOutputs(
         root=execution.output_file("."),
-        corrected_output_file=execution.output_file(pathlib.Path(output_file).name),
+        corrected_output_file=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

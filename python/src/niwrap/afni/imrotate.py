@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMROTATE_METADATA = Metadata(
-    id="91ce2622ebf37f0ee8816748397e7f0cf65a832b.boutiques",
+    id="046eb12264816ed4b6d2246d2d697caf596e0670.boutiques",
     name="imrotate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,7 +29,7 @@ def imrotate(
     dy: float,
     phi: float,
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     fourier_interpolation: bool = False,
     runner: Runner | None = None,
 ) -> ImrotateOutputs:
@@ -61,10 +61,10 @@ def imrotate(
     cargs.append(str(dy))
     cargs.append(str(phi))
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     ret = ImrotateOutputs(
         root=execution.output_file("."),
-        output_image_file=execution.output_file(pathlib.Path(output_image).name),
+        output_image_file=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

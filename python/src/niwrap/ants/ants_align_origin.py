@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_ALIGN_ORIGIN_METADATA = Metadata(
-    id="6857aca2f492ef8646affc2ca57d3ca2675b0b13.boutiques",
+    id="74cc71ee1dbe0d0c58e8719cd30215507f2ae81e.boutiques",
     name="antsAlignOrigin",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class AntsAlignOriginOutputs(typing.NamedTuple):
 def ants_align_origin(
     input_: InputPathType,
     reference_image: InputPathType,
-    output: InputPathType,
+    output: str,
     dimensionality: typing.Literal[2, 3] | None = None,
     runner: Runner | None = None,
 ) -> AntsAlignOriginOutputs:
@@ -74,11 +74,11 @@ def ants_align_origin(
     ])
     cargs.extend([
         "--output",
-        execution.input_file(output)
+        output
     ])
     ret = AntsAlignOriginOutputs(
         root=execution.output_file("."),
-        aligned_image=execution.output_file(pathlib.Path(output).name),
+        aligned_image=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXPORT_GCAM_METADATA = Metadata(
-    id="71849e2de237c64059ec889d31c3f9a65e91dede.boutiques",
+    id="f25415af5380b382665875b6fa909277c012e14e.boutiques",
     name="exportGcam",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ def export_gcam(
     fixed: InputPathType,
     moving: InputPathType,
     morph: InputPathType,
-    out_gcam: InputPathType,
+    out_gcam: str,
     zlib_buffer: float | None = None,
     bbox_threshold: float | None = None,
     interp_method: typing.Literal["linear", "nearest"] | None = "linear",
@@ -76,7 +76,7 @@ def export_gcam(
     ])
     cargs.extend([
         "--out_gcam",
-        execution.input_file(out_gcam)
+        out_gcam
     ])
     if zlib_buffer is not None:
         cargs.extend([
@@ -97,7 +97,7 @@ def export_gcam(
         cargs.append("--test")
     ret = ExportGcamOutputs(
         root=execution.output_file("."),
-        output_gcam_file=execution.output_file(pathlib.Path(out_gcam).name),
+        output_gcam_file=execution.output_file(out_gcam),
     )
     execution.run(cargs)
     return ret

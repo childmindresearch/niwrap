@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SEGMENT_THALAMIC_NUCLEI_DTI_CNN_METADATA = Metadata(
-    id="0d6b3980cf69cb76b17660e3b5ddbf899684c85e.boutiques",
+    id="f630b8f89597694e7e554e66b7fcc460b26de43a.boutiques",
     name="mri_segment_thalamic_nuclei_dti_cnn",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -32,10 +32,10 @@ def mri_segment_thalamic_nuclei_dti_cnn(
     t1_images: InputPathType,
     fa: InputPathType,
     v1: InputPathType,
-    output: InputPathType,
+    output: str,
     aseg: InputPathType | None = None,
-    volume_output: InputPathType | None = None,
-    posteriors_output: InputPathType | None = None,
+    volume_output: str | None = None,
+    posteriors_output: str | None = None,
     threads: float | None = None,
     force_cpu: bool = False,
     model: InputPathType | None = None,
@@ -89,17 +89,17 @@ def mri_segment_thalamic_nuclei_dti_cnn(
     ])
     cargs.extend([
         "--o",
-        execution.input_file(output)
+        output
     ])
     if volume_output is not None:
         cargs.extend([
             "--vol",
-            execution.input_file(volume_output)
+            volume_output
         ])
     if posteriors_output is not None:
         cargs.extend([
             "--post",
-            execution.input_file(posteriors_output)
+            posteriors_output
         ])
     if threads is not None:
         cargs.extend([
@@ -115,9 +115,9 @@ def mri_segment_thalamic_nuclei_dti_cnn(
         ])
     ret = MriSegmentThalamicNucleiDtiCnnOutputs(
         root=execution.output_file("."),
-        segmentation_output=execution.output_file(pathlib.Path(output).name),
-        volume_csv=execution.output_file(pathlib.Path(volume_output).name) if (volume_output is not None) else None,
-        posteriors=execution.output_file(pathlib.Path(posteriors_output).name) if (posteriors_output is not None) else None,
+        segmentation_output=execution.output_file(output),
+        volume_csv=execution.output_file(volume_output) if (volume_output is not None) else None,
+        posteriors=execution.output_file(posteriors_output) if (posteriors_output is not None) else None,
     )
     execution.run(cargs)
     return ret

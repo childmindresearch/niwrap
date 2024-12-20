@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKEROT_METADATA = Metadata(
-    id="228730131a9ac711780934f6fef814e8124671ad.boutiques",
+    id="ef60d83a5829289551593ecda4455fd09243cfb5.boutiques",
     name="makerot",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -29,7 +29,7 @@ def makerot(
     axis: str | None = None,
     cov: InputPathType | None = None,
     center: str | None = None,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     verbose_flag: bool = False,
     help_flag: bool = False,
     runner: Runner | None = None,
@@ -75,7 +75,7 @@ def makerot(
     if output_file is not None:
         cargs.extend([
             "--out",
-            execution.input_file(output_file)
+            output_file
         ])
     if verbose_flag:
         cargs.append("--verbose")
@@ -87,7 +87,7 @@ def makerot(
     ])
     ret = MakerotOutputs(
         root=execution.output_file("."),
-        matrix_output=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        matrix_output=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

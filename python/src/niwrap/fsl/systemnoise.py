@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SYSTEMNOISE_METADATA = Metadata(
-    id="491f1f9d1e77fe875414f044961ce13c20599887.boutiques",
+    id="5c166913c2e3126a839b19b3bfd5214597c6e32c.boutiques",
     name="systemnoise",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class SystemnoiseOutputs(typing.NamedTuple):
 
 def systemnoise(
     input_signal: InputPathType,
-    output_signal: InputPathType,
+    output_signal: str,
     noise_standard_deviation: float,
     seed: float | None = None,
     verbose_flag: bool = False,
@@ -62,7 +62,7 @@ def systemnoise(
     ])
     cargs.extend([
         "--out",
-        execution.input_file(output_signal)
+        output_signal
     ])
     cargs.extend([
         "--sigma",
@@ -79,7 +79,7 @@ def systemnoise(
         cargs.append("--help")
     ret = SystemnoiseOutputs(
         root=execution.output_file("."),
-        output_signal_file=execution.output_file(pathlib.Path(output_signal).name),
+        output_signal_file=execution.output_file(output_signal),
     )
     execution.run(cargs)
     return ret

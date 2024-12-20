@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_SCALAR_IMAGE_TO_RGB_METADATA = Metadata(
-    id="bd90be2304f55e5624a9a746b1b00f9df35ab8d6.boutiques",
+    id="9ca4a7950c397eac7a9318ce90e2920bf4776ea6.boutiques",
     name="ConvertScalarImageToRGB",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class ConvertScalarImageToRgbOutputs(typing.NamedTuple):
 def convert_scalar_image_to_rgb(
     image_dimension: int,
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     mask: InputPathType,
     colormap: typing.Literal["grey", "red", "green", "blue", "copper", "jet", "hsv", "spring", "summer", "autumn", "winter", "hot", "cool", "overunder", "custom"],
     custom_colormap_file: InputPathType | None = None,
@@ -72,7 +72,7 @@ def convert_scalar_image_to_rgb(
     cargs.append("ConvertScalarImageToRGB")
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(execution.input_file(mask))
     cargs.append(colormap)
     if custom_colormap_file is not None:
@@ -89,7 +89,7 @@ def convert_scalar_image_to_rgb(
         cargs.append(vtk_lookup_table)
     ret = ConvertScalarImageToRgbOutputs(
         root=execution.output_file("."),
-        output_rgb_image=execution.output_file(pathlib.Path(output_image).name),
+        output_rgb_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

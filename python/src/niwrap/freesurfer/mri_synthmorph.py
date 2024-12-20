@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHMORPH_METADATA = Metadata(
-    id="cca34624b81822a73cc5fffde808c9e91f121f25.boutiques",
+    id="b1358ac2bd45aee9fdba350a4c656aab59860ac3.boutiques",
     name="mri_synthmorph",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -29,7 +29,7 @@ class MriSynthmorphOutputs(typing.NamedTuple):
 def mri_synthmorph(
     moving_image: InputPathType,
     fixed_image: InputPathType,
-    moved_output: InputPathType | None = None,
+    moved_output: str | None = None,
     transform_output: InputPathType | None = None,
     header_only: bool = False,
     transformation_model: typing.Literal["deform", "affine", "rigid"] | None = "deform",
@@ -86,7 +86,7 @@ def mri_synthmorph(
     if moved_output is not None:
         cargs.extend([
             "-o",
-            execution.input_file(moved_output)
+            moved_output
         ])
     if transform_output is not None:
         cargs.extend([
@@ -134,7 +134,7 @@ def mri_synthmorph(
         ])
     ret = MriSynthmorphOutputs(
         root=execution.output_file("."),
-        moved_output_file=execution.output_file(pathlib.Path(moved_output).name) if (moved_output is not None) else None,
+        moved_output_file=execution.output_file(moved_output) if (moved_output is not None) else None,
         transform_output_file=execution.output_file("[TRANS_OUTPUT]"),
     )
     execution.run(cargs)

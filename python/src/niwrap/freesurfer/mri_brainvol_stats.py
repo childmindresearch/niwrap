@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_BRAINVOL_STATS_METADATA = Metadata(
-    id="86418de6f4396170ffc91b86701f5d618ef8249c.boutiques",
+    id="2356d9f563fd831a66df426a03e5dbd6badcc415.boutiques",
     name="mri_brainvol_stats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -29,7 +29,7 @@ def mri_brainvol_stats(
     xml_string: str | None = None,
     no_surface: bool = False,
     include_segmentation: bool = False,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     runner: Runner | None = None,
 ) -> MriBrainvolStatsOutputs:
     """
@@ -73,11 +73,11 @@ def mri_brainvol_stats(
     if output_file is not None:
         cargs.extend([
             "--out",
-            execution.input_file(output_file)
+            output_file
         ])
     ret = MriBrainvolStatsOutputs(
         root=execution.output_file("."),
-        brain_vol_stats_output=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        brain_vol_stats_output=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

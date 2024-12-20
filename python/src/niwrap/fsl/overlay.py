@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OVERLAY_METADATA = Metadata(
-    id="a83ce117857ce937c01cd3dee49afc5f2d588adc.boutiques",
+    id="c0718fc41040837c6b901bbd7591f11f61d7d2dd.boutiques",
     name="overlay",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -31,7 +31,7 @@ def overlay(
     stat_thresh: list[float],
     auto_thresh_bg: bool = False,
     full_bg_range: bool = False,
-    out_file: InputPathType | None = None,
+    out_file: str | None = None,
     out_type: typing.Literal["float", "int"] | None = "float",
     output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
     stat_image2: InputPathType | None = None,
@@ -79,7 +79,7 @@ def overlay(
     if full_bg_range:
         cargs.append("-A")
     if out_file is not None:
-        cargs.append(execution.input_file(out_file))
+        cargs.append(out_file)
     if out_type is not None:
         cargs.append(out_type)
     if output_type is not None:
@@ -94,7 +94,7 @@ def overlay(
         cargs.append("-c")
     ret = OverlayOutputs(
         root=execution.output_file("."),
-        out_file_outfile=execution.output_file(pathlib.Path(out_file).name) if (out_file is not None) else None,
+        out_file_outfile=execution.output_file(out_file) if (out_file is not None) else None,
     )
     execution.run(cargs)
     return ret

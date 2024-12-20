@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RESPONSEMEAN_METADATA = Metadata(
-    id="a8fd34348625b3b1fa9e865a3af1f57c9158d343.boutiques",
+    id="e6c56f5745cf6a8cbb9c9387ca97dbcce3e44b95.boutiques",
     name="responsemean",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -26,7 +26,7 @@ class ResponsemeanOutputs(typing.NamedTuple):
 
 def responsemean(
     input_response: list[InputPathType],
-    output_response: InputPathType,
+    output_response: str,
     legacy: bool = False,
     nocleanup: bool = False,
     scratch_dir: InputPathType | None = None,
@@ -78,7 +78,7 @@ def responsemean(
     cargs = []
     cargs.append("responsemean")
     cargs.extend([execution.input_file(f) for f in input_response])
-    cargs.append(execution.input_file(output_response))
+    cargs.append(output_response)
     if legacy:
         cargs.append("-legacy")
     if nocleanup:
@@ -117,7 +117,7 @@ def responsemean(
         cargs.append("-version")
     ret = ResponsemeanOutputs(
         root=execution.output_file("."),
-        output_response_file=execution.output_file(pathlib.Path(output_response).name),
+        output_response_file=execution.output_file(output_response),
     )
     execution.run(cargs)
     return ret

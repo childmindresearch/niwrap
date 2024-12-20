@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_SUM_METADATA = Metadata(
-    id="94da9de5b9f8766cfa66cfcd1b32542090f7970e.boutiques",
+    id="58764eefbbae527d5f0a0780d28019db82e2204f.boutiques",
     name="possum_sum",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class PossumSumOutputs(typing.NamedTuple):
 
 def possum_sum(
     input_signal: InputPathType,
-    output_signal: InputPathType,
+    output_signal: str,
     num_processors: int | None = None,
     verbose_flag: bool = False,
     runner: Runner | None = None,
@@ -58,7 +58,7 @@ def possum_sum(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output_signal)
+        output_signal
     ])
     if num_processors is not None:
         cargs.extend([
@@ -69,7 +69,7 @@ def possum_sum(
         cargs.append("-v")
     ret = PossumSumOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(pathlib.Path(output_signal).name),
+        output_file=execution.output_file(output_signal),
     )
     execution.run(cargs)
     return ret

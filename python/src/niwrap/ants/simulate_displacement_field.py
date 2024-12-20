@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIMULATE_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="b4b4d74766ee9ec6eddb1c050e1dc66d6fc3cd4d.boutiques",
+    id="ca776aa44d13ed564a1e49ff2d3269669eb9067c.boutiques",
     name="SimulateDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -78,7 +78,7 @@ def simulate_displacement_field(
     image_dimension: int,
     displacement_field_type: typing.Literal["BSpline", "Exponential"],
     domain_image: InputPathType,
-    output_field: InputPathType,
+    output_field: str,
     number_of_random_points: int | None = 1000,
     standard_deviation_displacement_field: float | None = 10,
     enforce_stationary_boundary: int | None = 1,
@@ -117,7 +117,7 @@ def simulate_displacement_field(
     cargs.append(str(image_dimension))
     cargs.append(displacement_field_type)
     cargs.append(execution.input_file(domain_image))
-    cargs.append(execution.input_file(output_field))
+    cargs.append(output_field)
     if number_of_random_points is not None:
         cargs.append(str(number_of_random_points))
     if standard_deviation_displacement_field is not None:
@@ -128,7 +128,7 @@ def simulate_displacement_field(
         cargs.extend(displacement_specific_options.run(execution))
     ret = SimulateDisplacementFieldOutputs(
         root=execution.output_file("."),
-        output_displacement_field=execution.output_file(pathlib.Path(output_field).name),
+        output_displacement_field=execution.output_file(output_field),
     )
     execution.run(cargs)
     return ret

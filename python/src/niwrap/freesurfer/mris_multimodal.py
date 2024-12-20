@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MULTIMODAL_METADATA = Metadata(
-    id="2538165a13ddb942b3f140f14c2c3852f648e85c.boutiques",
+    id="41d6bb30b581761db606adc285367bb0716e55ee.boutiques",
     name="mris_multimodal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -33,10 +33,10 @@ class MrisMultimodalOutputs(typing.NamedTuple):
 def mris_multimodal(
     input_surface: InputPathType,
     target_surface: InputPathType,
-    output_surface: InputPathType,
-    annotation_output: InputPathType,
-    overlay_output: InputPathType,
-    csv_output: InputPathType,
+    output_surface: str,
+    annotation_output: str,
+    overlay_output: str,
+    csv_output: str,
     fill_holes: bool = False,
     curvature: bool = False,
     thickness: bool = False,
@@ -79,7 +79,7 @@ def mris_multimodal(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output_surface)
+        output_surface
     ])
     if fill_holes:
         cargs.append("-fillHoles")
@@ -89,24 +89,24 @@ def mris_multimodal(
         cargs.append("--thickness")
     cargs.extend([
         "-a",
-        execution.input_file(annotation_output)
+        annotation_output
     ])
     cargs.extend([
         "-v",
-        execution.input_file(overlay_output)
+        overlay_output
     ])
     cargs.extend([
         "-c",
-        execution.input_file(csv_output)
+        csv_output
     ])
     if vtk_output:
         cargs.append("-vtk")
     ret = MrisMultimodalOutputs(
         root=execution.output_file("."),
-        processed_output_surface=execution.output_file(pathlib.Path(output_surface).name),
-        annotation_output_file=execution.output_file(pathlib.Path(annotation_output).name),
-        overlay_output_file=execution.output_file(pathlib.Path(overlay_output).name),
-        csv_output_file=execution.output_file(pathlib.Path(csv_output).name),
+        processed_output_surface=execution.output_file(output_surface),
+        annotation_output_file=execution.output_file(annotation_output),
+        overlay_output_file=execution.output_file(overlay_output),
+        csv_output_file=execution.output_file(csv_output),
     )
     execution.run(cargs)
     return ret

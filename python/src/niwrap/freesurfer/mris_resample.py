@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_RESAMPLE_METADATA = Metadata(
-    id="58c882ffaf4fe37d2d5aa57751a90cb1600aab80.boutiques",
+    id="d258d7337c5b1952a178b938bc77164575d3516d.boutiques",
     name="mris_resample",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -30,9 +30,9 @@ def mris_resample(
     atlas_reg: InputPathType,
     subject_reg: InputPathType,
     subject_surf: InputPathType,
-    output: InputPathType,
+    output: str,
     annot_in: InputPathType | None = None,
-    annot_out: InputPathType | None = None,
+    annot_out: str | None = None,
     runner: Runner | None = None,
 ) -> MrisResampleOutputs:
     """
@@ -73,7 +73,7 @@ def mris_resample(
     ])
     cargs.extend([
         "-out",
-        execution.input_file(output)
+        output
     ])
     if annot_in is not None:
         cargs.extend([
@@ -83,12 +83,12 @@ def mris_resample(
     if annot_out is not None:
         cargs.extend([
             "--annot_out",
-            execution.input_file(annot_out)
+            annot_out
         ])
     ret = MrisResampleOutputs(
         root=execution.output_file("."),
-        resampled_surface_output=execution.output_file(pathlib.Path(output).name),
-        resampled_annotation_output=execution.output_file(pathlib.Path(annot_out).name) if (annot_out is not None) else None,
+        resampled_surface_output=execution.output_file(output),
+        resampled_annotation_output=execution.output_file(annot_out) if (annot_out is not None) else None,
     )
     execution.run(cargs)
     return ret

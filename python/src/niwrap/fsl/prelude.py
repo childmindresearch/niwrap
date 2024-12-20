@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PRELUDE_METADATA = Metadata(
-    id="5adffe55db73f990a6bff1ef9b7c656a99d9928b.boutiques",
+    id="18f602028c707334504e0ec6d8f7e61ebd805a55.boutiques",
     name="prelude",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -31,7 +31,7 @@ class PreludeOutputs(typing.NamedTuple):
 
 
 def prelude(
-    output_unwrap: InputPathType,
+    output_unwrap: str,
     output_unwrap_alias: InputPathType,
     complex_phase: InputPathType | None = None,
     complex_phase_alias: InputPathType | None = None,
@@ -111,7 +111,7 @@ def prelude(
     cargs.append("prelude")
     cargs.extend([
         "-o",
-        execution.input_file(output_unwrap)
+        output_unwrap
     ])
     cargs.extend([
         "-u",
@@ -229,7 +229,7 @@ def prelude(
         cargs.append("--help")
     ret = PreludeOutputs(
         root=execution.output_file("."),
-        unwrapped_phase_output=execution.output_file(pathlib.Path(output_unwrap).name + ".nii.gz"),
+        unwrapped_phase_output=execution.output_file(output_unwrap + ".nii.gz"),
         saved_mask_volume=execution.output_file(pathlib.Path(save_mask).name + ".nii.gz") if (save_mask is not None) else None,
         saved_raw_phase_output=execution.output_file(pathlib.Path(save_raw_phase).name + ".nii.gz") if (save_raw_phase is not None) else None,
         saved_area_labels_output=execution.output_file(pathlib.Path(save_labels).name + ".nii.gz") if (save_labels is not None) else None,

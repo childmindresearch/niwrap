@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONNECTEDCOMP_METADATA = Metadata(
-    id="3fc7dd2db31b3ee1a378de6a6c8d12e543c231cb.boutiques",
+    id="7c1253e633254bef28f5556244da1e387dffc055.boutiques",
     name="connectedcomp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class ConnectedcompOutputs(typing.NamedTuple):
 
 def connectedcomp(
     in_volume: InputPathType,
-    output_volume: InputPathType | None = None,
+    output_volume: str | None = None,
     num_connect: int | None = None,
     runner: Runner | None = None,
 ) -> ConnectedcompOutputs:
@@ -51,12 +51,12 @@ def connectedcomp(
     cargs.append("connectedcomp")
     cargs.append(execution.input_file(in_volume))
     if output_volume is not None:
-        cargs.append(execution.input_file(output_volume))
+        cargs.append(output_volume)
     if num_connect is not None:
         cargs.append(str(num_connect))
     ret = ConnectedcompOutputs(
         root=execution.output_file("."),
-        outfile=execution.output_file(pathlib.Path(output_volume).name) if (output_volume is not None) else None,
+        outfile=execution.output_file(output_volume) if (output_volume is not None) else None,
     )
     execution.run(cargs)
     return ret

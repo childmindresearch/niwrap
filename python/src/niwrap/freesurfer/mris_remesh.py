@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REMESH_METADATA = Metadata(
-    id="2952fb621021ef623340899d397234ce68e0a747.boutiques",
+    id="f5ca57ee0b80f57d1998800d04224821e0092cc6.boutiques",
     name="mris_remesh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class MrisRemeshOutputs(typing.NamedTuple):
 
 def mris_remesh(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     edge_length: float | None = None,
     num_vertices: float | None = None,
     face_area: float | None = None,
@@ -65,7 +65,7 @@ def mris_remesh(
     ])
     cargs.extend([
         "-o",
-        execution.input_file(output)
+        output
     ])
     if edge_length is not None:
         cargs.extend([
@@ -91,7 +91,7 @@ def mris_remesh(
         ])
     ret = MrisRemeshOutputs(
         root=execution.output_file("."),
-        remeshed_output=execution.output_file(pathlib.Path(output).name),
+        remeshed_output=execution.output_file(output),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_BRAIN_VOLUME_METADATA = Metadata(
-    id="2918ea0c5a20422d8241bcf06406d8027e4e4dae.boutiques",
+    id="7e192aa897893490560e7414f5f2c974f66d8c71.boutiques",
     name="mri_brain_volume",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class MriBrainVolumeOutputs(typing.NamedTuple):
 
 def mri_brain_volume(
     input_file: InputPathType,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     runner: Runner | None = None,
 ) -> MriBrainVolumeOutputs:
     """
@@ -50,10 +50,10 @@ def mri_brain_volume(
     cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_file))
     if output_file is not None:
-        cargs.append(execution.input_file(output_file))
+        cargs.append(output_file)
     ret = MriBrainVolumeOutputs(
         root=execution.output_file("."),
-        output_volume_file=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        output_volume_file=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

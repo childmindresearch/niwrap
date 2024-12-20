@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLADD_METADATA = Metadata(
-    id="ce03c4eb1ad5d7b87c140d798cc4f443d506a093.boutiques",
+    id="f07330b46587f5e604d840221b21e17467d9b5f6.boutiques",
     name="fsladd",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -25,7 +25,7 @@ class FsladdOutputs(typing.NamedTuple):
 
 
 def fsladd(
-    output_file: InputPathType,
+    output_file: str,
     volume_list: list[InputPathType],
     mean_flag: bool = False,
     scale_flag: bool = False,
@@ -51,7 +51,7 @@ def fsladd(
     execution = runner.start_execution(FSLADD_METADATA)
     cargs = []
     cargs.append("fsladd")
-    cargs.append(execution.input_file(output_file))
+    cargs.append(output_file)
     if mean_flag:
         cargs.append("-m")
     if scale_flag:
@@ -59,7 +59,7 @@ def fsladd(
     cargs.extend([execution.input_file(f) for f in volume_list])
     ret = FsladdOutputs(
         root=execution.output_file("."),
-        resulting_output=execution.output_file(pathlib.Path(output_file).name),
+        resulting_output=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

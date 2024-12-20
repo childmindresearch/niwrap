@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SEG2ANNOT_METADATA = Metadata(
-    id="4bbdc9d57b691b8f7d4b0333b1d194fbe54c8e5b.boutiques",
+    id="d008c930a065c732716cdd3422ffc514e12ed385.boutiques",
     name="mris_seg2annot",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -28,7 +28,7 @@ def mris_seg2annot(
     surfseg: InputPathType,
     subject: str,
     hemi: str,
-    output_annotation: InputPathType,
+    output_annotation: str,
     colortable: InputPathType | None = None,
     auto_ctab: str | None = None,
     surf: str | None = None,
@@ -91,7 +91,7 @@ def mris_seg2annot(
     ])
     cargs.extend([
         "--o",
-        execution.input_file(output_annotation)
+        output_annotation
     ])
     if surf is not None:
         cargs.extend([
@@ -111,7 +111,7 @@ def mris_seg2annot(
         cargs.append("--version")
     ret = MrisSeg2annotOutputs(
         root=execution.output_file("."),
-        annotation_file=execution.output_file(pathlib.Path(output_annotation).name),
+        annotation_file=execution.output_file(output_annotation),
     )
     execution.run(cargs)
     return ret

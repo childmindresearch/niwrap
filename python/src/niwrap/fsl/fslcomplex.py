@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCOMPLEX_METADATA = Metadata(
-    id="7b0a519cc8c2bf2ab20b79371bcb5b1194faec91.boutiques",
+    id="c9fb65ebb725f2a440c3750432b06e3255db8eb3.boutiques",
     name="fslcomplex",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class FslcomplexOutputs(typing.NamedTuple):
 
 def fslcomplex(
     input_file: InputPathType,
-    output_file: InputPathType,
+    output_file: str,
     output_type: typing.Literal["-realabs", "-realphase", "-realpolar", "-realcartesian", "-complex", "-complexpolar", "-complexsplit", "-complexmerge", "-copyonly"],
     start_vol: int | None = None,
     end_vol: int | None = None,
@@ -54,7 +54,7 @@ def fslcomplex(
     cargs = []
     cargs.append("fslcomplex")
     cargs.append(execution.input_file(input_file))
-    cargs.append(execution.input_file(output_file))
+    cargs.append(output_file)
     cargs.append(output_type)
     if start_vol is not None:
         cargs.append(str(start_vol))
@@ -62,7 +62,7 @@ def fslcomplex(
         cargs.append(str(end_vol))
     ret = FslcomplexOutputs(
         root=execution.output_file("."),
-        result_output_file=execution.output_file(pathlib.Path(output_file).name),
+        result_output_file=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

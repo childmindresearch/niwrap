@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUPER_RESOLUTION_METADATA = Metadata(
-    id="971ff863d798c743fcbcf153281a68f737955b2e.boutiques",
+    id="cd1212b3e1e62a6349afb70d130bc6b89439a7a0.boutiques",
     name="SuperResolution",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -26,7 +26,7 @@ class SuperResolutionOutputs(typing.NamedTuple):
 
 def super_resolution(
     image_dimension: int,
-    output_image: InputPathType,
+    output_image: str,
     domain_image: InputPathType,
     gradient_sigma: float,
     mesh_size: float,
@@ -65,7 +65,7 @@ def super_resolution(
     cargs = []
     cargs.append("SuperResolution")
     cargs.append(str(image_dimension))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(execution.input_file(domain_image))
     cargs.append(str(gradient_sigma))
     cargs.append(str(mesh_size))
@@ -73,7 +73,7 @@ def super_resolution(
     cargs.extend([execution.input_file(f) for f in input_image_files])
     ret = SuperResolutionOutputs(
         root=execution.output_file("."),
-        super_resolved_image=execution.output_file(pathlib.Path(output_image).name),
+        super_resolved_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

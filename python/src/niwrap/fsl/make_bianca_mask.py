@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_BIANCA_MASK_METADATA = Metadata(
-    id="4c86228a8220f5a60129cb20c88b1a58d64d06a2.boutiques",
+    id="6301fdafc66328cb8c345bedf78a2080c05aa6ca.boutiques",
     name="make_bianca_mask",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -26,7 +26,7 @@ class MakeBiancaMaskOutputs(typing.NamedTuple):
 
 def make_bianca_mask(
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     overlay_flag: bool = False,
     binary_mask_flag: bool = False,
     approx_skull_flag: bool = False,
@@ -102,7 +102,7 @@ def make_bianca_mask(
     cargs = []
     cargs.append("make_bianca_mask")
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     if overlay_flag:
         cargs.append("-o")
     if binary_mask_flag:
@@ -158,7 +158,7 @@ def make_bianca_mask(
         cargs.append("-d")
     ret = MakeBiancaMaskOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(output_image).name),
+        output_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_TRANSFORM_METADATA = Metadata(
-    id="2cbca47da628de2939f9479c528fef081a7988fd.boutiques",
+    id="3298d98092db6f80d10399aa1e1af8a634ba3e9c.boutiques",
     name="reg_transform",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -51,32 +51,32 @@ class RegTransformOutputs(typing.NamedTuple):
 def reg_transform(
     reference_image: InputPathType,
     cpp2def_input: InputPathType | None = None,
-    cpp2def_output: InputPathType | None = None,
+    cpp2def_output: str | None = None,
     comp1_cpp2: InputPathType | None = None,
     comp1_cpp1: InputPathType | None = None,
-    comp1_output: InputPathType | None = None,
+    comp1_output: str | None = None,
     comp2_cpp: InputPathType | None = None,
     comp2_def: InputPathType | None = None,
-    comp2_output: InputPathType | None = None,
+    comp2_output: str | None = None,
     comp3_def2: InputPathType | None = None,
     comp3_def1: InputPathType | None = None,
-    comp3_output: InputPathType | None = None,
+    comp3_output: str | None = None,
     def2disp_input: InputPathType | None = None,
-    def2disp_output: InputPathType | None = None,
+    def2disp_output: str | None = None,
     disp2def_input: InputPathType | None = None,
-    disp2def_output: InputPathType | None = None,
+    disp2def_output: str | None = None,
     upd_sform_image: InputPathType | None = None,
     upd_sform_affine: InputPathType | None = None,
-    upd_sform_output: InputPathType | None = None,
+    upd_sform_output: str | None = None,
     aff2def_affine: InputPathType | None = None,
     aff2def_target: InputPathType | None = None,
     aff2def_cpp_or_def: InputPathType | None = None,
-    aff2def_output: InputPathType | None = None,
+    aff2def_output: str | None = None,
     inv_affine_input: InputPathType | None = None,
-    inv_affine_output: InputPathType | None = None,
+    inv_affine_output: str | None = None,
     comp_aff_1st: InputPathType | None = None,
     comp_aff_2nd: InputPathType | None = None,
-    comp_aff_output: InputPathType | None = None,
+    comp_aff_output: str | None = None,
     runner: Runner | None = None,
 ) -> RegTransformOutputs:
     """
@@ -151,7 +151,7 @@ def reg_transform(
             execution.input_file(cpp2def_input)
         ])
     if cpp2def_output is not None:
-        cargs.append(execution.input_file(cpp2def_output))
+        cargs.append(cpp2def_output)
     if comp1_cpp2 is not None:
         cargs.extend([
             "-comp1",
@@ -160,7 +160,7 @@ def reg_transform(
     if comp1_cpp1 is not None:
         cargs.append(execution.input_file(comp1_cpp1))
     if comp1_output is not None:
-        cargs.append(execution.input_file(comp1_output))
+        cargs.append(comp1_output)
     if comp2_cpp is not None:
         cargs.extend([
             "-comp2",
@@ -169,7 +169,7 @@ def reg_transform(
     if comp2_def is not None:
         cargs.append(execution.input_file(comp2_def))
     if comp2_output is not None:
-        cargs.append(execution.input_file(comp2_output))
+        cargs.append(comp2_output)
     if comp3_def2 is not None:
         cargs.extend([
             "-comp3",
@@ -178,21 +178,21 @@ def reg_transform(
     if comp3_def1 is not None:
         cargs.append(execution.input_file(comp3_def1))
     if comp3_output is not None:
-        cargs.append(execution.input_file(comp3_output))
+        cargs.append(comp3_output)
     if def2disp_input is not None:
         cargs.extend([
             "-def2disp",
             execution.input_file(def2disp_input)
         ])
     if def2disp_output is not None:
-        cargs.append(execution.input_file(def2disp_output))
+        cargs.append(def2disp_output)
     if disp2def_input is not None:
         cargs.extend([
             "-disp2def",
             execution.input_file(disp2def_input)
         ])
     if disp2def_output is not None:
-        cargs.append(execution.input_file(disp2def_output))
+        cargs.append(disp2def_output)
     if upd_sform_image is not None:
         cargs.extend([
             "-updSform",
@@ -201,7 +201,7 @@ def reg_transform(
     if upd_sform_affine is not None:
         cargs.append(execution.input_file(upd_sform_affine))
     if upd_sform_output is not None:
-        cargs.append(execution.input_file(upd_sform_output))
+        cargs.append(upd_sform_output)
     if aff2def_affine is not None:
         cargs.extend([
             "-aff2def",
@@ -212,14 +212,14 @@ def reg_transform(
     if aff2def_cpp_or_def is not None:
         cargs.append(execution.input_file(aff2def_cpp_or_def))
     if aff2def_output is not None:
-        cargs.append(execution.input_file(aff2def_output))
+        cargs.append(aff2def_output)
     if inv_affine_input is not None:
         cargs.extend([
             "-invAffine",
             execution.input_file(inv_affine_input)
         ])
     if inv_affine_output is not None:
-        cargs.append(execution.input_file(inv_affine_output))
+        cargs.append(inv_affine_output)
     if comp_aff_1st is not None:
         cargs.extend([
             "-compAff",
@@ -228,19 +228,19 @@ def reg_transform(
     if comp_aff_2nd is not None:
         cargs.append(execution.input_file(comp_aff_2nd))
     if comp_aff_output is not None:
-        cargs.append(execution.input_file(comp_aff_output))
+        cargs.append(comp_aff_output)
     ret = RegTransformOutputs(
         root=execution.output_file("."),
-        cpp2def_output_file=execution.output_file(pathlib.Path(cpp2def_output).name) if (cpp2def_output is not None) else None,
-        comp1_output_file=execution.output_file(pathlib.Path(comp1_output).name) if (comp1_output is not None) else None,
-        comp2_output_file=execution.output_file(pathlib.Path(comp2_output).name) if (comp2_output is not None) else None,
-        comp3_output_file=execution.output_file(pathlib.Path(comp3_output).name) if (comp3_output is not None) else None,
-        def2disp_output_file=execution.output_file(pathlib.Path(def2disp_output).name) if (def2disp_output is not None) else None,
-        disp2def_output_file=execution.output_file(pathlib.Path(disp2def_output).name) if (disp2def_output is not None) else None,
-        upd_sform_output_file=execution.output_file(pathlib.Path(upd_sform_output).name) if (upd_sform_output is not None) else None,
-        aff2def_output_file=execution.output_file(pathlib.Path(aff2def_output).name) if (aff2def_output is not None) else None,
-        inv_affine_output_file=execution.output_file(pathlib.Path(inv_affine_output).name) if (inv_affine_output is not None) else None,
-        comp_aff_output_file=execution.output_file(pathlib.Path(comp_aff_output).name) if (comp_aff_output is not None) else None,
+        cpp2def_output_file=execution.output_file(cpp2def_output) if (cpp2def_output is not None) else None,
+        comp1_output_file=execution.output_file(comp1_output) if (comp1_output is not None) else None,
+        comp2_output_file=execution.output_file(comp2_output) if (comp2_output is not None) else None,
+        comp3_output_file=execution.output_file(comp3_output) if (comp3_output is not None) else None,
+        def2disp_output_file=execution.output_file(def2disp_output) if (def2disp_output is not None) else None,
+        disp2def_output_file=execution.output_file(disp2def_output) if (disp2def_output is not None) else None,
+        upd_sform_output_file=execution.output_file(upd_sform_output) if (upd_sform_output is not None) else None,
+        aff2def_output_file=execution.output_file(aff2def_output) if (aff2def_output is not None) else None,
+        inv_affine_output_file=execution.output_file(inv_affine_output) if (inv_affine_output is not None) else None,
+        comp_aff_output_file=execution.output_file(comp_aff_output) if (comp_aff_output is not None) else None,
     )
     execution.run(cargs)
     return ret

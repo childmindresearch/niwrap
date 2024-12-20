@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QHULL_METADATA = Metadata(
-    id="c66bd98623328e49e50c28ca6d4ac9a47c26c314.boutiques",
+    id="d25dad9388d53afd5a2f6019c508abe651c2e611.boutiques",
     name="qhull",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,7 +45,7 @@ def qhull(
     geomview_output: bool = False,
     mathematica_output: bool = False,
     print_facets: str | None = None,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     runner: Runner | None = None,
 ) -> QhullOutputs:
     """
@@ -136,11 +136,11 @@ def qhull(
     if output_file is not None:
         cargs.extend([
             "TO",
-            execution.input_file(output_file)
+            output_file
         ])
     ret = QhullOutputs(
         root=execution.output_file("."),
-        output_results=execution.output_file(pathlib.Path(output_file).name + ".txt") if (output_file is not None) else None,
+        output_results=execution.output_file(output_file + ".txt") if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

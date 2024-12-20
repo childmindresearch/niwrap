@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FTOZ_METADATA = Metadata(
-    id="cfdf2d21494b563a42aaebc4d4b01d54859bfaa9.boutiques",
+    id="c8ceafb840b836488700378bae545b8864c0a58c.boutiques",
     name="ftoz",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -28,7 +28,7 @@ def ftoz(
     input_file: InputPathType,
     dof1: float,
     dof2: float,
-    output_file: InputPathType | None = None,
+    output_file: str | None = "zstats",
     runner: Runner | None = None,
 ) -> FtozOutputs:
     """
@@ -57,11 +57,11 @@ def ftoz(
     if output_file is not None:
         cargs.extend([
             "-zout",
-            execution.input_file(output_file)
+            output_file
         ])
     ret = FtozOutputs(
         root=execution.output_file("."),
-        output_zscores=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        output_zscores=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COMPUTE_VOLUME_INTENSITIES_METADATA = Metadata(
-    id="0ef3728f055c825945a1bf63696573fc7f07f67d.boutiques",
+    id="45ae774d2336d807239cb10e6ca5a797474fe7bd.boutiques",
     name="mri_compute_volume_intensities",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -27,7 +27,7 @@ class MriComputeVolumeIntensitiesOutputs(typing.NamedTuple):
 def mri_compute_volume_intensities(
     input_intensity: InputPathType,
     volume_fraction_stem: str,
-    output_volume: InputPathType,
+    output_volume: str,
     runner: Runner | None = None,
 ) -> MriComputeVolumeIntensitiesOutputs:
     """
@@ -52,10 +52,10 @@ def mri_compute_volume_intensities(
     cargs.append("mri_compute_volume_intensities")
     cargs.append(execution.input_file(input_intensity))
     cargs.append(volume_fraction_stem)
-    cargs.append(execution.input_file(output_volume))
+    cargs.append(output_volume)
     ret = MriComputeVolumeIntensitiesOutputs(
         root=execution.output_file("."),
-        output_volume_file=execution.output_file(pathlib.Path(output_volume).name),
+        output_volume_file=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret

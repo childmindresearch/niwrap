@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_LANDMARK_BASED_TRANSFORM_INITIALIZER_METADATA = Metadata(
-    id="e680d25c4b1661ea27d0968828f088b5d76779fa.boutiques",
+    id="0a1f0f529ca0b132289382b0bfa307fd1e5cda95.boutiques",
     name="antsLandmarkBasedTransformInitializer",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -29,7 +29,7 @@ def ants_landmark_based_transform_initializer(
     fixed_image: InputPathType,
     moving_image: InputPathType,
     transform_type: typing.Literal["rigid", "affine", "bspline"],
-    output_transform: InputPathType,
+    output_transform: str,
     mesh_size: str | None = None,
     number_of_levels: int | None = None,
     order: int | None = None,
@@ -74,7 +74,7 @@ def ants_landmark_based_transform_initializer(
     cargs.append(execution.input_file(fixed_image))
     cargs.append(execution.input_file(moving_image))
     cargs.append(transform_type)
-    cargs.append(execution.input_file(output_transform))
+    cargs.append(output_transform)
     if mesh_size is not None:
         cargs.append(mesh_size)
     if number_of_levels is not None:
@@ -87,7 +87,7 @@ def ants_landmark_based_transform_initializer(
         cargs.append(execution.input_file(landmark_weights))
     ret = AntsLandmarkBasedTransformInitializerOutputs(
         root=execution.output_file("."),
-        output_transform=execution.output_file(pathlib.Path(output_transform).name),
+        output_transform=execution.output_file(output_transform),
     )
     execution.run(cargs)
     return ret

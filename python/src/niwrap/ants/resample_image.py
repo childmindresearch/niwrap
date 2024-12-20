@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RESAMPLE_IMAGE_METADATA = Metadata(
-    id="09cbfa81905a40fb69e7164887ae36302a83bb75.boutiques",
+    id="243da81f65ea0a482b7b69380239da5960d94d94.boutiques",
     name="ResampleImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class ResampleImageOutputs(typing.NamedTuple):
 def resample_image(
     image_dimension: int,
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     size_spacing: str,
     interpolate_type: typing.Literal["0", "1", "2", "3", "4"] | None = None,
     pixeltype: typing.Literal["0", "1", "2", "3", "4", "5", "6", "7"] | None = None,
@@ -62,7 +62,7 @@ def resample_image(
     cargs.append("ResampleImage")
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(size_spacing)
     if interpolate_type is not None:
         cargs.append(interpolate_type)
@@ -70,7 +70,7 @@ def resample_image(
         cargs.append(pixeltype)
     ret = ResampleImageOutputs(
         root=execution.output_file("."),
-        resampled_output_image=execution.output_file(pathlib.Path(output_image).name),
+        resampled_output_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

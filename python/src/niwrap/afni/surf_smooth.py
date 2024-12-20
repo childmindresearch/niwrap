@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_SMOOTH_METADATA = Metadata(
-    id="9567232249acc1b0e69c280f3ce45f44bb256c86.boutiques",
+    id="d12bfab32f106014ff3d8c52a7b720c737313260.boutiques",
     name="SurfSmooth",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,7 +31,7 @@ def surf_smooth(
     target_fwhm: float | None = None,
     fwhm: float | None = None,
     number_iterations: float | None = None,
-    output_file: InputPathType | None = None,
+    output_file: str | None = None,
     band_pass_frequency: float | None = None,
     lambda_mu: str | None = None,
     interp_weights: str | None = None,
@@ -118,7 +118,7 @@ def surf_smooth(
     if output_file is not None:
         cargs.extend([
             "-output",
-            execution.input_file(output_file)
+            output_file
         ])
     if band_pass_frequency is not None:
         cargs.extend([
@@ -161,7 +161,7 @@ def surf_smooth(
         ])
     ret = SurfSmoothOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(output_file).name) if (output_file is not None) else None,
+        out_file=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

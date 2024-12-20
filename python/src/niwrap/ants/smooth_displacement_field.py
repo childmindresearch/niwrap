@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SMOOTH_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="74242e4a08e876a4821008fd823b0b832ab0e019.boutiques",
+    id="47ffc5bce5c9c966c1031311bf5353dec2fcef8b.boutiques",
     name="SmoothDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -30,7 +30,7 @@ class SmoothDisplacementFieldOutputs(typing.NamedTuple):
 def smooth_displacement_field(
     image_dimension: int,
     input_field: InputPathType,
-    output_field: InputPathType,
+    output_field: str,
     variance_or_mesh_size_base_level: float,
     number_of_levels: int | None = 1,
     spline_order: int | None = 3,
@@ -69,7 +69,7 @@ def smooth_displacement_field(
     cargs.append("SmoothDisplacementField")
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(input_field))
-    cargs.append(execution.input_file(output_field))
+    cargs.append(output_field)
     cargs.append(str(variance_or_mesh_size_base_level))
     if number_of_levels is not None:
         cargs.append(str(number_of_levels))
@@ -81,7 +81,7 @@ def smooth_displacement_field(
         cargs.append(execution.input_file(confidence_image))
     ret = SmoothDisplacementFieldOutputs(
         root=execution.output_file("."),
-        smoothed_field=execution.output_file(pathlib.Path(output_field).name),
+        smoothed_field=execution.output_file(output_field),
         confidence_image_out=execution.output_file(pathlib.Path(confidence_image).name) if (confidence_image is not None) else None,
     )
     execution.run(cargs)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_MATH_METADATA = Metadata(
-    id="f5740d314a9baf77fb8fa3899fa5f569f4daee75.boutiques",
+    id="82ab1b6a89b333ecedac9318d1094ca4109c3bdb.boutiques",
     name="ImageMath",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -26,7 +26,7 @@ class ImageMathOutputs(typing.NamedTuple):
 
 def image_math(
     image_dimension: typing.Literal[2, 3, 4],
-    output_image: InputPathType,
+    output_image: str,
     operations_and_inputs: str,
     image1: InputPathType,
     image2: InputPathType | None = None,
@@ -57,14 +57,14 @@ def image_math(
     cargs = []
     cargs.append("ImageMath")
     cargs.append(str(image_dimension))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(operations_and_inputs)
     cargs.append(execution.input_file(image1))
     if image2 is not None:
         cargs.append(execution.input_file(image2))
     ret = ImageMathOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(output_image).name),
+        output_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret

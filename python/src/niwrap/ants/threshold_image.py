@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 THRESHOLD_IMAGE_METADATA = Metadata(
-    id="21280b87f93b4982f5b7173d35c9223a6b16962d.boutiques",
+    id="8cf8b0c4869168dc7cd4d8ddd7703d636b4075fc.boutiques",
     name="ThresholdImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -27,7 +27,7 @@ class ThresholdImageOutputs(typing.NamedTuple):
 def threshold_image(
     image_dimension: int,
     image_in: InputPathType,
-    out_image: InputPathType,
+    out_image: str,
     threshlo: float | None = None,
     threshhi: float | None = None,
     inside_value: float | None = None,
@@ -69,7 +69,7 @@ def threshold_image(
     cargs.append("ThresholdImage")
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(image_in))
-    cargs.append(execution.input_file(out_image))
+    cargs.append(out_image)
     if threshlo is not None:
         cargs.append(str(threshlo))
     if threshhi is not None:
@@ -86,7 +86,7 @@ def threshold_image(
         cargs.append(execution.input_file(mask_image))
     ret = ThresholdImageOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(out_image).name),
+        output_image=execution.output_file(out_image),
     )
     execution.run(cargs)
     return ret

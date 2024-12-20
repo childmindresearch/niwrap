@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_UPRIGHT_METADATA = Metadata(
-    id="522244f0d58e1f0d0f3872b5729dcc10bc9de41f.boutiques",
+    id="f69f1f73df7f80db3bbc666008c56b37f2fb8894.boutiques",
     name="make_upright",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -26,7 +26,7 @@ class MakeUprightOutputs(typing.NamedTuple):
 
 def make_upright(
     input_image: InputPathType,
-    output_image: InputPathType,
+    output_image: str,
     transformation_map: InputPathType,
     runner: Runner | None = None,
 ) -> MakeUprightOutputs:
@@ -52,11 +52,11 @@ def make_upright(
     cargs = []
     cargs.append("make_upright")
     cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
+    cargs.append(output_image)
     cargs.append(execution.input_file(transformation_map))
     ret = MakeUprightOutputs(
         root=execution.output_file("."),
-        registered_image=execution.output_file(pathlib.Path(output_image).name),
+        registered_image=execution.output_file(output_image),
     )
     execution.run(cargs)
     return ret
