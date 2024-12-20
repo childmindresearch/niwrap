@@ -13,7 +13,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [3, 4],
+      "value-choices": [
+        3,
+        4
+      ],
       "description": "The dimensionality of the input images (3D or 4D)."
     },
     {
@@ -28,7 +31,7 @@
       "id": "output_image",
       "name": "Output Image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "description": "The output image after transformation. It is resampled based on the reference image domain."
     },
@@ -56,7 +59,10 @@
       "value-key": "[INTERPOLATION]",
       "type": "String",
       "optional": true,
-      "value-choices": ["NearestNeighbor", "BSpline"],
+      "value-choices": [
+        "NearestNeighbor",
+        "BSpline"
+      ],
       "description": "Specifies the type of interpolation to use: Nearest Neighbor or 3rd order B-Spline."
     }
   ],

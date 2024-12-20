@@ -21,7 +21,7 @@
       "id": "output_file",
       "name": "Output File",
       "optional": false,
-      "type": "File",
+      "type": "String",
       "value-key": "[OUTPUT_FILE]"
     },
     {

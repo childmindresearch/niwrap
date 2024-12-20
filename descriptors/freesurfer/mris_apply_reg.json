@@ -19,7 +19,7 @@
       "command-line-flag": "--trg",
       "description": "Target output file",
       "value-key": "[TRG_OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "trg_output",
       "name": "Target Output"

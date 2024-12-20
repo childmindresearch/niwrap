@@ -22,7 +22,7 @@
     {
       "description": "Output image file",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_image",
       "name": "Output Image"

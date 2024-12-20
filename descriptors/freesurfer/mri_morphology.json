@@ -49,7 +49,7 @@
     {
       "description": "Output volume file to store the results of the operation.",
       "value-key": "[OUTPUT_VOLUME]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_volume",
       "name": "Output Volume"

@@ -16,7 +16,7 @@
       "name": "Output Image",
       "value-key": "[OUTPUT]",
       "command-line-flag": "--output",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "description": "Output is a 2D correlation matrix."
     },
@@ -124,7 +124,12 @@
       "command-line-flag": "--partial-scca-option",
       "type": "String",
       "optional": true,
-      "value-choices": ["PQ", "PminusRQ", "PQminusR", "PminusRQminusR"],
+      "value-choices": [
+        "PQ",
+        "PminusRQ",
+        "PQminusR",
+        "PminusRQminusR"
+      ],
       "description": "Choices for partial SCCA: PQ, PminusRQ, PQminusR, PminusRQminusR."
     },
     {

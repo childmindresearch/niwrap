@@ -19,7 +19,7 @@
       "command-line-flag": "-o",
       "description": "Segmentation output file or directory (required if --i is provided).",
       "value-key": "[OUTPUT_SEGMENTATION]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_segmentation",
       "name": "Output Segmentation"

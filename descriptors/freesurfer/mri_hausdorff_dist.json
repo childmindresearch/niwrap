@@ -25,7 +25,7 @@
     {
       "description": "Output text file",
       "value-key": "[OUTPUT_TEXT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_text_file",
       "name": "Output Text File"

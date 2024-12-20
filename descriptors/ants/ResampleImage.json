@@ -26,7 +26,7 @@
       "id": "output_image",
       "name": "Output Image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "description": "The output image file after resampling."
     },
     {
@@ -42,7 +42,13 @@
       "value-key": "[INTERPOLATE_TYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["0", "1", "2", "3", "4"],
+      "value-choices": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
       "description": "Specifies the interpolation type. 0: linear (default), 1: nearest-neighbor, 2: gaussian, 3: windowedSinc, 4: B-Spline."
     },
     {
@@ -51,7 +57,16 @@
       "value-key": "[PIXELTYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["0", "1", "2", "3", "4", "5", "6", "7"],
+      "value-choices": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
       "description": "Specifies the pixel type of the output image. 0: char, 1: unsigned char, 2: short, 3: unsigned short, 4: int, 5: unsigned int, 6: float (default), 7: double."
     }
   ],

@@ -19,7 +19,7 @@
     {
       "description": "Output image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_image",
       "name": "Output Image"
@@ -248,7 +248,10 @@
     {
       "description": "Optional miscellaneous parameters when running make_bianca_mask",
       "id": "miscellaneous_params_group",
-      "members": ["verbose_flag", "debug_flag"],
+      "members": [
+        "verbose_flag",
+        "debug_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

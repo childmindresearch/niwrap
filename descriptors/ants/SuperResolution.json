@@ -17,7 +17,7 @@
       "id": "output_image",
       "name": "Output Image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "description": "The file path for the output super-resolved image."
     },

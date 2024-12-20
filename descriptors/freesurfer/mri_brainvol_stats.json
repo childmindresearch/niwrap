@@ -44,7 +44,7 @@
       "command-line-flag": "--out",
       "description": "Output file path to write the brain volume statistics.",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_file",
       "name": "Output File"

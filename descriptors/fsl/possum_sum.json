@@ -22,7 +22,7 @@
       "command-line-flag": "-o",
       "description": "Output signal: sum of all the processors (possum matrix form)",
       "value-key": "[OUTPUT_SIGNAL]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_signal",
       "name": "Output signal"

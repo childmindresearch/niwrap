@@ -27,7 +27,7 @@
       "id": "out_image",
       "name": "Output Image",
       "value-key": "[OUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "description": "The output image file after thresholding."
     },

@@ -24,7 +24,7 @@
       "command-line-flag": "--out",
       "description": "Output signal (possum matrix form)",
       "value-key": "[OUTPUT_SIGNAL]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_signal",
       "name": "Output Signal"
@@ -71,13 +71,21 @@
     {
       "description": "Specify compulsory arguments",
       "id": "compulsory_args_group",
-      "members": ["input_signal", "output_signal", "noise_standard_deviation"],
+      "members": [
+        "input_signal",
+        "output_signal",
+        "noise_standard_deviation"
+      ],
       "name": "Compulsory Arguments"
     },
     {
       "description": "Optional arguments",
       "id": "optional_args_group",
-      "members": ["seed", "verbose_flag", "help_flag"],
+      "members": [
+        "seed",
+        "verbose_flag",
+        "help_flag"
+      ],
       "name": "Optional Arguments"
     }
   ],

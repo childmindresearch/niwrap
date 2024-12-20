@@ -27,7 +27,7 @@
       "command-line-flag": "--o",
       "description": "Output merged segmentation",
       "value-key": "[OUT_SEG]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "out_seg",
       "name": "Output Segmentation"

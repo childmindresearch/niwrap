@@ -15,7 +15,7 @@
     {
       "description": "The output MR image file",
       "value-key": "[OUTPUT_VOLUME]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_volume",
       "name": "Output volume"

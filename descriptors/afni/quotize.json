@@ -24,7 +24,7 @@
     {
       "description": "Output file which will contain the C array of strings.",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_file",
       "name": "Output file"

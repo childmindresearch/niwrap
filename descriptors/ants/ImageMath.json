@@ -18,7 +18,11 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [2, 3, 4],
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
       "description": "The dimensionality of the image. Use 2 or 3 for spatial images, and 4 for 4D images like time-series data."
     },
     {
@@ -33,7 +37,7 @@
       "id": "output_image",
       "name": "Output Image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "description": "The output image file resulting from the operations."
     },

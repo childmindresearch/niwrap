@@ -18,7 +18,7 @@
     {
       "id": "output_transform",
       "name": "Output Transform",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUTPUT_TRANSFORM]",
       "command-line-flag": "--out",
       "description": "Output transform file in tm3d format.",

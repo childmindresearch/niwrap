@@ -37,7 +37,7 @@
     {
       "description": "The output transform file",
       "value-key": "[OUTPUT_XFORM]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_xform",
       "name": "Output Transform"

@@ -23,7 +23,7 @@
     {
       "id": "output_response",
       "name": "Output response function",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUTPUT_RESPONSE]",
       "description": "Output mean response function",
       "optional": false

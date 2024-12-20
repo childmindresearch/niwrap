@@ -25,7 +25,7 @@
     {
       "description": "Output surface file.",
       "value-key": "[OUTPUT_SURFACE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_surface",
       "name": "Output Surface",
@@ -62,7 +62,7 @@
       "command-line-flag": "-a",
       "description": "Output file for annotation data.",
       "value-key": "[ANNOTATION_OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "annotation_output",
       "name": "Annotation Output"
@@ -71,7 +71,7 @@
       "command-line-flag": "-v",
       "description": "Output file for overlay data.",
       "value-key": "[OVERLAY_OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "overlay_output",
       "name": "Overlay Output"
@@ -80,7 +80,7 @@
       "command-line-flag": "-c",
       "description": "Output CSV file.",
       "value-key": "[CSV_OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "csv_output",
       "name": "CSV Output"

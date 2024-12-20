@@ -32,7 +32,7 @@
       "command-line-flag": "-o",
       "description": "Filename of affine matrix output",
       "value-key": "[OUT_MATRIX]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "out_matrix",
       "name": "Output matrix"

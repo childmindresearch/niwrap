@@ -62,7 +62,7 @@
     {
       "id": "output_file",
       "name": "Output File",
-      "type": "File",
+      "type": "String",
       "description": "Name of output file. Default based on method being used.",
       "command-line-flag": "-output",
       "optional": true,

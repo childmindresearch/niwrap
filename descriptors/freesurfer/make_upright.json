@@ -17,7 +17,7 @@
     {
       "description": "Output MRI image file in .mgz format",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_image",
       "name": "Output MRI Image"

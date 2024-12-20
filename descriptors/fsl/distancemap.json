@@ -24,7 +24,7 @@
       "command-line-flag": "-o",
       "description": "Output image filename",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_image",
       "name": "Output image"
@@ -107,7 +107,10 @@
     {
       "description": "Compulsory arguments for the distancemap tool",
       "id": "compulsory_arguments",
-      "members": ["input_image", "output_image"],
+      "members": [
+        "input_image",
+        "output_image"
+      ],
       "name": "Compulsory Arguments"
     },
     {

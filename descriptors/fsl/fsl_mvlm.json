@@ -114,7 +114,7 @@
       "command-line-flag": "--out_data",
       "description": "Output file name for pre-processed data",
       "value-key": "[OUT_DATA]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "out_data",
       "name": "Output data file"
@@ -123,7 +123,7 @@
       "command-line-flag": "--out_vnscales",
       "description": "Output file name for scaling factors for variance normalisation",
       "value-key": "[OUT_VNSCALES]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "out_vnscales",
       "name": "Variance normalisation scales file"
@@ -134,7 +134,10 @@
     {
       "description": "Compulsory arguments group",
       "id": "compulsory_arguments_group",
-      "members": ["input_file", "basename_output_files"],
+      "members": [
+        "input_file",
+        "basename_output_files"
+      ],
       "name": "Compulsory arguments"
     },
     {

@@ -43,7 +43,7 @@
     {
       "id": "output",
       "name": "Segmentation output",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "value-key": "[OUTPUT]",
       "description": "Path to the segmentation output(s) or folder.",
@@ -52,7 +52,7 @@
     {
       "id": "volume_output",
       "name": "Volume output",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "value-key": "[VOLUME_OUTPUT]",
       "description": "CSV file for volumes of all structures and subjects.",
@@ -61,7 +61,7 @@
     {
       "id": "posteriors_output",
       "name": "Posteriors output",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "value-key": "[POSTERIORS_OUTPUT]",
       "description": "Path to the posteriors output(s) or folder.",

@@ -12,7 +12,7 @@
     {
       "description": "Output .bvars file",
       "value-key": "[OUTPUT_BVARS]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_bvars",
       "name": "Output BVARS file"

@@ -18,7 +18,10 @@
       "name": "Displacement Field Type",
       "value-key": "[DISPLACEMENT_FIELD_TYPE]",
       "type": "String",
-      "value-choices": ["BSpline", "Exponential"],
+      "value-choices": [
+        "BSpline",
+        "Exponential"
+      ],
       "description": "Type of displacement field to simulate."
     },
     {
@@ -32,7 +35,7 @@
       "id": "output_field",
       "name": "Output Field",
       "value-key": "[OUTPUT_FIELD]",
-      "type": "File",
+      "type": "String",
       "description": "Path to save the output displacement field."
     },
     {
