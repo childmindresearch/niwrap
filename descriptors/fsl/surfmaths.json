@@ -29,7 +29,7 @@
     {
       "description": "Output surface file.",
       "value-key": "[OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output",
       "name": "Output"

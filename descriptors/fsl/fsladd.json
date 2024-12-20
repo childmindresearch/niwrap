@@ -13,7 +13,7 @@
     {
       "description": "Output volume file",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_file",
       "name": "Output file"

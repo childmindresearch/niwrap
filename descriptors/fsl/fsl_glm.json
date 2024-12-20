@@ -33,7 +33,7 @@
       "command-line-flag": "-o",
       "description": "Output file name for GLM parameter estimates (GLM betas)",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_file",
       "name": "Output file"
@@ -105,7 +105,7 @@
       "command-line-flag": "--out_cope",
       "description": "Output file name for COPEs (either as text file or image)",
       "value-key": "[OUTPUT_COPES]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_copes",
       "name": "Output COPEs file"
@@ -114,7 +114,7 @@
       "command-line-flag": "--out_z",
       "description": "Output file name for Z-stats (either as text file or image)",
       "value-key": "[OUTPUT_ZSTATS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_zstats",
       "name": "Output Z-stats file"
@@ -123,7 +123,7 @@
       "command-line-flag": "--out_t",
       "description": "Output file name for t-stats (either as text file or image)",
       "value-key": "[OUTPUT_TSTATS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_tstats",
       "name": "Output t-stats file"
@@ -132,7 +132,7 @@
       "command-line-flag": "--out_p",
       "description": "Output file name for p-values of Z-stats (either as text file or image)",
       "value-key": "[OUTPUT_PVALS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_pvals",
       "name": "Output p-values file"
@@ -141,7 +141,7 @@
       "command-line-flag": "--out_f",
       "description": "Output file name for F-value of full model fit",
       "value-key": "[OUTPUT_FVALS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_fvals",
       "name": "Output F-value file"
@@ -150,7 +150,7 @@
       "command-line-flag": "--out_pf",
       "description": "Output file name for p-value for full model fit",
       "value-key": "[OUTPUT_PFVALS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_pfvals",
       "name": "Output p-value file"
@@ -159,7 +159,7 @@
       "command-line-flag": "--out_res",
       "description": "Output file name for residuals",
       "value-key": "[OUTPUT_RESIDUALS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_residuals",
       "name": "Output residuals file"
@@ -168,7 +168,7 @@
       "command-line-flag": "--out_varcb",
       "description": "Output file name for variance of COPEs",
       "value-key": "[OUTPUT_VARCB]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_varcb",
       "name": "Output variance of COPEs file"
@@ -177,7 +177,7 @@
       "command-line-flag": "--out_sigsq",
       "description": "Output file name for residual noise variance sigma-square",
       "value-key": "[OUTPUT_SIGSQ]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_sigsq",
       "name": "Output sigma-square variance file"
@@ -186,7 +186,7 @@
       "command-line-flag": "--out_data",
       "description": "Output file name for pre-processed data",
       "value-key": "[OUTPUT_DATA]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_data",
       "name": "Output pre-processed data"
@@ -195,7 +195,7 @@
       "command-line-flag": "--out_vnscales",
       "description": "Output file name for scaling factors for variance normalisation",
       "value-key": "[OUTPUT_VNSCALES]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_vnscales",
       "name": "Output variance normalisation scales file"
@@ -235,7 +235,10 @@
     {
       "description": "Compulsory inputs for FSL GLM",
       "id": "compulsory_group",
-      "members": ["input_file", "design_matrix"],
+      "members": [
+        "input_file",
+        "design_matrix"
+      ],
       "name": "Compulsory Parameters"
     },
     {
@@ -274,13 +277,18 @@
     {
       "description": "Beta options for FSL GLM",
       "id": "beta_options_group",
-      "members": ["vx_text", "vx_images"],
+      "members": [
+        "vx_text",
+        "vx_images"
+      ],
       "name": "Beta Options"
     },
     {
       "description": "Miscellaneous options for FSL GLM",
       "id": "miscellaneous_params_group",
-      "members": ["help_flag"],
+      "members": [
+        "help_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

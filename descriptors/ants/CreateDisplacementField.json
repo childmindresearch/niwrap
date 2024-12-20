@@ -27,7 +27,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "description": "Create zero-valued vectors along the borders when enabled (pass 1), recommended for better displacement field behavior."
     },
     {
@@ -45,7 +48,7 @@
       "id": "output_image",
       "name": "Output Image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "description": "The output displacement field image with itkVector pixels."
     }

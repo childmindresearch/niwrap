@@ -55,7 +55,7 @@
       "command-line-flag": "--o",
       "description": "Output annotation file. E.g., lh.aparc.annot",
       "value-key": "[OUTPUT_ANNOTATION]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_annotation",
       "name": "Output annotation file"

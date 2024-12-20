@@ -28,7 +28,7 @@
       "command-line-flag": "--out",
       "description": "Output volume of the interpolated spline",
       "value-key": "[OUTPUT_VOLUME]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_volume",
       "name": "Output Volume"
@@ -46,7 +46,7 @@
       "command-line-flag": "--outpts",
       "description": "Output text file containing all interpolated spline points",
       "value-key": "[OUTPUT_POINTS]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_points",
       "name": "Output Points File"

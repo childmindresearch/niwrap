@@ -15,7 +15,7 @@
       "command-line-flag": "-o",
       "description": "Filename for saving the unwrapped phase output",
       "value-key": "[OUTPUT_UNWRAP]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_unwrap",
       "name": "Output unwrap file"
@@ -287,7 +287,10 @@
     {
       "description": "One or more compulsory arguments",
       "id": "compulsory_arguments",
-      "members": ["output_unwrap", "output_unwrap_alias"],
+      "members": [
+        "output_unwrap",
+        "output_unwrap_alias"
+      ],
       "name": "Compulsory Arguments"
     },
     {

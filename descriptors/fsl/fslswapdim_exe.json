@@ -44,7 +44,7 @@
     {
       "description": "Output image file (optional, cannot be used with --checkLR flag)",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_file",
       "name": "Output File"

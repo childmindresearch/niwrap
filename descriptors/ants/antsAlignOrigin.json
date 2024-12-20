@@ -12,7 +12,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "--dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, antsWarp tries to infer the dimensionality from the input image."
     },
@@ -38,7 +41,7 @@
       "id": "output",
       "name": "Output",
       "value-key": "[OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "command-line-flag": "--output",
       "description": "One can either output the warped image or, if the boolean is set, one can print out the displacement field based on the composite transform and the reference image."

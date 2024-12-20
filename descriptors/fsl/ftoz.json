@@ -39,7 +39,7 @@
       "name": "Output file",
       "description": "Output file for Z-scores",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "default-value": "zstats"
     },

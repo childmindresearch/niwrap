@@ -35,7 +35,7 @@
     {
       "id": "output",
       "name": "Output Resampled Surface",
-      "type": "File",
+      "type": "String",
       "description": "Output resampled surface.",
       "value-key": "[OUTPUT]",
       "optional": false,
@@ -54,7 +54,7 @@
       "command-line-flag": "--annot_out",
       "id": "annot_out",
       "name": "Output Annotation",
-      "type": "File",
+      "type": "String",
       "description": "Output annotation (for the resampled atlas). If present, input annotation must be present as well.",
       "value-key": "[ANNOT_OUT]",
       "optional": true

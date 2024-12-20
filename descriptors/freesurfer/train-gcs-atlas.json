@@ -55,7 +55,7 @@
       "command-line-flag": "--o",
       "description": "Output GCS file",
       "value-key": "[OUTPUT_GCS]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_gcs",
       "name": "Output GCS File"

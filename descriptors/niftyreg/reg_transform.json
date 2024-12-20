@@ -28,7 +28,7 @@
     {
       "id": "cpp2def_output",
       "name": "CPP to DEF Output",
-      "type": "File",
+      "type": "String",
       "value-key": "[CPP2DEF_OUTPUT]",
       "description": "Filename of the output deformation field image (DEF).",
       "optional": true
@@ -53,7 +53,7 @@
     {
       "id": "comp1_output",
       "name": "Output for Composition 1",
-      "type": "File",
+      "type": "String",
       "value-key": "[COMP1_OUTPUT]",
       "description": "Filename of the output deformation field.",
       "optional": true
@@ -78,7 +78,7 @@
     {
       "id": "comp2_output",
       "name": "Output for Composition 2",
-      "type": "File",
+      "type": "String",
       "value-key": "[COMP2_OUTPUT]",
       "description": "Filename of the output deformation field.",
       "optional": true
@@ -103,7 +103,7 @@
     {
       "id": "comp3_output",
       "name": "Output for Composition 3",
-      "type": "File",
+      "type": "String",
       "value-key": "[COMP3_OUTPUT]",
       "description": "Filename of the output deformation field.",
       "optional": true
@@ -120,7 +120,7 @@
     {
       "id": "def2disp_output",
       "name": "DEF to DISP Output",
-      "type": "File",
+      "type": "String",
       "value-key": "[DEF2DISP_OUTPUT]",
       "description": "Filename of displacement field x'=x+T(x).",
       "optional": true
@@ -137,7 +137,7 @@
     {
       "id": "disp2def_output",
       "name": "DISP to DEF Output",
-      "type": "File",
+      "type": "String",
       "value-key": "[DISP2DEF_OUTPUT]",
       "description": "Filename of deformation field x'=T(x).",
       "optional": true
@@ -162,7 +162,7 @@
     {
       "id": "upd_sform_output",
       "name": "Update Sform Output",
-      "type": "File",
+      "type": "String",
       "value-key": "[UPD_SFORM_OUTPUT]",
       "description": "Updated image filename.",
       "optional": true
@@ -195,7 +195,7 @@
     {
       "id": "aff2def_output",
       "name": "Output for Aff2Def",
-      "type": "File",
+      "type": "String",
       "value-key": "[AFF2DEF_OUTPUT]",
       "description": "Output deformation field filename.",
       "optional": true
@@ -212,7 +212,7 @@
     {
       "id": "inv_affine_output",
       "name": "Output Affine for Inversion",
-      "type": "File",
+      "type": "String",
       "value-key": "[INV_AFFINE_OUTPUT]",
       "description": "Filename of inverted affine matrix.",
       "optional": true
@@ -237,7 +237,7 @@
     {
       "id": "comp_aff_output",
       "name": "Output Affine for Composition",
-      "type": "File",
+      "type": "String",
       "value-key": "[COMP_AFF_OUTPUT]",
       "description": "Filename of composed affine matrix result.",
       "optional": true

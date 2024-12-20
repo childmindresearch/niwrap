@@ -26,7 +26,7 @@
       "command-line-flag": "-o",
       "id": "moved_output",
       "name": "Moved Output Image",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "description": "The resulting image after registration.",
       "value-key": "[MOVED_OUTPUT]"
@@ -54,7 +54,11 @@
       "id": "transformation_model",
       "name": "Transformation Model",
       "type": "String",
-      "value-choices": ["deform", "affine", "rigid"],
+      "value-choices": [
+        "deform",
+        "affine",
+        "rigid"
+      ],
       "default-value": "deform",
       "optional": true,
       "description": "Specifies the registration transformation model. Options include 'deform', 'affine', and 'rigid'.",
@@ -102,7 +106,10 @@
       "id": "extent",
       "name": "Extent",
       "type": "Number",
-      "value-choices": [192, 256],
+      "value-choices": [
+        192,
+        256
+      ],
       "optional": true,
       "description": "Isotropic extent of the registration space in unit voxels.",
       "default-value": 256,

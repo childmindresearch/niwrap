@@ -22,7 +22,7 @@
     {
       "description": "File to save the search results",
       "value-key": "[FILE_OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "file_output",
       "name": "File Output"

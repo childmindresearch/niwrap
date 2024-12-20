@@ -27,7 +27,7 @@
       "description": "Output pointset file (json)",
       "id": "out",
       "name": "Output pointset file",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "value-key": "[OUT]"
     },

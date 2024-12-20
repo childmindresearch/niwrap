@@ -32,7 +32,7 @@
       "description": "Output file name",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-out",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "out_file",
       "name": "Output file"
@@ -41,7 +41,7 @@
       "description": "Output resampled thickness",
       "value-key": "[OUT_RESAMPLED]",
       "command-line-flag": "-out_resampled",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "out_resampled",
       "name": "Output resampled thickness file"

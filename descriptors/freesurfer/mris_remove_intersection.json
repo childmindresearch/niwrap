@@ -17,7 +17,7 @@
     {
       "description": "Corrected output surface file.",
       "value-key": "[CORRECTED_SURFACE_OUT_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "corrected_surface_out_file",
       "name": "Corrected Surface Out File"

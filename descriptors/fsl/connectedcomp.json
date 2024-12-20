@@ -16,7 +16,7 @@
     {
       "description": "Output image volume",
       "value-key": "[OUTPUT_VOLUME]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_volume",
       "name": "Output volume"

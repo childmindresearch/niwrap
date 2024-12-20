@@ -90,7 +90,7 @@
       "command-line-flag": "--surfout",
       "description": "Output surface file, not ASCII matrix (valid only for scalars)",
       "value-key": "[SURFACE_OUTPUT]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "surface_output",
       "name": "Surface output file"

@@ -17,7 +17,7 @@
       "command-line-flag": "-o",
       "description": "Refined segmentation output name.",
       "value-key": "[OUTPUT_SEGMENTATION]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_segmentation",
       "name": "Output Segmentation"

@@ -21,7 +21,7 @@
     {
       "description": "Output volume file (e.g. outvol.nii.gz)",
       "value-key": "[OUTPUT_VOLUME]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_volume",
       "name": "Output Volume"

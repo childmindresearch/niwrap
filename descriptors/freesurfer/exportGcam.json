@@ -36,7 +36,7 @@
       "command-line-flag": "--out_gcam",
       "description": "Output GCAM (Geodesic Coordinate-based Anatomic Mapping).",
       "value-key": "[OUT_GCAM]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "out_gcam",
       "name": "Output GCAM"
@@ -67,7 +67,10 @@
       "optional": true,
       "id": "interp_method",
       "name": "Interpolation Method",
-      "value-choices": ["linear", "nearest"],
+      "value-choices": [
+        "linear",
+        "nearest"
+      ],
       "default-value": "linear"
     },
     {

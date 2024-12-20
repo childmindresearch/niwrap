@@ -18,7 +18,7 @@
       "id": "output",
       "name": "Output Surface",
       "optional": false,
-      "type": "File",
+      "type": "String",
       "command-line-flag": "-o",
       "value-key": "[OUTPUT]"
     },

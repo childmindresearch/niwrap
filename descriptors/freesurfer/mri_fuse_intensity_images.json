@@ -31,7 +31,7 @@
     {
       "description": "Output fused volume",
       "value-key": "[OUTPUT_VOLUME]",
-      "type": "File",
+      "type": "String",
       "optional": false,
       "id": "output_volume",
       "name": "Output Volume"

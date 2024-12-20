@@ -17,7 +17,7 @@
       "id": "output_image",
       "name": "Output Image",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "description": "The path for the output tiled image."
     },
     {

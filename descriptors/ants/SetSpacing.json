@@ -24,7 +24,7 @@
       "id": "output_file",
       "name": "Output file",
       "value-key": "[OUTPUT_FILE]",
-      "type": "File",
+      "type": "String",
       "description": "The output image file in NII format."
     },
     {

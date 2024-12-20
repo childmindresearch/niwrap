@@ -16,7 +16,7 @@
     {
       "id": "output_volume",
       "name": "Output Volume",
-      "type": "File",
+      "type": "String",
       "description": "Defaced output volume",
       "optional": false,
       "value-key": "[OUTPUT_VOLUME]",

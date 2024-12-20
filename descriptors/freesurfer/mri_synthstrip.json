@@ -19,7 +19,7 @@
       "command-line-flag": "-o",
       "description": "Save stripped image to path.",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_image",
       "name": "Output image"
