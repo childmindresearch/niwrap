@@ -134,10 +134,7 @@
     {
       "description": "Compulsory arguments group",
       "id": "compulsory_arguments_group",
-      "members": [
-        "input_file",
-        "basename_output_files"
-      ],
+      "members": ["input_file", "basename_output_files"],
       "name": "Compulsory arguments"
     },
     {

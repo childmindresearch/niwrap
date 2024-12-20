@@ -124,12 +124,7 @@
       "command-line-flag": "--partial-scca-option",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "PQ",
-        "PminusRQ",
-        "PQminusR",
-        "PminusRQminusR"
-      ],
+      "value-choices": ["PQ", "PminusRQ", "PQminusR", "PminusRQminusR"],
       "description": "Choices for partial SCCA: PQ, PminusRQ, PQminusR, PminusRQminusR."
     },
     {

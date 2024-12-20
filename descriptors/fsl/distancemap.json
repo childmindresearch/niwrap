@@ -107,10 +107,7 @@
     {
       "description": "Compulsory arguments for the distancemap tool",
       "id": "compulsory_arguments",
-      "members": [
-        "input_image",
-        "output_image"
-      ],
+      "members": ["input_image", "output_image"],
       "name": "Compulsory Arguments"
     },
     {

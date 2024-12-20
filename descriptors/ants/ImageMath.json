@@ -18,11 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [
-        2,
-        3,
-        4
-      ],
+      "value-choices": [2, 3, 4],
       "description": "The dimensionality of the image. Use 2 or 3 for spatial images, and 4 for 4D images like time-series data."
     },
     {
