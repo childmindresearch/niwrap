@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FeatModelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `feat_model(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def feat_model_params(
     design_name_root: str,
     confound_matrix: InputPathType | None = None,
@@ -164,6 +172,7 @@ def feat_model(
 
 __all__ = [
     "FEAT_MODEL_METADATA",
+    "FeatModelOutputs",
     "feat_model",
     "feat_model_params",
 ]

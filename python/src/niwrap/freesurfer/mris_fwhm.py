@@ -80,6 +80,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisFwhmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_fwhm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_fwhm_params(
     input_file: InputPathType,
     subject: str,
@@ -474,6 +482,7 @@ def mris_fwhm(
 
 __all__ = [
     "MRIS_FWHM_METADATA",
+    "MrisFwhmOutputs",
     "mris_fwhm",
     "mris_fwhm_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VAfniOrient2RaimapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__afni_orient2_raimap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__afni_orient2_raimap_params(
     orientation_code: str,
 ) -> VAfniOrient2RaimapParameters:
@@ -154,6 +162,7 @@ def v__afni_orient2_raimap(
 
 
 __all__ = [
+    "VAfniOrient2RaimapOutputs",
     "V__AFNI_ORIENT2_RAIMAP_METADATA",
     "v__afni_orient2_raimap",
     "v__afni_orient2_raimap_params",

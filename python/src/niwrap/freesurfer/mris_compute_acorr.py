@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisComputeAcorrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_compute_acorr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_compute_acorr_params(
     output_subject: str,
     hemi: str,
@@ -195,6 +203,7 @@ def mris_compute_acorr(
 
 __all__ = [
     "MRIS_COMPUTE_ACORR_METADATA",
+    "MrisComputeAcorrOutputs",
     "mris_compute_acorr",
     "mris_compute_acorr_params",
 ]

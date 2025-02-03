@@ -64,6 +64,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Conf2hiresOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `conf2hires(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def conf2hires_params(
     subject: str,
     no_t2: bool = False,
@@ -298,6 +306,7 @@ def conf2hires(
 
 __all__ = [
     "CONF2HIRES_METADATA",
+    "Conf2hiresOutputs",
     "conf2hires",
     "conf2hires_params",
 ]

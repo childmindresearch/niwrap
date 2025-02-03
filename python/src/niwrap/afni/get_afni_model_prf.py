@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GetAfniModelPrfOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `get_afni_model_prf(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def get_afni_model_prf_params(
     amplitude: float,
     x_coord: float,
@@ -176,6 +184,7 @@ def get_afni_model_prf(
 
 __all__ = [
     "GET_AFNI_MODEL_PRF_METADATA",
+    "GetAfniModelPrfOutputs",
     "get_afni_model_prf",
     "get_afni_model_prf_params",
 ]

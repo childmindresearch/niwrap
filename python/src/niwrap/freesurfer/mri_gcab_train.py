@@ -49,6 +49,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriGcabTrainOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_gcab_train(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_gcab_train_params(
 ) -> MriGcabTrainParameters:
     """
@@ -150,6 +158,7 @@ def mri_gcab_train(
 
 __all__ = [
     "MRI_GCAB_TRAIN_METADATA",
+    "MriGcabTrainOutputs",
     "mri_gcab_train",
     "mri_gcab_train_params",
 ]

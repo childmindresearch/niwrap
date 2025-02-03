@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RunSegmentThalamicNucleiShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `run_segment_thalamic_nuclei_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def run_segment_thalamic_nuclei_sh_params(
     mcr_root: str,
     args: list[str] | None = None,
@@ -166,6 +174,7 @@ def run_segment_thalamic_nuclei_sh(
 
 __all__ = [
     "RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA",
+    "RunSegmentThalamicNucleiShOutputs",
     "run_segment_thalamic_nuclei_sh",
     "run_segment_thalamic_nuclei_sh_params",
 ]

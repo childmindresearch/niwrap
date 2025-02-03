@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriCorrectSegmentationsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_correct_segmentations(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_correct_segmentations_params(
     input_file_1: InputPathType,
     input_file_2: InputPathType,
@@ -162,6 +170,7 @@ def mri_correct_segmentations(
 
 __all__ = [
     "MRI_CORRECT_SEGMENTATIONS_METADATA",
+    "MriCorrectSegmentationsOutputs",
     "mri_correct_segmentations",
     "mri_correct_segmentations_params",
 ]

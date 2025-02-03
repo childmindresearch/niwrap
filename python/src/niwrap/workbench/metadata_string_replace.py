@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MetadataStringReplaceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `metadata_string_replace(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def metadata_string_replace_params(
     input_file: str,
     find_string: str,
@@ -191,6 +199,7 @@ def metadata_string_replace(
 
 __all__ = [
     "METADATA_STRING_REPLACE_METADATA",
+    "MetadataStringReplaceOutputs",
     "metadata_string_replace",
     "metadata_string_replace_params",
 ]

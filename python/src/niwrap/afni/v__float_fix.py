@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VFloatFixOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__float_fix(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__float_fix_params(
     input_files: list[InputPathType],
 ) -> VFloatFixParameters:
@@ -158,6 +166,7 @@ def v__float_fix(
 
 
 __all__ = [
+    "VFloatFixOutputs",
     "V__FLOAT_FIX_METADATA",
     "v__float_fix",
     "v__float_fix_params",

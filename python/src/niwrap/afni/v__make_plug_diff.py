@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VMakePlugDiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__make_plug_diff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__make_plug_diff_params(
     vtk_dir: str,
     xm_dir: str,
@@ -213,6 +221,7 @@ def v__make_plug_diff(
 
 
 __all__ = [
+    "VMakePlugDiffOutputs",
     "V__MAKE_PLUG_DIFF_METADATA",
     "v__make_plug_diff",
     "v__make_plug_diff_params",

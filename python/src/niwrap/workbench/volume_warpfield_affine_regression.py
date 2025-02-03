@@ -102,6 +102,14 @@ def volume_warpfield_affine_regression_flirt_out_cargs(
     return cargs
 
 
+class VolumeWarpfieldAffineRegressionOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_warpfield_affine_regression(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_warpfield_affine_regression_params(
     warpfield: str,
     affine_out: str,
@@ -268,6 +276,7 @@ def volume_warpfield_affine_regression(
 
 __all__ = [
     "VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA",
+    "VolumeWarpfieldAffineRegressionOutputs",
     "volume_warpfield_affine_regression",
     "volume_warpfield_affine_regression_flirt_out_params",
     "volume_warpfield_affine_regression_params",

@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisExtractPatchesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_extract_patches(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_extract_patches_params(
     subject: str,
     output_dir: str,
@@ -162,6 +170,7 @@ def mris_extract_patches(
 
 __all__ = [
     "MRIS_EXTRACT_PATCHES_METADATA",
+    "MrisExtractPatchesOutputs",
     "mris_extract_patches",
     "mris_extract_patches_params",
 ]

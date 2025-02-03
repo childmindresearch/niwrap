@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MorphRgbRhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `morph_rgb_rh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def morph_rgb_rh_params(
     subject_id: str,
 ) -> MorphRgbRhParameters:
@@ -157,6 +165,7 @@ def morph_rgb_rh(
 
 __all__ = [
     "MORPH_RGB_RH_METADATA",
+    "MorphRgbRhOutputs",
     "morph_rgb_rh",
     "morph_rgb_rh_params",
 ]

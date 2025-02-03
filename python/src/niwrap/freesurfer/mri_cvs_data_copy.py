@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriCvsDataCopyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_cvs_data_copy(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_cvs_data_copy_params(
     subjid: str,
     olddir: str,
@@ -198,6 +206,7 @@ def mri_cvs_data_copy(
 
 __all__ = [
     "MRI_CVS_DATA_COPY_METADATA",
+    "MriCvsDataCopyOutputs",
     "mri_cvs_data_copy",
     "mri_cvs_data_copy_params",
 ]

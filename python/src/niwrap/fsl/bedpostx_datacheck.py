@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BedpostxDatacheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `bedpostx_datacheck(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def bedpostx_datacheck_params(
     data_dir: str,
 ) -> BedpostxDatacheckParameters:
@@ -155,6 +163,7 @@ def bedpostx_datacheck(
 
 __all__ = [
     "BEDPOSTX_DATACHECK_METADATA",
+    "BedpostxDatacheckOutputs",
     "bedpostx_datacheck",
     "bedpostx_datacheck_params",
 ]

@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BackendAverageDenseRoiOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `backend_average_dense_roi(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def backend_average_dense_roi_params(
     index_list: str,
     out_file: str,
@@ -173,6 +181,7 @@ def backend_average_dense_roi(
 
 __all__ = [
     "BACKEND_AVERAGE_DENSE_ROI_METADATA",
+    "BackendAverageDenseRoiOutputs",
     "backend_average_dense_roi",
     "backend_average_dense_roi_params",
 ]

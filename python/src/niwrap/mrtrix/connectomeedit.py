@@ -107,6 +107,14 @@ def connectomeedit_config_cargs(
     return cargs
 
 
+class ConnectomeeditOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `connectomeedit(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def connectomeedit_params(
     input_: str,
     operation: str,
@@ -307,6 +315,7 @@ def connectomeedit(
 
 __all__ = [
     "CONNECTOMEEDIT_METADATA",
+    "ConnectomeeditOutputs",
     "connectomeedit",
     "connectomeedit_config_params",
     "connectomeedit_params",

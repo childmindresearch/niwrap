@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisInitGlobalTractographyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_init_global_tractography(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_init_global_tractography_params(
     subject: str,
     parcellation: str,
@@ -169,6 +177,7 @@ def mris_init_global_tractography(
 
 __all__ = [
     "MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA",
+    "MrisInitGlobalTractographyOutputs",
     "mris_init_global_tractography",
     "mris_init_global_tractography_params",
 ]

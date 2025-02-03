@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dnewidOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3dnewid(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3dnewid_params(
     datasets: list[InputPathType],
     fun: float | None = None,
@@ -216,6 +224,7 @@ def v_3dnewid(
 
 
 __all__ = [
+    "V3dnewidOutputs",
     "V_3DNEWID_METADATA",
     "v_3dnewid",
     "v_3dnewid_params",

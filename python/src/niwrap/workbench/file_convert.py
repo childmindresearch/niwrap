@@ -220,6 +220,14 @@ def file_convert_cifti_version_convert_cargs(
     return cargs
 
 
+class FileConvertOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `file_convert(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def file_convert_params(
     border_version_convert: FileConvertBorderVersionConvertParameters | None = None,
     nifti_version_convert: FileConvertNiftiVersionConvertParameters | None = None,
@@ -348,6 +356,7 @@ def file_convert(
 
 __all__ = [
     "FILE_CONVERT_METADATA",
+    "FileConvertOutputs",
     "file_convert",
     "file_convert_border_version_convert_params",
     "file_convert_cifti_version_convert_params",

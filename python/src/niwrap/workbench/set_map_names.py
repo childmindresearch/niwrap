@@ -100,6 +100,14 @@ def set_map_names_map_cargs(
     return cargs
 
 
+class SetMapNamesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `set_map_names(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def set_map_names_params(
     data_file: str,
     opt_name_file_file: str | None = None,
@@ -250,6 +258,7 @@ def set_map_names(
 
 __all__ = [
     "SET_MAP_NAMES_METADATA",
+    "SetMapNamesOutputs",
     "set_map_names",
     "set_map_names_map_params",
     "set_map_names_params",

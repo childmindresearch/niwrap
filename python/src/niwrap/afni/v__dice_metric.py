@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDiceMetricOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__dice_metric(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__dice_metric_params(
     base: InputPathType,
     dsets: list[InputPathType],
@@ -285,6 +293,7 @@ def v__dice_metric(
 
 
 __all__ = [
+    "VDiceMetricOutputs",
     "V__DICE_METRIC_METADATA",
     "v__dice_metric",
     "v__dice_metric_params",

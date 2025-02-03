@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PlugoutIjkOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `plugout_ijk(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def plugout_ijk_params(
     host: str | None = None,
     verbose: bool = False,
@@ -270,6 +278,7 @@ def plugout_ijk(
 
 __all__ = [
     "PLUGOUT_IJK_METADATA",
+    "PlugoutIjkOutputs",
     "plugout_ijk",
     "plugout_ijk_params",
 ]

@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class InflateSubjectLhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `inflate_subject_lh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def inflate_subject_lh_params(
     input_folder: str,
     hostname_flag: bool = False,
@@ -165,6 +173,7 @@ def inflate_subject_lh(
 
 __all__ = [
     "INFLATE_SUBJECT_LH_METADATA",
+    "InflateSubjectLhOutputs",
     "inflate_subject_lh",
     "inflate_subject_lh_params",
 ]

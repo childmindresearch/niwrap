@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BorderLengthOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `border_length(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def border_length_params(
     border: InputPathType,
     surface: InputPathType,
@@ -213,6 +221,7 @@ def border_length(
 
 __all__ = [
     "BORDER_LENGTH_METADATA",
+    "BorderLengthOutputs",
     "border_length",
     "border_length_params",
 ]

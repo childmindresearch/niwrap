@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GcatrainskullOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gcatrainskull(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gcatrainskull_params(
     gcatrain_dir: str,
 ) -> GcatrainskullParameters:
@@ -158,6 +166,7 @@ def gcatrainskull(
 
 __all__ = [
     "GCATRAINSKULL_METADATA",
+    "GcatrainskullOutputs",
     "gcatrainskull",
     "gcatrainskull_params",
 ]

@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriDefacerOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_defacer(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_defacer_params(
     input_volume: InputPathType,
     headmask: InputPathType,
@@ -416,6 +424,7 @@ def mri_defacer(
 
 __all__ = [
     "MRI_DEFACER_METADATA",
+    "MriDefacerOutputs",
     "mri_defacer",
     "mri_defacer_params",
 ]

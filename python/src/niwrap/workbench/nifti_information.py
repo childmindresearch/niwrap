@@ -144,6 +144,14 @@ def nifti_information_print_xml_cargs(
     return cargs
 
 
+class NiftiInformationOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `nifti_information(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def nifti_information_params(
     nifti_file: str,
     print_header: NiftiInformationPrintHeaderParameters | None = None,
@@ -277,6 +285,7 @@ def nifti_information(
 
 __all__ = [
     "NIFTI_INFORMATION_METADATA",
+    "NiftiInformationOutputs",
     "nifti_information",
     "nifti_information_params",
     "nifti_information_print_header_params",

@@ -276,6 +276,14 @@ def fixelconvert_various_file_cargs_(
     return cargs
 
 
+class FixelconvertOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fixelconvert(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fixelconvert_params(
     fixel_in: typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
     fixel_out: typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
@@ -536,6 +544,7 @@ def fixelconvert(
 
 __all__ = [
     "FIXELCONVERT_METADATA",
+    "FixelconvertOutputs",
     "fixelconvert",
     "fixelconvert_config_params",
     "fixelconvert_params",

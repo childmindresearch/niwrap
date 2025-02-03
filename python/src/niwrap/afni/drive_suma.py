@@ -80,6 +80,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DriveSumaOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `drive_suma(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def drive_suma_params(
     command: str,
     surf_label: str | None = None,
@@ -473,6 +481,7 @@ def drive_suma(
 
 __all__ = [
     "DRIVE_SUMA_METADATA",
+    "DriveSumaOutputs",
     "drive_suma",
     "drive_suma_params",
 ]

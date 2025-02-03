@@ -252,6 +252,14 @@ def cifti_replace_structure_volume_cargs(
     return cargs
 
 
+class CiftiReplaceStructureOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_replace_structure(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_replace_structure_params(
     cifti: str,
     direction: str,
@@ -512,6 +520,7 @@ def cifti_replace_structure(
 
 __all__ = [
     "CIFTI_REPLACE_STRUCTURE_METADATA",
+    "CiftiReplaceStructureOutputs",
     "cifti_replace_structure",
     "cifti_replace_structure_label_params",
     "cifti_replace_structure_metric_params",

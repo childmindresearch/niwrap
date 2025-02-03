@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriValidateSkullStrippedOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_validate_skull_stripped(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_validate_skull_stripped_params(
     mri_reference: InputPathType,
     mri_test: InputPathType,
@@ -169,6 +177,7 @@ def mri_validate_skull_stripped(
 
 __all__ = [
     "MRI_VALIDATE_SKULL_STRIPPED_METADATA",
+    "MriValidateSkullStrippedOutputs",
     "mri_validate_skull_stripped",
     "mri_validate_skull_stripped_params",
 ]

@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Ifh2hdrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `ifh2hdr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def ifh2hdr_params(
     input_file: InputPathType,
     range_: str | None = None,
@@ -169,6 +177,7 @@ def ifh2hdr(
 
 __all__ = [
     "IFH2HDR_METADATA",
+    "Ifh2hdrOutputs",
     "ifh2hdr",
     "ifh2hdr_params",
 ]

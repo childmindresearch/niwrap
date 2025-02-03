@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Fname2stemOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fname2stem(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fname2stem_params(
     filename: str,
 ) -> Fname2stemParameters:
@@ -159,6 +167,7 @@ def fname2stem(
 
 __all__ = [
     "FNAME2STEM_METADATA",
+    "Fname2stemOutputs",
     "fname2stem",
     "fname2stem_params",
 ]

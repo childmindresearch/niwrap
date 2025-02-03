@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriStripSubjectInfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_strip_subject_info(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_strip_subject_info_params(
     input_files: list[InputPathType],
     output_directory: str,
@@ -162,6 +170,7 @@ def mri_strip_subject_info(
 
 __all__ = [
     "MRI_STRIP_SUBJECT_INFO_METADATA",
+    "MriStripSubjectInfoOutputs",
     "mri_strip_subject_info",
     "mri_strip_subject_info_params",
 ]

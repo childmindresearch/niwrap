@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MorphTablesRhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `morph_tables_rh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def morph_tables_rh_params(
     options: str | None = None,
 ) -> MorphTablesRhParameters:
@@ -161,6 +169,7 @@ def morph_tables_rh(
 
 __all__ = [
     "MORPH_TABLES_RH_METADATA",
+    "MorphTablesRhOutputs",
     "morph_tables_rh",
     "morph_tables_rh_params",
 ]

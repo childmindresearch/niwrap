@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class IsSurfaceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `is_surface(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def is_surface_params(
     infile: InputPathType,
 ) -> IsSurfaceParameters:
@@ -159,6 +167,7 @@ def is_surface(
 
 __all__ = [
     "IS_SURFACE_METADATA",
+    "IsSurfaceOutputs",
     "is_surface",
     "is_surface_params",
 ]

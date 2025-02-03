@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RenormalizeT1SubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `renormalize_t1_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def renormalize_t1_subject_params(
     subject_dir: str,
 ) -> RenormalizeT1SubjectParameters:
@@ -157,6 +165,7 @@ def renormalize_t1_subject(
 
 __all__ = [
     "RENORMALIZE_T1_SUBJECT_METADATA",
+    "RenormalizeT1SubjectOutputs",
     "renormalize_t1_subject",
     "renormalize_t1_subject_params",
 ]

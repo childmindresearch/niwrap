@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriLogLikelihoodOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_log_likelihood(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_log_likelihood_params(
     input_brain_images: list[InputPathType],
     atlas_file: InputPathType,
@@ -169,6 +177,7 @@ def mri_log_likelihood(
 
 __all__ = [
     "MRI_LOG_LIKELIHOOD_METADATA",
+    "MriLogLikelihoodOutputs",
     "mri_log_likelihood",
     "mri_log_likelihood_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CheckReconsShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `check_recons_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def check_recons_sh_params(
     subject_directory: str | None = None,
 ) -> CheckReconsShParameters:
@@ -161,6 +169,7 @@ def check_recons_sh(
 
 __all__ = [
     "CHECK_RECONS_SH_METADATA",
+    "CheckReconsShOutputs",
     "check_recons_sh",
     "check_recons_sh_params",
 ]

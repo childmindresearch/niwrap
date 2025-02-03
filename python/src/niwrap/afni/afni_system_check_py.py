@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AfniSystemCheckPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `afni_system_check_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def afni_system_check_py_params(
     check_all: bool = False,
     find_prog: str | None = None,
@@ -248,6 +256,7 @@ def afni_system_check_py(
 
 __all__ = [
     "AFNI_SYSTEM_CHECK_PY_METADATA",
+    "AfniSystemCheckPyOutputs",
     "afni_system_check_py",
     "afni_system_check_py_params",
 ]

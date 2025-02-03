@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DicomHdrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dicom_hdr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dicom_hdr_params(
     files: list[InputPathType],
     hex_: bool = False,
@@ -237,6 +245,7 @@ def dicom_hdr(
 
 __all__ = [
     "DICOM_HDR_METADATA",
+    "DicomHdrOutputs",
     "dicom_hdr",
     "dicom_hdr_params",
 ]

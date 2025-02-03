@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V4DaverageOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__4_daverage(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__4_daverage_params(
     output_prefix: str,
 ) -> V4DaverageParameters:
@@ -155,6 +163,7 @@ def v__4_daverage(
 
 
 __all__ = [
+    "V4DaverageOutputs",
     "V__4_DAVERAGE_METADATA",
     "v__4_daverage",
     "v__4_daverage_params",

@@ -277,6 +277,14 @@ def fixelfilter_various_file_cargs_(
     return cargs
 
 
+class FixelfilterOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fixelfilter(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fixelfilter_params(
     matrix: InputPathType,
     input_: typing.Union[FixelfilterVariousStringParameters, FixelfilterVariousFileParameters],
@@ -563,6 +571,7 @@ def fixelfilter(
 
 __all__ = [
     "FIXELFILTER_METADATA",
+    "FixelfilterOutputs",
     "fixelfilter",
     "fixelfilter_config_params",
     "fixelfilter_params",

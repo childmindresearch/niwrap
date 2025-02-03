@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisLabelAreaOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_label_area(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_label_area_params(
     subject_name: str,
     hemi: str,
@@ -217,6 +225,7 @@ def mris_label_area(
 
 __all__ = [
     "MRIS_LABEL_AREA_METADATA",
+    "MrisLabelAreaOutputs",
     "mris_label_area",
     "mris_label_area_params",
 ]

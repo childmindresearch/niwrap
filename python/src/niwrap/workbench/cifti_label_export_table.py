@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CiftiLabelExportTableOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_label_export_table(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_label_export_table_params(
     label_in: InputPathType,
     map_: str,
@@ -176,6 +184,7 @@ def cifti_label_export_table(
 
 __all__ = [
     "CIFTI_LABEL_EXPORT_TABLE_METADATA",
+    "CiftiLabelExportTableOutputs",
     "cifti_label_export_table",
     "cifti_label_export_table_params",
 ]

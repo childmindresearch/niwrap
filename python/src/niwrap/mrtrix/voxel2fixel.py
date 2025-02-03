@@ -108,6 +108,14 @@ def voxel2fixel_config_cargs(
     return cargs
 
 
+class Voxel2fixelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `voxel2fixel(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def voxel2fixel_params(
     image_in: InputPathType,
     fixel_directory_in: InputPathType,
@@ -318,6 +326,7 @@ def voxel2fixel(
 
 __all__ = [
     "VOXEL2FIXEL_METADATA",
+    "Voxel2fixelOutputs",
     "voxel2fixel",
     "voxel2fixel_config_params",
     "voxel2fixel_params",

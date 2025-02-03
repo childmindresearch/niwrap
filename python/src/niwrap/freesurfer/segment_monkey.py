@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SegmentMonkeyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `segment_monkey(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def segment_monkey_params(
     control_points: list[str],
 ) -> SegmentMonkeyParameters:
@@ -155,6 +163,7 @@ def segment_monkey(
 
 __all__ = [
     "SEGMENT_MONKEY_METADATA",
+    "SegmentMonkeyOutputs",
     "segment_monkey",
     "segment_monkey_params",
 ]

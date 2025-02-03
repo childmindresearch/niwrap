@@ -215,6 +215,14 @@ def cifti_export_dense_mapping_volume_cargs(
     return cargs
 
 
+class CiftiExportDenseMappingOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_export_dense_mapping(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_export_dense_mapping_params(
     cifti: InputPathType,
     direction: str,
@@ -443,6 +451,7 @@ def cifti_export_dense_mapping(
 
 __all__ = [
     "CIFTI_EXPORT_DENSE_MAPPING_METADATA",
+    "CiftiExportDenseMappingOutputs",
     "cifti_export_dense_mapping",
     "cifti_export_dense_mapping_params",
     "cifti_export_dense_mapping_surface_params",

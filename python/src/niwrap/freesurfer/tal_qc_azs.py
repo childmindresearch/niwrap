@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TalQcAzsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tal_qc_azs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tal_qc_azs_params(
     logfile: InputPathType,
 ) -> TalQcAzsParameters:
@@ -155,6 +163,7 @@ def tal_qc_azs(
 
 __all__ = [
     "TAL_QC_AZS_METADATA",
+    "TalQcAzsOutputs",
     "tal_qc_azs",
     "tal_qc_azs_params",
 ]

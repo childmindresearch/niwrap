@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisTargetPosOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_target_pos(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_target_pos_params(
     input_volume: InputPathType,
     input_surface: InputPathType,
@@ -280,6 +288,7 @@ def mris_target_pos(
 
 __all__ = [
     "MRIS_TARGET_POS_METADATA",
+    "MrisTargetPosOutputs",
     "mris_target_pos",
     "mris_target_pos_params",
 ]

@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriMergepathsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_mergepaths(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_mergepaths_params(
     input_volumes: list[InputPathType],
     output_volume: str,
@@ -215,6 +223,7 @@ def dmri_mergepaths(
 
 __all__ = [
     "DMRI_MERGEPATHS_METADATA",
+    "DmriMergepathsOutputs",
     "dmri_mergepaths",
     "dmri_mergepaths_params",
 ]

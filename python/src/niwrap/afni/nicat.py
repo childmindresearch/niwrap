@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class NicatOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `nicat(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def nicat_params(
     stream_spec: str,
     reopen: str | None = None,
@@ -187,6 +195,7 @@ def nicat(
 
 __all__ = [
     "NICAT_METADATA",
+    "NicatOutputs",
     "nicat",
     "nicat_params",
 ]

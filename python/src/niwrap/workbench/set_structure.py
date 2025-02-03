@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SetStructureOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `set_structure(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def set_structure_params(
     data_file: str,
     structure: str,
@@ -309,6 +317,7 @@ def set_structure(
 
 __all__ = [
     "SET_STRUCTURE_METADATA",
+    "SetStructureOutputs",
     "set_structure",
     "set_structure_params",
 ]

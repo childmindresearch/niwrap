@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriPolvOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_polv(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_polv_params(
     input_image: InputPathType,
     output_image: InputPathType,
@@ -180,6 +188,7 @@ def mri_polv(
 
 __all__ = [
     "MRI_POLV_METADATA",
+    "MriPolvOutputs",
     "mri_polv",
     "mri_polv_params",
 ]

@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VSpharmExamplesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__spharm_examples(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__spharm_examples_params(
     help_web: bool = False,
     help_web_alias: bool = False,
@@ -203,6 +211,7 @@ def v__spharm_examples(
 
 
 __all__ = [
+    "VSpharmExamplesOutputs",
     "V__SPHARM_EXAMPLES_METADATA",
     "v__spharm_examples",
     "v__spharm_examples_params",

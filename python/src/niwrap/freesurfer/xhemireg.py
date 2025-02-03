@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class XhemiregOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `xhemireg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def xhemireg_params(
     subject: str,
     output_dir: str | None = None,
@@ -268,6 +276,7 @@ def xhemireg(
 
 __all__ = [
     "XHEMIREG_METADATA",
+    "XhemiregOutputs",
     "xhemireg",
     "xhemireg_params",
 ]

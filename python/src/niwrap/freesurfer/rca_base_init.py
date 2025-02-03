@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RcaBaseInitOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rca_base_init(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rca_base_init_params(
     log_file: str | None = None,
     status_file: str | None = None,
@@ -177,6 +185,7 @@ def rca_base_init(
 
 __all__ = [
     "RCA_BASE_INIT_METADATA",
+    "RcaBaseInitOutputs",
     "rca_base_init",
     "rca_base_init_params",
 ]

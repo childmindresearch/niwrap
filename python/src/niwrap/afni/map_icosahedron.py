@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MapIcosahedronOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `map_icosahedron(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def map_icosahedron_params(
     spec_file: InputPathType,
     rec_depth: float | None = None,
@@ -269,6 +277,7 @@ def map_icosahedron(
 
 __all__ = [
     "MAP_ICOSAHEDRON_METADATA",
+    "MapIcosahedronOutputs",
     "map_icosahedron",
     "map_icosahedron_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ImrmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `imrm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def imrm_params(
     images_to_remove: list[str],
 ) -> ImrmParameters:
@@ -157,6 +165,7 @@ def imrm(
 
 __all__ = [
     "IMRM_METADATA",
+    "ImrmOutputs",
     "imrm",
     "imrm_params",
 ]

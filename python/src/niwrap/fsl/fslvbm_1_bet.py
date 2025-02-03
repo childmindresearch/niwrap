@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Fslvbm1BetOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslvbm_1_bet(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslvbm_1_bet_params(
     increased_robustness: bool = False,
     bet_parameters: str | None = None,
@@ -167,6 +175,7 @@ def fslvbm_1_bet(
 
 __all__ = [
     "FSLVBM_1_BET_METADATA",
+    "Fslvbm1BetOutputs",
     "fslvbm_1_bet",
     "fslvbm_1_bet_params",
 ]

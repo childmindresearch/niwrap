@@ -104,6 +104,14 @@ def cifti_stats_roi_cargs(
     return cargs
 
 
+class CiftiStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_stats_params(
     cifti_in: InputPathType,
     opt_reduce_operation: str | None = None,
@@ -318,6 +326,7 @@ def cifti_stats(
 
 __all__ = [
     "CIFTI_STATS_METADATA",
+    "CiftiStatsOutputs",
     "cifti_stats",
     "cifti_stats_params",
     "cifti_stats_roi_params",

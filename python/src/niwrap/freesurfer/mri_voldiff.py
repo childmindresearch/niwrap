@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriVoldiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_voldiff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_voldiff_params(
     volume1: InputPathType,
     volume2: InputPathType,
@@ -234,6 +242,7 @@ def mri_voldiff(
 
 __all__ = [
     "MRI_VOLDIFF_METADATA",
+    "MriVoldiffOutputs",
     "mri_voldiff",
     "mri_voldiff_params",
 ]

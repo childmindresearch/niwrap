@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TksurferOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tksurfer(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tksurfer_params(
     subject_id: str,
     hemisphere: str,
@@ -178,6 +186,7 @@ def tksurfer(
 
 __all__ = [
     "TKSURFER_METADATA",
+    "TksurferOutputs",
     "tksurfer",
     "tksurfer_params",
 ]

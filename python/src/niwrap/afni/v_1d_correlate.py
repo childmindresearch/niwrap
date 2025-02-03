@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V1dCorrelateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_1d_correlate(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_1d_correlate_params(
     input_files: list[InputPathType],
     ktaub: bool = False,
@@ -196,6 +204,7 @@ def v_1d_correlate(
 
 
 __all__ = [
+    "V1dCorrelateOutputs",
     "V_1D_CORRELATE_METADATA",
     "v_1d_correlate",
     "v_1d_correlate_params",

@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Table2mapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `table2map(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def table2map_params(
     input_table: InputPathType,
     output_map: str,
@@ -218,6 +226,7 @@ def table2map(
 
 __all__ = [
     "TABLE2MAP_METADATA",
+    "Table2mapOutputs",
     "table2map",
     "table2map_params",
 ]

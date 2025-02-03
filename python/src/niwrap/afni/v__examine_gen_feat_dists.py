@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VExamineGenFeatDistsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__examine_gen_feat_dists(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__examine_gen_feat_dists_params(
     features_dir: str,
     wildcards: list[str] | None = None,
@@ -251,6 +259,7 @@ def v__examine_gen_feat_dists(
 
 
 __all__ = [
+    "VExamineGenFeatDistsOutputs",
     "V__EXAMINE_GEN_FEAT_DISTS_METADATA",
     "v__examine_gen_feat_dists",
     "v__examine_gen_feat_dists_params",

@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VFsRoiLabelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__fs_roi_label(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__fs_roi_label_params(
     label_int: float | None = None,
     lab_flag: float | None = None,
@@ -264,6 +272,7 @@ def v__fs_roi_label(
 
 
 __all__ = [
+    "VFsRoiLabelOutputs",
     "V__FS_ROI_LABEL_METADATA",
     "v__fs_roi_label",
     "v__fs_roi_label_params",

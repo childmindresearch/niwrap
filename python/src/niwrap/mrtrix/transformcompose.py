@@ -189,6 +189,14 @@ def transformcompose_various_file_cargs(
     return cargs
 
 
+class TransformcomposeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `transformcompose(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def transformcompose_params(
     input_: list[InputPathType],
     output: typing.Union[TransformcomposeVariousStringParameters, TransformcomposeVariousFileParameters],
@@ -426,6 +434,7 @@ def transformcompose(
 
 __all__ = [
     "TRANSFORMCOMPOSE_METADATA",
+    "TransformcomposeOutputs",
     "transformcompose",
     "transformcompose_config_params",
     "transformcompose_params",

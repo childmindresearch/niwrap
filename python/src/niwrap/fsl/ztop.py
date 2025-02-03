@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ZtopOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `ztop(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def ztop_params(
     z_score: float,
     tail_flag: bool = False,
@@ -182,6 +190,7 @@ def ztop(
 
 __all__ = [
     "ZTOP_METADATA",
+    "ZtopOutputs",
     "ztop",
     "ztop_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BiancaClusterStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `bianca_cluster_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def bianca_cluster_stats_params(
     bianca_output_map: InputPathType,
     threshold: float,
@@ -178,6 +186,7 @@ def bianca_cluster_stats(
 
 __all__ = [
     "BIANCA_CLUSTER_STATS_METADATA",
+    "BiancaClusterStatsOutputs",
     "bianca_cluster_stats",
     "bianca_cluster_stats_params",
 ]

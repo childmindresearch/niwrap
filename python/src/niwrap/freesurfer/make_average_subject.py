@@ -71,6 +71,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MakeAverageSubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `make_average_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def make_average_subject_params(
     subjects: list[str],
     average_subject_name: str,
@@ -364,6 +372,7 @@ def make_average_subject(
 
 __all__ = [
     "MAKE_AVERAGE_SUBJECT_METADATA",
+    "MakeAverageSubjectOutputs",
     "make_average_subject",
     "make_average_subject_params",
 ]

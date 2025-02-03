@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriViolinPlotsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_violin_plots(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_violin_plots_params(
     input_directory: str,
     labels: InputPathType,
@@ -178,6 +186,7 @@ def dmri_violin_plots(
 
 __all__ = [
     "DMRI_VIOLIN_PLOTS_METADATA",
+    "DmriViolinPlotsOutputs",
     "dmri_violin_plots",
     "dmri_violin_plots_params",
 ]

@@ -63,6 +63,21 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dRoistatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_roistats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+    stats: list[str]
+    """There will be one line of output for every sub-brick of every input
+    dataset. Across each line will be every statistic for every mask value. For
+    instance, if there 3 mask values (1,2,3), then the columns Mean_1, Mean_2
+    and Mean_3 will refer to the means across each mask value, respectively. If
+    4 statistics are requested, then there will be 12 stats displayed on each
+    line (4 for each mask region), besides the file and sub-brick number."""
+
+
 def v_3d_roistats_params(
     in_file: InputPathType,
     mask: InputPathType | None = None,
@@ -341,6 +356,7 @@ def v_3d_roistats(
 
 
 __all__ = [
+    "V3dRoistatsOutputs",
     "V_3D_ROISTATS_METADATA",
     "v_3d_roistats",
     "v_3d_roistats_params",

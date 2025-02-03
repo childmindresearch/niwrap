@@ -109,6 +109,14 @@ def tck2fixel_config_cargs(
     return cargs
 
 
+class Tck2fixelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tck2fixel(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tck2fixel_params(
     tracks: InputPathType,
     fixel_folder_in: InputPathType,
@@ -330,6 +338,7 @@ def tck2fixel(
 
 __all__ = [
     "TCK2FIXEL_METADATA",
+    "Tck2fixelOutputs",
     "tck2fixel",
     "tck2fixel_config_params",
     "tck2fixel_params",

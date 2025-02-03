@@ -160,6 +160,14 @@ def dcmedit_config_cargs(
     return cargs
 
 
+class DcmeditOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dcmedit(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dcmedit_params(
     file: InputPathType,
     anonymise: bool = False,
@@ -404,6 +412,7 @@ def dcmedit(
 
 __all__ = [
     "DCMEDIT_METADATA",
+    "DcmeditOutputs",
     "dcmedit",
     "dcmedit_config_params",
     "dcmedit_params",

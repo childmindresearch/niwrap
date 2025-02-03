@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RcaLongTpInitOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rca_long_tp_init(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rca_long_tp_init_params(
     timepoint: str,
     base: str,
@@ -209,6 +217,7 @@ def rca_long_tp_init(
 
 __all__ = [
     "RCA_LONG_TP_INIT_METADATA",
+    "RcaLongTpInitOutputs",
     "rca_long_tp_init",
     "rca_long_tp_init_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsInstallMcrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fs_install_mcr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fs_install_mcr_params(
     mcr_version: str,
 ) -> FsInstallMcrParameters:
@@ -157,6 +165,7 @@ def fs_install_mcr(
 
 __all__ = [
     "FS_INSTALL_MCR_METADATA",
+    "FsInstallMcrOutputs",
     "fs_install_mcr",
     "fs_install_mcr_params",
 ]

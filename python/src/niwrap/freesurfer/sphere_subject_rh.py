@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SphereSubjectRhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `sphere_subject_rh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def sphere_subject_rh_params(
     license_file: InputPathType,
 ) -> SphereSubjectRhParameters:
@@ -159,6 +167,7 @@ def sphere_subject_rh(
 
 __all__ = [
     "SPHERE_SUBJECT_RH_METADATA",
+    "SphereSubjectRhOutputs",
     "sphere_subject_rh",
     "sphere_subject_rh_params",
 ]

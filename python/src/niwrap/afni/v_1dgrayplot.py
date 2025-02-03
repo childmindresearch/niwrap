@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V1dgrayplotOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_1dgrayplot(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_1dgrayplot_params(
     tsfile: InputPathType,
     install: bool = False,
@@ -214,6 +222,7 @@ def v_1dgrayplot(
 
 
 __all__ = [
+    "V1dgrayplotOutputs",
     "V_1DGRAYPLOT_METADATA",
     "v_1dgrayplot",
     "v_1dgrayplot_params",

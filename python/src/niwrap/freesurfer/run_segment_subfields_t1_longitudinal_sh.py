@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RunSegmentSubfieldsT1LongitudinalShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `run_segment_subfields_t1_longitudinal_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def run_segment_subfields_t1_longitudinal_sh_params(
     deployed_mcr_root: str,
     additional_args: str | None = None,
@@ -168,6 +176,7 @@ def run_segment_subfields_t1_longitudinal_sh(
 
 __all__ = [
     "RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA",
+    "RunSegmentSubfieldsT1LongitudinalShOutputs",
     "run_segment_subfields_t1_longitudinal_sh",
     "run_segment_subfields_t1_longitudinal_sh_params",
 ]

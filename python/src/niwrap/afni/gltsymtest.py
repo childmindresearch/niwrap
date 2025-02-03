@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GltsymtestOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gltsymtest(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gltsymtest_params(
     varlist: str,
     expr: list[str],
@@ -174,6 +182,7 @@ def gltsymtest(
 
 __all__ = [
     "GLTSYMTEST_METADATA",
+    "GltsymtestOutputs",
     "gltsymtest",
     "gltsymtest_params",
 ]

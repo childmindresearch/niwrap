@@ -97,6 +97,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriConcatOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_concat(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_concat_params(
     input_files: list[InputPathType],
     output_file: str,
@@ -589,6 +597,7 @@ def mri_concat(
 
 __all__ = [
     "MRI_CONCAT_METADATA",
+    "MriConcatOutputs",
     "mri_concat",
     "mri_concat_params",
 ]

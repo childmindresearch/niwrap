@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CsvprintOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `csvprint(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def csvprint_params(
     infile: InputPathType,
 ) -> CsvprintParameters:
@@ -155,6 +163,7 @@ def csvprint(
 
 __all__ = [
     "CSVPRINT_METADATA",
+    "CsvprintOutputs",
     "csvprint",
     "csvprint_params",
 ]

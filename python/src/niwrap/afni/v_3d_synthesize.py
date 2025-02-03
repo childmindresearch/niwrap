@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dSynthesizeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_synthesize(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_synthesize_params(
     c_bucket: InputPathType,
     matrix: InputPathType,
@@ -227,6 +235,7 @@ def v_3d_synthesize(
 
 
 __all__ = [
+    "V3dSynthesizeOutputs",
     "V_3D_SYNTHESIZE_METADATA",
     "v_3d_synthesize",
     "v_3d_synthesize_params",

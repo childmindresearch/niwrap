@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriSbbrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_sbbr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_sbbr_params(
     template_volume: InputPathType,
     surface_file: InputPathType,
@@ -412,6 +420,7 @@ def mri_sbbr(
 
 __all__ = [
     "MRI_SBBR_METADATA",
+    "MriSbbrOutputs",
     "mri_sbbr",
     "mri_sbbr_params",
 ]

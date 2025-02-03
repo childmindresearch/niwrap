@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AfniBatchROutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `afni_batch_r(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def afni_batch_r_params(
     no_restore: bool = False,
     save_workspace: bool = False,
@@ -194,6 +202,7 @@ def afni_batch_r(
 
 __all__ = [
     "AFNI_BATCH_R_METADATA",
+    "AfniBatchROutputs",
     "afni_batch_r",
     "afni_batch_r_params",
 ]

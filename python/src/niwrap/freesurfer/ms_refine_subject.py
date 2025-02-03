@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MsRefineSubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `ms_refine_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def ms_refine_subject_params(
     subjects_dir: str,
 ) -> MsRefineSubjectParameters:
@@ -157,6 +165,7 @@ def ms_refine_subject(
 
 __all__ = [
     "MS_REFINE_SUBJECT_METADATA",
+    "MsRefineSubjectOutputs",
     "ms_refine_subject",
     "ms_refine_subject_params",
 ]

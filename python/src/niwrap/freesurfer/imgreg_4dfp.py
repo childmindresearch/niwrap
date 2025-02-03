@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Imgreg4dfpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `imgreg_4dfp(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def imgreg_4dfp_params(
     target_image: InputPathType,
     source_image: InputPathType,
@@ -190,6 +198,7 @@ def imgreg_4dfp(
 
 __all__ = [
     "IMGREG_4DFP_METADATA",
+    "Imgreg4dfpOutputs",
     "imgreg_4dfp",
     "imgreg_4dfp_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GcainitOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gcainit(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gcainit_params(
     gcadir: str,
 ) -> GcainitParameters:
@@ -158,6 +166,7 @@ def gcainit(
 
 __all__ = [
     "GCAINIT_METADATA",
+    "GcainitOutputs",
     "gcainit",
     "gcainit_params",
 ]

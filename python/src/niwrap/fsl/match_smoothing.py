@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MatchSmoothingOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `match_smoothing(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def match_smoothing_params(
     example_func: InputPathType,
     func_smoothing_fwhm: float,
@@ -182,6 +190,7 @@ def match_smoothing(
 
 __all__ = [
     "MATCH_SMOOTHING_METADATA",
+    "MatchSmoothingOutputs",
     "match_smoothing",
     "match_smoothing_params",
 ]

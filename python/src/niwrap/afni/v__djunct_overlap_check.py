@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDjunctOverlapCheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__djunct_overlap_check(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__djunct_overlap_check_params(
     ulay: InputPathType,
     olay: InputPathType,
@@ -389,6 +397,7 @@ def v__djunct_overlap_check(
 
 
 __all__ = [
+    "VDjunctOverlapCheckOutputs",
     "V__DJUNCT_OVERLAP_CHECK_METADATA",
     "v__djunct_overlap_check",
     "v__djunct_overlap_check_params",

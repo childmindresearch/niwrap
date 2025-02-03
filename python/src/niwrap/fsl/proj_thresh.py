@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ProjThreshOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `proj_thresh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def proj_thresh_params(
     input_paths: list[InputPathType],
     threshold: float,
@@ -164,6 +172,7 @@ def proj_thresh(
 
 __all__ = [
     "PROJ_THRESH_METADATA",
+    "ProjThreshOutputs",
     "proj_thresh",
     "proj_thresh_params",
 ]

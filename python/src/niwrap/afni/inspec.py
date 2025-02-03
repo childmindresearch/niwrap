@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class InspecOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `inspec(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def inspec_params(
     specfile: InputPathType,
     newspecname: str | None = None,
@@ -232,6 +240,7 @@ def inspec(
 
 __all__ = [
     "INSPEC_METADATA",
+    "InspecOutputs",
     "inspec",
     "inspec_params",
 ]

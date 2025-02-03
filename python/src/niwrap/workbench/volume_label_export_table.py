@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VolumeLabelExportTableOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_label_export_table(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_label_export_table_params(
     label_in: InputPathType,
     map_: str,
@@ -176,6 +184,7 @@ def volume_label_export_table(
 
 __all__ = [
     "VOLUME_LABEL_EXPORT_TABLE_METADATA",
+    "VolumeLabelExportTableOutputs",
     "volume_label_export_table",
     "volume_label_export_table_params",
 ]

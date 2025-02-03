@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dEntropyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_entropy(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_entropy_params(
     input_dataset: InputPathType,
     zskip: bool = False,
@@ -162,6 +170,7 @@ def v_3d_entropy(
 
 
 __all__ = [
+    "V3dEntropyOutputs",
     "V_3D_ENTROPY_METADATA",
     "v_3d_entropy",
     "v_3d_entropy_params",

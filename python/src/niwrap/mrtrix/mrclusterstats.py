@@ -174,6 +174,14 @@ def mrclusterstats_config_cargs(
     return cargs
 
 
+class MrclusterstatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mrclusterstats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mrclusterstats_params(
     input_: InputPathType,
     design: InputPathType,
@@ -679,6 +687,7 @@ def mrclusterstats(
 
 __all__ = [
     "MRCLUSTERSTATS_METADATA",
+    "MrclusterstatsOutputs",
     "mrclusterstats",
     "mrclusterstats_column_params",
     "mrclusterstats_config_params",

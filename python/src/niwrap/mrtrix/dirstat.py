@@ -162,6 +162,14 @@ def dirstat_config_cargs(
     return cargs
 
 
+class DirstatOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dirstat(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dirstat_params(
     dirs: InputPathType,
     output: str | None = None,
@@ -493,6 +501,7 @@ def dirstat(
 
 __all__ = [
     "DIRSTAT_METADATA",
+    "DirstatOutputs",
     "dirstat",
     "dirstat_config_params",
     "dirstat_fslgrad_params",

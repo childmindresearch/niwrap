@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsrGetxoptsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fsr_getxopts(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fsr_getxopts_params(
     help_: bool = False,
 ) -> FsrGetxoptsParameters:
@@ -156,6 +164,7 @@ def fsr_getxopts(
 
 __all__ = [
     "FSR_GETXOPTS_METADATA",
+    "FsrGetxoptsOutputs",
     "fsr_getxopts",
     "fsr_getxopts_params",
 ]

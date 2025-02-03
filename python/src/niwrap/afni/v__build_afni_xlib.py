@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VBuildAfniXlibOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__build_afni_xlib(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__build_afni_xlib_params(
     packages: list[str],
     localinstall: bool = False,
@@ -180,6 +188,7 @@ def v__build_afni_xlib(
 
 
 __all__ = [
+    "VBuildAfniXlibOutputs",
     "V__BUILD_AFNI_XLIB_METADATA",
     "v__build_afni_xlib",
     "v__build_afni_xlib_params",

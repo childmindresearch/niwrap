@@ -67,6 +67,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDiffTreeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__diff_tree(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__diff_tree_params(
     new_dir: str,
     old_dir: str,
@@ -323,6 +331,7 @@ def v__diff_tree(
 
 
 __all__ = [
+    "VDiffTreeOutputs",
     "V__DIFF_TREE_METADATA",
     "v__diff_tree",
     "v__diff_tree_params",

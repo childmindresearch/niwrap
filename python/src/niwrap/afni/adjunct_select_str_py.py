@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AdjunctSelectStrPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `adjunct_select_str_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def adjunct_select_str_py_params(
     input_file: InputPathType,
     num_bricks: float,
@@ -169,6 +177,7 @@ def adjunct_select_str_py(
 
 __all__ = [
     "ADJUNCT_SELECT_STR_PY_METADATA",
+    "AdjunctSelectStrPyOutputs",
     "adjunct_select_str_py",
     "adjunct_select_str_py_params",
 ]

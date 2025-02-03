@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisSphericalAverageOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_spherical_average(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_spherical_average_params(
     which: typing.Literal["coords", "label", "vals", "curv", "area"],
     fname: str,
@@ -204,6 +212,7 @@ def mris_spherical_average(
 
 __all__ = [
     "MRIS_SPHERICAL_AVERAGE_METADATA",
+    "MrisSphericalAverageOutputs",
     "mris_spherical_average",
     "mris_spherical_average_params",
 ]

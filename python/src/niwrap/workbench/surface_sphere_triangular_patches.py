@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfaceSphereTriangularPatchesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surface_sphere_triangular_patches(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surface_sphere_triangular_patches_params(
     sphere: InputPathType,
     divisions: int,
@@ -178,6 +186,7 @@ def surface_sphere_triangular_patches(
 
 __all__ = [
     "SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA",
+    "SurfaceSphereTriangularPatchesOutputs",
     "surface_sphere_triangular_patches",
     "surface_sphere_triangular_patches_params",
 ]

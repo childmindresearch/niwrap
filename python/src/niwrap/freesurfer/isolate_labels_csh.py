@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class IsolateLabelsCshOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `isolate_labels_csh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def isolate_labels_csh_params(
     label_volume: InputPathType,
     output_prefix: str,
@@ -208,6 +216,7 @@ def isolate_labels_csh(
 
 __all__ = [
     "ISOLATE_LABELS_CSH_METADATA",
+    "IsolateLabelsCshOutputs",
     "isolate_labels_csh",
     "isolate_labels_csh_params",
 ]

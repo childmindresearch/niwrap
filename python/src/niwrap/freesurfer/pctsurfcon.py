@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PctsurfconOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `pctsurfcon(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def pctsurfcon_params(
     subject: str,
     fsvol: str | None = None,
@@ -278,6 +286,7 @@ def pctsurfcon(
 
 __all__ = [
     "PCTSURFCON_METADATA",
+    "PctsurfconOutputs",
     "pctsurfcon",
     "pctsurfcon_params",
 ]

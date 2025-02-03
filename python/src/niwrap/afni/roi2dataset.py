@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Roi2datasetOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `roi2dataset(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def roi2dataset_params(
     prefix: str,
     input_rois: list[InputPathType],
@@ -283,6 +291,7 @@ def roi2dataset(
 
 __all__ = [
     "ROI2DATASET_METADATA",
+    "Roi2datasetOutputs",
     "roi2dataset",
     "roi2dataset_params",
 ]

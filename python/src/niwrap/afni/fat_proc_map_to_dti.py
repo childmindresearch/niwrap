@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FatProcMapToDtiOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fat_proc_map_to_dti(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fat_proc_map_to_dti_params(
     source: InputPathType,
     base: InputPathType,
@@ -280,6 +288,7 @@ def fat_proc_map_to_dti(
 
 __all__ = [
     "FAT_PROC_MAP_TO_DTI_METADATA",
+    "FatProcMapToDtiOutputs",
     "fat_proc_map_to_dti",
     "fat_proc_map_to_dti_params",
 ]

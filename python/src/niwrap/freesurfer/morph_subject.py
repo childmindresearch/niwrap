@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MorphSubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `morph_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def morph_subject_params(
     subjid: str,
 ) -> MorphSubjectParameters:
@@ -157,6 +165,7 @@ def morph_subject(
 
 __all__ = [
     "MORPH_SUBJECT_METADATA",
+    "MorphSubjectOutputs",
     "morph_subject",
     "morph_subject_params",
 ]

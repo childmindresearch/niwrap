@@ -77,6 +77,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriTrainOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_train(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_train_params(
     slist: InputPathType,
     trk_files: list[InputPathType],
@@ -432,6 +440,7 @@ def dmri_train(
 
 __all__ = [
     "DMRI_TRAIN_METADATA",
+    "DmriTrainOutputs",
     "dmri_train",
     "dmri_train_params",
 ]

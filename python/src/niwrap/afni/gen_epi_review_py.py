@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GenEpiReviewPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gen_epi_review_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gen_epi_review_py_params(
     datasets: list[str],
     script_name: str | None = None,
@@ -266,6 +274,7 @@ def gen_epi_review_py(
 
 __all__ = [
     "GEN_EPI_REVIEW_PY_METADATA",
+    "GenEpiReviewPyOutputs",
     "gen_epi_review_py",
     "gen_epi_review_py_params",
 ]

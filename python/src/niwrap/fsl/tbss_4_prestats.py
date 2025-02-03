@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Tbss4PrestatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tbss_4_prestats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tbss_4_prestats_params(
     threshold: float = 0.2,
 ) -> Tbss4PrestatsParameters:
@@ -157,6 +165,7 @@ def tbss_4_prestats(
 
 __all__ = [
     "TBSS_4_PRESTATS_METADATA",
+    "Tbss4PrestatsOutputs",
     "tbss_4_prestats",
     "tbss_4_prestats_params",
 ]

@@ -76,6 +76,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SccanOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `sccan(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def sccan_params(
     output: str | None = None,
     n_permutations: int | None = None,
@@ -494,6 +502,7 @@ def sccan(
 
 __all__ = [
     "SCCAN_METADATA",
+    "SccanOutputs",
     "sccan",
     "sccan_params",
 ]

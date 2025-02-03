@@ -79,6 +79,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ScaleToMapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `scale_to_map(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def scale_to_map_params(
     input_file: InputPathType,
     icol: float,
@@ -435,6 +443,7 @@ def scale_to_map(
 
 __all__ = [
     "SCALE_TO_MAP_METADATA",
+    "ScaleToMapOutputs",
     "scale_to_map",
     "scale_to_map_params",
 ]

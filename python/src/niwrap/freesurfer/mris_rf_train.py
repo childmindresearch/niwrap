@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisRfTrainOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_rf_train(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_rf_train_params(
     subjects: list[str],
     output_name: str,
@@ -188,6 +196,7 @@ def mris_rf_train(
 
 __all__ = [
     "MRIS_RF_TRAIN_METADATA",
+    "MrisRfTrainOutputs",
     "mris_rf_train",
     "mris_rf_train_params",
 ]

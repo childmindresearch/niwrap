@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsLibCheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fs_lib_check(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fs_lib_check_params(
     use_ldconfig: bool = False,
     use_rpm: bool = False,
@@ -192,6 +200,7 @@ def fs_lib_check(
 
 __all__ = [
     "FS_LIB_CHECK_METADATA",
+    "FsLibCheckOutputs",
     "fs_lib_check",
     "fs_lib_check_params",
 ]

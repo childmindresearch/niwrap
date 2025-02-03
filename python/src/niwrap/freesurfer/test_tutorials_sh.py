@@ -65,6 +65,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TestTutorialsShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `test_tutorials_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def test_tutorials_sh_params(
     all_tutorials: bool = False,
     quick_test: bool = False,
@@ -282,6 +290,7 @@ def test_tutorials_sh(
 
 __all__ = [
     "TEST_TUTORIALS_SH_METADATA",
+    "TestTutorialsShOutputs",
     "test_tutorials_sh",
     "test_tutorials_sh_params",
 ]

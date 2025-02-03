@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Analyzeto4dfpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `analyzeto4dfp(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def analyzeto4dfp_params(
     analyze_image: InputPathType,
     rois_scale: bool = False,
@@ -211,6 +219,7 @@ def analyzeto4dfp(
 
 __all__ = [
     "ANALYZETO4DFP_METADATA",
+    "Analyzeto4dfpOutputs",
     "analyzeto4dfp",
     "analyzeto4dfp_params",
 ]

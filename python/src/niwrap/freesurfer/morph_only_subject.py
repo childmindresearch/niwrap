@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MorphOnlySubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `morph_only_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def morph_only_subject_params(
     placeholder_input: str | None = None,
 ) -> MorphOnlySubjectParameters:
@@ -161,6 +169,7 @@ def morph_only_subject(
 
 __all__ = [
     "MORPH_ONLY_SUBJECT_METADATA",
+    "MorphOnlySubjectOutputs",
     "morph_only_subject",
     "morph_only_subject_params",
 ]

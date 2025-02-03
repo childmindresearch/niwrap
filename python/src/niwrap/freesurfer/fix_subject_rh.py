@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FixSubjectRhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fix_subject_rh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fix_subject_rh_params(
     input_directory: str,
     help_flag: bool = False,
@@ -169,6 +177,7 @@ def fix_subject_rh(
 
 __all__ = [
     "FIX_SUBJECT_RH_METADATA",
+    "FixSubjectRhOutputs",
     "fix_subject_rh",
     "fix_subject_rh_params",
 ]

@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisPmakeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_pmake(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_pmake_params(
     subject: str,
     hemisphere: str,
@@ -298,6 +306,7 @@ def mris_pmake(
 
 __all__ = [
     "MRIS_PMAKE_METADATA",
+    "MrisPmakeOutputs",
     "mris_pmake",
     "mris_pmake_params",
 ]

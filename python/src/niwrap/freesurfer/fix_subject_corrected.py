@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FixSubjectCorrectedOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fix_subject_corrected(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fix_subject_corrected_params(
     subject_directory: str,
     output_directory: str,
@@ -162,6 +170,7 @@ def fix_subject_corrected(
 
 __all__ = [
     "FIX_SUBJECT_CORRECTED_METADATA",
+    "FixSubjectCorrectedOutputs",
     "fix_subject_corrected",
     "fix_subject_corrected_params",
 ]

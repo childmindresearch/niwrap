@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VSurfSmoothHeat07ExamplesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__surf_smooth_heat_07_examples(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__surf_smooth_heat_07_examples_params(
     path_to_suma_demo: str,
 ) -> VSurfSmoothHeat07ExamplesParameters:
@@ -154,6 +162,7 @@ def v__surf_smooth_heat_07_examples(
 
 
 __all__ = [
+    "VSurfSmoothHeat07ExamplesOutputs",
     "V__SURF_SMOOTH_HEAT_07_EXAMPLES_METADATA",
     "v__surf_smooth_heat_07_examples",
     "v__surf_smooth_heat_07_examples_params",

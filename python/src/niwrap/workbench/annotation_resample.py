@@ -101,6 +101,14 @@ def annotation_resample_surface_pair_cargs(
     return cargs
 
 
+class AnnotationResampleOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `annotation_resample(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def annotation_resample_params(
     annotation_in: InputPathType,
     annotation_out: str,
@@ -235,6 +243,7 @@ def annotation_resample(
 
 __all__ = [
     "ANNOTATION_RESAMPLE_METADATA",
+    "AnnotationResampleOutputs",
     "annotation_resample",
     "annotation_resample_params",
     "annotation_resample_surface_pair_params",

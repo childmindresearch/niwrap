@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FatcatMatplotOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fatcat_matplot(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fatcat_matplot_params(
     directory: str,
     shiny_folder: bool = False,
@@ -163,6 +171,7 @@ def fatcat_matplot(
 
 __all__ = [
     "FATCAT_MATPLOT_METADATA",
+    "FatcatMatplotOutputs",
     "fatcat_matplot",
     "fatcat_matplot_params",
 ]

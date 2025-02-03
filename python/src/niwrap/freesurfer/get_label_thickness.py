@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GetLabelThicknessOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `get_label_thickness(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def get_label_thickness_params(
     infile: InputPathType,
 ) -> GetLabelThicknessParameters:
@@ -156,6 +164,7 @@ def get_label_thickness(
 
 __all__ = [
     "GET_LABEL_THICKNESS_METADATA",
+    "GetLabelThicknessOutputs",
     "get_label_thickness",
     "get_label_thickness_params",
 ]

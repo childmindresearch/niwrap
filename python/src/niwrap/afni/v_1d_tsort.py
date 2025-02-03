@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V1dTsortOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_1d_tsort(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_1d_tsort_params(
     infile: InputPathType,
     dec_order: bool = False,
@@ -194,6 +202,7 @@ def v_1d_tsort(
 
 
 __all__ = [
+    "V1dTsortOutputs",
     "V_1D_TSORT_METADATA",
     "v_1d_tsort",
     "v_1d_tsort_params",

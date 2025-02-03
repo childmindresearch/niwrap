@@ -87,6 +87,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DcmunpackOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dcmunpack(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dcmunpack_params(
     src: str,
     targ: str | None = None,
@@ -540,6 +548,7 @@ def dcmunpack(
 
 __all__ = [
     "DCMUNPACK_METADATA",
+    "DcmunpackOutputs",
     "dcmunpack",
     "dcmunpack_params",
 ]

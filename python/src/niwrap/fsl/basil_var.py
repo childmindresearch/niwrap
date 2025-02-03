@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BasilVarOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `basil_var(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def basil_var_params(
     results_dir: str,
     mask_image: InputPathType,
@@ -168,6 +176,7 @@ def basil_var(
 
 __all__ = [
     "BASIL_VAR_METADATA",
+    "BasilVarOutputs",
     "basil_var",
     "basil_var_params",
 ]

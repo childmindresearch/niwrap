@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RmzOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rmz(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rmz_params(
     filenames: list[InputPathType],
     quiet: bool = False,
@@ -183,6 +191,7 @@ def rmz(
 
 __all__ = [
     "RMZ_METADATA",
+    "RmzOutputs",
     "rmz",
     "rmz_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VnoMatchCheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `vno_match_check(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def vno_match_check_params(
     subjid: str,
     debug: bool = False,
@@ -181,6 +189,7 @@ def vno_match_check(
 
 __all__ = [
     "VNO_MATCH_CHECK_METADATA",
+    "VnoMatchCheckOutputs",
     "vno_match_check",
     "vno_match_check_params",
 ]

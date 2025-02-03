@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ZipSceneFileOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `zip_scene_file(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def zip_scene_file_params(
     scene_file: str,
     extract_folder: str,
@@ -218,6 +226,7 @@ def zip_scene_file(
 
 __all__ = [
     "ZIP_SCENE_FILE_METADATA",
+    "ZipSceneFileOutputs",
     "zip_scene_file",
     "zip_scene_file_params",
 ]

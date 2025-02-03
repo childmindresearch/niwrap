@@ -97,6 +97,14 @@ def metric_estimate_fwhm_whole_file_cargs(
     return cargs
 
 
+class MetricEstimateFwhmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `metric_estimate_fwhm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def metric_estimate_fwhm_params(
     surface: InputPathType,
     metric_in: InputPathType,
@@ -251,6 +259,7 @@ def metric_estimate_fwhm(
 
 __all__ = [
     "METRIC_ESTIMATE_FWHM_METADATA",
+    "MetricEstimateFwhmOutputs",
     "metric_estimate_fwhm",
     "metric_estimate_fwhm_params",
     "metric_estimate_fwhm_whole_file_params",

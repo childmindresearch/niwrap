@@ -106,6 +106,14 @@ def tckinfo_config_cargs(
     return cargs
 
 
+class TckinfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tckinfo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tckinfo_params(
     tracks: list[InputPathType],
     count: bool = False,
@@ -299,6 +307,7 @@ def tckinfo(
 
 __all__ = [
     "TCKINFO_METADATA",
+    "TckinfoOutputs",
     "tckinfo",
     "tckinfo_config_params",
     "tckinfo_params",

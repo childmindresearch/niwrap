@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VPurify1DOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__purify_1_d(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__purify_1_d_params(
     input_files: list[InputPathType],
     sub_brick: str | None = None,
@@ -182,6 +190,7 @@ def v__purify_1_d(
 
 
 __all__ = [
+    "VPurify1DOutputs",
     "V__PURIFY_1_D_METADATA",
     "v__purify_1_d",
     "v__purify_1_d_params",

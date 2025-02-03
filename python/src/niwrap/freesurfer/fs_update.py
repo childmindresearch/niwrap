@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsUpdateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fs_update(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fs_update_params(
     update_path: str | None = None,
     help_long: bool = False,
@@ -167,6 +175,7 @@ def fs_update(
 
 __all__ = [
     "FS_UPDATE_METADATA",
+    "FsUpdateOutputs",
     "fs_update",
     "fs_update_params",
 ]

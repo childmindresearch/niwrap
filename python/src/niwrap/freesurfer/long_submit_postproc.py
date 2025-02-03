@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LongSubmitPostprocOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `long_submit_postproc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def long_submit_postproc_params(
     qdec: InputPathType,
     prog: str,
@@ -238,6 +246,7 @@ def long_submit_postproc(
 
 __all__ = [
     "LONG_SUBMIT_POSTPROC_METADATA",
+    "LongSubmitPostprocOutputs",
     "long_submit_postproc",
     "long_submit_postproc_params",
 ]

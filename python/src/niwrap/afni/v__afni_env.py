@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VAfniEnvOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__afni_env(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__afni_env_params(
     set_flag: list[str] | None = None,
     unset_flag: str | None = None,
@@ -229,6 +237,7 @@ def v__afni_env(
 
 
 __all__ = [
+    "VAfniEnvOutputs",
     "V__AFNI_ENV_METADATA",
     "v__afni_env",
     "v__afni_env_params",

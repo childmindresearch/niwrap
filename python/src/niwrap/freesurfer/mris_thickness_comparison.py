@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisThicknessComparisonOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_thickness_comparison(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_thickness_comparison_params(
     subject: str,
     hemi: str,
@@ -185,6 +193,7 @@ def mris_thickness_comparison(
 
 __all__ = [
     "MRIS_THICKNESS_COMPARISON_METADATA",
+    "MrisThicknessComparisonOutputs",
     "mris_thickness_comparison",
     "mris_thickness_comparison_params",
 ]

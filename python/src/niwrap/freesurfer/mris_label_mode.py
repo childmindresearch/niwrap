@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisLabelModeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_label_mode(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_label_mode_params(
     input_curv_file: InputPathType,
     hemi: str,
@@ -212,6 +220,7 @@ def mris_label_mode(
 
 __all__ = [
     "MRIS_LABEL_MODE_METADATA",
+    "MrisLabelModeOutputs",
     "mris_label_mode",
     "mris_label_mode_params",
 ]

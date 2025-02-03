@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ZipSpecFileOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `zip_spec_file(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def zip_spec_file_params(
     spec_file: str,
     extract_folder: str,
@@ -212,6 +220,7 @@ def zip_spec_file(
 
 __all__ = [
     "ZIP_SPEC_FILE_METADATA",
+    "ZipSpecFileOutputs",
     "zip_spec_file",
     "zip_spec_file_params",
 ]

@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriCaTrainOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_ca_train(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_ca_train_params(
     subjects: list[str],
     output_gca: str,
@@ -304,6 +312,7 @@ def mri_ca_train(
 
 __all__ = [
     "MRI_CA_TRAIN_METADATA",
+    "MriCaTrainOutputs",
     "mri_ca_train",
     "mri_ca_train_params",
 ]

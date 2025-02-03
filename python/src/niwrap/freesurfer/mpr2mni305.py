@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Mpr2mni305Outputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mpr2mni305(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mpr2mni305_params(
     mpr_anat: str,
 ) -> Mpr2mni305Parameters:
@@ -155,6 +163,7 @@ def mpr2mni305(
 
 __all__ = [
     "MPR2MNI305_METADATA",
+    "Mpr2mni305Outputs",
     "mpr2mni305",
     "mpr2mni305_params",
 ]

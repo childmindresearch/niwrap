@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VIsoMasksOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__iso_masks(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__iso_masks_params(
     input_dataset: InputPathType,
     isovals: list[float] | None = None,
@@ -166,6 +174,7 @@ def v__iso_masks(
 
 
 __all__ = [
+    "VIsoMasksOutputs",
     "V__ISO_MASKS_METADATA",
     "v__iso_masks",
     "v__iso_masks_params",

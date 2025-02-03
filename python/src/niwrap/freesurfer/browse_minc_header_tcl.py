@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BrowseMincHeaderTclOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `browse_minc_header_tcl(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def browse_minc_header_tcl_params(
     infile: InputPathType,
 ) -> BrowseMincHeaderTclParameters:
@@ -155,6 +163,7 @@ def browse_minc_header_tcl(
 
 __all__ = [
     "BROWSE_MINC_HEADER_TCL_METADATA",
+    "BrowseMincHeaderTclOutputs",
     "browse_minc_header_tcl",
     "browse_minc_header_tcl_params",
 ]

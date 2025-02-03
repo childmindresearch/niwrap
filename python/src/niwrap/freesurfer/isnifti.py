@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class IsniftiOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `isnifti(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def isnifti_params(
     infile: InputPathType,
 ) -> IsniftiParameters:
@@ -155,6 +163,7 @@ def isnifti(
 
 __all__ = [
     "ISNIFTI_METADATA",
+    "IsniftiOutputs",
     "isnifti",
     "isnifti_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SienaFlow2stdOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `siena_flow2std(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def siena_flow2std_params(
     fileroot1: str,
     fileroot2: str,
@@ -184,6 +192,7 @@ def siena_flow2std(
 
 __all__ = [
     "SIENA_FLOW2STD_METADATA",
+    "SienaFlow2stdOutputs",
     "siena_flow2std",
     "siena_flow2std_params",
 ]

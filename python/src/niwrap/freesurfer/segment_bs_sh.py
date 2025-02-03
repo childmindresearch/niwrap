@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SegmentBsShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `segment_bs_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def segment_bs_sh_params(
     matlab_runtime: str | None = "/usr/local/freesurfer/MCRv97",
 ) -> SegmentBsShParameters:
@@ -159,6 +167,7 @@ def segment_bs_sh(
 
 __all__ = [
     "SEGMENT_BS_SH_METADATA",
+    "SegmentBsShOutputs",
     "segment_bs_sh",
     "segment_bs_sh_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BugrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `bugr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def bugr_params(
     subject_name: str,
     command_line: str,
@@ -190,6 +198,7 @@ def bugr(
 
 __all__ = [
     "BUGR_METADATA",
+    "BugrOutputs",
     "bugr",
     "bugr_params",
 ]

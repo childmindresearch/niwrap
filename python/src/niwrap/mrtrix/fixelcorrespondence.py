@@ -109,6 +109,14 @@ def fixelcorrespondence_config_cargs(
     return cargs
 
 
+class FixelcorrespondenceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fixelcorrespondence(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fixelcorrespondence_params(
     subject_data: InputPathType,
     template_directory: InputPathType,
@@ -338,6 +346,7 @@ def fixelcorrespondence(
 
 __all__ = [
     "FIXELCORRESPONDENCE_METADATA",
+    "FixelcorrespondenceOutputs",
     "fixelcorrespondence",
     "fixelcorrespondence_config_params",
     "fixelcorrespondence_params",

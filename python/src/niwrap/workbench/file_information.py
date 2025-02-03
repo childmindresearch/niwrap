@@ -107,6 +107,14 @@ def file_information_only_metadata_cargs(
     return cargs
 
 
+class FileInformationOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `file_information(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def file_information_params(
     data_file: str,
     opt_no_map_info: bool = False,
@@ -375,6 +383,7 @@ def file_information(
 
 __all__ = [
     "FILE_INFORMATION_METADATA",
+    "FileInformationOutputs",
     "file_information",
     "file_information_only_metadata_params",
     "file_information_params",

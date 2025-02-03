@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisTalairachOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_talairach(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_talairach_params(
     input_image: InputPathType,
 ) -> MrisTalairachParameters:
@@ -155,6 +163,7 @@ def mris_talairach(
 
 __all__ = [
     "MRIS_TALAIRACH_METADATA",
+    "MrisTalairachOutputs",
     "mris_talairach",
     "mris_talairach_params",
 ]

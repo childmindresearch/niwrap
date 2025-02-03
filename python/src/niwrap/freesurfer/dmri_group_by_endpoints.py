@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriGroupByEndpointsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_group_by_endpoints(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_group_by_endpoints_params(
     streamline_file: InputPathType,
     image_file: InputPathType,
@@ -178,6 +186,7 @@ def dmri_group_by_endpoints(
 
 __all__ = [
     "DMRI_GROUP_BY_ENDPOINTS_METADATA",
+    "DmriGroupByEndpointsOutputs",
     "dmri_group_by_endpoints",
     "dmri_group_by_endpoints_params",
 ]

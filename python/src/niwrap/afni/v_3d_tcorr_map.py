@@ -66,6 +66,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dTcorrMapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_tcorr_map(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_tcorr_map_params(
     input_: InputPathType,
     seed: InputPathType | None = None,
@@ -362,6 +370,7 @@ def v_3d_tcorr_map(
 
 
 __all__ = [
+    "V3dTcorrMapOutputs",
     "V_3D_TCORR_MAP_METADATA",
     "v_3d_tcorr_map",
     "v_3d_tcorr_map_params",

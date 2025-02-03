@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriAparc2wmsegOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_aparc2wmseg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_aparc2wmseg_params(
     subject: str,
     wmseg_file: str,
@@ -186,6 +194,7 @@ def mri_aparc2wmseg(
 
 __all__ = [
     "MRI_APARC2WMSEG_METADATA",
+    "MriAparc2wmsegOutputs",
     "mri_aparc2wmseg",
     "mri_aparc2wmseg_params",
 ]

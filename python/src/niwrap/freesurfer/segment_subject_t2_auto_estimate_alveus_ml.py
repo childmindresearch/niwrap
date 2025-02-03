@@ -49,6 +49,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SegmentSubjectT2AutoEstimateAlveusMlOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `segment_subject_t2_auto_estimate_alveus_ml(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def segment_subject_t2_auto_estimate_alveus_ml_params(
 ) -> SegmentSubjectT2AutoEstimateAlveusMlParameters:
     """
@@ -148,6 +156,7 @@ def segment_subject_t2_auto_estimate_alveus_ml(
 
 __all__ = [
     "SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_METADATA",
+    "SegmentSubjectT2AutoEstimateAlveusMlOutputs",
     "segment_subject_t2_auto_estimate_alveus_ml",
     "segment_subject_t2_auto_estimate_alveus_ml_params",
 ]

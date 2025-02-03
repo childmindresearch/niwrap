@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FirdesignOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `firdesign(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def firdesign_params(
     fbot: float,
     ftop: float,
@@ -213,6 +221,7 @@ def firdesign(
 
 __all__ = [
     "FIRDESIGN_METADATA",
+    "FirdesignOutputs",
     "firdesign",
     "firdesign_params",
 ]

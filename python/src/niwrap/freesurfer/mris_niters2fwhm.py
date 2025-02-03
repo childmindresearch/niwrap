@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisNiters2fwhmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_niters2fwhm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_niters2fwhm_params(
     subject: str,
     hemi: str,
@@ -230,6 +238,7 @@ def mris_niters2fwhm(
 
 __all__ = [
     "MRIS_NITERS2FWHM_METADATA",
+    "MrisNiters2fwhmOutputs",
     "mris_niters2fwhm",
     "mris_niters2fwhm_params",
 ]

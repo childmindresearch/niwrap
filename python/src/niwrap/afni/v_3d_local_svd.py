@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dLocalSvdOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_local_svd(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_local_svd_params(
     input_file: InputPathType,
     output_file: str,
@@ -233,6 +241,7 @@ def v_3d_local_svd(
 
 
 __all__ = [
+    "V3dLocalSvdOutputs",
     "V_3D_LOCAL_SVD_METADATA",
     "v_3d_local_svd",
     "v_3d_local_svd_params",

@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class XsanatregOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `xsanatreg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def xsanatreg_params(
     src_cordir: str,
     targ_cordir: str,
@@ -246,6 +254,7 @@ def xsanatreg(
 
 __all__ = [
     "XSANATREG_METADATA",
+    "XsanatregOutputs",
     "xsanatreg",
     "xsanatreg_params",
 ]

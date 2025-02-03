@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class InvfeatregOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `invfeatreg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def invfeatreg_params(
     feat_directory: str,
 ) -> InvfeatregParameters:
@@ -155,6 +163,7 @@ def invfeatreg(
 
 __all__ = [
     "INVFEATREG_METADATA",
+    "InvfeatregOutputs",
     "invfeatreg",
     "invfeatreg_params",
 ]

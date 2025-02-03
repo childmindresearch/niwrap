@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MaskdyadsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `maskdyads(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def maskdyads_params(
     dyads: InputPathType,
     fsamples: InputPathType,
@@ -174,6 +182,7 @@ def maskdyads(
 
 __all__ = [
     "MASKDYADS_METADATA",
+    "MaskdyadsOutputs",
     "maskdyads",
     "maskdyads_params",
 ]

@@ -151,6 +151,14 @@ def metric_weighted_stats_stdev_cargs(
     return cargs
 
 
+class MetricWeightedStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `metric_weighted_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def metric_weighted_stats_params(
     metric_in: InputPathType,
     opt_area_surface_area_surface: InputPathType | None = None,
@@ -374,6 +382,7 @@ def metric_weighted_stats(
 
 __all__ = [
     "METRIC_WEIGHTED_STATS_METADATA",
+    "MetricWeightedStatsOutputs",
     "metric_weighted_stats",
     "metric_weighted_stats_params",
     "metric_weighted_stats_roi_params",

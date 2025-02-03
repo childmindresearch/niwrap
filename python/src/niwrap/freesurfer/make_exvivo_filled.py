@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MakeExvivoFilledOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `make_exvivo_filled(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def make_exvivo_filled_params(
     subject_name: str,
     input_samseg: InputPathType,
@@ -176,6 +184,7 @@ def make_exvivo_filled(
 
 __all__ = [
     "MAKE_EXVIVO_FILLED_METADATA",
+    "MakeExvivoFilledOutputs",
     "make_exvivo_filled",
     "make_exvivo_filled_params",
 ]

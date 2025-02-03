@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dcopyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3dcopy(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3dcopy_params(
     verbose: bool = False,
     denote: bool = False,
@@ -165,6 +173,7 @@ def v_3dcopy(
 
 
 __all__ = [
+    "V3dcopyOutputs",
     "V_3DCOPY_METADATA",
     "v_3dcopy",
     "v_3dcopy_params",

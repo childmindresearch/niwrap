@@ -83,6 +83,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslSubOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fsl_sub(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fsl_sub_params(
     arch: str | None = None,
     coprocessor: str | None = None,
@@ -542,6 +550,7 @@ def fsl_sub(
 
 __all__ = [
     "FSL_SUB_METADATA",
+    "FslSubOutputs",
     "fsl_sub",
     "fsl_sub_params",
 ]

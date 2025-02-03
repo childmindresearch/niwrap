@@ -69,6 +69,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GroupstatsdiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `groupstatsdiff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def groupstatsdiff_params(
     group1_dir: str,
     group2_dir: str,
@@ -340,6 +348,7 @@ def groupstatsdiff(
 
 __all__ = [
     "GROUPSTATSDIFF_METADATA",
+    "GroupstatsdiffOutputs",
     "groupstatsdiff",
     "groupstatsdiff_params",
 ]

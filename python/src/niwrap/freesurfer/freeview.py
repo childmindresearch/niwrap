@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FreeviewOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `freeview(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def freeview_params(
     args: str | None = None,
 ) -> FreeviewParameters:
@@ -157,6 +165,7 @@ def freeview(
 
 __all__ = [
     "FREEVIEW_METADATA",
+    "FreeviewOutputs",
     "freeview",
     "freeview_params",
 ]

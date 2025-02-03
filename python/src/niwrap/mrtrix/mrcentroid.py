@@ -107,6 +107,14 @@ def mrcentroid_config_cargs(
     return cargs
 
 
+class MrcentroidOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mrcentroid(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mrcentroid_params(
     input_: InputPathType,
     mask: InputPathType | None = None,
@@ -313,6 +321,7 @@ def mrcentroid(
 
 __all__ = [
     "MRCENTROID_METADATA",
+    "MrcentroidOutputs",
     "mrcentroid",
     "mrcentroid_config_params",
     "mrcentroid_params",

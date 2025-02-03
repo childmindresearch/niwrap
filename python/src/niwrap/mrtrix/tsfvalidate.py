@@ -106,6 +106,14 @@ def tsfvalidate_config_cargs(
     return cargs
 
 
+class TsfvalidateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tsfvalidate(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tsfvalidate_params(
     tsf: InputPathType,
     tracks: InputPathType,
@@ -298,6 +306,7 @@ def tsfvalidate(
 
 __all__ = [
     "TSFVALIDATE_METADATA",
+    "TsfvalidateOutputs",
     "tsfvalidate",
     "tsfvalidate_config_params",
     "tsfvalidate_params",

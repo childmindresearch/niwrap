@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ThickdiffmapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `thickdiffmap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def thickdiffmap_params(
     subjscan1: InputPathType,
     subjscan2: InputPathType,
@@ -185,6 +193,7 @@ def thickdiffmap(
 
 __all__ = [
     "THICKDIFFMAP_METADATA",
+    "ThickdiffmapOutputs",
     "thickdiffmap",
     "thickdiffmap_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ReconAllExvivoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `recon_all_exvivo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def recon_all_exvivo_params(
     subject_id: str,
     hemisphere: str | None = None,
@@ -178,6 +186,7 @@ def recon_all_exvivo(
 
 __all__ = [
     "RECON_ALL_EXVIVO_METADATA",
+    "ReconAllExvivoOutputs",
     "recon_all_exvivo",
     "recon_all_exvivo_params",
 ]

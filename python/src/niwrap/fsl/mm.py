@@ -66,6 +66,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mm_params(
     spatial_data_file: InputPathType,
     mask_file: InputPathType,
@@ -330,6 +338,7 @@ def mm(
 
 __all__ = [
     "MM_METADATA",
+    "MmOutputs",
     "mm",
     "mm_params",
 ]

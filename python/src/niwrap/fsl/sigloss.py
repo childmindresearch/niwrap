@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SiglossOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `sigloss(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def sigloss_params(
     input_b0map: InputPathType,
     output_sigloss: str,
@@ -212,6 +220,7 @@ def sigloss(
 
 __all__ = [
     "SIGLOSS_METADATA",
+    "SiglossOutputs",
     "sigloss",
     "sigloss_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ConvertTransformFileOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `convert_transform_file(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def convert_transform_file_params(
     dimensions: int,
     input_transform_file: InputPathType,
@@ -176,6 +184,7 @@ def convert_transform_file(
 
 __all__ = [
     "CONVERT_TRANSFORM_FILE_METADATA",
+    "ConvertTransformFileOutputs",
     "convert_transform_file",
     "convert_transform_file_params",
 ]

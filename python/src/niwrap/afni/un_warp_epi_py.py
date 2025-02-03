@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UnWarpEpiPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `un_warp_epi_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def un_warp_epi_py_params(
     forward: InputPathType,
     reverse: InputPathType,
@@ -210,6 +218,7 @@ def un_warp_epi_py(
 
 __all__ = [
     "UN_WARP_EPI_PY_METADATA",
+    "UnWarpEpiPyOutputs",
     "un_warp_epi_py",
     "un_warp_epi_py_params",
 ]

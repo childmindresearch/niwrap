@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriExtractSurfaceMeasurementsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_extract_surface_measurements(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_extract_surface_measurements_params(
     streamline_file: InputPathType,
     lh_surface_file: InputPathType,
@@ -292,6 +300,7 @@ def dmri_extract_surface_measurements(
 
 __all__ = [
     "DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA",
+    "DmriExtractSurfaceMeasurementsOutputs",
     "dmri_extract_surface_measurements",
     "dmri_extract_surface_measurements_params",
 ]

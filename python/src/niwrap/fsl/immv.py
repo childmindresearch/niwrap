@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ImmvOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `immv(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def immv_params(
     source_files: list[InputPathType],
     destination: str,
@@ -164,6 +172,7 @@ def immv(
 
 __all__ = [
     "IMMV_METADATA",
+    "ImmvOutputs",
     "immv",
     "immv_params",
 ]

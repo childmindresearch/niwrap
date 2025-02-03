@@ -49,6 +49,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FiducialsCalibrationOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fiducials_calibration(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fiducials_calibration_params(
 ) -> FiducialsCalibrationParameters:
     """
@@ -148,6 +156,7 @@ def fiducials_calibration(
 
 __all__ = [
     "FIDUCIALS_CALIBRATION_METADATA",
+    "FiducialsCalibrationOutputs",
     "fiducials_calibration",
     "fiducials_calibration_params",
 ]

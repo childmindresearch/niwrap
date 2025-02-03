@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AfniCheckOmpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `afni_check_omp(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def afni_check_omp_params(
     iterations: float | None = None,
 ) -> AfniCheckOmpParameters:
@@ -157,6 +165,7 @@ def afni_check_omp(
 
 __all__ = [
     "AFNI_CHECK_OMP_METADATA",
+    "AfniCheckOmpOutputs",
     "afni_check_omp",
     "afni_check_omp_params",
 ]

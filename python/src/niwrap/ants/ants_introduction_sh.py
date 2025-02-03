@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AntsIntroductionShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `ants_introduction_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def ants_introduction_sh_params(
     image_dimension: typing.Literal[2, 3],
     reference_image: InputPathType,
@@ -282,6 +290,7 @@ def ants_introduction_sh(
 
 __all__ = [
     "ANTS_INTRODUCTION_SH_METADATA",
+    "AntsIntroductionShOutputs",
     "ants_introduction_sh",
     "ants_introduction_sh_params",
 ]

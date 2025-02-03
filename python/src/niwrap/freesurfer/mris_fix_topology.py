@@ -75,6 +75,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisFixTopologyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_fix_topology(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_fix_topology_params(
     subject_name: str,
     hemisphere: str,
@@ -404,6 +412,7 @@ def mris_fix_topology(
 
 __all__ = [
     "MRIS_FIX_TOPOLOGY_METADATA",
+    "MrisFixTopologyOutputs",
     "mris_fix_topology",
     "mris_fix_topology_params",
 ]

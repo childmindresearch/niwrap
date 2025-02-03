@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SwapSubjectwiseOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `swap_subjectwise(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def swap_subjectwise_params(
     dyads: InputPathType,
     fmean: InputPathType,
@@ -222,6 +230,7 @@ def swap_subjectwise(
 
 __all__ = [
     "SWAP_SUBJECTWISE_METADATA",
+    "SwapSubjectwiseOutputs",
     "swap_subjectwise",
     "swap_subjectwise_params",
 ]

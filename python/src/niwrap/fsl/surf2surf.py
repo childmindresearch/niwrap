@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Surf2surfOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surf2surf(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surf2surf_params(
     input_surface: InputPathType,
     output_surface: InputPathType,
@@ -264,6 +272,7 @@ def surf2surf(
 
 __all__ = [
     "SURF2SURF_METADATA",
+    "Surf2surfOutputs",
     "surf2surf",
     "surf2surf_params",
 ]

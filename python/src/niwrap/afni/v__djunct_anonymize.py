@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDjunctAnonymizeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__djunct_anonymize(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__djunct_anonymize_params(
     input_: InputPathType,
     add_note: str | None = None,
@@ -186,6 +194,7 @@ def v__djunct_anonymize(
 
 
 __all__ = [
+    "VDjunctAnonymizeOutputs",
     "V__DJUNCT_ANONYMIZE_METADATA",
     "v__djunct_anonymize",
     "v__djunct_anonymize_params",

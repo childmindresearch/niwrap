@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GiftiConvertOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gifti_convert(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gifti_convert_params(
     gifti_encoding: str,
     input_gifti_file: str,
@@ -184,6 +192,7 @@ def gifti_convert(
 
 __all__ = [
     "GIFTI_CONVERT_METADATA",
+    "GiftiConvertOutputs",
     "gifti_convert",
     "gifti_convert_params",
 ]

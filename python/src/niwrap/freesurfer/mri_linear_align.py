@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriLinearAlignOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_linear_align(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_linear_align_params(
     source: InputPathType,
     target: InputPathType,
@@ -169,6 +177,7 @@ def mri_linear_align(
 
 __all__ = [
     "MRI_LINEAR_ALIGN_METADATA",
+    "MriLinearAlignOutputs",
     "mri_linear_align",
     "mri_linear_align_params",
 ]

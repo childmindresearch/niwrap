@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisRegisterLabelMapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_register_label_map(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_register_label_map_params(
     subjects_list: str,
     target_subject: str,
@@ -254,6 +262,7 @@ def mris_register_label_map(
 
 __all__ = [
     "MRIS_REGISTER_LABEL_MAP_METADATA",
+    "MrisRegisterLabelMapOutputs",
     "mris_register_label_map",
     "mris_register_label_map_params",
 ]

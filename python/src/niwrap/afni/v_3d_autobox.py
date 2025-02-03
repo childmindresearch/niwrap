@@ -63,6 +63,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dAutoboxOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_autobox(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_autobox_params(
     input_: InputPathType,
     prefix: str | None = None,
@@ -304,6 +312,7 @@ def v_3d_autobox(
 
 
 __all__ = [
+    "V3dAutoboxOutputs",
     "V_3D_AUTOBOX_METADATA",
     "v_3d_autobox",
     "v_3d_autobox_params",

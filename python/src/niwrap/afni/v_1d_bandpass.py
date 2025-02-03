@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V1dBandpassOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_1d_bandpass(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_1d_bandpass_params(
     fbot: float,
     ftop: float,
@@ -214,6 +222,7 @@ def v_1d_bandpass(
 
 
 __all__ = [
+    "V1dBandpassOutputs",
     "V_1D_BANDPASS_METADATA",
     "v_1d_bandpass",
     "v_1d_bandpass_params",

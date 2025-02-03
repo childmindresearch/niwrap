@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriComputeSegOverlapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_compute_seg_overlap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_compute_seg_overlap_params(
     segvol1: InputPathType,
     segvol2: InputPathType,
@@ -256,6 +264,7 @@ def mri_compute_seg_overlap(
 
 __all__ = [
     "MRI_COMPUTE_SEG_OVERLAP_METADATA",
+    "MriComputeSegOverlapOutputs",
     "mri_compute_seg_overlap",
     "mri_compute_seg_overlap_params",
 ]

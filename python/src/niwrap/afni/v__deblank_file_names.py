@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDeblankFileNamesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__deblank_file_names(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__deblank_file_names_params(
     move: bool = False,
     nobrac: bool = False,
@@ -188,6 +196,7 @@ def v__deblank_file_names(
 
 
 __all__ = [
+    "VDeblankFileNamesOutputs",
     "V__DEBLANK_FILE_NAMES_METADATA",
     "v__deblank_file_names",
     "v__deblank_file_names_params",

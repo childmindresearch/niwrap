@@ -273,6 +273,14 @@ def volume_set_space_file_cargs(
     return cargs
 
 
+class VolumeSetSpaceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_set_space(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_set_space_params(
     volume_in: InputPathType,
     volume_out: str,
@@ -419,6 +427,7 @@ def volume_set_space(
 
 __all__ = [
     "VOLUME_SET_SPACE_METADATA",
+    "VolumeSetSpaceOutputs",
     "volume_set_space",
     "volume_set_space_file_params",
     "volume_set_space_params",

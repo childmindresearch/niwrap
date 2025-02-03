@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisMapCutsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_map_cuts(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_map_cuts_params(
     input_patch: InputPathType,
     output_patch: str,
@@ -163,6 +171,7 @@ def mris_map_cuts(
 
 __all__ = [
     "MRIS_MAP_CUTS_METADATA",
+    "MrisMapCutsOutputs",
     "mris_map_cuts",
     "mris_map_cuts_params",
 ]

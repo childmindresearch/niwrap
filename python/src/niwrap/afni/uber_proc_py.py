@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UberProcPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `uber_proc_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def uber_proc_py_params(
     results_dir: str | None = None,
 ) -> UberProcPyParameters:
@@ -159,6 +167,7 @@ def uber_proc_py(
 
 __all__ = [
     "UBER_PROC_PY_METADATA",
+    "UberProcPyOutputs",
     "uber_proc_py",
     "uber_proc_py_params",
 ]

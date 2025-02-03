@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriExtractFcdFeaturesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_extract_fcd_features(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_extract_fcd_features_params(
     subject: str,
     hemi: str,
@@ -183,6 +191,7 @@ def mri_extract_fcd_features(
 
 __all__ = [
     "MRI_EXTRACT_FCD_FEATURES_METADATA",
+    "MriExtractFcdFeaturesOutputs",
     "mri_extract_fcd_features",
     "mri_extract_fcd_features_params",
 ]

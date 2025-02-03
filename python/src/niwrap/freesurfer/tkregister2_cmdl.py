@@ -109,6 +109,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Tkregister2CmdlOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tkregister2_cmdl(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tkregister2_cmdl_params(
     movable_volume: InputPathType,
     target_volume: InputPathType,
@@ -788,6 +796,7 @@ def tkregister2_cmdl(
 
 __all__ = [
     "TKREGISTER2_CMDL_METADATA",
+    "Tkregister2CmdlOutputs",
     "tkregister2_cmdl",
     "tkregister2_cmdl_params",
 ]

@@ -256,6 +256,14 @@ def convert_affine_to_flirt_cargs(
     return cargs
 
 
+class ConvertAffineOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `convert_affine(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def convert_affine_params(
     from_world: ConvertAffineFromWorldParameters | None = None,
     opt_from_itk_input: str | None = None,
@@ -436,6 +444,7 @@ def convert_affine(
 
 __all__ = [
     "CONVERT_AFFINE_METADATA",
+    "ConvertAffineOutputs",
     "convert_affine",
     "convert_affine_from_flirt_params",
     "convert_affine_from_world_params",

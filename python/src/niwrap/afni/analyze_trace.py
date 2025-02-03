@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AnalyzeTraceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `analyze_trace(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def analyze_trace_params(
     tracefile: InputPathType,
     max_func_lines: int | None = None,
@@ -265,6 +273,7 @@ def analyze_trace(
 
 __all__ = [
     "ANALYZE_TRACE_METADATA",
+    "AnalyzeTraceOutputs",
     "analyze_trace",
     "analyze_trace_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsTempFileOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fs_temp_file(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fs_temp_file_params(
     base_dir_alt: str | None = None,
     suffix_alt: str | None = None,
@@ -192,6 +200,7 @@ def fs_temp_file(
 
 __all__ = [
     "FS_TEMP_FILE_METADATA",
+    "FsTempFileOutputs",
     "fs_temp_file",
     "fs_temp_file_params",
 ]

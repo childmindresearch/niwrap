@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VAfniRunMeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__afni_run_me(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__afni_run_me_params(
     go: bool = False,
     curl: bool = False,
@@ -171,6 +179,7 @@ def v__afni_run_me(
 
 
 __all__ = [
+    "VAfniRunMeOutputs",
     "V__AFNI_RUN_ME_METADATA",
     "v__afni_run_me",
     "v__afni_run_me_params",

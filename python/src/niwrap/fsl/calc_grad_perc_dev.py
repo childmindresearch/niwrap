@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CalcGradPercDevOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `calc_grad_perc_dev(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def calc_grad_perc_dev_params(
     fullwarp_image: InputPathType,
     out_basename: str,
@@ -186,6 +194,7 @@ def calc_grad_perc_dev(
 
 __all__ = [
     "CALC_GRAD_PERC_DEV_METADATA",
+    "CalcGradPercDevOutputs",
     "calc_grad_perc_dev",
     "calc_grad_perc_dev_params",
 ]

@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MkxsubjregOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mkxsubjreg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mkxsubjreg_params(
     srcreg: InputPathType,
     targreg: InputPathType,
@@ -236,6 +244,7 @@ def mkxsubjreg(
 
 __all__ = [
     "MKXSUBJREG_METADATA",
+    "MkxsubjregOutputs",
     "mkxsubjreg",
     "mkxsubjreg_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AdjunctCalcMontDimsPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `adjunct_calc_mont_dims_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def adjunct_calc_mont_dims_py_params(
     help_: bool = False,
 ) -> AdjunctCalcMontDimsPyParameters:
@@ -156,6 +164,7 @@ def adjunct_calc_mont_dims_py(
 
 __all__ = [
     "ADJUNCT_CALC_MONT_DIMS_PY_METADATA",
+    "AdjunctCalcMontDimsPyOutputs",
     "adjunct_calc_mont_dims_py",
     "adjunct_calc_mont_dims_py_params",
 ]

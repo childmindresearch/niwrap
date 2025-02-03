@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VFindAfniDsetPathOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__find_afni_dset_path(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__find_afni_dset_path_params(
     dsetname: str,
     append_file: bool = False,
@@ -178,6 +186,7 @@ def v__find_afni_dset_path(
 
 
 __all__ = [
+    "VFindAfniDsetPathOutputs",
     "V__FIND_AFNI_DSET_PATH_METADATA",
     "v__find_afni_dset_path",
     "v__find_afni_dset_path_params",

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Cluster2htmlOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cluster2html(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cluster2html_params(
     featdir: str,
     inroot: str,
@@ -172,6 +180,7 @@ def cluster2html(
 
 __all__ = [
     "CLUSTER2HTML_METADATA",
+    "Cluster2htmlOutputs",
     "cluster2html",
     "cluster2html_params",
 ]

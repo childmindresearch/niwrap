@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MakeAverageVolumeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `make_average_volume(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def make_average_volume_params(
     subjects: list[str],
     fsgd: InputPathType | None = None,
@@ -280,6 +288,7 @@ def make_average_volume(
 
 __all__ = [
     "MAKE_AVERAGE_VOLUME_METADATA",
+    "MakeAverageVolumeOutputs",
     "make_average_volume",
     "make_average_volume_params",
 ]

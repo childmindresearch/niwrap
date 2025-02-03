@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SpharmRecoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `spharm_reco(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def spharm_reco_params(
     input_surface: str,
     decomposition_order: float,
@@ -250,6 +258,7 @@ def spharm_reco(
 
 __all__ = [
     "SPHARM_RECO_METADATA",
+    "SpharmRecoOutputs",
     "spharm_reco",
     "spharm_reco_params",
 ]

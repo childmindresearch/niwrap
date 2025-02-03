@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisWmVolumeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_wm_volume(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_wm_volume_params(
     subject: str,
     hemi: str,
@@ -208,6 +216,7 @@ def mris_wm_volume(
 
 __all__ = [
     "MRIS_WM_VOLUME_METADATA",
+    "MrisWmVolumeOutputs",
     "mris_wm_volume",
     "mris_wm_volume_params",
 ]

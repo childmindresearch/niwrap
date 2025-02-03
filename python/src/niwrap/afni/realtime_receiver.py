@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RealtimeReceiverOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `realtime_receiver(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def realtime_receiver_params(
     show_data: typing.Literal["yes", "no"] | None = None,
     write_text_data: str | None = None,
@@ -282,6 +290,7 @@ def realtime_receiver(
 
 __all__ = [
     "REALTIME_RECEIVER_METADATA",
+    "RealtimeReceiverOutputs",
     "realtime_receiver",
     "realtime_receiver_params",
 ]

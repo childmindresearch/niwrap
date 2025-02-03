@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CcalcOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `ccalc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def ccalc_params(
     expr: str,
     format_: str | None = None,
@@ -174,6 +182,7 @@ def ccalc(
 
 __all__ = [
     "CCALC_METADATA",
+    "CcalcOutputs",
     "ccalc",
     "ccalc_params",
 ]

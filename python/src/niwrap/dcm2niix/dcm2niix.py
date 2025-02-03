@@ -78,6 +78,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Dcm2niixOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dcm2niix_(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dcm2niix_params(
     input_dir: InputPathType,
     compression_level: float | None = None,
@@ -502,6 +510,7 @@ def dcm2niix_(
 
 __all__ = [
     "DCM2NIIX_METADATA",
+    "Dcm2niixOutputs",
     "dcm2niix_",
     "dcm2niix_params",
 ]

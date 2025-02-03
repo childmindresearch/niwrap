@@ -308,6 +308,14 @@ def volume_palette_thresholding_cargs(
     return cargs
 
 
+class VolumePaletteOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_palette(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_palette_params(
     volume: str,
     mode: str,
@@ -699,6 +707,7 @@ def volume_palette(
 
 __all__ = [
     "VOLUME_PALETTE_METADATA",
+    "VolumePaletteOutputs",
     "volume_palette",
     "volume_palette_neg_percent_params",
     "volume_palette_neg_user_params",

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SegmentSubjectNotalOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `segment_subject_notal(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def segment_subject_notal_params(
     subject_path: str,
 ) -> SegmentSubjectNotalParameters:
@@ -155,6 +163,7 @@ def segment_subject_notal(
 
 __all__ = [
     "SEGMENT_SUBJECT_NOTAL_METADATA",
+    "SegmentSubjectNotalOutputs",
     "segment_subject_notal",
     "segment_subject_notal_params",
 ]

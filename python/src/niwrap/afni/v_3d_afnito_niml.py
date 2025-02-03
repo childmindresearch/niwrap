@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dAfnitoNimlOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_afnito_niml(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_afnito_niml_params(
     dset: InputPathType,
 ) -> V3dAfnitoNimlParameters:
@@ -157,6 +165,7 @@ def v_3d_afnito_niml(
 
 
 __all__ = [
+    "V3dAfnitoNimlOutputs",
     "V_3D_AFNITO_NIML_METADATA",
     "v_3d_afnito_niml",
     "v_3d_afnito_niml_params",

@@ -63,6 +63,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CountOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `count(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def count_params(
     bot: str,
     top: str,
@@ -297,6 +305,7 @@ def count(
 
 __all__ = [
     "COUNT_METADATA",
+    "CountOutputs",
     "count",
     "count_params",
 ]

@@ -63,6 +63,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriModifyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_modify(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_modify_params(
     x_ras: list[float],
     y_ras: list[float],
@@ -282,6 +290,7 @@ def mri_modify(
 
 __all__ = [
     "MRI_MODIFY_METADATA",
+    "MriModifyOutputs",
     "mri_modify",
     "mri_modify_params",
 ]

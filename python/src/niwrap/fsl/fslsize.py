@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslsizeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslsize(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslsize_params(
     input_file: InputPathType,
     short_format_flag: bool = False,
@@ -163,6 +171,7 @@ def fslsize(
 
 __all__ = [
     "FSLSIZE_METADATA",
+    "FslsizeOutputs",
     "fslsize",
     "fslsize_params",
 ]

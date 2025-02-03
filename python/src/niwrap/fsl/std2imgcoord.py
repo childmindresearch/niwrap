@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Std2imgcoordOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `std2imgcoord(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def std2imgcoord_params(
     filename_coordinates: InputPathType,
     input_image: InputPathType,
@@ -251,6 +259,7 @@ def std2imgcoord(
 
 __all__ = [
     "STD2IMGCOORD_METADATA",
+    "Std2imgcoordOutputs",
     "std2imgcoord",
     "std2imgcoord_params",
 ]

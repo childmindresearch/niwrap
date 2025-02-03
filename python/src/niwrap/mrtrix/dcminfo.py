@@ -160,6 +160,14 @@ def dcminfo_config_cargs(
     return cargs
 
 
+class DcminfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dcminfo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dcminfo_params(
     file: InputPathType,
     all_: bool = False,
@@ -379,6 +387,7 @@ def dcminfo(
 
 __all__ = [
     "DCMINFO_METADATA",
+    "DcminfoOutputs",
     "dcminfo",
     "dcminfo_config_params",
     "dcminfo_params",

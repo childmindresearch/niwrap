@@ -308,6 +308,14 @@ def metric_palette_thresholding_cargs(
     return cargs
 
 
+class MetricPaletteOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `metric_palette(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def metric_palette_params(
     metric: str,
     mode: str,
@@ -697,6 +705,7 @@ def metric_palette(
 
 __all__ = [
     "METRIC_PALETTE_METADATA",
+    "MetricPaletteOutputs",
     "metric_palette",
     "metric_palette_neg_percent_params",
     "metric_palette_neg_user_params",

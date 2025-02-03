@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriFuncvitsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_funcvits(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_funcvits_params(
     stem: str,
     outdir: str,
@@ -284,6 +292,7 @@ def mri_funcvits(
 
 __all__ = [
     "MRI_FUNCVITS_METADATA",
+    "MriFuncvitsOutputs",
     "mri_funcvits",
     "mri_funcvits_params",
 ]

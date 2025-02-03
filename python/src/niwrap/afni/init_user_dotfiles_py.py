@@ -66,6 +66,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class InitUserDotfilesPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `init_user_dotfiles_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def init_user_dotfiles_py_params(
     help_: bool = False,
     help_dotfiles_all: bool = False,
@@ -320,6 +328,7 @@ def init_user_dotfiles_py(
 
 __all__ = [
     "INIT_USER_DOTFILES_PY_METADATA",
+    "InitUserDotfilesPyOutputs",
     "init_user_dotfiles_py",
     "init_user_dotfiles_py_params",
 ]

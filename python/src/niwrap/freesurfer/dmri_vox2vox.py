@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriVox2voxOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_vox2vox(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_vox2vox_params(
     input_files: list[InputPathType],
     output_files: list[str],
@@ -280,6 +288,7 @@ def dmri_vox2vox(
 
 __all__ = [
     "DMRI_VOX2VOX_METADATA",
+    "DmriVox2voxOutputs",
     "dmri_vox2vox",
     "dmri_vox2vox_params",
 ]

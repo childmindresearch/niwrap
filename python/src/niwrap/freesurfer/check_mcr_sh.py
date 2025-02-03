@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CheckMcrShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `check_mcr_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def check_mcr_sh_params(
     help_: bool = False,
 ) -> CheckMcrShParameters:
@@ -158,6 +166,7 @@ def check_mcr_sh(
 
 __all__ = [
     "CHECK_MCR_SH_METADATA",
+    "CheckMcrShOutputs",
     "check_mcr_sh",
     "check_mcr_sh_params",
 ]

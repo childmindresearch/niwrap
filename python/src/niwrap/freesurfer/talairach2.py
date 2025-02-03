@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Talairach2Outputs(typing.NamedTuple):
+    """
+    Output object returned when calling `talairach2(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def talairach2_params(
     subject_id: str,
     mgz_flag: str | None = None,
@@ -164,6 +172,7 @@ def talairach2(
 
 __all__ = [
     "TALAIRACH2_METADATA",
+    "Talairach2Outputs",
     "talairach2",
     "talairach2_params",
 ]

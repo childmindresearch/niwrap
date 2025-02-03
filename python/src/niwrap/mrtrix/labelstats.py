@@ -107,6 +107,14 @@ def labelstats_config_cargs(
     return cargs
 
 
+class LabelstatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `labelstats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def labelstats_params(
     input_: InputPathType,
     output: str | None = None,
@@ -313,6 +321,7 @@ def labelstats(
 
 __all__ = [
     "LABELSTATS_METADATA",
+    "LabelstatsOutputs",
     "labelstats",
     "labelstats_config_params",
     "labelstats_params",

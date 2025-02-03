@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DiffusionUtilsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `diffusion_utils(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def diffusion_utils_params(
     dummy_flag: bool = False,
 ) -> DiffusionUtilsParameters:
@@ -158,6 +166,7 @@ def diffusion_utils(
 
 __all__ = [
     "DIFFUSION_UTILS_METADATA",
+    "DiffusionUtilsOutputs",
     "diffusion_utils",
     "diffusion_utils_params",
 ]

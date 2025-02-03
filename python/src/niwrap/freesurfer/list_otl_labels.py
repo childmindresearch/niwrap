@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ListOtlLabelsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `list_otl_labels(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def list_otl_labels_params(
     input_file: InputPathType,
 ) -> ListOtlLabelsParameters:
@@ -158,6 +166,7 @@ def list_otl_labels(
 
 __all__ = [
     "LIST_OTL_LABELS_METADATA",
+    "ListOtlLabelsOutputs",
     "list_otl_labels",
     "list_otl_labels_params",
 ]

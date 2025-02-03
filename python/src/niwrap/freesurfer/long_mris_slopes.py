@@ -83,6 +83,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LongMrisSlopesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `long_mris_slopes(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def long_mris_slopes_params(
     qdec: InputPathType,
     meas: str,
@@ -524,6 +532,7 @@ def long_mris_slopes(
 
 __all__ = [
     "LONG_MRIS_SLOPES_METADATA",
+    "LongMrisSlopesOutputs",
     "long_mris_slopes",
     "long_mris_slopes_params",
 ]

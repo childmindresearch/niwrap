@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TbssXOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tbss_x(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tbss_x_params(
     scalar_dirs: list[str],
     vector_dirs: list[str],
@@ -162,6 +170,7 @@ def tbss_x(
 
 __all__ = [
     "TBSS_X_METADATA",
+    "TbssXOutputs",
     "tbss_x",
     "tbss_x_params",
 ]

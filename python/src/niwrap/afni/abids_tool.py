@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AbidsToolOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `abids_tool(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def abids_tool_params(
     input_files: list[InputPathType],
     copy_prefix: list[str] | None = None,
@@ -173,6 +181,7 @@ def abids_tool(
 
 __all__ = [
     "ABIDS_TOOL_METADATA",
+    "AbidsToolOutputs",
     "abids_tool",
     "abids_tool_params",
 ]

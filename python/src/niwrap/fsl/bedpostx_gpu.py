@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BedpostxGpuOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `bedpostx_gpu(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def bedpostx_gpu_params(
     subject_dir: str,
     gpu_queue: str | None = None,
@@ -269,6 +277,7 @@ def bedpostx_gpu(
 
 __all__ = [
     "BEDPOSTX_GPU_METADATA",
+    "BedpostxGpuOutputs",
     "bedpostx_gpu",
     "bedpostx_gpu_params",
 ]

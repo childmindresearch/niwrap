@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisInterpolateWarpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_interpolate_warp(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_interpolate_warp_params(
     start_surface: InputPathType,
     end_surface: InputPathType,
@@ -169,6 +177,7 @@ def mris_interpolate_warp(
 
 __all__ = [
     "MRIS_INTERPOLATE_WARP_METADATA",
+    "MrisInterpolateWarpOutputs",
     "mris_interpolate_warp",
     "mris_interpolate_warp_params",
 ]

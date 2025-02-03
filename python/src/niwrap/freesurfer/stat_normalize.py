@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class StatNormalizeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `stat_normalize(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def stat_normalize_params(
     input_sv_prefix: str,
     output_sv_prefix: str,
@@ -236,6 +244,7 @@ def stat_normalize(
 
 __all__ = [
     "STAT_NORMALIZE_METADATA",
+    "StatNormalizeOutputs",
     "stat_normalize",
     "stat_normalize_params",
 ]

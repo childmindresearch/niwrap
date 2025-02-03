@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Tbss1PreprocOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tbss_1_preproc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tbss_1_preproc_params(
     images: list[InputPathType],
 ) -> Tbss1PreprocParameters:
@@ -155,6 +163,7 @@ def tbss_1_preproc(
 
 __all__ = [
     "TBSS_1_PREPROC_METADATA",
+    "Tbss1PreprocOutputs",
     "tbss_1_preproc",
     "tbss_1_preproc_params",
 ]

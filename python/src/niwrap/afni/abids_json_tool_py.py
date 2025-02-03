@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AbidsJsonToolPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `abids_json_tool_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def abids_json_tool_py_params(
     input_file: InputPathType,
     prefix: str,
@@ -192,6 +200,7 @@ def abids_json_tool_py(
 
 __all__ = [
     "ABIDS_JSON_TOOL_PY_METADATA",
+    "AbidsJsonToolPyOutputs",
     "abids_json_tool_py",
     "abids_json_tool_py_params",
 ]

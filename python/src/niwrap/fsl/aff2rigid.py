@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Aff2rigidOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `aff2rigid(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def aff2rigid_params(
     input_transform: InputPathType,
     output_transform: str,
@@ -166,6 +174,7 @@ def aff2rigid(
 
 __all__ = [
     "AFF2RIGID_METADATA",
+    "Aff2rigidOutputs",
     "aff2rigid",
     "aff2rigid_params",
 ]

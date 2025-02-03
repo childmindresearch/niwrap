@@ -65,6 +65,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PostReconAllOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `post_recon_all(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def post_recon_all_params(
     subject: str,
     no_subfields: bool = False,
@@ -281,6 +289,7 @@ def post_recon_all(
 
 __all__ = [
     "POST_RECON_ALL_METADATA",
+    "PostReconAllOutputs",
     "post_recon_all",
     "post_recon_all_params",
 ]

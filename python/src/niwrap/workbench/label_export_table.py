@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LabelExportTableOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `label_export_table(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def label_export_table_params(
     label_in: InputPathType,
     table_out: str,
@@ -169,6 +177,7 @@ def label_export_table(
 
 __all__ = [
     "LABEL_EXPORT_TABLE_METADATA",
+    "LabelExportTableOutputs",
     "label_export_table",
     "label_export_table_params",
 ]

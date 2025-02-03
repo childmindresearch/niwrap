@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriCnrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_cnr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_cnr_params(
     surf_dir: str,
     volume_files: list[InputPathType],
@@ -232,6 +240,7 @@ def mri_cnr(
 
 __all__ = [
     "MRI_CNR_METADATA",
+    "MriCnrOutputs",
     "mri_cnr",
     "mri_cnr_params",
 ]

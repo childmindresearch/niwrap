@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SpecFileMergeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `spec_file_merge(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def spec_file_merge_params(
     spec_1: str,
     spec_2: str,
@@ -176,6 +184,7 @@ def spec_file_merge(
 
 __all__ = [
     "SPEC_FILE_MERGE_METADATA",
+    "SpecFileMergeOutputs",
     "spec_file_merge",
     "spec_file_merge_params",
 ]

@@ -104,6 +104,14 @@ def metric_stats_roi_cargs(
     return cargs
 
 
+class MetricStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `metric_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def metric_stats_params(
     metric_in: InputPathType,
     opt_reduce_operation: str | None = None,
@@ -318,6 +326,7 @@ def metric_stats(
 
 __all__ = [
     "METRIC_STATS_METADATA",
+    "MetricStatsOutputs",
     "metric_stats",
     "metric_stats_params",
     "metric_stats_roi_params",

@@ -94,6 +94,14 @@ def wbsparse_merge_dense_wbsparse_cargs(
     return cargs
 
 
+class WbsparseMergeDenseOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `wbsparse_merge_dense(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def wbsparse_merge_dense_params(
     direction: str,
     wbsparse_out: str,
@@ -222,6 +230,7 @@ def wbsparse_merge_dense(
 
 __all__ = [
     "WBSPARSE_MERGE_DENSE_METADATA",
+    "WbsparseMergeDenseOutputs",
     "wbsparse_merge_dense",
     "wbsparse_merge_dense_params",
     "wbsparse_merge_dense_wbsparse_params",

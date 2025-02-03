@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RboxOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rbox(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rbox_params(
     number_points: str,
     dimension: str | None = None,
@@ -222,6 +230,7 @@ def rbox(
 
 __all__ = [
     "RBOX_METADATA",
+    "RboxOutputs",
     "rbox",
     "rbox_params",
 ]

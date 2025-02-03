@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TracPathsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `trac_paths(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def trac_paths_params(
     dmrirc_file: InputPathType,
     log_file: str | None = None,
@@ -276,6 +284,7 @@ def trac_paths(
 
 __all__ = [
     "TRAC_PATHS_METADATA",
+    "TracPathsOutputs",
     "trac_paths",
     "trac_paths_params",
 ]

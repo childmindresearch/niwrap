@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V4swapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_4swap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_4swap_params(
     files: list[InputPathType],
     quiet: bool = False,
@@ -162,6 +170,7 @@ def v_4swap(
 
 
 __all__ = [
+    "V4swapOutputs",
     "V_4SWAP_METADATA",
     "v_4swap",
     "v_4swap_params",

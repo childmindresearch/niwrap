@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfaceAffineRegressionOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surface_affine_regression(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surface_affine_regression_params(
     source: InputPathType,
     target: InputPathType,
@@ -182,6 +190,7 @@ def surface_affine_regression(
 
 __all__ = [
     "SURFACE_AFFINE_REGRESSION_METADATA",
+    "SurfaceAffineRegressionOutputs",
     "surface_affine_regression",
     "surface_affine_regression_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FftestOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fftest(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fftest_params(
     length: float,
     num_tests: float,
@@ -177,6 +185,7 @@ def fftest(
 
 __all__ = [
     "FFTEST_METADATA",
+    "FftestOutputs",
     "fftest",
     "fftest_params",
 ]

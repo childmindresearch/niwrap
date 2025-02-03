@@ -74,6 +74,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriSurf2volsegOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_surf2volseg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_surf2volseg_params(
     input_segmentation: InputPathType | None = None,
     output_segmentation: str | None = None,
@@ -446,6 +454,7 @@ def mri_surf2volseg(
 
 __all__ = [
     "MRI_SURF2VOLSEG_METADATA",
+    "MriSurf2volsegOutputs",
     "mri_surf2volseg",
     "mri_surf2volseg_params",
 ]

@@ -206,6 +206,14 @@ def convert_warpfield_to_fnirt_cargs(
     return cargs
 
 
+class ConvertWarpfieldOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `convert_warpfield(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def convert_warpfield_params(
     from_world: ConvertWarpfieldFromWorldParameters | None = None,
     opt_from_itk_input: str | None = None,
@@ -393,6 +401,7 @@ def convert_warpfield(
 
 __all__ = [
     "CONVERT_WARPFIELD_METADATA",
+    "ConvertWarpfieldOutputs",
     "convert_warpfield",
     "convert_warpfield_from_fnirt_params",
     "convert_warpfield_from_world_params",

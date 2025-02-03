@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dNotesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_notes(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_notes_params(
     dataset: InputPathType,
     add_note: str | None = None,
@@ -222,6 +230,7 @@ def v_3d_notes(
 
 
 __all__ = [
+    "V3dNotesOutputs",
     "V_3D_NOTES_METADATA",
     "v_3d_notes",
     "v_3d_notes_params",

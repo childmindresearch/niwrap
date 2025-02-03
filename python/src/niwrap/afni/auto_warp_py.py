@@ -82,6 +82,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AutoWarpPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `auto_warp_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def auto_warp_py_params(
     base: InputPathType,
     input_: InputPathType,
@@ -478,6 +486,7 @@ def auto_warp_py(
 
 __all__ = [
     "AUTO_WARP_PY_METADATA",
+    "AutoWarpPyOutputs",
     "auto_warp_py",
     "auto_warp_py_params",
 ]

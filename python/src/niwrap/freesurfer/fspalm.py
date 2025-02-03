@@ -63,6 +63,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FspalmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fspalm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fspalm_params(
     glmdir: str,
     cft: float,
@@ -280,6 +288,7 @@ def fspalm(
 
 __all__ = [
     "FSPALM_METADATA",
+    "FspalmOutputs",
     "fspalm",
     "fspalm_params",
 ]

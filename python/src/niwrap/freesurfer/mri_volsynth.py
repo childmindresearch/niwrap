@@ -92,6 +92,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriVolsynthOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_volsynth(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_volsynth_params(
     output_volid: str,
     template: str | None = None,
@@ -646,6 +654,7 @@ def mri_volsynth(
 
 __all__ = [
     "MRI_VOLSYNTH_METADATA",
+    "MriVolsynthOutputs",
     "mri_volsynth",
     "mri_volsynth_params",
 ]

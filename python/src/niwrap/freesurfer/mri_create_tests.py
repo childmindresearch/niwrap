@@ -68,6 +68,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriCreateTestsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_create_tests(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_create_tests_params(
     input_file: InputPathType,
     out_src: str,
@@ -366,6 +374,7 @@ def mri_create_tests(
 
 __all__ = [
     "MRI_CREATE_TESTS_METADATA",
+    "MriCreateTestsOutputs",
     "mri_create_tests",
     "mri_create_tests_params",
 ]

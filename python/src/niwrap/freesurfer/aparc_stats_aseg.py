@@ -71,6 +71,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AparcStatsAsegOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `aparc_stats_aseg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def aparc_stats_aseg_params(
     subject_name: str,
     gcs_name: str,
@@ -364,6 +372,7 @@ def aparc_stats_aseg(
 
 __all__ = [
     "APARC_STATS_ASEG_METADATA",
+    "AparcStatsAsegOutputs",
     "aparc_stats_aseg",
     "aparc_stats_aseg_params",
 ]

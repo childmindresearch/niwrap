@@ -68,6 +68,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GcatrainOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gcatrain(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gcatrain_params(
     gcadir: str,
     subjectlistfile: InputPathType,
@@ -332,6 +340,7 @@ def gcatrain(
 
 __all__ = [
     "GCATRAIN_METADATA",
+    "GcatrainOutputs",
     "gcatrain",
     "gcatrain_params",
 ]

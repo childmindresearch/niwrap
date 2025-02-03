@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MksubjdirsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mksubjdirs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mksubjdirs_params(
     subj_name: str,
     mode: str | None = None,
@@ -209,6 +217,7 @@ def mksubjdirs(
 
 __all__ = [
     "MKSUBJDIRS_METADATA",
+    "MksubjdirsOutputs",
     "mksubjdirs",
     "mksubjdirs_params",
 ]

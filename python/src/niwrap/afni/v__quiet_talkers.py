@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VQuietTalkersOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__quiet_talkers(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__quiet_talkers_params(
     sudo: bool = False,
     prog: list[str] | None = None,
@@ -231,6 +239,7 @@ def v__quiet_talkers(
 
 
 __all__ = [
+    "VQuietTalkersOutputs",
     "V__QUIET_TALKERS_METADATA",
     "v__quiet_talkers",
     "v__quiet_talkers_params",

@@ -259,6 +259,14 @@ def scene_capture_image_conn_db_login_cargs(
     return cargs
 
 
+class SceneCaptureImageOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `scene_capture_image(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def scene_capture_image_params(
     scene_file: str,
     scene_name_or_number: str,
@@ -665,6 +673,7 @@ def scene_capture_image(
 
 __all__ = [
     "SCENE_CAPTURE_IMAGE_METADATA",
+    "SceneCaptureImageOutputs",
     "scene_capture_image",
     "scene_capture_image_conn_db_login_params",
     "scene_capture_image_params",

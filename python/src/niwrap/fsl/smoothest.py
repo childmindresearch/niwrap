@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SmoothestOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `smoothest(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def smoothest_params(
     mask: InputPathType,
     dof: float | None = None,
@@ -202,6 +210,7 @@ def smoothest(
 
 __all__ = [
     "SMOOTHEST_METADATA",
+    "SmoothestOutputs",
     "smoothest",
     "smoothest_params",
 ]

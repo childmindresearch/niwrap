@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ExtractRegionFromImageByMaskOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `extract_region_from_image_by_mask(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def extract_region_from_image_by_mask_params(
     image_dimension: int,
     input_image: InputPathType,
@@ -200,6 +208,7 @@ def extract_region_from_image_by_mask(
 
 __all__ = [
     "EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA",
+    "ExtractRegionFromImageByMaskOutputs",
     "extract_region_from_image_by_mask",
     "extract_region_from_image_by_mask_params",
 ]

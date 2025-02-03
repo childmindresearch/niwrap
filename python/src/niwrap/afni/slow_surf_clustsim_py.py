@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SlowSurfClustsimPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `slow_surf_clustsim_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def slow_surf_clustsim_py_params(
     on_surface: str | None = None,
     save_script: str | None = None,
@@ -258,6 +266,7 @@ def slow_surf_clustsim_py(
 
 __all__ = [
     "SLOW_SURF_CLUSTSIM_PY_METADATA",
+    "SlowSurfClustsimPyOutputs",
     "slow_surf_clustsim_py",
     "slow_surf_clustsim_py_params",
 ]

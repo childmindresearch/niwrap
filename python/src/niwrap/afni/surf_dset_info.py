@@ -68,6 +68,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfDsetInfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surf_dset_info(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surf_dset_info_params(
     input_dsets: list[InputPathType],
     debug_level: int | None = None,
@@ -320,6 +328,7 @@ def surf_dset_info(
 
 __all__ = [
     "SURF_DSET_INFO_METADATA",
+    "SurfDsetInfoOutputs",
     "surf_dset_info",
     "surf_dset_info_params",
 ]

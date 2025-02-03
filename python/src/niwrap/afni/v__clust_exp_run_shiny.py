@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VClustExpRunShinyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__clust_exp_run_shiny(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__clust_exp_run_shiny_params(
     directory: str,
     help_: bool = False,
@@ -162,6 +170,7 @@ def v__clust_exp_run_shiny(
 
 
 __all__ = [
+    "VClustExpRunShinyOutputs",
     "V__CLUST_EXP_RUN_SHINY_METADATA",
     "v__clust_exp_run_shiny",
     "v__clust_exp_run_shiny_params",

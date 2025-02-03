@@ -66,6 +66,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDjunctEdgyAlignCheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__djunct_edgy_align_check(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__djunct_edgy_align_check_params(
     ulay: str,
     olay: str,
@@ -305,6 +313,7 @@ def v__djunct_edgy_align_check(
 
 
 __all__ = [
+    "VDjunctEdgyAlignCheckOutputs",
     "V__DJUNCT_EDGY_ALIGN_CHECK_METADATA",
     "v__djunct_edgy_align_check",
     "v__djunct_edgy_align_check_params",

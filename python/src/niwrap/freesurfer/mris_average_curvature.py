@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisAverageCurvatureOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_average_curvature(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_average_curvature_params(
     input_curvature_file: InputPathType,
     hemi: str,
@@ -207,6 +215,7 @@ def mris_average_curvature(
 
 __all__ = [
     "MRIS_AVERAGE_CURVATURE_METADATA",
+    "MrisAverageCurvatureOutputs",
     "mris_average_curvature",
     "mris_average_curvature_params",
 ]

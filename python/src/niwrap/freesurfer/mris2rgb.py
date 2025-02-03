@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Mris2rgbOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris2rgb(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris2rgb_params(
     library_path: str,
 ) -> Mris2rgbParameters:
@@ -160,6 +168,7 @@ def mris2rgb(
 
 __all__ = [
     "MRIS2RGB_METADATA",
+    "Mris2rgbOutputs",
     "mris2rgb",
     "mris2rgb_params",
 ]

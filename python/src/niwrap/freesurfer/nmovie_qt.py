@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class NmovieQtOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `nmovie_qt(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def nmovie_qt_params(
     images: list[InputPathType],
 ) -> NmovieQtParameters:
@@ -157,6 +165,7 @@ def nmovie_qt(
 
 __all__ = [
     "NMOVIE_QT_METADATA",
+    "NmovieQtOutputs",
     "nmovie_qt",
     "nmovie_qt_params",
 ]

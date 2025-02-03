@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PtozOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `ptoz(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def ptoz_params(
     p_value: float,
     tail_flag: bool = False,
@@ -175,6 +183,7 @@ def ptoz(
 
 __all__ = [
     "PTOZ_METADATA",
+    "PtozOutputs",
     "ptoz",
     "ptoz_params",
 ]

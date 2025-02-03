@@ -144,6 +144,14 @@ def cifti_estimate_fwhm_surface_cargs(
     return cargs
 
 
+class CiftiEstimateFwhmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_estimate_fwhm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_estimate_fwhm_params(
     cifti: InputPathType,
     opt_merged_volume: bool = False,
@@ -370,6 +378,7 @@ def cifti_estimate_fwhm(
 
 __all__ = [
     "CIFTI_ESTIMATE_FWHM_METADATA",
+    "CiftiEstimateFwhmOutputs",
     "cifti_estimate_fwhm",
     "cifti_estimate_fwhm_params",
     "cifti_estimate_fwhm_surface_params",

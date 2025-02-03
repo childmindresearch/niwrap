@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RmsdiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rmsdiff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rmsdiff_params(
     matrixfile1: InputPathType,
     matrixfile2: InputPathType,
@@ -178,6 +186,7 @@ def rmsdiff(
 
 __all__ = [
     "RMSDIFF_METADATA",
+    "RmsdiffOutputs",
     "rmsdiff",
     "rmsdiff_params",
 ]

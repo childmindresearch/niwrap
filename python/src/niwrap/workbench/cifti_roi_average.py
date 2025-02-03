@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CiftiRoiAverageOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_roi_average(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_roi_average_params(
     cifti_in: InputPathType,
     text_out: str,
@@ -241,6 +249,7 @@ def cifti_roi_average(
 
 __all__ = [
     "CIFTI_ROI_AVERAGE_METADATA",
+    "CiftiRoiAverageOutputs",
     "cifti_roi_average",
     "cifti_roi_average_params",
 ]

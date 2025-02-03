@@ -81,6 +81,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TkmeditfvOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tkmeditfv(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tkmeditfv_params(
     mainvol: InputPathType,
     subject: str | None = None,
@@ -460,6 +468,7 @@ def tkmeditfv(
 
 __all__ = [
     "TKMEDITFV_METADATA",
+    "TkmeditfvOutputs",
     "tkmeditfv",
     "tkmeditfv_params",
 ]

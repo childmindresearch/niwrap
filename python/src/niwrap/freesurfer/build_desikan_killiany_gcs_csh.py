@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BuildDesikanKillianyGcsCshOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `build_desikan_killiany_gcs_csh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def build_desikan_killiany_gcs_csh_params(
     hemi: str,
 ) -> BuildDesikanKillianyGcsCshParameters:
@@ -157,6 +165,7 @@ def build_desikan_killiany_gcs_csh(
 
 __all__ = [
     "BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA",
+    "BuildDesikanKillianyGcsCshOutputs",
     "build_desikan_killiany_gcs_csh",
     "build_desikan_killiany_gcs_csh_params",
 ]

@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LongCreateBaseSigmaOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `long_create_base_sigma(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def long_create_base_sigma_params(
     base_id: str,
     sigma: int,
@@ -166,6 +174,7 @@ def long_create_base_sigma(
 
 __all__ = [
     "LONG_CREATE_BASE_SIGMA_METADATA",
+    "LongCreateBaseSigmaOutputs",
     "long_create_base_sigma",
     "long_create_base_sigma_params",
 ]

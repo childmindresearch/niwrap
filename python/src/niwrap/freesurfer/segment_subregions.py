@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SegmentSubregionsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `segment_subregions(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def segment_subregions_params(
     structure: str,
     cross: str | None = None,
@@ -259,6 +267,7 @@ def segment_subregions(
 
 __all__ = [
     "SEGMENT_SUBREGIONS_METADATA",
+    "SegmentSubregionsOutputs",
     "segment_subregions",
     "segment_subregions_params",
 ]

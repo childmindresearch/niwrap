@@ -199,6 +199,14 @@ def volume_weighted_stats_stdev_cargs(
     return cargs
 
 
+class VolumeWeightedStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_weighted_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_weighted_stats_params(
     volume_in: InputPathType,
     weight_volume: VolumeWeightedStatsWeightVolumeParameters | None = None,
@@ -398,6 +406,7 @@ def volume_weighted_stats(
 
 __all__ = [
     "VOLUME_WEIGHTED_STATS_METADATA",
+    "VolumeWeightedStatsOutputs",
     "volume_weighted_stats",
     "volume_weighted_stats_params",
     "volume_weighted_stats_roi_params",

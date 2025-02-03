@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TracPreprocOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `trac_preproc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def trac_preproc_params(
     dmrirc_file: InputPathType,
     log_file: str | None = None,
@@ -264,6 +272,7 @@ def trac_preproc(
 
 __all__ = [
     "TRAC_PREPROC_METADATA",
+    "TracPreprocOutputs",
     "trac_preproc",
     "trac_preproc_params",
 ]

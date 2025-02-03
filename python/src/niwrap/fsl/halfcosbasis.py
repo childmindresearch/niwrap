@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class HalfcosbasisOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `halfcosbasis(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def halfcosbasis_params(
     hrf_param_file_hf: InputPathType,
     verbose_flag: bool = False,
@@ -248,6 +256,7 @@ def halfcosbasis(
 
 __all__ = [
     "HALFCOSBASIS_METADATA",
+    "HalfcosbasisOutputs",
     "halfcosbasis",
     "halfcosbasis_params",
 ]

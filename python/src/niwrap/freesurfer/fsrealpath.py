@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsrealpathOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fsrealpath(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fsrealpath_params(
     path: str,
     help_: bool = False,
@@ -163,6 +171,7 @@ def fsrealpath(
 
 __all__ = [
     "FSREALPATH_METADATA",
+    "FsrealpathOutputs",
     "fsrealpath",
     "fsrealpath_params",
 ]

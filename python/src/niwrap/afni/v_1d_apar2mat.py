@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V1dApar2matOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_1d_apar2mat(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_1d_apar2mat_params(
     x_shift: float,
     y_shift: float,
@@ -233,6 +241,7 @@ def v_1d_apar2mat(
 
 
 __all__ = [
+    "V1dApar2matOutputs",
     "V_1D_APAR2MAT_METADATA",
     "v_1d_apar2mat",
     "v_1d_apar2mat_params",

@@ -89,6 +89,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VRetinoProcOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__retino_proc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__retino_proc_params(
     tr: float,
     period_ecc: float,
@@ -613,6 +621,7 @@ def v__retino_proc(
 
 
 __all__ = [
+    "VRetinoProcOutputs",
     "V__RETINO_PROC_METADATA",
     "v__retino_proc",
     "v__retino_proc_params",

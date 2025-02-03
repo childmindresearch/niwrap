@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DesignTtest2Outputs(typing.NamedTuple):
+    """
+    Output object returned when calling `design_ttest2(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def design_ttest2_params(
     design_files_rootname: str,
     ngroupa: float,
@@ -177,6 +185,7 @@ def design_ttest2(
 
 __all__ = [
     "DESIGN_TTEST2_METADATA",
+    "DesignTtest2Outputs",
     "design_ttest2",
     "design_ttest2_params",
 ]

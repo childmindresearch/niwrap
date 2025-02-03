@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class InflateSubjectNewRhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `inflate_subject_new_rh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def inflate_subject_new_rh_params(
     args: str | None = None,
 ) -> InflateSubjectNewRhParameters:
@@ -163,6 +171,7 @@ def inflate_subject_new_rh(
 
 __all__ = [
     "INFLATE_SUBJECT_NEW_RH_METADATA",
+    "InflateSubjectNewRhOutputs",
     "inflate_subject_new_rh",
     "inflate_subject_new_rh_params",
 ]

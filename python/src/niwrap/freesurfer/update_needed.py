@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UpdateNeededOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `update_needed(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def update_needed_params(
     target_file: InputPathType,
     source_file: InputPathType,
@@ -163,6 +171,7 @@ def update_needed(
 
 __all__ = [
     "UPDATE_NEEDED_METADATA",
+    "UpdateNeededOutputs",
     "update_needed",
     "update_needed_params",
 ]

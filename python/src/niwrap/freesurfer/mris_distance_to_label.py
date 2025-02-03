@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisDistanceToLabelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_distance_to_label(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_distance_to_label_params(
     hemisphere: str,
     subject_1: str,
@@ -166,6 +174,7 @@ def mris_distance_to_label(
 
 __all__ = [
     "MRIS_DISTANCE_TO_LABEL_METADATA",
+    "MrisDistanceToLabelOutputs",
     "mris_distance_to_label",
     "mris_distance_to_label_params",
 ]

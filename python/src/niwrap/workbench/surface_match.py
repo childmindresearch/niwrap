@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfaceMatchOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surface_match(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surface_match_params(
     match_surface_file: InputPathType,
     input_surface_file: InputPathType,
@@ -176,6 +184,7 @@ def surface_match(
 
 __all__ = [
     "SURFACE_MATCH_METADATA",
+    "SurfaceMatchOutputs",
     "surface_match",
     "surface_match_params",
 ]

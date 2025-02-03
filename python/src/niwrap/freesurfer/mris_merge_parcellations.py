@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisMergeParcellationsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_merge_parcellations(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_merge_parcellations_params(
     surface: InputPathType,
     label1: InputPathType,
@@ -181,6 +189,7 @@ def mris_merge_parcellations(
 
 __all__ = [
     "MRIS_MERGE_PARCELLATIONS_METADATA",
+    "MrisMergeParcellationsOutputs",
     "mris_merge_parcellations",
     "mris_merge_parcellations_params",
 ]

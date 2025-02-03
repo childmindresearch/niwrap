@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsPrintHelpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fs_print_help(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fs_print_help_params(
     arguments: str | None = None,
 ) -> FsPrintHelpParameters:
@@ -159,6 +167,7 @@ def fs_print_help(
 
 __all__ = [
     "FS_PRINT_HELP_METADATA",
+    "FsPrintHelpOutputs",
     "fs_print_help",
     "fs_print_help_params",
 ]

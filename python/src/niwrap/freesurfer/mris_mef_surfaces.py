@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisMefSurfacesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_mef_surfaces(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_mef_surfaces_params(
     subject_name: str,
     hemisphere: str,
@@ -210,6 +218,7 @@ def mris_mef_surfaces(
 
 __all__ = [
     "MRIS_MEF_SURFACES_METADATA",
+    "MrisMefSurfacesOutputs",
     "mris_mef_surfaces",
     "mris_mef_surfaces_params",
 ]

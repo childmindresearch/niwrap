@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FixSubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fix_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fix_subject_params(
     arguments: str | None = None,
 ) -> FixSubjectParameters:
@@ -161,6 +169,7 @@ def fix_subject(
 
 __all__ = [
     "FIX_SUBJECT_METADATA",
+    "FixSubjectOutputs",
     "fix_subject",
     "fix_subject_params",
 ]

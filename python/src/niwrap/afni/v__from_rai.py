@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VFromRaiOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__from_rai(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__from_rai_params(
     rai_coordinates: list[float],
     orientation: str,
@@ -167,6 +175,7 @@ def v__from_rai(
 
 
 __all__ = [
+    "VFromRaiOutputs",
     "V__FROM_RAI_METADATA",
     "v__from_rai",
     "v__from_rai_params",

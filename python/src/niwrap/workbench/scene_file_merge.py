@@ -197,6 +197,14 @@ def scene_file_merge_scene_file_cargs(
     return cargs
 
 
+class SceneFileMergeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `scene_file_merge(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def scene_file_merge_params(
     scene_file_out: str,
     scene_file: list[SceneFileMergeSceneFileParameters] | None = None,
@@ -329,6 +337,7 @@ def scene_file_merge(
 
 __all__ = [
     "SCENE_FILE_MERGE_METADATA",
+    "SceneFileMergeOutputs",
     "scene_file_merge",
     "scene_file_merge_params",
     "scene_file_merge_scene_file_params",

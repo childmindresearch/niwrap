@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dCruisetoAfniOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_cruiseto_afni(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_cruiseto_afni_params(
     input_: InputPathType,
     novolreg: bool = False,
@@ -237,6 +245,7 @@ def v_3d_cruiseto_afni(
 
 
 __all__ = [
+    "V3dCruisetoAfniOutputs",
     "V_3D_CRUISETO_AFNI_METADATA",
     "v_3d_cruiseto_afni",
     "v_3d_cruiseto_afni_params",

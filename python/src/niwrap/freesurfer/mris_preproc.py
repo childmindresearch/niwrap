@@ -97,6 +97,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisPreprocOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_preproc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_preproc_params(
     outfile: str,
     target_subject: str,
@@ -675,6 +683,7 @@ def mris_preproc(
 
 __all__ = [
     "MRIS_PREPROC_METADATA",
+    "MrisPreprocOutputs",
     "mris_preproc",
     "mris_preproc_params",
 ]

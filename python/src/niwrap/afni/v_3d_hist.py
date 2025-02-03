@@ -68,6 +68,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dHistOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_hist(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_hist_params(
     input_: InputPathType,
     mask_dset: InputPathType | None = None,
@@ -370,6 +378,7 @@ def v_3d_hist(
 
 
 __all__ = [
+    "V3dHistOutputs",
     "V_3D_HIST_METADATA",
     "v_3d_hist",
     "v_3d_hist_params",

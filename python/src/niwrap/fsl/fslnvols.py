@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslnvolsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslnvols(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslnvols_params(
     infile: InputPathType,
 ) -> FslnvolsParameters:
@@ -155,6 +163,7 @@ def fslnvols(
 
 __all__ = [
     "FSLNVOLS_METADATA",
+    "FslnvolsOutputs",
     "fslnvols",
     "fslnvols_params",
 ]

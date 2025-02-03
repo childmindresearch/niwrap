@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsRunFromMcrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fs_run_from_mcr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fs_run_from_mcr_params(
     name: str | None = None,
     command: str | None = None,
@@ -185,6 +193,7 @@ def fs_run_from_mcr(
 
 __all__ = [
     "FS_RUN_FROM_MCR_METADATA",
+    "FsRunFromMcrOutputs",
     "fs_run_from_mcr",
     "fs_run_from_mcr_params",
 ]

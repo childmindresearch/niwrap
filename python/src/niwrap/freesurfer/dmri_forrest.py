@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriForrestOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_forrest(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_forrest_params(
     test_dir: str,
     train_file: InputPathType,
@@ -232,6 +240,7 @@ def dmri_forrest(
 
 __all__ = [
     "DMRI_FORREST_METADATA",
+    "DmriForrestOutputs",
     "dmri_forrest",
     "dmri_forrest_params",
 ]

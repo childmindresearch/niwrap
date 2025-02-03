@@ -76,6 +76,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LongStatsSlopesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `long_stats_slopes(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def long_stats_slopes_params(
     qdec_table: InputPathType,
     stats_file: InputPathType,
@@ -456,6 +464,7 @@ def long_stats_slopes(
 
 __all__ = [
     "LONG_STATS_SLOPES_METADATA",
+    "LongStatsSlopesOutputs",
     "long_stats_slopes",
     "long_stats_slopes_params",
 ]

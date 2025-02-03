@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RunMrisPreprocOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `run_mris_preproc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def run_mris_preproc_params(
     qdec_table: InputPathType,
     target_average: str | None = None,
@@ -166,6 +174,7 @@ def run_mris_preproc(
 
 __all__ = [
     "RUN_MRIS_PREPROC_METADATA",
+    "RunMrisPreprocOutputs",
     "run_mris_preproc",
     "run_mris_preproc_params",
 ]

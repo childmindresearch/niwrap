@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VTimeDiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__time_diff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__time_diff_params(
     file1: InputPathType,
     file2: InputPathType,
@@ -161,6 +169,7 @@ def v__time_diff(
 
 
 __all__ = [
+    "VTimeDiffOutputs",
     "V__TIME_DIFF_METADATA",
     "v__time_diff",
     "v__time_diff_params",

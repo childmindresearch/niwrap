@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VDjunctSswIntermedEdgeImgsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__djunct_ssw_intermed_edge_imgs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__djunct_ssw_intermed_edge_imgs_params(
     prefix: str,
     ulay: InputPathType,
@@ -281,6 +289,7 @@ def v__djunct_ssw_intermed_edge_imgs(
 
 
 __all__ = [
+    "VDjunctSswIntermedEdgeImgsOutputs",
     "V__DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA",
     "v__djunct_ssw_intermed_edge_imgs",
     "v__djunct_ssw_intermed_edge_imgs_params",

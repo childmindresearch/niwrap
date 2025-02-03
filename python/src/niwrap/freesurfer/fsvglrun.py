@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FsvglrunOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fsvglrun(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fsvglrun_params(
     command: str,
     zeroth_arg_name: str | None = None,
@@ -196,6 +204,7 @@ def fsvglrun(
 
 __all__ = [
     "FSVGLRUN_METADATA",
+    "FsvglrunOutputs",
     "fsvglrun",
     "fsvglrun_params",
 ]

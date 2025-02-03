@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BedpostxMghOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `bedpostx_mgh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def bedpostx_mgh_params(
     subject_directory: str,
     fibres: float | None = None,
@@ -243,6 +251,7 @@ def bedpostx_mgh(
 
 __all__ = [
     "BEDPOSTX_MGH_METADATA",
+    "BedpostxMghOutputs",
     "bedpostx_mgh",
     "bedpostx_mgh_params",
 ]

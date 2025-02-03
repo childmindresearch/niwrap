@@ -164,6 +164,14 @@ def vectorstats_config_cargs(
     return cargs
 
 
+class VectorstatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `vectorstats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def vectorstats_params(
     input_: InputPathType,
     design: InputPathType,
@@ -538,6 +546,7 @@ def vectorstats(
 
 __all__ = [
     "VECTORSTATS_METADATA",
+    "VectorstatsOutputs",
     "vectorstats",
     "vectorstats_column_params",
     "vectorstats_config_params",

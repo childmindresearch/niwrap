@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SpmTToBOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `spm_t_to_b(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def spm_t_to_b_params(
     spm_stem_format: str,
     bshort_stem: str,
@@ -162,6 +170,7 @@ def spm_t_to_b(
 
 __all__ = [
     "SPM_T_TO_B_METADATA",
+    "SpmTToBOutputs",
     "spm_t_to_b",
     "spm_t_to_b_params",
 ]

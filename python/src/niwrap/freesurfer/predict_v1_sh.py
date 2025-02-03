@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PredictV1ShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `predict_v1_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def predict_v1_sh_params(
     subjects: list[str],
     template: str | None = None,
@@ -197,6 +205,7 @@ def predict_v1_sh(
 
 __all__ = [
     "PREDICT_V1_SH_METADATA",
+    "PredictV1ShOutputs",
     "predict_v1_sh",
     "predict_v1_sh_params",
 ]

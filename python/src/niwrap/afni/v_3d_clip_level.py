@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dClipLevelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_clip_level(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_clip_level_params(
     dataset: InputPathType,
 ) -> V3dClipLevelParameters:
@@ -157,6 +165,7 @@ def v_3d_clip_level(
 
 
 __all__ = [
+    "V3dClipLevelOutputs",
     "V_3D_CLIP_LEVEL_METADATA",
     "v_3d_clip_level",
     "v_3d_clip_level_params",

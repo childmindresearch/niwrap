@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriProbeImaOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_probe_ima(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_probe_ima_params(
     ima_file: InputPathType,
     key_string: str | None = None,
@@ -240,6 +248,7 @@ def mri_probe_ima(
 
 __all__ = [
     "MRI_PROBE_IMA_METADATA",
+    "MriProbeImaOutputs",
     "mri_probe_ima",
     "mri_probe_ima_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ReconAllClinicalShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `recon_all_clinical_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def recon_all_clinical_sh_params(
     input_scan: InputPathType,
     subject_id: str,
@@ -182,6 +190,7 @@ def recon_all_clinical_sh(
 
 __all__ = [
     "RECON_ALL_CLINICAL_SH_METADATA",
+    "ReconAllClinicalShOutputs",
     "recon_all_clinical_sh",
     "recon_all_clinical_sh_params",
 ]

@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VFslabel2dsetOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__fslabel2dset(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__fslabel2dset_params(
     fs_label_file: InputPathType,
     val: float | None = None,
@@ -195,6 +203,7 @@ def v__fslabel2dset(
 
 
 __all__ = [
+    "VFslabel2dsetOutputs",
     "V__FSLABEL2DSET_METADATA",
     "v__fslabel2dset",
     "v__fslabel2dset_params",

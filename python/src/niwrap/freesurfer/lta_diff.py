@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LtaDiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `lta_diff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def lta_diff_params(
     transform1: InputPathType,
     transform2: InputPathType | None = None,
@@ -236,6 +244,7 @@ def lta_diff(
 
 __all__ = [
     "LTA_DIFF_METADATA",
+    "LtaDiffOutputs",
     "lta_diff",
     "lta_diff_params",
 ]

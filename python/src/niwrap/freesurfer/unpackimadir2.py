@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Unpackimadir2Outputs(typing.NamedTuple):
+    """
+    Output object returned when calling `unpackimadir2(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def unpackimadir2_params(
     directory: InputPathType,
 ) -> Unpackimadir2Parameters:
@@ -155,6 +163,7 @@ def unpackimadir2(
 
 __all__ = [
     "UNPACKIMADIR2_METADATA",
+    "Unpackimadir2Outputs",
     "unpackimadir2",
     "unpackimadir2_params",
 ]

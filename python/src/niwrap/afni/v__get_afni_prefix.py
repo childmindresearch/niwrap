@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VGetAfniPrefixOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__get_afni_prefix(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__get_afni_prefix_params(
     name: InputPathType,
     suffix: str | None = None,
@@ -163,6 +171,7 @@ def v__get_afni_prefix(
 
 
 __all__ = [
+    "VGetAfniPrefixOutputs",
     "V__GET_AFNI_PREFIX_METADATA",
     "v__get_afni_prefix",
     "v__get_afni_prefix_params",

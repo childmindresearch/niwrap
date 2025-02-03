@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RcaConfig2cshOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rca_config2csh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rca_config2csh_params(
     configfile: InputPathType,
 ) -> RcaConfig2cshParameters:
@@ -157,6 +165,7 @@ def rca_config2csh(
 
 __all__ = [
     "RCA_CONFIG2CSH_METADATA",
+    "RcaConfig2cshOutputs",
     "rca_config2csh",
     "rca_config2csh_params",
 ]

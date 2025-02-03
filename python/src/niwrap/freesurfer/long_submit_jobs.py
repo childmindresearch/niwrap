@@ -74,6 +74,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LongSubmitJobsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `long_submit_jobs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def long_submit_jobs_params(
     qdec: InputPathType,
     cdir: str,
@@ -422,6 +430,7 @@ def long_submit_jobs(
 
 __all__ = [
     "LONG_SUBMIT_JOBS_METADATA",
+    "LongSubmitJobsOutputs",
     "long_submit_jobs",
     "long_submit_jobs_params",
 ]

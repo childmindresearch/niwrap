@@ -64,6 +64,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AfniOpenOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `afni_open(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def afni_open_params(
     files: list[InputPathType],
     method: str | None = None,
@@ -273,6 +281,7 @@ def afni_open(
 
 __all__ = [
     "AFNI_OPEN_METADATA",
+    "AfniOpenOutputs",
     "afni_open",
     "afni_open_params",
 ]

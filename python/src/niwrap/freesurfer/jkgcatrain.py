@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class JkgcatrainOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `jkgcatrain(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def jkgcatrain_params(
     gca_directory: str,
     iteration_number: float | None = 2,
@@ -198,6 +206,7 @@ def jkgcatrain(
 
 __all__ = [
     "JKGCATRAIN_METADATA",
+    "JkgcatrainOutputs",
     "jkgcatrain",
     "jkgcatrain_params",
 ]

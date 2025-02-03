@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslhdOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslhd(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslhd_params(
     input_file: InputPathType,
     xml_flag: bool = False,
@@ -163,6 +171,7 @@ def fslhd(
 
 __all__ = [
     "FSLHD_METADATA",
+    "FslhdOutputs",
     "fslhd",
     "fslhd_params",
 ]

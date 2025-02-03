@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VNoPoundOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__no_pound(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__no_pound_params(
     afni_files: list[str],
 ) -> VNoPoundParameters:
@@ -156,6 +164,7 @@ def v__no_pound(
 
 
 __all__ = [
+    "VNoPoundOutputs",
     "V__NO_POUND_METADATA",
     "v__no_pound",
     "v__no_pound_params",

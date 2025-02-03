@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PolyorderOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `polyorder(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def polyorder_params(
     ntp: float,
     tr: float,
@@ -180,6 +188,7 @@ def polyorder(
 
 __all__ = [
     "POLYORDER_METADATA",
+    "PolyorderOutputs",
     "polyorder",
     "polyorder_params",
 ]

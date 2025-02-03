@@ -66,6 +66,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VolumeCapturePlaneOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_capture_plane(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_capture_plane_params(
     volume: InputPathType,
     subvolume: str,
@@ -288,6 +296,7 @@ def volume_capture_plane(
 
 __all__ = [
     "VOLUME_CAPTURE_PLANE_METADATA",
+    "VolumeCapturePlaneOutputs",
     "volume_capture_plane",
     "volume_capture_plane_params",
 ]

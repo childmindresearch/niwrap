@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SpecFileRelocateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `spec_file_relocate(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def spec_file_relocate_params(
     input_spec: str,
     output_spec: str,
@@ -173,6 +181,7 @@ def spec_file_relocate(
 
 __all__ = [
     "SPEC_FILE_RELOCATE_METADATA",
+    "SpecFileRelocateOutputs",
     "spec_file_relocate",
     "spec_file_relocate_params",
 ]

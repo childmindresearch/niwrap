@@ -2088,6 +2088,14 @@ def mrcalc_various_file_cargs(
     return cargs
 
 
+class MrcalcOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mrcalc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mrcalc_params(
     operand: list[typing.Union[MrcalcVariousStringParameters, MrcalcVariousFileParameters]],
     abs_: list[MrcalcAbsParameters] | None = None,
@@ -2759,6 +2767,7 @@ def mrcalc(
 
 __all__ = [
     "MRCALC_METADATA",
+    "MrcalcOutputs",
     "mrcalc",
     "mrcalc_abs_params",
     "mrcalc_acos_params",

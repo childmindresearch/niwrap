@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dAboverlapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_aboverlap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_aboverlap_params(
     dataset_a: InputPathType,
     dataset_b: InputPathType,
@@ -189,6 +197,7 @@ def v_3d_aboverlap(
 
 
 __all__ = [
+    "V3dAboverlapOutputs",
     "V_3D_ABOVERLAP_METADATA",
     "v_3d_aboverlap",
     "v_3d_aboverlap_params",

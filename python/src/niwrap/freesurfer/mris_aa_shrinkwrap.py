@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisAaShrinkwrapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_aa_shrinkwrap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_aa_shrinkwrap_params(
     t1_vol: InputPathType,
     pd_vol: InputPathType,
@@ -217,6 +225,7 @@ def mris_aa_shrinkwrap(
 
 __all__ = [
     "MRIS_AA_SHRINKWRAP_METADATA",
+    "MrisAaShrinkwrapOutputs",
     "mris_aa_shrinkwrap",
     "mris_aa_shrinkwrap_params",
 ]

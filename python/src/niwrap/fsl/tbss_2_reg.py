@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Tbss2RegOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tbss_2_reg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tbss_2_reg_params(
     use_fmrib58_fa_1mm: bool = False,
     target_image: InputPathType | None = None,
@@ -182,6 +190,7 @@ def tbss_2_reg(
 
 __all__ = [
     "TBSS_2_REG_METADATA",
+    "Tbss2RegOutputs",
     "tbss_2_reg",
     "tbss_2_reg_params",
 ]

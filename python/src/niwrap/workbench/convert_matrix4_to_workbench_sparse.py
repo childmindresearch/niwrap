@@ -105,6 +105,14 @@ def convert_matrix4_to_workbench_sparse_volume_seeds_cargs(
     return cargs
 
 
+class ConvertMatrix4ToWorkbenchSparseOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `convert_matrix4_to_workbench_sparse(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def convert_matrix4_to_workbench_sparse_params(
     matrix4_1: str,
     matrix4_2: str,
@@ -272,6 +280,7 @@ def convert_matrix4_to_workbench_sparse(
 
 __all__ = [
     "CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA",
+    "ConvertMatrix4ToWorkbenchSparseOutputs",
     "convert_matrix4_to_workbench_sparse",
     "convert_matrix4_to_workbench_sparse_params",
     "convert_matrix4_to_workbench_sparse_volume_seeds_params",

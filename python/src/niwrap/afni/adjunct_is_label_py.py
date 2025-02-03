@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AdjunctIsLabelPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `adjunct_is_label_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def adjunct_is_label_py_params(
     infile: InputPathType,
     label: str,
@@ -162,6 +170,7 @@ def adjunct_is_label_py(
 
 __all__ = [
     "ADJUNCT_IS_LABEL_PY_METADATA",
+    "AdjunctIsLabelPyOutputs",
     "adjunct_is_label_py",
     "adjunct_is_label_py_params",
 ]

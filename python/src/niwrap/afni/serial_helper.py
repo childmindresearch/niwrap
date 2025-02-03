@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SerialHelperOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `serial_helper(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def serial_helper_params(
     serial_port: str,
     sock_num: float | None = None,
@@ -270,6 +278,7 @@ def serial_helper(
 
 __all__ = [
     "SERIAL_HELPER_METADATA",
+    "SerialHelperOutputs",
     "serial_helper",
     "serial_helper_params",
 ]

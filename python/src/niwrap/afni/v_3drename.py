@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3drenameOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3drename(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3drename_params(
     old_prefix: str,
     new_prefix: str,
@@ -161,6 +169,7 @@ def v_3drename(
 
 
 __all__ = [
+    "V3drenameOutputs",
     "V_3DRENAME_METADATA",
     "v_3drename",
     "v_3drename_params",

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AdjunctSimplifyCostOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `adjunct_simplify_cost(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def adjunct_simplify_cost_params(
     cost_function: str,
 ) -> AdjunctSimplifyCostParameters:
@@ -155,6 +163,7 @@ def adjunct_simplify_cost(
 
 __all__ = [
     "ADJUNCT_SIMPLIFY_COST_METADATA",
+    "AdjunctSimplifyCostOutputs",
     "adjunct_simplify_cost",
     "adjunct_simplify_cost_params",
 ]

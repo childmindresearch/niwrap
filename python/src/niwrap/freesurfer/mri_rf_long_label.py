@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriRfLongLabelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_rf_long_label(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_rf_long_label_params(
     help_flag: str | None = None,
 ) -> MriRfLongLabelParameters:
@@ -157,6 +165,7 @@ def mri_rf_long_label(
 
 __all__ = [
     "MRI_RF_LONG_LABEL_METADATA",
+    "MriRfLongLabelOutputs",
     "mri_rf_long_label",
     "mri_rf_long_label_params",
 ]

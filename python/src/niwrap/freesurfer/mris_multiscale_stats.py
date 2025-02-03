@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisMultiscaleStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_multiscale_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_multiscale_stats_params(
     output_subject: str,
     hemi: str,
@@ -195,6 +203,7 @@ def mris_multiscale_stats(
 
 __all__ = [
     "MRIS_MULTISCALE_STATS_METADATA",
+    "MrisMultiscaleStatsOutputs",
     "mris_multiscale_stats",
     "mris_multiscale_stats_params",
 ]

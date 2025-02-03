@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CatMatvecOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cat_matvec(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cat_matvec_params(
     matvec_spec: list[str],
     four_by_four_format: bool = False,
@@ -167,6 +175,7 @@ def cat_matvec(
 
 __all__ = [
     "CAT_MATVEC_METADATA",
+    "CatMatvecOutputs",
     "cat_matvec",
     "cat_matvec_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ApqcMakeHtmlOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `apqc_make_html(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def apqc_make_html_params(
     qc_dir: str,
 ) -> ApqcMakeHtmlParameters:
@@ -158,6 +166,7 @@ def apqc_make_html(
 
 __all__ = [
     "APQC_MAKE_HTML_METADATA",
+    "ApqcMakeHtmlOutputs",
     "apqc_make_html",
     "apqc_make_html_params",
 ]

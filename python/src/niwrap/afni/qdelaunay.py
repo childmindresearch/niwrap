@@ -82,6 +82,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class QdelaunayOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `qdelaunay(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def qdelaunay_params(
     input_file: InputPathType,
     furthest_site: bool = False,
@@ -485,6 +493,7 @@ def qdelaunay(
 
 __all__ = [
     "QDELAUNAY_METADATA",
+    "QdelaunayOutputs",
     "qdelaunay",
     "qdelaunay_params",
 ]

@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UberAlignTestPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `uber_align_test_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def uber_align_test_py_params(
     no_gui: bool = False,
     print_script: bool = False,
@@ -240,6 +248,7 @@ def uber_align_test_py(
 
 __all__ = [
     "UBER_ALIGN_TEST_PY_METADATA",
+    "UberAlignTestPyOutputs",
     "uber_align_test_py",
     "uber_align_test_py_params",
 ]

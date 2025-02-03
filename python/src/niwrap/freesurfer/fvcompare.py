@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FvcompareOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fvcompare(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fvcompare_params(
     subject1: str,
     subject2: str,
@@ -404,6 +412,7 @@ def fvcompare(
 
 __all__ = [
     "FVCOMPARE_METADATA",
+    "FvcompareOutputs",
     "fvcompare",
     "fvcompare_params",
 ]

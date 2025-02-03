@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UnpackmincdirOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `unpackmincdir(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def unpackmincdir_params(
     source_directory: str,
     target_directory: str,
@@ -236,6 +244,7 @@ def unpackmincdir(
 
 __all__ = [
     "UNPACKMINCDIR_METADATA",
+    "UnpackmincdirOutputs",
     "unpackmincdir",
     "unpackmincdir_params",
 ]

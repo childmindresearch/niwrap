@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RtfeedmeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rtfeedme(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rtfeedme_params(
     datasets: list[InputPathType],
     host: str | None = None,
@@ -281,6 +289,7 @@ def rtfeedme(
 
 __all__ = [
     "RTFEEDME_METADATA",
+    "RtfeedmeOutputs",
     "rtfeedme",
     "rtfeedme_params",
 ]

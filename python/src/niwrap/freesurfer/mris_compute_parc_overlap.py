@@ -65,6 +65,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisComputeParcOverlapOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_compute_parc_overlap(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_compute_parc_overlap_params(
     subject: str,
     hemi: str,
@@ -314,6 +322,7 @@ def mris_compute_parc_overlap(
 
 __all__ = [
     "MRIS_COMPUTE_PARC_OVERLAP_METADATA",
+    "MrisComputeParcOverlapOutputs",
     "mris_compute_parc_overlap",
     "mris_compute_parc_overlap_params",
 ]

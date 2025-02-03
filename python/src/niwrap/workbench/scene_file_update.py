@@ -200,6 +200,14 @@ def scene_file_update_data_file_remove_cargs(
     return cargs
 
 
+class SceneFileUpdateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `scene_file_update(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def scene_file_update_params(
     input_scene_file: str,
     output_scene_file: str,
@@ -434,6 +442,7 @@ def scene_file_update(
 
 __all__ = [
     "SCENE_FILE_UPDATE_METADATA",
+    "SceneFileUpdateOutputs",
     "scene_file_update",
     "scene_file_update_copy_map_one_palette_params",
     "scene_file_update_data_file_add_params",

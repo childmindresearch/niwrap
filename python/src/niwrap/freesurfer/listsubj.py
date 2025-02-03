@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ListsubjOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `listsubj(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def listsubj_params(
     subject_dir: str,
 ) -> ListsubjParameters:
@@ -156,6 +164,7 @@ def listsubj(
 
 __all__ = [
     "LISTSUBJ_METADATA",
+    "ListsubjOutputs",
     "listsubj",
     "listsubj_params",
 ]

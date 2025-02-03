@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VMoveToSeriesDirsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__move_to_series_dirs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__move_to_series_dirs_params(
     dicom_files: list[InputPathType],
     action: typing.Literal["copy", "move"] | None = None,
@@ -230,6 +238,7 @@ def v__move_to_series_dirs(
 
 
 __all__ = [
+    "VMoveToSeriesDirsOutputs",
     "V__MOVE_TO_SERIES_DIRS_METADATA",
     "v__move_to_series_dirs",
     "v__move_to_series_dirs_params",

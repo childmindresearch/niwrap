@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AivOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `aiv(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def aiv_params(
     input_images: list[InputPathType],
     verbose: bool = False,
@@ -209,6 +217,7 @@ def aiv(
 
 __all__ = [
     "AIV_METADATA",
+    "AivOutputs",
     "aiv",
     "aiv_params",
 ]

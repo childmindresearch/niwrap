@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RtviewOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rtview(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rtview_params(
     subject: str | None = None,
     right_hemi: bool = False,
@@ -266,6 +274,7 @@ def rtview(
 
 __all__ = [
     "RTVIEW_METADATA",
+    "RtviewOutputs",
     "rtview",
     "rtview_params",
 ]

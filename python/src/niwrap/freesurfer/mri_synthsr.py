@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriSynthsrOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_synthsr(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_synthsr_params(
     input_: str,
     output: str,
@@ -246,6 +254,7 @@ def mri_synthsr(
 
 __all__ = [
     "MRI_SYNTHSR_METADATA",
+    "MriSynthsrOutputs",
     "mri_synthsr",
     "mri_synthsr_params",
 ]

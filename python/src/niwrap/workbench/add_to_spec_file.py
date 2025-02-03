@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AddToSpecFileOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `add_to_spec_file(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def add_to_spec_file_params(
     specfile: str,
     structure: str,
@@ -248,6 +256,7 @@ def add_to_spec_file(
 
 __all__ = [
     "ADD_TO_SPEC_FILE_METADATA",
+    "AddToSpecFileOutputs",
     "add_to_spec_file",
     "add_to_spec_file_params",
 ]

@@ -258,6 +258,14 @@ def fixelcfestats_various_file_cargs(
     return cargs
 
 
+class FixelcfestatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fixelcfestats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fixelcfestats_params(
     in_fixel_directory: InputPathType,
     subjects: InputPathType,
@@ -826,6 +834,7 @@ def fixelcfestats(
 
 __all__ = [
     "FIXELCFESTATS_METADATA",
+    "FixelcfestatsOutputs",
     "fixelcfestats",
     "fixelcfestats_column_params",
     "fixelcfestats_config_params",

@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FeatGmPrepareOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `feat_gm_prepare(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def feat_gm_prepare_params(
     gm_output: str,
     feat_dirs_list: list[InputPathType],
@@ -162,6 +170,7 @@ def feat_gm_prepare(
 
 __all__ = [
     "FEAT_GM_PREPARE_METADATA",
+    "FeatGmPrepareOutputs",
     "feat_gm_prepare",
     "feat_gm_prepare_params",
 ]

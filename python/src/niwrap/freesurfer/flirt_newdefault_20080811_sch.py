@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FlirtNewdefault20080811SchOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `flirt_newdefault_20080811_sch(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def flirt_newdefault_20080811_sch_params(
     term_option: str | None = None,
     curses_flag: bool = False,
@@ -176,6 +184,7 @@ def flirt_newdefault_20080811_sch(
 
 __all__ = [
     "FLIRT_NEWDEFAULT_20080811_SCH_METADATA",
+    "FlirtNewdefault20080811SchOutputs",
     "flirt_newdefault_20080811_sch",
     "flirt_newdefault_20080811_sch_params",
 ]

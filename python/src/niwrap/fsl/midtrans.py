@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MidtransOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `midtrans(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def midtrans_params(
     transforms: list[InputPathType],
     output_matrix: str | None = None,
@@ -213,6 +221,7 @@ def midtrans(
 
 __all__ = [
     "MIDTRANS_METADATA",
+    "MidtransOutputs",
     "midtrans",
     "midtrans_params",
 ]

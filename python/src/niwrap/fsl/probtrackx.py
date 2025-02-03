@@ -83,6 +83,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ProbtrackxOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `probtrackx(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def probtrackx_params(
     samples: InputPathType,
     mask: InputPathType,
@@ -542,6 +550,7 @@ def probtrackx(
 
 __all__ = [
     "PROBTRACKX_METADATA",
+    "ProbtrackxOutputs",
     "probtrackx",
     "probtrackx_params",
 ]

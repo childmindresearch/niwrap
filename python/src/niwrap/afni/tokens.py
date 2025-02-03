@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TokensOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tokens(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tokens_params(
     infile: InputPathType | None = None,
     extra_char: list[str] | None = None,
@@ -174,6 +182,7 @@ def tokens(
 
 __all__ = [
     "TOKENS_METADATA",
+    "TokensOutputs",
     "tokens",
     "tokens_params",
 ]

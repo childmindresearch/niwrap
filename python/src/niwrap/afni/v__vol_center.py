@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VVolCenterOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__vol_center(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__vol_center_params(
     dset: InputPathType,
     orient: str | None = None,
@@ -169,6 +177,7 @@ def v__vol_center(
 
 
 __all__ = [
+    "VVolCenterOutputs",
     "V__VOL_CENTER_METADATA",
     "v__vol_center",
     "v__vol_center_params",

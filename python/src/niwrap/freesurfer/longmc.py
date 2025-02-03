@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class LongmcOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `longmc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def longmc_params(
     cross_tp_name: str,
     base_name: str,
@@ -205,6 +213,7 @@ def longmc(
 
 __all__ = [
     "LONGMC_METADATA",
+    "LongmcOutputs",
     "longmc",
     "longmc_params",
 ]

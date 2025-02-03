@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FspythonOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fspython(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fspython_params(
     args: list[str] | None = None,
 ) -> FspythonParameters:
@@ -158,6 +166,7 @@ def fspython(
 
 __all__ = [
     "FSPYTHON_METADATA",
+    "FspythonOutputs",
     "fspython",
     "fspython_params",
 ]

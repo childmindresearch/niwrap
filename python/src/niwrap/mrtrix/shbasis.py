@@ -106,6 +106,14 @@ def shbasis_config_cargs(
     return cargs
 
 
+class ShbasisOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `shbasis(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def shbasis_params(
     sh: list[InputPathType],
     convert: str | None = None,
@@ -343,6 +351,7 @@ def shbasis(
 
 __all__ = [
     "SHBASIS_METADATA",
+    "ShbasisOutputs",
     "shbasis",
     "shbasis_config_params",
     "shbasis_params",

@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisEstimateWmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_estimate_wm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_estimate_wm_params(
     subjs: list[str],
     hemi: str,
@@ -240,6 +248,7 @@ def mris_estimate_wm(
 
 __all__ = [
     "MRIS_ESTIMATE_WM_METADATA",
+    "MrisEstimateWmOutputs",
     "mris_estimate_wm",
     "mris_estimate_wm_params",
 ]

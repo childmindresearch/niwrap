@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FilmbabescriptOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `filmbabescript(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def filmbabescript_params(
     feat_dir: str,
     flobs_dir: str,
@@ -162,6 +170,7 @@ def filmbabescript(
 
 __all__ = [
     "FILMBABESCRIPT_METADATA",
+    "FilmbabescriptOutputs",
     "filmbabescript",
     "filmbabescript_params",
 ]

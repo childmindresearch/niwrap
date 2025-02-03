@@ -173,6 +173,14 @@ def connectomestats_config_cargs(
     return cargs
 
 
+class ConnectomestatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `connectomestats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def connectomestats_params(
     input_: InputPathType,
     algorithm: str,
@@ -711,6 +719,7 @@ def connectomestats(
 
 __all__ = [
     "CONNECTOMESTATS_METADATA",
+    "ConnectomestatsOutputs",
     "connectomestats",
     "connectomestats_column_params",
     "connectomestats_config_params",

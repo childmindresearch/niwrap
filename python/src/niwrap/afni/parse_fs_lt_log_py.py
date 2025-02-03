@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ParseFsLtLogPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `parse_fs_lt_log_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def parse_fs_lt_log_py_params(
     logfile: InputPathType,
     labels: list[str],
@@ -196,6 +204,7 @@ def parse_fs_lt_log_py(
 
 __all__ = [
     "PARSE_FS_LT_LOG_PY_METADATA",
+    "ParseFsLtLogPyOutputs",
     "parse_fs_lt_log_py",
     "parse_fs_lt_log_py_params",
 ]

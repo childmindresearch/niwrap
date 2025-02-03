@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dTsgenOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_tsgen(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_tsgen_params(
     input_file: InputPathType,
     signal_label: str,
@@ -290,6 +298,7 @@ def v_3d_tsgen(
 
 
 __all__ = [
+    "V3dTsgenOutputs",
     "V_3D_TSGEN_METADATA",
     "v_3d_tsgen",
     "v_3d_tsgen_params",

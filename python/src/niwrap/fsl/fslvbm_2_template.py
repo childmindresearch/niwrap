@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Fslvbm2TemplateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslvbm_2_template(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslvbm_2_template_params(
     arch: str | None = None,
     coprocessor: str | None = None,
@@ -436,6 +444,7 @@ def fslvbm_2_template(
 
 __all__ = [
     "FSLVBM_2_TEMPLATE_METADATA",
+    "Fslvbm2TemplateOutputs",
     "fslvbm_2_template",
     "fslvbm_2_template_params",
 ]

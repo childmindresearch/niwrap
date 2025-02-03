@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PromptUserOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `prompt_user(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def prompt_user_params(
     pause_message: str,
     timeout_alias: float | None = None,
@@ -172,6 +180,7 @@ def prompt_user(
 
 __all__ = [
     "PROMPT_USER_METADATA",
+    "PromptUserOutputs",
     "prompt_user",
     "prompt_user_params",
 ]

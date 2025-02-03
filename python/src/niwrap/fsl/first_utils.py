@@ -81,6 +81,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FirstUtilsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `first_utils(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def first_utils_params(
     input_file: InputPathType,
     output_name: str,
@@ -452,6 +460,7 @@ def first_utils(
 
 __all__ = [
     "FIRST_UTILS_METADATA",
+    "FirstUtilsOutputs",
     "first_utils",
     "first_utils_params",
 ]

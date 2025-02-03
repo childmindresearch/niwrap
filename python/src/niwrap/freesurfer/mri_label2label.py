@@ -95,6 +95,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriLabel2labelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_label2label(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_label2label_params(
     src_label: InputPathType,
     trg_label: str,
@@ -678,6 +686,7 @@ def mri_label2label(
 
 __all__ = [
     "MRI_LABEL2LABEL_METADATA",
+    "MriLabel2labelOutputs",
     "mri_label2label",
     "mri_label2label_params",
 ]

@@ -72,6 +72,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfaceMetricsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surface_metrics(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surface_metrics_params(
     surf1: str,
     internal_nodes: bool = False,
@@ -338,6 +346,7 @@ def surface_metrics(
 
 __all__ = [
     "SURFACE_METRICS_METADATA",
+    "SurfaceMetricsOutputs",
     "surface_metrics",
     "surface_metrics_params",
 ]

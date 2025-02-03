@@ -70,6 +70,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AfniHistoryOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `afni_history(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def afni_history_params(
     verb_level: int | None = None,
     check_date: str | None = None,
@@ -376,6 +384,7 @@ def afni_history(
 
 __all__ = [
     "AFNI_HISTORY_METADATA",
+    "AfniHistoryOutputs",
     "afni_history",
     "afni_history_params",
 ]

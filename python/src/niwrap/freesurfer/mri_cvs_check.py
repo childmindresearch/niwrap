@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriCvsCheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_cvs_check(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_cvs_check_params(
     mov_subjid: str,
     template_subjid: str | None = None,
@@ -204,6 +212,7 @@ def mri_cvs_check(
 
 __all__ = [
     "MRI_CVS_CHECK_METADATA",
+    "MriCvsCheckOutputs",
     "mri_cvs_check",
     "mri_cvs_check_params",
 ]

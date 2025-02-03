@@ -93,6 +93,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisPlaceSurfaceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_place_surface(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_place_surface_params(
     output_surface: str,
     input_surface: str,
@@ -653,6 +661,7 @@ def mris_place_surface(
 
 __all__ = [
     "MRIS_PLACE_SURFACE_METADATA",
+    "MrisPlaceSurfaceOutputs",
     "mris_place_surface",
     "mris_place_surface_params",
 ]

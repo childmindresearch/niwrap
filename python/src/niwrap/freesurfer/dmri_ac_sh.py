@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriAcShOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_ac_sh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_ac_sh_params(
     additional_args: str | None = None,
 ) -> DmriAcShParameters:
@@ -157,6 +165,7 @@ def dmri_ac_sh(
 
 __all__ = [
     "DMRI_AC_SH_METADATA",
+    "DmriAcShOutputs",
     "dmri_ac_sh",
     "dmri_ac_sh_params",
 ]

@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisAnnotDiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_annot_diff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_annot_diff_params(
     annot1: InputPathType,
     annot2: InputPathType,
@@ -178,6 +186,7 @@ def mris_annot_diff(
 
 __all__ = [
     "MRIS_ANNOT_DIFF_METADATA",
+    "MrisAnnotDiffOutputs",
     "mris_annot_diff",
     "mris_annot_diff_params",
 ]

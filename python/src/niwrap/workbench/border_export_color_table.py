@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BorderExportColorTableOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `border_export_color_table(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def border_export_color_table_params(
     border_file: InputPathType,
     table_out: str,
@@ -181,6 +189,7 @@ def border_export_color_table(
 
 __all__ = [
     "BORDER_EXPORT_COLOR_TABLE_METADATA",
+    "BorderExportColorTableOutputs",
     "border_export_color_table",
     "border_export_color_table_params",
 ]

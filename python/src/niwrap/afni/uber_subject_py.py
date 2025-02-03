@@ -92,6 +92,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UberSubjectPyOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `uber_subject_py(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def uber_subject_py_params(
     qt_opts: str | None = None,
     svar: str | None = None,
@@ -648,6 +656,7 @@ def uber_subject_py(
 
 __all__ = [
     "UBER_SUBJECT_PY_METADATA",
+    "UberSubjectPyOutputs",
     "uber_subject_py",
     "uber_subject_py_params",
 ]

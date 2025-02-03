@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class IsanalyzeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `isanalyze(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def isanalyze_params(
     input_file: InputPathType,
 ) -> IsanalyzeParameters:
@@ -155,6 +163,7 @@ def isanalyze(
 
 __all__ = [
     "ISANALYZE_METADATA",
+    "IsanalyzeOutputs",
     "isanalyze",
     "isanalyze_params",
 ]

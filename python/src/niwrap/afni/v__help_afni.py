@@ -49,6 +49,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VHelpAfniOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__help_afni(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__help_afni_params(
 ) -> VHelpAfniParameters:
     """
@@ -148,6 +156,7 @@ def v__help_afni(
 
 
 __all__ = [
+    "VHelpAfniOutputs",
     "V__HELP_AFNI_METADATA",
     "v__help_afni",
     "v__help_afni_params",

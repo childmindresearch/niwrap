@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VUpdateAfniBinariesOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v__update_afni_binaries(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v__update_afni_binaries_params(
     defaults_flag: bool = False,
     help_flag: bool = False,
@@ -369,6 +377,7 @@ def v__update_afni_binaries(
 
 
 __all__ = [
+    "VUpdateAfniBinariesOutputs",
     "V__UPDATE_AFNI_BINARIES_METADATA",
     "v__update_afni_binaries",
     "v__update_afni_binaries_params",

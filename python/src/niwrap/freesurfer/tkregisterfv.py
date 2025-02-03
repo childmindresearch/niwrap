@@ -81,6 +81,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TkregisterfvOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tkregisterfv(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tkregisterfv_params(
     reg: InputPathType,
     mov: InputPathType | None = None,
@@ -476,6 +484,7 @@ def tkregisterfv(
 
 __all__ = [
     "TKREGISTERFV_METADATA",
+    "TkregisterfvOutputs",
     "tkregisterfv",
     "tkregisterfv_params",
 ]

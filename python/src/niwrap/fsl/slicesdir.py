@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SlicesdirOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `slicesdir(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def slicesdir_params(
     filelist: list[str],
     flag_filelist: bool = False,
@@ -203,6 +211,7 @@ def slicesdir(
 
 __all__ = [
     "SLICESDIR_METADATA",
+    "SlicesdirOutputs",
     "slicesdir",
     "slicesdir_params",
 ]

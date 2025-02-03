@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class NimlFeedmeOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `niml_feedme(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def niml_feedme_params(
     dataset: InputPathType,
     host: str | None = None,
@@ -237,6 +245,7 @@ def niml_feedme(
 
 __all__ = [
     "NIML_FEEDME_METADATA",
+    "NimlFeedmeOutputs",
     "niml_feedme",
     "niml_feedme_params",
 ]

@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UberSkelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `uber_skel(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def uber_skel_params(
     qt_options: str | None = None,
     no_gui_flag: bool = False,
@@ -250,6 +258,7 @@ def uber_skel(
 
 __all__ = [
     "UBER_SKEL_METADATA",
+    "UberSkelOutputs",
     "uber_skel",
     "uber_skel_params",
 ]

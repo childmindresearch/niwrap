@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PromptPopupOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `prompt_popup(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def prompt_popup_params(
     message_pause: str | None = None,
     buttons_b: list[str] | None = None,
@@ -186,6 +194,7 @@ def prompt_popup(
 
 __all__ = [
     "PROMPT_POPUP_METADATA",
+    "PromptPopupOutputs",
     "prompt_popup",
     "prompt_popup_params",
 ]

@@ -254,6 +254,14 @@ def cifti_weighted_stats_stdev_cargs(
     return cargs
 
 
+class CiftiWeightedStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cifti_weighted_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cifti_weighted_stats_params(
     cifti_in: InputPathType,
     spatial_weights: CiftiWeightedStatsSpatialWeightsParameters | None = None,
@@ -474,6 +482,7 @@ def cifti_weighted_stats(
 
 __all__ = [
     "CIFTI_WEIGHTED_STATS_METADATA",
+    "CiftiWeightedStatsOutputs",
     "cifti_weighted_stats",
     "cifti_weighted_stats_params",
     "cifti_weighted_stats_roi_params",

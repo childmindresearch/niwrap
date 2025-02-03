@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PngappendOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `pngappend(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def pngappend_params(
     input_files_and_options: list[str],
     output_file: InputPathType,
@@ -164,6 +172,7 @@ def pngappend(
 
 __all__ = [
     "PNGAPPEND_METADATA",
+    "PngappendOutputs",
     "pngappend",
     "pngappend_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslmodhdOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslmodhd(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslmodhd_params(
     image: InputPathType,
     keyword_: str,
@@ -169,6 +177,7 @@ def fslmodhd(
 
 __all__ = [
     "FSLMODHD_METADATA",
+    "FslmodhdOutputs",
     "fslmodhd",
     "fslmodhd_params",
 ]

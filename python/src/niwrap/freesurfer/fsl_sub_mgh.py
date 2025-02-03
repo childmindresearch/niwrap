@@ -62,6 +62,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslSubMghOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fsl_sub_mgh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fsl_sub_mgh_params(
     estimated_time: int | None = None,
     queue_name: str | None = "long.q",
@@ -307,6 +315,7 @@ def fsl_sub_mgh(
 
 __all__ = [
     "FSL_SUB_MGH_METADATA",
+    "FslSubMghOutputs",
     "fsl_sub_mgh",
     "fsl_sub_mgh_params",
 ]

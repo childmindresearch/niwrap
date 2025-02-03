@@ -162,6 +162,16 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dinfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3dinfo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+    info: list[str]
+    """Sort-of-useful information from a 3D dataset's header"""
+
+
 def v_3dinfo_params(
     dataset: list[InputPathType],
     orient: bool = False,
@@ -1139,6 +1149,7 @@ def v_3dinfo(
 
 
 __all__ = [
+    "V3dinfoOutputs",
     "V_3DINFO_METADATA",
     "v_3dinfo",
     "v_3dinfo_params",

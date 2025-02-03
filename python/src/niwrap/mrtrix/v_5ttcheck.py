@@ -106,6 +106,14 @@ def v_5ttcheck_config_cargs(
     return cargs
 
 
+class V5ttcheckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_5ttcheck(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_5ttcheck_params(
     input_: list[InputPathType],
     voxels: str | None = None,
@@ -306,6 +314,7 @@ def v_5ttcheck(
 
 
 __all__ = [
+    "V5ttcheckOutputs",
     "V_5TTCHECK_METADATA",
     "v_5ttcheck",
     "v_5ttcheck_config_params",

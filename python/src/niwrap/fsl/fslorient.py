@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslorientOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslorient(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslorient_params(
     filename: InputPathType,
     swap_orient: bool = False,
@@ -163,6 +171,7 @@ def fslorient(
 
 __all__ = [
     "FSLORIENT_METADATA",
+    "FslorientOutputs",
     "fslorient",
     "fslorient_params",
 ]

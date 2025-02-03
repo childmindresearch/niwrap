@@ -71,6 +71,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RunSamsegLongOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `run_samseg_long(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def run_samseg_long_params(
     timepoint: list[InputPathType],
     output: str,
@@ -392,6 +400,7 @@ def run_samseg_long(
 
 __all__ = [
     "RUN_SAMSEG_LONG_METADATA",
+    "RunSamsegLongOutputs",
     "run_samseg_long",
     "run_samseg_long_params",
 ]

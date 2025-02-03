@@ -157,6 +157,14 @@ def mrstats_config_cargs(
     return cargs
 
 
+class MrstatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mrstats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mrstats_params(
     image: InputPathType,
     output: list[MrstatsOutputParameters] | None = None,
@@ -390,6 +398,7 @@ def mrstats(
 
 __all__ = [
     "MRSTATS_METADATA",
+    "MrstatsOutputs",
     "mrstats",
     "mrstats_config_params",
     "mrstats_output_params",

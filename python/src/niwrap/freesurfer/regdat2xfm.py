@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Regdat2xfmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `regdat2xfm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def regdat2xfm_params(
     input_file: InputPathType,
     output_file: str,
@@ -162,6 +170,7 @@ def regdat2xfm(
 
 __all__ = [
     "REGDAT2XFM_METADATA",
+    "Regdat2xfmOutputs",
     "regdat2xfm",
     "regdat2xfm_params",
 ]

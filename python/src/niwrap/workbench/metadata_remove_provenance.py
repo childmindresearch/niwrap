@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MetadataRemoveProvenanceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `metadata_remove_provenance(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def metadata_remove_provenance_params(
     input_file: str,
     output_file: str,
@@ -167,6 +175,7 @@ def metadata_remove_provenance(
 
 __all__ = [
     "METADATA_REMOVE_PROVENANCE_METADATA",
+    "MetadataRemoveProvenanceOutputs",
     "metadata_remove_provenance",
     "metadata_remove_provenance_params",
 ]

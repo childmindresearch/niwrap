@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RunQdecGlmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `run_qdec_glm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def run_qdec_glm_params(
     qdec_directory: str,
 ) -> RunQdecGlmParameters:
@@ -157,6 +165,7 @@ def run_qdec_glm(
 
 __all__ = [
     "RUN_QDEC_GLM_METADATA",
+    "RunQdecGlmOutputs",
     "run_qdec_glm",
     "run_qdec_glm_params",
 ]

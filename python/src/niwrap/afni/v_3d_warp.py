@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dWarpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_warp(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_warp_params(
     dataset: str,
 ) -> V3dWarpParameters:
@@ -155,6 +163,7 @@ def v_3d_warp(
 
 
 __all__ = [
+    "V3dWarpOutputs",
     "V_3D_WARP_METADATA",
     "v_3d_warp",
     "v_3d_warp_params",

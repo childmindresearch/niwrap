@@ -113,6 +113,14 @@ def mrmetric_config_cargs(
     return cargs
 
 
+class MrmetricOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mrmetric(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mrmetric_params(
     image1: InputPathType,
     image2: InputPathType,
@@ -388,6 +396,7 @@ def mrmetric(
 
 __all__ = [
     "MRMETRIC_METADATA",
+    "MrmetricOutputs",
     "mrmetric",
     "mrmetric_config_params",
     "mrmetric_params",

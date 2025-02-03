@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ImglobOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `imglob(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def imglob_params(
     input_list: list[str],
     multiple_extensions: bool = False,
@@ -163,6 +171,7 @@ def imglob(
 
 __all__ = [
     "IMGLOB_METADATA",
+    "ImglobOutputs",
     "imglob",
     "imglob_params",
 ]

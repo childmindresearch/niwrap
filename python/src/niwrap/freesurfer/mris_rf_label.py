@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisRfLabelOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_rf_label(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_rf_label_params(
     subject: str,
     rf_classifier: str,
@@ -193,6 +201,7 @@ def mris_rf_label(
 
 __all__ = [
     "MRIS_RF_LABEL_METADATA",
+    "MrisRfLabelOutputs",
     "mris_rf_label",
     "mris_rf_label_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class VolumeReorientOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_reorient(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_reorient_params(
     volume: InputPathType,
     orient_string: str,
@@ -194,6 +202,7 @@ def volume_reorient(
 
 __all__ = [
     "VOLUME_REORIENT_METADATA",
+    "VolumeReorientOutputs",
     "volume_reorient",
     "volume_reorient_params",
 ]

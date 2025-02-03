@@ -72,6 +72,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AdjunctApqcTsnrGeneralOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `adjunct_apqc_tsnr_general(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def adjunct_apqc_tsnr_general_params(
     montgap: str | None = None,
     montcolor: str | None = None,
@@ -408,6 +416,7 @@ def adjunct_apqc_tsnr_general(
 
 __all__ = [
     "ADJUNCT_APQC_TSNR_GENERAL_METADATA",
+    "AdjunctApqcTsnrGeneralOutputs",
     "adjunct_apqc_tsnr_general",
     "adjunct_apqc_tsnr_general_params",
 ]

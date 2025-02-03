@@ -61,6 +61,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriConcatenateLtaOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_concatenate_lta(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_concatenate_lta_params(
     lta_1: InputPathType,
     lta_2: InputPathType,
@@ -263,6 +271,7 @@ def mri_concatenate_lta(
 
 __all__ = [
     "MRI_CONCATENATE_LTA_METADATA",
+    "MriConcatenateLtaOutputs",
     "mri_concatenate_lta",
     "mri_concatenate_lta_params",
 ]

@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class PlugoutDriveOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `plugout_drive(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def plugout_drive_params(
     host: str | None = None,
     verbose: bool = False,
@@ -236,6 +244,7 @@ def plugout_drive(
 
 __all__ = [
     "PLUGOUT_DRIVE_METADATA",
+    "PlugoutDriveOutputs",
     "plugout_drive",
     "plugout_drive_params",
 ]

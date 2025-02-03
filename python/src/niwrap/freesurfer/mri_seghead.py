@@ -64,6 +64,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriSegheadOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_seghead(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_seghead_params(
     input_volume: str,
     output_volume: str,
@@ -320,6 +328,7 @@ def mri_seghead(
 
 __all__ = [
     "MRI_SEGHEAD_METADATA",
+    "MriSegheadOutputs",
     "mri_seghead",
     "mri_seghead_params",
 ]

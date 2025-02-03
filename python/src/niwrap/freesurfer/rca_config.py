@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class RcaConfigOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `rca_config(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def rca_config_params(
     source_config: InputPathType,
     updated_config: InputPathType,
@@ -182,6 +190,7 @@ def rca_config(
 
 __all__ = [
     "RCA_CONFIG_METADATA",
+    "RcaConfigOutputs",
     "rca_config",
     "rca_config_params",
 ]

@@ -67,6 +67,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisVolmaskOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_volmask(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_volmask_params(
     io_: str,
     cap_distance: float | None = None,
@@ -361,6 +369,7 @@ def mris_volmask(
 
 __all__ = [
     "MRIS_VOLMASK_METADATA",
+    "MrisVolmaskOutputs",
     "mris_volmask",
     "mris_volmask_params",
 ]

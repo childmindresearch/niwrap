@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ReinflateSubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `reinflate_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def reinflate_subject_params(
     args: str | None = None,
 ) -> ReinflateSubjectParameters:
@@ -157,6 +165,7 @@ def reinflate_subject(
 
 __all__ = [
     "REINFLATE_SUBJECT_METADATA",
+    "ReinflateSubjectOutputs",
     "reinflate_subject",
     "reinflate_subject_params",
 ]

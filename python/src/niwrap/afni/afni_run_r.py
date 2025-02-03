@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AfniRunROutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `afni_run_r(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def afni_run_r_params(
     r_script: InputPathType,
     r_args: list[str],
@@ -162,6 +170,7 @@ def afni_run_r(
 
 __all__ = [
     "AFNI_RUN_R_METADATA",
+    "AfniRunROutputs",
     "afni_run_r",
     "afni_run_r_params",
 ]

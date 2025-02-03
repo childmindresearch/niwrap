@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DicomHinfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dicom_hinfo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dicom_hinfo_params(
     tag: list[str],
     sepstr: str | None = None,
@@ -199,6 +207,7 @@ def dicom_hinfo(
 
 __all__ = [
     "DICOM_HINFO_METADATA",
+    "DicomHinfoOutputs",
     "dicom_hinfo",
     "dicom_hinfo_params",
 ]

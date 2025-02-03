@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CpDicomOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `cp_dicom(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def cp_dicom_params(
     dicom_dir: str,
     output_dir: str,
@@ -178,6 +186,7 @@ def cp_dicom(
 
 __all__ = [
     "CP_DICOM_METADATA",
+    "CpDicomOutputs",
     "cp_dicom",
     "cp_dicom_params",
 ]

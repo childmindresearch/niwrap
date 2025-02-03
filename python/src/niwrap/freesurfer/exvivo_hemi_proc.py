@@ -63,6 +63,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ExvivoHemiProcOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `exvivo_hemi_proc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def exvivo_hemi_proc_params(
     flashdir: str,
     outdir: str,
@@ -280,6 +288,7 @@ def exvivo_hemi_proc(
 
 __all__ = [
     "EXVIVO_HEMI_PROC_METADATA",
+    "ExvivoHemiProcOutputs",
     "exvivo_hemi_proc",
     "exvivo_hemi_proc_params",
 ]

@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AtlasqueryOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `atlasquery(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def atlasquery_params(
     dumpatlases_flag: bool = False,
     atlas: str | None = None,
@@ -208,6 +216,7 @@ def atlasquery(
 
 __all__ = [
     "ATLASQUERY_METADATA",
+    "AtlasqueryOutputs",
     "atlasquery",
     "atlasquery_params",
 ]

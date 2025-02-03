@@ -76,6 +76,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MkheadsurfOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mkheadsurf(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mkheadsurf_params(
     input_vol: InputPathType,
     output_vol: str,
@@ -448,6 +456,7 @@ def mkheadsurf(
 
 __all__ = [
     "MKHEADSURF_METADATA",
+    "MkheadsurfOutputs",
     "mkheadsurf",
     "mkheadsurf_params",
 ]

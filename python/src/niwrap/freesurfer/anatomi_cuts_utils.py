@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class AnatomiCutsUtilsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `anatomi_cuts_utils(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def anatomi_cuts_utils_params(
     modules: list[str] | None = None,
 ) -> AnatomiCutsUtilsParameters:
@@ -159,6 +167,7 @@ def anatomi_cuts_utils(
 
 __all__ = [
     "ANATOMI_CUTS_UTILS_METADATA",
+    "AnatomiCutsUtilsOutputs",
     "anatomi_cuts_utils",
     "anatomi_cuts_utils_params",
 ]

@@ -104,6 +104,14 @@ def volume_stats_roi_cargs(
     return cargs
 
 
+class VolumeStatsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_stats(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_stats_params(
     volume_in: InputPathType,
     opt_reduce_operation: str | None = None,
@@ -318,6 +326,7 @@ def volume_stats(
 
 __all__ = [
     "VOLUME_STATS_METADATA",
+    "VolumeStatsOutputs",
     "volume_stats",
     "volume_stats_params",
     "volume_stats_roi_params",

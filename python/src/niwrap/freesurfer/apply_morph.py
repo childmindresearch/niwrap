@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ApplyMorphOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `apply_morph(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def apply_morph_params(
     inputs: list[InputPathType],
     template: InputPathType,
@@ -199,6 +207,7 @@ def apply_morph(
 
 __all__ = [
     "APPLY_MORPH_METADATA",
+    "ApplyMorphOutputs",
     "apply_morph",
     "apply_morph_params",
 ]

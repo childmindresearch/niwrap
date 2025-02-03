@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class HiamMakeTemplateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `hiam_make_template(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def hiam_make_template_params(
     hemi: str,
     surface_name: str,
@@ -176,6 +184,7 @@ def hiam_make_template(
 
 __all__ = [
     "HIAM_MAKE_TEMPLATE_METADATA",
+    "HiamMakeTemplateOutputs",
     "hiam_make_template",
     "hiam_make_template_params",
 ]

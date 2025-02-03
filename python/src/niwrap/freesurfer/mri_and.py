@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriAndOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_and(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_and_params(
     input_files: list[InputPathType],
 ) -> MriAndParameters:
@@ -155,6 +163,7 @@ def mri_and(
 
 __all__ = [
     "MRI_AND_METADATA",
+    "MriAndOutputs",
     "mri_and",
     "mri_and_params",
 ]

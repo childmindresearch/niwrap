@@ -71,6 +71,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MakeAverageSurfaceOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `make_average_surface(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def make_average_surface_params(
     subjects: list[str],
     fsgd_file: InputPathType | None = None,
@@ -361,6 +369,7 @@ def make_average_surface(
 
 __all__ = [
     "MAKE_AVERAGE_SURFACE_METADATA",
+    "MakeAverageSurfaceOutputs",
     "make_average_surface",
     "make_average_surface_params",
 ]

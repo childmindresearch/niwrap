@@ -115,6 +115,14 @@ def connectome2tck_config_cargs(
     return cargs
 
 
+class Connectome2tckOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `connectome2tck(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def connectome2tck_params(
     tracks_in: InputPathType,
     assignments_in: InputPathType,
@@ -431,6 +439,7 @@ def connectome2tck(
 
 __all__ = [
     "CONNECTOME2TCK_METADATA",
+    "Connectome2tckOutputs",
     "connectome2tck",
     "connectome2tck_config_params",
     "connectome2tck_params",

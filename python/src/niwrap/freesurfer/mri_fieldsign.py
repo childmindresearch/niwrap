@@ -73,6 +73,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriFieldsignOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_fieldsign(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_fieldsign_params(
     fieldsign_file: str,
     eccen_values: list[float],
@@ -390,6 +398,7 @@ def mri_fieldsign(
 
 __all__ = [
     "MRI_FIELDSIGN_METADATA",
+    "MriFieldsignOutputs",
     "mri_fieldsign",
     "mri_fieldsign_params",
 ]

@@ -66,6 +66,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriWbcOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_wbc(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_wbc_params(
     functional_volume: InputPathType,
     lh_functional_surface: InputPathType,
@@ -334,6 +342,7 @@ def mri_wbc(
 
 __all__ = [
     "MRI_WBC_METADATA",
+    "MriWbcOutputs",
     "mri_wbc",
     "mri_wbc_params",
 ]

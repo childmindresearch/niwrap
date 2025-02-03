@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class BalloonOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `balloon(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def balloon_params(
     tr: float,
     num_scans: int,
@@ -190,6 +198,7 @@ def balloon(
 
 __all__ = [
     "BALLOON_METADATA",
+    "BalloonOutputs",
     "balloon",
     "balloon_params",
 ]

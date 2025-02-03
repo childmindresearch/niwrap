@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfaceClosestVertexOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surface_closest_vertex(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surface_closest_vertex_params(
     surface: InputPathType,
     coord_list_file: str,
@@ -184,6 +192,7 @@ def surface_closest_vertex(
 
 __all__ = [
     "SURFACE_CLOSEST_VERTEX_METADATA",
+    "SurfaceClosestVertexOutputs",
     "surface_closest_vertex",
     "surface_closest_vertex_params",
 ]

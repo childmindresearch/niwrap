@@ -53,6 +53,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dToyProgOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_toy_prog(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_toy_prog_params(
     input_dataset: InputPathType,
     output_prefix: str | None = None,
@@ -195,6 +203,7 @@ def v_3d_toy_prog(
 
 
 __all__ = [
+    "V3dToyProgOutputs",
     "V_3D_TOY_PROG_METADATA",
     "v_3d_toy_prog",
     "v_3d_toy_prog_params",

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslcpgeomOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslcpgeom(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslcpgeom_params(
     source_file: InputPathType,
     destination_file: InputPathType,
@@ -170,6 +178,7 @@ def fslcpgeom(
 
 __all__ = [
     "FSLCPGEOM_METADATA",
+    "FslcpgeomOutputs",
     "fslcpgeom",
     "fslcpgeom_params",
 ]

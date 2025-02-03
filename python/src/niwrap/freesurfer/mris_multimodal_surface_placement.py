@@ -65,6 +65,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisMultimodalSurfacePlacementOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_multimodal_surface_placement(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_multimodal_surface_placement_params(
     input_surface: InputPathType,
     output_surface: InputPathType,
@@ -308,6 +316,7 @@ def mris_multimodal_surface_placement(
 
 __all__ = [
     "MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA",
+    "MrisMultimodalSurfacePlacementOutputs",
     "mris_multimodal_surface_placement",
     "mris_multimodal_surface_placement_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dAfnitoRawOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3d_afnito_raw(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3d_afnito_raw_params(
     dataset: str,
     output_file: str | None = None,
@@ -182,6 +190,7 @@ def v_3d_afnito_raw(
 
 
 __all__ = [
+    "V3dAfnitoRawOutputs",
     "V_3D_AFNITO_RAW_METADATA",
     "v_3d_afnito_raw",
     "v_3d_afnito_raw_params",

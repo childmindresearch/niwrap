@@ -55,6 +55,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslsmoothfillOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslsmoothfill(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslsmoothfill_params(
     input_image: InputPathType,
     mask_image: InputPathType,
@@ -211,6 +219,7 @@ def fslsmoothfill(
 
 __all__ = [
     "FSLSMOOTHFILL_METADATA",
+    "FslsmoothfillOutputs",
     "fslsmoothfill",
     "fslsmoothfill_params",
 ]

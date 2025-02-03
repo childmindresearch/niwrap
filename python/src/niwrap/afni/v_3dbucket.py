@@ -58,6 +58,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class V3dbucketOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `v_3dbucket(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def v_3dbucket_params(
     input_files: list[str],
     prefix: str | None = None,
@@ -240,6 +248,7 @@ def v_3dbucket(
 
 
 __all__ = [
+    "V3dbucketOutputs",
     "V_3DBUCKET_METADATA",
     "v_3dbucket",
     "v_3dbucket_params",

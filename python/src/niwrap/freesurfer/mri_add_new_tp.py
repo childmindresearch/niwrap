@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriAddNewTpOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_add_new_tp(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_add_new_tp_params(
     base_id: str,
     newtp_id: str,
@@ -164,6 +172,7 @@ def mri_add_new_tp(
 
 __all__ = [
     "MRI_ADD_NEW_TP_METADATA",
+    "MriAddNewTpOutputs",
     "mri_add_new_tp",
     "mri_add_new_tp_params",
 ]

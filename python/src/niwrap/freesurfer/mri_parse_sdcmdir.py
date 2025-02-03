@@ -54,6 +54,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriParseSdcmdirOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_parse_sdcmdir(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_parse_sdcmdir_params(
     sdicomdir: str,
     outfile: str | None = None,
@@ -198,6 +206,7 @@ def mri_parse_sdcmdir(
 
 __all__ = [
     "MRI_PARSE_SDCMDIR_METADATA",
+    "MriParseSdcmdirOutputs",
     "mri_parse_sdcmdir",
     "mri_parse_sdcmdir_params",
 ]

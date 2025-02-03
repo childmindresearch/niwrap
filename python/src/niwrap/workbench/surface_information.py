@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SurfaceInformationOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `surface_information(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def surface_information_params(
     surface_file: InputPathType,
 ) -> SurfaceInformationParameters:
@@ -162,6 +170,7 @@ def surface_information(
 
 __all__ = [
     "SURFACE_INFORMATION_METADATA",
+    "SurfaceInformationOutputs",
     "surface_information",
     "surface_information_params",
 ]

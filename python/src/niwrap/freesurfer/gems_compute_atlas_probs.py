@@ -65,6 +65,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GemsComputeAtlasProbsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gems_compute_atlas_probs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gems_compute_atlas_probs_params(
     subjects_dir: str,
     mesh_collections: list[str],
@@ -314,6 +322,7 @@ def gems_compute_atlas_probs(
 
 __all__ = [
     "GEMS_COMPUTE_ATLAS_PROBS_METADATA",
+    "GemsComputeAtlasProbsOutputs",
     "gems_compute_atlas_probs",
     "gems_compute_atlas_probs_params",
 ]

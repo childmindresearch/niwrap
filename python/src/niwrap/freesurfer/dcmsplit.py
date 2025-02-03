@@ -59,6 +59,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DcmsplitOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dcmsplit(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dcmsplit_params(
     dcm_dir: str,
     out_dir: str,
@@ -236,6 +244,7 @@ def dcmsplit(
 
 __all__ = [
     "DCMSPLIT_METADATA",
+    "DcmsplitOutputs",
     "dcmsplit",
     "dcmsplit_params",
 ]

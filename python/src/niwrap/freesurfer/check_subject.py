@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class CheckSubjectOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `check_subject(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def check_subject_params(
     subject_dir: str,
 ) -> CheckSubjectParameters:
@@ -155,6 +163,7 @@ def check_subject(
 
 __all__ = [
     "CHECK_SUBJECT_METADATA",
+    "CheckSubjectOutputs",
     "check_subject",
     "check_subject_params",
 ]

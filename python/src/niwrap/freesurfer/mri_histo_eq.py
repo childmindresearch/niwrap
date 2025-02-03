@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriHistoEqOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_histo_eq(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_histo_eq_params(
     input_volume_1: InputPathType,
     input_volume_2: InputPathType,
@@ -162,6 +170,7 @@ def mri_histo_eq(
 
 __all__ = [
     "MRI_HISTO_EQ_METADATA",
+    "MriHistoEqOutputs",
     "mri_histo_eq",
     "mri_histo_eq_params",
 ]

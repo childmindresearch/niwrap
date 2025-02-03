@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SceneFileRelocateOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `scene_file_relocate(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def scene_file_relocate_params(
     input_scene: str,
     output_scene: str,
@@ -173,6 +181,7 @@ def scene_file_relocate(
 
 __all__ = [
     "SCENE_FILE_RELOCATE_METADATA",
+    "SceneFileRelocateOutputs",
     "scene_file_relocate",
     "scene_file_relocate_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class TestOrientationPlanesFromParcellationOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `test_orientation_planes_from_parcellation(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def test_orientation_planes_from_parcellation_params(
     input_file: InputPathType,
     output_file: str,
@@ -176,6 +184,7 @@ def test_orientation_planes_from_parcellation(
 
 __all__ = [
     "TEST_ORIENTATION_PLANES_FROM_PARCELLATION_METADATA",
+    "TestOrientationPlanesFromParcellationOutputs",
     "test_orientation_planes_from_parcellation",
     "test_orientation_planes_from_parcellation_params",
 ]

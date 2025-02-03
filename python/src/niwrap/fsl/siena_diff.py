@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SienaDiffOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `siena_diff(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def siena_diff_params(
     input1_basename: str,
     input2_basename: str,
@@ -228,6 +236,7 @@ def siena_diff(
 
 __all__ = [
     "SIENA_DIFF_METADATA",
+    "SienaDiffOutputs",
     "siena_diff",
     "siena_diff_params",
 ]

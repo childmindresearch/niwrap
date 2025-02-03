@@ -89,6 +89,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GdcmconvFsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `gdcmconv_fs(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def gdcmconv_fs_params(
     input_file: InputPathType,
     output_file: str,
@@ -518,6 +526,7 @@ def gdcmconv_fs(
 
 __all__ = [
     "GDCMCONV_FS_METADATA",
+    "GdcmconvFsOutputs",
     "gdcmconv_fs",
     "gdcmconv_fs_params",
 ]

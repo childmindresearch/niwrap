@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class DmriGroupOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `dmri_group(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def dmri_group_params(
     input_list: InputPathType,
     reference_volume: InputPathType,
@@ -218,6 +226,7 @@ def dmri_group(
 
 __all__ = [
     "DMRI_GROUP_METADATA",
+    "DmriGroupOutputs",
     "dmri_group",
     "dmri_group_params",
 ]

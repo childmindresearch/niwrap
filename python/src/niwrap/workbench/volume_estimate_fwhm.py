@@ -96,6 +96,14 @@ def volume_estimate_fwhm_whole_file_cargs(
     return cargs
 
 
+class VolumeEstimateFwhmOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `volume_estimate_fwhm(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def volume_estimate_fwhm_params(
     volume: InputPathType,
     opt_roi_roivol: InputPathType | None = None,
@@ -248,6 +256,7 @@ def volume_estimate_fwhm(
 
 __all__ = [
     "VOLUME_ESTIMATE_FWHM_METADATA",
+    "VolumeEstimateFwhmOutputs",
     "volume_estimate_fwhm",
     "volume_estimate_fwhm_params",
     "volume_estimate_fwhm_whole_file_params",

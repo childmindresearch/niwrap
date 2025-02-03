@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class InflateSubject3Outputs(typing.NamedTuple):
+    """
+    Output object returned when calling `inflate_subject3(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def inflate_subject3_params(
     subjects_dir: str,
     script_name: str,
@@ -162,6 +170,7 @@ def inflate_subject3(
 
 __all__ = [
     "INFLATE_SUBJECT3_METADATA",
+    "InflateSubject3Outputs",
     "inflate_subject3",
     "inflate_subject3_params",
 ]

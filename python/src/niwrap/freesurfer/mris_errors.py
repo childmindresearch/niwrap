@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MrisErrorsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mris_errors(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mris_errors_params(
     input_image_file: InputPathType,
 ) -> MrisErrorsParameters:
@@ -156,6 +164,7 @@ def mris_errors(
 
 __all__ = [
     "MRIS_ERRORS_METADATA",
+    "MrisErrorsOutputs",
     "mris_errors",
     "mris_errors_params",
 ]

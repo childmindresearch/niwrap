@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class XhemiTalOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `xhemi_tal(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def xhemi_tal_params(
     subject: str,
 ) -> XhemiTalParameters:
@@ -160,6 +168,7 @@ def xhemi_tal(
 
 __all__ = [
     "XHEMI_TAL_METADATA",
+    "XhemiTalOutputs",
     "xhemi_tal",
     "xhemi_tal_params",
 ]

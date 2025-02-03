@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class UnpackImaTclOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `unpack_ima_tcl(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def unpack_ima_tcl_params(
     target_dir: str = "~",
 ) -> UnpackImaTclParameters:
@@ -155,6 +163,7 @@ def unpack_ima_tcl(
 
 __all__ = [
     "UNPACK_IMA_TCL_METADATA",
+    "UnpackImaTclOutputs",
     "unpack_ima_tcl",
     "unpack_ima_tcl_params",
 ]

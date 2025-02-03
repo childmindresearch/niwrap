@@ -51,6 +51,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Tbss3PostregOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tbss_3_postreg(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tbss_3_postreg_params(
     derive_mean_from_study: bool = False,
     use_fmrib58: bool = False,
@@ -168,6 +176,7 @@ def tbss_3_postreg(
 
 __all__ = [
     "TBSS_3_POSTREG_METADATA",
+    "Tbss3PostregOutputs",
     "tbss_3_postreg",
     "tbss_3_postreg_params",
 ]

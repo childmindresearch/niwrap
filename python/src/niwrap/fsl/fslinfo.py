@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FslinfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fslinfo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fslinfo_params(
     filename: InputPathType,
 ) -> FslinfoParameters:
@@ -155,6 +163,7 @@ def fslinfo(
 
 __all__ = [
     "FSLINFO_METADATA",
+    "FslinfoOutputs",
     "fslinfo",
     "fslinfo_params",
 ]

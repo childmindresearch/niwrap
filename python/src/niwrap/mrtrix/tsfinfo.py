@@ -107,6 +107,14 @@ def tsfinfo_config_cargs(
     return cargs
 
 
+class TsfinfoOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `tsfinfo(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def tsfinfo_params(
     tracks: list[InputPathType],
     count: bool = False,
@@ -313,6 +321,7 @@ def tsfinfo(
 
 __all__ = [
     "TSFINFO_METADATA",
+    "TsfinfoOutputs",
     "tsfinfo",
     "tsfinfo_config_params",
     "tsfinfo_params",

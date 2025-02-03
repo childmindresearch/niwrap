@@ -56,6 +56,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class StrblastOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `strblast(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def strblast_params(
     targetstring: str,
     input_files: list[InputPathType],
@@ -216,6 +224,7 @@ def strblast(
 
 __all__ = [
     "STRBLAST_METADATA",
+    "StrblastOutputs",
     "strblast",
     "strblast_params",
 ]

@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class Fsl502XyztransSchOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `fsl_5_0_2_xyztrans_sch(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def fsl_5_0_2_xyztrans_sch_params(
     term_option: str | None = None,
     version_flag: bool = False,
@@ -176,6 +184,7 @@ def fsl_5_0_2_xyztrans_sch(
 
 __all__ = [
     "FSL_5_0_2_XYZTRANS_SCH_METADATA",
+    "Fsl502XyztransSchOutputs",
     "fsl_5_0_2_xyztrans_sch",
     "fsl_5_0_2_xyztrans_sch_params",
 ]

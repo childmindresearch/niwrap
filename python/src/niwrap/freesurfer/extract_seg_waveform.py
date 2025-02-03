@@ -57,6 +57,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class ExtractSegWaveformOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `extract_seg_waveform(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def extract_seg_waveform_params(
     seg_file: InputPathType,
     seg_indices: list[float],
@@ -234,6 +242,7 @@ def extract_seg_waveform(
 
 __all__ = [
     "EXTRACT_SEG_WAVEFORM_METADATA",
+    "ExtractSegWaveformOutputs",
     "extract_seg_waveform",
     "extract_seg_waveform_params",
 ]

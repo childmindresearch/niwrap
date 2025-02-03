@@ -52,6 +52,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class FociListCoordsOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `foci_list_coords(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def foci_list_coords_params(
     foci_file: InputPathType,
     coord_file_out: str,
@@ -183,6 +191,7 @@ def foci_list_coords(
 
 __all__ = [
     "FOCI_LIST_COORDS_METADATA",
+    "FociListCoordsOutputs",
     "foci_list_coords",
     "foci_list_coords_params",
 ]

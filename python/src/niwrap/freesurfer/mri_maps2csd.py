@@ -60,6 +60,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class MriMaps2csdOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `mri_maps2csd(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def mri_maps2csd_params(
     input_files: list[str],
     csd_file: str | None = None,
@@ -269,6 +277,7 @@ def mri_maps2csd(
 
 __all__ = [
     "MRI_MAPS2CSD_METADATA",
+    "MriMaps2csdOutputs",
     "mri_maps2csd",
     "mri_maps2csd_params",
 ]

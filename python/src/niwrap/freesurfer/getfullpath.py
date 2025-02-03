@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class GetfullpathOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `getfullpath(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def getfullpath_params(
     filename: str,
 ) -> GetfullpathParameters:
@@ -155,6 +163,7 @@ def getfullpath(
 
 __all__ = [
     "GETFULLPATH_METADATA",
+    "GetfullpathOutputs",
     "getfullpath",
     "getfullpath_params",
 ]

@@ -50,6 +50,14 @@ def dyn_outputs(
     return vt.get(t)
 
 
+class SphereSubjectLhOutputs(typing.NamedTuple):
+    """
+    Output object returned when calling `sphere_subject_lh(...)`.
+    """
+    root: OutputPathType
+    """Output root folder. This is the root folder for all outputs."""
+
+
 def sphere_subject_lh_params(
     license_file: InputPathType,
 ) -> SphereSubjectLhParameters:
@@ -157,6 +165,7 @@ def sphere_subject_lh(
 
 __all__ = [
     "SPHERE_SUBJECT_LH_METADATA",
+    "SphereSubjectLhOutputs",
     "sphere_subject_lh",
     "sphere_subject_lh_params",
 ]
