@@ -12,96 +12,193 @@ CIFTI_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiMergeUpToParameters = typing.TypedDict('CiftiMergeUpToParameters', {
+    "__STYX_TYPE__": typing.Literal["up_to"],
+    "last_index": str,
+    "opt_reverse": bool,
+})
+CiftiMergeIndexParameters = typing.TypedDict('CiftiMergeIndexParameters', {
+    "__STYX_TYPE__": typing.Literal["index"],
+    "index": str,
+    "up_to": typing.NotRequired[CiftiMergeUpToParameters | None],
+})
+CiftiMergeCiftiParameters = typing.TypedDict('CiftiMergeCiftiParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti"],
+    "cifti_in": InputPathType,
+    "index": typing.NotRequired[list[CiftiMergeIndexParameters] | None],
+})
+CiftiMergeParameters = typing.TypedDict('CiftiMergeParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-merge"],
+    "cifti_out": str,
+    "opt_direction_direction": typing.NotRequired[str | None],
+    "opt_mem_limit_limit_gb": typing.NotRequired[float | None],
+    "cifti": typing.NotRequired[list[CiftiMergeCiftiParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiMergeUpTo:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    use an inclusive range of indices.
-    """
-    last_index: str
-    """the number or name of the last index to include"""
-    opt_reverse: bool = False
-    """use the range in reverse order"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-up-to")
-        cargs.append(self.last_index)
-        if self.opt_reverse:
-            cargs.append("-reverse")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-merge": cifti_merge_cargs,
+        "cifti": cifti_merge_cifti_cargs,
+        "index": cifti_merge_index_cargs,
+        "up_to": cifti_merge_up_to_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiMergeIndex:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    select a single index to use.
-    """
-    index: str
-    """the index number (starting from 1), or name"""
-    up_to: CiftiMergeUpTo | None = None
-    """use an inclusive range of indices"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-index")
-        cargs.append(self.index)
-        if self.up_to is not None:
-            cargs.extend(self.up_to.run(execution))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-merge": cifti_merge_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiMergeCifti:
+def cifti_merge_up_to_params(
+    last_index: str,
+    opt_reverse: bool = False,
+) -> CiftiMergeUpToParameters:
     """
-    specify an input cifti file.
-    """
-    cifti_in: InputPathType
-    """a cifti file to use data from"""
-    index: list[CiftiMergeIndex] | None = None
-    """select a single index to use"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cifti")
-        cargs.append(execution.input_file(self.cifti_in))
-        if self.index is not None:
-            cargs.extend([a for c in [s.run(execution) for s in self.index] for a in c])
-        return cargs
+    Args:
+        last_index: the number or name of the last index to include.
+        opt_reverse: use the range in reverse order.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "up_to",
+        "last_index": last_index,
+        "opt_reverse": opt_reverse,
+    }
+    return params
+
+
+def cifti_merge_up_to_cargs(
+    params: CiftiMergeUpToParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-up-to")
+    cargs.append(params.get("last_index"))
+    if params.get("opt_reverse"):
+        cargs.append("-reverse")
+    return cargs
+
+
+def cifti_merge_index_params(
+    index: str,
+    up_to: CiftiMergeUpToParameters | None = None,
+) -> CiftiMergeIndexParameters:
+    """
+    Build parameters.
+    
+    Args:
+        index: the index number (starting from 1), or name.
+        up_to: use an inclusive range of indices.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "index",
+        "index": index,
+    }
+    if up_to is not None:
+        params["up_to"] = up_to
+    return params
+
+
+def cifti_merge_index_cargs(
+    params: CiftiMergeIndexParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-index")
+    cargs.append(params.get("index"))
+    if params.get("up_to") is not None:
+        cargs.extend(dyn_cargs(params.get("up_to")["__STYXTYPE__"])(params.get("up_to"), execution))
+    return cargs
+
+
+def cifti_merge_cifti_params(
+    cifti_in: InputPathType,
+    index: list[CiftiMergeIndexParameters] | None = None,
+) -> CiftiMergeCiftiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_in: a cifti file to use data from.
+        index: select a single index to use.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti",
+        "cifti_in": cifti_in,
+    }
+    if index is not None:
+        params["index"] = index
+    return params
+
+
+def cifti_merge_cifti_cargs(
+    params: CiftiMergeCiftiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cifti")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    if params.get("index") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("index")] for a in c])
+    return cargs
 
 
 class CiftiMergeOutputs(typing.NamedTuple):
@@ -114,11 +211,134 @@ class CiftiMergeOutputs(typing.NamedTuple):
     """output cifti file"""
 
 
+def cifti_merge_params(
+    cifti_out: str,
+    opt_direction_direction: str | None = None,
+    opt_mem_limit_limit_gb: float | None = None,
+    cifti: list[CiftiMergeCiftiParameters] | None = None,
+) -> CiftiMergeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_out: output cifti file.
+        opt_direction_direction: merge in a direction other than along rows:\
+            the dimension to split/concatenate along, default ROW.
+        opt_mem_limit_limit_gb: restrict memory used for file reading\
+            efficiency: memory limit in gigabytes.
+        cifti: specify an input cifti file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-merge",
+        "cifti_out": cifti_out,
+    }
+    if opt_direction_direction is not None:
+        params["opt_direction_direction"] = opt_direction_direction
+    if opt_mem_limit_limit_gb is not None:
+        params["opt_mem_limit_limit_gb"] = opt_mem_limit_limit_gb
+    if cifti is not None:
+        params["cifti"] = cifti
+    return params
+
+
+def cifti_merge_cargs(
+    params: CiftiMergeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-merge")
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_direction_direction") is not None:
+        cargs.extend([
+            "-direction",
+            params.get("opt_direction_direction")
+        ])
+    if params.get("opt_mem_limit_limit_gb") is not None:
+        cargs.extend([
+            "-mem-limit",
+            str(params.get("opt_mem_limit_limit_gb"))
+        ])
+    if params.get("cifti") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("cifti")] for a in c])
+    return cargs
+
+
+def cifti_merge_outputs(
+    params: CiftiMergeParameters,
+    execution: Execution,
+) -> CiftiMergeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiMergeOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_merge_execute(
+    params: CiftiMergeParameters,
+    execution: Execution,
+) -> CiftiMergeOutputs:
+    """
+    Merge or split on series, scalar, or label dimensions.
+    
+    Given input CIFTI files for which mappings along the selected direction are
+    the same type, all either series, scalars, or labels, and the other
+    dimensions are index-compatible, this command concatenates the data in the
+    specified indices/ranges along the selected direction (by default, on
+    typical 2D cifti, concatenate horizontally, so rows become longer). The
+    direction can be either an integer starting from 1, or the strings 'ROW' or
+    'COLUMN'.
+    
+    Example: wb_command -cifti-merge out.dtseries.nii -cifti first.dtseries.nii
+    -index 1 -cifti second.dtseries.nii
+    
+    This example would take the first column from first.dtseries.nii, followed
+    by all columns from second.dtseries.nii, and write these columns to
+    out.dtseries.nii. .
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiMergeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_merge_cargs(params, execution)
+    ret = cifti_merge_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def cifti_merge(
     cifti_out: str,
     opt_direction_direction: str | None = None,
     opt_mem_limit_limit_gb: float | None = None,
-    cifti: list[CiftiMergeCifti] | None = None,
+    cifti: list[CiftiMergeCiftiParameters] | None = None,
     runner: Runner | None = None,
 ) -> CiftiMergeOutputs:
     """
@@ -156,35 +376,16 @@ def cifti_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MERGE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-merge")
-    cargs.append(cifti_out)
-    if opt_direction_direction is not None:
-        cargs.extend([
-            "-direction",
-            opt_direction_direction
-        ])
-    if opt_mem_limit_limit_gb is not None:
-        cargs.extend([
-            "-mem-limit",
-            str(opt_mem_limit_limit_gb)
-        ])
-    if cifti is not None:
-        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
-    ret = CiftiMergeOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_merge_params(cifti_out=cifti_out, opt_direction_direction=opt_direction_direction, opt_mem_limit_limit_gb=opt_mem_limit_limit_gb, cifti=cifti)
+    return cifti_merge_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_MERGE_METADATA",
-    "CiftiMergeCifti",
-    "CiftiMergeIndex",
     "CiftiMergeOutputs",
-    "CiftiMergeUpTo",
     "cifti_merge",
+    "cifti_merge_cifti_params",
+    "cifti_merge_index_params",
+    "cifti_merge_params",
+    "cifti_merge_up_to_params",
 ]

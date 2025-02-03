@@ -12,6 +12,50 @@ MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisTransmantleDysplasiaPathsParameters = typing.TypedDict('MrisTransmantleDysplasiaPathsParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_transmantle_dysplasia_paths"],
+    "surface": InputPathType,
+    "aseg_volume": InputPathType,
+    "intensity_volume": InputPathType,
+    "xform": InputPathType,
+    "output_volume": str,
+    "filter": typing.NotRequired[list[float] | None],
+    "noise_sensitivity": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_transmantle_dysplasia_paths": mris_transmantle_dysplasia_paths_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_transmantle_dysplasia_paths": mris_transmantle_dysplasia_paths_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisTransmantleDysplasiaPathsOutputs(typing.NamedTuple):
@@ -22,6 +66,118 @@ class MrisTransmantleDysplasiaPathsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output volume file"""
+
+
+def mris_transmantle_dysplasia_paths_params(
+    surface: InputPathType,
+    aseg_volume: InputPathType,
+    intensity_volume: InputPathType,
+    xform: InputPathType,
+    output_volume: str,
+    filter_: list[float] | None = None,
+    noise_sensitivity: bool = False,
+) -> MrisTransmantleDysplasiaPathsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Surface file.
+        aseg_volume: ASEG volume file.
+        intensity_volume: Intensity volume file.
+        xform: Transformation file.
+        output_volume: Output volume file.
+        filter_: Apply specified filter with low and high values (not\
+            implemented yet).
+        noise_sensitivity: Noise-sensitivity normalize inverse (default=1).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_transmantle_dysplasia_paths",
+        "surface": surface,
+        "aseg_volume": aseg_volume,
+        "intensity_volume": intensity_volume,
+        "xform": xform,
+        "output_volume": output_volume,
+        "noise_sensitivity": noise_sensitivity,
+    }
+    if filter_ is not None:
+        params["filter"] = filter_
+    return params
+
+
+def mris_transmantle_dysplasia_paths_cargs(
+    params: MrisTransmantleDysplasiaPathsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_transmantle_dysplasia_paths")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("aseg_volume")))
+    cargs.append(execution.input_file(params.get("intensity_volume")))
+    cargs.append(execution.input_file(params.get("xform")))
+    cargs.append(params.get("output_volume"))
+    if params.get("filter") is not None:
+        cargs.extend([
+            "-f",
+            *map(str, params.get("filter"))
+        ])
+    if params.get("noise_sensitivity"):
+        cargs.append("-n")
+    return cargs
+
+
+def mris_transmantle_dysplasia_paths_outputs(
+    params: MrisTransmantleDysplasiaPathsParameters,
+    execution: Execution,
+) -> MrisTransmantleDysplasiaPathsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisTransmantleDysplasiaPathsOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mris_transmantle_dysplasia_paths_execute(
+    params: MrisTransmantleDysplasiaPathsParameters,
+    execution: Execution,
+) -> MrisTransmantleDysplasiaPathsOutputs:
+    """
+    Tool for transmantle dysplasia path computation.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisTransmantleDysplasiaPathsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_transmantle_dysplasia_paths_cargs(params, execution)
+    ret = mris_transmantle_dysplasia_paths_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_transmantle_dysplasia_paths(
@@ -56,30 +212,13 @@ def mris_transmantle_dysplasia_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA)
-    cargs = []
-    cargs.append("mris_transmantle_dysplasia_paths")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(aseg_volume))
-    cargs.append(execution.input_file(intensity_volume))
-    cargs.append(execution.input_file(xform))
-    cargs.append(output_volume)
-    if filter_ is not None:
-        cargs.extend([
-            "-f",
-            *map(str, filter_)
-        ])
-    if noise_sensitivity:
-        cargs.append("-n")
-    ret = MrisTransmantleDysplasiaPathsOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_transmantle_dysplasia_paths_params(surface=surface, aseg_volume=aseg_volume, intensity_volume=intensity_volume, xform=xform, output_volume=output_volume, filter_=filter_, noise_sensitivity=noise_sensitivity)
+    return mris_transmantle_dysplasia_paths_execute(params, execution)
 
 
 __all__ = [
     "MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA",
     "MrisTransmantleDysplasiaPathsOutputs",
     "mris_transmantle_dysplasia_paths",
+    "mris_transmantle_dysplasia_paths_params",
 ]

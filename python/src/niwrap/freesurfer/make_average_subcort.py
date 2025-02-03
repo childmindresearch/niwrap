@@ -12,6 +12,45 @@ MAKE_AVERAGE_SUBCORT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MakeAverageSubcortParameters = typing.TypedDict('MakeAverageSubcortParameters', {
+    "__STYX_TYPE__": typing.Literal["make_average_subcort"],
+    "subjects": list[str],
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "make_average_subcort": make_average_subcort_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "make_average_subcort": make_average_subcort_outputs,
+    }
+    return vt.get(t)
 
 
 class MakeAverageSubcortOutputs(typing.NamedTuple):
@@ -22,6 +61,95 @@ class MakeAverageSubcortOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_mask_file: OutputPathType
     """Final average subcortical mask in fsaverage/mni305 space"""
+
+
+def make_average_subcort_params(
+    subjects: list[str],
+    output_volume: str,
+) -> MakeAverageSubcortParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects: List of subject identifiers.
+        output_volume: Output volume file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "make_average_subcort",
+        "subjects": subjects,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def make_average_subcort_cargs(
+    params: MakeAverageSubcortParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("make_average_subcort")
+    cargs.extend(params.get("subjects"))
+    cargs.extend([
+        "--o",
+        params.get("output_volume")
+    ])
+    return cargs
+
+
+def make_average_subcort_outputs(
+    params: MakeAverageSubcortParameters,
+    execution: Execution,
+) -> MakeAverageSubcortOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakeAverageSubcortOutputs(
+        root=execution.output_file("."),
+        output_mask_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def make_average_subcort_execute(
+    params: MakeAverageSubcortParameters,
+    execution: Execution,
+) -> MakeAverageSubcortOutputs:
+    """
+    This creates an average subcortical mask for the given input subjects, intended
+    for use in subcortical analysis in FSFAST to exclude cortical voxels.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakeAverageSubcortOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = make_average_subcort_cargs(params, execution)
+    ret = make_average_subcort_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def make_average_subcort(
@@ -46,23 +174,13 @@ def make_average_subcort(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_AVERAGE_SUBCORT_METADATA)
-    cargs = []
-    cargs.append("make_average_subcort")
-    cargs.extend(subjects)
-    cargs.extend([
-        "--o",
-        output_volume
-    ])
-    ret = MakeAverageSubcortOutputs(
-        root=execution.output_file("."),
-        output_mask_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = make_average_subcort_params(subjects=subjects, output_volume=output_volume)
+    return make_average_subcort_execute(params, execution)
 
 
 __all__ = [
     "MAKE_AVERAGE_SUBCORT_METADATA",
     "MakeAverageSubcortOutputs",
     "make_average_subcort",
+    "make_average_subcort_params",
 ]

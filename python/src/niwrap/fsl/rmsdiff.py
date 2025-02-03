@@ -12,14 +12,139 @@ RMSDIFF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+RmsdiffParameters = typing.TypedDict('RmsdiffParameters', {
+    "__STYX_TYPE__": typing.Literal["rmsdiff"],
+    "matrixfile1": InputPathType,
+    "matrixfile2": InputPathType,
+    "refvol": InputPathType,
+    "mask": typing.NotRequired[InputPathType | None],
+})
 
 
-class RmsdiffOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `rmsdiff(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "rmsdiff": rmsdiff_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def rmsdiff_params(
+    matrixfile1: InputPathType,
+    matrixfile2: InputPathType,
+    refvol: InputPathType,
+    mask: InputPathType | None = None,
+) -> RmsdiffParameters:
+    """
+    Build parameters.
+    
+    Args:
+        matrixfile1: First matrix file.
+        matrixfile2: Second matrix file.
+        refvol: Reference volume.
+        mask: Optional mask.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "rmsdiff",
+        "matrixfile1": matrixfile1,
+        "matrixfile2": matrixfile2,
+        "refvol": refvol,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def rmsdiff_cargs(
+    params: RmsdiffParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("rmsdiff")
+    cargs.append(execution.input_file(params.get("matrixfile1")))
+    cargs.append(execution.input_file(params.get("matrixfile2")))
+    cargs.append(execution.input_file(params.get("refvol")))
+    if params.get("mask") is not None:
+        cargs.append(execution.input_file(params.get("mask")))
+    return cargs
+
+
+def rmsdiff_outputs(
+    params: RmsdiffParameters,
+    execution: Execution,
+) -> RmsdiffOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RmsdiffOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def rmsdiff_execute(
+    params: RmsdiffParameters,
+    execution: Execution,
+) -> RmsdiffOutputs:
+    """
+    Outputs RMS deviation between matrices (in mm).
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RmsdiffOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = rmsdiff_cargs(params, execution)
+    ret = rmsdiff_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def rmsdiff(
@@ -47,22 +172,12 @@ def rmsdiff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RMSDIFF_METADATA)
-    cargs = []
-    cargs.append("rmsdiff")
-    cargs.append(execution.input_file(matrixfile1))
-    cargs.append(execution.input_file(matrixfile2))
-    cargs.append(execution.input_file(refvol))
-    if mask is not None:
-        cargs.append(execution.input_file(mask))
-    ret = RmsdiffOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = rmsdiff_params(matrixfile1=matrixfile1, matrixfile2=matrixfile2, refvol=refvol, mask=mask)
+    return rmsdiff_execute(params, execution)
 
 
 __all__ = [
     "RMSDIFF_METADATA",
-    "RmsdiffOutputs",
     "rmsdiff",
+    "rmsdiff_params",
 ]

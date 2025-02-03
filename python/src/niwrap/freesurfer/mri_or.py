@@ -12,14 +12,130 @@ MRI_OR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriOrParameters = typing.TypedDict('MriOrParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_or"],
+    "original_labels": bool,
+    "input_files": list[InputPathType],
+})
 
 
-class MriOrOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_or(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_or": mri_or_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_or_params(
+    input_files: list[InputPathType],
+    original_labels: bool = False,
+) -> MriOrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input image files on which to perform the logical OR\
+            operation.
+        original_labels: Keeps the original label values in the input files\
+            when creating the output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_or",
+        "original_labels": original_labels,
+        "input_files": input_files,
+    }
+    return params
+
+
+def mri_or_cargs(
+    params: MriOrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_or")
+    if params.get("original_labels"):
+        cargs.append("-o")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def mri_or_outputs(
+    params: MriOrParameters,
+    execution: Execution,
+) -> MriOrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriOrOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_or_execute(
+    params: MriOrParameters,
+    execution: Execution,
+) -> MriOrOutputs:
+    """
+    Performs a logical voxel-wise OR on a series of volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriOrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_or_cargs(params, execution)
+    ret = mri_or_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_or(
@@ -45,20 +161,12 @@ def mri_or(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_OR_METADATA)
-    cargs = []
-    cargs.append("mri_or")
-    if original_labels:
-        cargs.append("-o")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = MriOrOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_or_params(original_labels=original_labels, input_files=input_files)
+    return mri_or_execute(params, execution)
 
 
 __all__ = [
     "MRI_OR_METADATA",
-    "MriOrOutputs",
     "mri_or",
+    "mri_or_params",
 ]

@@ -12,14 +12,161 @@ LONGMC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LongmcParameters = typing.TypedDict('LongmcParameters', {
+    "__STYX_TYPE__": typing.Literal["longmc"],
+    "cross_tp_name": str,
+    "base_name": str,
+    "conform_to_hires": bool,
+    "subjects_dir": str,
+    "subject_name": typing.NotRequired[str | None],
+    "no_force_update": bool,
+})
 
 
-class LongmcOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `longmc(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "longmc": longmc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def longmc_params(
+    cross_tp_name: str,
+    base_name: str,
+    subjects_dir: str,
+    conform_to_hires: bool = False,
+    subject_name: str | None = None,
+    no_force_update: bool = False,
+) -> LongmcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cross_tp_name: Cross time point name for the longitudinal analysis.
+        base_name: Base name for the longitudinal analysis.
+        subjects_dir: Set the SUBJECTS_DIR directory.
+        conform_to_hires: Option to conform input to high-resolution.
+        subject_name: Subject name override, must be declared after -long.
+        no_force_update: Do not force update.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "longmc",
+        "cross_tp_name": cross_tp_name,
+        "base_name": base_name,
+        "conform_to_hires": conform_to_hires,
+        "subjects_dir": subjects_dir,
+        "no_force_update": no_force_update,
+    }
+    if subject_name is not None:
+        params["subject_name"] = subject_name
+    return params
+
+
+def longmc_cargs(
+    params: LongmcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("longmc")
+    cargs.extend([
+        "-long",
+        params.get("cross_tp_name")
+    ])
+    cargs.append(params.get("base_name"))
+    if params.get("conform_to_hires"):
+        cargs.append("-conf2hires")
+    cargs.extend([
+        "-sd",
+        params.get("subjects_dir")
+    ])
+    if params.get("subject_name") is not None:
+        cargs.extend([
+            "-s",
+            params.get("subject_name")
+        ])
+    if params.get("no_force_update"):
+        cargs.append("-no-force-update")
+    return cargs
+
+
+def longmc_outputs(
+    params: LongmcParameters,
+    execution: Execution,
+) -> LongmcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LongmcOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def longmc_execute(
+    params: LongmcParameters,
+    execution: Execution,
+) -> LongmcOutputs:
+    """
+    Perform motion correction for the longitudinal recon-all stream when creating
+    the longitudinal timepoint of a subject.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LongmcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = longmc_cargs(params, execution)
+    ret = longmc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def longmc(
@@ -52,35 +199,12 @@ def longmc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONGMC_METADATA)
-    cargs = []
-    cargs.append("longmc")
-    cargs.extend([
-        "-long",
-        cross_tp_name
-    ])
-    cargs.append(base_name)
-    if conform_to_hires:
-        cargs.append("-conf2hires")
-    cargs.extend([
-        "-sd",
-        subjects_dir
-    ])
-    if subject_name is not None:
-        cargs.extend([
-            "-s",
-            subject_name
-        ])
-    if no_force_update:
-        cargs.append("-no-force-update")
-    ret = LongmcOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = longmc_params(cross_tp_name=cross_tp_name, base_name=base_name, conform_to_hires=conform_to_hires, subjects_dir=subjects_dir, subject_name=subject_name, no_force_update=no_force_update)
+    return longmc_execute(params, execution)
 
 
 __all__ = [
     "LONGMC_METADATA",
-    "LongmcOutputs",
     "longmc",
+    "longmc_params",
 ]

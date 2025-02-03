@@ -12,14 +12,297 @@ AFNI_HISTORY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AfniHistoryParameters = typing.TypedDict('AfniHistoryParameters', {
+    "__STYX_TYPE__": typing.Literal["afni_history"],
+    "verb_level": typing.NotRequired[int | None],
+    "check_date": typing.NotRequired[str | None],
+    "help": bool,
+    "history": bool,
+    "list_authors": bool,
+    "list_types": bool,
+    "version": bool,
+    "author": typing.NotRequired[str | None],
+    "level": typing.NotRequired[int | None],
+    "min_level": typing.NotRequired[int | None],
+    "program": typing.NotRequired[str | None],
+    "past_entries": typing.NotRequired[int | None],
+    "past_days": typing.NotRequired[int | None],
+    "past_months": typing.NotRequired[int | None],
+    "past_years": typing.NotRequired[int | None],
+    "type": typing.NotRequired[str | None],
+    "html": bool,
+    "dline": bool,
+    "reverse": bool,
+    "show_field": typing.NotRequired[str | None],
+    "show_field_names": bool,
+})
 
 
-class AfniHistoryOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `afni_history(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "afni_history": afni_history_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def afni_history_params(
+    verb_level: int | None = None,
+    check_date: str | None = None,
+    help_: bool = False,
+    history: bool = False,
+    list_authors: bool = False,
+    list_types: bool = False,
+    version: bool = False,
+    author: str | None = None,
+    level: int | None = None,
+    min_level: int | None = None,
+    program: str | None = None,
+    past_entries: int | None = None,
+    past_days: int | None = None,
+    past_months: int | None = None,
+    past_years: int | None = None,
+    type_: str | None = None,
+    html_: bool = False,
+    dline: bool = False,
+    reverse: bool = False,
+    show_field: str | None = None,
+    show_field_names: bool = False,
+) -> AfniHistoryParameters:
+    """
+    Build parameters.
+    
+    Args:
+        verb_level: Request verbose output (LEVEL is from 0-6).
+        check_date: Check history against given date. If most recent\
+            afni_history is older than the passed date, the distribution version\
+            might be considered out of date.
+        help_: Show help information.
+        history: Show this program's history.
+        list_authors: Show the list of valid authors.
+        list_types: Show the list of valid change types.
+        version: Show this program's version.
+        author: Restrict output to the given author.
+        level: Restrict output to the given level.
+        min_level: Restrict output to at least level LEVEL.
+        program: Restrict output to the given program.
+        past_entries: Restrict output to final ENTRIES entries.
+        past_days: Restrict output to the past DAYS days.
+        past_months: Restrict output to the past MONTHS months.
+        past_years: Restrict output to the past YEARS years.
+        type_: Restrict output to the given TYPE (TYPE = 0..5, or strings\
+            'NEW_PROG', etc.).
+        html_: Add HTML formatting.
+        dline: Put a divider line between dates.
+        reverse: Reverse the sorting order (sort is by date, author, level,\
+            program).
+        show_field: Restrict entry output to field FIELD. Valid FIELDs include:\
+            all, firstline, day, month, year, date, author, program, level, type,\
+            desc, verbtext.
+        show_field_names: List valid FIELD names for -show_field.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "afni_history",
+        "help": help_,
+        "history": history,
+        "list_authors": list_authors,
+        "list_types": list_types,
+        "version": version,
+        "html": html_,
+        "dline": dline,
+        "reverse": reverse,
+        "show_field_names": show_field_names,
+    }
+    if verb_level is not None:
+        params["verb_level"] = verb_level
+    if check_date is not None:
+        params["check_date"] = check_date
+    if author is not None:
+        params["author"] = author
+    if level is not None:
+        params["level"] = level
+    if min_level is not None:
+        params["min_level"] = min_level
+    if program is not None:
+        params["program"] = program
+    if past_entries is not None:
+        params["past_entries"] = past_entries
+    if past_days is not None:
+        params["past_days"] = past_days
+    if past_months is not None:
+        params["past_months"] = past_months
+    if past_years is not None:
+        params["past_years"] = past_years
+    if type_ is not None:
+        params["type"] = type_
+    if show_field is not None:
+        params["show_field"] = show_field
+    return params
+
+
+def afni_history_cargs(
+    params: AfniHistoryParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("afni_history")
+    if params.get("verb_level") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verb_level"))
+        ])
+    if params.get("check_date") is not None:
+        cargs.extend([
+            "-check_date",
+            params.get("check_date")
+        ])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("history"):
+        cargs.append("-hist")
+    if params.get("list_authors"):
+        cargs.append("-list_authors")
+    if params.get("list_types"):
+        cargs.append("-list_types")
+    if params.get("version"):
+        cargs.append("-ver")
+    if params.get("author") is not None:
+        cargs.extend([
+            "-author",
+            params.get("author")
+        ])
+    if params.get("level") is not None:
+        cargs.extend([
+            "-level",
+            str(params.get("level"))
+        ])
+    if params.get("min_level") is not None:
+        cargs.extend([
+            "-min_level",
+            str(params.get("min_level"))
+        ])
+    if params.get("program") is not None:
+        cargs.extend([
+            "-program",
+            params.get("program")
+        ])
+    if params.get("past_entries") is not None:
+        cargs.extend([
+            "-past_entries",
+            str(params.get("past_entries"))
+        ])
+    if params.get("past_days") is not None:
+        cargs.extend([
+            "-past_days",
+            str(params.get("past_days"))
+        ])
+    if params.get("past_months") is not None:
+        cargs.extend([
+            "-past_months",
+            str(params.get("past_months"))
+        ])
+    if params.get("past_years") is not None:
+        cargs.extend([
+            "-past_years",
+            str(params.get("past_years"))
+        ])
+    if params.get("type") is not None:
+        cargs.extend([
+            "-type",
+            params.get("type")
+        ])
+    if params.get("html"):
+        cargs.append("-html")
+    if params.get("dline"):
+        cargs.append("-dline")
+    if params.get("reverse"):
+        cargs.append("-reverse")
+    if params.get("show_field") is not None:
+        cargs.extend([
+            "-show_field",
+            params.get("show_field")
+        ])
+    if params.get("show_field_names"):
+        cargs.append("-show_field_names")
+    return cargs
+
+
+def afni_history_outputs(
+    params: AfniHistoryParameters,
+    execution: Execution,
+) -> AfniHistoryOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AfniHistoryOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def afni_history_execute(
+    params: AfniHistoryParameters,
+    execution: Execution,
+) -> AfniHistoryOutputs:
+    """
+    Show AFNI updates per user, dates, or levels.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AfniHistoryOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = afni_history_cargs(params, execution)
+    ret = afni_history_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def afni_history(
@@ -85,103 +368,14 @@ def afni_history(
     Returns:
         NamedTuple of outputs (described in `AfniHistoryOutputs`).
     """
-    if verb_level is not None and not (0 <= verb_level <= 6): 
-        raise ValueError(f"'verb_level' must be between 0 <= x <= 6 but was {verb_level}")
-    if level is not None and not (1 <= level <= 5): 
-        raise ValueError(f"'level' must be between 1 <= x <= 5 but was {level}")
-    if min_level is not None and not (1 <= min_level <= 5): 
-        raise ValueError(f"'min_level' must be between 1 <= x <= 5 but was {min_level}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_HISTORY_METADATA)
-    cargs = []
-    cargs.append("afni_history")
-    if verb_level is not None:
-        cargs.extend([
-            "-verb",
-            str(verb_level)
-        ])
-    if check_date is not None:
-        cargs.extend([
-            "-check_date",
-            check_date
-        ])
-    if help_:
-        cargs.append("-help")
-    if history:
-        cargs.append("-hist")
-    if list_authors:
-        cargs.append("-list_authors")
-    if list_types:
-        cargs.append("-list_types")
-    if version:
-        cargs.append("-ver")
-    if author is not None:
-        cargs.extend([
-            "-author",
-            author
-        ])
-    if level is not None:
-        cargs.extend([
-            "-level",
-            str(level)
-        ])
-    if min_level is not None:
-        cargs.extend([
-            "-min_level",
-            str(min_level)
-        ])
-    if program is not None:
-        cargs.extend([
-            "-program",
-            program
-        ])
-    if past_entries is not None:
-        cargs.extend([
-            "-past_entries",
-            str(past_entries)
-        ])
-    if past_days is not None:
-        cargs.extend([
-            "-past_days",
-            str(past_days)
-        ])
-    if past_months is not None:
-        cargs.extend([
-            "-past_months",
-            str(past_months)
-        ])
-    if past_years is not None:
-        cargs.extend([
-            "-past_years",
-            str(past_years)
-        ])
-    if type_ is not None:
-        cargs.extend([
-            "-type",
-            type_
-        ])
-    if html_:
-        cargs.append("-html")
-    if dline:
-        cargs.append("-dline")
-    if reverse:
-        cargs.append("-reverse")
-    if show_field is not None:
-        cargs.extend([
-            "-show_field",
-            show_field
-        ])
-    if show_field_names:
-        cargs.append("-show_field_names")
-    ret = AfniHistoryOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = afni_history_params(verb_level=verb_level, check_date=check_date, help_=help_, history=history, list_authors=list_authors, list_types=list_types, version=version, author=author, level=level, min_level=min_level, program=program, past_entries=past_entries, past_days=past_days, past_months=past_months, past_years=past_years, type_=type_, html_=html_, dline=dline, reverse=reverse, show_field=show_field, show_field_names=show_field_names)
+    return afni_history_execute(params, execution)
 
 
 __all__ = [
     "AFNI_HISTORY_METADATA",
-    "AfniHistoryOutputs",
     "afni_history",
+    "afni_history_params",
 ]

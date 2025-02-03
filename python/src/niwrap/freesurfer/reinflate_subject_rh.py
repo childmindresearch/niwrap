@@ -12,14 +12,133 @@ REINFLATE_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ReinflateSubjectRhParameters = typing.TypedDict('ReinflateSubjectRhParameters', {
+    "__STYX_TYPE__": typing.Literal["reinflate_subject-rh"],
+    "subject_dir": str,
+    "additional_options": typing.NotRequired[str | None],
+})
 
 
-class ReinflateSubjectRhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `reinflate_subject_rh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "reinflate_subject-rh": reinflate_subject_rh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def reinflate_subject_rh_params(
+    subject_dir: str,
+    additional_options: str | None = None,
+) -> ReinflateSubjectRhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_dir: Directory of the subject within FreeSurfer environment.
+        additional_options: Additional options for the reinflate_subject-rh\
+            command.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reinflate_subject-rh",
+        "subject_dir": subject_dir,
+    }
+    if additional_options is not None:
+        params["additional_options"] = additional_options
+    return params
+
+
+def reinflate_subject_rh_cargs(
+    params: ReinflateSubjectRhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-rh",
+        "reinflate_subject" + params.get("subject_dir")
+    ])
+    if params.get("additional_options") is not None:
+        cargs.append(params.get("additional_options"))
+    return cargs
+
+
+def reinflate_subject_rh_outputs(
+    params: ReinflateSubjectRhParameters,
+    execution: Execution,
+) -> ReinflateSubjectRhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ReinflateSubjectRhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def reinflate_subject_rh_execute(
+    params: ReinflateSubjectRhParameters,
+    execution: Execution,
+) -> ReinflateSubjectRhOutputs:
+    """
+    A tool for reinflating the cortical surfaces for a given subject in FreeSurfer,
+    specifically for the right hemisphere.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ReinflateSubjectRhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reinflate_subject_rh_cargs(params, execution)
+    ret = reinflate_subject_rh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reinflate_subject_rh(
@@ -45,22 +164,12 @@ def reinflate_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REINFLATE_SUBJECT_RH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-rh",
-        "reinflate_subject" + subject_dir
-    ])
-    if additional_options is not None:
-        cargs.append(additional_options)
-    ret = ReinflateSubjectRhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = reinflate_subject_rh_params(subject_dir=subject_dir, additional_options=additional_options)
+    return reinflate_subject_rh_execute(params, execution)
 
 
 __all__ = [
     "REINFLATE_SUBJECT_RH_METADATA",
-    "ReinflateSubjectRhOutputs",
     "reinflate_subject_rh",
+    "reinflate_subject_rh_params",
 ]

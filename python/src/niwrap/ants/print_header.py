@@ -12,6 +12,45 @@ PRINT_HEADER_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+PrintHeaderParameters = typing.TypedDict('PrintHeaderParameters', {
+    "__STYX_TYPE__": typing.Literal["PrintHeader"],
+    "image": InputPathType,
+    "what_information": typing.NotRequired[typing.Literal[0, 1, 2, 3, 4] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "PrintHeader": print_header_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "PrintHeader": print_header_outputs,
+    }
+    return vt.get(t)
 
 
 class PrintHeaderOutputs(typing.NamedTuple):
@@ -22,6 +61,95 @@ class PrintHeaderOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """The printed header information from the specified image."""
+
+
+def print_header_params(
+    image: InputPathType,
+    what_information: typing.Literal[0, 1, 2, 3, 4] | None = None,
+) -> PrintHeaderParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image: The image file to extract header information from. Supported\
+            extension: .ext.
+        what_information: Specify the type of information to print: 0 for\
+            origin, 1 for spacing, 2 for size, 3 for index, 4 for direction.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "PrintHeader",
+        "image": image,
+    }
+    if what_information is not None:
+        params["what_information"] = what_information
+    return params
+
+
+def print_header_cargs(
+    params: PrintHeaderParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("PrintHeader")
+    cargs.append(execution.input_file(params.get("image")))
+    if params.get("what_information") is not None:
+        cargs.append(str(params.get("what_information")))
+    return cargs
+
+
+def print_header_outputs(
+    params: PrintHeaderParameters,
+    execution: Execution,
+) -> PrintHeaderOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PrintHeaderOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file("header_info.txt"),
+    )
+    return ret
+
+
+def print_header_execute(
+    params: PrintHeaderParameters,
+    execution: Execution,
+) -> PrintHeaderOutputs:
+    """
+    A utility to print header information from an image file.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PrintHeaderOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = print_header_cargs(params, execution)
+    ret = print_header_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def print_header(
@@ -47,21 +175,13 @@ def print_header(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PRINT_HEADER_METADATA)
-    cargs = []
-    cargs.append("PrintHeader")
-    cargs.append(execution.input_file(image))
-    if what_information is not None:
-        cargs.append(str(what_information))
-    ret = PrintHeaderOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file("header_info.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = print_header_params(image=image, what_information=what_information)
+    return print_header_execute(params, execution)
 
 
 __all__ = [
     "PRINT_HEADER_METADATA",
     "PrintHeaderOutputs",
     "print_header",
+    "print_header_params",
 ]

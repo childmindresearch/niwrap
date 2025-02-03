@@ -12,6 +12,51 @@ DTIGEN_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+DtigenParameters = typing.TypedDict('DtigenParameters', {
+    "__STYX_TYPE__": typing.Literal["dtigen"],
+    "tensor": InputPathType,
+    "s0": InputPathType,
+    "output_data": str,
+    "bvecs": InputPathType,
+    "bvals": InputPathType,
+    "brainmask": InputPathType,
+    "kurtosis": typing.NotRequired[InputPathType | None],
+    "help": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dtigen": dtigen_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dtigen": dtigen_outputs,
+    }
+    return vt.get(t)
 
 
 class DtigenOutputs(typing.NamedTuple):
@@ -24,6 +69,140 @@ class DtigenOutputs(typing.NamedTuple):
     """Output diffusion data"""
     output_kurtosis_map: OutputPathType | None
     """Mean kurtosis map"""
+
+
+def dtigen_params(
+    tensor: InputPathType,
+    s0: InputPathType,
+    output_data: str,
+    bvecs: InputPathType,
+    bvals: InputPathType,
+    brainmask: InputPathType,
+    kurtosis: InputPathType | None = None,
+    help_: bool = False,
+) -> DtigenParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tensor: Input tensor file.
+        s0: Input S0 file.
+        output_data: Output data file.
+        bvecs: bvecs ASCII text file.
+        bvals: bvals ASCII text file.
+        brainmask: Brain mask file.
+        kurtosis: Mean kurtosis map.
+        help_: Display help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dtigen",
+        "tensor": tensor,
+        "s0": s0,
+        "output_data": output_data,
+        "bvecs": bvecs,
+        "bvals": bvals,
+        "brainmask": brainmask,
+        "help": help_,
+    }
+    if kurtosis is not None:
+        params["kurtosis"] = kurtosis
+    return params
+
+
+def dtigen_cargs(
+    params: DtigenParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dtigen")
+    cargs.extend([
+        "-t",
+        execution.input_file(params.get("tensor"))
+    ])
+    cargs.extend([
+        "--s0",
+        execution.input_file(params.get("s0"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_data")
+    ])
+    cargs.extend([
+        "-r",
+        execution.input_file(params.get("bvecs"))
+    ])
+    cargs.extend([
+        "-b",
+        execution.input_file(params.get("bvals"))
+    ])
+    cargs.extend([
+        "-m",
+        execution.input_file(params.get("brainmask"))
+    ])
+    if params.get("kurtosis") is not None:
+        cargs.extend([
+            "--kurt",
+            execution.input_file(params.get("kurtosis"))
+        ])
+    if params.get("help"):
+        cargs.append("-h")
+    return cargs
+
+
+def dtigen_outputs(
+    params: DtigenParameters,
+    execution: Execution,
+) -> DtigenOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DtigenOutputs(
+        root=execution.output_file("."),
+        output_diffusion_data=execution.output_file(params.get("output_data") + ".nii.gz"),
+        output_kurtosis_map=execution.output_file(pathlib.Path(params.get("kurtosis")).name) if (params.get("kurtosis") is not None) else None,
+    )
+    return ret
+
+
+def dtigen_execute(
+    params: DtigenParameters,
+    execution: Execution,
+) -> DtigenOutputs:
+    """
+    Generate diffusion data using tensor model.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DtigenOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dtigen_cargs(params, execution)
+    ret = dtigen_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dtigen(
@@ -59,50 +238,13 @@ def dtigen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DTIGEN_METADATA)
-    cargs = []
-    cargs.append("dtigen")
-    cargs.extend([
-        "-t",
-        execution.input_file(tensor)
-    ])
-    cargs.extend([
-        "--s0",
-        execution.input_file(s0)
-    ])
-    cargs.extend([
-        "-o",
-        output_data
-    ])
-    cargs.extend([
-        "-r",
-        execution.input_file(bvecs)
-    ])
-    cargs.extend([
-        "-b",
-        execution.input_file(bvals)
-    ])
-    cargs.extend([
-        "-m",
-        execution.input_file(brainmask)
-    ])
-    if kurtosis is not None:
-        cargs.extend([
-            "--kurt",
-            execution.input_file(kurtosis)
-        ])
-    if help_:
-        cargs.append("-h")
-    ret = DtigenOutputs(
-        root=execution.output_file("."),
-        output_diffusion_data=execution.output_file(output_data + ".nii.gz"),
-        output_kurtosis_map=execution.output_file(pathlib.Path(kurtosis).name) if (kurtosis is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = dtigen_params(tensor=tensor, s0=s0, output_data=output_data, bvecs=bvecs, bvals=bvals, brainmask=brainmask, kurtosis=kurtosis, help_=help_)
+    return dtigen_execute(params, execution)
 
 
 __all__ = [
     "DTIGEN_METADATA",
     "DtigenOutputs",
     "dtigen",
+    "dtigen_params",
 ]

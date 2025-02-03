@@ -12,6 +12,49 @@ V_1DSUM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dsumParameters = typing.TypedDict('V1dsumParameters', {
+    "__STYX_TYPE__": typing.Literal["1dsum"],
+    "input_files": list[InputPathType],
+    "ignore_rows": typing.NotRequired[float | None],
+    "use_rows": typing.NotRequired[float | None],
+    "mean_flag": bool,
+    "nocomment_flag": bool,
+    "okempty_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1dsum": v_1dsum_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1dsum": v_1dsum_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dsumOutputs(typing.NamedTuple):
@@ -22,6 +65,123 @@ class V1dsumOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Sum or average of columns in the input files"""
+
+
+def v_1dsum_params(
+    input_files: list[InputPathType],
+    ignore_rows: float | None = None,
+    use_rows: float | None = None,
+    mean_flag: bool = False,
+    nocomment_flag: bool = False,
+    okempty_flag: bool = False,
+) -> V1dsumParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input ASCII files with numbers arranged in rows and\
+            columns.
+        ignore_rows: Skip the first nn rows of each file.
+        use_rows: Use only mm rows from each file.
+        mean_flag: Compute the average instead of the sum.
+        nocomment_flag: Do not reproduce comments from the header of the first\
+            input file to the output.
+        okempty_flag: If encountering an empty 1D file, print 0 and exit\
+            quietly instead of exiting with an error message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dsum",
+        "input_files": input_files,
+        "mean_flag": mean_flag,
+        "nocomment_flag": nocomment_flag,
+        "okempty_flag": okempty_flag,
+    }
+    if ignore_rows is not None:
+        params["ignore_rows"] = ignore_rows
+    if use_rows is not None:
+        params["use_rows"] = use_rows
+    return params
+
+
+def v_1dsum_cargs(
+    params: V1dsumParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dsum")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    if params.get("ignore_rows") is not None:
+        cargs.extend([
+            "-ignore",
+            str(params.get("ignore_rows"))
+        ])
+    if params.get("use_rows") is not None:
+        cargs.extend([
+            "-use",
+            str(params.get("use_rows"))
+        ])
+    if params.get("mean_flag"):
+        cargs.append("-mean")
+    if params.get("nocomment_flag"):
+        cargs.append("-nocomment")
+    if params.get("okempty_flag"):
+        cargs.append("-OKempty")
+    return cargs
+
+
+def v_1dsum_outputs(
+    params: V1dsumParameters,
+    execution: Execution,
+) -> V1dsumOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dsumOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("output.txt"),
+    )
+    return ret
+
+
+def v_1dsum_execute(
+    params: V1dsumParameters,
+    execution: Execution,
+) -> V1dsumOutputs:
+    """
+    Sum or average columns of ASCII files with numbers arranged in rows and columns.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dsumOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1dsum_cargs(params, execution)
+    ret = v_1dsum_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1dsum(
@@ -56,35 +216,13 @@ def v_1dsum(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DSUM_METADATA)
-    cargs = []
-    cargs.append("1dsum")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    if ignore_rows is not None:
-        cargs.extend([
-            "-ignore",
-            str(ignore_rows)
-        ])
-    if use_rows is not None:
-        cargs.extend([
-            "-use",
-            str(use_rows)
-        ])
-    if mean_flag:
-        cargs.append("-mean")
-    if nocomment_flag:
-        cargs.append("-nocomment")
-    if okempty_flag:
-        cargs.append("-OKempty")
-    ret = V1dsumOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("output.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1dsum_params(input_files=input_files, ignore_rows=ignore_rows, use_rows=use_rows, mean_flag=mean_flag, nocomment_flag=nocomment_flag, okempty_flag=okempty_flag)
+    return v_1dsum_execute(params, execution)
 
 
 __all__ = [
     "V1dsumOutputs",
     "V_1DSUM_METADATA",
     "v_1dsum",
+    "v_1dsum_params",
 ]

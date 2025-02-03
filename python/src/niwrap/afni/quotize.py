@@ -12,6 +12,46 @@ QUOTIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+QuotizeParameters = typing.TypedDict('QuotizeParameters', {
+    "__STYX_TYPE__": typing.Literal["quotize"],
+    "name": str,
+    "input_file": InputPathType,
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "quotize": quotize_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "quotize": quotize_outputs,
+    }
+    return vt.get(t)
 
 
 class QuotizeOutputs(typing.NamedTuple):
@@ -22,6 +62,96 @@ class QuotizeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     array_output: OutputPathType
     """Generated C array of strings file"""
+
+
+def quotize_params(
+    name: str,
+    input_file: InputPathType,
+    output_file: str,
+) -> QuotizeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        name: The name to be used for the array of strings.
+        input_file: Input text file to be converted.
+        output_file: Output file which will contain the C array of strings.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "quotize",
+        "name": name,
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    return params
+
+
+def quotize_cargs(
+    params: QuotizeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("quotize")
+    cargs.append(params.get("name"))
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def quotize_outputs(
+    params: QuotizeParameters,
+    execution: Execution,
+) -> QuotizeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = QuotizeOutputs(
+        root=execution.output_file("."),
+        array_output=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def quotize_execute(
+    params: QuotizeParameters,
+    execution: Execution,
+) -> QuotizeOutputs:
+    """
+    Turns a text file into a C array of strings initialized into an array 'char
+    *name[]'.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `QuotizeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = quotize_cargs(params, execution)
+    ret = quotize_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def quotize(
@@ -48,21 +178,13 @@ def quotize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUOTIZE_METADATA)
-    cargs = []
-    cargs.append("quotize")
-    cargs.append(name)
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    ret = QuotizeOutputs(
-        root=execution.output_file("."),
-        array_output=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = quotize_params(name=name, input_file=input_file, output_file=output_file)
+    return quotize_execute(params, execution)
 
 
 __all__ = [
     "QUOTIZE_METADATA",
     "QuotizeOutputs",
     "quotize",
+    "quotize_params",
 ]

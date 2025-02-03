@@ -12,6 +12,50 @@ EASYTHRESH_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+EasythreshParameters = typing.TypedDict('EasythreshParameters', {
+    "__STYX_TYPE__": typing.Literal["easythresh"],
+    "raw_zstat_input": InputPathType,
+    "brain_mask_input": InputPathType,
+    "cluster_z_thresh_input": float,
+    "cluster_prob_thresh_input": float,
+    "background_image_input": InputPathType,
+    "output_root": str,
+    "mm_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "easythresh": easythresh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "easythresh": easythresh_outputs,
+    }
+    return vt.get(t)
 
 
 class EasythreshOutputs(typing.NamedTuple):
@@ -22,6 +66,112 @@ class EasythreshOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_thresh_image: OutputPathType
     """Output thresholded image"""
+
+
+def easythresh_params(
+    raw_zstat_input: InputPathType,
+    brain_mask_input: InputPathType,
+    cluster_z_thresh_input: float,
+    cluster_prob_thresh_input: float,
+    background_image_input: InputPathType,
+    output_root: str,
+    mm_flag: bool = False,
+) -> EasythreshParameters:
+    """
+    Build parameters.
+    
+    Args:
+        raw_zstat_input: Input raw z-statistics image.
+        brain_mask_input: Brain mask image.
+        cluster_z_thresh_input: Cluster z-threshold.
+        cluster_prob_thresh_input: Cluster probability threshold.
+        background_image_input: Background image for thresholding.
+        output_root: Root of output file names.
+        mm_flag: Flag to indicate the use of mm (millimeters).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "easythresh",
+        "raw_zstat_input": raw_zstat_input,
+        "brain_mask_input": brain_mask_input,
+        "cluster_z_thresh_input": cluster_z_thresh_input,
+        "cluster_prob_thresh_input": cluster_prob_thresh_input,
+        "background_image_input": background_image_input,
+        "output_root": output_root,
+        "mm_flag": mm_flag,
+    }
+    return params
+
+
+def easythresh_cargs(
+    params: EasythreshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("easythresh")
+    cargs.append(execution.input_file(params.get("raw_zstat_input")))
+    cargs.append(execution.input_file(params.get("brain_mask_input")))
+    cargs.append(str(params.get("cluster_z_thresh_input")))
+    cargs.append(str(params.get("cluster_prob_thresh_input")))
+    cargs.append(execution.input_file(params.get("background_image_input")))
+    cargs.append(params.get("output_root"))
+    if params.get("mm_flag"):
+        cargs.append("--mm")
+    return cargs
+
+
+def easythresh_outputs(
+    params: EasythreshParameters,
+    execution: Execution,
+) -> EasythreshOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = EasythreshOutputs(
+        root=execution.output_file("."),
+        output_thresh_image=execution.output_file(params.get("output_root") + "_thresh.nii.gz"),
+    )
+    return ret
+
+
+def easythresh_execute(
+    params: EasythreshParameters,
+    execution: Execution,
+) -> EasythreshOutputs:
+    """
+    Cluster-based statistical thresholding tool from FSL.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `EasythreshOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = easythresh_cargs(params, execution)
+    ret = easythresh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def easythresh(
@@ -55,26 +205,13 @@ def easythresh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EASYTHRESH_METADATA)
-    cargs = []
-    cargs.append("easythresh")
-    cargs.append(execution.input_file(raw_zstat_input))
-    cargs.append(execution.input_file(brain_mask_input))
-    cargs.append(str(cluster_z_thresh_input))
-    cargs.append(str(cluster_prob_thresh_input))
-    cargs.append(execution.input_file(background_image_input))
-    cargs.append(output_root)
-    if mm_flag:
-        cargs.append("--mm")
-    ret = EasythreshOutputs(
-        root=execution.output_file("."),
-        output_thresh_image=execution.output_file(output_root + "_thresh.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = easythresh_params(raw_zstat_input=raw_zstat_input, brain_mask_input=brain_mask_input, cluster_z_thresh_input=cluster_z_thresh_input, cluster_prob_thresh_input=cluster_prob_thresh_input, background_image_input=background_image_input, output_root=output_root, mm_flag=mm_flag)
+    return easythresh_execute(params, execution)
 
 
 __all__ = [
     "EASYTHRESH_METADATA",
     "EasythreshOutputs",
     "easythresh",
+    "easythresh_params",
 ]

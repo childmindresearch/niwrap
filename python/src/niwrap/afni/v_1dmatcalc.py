@@ -12,6 +12,44 @@ V_1DMATCALC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dmatcalcParameters = typing.TypedDict('V1dmatcalcParameters', {
+    "__STYX_TYPE__": typing.Literal["1dmatcalc"],
+    "expression": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1dmatcalc": v_1dmatcalc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1dmatcalc": v_1dmatcalc_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dmatcalcOutputs(typing.NamedTuple):
@@ -22,6 +60,90 @@ class V1dmatcalcOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file resulting from the evaluated expression"""
+
+
+def v_1dmatcalc_params(
+    expression: str | None = None,
+) -> V1dmatcalcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        expression: Expression to evaluate the RPN matrix-valued operations.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dmatcalc",
+    }
+    if expression is not None:
+        params["expression"] = expression
+    return params
+
+
+def v_1dmatcalc_cargs(
+    params: V1dmatcalcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dmatcalc")
+    if params.get("expression") is not None:
+        cargs.append(params.get("expression"))
+    return cargs
+
+
+def v_1dmatcalc_outputs(
+    params: V1dmatcalcParameters,
+    execution: Execution,
+) -> V1dmatcalcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dmatcalcOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("[OUTPUT_FILE]"),
+    )
+    return ret
+
+
+def v_1dmatcalc_execute(
+    params: V1dmatcalcParameters,
+    execution: Execution,
+) -> V1dmatcalcOutputs:
+    """
+    A tool to evaluate space-delimited RPN (Reverse Polish Notation) matrix-valued
+    expressions.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dmatcalcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1dmatcalc_cargs(params, execution)
+    ret = v_1dmatcalc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1dmatcalc(
@@ -44,20 +166,13 @@ def v_1dmatcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DMATCALC_METADATA)
-    cargs = []
-    cargs.append("1dmatcalc")
-    if expression is not None:
-        cargs.append(expression)
-    ret = V1dmatcalcOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_FILE]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1dmatcalc_params(expression=expression)
+    return v_1dmatcalc_execute(params, execution)
 
 
 __all__ = [
     "V1dmatcalcOutputs",
     "V_1DMATCALC_METADATA",
     "v_1dmatcalc",
+    "v_1dmatcalc_params",
 ]

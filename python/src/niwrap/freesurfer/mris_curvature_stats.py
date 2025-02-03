@@ -12,6 +12,45 @@ MRIS_CURVATURE_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisCurvatureStatsParameters = typing.TypedDict('MrisCurvatureStatsParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_curvature_stats"],
+    "subject_name": str,
+    "hemisphere": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_curvature_stats": mris_curvature_stats_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_curvature_stats": mris_curvature_stats_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisCurvatureStatsOutputs(typing.NamedTuple):
@@ -22,6 +61,93 @@ class MrisCurvatureStatsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     scaled_curvature_file: OutputPathType
     """Scaled curvature file."""
+
+
+def mris_curvature_stats_params(
+    subject_name: str,
+    hemisphere: str,
+) -> MrisCurvatureStatsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_name: Subject name defined in the SUBJECTS_DIR.
+        hemisphere: Hemisphere, can be 'lh' or 'rh'.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_curvature_stats",
+        "subject_name": subject_name,
+        "hemisphere": hemisphere,
+    }
+    return params
+
+
+def mris_curvature_stats_cargs(
+    params: MrisCurvatureStatsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_curvature_stats")
+    cargs.append("[OPTIONS]")
+    cargs.append(params.get("subject_name"))
+    cargs.append(params.get("hemisphere"))
+    cargs.append("[CURVFILE...]")
+    return cargs
+
+
+def mris_curvature_stats_outputs(
+    params: MrisCurvatureStatsParameters,
+    execution: Execution,
+) -> MrisCurvatureStatsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisCurvatureStatsOutputs(
+        root=execution.output_file("."),
+        scaled_curvature_file=execution.output_file(params.get("subject_name") + "/surf/" + params.get("hemisphere") + ".[CURVATURE_FILES].scaled.crv"),
+    )
+    return ret
+
+
+def mris_curvature_stats_execute(
+    params: MrisCurvatureStatsParameters,
+    execution: Execution,
+) -> MrisCurvatureStatsOutputs:
+    """
+    Tool for calculating statistics on surface curvature values.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisCurvatureStatsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_curvature_stats_cargs(params, execution)
+    ret = mris_curvature_stats_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_curvature_stats(
@@ -45,22 +171,13 @@ def mris_curvature_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CURVATURE_STATS_METADATA)
-    cargs = []
-    cargs.append("mris_curvature_stats")
-    cargs.append("[OPTIONS]")
-    cargs.append(subject_name)
-    cargs.append(hemisphere)
-    cargs.append("[CURVFILE...]")
-    ret = MrisCurvatureStatsOutputs(
-        root=execution.output_file("."),
-        scaled_curvature_file=execution.output_file(subject_name + "/surf/" + hemisphere + ".[CURVATURE_FILES].scaled.crv"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_curvature_stats_params(subject_name=subject_name, hemisphere=hemisphere)
+    return mris_curvature_stats_execute(params, execution)
 
 
 __all__ = [
     "MRIS_CURVATURE_STATS_METADATA",
     "MrisCurvatureStatsOutputs",
     "mris_curvature_stats",
+    "mris_curvature_stats_params",
 ]

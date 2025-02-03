@@ -12,6 +12,51 @@ ROIGROW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+RoigrowParameters = typing.TypedDict('RoigrowParameters', {
+    "__STYX_TYPE__": typing.Literal["ROIgrow"],
+    "input_surface": str,
+    "roi_labels": str,
+    "lim_distance": float,
+    "output_prefix": typing.NotRequired[str | None],
+    "full_list": bool,
+    "grow_from_edge": bool,
+    "insphere_diameter": typing.NotRequired[float | None],
+    "inbox_edges": typing.NotRequired[list[float] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ROIgrow": roigrow_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ROIgrow": roigrow_outputs,
+    }
+    return vt.get(t)
 
 
 class RoigrowOutputs(typing.NamedTuple):
@@ -22,6 +67,150 @@ class RoigrowOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType | None
     """1D output dataset."""
+
+
+def roigrow_params(
+    input_surface: str,
+    roi_labels: str,
+    lim_distance: float,
+    output_prefix: str | None = None,
+    full_list: bool = False,
+    grow_from_edge: bool = False,
+    insphere_diameter: float | None = None,
+    inbox_edges: list[float] | None = None,
+) -> RoigrowParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Specify input surface. You can also use -t* and -spec\
+            and -surf methods to input surfaces.
+        roi_labels: Data column containing integer labels of ROIs. Each integer\
+            label gets grown separately.
+        lim_distance: Distance to cover from each node. The units of LIM are\
+            those of the surface's node coordinates. Distances are calculated along\
+            the surface's mesh.
+        output_prefix: Prefix of 1D output dataset. Default is ROIgrow.
+        full_list: Output a row for each node on the surface. Nodes not in the\
+            grown ROI, receive a 0 for a label. This option is ONLY for use with\
+            -roi_labels.
+        grow_from_edge: Grow ROIs from their edges rather than the brute force\
+            default. This might make the program faster on large ROIs and large\
+            surfaces.
+        insphere_diameter: Diameter of the sphere inside which nodes are added\
+            instead of growing along the surface.
+        inbox_edges: Use a box of edge widths E1, E2, E3 instead of DIA.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ROIgrow",
+        "input_surface": input_surface,
+        "roi_labels": roi_labels,
+        "lim_distance": lim_distance,
+        "full_list": full_list,
+        "grow_from_edge": grow_from_edge,
+    }
+    if output_prefix is not None:
+        params["output_prefix"] = output_prefix
+    if insphere_diameter is not None:
+        params["insphere_diameter"] = insphere_diameter
+    if inbox_edges is not None:
+        params["inbox_edges"] = inbox_edges
+    return params
+
+
+def roigrow_cargs(
+    params: RoigrowParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ROIgrow")
+    cargs.extend([
+        "-i_TYPE",
+        params.get("input_surface")
+    ])
+    cargs.extend([
+        "-roi_labels",
+        params.get("roi_labels")
+    ])
+    cargs.extend([
+        "-lim",
+        str(params.get("lim_distance"))
+    ])
+    if params.get("output_prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("output_prefix")
+        ])
+    if params.get("full_list"):
+        cargs.append("-full_list")
+    if params.get("grow_from_edge"):
+        cargs.append("-grow_from_edge")
+    if params.get("insphere_diameter") is not None:
+        cargs.extend([
+            "-insphere",
+            str(params.get("insphere_diameter"))
+        ])
+    if params.get("inbox_edges") is not None:
+        cargs.extend([
+            "-inbox",
+            *map(str, params.get("inbox_edges"))
+        ])
+    return cargs
+
+
+def roigrow_outputs(
+    params: RoigrowParameters,
+    execution: Execution,
+) -> RoigrowOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RoigrowOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_prefix") + ".1D") if (params.get("output_prefix") is not None) else None,
+    )
+    return ret
+
+
+def roigrow_execute(
+    params: RoigrowParameters,
+    execution: Execution,
+) -> RoigrowOutputs:
+    """
+    A program to expand an ROI on the surface.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RoigrowOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = roigrow_cargs(params, execution)
+    ret = roigrow_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def roigrow(
@@ -66,49 +255,13 @@ def roigrow(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ROIGROW_METADATA)
-    cargs = []
-    cargs.append("ROIgrow")
-    cargs.extend([
-        "-i_TYPE",
-        input_surface
-    ])
-    cargs.extend([
-        "-roi_labels",
-        roi_labels
-    ])
-    cargs.extend([
-        "-lim",
-        str(lim_distance)
-    ])
-    if output_prefix is not None:
-        cargs.extend([
-            "-prefix",
-            output_prefix
-        ])
-    if full_list:
-        cargs.append("-full_list")
-    if grow_from_edge:
-        cargs.append("-grow_from_edge")
-    if insphere_diameter is not None:
-        cargs.extend([
-            "-insphere",
-            str(insphere_diameter)
-        ])
-    if inbox_edges is not None:
-        cargs.extend([
-            "-inbox",
-            *map(str, inbox_edges)
-        ])
-    ret = RoigrowOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_prefix + ".1D") if (output_prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = roigrow_params(input_surface=input_surface, roi_labels=roi_labels, lim_distance=lim_distance, output_prefix=output_prefix, full_list=full_list, grow_from_edge=grow_from_edge, insphere_diameter=insphere_diameter, inbox_edges=inbox_edges)
+    return roigrow_execute(params, execution)
 
 
 __all__ = [
     "ROIGROW_METADATA",
     "RoigrowOutputs",
     "roigrow",
+    "roigrow_params",
 ]

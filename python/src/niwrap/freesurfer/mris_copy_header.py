@@ -12,6 +12,46 @@ MRIS_COPY_HEADER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisCopyHeaderParameters = typing.TypedDict('MrisCopyHeaderParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_copy_header"],
+    "input_surface": InputPathType,
+    "template_surface": InputPathType,
+    "output_surface": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_copy_header": mris_copy_header_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_copy_header": mris_copy_header_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisCopyHeaderOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class MrisCopyHeaderOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_surface: OutputPathType
     """Output surface file with copied header."""
+
+
+def mris_copy_header_params(
+    input_surface: InputPathType,
+    template_surface: InputPathType,
+    output_surface: str,
+) -> MrisCopyHeaderParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file whose header will be replaced.
+        template_surface: Template surface file from which the header will be\
+            copied.
+        output_surface: Output surface file with the updated header.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_copy_header",
+        "input_surface": input_surface,
+        "template_surface": template_surface,
+        "output_surface": output_surface,
+    }
+    return params
+
+
+def mris_copy_header_cargs(
+    params: MrisCopyHeaderParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_copy_header")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(execution.input_file(params.get("template_surface")))
+    cargs.append(params.get("output_surface"))
+    return cargs
+
+
+def mris_copy_header_outputs(
+    params: MrisCopyHeaderParameters,
+    execution: Execution,
+) -> MrisCopyHeaderOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisCopyHeaderOutputs(
+        root=execution.output_file("."),
+        out_surface=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def mris_copy_header_execute(
+    params: MrisCopyHeaderParameters,
+    execution: Execution,
+) -> MrisCopyHeaderOutputs:
+    """
+    Tool to copy the header from a template surface to an input surface and save as
+    the output surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisCopyHeaderOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_copy_header_cargs(params, execution)
+    ret = mris_copy_header_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_copy_header(
@@ -49,21 +180,13 @@ def mris_copy_header(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_COPY_HEADER_METADATA)
-    cargs = []
-    cargs.append("mris_copy_header")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(execution.input_file(template_surface))
-    cargs.append(output_surface)
-    ret = MrisCopyHeaderOutputs(
-        root=execution.output_file("."),
-        out_surface=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_copy_header_params(input_surface=input_surface, template_surface=template_surface, output_surface=output_surface)
+    return mris_copy_header_execute(params, execution)
 
 
 __all__ = [
     "MRIS_COPY_HEADER_METADATA",
     "MrisCopyHeaderOutputs",
     "mris_copy_header",
+    "mris_copy_header_params",
 ]

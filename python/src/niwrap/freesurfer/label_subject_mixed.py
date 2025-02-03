@@ -12,6 +12,48 @@ LABEL_SUBJECT_MIXED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LabelSubjectMixedParameters = typing.TypedDict('LabelSubjectMixedParameters', {
+    "__STYX_TYPE__": typing.Literal["label_subject_mixed"],
+    "brain_mask": InputPathType,
+    "norm_volume": InputPathType,
+    "transform": InputPathType,
+    "gca_file": InputPathType,
+    "aseg_output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label_subject_mixed": label_subject_mixed_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label_subject_mixed": label_subject_mixed_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelSubjectMixedOutputs(typing.NamedTuple):
@@ -22,6 +64,106 @@ class LabelSubjectMixedOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_aseg: OutputPathType
     """Labeled segmentation output"""
+
+
+def label_subject_mixed_params(
+    brain_mask: InputPathType,
+    norm_volume: InputPathType,
+    transform: InputPathType,
+    gca_file: InputPathType,
+    aseg_output: str,
+) -> LabelSubjectMixedParameters:
+    """
+    Build parameters.
+    
+    Args:
+        brain_mask: Brain mask to be used for final labeling.
+        norm_volume: Normalized volume.
+        transform: Transform file in LTA format.
+        gca_file: Gaussian classifier array (GCA) file.
+        aseg_output: Output aseg file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label_subject_mixed",
+        "brain_mask": brain_mask,
+        "norm_volume": norm_volume,
+        "transform": transform,
+        "gca_file": gca_file,
+        "aseg_output": aseg_output,
+    }
+    return params
+
+
+def label_subject_mixed_cargs(
+    params: LabelSubjectMixedParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_ca_label")
+    cargs.extend([
+        "-mask",
+        execution.input_file(params.get("brain_mask"))
+    ])
+    cargs.append(execution.input_file(params.get("norm_volume")))
+    cargs.append(execution.input_file(params.get("transform")))
+    cargs.append(execution.input_file(params.get("gca_file")))
+    cargs.append(params.get("aseg_output"))
+    return cargs
+
+
+def label_subject_mixed_outputs(
+    params: LabelSubjectMixedParameters,
+    execution: Execution,
+) -> LabelSubjectMixedOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelSubjectMixedOutputs(
+        root=execution.output_file("."),
+        output_aseg=execution.output_file(params.get("aseg_output")),
+    )
+    return ret
+
+
+def label_subject_mixed_execute(
+    params: LabelSubjectMixedParameters,
+    execution: Execution,
+) -> LabelSubjectMixedOutputs:
+    """
+    Automatic labeling of brain regions using a Gaussian classifier array.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label_subject_mixed_cargs(params, execution)
+    ret = label_subject_mixed_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def label_subject_mixed(
@@ -51,26 +193,13 @@ def label_subject_mixed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_SUBJECT_MIXED_METADATA)
-    cargs = []
-    cargs.append("mri_ca_label")
-    cargs.extend([
-        "-mask",
-        execution.input_file(brain_mask)
-    ])
-    cargs.append(execution.input_file(norm_volume))
-    cargs.append(execution.input_file(transform))
-    cargs.append(execution.input_file(gca_file))
-    cargs.append(aseg_output)
-    ret = LabelSubjectMixedOutputs(
-        root=execution.output_file("."),
-        output_aseg=execution.output_file(aseg_output),
-    )
-    execution.run(cargs)
-    return ret
+    params = label_subject_mixed_params(brain_mask=brain_mask, norm_volume=norm_volume, transform=transform, gca_file=gca_file, aseg_output=aseg_output)
+    return label_subject_mixed_execute(params, execution)
 
 
 __all__ = [
     "LABEL_SUBJECT_MIXED_METADATA",
     "LabelSubjectMixedOutputs",
     "label_subject_mixed",
+    "label_subject_mixed_params",
 ]

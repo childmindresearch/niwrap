@@ -12,64 +12,148 @@ METRIC_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricResampleAreaSurfsParameters = typing.TypedDict('MetricResampleAreaSurfsParameters', {
+    "__STYX_TYPE__": typing.Literal["area_surfs"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+MetricResampleAreaMetricsParameters = typing.TypedDict('MetricResampleAreaMetricsParameters', {
+    "__STYX_TYPE__": typing.Literal["area_metrics"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+MetricResampleParameters = typing.TypedDict('MetricResampleParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-resample"],
+    "metric_in": InputPathType,
+    "current_sphere": InputPathType,
+    "new_sphere": InputPathType,
+    "method": str,
+    "metric_out": str,
+    "area_surfs": typing.NotRequired[MetricResampleAreaSurfsParameters | None],
+    "area_metrics": typing.NotRequired[MetricResampleAreaMetricsParameters | None],
+    "opt_current_roi_roi_metric": typing.NotRequired[InputPathType | None],
+    "opt_valid_roi_out_roi_out": typing.NotRequired[str | None],
+    "opt_largest": bool,
+    "opt_bypass_sphere_check": bool,
+})
 
 
-@dataclasses.dataclass
-class MetricResampleAreaSurfs:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    specify surfaces to do vertex area correction based on.
-    """
-    current_area: InputPathType
-    """a relevant anatomical surface with <current-sphere> mesh"""
-    new_area: InputPathType
-    """a relevant anatomical surface with <new-sphere> mesh"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-area-surfs")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-resample": metric_resample_cargs,
+        "area_surfs": metric_resample_area_surfs_cargs,
+        "area_metrics": metric_resample_area_metrics_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MetricResampleAreaMetrics:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    specify vertex area metrics to do area correction based on.
-    """
-    current_area: InputPathType
-    """a metric file with vertex areas for <current-sphere> mesh"""
-    new_area: InputPathType
-    """a metric file with vertex areas for <new-sphere> mesh"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-area-metrics")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-resample": metric_resample_outputs,
+    }
+    return vt.get(t)
+
+
+def metric_resample_area_surfs_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> MetricResampleAreaSurfsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a relevant anatomical surface with <current-sphere> mesh.
+        new_area: a relevant anatomical surface with <new-sphere> mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "area_surfs",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def metric_resample_area_surfs_cargs(
+    params: MetricResampleAreaSurfsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-area-surfs")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def metric_resample_area_metrics_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> MetricResampleAreaMetricsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a metric file with vertex areas for <current-sphere> mesh.
+        new_area: a metric file with vertex areas for <new-sphere> mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "area_metrics",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def metric_resample_area_metrics_cargs(
+    params: MetricResampleAreaMetricsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-area-metrics")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
 
 
 class MetricResampleOutputs(typing.NamedTuple):
@@ -85,14 +169,183 @@ class MetricResampleOutputs(typing.NamedTuple):
     output roi as a metric"""
 
 
+def metric_resample_params(
+    metric_in: InputPathType,
+    current_sphere: InputPathType,
+    new_sphere: InputPathType,
+    method: str,
+    metric_out: str,
+    area_surfs: MetricResampleAreaSurfsParameters | None = None,
+    area_metrics: MetricResampleAreaMetricsParameters | None = None,
+    opt_current_roi_roi_metric: InputPathType | None = None,
+    opt_valid_roi_out_roi_out: str | None = None,
+    opt_largest: bool = False,
+    opt_bypass_sphere_check: bool = False,
+) -> MetricResampleParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric_in: the metric file to resample.
+        current_sphere: a sphere surface with the mesh that the metric is\
+            currently on.
+        new_sphere: a sphere surface that is in register with <current-sphere>\
+            and has the desired output mesh.
+        method: the method name.
+        metric_out: the output metric.
+        area_surfs: specify surfaces to do vertex area correction based on.
+        area_metrics: specify vertex area metrics to do area correction based\
+            on.
+        opt_current_roi_roi_metric: use an input roi on the current mesh to\
+            exclude non-data vertices: the roi, as a metric file.
+        opt_valid_roi_out_roi_out: output the ROI of vertices that got data\
+            from valid source vertices: the output roi as a metric.
+        opt_largest: use only the value of the vertex with the largest weight.
+        opt_bypass_sphere_check: ADVANCED: allow the current and new 'spheres'\
+            to have arbitrary shape as long as they follow the same contour.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-resample",
+        "metric_in": metric_in,
+        "current_sphere": current_sphere,
+        "new_sphere": new_sphere,
+        "method": method,
+        "metric_out": metric_out,
+        "opt_largest": opt_largest,
+        "opt_bypass_sphere_check": opt_bypass_sphere_check,
+    }
+    if area_surfs is not None:
+        params["area_surfs"] = area_surfs
+    if area_metrics is not None:
+        params["area_metrics"] = area_metrics
+    if opt_current_roi_roi_metric is not None:
+        params["opt_current_roi_roi_metric"] = opt_current_roi_roi_metric
+    if opt_valid_roi_out_roi_out is not None:
+        params["opt_valid_roi_out_roi_out"] = opt_valid_roi_out_roi_out
+    return params
+
+
+def metric_resample_cargs(
+    params: MetricResampleParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-resample")
+    cargs.append(execution.input_file(params.get("metric_in")))
+    cargs.append(execution.input_file(params.get("current_sphere")))
+    cargs.append(execution.input_file(params.get("new_sphere")))
+    cargs.append(params.get("method"))
+    cargs.append(params.get("metric_out"))
+    if params.get("area_surfs") is not None:
+        cargs.extend(dyn_cargs(params.get("area_surfs")["__STYXTYPE__"])(params.get("area_surfs"), execution))
+    if params.get("area_metrics") is not None:
+        cargs.extend(dyn_cargs(params.get("area_metrics")["__STYXTYPE__"])(params.get("area_metrics"), execution))
+    if params.get("opt_current_roi_roi_metric") is not None:
+        cargs.extend([
+            "-current-roi",
+            execution.input_file(params.get("opt_current_roi_roi_metric"))
+        ])
+    if params.get("opt_valid_roi_out_roi_out") is not None:
+        cargs.extend([
+            "-valid-roi-out",
+            params.get("opt_valid_roi_out_roi_out")
+        ])
+    if params.get("opt_largest"):
+        cargs.append("-largest")
+    if params.get("opt_bypass_sphere_check"):
+        cargs.append("-bypass-sphere-check")
+    return cargs
+
+
+def metric_resample_outputs(
+    params: MetricResampleParameters,
+    execution: Execution,
+) -> MetricResampleOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricResampleOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+        opt_valid_roi_out_roi_out=execution.output_file(params.get("opt_valid_roi_out_roi_out")) if (params.get("opt_valid_roi_out_roi_out") is not None) else None,
+    )
+    return ret
+
+
+def metric_resample_execute(
+    params: MetricResampleParameters,
+    execution: Execution,
+) -> MetricResampleOutputs:
+    """
+    Resample a metric file to a different mesh.
+    
+    Resamples a metric file, given two spherical surfaces that are in register.
+    If ADAP_BARY_AREA is used, exactly one of -area-surfs or -area-metrics must
+    be specified.
+    
+    The ADAP_BARY_AREA method is recommended for ordinary metric data, because
+    it should use all data while downsampling, unlike BARYCENTRIC. The
+    recommended areas option for most data is individual midthicknesses for
+    individual data, and averaged vertex area metrics from individual
+    midthicknesses for group average data.
+    
+    The -current-roi option only masks the input, the output may be slightly
+    dilated in comparison, consider using -metric-mask on the output when using
+    -current-roi.
+    
+    The -largest option results in nearest vertex behavior when used with
+    BARYCENTRIC. When resampling a binary metric, consider thresholding at 0.5
+    after resampling rather than using -largest.
+    
+    The <method> argument must be one of the following:
+    
+    ADAP_BARY_AREA
+    BARYCENTRIC
+    .
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricResampleOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_resample_cargs(params, execution)
+    ret = metric_resample_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def metric_resample(
     metric_in: InputPathType,
     current_sphere: InputPathType,
     new_sphere: InputPathType,
     method: str,
     metric_out: str,
-    area_surfs: MetricResampleAreaSurfs | None = None,
-    area_metrics: MetricResampleAreaMetrics | None = None,
+    area_surfs: MetricResampleAreaSurfsParameters | None = None,
+    area_metrics: MetricResampleAreaMetricsParameters | None = None,
     opt_current_roi_roi_metric: InputPathType | None = None,
     opt_valid_roi_out_roi_out: str | None = None,
     opt_largest: bool = False,
@@ -154,45 +407,15 @@ def metric_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_RESAMPLE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-resample")
-    cargs.append(execution.input_file(metric_in))
-    cargs.append(execution.input_file(current_sphere))
-    cargs.append(execution.input_file(new_sphere))
-    cargs.append(method)
-    cargs.append(metric_out)
-    if area_surfs is not None:
-        cargs.extend(area_surfs.run(execution))
-    if area_metrics is not None:
-        cargs.extend(area_metrics.run(execution))
-    if opt_current_roi_roi_metric is not None:
-        cargs.extend([
-            "-current-roi",
-            execution.input_file(opt_current_roi_roi_metric)
-        ])
-    if opt_valid_roi_out_roi_out is not None:
-        cargs.extend([
-            "-valid-roi-out",
-            opt_valid_roi_out_roi_out
-        ])
-    if opt_largest:
-        cargs.append("-largest")
-    if opt_bypass_sphere_check:
-        cargs.append("-bypass-sphere-check")
-    ret = MetricResampleOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-        opt_valid_roi_out_roi_out=execution.output_file(opt_valid_roi_out_roi_out) if (opt_valid_roi_out_roi_out is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_resample_params(metric_in=metric_in, current_sphere=current_sphere, new_sphere=new_sphere, method=method, metric_out=metric_out, area_surfs=area_surfs, area_metrics=area_metrics, opt_current_roi_roi_metric=opt_current_roi_roi_metric, opt_valid_roi_out_roi_out=opt_valid_roi_out_roi_out, opt_largest=opt_largest, opt_bypass_sphere_check=opt_bypass_sphere_check)
+    return metric_resample_execute(params, execution)
 
 
 __all__ = [
     "METRIC_RESAMPLE_METADATA",
-    "MetricResampleAreaMetrics",
-    "MetricResampleAreaSurfs",
     "MetricResampleOutputs",
     "metric_resample",
+    "metric_resample_area_metrics_params",
+    "metric_resample_area_surfs_params",
+    "metric_resample_params",
 ]

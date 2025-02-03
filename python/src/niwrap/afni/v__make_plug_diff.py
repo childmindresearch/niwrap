@@ -12,14 +12,169 @@ V__MAKE_PLUG_DIFF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VMakePlugDiffParameters = typing.TypedDict('VMakePlugDiffParameters', {
+    "__STYX_TYPE__": typing.Literal["@make_plug_diff"],
+    "vtk_dir": str,
+    "xm_dir": str,
+    "afni_src_dir": str,
+    "afni_bin_dir": str,
+    "comments": bool,
+    "linux": bool,
+    "diff_dir": str,
+})
 
 
-class VMakePlugDiffOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__make_plug_diff(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@make_plug_diff": v__make_plug_diff_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__make_plug_diff_params(
+    vtk_dir: str,
+    xm_dir: str,
+    afni_src_dir: str,
+    afni_bin_dir: str,
+    diff_dir: str,
+    comments: bool = False,
+    linux: bool = False,
+) -> VMakePlugDiffParameters:
+    """
+    Build parameters.
+    
+    Args:
+        vtk_dir: Directory where vtk is installed.
+        xm_dir: Directory where motif is installed.
+        afni_src_dir: Full path to AFNI's src/ directory.
+        afni_bin_dir: Path, relative to ASRCDIR, to abin.
+        diff_dir: Name of directory containing diffusion code.
+        comments: Output comments only.
+        linux: Flag for doing linuxy things.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@make_plug_diff",
+        "vtk_dir": vtk_dir,
+        "xm_dir": xm_dir,
+        "afni_src_dir": afni_src_dir,
+        "afni_bin_dir": afni_bin_dir,
+        "comments": comments,
+        "linux": linux,
+        "diff_dir": diff_dir,
+    }
+    return params
+
+
+def v__make_plug_diff_cargs(
+    params: VMakePlugDiffParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@make_plug_diff")
+    cargs.extend([
+        "-vtk",
+        params.get("vtk_dir")
+    ])
+    cargs.extend([
+        "-xm",
+        params.get("xm_dir")
+    ])
+    cargs.extend([
+        "-asrc",
+        params.get("afni_src_dir")
+    ])
+    cargs.extend([
+        "-abin",
+        params.get("afni_bin_dir")
+    ])
+    if params.get("comments"):
+        cargs.append("-comments")
+    if params.get("linux"):
+        cargs.append("-linux")
+    cargs.extend([
+        "-diff",
+        params.get("diff_dir")
+    ])
+    return cargs
+
+
+def v__make_plug_diff_outputs(
+    params: VMakePlugDiffParameters,
+    execution: Execution,
+) -> VMakePlugDiffOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VMakePlugDiffOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__make_plug_diff_execute(
+    params: VMakePlugDiffParameters,
+    execution: Execution,
+) -> VMakePlugDiffOutputs:
+    """
+    Compiles AFNI's diffusion plugin.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VMakePlugDiffOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__make_plug_diff_cargs(params, execution)
+    ret = v__make_plug_diff_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__make_plug_diff(
@@ -53,41 +208,12 @@ def v__make_plug_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MAKE_PLUG_DIFF_METADATA)
-    cargs = []
-    cargs.append("@make_plug_diff")
-    cargs.extend([
-        "-vtk",
-        vtk_dir
-    ])
-    cargs.extend([
-        "-xm",
-        xm_dir
-    ])
-    cargs.extend([
-        "-asrc",
-        afni_src_dir
-    ])
-    cargs.extend([
-        "-abin",
-        afni_bin_dir
-    ])
-    if comments:
-        cargs.append("-comments")
-    if linux:
-        cargs.append("-linux")
-    cargs.extend([
-        "-diff",
-        diff_dir
-    ])
-    ret = VMakePlugDiffOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__make_plug_diff_params(vtk_dir=vtk_dir, xm_dir=xm_dir, afni_src_dir=afni_src_dir, afni_bin_dir=afni_bin_dir, comments=comments, linux=linux, diff_dir=diff_dir)
+    return v__make_plug_diff_execute(params, execution)
 
 
 __all__ = [
-    "VMakePlugDiffOutputs",
     "V__MAKE_PLUG_DIFF_METADATA",
     "v__make_plug_diff",
+    "v__make_plug_diff_params",
 ]

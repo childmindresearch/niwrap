@@ -12,14 +12,123 @@ FS_INSTALL_MCR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsInstallMcrParameters = typing.TypedDict('FsInstallMcrParameters', {
+    "__STYX_TYPE__": typing.Literal["fs_install_mcr"],
+    "mcr_version": str,
+})
 
 
-class FsInstallMcrOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fs_install_mcr(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fs_install_mcr": fs_install_mcr_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fs_install_mcr_params(
+    mcr_version: str,
+) -> FsInstallMcrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mcr_version: Specify the MATLAB Compiler Runtime (MCR) version to\
+            install.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fs_install_mcr",
+        "mcr_version": mcr_version,
+    }
+    return params
+
+
+def fs_install_mcr_cargs(
+    params: FsInstallMcrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fs_install_mcr")
+    cargs.append(params.get("mcr_version"))
+    return cargs
+
+
+def fs_install_mcr_outputs(
+    params: FsInstallMcrParameters,
+    execution: Execution,
+) -> FsInstallMcrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsInstallMcrOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fs_install_mcr_execute(
+    params: FsInstallMcrParameters,
+    execution: Execution,
+) -> FsInstallMcrOutputs:
+    """
+    MCR installation tool for FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsInstallMcrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_install_mcr_cargs(params, execution)
+    ret = fs_install_mcr_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_install_mcr(
@@ -42,18 +151,12 @@ def fs_install_mcr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_INSTALL_MCR_METADATA)
-    cargs = []
-    cargs.append("fs_install_mcr")
-    cargs.append(mcr_version)
-    ret = FsInstallMcrOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_install_mcr_params(mcr_version=mcr_version)
+    return fs_install_mcr_execute(params, execution)
 
 
 __all__ = [
     "FS_INSTALL_MCR_METADATA",
-    "FsInstallMcrOutputs",
     "fs_install_mcr",
+    "fs_install_mcr_params",
 ]

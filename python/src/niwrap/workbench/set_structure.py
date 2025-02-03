@@ -12,14 +12,209 @@ SET_STRUCTURE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SetStructureParameters = typing.TypedDict('SetStructureParameters', {
+    "__STYX_TYPE__": typing.Literal["set-structure"],
+    "data_file": str,
+    "structure": str,
+    "opt_surface_type_type": typing.NotRequired[str | None],
+    "opt_surface_secondary_type_secondary_type": typing.NotRequired[str | None],
+})
 
 
-class SetStructureOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `set_structure(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "set-structure": set_structure_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def set_structure_params(
+    data_file: str,
+    structure: str,
+    opt_surface_type_type: str | None = None,
+    opt_surface_secondary_type_secondary_type: str | None = None,
+) -> SetStructureParameters:
+    """
+    Build parameters.
+    
+    Args:
+        data_file: the file to set the structure of.
+        structure: the structure to set the file to.
+        opt_surface_type_type: set the type of a surface (only used if file is\
+            a surface file): name of surface type.
+        opt_surface_secondary_type_secondary_type: set the secondary type of a\
+            surface (only used if file is a surface file): name of surface\
+            secondary type.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "set-structure",
+        "data_file": data_file,
+        "structure": structure,
+    }
+    if opt_surface_type_type is not None:
+        params["opt_surface_type_type"] = opt_surface_type_type
+    if opt_surface_secondary_type_secondary_type is not None:
+        params["opt_surface_secondary_type_secondary_type"] = opt_surface_secondary_type_secondary_type
+    return params
+
+
+def set_structure_cargs(
+    params: SetStructureParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-set-structure")
+    cargs.append(params.get("data_file"))
+    cargs.append(params.get("structure"))
+    if params.get("opt_surface_type_type") is not None:
+        cargs.extend([
+            "-surface-type",
+            params.get("opt_surface_type_type")
+        ])
+    if params.get("opt_surface_secondary_type_secondary_type") is not None:
+        cargs.extend([
+            "-surface-secondary-type",
+            params.get("opt_surface_secondary_type_secondary_type")
+        ])
+    return cargs
+
+
+def set_structure_outputs(
+    params: SetStructureParameters,
+    execution: Execution,
+) -> SetStructureOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SetStructureOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def set_structure_execute(
+    params: SetStructureParameters,
+    execution: Execution,
+) -> SetStructureOutputs:
+    """
+    Set structure of a data file.
+    
+    The existing file is modified and rewritten to the same filename. Valid
+    values for the structure name are:
+    
+    CORTEX_LEFT
+    CORTEX_RIGHT
+    CEREBELLUM
+    ACCUMBENS_LEFT
+    ACCUMBENS_RIGHT
+    ALL_GREY_MATTER
+    ALL_WHITE_MATTER
+    AMYGDALA_LEFT
+    AMYGDALA_RIGHT
+    BRAIN_STEM
+    CAUDATE_LEFT
+    CAUDATE_RIGHT
+    CEREBELLAR_WHITE_MATTER_LEFT
+    CEREBELLAR_WHITE_MATTER_RIGHT
+    CEREBELLUM_LEFT
+    CEREBELLUM_RIGHT
+    CEREBRAL_WHITE_MATTER_LEFT
+    CEREBRAL_WHITE_MATTER_RIGHT
+    CORTEX
+    DIENCEPHALON_VENTRAL_LEFT
+    DIENCEPHALON_VENTRAL_RIGHT
+    HIPPOCAMPUS_LEFT
+    HIPPOCAMPUS_RIGHT
+    INVALID
+    OTHER
+    OTHER_GREY_MATTER
+    OTHER_WHITE_MATTER
+    PALLIDUM_LEFT
+    PALLIDUM_RIGHT
+    PUTAMEN_LEFT
+    PUTAMEN_RIGHT
+    THALAMUS_LEFT
+    THALAMUS_RIGHT
+    
+    Valid names for the surface type are:
+    
+    UNKNOWN
+    RECONSTRUCTION
+    ANATOMICAL
+    INFLATED
+    VERY_INFLATED
+    SPHERICAL
+    SEMI_SPHERICAL
+    ELLIPSOID
+    FLAT
+    HULL
+    
+    Valid names for the surface secondary type are:
+    
+    INVALID
+    GRAY_WHITE
+    MIDTHICKNESS
+    PIAL
+    .
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SetStructureOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = set_structure_cargs(params, execution)
+    ret = set_structure_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def set_structure(
@@ -108,30 +303,12 @@ def set_structure(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SET_STRUCTURE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-set-structure")
-    cargs.append(data_file)
-    cargs.append(structure)
-    if opt_surface_type_type is not None:
-        cargs.extend([
-            "-surface-type",
-            opt_surface_type_type
-        ])
-    if opt_surface_secondary_type_secondary_type is not None:
-        cargs.extend([
-            "-surface-secondary-type",
-            opt_surface_secondary_type_secondary_type
-        ])
-    ret = SetStructureOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = set_structure_params(data_file=data_file, structure=structure, opt_surface_type_type=opt_surface_type_type, opt_surface_secondary_type_secondary_type=opt_surface_secondary_type_secondary_type)
+    return set_structure_execute(params, execution)
 
 
 __all__ = [
     "SET_STRUCTURE_METADATA",
-    "SetStructureOutputs",
     "set_structure",
+    "set_structure_params",
 ]

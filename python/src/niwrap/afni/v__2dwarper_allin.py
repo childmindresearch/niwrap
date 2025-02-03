@@ -12,6 +12,46 @@ V__2DWARPER_ALLIN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V2dwarperAllinParameters = typing.TypedDict('V2dwarperAllinParameters', {
+    "__STYX_TYPE__": typing.Literal["@2dwarper.Allin"],
+    "input_prefix": str,
+    "mask_prefix": typing.NotRequired[str | None],
+    "output_prefix": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@2dwarper.Allin": v__2dwarper_allin_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@2dwarper.Allin": v__2dwarper_allin_outputs,
+    }
+    return vt.get(t)
 
 
 class V2dwarperAllinOutputs(typing.NamedTuple):
@@ -24,6 +64,107 @@ class V2dwarperAllinOutputs(typing.NamedTuple):
     """Output registered dataset"""
     param_files: OutputPathType | None
     """Output registration parameter files"""
+
+
+def v__2dwarper_allin_params(
+    input_prefix: str,
+    mask_prefix: str | None = None,
+    output_prefix: str | None = None,
+) -> V2dwarperAllinParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_prefix: Prefix for the input 3D+time dataset.
+        mask_prefix: Prefix of an existing mask dataset.
+        output_prefix: Prefix for output datasets.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@2dwarper.Allin",
+        "input_prefix": input_prefix,
+    }
+    if mask_prefix is not None:
+        params["mask_prefix"] = mask_prefix
+    if output_prefix is not None:
+        params["output_prefix"] = output_prefix
+    return params
+
+
+def v__2dwarper_allin_cargs(
+    params: V2dwarperAllinParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@2dwarper.Allin")
+    cargs.append(params.get("input_prefix"))
+    if params.get("mask_prefix") is not None:
+        cargs.extend([
+            "-mask",
+            params.get("mask_prefix")
+        ])
+    if params.get("output_prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("output_prefix")
+        ])
+    return cargs
+
+
+def v__2dwarper_allin_outputs(
+    params: V2dwarperAllinParameters,
+    execution: Execution,
+) -> V2dwarperAllinOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V2dwarperAllinOutputs(
+        root=execution.output_file("."),
+        reg_output=execution.output_file(params.get("output_prefix") + "_reg+orig.HEAD") if (params.get("output_prefix") is not None) else None,
+        param_files=execution.output_file(params.get("output_prefix") + "_param_*.1D") if (params.get("output_prefix") is not None) else None,
+    )
+    return ret
+
+
+def v__2dwarper_allin_execute(
+    params: V2dwarperAllinParameters,
+    execution: Execution,
+) -> V2dwarperAllinOutputs:
+    """
+    Perform 2D registration on each slice of a 3D+time dataset, and combine the
+    results.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V2dwarperAllinOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__2dwarper_allin_cargs(params, execution)
+    ret = v__2dwarper_allin_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__2dwarper_allin(
@@ -50,30 +191,13 @@ def v__2dwarper_allin(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__2DWARPER_ALLIN_METADATA)
-    cargs = []
-    cargs.append("@2dwarper.Allin")
-    cargs.append(input_prefix)
-    if mask_prefix is not None:
-        cargs.extend([
-            "-mask",
-            mask_prefix
-        ])
-    if output_prefix is not None:
-        cargs.extend([
-            "-prefix",
-            output_prefix
-        ])
-    ret = V2dwarperAllinOutputs(
-        root=execution.output_file("."),
-        reg_output=execution.output_file(output_prefix + "_reg+orig.HEAD") if (output_prefix is not None) else None,
-        param_files=execution.output_file(output_prefix + "_param_*.1D") if (output_prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v__2dwarper_allin_params(input_prefix=input_prefix, mask_prefix=mask_prefix, output_prefix=output_prefix)
+    return v__2dwarper_allin_execute(params, execution)
 
 
 __all__ = [
     "V2dwarperAllinOutputs",
     "V__2DWARPER_ALLIN_METADATA",
     "v__2dwarper_allin",
+    "v__2dwarper_allin_params",
 ]

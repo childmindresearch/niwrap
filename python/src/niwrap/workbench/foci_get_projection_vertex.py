@@ -12,6 +12,47 @@ FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+FociGetProjectionVertexParameters = typing.TypedDict('FociGetProjectionVertexParameters', {
+    "__STYX_TYPE__": typing.Literal["foci-get-projection-vertex"],
+    "foci": InputPathType,
+    "surface": InputPathType,
+    "metric_out": str,
+    "opt_name_name": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "foci-get-projection-vertex": foci_get_projection_vertex_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "foci-get-projection-vertex": foci_get_projection_vertex_outputs,
+    }
+    return vt.get(t)
 
 
 class FociGetProjectionVertexOutputs(typing.NamedTuple):
@@ -22,6 +63,109 @@ class FociGetProjectionVertexOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
+
+
+def foci_get_projection_vertex_params(
+    foci: InputPathType,
+    surface: InputPathType,
+    metric_out: str,
+    opt_name_name: str | None = None,
+) -> FociGetProjectionVertexParameters:
+    """
+    Build parameters.
+    
+    Args:
+        foci: the foci file.
+        surface: the surface related to the foci file.
+        metric_out: the output metric file.
+        opt_name_name: select a focus by name: the name of the focus.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "foci-get-projection-vertex",
+        "foci": foci,
+        "surface": surface,
+        "metric_out": metric_out,
+    }
+    if opt_name_name is not None:
+        params["opt_name_name"] = opt_name_name
+    return params
+
+
+def foci_get_projection_vertex_cargs(
+    params: FociGetProjectionVertexParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-foci-get-projection-vertex")
+    cargs.append(execution.input_file(params.get("foci")))
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(params.get("metric_out"))
+    if params.get("opt_name_name") is not None:
+        cargs.extend([
+            "-name",
+            params.get("opt_name_name")
+        ])
+    return cargs
+
+
+def foci_get_projection_vertex_outputs(
+    params: FociGetProjectionVertexParameters,
+    execution: Execution,
+) -> FociGetProjectionVertexOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FociGetProjectionVertexOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def foci_get_projection_vertex_execute(
+    params: FociGetProjectionVertexParameters,
+    execution: Execution,
+) -> FociGetProjectionVertexOutputs:
+    """
+    Get projection vertex for foci.
+    
+    For each focus, a column is created in <metric-out>, and the vertex with the
+    most influence on its projection is assigned a value of 1 in that column,
+    with all other vertices 0. If -name is used, only one focus will be used.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FociGetProjectionVertexOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = foci_get_projection_vertex_cargs(params, execution)
+    ret = foci_get_projection_vertex_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def foci_get_projection_vertex(
@@ -53,27 +197,13 @@ def foci_get_projection_vertex(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FOCI_GET_PROJECTION_VERTEX_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-foci-get-projection-vertex")
-    cargs.append(execution.input_file(foci))
-    cargs.append(execution.input_file(surface))
-    cargs.append(metric_out)
-    if opt_name_name is not None:
-        cargs.extend([
-            "-name",
-            opt_name_name
-        ])
-    ret = FociGetProjectionVertexOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = foci_get_projection_vertex_params(foci=foci, surface=surface, metric_out=metric_out, opt_name_name=opt_name_name)
+    return foci_get_projection_vertex_execute(params, execution)
 
 
 __all__ = [
     "FOCI_GET_PROJECTION_VERTEX_METADATA",
     "FociGetProjectionVertexOutputs",
     "foci_get_projection_vertex",
+    "foci_get_projection_vertex_params",
 ]

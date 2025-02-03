@@ -12,6 +12,49 @@ TRK_TOOLS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TrkToolsParameters = typing.TypedDict('TrkToolsParameters', {
+    "__STYX_TYPE__": typing.Literal["trk_tools"],
+    "reference_image": InputPathType,
+    "input_trk": InputPathType,
+    "output_trk": typing.NotRequired[str | None],
+    "output_image": typing.NotRequired[str | None],
+    "update_header": bool,
+    "output_vtk": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "trk_tools": trk_tools_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "trk_tools": trk_tools_outputs,
+    }
+    return vt.get(t)
 
 
 class TrkToolsOutputs(typing.NamedTuple):
@@ -26,6 +69,131 @@ class TrkToolsOutputs(typing.NamedTuple):
     """Image exported from TRK file"""
     vtk_output_file: OutputPathType | None
     """VTK file containing streamlines"""
+
+
+def trk_tools_params(
+    reference_image: InputPathType,
+    input_trk: InputPathType,
+    output_trk: str | None = None,
+    output_image: str | None = None,
+    update_header: bool = False,
+    output_vtk: str | None = None,
+) -> TrkToolsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        reference_image: Reference image for TRK processing.
+        input_trk: Input TRK file to be processed.
+        output_trk: Output TRK file.
+        output_image: Export TRK into an image.
+        update_header: Update TRK header with reference image.
+        output_vtk: Output streamlines in VTK format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "trk_tools",
+        "reference_image": reference_image,
+        "input_trk": input_trk,
+        "update_header": update_header,
+    }
+    if output_trk is not None:
+        params["output_trk"] = output_trk
+    if output_image is not None:
+        params["output_image"] = output_image
+    if output_vtk is not None:
+        params["output_vtk"] = output_vtk
+    return params
+
+
+def trk_tools_cargs(
+    params: TrkToolsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("trk_tools")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("reference_image"))
+    ])
+    cargs.extend([
+        "-f",
+        execution.input_file(params.get("input_trk"))
+    ])
+    if params.get("output_trk") is not None:
+        cargs.extend([
+            "-o",
+            params.get("output_trk")
+        ])
+    if params.get("output_image") is not None:
+        cargs.extend([
+            "-e",
+            params.get("output_image")
+        ])
+    if params.get("update_header"):
+        cargs.append("-u")
+    if params.get("output_vtk") is not None:
+        cargs.extend([
+            "-v",
+            params.get("output_vtk")
+        ])
+    return cargs
+
+
+def trk_tools_outputs(
+    params: TrkToolsParameters,
+    execution: Execution,
+) -> TrkToolsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TrkToolsOutputs(
+        root=execution.output_file("."),
+        trk_output_file=execution.output_file(params.get("output_trk")) if (params.get("output_trk") is not None) else None,
+        image_output_file=execution.output_file(params.get("output_image")) if (params.get("output_image") is not None) else None,
+        vtk_output_file=execution.output_file(params.get("output_vtk")) if (params.get("output_vtk") is not None) else None,
+    )
+    return ret
+
+
+def trk_tools_execute(
+    params: TrkToolsParameters,
+    execution: Execution,
+) -> TrkToolsOutputs:
+    """
+    Tool for processing TRK files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TrkToolsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = trk_tools_cargs(params, execution)
+    ret = trk_tools_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def trk_tools(
@@ -57,45 +225,13 @@ def trk_tools(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRK_TOOLS_METADATA)
-    cargs = []
-    cargs.append("trk_tools")
-    cargs.extend([
-        "-i",
-        execution.input_file(reference_image)
-    ])
-    cargs.extend([
-        "-f",
-        execution.input_file(input_trk)
-    ])
-    if output_trk is not None:
-        cargs.extend([
-            "-o",
-            output_trk
-        ])
-    if output_image is not None:
-        cargs.extend([
-            "-e",
-            output_image
-        ])
-    if update_header:
-        cargs.append("-u")
-    if output_vtk is not None:
-        cargs.extend([
-            "-v",
-            output_vtk
-        ])
-    ret = TrkToolsOutputs(
-        root=execution.output_file("."),
-        trk_output_file=execution.output_file(output_trk) if (output_trk is not None) else None,
-        image_output_file=execution.output_file(output_image) if (output_image is not None) else None,
-        vtk_output_file=execution.output_file(output_vtk) if (output_vtk is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = trk_tools_params(reference_image=reference_image, input_trk=input_trk, output_trk=output_trk, output_image=output_image, update_header=update_header, output_vtk=output_vtk)
+    return trk_tools_execute(params, execution)
 
 
 __all__ = [
     "TRK_TOOLS_METADATA",
     "TrkToolsOutputs",
     "trk_tools",
+    "trk_tools_params",
 ]

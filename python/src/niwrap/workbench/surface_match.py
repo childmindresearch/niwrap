@@ -12,14 +12,136 @@ SURFACE_MATCH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceMatchParameters = typing.TypedDict('SurfaceMatchParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-match"],
+    "match_surface_file": InputPathType,
+    "input_surface_file": InputPathType,
+    "output_surface_name": str,
+})
 
 
-class SurfaceMatchOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `surface_match(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "surface-match": surface_match_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def surface_match_params(
+    match_surface_file: InputPathType,
+    input_surface_file: InputPathType,
+    output_surface_name: str,
+) -> SurfaceMatchParameters:
+    """
+    Build parameters.
+    
+    Args:
+        match_surface_file: Match (Reference) Surface.
+        input_surface_file: File containing surface that will be transformed.
+        output_surface_name: Surface File after transformation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-match",
+        "match_surface_file": match_surface_file,
+        "input_surface_file": input_surface_file,
+        "output_surface_name": output_surface_name,
+    }
+    return params
+
+
+def surface_match_cargs(
+    params: SurfaceMatchParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-match")
+    cargs.append(execution.input_file(params.get("match_surface_file")))
+    cargs.append(execution.input_file(params.get("input_surface_file")))
+    cargs.append(params.get("output_surface_name"))
+    return cargs
+
+
+def surface_match_outputs(
+    params: SurfaceMatchParameters,
+    execution: Execution,
+) -> SurfaceMatchOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceMatchOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def surface_match_execute(
+    params: SurfaceMatchParameters,
+    execution: Execution,
+) -> SurfaceMatchOutputs:
+    """
+    Surface match.
+    
+    The Input Surface File will be transformed so that its coordinate ranges
+    (bounding box) match that of the Match Surface File.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceMatchOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_match_cargs(params, execution)
+    ret = surface_match_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_match(
@@ -48,21 +170,12 @@ def surface_match(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_MATCH_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-match")
-    cargs.append(execution.input_file(match_surface_file))
-    cargs.append(execution.input_file(input_surface_file))
-    cargs.append(output_surface_name)
-    ret = SurfaceMatchOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_match_params(match_surface_file=match_surface_file, input_surface_file=input_surface_file, output_surface_name=output_surface_name)
+    return surface_match_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_MATCH_METADATA",
-    "SurfaceMatchOutputs",
     "surface_match",
+    "surface_match_params",
 ]

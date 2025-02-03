@@ -12,14 +12,122 @@ TBSS_1_PREPROC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Tbss1PreprocParameters = typing.TypedDict('Tbss1PreprocParameters', {
+    "__STYX_TYPE__": typing.Literal["tbss_1_preproc"],
+    "images": list[InputPathType],
+})
 
 
-class Tbss1PreprocOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tbss_1_preproc(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "tbss_1_preproc": tbss_1_preproc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def tbss_1_preproc_params(
+    images: list[InputPathType],
+) -> Tbss1PreprocParameters:
+    """
+    Build parameters.
+    
+    Args:
+        images: List of input images (e.g. subj1_FA.nii.gz subj2_FA.nii.gz ...).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tbss_1_preproc",
+        "images": images,
+    }
+    return params
+
+
+def tbss_1_preproc_cargs(
+    params: Tbss1PreprocParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tbss_1_preproc")
+    cargs.extend([execution.input_file(f) for f in params.get("images")])
+    return cargs
+
+
+def tbss_1_preproc_outputs(
+    params: Tbss1PreprocParameters,
+    execution: Execution,
+) -> Tbss1PreprocOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Tbss1PreprocOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tbss_1_preproc_execute(
+    params: Tbss1PreprocParameters,
+    execution: Execution,
+) -> Tbss1PreprocOutputs:
+    """
+    TBSS (Tract-Based Spatial Statistics) - Step 1: Preprocessing.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Tbss1PreprocOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tbss_1_preproc_cargs(params, execution)
+    ret = tbss_1_preproc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tbss_1_preproc(
@@ -41,18 +149,12 @@ def tbss_1_preproc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_1_PREPROC_METADATA)
-    cargs = []
-    cargs.append("tbss_1_preproc")
-    cargs.extend([execution.input_file(f) for f in images])
-    ret = Tbss1PreprocOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tbss_1_preproc_params(images=images)
+    return tbss_1_preproc_execute(params, execution)
 
 
 __all__ = [
     "TBSS_1_PREPROC_METADATA",
-    "Tbss1PreprocOutputs",
     "tbss_1_preproc",
+    "tbss_1_preproc_params",
 ]

@@ -12,6 +12,46 @@ TBSS_DEPROJECT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+TbssDeprojectParameters = typing.TypedDict('TbssDeprojectParameters', {
+    "__STYX_TYPE__": typing.Literal["tbss_deproject"],
+    "skeleton_space_input_image": InputPathType,
+    "final_space_option": int,
+    "index_image_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tbss_deproject": tbss_deproject_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tbss_deproject": tbss_deproject_outputs,
+    }
+    return vt.get(t)
 
 
 class TbssDeprojectOutputs(typing.NamedTuple):
@@ -24,6 +64,99 @@ class TbssDeprojectOutputs(typing.NamedTuple):
     """Output in stats directory."""
     fa_output: OutputPathType
     """Output in FA directory."""
+
+
+def tbss_deproject_params(
+    skeleton_space_input_image: InputPathType,
+    final_space_option: int,
+    index_image_flag: bool = False,
+) -> TbssDeprojectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        skeleton_space_input_image: Skeleton space input image.
+        final_space_option: Final space option.
+        index_image_flag: Assume that the skeleton space input image contains\
+            one or more integer index numbers and ensure that those exact values\
+            are deprojected without being changed by interpolations.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tbss_deproject",
+        "skeleton_space_input_image": skeleton_space_input_image,
+        "final_space_option": final_space_option,
+        "index_image_flag": index_image_flag,
+    }
+    return params
+
+
+def tbss_deproject_cargs(
+    params: TbssDeprojectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tbss_deproject")
+    cargs.append(execution.input_file(params.get("skeleton_space_input_image")))
+    cargs.append(str(params.get("final_space_option")))
+    if params.get("index_image_flag"):
+        cargs.append("-n")
+    return cargs
+
+
+def tbss_deproject_outputs(
+    params: TbssDeprojectParameters,
+    execution: Execution,
+) -> TbssDeprojectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TbssDeprojectOutputs(
+        root=execution.output_file("."),
+        stats_output=execution.output_file("stats/" + pathlib.Path(params.get("skeleton_space_input_image")).name),
+        fa_output=execution.output_file("FA/" + pathlib.Path(params.get("skeleton_space_input_image")).name),
+    )
+    return ret
+
+
+def tbss_deproject_execute(
+    params: TbssDeprojectParameters,
+    execution: Execution,
+) -> TbssDeprojectOutputs:
+    """
+    Tool to deproject images from skeleton space to final space.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TbssDeprojectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tbss_deproject_cargs(params, execution)
+    ret = tbss_deproject_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tbss_deproject(
@@ -51,23 +184,13 @@ def tbss_deproject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_DEPROJECT_METADATA)
-    cargs = []
-    cargs.append("tbss_deproject")
-    cargs.append(execution.input_file(skeleton_space_input_image))
-    cargs.append(str(final_space_option))
-    if index_image_flag:
-        cargs.append("-n")
-    ret = TbssDeprojectOutputs(
-        root=execution.output_file("."),
-        stats_output=execution.output_file("stats/" + pathlib.Path(skeleton_space_input_image).name),
-        fa_output=execution.output_file("FA/" + pathlib.Path(skeleton_space_input_image).name),
-    )
-    execution.run(cargs)
-    return ret
+    params = tbss_deproject_params(skeleton_space_input_image=skeleton_space_input_image, final_space_option=final_space_option, index_image_flag=index_image_flag)
+    return tbss_deproject_execute(params, execution)
 
 
 __all__ = [
     "TBSS_DEPROJECT_METADATA",
     "TbssDeprojectOutputs",
     "tbss_deproject",
+    "tbss_deproject_params",
 ]

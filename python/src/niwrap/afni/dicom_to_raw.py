@@ -12,6 +12,44 @@ DICOM_TO_RAW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+DicomToRawParameters = typing.TypedDict('DicomToRawParameters', {
+    "__STYX_TYPE__": typing.Literal["dicom_to_raw"],
+    "input_dicom": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dicom_to_raw": dicom_to_raw_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dicom_to_raw": dicom_to_raw_outputs,
+    }
+    return vt.get(t)
 
 
 class DicomToRawOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class DicomToRawOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_raw_file: OutputPathType
     """Output raw file(s)"""
+
+
+def dicom_to_raw_params(
+    input_dicom: InputPathType,
+) -> DicomToRawParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dicom: Input DICOM file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dicom_to_raw",
+        "input_dicom": input_dicom,
+    }
+    return params
+
+
+def dicom_to_raw_cargs(
+    params: DicomToRawParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dicom_to_raw")
+    cargs.append(execution.input_file(params.get("input_dicom")))
+    return cargs
+
+
+def dicom_to_raw_outputs(
+    params: DicomToRawParameters,
+    execution: Execution,
+) -> DicomToRawOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DicomToRawOutputs(
+        root=execution.output_file("."),
+        output_raw_file=execution.output_file(pathlib.Path(params.get("input_dicom")).name + ".raw.0001"),
+    )
+    return ret
+
+
+def dicom_to_raw_execute(
+    params: DicomToRawParameters,
+    execution: Execution,
+) -> DicomToRawOutputs:
+    """
+    Reads images from DICOM file and writes them to raw file(s).
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DicomToRawOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dicom_to_raw_cargs(params, execution)
+    ret = dicom_to_raw_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dicom_to_raw(
@@ -43,19 +162,13 @@ def dicom_to_raw(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DICOM_TO_RAW_METADATA)
-    cargs = []
-    cargs.append("dicom_to_raw")
-    cargs.append(execution.input_file(input_dicom))
-    ret = DicomToRawOutputs(
-        root=execution.output_file("."),
-        output_raw_file=execution.output_file(pathlib.Path(input_dicom).name + ".raw.0001"),
-    )
-    execution.run(cargs)
-    return ret
+    params = dicom_to_raw_params(input_dicom=input_dicom)
+    return dicom_to_raw_execute(params, execution)
 
 
 __all__ = [
     "DICOM_TO_RAW_METADATA",
     "DicomToRawOutputs",
     "dicom_to_raw",
+    "dicom_to_raw_params",
 ]

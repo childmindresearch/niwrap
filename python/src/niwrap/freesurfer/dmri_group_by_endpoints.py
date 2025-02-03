@@ -12,14 +12,141 @@ DMRI_GROUP_BY_ENDPOINTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriGroupByEndpointsParameters = typing.TypedDict('DmriGroupByEndpointsParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_groupByEndpoints"],
+    "streamline_file": InputPathType,
+    "image_file": InputPathType,
+    "output_directory": str,
+})
 
 
-class DmriGroupByEndpointsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `dmri_group_by_endpoints(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "dmri_groupByEndpoints": dmri_group_by_endpoints_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def dmri_group_by_endpoints_params(
+    streamline_file: InputPathType,
+    image_file: InputPathType,
+    output_directory: str,
+) -> DmriGroupByEndpointsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        streamline_file: The file containing streamline data.
+        image_file: The image file to be used in grouping.
+        output_directory: The directory where output will be saved.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_groupByEndpoints",
+        "streamline_file": streamline_file,
+        "image_file": image_file,
+        "output_directory": output_directory,
+    }
+    return params
+
+
+def dmri_group_by_endpoints_cargs(
+    params: DmriGroupByEndpointsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_groupByEndpoints")
+    cargs.extend([
+        "-s",
+        execution.input_file(params.get("streamline_file"))
+    ])
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("image_file"))
+    ])
+    cargs.extend([
+        "-d",
+        params.get("output_directory")
+    ])
+    return cargs
+
+
+def dmri_group_by_endpoints_outputs(
+    params: DmriGroupByEndpointsParameters,
+    execution: Execution,
+) -> DmriGroupByEndpointsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriGroupByEndpointsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def dmri_group_by_endpoints_execute(
+    params: DmriGroupByEndpointsParameters,
+    execution: Execution,
+) -> DmriGroupByEndpointsOutputs:
+    """
+    A tool to group streamlines by their endpoints using diffusion MRI data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriGroupByEndpointsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_group_by_endpoints_cargs(params, execution)
+    ret = dmri_group_by_endpoints_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_group_by_endpoints(
@@ -45,29 +172,12 @@ def dmri_group_by_endpoints(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_GROUP_BY_ENDPOINTS_METADATA)
-    cargs = []
-    cargs.append("dmri_groupByEndpoints")
-    cargs.extend([
-        "-s",
-        execution.input_file(streamline_file)
-    ])
-    cargs.extend([
-        "-i",
-        execution.input_file(image_file)
-    ])
-    cargs.extend([
-        "-d",
-        output_directory
-    ])
-    ret = DmriGroupByEndpointsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_group_by_endpoints_params(streamline_file=streamline_file, image_file=image_file, output_directory=output_directory)
+    return dmri_group_by_endpoints_execute(params, execution)
 
 
 __all__ = [
     "DMRI_GROUP_BY_ENDPOINTS_METADATA",
-    "DmriGroupByEndpointsOutputs",
     "dmri_group_by_endpoints",
+    "dmri_group_by_endpoints_params",
 ]

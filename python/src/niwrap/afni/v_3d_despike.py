@@ -12,6 +12,45 @@ V_3D_DESPIKE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dDespikeParameters = typing.TypedDict('V3dDespikeParameters', {
+    "__STYX_TYPE__": typing.Literal["3dDespike"],
+    "prefix": typing.NotRequired[str | None],
+    "in_file": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dDespike": v_3d_despike_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dDespike": v_3d_despike_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dDespikeOutputs(typing.NamedTuple):
@@ -22,6 +61,97 @@ class V3dDespikeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_file: OutputPathType | None
     """Output file."""
+
+
+def v_3d_despike_params(
+    in_file: InputPathType,
+    prefix: str | None = None,
+) -> V3dDespikeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in_file: Input file to 3ddespike.
+        prefix: Prefix for output file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dDespike",
+        "in_file": in_file,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    return params
+
+
+def v_3d_despike_cargs(
+    params: V3dDespikeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dDespike")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    cargs.append(execution.input_file(params.get("in_file")))
+    return cargs
+
+
+def v_3d_despike_outputs(
+    params: V3dDespikeParameters,
+    execution: Execution,
+) -> V3dDespikeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dDespikeOutputs(
+        root=execution.output_file("."),
+        out_file=execution.output_file(params.get("prefix")) if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_despike_execute(
+    params: V3dDespikeParameters,
+    execution: Execution,
+) -> V3dDespikeOutputs:
+    """
+    Removes 'spikes' from the 3D+time input dataset and writes a new dataset with
+    the spike values replaced by something more pleasing to the eye.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dDespikeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_despike_cargs(params, execution)
+    ret = v_3d_despike_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_despike(
@@ -46,24 +176,13 @@ def v_3d_despike(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DESPIKE_METADATA)
-    cargs = []
-    cargs.append("3dDespike")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    cargs.append(execution.input_file(in_file))
-    ret = V3dDespikeOutputs(
-        root=execution.output_file("."),
-        out_file=execution.output_file(prefix) if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_despike_params(prefix=prefix, in_file=in_file)
+    return v_3d_despike_execute(params, execution)
 
 
 __all__ = [
     "V3dDespikeOutputs",
     "V_3D_DESPIKE_METADATA",
     "v_3d_despike",
+    "v_3d_despike_params",
 ]

@@ -12,6 +12,48 @@ LABEL2SURF_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Label2surfParameters = typing.TypedDict('Label2surfParameters', {
+    "__STYX_TYPE__": typing.Literal["label2surf"],
+    "input_surface": InputPathType,
+    "output_surface": str,
+    "labels": InputPathType,
+    "verbose_flag": bool,
+    "help_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label2surf": label2surf_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label2surf": label2surf_outputs,
+    }
+    return vt.get(t)
 
 
 class Label2surfOutputs(typing.NamedTuple):
@@ -22,6 +64,114 @@ class Label2surfOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_surf: OutputPathType
     """Resulting output surface file"""
+
+
+def label2surf_params(
+    input_surface: InputPathType,
+    output_surface: str,
+    labels: InputPathType,
+    verbose_flag: bool = False,
+    help_flag: bool = False,
+) -> Label2surfParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file.
+        output_surface: Output surface file.
+        labels: ASCII list of label files.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label2surf",
+        "input_surface": input_surface,
+        "output_surface": output_surface,
+        "labels": labels,
+        "verbose_flag": verbose_flag,
+        "help_flag": help_flag,
+    }
+    return params
+
+
+def label2surf_cargs(
+    params: Label2surfParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("label2surf")
+    cargs.extend([
+        "--surf",
+        execution.input_file(params.get("input_surface"))
+    ])
+    cargs.extend([
+        "--out",
+        params.get("output_surface")
+    ])
+    cargs.extend([
+        "--labels",
+        execution.input_file(params.get("labels"))
+    ])
+    if params.get("verbose_flag"):
+        cargs.append("--verbose")
+    if params.get("help_flag"):
+        cargs.append("--help")
+    return cargs
+
+
+def label2surf_outputs(
+    params: Label2surfParameters,
+    execution: Execution,
+) -> Label2surfOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Label2surfOutputs(
+        root=execution.output_file("."),
+        out_surf=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def label2surf_execute(
+    params: Label2surfParameters,
+    execution: Execution,
+) -> Label2surfOutputs:
+    """
+    Transform a group of labels into a surface.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Label2surfOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label2surf_cargs(params, execution)
+    ret = label2surf_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def label2surf(
@@ -51,34 +201,13 @@ def label2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2SURF_METADATA)
-    cargs = []
-    cargs.append("label2surf")
-    cargs.extend([
-        "--surf",
-        execution.input_file(input_surface)
-    ])
-    cargs.extend([
-        "--out",
-        output_surface
-    ])
-    cargs.extend([
-        "--labels",
-        execution.input_file(labels)
-    ])
-    if verbose_flag:
-        cargs.append("--verbose")
-    if help_flag:
-        cargs.append("--help")
-    ret = Label2surfOutputs(
-        root=execution.output_file("."),
-        out_surf=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = label2surf_params(input_surface=input_surface, output_surface=output_surface, labels=labels, verbose_flag=verbose_flag, help_flag=help_flag)
+    return label2surf_execute(params, execution)
 
 
 __all__ = [
     "LABEL2SURF_METADATA",
     "Label2surfOutputs",
     "label2surf",
+    "label2surf_params",
 ]

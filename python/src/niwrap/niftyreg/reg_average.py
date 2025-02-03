@@ -12,6 +12,45 @@ REG_AVERAGE_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+RegAverageParameters = typing.TypedDict('RegAverageParameters', {
+    "__STYX_TYPE__": typing.Literal["reg_average"],
+    "output_file": str,
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "reg_average": reg_average_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "reg_average": reg_average_outputs,
+    }
+    return vt.get(t)
 
 
 class RegAverageOutputs(typing.NamedTuple):
@@ -22,6 +61,92 @@ class RegAverageOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file_location: OutputPathType
     """The averaged output file (image or affine transformation)"""
+
+
+def reg_average_params(
+    output_file: str,
+    input_files: list[InputPathType],
+) -> RegAverageParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_file: Filename of the output image or affine transformation.
+        input_files: Input file names (images or affine matrices) to be\
+            averaged.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reg_average",
+        "output_file": output_file,
+        "input_files": input_files,
+    }
+    return params
+
+
+def reg_average_cargs(
+    params: RegAverageParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("reg_average")
+    cargs.append(params.get("output_file"))
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def reg_average_outputs(
+    params: RegAverageParameters,
+    execution: Execution,
+) -> RegAverageOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RegAverageOutputs(
+        root=execution.output_file("."),
+        output_file_location=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def reg_average_execute(
+    params: RegAverageParameters,
+    execution: Execution,
+) -> RegAverageOutputs:
+    """
+    Command line program to average either images or affine transformations.
+    
+    Author: NiftyReg Developers
+    
+    URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RegAverageOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reg_average_cargs(params, execution)
+    ret = reg_average_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reg_average(
@@ -46,20 +171,13 @@ def reg_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_AVERAGE_METADATA)
-    cargs = []
-    cargs.append("reg_average")
-    cargs.append(output_file)
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = RegAverageOutputs(
-        root=execution.output_file("."),
-        output_file_location=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = reg_average_params(output_file=output_file, input_files=input_files)
+    return reg_average_execute(params, execution)
 
 
 __all__ = [
     "REG_AVERAGE_METADATA",
     "RegAverageOutputs",
     "reg_average",
+    "reg_average_params",
 ]

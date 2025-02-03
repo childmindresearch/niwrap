@@ -12,14 +12,128 @@ UPDATE_NEEDED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+UpdateNeededParameters = typing.TypedDict('UpdateNeededParameters', {
+    "__STYX_TYPE__": typing.Literal["UpdateNeeded"],
+    "target_file": InputPathType,
+    "source_file": InputPathType,
+})
 
 
-class UpdateNeededOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `update_needed(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "UpdateNeeded": update_needed_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def update_needed_params(
+    target_file: InputPathType,
+    source_file: InputPathType,
+) -> UpdateNeededParameters:
+    """
+    Build parameters.
+    
+    Args:
+        target_file: The target file that needs to be updated.
+        source_file: The primary source file for updating the target file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "UpdateNeeded",
+        "target_file": target_file,
+        "source_file": source_file,
+    }
+    return params
+
+
+def update_needed_cargs(
+    params: UpdateNeededParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("UpdateNeeded")
+    cargs.append(execution.input_file(params.get("target_file")))
+    cargs.append(execution.input_file(params.get("source_file")))
+    cargs.append("[ADDITIONAL_SOURCE_FILES...]")
+    return cargs
+
+
+def update_needed_outputs(
+    params: UpdateNeededParameters,
+    execution: Execution,
+) -> UpdateNeededOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UpdateNeededOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def update_needed_execute(
+    params: UpdateNeededParameters,
+    execution: Execution,
+) -> UpdateNeededOutputs:
+    """
+    A command-line tool to update a target file based on one or more source files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UpdateNeededOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = update_needed_cargs(params, execution)
+    ret = update_needed_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def update_needed(
@@ -43,20 +157,12 @@ def update_needed(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UPDATE_NEEDED_METADATA)
-    cargs = []
-    cargs.append("UpdateNeeded")
-    cargs.append(execution.input_file(target_file))
-    cargs.append(execution.input_file(source_file))
-    cargs.append("[ADDITIONAL_SOURCE_FILES...]")
-    ret = UpdateNeededOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = update_needed_params(target_file=target_file, source_file=source_file)
+    return update_needed_execute(params, execution)
 
 
 __all__ = [
     "UPDATE_NEEDED_METADATA",
-    "UpdateNeededOutputs",
     "update_needed",
+    "update_needed_params",
 ]

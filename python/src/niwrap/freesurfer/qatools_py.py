@@ -12,6 +12,50 @@ QATOOLS_PY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+QatoolsPyParameters = typing.TypedDict('QatoolsPyParameters', {
+    "__STYX_TYPE__": typing.Literal["qatools.py"],
+    "subjects_dir": str,
+    "output_dir": str,
+    "subjects": typing.NotRequired[list[str] | None],
+    "screenshots": bool,
+    "fornix": bool,
+    "outlier": bool,
+    "outlier_table": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "qatools.py": qatools_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "qatools.py": qatools_py_outputs,
+    }
+    return vt.get(t)
 
 
 class QatoolsPyOutputs(typing.NamedTuple):
@@ -25,6 +69,133 @@ class QatoolsPyOutputs(typing.NamedTuple):
     screenshots_output: OutputPathType
     """Directory containing screenshots of individual brains if screenshots
     option is selected."""
+
+
+def qatools_py_params(
+    subjects_dir: str,
+    output_dir: str,
+    subjects: list[str] | None = None,
+    screenshots: bool = False,
+    fornix: bool = False,
+    outlier: bool = False,
+    outlier_table: InputPathType | None = None,
+) -> QatoolsPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects_dir: Subjects directory containing a set of Freesurfer 6.0\
+            processed individual datasets.
+        output_dir: Output directory for the generated results.
+        subjects: List of subject IDs. If omitted, all suitable subdirectories\
+            within the subjects directory will be used.
+        screenshots: Create screenshots of individual brains.
+        fornix: Check fornix segmentation.
+        outlier: Run outlier detection.
+        outlier_table: Specify normative values for outlier detection.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "qatools.py",
+        "subjects_dir": subjects_dir,
+        "output_dir": output_dir,
+        "screenshots": screenshots,
+        "fornix": fornix,
+        "outlier": outlier,
+    }
+    if subjects is not None:
+        params["subjects"] = subjects
+    if outlier_table is not None:
+        params["outlier_table"] = outlier_table
+    return params
+
+
+def qatools_py_cargs(
+    params: QatoolsPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("qatools.py")
+    cargs.extend([
+        "--subjects_dir",
+        params.get("subjects_dir")
+    ])
+    cargs.extend([
+        "--output_dir",
+        params.get("output_dir")
+    ])
+    if params.get("subjects") is not None:
+        cargs.extend([
+            "--subjects",
+            *params.get("subjects")
+        ])
+    if params.get("screenshots"):
+        cargs.append("--screenshots")
+    if params.get("fornix"):
+        cargs.append("--fornix")
+    if params.get("outlier"):
+        cargs.append("--outlier")
+    if params.get("outlier_table") is not None:
+        cargs.extend([
+            "--outlier-table",
+            execution.input_file(params.get("outlier_table"))
+        ])
+    return cargs
+
+
+def qatools_py_outputs(
+    params: QatoolsPyParameters,
+    execution: Execution,
+) -> QatoolsPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = QatoolsPyOutputs(
+        root=execution.output_file("."),
+        summary_csv=execution.output_file(params.get("output_dir") + "/summary.csv"),
+        screenshots_output=execution.output_file(params.get("output_dir") + "/screenshots/"),
+    )
+    return ret
+
+
+def qatools_py_execute(
+    params: QatoolsPyParameters,
+    execution: Execution,
+) -> QatoolsPyOutputs:
+    """
+    A tool to compute quality metrics from Freesurfer 6.0 analysis results.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `QatoolsPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = qatools_py_cargs(params, execution)
+    ret = qatools_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def qatools_py(
@@ -60,43 +231,13 @@ def qatools_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QATOOLS_PY_METADATA)
-    cargs = []
-    cargs.append("qatools.py")
-    cargs.extend([
-        "--subjects_dir",
-        subjects_dir
-    ])
-    cargs.extend([
-        "--output_dir",
-        output_dir
-    ])
-    if subjects is not None:
-        cargs.extend([
-            "--subjects",
-            *subjects
-        ])
-    if screenshots:
-        cargs.append("--screenshots")
-    if fornix:
-        cargs.append("--fornix")
-    if outlier:
-        cargs.append("--outlier")
-    if outlier_table is not None:
-        cargs.extend([
-            "--outlier-table",
-            execution.input_file(outlier_table)
-        ])
-    ret = QatoolsPyOutputs(
-        root=execution.output_file("."),
-        summary_csv=execution.output_file(output_dir + "/summary.csv"),
-        screenshots_output=execution.output_file(output_dir + "/screenshots/"),
-    )
-    execution.run(cargs)
-    return ret
+    params = qatools_py_params(subjects_dir=subjects_dir, output_dir=output_dir, subjects=subjects, screenshots=screenshots, fornix=fornix, outlier=outlier, outlier_table=outlier_table)
+    return qatools_py_execute(params, execution)
 
 
 __all__ = [
     "QATOOLS_PY_METADATA",
     "QatoolsPyOutputs",
     "qatools_py",
+    "qatools_py_params",
 ]

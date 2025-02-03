@@ -12,14 +12,122 @@ SEGMENT_MONKEY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SegmentMonkeyParameters = typing.TypedDict('SegmentMonkeyParameters', {
+    "__STYX_TYPE__": typing.Literal["segment_monkey"],
+    "control_points": list[str],
+})
 
 
-class SegmentMonkeyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `segment_monkey(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "segment_monkey": segment_monkey_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def segment_monkey_params(
+    control_points: list[str],
+) -> SegmentMonkeyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        control_points: List of control points required for segmentation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "segment_monkey",
+        "control_points": control_points,
+    }
+    return params
+
+
+def segment_monkey_cargs(
+    params: SegmentMonkeyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("segment_monkey")
+    cargs.extend(params.get("control_points"))
+    return cargs
+
+
+def segment_monkey_outputs(
+    params: SegmentMonkeyParameters,
+    execution: Execution,
+) -> SegmentMonkeyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SegmentMonkeyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def segment_monkey_execute(
+    params: SegmentMonkeyParameters,
+    execution: Execution,
+) -> SegmentMonkeyOutputs:
+    """
+    A tool for segmenting images using specified control points.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SegmentMonkeyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = segment_monkey_cargs(params, execution)
+    ret = segment_monkey_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def segment_monkey(
@@ -39,22 +147,14 @@ def segment_monkey(
     Returns:
         NamedTuple of outputs (described in `SegmentMonkeyOutputs`).
     """
-    if not (1 <= len(control_points)): 
-        raise ValueError(f"Length of 'control_points' must be greater than 1 but was {len(control_points)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_MONKEY_METADATA)
-    cargs = []
-    cargs.append("segment_monkey")
-    cargs.extend(control_points)
-    ret = SegmentMonkeyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = segment_monkey_params(control_points=control_points)
+    return segment_monkey_execute(params, execution)
 
 
 __all__ = [
     "SEGMENT_MONKEY_METADATA",
-    "SegmentMonkeyOutputs",
     "segment_monkey",
+    "segment_monkey_params",
 ]

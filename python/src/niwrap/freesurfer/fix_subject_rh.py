@@ -12,14 +12,132 @@ FIX_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FixSubjectRhParameters = typing.TypedDict('FixSubjectRhParameters', {
+    "__STYX_TYPE__": typing.Literal["fix_subject-rh"],
+    "input_directory": str,
+    "help_flag": bool,
+})
 
 
-class FixSubjectRhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fix_subject_rh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fix_subject-rh": fix_subject_rh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fix_subject_rh_params(
+    input_directory: str,
+    help_flag: bool = False,
+) -> FixSubjectRhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_directory: Directory where the subject's right hemisphere data is\
+            located.
+        help_flag: Displays help information for fix_subject-rh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fix_subject-rh",
+        "input_directory": input_directory,
+        "help_flag": help_flag,
+    }
+    return params
+
+
+def fix_subject_rh_cargs(
+    params: FixSubjectRhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-rh",
+        "fix_subject" + params.get("input_directory")
+    ])
+    if params.get("help_flag"):
+        cargs.append("--help")
+    return cargs
+
+
+def fix_subject_rh_outputs(
+    params: FixSubjectRhParameters,
+    execution: Execution,
+) -> FixSubjectRhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FixSubjectRhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fix_subject_rh_execute(
+    params: FixSubjectRhParameters,
+    execution: Execution,
+) -> FixSubjectRhOutputs:
+    """
+    A tool from FreeSurfer that performs operations on the right hemisphere data
+    within a specified directory.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FixSubjectRhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fix_subject_rh_cargs(params, execution)
+    ret = fix_subject_rh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fix_subject_rh(
@@ -45,22 +163,12 @@ def fix_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIX_SUBJECT_RH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-rh",
-        "fix_subject" + input_directory
-    ])
-    if help_flag:
-        cargs.append("--help")
-    ret = FixSubjectRhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fix_subject_rh_params(input_directory=input_directory, help_flag=help_flag)
+    return fix_subject_rh_execute(params, execution)
 
 
 __all__ = [
     "FIX_SUBJECT_RH_METADATA",
-    "FixSubjectRhOutputs",
     "fix_subject_rh",
+    "fix_subject_rh_params",
 ]

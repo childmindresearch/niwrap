@@ -12,6 +12,46 @@ IMAND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ImandParameters = typing.TypedDict('ImandParameters', {
+    "__STYX_TYPE__": typing.Literal["imand"],
+    "threshold": typing.NotRequired[float | None],
+    "input_images": list[InputPathType],
+    "output_image": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "imand": imand_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "imand": imand_outputs,
+    }
+    return vt.get(t)
 
 
 class ImandOutputs(typing.NamedTuple):
@@ -22,6 +62,103 @@ class ImandOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """The resulting output image file."""
+
+
+def imand_params(
+    input_images: list[InputPathType],
+    output_image: str,
+    threshold: float | None = None,
+) -> ImandParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_images: Input images to be processed. Multiple input images can\
+            be specified.
+        output_image: Output image file.
+        threshold: Threshold value; only pixels above this value will be\
+            output. Optional.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imand",
+        "input_images": input_images,
+        "output_image": output_image,
+    }
+    if threshold is not None:
+        params["threshold"] = threshold
+    return params
+
+
+def imand_cargs(
+    params: ImandParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("imand")
+    if params.get("threshold") is not None:
+        cargs.extend([
+            "--thresh",
+            str(params.get("threshold"))
+        ])
+    cargs.extend([execution.input_file(f) for f in params.get("input_images")])
+    cargs.append(params.get("output_image"))
+    return cargs
+
+
+def imand_outputs(
+    params: ImandParameters,
+    execution: Execution,
+) -> ImandOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImandOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def imand_execute(
+    params: ImandParameters,
+    execution: Execution,
+) -> ImandOutputs:
+    """
+    Image AND operation tool. Only pixels nonzero in all input images (and above the
+    threshold, if given) will be output.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImandOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = imand_cargs(params, execution)
+    ret = imand_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def imand(
@@ -50,25 +187,13 @@ def imand(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAND_METADATA)
-    cargs = []
-    cargs.append("imand")
-    if threshold is not None:
-        cargs.extend([
-            "--thresh",
-            str(threshold)
-        ])
-    cargs.extend([execution.input_file(f) for f in input_images])
-    cargs.append(output_image)
-    ret = ImandOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = imand_params(threshold=threshold, input_images=input_images, output_image=output_image)
+    return imand_execute(params, execution)
 
 
 __all__ = [
     "IMAND_METADATA",
     "ImandOutputs",
     "imand",
+    "imand_params",
 ]

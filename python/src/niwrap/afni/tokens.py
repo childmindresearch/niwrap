@@ -12,14 +12,138 @@ TOKENS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+TokensParameters = typing.TypedDict('TokensParameters', {
+    "__STYX_TYPE__": typing.Literal["tokens"],
+    "infile": typing.NotRequired[InputPathType | None],
+    "extra_char": typing.NotRequired[list[str] | None],
+})
 
 
-class TokensOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tokens(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "tokens": tokens_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def tokens_params(
+    infile: InputPathType | None = None,
+    extra_char: list[str] | None = None,
+) -> TokensParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Specify input file (stdin if none).
+        extra_char: Specify extra character to count as valid. Can be used more\
+            than once.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tokens",
+    }
+    if infile is not None:
+        params["infile"] = infile
+    if extra_char is not None:
+        params["extra_char"] = extra_char
+    return params
+
+
+def tokens_cargs(
+    params: TokensParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tokens")
+    if params.get("infile") is not None:
+        cargs.extend([
+            "-infile",
+            execution.input_file(params.get("infile"))
+        ])
+    if params.get("extra_char") is not None:
+        cargs.extend([
+            "-extra",
+            *params.get("extra_char")
+        ])
+    return cargs
+
+
+def tokens_outputs(
+    params: TokensParameters,
+    execution: Execution,
+) -> TokensOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TokensOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tokens_execute(
+    params: TokensParameters,
+    execution: Execution,
+) -> TokensOutputs:
+    """
+    Token counting tool.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TokensOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tokens_cargs(params, execution)
+    ret = tokens_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tokens(
@@ -44,27 +168,12 @@ def tokens(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TOKENS_METADATA)
-    cargs = []
-    cargs.append("tokens")
-    if infile is not None:
-        cargs.extend([
-            "-infile",
-            execution.input_file(infile)
-        ])
-    if extra_char is not None:
-        cargs.extend([
-            "-extra",
-            *extra_char
-        ])
-    ret = TokensOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tokens_params(infile=infile, extra_char=extra_char)
+    return tokens_execute(params, execution)
 
 
 __all__ = [
     "TOKENS_METADATA",
-    "TokensOutputs",
     "tokens",
+    "tokens_params",
 ]

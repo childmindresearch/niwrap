@@ -12,6 +12,48 @@ TBSS_NON_FA_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+TbssNonFaParameters = typing.TypedDict('TbssNonFaParameters', {
+    "__STYX_TYPE__": typing.Literal["tbss_non_FA"],
+    "concat_auto": bool,
+    "output_file": str,
+    "input_files": list[InputPathType],
+    "concat_tr": typing.NotRequired[float | None],
+    "volume_number": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tbss_non_FA": tbss_non_fa_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tbss_non_FA": tbss_non_fa_outputs,
+    }
+    return vt.get(t)
 
 
 class TbssNonFaOutputs(typing.NamedTuple):
@@ -22,6 +64,117 @@ class TbssNonFaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     merged_output: OutputPathType
     """Merged output file"""
+
+
+def tbss_non_fa_params(
+    output_file: str,
+    input_files: list[InputPathType],
+    concat_auto: bool = False,
+    concat_tr: float | None = 0,
+    volume_number: float | None = None,
+) -> TbssNonFaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_file: Output file for merged images.
+        input_files: Images to concatenate.
+        concat_auto: Auto-choose: single slices -> volume, volumes -> 4D (time\
+            series).
+        concat_tr: Concatenate images in time and set the output image TR\
+            (repetition time) to the final option value.
+        volume_number: Only use volume <N> from each input file (first volume\
+            is 0 not 1).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tbss_non_FA",
+        "concat_auto": concat_auto,
+        "output_file": output_file,
+        "input_files": input_files,
+    }
+    if concat_tr is not None:
+        params["concat_tr"] = concat_tr
+    if volume_number is not None:
+        params["volume_number"] = volume_number
+    return params
+
+
+def tbss_non_fa_cargs(
+    params: TbssNonFaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tbss_non_FA")
+    if params.get("concat_auto"):
+        cargs.append("-a")
+    cargs.append(params.get("output_file"))
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    if params.get("concat_tr") is not None:
+        cargs.extend([
+            "-tr",
+            str(params.get("concat_tr"))
+        ])
+    if params.get("volume_number") is not None:
+        cargs.extend([
+            "-n",
+            str(params.get("volume_number"))
+        ])
+    return cargs
+
+
+def tbss_non_fa_outputs(
+    params: TbssNonFaParameters,
+    execution: Execution,
+) -> TbssNonFaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TbssNonFaOutputs(
+        root=execution.output_file("."),
+        merged_output=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def tbss_non_fa_execute(
+    params: TbssNonFaParameters,
+    execution: Execution,
+) -> TbssNonFaOutputs:
+    """
+    TBSS processing for non-FA images.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TbssNonFaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tbss_non_fa_cargs(params, execution)
+    ret = tbss_non_fa_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tbss_non_fa(
@@ -54,32 +207,13 @@ def tbss_non_fa(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_NON_FA_METADATA)
-    cargs = []
-    cargs.append("tbss_non_FA")
-    if concat_auto:
-        cargs.append("-a")
-    cargs.append(output_file)
-    cargs.extend([execution.input_file(f) for f in input_files])
-    if concat_tr is not None:
-        cargs.extend([
-            "-tr",
-            str(concat_tr)
-        ])
-    if volume_number is not None:
-        cargs.extend([
-            "-n",
-            str(volume_number)
-        ])
-    ret = TbssNonFaOutputs(
-        root=execution.output_file("."),
-        merged_output=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = tbss_non_fa_params(concat_auto=concat_auto, output_file=output_file, input_files=input_files, concat_tr=concat_tr, volume_number=volume_number)
+    return tbss_non_fa_execute(params, execution)
 
 
 __all__ = [
     "TBSS_NON_FA_METADATA",
     "TbssNonFaOutputs",
     "tbss_non_fa",
+    "tbss_non_fa_params",
 ]

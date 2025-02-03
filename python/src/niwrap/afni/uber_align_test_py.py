@@ -12,14 +12,189 @@ UBER_ALIGN_TEST_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+UberAlignTestPyParameters = typing.TypedDict('UberAlignTestPyParameters', {
+    "__STYX_TYPE__": typing.Literal["uber_align_test.py"],
+    "no_gui": bool,
+    "print_script": bool,
+    "save_script": typing.NotRequired[str | None],
+    "user_variable": typing.NotRequired[list[str] | None],
+    "qt_opts": typing.NotRequired[str | None],
+    "help": bool,
+    "help_gui": bool,
+    "history": bool,
+    "show_valid_opts": bool,
+    "version": bool,
+})
 
 
-class UberAlignTestPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `uber_align_test_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "uber_align_test.py": uber_align_test_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def uber_align_test_py_params(
+    no_gui: bool = False,
+    print_script: bool = False,
+    save_script: str | None = None,
+    user_variable: list[str] | None = None,
+    qt_opts: str | None = None,
+    help_: bool = False,
+    help_gui: bool = False,
+    history: bool = False,
+    show_valid_opts: bool = False,
+    version: bool = False,
+) -> UberAlignTestPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        no_gui: Run without the graphical user interface (GUI).
+        print_script: Print the generated script to standard output.
+        save_script: Save the generated script to the specified file.
+        user_variable: Specify user variables for alignment.
+        qt_opts: Pass PyQt4 options directly to the GUI.
+        help_: Show help information.
+        help_gui: Show help information for the GUI.
+        history: Show command history.
+        show_valid_opts: Show valid options.
+        version: Show version information.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "uber_align_test.py",
+        "no_gui": no_gui,
+        "print_script": print_script,
+        "help": help_,
+        "help_gui": help_gui,
+        "history": history,
+        "show_valid_opts": show_valid_opts,
+        "version": version,
+    }
+    if save_script is not None:
+        params["save_script"] = save_script
+    if user_variable is not None:
+        params["user_variable"] = user_variable
+    if qt_opts is not None:
+        params["qt_opts"] = qt_opts
+    return params
+
+
+def uber_align_test_py_cargs(
+    params: UberAlignTestPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("uber_align_test.py")
+    if params.get("no_gui"):
+        cargs.append("-no_gui")
+    if params.get("print_script"):
+        cargs.append("-print_script")
+    if params.get("save_script") is not None:
+        cargs.extend([
+            "-save_script",
+            params.get("save_script")
+        ])
+    if params.get("user_variable") is not None:
+        cargs.extend([
+            "-uvar",
+            *params.get("user_variable")
+        ])
+    if params.get("qt_opts") is not None:
+        cargs.extend([
+            "-qt_opts",
+            params.get("qt_opts")
+        ])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("help_gui"):
+        cargs.append("-help_gui")
+    if params.get("history"):
+        cargs.append("-hist")
+    if params.get("show_valid_opts"):
+        cargs.append("-show_valid_opts")
+    if params.get("version"):
+        cargs.append("-ver")
+    return cargs
+
+
+def uber_align_test_py_outputs(
+    params: UberAlignTestPyParameters,
+    execution: Execution,
+) -> UberAlignTestPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UberAlignTestPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def uber_align_test_py_execute(
+    params: UberAlignTestPyParameters,
+    execution: Execution,
+) -> UberAlignTestPyOutputs:
+    """
+    Generate script to test anatomical/EPI alignment.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UberAlignTestPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = uber_align_test_py_cargs(params, execution)
+    ret = uber_align_test_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def uber_align_test_py(
@@ -59,46 +234,12 @@ def uber_align_test_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_ALIGN_TEST_PY_METADATA)
-    cargs = []
-    cargs.append("uber_align_test.py")
-    if no_gui:
-        cargs.append("-no_gui")
-    if print_script:
-        cargs.append("-print_script")
-    if save_script is not None:
-        cargs.extend([
-            "-save_script",
-            save_script
-        ])
-    if user_variable is not None:
-        cargs.extend([
-            "-uvar",
-            *user_variable
-        ])
-    if qt_opts is not None:
-        cargs.extend([
-            "-qt_opts",
-            qt_opts
-        ])
-    if help_:
-        cargs.append("-help")
-    if help_gui:
-        cargs.append("-help_gui")
-    if history:
-        cargs.append("-hist")
-    if show_valid_opts:
-        cargs.append("-show_valid_opts")
-    if version:
-        cargs.append("-ver")
-    ret = UberAlignTestPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = uber_align_test_py_params(no_gui=no_gui, print_script=print_script, save_script=save_script, user_variable=user_variable, qt_opts=qt_opts, help_=help_, help_gui=help_gui, history=history, show_valid_opts=show_valid_opts, version=version)
+    return uber_align_test_py_execute(params, execution)
 
 
 __all__ = [
     "UBER_ALIGN_TEST_PY_METADATA",
-    "UberAlignTestPyOutputs",
     "uber_align_test_py",
+    "uber_align_test_py_params",
 ]

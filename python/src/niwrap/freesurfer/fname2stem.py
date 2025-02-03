@@ -12,14 +12,124 @@ FNAME2STEM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Fname2stemParameters = typing.TypedDict('Fname2stemParameters', {
+    "__STYX_TYPE__": typing.Literal["fname2stem"],
+    "filename": str,
+})
 
 
-class Fname2stemOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fname2stem(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fname2stem": fname2stem_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fname2stem_params(
+    filename: str,
+) -> Fname2stemParameters:
+    """
+    Build parameters.
+    
+    Args:
+        filename: The name of the file to convert to a stem. The file does not\
+            need to exist.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fname2stem",
+        "filename": filename,
+    }
+    return params
+
+
+def fname2stem_cargs(
+    params: Fname2stemParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fname2stem")
+    cargs.append(params.get("filename"))
+    return cargs
+
+
+def fname2stem_outputs(
+    params: Fname2stemParameters,
+    execution: Execution,
+) -> Fname2stemOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Fname2stemOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fname2stem_execute(
+    params: Fname2stemParameters,
+    execution: Execution,
+) -> Fname2stemOutputs:
+    """
+    Converts the name of a file to a stem. Example: f.mgh, f.nii, f.nii.gz would
+    return f.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Fname2stemOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fname2stem_cargs(params, execution)
+    ret = fname2stem_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fname2stem(
@@ -43,18 +153,12 @@ def fname2stem(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FNAME2STEM_METADATA)
-    cargs = []
-    cargs.append("fname2stem")
-    cargs.append(filename)
-    ret = Fname2stemOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fname2stem_params(filename=filename)
+    return fname2stem_execute(params, execution)
 
 
 __all__ = [
     "FNAME2STEM_METADATA",
-    "Fname2stemOutputs",
     "fname2stem",
+    "fname2stem_params",
 ]

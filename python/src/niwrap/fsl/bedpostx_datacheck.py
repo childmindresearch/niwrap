@@ -12,14 +12,122 @@ BEDPOSTX_DATACHECK_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+BedpostxDatacheckParameters = typing.TypedDict('BedpostxDatacheckParameters', {
+    "__STYX_TYPE__": typing.Literal["bedpostx_datacheck"],
+    "data_dir": str,
+})
 
 
-class BedpostxDatacheckOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `bedpostx_datacheck(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "bedpostx_datacheck": bedpostx_datacheck_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def bedpostx_datacheck_params(
+    data_dir: str,
+) -> BedpostxDatacheckParameters:
+    """
+    Build parameters.
+    
+    Args:
+        data_dir: Data directory to check for BEDPOSTX compatibility.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "bedpostx_datacheck",
+        "data_dir": data_dir,
+    }
+    return params
+
+
+def bedpostx_datacheck_cargs(
+    params: BedpostxDatacheckParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("bedpostx_datacheck")
+    cargs.append(params.get("data_dir"))
+    return cargs
+
+
+def bedpostx_datacheck_outputs(
+    params: BedpostxDatacheckParameters,
+    execution: Execution,
+) -> BedpostxDatacheckOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BedpostxDatacheckOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def bedpostx_datacheck_execute(
+    params: BedpostxDatacheckParameters,
+    execution: Execution,
+) -> BedpostxDatacheckOutputs:
+    """
+    Check the data directory for BEDPOSTX compatibility.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BedpostxDatacheckOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = bedpostx_datacheck_cargs(params, execution)
+    ret = bedpostx_datacheck_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def bedpostx_datacheck(
@@ -41,18 +149,12 @@ def bedpostx_datacheck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_DATACHECK_METADATA)
-    cargs = []
-    cargs.append("bedpostx_datacheck")
-    cargs.append(data_dir)
-    ret = BedpostxDatacheckOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = bedpostx_datacheck_params(data_dir=data_dir)
+    return bedpostx_datacheck_execute(params, execution)
 
 
 __all__ = [
     "BEDPOSTX_DATACHECK_METADATA",
-    "BedpostxDatacheckOutputs",
     "bedpostx_datacheck",
+    "bedpostx_datacheck_params",
 ]

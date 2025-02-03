@@ -12,14 +12,128 @@ MRIS_MAP_CUTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisMapCutsParameters = typing.TypedDict('MrisMapCutsParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_map_cuts"],
+    "input_patch": InputPathType,
+    "output_patch": str,
+})
 
 
-class MrisMapCutsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_map_cuts(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_map_cuts": mris_map_cuts_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_map_cuts_params(
+    input_patch: InputPathType,
+    output_patch: str,
+) -> MrisMapCutsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_patch: Input patch file.
+        output_patch: Output patch file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_map_cuts",
+        "input_patch": input_patch,
+        "output_patch": output_patch,
+    }
+    return params
+
+
+def mris_map_cuts_cargs(
+    params: MrisMapCutsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_map_cuts")
+    cargs.append("[OPTIONS]")
+    cargs.append(execution.input_file(params.get("input_patch")))
+    cargs.append(params.get("output_patch"))
+    return cargs
+
+
+def mris_map_cuts_outputs(
+    params: MrisMapCutsParameters,
+    execution: Execution,
+) -> MrisMapCutsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisMapCutsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_map_cuts_execute(
+    params: MrisMapCutsParameters,
+    execution: Execution,
+) -> MrisMapCutsOutputs:
+    """
+    Tool for mapping cortical surface data onto cuts.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisMapCutsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_map_cuts_cargs(params, execution)
+    ret = mris_map_cuts_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_map_cuts(
@@ -43,20 +157,12 @@ def mris_map_cuts(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAP_CUTS_METADATA)
-    cargs = []
-    cargs.append("mris_map_cuts")
-    cargs.append("[OPTIONS]")
-    cargs.append(execution.input_file(input_patch))
-    cargs.append(output_patch)
-    ret = MrisMapCutsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_map_cuts_params(input_patch=input_patch, output_patch=output_patch)
+    return mris_map_cuts_execute(params, execution)
 
 
 __all__ = [
     "MRIS_MAP_CUTS_METADATA",
-    "MrisMapCutsOutputs",
     "mris_map_cuts",
+    "mris_map_cuts_params",
 ]

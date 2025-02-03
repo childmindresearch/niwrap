@@ -12,6 +12,52 @@ FILM_CIFTI_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FilmCiftiParameters = typing.TypedDict('FilmCiftiParameters', {
+    "__STYX_TYPE__": typing.Literal["film_cifti"],
+    "input_filename": InputPathType,
+    "basename": str,
+    "left_surface": InputPathType,
+    "right_surface": InputPathType,
+    "susan_threshold": typing.NotRequired[float | None],
+    "susan_extent": typing.NotRequired[float | None],
+    "surface_sigma": typing.NotRequired[float | None],
+    "surface_extent": typing.NotRequired[float | None],
+    "film_options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "film_cifti": film_cifti_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "film_cifti": film_cifti_outputs,
+    }
+    return vt.get(t)
 
 
 class FilmCiftiOutputs(typing.NamedTuple):
@@ -22,6 +68,158 @@ class FilmCiftiOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_results: OutputPathType
     """Output results file"""
+
+
+def film_cifti_params(
+    input_filename: InputPathType,
+    basename: str,
+    left_surface: InputPathType,
+    right_surface: InputPathType,
+    susan_threshold: float | None = None,
+    susan_extent: float | None = None,
+    surface_sigma: float | None = None,
+    surface_extent: float | None = None,
+    film_options: str | None = None,
+) -> FilmCiftiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_filename: Input CIFTI file.
+        basename: Output basename.
+        left_surface: Geometry for left cortex.
+        right_surface: Geometry for right cortex.
+        susan_threshold: Susan brightness threshold for volumetric analysis\
+            (default: 0).
+        susan_extent: Susan mask size for volumetric analysis (default: 4).
+        surface_sigma: Smoothing sigma for surface analysis (default: 0).
+        surface_extent: Smoothing extent for surface analysis (default: 4).
+        film_options: Film options to be used with all modes, list must be\
+            wrapped by quotes.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "film_cifti",
+        "input_filename": input_filename,
+        "basename": basename,
+        "left_surface": left_surface,
+        "right_surface": right_surface,
+    }
+    if susan_threshold is not None:
+        params["susan_threshold"] = susan_threshold
+    if susan_extent is not None:
+        params["susan_extent"] = susan_extent
+    if surface_sigma is not None:
+        params["surface_sigma"] = surface_sigma
+    if surface_extent is not None:
+        params["surface_extent"] = surface_extent
+    if film_options is not None:
+        params["film_options"] = film_options
+    return params
+
+
+def film_cifti_cargs(
+    params: FilmCiftiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("film_cifti")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input_filename"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("basename")
+    ])
+    cargs.extend([
+        "-l",
+        execution.input_file(params.get("left_surface"))
+    ])
+    cargs.extend([
+        "-r",
+        execution.input_file(params.get("right_surface"))
+    ])
+    if params.get("susan_threshold") is not None:
+        cargs.extend([
+            "--st",
+            str(params.get("susan_threshold"))
+        ])
+    if params.get("susan_extent") is not None:
+        cargs.extend([
+            "--sm",
+            str(params.get("susan_extent"))
+        ])
+    if params.get("surface_sigma") is not None:
+        cargs.extend([
+            "--ss",
+            str(params.get("surface_sigma"))
+        ])
+    if params.get("surface_extent") is not None:
+        cargs.extend([
+            "--se",
+            str(params.get("surface_extent"))
+        ])
+    if params.get("film_options") is not None:
+        cargs.extend([
+            "--filmOptions",
+            params.get("film_options")
+        ])
+    return cargs
+
+
+def film_cifti_outputs(
+    params: FilmCiftiParameters,
+    execution: Execution,
+) -> FilmCiftiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FilmCiftiOutputs(
+        root=execution.output_file("."),
+        output_results=execution.output_file(params.get("basename") + "_results.nii.gz"),
+    )
+    return ret
+
+
+def film_cifti_execute(
+    params: FilmCiftiParameters,
+    execution: Execution,
+) -> FilmCiftiOutputs:
+    """
+    A tool for statistical analysis of CIFTI files using FILM.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FilmCiftiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = film_cifti_cargs(params, execution)
+    ret = film_cifti_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def film_cifti(
@@ -61,59 +259,13 @@ def film_cifti(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILM_CIFTI_METADATA)
-    cargs = []
-    cargs.append("film_cifti")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_filename)
-    ])
-    cargs.extend([
-        "-o",
-        basename
-    ])
-    cargs.extend([
-        "-l",
-        execution.input_file(left_surface)
-    ])
-    cargs.extend([
-        "-r",
-        execution.input_file(right_surface)
-    ])
-    if susan_threshold is not None:
-        cargs.extend([
-            "--st",
-            str(susan_threshold)
-        ])
-    if susan_extent is not None:
-        cargs.extend([
-            "--sm",
-            str(susan_extent)
-        ])
-    if surface_sigma is not None:
-        cargs.extend([
-            "--ss",
-            str(surface_sigma)
-        ])
-    if surface_extent is not None:
-        cargs.extend([
-            "--se",
-            str(surface_extent)
-        ])
-    if film_options is not None:
-        cargs.extend([
-            "--filmOptions",
-            film_options
-        ])
-    ret = FilmCiftiOutputs(
-        root=execution.output_file("."),
-        output_results=execution.output_file(basename + "_results.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = film_cifti_params(input_filename=input_filename, basename=basename, left_surface=left_surface, right_surface=right_surface, susan_threshold=susan_threshold, susan_extent=susan_extent, surface_sigma=surface_sigma, surface_extent=surface_extent, film_options=film_options)
+    return film_cifti_execute(params, execution)
 
 
 __all__ = [
     "FILM_CIFTI_METADATA",
     "FilmCiftiOutputs",
     "film_cifti",
+    "film_cifti_params",
 ]

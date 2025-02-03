@@ -12,14 +12,144 @@ MRI_MI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMiParameters = typing.TypedDict('MriMiParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_mi"],
+    "input_file1": InputPathType,
+    "input_file2": InputPathType,
+    "bins": typing.NotRequired[str | None],
+    "silent": bool,
+})
 
 
-class MriMiOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_mi(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_mi": mri_mi_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_mi_params(
+    input_file1: InputPathType,
+    input_file2: InputPathType,
+    bins: str | None = None,
+    silent: bool = False,
+) -> MriMiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file1: First input file name.
+        input_file2: Second input file name.
+        bins: Specifies the number of bins for the two input volumes. Default\
+            is 64x64.
+        silent: Write out only the final mutual information result.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_mi",
+        "input_file1": input_file1,
+        "input_file2": input_file2,
+        "silent": silent,
+    }
+    if bins is not None:
+        params["bins"] = bins
+    return params
+
+
+def mri_mi_cargs(
+    params: MriMiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_mi")
+    cargs.append(execution.input_file(params.get("input_file1")))
+    cargs.append(execution.input_file(params.get("input_file2")))
+    if params.get("bins") is not None:
+        cargs.extend([
+            "--bins",
+            params.get("bins")
+        ])
+    if params.get("silent"):
+        cargs.append("--silent")
+    return cargs
+
+
+def mri_mi_outputs(
+    params: MriMiParameters,
+    execution: Execution,
+) -> MriMiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMiOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_mi_execute(
+    params: MriMiParameters,
+    execution: Execution,
+) -> MriMiOutputs:
+    """
+    Computes mutual information (mi) between two input volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_mi_cargs(params, execution)
+    ret = mri_mi_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_mi(
@@ -48,26 +178,12 @@ def mri_mi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MI_METADATA)
-    cargs = []
-    cargs.append("mri_mi")
-    cargs.append(execution.input_file(input_file1))
-    cargs.append(execution.input_file(input_file2))
-    if bins is not None:
-        cargs.extend([
-            "--bins",
-            bins
-        ])
-    if silent:
-        cargs.append("--silent")
-    ret = MriMiOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_mi_params(input_file1=input_file1, input_file2=input_file2, bins=bins, silent=silent)
+    return mri_mi_execute(params, execution)
 
 
 __all__ = [
     "MRI_MI_METADATA",
-    "MriMiOutputs",
     "mri_mi",
+    "mri_mi_params",
 ]

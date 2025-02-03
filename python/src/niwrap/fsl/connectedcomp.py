@@ -12,6 +12,46 @@ CONNECTEDCOMP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+ConnectedcompParameters = typing.TypedDict('ConnectedcompParameters', {
+    "__STYX_TYPE__": typing.Literal["connectedcomp"],
+    "in_volume": InputPathType,
+    "output_volume": typing.NotRequired[str | None],
+    "num_connect": typing.NotRequired[int | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "connectedcomp": connectedcomp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "connectedcomp": connectedcomp_outputs,
+    }
+    return vt.get(t)
 
 
 class ConnectedcompOutputs(typing.NamedTuple):
@@ -22,6 +62,99 @@ class ConnectedcompOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType | None
     """The output image volume"""
+
+
+def connectedcomp_params(
+    in_volume: InputPathType,
+    output_volume: str | None = None,
+    num_connect: int | None = None,
+) -> ConnectedcompParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in_volume: Input image volume.
+        output_volume: Output image volume.
+        num_connect: Number of connected components.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "connectedcomp",
+        "in_volume": in_volume,
+    }
+    if output_volume is not None:
+        params["output_volume"] = output_volume
+    if num_connect is not None:
+        params["num_connect"] = num_connect
+    return params
+
+
+def connectedcomp_cargs(
+    params: ConnectedcompParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("connectedcomp")
+    cargs.append(execution.input_file(params.get("in_volume")))
+    if params.get("output_volume") is not None:
+        cargs.append(params.get("output_volume"))
+    if params.get("num_connect") is not None:
+        cargs.append(str(params.get("num_connect")))
+    return cargs
+
+
+def connectedcomp_outputs(
+    params: ConnectedcompParameters,
+    execution: Execution,
+) -> ConnectedcompOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ConnectedcompOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("output_volume")) if (params.get("output_volume") is not None) else None,
+    )
+    return ret
+
+
+def connectedcomp_execute(
+    params: ConnectedcompParameters,
+    execution: Execution,
+) -> ConnectedcompOutputs:
+    """
+    Connected component analysis tool.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ConnectedcompOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = connectedcomp_cargs(params, execution)
+    ret = connectedcomp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def connectedcomp(
@@ -47,23 +180,13 @@ def connectedcomp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONNECTEDCOMP_METADATA)
-    cargs = []
-    cargs.append("connectedcomp")
-    cargs.append(execution.input_file(in_volume))
-    if output_volume is not None:
-        cargs.append(output_volume)
-    if num_connect is not None:
-        cargs.append(str(num_connect))
-    ret = ConnectedcompOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(output_volume) if (output_volume is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = connectedcomp_params(in_volume=in_volume, output_volume=output_volume, num_connect=num_connect)
+    return connectedcomp_execute(params, execution)
 
 
 __all__ = [
     "CONNECTEDCOMP_METADATA",
     "ConnectedcompOutputs",
     "connectedcomp",
+    "connectedcomp_params",
 ]

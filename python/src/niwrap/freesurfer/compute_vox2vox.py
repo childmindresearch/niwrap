@@ -12,6 +12,46 @@ COMPUTE_VOX2VOX_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ComputeVox2voxParameters = typing.TypedDict('ComputeVox2voxParameters', {
+    "__STYX_TYPE__": typing.Literal["compute_vox2vox"],
+    "source": InputPathType,
+    "t4file": InputPathType,
+    "target": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "compute_vox2vox": compute_vox2vox_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "compute_vox2vox": compute_vox2vox_outputs,
+    }
+    return vt.get(t)
 
 
 class ComputeVox2voxOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class ComputeVox2voxOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """The resulting transformed voxel-to-voxel 4dfp output file."""
+
+
+def compute_vox2vox_params(
+    source: InputPathType,
+    t4file: InputPathType,
+    target: InputPathType,
+) -> ComputeVox2voxParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source: Input 4dfp source file.
+        t4file: T4 transformation matrix file.
+        target: Input 4dfp target file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "compute_vox2vox",
+        "source": source,
+        "t4file": t4file,
+        "target": target,
+    }
+    return params
+
+
+def compute_vox2vox_cargs(
+    params: ComputeVox2voxParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("compute_vox2vox")
+    cargs.append(execution.input_file(params.get("source")))
+    cargs.append(execution.input_file(params.get("t4file")))
+    cargs.append(execution.input_file(params.get("target")))
+    return cargs
+
+
+def compute_vox2vox_outputs(
+    params: ComputeVox2voxParameters,
+    execution: Execution,
+) -> ComputeVox2voxOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ComputeVox2voxOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file("<replace_with_output_path_pattern>"),
+    )
+    return ret
+
+
+def compute_vox2vox_execute(
+    params: ComputeVox2voxParameters,
+    execution: Execution,
+) -> ComputeVox2voxOutputs:
+    """
+    Tool for computing voxel-to-voxel transformations.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ComputeVox2voxOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = compute_vox2vox_cargs(params, execution)
+    ret = compute_vox2vox_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def compute_vox2vox(
@@ -47,21 +176,13 @@ def compute_vox2vox(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COMPUTE_VOX2VOX_METADATA)
-    cargs = []
-    cargs.append("compute_vox2vox")
-    cargs.append(execution.input_file(source))
-    cargs.append(execution.input_file(t4file))
-    cargs.append(execution.input_file(target))
-    ret = ComputeVox2voxOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file("<replace_with_output_path_pattern>"),
-    )
-    execution.run(cargs)
-    return ret
+    params = compute_vox2vox_params(source=source, t4file=t4file, target=target)
+    return compute_vox2vox_execute(params, execution)
 
 
 __all__ = [
     "COMPUTE_VOX2VOX_METADATA",
     "ComputeVox2voxOutputs",
     "compute_vox2vox",
+    "compute_vox2vox_params",
 ]

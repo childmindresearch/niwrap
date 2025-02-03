@@ -12,6 +12,46 @@ V_3DTO_XDATASET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dtoXdatasetParameters = typing.TypedDict('V3dtoXdatasetParameters', {
+    "__STYX_TYPE__": typing.Literal["3dtoXdataset"],
+    "prefix": str,
+    "mask": InputPathType,
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dtoXdataset": v_3dto_xdataset_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dtoXdataset": v_3dto_xdataset_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dtoXdatasetOutputs(typing.NamedTuple):
@@ -22,6 +62,98 @@ class V3dtoXdatasetOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_sdat: OutputPathType
     """Output file in .sdat format"""
+
+
+def v_3dto_xdataset_params(
+    prefix: str,
+    mask: InputPathType,
+    input_files: list[InputPathType],
+) -> V3dtoXdatasetParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Prefix for the output file.
+        mask: Mask dataset file.
+        input_files: Input datasets to be converted.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dtoXdataset",
+        "prefix": prefix,
+        "mask": mask,
+        "input_files": input_files,
+    }
+    return params
+
+
+def v_3dto_xdataset_cargs(
+    params: V3dtoXdatasetParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dtoXdataset")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.append(execution.input_file(params.get("mask")))
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def v_3dto_xdataset_outputs(
+    params: V3dtoXdatasetParameters,
+    execution: Execution,
+) -> V3dtoXdatasetOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dtoXdatasetOutputs(
+        root=execution.output_file("."),
+        output_sdat=execution.output_file(params.get("prefix") + ".sdat"),
+    )
+    return ret
+
+
+def v_3dto_xdataset_execute(
+    params: V3dtoXdatasetParameters,
+    execution: Execution,
+) -> V3dtoXdatasetOutputs:
+    """
+    Convert input datasets to the format needed for 3dClustSimX.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dtoXdatasetOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dto_xdataset_cargs(params, execution)
+    ret = v_3dto_xdataset_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dto_xdataset(
@@ -47,24 +179,13 @@ def v_3dto_xdataset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DTO_XDATASET_METADATA)
-    cargs = []
-    cargs.append("3dtoXdataset")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.append(execution.input_file(mask))
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = V3dtoXdatasetOutputs(
-        root=execution.output_file("."),
-        output_sdat=execution.output_file(prefix + ".sdat"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dto_xdataset_params(prefix=prefix, mask=mask, input_files=input_files)
+    return v_3dto_xdataset_execute(params, execution)
 
 
 __all__ = [
     "V3dtoXdatasetOutputs",
     "V_3DTO_XDATASET_METADATA",
     "v_3dto_xdataset",
+    "v_3dto_xdataset_params",
 ]

@@ -12,6 +12,49 @@ V__ROI_DECLUSTER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VRoiDeclusterParameters = typing.TypedDict('VRoiDeclusterParameters', {
+    "__STYX_TYPE__": typing.Literal["@ROI_decluster"],
+    "input_dset": InputPathType,
+    "output_dir": typing.NotRequired[str | None],
+    "nvox_thresh": typing.NotRequired[float | None],
+    "frac_thresh": typing.NotRequired[float | None],
+    "prefix": typing.NotRequired[str | None],
+    "neighborhood_type": typing.NotRequired[int | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@ROI_decluster": v__roi_decluster_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@ROI_decluster": v__roi_decluster_outputs,
+    }
+    return vt.get(t)
 
 
 class VRoiDeclusterOutputs(typing.NamedTuple):
@@ -22,6 +65,139 @@ class VRoiDeclusterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType | None
     """Final output dataset"""
+
+
+def v__roi_decluster_params(
+    input_dset: InputPathType,
+    output_dir: str | None = None,
+    nvox_thresh: float | None = None,
+    frac_thresh: float | None = None,
+    prefix: str | None = None,
+    neighborhood_type: int | None = None,
+) -> VRoiDeclusterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dset: Required input dataset. This dataset should be set of\
+            integer values. The program mostly assumes approximate isotropic\
+            voxels.
+        output_dir: Directory name for output. All output goes to this\
+            directory.
+        nvox_thresh: Number of voxels in a cluster to keep.
+        frac_thresh: Fraction of voxels in a cluster to keep [0.0-1.0].
+        prefix: Base name of final output dataset, i.e. baseprefix.nii.gz.
+        neighborhood_type: Neighborhood type using in finding mode: 1 - facing\
+            neighbors, 2 - edges, 3 - corners.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@ROI_decluster",
+        "input_dset": input_dset,
+    }
+    if output_dir is not None:
+        params["output_dir"] = output_dir
+    if nvox_thresh is not None:
+        params["nvox_thresh"] = nvox_thresh
+    if frac_thresh is not None:
+        params["frac_thresh"] = frac_thresh
+    if prefix is not None:
+        params["prefix"] = prefix
+    if neighborhood_type is not None:
+        params["neighborhood_type"] = neighborhood_type
+    return params
+
+
+def v__roi_decluster_cargs(
+    params: VRoiDeclusterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@ROI_decluster")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_dset"))
+    ])
+    if params.get("output_dir") is not None:
+        cargs.extend([
+            "-outdir",
+            params.get("output_dir")
+        ])
+    if params.get("nvox_thresh") is not None:
+        cargs.extend([
+            "-nvox_thresh",
+            str(params.get("nvox_thresh"))
+        ])
+    if params.get("frac_thresh") is not None:
+        cargs.extend([
+            "-frac_thresh",
+            str(params.get("frac_thresh"))
+        ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("neighborhood_type") is not None:
+        cargs.extend([
+            "-NN",
+            str(params.get("neighborhood_type"))
+        ])
+    return cargs
+
+
+def v__roi_decluster_outputs(
+    params: VRoiDeclusterParameters,
+    execution: Execution,
+) -> VRoiDeclusterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VRoiDeclusterOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("prefix") + ".nii.gz") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v__roi_decluster_execute(
+    params: VRoiDeclusterParameters,
+    execution: Execution,
+) -> VRoiDeclusterOutputs:
+    """
+    Script to remove small clusters or standalone voxels from an ROI/atlas dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VRoiDeclusterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__roi_decluster_cargs(params, execution)
+    ret = v__roi_decluster_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__roi_decluster(
@@ -55,51 +231,15 @@ def v__roi_decluster(
     Returns:
         NamedTuple of outputs (described in `VRoiDeclusterOutputs`).
     """
-    if neighborhood_type is not None and not (1 <= neighborhood_type <= 3): 
-        raise ValueError(f"'neighborhood_type' must be between 1 <= x <= 3 but was {neighborhood_type}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ROI_DECLUSTER_METADATA)
-    cargs = []
-    cargs.append("@ROI_decluster")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_dset)
-    ])
-    if output_dir is not None:
-        cargs.extend([
-            "-outdir",
-            output_dir
-        ])
-    if nvox_thresh is not None:
-        cargs.extend([
-            "-nvox_thresh",
-            str(nvox_thresh)
-        ])
-    if frac_thresh is not None:
-        cargs.extend([
-            "-frac_thresh",
-            str(frac_thresh)
-        ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if neighborhood_type is not None:
-        cargs.extend([
-            "-NN",
-            str(neighborhood_type)
-        ])
-    ret = VRoiDeclusterOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v__roi_decluster_params(input_dset=input_dset, output_dir=output_dir, nvox_thresh=nvox_thresh, frac_thresh=frac_thresh, prefix=prefix, neighborhood_type=neighborhood_type)
+    return v__roi_decluster_execute(params, execution)
 
 
 __all__ = [
     "VRoiDeclusterOutputs",
     "V__ROI_DECLUSTER_METADATA",
     "v__roi_decluster",
+    "v__roi_decluster_params",
 ]

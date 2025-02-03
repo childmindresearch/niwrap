@@ -12,6 +12,44 @@ V_1D_RPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dRplotParameters = typing.TypedDict('V1dRplotParameters', {
+    "__STYX_TYPE__": typing.Literal["1dRplot"],
+    "input_file": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1dRplot": v_1d_rplot_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1dRplot": v_1d_rplot_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dRplotOutputs(typing.NamedTuple):
@@ -22,6 +60,91 @@ class V1dRplotOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_plot: OutputPathType
     """Output plot file"""
+
+
+def v_1d_rplot_params(
+    input_file: InputPathType,
+) -> V1dRplotParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input 1D file to plot.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dRplot",
+        "input_file": input_file,
+    }
+    return params
+
+
+def v_1d_rplot_cargs(
+    params: V1dRplotParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dRplot")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def v_1d_rplot_outputs(
+    params: V1dRplotParameters,
+    execution: Execution,
+) -> V1dRplotOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dRplotOutputs(
+        root=execution.output_file("."),
+        output_plot=execution.output_file("[OUTPUT_PREFIX]*.jpg"),
+    )
+    return ret
+
+
+def v_1d_rplot_execute(
+    params: V1dRplotParameters,
+    execution: Execution,
+) -> V1dRplotOutputs:
+    """
+    Program for plotting a 1D file.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dRplotOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1d_rplot_cargs(params, execution)
+    ret = v_1d_rplot_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1d_rplot(
@@ -43,23 +166,13 @@ def v_1d_rplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_RPLOT_METADATA)
-    cargs = []
-    cargs.append("1dRplot")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    cargs.append("[OPTIONS]")
-    ret = V1dRplotOutputs(
-        root=execution.output_file("."),
-        output_plot=execution.output_file("[OUTPUT_PREFIX]*.jpg"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1d_rplot_params(input_file=input_file)
+    return v_1d_rplot_execute(params, execution)
 
 
 __all__ = [
     "V1dRplotOutputs",
     "V_1D_RPLOT_METADATA",
     "v_1d_rplot",
+    "v_1d_rplot_params",
 ]

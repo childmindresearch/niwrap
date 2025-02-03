@@ -12,6 +12,46 @@ V__DJUNCT_DWI_SELECTOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VDjunctDwiSelectorParameters = typing.TypedDict('VDjunctDwiSelectorParameters', {
+    "__STYX_TYPE__": typing.Literal["@djunct_dwi_selector"],
+    "dwi": InputPathType,
+    "png": InputPathType,
+    "outfile": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@djunct_dwi_selector": v__djunct_dwi_selector_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@djunct_dwi_selector": v__djunct_dwi_selector_outputs,
+    }
+    return vt.get(t)
 
 
 class VDjunctDwiSelectorOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class VDjunctDwiSelectorOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """The main output file"""
+
+
+def v__djunct_dwi_selector_params(
+    dwi: InputPathType,
+    png: InputPathType,
+    outfile: str,
+) -> VDjunctDwiSelectorParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dwi: Input DWI file.
+        png: Output PNG image.
+        outfile: Path to the output file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@djunct_dwi_selector",
+        "dwi": dwi,
+        "png": png,
+        "outfile": outfile,
+    }
+    return params
+
+
+def v__djunct_dwi_selector_cargs(
+    params: VDjunctDwiSelectorParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@djunct_dwi_selector.tcsh")
+    cargs.append(execution.input_file(params.get("dwi")))
+    cargs.append(execution.input_file(params.get("png")))
+    cargs.append(params.get("outfile"))
+    return cargs
+
+
+def v__djunct_dwi_selector_outputs(
+    params: VDjunctDwiSelectorParameters,
+    execution: Execution,
+) -> VDjunctDwiSelectorOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VDjunctDwiSelectorOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def v__djunct_dwi_selector_execute(
+    params: VDjunctDwiSelectorParameters,
+    execution: Execution,
+) -> VDjunctDwiSelectorOutputs:
+    """
+    Selects DWI data and creates a representative image.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VDjunctDwiSelectorOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__djunct_dwi_selector_cargs(params, execution)
+    ret = v__djunct_dwi_selector_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__djunct_dwi_selector(
@@ -47,21 +176,13 @@ def v__djunct_dwi_selector(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_DWI_SELECTOR_METADATA)
-    cargs = []
-    cargs.append("@djunct_dwi_selector.tcsh")
-    cargs.append(execution.input_file(dwi))
-    cargs.append(execution.input_file(png))
-    cargs.append(outfile)
-    ret = VDjunctDwiSelectorOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__djunct_dwi_selector_params(dwi=dwi, png=png, outfile=outfile)
+    return v__djunct_dwi_selector_execute(params, execution)
 
 
 __all__ = [
     "VDjunctDwiSelectorOutputs",
     "V__DJUNCT_DWI_SELECTOR_METADATA",
     "v__djunct_dwi_selector",
+    "v__djunct_dwi_selector_params",
 ]

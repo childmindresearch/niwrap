@@ -12,6 +12,44 @@ FNAME2EXT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Fname2extParameters = typing.TypedDict('Fname2extParameters', {
+    "__STYX_TYPE__": typing.Literal["fname2ext"],
+    "filename": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fname2ext": fname2ext_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fname2ext": fname2ext_outputs,
+    }
+    return vt.get(t)
 
 
 class Fname2extOutputs(typing.NamedTuple):
@@ -22,6 +60,88 @@ class Fname2extOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     file_extension: OutputPathType
     """Extracted file extension"""
+
+
+def fname2ext_params(
+    filename: str,
+) -> Fname2extParameters:
+    """
+    Build parameters.
+    
+    Args:
+        filename: The name of the file for which to extract the extension. The\
+            file does not need to exist.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fname2ext",
+        "filename": filename,
+    }
+    return params
+
+
+def fname2ext_cargs(
+    params: Fname2extParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fname2ext")
+    cargs.append(params.get("filename"))
+    return cargs
+
+
+def fname2ext_outputs(
+    params: Fname2extParameters,
+    execution: Execution,
+) -> Fname2extOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Fname2extOutputs(
+        root=execution.output_file("."),
+        file_extension=execution.output_file("extension.txt"),
+    )
+    return ret
+
+
+def fname2ext_execute(
+    params: Fname2extParameters,
+    execution: Execution,
+) -> Fname2extOutputs:
+    """
+    Converts the name of a file to its extension.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Fname2extOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fname2ext_cargs(params, execution)
+    ret = fname2ext_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fname2ext(
@@ -44,19 +164,13 @@ def fname2ext(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FNAME2EXT_METADATA)
-    cargs = []
-    cargs.append("fname2ext")
-    cargs.append(filename)
-    ret = Fname2extOutputs(
-        root=execution.output_file("."),
-        file_extension=execution.output_file("extension.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fname2ext_params(filename=filename)
+    return fname2ext_execute(params, execution)
 
 
 __all__ = [
     "FNAME2EXT_METADATA",
     "Fname2extOutputs",
     "fname2ext",
+    "fname2ext_params",
 ]

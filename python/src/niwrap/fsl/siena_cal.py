@@ -12,6 +12,47 @@ SIENA_CAL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+SienaCalParameters = typing.TypedDict('SienaCalParameters', {
+    "__STYX_TYPE__": typing.Literal["siena_cal"],
+    "input1_file": InputPathType,
+    "input2_file": InputPathType,
+    "scale": float,
+    "siena_diff_options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "siena_cal": siena_cal_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "siena_cal": siena_cal_outputs,
+    }
+    return vt.get(t)
 
 
 class SienaCalOutputs(typing.NamedTuple):
@@ -22,6 +63,102 @@ class SienaCalOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_dir: OutputPathType
     """Output directory containing SIENA results"""
+
+
+def siena_cal_params(
+    input1_file: InputPathType,
+    input2_file: InputPathType,
+    scale: float,
+    siena_diff_options: str | None = None,
+) -> SienaCalParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input1_file: First input image file root (e.g., baseline image root).
+        input2_file: Second input image file root (e.g., follow-up image root).
+        scale: Voxel size scaling factor.
+        siena_diff_options: Optional SIENA difference options.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "siena_cal",
+        "input1_file": input1_file,
+        "input2_file": input2_file,
+        "scale": scale,
+    }
+    if siena_diff_options is not None:
+        params["siena_diff_options"] = siena_diff_options
+    return params
+
+
+def siena_cal_cargs(
+    params: SienaCalParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("siena_cal")
+    cargs.append(execution.input_file(params.get("input1_file")))
+    cargs.append(execution.input_file(params.get("input2_file")))
+    cargs.append(str(params.get("scale")))
+    if params.get("siena_diff_options") is not None:
+        cargs.append(params.get("siena_diff_options"))
+    return cargs
+
+
+def siena_cal_outputs(
+    params: SienaCalParameters,
+    execution: Execution,
+) -> SienaCalOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SienaCalOutputs(
+        root=execution.output_file("."),
+        output_dir=execution.output_file(pathlib.Path(params.get("input1_file")).name + "_to_" + pathlib.Path(params.get("input2_file")).name + "_siena"),
+    )
+    return ret
+
+
+def siena_cal_execute(
+    params: SienaCalParameters,
+    execution: Execution,
+) -> SienaCalOutputs:
+    """
+    SIENA is part of FSL (FMRIB Software Library), which performs a two-timepoint
+    brain volume change analysis.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SienaCalOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = siena_cal_cargs(params, execution)
+    ret = siena_cal_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def siena_cal(
@@ -50,23 +187,13 @@ def siena_cal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENA_CAL_METADATA)
-    cargs = []
-    cargs.append("siena_cal")
-    cargs.append(execution.input_file(input1_file))
-    cargs.append(execution.input_file(input2_file))
-    cargs.append(str(scale))
-    if siena_diff_options is not None:
-        cargs.append(siena_diff_options)
-    ret = SienaCalOutputs(
-        root=execution.output_file("."),
-        output_dir=execution.output_file(pathlib.Path(input1_file).name + "_to_" + pathlib.Path(input2_file).name + "_siena"),
-    )
-    execution.run(cargs)
-    return ret
+    params = siena_cal_params(input1_file=input1_file, input2_file=input2_file, scale=scale, siena_diff_options=siena_diff_options)
+    return siena_cal_execute(params, execution)
 
 
 __all__ = [
     "SIENA_CAL_METADATA",
     "SienaCalOutputs",
     "siena_cal",
+    "siena_cal_params",
 ]

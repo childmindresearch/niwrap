@@ -12,6 +12,46 @@ FSLANIMATE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslanimateParameters = typing.TypedDict('FslanimateParameters', {
+    "__STYX_TYPE__": typing.Literal["fslanimate"],
+    "input_file": InputPathType,
+    "output_file": str,
+    "tmp_dir": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslanimate": fslanimate_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslanimate": fslanimate_outputs,
+    }
+    return vt.get(t)
 
 
 class FslanimateOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class FslanimateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_animation: OutputPathType
     """The resulting animation file"""
+
+
+def fslanimate_params(
+    input_file: InputPathType,
+    output_file: str,
+    tmp_dir: str | None = None,
+) -> FslanimateParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input image file (e.g., input.nii.gz).
+        output_file: Output file (e.g., output.gif).
+        tmp_dir: Temporary directory for intermediate files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslanimate",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    if tmp_dir is not None:
+        params["tmp_dir"] = tmp_dir
+    return params
+
+
+def fslanimate_cargs(
+    params: FslanimateParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslanimate")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    if params.get("tmp_dir") is not None:
+        cargs.append(params.get("tmp_dir"))
+    return cargs
+
+
+def fslanimate_outputs(
+    params: FslanimateParameters,
+    execution: Execution,
+) -> FslanimateOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslanimateOutputs(
+        root=execution.output_file("."),
+        output_animation=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def fslanimate_execute(
+    params: FslanimateParameters,
+    execution: Execution,
+) -> FslanimateOutputs:
+    """
+    Tool for creating animations from imaging data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslanimateOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslanimate_cargs(params, execution)
+    ret = fslanimate_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslanimate(
@@ -47,22 +178,13 @@ def fslanimate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLANIMATE_METADATA)
-    cargs = []
-    cargs.append("fslanimate")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    if tmp_dir is not None:
-        cargs.append(tmp_dir)
-    ret = FslanimateOutputs(
-        root=execution.output_file("."),
-        output_animation=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslanimate_params(input_file=input_file, output_file=output_file, tmp_dir=tmp_dir)
+    return fslanimate_execute(params, execution)
 
 
 __all__ = [
     "FSLANIMATE_METADATA",
     "FslanimateOutputs",
     "fslanimate",
+    "fslanimate_params",
 ]

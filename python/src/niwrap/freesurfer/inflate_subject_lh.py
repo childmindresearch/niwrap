@@ -12,14 +12,130 @@ INFLATE_SUBJECT_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+InflateSubjectLhParameters = typing.TypedDict('InflateSubjectLhParameters', {
+    "__STYX_TYPE__": typing.Literal["inflate_subject-lh"],
+    "input_folder": str,
+    "hostname_flag": bool,
+})
 
 
-class InflateSubjectLhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `inflate_subject_lh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "inflate_subject-lh": inflate_subject_lh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def inflate_subject_lh_params(
+    input_folder: str,
+    hostname_flag: bool = False,
+) -> InflateSubjectLhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_folder: Input folder containing subject data.
+        hostname_flag: Flag to check hostname.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "inflate_subject-lh",
+        "input_folder": input_folder,
+        "hostname_flag": hostname_flag,
+    }
+    return params
+
+
+def inflate_subject_lh_cargs(
+    params: InflateSubjectLhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-lh",
+        "inflate_subject" + params.get("input_folder")
+    ])
+    if params.get("hostname_flag"):
+        cargs.append("hostname")
+    return cargs
+
+
+def inflate_subject_lh_outputs(
+    params: InflateSubjectLhParameters,
+    execution: Execution,
+) -> InflateSubjectLhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = InflateSubjectLhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def inflate_subject_lh_execute(
+    params: InflateSubjectLhParameters,
+    execution: Execution,
+) -> InflateSubjectLhOutputs:
+    """
+    A tool to process and inflate left hemisphere subject data in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `InflateSubjectLhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = inflate_subject_lh_cargs(params, execution)
+    ret = inflate_subject_lh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def inflate_subject_lh(
@@ -43,22 +159,12 @@ def inflate_subject_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_LH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-lh",
-        "inflate_subject" + input_folder
-    ])
-    if hostname_flag:
-        cargs.append("hostname")
-    ret = InflateSubjectLhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = inflate_subject_lh_params(input_folder=input_folder, hostname_flag=hostname_flag)
+    return inflate_subject_lh_execute(params, execution)
 
 
 __all__ = [
     "INFLATE_SUBJECT_LH_METADATA",
-    "InflateSubjectLhOutputs",
     "inflate_subject_lh",
+    "inflate_subject_lh_params",
 ]

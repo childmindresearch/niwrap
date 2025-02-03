@@ -12,6 +12,45 @@ SIENA_FLIRT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+SienaFlirtParameters = typing.TypedDict('SienaFlirtParameters', {
+    "__STYX_TYPE__": typing.Literal["siena_flirt"],
+    "input1_fileroot": str,
+    "input2_fileroot": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "siena_flirt": siena_flirt_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "siena_flirt": siena_flirt_outputs,
+    }
+    return vt.get(t)
 
 
 class SienaFlirtOutputs(typing.NamedTuple):
@@ -24,6 +63,94 @@ class SienaFlirtOutputs(typing.NamedTuple):
     """Output transformation matrix file"""
     output_registered_image: OutputPathType
     """Output registered image"""
+
+
+def siena_flirt_params(
+    input1_fileroot: str,
+    input2_fileroot: str,
+) -> SienaFlirtParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input1_fileroot: First input file root (e.g. first time-point image\
+            root, without file extension).
+        input2_fileroot: Second input file root (e.g. second time-point image\
+            root, without file extension).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "siena_flirt",
+        "input1_fileroot": input1_fileroot,
+        "input2_fileroot": input2_fileroot,
+    }
+    return params
+
+
+def siena_flirt_cargs(
+    params: SienaFlirtParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("siena_flirt")
+    cargs.append(params.get("input1_fileroot"))
+    cargs.append(params.get("input2_fileroot"))
+    return cargs
+
+
+def siena_flirt_outputs(
+    params: SienaFlirtParameters,
+    execution: Execution,
+) -> SienaFlirtOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SienaFlirtOutputs(
+        root=execution.output_file("."),
+        output_transform_matrix=execution.output_file(params.get("input1_fileroot") + "_to_" + params.get("input2_fileroot") + "_flirt.mat"),
+        output_registered_image=execution.output_file(params.get("input1_fileroot") + "_to_" + params.get("input2_fileroot") + "_flirt.nii.gz"),
+    )
+    return ret
+
+
+def siena_flirt_execute(
+    params: SienaFlirtParameters,
+    execution: Execution,
+) -> SienaFlirtOutputs:
+    """
+    Wrapper for FLIRT image registration within the SIENA framework.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SienaFlirtOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = siena_flirt_cargs(params, execution)
+    ret = siena_flirt_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def siena_flirt(
@@ -49,21 +176,13 @@ def siena_flirt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIENA_FLIRT_METADATA)
-    cargs = []
-    cargs.append("siena_flirt")
-    cargs.append(input1_fileroot)
-    cargs.append(input2_fileroot)
-    ret = SienaFlirtOutputs(
-        root=execution.output_file("."),
-        output_transform_matrix=execution.output_file(input1_fileroot + "_to_" + input2_fileroot + "_flirt.mat"),
-        output_registered_image=execution.output_file(input1_fileroot + "_to_" + input2_fileroot + "_flirt.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = siena_flirt_params(input1_fileroot=input1_fileroot, input2_fileroot=input2_fileroot)
+    return siena_flirt_execute(params, execution)
 
 
 __all__ = [
     "SIENA_FLIRT_METADATA",
     "SienaFlirtOutputs",
     "siena_flirt",
+    "siena_flirt_params",
 ]

@@ -12,6 +12,51 @@ DMRI_SPLINE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriSplineParameters = typing.TypedDict('DmriSplineParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_spline"],
+    "control_points_file": InputPathType,
+    "mask_volume": InputPathType,
+    "output_volume": typing.NotRequired[str | None],
+    "show_points": bool,
+    "output_points": typing.NotRequired[str | None],
+    "output_vectors_base": typing.NotRequired[str | None],
+    "debug": bool,
+    "check_options": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dmri_spline": dmri_spline_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dmri_spline": dmri_spline_outputs,
+    }
+    return vt.get(t)
 
 
 class DmriSplineOutputs(typing.NamedTuple):
@@ -30,6 +75,146 @@ class DmriSplineOutputs(typing.NamedTuple):
     """Output text file containing normal vectors"""
     out_curvature: OutputPathType | None
     """Output text file containing curvatures"""
+
+
+def dmri_spline_params(
+    control_points_file: InputPathType,
+    mask_volume: InputPathType,
+    output_volume: str | None = None,
+    show_points: bool = False,
+    output_points: str | None = None,
+    output_vectors_base: str | None = None,
+    debug: bool = False,
+    check_options: bool = False,
+) -> DmriSplineParameters:
+    """
+    Build parameters.
+    
+    Args:
+        control_points_file: Input text file containing control points.
+        mask_volume: Input mask volume (spline is not allowed to stray off\
+            mask).
+        output_volume: Output volume of the interpolated spline.
+        show_points: Highlight control points in output volume (default: no).
+        output_points: Output text file containing all interpolated spline\
+            points.
+        output_vectors_base: Base name of output text files containing tangent\
+            vectors, normal vectors, and curvatures at every point along the spline.
+        debug: Turn on debugging.
+        check_options: Don't run anything, just check options and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_spline",
+        "control_points_file": control_points_file,
+        "mask_volume": mask_volume,
+        "show_points": show_points,
+        "debug": debug,
+        "check_options": check_options,
+    }
+    if output_volume is not None:
+        params["output_volume"] = output_volume
+    if output_points is not None:
+        params["output_points"] = output_points
+    if output_vectors_base is not None:
+        params["output_vectors_base"] = output_vectors_base
+    return params
+
+
+def dmri_spline_cargs(
+    params: DmriSplineParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_spline")
+    cargs.extend([
+        "--cpts",
+        execution.input_file(params.get("control_points_file"))
+    ])
+    cargs.extend([
+        "--mask",
+        execution.input_file(params.get("mask_volume"))
+    ])
+    if params.get("output_volume") is not None:
+        cargs.extend([
+            "--out",
+            params.get("output_volume")
+        ])
+    if params.get("show_points"):
+        cargs.append("--show")
+    if params.get("output_points") is not None:
+        cargs.extend([
+            "--outpts",
+            params.get("output_points")
+        ])
+    if params.get("output_vectors_base") is not None:
+        cargs.extend([
+            "--outvec",
+            params.get("output_vectors_base")
+        ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("check_options"):
+        cargs.append("--checkopts")
+    return cargs
+
+
+def dmri_spline_outputs(
+    params: DmriSplineParameters,
+    execution: Execution,
+) -> DmriSplineOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriSplineOutputs(
+        root=execution.output_file("."),
+        out_volume=execution.output_file(params.get("output_volume")) if (params.get("output_volume") is not None) else None,
+        out_points_file=execution.output_file(params.get("output_points")) if (params.get("output_points") is not None) else None,
+        out_tangent_vectors=execution.output_file(params.get("output_vectors_base") + "_tangent.txt") if (params.get("output_vectors_base") is not None) else None,
+        out_normal_vectors=execution.output_file(params.get("output_vectors_base") + "_normal.txt") if (params.get("output_vectors_base") is not None) else None,
+        out_curvature=execution.output_file(params.get("output_vectors_base") + "_curvature.txt") if (params.get("output_vectors_base") is not None) else None,
+    )
+    return ret
+
+
+def dmri_spline_execute(
+    params: DmriSplineParameters,
+    execution: Execution,
+) -> DmriSplineOutputs:
+    """
+    Tool for interpolating and analyzing splines within a defined mask.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriSplineOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_spline_cargs(params, execution)
+    ret = dmri_spline_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_spline(
@@ -68,51 +253,13 @@ def dmri_spline(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_SPLINE_METADATA)
-    cargs = []
-    cargs.append("dmri_spline")
-    cargs.extend([
-        "--cpts",
-        execution.input_file(control_points_file)
-    ])
-    cargs.extend([
-        "--mask",
-        execution.input_file(mask_volume)
-    ])
-    if output_volume is not None:
-        cargs.extend([
-            "--out",
-            output_volume
-        ])
-    if show_points:
-        cargs.append("--show")
-    if output_points is not None:
-        cargs.extend([
-            "--outpts",
-            output_points
-        ])
-    if output_vectors_base is not None:
-        cargs.extend([
-            "--outvec",
-            output_vectors_base
-        ])
-    if debug:
-        cargs.append("--debug")
-    if check_options:
-        cargs.append("--checkopts")
-    ret = DmriSplineOutputs(
-        root=execution.output_file("."),
-        out_volume=execution.output_file(output_volume) if (output_volume is not None) else None,
-        out_points_file=execution.output_file(output_points) if (output_points is not None) else None,
-        out_tangent_vectors=execution.output_file(output_vectors_base + "_tangent.txt") if (output_vectors_base is not None) else None,
-        out_normal_vectors=execution.output_file(output_vectors_base + "_normal.txt") if (output_vectors_base is not None) else None,
-        out_curvature=execution.output_file(output_vectors_base + "_curvature.txt") if (output_vectors_base is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_spline_params(control_points_file=control_points_file, mask_volume=mask_volume, output_volume=output_volume, show_points=show_points, output_points=output_points, output_vectors_base=output_vectors_base, debug=debug, check_options=check_options)
+    return dmri_spline_execute(params, execution)
 
 
 __all__ = [
     "DMRI_SPLINE_METADATA",
     "DmriSplineOutputs",
     "dmri_spline",
+    "dmri_spline_params",
 ]

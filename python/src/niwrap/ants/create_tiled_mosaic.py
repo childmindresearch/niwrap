@@ -12,6 +12,55 @@ CREATE_TILED_MOSAIC_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+CreateTiledMosaicParameters = typing.TypedDict('CreateTiledMosaicParameters', {
+    "__STYX_TYPE__": typing.Literal["CreateTiledMosaic"],
+    "input_image": InputPathType,
+    "rgb_image": typing.NotRequired[InputPathType | None],
+    "mask_image": typing.NotRequired[InputPathType | None],
+    "alpha": typing.NotRequired[float | None],
+    "functional_overlay": typing.NotRequired[str | None],
+    "output": str,
+    "tile_geometry": typing.NotRequired[str | None],
+    "direction": typing.NotRequired[typing.Literal["0", "1", "2", "x", "y", "z"] | None],
+    "pad_or_crop": typing.NotRequired[str | None],
+    "slices": typing.NotRequired[str | None],
+    "flip_slice": typing.NotRequired[str | None],
+    "permute_axes": typing.NotRequired[typing.Literal[0, 1] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "CreateTiledMosaic": create_tiled_mosaic_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "CreateTiledMosaic": create_tiled_mosaic_outputs,
+    }
+    return vt.get(t)
 
 
 class CreateTiledMosaicOutputs(typing.NamedTuple):
@@ -22,6 +71,203 @@ class CreateTiledMosaicOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     tiled_mosaic_image: OutputPathType
     """The output is the tiled mosaic image."""
+
+
+def create_tiled_mosaic_params(
+    input_image: InputPathType,
+    output: str,
+    rgb_image: InputPathType | None = None,
+    mask_image: InputPathType | None = None,
+    alpha: float | None = None,
+    functional_overlay: str | None = None,
+    tile_geometry: str | None = None,
+    direction: typing.Literal["0", "1", "2", "x", "y", "z"] | None = None,
+    pad_or_crop: str | None = None,
+    slices: str | None = None,
+    flip_slice: str | None = None,
+    permute_axes: typing.Literal[0, 1] | None = None,
+) -> CreateTiledMosaicParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Main input is a 3-D grayscale image.
+        output: The output is the tiled mosaic image. The format must support\
+            the specific data type: floating point images without RGB overlays, Rgb\
+            images with intensities scaled to [0,255] if overlays are present.
+        rgb_image: An optional Rgb image can be added as an overlay. It must\
+            have the same image geometry as the input grayscale image.
+        mask_image: Specifies the ROI of the RGB voxels used.
+        alpha: If an Rgb image is provided, render the overlay using the\
+            specified alpha parameter.
+        functional_overlay: A functional overlay can be specified using both\
+            and rgb image and a mask specifying where that rgb image should be\
+            applied. Both images must have the same image geometry as the input\
+            image. Optionally, an alpha parameter can be specified.
+        tile_geometry: The tile geometry specifies the number of rows and\
+            columns in the output image. For example, specifying '5x10' renders 5\
+            rows by 10 columns of slices.
+        direction: Specifies the direction of the slices. Can be based on image\
+            storage in memory or aligned physical space. Defaults to z-direction if\
+            unspecified.
+        pad_or_crop: Specify padding or cropping with a voxel-width boundary\
+            for each slice. Padding uses a specified constant value. Cropping pads\
+            with negative voxel-widths.
+        slices: Control over which slices to render. Specify slices directly or\
+            incrementally with optional start and end slices.
+        flip_slice: Flip individual slice images horizontally and/or\
+            vertically.
+        permute_axes: Permute (or swap) the axes of the individual slice\
+            images.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "CreateTiledMosaic",
+        "input_image": input_image,
+        "output": output,
+    }
+    if rgb_image is not None:
+        params["rgb_image"] = rgb_image
+    if mask_image is not None:
+        params["mask_image"] = mask_image
+    if alpha is not None:
+        params["alpha"] = alpha
+    if functional_overlay is not None:
+        params["functional_overlay"] = functional_overlay
+    if tile_geometry is not None:
+        params["tile_geometry"] = tile_geometry
+    if direction is not None:
+        params["direction"] = direction
+    if pad_or_crop is not None:
+        params["pad_or_crop"] = pad_or_crop
+    if slices is not None:
+        params["slices"] = slices
+    if flip_slice is not None:
+        params["flip_slice"] = flip_slice
+    if permute_axes is not None:
+        params["permute_axes"] = permute_axes
+    return params
+
+
+def create_tiled_mosaic_cargs(
+    params: CreateTiledMosaicParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("CreateTiledMosaic")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input_image"))
+    ])
+    if params.get("rgb_image") is not None:
+        cargs.extend([
+            "-r",
+            execution.input_file(params.get("rgb_image"))
+        ])
+    if params.get("mask_image") is not None:
+        cargs.extend([
+            "-x",
+            execution.input_file(params.get("mask_image"))
+        ])
+    if params.get("alpha") is not None:
+        cargs.extend([
+            "-a",
+            str(params.get("alpha"))
+        ])
+    if params.get("functional_overlay") is not None:
+        cargs.extend([
+            "-e",
+            params.get("functional_overlay")
+        ])
+    cargs.extend([
+        "-o",
+        params.get("output")
+    ])
+    if params.get("tile_geometry") is not None:
+        cargs.extend([
+            "-t",
+            params.get("tile_geometry")
+        ])
+    if params.get("direction") is not None:
+        cargs.extend([
+            "-d",
+            params.get("direction")
+        ])
+    if params.get("pad_or_crop") is not None:
+        cargs.extend([
+            "-p",
+            params.get("pad_or_crop")
+        ])
+    if params.get("slices") is not None:
+        cargs.extend([
+            "-s",
+            params.get("slices")
+        ])
+    if params.get("flip_slice") is not None:
+        cargs.extend([
+            "-f",
+            params.get("flip_slice")
+        ])
+    if params.get("permute_axes") is not None:
+        cargs.extend([
+            "-g",
+            str(params.get("permute_axes"))
+        ])
+    return cargs
+
+
+def create_tiled_mosaic_outputs(
+    params: CreateTiledMosaicParameters,
+    execution: Execution,
+) -> CreateTiledMosaicOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CreateTiledMosaicOutputs(
+        root=execution.output_file("."),
+        tiled_mosaic_image=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def create_tiled_mosaic_execute(
+    params: CreateTiledMosaicParameters,
+    execution: Execution,
+) -> CreateTiledMosaicOutputs:
+    """
+    Render a 3-D image volume with optional Rgb overlay.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CreateTiledMosaicOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = create_tiled_mosaic_cargs(params, execution)
+    ret = create_tiled_mosaic_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def create_tiled_mosaic(
@@ -81,76 +327,13 @@ def create_tiled_mosaic(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_TILED_MOSAIC_METADATA)
-    cargs = []
-    cargs.append("CreateTiledMosaic")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_image)
-    ])
-    if rgb_image is not None:
-        cargs.extend([
-            "-r",
-            execution.input_file(rgb_image)
-        ])
-    if mask_image is not None:
-        cargs.extend([
-            "-x",
-            execution.input_file(mask_image)
-        ])
-    if alpha is not None:
-        cargs.extend([
-            "-a",
-            str(alpha)
-        ])
-    if functional_overlay is not None:
-        cargs.extend([
-            "-e",
-            functional_overlay
-        ])
-    cargs.extend([
-        "-o",
-        output
-    ])
-    if tile_geometry is not None:
-        cargs.extend([
-            "-t",
-            tile_geometry
-        ])
-    if direction is not None:
-        cargs.extend([
-            "-d",
-            direction
-        ])
-    if pad_or_crop is not None:
-        cargs.extend([
-            "-p",
-            pad_or_crop
-        ])
-    if slices is not None:
-        cargs.extend([
-            "-s",
-            slices
-        ])
-    if flip_slice is not None:
-        cargs.extend([
-            "-f",
-            flip_slice
-        ])
-    if permute_axes is not None:
-        cargs.extend([
-            "-g",
-            str(permute_axes)
-        ])
-    ret = CreateTiledMosaicOutputs(
-        root=execution.output_file("."),
-        tiled_mosaic_image=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = create_tiled_mosaic_params(input_image=input_image, rgb_image=rgb_image, mask_image=mask_image, alpha=alpha, functional_overlay=functional_overlay, output=output, tile_geometry=tile_geometry, direction=direction, pad_or_crop=pad_or_crop, slices=slices, flip_slice=flip_slice, permute_axes=permute_axes)
+    return create_tiled_mosaic_execute(params, execution)
 
 
 __all__ = [
     "CREATE_TILED_MOSAIC_METADATA",
     "CreateTiledMosaicOutputs",
     "create_tiled_mosaic",
+    "create_tiled_mosaic_params",
 ]

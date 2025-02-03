@@ -12,6 +12,44 @@ V_1D_ASTRIP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dAstripParameters = typing.TypedDict('V1dAstripParameters', {
+    "__STYX_TYPE__": typing.Literal["1dAstrip"],
+    "infile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1dAstrip": v_1d_astrip_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1dAstrip": v_1d_astrip_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dAstripOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class V1dAstripOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Output file with only numeric characters."""
+
+
+def v_1d_astrip_params(
+    infile: InputPathType,
+) -> V1dAstripParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input file from which non-numeric characters will be stripped.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dAstrip",
+        "infile": infile,
+    }
+    return params
+
+
+def v_1d_astrip_cargs(
+    params: V1dAstripParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dAstrip")
+    cargs.append("< " + execution.input_file(params.get("infile")))
+    return cargs
+
+
+def v_1d_astrip_outputs(
+    params: V1dAstripParameters,
+    execution: Execution,
+) -> V1dAstripOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dAstripOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file("[OUTPUT_FILE]"),
+    )
+    return ret
+
+
+def v_1d_astrip_execute(
+    params: V1dAstripParameters,
+    execution: Execution,
+) -> V1dAstripOutputs:
+    """
+    Strips non-numeric characters from a file.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dAstripOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1d_astrip_cargs(params, execution)
+    ret = v_1d_astrip_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1d_astrip(
@@ -43,19 +162,13 @@ def v_1d_astrip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_ASTRIP_METADATA)
-    cargs = []
-    cargs.append("1dAstrip")
-    cargs.append("< " + execution.input_file(infile))
-    ret = V1dAstripOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file("[OUTPUT_FILE]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1d_astrip_params(infile=infile)
+    return v_1d_astrip_execute(params, execution)
 
 
 __all__ = [
     "V1dAstripOutputs",
     "V_1D_ASTRIP_METADATA",
     "v_1d_astrip",
+    "v_1d_astrip_params",
 ]

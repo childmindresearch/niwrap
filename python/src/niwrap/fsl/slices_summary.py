@@ -12,6 +12,53 @@ SLICES_SUMMARY_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+SlicesSummaryParameters = typing.TypedDict('SlicesSummaryParameters', {
+    "__STYX_TYPE__": typing.Literal["slices_summary"],
+    "4d_input_file": InputPathType,
+    "threshold": float,
+    "background_image": InputPathType,
+    "pictures_sum_second": str,
+    "single_slice_flag": bool,
+    "darker_background_flag": bool,
+    "dumb_rule_flag": bool,
+    "pictures_sum_second": str,
+    "output_png": str,
+    "timepoints": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "slices_summary": slices_summary_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "slices_summary": slices_summary_outputs,
+    }
+    return vt.get(t)
 
 
 class SlicesSummaryOutputs(typing.NamedTuple):
@@ -24,6 +71,132 @@ class SlicesSummaryOutputs(typing.NamedTuple):
     """Directory containing summary images"""
     combined_summary_image: OutputPathType
     """Combined summary PNG image"""
+
+
+def slices_summary_params(
+    v_4d_input_file: InputPathType,
+    threshold: float,
+    background_image: InputPathType,
+    pictures_sum_second: str,
+    pictures_sum_second_: str,
+    output_png: str,
+    timepoints: str,
+    single_slice_flag: bool = False,
+    darker_background_flag: bool = False,
+    dumb_rule_flag: bool = False,
+) -> SlicesSummaryParameters:
+    """
+    Build parameters.
+    
+    Args:
+        v_4d_input_file: 4D input image (e.g., melodic_IC).
+        threshold: Threshold value for the slices.
+        background_image: Background image file (e.g., standard/MNI152_T1_2mm).
+        pictures_sum_second: Path to summary images directory.
+        pictures_sum_second_: Path to summary images directory.
+        output_png: Output PNG file.
+        timepoints: Space-separated list of timepoints to use; first timepoint\
+            is 0.
+        single_slice_flag: Generate single-slice summary images instead of\
+            3-slice.
+        darker_background_flag: Make background darker and colour brighter, for\
+            greater colour visibility.
+        dumb_rule_flag: Use dumber rule for choosing optimal slice.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "slices_summary",
+        "4d_input_file": v_4d_input_file,
+        "threshold": threshold,
+        "background_image": background_image,
+        "pictures_sum_second": pictures_sum_second,
+        "single_slice_flag": single_slice_flag,
+        "darker_background_flag": darker_background_flag,
+        "dumb_rule_flag": dumb_rule_flag,
+        "pictures_sum_second": pictures_sum_second_,
+        "output_png": output_png,
+        "timepoints": timepoints,
+    }
+    return params
+
+
+def slices_summary_cargs(
+    params: SlicesSummaryParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("slices_summary")
+    cargs.append(execution.input_file(params.get("4d_input_file")))
+    cargs.append(str(params.get("threshold")))
+    cargs.append(execution.input_file(params.get("background_image")))
+    cargs.append(params.get("pictures_sum_second"))
+    if params.get("single_slice_flag"):
+        cargs.append("-1")
+    if params.get("darker_background_flag"):
+        cargs.append("-d")
+    if params.get("dumb_rule_flag"):
+        cargs.append("-c")
+    cargs.append("|")
+    cargs.append("slices_summary")
+    cargs.append(params.get("pictures_sum_second"))
+    cargs.append(params.get("output_png"))
+    cargs.append(params.get("timepoints"))
+    return cargs
+
+
+def slices_summary_outputs(
+    params: SlicesSummaryParameters,
+    execution: Execution,
+) -> SlicesSummaryOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SlicesSummaryOutputs(
+        root=execution.output_file("."),
+        summary_images_directory=execution.output_file(params.get("pictures_sum_second")),
+        combined_summary_image=execution.output_file(params.get("output_png")),
+    )
+    return ret
+
+
+def slices_summary_execute(
+    params: SlicesSummaryParameters,
+    execution: Execution,
+) -> SlicesSummaryOutputs:
+    """
+    Generate summary PNG images for 4D neuroimaging data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SlicesSummaryOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = slices_summary_cargs(params, execution)
+    ret = slices_summary_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def slices_summary(
@@ -66,34 +239,13 @@ def slices_summary(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICES_SUMMARY_METADATA)
-    cargs = []
-    cargs.append("slices_summary")
-    cargs.append(execution.input_file(v_4d_input_file))
-    cargs.append(str(threshold))
-    cargs.append(execution.input_file(background_image))
-    cargs.append(pictures_sum_second)
-    if single_slice_flag:
-        cargs.append("-1")
-    if darker_background_flag:
-        cargs.append("-d")
-    if dumb_rule_flag:
-        cargs.append("-c")
-    cargs.append("|")
-    cargs.append("slices_summary")
-    cargs.append(pictures_sum_second_)
-    cargs.append(output_png)
-    cargs.append(timepoints)
-    ret = SlicesSummaryOutputs(
-        root=execution.output_file("."),
-        summary_images_directory=execution.output_file(pictures_sum_second_),
-        combined_summary_image=execution.output_file(output_png),
-    )
-    execution.run(cargs)
-    return ret
+    params = slices_summary_params(v_4d_input_file=v_4d_input_file, threshold=threshold, background_image=background_image, pictures_sum_second=pictures_sum_second, single_slice_flag=single_slice_flag, darker_background_flag=darker_background_flag, dumb_rule_flag=dumb_rule_flag, pictures_sum_second_=pictures_sum_second_, output_png=output_png, timepoints=timepoints)
+    return slices_summary_execute(params, execution)
 
 
 __all__ = [
     "SLICES_SUMMARY_METADATA",
     "SlicesSummaryOutputs",
     "slices_summary",
+    "slices_summary_params",
 ]

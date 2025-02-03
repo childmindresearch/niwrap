@@ -12,6 +12,45 @@ IS_LTA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+IsLtaParameters = typing.TypedDict('IsLtaParameters', {
+    "__STYX_TYPE__": typing.Literal["IsLTA"],
+    "candidate_file": InputPathType,
+    "outfile": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "IsLTA": is_lta_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "IsLTA": is_lta_outputs,
+    }
+    return vt.get(t)
 
 
 class IsLtaOutputs(typing.NamedTuple):
@@ -22,6 +61,98 @@ class IsLtaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """File containing 1 if the candidate file is an LTA, otherwise 0"""
+
+
+def is_lta_params(
+    candidate_file: InputPathType,
+    outfile: str,
+) -> IsLtaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        candidate_file: Candidate file to check if it is an LTA.
+        outfile: Output file to write the result.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "IsLTA",
+        "candidate_file": candidate_file,
+        "outfile": outfile,
+    }
+    return params
+
+
+def is_lta_cargs(
+    params: IsLtaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("IsLTA")
+    cargs.extend([
+        "--r",
+        execution.input_file(params.get("candidate_file"))
+    ])
+    cargs.extend([
+        "--o",
+        params.get("outfile")
+    ])
+    return cargs
+
+
+def is_lta_outputs(
+    params: IsLtaParameters,
+    execution: Execution,
+) -> IsLtaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = IsLtaOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def is_lta_execute(
+    params: IsLtaParameters,
+    execution: Execution,
+) -> IsLtaOutputs:
+    """
+    Determines if a given file is an LTA (Linear Transform Array) file. Outputs 1 if
+    true, otherwise outputs 0.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `IsLtaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = is_lta_cargs(params, execution)
+    ret = is_lta_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def is_lta(
@@ -46,26 +177,13 @@ def is_lta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IS_LTA_METADATA)
-    cargs = []
-    cargs.append("IsLTA")
-    cargs.extend([
-        "--r",
-        execution.input_file(candidate_file)
-    ])
-    cargs.extend([
-        "--o",
-        outfile
-    ])
-    ret = IsLtaOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = is_lta_params(candidate_file=candidate_file, outfile=outfile)
+    return is_lta_execute(params, execution)
 
 
 __all__ = [
     "IS_LTA_METADATA",
     "IsLtaOutputs",
     "is_lta",
+    "is_lta_params",
 ]

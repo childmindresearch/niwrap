@@ -12,6 +12,53 @@ MRI_FDR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriFdrParameters = typing.TypedDict('MriFdrParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_fdr"],
+    "input_files": list[str],
+    "fdr_value": float,
+    "default_frame": typing.NotRequired[int | None],
+    "positive_only": bool,
+    "negative_only": bool,
+    "all_voxels": bool,
+    "raw_p_values": bool,
+    "threshold_file": typing.NotRequired[str | None],
+    "debug": bool,
+    "check_options": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_fdr": mri_fdr_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_fdr": mri_fdr_outputs,
+    }
+    return vt.get(t)
 
 
 class MriFdrOutputs(typing.NamedTuple):
@@ -24,6 +71,147 @@ class MriFdrOutputs(typing.NamedTuple):
     """Output after applying FDR correction"""
     output_threshold: OutputPathType
     """Threshold written to text file"""
+
+
+def mri_fdr_params(
+    input_files: list[str],
+    fdr_value: float,
+    default_frame: int | None = None,
+    positive_only: bool = False,
+    negative_only: bool = False,
+    all_voxels: bool = False,
+    raw_p_values: bool = False,
+    threshold_file: str | None = None,
+    debug: bool = False,
+    check_options: bool = False,
+) -> MriFdrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input source volume or surface overlay. Specify mask,\
+            output, and frame as needed.
+        fdr_value: FDR value between 0 and 1, typically .05.
+        default_frame: Use input frame when not specifying frame in --i.
+        positive_only: Only consider positive voxels.
+        negative_only: Only consider negative voxels.
+        all_voxels: Consider all voxels regardless of sign (default).
+        raw_p_values: Input is raw p-values, not -log10(p).
+        threshold_file: Write threshold to text file.
+        debug: Turn on debugging.
+        check_options: Don't run anything, just check options and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_fdr",
+        "input_files": input_files,
+        "fdr_value": fdr_value,
+        "positive_only": positive_only,
+        "negative_only": negative_only,
+        "all_voxels": all_voxels,
+        "raw_p_values": raw_p_values,
+        "debug": debug,
+        "check_options": check_options,
+    }
+    if default_frame is not None:
+        params["default_frame"] = default_frame
+    if threshold_file is not None:
+        params["threshold_file"] = threshold_file
+    return params
+
+
+def mri_fdr_cargs(
+    params: MriFdrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_fdr")
+    cargs.extend([
+        "--i",
+        *params.get("input_files")
+    ])
+    cargs.extend([
+        "--fdr",
+        str(params.get("fdr_value"))
+    ])
+    if params.get("default_frame") is not None:
+        cargs.extend([
+            "--f",
+            str(params.get("default_frame"))
+        ])
+    if params.get("positive_only"):
+        cargs.append("--pos")
+    if params.get("negative_only"):
+        cargs.append("--neg")
+    if params.get("all_voxels"):
+        cargs.append("--abs")
+    if params.get("raw_p_values"):
+        cargs.append("--no-log10p")
+    if params.get("threshold_file") is not None:
+        cargs.extend([
+            "--thfile",
+            params.get("threshold_file")
+        ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("check_options"):
+        cargs.append("--checkopts")
+    return cargs
+
+
+def mri_fdr_outputs(
+    params: MriFdrParameters,
+    execution: Execution,
+) -> MriFdrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriFdrOutputs(
+        root=execution.output_file("."),
+        output_corrected=execution.output_file("<output>.mgh"),
+        output_threshold=execution.output_file("<output>_threshold.txt"),
+    )
+    return ret
+
+
+def mri_fdr_execute(
+    params: MriFdrParameters,
+    execution: Execution,
+) -> MriFdrOutputs:
+    """
+    A program that performs False Discovery Rate correction.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriFdrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_fdr_cargs(params, execution)
+    ret = mri_fdr_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_fdr(
@@ -62,55 +250,15 @@ def mri_fdr(
     Returns:
         NamedTuple of outputs (described in `MriFdrOutputs`).
     """
-    if not (1 <= len(input_files)): 
-        raise ValueError(f"Length of 'input_files' must be greater than 1 but was {len(input_files)}")
-    if not (0 <= fdr_value <= 1): 
-        raise ValueError(f"'fdr_value' must be between 0 <= x <= 1 but was {fdr_value}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FDR_METADATA)
-    cargs = []
-    cargs.append("mri_fdr")
-    cargs.extend([
-        "--i",
-        *input_files
-    ])
-    cargs.extend([
-        "--fdr",
-        str(fdr_value)
-    ])
-    if default_frame is not None:
-        cargs.extend([
-            "--f",
-            str(default_frame)
-        ])
-    if positive_only:
-        cargs.append("--pos")
-    if negative_only:
-        cargs.append("--neg")
-    if all_voxels:
-        cargs.append("--abs")
-    if raw_p_values:
-        cargs.append("--no-log10p")
-    if threshold_file is not None:
-        cargs.extend([
-            "--thfile",
-            threshold_file
-        ])
-    if debug:
-        cargs.append("--debug")
-    if check_options:
-        cargs.append("--checkopts")
-    ret = MriFdrOutputs(
-        root=execution.output_file("."),
-        output_corrected=execution.output_file("<output>.mgh"),
-        output_threshold=execution.output_file("<output>_threshold.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_fdr_params(input_files=input_files, fdr_value=fdr_value, default_frame=default_frame, positive_only=positive_only, negative_only=negative_only, all_voxels=all_voxels, raw_p_values=raw_p_values, threshold_file=threshold_file, debug=debug, check_options=check_options)
+    return mri_fdr_execute(params, execution)
 
 
 __all__ = [
     "MRI_FDR_METADATA",
     "MriFdrOutputs",
     "mri_fdr",
+    "mri_fdr_params",
 ]

@@ -12,6 +12,48 @@ V_3DMATMULT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dmatmultParameters = typing.TypedDict('V3dmatmultParameters', {
+    "__STYX_TYPE__": typing.Literal["3dmatmult"],
+    "inputA": InputPathType,
+    "inputB": InputPathType,
+    "prefix": str,
+    "datum": typing.NotRequired[str | None],
+    "verb": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dmatmult": v_3dmatmult_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dmatmult": v_3dmatmult_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dmatmultOutputs(typing.NamedTuple):
@@ -22,6 +64,122 @@ class V3dmatmultOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output dataset from the matrix multiplication"""
+
+
+def v_3dmatmult_params(
+    input_a: InputPathType,
+    input_b: InputPathType,
+    prefix: str,
+    datum: str | None = None,
+    verb: float | None = None,
+) -> V3dmatmultParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_a: Specify first (matrix) dataset.
+        input_b: Specify second (matrix) dataset.
+        prefix: Specify output dataset prefix.
+        datum: Specify output data type ('byte', 'short', 'float').
+        verb: Specify verbosity level.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dmatmult",
+        "inputA": input_a,
+        "inputB": input_b,
+        "prefix": prefix,
+    }
+    if datum is not None:
+        params["datum"] = datum
+    if verb is not None:
+        params["verb"] = verb
+    return params
+
+
+def v_3dmatmult_cargs(
+    params: V3dmatmultParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dmatmult")
+    cargs.extend([
+        "-inputA",
+        execution.input_file(params.get("inputA"))
+    ])
+    cargs.extend([
+        "-inputB",
+        execution.input_file(params.get("inputB"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("datum") is not None:
+        cargs.extend([
+            "-datum",
+            params.get("datum")
+        ])
+    if params.get("verb") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verb"))
+        ])
+    return cargs
+
+
+def v_3dmatmult_outputs(
+    params: V3dmatmultParameters,
+    execution: Execution,
+) -> V3dmatmultOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dmatmultOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("prefix")),
+    )
+    return ret
+
+
+def v_3dmatmult_execute(
+    params: V3dmatmultParameters,
+    execution: Execution,
+) -> V3dmatmultOutputs:
+    """
+    Multiply AFNI datasets slice-by-slice as matrices.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dmatmultOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dmatmult_cargs(params, execution)
+    ret = v_3dmatmult_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dmatmult(
@@ -51,40 +209,13 @@ def v_3dmatmult(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMATMULT_METADATA)
-    cargs = []
-    cargs.append("3dmatmult")
-    cargs.extend([
-        "-inputA",
-        execution.input_file(input_a)
-    ])
-    cargs.extend([
-        "-inputB",
-        execution.input_file(input_b)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if datum is not None:
-        cargs.extend([
-            "-datum",
-            datum
-        ])
-    if verb is not None:
-        cargs.extend([
-            "-verb",
-            str(verb)
-        ])
-    ret = V3dmatmultOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(prefix),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dmatmult_params(input_a=input_a, input_b=input_b, prefix=prefix, datum=datum, verb=verb)
+    return v_3dmatmult_execute(params, execution)
 
 
 __all__ = [
     "V3dmatmultOutputs",
     "V_3DMATMULT_METADATA",
     "v_3dmatmult",
+    "v_3dmatmult_params",
 ]

@@ -12,6 +12,47 @@ METRIC_REMOVE_ISLANDS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricRemoveIslandsParameters = typing.TypedDict('MetricRemoveIslandsParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-remove-islands"],
+    "surface": InputPathType,
+    "metric_in": InputPathType,
+    "metric_out": str,
+    "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-remove-islands": metric_remove_islands_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-remove-islands": metric_remove_islands_outputs,
+    }
+    return vt.get(t)
 
 
 class MetricRemoveIslandsOutputs(typing.NamedTuple):
@@ -22,6 +63,110 @@ class MetricRemoveIslandsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output ROI metric"""
+
+
+def metric_remove_islands_params(
+    surface: InputPathType,
+    metric_in: InputPathType,
+    metric_out: str,
+    opt_corrected_areas_area_metric: InputPathType | None = None,
+) -> MetricRemoveIslandsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to use for neighbor information.
+        metric_in: the input ROI metric.
+        metric_out: the output ROI metric.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-remove-islands",
+        "surface": surface,
+        "metric_in": metric_in,
+        "metric_out": metric_out,
+    }
+    if opt_corrected_areas_area_metric is not None:
+        params["opt_corrected_areas_area_metric"] = opt_corrected_areas_area_metric
+    return params
+
+
+def metric_remove_islands_cargs(
+    params: MetricRemoveIslandsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-remove-islands")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("metric_in")))
+    cargs.append(params.get("metric_out"))
+    if params.get("opt_corrected_areas_area_metric") is not None:
+        cargs.extend([
+            "-corrected-areas",
+            execution.input_file(params.get("opt_corrected_areas_area_metric"))
+        ])
+    return cargs
+
+
+def metric_remove_islands_outputs(
+    params: MetricRemoveIslandsParameters,
+    execution: Execution,
+) -> MetricRemoveIslandsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricRemoveIslandsOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_remove_islands_execute(
+    params: MetricRemoveIslandsParameters,
+    execution: Execution,
+) -> MetricRemoveIslandsOutputs:
+    """
+    Remove islands from an roi metric.
+    
+    Finds all connected areas in the ROI, and zeros out all but the largest one,
+    in terms of surface area.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricRemoveIslandsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_remove_islands_cargs(params, execution)
+    ret = metric_remove_islands_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def metric_remove_islands(
@@ -54,27 +199,13 @@ def metric_remove_islands(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_REMOVE_ISLANDS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-remove-islands")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_in))
-    cargs.append(metric_out)
-    if opt_corrected_areas_area_metric is not None:
-        cargs.extend([
-            "-corrected-areas",
-            execution.input_file(opt_corrected_areas_area_metric)
-        ])
-    ret = MetricRemoveIslandsOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_remove_islands_params(surface=surface, metric_in=metric_in, metric_out=metric_out, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    return metric_remove_islands_execute(params, execution)
 
 
 __all__ = [
     "METRIC_REMOVE_ISLANDS_METADATA",
     "MetricRemoveIslandsOutputs",
     "metric_remove_islands",
+    "metric_remove_islands_params",
 ]

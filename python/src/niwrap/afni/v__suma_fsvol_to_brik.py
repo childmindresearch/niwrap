@@ -12,6 +12,45 @@ V__SUMA_FSVOL_TO_BRIK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSumaFsvolToBrikParameters = typing.TypedDict('VSumaFsvolToBrikParameters', {
+    "__STYX_TYPE__": typing.Literal["@SUMA_FSvolToBRIK"],
+    "fs_vol_data": InputPathType,
+    "prefix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@SUMA_FSvolToBRIK": v__suma_fsvol_to_brik_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@SUMA_FSvolToBRIK": v__suma_fsvol_to_brik_outputs,
+    }
+    return vt.get(t)
 
 
 class VSumaFsvolToBrikOutputs(typing.NamedTuple):
@@ -24,6 +63,93 @@ class VSumaFsvolToBrikOutputs(typing.NamedTuple):
     """Output BRIK volume converted from FreeSurfer data"""
     out_head: OutputPathType
     """Header file for the output BRIK volume"""
+
+
+def v__suma_fsvol_to_brik_params(
+    fs_vol_data: InputPathType,
+    prefix: str,
+) -> VSumaFsvolToBrikParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fs_vol_data: Input FreeSurfer volume data (e.g. COR- images or .mgz\
+            volume).
+        prefix: Prefix for output BRIK volume.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@SUMA_FSvolToBRIK",
+        "fs_vol_data": fs_vol_data,
+        "prefix": prefix,
+    }
+    return params
+
+
+def v__suma_fsvol_to_brik_cargs(
+    params: VSumaFsvolToBrikParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@SUMA_FSvolToBRIK")
+    cargs.append(execution.input_file(params.get("fs_vol_data")))
+    cargs.append(params.get("prefix"))
+    return cargs
+
+
+def v__suma_fsvol_to_brik_outputs(
+    params: VSumaFsvolToBrikParameters,
+    execution: Execution,
+) -> VSumaFsvolToBrikOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSumaFsvolToBrikOutputs(
+        root=execution.output_file("."),
+        out_brik=execution.output_file(params.get("prefix") + ".BRIK"),
+        out_head=execution.output_file(params.get("prefix") + ".HEAD"),
+    )
+    return ret
+
+
+def v__suma_fsvol_to_brik_execute(
+    params: VSumaFsvolToBrikParameters,
+    execution: Execution,
+) -> VSumaFsvolToBrikOutputs:
+    """
+    A script to convert COR- or .mgz files from FreeSurfer to BRIK format.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSumaFsvolToBrikOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__suma_fsvol_to_brik_cargs(params, execution)
+    ret = v__suma_fsvol_to_brik_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__suma_fsvol_to_brik(
@@ -48,21 +174,13 @@ def v__suma_fsvol_to_brik(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_FSVOL_TO_BRIK_METADATA)
-    cargs = []
-    cargs.append("@SUMA_FSvolToBRIK")
-    cargs.append(execution.input_file(fs_vol_data))
-    cargs.append(prefix)
-    ret = VSumaFsvolToBrikOutputs(
-        root=execution.output_file("."),
-        out_brik=execution.output_file(prefix + ".BRIK"),
-        out_head=execution.output_file(prefix + ".HEAD"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__suma_fsvol_to_brik_params(fs_vol_data=fs_vol_data, prefix=prefix)
+    return v__suma_fsvol_to_brik_execute(params, execution)
 
 
 __all__ = [
     "VSumaFsvolToBrikOutputs",
     "V__SUMA_FSVOL_TO_BRIK_METADATA",
     "v__suma_fsvol_to_brik",
+    "v__suma_fsvol_to_brik_params",
 ]

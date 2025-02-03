@@ -12,6 +12,51 @@ V_3D_DIFF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dDiffParameters = typing.TypedDict('V3dDiffParameters', {
+    "__STYX_TYPE__": typing.Literal["3dDiff"],
+    "dataset_a": InputPathType,
+    "dataset_b": InputPathType,
+    "tolerance": typing.NotRequired[float | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "quiet_mode": bool,
+    "tabular_mode": bool,
+    "brutalist_mode": bool,
+    "long_report_mode": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dDiff": v_3d_diff_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dDiff": v_3d_diff_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dDiffOutputs(typing.NamedTuple):
@@ -22,6 +67,136 @@ class V3dDiffOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_log: OutputPathType
     """Log file containing the element-wise differences."""
+
+
+def v_3d_diff_params(
+    dataset_a: InputPathType,
+    dataset_b: InputPathType,
+    tolerance: float | None = None,
+    mask: InputPathType | None = None,
+    quiet_mode: bool = False,
+    tabular_mode: bool = False,
+    brutalist_mode: bool = False,
+    long_report_mode: bool = False,
+) -> V3dDiffParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset_a: First input dataset for comparison.
+        dataset_b: Second input dataset for comparison.
+        tolerance: Floating-point tolerance/epsilon for the comparison.
+        mask: Mask to use when comparing the datasets.
+        quiet_mode: Quiet mode: 0 for no differences, 1 for differences, -1 for\
+            error.
+        tabular_mode: Display a table of differences, mainly for 4D data.
+        brutalist_mode: Display one-liner with summary of differences.
+        long_report_mode: Print a detailed report with more information.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dDiff",
+        "dataset_a": dataset_a,
+        "dataset_b": dataset_b,
+        "quiet_mode": quiet_mode,
+        "tabular_mode": tabular_mode,
+        "brutalist_mode": brutalist_mode,
+        "long_report_mode": long_report_mode,
+    }
+    if tolerance is not None:
+        params["tolerance"] = tolerance
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_3d_diff_cargs(
+    params: V3dDiffParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dDiff")
+    cargs.extend([
+        "-a",
+        execution.input_file(params.get("dataset_a"))
+    ])
+    cargs.extend([
+        "-b",
+        execution.input_file(params.get("dataset_b"))
+    ])
+    if params.get("tolerance") is not None:
+        cargs.extend([
+            "-tol",
+            str(params.get("tolerance"))
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("quiet_mode"):
+        cargs.append("-q")
+    if params.get("tabular_mode"):
+        cargs.append("-tabular")
+    if params.get("brutalist_mode"):
+        cargs.append("-brutalist")
+    if params.get("long_report_mode"):
+        cargs.append("-long_report")
+    return cargs
+
+
+def v_3d_diff_outputs(
+    params: V3dDiffParameters,
+    execution: Execution,
+) -> V3dDiffOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dDiffOutputs(
+        root=execution.output_file("."),
+        output_log=execution.output_file(pathlib.Path(params.get("dataset_a")).name + "_vs_" + pathlib.Path(params.get("dataset_b")).name + ".log"),
+    )
+    return ret
+
+
+def v_3d_diff_execute(
+    params: V3dDiffParameters,
+    execution: Execution,
+) -> V3dDiffOutputs:
+    """
+    A program to examine element-wise differences between two images.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dDiffOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_diff_cargs(params, execution)
+    ret = v_3d_diff_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_diff(
@@ -58,44 +233,13 @@ def v_3d_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DIFF_METADATA)
-    cargs = []
-    cargs.append("3dDiff")
-    cargs.extend([
-        "-a",
-        execution.input_file(dataset_a)
-    ])
-    cargs.extend([
-        "-b",
-        execution.input_file(dataset_b)
-    ])
-    if tolerance is not None:
-        cargs.extend([
-            "-tol",
-            str(tolerance)
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if quiet_mode:
-        cargs.append("-q")
-    if tabular_mode:
-        cargs.append("-tabular")
-    if brutalist_mode:
-        cargs.append("-brutalist")
-    if long_report_mode:
-        cargs.append("-long_report")
-    ret = V3dDiffOutputs(
-        root=execution.output_file("."),
-        output_log=execution.output_file(pathlib.Path(dataset_a).name + "_vs_" + pathlib.Path(dataset_b).name + ".log"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_diff_params(dataset_a=dataset_a, dataset_b=dataset_b, tolerance=tolerance, mask=mask, quiet_mode=quiet_mode, tabular_mode=tabular_mode, brutalist_mode=brutalist_mode, long_report_mode=long_report_mode)
+    return v_3d_diff_execute(params, execution)
 
 
 __all__ = [
     "V3dDiffOutputs",
     "V_3D_DIFF_METADATA",
     "v_3d_diff",
+    "v_3d_diff_params",
 ]

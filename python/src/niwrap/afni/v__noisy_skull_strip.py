@@ -12,6 +12,46 @@ V__NOISY_SKULL_STRIP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VNoisySkullStripParameters = typing.TypedDict('VNoisySkullStripParameters', {
+    "__STYX_TYPE__": typing.Literal["@NoisySkullStrip"],
+    "input_file": InputPathType,
+    "keep_tmp": bool,
+    "3dskullstrip_opts": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@NoisySkullStrip": v__noisy_skull_strip_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@NoisySkullStrip": v__noisy_skull_strip_outputs,
+    }
+    return vt.get(t)
 
 
 class VNoisySkullStripOutputs(typing.NamedTuple):
@@ -28,6 +68,108 @@ class VNoisySkullStripOutputs(typing.NamedTuple):
     """Special mask output - skull"""
     anat_lsp: OutputPathType
     """Volume used to threshold 'air' out of the volume to be stripped"""
+
+
+def v__noisy_skull_strip_params(
+    input_file: InputPathType,
+    keep_tmp: bool = False,
+    v_3dskullstrip_opts: str | None = None,
+) -> VNoisySkullStripParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: The anatomical dataset.
+        keep_tmp: Do not erase temporary files at the end.
+        v_3dskullstrip_opts: Anything following this option is passed to\
+            3dSkullStrip.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@NoisySkullStrip",
+        "input_file": input_file,
+        "keep_tmp": keep_tmp,
+    }
+    if v_3dskullstrip_opts is not None:
+        params["3dskullstrip_opts"] = v_3dskullstrip_opts
+    return params
+
+
+def v__noisy_skull_strip_cargs(
+    params: VNoisySkullStripParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@NoisySkullStrip")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    if params.get("keep_tmp"):
+        cargs.append("-keep_tmp")
+    if params.get("3dskullstrip_opts") is not None:
+        cargs.extend([
+            "-3dSkullStrip_opts",
+            params.get("3dskullstrip_opts")
+        ])
+    return cargs
+
+
+def v__noisy_skull_strip_outputs(
+    params: VNoisySkullStripParameters,
+    execution: Execution,
+) -> VNoisySkullStripOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VNoisySkullStripOutputs(
+        root=execution.output_file("."),
+        anat_ns=execution.output_file(pathlib.Path(params.get("input_file")).name + ".ns"),
+        anat_air=execution.output_file(pathlib.Path(params.get("input_file")).name + ".air"),
+        anat_skl=execution.output_file(pathlib.Path(params.get("input_file")).name + ".skl"),
+        anat_lsp=execution.output_file(pathlib.Path(params.get("input_file")).name + ".lsp"),
+    )
+    return ret
+
+
+def v__noisy_skull_strip_execute(
+    params: VNoisySkullStripParameters,
+    execution: Execution,
+) -> VNoisySkullStripOutputs:
+    """
+    Strips the skull of anatomical datasets with low SNR.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VNoisySkullStripOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__noisy_skull_strip_cargs(params, execution)
+    ret = v__noisy_skull_strip_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__noisy_skull_strip(
@@ -54,32 +196,13 @@ def v__noisy_skull_strip(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__NOISY_SKULL_STRIP_METADATA)
-    cargs = []
-    cargs.append("@NoisySkullStrip")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    if keep_tmp:
-        cargs.append("-keep_tmp")
-    if v_3dskullstrip_opts is not None:
-        cargs.extend([
-            "-3dSkullStrip_opts",
-            v_3dskullstrip_opts
-        ])
-    ret = VNoisySkullStripOutputs(
-        root=execution.output_file("."),
-        anat_ns=execution.output_file(pathlib.Path(input_file).name + ".ns"),
-        anat_air=execution.output_file(pathlib.Path(input_file).name + ".air"),
-        anat_skl=execution.output_file(pathlib.Path(input_file).name + ".skl"),
-        anat_lsp=execution.output_file(pathlib.Path(input_file).name + ".lsp"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__noisy_skull_strip_params(input_file=input_file, keep_tmp=keep_tmp, v_3dskullstrip_opts=v_3dskullstrip_opts)
+    return v__noisy_skull_strip_execute(params, execution)
 
 
 __all__ = [
     "VNoisySkullStripOutputs",
     "V__NOISY_SKULL_STRIP_METADATA",
     "v__noisy_skull_strip",
+    "v__noisy_skull_strip_params",
 ]

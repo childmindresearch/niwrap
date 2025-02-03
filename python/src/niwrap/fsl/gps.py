@@ -12,6 +12,51 @@ GPS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+GpsParameters = typing.TypedDict('GpsParameters', {
+    "__STYX_TYPE__": typing.Literal["gps"],
+    "ndir": float,
+    "optws": bool,
+    "output": typing.NotRequired[str | None],
+    "ranseed": typing.NotRequired[float | None],
+    "init": typing.NotRequired[InputPathType | None],
+    "report": bool,
+    "verbose": bool,
+    "help": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "gps": gps_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "gps": gps_outputs,
+    }
+    return vt.get(t)
 
 
 class GpsOutputs(typing.NamedTuple):
@@ -22,6 +67,138 @@ class GpsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType | None
     """Output file with generated directions"""
+
+
+def gps_params(
+    ndir: float,
+    optws: bool = False,
+    output: str | None = "bvecs#.txt",
+    ranseed: float | None = None,
+    init: InputPathType | None = None,
+    report: bool = False,
+    verbose: bool = False,
+    help_: bool = False,
+) -> GpsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        ndir: Number of directions.
+        optws: Perform additional optimisation on the whole sphere (needed for\
+            eddy).
+        output: Name of output file (default: bvecs#.txt).
+        ranseed: Seed random generator with supplied number.
+        init: File with bvecs to use as initialisation.
+        report: Report coulomb forces for initial configuration.
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "gps",
+        "ndir": ndir,
+        "optws": optws,
+        "report": report,
+        "verbose": verbose,
+        "help": help_,
+    }
+    if output is not None:
+        params["output"] = output
+    if ranseed is not None:
+        params["ranseed"] = ranseed
+    if init is not None:
+        params["init"] = init
+    return params
+
+
+def gps_cargs(
+    params: GpsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("gps")
+    cargs.extend([
+        "--ndir",
+        str(params.get("ndir"))
+    ])
+    if params.get("optws"):
+        cargs.append("--optws")
+    if params.get("output") is not None:
+        cargs.extend([
+            "--out",
+            params.get("output")
+        ])
+    if params.get("ranseed") is not None:
+        cargs.extend([
+            "--ranseed",
+            str(params.get("ranseed"))
+        ])
+    if params.get("init") is not None:
+        cargs.extend([
+            "--init",
+            execution.input_file(params.get("init"))
+        ])
+    if params.get("report"):
+        cargs.append("--report")
+    if params.get("verbose"):
+        cargs.append("-v,--verbose")
+    if params.get("help"):
+        cargs.append("-h,--help")
+    return cargs
+
+
+def gps_outputs(
+    params: GpsParameters,
+    execution: Execution,
+) -> GpsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = GpsOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output")) if (params.get("output") is not None) else None,
+    )
+    return ret
+
+
+def gps_execute(
+    params: GpsParameters,
+    execution: Execution,
+) -> GpsOutputs:
+    """
+    Generate set of diffusion gradient directions.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `GpsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = gps_cargs(params, execution)
+    ret = gps_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def gps(
@@ -58,45 +235,13 @@ def gps(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GPS_METADATA)
-    cargs = []
-    cargs.append("gps")
-    cargs.extend([
-        "--ndir",
-        str(ndir)
-    ])
-    if optws:
-        cargs.append("--optws")
-    if output is not None:
-        cargs.extend([
-            "--out",
-            output
-        ])
-    if ranseed is not None:
-        cargs.extend([
-            "--ranseed",
-            str(ranseed)
-        ])
-    if init is not None:
-        cargs.extend([
-            "--init",
-            execution.input_file(init)
-        ])
-    if report:
-        cargs.append("--report")
-    if verbose:
-        cargs.append("-v,--verbose")
-    if help_:
-        cargs.append("-h,--help")
-    ret = GpsOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output) if (output is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = gps_params(ndir=ndir, optws=optws, output=output, ranseed=ranseed, init=init, report=report, verbose=verbose, help_=help_)
+    return gps_execute(params, execution)
 
 
 __all__ = [
     "GPS_METADATA",
     "GpsOutputs",
     "gps",
+    "gps_params",
 ]

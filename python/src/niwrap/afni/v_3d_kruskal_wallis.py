@@ -12,6 +12,48 @@ V_3D_KRUSKAL_WALLIS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dKruskalWallisParameters = typing.TypedDict('V3dKruskalWallisParameters', {
+    "__STYX_TYPE__": typing.Literal["3dKruskalWallis"],
+    "levels": int,
+    "datasets": list[str],
+    "workmem": typing.NotRequired[int | None],
+    "voxel": typing.NotRequired[int | None],
+    "output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dKruskalWallis": v_3d_kruskal_wallis_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dKruskalWallis": v_3d_kruskal_wallis_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dKruskalWallisOutputs(typing.NamedTuple):
@@ -22,6 +64,124 @@ class V3dKruskalWallisOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile_prefix: OutputPathType
     """Output file containing Kruskal-Wallis statistics"""
+
+
+def v_3d_kruskal_wallis_params(
+    levels: int,
+    datasets: list[str],
+    output: str,
+    workmem: int | None = None,
+    voxel: int | None = None,
+) -> V3dKruskalWallisParameters:
+    """
+    Build parameters.
+    
+    Args:
+        levels: Number of treatments.
+        datasets: Data set for treatment #1 through to treatment #s. Specify\
+            sub-brick if more than one present.
+        output: Kruskal-Wallis statistics are written to file prefixname.
+        workmem: Number of megabytes of RAM to use for statistical workspace.
+        voxel: Screen output for voxel # num.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dKruskalWallis",
+        "levels": levels,
+        "datasets": datasets,
+        "output": output,
+    }
+    if workmem is not None:
+        params["workmem"] = workmem
+    if voxel is not None:
+        params["voxel"] = voxel
+    return params
+
+
+def v_3d_kruskal_wallis_cargs(
+    params: V3dKruskalWallisParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dKruskalWallis")
+    cargs.extend([
+        "-levels",
+        str(params.get("levels"))
+    ])
+    cargs.extend([
+        "-dset",
+        *params.get("datasets")
+    ])
+    if params.get("workmem") is not None:
+        cargs.extend([
+            "-workmem",
+            str(params.get("workmem"))
+        ])
+    if params.get("voxel") is not None:
+        cargs.extend([
+            "-voxel",
+            str(params.get("voxel"))
+        ])
+    cargs.extend([
+        "-out",
+        params.get("output")
+    ])
+    return cargs
+
+
+def v_3d_kruskal_wallis_outputs(
+    params: V3dKruskalWallisParameters,
+    execution: Execution,
+) -> V3dKruskalWallisOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dKruskalWallisOutputs(
+        root=execution.output_file("."),
+        outfile_prefix=execution.output_file(params.get("output") + "+tlrc"),
+    )
+    return ret
+
+
+def v_3d_kruskal_wallis_execute(
+    params: V3dKruskalWallisParameters,
+    execution: Execution,
+) -> V3dKruskalWallisOutputs:
+    """
+    This program performs nonparametric Kruskal-Wallis test for comparison of
+    multiple treatments.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_kruskal_wallis_cargs(params, execution)
+    ret = v_3d_kruskal_wallis_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_kruskal_wallis(
@@ -51,44 +211,15 @@ def v_3d_kruskal_wallis(
     Returns:
         NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).
     """
-    if not (2 <= levels): 
-        raise ValueError(f"'levels' must be greater than 2 <= x but was {levels}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_KRUSKAL_WALLIS_METADATA)
-    cargs = []
-    cargs.append("3dKruskalWallis")
-    cargs.extend([
-        "-levels",
-        str(levels)
-    ])
-    cargs.extend([
-        "-dset",
-        *datasets
-    ])
-    if workmem is not None:
-        cargs.extend([
-            "-workmem",
-            str(workmem)
-        ])
-    if voxel is not None:
-        cargs.extend([
-            "-voxel",
-            str(voxel)
-        ])
-    cargs.extend([
-        "-out",
-        output
-    ])
-    ret = V3dKruskalWallisOutputs(
-        root=execution.output_file("."),
-        outfile_prefix=execution.output_file(output + "+tlrc"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_kruskal_wallis_params(levels=levels, datasets=datasets, workmem=workmem, voxel=voxel, output=output)
+    return v_3d_kruskal_wallis_execute(params, execution)
 
 
 __all__ = [
     "V3dKruskalWallisOutputs",
     "V_3D_KRUSKAL_WALLIS_METADATA",
     "v_3d_kruskal_wallis",
+    "v_3d_kruskal_wallis_params",
 ]

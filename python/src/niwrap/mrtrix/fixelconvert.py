@@ -12,136 +12,273 @@ FIXELCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+FixelconvertConfigParameters = typing.TypedDict('FixelconvertConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+FixelconvertVariousStringParameters = typing.TypedDict('FixelconvertVariousStringParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+FixelconvertVariousFileParameters = typing.TypedDict('FixelconvertVariousFileParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+FixelconvertVariousStringParameters_ = typing.TypedDict('FixelconvertVariousStringParameters_', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+FixelconvertVariousFileParameters_ = typing.TypedDict('FixelconvertVariousFileParameters_', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+FixelconvertParameters = typing.TypedDict('FixelconvertParameters', {
+    "__STYX_TYPE__": typing.Literal["fixelconvert"],
+    "name": typing.NotRequired[str | None],
+    "nii": bool,
+    "out_size": bool,
+    "template": typing.NotRequired[InputPathType | None],
+    "value": typing.NotRequired[InputPathType | None],
+    "in_size": typing.NotRequired[InputPathType | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[FixelconvertConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "fixel_in": typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
+    "fixel_out": typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
+})
 
 
-@dataclasses.dataclass
-class FixelconvertConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    vt = {
+        "fixelconvert": fixelconvert_cargs,
+        "config": fixelconvert_config_cargs,
+        "VariousString": fixelconvert_various_string_cargs,
+        "VariousFile": fixelconvert_various_file_cargs,
+        "VariousString": fixelconvert_various_string_cargs_,
+        "VariousFile": fixelconvert_various_file_cargs_,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class FixelconvertVariousString:
-    obj: str
-    """String object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
-
-
-@dataclasses.dataclass
-class FixelconvertVariousFile:
-    obj: InputPathType
-    """File object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
-
-
-@dataclasses.dataclass
-class FixelconvertVariousString_:
-    obj: str
-    """String object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
-
-
-@dataclasses.dataclass
-class FixelconvertVariousFile_:
-    obj: InputPathType
-    """File object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
-
-
-class FixelconvertOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fixelconvert(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
 
 
-def fixelconvert(
-    fixel_in: typing.Union[FixelconvertVariousString, FixelconvertVariousFile],
-    fixel_out: typing.Union[FixelconvertVariousString_, FixelconvertVariousFile_],
+def fixelconvert_config_params(
+    key: str,
+    value: str,
+) -> FixelconvertConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def fixelconvert_config_cargs(
+    params: FixelconvertConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def fixelconvert_various_string_params(
+    obj: str,
+) -> FixelconvertVariousStringParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def fixelconvert_various_string_cargs(
+    params: FixelconvertVariousStringParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def fixelconvert_various_file_params(
+    obj: InputPathType,
+) -> FixelconvertVariousFileParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def fixelconvert_various_file_cargs(
+    params: FixelconvertVariousFileParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def fixelconvert_various_string_params_(
+    obj: str,
+) -> FixelconvertVariousStringParameters_:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def fixelconvert_various_string_cargs_(
+    params: FixelconvertVariousStringParameters_,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def fixelconvert_various_file_params_(
+    obj: InputPathType,
+) -> FixelconvertVariousFileParameters_:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def fixelconvert_various_file_cargs_(
+    params: FixelconvertVariousFileParameters_,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def fixelconvert_params(
+    fixel_in: typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
+    fixel_out: typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
     name: str | None = None,
     nii: bool = False,
     out_size: bool = False,
@@ -153,7 +290,197 @@ def fixelconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelconvertConfig] | None = None,
+    config: list[FixelconvertConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> FixelconvertParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fixel_in: the input fixel file / directory.
+        fixel_out: the output fixel file / directory.
+        name: assign a different name to the value field output (Default:\
+            value). Do not include the file extension.
+        nii: output the index, directions and data file in NIfTI format instead\
+            of .mif.
+        out_size: also output the 'size' field from the old format.
+        template: specify an existing fixel directory (in the new format) to\
+            which the new output should conform.
+        value: nominate the data file to import to the 'value' field in the old\
+            format.
+        in_size: import data for the 'size' field in the old format.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fixelconvert",
+        "nii": nii,
+        "out_size": out_size,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "fixel_in": fixel_in,
+        "fixel_out": fixel_out,
+    }
+    if name is not None:
+        params["name"] = name
+    if template is not None:
+        params["template"] = template
+    if value is not None:
+        params["value"] = value
+    if in_size is not None:
+        params["in_size"] = in_size
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def fixelconvert_cargs(
+    params: FixelconvertParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fixelconvert")
+    if params.get("name") is not None:
+        cargs.extend([
+            "-name",
+            params.get("name")
+        ])
+    if params.get("nii"):
+        cargs.append("-nii")
+    if params.get("out_size"):
+        cargs.append("-out_size")
+    if params.get("template") is not None:
+        cargs.extend([
+            "-template",
+            execution.input_file(params.get("template"))
+        ])
+    if params.get("value") is not None:
+        cargs.extend([
+            "-value",
+            execution.input_file(params.get("value"))
+        ])
+    if params.get("in_size") is not None:
+        cargs.extend([
+            "-in_size",
+            execution.input_file(params.get("in_size"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.extend(dyn_cargs(params.get("fixel_in")["__STYXTYPE__"])(params.get("fixel_in"), execution))
+    cargs.extend(dyn_cargs(params.get("fixel_out")["__STYXTYPE__"])(params.get("fixel_out"), execution))
+    return cargs
+
+
+def fixelconvert_outputs(
+    params: FixelconvertParameters,
+    execution: Execution,
+) -> FixelconvertOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FixelconvertOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fixelconvert_execute(
+    params: FixelconvertParameters,
+    execution: Execution,
+) -> FixelconvertOutputs:
+    """
+    Convert between the old format fixel image (.msf / .msh) and the new fixel
+    directory format.
+    
+    
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FixelconvertOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fixelconvert_cargs(params, execution)
+    ret = fixelconvert_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def fixelconvert(
+    fixel_in: typing.Union[FixelconvertVariousStringParameters, FixelconvertVariousFileParameters],
+    fixel_out: typing.Union[FixelconvertVariousStringParameters_, FixelconvertVariousFileParameters_],
+    name: str | None = None,
+    nii: bool = False,
+    out_size: bool = False,
+    template: InputPathType | None = None,
+    value: InputPathType | None = None,
+    in_size: InputPathType | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[FixelconvertConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -203,67 +530,17 @@ def fixelconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCONVERT_METADATA)
-    cargs = []
-    cargs.append("fixelconvert")
-    if name is not None:
-        cargs.extend([
-            "-name",
-            name
-        ])
-    if nii:
-        cargs.append("-nii")
-    if out_size:
-        cargs.append("-out_size")
-    if template is not None:
-        cargs.extend([
-            "-template",
-            execution.input_file(template)
-        ])
-    if value is not None:
-        cargs.extend([
-            "-value",
-            execution.input_file(value)
-        ])
-    if in_size is not None:
-        cargs.extend([
-            "-in_size",
-            execution.input_file(in_size)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.extend(fixel_in.run(execution))
-    cargs.extend(fixel_out.run(execution))
-    ret = FixelconvertOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fixelconvert_params(name=name, nii=nii, out_size=out_size, template=template, value=value, in_size=in_size, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, fixel_out=fixel_out)
+    return fixelconvert_execute(params, execution)
 
 
 __all__ = [
     "FIXELCONVERT_METADATA",
-    "FixelconvertConfig",
-    "FixelconvertOutputs",
-    "FixelconvertVariousFile",
-    "FixelconvertVariousFile_",
-    "FixelconvertVariousString",
-    "FixelconvertVariousString_",
     "fixelconvert",
+    "fixelconvert_config_params",
+    "fixelconvert_params",
+    "fixelconvert_various_file_params",
+    "fixelconvert_various_file_params_",
+    "fixelconvert_various_string_params",
+    "fixelconvert_various_string_params_",
 ]

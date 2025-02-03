@@ -12,6 +12,50 @@ V_3D_DFT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dDftParameters = typing.TypedDict('V3dDftParameters', {
+    "__STYX_TYPE__": typing.Literal["3dDFT"],
+    "infile": InputPathType,
+    "prefix": str,
+    "abs_output": bool,
+    "nfft": typing.NotRequired[float | None],
+    "detrend": bool,
+    "taper": typing.NotRequired[float | None],
+    "inverse": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dDFT": v_3d_dft_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dDFT": v_3d_dft_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dDftOutputs(typing.NamedTuple):
@@ -24,6 +68,129 @@ class V3dDftOutputs(typing.NamedTuple):
     """Output dataset file"""
     outheader: OutputPathType
     """Output dataset header file"""
+
+
+def v_3d_dft_params(
+    infile: InputPathType,
+    prefix: str,
+    abs_output: bool = False,
+    nfft: float | None = None,
+    detrend: bool = False,
+    taper: float | None = None,
+    inverse: bool = False,
+) -> V3dDftParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input dataset (complex- or float-valued).
+        prefix: Prefix for the output file.
+        abs_output: Output float dataset = abs(DFT).
+        nfft: DFT length (must be >= number of time points).
+        detrend: Least-squares remove linear drift before DFT.
+        taper: Fraction (0 <= f <= 1) of data to taper at ends (Hamming taper).
+        inverse: Perform the inverse DFT.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dDFT",
+        "infile": infile,
+        "prefix": prefix,
+        "abs_output": abs_output,
+        "detrend": detrend,
+        "inverse": inverse,
+    }
+    if nfft is not None:
+        params["nfft"] = nfft
+    if taper is not None:
+        params["taper"] = taper
+    return params
+
+
+def v_3d_dft_cargs(
+    params: V3dDftParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dDFT")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("abs_output"):
+        cargs.append("-abs")
+    if params.get("nfft") is not None:
+        cargs.extend([
+            "-nfft",
+            str(params.get("nfft"))
+        ])
+    if params.get("detrend"):
+        cargs.append("-detrend")
+    if params.get("taper") is not None:
+        cargs.extend([
+            "-taper",
+            str(params.get("taper"))
+        ])
+    if params.get("inverse"):
+        cargs.append("-inverse")
+    return cargs
+
+
+def v_3d_dft_outputs(
+    params: V3dDftParameters,
+    execution: Execution,
+) -> V3dDftOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dDftOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("prefix") + "+orig.BRIK"),
+        outheader=execution.output_file(params.get("prefix") + "+orig.HEAD"),
+    )
+    return ret
+
+
+def v_3d_dft_execute(
+    params: V3dDftParameters,
+    execution: Execution,
+) -> V3dDftOutputs:
+    """
+    Performs Discrete Fourier Transform (DFT) along the time axis of a complex- or
+    float-valued dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dDftOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_dft_cargs(params, execution)
+    ret = v_3d_dft_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_dft(
@@ -56,44 +223,15 @@ def v_3d_dft(
     Returns:
         NamedTuple of outputs (described in `V3dDftOutputs`).
     """
-    if taper is not None and not (0.0 <= taper <= 1.0): 
-        raise ValueError(f"'taper' must be between 0.0 <= x <= 1.0 but was {taper}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DFT_METADATA)
-    cargs = []
-    cargs.append("3dDFT")
-    cargs.append(execution.input_file(infile))
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if abs_output:
-        cargs.append("-abs")
-    if nfft is not None:
-        cargs.extend([
-            "-nfft",
-            str(nfft)
-        ])
-    if detrend:
-        cargs.append("-detrend")
-    if taper is not None:
-        cargs.extend([
-            "-taper",
-            str(taper)
-        ])
-    if inverse:
-        cargs.append("-inverse")
-    ret = V3dDftOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(prefix + "+orig.BRIK"),
-        outheader=execution.output_file(prefix + "+orig.HEAD"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_dft_params(infile=infile, prefix=prefix, abs_output=abs_output, nfft=nfft, detrend=detrend, taper=taper, inverse=inverse)
+    return v_3d_dft_execute(params, execution)
 
 
 __all__ = [
     "V3dDftOutputs",
     "V_3D_DFT_METADATA",
     "v_3d_dft",
+    "v_3d_dft_params",
 ]

@@ -12,35 +12,100 @@ MASKDUMP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+MaskdumpConfigParameters = typing.TypedDict('MaskdumpConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+MaskdumpParameters = typing.TypedDict('MaskdumpParameters', {
+    "__STYX_TYPE__": typing.Literal["maskdump"],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[MaskdumpConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "input": InputPathType,
+    "output": typing.NotRequired[str | None],
+})
 
 
-@dataclasses.dataclass
-class MaskdumpConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "maskdump": maskdump_cargs,
+        "config": maskdump_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "maskdump": maskdump_outputs,
+    }
+    return vt.get(t)
+
+
+def maskdump_config_params(
+    key: str,
+    value: str,
+) -> MaskdumpConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def maskdump_config_cargs(
+    params: MaskdumpConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class MaskdumpOutputs(typing.NamedTuple):
@@ -53,6 +118,149 @@ class MaskdumpOutputs(typing.NamedTuple):
     """the (optional) output text file."""
 
 
+def maskdump_params(
+    input_: InputPathType,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[MaskdumpConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+    output: str | None = None,
+) -> MaskdumpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: the input image.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+        output: the (optional) output text file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "maskdump",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "input": input_,
+    }
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    if output is not None:
+        params["output"] = output
+    return params
+
+
+def maskdump_cargs(
+    params: MaskdumpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("maskdump")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("input")))
+    if params.get("output") is not None:
+        cargs.append(params.get("output"))
+    return cargs
+
+
+def maskdump_outputs(
+    params: MaskdumpParameters,
+    execution: Execution,
+) -> MaskdumpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MaskdumpOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")) if (params.get("output") is not None) else None,
+    )
+    return ret
+
+
+def maskdump_execute(
+    params: MaskdumpParameters,
+    execution: Execution,
+) -> MaskdumpOutputs:
+    """
+    Print out the locations of all non-zero voxels in a mask image.
+    
+    If no destination file is specified, the voxel locations will be printed to
+    stdout.
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MaskdumpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = maskdump_cargs(params, execution)
+    ret = maskdump_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def maskdump(
     input_: InputPathType,
     info: bool = False,
@@ -60,7 +268,7 @@ def maskdump(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MaskdumpConfig] | None = None,
+    config: list[MaskdumpConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     output: str | None = None,
@@ -101,41 +309,14 @@ def maskdump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MASKDUMP_METADATA)
-    cargs = []
-    cargs.append("maskdump")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(input_))
-    if output is not None:
-        cargs.append(output)
-    ret = MaskdumpOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(output) if (output is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = maskdump_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    return maskdump_execute(params, execution)
 
 
 __all__ = [
     "MASKDUMP_METADATA",
-    "MaskdumpConfig",
     "MaskdumpOutputs",
     "maskdump",
+    "maskdump_config_params",
+    "maskdump_params",
 ]

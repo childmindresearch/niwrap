@@ -12,14 +12,168 @@ V_1DGRAYPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dgrayplotParameters = typing.TypedDict('V1dgrayplotParameters', {
+    "__STYX_TYPE__": typing.Literal["1dgrayplot"],
+    "tsfile": InputPathType,
+    "install": bool,
+    "ignore": typing.NotRequired[float | None],
+    "flip": bool,
+    "sep": bool,
+    "use": typing.NotRequired[float | None],
+    "ps": bool,
+})
 
 
-class V1dgrayplotOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v_1dgrayplot(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "1dgrayplot": v_1dgrayplot_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v_1dgrayplot_params(
+    tsfile: InputPathType,
+    install: bool = False,
+    ignore: float | None = None,
+    flip: bool = False,
+    sep: bool = False,
+    use: float | None = None,
+    ps: bool = False,
+) -> V1dgrayplotParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tsfile: Input time series file (*.1D format).
+        install: Install a new X11 colormap (for X11 PseudoColor).
+        ignore: Skip first 'nn' rows in the input file [default = 0].
+        flip: Plot x and y axes interchanged [default: data columns plotted\
+            DOWN the screen].
+        sep: Separate scales for each column.
+        use: Plot 'mm' points [default: all of them].
+        ps: Don't draw plot in a window; write it to stdout in PostScript\
+            format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dgrayplot",
+        "tsfile": tsfile,
+        "install": install,
+        "flip": flip,
+        "sep": sep,
+        "ps": ps,
+    }
+    if ignore is not None:
+        params["ignore"] = ignore
+    if use is not None:
+        params["use"] = use
+    return params
+
+
+def v_1dgrayplot_cargs(
+    params: V1dgrayplotParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dgrayplot")
+    cargs.append(execution.input_file(params.get("tsfile")))
+    if params.get("install"):
+        cargs.append("-install")
+    if params.get("ignore") is not None:
+        cargs.extend([
+            "-ignore",
+            str(params.get("ignore"))
+        ])
+    if params.get("flip"):
+        cargs.append("-flip")
+    if params.get("sep"):
+        cargs.append("-sep")
+    if params.get("use") is not None:
+        cargs.extend([
+            "-use",
+            str(params.get("use"))
+        ])
+    if params.get("ps"):
+        cargs.append("-ps")
+    return cargs
+
+
+def v_1dgrayplot_outputs(
+    params: V1dgrayplotParameters,
+    execution: Execution,
+) -> V1dgrayplotOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dgrayplotOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v_1dgrayplot_execute(
+    params: V1dgrayplotParameters,
+    execution: Execution,
+) -> V1dgrayplotOutputs:
+    """
+    Graphs the columns of a *.1D type time series file to the screen in grayscale.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dgrayplotOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1dgrayplot_cargs(params, execution)
+    ret = v_1dgrayplot_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1dgrayplot(
@@ -55,36 +209,12 @@ def v_1dgrayplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DGRAYPLOT_METADATA)
-    cargs = []
-    cargs.append("1dgrayplot")
-    cargs.append(execution.input_file(tsfile))
-    if install:
-        cargs.append("-install")
-    if ignore is not None:
-        cargs.extend([
-            "-ignore",
-            str(ignore)
-        ])
-    if flip:
-        cargs.append("-flip")
-    if sep:
-        cargs.append("-sep")
-    if use is not None:
-        cargs.extend([
-            "-use",
-            str(use)
-        ])
-    if ps:
-        cargs.append("-ps")
-    ret = V1dgrayplotOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1dgrayplot_params(tsfile=tsfile, install=install, ignore=ignore, flip=flip, sep=sep, use=use, ps=ps)
+    return v_1dgrayplot_execute(params, execution)
 
 
 __all__ = [
-    "V1dgrayplotOutputs",
     "V_1DGRAYPLOT_METADATA",
     "v_1dgrayplot",
+    "v_1dgrayplot_params",
 ]

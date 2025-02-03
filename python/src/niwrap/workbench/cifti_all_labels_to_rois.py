@@ -12,6 +12,46 @@ CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiAllLabelsToRoisParameters = typing.TypedDict('CiftiAllLabelsToRoisParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-all-labels-to-rois"],
+    "label_in": InputPathType,
+    "map": str,
+    "cifti_out": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-all-labels-to-rois": cifti_all_labels_to_rois_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-all-labels-to-rois": cifti_all_labels_to_rois_outputs,
+    }
+    return vt.get(t)
 
 
 class CiftiAllLabelsToRoisOutputs(typing.NamedTuple):
@@ -22,6 +62,103 @@ class CiftiAllLabelsToRoisOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti file"""
+
+
+def cifti_all_labels_to_rois_params(
+    label_in: InputPathType,
+    map_: str,
+    cifti_out: str,
+) -> CiftiAllLabelsToRoisParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label_in: the input cifti label file.
+        map_: the number or name of the label map to use.
+        cifti_out: the output cifti file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-all-labels-to-rois",
+        "label_in": label_in,
+        "map": map_,
+        "cifti_out": cifti_out,
+    }
+    return params
+
+
+def cifti_all_labels_to_rois_cargs(
+    params: CiftiAllLabelsToRoisParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-all-labels-to-rois")
+    cargs.append(execution.input_file(params.get("label_in")))
+    cargs.append(params.get("map"))
+    cargs.append(params.get("cifti_out"))
+    return cargs
+
+
+def cifti_all_labels_to_rois_outputs(
+    params: CiftiAllLabelsToRoisParameters,
+    execution: Execution,
+) -> CiftiAllLabelsToRoisOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiAllLabelsToRoisOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_all_labels_to_rois_execute(
+    params: CiftiAllLabelsToRoisParameters,
+    execution: Execution,
+) -> CiftiAllLabelsToRoisOutputs:
+    """
+    Make rois from all labels in a cifti label map.
+    
+    The output cifti file is a dscalar file with a column (map) for each label
+    in the specified input map, other than the ??? label, each of which contains
+    a binary ROI of all brainordinates that are set to the corresponding label.
+    
+    Most of the time, specifying '1' for the <map> argument will do what is
+    desired.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiAllLabelsToRoisOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_all_labels_to_rois_cargs(params, execution)
+    ret = cifti_all_labels_to_rois_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cifti_all_labels_to_rois(
@@ -54,22 +191,13 @@ def cifti_all_labels_to_rois(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_ALL_LABELS_TO_ROIS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-all-labels-to-rois")
-    cargs.append(execution.input_file(label_in))
-    cargs.append(map_)
-    cargs.append(cifti_out)
-    ret = CiftiAllLabelsToRoisOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_all_labels_to_rois_params(label_in=label_in, map_=map_, cifti_out=cifti_out)
+    return cifti_all_labels_to_rois_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_ALL_LABELS_TO_ROIS_METADATA",
     "CiftiAllLabelsToRoisOutputs",
     "cifti_all_labels_to_rois",
+    "cifti_all_labels_to_rois_params",
 ]

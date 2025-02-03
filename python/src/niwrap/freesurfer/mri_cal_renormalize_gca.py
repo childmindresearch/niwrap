@@ -12,6 +12,48 @@ MRI_CAL_RENORMALIZE_GCA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriCalRenormalizeGcaParameters = typing.TypedDict('MriCalRenormalizeGcaParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_cal_renormalize_gca"],
+    "timepoint_file": InputPathType,
+    "in_vol": InputPathType,
+    "input_atlas": InputPathType,
+    "transform_file": InputPathType,
+    "output_atlas": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_cal_renormalize_gca": mri_cal_renormalize_gca_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_cal_renormalize_gca": mri_cal_renormalize_gca_outputs,
+    }
+    return vt.get(t)
 
 
 class MriCalRenormalizeGcaOutputs(typing.NamedTuple):
@@ -22,6 +64,103 @@ class MriCalRenormalizeGcaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_atlas_file: OutputPathType
     """Renormalized output atlas"""
+
+
+def mri_cal_renormalize_gca_params(
+    timepoint_file: InputPathType,
+    in_vol: InputPathType,
+    input_atlas: InputPathType,
+    transform_file: InputPathType,
+    output_atlas: str,
+) -> MriCalRenormalizeGcaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        timepoint_file: Longitudinal time point file.
+        in_vol: Input volume.
+        input_atlas: Input atlas.
+        transform_file: Transform file.
+        output_atlas: Output atlas.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_cal_renormalize_gca",
+        "timepoint_file": timepoint_file,
+        "in_vol": in_vol,
+        "input_atlas": input_atlas,
+        "transform_file": transform_file,
+        "output_atlas": output_atlas,
+    }
+    return params
+
+
+def mri_cal_renormalize_gca_cargs(
+    params: MriCalRenormalizeGcaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_cal_renormalize_gca")
+    cargs.append(execution.input_file(params.get("timepoint_file")))
+    cargs.append(execution.input_file(params.get("in_vol")))
+    cargs.append(execution.input_file(params.get("input_atlas")))
+    cargs.append(execution.input_file(params.get("transform_file")))
+    cargs.append(params.get("output_atlas"))
+    return cargs
+
+
+def mri_cal_renormalize_gca_outputs(
+    params: MriCalRenormalizeGcaParameters,
+    execution: Execution,
+) -> MriCalRenormalizeGcaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriCalRenormalizeGcaOutputs(
+        root=execution.output_file("."),
+        output_atlas_file=execution.output_file(params.get("output_atlas")),
+    )
+    return ret
+
+
+def mri_cal_renormalize_gca_execute(
+    params: MriCalRenormalizeGcaParameters,
+    execution: Execution,
+) -> MriCalRenormalizeGcaOutputs:
+    """
+    Tool for atlas renormalization in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriCalRenormalizeGcaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_cal_renormalize_gca_cargs(params, execution)
+    ret = mri_cal_renormalize_gca_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_cal_renormalize_gca(
@@ -51,23 +190,13 @@ def mri_cal_renormalize_gca(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CAL_RENORMALIZE_GCA_METADATA)
-    cargs = []
-    cargs.append("mri_cal_renormalize_gca")
-    cargs.append(execution.input_file(timepoint_file))
-    cargs.append(execution.input_file(in_vol))
-    cargs.append(execution.input_file(input_atlas))
-    cargs.append(execution.input_file(transform_file))
-    cargs.append(output_atlas)
-    ret = MriCalRenormalizeGcaOutputs(
-        root=execution.output_file("."),
-        output_atlas_file=execution.output_file(output_atlas),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_cal_renormalize_gca_params(timepoint_file=timepoint_file, in_vol=in_vol, input_atlas=input_atlas, transform_file=transform_file, output_atlas=output_atlas)
+    return mri_cal_renormalize_gca_execute(params, execution)
 
 
 __all__ = [
     "MRI_CAL_RENORMALIZE_GCA_METADATA",
     "MriCalRenormalizeGcaOutputs",
     "mri_cal_renormalize_gca",
+    "mri_cal_renormalize_gca_params",
 ]

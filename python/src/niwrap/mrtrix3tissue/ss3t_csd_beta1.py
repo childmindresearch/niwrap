@@ -12,40 +12,115 @@ SS3T_CSD_BETA1_METADATA = Metadata(
     package="mrtrix3tissue",
     container_image_tag="brainlife/3tissue:5.2.8",
 )
+Ss3tCsdBeta1ConfigParameters = typing.TypedDict('Ss3tCsdBeta1ConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Ss3tCsdBeta1ResponseOdfParameters = typing.TypedDict('Ss3tCsdBeta1ResponseOdfParameters', {
+    "__STYX_TYPE__": typing.Literal["response_odf"],
+    "response": InputPathType,
+    "odf": str,
+})
+Ss3tCsdBeta1Parameters = typing.TypedDict('Ss3tCsdBeta1Parameters', {
+    "__STYX_TYPE__": typing.Literal["ss3t_csd_beta1"],
+    "mask": typing.NotRequired[InputPathType | None],
+    "bzero_pct": typing.NotRequired[float | None],
+    "niter": typing.NotRequired[int | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Ss3tCsdBeta1ConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "dwi": InputPathType,
+    "response_odf": list[Ss3tCsdBeta1ResponseOdfParameters],
+})
 
 
-@dataclasses.dataclass
-class Ss3tCsdBeta1Config:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ss3t_csd_beta1": ss3t_csd_beta1_cargs,
+        "config": ss3t_csd_beta1_config_cargs,
+        "response_odf": ss3t_csd_beta1_response_odf_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ss3t_csd_beta1": ss3t_csd_beta1_outputs,
+        "response_odf": ss3t_csd_beta1_response_odf_outputs,
+    }
+    return vt.get(t)
+
+
+def ss3t_csd_beta1_config_params(
+    key: str,
+    value: str,
+) -> Ss3tCsdBeta1ConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def ss3t_csd_beta1_config_cargs(
+    params: Ss3tCsdBeta1ConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Ss3tCsdBeta1ResponseOdfOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `list[Ss3tCsdBeta1ResponseOdf](...)`.
+    Output object returned when calling `list[Ss3tCsdBeta1ResponseOdfParameters](...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -53,50 +128,64 @@ class Ss3tCsdBeta1ResponseOdfOutputs(typing.NamedTuple):
     """output ODF image"""
 
 
-@dataclasses.dataclass
-class Ss3tCsdBeta1ResponseOdf:
+def ss3t_csd_beta1_response_odf_params(
+    response: InputPathType,
+    odf: str,
+) -> Ss3tCsdBeta1ResponseOdfParameters:
     """
-    pairs of input tissue response and output ODF images.
+    Build parameters.
+    
+    Args:
+        response: input tissue response.
+        odf: output ODF image.
+    Returns:
+        Parameter dictionary
     """
-    response: InputPathType
-    """input tissue response"""
-    odf: str
-    """output ODF image"""
+    params = {
+        "__STYXTYPE__": "response_odf",
+        "response": response,
+        "odf": odf,
+    }
+    return params
+
+
+def ss3t_csd_beta1_response_odf_cargs(
+    params: Ss3tCsdBeta1ResponseOdfParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.response))
-        cargs.append(self.odf)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("response")))
+    cargs.append(params.get("odf"))
+    return cargs
+
+
+def ss3t_csd_beta1_response_odf_outputs(
+    params: Ss3tCsdBeta1ResponseOdfParameters,
+    execution: Execution,
+) -> Ss3tCsdBeta1ResponseOdfOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Ss3tCsdBeta1ResponseOdfOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Ss3tCsdBeta1ResponseOdfOutputs`).
-        """
-        ret = Ss3tCsdBeta1ResponseOdfOutputs(
-            root=execution.output_file("."),
-            odf=execution.output_file(self.odf),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Ss3tCsdBeta1ResponseOdfOutputs(
+        root=execution.output_file("."),
+        odf=execution.output_file(params.get("odf")),
+    )
+    return ret
 
 
 class Ss3tCsdBeta1Outputs(typing.NamedTuple):
@@ -106,13 +195,13 @@ class Ss3tCsdBeta1Outputs(typing.NamedTuple):
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     response_odf: list[Ss3tCsdBeta1ResponseOdfOutputs]
-    """Outputs from `Ss3tCsdBeta1ResponseOdf`.This is a list of outputs with the
-    same length and order as the inputs."""
+    """Outputs from `ss3t_csd_beta1_response_odf_outputs`.This is a list of
+    outputs with the same length and order as the inputs."""
 
 
-def ss3t_csd_beta1(
+def ss3t_csd_beta1_params(
     dwi: InputPathType,
-    response_odf: list[Ss3tCsdBeta1ResponseOdf],
+    response_odf: list[Ss3tCsdBeta1ResponseOdfParameters],
     mask: InputPathType | None = None,
     bzero_pct: float | None = None,
     niter: int | None = None,
@@ -121,7 +210,176 @@ def ss3t_csd_beta1(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Ss3tCsdBeta1Config] | None = None,
+    config: list[Ss3tCsdBeta1ConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Ss3tCsdBeta1Parameters:
+    """
+    Build parameters.
+    
+    Args:
+        dwi: the input diffusion-weighted image.
+        response_odf: pairs of input tissue response and output ODF images.
+        mask: only perform computation within the specified binary brain mask\
+            image.
+        bzero_pct: the threshold below which the amplitude of the FOD is\
+            assumed to be zero, expressed as an absolute amplitude (default = 0).
+        niter: the maximum number of iterations to perform for each voxel\
+            (default = 50). Use '-niter 0' for a linear unconstrained spherical\
+            deconvolution.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ss3t_csd_beta1",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "dwi": dwi,
+        "response_odf": response_odf,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if bzero_pct is not None:
+        params["bzero_pct"] = bzero_pct
+    if niter is not None:
+        params["niter"] = niter
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def ss3t_csd_beta1_cargs(
+    params: Ss3tCsdBeta1Parameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ss3t_csd_beta1")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("bzero_pct") is not None:
+        cargs.extend([
+            "-bzero_pct",
+            str(params.get("bzero_pct"))
+        ])
+    if params.get("niter") is not None:
+        cargs.extend([
+            "-niter",
+            str(params.get("niter"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("dwi")))
+    cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("response_odf")] for a in c])
+    return cargs
+
+
+def ss3t_csd_beta1_outputs(
+    params: Ss3tCsdBeta1Parameters,
+    execution: Execution,
+) -> Ss3tCsdBeta1Outputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Ss3tCsdBeta1Outputs(
+        root=execution.output_file("."),
+        response_odf=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in response_odf],
+    )
+    return ret
+
+
+def ss3t_csd_beta1_execute(
+    params: Ss3tCsdBeta1Parameters,
+    execution: Execution,
+) -> Ss3tCsdBeta1Outputs:
+    """
+    SS3T-CSD: beta 1 implementation
+    
+    * Dhollander, T. & Connelly, A. A novel iterative approach to reap the
+    benefits of multi-tissue CSD from just single-shell (+b=0) diffusion MRI
+    data. Proc Intl Soc Mag Reson Med, 2016, 3010.
+    
+    Author: MRTrix3Tissue Developers
+    
+    URL: https://3tissue.github.io/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Ss3tCsdBeta1Outputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ss3t_csd_beta1_cargs(params, execution)
+    ret = ss3t_csd_beta1_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def ss3t_csd_beta1(
+    dwi: InputPathType,
+    response_odf: list[Ss3tCsdBeta1ResponseOdfParameters],
+    mask: InputPathType | None = None,
+    bzero_pct: float | None = None,
+    niter: int | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Ss3tCsdBeta1ConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -165,57 +423,16 @@ def ss3t_csd_beta1(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SS3T_CSD_BETA1_METADATA)
-    cargs = []
-    cargs.append("ss3t_csd_beta1")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if bzero_pct is not None:
-        cargs.extend([
-            "-bzero_pct",
-            str(bzero_pct)
-        ])
-    if niter is not None:
-        cargs.extend([
-            "-niter",
-            str(niter)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(dwi))
-    cargs.extend([a for c in [s.run(execution) for s in response_odf] for a in c])
-    ret = Ss3tCsdBeta1Outputs(
-        root=execution.output_file("."),
-        response_odf=[i.outputs(execution) if hasattr(i, "outputs") else None for i in response_odf],
-    )
-    execution.run(cargs)
-    return ret
+    params = ss3t_csd_beta1_params(mask=mask, bzero_pct=bzero_pct, niter=niter, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, dwi=dwi, response_odf=response_odf)
+    return ss3t_csd_beta1_execute(params, execution)
 
 
 __all__ = [
     "SS3T_CSD_BETA1_METADATA",
-    "Ss3tCsdBeta1Config",
     "Ss3tCsdBeta1Outputs",
-    "Ss3tCsdBeta1ResponseOdf",
     "Ss3tCsdBeta1ResponseOdfOutputs",
     "ss3t_csd_beta1",
+    "ss3t_csd_beta1_config_params",
+    "ss3t_csd_beta1_params",
+    "ss3t_csd_beta1_response_odf_params",
 ]

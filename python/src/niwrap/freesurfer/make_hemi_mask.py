@@ -12,6 +12,46 @@ MAKE_HEMI_MASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MakeHemiMaskParameters = typing.TypedDict('MakeHemiMaskParameters', {
+    "__STYX_TYPE__": typing.Literal["make_hemi_mask"],
+    "hemi": str,
+    "input_file": InputPathType,
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "make_hemi_mask": make_hemi_mask_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "make_hemi_mask": make_hemi_mask_outputs,
+    }
+    return vt.get(t)
 
 
 class MakeHemiMaskOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class MakeHemiMaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Hemisphere masked MRI volume output"""
+
+
+def make_hemi_mask_params(
+    hemi: str,
+    input_file: InputPathType,
+    output_file: str,
+) -> MakeHemiMaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        hemi: Hemisphere to keep ('lh' for left hemisphere, 'rh' for right\
+            hemisphere).
+        input_file: Input MRI volume file (e.g. input.mgz).
+        output_file: Output masked MRI volume file (e.g. output.mgz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "make_hemi_mask",
+        "hemi": hemi,
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    return params
+
+
+def make_hemi_mask_cargs(
+    params: MakeHemiMaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("make_hemi_mask")
+    cargs.append(params.get("hemi"))
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def make_hemi_mask_outputs(
+    params: MakeHemiMaskParameters,
+    execution: Execution,
+) -> MakeHemiMaskOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakeHemiMaskOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def make_hemi_mask_execute(
+    params: MakeHemiMaskParameters,
+    execution: Execution,
+) -> MakeHemiMaskOutputs:
+    """
+    Generates a hemisphere mask by registering input to the left/right reversed
+    version using mri_robust_register, then keeps only the selected hemisphere.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakeHemiMaskOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = make_hemi_mask_cargs(params, execution)
+    ret = make_hemi_mask_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def make_hemi_mask(
@@ -49,21 +180,13 @@ def make_hemi_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_HEMI_MASK_METADATA)
-    cargs = []
-    cargs.append("make_hemi_mask")
-    cargs.append(hemi)
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    ret = MakeHemiMaskOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = make_hemi_mask_params(hemi=hemi, input_file=input_file, output_file=output_file)
+    return make_hemi_mask_execute(params, execution)
 
 
 __all__ = [
     "MAKE_HEMI_MASK_METADATA",
     "MakeHemiMaskOutputs",
     "make_hemi_mask",
+    "make_hemi_mask_params",
 ]

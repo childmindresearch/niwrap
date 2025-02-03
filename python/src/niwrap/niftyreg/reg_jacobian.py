@@ -12,6 +12,50 @@ REG_JACOBIAN_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+RegJacobianParameters = typing.TypedDict('RegJacobianParameters', {
+    "__STYX_TYPE__": typing.Literal["reg_jacobian"],
+    "reference_image": InputPathType,
+    "deformation_field": typing.NotRequired[InputPathType | None],
+    "control_point_lattice": typing.NotRequired[InputPathType | None],
+    "output_jacobian": typing.NotRequired[str | None],
+    "output_jacobian_matrix": typing.NotRequired[str | None],
+    "output_log_jacobian": typing.NotRequired[str | None],
+    "affine_matrix": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "reg_jacobian": reg_jacobian_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "reg_jacobian": reg_jacobian_outputs,
+    }
+    return vt.get(t)
 
 
 class RegJacobianOutputs(typing.NamedTuple):
@@ -26,6 +70,152 @@ class RegJacobianOutputs(typing.NamedTuple):
     """File containing the Jacobian matrix map"""
     output_log_jacobian_file: OutputPathType | None
     """File containing the log of the Jacobian determinant map"""
+
+
+def reg_jacobian_params(
+    reference_image: InputPathType,
+    deformation_field: InputPathType | None = None,
+    control_point_lattice: InputPathType | None = None,
+    output_jacobian: str | None = None,
+    output_jacobian_matrix: str | None = None,
+    output_log_jacobian: str | None = None,
+    affine_matrix: InputPathType | None = None,
+) -> RegJacobianParameters:
+    """
+    Build parameters.
+    
+    Args:
+        reference_image: Filename of the reference image.
+        deformation_field: Filename of the deformation field (from\
+            reg_transform).
+        control_point_lattice: Filename of the control point position lattice\
+            (from reg_f3d).
+        output_jacobian: Filename of the Jacobian determinant map.
+        output_jacobian_matrix: Filename of the Jacobian matrix map (9 or 4\
+            values stored as a 5D nifti).
+        output_log_jacobian: Filename of the Log of the Jacobian determinant\
+            map.
+        affine_matrix: Filename of the affine matrix to modulate the Jacobian\
+            determinant map.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reg_jacobian",
+        "reference_image": reference_image,
+    }
+    if deformation_field is not None:
+        params["deformation_field"] = deformation_field
+    if control_point_lattice is not None:
+        params["control_point_lattice"] = control_point_lattice
+    if output_jacobian is not None:
+        params["output_jacobian"] = output_jacobian
+    if output_jacobian_matrix is not None:
+        params["output_jacobian_matrix"] = output_jacobian_matrix
+    if output_log_jacobian is not None:
+        params["output_log_jacobian"] = output_log_jacobian
+    if affine_matrix is not None:
+        params["affine_matrix"] = affine_matrix
+    return params
+
+
+def reg_jacobian_cargs(
+    params: RegJacobianParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("reg_jacobian")
+    cargs.extend([
+        "-ref",
+        execution.input_file(params.get("reference_image"))
+    ])
+    if params.get("deformation_field") is not None:
+        cargs.extend([
+            "-def",
+            execution.input_file(params.get("deformation_field"))
+        ])
+    if params.get("control_point_lattice") is not None:
+        cargs.extend([
+            "-cpp",
+            execution.input_file(params.get("control_point_lattice"))
+        ])
+    if params.get("output_jacobian") is not None:
+        cargs.extend([
+            "-jac",
+            params.get("output_jacobian")
+        ])
+    if params.get("output_jacobian_matrix") is not None:
+        cargs.extend([
+            "-jacM",
+            params.get("output_jacobian_matrix")
+        ])
+    if params.get("output_log_jacobian") is not None:
+        cargs.extend([
+            "-jacL",
+            params.get("output_log_jacobian")
+        ])
+    if params.get("affine_matrix") is not None:
+        cargs.extend([
+            "-aff",
+            execution.input_file(params.get("affine_matrix"))
+        ])
+    return cargs
+
+
+def reg_jacobian_outputs(
+    params: RegJacobianParameters,
+    execution: Execution,
+) -> RegJacobianOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RegJacobianOutputs(
+        root=execution.output_file("."),
+        output_jacobian_file=execution.output_file(params.get("output_jacobian")) if (params.get("output_jacobian") is not None) else None,
+        output_jacobian_matrix_file=execution.output_file(params.get("output_jacobian_matrix")) if (params.get("output_jacobian_matrix") is not None) else None,
+        output_log_jacobian_file=execution.output_file(params.get("output_log_jacobian")) if (params.get("output_log_jacobian") is not None) else None,
+    )
+    return ret
+
+
+def reg_jacobian_execute(
+    params: RegJacobianParameters,
+    execution: Execution,
+) -> RegJacobianOutputs:
+    """
+    Tool to compute the Jacobian determinant map from a deformation field or control
+    point lattice.
+    
+    Author: NiftyReg Developers
+    
+    URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RegJacobianOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reg_jacobian_cargs(params, execution)
+    ret = reg_jacobian_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reg_jacobian(
@@ -65,54 +255,13 @@ def reg_jacobian(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_JACOBIAN_METADATA)
-    cargs = []
-    cargs.append("reg_jacobian")
-    cargs.extend([
-        "-ref",
-        execution.input_file(reference_image)
-    ])
-    if deformation_field is not None:
-        cargs.extend([
-            "-def",
-            execution.input_file(deformation_field)
-        ])
-    if control_point_lattice is not None:
-        cargs.extend([
-            "-cpp",
-            execution.input_file(control_point_lattice)
-        ])
-    if output_jacobian is not None:
-        cargs.extend([
-            "-jac",
-            output_jacobian
-        ])
-    if output_jacobian_matrix is not None:
-        cargs.extend([
-            "-jacM",
-            output_jacobian_matrix
-        ])
-    if output_log_jacobian is not None:
-        cargs.extend([
-            "-jacL",
-            output_log_jacobian
-        ])
-    if affine_matrix is not None:
-        cargs.extend([
-            "-aff",
-            execution.input_file(affine_matrix)
-        ])
-    ret = RegJacobianOutputs(
-        root=execution.output_file("."),
-        output_jacobian_file=execution.output_file(output_jacobian) if (output_jacobian is not None) else None,
-        output_jacobian_matrix_file=execution.output_file(output_jacobian_matrix) if (output_jacobian_matrix is not None) else None,
-        output_log_jacobian_file=execution.output_file(output_log_jacobian) if (output_log_jacobian is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = reg_jacobian_params(reference_image=reference_image, deformation_field=deformation_field, control_point_lattice=control_point_lattice, output_jacobian=output_jacobian, output_jacobian_matrix=output_jacobian_matrix, output_log_jacobian=output_log_jacobian, affine_matrix=affine_matrix)
+    return reg_jacobian_execute(params, execution)
 
 
 __all__ = [
     "REG_JACOBIAN_METADATA",
     "RegJacobianOutputs",
     "reg_jacobian",
+    "reg_jacobian_params",
 ]

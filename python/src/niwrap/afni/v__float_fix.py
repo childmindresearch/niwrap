@@ -12,14 +12,124 @@ V__FLOAT_FIX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VFloatFixParameters = typing.TypedDict('VFloatFixParameters', {
+    "__STYX_TYPE__": typing.Literal["@float_fix"],
+    "input_files": list[InputPathType],
+})
 
 
-class VFloatFixOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__float_fix(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@float_fix": v__float_fix_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__float_fix_params(
+    input_files: list[InputPathType],
+) -> VFloatFixParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input files to be checked for illegal IEEE floating point\
+            values. Wildcards can be used, but filenames must end with .HEAD.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@float_fix",
+        "input_files": input_files,
+    }
+    return params
+
+
+def v__float_fix_cargs(
+    params: VFloatFixParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@float_fix")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def v__float_fix_outputs(
+    params: VFloatFixParameters,
+    execution: Execution,
+) -> VFloatFixOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VFloatFixOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__float_fix_execute(
+    params: VFloatFixParameters,
+    execution: Execution,
+) -> VFloatFixOutputs:
+    """
+    Check whether the input files have any IEEE floating point numbers for illegal
+    values: infinities and not-a-number (NaN) values.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VFloatFixOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__float_fix_cargs(params, execution)
+    ret = v__float_fix_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__float_fix(
@@ -43,18 +153,12 @@ def v__float_fix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FLOAT_FIX_METADATA)
-    cargs = []
-    cargs.append("@float_fix")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = VFloatFixOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__float_fix_params(input_files=input_files)
+    return v__float_fix_execute(params, execution)
 
 
 __all__ = [
-    "VFloatFixOutputs",
     "V__FLOAT_FIX_METADATA",
     "v__float_fix",
+    "v__float_fix_params",
 ]

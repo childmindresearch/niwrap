@@ -12,14 +12,125 @@ SPHERE_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SphereSubjectRhParameters = typing.TypedDict('SphereSubjectRhParameters', {
+    "__STYX_TYPE__": typing.Literal["sphere_subject-rh"],
+    "license_file": InputPathType,
+})
 
 
-class SphereSubjectRhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `sphere_subject_rh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "sphere_subject-rh": sphere_subject_rh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def sphere_subject_rh_params(
+    license_file: InputPathType,
+) -> SphereSubjectRhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        license_file: Path to FreeSurfer license file, can be specified with\
+            the FS_LICENSE environmental variable.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sphere_subject-rh",
+        "license_file": license_file,
+    }
+    return params
+
+
+def sphere_subject_rh_cargs(
+    params: SphereSubjectRhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-rh",
+        "sphere_subject" + execution.input_file(params.get("license_file"))
+    ])
+    return cargs
+
+
+def sphere_subject_rh_outputs(
+    params: SphereSubjectRhParameters,
+    execution: Execution,
+) -> SphereSubjectRhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SphereSubjectRhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def sphere_subject_rh_execute(
+    params: SphereSubjectRhParameters,
+    execution: Execution,
+) -> SphereSubjectRhOutputs:
+    """
+    Sphere Subject RH tool for FreeSurfer, requires valid license.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SphereSubjectRhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = sphere_subject_rh_cargs(params, execution)
+    ret = sphere_subject_rh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def sphere_subject_rh(
@@ -42,20 +153,12 @@ def sphere_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPHERE_SUBJECT_RH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-rh",
-        "sphere_subject" + execution.input_file(license_file)
-    ])
-    ret = SphereSubjectRhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = sphere_subject_rh_params(license_file=license_file)
+    return sphere_subject_rh_execute(params, execution)
 
 
 __all__ = [
     "SPHERE_SUBJECT_RH_METADATA",
-    "SphereSubjectRhOutputs",
     "sphere_subject_rh",
+    "sphere_subject_rh_params",
 ]

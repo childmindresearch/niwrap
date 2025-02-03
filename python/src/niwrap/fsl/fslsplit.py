@@ -12,6 +12,47 @@ FSLSPLIT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslsplitParameters = typing.TypedDict('FslsplitParameters', {
+    "__STYX_TYPE__": typing.Literal["fslsplit"],
+    "infile": InputPathType,
+    "output_basename": typing.NotRequired[str | None],
+    "separation_z": bool,
+    "separation_time": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslsplit": fslsplit_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslsplit": fslsplit_outputs,
+    }
+    return vt.get(t)
 
 
 class FslsplitOutputs(typing.NamedTuple):
@@ -22,6 +63,103 @@ class FslsplitOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_files: OutputPathType | None
     """Output volumes/slices"""
+
+
+def fslsplit_params(
+    infile: InputPathType,
+    output_basename: str | None = "vol",
+    separation_z: bool = False,
+    separation_time: bool = False,
+) -> FslsplitParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input image (e.g. img.nii.gz).
+        output_basename: Output basename (default: vol).
+        separation_z: Separate images in the z direction.
+        separation_time: Separate images in time (default behaviour).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslsplit",
+        "infile": infile,
+        "separation_z": separation_z,
+        "separation_time": separation_time,
+    }
+    if output_basename is not None:
+        params["output_basename"] = output_basename
+    return params
+
+
+def fslsplit_cargs(
+    params: FslsplitParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslsplit")
+    cargs.append(execution.input_file(params.get("infile")))
+    if params.get("output_basename") is not None:
+        cargs.append(params.get("output_basename"))
+    if params.get("separation_z"):
+        cargs.append("-z")
+    if params.get("separation_time"):
+        cargs.append("-t")
+    return cargs
+
+
+def fslsplit_outputs(
+    params: FslsplitParameters,
+    execution: Execution,
+) -> FslsplitOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslsplitOutputs(
+        root=execution.output_file("."),
+        out_files=execution.output_file(params.get("output_basename")) if (params.get("output_basename") is not None) else None,
+    )
+    return ret
+
+
+def fslsplit_execute(
+    params: FslsplitParameters,
+    execution: Execution,
+) -> FslsplitOutputs:
+    """
+    Split a 4D image into separate volumes or a 3D image into separate slices.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslsplitOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslsplit_cargs(params, execution)
+    ret = fslsplit_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslsplit(
@@ -49,25 +187,13 @@ def fslsplit(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSPLIT_METADATA)
-    cargs = []
-    cargs.append("fslsplit")
-    cargs.append(execution.input_file(infile))
-    if output_basename is not None:
-        cargs.append(output_basename)
-    if separation_z:
-        cargs.append("-z")
-    if separation_time:
-        cargs.append("-t")
-    ret = FslsplitOutputs(
-        root=execution.output_file("."),
-        out_files=execution.output_file(output_basename) if (output_basename is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = fslsplit_params(infile=infile, output_basename=output_basename, separation_z=separation_z, separation_time=separation_time)
+    return fslsplit_execute(params, execution)
 
 
 __all__ = [
     "FSLSPLIT_METADATA",
     "FslsplitOutputs",
     "fslsplit",
+    "fslsplit_params",
 ]

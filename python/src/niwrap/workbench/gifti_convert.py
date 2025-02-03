@@ -12,14 +12,140 @@ GIFTI_CONVERT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+GiftiConvertParameters = typing.TypedDict('GiftiConvertParameters', {
+    "__STYX_TYPE__": typing.Literal["gifti-convert"],
+    "gifti_encoding": str,
+    "input_gifti_file": str,
+    "output_gifti_file": str,
+})
 
 
-class GiftiConvertOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `gifti_convert(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "gifti-convert": gifti_convert_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def gifti_convert_params(
+    gifti_encoding: str,
+    input_gifti_file: str,
+    output_gifti_file: str,
+) -> GiftiConvertParameters:
+    """
+    Build parameters.
+    
+    Args:
+        gifti_encoding: what the output encoding should be.
+        input_gifti_file: the input gifti file.
+        output_gifti_file: output - the output gifti file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "gifti-convert",
+        "gifti_encoding": gifti_encoding,
+        "input_gifti_file": input_gifti_file,
+        "output_gifti_file": output_gifti_file,
+    }
+    return params
+
+
+def gifti_convert_cargs(
+    params: GiftiConvertParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-gifti-convert")
+    cargs.append(params.get("gifti_encoding"))
+    cargs.append(params.get("input_gifti_file"))
+    cargs.append(params.get("output_gifti_file"))
+    return cargs
+
+
+def gifti_convert_outputs(
+    params: GiftiConvertParameters,
+    execution: Execution,
+) -> GiftiConvertOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = GiftiConvertOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def gifti_convert_execute(
+    params: GiftiConvertParameters,
+    execution: Execution,
+) -> GiftiConvertOutputs:
+    """
+    Convert a gifti file to a different encoding.
+    
+    The value of <gifti-encoding> must be one of the following:
+    
+    ASCII
+    BASE64_BINARY
+    GZIP_BASE64_BINARY
+    EXTERNAL_FILE_BINARY.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `GiftiConvertOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = gifti_convert_cargs(params, execution)
+    ret = gifti_convert_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def gifti_convert(
@@ -52,21 +178,12 @@ def gifti_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GIFTI_CONVERT_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-gifti-convert")
-    cargs.append(gifti_encoding)
-    cargs.append(input_gifti_file)
-    cargs.append(output_gifti_file)
-    ret = GiftiConvertOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = gifti_convert_params(gifti_encoding=gifti_encoding, input_gifti_file=input_gifti_file, output_gifti_file=output_gifti_file)
+    return gifti_convert_execute(params, execution)
 
 
 __all__ = [
     "GIFTI_CONVERT_METADATA",
-    "GiftiConvertOutputs",
     "gifti_convert",
+    "gifti_convert_params",
 ]

@@ -12,6 +12,50 @@ VECWARP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VecwarpParameters = typing.TypedDict('VecwarpParameters', {
+    "__STYX_TYPE__": typing.Literal["Vecwarp"],
+    "apar": typing.NotRequired[InputPathType | None],
+    "matvec": typing.NotRequired[InputPathType | None],
+    "forward": bool,
+    "backward": bool,
+    "input": typing.NotRequired[InputPathType | None],
+    "output": typing.NotRequired[str | None],
+    "force": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "Vecwarp": vecwarp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "Vecwarp": vecwarp_outputs,
+    }
+    return vt.get(t)
 
 
 class VecwarpOutputs(typing.NamedTuple):
@@ -22,6 +66,143 @@ class VecwarpOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType | None
     """The output file containing the transformed 3-vectors."""
+
+
+def vecwarp_params(
+    apar: InputPathType | None = None,
+    matvec: InputPathType | None = None,
+    forward: bool = False,
+    backward: bool = False,
+    input_: InputPathType | None = None,
+    output: str | None = None,
+    force: bool = False,
+) -> VecwarpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        apar: Use the AFNI dataset 'aaa' as the source of the transformation;\
+            this dataset must be in +acpc or +tlrc coordinates, and must contain\
+            the attributes WARP_TYPE and WARP_DATA which describe the forward\
+            transformation from +orig coordinates to the 'aaa' coordinate system.
+        matvec: Read an affine transformation matrix-vector from file 'mmm',\
+            which must be in the specified format.
+        forward: To apply the forward transformation. If neither -forward nor\
+            -backward is given, -forward is the default.
+        backward: To apply the backward transformation.
+        input_: Read input 3-vectors from the file 'iii' (from stdin if 'iii'\
+            is '-' or the -input option is missing).
+        output: Write the output to file 'ooo' (to stdout if 'ooo' is '-', or\
+            if the -output option is missing).
+        force: If the output file already exists, use -force to overwrite it.\
+            If -force is used, it must come before -output on the command line.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "Vecwarp",
+        "forward": forward,
+        "backward": backward,
+        "force": force,
+    }
+    if apar is not None:
+        params["apar"] = apar
+    if matvec is not None:
+        params["matvec"] = matvec
+    if input_ is not None:
+        params["input"] = input_
+    if output is not None:
+        params["output"] = output
+    return params
+
+
+def vecwarp_cargs(
+    params: VecwarpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("Vecwarp")
+    if params.get("apar") is not None:
+        cargs.extend([
+            "-apar",
+            execution.input_file(params.get("apar"))
+        ])
+    if params.get("matvec") is not None:
+        cargs.extend([
+            "-matvec",
+            execution.input_file(params.get("matvec"))
+        ])
+    if params.get("forward"):
+        cargs.append("-forward")
+    if params.get("backward"):
+        cargs.append("-backward")
+    if params.get("input") is not None:
+        cargs.extend([
+            "-input",
+            execution.input_file(params.get("input"))
+        ])
+    if params.get("output") is not None:
+        cargs.extend([
+            "-output",
+            params.get("output")
+        ])
+    if params.get("force"):
+        cargs.append("-force")
+    return cargs
+
+
+def vecwarp_outputs(
+    params: VecwarpParameters,
+    execution: Execution,
+) -> VecwarpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VecwarpOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output")) if (params.get("output") is not None) else None,
+    )
+    return ret
+
+
+def vecwarp_execute(
+    params: VecwarpParameters,
+    execution: Execution,
+) -> VecwarpOutputs:
+    """
+    Transforms (warps) a list of 3-vectors into another list of 3-vectors according
+    to the specified options.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VecwarpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = vecwarp_cargs(params, execution)
+    ret = vecwarp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def vecwarp(
@@ -64,44 +245,13 @@ def vecwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VECWARP_METADATA)
-    cargs = []
-    cargs.append("Vecwarp")
-    if apar is not None:
-        cargs.extend([
-            "-apar",
-            execution.input_file(apar)
-        ])
-    if matvec is not None:
-        cargs.extend([
-            "-matvec",
-            execution.input_file(matvec)
-        ])
-    if forward:
-        cargs.append("-forward")
-    if backward:
-        cargs.append("-backward")
-    if input_ is not None:
-        cargs.extend([
-            "-input",
-            execution.input_file(input_)
-        ])
-    if output is not None:
-        cargs.extend([
-            "-output",
-            output
-        ])
-    if force:
-        cargs.append("-force")
-    ret = VecwarpOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output) if (output is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = vecwarp_params(apar=apar, matvec=matvec, forward=forward, backward=backward, input_=input_, output=output, force=force)
+    return vecwarp_execute(params, execution)
 
 
 __all__ = [
     "VECWARP_METADATA",
     "VecwarpOutputs",
     "vecwarp",
+    "vecwarp_params",
 ]

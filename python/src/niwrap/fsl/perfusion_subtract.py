@@ -12,6 +12,46 @@ PERFUSION_SUBTRACT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+PerfusionSubtractParameters = typing.TypedDict('PerfusionSubtractParameters', {
+    "__STYX_TYPE__": typing.Literal["perfusion_subtract"],
+    "four_d_input": InputPathType,
+    "four_d_output": str,
+    "control_first_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "perfusion_subtract": perfusion_subtract_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "perfusion_subtract": perfusion_subtract_outputs,
+    }
+    return vt.get(t)
 
 
 class PerfusionSubtractOutputs(typing.NamedTuple):
@@ -22,6 +62,98 @@ class PerfusionSubtractOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output 4D image with subtraction results"""
+
+
+def perfusion_subtract_params(
+    four_d_input: InputPathType,
+    four_d_output: str,
+    control_first_flag: bool = False,
+) -> PerfusionSubtractParameters:
+    """
+    Build parameters.
+    
+    Args:
+        four_d_input: Input 4D perfusion image (e.g. perfusion.nii.gz).
+        four_d_output: Output 4D image with subtraction results (e.g.\
+            perfusion_subtracted.nii.gz).
+        control_first_flag: First timepoint is control instead of tag. Default\
+            is tag first.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "perfusion_subtract",
+        "four_d_input": four_d_input,
+        "four_d_output": four_d_output,
+        "control_first_flag": control_first_flag,
+    }
+    return params
+
+
+def perfusion_subtract_cargs(
+    params: PerfusionSubtractParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("perfusion_subtract")
+    cargs.append(execution.input_file(params.get("four_d_input")))
+    cargs.append(params.get("four_d_output"))
+    if params.get("control_first_flag"):
+        cargs.append("-c")
+    return cargs
+
+
+def perfusion_subtract_outputs(
+    params: PerfusionSubtractParameters,
+    execution: Execution,
+) -> PerfusionSubtractOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PerfusionSubtractOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("four_d_output") + ".nii.gz"),
+    )
+    return ret
+
+
+def perfusion_subtract_execute(
+    params: PerfusionSubtractParameters,
+    execution: Execution,
+) -> PerfusionSubtractOutputs:
+    """
+    Subtract control images from tag images in 4D perfusion data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PerfusionSubtractOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = perfusion_subtract_cargs(params, execution)
+    ret = perfusion_subtract_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def perfusion_subtract(
@@ -49,22 +181,13 @@ def perfusion_subtract(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PERFUSION_SUBTRACT_METADATA)
-    cargs = []
-    cargs.append("perfusion_subtract")
-    cargs.append(execution.input_file(four_d_input))
-    cargs.append(four_d_output)
-    if control_first_flag:
-        cargs.append("-c")
-    ret = PerfusionSubtractOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(four_d_output + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = perfusion_subtract_params(four_d_input=four_d_input, four_d_output=four_d_output, control_first_flag=control_first_flag)
+    return perfusion_subtract_execute(params, execution)
 
 
 __all__ = [
     "PERFUSION_SUBTRACT_METADATA",
     "PerfusionSubtractOutputs",
     "perfusion_subtract",
+    "perfusion_subtract_params",
 ]

@@ -12,14 +12,122 @@ CSVPRINT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+CsvprintParameters = typing.TypedDict('CsvprintParameters', {
+    "__STYX_TYPE__": typing.Literal["csvprint"],
+    "infile": InputPathType,
+})
 
 
-class CsvprintOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `csvprint(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "csvprint": csvprint_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def csvprint_params(
+    infile: InputPathType,
+) -> CsvprintParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input CSV file to be printed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "csvprint",
+        "infile": infile,
+    }
+    return params
+
+
+def csvprint_cargs(
+    params: CsvprintParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("csvprint")
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def csvprint_outputs(
+    params: CsvprintParameters,
+    execution: Execution,
+) -> CsvprintOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CsvprintOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def csvprint_execute(
+    params: CsvprintParameters,
+    execution: Execution,
+) -> CsvprintOutputs:
+    """
+    Command-line tool for printing CSV files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CsvprintOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = csvprint_cargs(params, execution)
+    ret = csvprint_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def csvprint(
@@ -41,18 +149,12 @@ def csvprint(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CSVPRINT_METADATA)
-    cargs = []
-    cargs.append("csvprint")
-    cargs.append(execution.input_file(infile))
-    ret = CsvprintOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = csvprint_params(infile=infile)
+    return csvprint_execute(params, execution)
 
 
 __all__ = [
     "CSVPRINT_METADATA",
-    "CsvprintOutputs",
     "csvprint",
+    "csvprint_params",
 ]

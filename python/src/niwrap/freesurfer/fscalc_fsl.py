@@ -12,6 +12,46 @@ FSCALC_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FscalcFslParameters = typing.TypedDict('FscalcFslParameters', {
+    "__STYX_TYPE__": typing.Literal["fscalc.fsl"],
+    "input_file": InputPathType,
+    "output_file": str,
+    "additional_options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fscalc.fsl": fscalc_fsl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fscalc.fsl": fscalc_fsl_outputs,
+    }
+    return vt.get(t)
 
 
 class FscalcFslOutputs(typing.NamedTuple):
@@ -22,6 +62,98 @@ class FscalcFslOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file"""
+
+
+def fscalc_fsl_params(
+    input_file: InputPathType,
+    output_file: str,
+    additional_options: str | None = None,
+) -> FscalcFslParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input image file readable by Freesurfer.
+        output_file: Output image file writable by Freesurfer.
+        additional_options: Additional fslmaths-specific options.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fscalc.fsl",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    if additional_options is not None:
+        params["additional_options"] = additional_options
+    return params
+
+
+def fscalc_fsl_cargs(
+    params: FscalcFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fscalc.fsl")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    if params.get("additional_options") is not None:
+        cargs.append(params.get("additional_options"))
+    return cargs
+
+
+def fscalc_fsl_outputs(
+    params: FscalcFslParameters,
+    execution: Execution,
+) -> FscalcFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FscalcFslOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def fscalc_fsl_execute(
+    params: FscalcFslParameters,
+    execution: Execution,
+) -> FscalcFslOutputs:
+    """
+    A Freesurfer wrapper around fslmaths, allowing input and output formats
+    compatible with Freesurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FscalcFslOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fscalc_fsl_cargs(params, execution)
+    ret = fscalc_fsl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fscalc_fsl(
@@ -48,22 +180,13 @@ def fscalc_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSCALC_FSL_METADATA)
-    cargs = []
-    cargs.append("fscalc.fsl")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    if additional_options is not None:
-        cargs.append(additional_options)
-    ret = FscalcFslOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = fscalc_fsl_params(input_file=input_file, output_file=output_file, additional_options=additional_options)
+    return fscalc_fsl_execute(params, execution)
 
 
 __all__ = [
     "FSCALC_FSL_METADATA",
     "FscalcFslOutputs",
     "fscalc_fsl",
+    "fscalc_fsl_params",
 ]

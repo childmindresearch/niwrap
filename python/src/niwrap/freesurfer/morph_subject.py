@@ -12,14 +12,123 @@ MORPH_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MorphSubjectParameters = typing.TypedDict('MorphSubjectParameters', {
+    "__STYX_TYPE__": typing.Literal["morph_subject"],
+    "subjid": str,
+})
 
 
-class MorphSubjectOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `morph_subject(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "morph_subject": morph_subject_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def morph_subject_params(
+    subjid: str,
+) -> MorphSubjectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjid: Subject ID for processing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "morph_subject",
+        "subjid": subjid,
+    }
+    return params
+
+
+def morph_subject_cargs(
+    params: MorphSubjectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("morph_subject")
+    cargs.append(params.get("subjid"))
+    return cargs
+
+
+def morph_subject_outputs(
+    params: MorphSubjectParameters,
+    execution: Execution,
+) -> MorphSubjectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MorphSubjectOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def morph_subject_execute(
+    params: MorphSubjectParameters,
+    execution: Execution,
+) -> MorphSubjectOutputs:
+    """
+    A morphological processing tool for Freesurfer subjects. The specific operations
+    and options are not documented in the available help text.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MorphSubjectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = morph_subject_cargs(params, execution)
+    ret = morph_subject_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def morph_subject(
@@ -42,18 +151,12 @@ def morph_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_SUBJECT_METADATA)
-    cargs = []
-    cargs.append("morph_subject")
-    cargs.append(subjid)
-    ret = MorphSubjectOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = morph_subject_params(subjid=subjid)
+    return morph_subject_execute(params, execution)
 
 
 __all__ = [
     "MORPH_SUBJECT_METADATA",
-    "MorphSubjectOutputs",
     "morph_subject",
+    "morph_subject_params",
 ]

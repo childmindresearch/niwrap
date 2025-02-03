@@ -12,6 +12,46 @@ V__SUMA_MAKE_SPEC_SF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSumaMakeSpecSfParameters = typing.TypedDict('VSumaMakeSpecSfParameters', {
+    "__STYX_TYPE__": typing.Literal["@SUMA_Make_Spec_SF"],
+    "debug_level": typing.NotRequired[int | None],
+    "surface_path": typing.NotRequired[str | None],
+    "subject_id": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@SUMA_Make_Spec_SF": v__suma_make_spec_sf_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@SUMA_Make_Spec_SF": v__suma_make_spec_sf_outputs,
+    }
+    return vt.get(t)
 
 
 class VSumaMakeSpecSfOutputs(typing.NamedTuple):
@@ -22,6 +62,109 @@ class VSumaMakeSpecSfOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_files: OutputPathType
     """All created files are stored in SURFACES directory"""
+
+
+def v__suma_make_spec_sf_params(
+    subject_id: str,
+    debug_level: int | None = None,
+    surface_path: str | None = None,
+) -> VSumaMakeSpecSfParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: Required subject ID for file naming.
+        debug_level: Print debug information along the way.
+        surface_path: Path to directory containing 'SURFACES' and AFNI volume\
+            used in creating the surfaces.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@SUMA_Make_Spec_SF",
+        "subject_id": subject_id,
+    }
+    if debug_level is not None:
+        params["debug_level"] = debug_level
+    if surface_path is not None:
+        params["surface_path"] = surface_path
+    return params
+
+
+def v__suma_make_spec_sf_cargs(
+    params: VSumaMakeSpecSfParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@SUMA_Make_Spec_SF")
+    if params.get("debug_level") is not None:
+        cargs.extend([
+            "-debug",
+            str(params.get("debug_level"))
+        ])
+    if params.get("surface_path") is not None:
+        cargs.extend([
+            "-sfpath",
+            params.get("surface_path")
+        ])
+    cargs.extend([
+        "-sid",
+        params.get("subject_id")
+    ])
+    return cargs
+
+
+def v__suma_make_spec_sf_outputs(
+    params: VSumaMakeSpecSfParameters,
+    execution: Execution,
+) -> VSumaMakeSpecSfOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSumaMakeSpecSfOutputs(
+        root=execution.output_file("."),
+        output_files=execution.output_file("SURFACES/*"),
+    )
+    return ret
+
+
+def v__suma_make_spec_sf_execute(
+    params: VSumaMakeSpecSfParameters,
+    execution: Execution,
+) -> VSumaMakeSpecSfOutputs:
+    """
+    Prepare for surface viewing in SUMA.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__suma_make_spec_sf_cargs(params, execution)
+    ret = v__suma_make_spec_sf_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__suma_make_spec_sf(
@@ -46,36 +189,15 @@ def v__suma_make_spec_sf(
     Returns:
         NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).
     """
-    if debug_level is not None and not (debug_level <= 2): 
-        raise ValueError(f"'debug_level' must be less than x <= 2 but was {debug_level}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_MAKE_SPEC_SF_METADATA)
-    cargs = []
-    cargs.append("@SUMA_Make_Spec_SF")
-    if debug_level is not None:
-        cargs.extend([
-            "-debug",
-            str(debug_level)
-        ])
-    if surface_path is not None:
-        cargs.extend([
-            "-sfpath",
-            surface_path
-        ])
-    cargs.extend([
-        "-sid",
-        subject_id
-    ])
-    ret = VSumaMakeSpecSfOutputs(
-        root=execution.output_file("."),
-        output_files=execution.output_file("SURFACES/*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__suma_make_spec_sf_params(debug_level=debug_level, surface_path=surface_path, subject_id=subject_id)
+    return v__suma_make_spec_sf_execute(params, execution)
 
 
 __all__ = [
     "VSumaMakeSpecSfOutputs",
     "V__SUMA_MAKE_SPEC_SF_METADATA",
     "v__suma_make_spec_sf",
+    "v__suma_make_spec_sf_params",
 ]

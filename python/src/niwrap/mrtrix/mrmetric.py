@@ -12,43 +12,306 @@ MRMETRIC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+MrmetricConfigParameters = typing.TypedDict('MrmetricConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+MrmetricParameters = typing.TypedDict('MrmetricParameters', {
+    "__STYX_TYPE__": typing.Literal["mrmetric"],
+    "space": typing.NotRequired[str | None],
+    "interp": typing.NotRequired[str | None],
+    "metric": typing.NotRequired[str | None],
+    "mask1": typing.NotRequired[InputPathType | None],
+    "mask2": typing.NotRequired[InputPathType | None],
+    "nonormalisation": bool,
+    "overlap": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[MrmetricConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "image1": InputPathType,
+    "image2": InputPathType,
+})
 
 
-@dataclasses.dataclass
-class MrmetricConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mrmetric": mrmetric_cargs,
+        "config": mrmetric_config_cargs,
+    }
+    return vt.get(t)
 
 
-class MrmetricOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mrmetric(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def mrmetric_config_params(
+    key: str,
+    value: str,
+) -> MrmetricConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def mrmetric_config_cargs(
+    params: MrmetricConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def mrmetric_params(
+    image1: InputPathType,
+    image2: InputPathType,
+    space: str | None = None,
+    interp: str | None = None,
+    metric: str | None = None,
+    mask1: InputPathType | None = None,
+    mask2: InputPathType | None = None,
+    nonormalisation: bool = False,
+    overlap: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[MrmetricConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> MrmetricParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image1: the first input image.
+        image2: the second input image.
+        space: voxel (default): per voxel image1: scanner space of image 1\
+            image2: scanner space of image 2 average: scanner space of the average\
+            affine transformation of image 1 and 2.
+        interp: set the interpolation method to use when reslicing (choices:\
+            nearest, linear, cubic, sinc. Default: linear).
+        metric: define the dissimilarity metric used to calculate the cost.\
+            Choices: diff (squared differences), cc (non-normalised negative cross\
+            correlation aka negative cross covariance). Default: diff). cc is only\
+            implemented for -space average and -interp linear and cubic.
+        mask1: mask for image 1.
+        mask2: mask for image 2.
+        nonormalisation: do not normalise the dissimilarity metric to the\
+            number of voxels.
+        overlap: output number of voxels that were used.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mrmetric",
+        "nonormalisation": nonormalisation,
+        "overlap": overlap,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "image1": image1,
+        "image2": image2,
+    }
+    if space is not None:
+        params["space"] = space
+    if interp is not None:
+        params["interp"] = interp
+    if metric is not None:
+        params["metric"] = metric
+    if mask1 is not None:
+        params["mask1"] = mask1
+    if mask2 is not None:
+        params["mask2"] = mask2
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def mrmetric_cargs(
+    params: MrmetricParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mrmetric")
+    if params.get("space") is not None:
+        cargs.extend([
+            "-space",
+            params.get("space")
+        ])
+    if params.get("interp") is not None:
+        cargs.extend([
+            "-interp",
+            params.get("interp")
+        ])
+    if params.get("metric") is not None:
+        cargs.extend([
+            "-metric",
+            params.get("metric")
+        ])
+    if params.get("mask1") is not None:
+        cargs.extend([
+            "-mask1",
+            execution.input_file(params.get("mask1"))
+        ])
+    if params.get("mask2") is not None:
+        cargs.extend([
+            "-mask2",
+            execution.input_file(params.get("mask2"))
+        ])
+    if params.get("nonormalisation"):
+        cargs.append("-nonormalisation")
+    if params.get("overlap"):
+        cargs.append("-overlap")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("image1")))
+    cargs.append(execution.input_file(params.get("image2")))
+    return cargs
+
+
+def mrmetric_outputs(
+    params: MrmetricParameters,
+    execution: Execution,
+) -> MrmetricOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrmetricOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mrmetric_execute(
+    params: MrmetricParameters,
+    execution: Execution,
+) -> MrmetricOutputs:
+    """
+    Computes a dissimilarity metric between two images.
+    
+    Currently only the mean squared difference is fully implemented.
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrmetricOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mrmetric_cargs(params, execution)
+    ret = mrmetric_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mrmetric(
@@ -66,7 +329,7 @@ def mrmetric(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrmetricConfig] | None = None,
+    config: list[MrmetricConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -119,68 +382,13 @@ def mrmetric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRMETRIC_METADATA)
-    cargs = []
-    cargs.append("mrmetric")
-    if space is not None:
-        cargs.extend([
-            "-space",
-            space
-        ])
-    if interp is not None:
-        cargs.extend([
-            "-interp",
-            interp
-        ])
-    if metric is not None:
-        cargs.extend([
-            "-metric",
-            metric
-        ])
-    if mask1 is not None:
-        cargs.extend([
-            "-mask1",
-            execution.input_file(mask1)
-        ])
-    if mask2 is not None:
-        cargs.extend([
-            "-mask2",
-            execution.input_file(mask2)
-        ])
-    if nonormalisation:
-        cargs.append("-nonormalisation")
-    if overlap:
-        cargs.append("-overlap")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(image1))
-    cargs.append(execution.input_file(image2))
-    ret = MrmetricOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mrmetric_params(space=space, interp=interp, metric=metric, mask1=mask1, mask2=mask2, nonormalisation=nonormalisation, overlap=overlap, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image1=image1, image2=image2)
+    return mrmetric_execute(params, execution)
 
 
 __all__ = [
     "MRMETRIC_METADATA",
-    "MrmetricConfig",
-    "MrmetricOutputs",
     "mrmetric",
+    "mrmetric_config_params",
+    "mrmetric_params",
 ]

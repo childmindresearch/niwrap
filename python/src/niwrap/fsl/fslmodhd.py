@@ -12,14 +12,132 @@ FSLMODHD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslmodhdParameters = typing.TypedDict('FslmodhdParameters', {
+    "__STYX_TYPE__": typing.Literal["fslmodhd"],
+    "image": InputPathType,
+    "keyword": str,
+    "value": str,
+})
 
 
-class FslmodhdOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fslmodhd(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fslmodhd": fslmodhd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fslmodhd_params(
+    image: InputPathType,
+    keyword_: str,
+    value: str,
+) -> FslmodhdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image: Input image file (e.g. image.nii.gz).
+        keyword_: Header keyword to modify (e.g. 'dim', 'pixdim').
+        value: New value for the given header keyword.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslmodhd",
+        "image": image,
+        "keyword": keyword_,
+        "value": value,
+    }
+    return params
+
+
+def fslmodhd_cargs(
+    params: FslmodhdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslmodhd")
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(params.get("keyword"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def fslmodhd_outputs(
+    params: FslmodhdParameters,
+    execution: Execution,
+) -> FslmodhdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslmodhdOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fslmodhd_execute(
+    params: FslmodhdParameters,
+    execution: Execution,
+) -> FslmodhdOutputs:
+    """
+    A tool for modifying header information of NIfTI images.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslmodhdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslmodhd_cargs(params, execution)
+    ret = fslmodhd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslmodhd(
@@ -45,20 +163,12 @@ def fslmodhd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMODHD_METADATA)
-    cargs = []
-    cargs.append("fslmodhd")
-    cargs.append(execution.input_file(image))
-    cargs.append(keyword_)
-    cargs.append(value)
-    ret = FslmodhdOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslmodhd_params(image=image, keyword_=keyword_, value=value)
+    return fslmodhd_execute(params, execution)
 
 
 __all__ = [
     "FSLMODHD_METADATA",
-    "FslmodhdOutputs",
     "fslmodhd",
+    "fslmodhd_params",
 ]

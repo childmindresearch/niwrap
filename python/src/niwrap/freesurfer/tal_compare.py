@@ -12,6 +12,47 @@ TAL_COMPARE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TalCompareParameters = typing.TypedDict('TalCompareParameters', {
+    "__STYX_TYPE__": typing.Literal["tal_compare"],
+    "ref_file": InputPathType,
+    "moving_file": InputPathType,
+    "output_file": str,
+    "verbose": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tal_compare": tal_compare_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tal_compare": tal_compare_outputs,
+    }
+    return vt.get(t)
 
 
 class TalCompareOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class TalCompareOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     comparison_results: OutputPathType
     """Comparison results output file."""
+
+
+def tal_compare_params(
+    ref_file: InputPathType,
+    moving_file: InputPathType,
+    output_file: str,
+    verbose: bool = False,
+) -> TalCompareParameters:
+    """
+    Build parameters.
+    
+    Args:
+        ref_file: Reference TAL database file.
+        moving_file: Moving TAL database file to compare against the reference.
+        output_file: Output file to store comparison results.
+        verbose: Enable verbose output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tal_compare",
+        "ref_file": ref_file,
+        "moving_file": moving_file,
+        "output_file": output_file,
+        "verbose": verbose,
+    }
+    return params
+
+
+def tal_compare_cargs(
+    params: TalCompareParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tal_compare")
+    cargs.append(execution.input_file(params.get("ref_file")))
+    cargs.append(execution.input_file(params.get("moving_file")))
+    cargs.append(params.get("output_file"))
+    if params.get("verbose"):
+        cargs.append("-v")
+    return cargs
+
+
+def tal_compare_outputs(
+    params: TalCompareParameters,
+    execution: Execution,
+) -> TalCompareOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TalCompareOutputs(
+        root=execution.output_file("."),
+        comparison_results=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def tal_compare_execute(
+    params: TalCompareParameters,
+    execution: Execution,
+) -> TalCompareOutputs:
+    """
+    Tool for comparing TAL databases.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TalCompareOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tal_compare_cargs(params, execution)
+    ret = tal_compare_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tal_compare(
@@ -49,23 +184,13 @@ def tal_compare(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TAL_COMPARE_METADATA)
-    cargs = []
-    cargs.append("tal_compare")
-    cargs.append(execution.input_file(ref_file))
-    cargs.append(execution.input_file(moving_file))
-    cargs.append(output_file)
-    if verbose:
-        cargs.append("-v")
-    ret = TalCompareOutputs(
-        root=execution.output_file("."),
-        comparison_results=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = tal_compare_params(ref_file=ref_file, moving_file=moving_file, output_file=output_file, verbose=verbose)
+    return tal_compare_execute(params, execution)
 
 
 __all__ = [
     "TAL_COMPARE_METADATA",
     "TalCompareOutputs",
     "tal_compare",
+    "tal_compare_params",
 ]

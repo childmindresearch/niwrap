@@ -12,6 +12,44 @@ V__PARSE_AFNI_NAME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VParseAfniNameParameters = typing.TypedDict('VParseAfniNameParameters', {
+    "__STYX_TYPE__": typing.Literal["@parse_afni_name"],
+    "afni_name": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@parse_afni_name": v__parse_afni_name_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@parse_afni_name": v__parse_afni_name_outputs,
+    }
+    return vt.get(t)
 
 
 class VParseAfniNameOutputs(typing.NamedTuple):
@@ -28,6 +66,91 @@ class VParseAfniNameOutputs(typing.NamedTuple):
     """Output view parsed from the AFNI name"""
     output_subbrick: OutputPathType
     """Output sub-brick selection string parsed from the AFNI name"""
+
+
+def v__parse_afni_name_params(
+    afni_name: str,
+) -> VParseAfniNameParameters:
+    """
+    Build parameters.
+    
+    Args:
+        afni_name: The AFNI name to be parsed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@parse_afni_name",
+        "afni_name": afni_name,
+    }
+    return params
+
+
+def v__parse_afni_name_cargs(
+    params: VParseAfniNameParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@parse_afni_name")
+    cargs.append(params.get("afni_name"))
+    return cargs
+
+
+def v__parse_afni_name_outputs(
+    params: VParseAfniNameParameters,
+    execution: Execution,
+) -> VParseAfniNameOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VParseAfniNameOutputs(
+        root=execution.output_file("."),
+        output_path=execution.output_file("parsed_name_path.txt"),
+        output_prefix=execution.output_file("parsed_name_prefix.txt"),
+        output_view=execution.output_file("parsed_name_view.txt"),
+        output_subbrick=execution.output_file("parsed_name_subbrick.txt"),
+    )
+    return ret
+
+
+def v__parse_afni_name_execute(
+    params: VParseAfniNameParameters,
+    execution: Execution,
+) -> VParseAfniNameOutputs:
+    """
+    A script to parse an AFNI name, outputting the path, prefix, view, and sub-brick
+    selection string.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VParseAfniNameOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__parse_afni_name_cargs(params, execution)
+    ret = v__parse_afni_name_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__parse_afni_name(
@@ -50,22 +173,13 @@ def v__parse_afni_name(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__PARSE_AFNI_NAME_METADATA)
-    cargs = []
-    cargs.append("@parse_afni_name")
-    cargs.append(afni_name)
-    ret = VParseAfniNameOutputs(
-        root=execution.output_file("."),
-        output_path=execution.output_file("parsed_name_path.txt"),
-        output_prefix=execution.output_file("parsed_name_prefix.txt"),
-        output_view=execution.output_file("parsed_name_view.txt"),
-        output_subbrick=execution.output_file("parsed_name_subbrick.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__parse_afni_name_params(afni_name=afni_name)
+    return v__parse_afni_name_execute(params, execution)
 
 
 __all__ = [
     "VParseAfniNameOutputs",
     "V__PARSE_AFNI_NAME_METADATA",
     "v__parse_afni_name",
+    "v__parse_afni_name_params",
 ]

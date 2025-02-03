@@ -12,6 +12,46 @@ ADJUNCT_COMBINE_STR_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AdjunctCombineStrPyParameters = typing.TypedDict('AdjunctCombineStrPyParameters', {
+    "__STYX_TYPE__": typing.Literal["adjunct_combine_str.py"],
+    "output_file": str,
+    "upper_index": float,
+    "string_selectors": list[str],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "adjunct_combine_str.py": adjunct_combine_str_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "adjunct_combine_str.py": adjunct_combine_str_py_outputs,
+    }
+    return vt.get(t)
 
 
 class AdjunctCombineStrPyOutputs(typing.NamedTuple):
@@ -22,6 +62,98 @@ class AdjunctCombineStrPyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_selector_file: OutputPathType
     """The output file containing the new string selector"""
+
+
+def adjunct_combine_str_py_params(
+    output_file: str,
+    upper_index: float,
+    string_selectors: list[str],
+) -> AdjunctCombineStrPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_file: An output file name.
+        upper_index: An int that is the upper index for the selector (-1 means\
+            to use the max number in the input strings).
+        string_selectors: One or more string selector strings of *goods* to\
+            keep.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "adjunct_combine_str.py",
+        "output_file": output_file,
+        "upper_index": upper_index,
+        "string_selectors": string_selectors,
+    }
+    return params
+
+
+def adjunct_combine_str_py_cargs(
+    params: AdjunctCombineStrPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("adjunct_combine_str.py")
+    cargs.append(params.get("output_file"))
+    cargs.append(str(params.get("upper_index")))
+    cargs.extend(params.get("string_selectors"))
+    return cargs
+
+
+def adjunct_combine_str_py_outputs(
+    params: AdjunctCombineStrPyParameters,
+    execution: Execution,
+) -> AdjunctCombineStrPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AdjunctCombineStrPyOutputs(
+        root=execution.output_file("."),
+        output_selector_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def adjunct_combine_str_py_execute(
+    params: AdjunctCombineStrPyParameters,
+    execution: Execution,
+) -> AdjunctCombineStrPyOutputs:
+    """
+    A simple helper function for fat_proc* scripts that processes string selectors
+    and outputs a new string selector.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AdjunctCombineStrPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = adjunct_combine_str_py_cargs(params, execution)
+    ret = adjunct_combine_str_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def adjunct_combine_str_py(
@@ -50,21 +182,13 @@ def adjunct_combine_str_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_COMBINE_STR_PY_METADATA)
-    cargs = []
-    cargs.append("adjunct_combine_str.py")
-    cargs.append(output_file)
-    cargs.append(str(upper_index))
-    cargs.extend(string_selectors)
-    ret = AdjunctCombineStrPyOutputs(
-        root=execution.output_file("."),
-        output_selector_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = adjunct_combine_str_py_params(output_file=output_file, upper_index=upper_index, string_selectors=string_selectors)
+    return adjunct_combine_str_py_execute(params, execution)
 
 
 __all__ = [
     "ADJUNCT_COMBINE_STR_PY_METADATA",
     "AdjunctCombineStrPyOutputs",
     "adjunct_combine_str_py",
+    "adjunct_combine_str_py_params",
 ]

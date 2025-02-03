@@ -12,47 +12,127 @@ ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsApplyTransformsToPointsSingleTransformParameters = typing.TypedDict('AntsApplyTransformsToPointsSingleTransformParameters', {
+    "__STYX_TYPE__": typing.Literal["single_transform"],
+})
+AntsApplyTransformsToPointsInverseTransformParameters = typing.TypedDict('AntsApplyTransformsToPointsInverseTransformParameters', {
+    "__STYX_TYPE__": typing.Literal["inverse_transform"],
+    "transform_file": InputPathType,
+})
+AntsApplyTransformsToPointsParameters = typing.TypedDict('AntsApplyTransformsToPointsParameters', {
+    "__STYX_TYPE__": typing.Literal["antsApplyTransformsToPoints"],
+    "dimensionality": typing.NotRequired[typing.Literal[2, 3] | None],
+    "precision": typing.NotRequired[typing.Literal[0, 1] | None],
+    "forantsr": typing.NotRequired[typing.Literal[0, 1] | None],
+    "input": InputPathType,
+    "output": str,
+    "transform": typing.NotRequired[typing.Union[AntsApplyTransformsToPointsSingleTransformParameters, AntsApplyTransformsToPointsInverseTransformParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsToPointsSingleTransform:
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("[TRANSFORM]")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "antsApplyTransformsToPoints": ants_apply_transforms_to_points_cargs,
+        "single_transform": ants_apply_transforms_to_points_single_transform_cargs,
+        "inverse_transform": ants_apply_transforms_to_points_inverse_transform_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsToPointsInverseTransform:
-    transform_file: InputPathType
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.transform_file) + ",1")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "antsApplyTransformsToPoints": ants_apply_transforms_to_points_outputs,
+    }
+    return vt.get(t)
+
+
+def ants_apply_transforms_to_points_single_transform_params(
+) -> AntsApplyTransformsToPointsSingleTransformParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "single_transform",
+    }
+    return params
+
+
+def ants_apply_transforms_to_points_single_transform_cargs(
+    params: AntsApplyTransformsToPointsSingleTransformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("[TRANSFORM]")
+    return cargs
+
+
+def ants_apply_transforms_to_points_inverse_transform_params(
+    transform_file: InputPathType,
+) -> AntsApplyTransformsToPointsInverseTransformParameters:
+    """
+    Build parameters.
+    
+    Args:
+        transform_file:.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "inverse_transform",
+        "transform_file": transform_file,
+    }
+    return params
+
+
+def ants_apply_transforms_to_points_inverse_transform_cargs(
+    params: AntsApplyTransformsToPointsInverseTransformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("transform_file")) + ",1")
+    return cargs
 
 
 class AntsApplyTransformsToPointsOutputs(typing.NamedTuple):
@@ -65,13 +145,147 @@ class AntsApplyTransformsToPointsOutputs(typing.NamedTuple):
     """The output is the CSV file containing warped points."""
 
 
+def ants_apply_transforms_to_points_params(
+    input_: InputPathType,
+    output: str,
+    dimensionality: typing.Literal[2, 3] | None = None,
+    precision: typing.Literal[0, 1] | None = None,
+    forantsr: typing.Literal[0, 1] | None = None,
+    transform: typing.Union[AntsApplyTransformsToPointsSingleTransformParameters, AntsApplyTransformsToPointsInverseTransformParameters] | None = None,
+) -> AntsApplyTransformsToPointsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: Input CSV file with columns including x,y,z,t headers that\
+            define the points in physical space, or a 2D .mha binary image file.
+        output: Output the warped points to a CSV file.
+        dimensionality: This option forces the points to be treated as a\
+            specified-dimensionality.
+        precision: Use double precision.
+        forantsr: Set true for ANTsR IO.
+        transform: Transform file(s) to apply to the input points. Uses an\
+            inverse transform if specified as [transformFileName,1].
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "antsApplyTransformsToPoints",
+        "input": input_,
+        "output": output,
+    }
+    if dimensionality is not None:
+        params["dimensionality"] = dimensionality
+    if precision is not None:
+        params["precision"] = precision
+    if forantsr is not None:
+        params["forantsr"] = forantsr
+    if transform is not None:
+        params["transform"] = transform
+    return params
+
+
+def ants_apply_transforms_to_points_cargs(
+    params: AntsApplyTransformsToPointsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("antsApplyTransformsToPoints")
+    if params.get("dimensionality") is not None:
+        cargs.extend([
+            "--dimensionality",
+            str(params.get("dimensionality"))
+        ])
+    if params.get("precision") is not None:
+        cargs.extend([
+            "--precision",
+            str(params.get("precision"))
+        ])
+    if params.get("forantsr") is not None:
+        cargs.extend([
+            "--forantsr",
+            str(params.get("forantsr"))
+        ])
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output")
+    ])
+    if params.get("transform") is not None:
+        cargs.extend([
+            "-t",
+            *dyn_cargs(params.get("transform")["__STYXTYPE__"])(params.get("transform"), execution)
+        ])
+    return cargs
+
+
+def ants_apply_transforms_to_points_outputs(
+    params: AntsApplyTransformsToPointsParameters,
+    execution: Execution,
+) -> AntsApplyTransformsToPointsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsApplyTransformsToPointsOutputs(
+        root=execution.output_file("."),
+        warped_points=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def ants_apply_transforms_to_points_execute(
+    params: AntsApplyTransformsToPointsParameters,
+    execution: Execution,
+) -> AntsApplyTransformsToPointsOutputs:
+    """
+    antsApplyTransformsToPoints, applied to an input image, transforms it according
+    to a reference image and a transform (or a set of transforms). It reads in a CSV
+    file with the first D columns defining the spatial location where the spatial
+    location is defined in physical coordinates. The CSV file should have a header
+    row.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsApplyTransformsToPointsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ants_apply_transforms_to_points_cargs(params, execution)
+    ret = ants_apply_transforms_to_points_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def ants_apply_transforms_to_points(
     input_: InputPathType,
     output: str,
     dimensionality: typing.Literal[2, 3] | None = None,
     precision: typing.Literal[0, 1] | None = None,
     forantsr: typing.Literal[0, 1] | None = None,
-    transform: typing.Union[AntsApplyTransformsToPointsSingleTransform, AntsApplyTransformsToPointsInverseTransform] | None = None,
+    transform: typing.Union[AntsApplyTransformsToPointsSingleTransformParameters, AntsApplyTransformsToPointsInverseTransformParameters] | None = None,
     runner: Runner | None = None,
 ) -> AntsApplyTransformsToPointsOutputs:
     """
@@ -101,48 +315,15 @@ def ants_apply_transforms_to_points(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA)
-    cargs = []
-    cargs.append("antsApplyTransformsToPoints")
-    if dimensionality is not None:
-        cargs.extend([
-            "--dimensionality",
-            str(dimensionality)
-        ])
-    if precision is not None:
-        cargs.extend([
-            "--precision",
-            str(precision)
-        ])
-    if forantsr is not None:
-        cargs.extend([
-            "--forantsr",
-            str(forantsr)
-        ])
-    cargs.extend([
-        "-i",
-        execution.input_file(input_)
-    ])
-    cargs.extend([
-        "-o",
-        output
-    ])
-    if transform is not None:
-        cargs.extend([
-            "-t",
-            *transform.run(execution)
-        ])
-    ret = AntsApplyTransformsToPointsOutputs(
-        root=execution.output_file("."),
-        warped_points=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = ants_apply_transforms_to_points_params(dimensionality=dimensionality, precision=precision, forantsr=forantsr, input_=input_, output=output, transform=transform)
+    return ants_apply_transforms_to_points_execute(params, execution)
 
 
 __all__ = [
     "ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA",
-    "AntsApplyTransformsToPointsInverseTransform",
     "AntsApplyTransformsToPointsOutputs",
-    "AntsApplyTransformsToPointsSingleTransform",
     "ants_apply_transforms_to_points",
+    "ants_apply_transforms_to_points_inverse_transform_params",
+    "ants_apply_transforms_to_points_params",
+    "ants_apply_transforms_to_points_single_transform_params",
 ]

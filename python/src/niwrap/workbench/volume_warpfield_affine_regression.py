@@ -12,43 +12,215 @@ VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeWarpfieldAffineRegressionFlirtOutParameters = typing.TypedDict('VolumeWarpfieldAffineRegressionFlirtOutParameters', {
+    "__STYX_TYPE__": typing.Literal["flirt_out"],
+    "source_volume": str,
+    "target_volume": str,
+})
+VolumeWarpfieldAffineRegressionParameters = typing.TypedDict('VolumeWarpfieldAffineRegressionParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-warpfield-affine-regression"],
+    "warpfield": str,
+    "affine_out": str,
+    "opt_roi_roi_vol": typing.NotRequired[InputPathType | None],
+    "opt_fnirt_source_volume": typing.NotRequired[str | None],
+    "flirt_out": typing.NotRequired[VolumeWarpfieldAffineRegressionFlirtOutParameters | None],
+})
 
 
-@dataclasses.dataclass
-class VolumeWarpfieldAffineRegressionFlirtOut:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    write output as a flirt matrix rather than a world coordinate transform.
-    """
-    source_volume: str
-    """the volume you want to apply the transform to"""
-    target_volume: str
-    """the target space you want the transformed volume to match"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-flirt-out")
-        cargs.append(self.source_volume)
-        cargs.append(self.target_volume)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "volume-warpfield-affine-regression": volume_warpfield_affine_regression_cargs,
+        "flirt_out": volume_warpfield_affine_regression_flirt_out_cargs,
+    }
+    return vt.get(t)
 
 
-class VolumeWarpfieldAffineRegressionOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `volume_warpfield_affine_regression(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def volume_warpfield_affine_regression_flirt_out_params(
+    source_volume: str,
+    target_volume: str,
+) -> VolumeWarpfieldAffineRegressionFlirtOutParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source_volume: the volume you want to apply the transform to.
+        target_volume: the target space you want the transformed volume to\
+            match.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "flirt_out",
+        "source_volume": source_volume,
+        "target_volume": target_volume,
+    }
+    return params
+
+
+def volume_warpfield_affine_regression_flirt_out_cargs(
+    params: VolumeWarpfieldAffineRegressionFlirtOutParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-flirt-out")
+    cargs.append(params.get("source_volume"))
+    cargs.append(params.get("target_volume"))
+    return cargs
+
+
+def volume_warpfield_affine_regression_params(
+    warpfield: str,
+    affine_out: str,
+    opt_roi_roi_vol: InputPathType | None = None,
+    opt_fnirt_source_volume: str | None = None,
+    flirt_out: VolumeWarpfieldAffineRegressionFlirtOutParameters | None = None,
+) -> VolumeWarpfieldAffineRegressionParameters:
+    """
+    Build parameters.
+    
+    Args:
+        warpfield: the input warpfield.
+        affine_out: output - the output affine file.
+        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\
+            mask): the mask volume.
+        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\
+            used when generating the fnirt warpfield.
+        flirt_out: write output as a flirt matrix rather than a world\
+            coordinate transform.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-warpfield-affine-regression",
+        "warpfield": warpfield,
+        "affine_out": affine_out,
+    }
+    if opt_roi_roi_vol is not None:
+        params["opt_roi_roi_vol"] = opt_roi_roi_vol
+    if opt_fnirt_source_volume is not None:
+        params["opt_fnirt_source_volume"] = opt_fnirt_source_volume
+    if flirt_out is not None:
+        params["flirt_out"] = flirt_out
+    return params
+
+
+def volume_warpfield_affine_regression_cargs(
+    params: VolumeWarpfieldAffineRegressionParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-warpfield-affine-regression")
+    cargs.append(params.get("warpfield"))
+    cargs.append(params.get("affine_out"))
+    if params.get("opt_roi_roi_vol") is not None:
+        cargs.extend([
+            "-roi",
+            execution.input_file(params.get("opt_roi_roi_vol"))
+        ])
+    if params.get("opt_fnirt_source_volume") is not None:
+        cargs.extend([
+            "-fnirt",
+            params.get("opt_fnirt_source_volume")
+        ])
+    if params.get("flirt_out") is not None:
+        cargs.extend(dyn_cargs(params.get("flirt_out")["__STYXTYPE__"])(params.get("flirt_out"), execution))
+    return cargs
+
+
+def volume_warpfield_affine_regression_outputs(
+    params: VolumeWarpfieldAffineRegressionParameters,
+    execution: Execution,
+) -> VolumeWarpfieldAffineRegressionOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeWarpfieldAffineRegressionOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def volume_warpfield_affine_regression_execute(
+    params: VolumeWarpfieldAffineRegressionParameters,
+    execution: Execution,
+) -> VolumeWarpfieldAffineRegressionOutputs:
+    """
+    Regress affine from warpfield.
+    
+    For all voxels in the warpfield, do a regression that predicts the post-warp
+    coordinate from the source coordinate. When -roi is specified, only consider
+    voxels with a value greater than 0 in <roi-vol>.
+    
+    The default is to expect the warpfield to be in relative world coordinates
+    (mm space), and to write the output as a world affine (mm space to mm
+    space). If you are using FSL-created files and utilities, specify -fnirt and
+    -flirt as needed, as their coordinate conventions are different.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_warpfield_affine_regression_cargs(params, execution)
+    ret = volume_warpfield_affine_regression_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def volume_warpfield_affine_regression(
@@ -56,7 +228,7 @@ def volume_warpfield_affine_regression(
     affine_out: str,
     opt_roi_roi_vol: InputPathType | None = None,
     opt_fnirt_source_volume: str | None = None,
-    flirt_out: VolumeWarpfieldAffineRegressionFlirtOut | None = None,
+    flirt_out: VolumeWarpfieldAffineRegressionFlirtOutParameters | None = None,
     runner: Runner | None = None,
 ) -> VolumeWarpfieldAffineRegressionOutputs:
     """
@@ -90,33 +262,13 @@ def volume_warpfield_affine_regression(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-warpfield-affine-regression")
-    cargs.append(warpfield)
-    cargs.append(affine_out)
-    if opt_roi_roi_vol is not None:
-        cargs.extend([
-            "-roi",
-            execution.input_file(opt_roi_roi_vol)
-        ])
-    if opt_fnirt_source_volume is not None:
-        cargs.extend([
-            "-fnirt",
-            opt_fnirt_source_volume
-        ])
-    if flirt_out is not None:
-        cargs.extend(flirt_out.run(execution))
-    ret = VolumeWarpfieldAffineRegressionOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_warpfield_affine_regression_params(warpfield=warpfield, affine_out=affine_out, opt_roi_roi_vol=opt_roi_roi_vol, opt_fnirt_source_volume=opt_fnirt_source_volume, flirt_out=flirt_out)
+    return volume_warpfield_affine_regression_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA",
-    "VolumeWarpfieldAffineRegressionFlirtOut",
-    "VolumeWarpfieldAffineRegressionOutputs",
     "volume_warpfield_affine_regression",
+    "volume_warpfield_affine_regression_flirt_out_params",
+    "volume_warpfield_affine_regression_params",
 ]

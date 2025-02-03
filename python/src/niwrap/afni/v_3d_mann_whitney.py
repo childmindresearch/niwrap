@@ -12,6 +12,48 @@ V_3D_MANN_WHITNEY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dMannWhitneyParameters = typing.TypedDict('V3dMannWhitneyParameters', {
+    "__STYX_TYPE__": typing.Literal["3dMannWhitney"],
+    "dset1_x": list[str],
+    "dset2_y": list[str],
+    "output_prefix": str,
+    "workmem": typing.NotRequired[int | None],
+    "voxel_num": typing.NotRequired[int | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dMannWhitney": v_3d_mann_whitney_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dMannWhitney": v_3d_mann_whitney_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dMannWhitneyOutputs(typing.NamedTuple):
@@ -23,6 +65,125 @@ class V3dMannWhitneyOutputs(typing.NamedTuple):
     output_files: OutputPathType
     """Output files for the estimated population delta and Wilcoxon-Mann-Whitney
     statistics."""
+
+
+def v_3d_mann_whitney_params(
+    dset1_x: list[str],
+    dset2_y: list[str],
+    output_prefix: str,
+    workmem: int | None = None,
+    voxel_num: int | None = None,
+) -> V3dMannWhitneyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dset1_x: Data set for X observations. Must specify 1 and only 1\
+            sub-brick.
+        dset2_y: Data set for Y observations. Must specify 1 and only 1\
+            sub-brick.
+        output_prefix: Estimated population delta and Wilcoxon-Mann-Whitney\
+            statistics written to file.
+        workmem: Number of megabytes of RAM to use for statistical workspace.
+        voxel_num: Screen output for voxel # num.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dMannWhitney",
+        "dset1_x": dset1_x,
+        "dset2_y": dset2_y,
+        "output_prefix": output_prefix,
+    }
+    if workmem is not None:
+        params["workmem"] = workmem
+    if voxel_num is not None:
+        params["voxel_num"] = voxel_num
+    return params
+
+
+def v_3d_mann_whitney_cargs(
+    params: V3dMannWhitneyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dMannWhitney")
+    cargs.extend([
+        "-dset 1",
+        *params.get("dset1_x")
+    ])
+    cargs.extend([
+        "-dset 2",
+        *params.get("dset2_y")
+    ])
+    cargs.extend([
+        "-out",
+        params.get("output_prefix")
+    ])
+    if params.get("workmem") is not None:
+        cargs.extend([
+            "-workmem",
+            str(params.get("workmem"))
+        ])
+    if params.get("voxel_num") is not None:
+        cargs.extend([
+            "-voxel",
+            str(params.get("voxel_num"))
+        ])
+    return cargs
+
+
+def v_3d_mann_whitney_outputs(
+    params: V3dMannWhitneyParameters,
+    execution: Execution,
+) -> V3dMannWhitneyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dMannWhitneyOutputs(
+        root=execution.output_file("."),
+        output_files=execution.output_file(params.get("output_prefix") + "*"),
+    )
+    return ret
+
+
+def v_3d_mann_whitney_execute(
+    params: V3dMannWhitneyParameters,
+    execution: Execution,
+) -> V3dMannWhitneyOutputs:
+    """
+    Performs nonparametric Mann-Whitney two-sample test.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dMannWhitneyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_mann_whitney_cargs(params, execution)
+    ret = v_3d_mann_whitney_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_mann_whitney(
@@ -55,40 +216,13 @@ def v_3d_mann_whitney(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_MANN_WHITNEY_METADATA)
-    cargs = []
-    cargs.append("3dMannWhitney")
-    cargs.extend([
-        "-dset 1",
-        *dset1_x
-    ])
-    cargs.extend([
-        "-dset 2",
-        *dset2_y
-    ])
-    cargs.extend([
-        "-out",
-        output_prefix
-    ])
-    if workmem is not None:
-        cargs.extend([
-            "-workmem",
-            str(workmem)
-        ])
-    if voxel_num is not None:
-        cargs.extend([
-            "-voxel",
-            str(voxel_num)
-        ])
-    ret = V3dMannWhitneyOutputs(
-        root=execution.output_file("."),
-        output_files=execution.output_file(output_prefix + "*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_mann_whitney_params(dset1_x=dset1_x, dset2_y=dset2_y, output_prefix=output_prefix, workmem=workmem, voxel_num=voxel_num)
+    return v_3d_mann_whitney_execute(params, execution)
 
 
 __all__ = [
     "V3dMannWhitneyOutputs",
     "V_3D_MANN_WHITNEY_METADATA",
     "v_3d_mann_whitney",
+    "v_3d_mann_whitney_params",
 ]

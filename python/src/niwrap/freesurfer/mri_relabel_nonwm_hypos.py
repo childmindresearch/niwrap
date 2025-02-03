@@ -12,6 +12,49 @@ MRI_RELABEL_NONWM_HYPOS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriRelabelNonwmHyposParameters = typing.TypedDict('MriRelabelNonwmHyposParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_relabel_nonwm_hypos"],
+    "inputseg": InputPathType,
+    "outputseg": str,
+    "segments": typing.NotRequired[list[str] | None],
+    "seg_default": bool,
+    "debug": bool,
+    "checkopts": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_relabel_nonwm_hypos": mri_relabel_nonwm_hypos_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_relabel_nonwm_hypos": mri_relabel_nonwm_hypos_outputs,
+    }
+    return vt.get(t)
 
 
 class MriRelabelNonwmHyposOutputs(typing.NamedTuple):
@@ -22,6 +65,123 @@ class MriRelabelNonwmHyposOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_segmentation: OutputPathType
     """Output segmentation with non-WM hypointensities relabeled."""
+
+
+def mri_relabel_nonwm_hypos_params(
+    inputseg: InputPathType,
+    outputseg: str,
+    segments: list[str] | None = None,
+    seg_default: bool = False,
+    debug: bool = False,
+    checkopts: bool = False,
+) -> MriRelabelNonwmHyposParameters:
+    """
+    Build parameters.
+    
+    Args:
+        inputseg: Input segmentation file with non-wm-hypos labeled as 80, 81,\
+            or 82.
+        outputseg: Output segmentation file with non-wm-hypos relabeled.
+        segments: Label hypos adjacent to specified segment as a new segment\
+            (can be used multiple times).
+        seg_default: Use the default relabeling scheme.
+        debug: Turn on debugging.
+        checkopts: Don't run anything, just check options and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_relabel_nonwm_hypos",
+        "inputseg": inputseg,
+        "outputseg": outputseg,
+        "seg_default": seg_default,
+        "debug": debug,
+        "checkopts": checkopts,
+    }
+    if segments is not None:
+        params["segments"] = segments
+    return params
+
+
+def mri_relabel_nonwm_hypos_cargs(
+    params: MriRelabelNonwmHyposParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_relabel_nonwm_hypos")
+    cargs.extend([
+        "-i",
+        "-" + execution.input_file(params.get("inputseg"))
+    ])
+    cargs.extend([
+        "-o",
+        "-" + params.get("outputseg")
+    ])
+    if params.get("segments") is not None:
+        cargs.extend([
+            "--seg",
+            *params.get("segments")
+        ])
+    if params.get("seg_default"):
+        cargs.append("--seg-default")
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("checkopts"):
+        cargs.append("--checkopts")
+    return cargs
+
+
+def mri_relabel_nonwm_hypos_outputs(
+    params: MriRelabelNonwmHyposParameters,
+    execution: Execution,
+) -> MriRelabelNonwmHyposOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriRelabelNonwmHyposOutputs(
+        root=execution.output_file("."),
+        out_segmentation=execution.output_file(params.get("outputseg")),
+    )
+    return ret
+
+
+def mri_relabel_nonwm_hypos_execute(
+    params: MriRelabelNonwmHyposParameters,
+    execution: Execution,
+) -> MriRelabelNonwmHyposOutputs:
+    """
+    Relabels non-WM hypointensities based on proximity to a nearby label.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriRelabelNonwmHyposOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_relabel_nonwm_hypos_cargs(params, execution)
+    ret = mri_relabel_nonwm_hypos_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_relabel_nonwm_hypos(
@@ -55,37 +215,13 @@ def mri_relabel_nonwm_hypos(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RELABEL_NONWM_HYPOS_METADATA)
-    cargs = []
-    cargs.append("mri_relabel_nonwm_hypos")
-    cargs.extend([
-        "-i",
-        "-" + execution.input_file(inputseg)
-    ])
-    cargs.extend([
-        "-o",
-        "-" + outputseg
-    ])
-    if segments is not None:
-        cargs.extend([
-            "--seg",
-            *segments
-        ])
-    if seg_default:
-        cargs.append("--seg-default")
-    if debug:
-        cargs.append("--debug")
-    if checkopts:
-        cargs.append("--checkopts")
-    ret = MriRelabelNonwmHyposOutputs(
-        root=execution.output_file("."),
-        out_segmentation=execution.output_file(outputseg),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_relabel_nonwm_hypos_params(inputseg=inputseg, outputseg=outputseg, segments=segments, seg_default=seg_default, debug=debug, checkopts=checkopts)
+    return mri_relabel_nonwm_hypos_execute(params, execution)
 
 
 __all__ = [
     "MRI_RELABEL_NONWM_HYPOS_METADATA",
     "MriRelabelNonwmHyposOutputs",
     "mri_relabel_nonwm_hypos",
+    "mri_relabel_nonwm_hypos_params",
 ]

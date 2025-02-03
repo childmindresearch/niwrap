@@ -12,6 +12,47 @@ MRIS_LEFT_RIGHT_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisLeftRightRegisterParameters = typing.TypedDict('MrisLeftRightRegisterParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_left_right_register"],
+    "lh_sphere": InputPathType,
+    "rh_sphere": InputPathType,
+    "lh_sphere_left_right": str,
+    "rh_sphere_left_right": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_left_right_register": mris_left_right_register_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_left_right_register": mris_left_right_register_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisLeftRightRegisterOutputs(typing.NamedTuple):
@@ -24,6 +65,102 @@ class MrisLeftRightRegisterOutputs(typing.NamedTuple):
     """Registered left hemisphere spherical surface output file"""
     out_rh_sphere_left_right: OutputPathType
     """Registered right hemisphere spherical surface output file"""
+
+
+def mris_left_right_register_params(
+    lh_sphere: InputPathType,
+    rh_sphere: InputPathType,
+    lh_sphere_left_right: str,
+    rh_sphere_left_right: str,
+) -> MrisLeftRightRegisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        lh_sphere: Left hemisphere spherical surface input file.
+        rh_sphere: Right hemisphere spherical surface input file.
+        lh_sphere_left_right: Output file for left hemisphere with left-right\
+            registration.
+        rh_sphere_left_right: Output file for right hemisphere with left-right\
+            registration.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_left_right_register",
+        "lh_sphere": lh_sphere,
+        "rh_sphere": rh_sphere,
+        "lh_sphere_left_right": lh_sphere_left_right,
+        "rh_sphere_left_right": rh_sphere_left_right,
+    }
+    return params
+
+
+def mris_left_right_register_cargs(
+    params: MrisLeftRightRegisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_left_right_register")
+    cargs.append(execution.input_file(params.get("lh_sphere")))
+    cargs.append(execution.input_file(params.get("rh_sphere")))
+    cargs.append(params.get("lh_sphere_left_right"))
+    cargs.append(params.get("rh_sphere_left_right"))
+    return cargs
+
+
+def mris_left_right_register_outputs(
+    params: MrisLeftRightRegisterParameters,
+    execution: Execution,
+) -> MrisLeftRightRegisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisLeftRightRegisterOutputs(
+        root=execution.output_file("."),
+        out_lh_sphere_left_right=execution.output_file(params.get("lh_sphere_left_right")),
+        out_rh_sphere_left_right=execution.output_file(params.get("rh_sphere_left_right")),
+    )
+    return ret
+
+
+def mris_left_right_register_execute(
+    params: MrisLeftRightRegisterParameters,
+    execution: Execution,
+) -> MrisLeftRightRegisterOutputs:
+    """
+    Register left and right hemisphere spherical surfaces.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisLeftRightRegisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_left_right_register_cargs(params, execution)
+    ret = mris_left_right_register_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_left_right_register(
@@ -53,23 +190,13 @@ def mris_left_right_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LEFT_RIGHT_REGISTER_METADATA)
-    cargs = []
-    cargs.append("mris_left_right_register")
-    cargs.append(execution.input_file(lh_sphere))
-    cargs.append(execution.input_file(rh_sphere))
-    cargs.append(lh_sphere_left_right)
-    cargs.append(rh_sphere_left_right)
-    ret = MrisLeftRightRegisterOutputs(
-        root=execution.output_file("."),
-        out_lh_sphere_left_right=execution.output_file(lh_sphere_left_right),
-        out_rh_sphere_left_right=execution.output_file(rh_sphere_left_right),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_left_right_register_params(lh_sphere=lh_sphere, rh_sphere=rh_sphere, lh_sphere_left_right=lh_sphere_left_right, rh_sphere_left_right=rh_sphere_left_right)
+    return mris_left_right_register_execute(params, execution)
 
 
 __all__ = [
     "MRIS_LEFT_RIGHT_REGISTER_METADATA",
     "MrisLeftRightRegisterOutputs",
     "mris_left_right_register",
+    "mris_left_right_register_params",
 ]

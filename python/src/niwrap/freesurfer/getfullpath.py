@@ -12,14 +12,122 @@ GETFULLPATH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+GetfullpathParameters = typing.TypedDict('GetfullpathParameters', {
+    "__STYX_TYPE__": typing.Literal["getfullpath"],
+    "filename": str,
+})
 
 
-class GetfullpathOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `getfullpath(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "getfullpath": getfullpath_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def getfullpath_params(
+    filename: str,
+) -> GetfullpathParameters:
+    """
+    Build parameters.
+    
+    Args:
+        filename: Filename for which to get the full path.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "getfullpath",
+        "filename": filename,
+    }
+    return params
+
+
+def getfullpath_cargs(
+    params: GetfullpathParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("getfullpath")
+    cargs.append(params.get("filename"))
+    return cargs
+
+
+def getfullpath_outputs(
+    params: GetfullpathParameters,
+    execution: Execution,
+) -> GetfullpathOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = GetfullpathOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def getfullpath_execute(
+    params: GetfullpathParameters,
+    execution: Execution,
+) -> GetfullpathOutputs:
+    """
+    A utility to retrieve the full path of a specified file or directory.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `GetfullpathOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = getfullpath_cargs(params, execution)
+    ret = getfullpath_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def getfullpath(
@@ -41,18 +149,12 @@ def getfullpath(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GETFULLPATH_METADATA)
-    cargs = []
-    cargs.append("getfullpath")
-    cargs.append(filename)
-    ret = GetfullpathOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = getfullpath_params(filename=filename)
+    return getfullpath_execute(params, execution)
 
 
 __all__ = [
     "GETFULLPATH_METADATA",
-    "GetfullpathOutputs",
     "getfullpath",
+    "getfullpath_params",
 ]

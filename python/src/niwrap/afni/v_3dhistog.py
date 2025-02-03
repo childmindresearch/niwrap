@@ -12,6 +12,61 @@ V_3DHISTOG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dhistogParameters = typing.TypedDict('V3dhistogParameters', {
+    "__STYX_TYPE__": typing.Literal["3dhistog"],
+    "dataset": InputPathType,
+    "nbin": typing.NotRequired[float | None],
+    "dind": typing.NotRequired[float | None],
+    "omit": typing.NotRequired[list[float] | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "roi_mask": typing.NotRequired[InputPathType | None],
+    "doall": bool,
+    "noempty": bool,
+    "notitle": bool,
+    "log10": bool,
+    "pdf": bool,
+    "min": typing.NotRequired[float | None],
+    "max": typing.NotRequired[float | None],
+    "igfac": bool,
+    "int": bool,
+    "float": bool,
+    "unq": typing.NotRequired[str | None],
+    "prefix": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dhistog": v_3dhistog_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dhistog": v_3dhistog_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dhistogOutputs(typing.NamedTuple):
@@ -22,6 +77,208 @@ class V3dhistogOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     histogram_output: OutputPathType
     """Histogram output when -prefix option is used"""
+
+
+def v_3dhistog_params(
+    dataset: InputPathType,
+    nbin: float | None = None,
+    dind: float | None = None,
+    omit: list[float] | None = None,
+    mask: InputPathType | None = None,
+    roi_mask: InputPathType | None = None,
+    doall: bool = False,
+    noempty: bool = False,
+    notitle: bool = False,
+    log10: bool = False,
+    pdf: bool = False,
+    min_: float | None = None,
+    max_: float | None = None,
+    igfac: bool = False,
+    int_: bool = False,
+    float_: bool = False,
+    unq: str | None = None,
+    prefix: str | None = None,
+) -> V3dhistogParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset: Input dataset.
+        nbin: Use specified number of bins.
+        dind: Use data from specified sub-brick index.
+        omit: Omit specified value from the count.
+        mask: Use mask dataset to determine which voxels to use.
+        roi_mask: Create histogram for each non-zero value in 'r' dataset.
+        doall: Include all sub-bricks in the calculation.
+        noempty: Only output bins that are not empty.
+        notitle: Leave the title line off the output.
+        log10: Output log10() of the counts.
+        pdf: Output the counts divided by the number of samples.
+        min_: Specify minimum (inclusive) of histogram.
+        max_: Specify maximum (inclusive) of histogram.
+        igfac: Ignore sub-brick scale factors and histogram-ize the 'raw' data.
+        int_: Treat data and output as integers.
+        float_: Treat data and output as floats.
+        unq: Writes out the sorted unique values to file.
+        prefix: Write a copy of the histogram into specified file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dhistog",
+        "dataset": dataset,
+        "doall": doall,
+        "noempty": noempty,
+        "notitle": notitle,
+        "log10": log10,
+        "pdf": pdf,
+        "igfac": igfac,
+        "int": int_,
+        "float": float_,
+    }
+    if nbin is not None:
+        params["nbin"] = nbin
+    if dind is not None:
+        params["dind"] = dind
+    if omit is not None:
+        params["omit"] = omit
+    if mask is not None:
+        params["mask"] = mask
+    if roi_mask is not None:
+        params["roi_mask"] = roi_mask
+    if min_ is not None:
+        params["min"] = min_
+    if max_ is not None:
+        params["max"] = max_
+    if unq is not None:
+        params["unq"] = unq
+    if prefix is not None:
+        params["prefix"] = prefix
+    return params
+
+
+def v_3dhistog_cargs(
+    params: V3dhistogParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dhistog")
+    cargs.append(execution.input_file(params.get("dataset")))
+    if params.get("nbin") is not None:
+        cargs.extend([
+            "-nbin",
+            str(params.get("nbin"))
+        ])
+    if params.get("dind") is not None:
+        cargs.extend([
+            "-dind",
+            str(params.get("dind"))
+        ])
+    if params.get("omit") is not None:
+        cargs.extend([
+            "-omit",
+            *map(str, params.get("omit"))
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("roi_mask") is not None:
+        cargs.extend([
+            "-roi_mask",
+            execution.input_file(params.get("roi_mask"))
+        ])
+    if params.get("doall"):
+        cargs.append("-doall")
+    if params.get("noempty"):
+        cargs.append("-noempty")
+    if params.get("notitle"):
+        cargs.append("-notitle")
+    if params.get("log10"):
+        cargs.append("-log10")
+    if params.get("pdf"):
+        cargs.append("-pdf")
+    if params.get("min") is not None:
+        cargs.extend([
+            "-min",
+            str(params.get("min"))
+        ])
+    if params.get("max") is not None:
+        cargs.extend([
+            "-max",
+            str(params.get("max"))
+        ])
+    if params.get("igfac"):
+        cargs.append("-igfac")
+    if params.get("int"):
+        cargs.append("-int")
+    if params.get("float"):
+        cargs.append("-float")
+    if params.get("unq") is not None:
+        cargs.extend([
+            "-unq",
+            params.get("unq")
+        ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    return cargs
+
+
+def v_3dhistog_outputs(
+    params: V3dhistogParameters,
+    execution: Execution,
+) -> V3dhistogOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dhistogOutputs(
+        root=execution.output_file("."),
+        histogram_output=execution.output_file("HOUT.1D"),
+    )
+    return ret
+
+
+def v_3dhistog_execute(
+    params: V3dhistogParameters,
+    execution: Execution,
+) -> V3dhistogOutputs:
+    """
+    Compute histogram of a 3D dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dhistogOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dhistog_cargs(params, execution)
+    ret = v_3dhistog_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dhistog(
@@ -77,80 +334,13 @@ def v_3dhistog(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DHISTOG_METADATA)
-    cargs = []
-    cargs.append("3dhistog")
-    cargs.append(execution.input_file(dataset))
-    if nbin is not None:
-        cargs.extend([
-            "-nbin",
-            str(nbin)
-        ])
-    if dind is not None:
-        cargs.extend([
-            "-dind",
-            str(dind)
-        ])
-    if omit is not None:
-        cargs.extend([
-            "-omit",
-            *map(str, omit)
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if roi_mask is not None:
-        cargs.extend([
-            "-roi_mask",
-            execution.input_file(roi_mask)
-        ])
-    if doall:
-        cargs.append("-doall")
-    if noempty:
-        cargs.append("-noempty")
-    if notitle:
-        cargs.append("-notitle")
-    if log10:
-        cargs.append("-log10")
-    if pdf:
-        cargs.append("-pdf")
-    if min_ is not None:
-        cargs.extend([
-            "-min",
-            str(min_)
-        ])
-    if max_ is not None:
-        cargs.extend([
-            "-max",
-            str(max_)
-        ])
-    if igfac:
-        cargs.append("-igfac")
-    if int_:
-        cargs.append("-int")
-    if float_:
-        cargs.append("-float")
-    if unq is not None:
-        cargs.extend([
-            "-unq",
-            unq
-        ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    ret = V3dhistogOutputs(
-        root=execution.output_file("."),
-        histogram_output=execution.output_file("HOUT.1D"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dhistog_params(dataset=dataset, nbin=nbin, dind=dind, omit=omit, mask=mask, roi_mask=roi_mask, doall=doall, noempty=noempty, notitle=notitle, log10=log10, pdf=pdf, min_=min_, max_=max_, igfac=igfac, int_=int_, float_=float_, unq=unq, prefix=prefix)
+    return v_3dhistog_execute(params, execution)
 
 
 __all__ = [
     "V3dhistogOutputs",
     "V_3DHISTOG_METADATA",
     "v_3dhistog",
+    "v_3dhistog_params",
 ]

@@ -12,6 +12,46 @@ DEFECT_SEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DefectSegParameters = typing.TypedDict('DefectSegParameters', {
+    "__STYX_TYPE__": typing.Literal["defect-seg"],
+    "subject": str,
+    "lh_only": bool,
+    "rh_only": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "defect-seg": defect_seg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "defect-seg": defect_seg_outputs,
+    }
+    return vt.get(t)
 
 
 class DefectSegOutputs(typing.NamedTuple):
@@ -34,6 +74,108 @@ class DefectSegOutputs(typing.NamedTuple):
     """Annotation file for defects with fixes."""
     defects_stats: OutputPathType
     """Statistics summary of defects indicating area and average thickness."""
+
+
+def defect_seg_params(
+    subject: str,
+    lh_only: bool = False,
+    rh_only: bool = False,
+) -> DefectSegParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Subject identifier.
+        lh_only: Only process the left hemisphere.
+        rh_only: Only process the right hemisphere.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "defect-seg",
+        "subject": subject,
+        "lh_only": lh_only,
+        "rh_only": rh_only,
+    }
+    return params
+
+
+def defect_seg_cargs(
+    params: DefectSegParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("defect-seg")
+    cargs.extend([
+        "--s",
+        params.get("subject")
+    ])
+    if params.get("lh_only"):
+        cargs.append("--lh-only")
+    if params.get("rh_only"):
+        cargs.append("--rh-only")
+    return cargs
+
+
+def defect_seg_outputs(
+    params: DefectSegParameters,
+    execution: Execution,
+) -> DefectSegOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DefectSegOutputs(
+        root=execution.output_file("."),
+        surface_defects=execution.output_file("mri/surface.defects.mgz"),
+        defects_summary=execution.output_file("scripts/?h.defects.summary"),
+        defect_labels_fix=execution.output_file("surf/?h.defect_labels.fix.mgz"),
+        defect_labels_fix_bin=execution.output_file("surf/?h.defect_labels.fix.bin.mgz"),
+        defects_nofix_annot=execution.output_file("label/?h.defects.nofix.annot"),
+        defects_fix_annot=execution.output_file("label/?h.defects.fix.annot"),
+        defects_stats=execution.output_file("stats/?h.defects.stats"),
+    )
+    return ret
+
+
+def defect_seg_execute(
+    params: DefectSegParameters,
+    execution: Execution,
+) -> DefectSegOutputs:
+    """
+    This program creates some files that allows the user to visualize and evaluate
+    the surface defects that were automatically detected and fixed by the topology
+    correction program.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DefectSegOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = defect_seg_cargs(params, execution)
+    ret = defect_seg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def defect_seg(
@@ -61,32 +203,13 @@ def defect_seg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DEFECT_SEG_METADATA)
-    cargs = []
-    cargs.append("defect-seg")
-    cargs.extend([
-        "--s",
-        subject
-    ])
-    if lh_only:
-        cargs.append("--lh-only")
-    if rh_only:
-        cargs.append("--rh-only")
-    ret = DefectSegOutputs(
-        root=execution.output_file("."),
-        surface_defects=execution.output_file("mri/surface.defects.mgz"),
-        defects_summary=execution.output_file("scripts/?h.defects.summary"),
-        defect_labels_fix=execution.output_file("surf/?h.defect_labels.fix.mgz"),
-        defect_labels_fix_bin=execution.output_file("surf/?h.defect_labels.fix.bin.mgz"),
-        defects_nofix_annot=execution.output_file("label/?h.defects.nofix.annot"),
-        defects_fix_annot=execution.output_file("label/?h.defects.fix.annot"),
-        defects_stats=execution.output_file("stats/?h.defects.stats"),
-    )
-    execution.run(cargs)
-    return ret
+    params = defect_seg_params(subject=subject, lh_only=lh_only, rh_only=rh_only)
+    return defect_seg_execute(params, execution)
 
 
 __all__ = [
     "DEFECT_SEG_METADATA",
     "DefectSegOutputs",
     "defect_seg",
+    "defect_seg_params",
 ]

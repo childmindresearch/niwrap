@@ -12,6 +12,47 @@ MRIS_PARCELLATE_CONNECTIVITY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisParcellateConnectivityParameters = typing.TypedDict('MrisParcellateConnectivityParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_parcellate_connectivity"],
+    "smooth_iterations": typing.NotRequired[float | None],
+    "input_surface": InputPathType,
+    "input_correlations": InputPathType,
+    "output_parcellation": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_parcellate_connectivity": mris_parcellate_connectivity_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_parcellate_connectivity": mris_parcellate_connectivity_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisParcellateConnectivityOutputs(typing.NamedTuple):
@@ -22,6 +63,105 @@ class MrisParcellateConnectivityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     parcellation_output: OutputPathType
     """The resulting output parcellation."""
+
+
+def mris_parcellate_connectivity_params(
+    input_surface: InputPathType,
+    input_correlations: InputPathType,
+    output_parcellation: str,
+    smooth_iterations: float | None = None,
+) -> MrisParcellateConnectivityParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file.
+        input_correlations: Input correlations file.
+        output_parcellation: Output parcellation file.
+        smooth_iterations: Number of averaging iterations for smoothing\
+            correlation matrix.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_parcellate_connectivity",
+        "input_surface": input_surface,
+        "input_correlations": input_correlations,
+        "output_parcellation": output_parcellation,
+    }
+    if smooth_iterations is not None:
+        params["smooth_iterations"] = smooth_iterations
+    return params
+
+
+def mris_parcellate_connectivity_cargs(
+    params: MrisParcellateConnectivityParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_parcellate_connectivity")
+    if params.get("smooth_iterations") is not None:
+        cargs.extend([
+            "-n",
+            str(params.get("smooth_iterations"))
+        ])
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(execution.input_file(params.get("input_correlations")))
+    cargs.append(params.get("output_parcellation"))
+    return cargs
+
+
+def mris_parcellate_connectivity_outputs(
+    params: MrisParcellateConnectivityParameters,
+    execution: Execution,
+) -> MrisParcellateConnectivityOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisParcellateConnectivityOutputs(
+        root=execution.output_file("."),
+        parcellation_output=execution.output_file(params.get("output_parcellation")),
+    )
+    return ret
+
+
+def mris_parcellate_connectivity_execute(
+    params: MrisParcellateConnectivityParameters,
+    execution: Execution,
+) -> MrisParcellateConnectivityOutputs:
+    """
+    A tool to parcellate brain connectivity using surface and correlation data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisParcellateConnectivityOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_parcellate_connectivity_cargs(params, execution)
+    ret = mris_parcellate_connectivity_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_parcellate_connectivity(
@@ -50,26 +190,13 @@ def mris_parcellate_connectivity(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PARCELLATE_CONNECTIVITY_METADATA)
-    cargs = []
-    cargs.append("mris_parcellate_connectivity")
-    if smooth_iterations is not None:
-        cargs.extend([
-            "-n",
-            str(smooth_iterations)
-        ])
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(execution.input_file(input_correlations))
-    cargs.append(output_parcellation)
-    ret = MrisParcellateConnectivityOutputs(
-        root=execution.output_file("."),
-        parcellation_output=execution.output_file(output_parcellation),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_parcellate_connectivity_params(smooth_iterations=smooth_iterations, input_surface=input_surface, input_correlations=input_correlations, output_parcellation=output_parcellation)
+    return mris_parcellate_connectivity_execute(params, execution)
 
 
 __all__ = [
     "MRIS_PARCELLATE_CONNECTIVITY_METADATA",
     "MrisParcellateConnectivityOutputs",
     "mris_parcellate_connectivity",
+    "mris_parcellate_connectivity_params",
 ]

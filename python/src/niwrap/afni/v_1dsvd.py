@@ -12,6 +12,54 @@ V_1DSVD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dsvdParameters = typing.TypedDict('V1dsvdParameters', {
+    "__STYX_TYPE__": typing.Literal["1dsvd"],
+    "one": bool,
+    "vmean": bool,
+    "vnorm": bool,
+    "cond": bool,
+    "sing": bool,
+    "sort": bool,
+    "nosort": bool,
+    "asort": bool,
+    "left_eigenvectors": bool,
+    "num_eigenvectors": typing.NotRequired[str | None],
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1dsvd": v_1dsvd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1dsvd": v_1dsvd_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dsvdOutputs(typing.NamedTuple):
@@ -22,6 +70,142 @@ class V1dsvdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     stdout: OutputPathType
     """Output of the SVD computation"""
+
+
+def v_1dsvd_params(
+    input_files: list[InputPathType],
+    one: bool = False,
+    vmean: bool = False,
+    vnorm: bool = False,
+    cond: bool = False,
+    sing: bool = False,
+    sort: bool = False,
+    nosort: bool = False,
+    asort: bool = False,
+    left_eigenvectors: bool = False,
+    num_eigenvectors: str | None = None,
+) -> V1dsvdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input 1D file(s) for SVD computation.
+        one: Make 1st vector be all 1's.
+        vmean: Remove mean from each vector (cannot be used with -one).
+        vnorm: Make L2-norm of each vector = 1 before SVD.
+        cond: Only print condition number (ratio of extremes).
+        sing: Only print singular values.
+        sort: Sort singular values in descending order (default).
+        nosort: Don't sort singular values.
+        asort: Sort singular values in ascending order.
+        left_eigenvectors: Only output left eigenvectors in .1D format.
+        num_eigenvectors: Specify number of left eigenvectors to output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dsvd",
+        "one": one,
+        "vmean": vmean,
+        "vnorm": vnorm,
+        "cond": cond,
+        "sing": sing,
+        "sort": sort,
+        "nosort": nosort,
+        "asort": asort,
+        "left_eigenvectors": left_eigenvectors,
+        "input_files": input_files,
+    }
+    if num_eigenvectors is not None:
+        params["num_eigenvectors"] = num_eigenvectors
+    return params
+
+
+def v_1dsvd_cargs(
+    params: V1dsvdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dsvd")
+    if params.get("one"):
+        cargs.append("-one")
+    if params.get("vmean"):
+        cargs.append("-vmean")
+    if params.get("vnorm"):
+        cargs.append("-vnorm")
+    if params.get("cond"):
+        cargs.append("-cond")
+    if params.get("sing"):
+        cargs.append("-sing")
+    if params.get("sort"):
+        cargs.append("-sort")
+    if params.get("nosort"):
+        cargs.append("-nosort")
+    if params.get("asort"):
+        cargs.append("-asort")
+    if params.get("left_eigenvectors"):
+        cargs.append("-1Dleft")
+    if params.get("num_eigenvectors") is not None:
+        cargs.extend([
+            "-nev",
+            params.get("num_eigenvectors")
+        ])
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def v_1dsvd_outputs(
+    params: V1dsvdParameters,
+    execution: Execution,
+) -> V1dsvdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dsvdOutputs(
+        root=execution.output_file("."),
+        stdout=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def v_1dsvd_execute(
+    params: V1dsvdParameters,
+    execution: Execution,
+) -> V1dsvdOutputs:
+    """
+    Computes SVD of the matrix formed by the 1D file(s) and outputs the result on
+    stdout.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dsvdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1dsvd_cargs(params, execution)
+    ret = v_1dsvd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1dsvd(
@@ -64,42 +248,13 @@ def v_1dsvd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DSVD_METADATA)
-    cargs = []
-    cargs.append("1dsvd")
-    if one:
-        cargs.append("-one")
-    if vmean:
-        cargs.append("-vmean")
-    if vnorm:
-        cargs.append("-vnorm")
-    if cond:
-        cargs.append("-cond")
-    if sing:
-        cargs.append("-sing")
-    if sort:
-        cargs.append("-sort")
-    if nosort:
-        cargs.append("-nosort")
-    if asort:
-        cargs.append("-asort")
-    if left_eigenvectors:
-        cargs.append("-1Dleft")
-    if num_eigenvectors is not None:
-        cargs.extend([
-            "-nev",
-            num_eigenvectors
-        ])
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = V1dsvdOutputs(
-        root=execution.output_file("."),
-        stdout=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1dsvd_params(one=one, vmean=vmean, vnorm=vnorm, cond=cond, sing=sing, sort=sort, nosort=nosort, asort=asort, left_eigenvectors=left_eigenvectors, num_eigenvectors=num_eigenvectors, input_files=input_files)
+    return v_1dsvd_execute(params, execution)
 
 
 __all__ = [
     "V1dsvdOutputs",
     "V_1DSVD_METADATA",
     "v_1dsvd",
+    "v_1dsvd_params",
 ]

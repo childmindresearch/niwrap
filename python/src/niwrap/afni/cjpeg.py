@@ -12,6 +12,50 @@ CJPEG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+CjpegParameters = typing.TypedDict('CjpegParameters', {
+    "__STYX_TYPE__": typing.Literal["cjpeg"],
+    "quality": typing.NotRequired[float | None],
+    "grayscale": bool,
+    "optimize": bool,
+    "baseline": bool,
+    "progressive": bool,
+    "outfile": str,
+    "infile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cjpeg": cjpeg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cjpeg": cjpeg_outputs,
+    }
+    return vt.get(t)
 
 
 class CjpegOutputs(typing.NamedTuple):
@@ -22,6 +66,120 @@ class CjpegOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """The output JPEG file"""
+
+
+def cjpeg_params(
+    outfile: str,
+    infile: InputPathType,
+    quality: float | None = None,
+    grayscale: bool = False,
+    optimize: bool = False,
+    baseline: bool = False,
+    progressive: bool = False,
+) -> CjpegParameters:
+    """
+    Build parameters.
+    
+    Args:
+        outfile: Output JPEG file.
+        infile: Input image file.
+        quality: Quality of JPEG image (0-100).
+        grayscale: Create a grayscale JPEG file.
+        optimize: Optimize Huffman table.
+        baseline: Create a baseline JPEG file.
+        progressive: Create a progressive JPEG file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cjpeg",
+        "grayscale": grayscale,
+        "optimize": optimize,
+        "baseline": baseline,
+        "progressive": progressive,
+        "outfile": outfile,
+        "infile": infile,
+    }
+    if quality is not None:
+        params["quality"] = quality
+    return params
+
+
+def cjpeg_cargs(
+    params: CjpegParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("cjpeg")
+    if params.get("quality") is not None:
+        cargs.extend([
+            "-quality",
+            str(params.get("quality"))
+        ])
+    if params.get("grayscale"):
+        cargs.append("-grayscale")
+    if params.get("optimize"):
+        cargs.append("-optimize")
+    if params.get("baseline"):
+        cargs.append("-baseline")
+    if params.get("progressive"):
+        cargs.append("-progressive")
+    cargs.append(params.get("outfile"))
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def cjpeg_outputs(
+    params: CjpegParameters,
+    execution: Execution,
+) -> CjpegOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CjpegOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def cjpeg_execute(
+    params: CjpegParameters,
+    execution: Execution,
+) -> CjpegOutputs:
+    """
+    Compresses an image file to a JPEG file.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CjpegOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cjpeg_cargs(params, execution)
+    ret = cjpeg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cjpeg(
@@ -53,37 +211,15 @@ def cjpeg(
     Returns:
         NamedTuple of outputs (described in `CjpegOutputs`).
     """
-    if quality is not None and not (0 <= quality <= 100): 
-        raise ValueError(f"'quality' must be between 0 <= x <= 100 but was {quality}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(CJPEG_METADATA)
-    cargs = []
-    cargs.append("cjpeg")
-    if quality is not None:
-        cargs.extend([
-            "-quality",
-            str(quality)
-        ])
-    if grayscale:
-        cargs.append("-grayscale")
-    if optimize:
-        cargs.append("-optimize")
-    if baseline:
-        cargs.append("-baseline")
-    if progressive:
-        cargs.append("-progressive")
-    cargs.append(outfile)
-    cargs.append(execution.input_file(infile))
-    ret = CjpegOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = cjpeg_params(quality=quality, grayscale=grayscale, optimize=optimize, baseline=baseline, progressive=progressive, outfile=outfile, infile=infile)
+    return cjpeg_execute(params, execution)
 
 
 __all__ = [
     "CJPEG_METADATA",
     "CjpegOutputs",
     "cjpeg",
+    "cjpeg_params",
 ]

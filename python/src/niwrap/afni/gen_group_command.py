@@ -12,6 +12,55 @@ GEN_GROUP_COMMAND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+GenGroupCommandParameters = typing.TypedDict('GenGroupCommandParameters', {
+    "__STYX_TYPE__": typing.Literal["gen_group_command"],
+    "command_name": str,
+    "datasets": list[str],
+    "prefix": typing.NotRequired[str | None],
+    "set_labels": typing.NotRequired[list[str] | None],
+    "subj_prefix": typing.NotRequired[str | None],
+    "subj_suffix": typing.NotRequired[str | None],
+    "subs_betas": typing.NotRequired[list[str] | None],
+    "subs_tstats": typing.NotRequired[list[str] | None],
+    "type": typing.NotRequired[str | None],
+    "verb": typing.NotRequired[str | None],
+    "write_script": typing.NotRequired[str | None],
+    "other_options": typing.NotRequired[list[str] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "gen_group_command": gen_group_command_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "gen_group_command": gen_group_command_outputs,
+    }
+    return vt.get(t)
 
 
 class GenGroupCommandOutputs(typing.NamedTuple):
@@ -22,6 +71,189 @@ class GenGroupCommandOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_script: OutputPathType | None
     """The generated command script file"""
+
+
+def gen_group_command_params(
+    command_name: str,
+    datasets: list[str],
+    prefix: str | None = None,
+    set_labels: list[str] | None = None,
+    subj_prefix: str | None = None,
+    subj_suffix: str | None = None,
+    subs_betas: list[str] | None = None,
+    subs_tstats: list[str] | None = None,
+    type_: str | None = None,
+    verb: str | None = None,
+    write_script: str | None = None,
+    other_options: list[str] | None = None,
+) -> GenGroupCommandParameters:
+    """
+    Build parameters.
+    
+    Args:
+        command_name: Resulting command, such as 3dttest++.
+        datasets: List of datasets, can be used multiple times for different\
+            groups.
+        prefix: Prefix for the output file names.
+        set_labels: Labels corresponding to datasets entries.
+        subj_prefix: Prefix for subject names.
+        subj_suffix: Suffix for subject names.
+        subs_betas: Sub-bricks for beta weights.
+        subs_tstats: Sub-bricks for t-stats (3dMEMA).
+        type_: Specify the type of test to perform.
+        verb: Set the verbosity level.
+        write_script: Write command script to specified file name.
+        other_options: List of options to pass along to result.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "gen_group_command",
+        "command_name": command_name,
+        "datasets": datasets,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    if set_labels is not None:
+        params["set_labels"] = set_labels
+    if subj_prefix is not None:
+        params["subj_prefix"] = subj_prefix
+    if subj_suffix is not None:
+        params["subj_suffix"] = subj_suffix
+    if subs_betas is not None:
+        params["subs_betas"] = subs_betas
+    if subs_tstats is not None:
+        params["subs_tstats"] = subs_tstats
+    if type_ is not None:
+        params["type"] = type_
+    if verb is not None:
+        params["verb"] = verb
+    if write_script is not None:
+        params["write_script"] = write_script
+    if other_options is not None:
+        params["other_options"] = other_options
+    return params
+
+
+def gen_group_command_cargs(
+    params: GenGroupCommandParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("gen_group_command.py")
+    cargs.extend([
+        "-command",
+        params.get("command_name")
+    ])
+    cargs.extend([
+        "-dsets",
+        *params.get("datasets")
+    ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("set_labels") is not None:
+        cargs.extend([
+            "-set_labels",
+            *params.get("set_labels")
+        ])
+    if params.get("subj_prefix") is not None:
+        cargs.extend([
+            "-subj_prefix",
+            params.get("subj_prefix")
+        ])
+    if params.get("subj_suffix") is not None:
+        cargs.extend([
+            "-subj_suffix",
+            params.get("subj_suffix")
+        ])
+    if params.get("subs_betas") is not None:
+        cargs.extend([
+            "-subs_betas",
+            *params.get("subs_betas")
+        ])
+    if params.get("subs_tstats") is not None:
+        cargs.extend([
+            "-subs_tstats",
+            *params.get("subs_tstats")
+        ])
+    if params.get("type") is not None:
+        cargs.extend([
+            "-type",
+            params.get("type")
+        ])
+    if params.get("verb") is not None:
+        cargs.extend([
+            "-verb",
+            params.get("verb")
+        ])
+    if params.get("write_script") is not None:
+        cargs.extend([
+            "-write_script",
+            params.get("write_script")
+        ])
+    if params.get("other_options") is not None:
+        cargs.extend([
+            "-options",
+            *params.get("other_options")
+        ])
+    return cargs
+
+
+def gen_group_command_outputs(
+    params: GenGroupCommandParameters,
+    execution: Execution,
+) -> GenGroupCommandOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = GenGroupCommandOutputs(
+        root=execution.output_file("."),
+        output_script=execution.output_file(params.get("write_script")) if (params.get("write_script") is not None) else None,
+    )
+    return ret
+
+
+def gen_group_command_execute(
+    params: GenGroupCommandParameters,
+    execution: Execution,
+) -> GenGroupCommandOutputs:
+    """
+    Generate group analysis command scripts by parsing wildcard-based lists of input
+    datasets.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `GenGroupCommandOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = gen_group_command_cargs(params, execution)
+    ret = gen_group_command_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def gen_group_command(
@@ -67,76 +299,13 @@ def gen_group_command(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_GROUP_COMMAND_METADATA)
-    cargs = []
-    cargs.append("gen_group_command.py")
-    cargs.extend([
-        "-command",
-        command_name
-    ])
-    cargs.extend([
-        "-dsets",
-        *datasets
-    ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if set_labels is not None:
-        cargs.extend([
-            "-set_labels",
-            *set_labels
-        ])
-    if subj_prefix is not None:
-        cargs.extend([
-            "-subj_prefix",
-            subj_prefix
-        ])
-    if subj_suffix is not None:
-        cargs.extend([
-            "-subj_suffix",
-            subj_suffix
-        ])
-    if subs_betas is not None:
-        cargs.extend([
-            "-subs_betas",
-            *subs_betas
-        ])
-    if subs_tstats is not None:
-        cargs.extend([
-            "-subs_tstats",
-            *subs_tstats
-        ])
-    if type_ is not None:
-        cargs.extend([
-            "-type",
-            type_
-        ])
-    if verb is not None:
-        cargs.extend([
-            "-verb",
-            verb
-        ])
-    if write_script is not None:
-        cargs.extend([
-            "-write_script",
-            write_script
-        ])
-    if other_options is not None:
-        cargs.extend([
-            "-options",
-            *other_options
-        ])
-    ret = GenGroupCommandOutputs(
-        root=execution.output_file("."),
-        output_script=execution.output_file(write_script) if (write_script is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = gen_group_command_params(command_name=command_name, datasets=datasets, prefix=prefix, set_labels=set_labels, subj_prefix=subj_prefix, subj_suffix=subj_suffix, subs_betas=subs_betas, subs_tstats=subs_tstats, type_=type_, verb=verb, write_script=write_script, other_options=other_options)
+    return gen_group_command_execute(params, execution)
 
 
 __all__ = [
     "GEN_GROUP_COMMAND_METADATA",
     "GenGroupCommandOutputs",
     "gen_group_command",
+    "gen_group_command_params",
 ]

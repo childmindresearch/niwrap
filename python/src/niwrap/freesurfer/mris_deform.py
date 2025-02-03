@@ -12,6 +12,47 @@ MRIS_DEFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisDeformParameters = typing.TypedDict('MrisDeformParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_deform"],
+    "input_surface": InputPathType,
+    "input_volume": InputPathType,
+    "xform": InputPathType,
+    "output_surface": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_deform": mris_deform_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_deform": mris_deform_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisDeformOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class MrisDeformOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     deformed_surface: OutputPathType
     """Deformed surface file output by mris_deform"""
+
+
+def mris_deform_params(
+    input_surface: InputPathType,
+    input_volume: InputPathType,
+    xform: InputPathType,
+    output_surface: str,
+) -> MrisDeformParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file (e.g., lh.white).
+        input_volume: Input volume file (e.g., brain.mgz).
+        xform: Transformation file (e.g., talairach.xfm).
+        output_surface: Output surface file (e.g., lh.white.deformed).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_deform",
+        "input_surface": input_surface,
+        "input_volume": input_volume,
+        "xform": xform,
+        "output_surface": output_surface,
+    }
+    return params
+
+
+def mris_deform_cargs(
+    params: MrisDeformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_deform")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("xform")))
+    cargs.append(params.get("output_surface"))
+    return cargs
+
+
+def mris_deform_outputs(
+    params: MrisDeformParameters,
+    execution: Execution,
+) -> MrisDeformOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisDeformOutputs(
+        root=execution.output_file("."),
+        deformed_surface=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def mris_deform_execute(
+    params: MrisDeformParameters,
+    execution: Execution,
+) -> MrisDeformOutputs:
+    """
+    A tool for deforming surface meshes using volumetric information from an
+    auxiliary volume.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisDeformOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_deform_cargs(params, execution)
+    ret = mris_deform_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_deform(
@@ -50,22 +185,13 @@ def mris_deform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DEFORM_METADATA)
-    cargs = []
-    cargs.append("mris_deform")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(xform))
-    cargs.append(output_surface)
-    ret = MrisDeformOutputs(
-        root=execution.output_file("."),
-        deformed_surface=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_deform_params(input_surface=input_surface, input_volume=input_volume, xform=xform, output_surface=output_surface)
+    return mris_deform_execute(params, execution)
 
 
 __all__ = [
     "MRIS_DEFORM_METADATA",
     "MrisDeformOutputs",
     "mris_deform",
+    "mris_deform_params",
 ]

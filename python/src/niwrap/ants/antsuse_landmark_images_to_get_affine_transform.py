@@ -12,6 +12,47 @@ ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsuseLandmarkImagesToGetAffineTransformParameters = typing.TypedDict('AntsuseLandmarkImagesToGetAffineTransformParameters', {
+    "__STYX_TYPE__": typing.Literal["ANTSUseLandmarkImagesToGetAffineTransform"],
+    "fixed_image": InputPathType,
+    "moving_image": InputPathType,
+    "transform_type": typing.Literal["rigid", "affine"],
+    "output_affine": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ANTSUseLandmarkImagesToGetAffineTransform": antsuse_landmark_images_to_get_affine_transform_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ANTSUseLandmarkImagesToGetAffineTransform": antsuse_landmark_images_to_get_affine_transform_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsuseLandmarkImagesToGetAffineTransformOutputs(typing.NamedTuple):
@@ -22,6 +63,106 @@ class AntsuseLandmarkImagesToGetAffineTransformOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     affine_transform_matrix: OutputPathType
     """The output is the affine transformation matrix file."""
+
+
+def antsuse_landmark_images_to_get_affine_transform_params(
+    fixed_image: InputPathType,
+    moving_image: InputPathType,
+    transform_type: typing.Literal["rigid", "affine"],
+    output_affine: str,
+) -> AntsuseLandmarkImagesToGetAffineTransformParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fixed_image: The fixed image containing labeled landmarks (N-ary\
+            image).
+        moving_image: The moving image containing labeled landmarks (N-ary\
+            image).
+        transform_type: Type of transform to compute: 'rigid' or 'affine'.
+        output_affine: The output file for the affine transform matrix (e.g.,\
+            OutAffine.txt).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ANTSUseLandmarkImagesToGetAffineTransform",
+        "fixed_image": fixed_image,
+        "moving_image": moving_image,
+        "transform_type": transform_type,
+        "output_affine": output_affine,
+    }
+    return params
+
+
+def antsuse_landmark_images_to_get_affine_transform_cargs(
+    params: AntsuseLandmarkImagesToGetAffineTransformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ANTSUseLandmarkImagesToGetAffineTransform")
+    cargs.append(execution.input_file(params.get("fixed_image")))
+    cargs.append(execution.input_file(params.get("moving_image")))
+    cargs.append(params.get("transform_type"))
+    cargs.append(params.get("output_affine"))
+    return cargs
+
+
+def antsuse_landmark_images_to_get_affine_transform_outputs(
+    params: AntsuseLandmarkImagesToGetAffineTransformParameters,
+    execution: Execution,
+) -> AntsuseLandmarkImagesToGetAffineTransformOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsuseLandmarkImagesToGetAffineTransformOutputs(
+        root=execution.output_file("."),
+        affine_transform_matrix=execution.output_file(params.get("output_affine")),
+    )
+    return ret
+
+
+def antsuse_landmark_images_to_get_affine_transform_execute(
+    params: AntsuseLandmarkImagesToGetAffineTransformParameters,
+    execution: Execution,
+) -> AntsuseLandmarkImagesToGetAffineTransformOutputs:
+    """
+    This tool computes an affine transform (rigid or affine) from labeled landmark
+    images. It requires input images to be N-ary, in the same physical space as the
+    images you want to register, and to have the same landmark points defined within
+    them. Landmarks are defined from the center of mass of the labels in the input
+    images. ITK-snap can be used to generate the label images.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsuseLandmarkImagesToGetAffineTransformOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = antsuse_landmark_images_to_get_affine_transform_cargs(params, execution)
+    ret = antsuse_landmark_images_to_get_affine_transform_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def antsuse_landmark_images_to_get_affine_transform(
@@ -56,22 +197,13 @@ def antsuse_landmark_images_to_get_affine_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA)
-    cargs = []
-    cargs.append("ANTSUseLandmarkImagesToGetAffineTransform")
-    cargs.append(execution.input_file(fixed_image))
-    cargs.append(execution.input_file(moving_image))
-    cargs.append(transform_type)
-    cargs.append(output_affine)
-    ret = AntsuseLandmarkImagesToGetAffineTransformOutputs(
-        root=execution.output_file("."),
-        affine_transform_matrix=execution.output_file(output_affine),
-    )
-    execution.run(cargs)
-    return ret
+    params = antsuse_landmark_images_to_get_affine_transform_params(fixed_image=fixed_image, moving_image=moving_image, transform_type=transform_type, output_affine=output_affine)
+    return antsuse_landmark_images_to_get_affine_transform_execute(params, execution)
 
 
 __all__ = [
     "ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA",
     "AntsuseLandmarkImagesToGetAffineTransformOutputs",
     "antsuse_landmark_images_to_get_affine_transform",
+    "antsuse_landmark_images_to_get_affine_transform_params",
 ]

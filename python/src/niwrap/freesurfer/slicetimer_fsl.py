@@ -12,6 +12,53 @@ SLICETIMER_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SlicetimerFslParameters = typing.TypedDict('SlicetimerFslParameters', {
+    "__STYX_TYPE__": typing.Literal["slicetimer.fsl"],
+    "infile": InputPathType,
+    "outfile": typing.NotRequired[str | None],
+    "tr": typing.NotRequired[float | None],
+    "direction": typing.NotRequired[typing.Literal["x", "y", "z"] | None],
+    "interleaved": bool,
+    "reverse": bool,
+    "custom_timings": typing.NotRequired[InputPathType | None],
+    "global_shift": typing.NotRequired[float | None],
+    "custom_interleave_order": typing.NotRequired[InputPathType | None],
+    "verbose": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "slicetimer.fsl": slicetimer_fsl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "slicetimer.fsl": slicetimer_fsl_outputs,
+    }
+    return vt.get(t)
 
 
 class SlicetimerFslOutputs(typing.NamedTuple):
@@ -22,6 +69,163 @@ class SlicetimerFslOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     corrected_timeseries: OutputPathType | None
     """Corrected output timeseries"""
+
+
+def slicetimer_fsl_params(
+    infile: InputPathType,
+    outfile: str | None = None,
+    tr: float | None = None,
+    direction: typing.Literal["x", "y", "z"] | None = None,
+    interleaved: bool = False,
+    reverse: bool = False,
+    custom_timings: InputPathType | None = None,
+    global_shift: float | None = None,
+    custom_interleave_order: InputPathType | None = None,
+    verbose: bool = False,
+) -> SlicetimerFslParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Filename of input timeseries.
+        outfile: Filename of output corrected timeseries.
+        tr: Specify TR of data, default is 3s.
+        direction: Direction of slice acquisition (x=1, y=2, z=3); default is z.
+        interleaved: Use interleaved acquisition.
+        reverse: Reverse slice indexing (default is slices were acquired\
+            bottom-up).
+        custom_timings: Filename of single-column slice timings in fractions of\
+            TR, positive values shift slices forwards in time.
+        global_shift: Global shift in fraction of TR, default is 0.
+        custom_interleave_order: Filename of single-column custom interleave\
+            order file (first slice is referred to as 1 not 0).
+        verbose: Switch on diagnostic messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "slicetimer.fsl",
+        "infile": infile,
+        "interleaved": interleaved,
+        "reverse": reverse,
+        "verbose": verbose,
+    }
+    if outfile is not None:
+        params["outfile"] = outfile
+    if tr is not None:
+        params["tr"] = tr
+    if direction is not None:
+        params["direction"] = direction
+    if custom_timings is not None:
+        params["custom_timings"] = custom_timings
+    if global_shift is not None:
+        params["global_shift"] = global_shift
+    if custom_interleave_order is not None:
+        params["custom_interleave_order"] = custom_interleave_order
+    return params
+
+
+def slicetimer_fsl_cargs(
+    params: SlicetimerFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("slicetimer")
+    cargs.append("--in")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("infile"))
+    ])
+    if params.get("outfile") is not None:
+        cargs.extend([
+            "-o",
+            params.get("outfile")
+        ])
+    if params.get("tr") is not None:
+        cargs.extend([
+            "-r",
+            str(params.get("tr"))
+        ])
+    if params.get("direction") is not None:
+        cargs.extend([
+            "-d",
+            params.get("direction")
+        ])
+    if params.get("interleaved"):
+        cargs.append("--odd")
+    if params.get("reverse"):
+        cargs.append("--down")
+    if params.get("custom_timings") is not None:
+        cargs.extend([
+            "--tcustom",
+            execution.input_file(params.get("custom_timings"))
+        ])
+    if params.get("global_shift") is not None:
+        cargs.extend([
+            "--tglobal",
+            str(params.get("global_shift"))
+        ])
+    if params.get("custom_interleave_order") is not None:
+        cargs.extend([
+            "--ocustom",
+            execution.input_file(params.get("custom_interleave_order"))
+        ])
+    if params.get("verbose"):
+        cargs.append("-v")
+    return cargs
+
+
+def slicetimer_fsl_outputs(
+    params: SlicetimerFslParameters,
+    execution: Execution,
+) -> SlicetimerFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SlicetimerFslOutputs(
+        root=execution.output_file("."),
+        corrected_timeseries=execution.output_file(params.get("outfile")) if (params.get("outfile") is not None) else None,
+    )
+    return ret
+
+
+def slicetimer_fsl_execute(
+    params: SlicetimerFslParameters,
+    execution: Execution,
+) -> SlicetimerFslOutputs:
+    """
+    FMRIB's Interpolation for Slice Timing correction in FMRI data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SlicetimerFslOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = slicetimer_fsl_cargs(params, execution)
+    ret = slicetimer_fsl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def slicetimer_fsl(
@@ -64,59 +268,13 @@ def slicetimer_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICETIMER_FSL_METADATA)
-    cargs = []
-    cargs.append("slicetimer")
-    cargs.append("--in")
-    cargs.extend([
-        "-i",
-        execution.input_file(infile)
-    ])
-    if outfile is not None:
-        cargs.extend([
-            "-o",
-            outfile
-        ])
-    if tr is not None:
-        cargs.extend([
-            "-r",
-            str(tr)
-        ])
-    if direction is not None:
-        cargs.extend([
-            "-d",
-            direction
-        ])
-    if interleaved:
-        cargs.append("--odd")
-    if reverse:
-        cargs.append("--down")
-    if custom_timings is not None:
-        cargs.extend([
-            "--tcustom",
-            execution.input_file(custom_timings)
-        ])
-    if global_shift is not None:
-        cargs.extend([
-            "--tglobal",
-            str(global_shift)
-        ])
-    if custom_interleave_order is not None:
-        cargs.extend([
-            "--ocustom",
-            execution.input_file(custom_interleave_order)
-        ])
-    if verbose:
-        cargs.append("-v")
-    ret = SlicetimerFslOutputs(
-        root=execution.output_file("."),
-        corrected_timeseries=execution.output_file(outfile) if (outfile is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = slicetimer_fsl_params(infile=infile, outfile=outfile, tr=tr, direction=direction, interleaved=interleaved, reverse=reverse, custom_timings=custom_timings, global_shift=global_shift, custom_interleave_order=custom_interleave_order, verbose=verbose)
+    return slicetimer_fsl_execute(params, execution)
 
 
 __all__ = [
     "SLICETIMER_FSL_METADATA",
     "SlicetimerFslOutputs",
     "slicetimer_fsl",
+    "slicetimer_fsl_params",
 ]

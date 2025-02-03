@@ -12,14 +12,196 @@ UBER_SKEL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+UberSkelParameters = typing.TypedDict('UberSkelParameters', {
+    "__STYX_TYPE__": typing.Literal["uber_skel"],
+    "qt_options": typing.NotRequired[str | None],
+    "no_gui_flag": bool,
+    "print_script": bool,
+    "save_script": typing.NotRequired[str | None],
+    "user_var": typing.NotRequired[list[str] | None],
+    "help_howto_program": bool,
+    "help": bool,
+    "help_gui": bool,
+    "history": bool,
+    "show_valid_opts": bool,
+    "version": bool,
+})
 
 
-class UberSkelOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `uber_skel(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "uber_skel": uber_skel_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def uber_skel_params(
+    qt_options: str | None = None,
+    no_gui_flag: bool = False,
+    print_script: bool = False,
+    save_script: str | None = None,
+    user_var: list[str] | None = None,
+    help_howto_program: bool = False,
+    help_: bool = False,
+    help_gui: bool = False,
+    history: bool = False,
+    show_valid_opts: bool = False,
+    version: bool = False,
+) -> UberSkelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        qt_options: Pass PyQt4 options directly to the GUI.
+        no_gui_flag: Run without the GUI.
+        print_script: Print the script.
+        save_script: Save the script.
+        user_var: Initialize user variables. Usage: -uvar <name> <value>.
+        help_howto_program: Show programming comments.
+        help_: Show help.
+        help_gui: Show help for the GUI.
+        history: Show history.
+        show_valid_opts: Show valid options.
+        version: Show version.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "uber_skel",
+        "no_gui_flag": no_gui_flag,
+        "print_script": print_script,
+        "help_howto_program": help_howto_program,
+        "help": help_,
+        "help_gui": help_gui,
+        "history": history,
+        "show_valid_opts": show_valid_opts,
+        "version": version,
+    }
+    if qt_options is not None:
+        params["qt_options"] = qt_options
+    if save_script is not None:
+        params["save_script"] = save_script
+    if user_var is not None:
+        params["user_var"] = user_var
+    return params
+
+
+def uber_skel_cargs(
+    params: UberSkelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("uber_skel.py")
+    if params.get("qt_options") is not None:
+        cargs.extend([
+            "-qt_opts",
+            params.get("qt_options")
+        ])
+    if params.get("no_gui_flag"):
+        cargs.append("-no_gui")
+    if params.get("print_script"):
+        cargs.append("-print_script")
+    if params.get("save_script") is not None:
+        cargs.extend([
+            "-save_script",
+            params.get("save_script")
+        ])
+    if params.get("user_var") is not None:
+        cargs.extend([
+            "-uvar",
+            *params.get("user_var")
+        ])
+    if params.get("help_howto_program"):
+        cargs.append("-help_howto_program")
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("help_gui"):
+        cargs.append("-help_gui")
+    if params.get("history"):
+        cargs.append("-hist")
+    if params.get("show_valid_opts"):
+        cargs.append("-show_valid_opts")
+    if params.get("version"):
+        cargs.append("-ver")
+    return cargs
+
+
+def uber_skel_outputs(
+    params: UberSkelParameters,
+    execution: Execution,
+) -> UberSkelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UberSkelOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def uber_skel_execute(
+    params: UberSkelParameters,
+    execution: Execution,
+) -> UberSkelOutputs:
+    """
+    Sample uber processing program for initializing user and control variables, with
+    options for both GUI and non-GUI modes.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UberSkelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = uber_skel_cargs(params, execution)
+    ret = uber_skel_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def uber_skel(
@@ -62,48 +244,12 @@ def uber_skel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_SKEL_METADATA)
-    cargs = []
-    cargs.append("uber_skel.py")
-    if qt_options is not None:
-        cargs.extend([
-            "-qt_opts",
-            qt_options
-        ])
-    if no_gui_flag:
-        cargs.append("-no_gui")
-    if print_script:
-        cargs.append("-print_script")
-    if save_script is not None:
-        cargs.extend([
-            "-save_script",
-            save_script
-        ])
-    if user_var is not None:
-        cargs.extend([
-            "-uvar",
-            *user_var
-        ])
-    if help_howto_program:
-        cargs.append("-help_howto_program")
-    if help_:
-        cargs.append("-help")
-    if help_gui:
-        cargs.append("-help_gui")
-    if history:
-        cargs.append("-hist")
-    if show_valid_opts:
-        cargs.append("-show_valid_opts")
-    if version:
-        cargs.append("-ver")
-    ret = UberSkelOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = uber_skel_params(qt_options=qt_options, no_gui_flag=no_gui_flag, print_script=print_script, save_script=save_script, user_var=user_var, help_howto_program=help_howto_program, help_=help_, help_gui=help_gui, history=history, show_valid_opts=show_valid_opts, version=version)
+    return uber_skel_execute(params, execution)
 
 
 __all__ = [
     "UBER_SKEL_METADATA",
-    "UberSkelOutputs",
     "uber_skel",
+    "uber_skel_params",
 ]

@@ -12,6 +12,45 @@ REGISTER_CHILD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RegisterChildParameters = typing.TypedDict('RegisterChildParameters', {
+    "__STYX_TYPE__": typing.Literal["register_child"],
+    "input_volume": InputPathType,
+    "output_directory": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "register_child": register_child_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "register_child": register_child_outputs,
+    }
+    return vt.get(t)
 
 
 class RegisterChildOutputs(typing.NamedTuple):
@@ -24,6 +63,92 @@ class RegisterChildOutputs(typing.NamedTuple):
     """File where transformed control points are written."""
     intensity_normalized_volume: OutputPathType
     """File where intensity normalized volume is written."""
+
+
+def register_child_params(
+    input_volume: InputPathType,
+    output_directory: str,
+) -> RegisterChildParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input MR volume to be used for registration.
+        output_directory: Directory where output files will be written.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "register_child",
+        "input_volume": input_volume,
+        "output_directory": output_directory,
+    }
+    return params
+
+
+def register_child_cargs(
+    params: RegisterChildParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("register_child")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(params.get("output_directory"))
+    return cargs
+
+
+def register_child_outputs(
+    params: RegisterChildParameters,
+    execution: Execution,
+) -> RegisterChildOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RegisterChildOutputs(
+        root=execution.output_file("."),
+        transformed_control_points=execution.output_file(params.get("output_directory") + "/fsamples"),
+        intensity_normalized_volume=execution.output_file(params.get("output_directory") + "/norm"),
+    )
+    return ret
+
+
+def register_child_execute(
+    params: RegisterChildParameters,
+    execution: Execution,
+) -> RegisterChildOutputs:
+    """
+    A tool used for registering MR volumes with a child's atlas in Freesurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RegisterChildOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = register_child_cargs(params, execution)
+    ret = register_child_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def register_child(
@@ -47,21 +172,13 @@ def register_child(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_CHILD_METADATA)
-    cargs = []
-    cargs.append("register_child")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(output_directory)
-    ret = RegisterChildOutputs(
-        root=execution.output_file("."),
-        transformed_control_points=execution.output_file(output_directory + "/fsamples"),
-        intensity_normalized_volume=execution.output_file(output_directory + "/norm"),
-    )
-    execution.run(cargs)
-    return ret
+    params = register_child_params(input_volume=input_volume, output_directory=output_directory)
+    return register_child_execute(params, execution)
 
 
 __all__ = [
     "REGISTER_CHILD_METADATA",
     "RegisterChildOutputs",
     "register_child",
+    "register_child_params",
 ]

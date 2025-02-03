@@ -12,14 +12,122 @@ BROWSE_MINC_HEADER_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+BrowseMincHeaderTclParameters = typing.TypedDict('BrowseMincHeaderTclParameters', {
+    "__STYX_TYPE__": typing.Literal["browse-minc-header.tcl"],
+    "infile": InputPathType,
+})
 
 
-class BrowseMincHeaderTclOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `browse_minc_header_tcl(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "browse-minc-header.tcl": browse_minc_header_tcl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def browse_minc_header_tcl_params(
+    infile: InputPathType,
+) -> BrowseMincHeaderTclParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: MINC file for which the header is to be browsed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "browse-minc-header.tcl",
+        "infile": infile,
+    }
+    return params
+
+
+def browse_minc_header_tcl_cargs(
+    params: BrowseMincHeaderTclParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("browse-minc-header.tcl")
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def browse_minc_header_tcl_outputs(
+    params: BrowseMincHeaderTclParameters,
+    execution: Execution,
+) -> BrowseMincHeaderTclOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BrowseMincHeaderTclOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def browse_minc_header_tcl_execute(
+    params: BrowseMincHeaderTclParameters,
+    execution: Execution,
+) -> BrowseMincHeaderTclOutputs:
+    """
+    A tool for browsing MINC file headers, likely part of the FreeSurfer package.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BrowseMincHeaderTclOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = browse_minc_header_tcl_cargs(params, execution)
+    ret = browse_minc_header_tcl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def browse_minc_header_tcl(
@@ -41,18 +149,12 @@ def browse_minc_header_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BROWSE_MINC_HEADER_TCL_METADATA)
-    cargs = []
-    cargs.append("browse-minc-header.tcl")
-    cargs.append(execution.input_file(infile))
-    ret = BrowseMincHeaderTclOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = browse_minc_header_tcl_params(infile=infile)
+    return browse_minc_header_tcl_execute(params, execution)
 
 
 __all__ = [
     "BROWSE_MINC_HEADER_TCL_METADATA",
-    "BrowseMincHeaderTclOutputs",
     "browse_minc_header_tcl",
+    "browse_minc_header_tcl_params",
 ]

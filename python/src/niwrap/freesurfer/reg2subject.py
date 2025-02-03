@@ -12,14 +12,126 @@ REG2SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Reg2subjectParameters = typing.TypedDict('Reg2subjectParameters', {
+    "__STYX_TYPE__": typing.Literal["reg2subject"],
+    "regfile": InputPathType,
+})
 
 
-class Reg2subjectOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `reg2subject(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "reg2subject": reg2subject_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def reg2subject_params(
+    regfile: InputPathType,
+) -> Reg2subjectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        regfile: Input registration file, either in LTA or register.dat format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reg2subject",
+        "regfile": regfile,
+    }
+    return params
+
+
+def reg2subject_cargs(
+    params: Reg2subjectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("reg2subject")
+    cargs.extend([
+        "--r",
+        execution.input_file(params.get("regfile"))
+    ])
+    return cargs
+
+
+def reg2subject_outputs(
+    params: Reg2subjectParameters,
+    execution: Execution,
+) -> Reg2subjectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Reg2subjectOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def reg2subject_execute(
+    params: Reg2subjectParameters,
+    execution: Execution,
+) -> Reg2subjectOutputs:
+    """
+    Returns the name of the subject in the registration file, whether it is an LTA
+    or register.dat file.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Reg2subjectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reg2subject_cargs(params, execution)
+    ret = reg2subject_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reg2subject(
@@ -42,21 +154,12 @@ def reg2subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG2SUBJECT_METADATA)
-    cargs = []
-    cargs.append("reg2subject")
-    cargs.extend([
-        "--r",
-        execution.input_file(regfile)
-    ])
-    ret = Reg2subjectOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = reg2subject_params(regfile=regfile)
+    return reg2subject_execute(params, execution)
 
 
 __all__ = [
     "REG2SUBJECT_METADATA",
-    "Reg2subjectOutputs",
     "reg2subject",
+    "reg2subject_params",
 ]

@@ -12,6 +12,43 @@ RENORMALIZE_SUBJECT_KEEP_EDITTING_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RenormalizeSubjectKeepEdittingParameters = typing.TypedDict('RenormalizeSubjectKeepEdittingParameters', {
+    "__STYX_TYPE__": typing.Literal["renormalize_subject_keep_editting"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "renormalize_subject_keep_editting": renormalize_subject_keep_editting_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "renormalize_subject_keep_editting": renormalize_subject_keep_editting_outputs,
+    }
+    return vt.get(t)
 
 
 class RenormalizeSubjectKeepEdittingOutputs(typing.NamedTuple):
@@ -22,6 +59,84 @@ class RenormalizeSubjectKeepEdittingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Placeholder output file since tool details are not available."""
+
+
+def renormalize_subject_keep_editting_params(
+) -> RenormalizeSubjectKeepEdittingParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "renormalize_subject_keep_editting",
+    }
+    return params
+
+
+def renormalize_subject_keep_editting_cargs(
+    params: RenormalizeSubjectKeepEdittingParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("renormalize_subject_keep_editting")
+    return cargs
+
+
+def renormalize_subject_keep_editting_outputs(
+    params: RenormalizeSubjectKeepEdittingParameters,
+    execution: Execution,
+) -> RenormalizeSubjectKeepEdittingOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RenormalizeSubjectKeepEdittingOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file("output.txt"),
+    )
+    return ret
+
+
+def renormalize_subject_keep_editting_execute(
+    params: RenormalizeSubjectKeepEdittingParameters,
+    execution: Execution,
+) -> RenormalizeSubjectKeepEdittingOutputs:
+    """
+    A placeholder for the renormalize_subject_keep_editting tool, details not
+    available.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RenormalizeSubjectKeepEdittingOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = renormalize_subject_keep_editting_cargs(params, execution)
+    ret = renormalize_subject_keep_editting_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def renormalize_subject_keep_editting(
@@ -42,18 +157,13 @@ def renormalize_subject_keep_editting(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RENORMALIZE_SUBJECT_KEEP_EDITTING_METADATA)
-    cargs = []
-    cargs.append("renormalize_subject_keep_editting")
-    ret = RenormalizeSubjectKeepEdittingOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file("output.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = renormalize_subject_keep_editting_params()
+    return renormalize_subject_keep_editting_execute(params, execution)
 
 
 __all__ = [
     "RENORMALIZE_SUBJECT_KEEP_EDITTING_METADATA",
     "RenormalizeSubjectKeepEdittingOutputs",
     "renormalize_subject_keep_editting",
+    "renormalize_subject_keep_editting_params",
 ]

@@ -12,14 +12,172 @@ ABIDS_JSON_INFO_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AbidsJsonInfoPyParameters = typing.TypedDict('AbidsJsonInfoPyParameters', {
+    "__STYX_TYPE__": typing.Literal["abids_json_info.py"],
+    "json_files": list[InputPathType],
+    "tr_flag": bool,
+    "te_flag": bool,
+    "te_sec_flag": bool,
+    "match_nii_flag": bool,
+    "field_list": typing.NotRequired[list[str] | None],
+    "list_fields_flag": bool,
+    "help_flag": bool,
+})
 
 
-class AbidsJsonInfoPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `abids_json_info_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "abids_json_info.py": abids_json_info_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def abids_json_info_py_params(
+    json_files: list[InputPathType],
+    tr_flag: bool = False,
+    te_flag: bool = False,
+    te_sec_flag: bool = False,
+    match_nii_flag: bool = False,
+    field_list: list[str] | None = None,
+    list_fields_flag: bool = False,
+    help_flag: bool = False,
+) -> AbidsJsonInfoPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        json_files: Specify .json file(s).
+        tr_flag: Print the TR from the json file in seconds, from the\
+            'RepetitionTime' field.
+        te_flag: Print out the 'EchoTime' field in milliseconds (the json file\
+            stores it in seconds).
+        te_sec_flag: Print the 'EchoTime' field in seconds.
+        match_nii_flag: Check if there is a .nii or .nii.gz file that matches\
+            the .json file (1 if the dataset is loadable).
+        field_list: Print any field or list of fields from the json file.
+        list_fields_flag: Print a list of the available fields from the .json\
+            file. This must be the only argument specified.
+        help_flag: Show this help message and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "abids_json_info.py",
+        "json_files": json_files,
+        "tr_flag": tr_flag,
+        "te_flag": te_flag,
+        "te_sec_flag": te_sec_flag,
+        "match_nii_flag": match_nii_flag,
+        "list_fields_flag": list_fields_flag,
+        "help_flag": help_flag,
+    }
+    if field_list is not None:
+        params["field_list"] = field_list
+    return params
+
+
+def abids_json_info_py_cargs(
+    params: AbidsJsonInfoPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("abids_json_info.py")
+    cargs.extend([execution.input_file(f) for f in params.get("json_files")])
+    if params.get("tr_flag"):
+        cargs.append("-TR")
+    if params.get("te_flag"):
+        cargs.append("-TE")
+    if params.get("te_sec_flag"):
+        cargs.append("-TE_sec")
+    if params.get("match_nii_flag"):
+        cargs.append("-match_nii")
+    if params.get("field_list") is not None:
+        cargs.extend([
+            "-field",
+            *params.get("field_list")
+        ])
+    if params.get("list_fields_flag"):
+        cargs.append("-list_fields")
+    if params.get("help_flag"):
+        cargs.append("-help")
+    return cargs
+
+
+def abids_json_info_py_outputs(
+    params: AbidsJsonInfoPyParameters,
+    execution: Execution,
+) -> AbidsJsonInfoPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AbidsJsonInfoPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def abids_json_info_py_execute(
+    params: AbidsJsonInfoPyParameters,
+    execution: Execution,
+) -> AbidsJsonInfoPyOutputs:
+    """
+    A tool to extract information from BIDS formatted json files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AbidsJsonInfoPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = abids_json_info_py_cargs(params, execution)
+    ret = abids_json_info_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def abids_json_info_py(
@@ -59,35 +217,12 @@ def abids_json_info_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_JSON_INFO_PY_METADATA)
-    cargs = []
-    cargs.append("abids_json_info.py")
-    cargs.extend([execution.input_file(f) for f in json_files])
-    if tr_flag:
-        cargs.append("-TR")
-    if te_flag:
-        cargs.append("-TE")
-    if te_sec_flag:
-        cargs.append("-TE_sec")
-    if match_nii_flag:
-        cargs.append("-match_nii")
-    if field_list is not None:
-        cargs.extend([
-            "-field",
-            *field_list
-        ])
-    if list_fields_flag:
-        cargs.append("-list_fields")
-    if help_flag:
-        cargs.append("-help")
-    ret = AbidsJsonInfoPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = abids_json_info_py_params(json_files=json_files, tr_flag=tr_flag, te_flag=te_flag, te_sec_flag=te_sec_flag, match_nii_flag=match_nii_flag, field_list=field_list, list_fields_flag=list_fields_flag, help_flag=help_flag)
+    return abids_json_info_py_execute(params, execution)
 
 
 __all__ = [
     "ABIDS_JSON_INFO_PY_METADATA",
-    "AbidsJsonInfoPyOutputs",
     "abids_json_info_py",
+    "abids_json_info_py_params",
 ]

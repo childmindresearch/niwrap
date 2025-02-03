@@ -12,6 +12,43 @@ CONNECTED_COMPONENTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ConnectedComponentsParameters = typing.TypedDict('ConnectedComponentsParameters', {
+    "__STYX_TYPE__": typing.Literal["connected_components"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "connected_components": connected_components_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "connected_components": connected_components_outputs,
+    }
+    return vt.get(t)
 
 
 class ConnectedComponentsOutputs(typing.NamedTuple):
@@ -22,6 +59,83 @@ class ConnectedComponentsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_labelled_image_file: OutputPathType
     """Labeled connected components image output file."""
+
+
+def connected_components_params(
+) -> ConnectedComponentsParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "connected_components",
+    }
+    return params
+
+
+def connected_components_cargs(
+    params: ConnectedComponentsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("connected_components")
+    return cargs
+
+
+def connected_components_outputs(
+    params: ConnectedComponentsParameters,
+    execution: Execution,
+) -> ConnectedComponentsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ConnectedComponentsOutputs(
+        root=execution.output_file("."),
+        output_labelled_image_file=execution.output_file("[OUTPUT_IMAGE].nii.gz"),
+    )
+    return ret
+
+
+def connected_components_execute(
+    params: ConnectedComponentsParameters,
+    execution: Execution,
+) -> ConnectedComponentsOutputs:
+    """
+    A tool for identifying connected components in an image.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ConnectedComponentsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = connected_components_cargs(params, execution)
+    ret = connected_components_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def connected_components(
@@ -41,18 +155,13 @@ def connected_components(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONNECTED_COMPONENTS_METADATA)
-    cargs = []
-    cargs.append("connected_components")
-    ret = ConnectedComponentsOutputs(
-        root=execution.output_file("."),
-        output_labelled_image_file=execution.output_file("[OUTPUT_IMAGE].nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = connected_components_params()
+    return connected_components_execute(params, execution)
 
 
 __all__ = [
     "CONNECTED_COMPONENTS_METADATA",
     "ConnectedComponentsOutputs",
     "connected_components",
+    "connected_components_params",
 ]

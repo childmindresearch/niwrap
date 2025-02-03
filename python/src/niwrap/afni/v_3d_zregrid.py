@@ -12,6 +12,49 @@ V_3D_ZREGRID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dZregridParameters = typing.TypedDict('V3dZregridParameters', {
+    "__STYX_TYPE__": typing.Literal["3dZregrid"],
+    "z_thickness": typing.NotRequired[float | None],
+    "slice_count": typing.NotRequired[float | None],
+    "z_size": typing.NotRequired[float | None],
+    "prefix": typing.NotRequired[str | None],
+    "infile": InputPathType,
+    "verbose": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dZregrid": v_3d_zregrid_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dZregrid": v_3d_zregrid_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dZregridOutputs(typing.NamedTuple):
@@ -24,6 +67,130 @@ class V3dZregridOutputs(typing.NamedTuple):
     """Output dataset with new grid"""
     outfile_brik: OutputPathType | None
     """Output dataset with new grid"""
+
+
+def v_3d_zregrid_params(
+    infile: InputPathType,
+    z_thickness: float | None = None,
+    slice_count: float | None = None,
+    z_size: float | None = None,
+    prefix: str | None = None,
+    verbose: bool = False,
+) -> V3dZregridParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input dataset.
+        z_thickness: Set slice thickness to D mm.
+        slice_count: Set slice count to N.
+        z_size: Set thickness of dataset (center-to-center of first and last\
+            slices) to Z mm.
+        prefix: Write result to dataset with prefix P.
+        verbose: Write progress reports to stderr.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dZregrid",
+        "infile": infile,
+        "verbose": verbose,
+    }
+    if z_thickness is not None:
+        params["z_thickness"] = z_thickness
+    if slice_count is not None:
+        params["slice_count"] = slice_count
+    if z_size is not None:
+        params["z_size"] = z_size
+    if prefix is not None:
+        params["prefix"] = prefix
+    return params
+
+
+def v_3d_zregrid_cargs(
+    params: V3dZregridParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dZregrid")
+    if params.get("z_thickness") is not None:
+        cargs.extend([
+            "-dz",
+            str(params.get("z_thickness"))
+        ])
+    if params.get("slice_count") is not None:
+        cargs.extend([
+            "-nz",
+            str(params.get("slice_count"))
+        ])
+    if params.get("z_size") is not None:
+        cargs.extend([
+            "-zsize",
+            str(params.get("z_size"))
+        ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    cargs.append(execution.input_file(params.get("infile")))
+    if params.get("verbose"):
+        cargs.append("-verb")
+    return cargs
+
+
+def v_3d_zregrid_outputs(
+    params: V3dZregridParameters,
+    execution: Execution,
+) -> V3dZregridOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dZregridOutputs(
+        root=execution.output_file("."),
+        outfile_head=execution.output_file(params.get("prefix") + "+orig.HEAD") if (params.get("prefix") is not None) else None,
+        outfile_brik=execution.output_file(params.get("prefix") + "+orig.BRIK") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_zregrid_execute(
+    params: V3dZregridParameters,
+    execution: Execution,
+) -> V3dZregridOutputs:
+    """
+    Alters the input dataset's slice thickness and/or number.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dZregridOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_zregrid_cargs(params, execution)
+    ret = v_3d_zregrid_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_zregrid(
@@ -56,42 +223,13 @@ def v_3d_zregrid(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ZREGRID_METADATA)
-    cargs = []
-    cargs.append("3dZregrid")
-    if z_thickness is not None:
-        cargs.extend([
-            "-dz",
-            str(z_thickness)
-        ])
-    if slice_count is not None:
-        cargs.extend([
-            "-nz",
-            str(slice_count)
-        ])
-    if z_size is not None:
-        cargs.extend([
-            "-zsize",
-            str(z_size)
-        ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    cargs.append(execution.input_file(infile))
-    if verbose:
-        cargs.append("-verb")
-    ret = V3dZregridOutputs(
-        root=execution.output_file("."),
-        outfile_head=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,
-        outfile_brik=execution.output_file(prefix + "+orig.BRIK") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_zregrid_params(z_thickness=z_thickness, slice_count=slice_count, z_size=z_size, prefix=prefix, infile=infile, verbose=verbose)
+    return v_3d_zregrid_execute(params, execution)
 
 
 __all__ = [
     "V3dZregridOutputs",
     "V_3D_ZREGRID_METADATA",
     "v_3d_zregrid",
+    "v_3d_zregrid_params",
 ]

@@ -12,79 +12,243 @@ NIFTI_INFORMATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+NiftiInformationPrintHeaderParameters = typing.TypedDict('NiftiInformationPrintHeaderParameters', {
+    "__STYX_TYPE__": typing.Literal["print_header"],
+    "opt_allow_truncated": bool,
+})
+NiftiInformationPrintXmlParameters = typing.TypedDict('NiftiInformationPrintXmlParameters', {
+    "__STYX_TYPE__": typing.Literal["print_xml"],
+    "opt_version_version": typing.NotRequired[str | None],
+})
+NiftiInformationParameters = typing.TypedDict('NiftiInformationParameters', {
+    "__STYX_TYPE__": typing.Literal["nifti-information"],
+    "nifti_file": str,
+    "print_header": typing.NotRequired[NiftiInformationPrintHeaderParameters | None],
+    "opt_print_matrix": bool,
+    "print_xml": typing.NotRequired[NiftiInformationPrintXmlParameters | None],
+})
 
 
-@dataclasses.dataclass
-class NiftiInformationPrintHeader:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    display the header contents.
-    """
-    opt_allow_truncated: bool = False
-    """print the header even if the data is truncated"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-print-header")
-        if self.opt_allow_truncated:
-            cargs.append("-allow-truncated")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "nifti-information": nifti_information_cargs,
+        "print_header": nifti_information_print_header_cargs,
+        "print_xml": nifti_information_print_xml_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class NiftiInformationPrintXml:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    print the cifti XML (cifti only).
-    """
-    opt_version_version: str | None = None
-    """convert the XML to a specific CIFTI version (default is the file's cifti
-    version): the CIFTI version to use"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-print-xml")
-        if self.opt_version_version is not None:
-            cargs.extend([
-                "-version",
-                self.opt_version_version
-            ])
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
 
 
-class NiftiInformationOutputs(typing.NamedTuple):
+def nifti_information_print_header_params(
+    opt_allow_truncated: bool = False,
+) -> NiftiInformationPrintHeaderParameters:
     """
-    Output object returned when calling `nifti_information(...)`.
+    Build parameters.
+    
+    Args:
+        opt_allow_truncated: print the header even if the data is truncated.
+    Returns:
+        Parameter dictionary
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    params = {
+        "__STYXTYPE__": "print_header",
+        "opt_allow_truncated": opt_allow_truncated,
+    }
+    return params
+
+
+def nifti_information_print_header_cargs(
+    params: NiftiInformationPrintHeaderParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-print-header")
+    if params.get("opt_allow_truncated"):
+        cargs.append("-allow-truncated")
+    return cargs
+
+
+def nifti_information_print_xml_params(
+    opt_version_version: str | None = None,
+) -> NiftiInformationPrintXmlParameters:
+    """
+    Build parameters.
+    
+    Args:
+        opt_version_version: convert the XML to a specific CIFTI version\
+            (default is the file's cifti version): the CIFTI version to use.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "print_xml",
+    }
+    if opt_version_version is not None:
+        params["opt_version_version"] = opt_version_version
+    return params
+
+
+def nifti_information_print_xml_cargs(
+    params: NiftiInformationPrintXmlParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-print-xml")
+    if params.get("opt_version_version") is not None:
+        cargs.extend([
+            "-version",
+            params.get("opt_version_version")
+        ])
+    return cargs
+
+
+def nifti_information_params(
+    nifti_file: str,
+    print_header: NiftiInformationPrintHeaderParameters | None = None,
+    opt_print_matrix: bool = False,
+    print_xml: NiftiInformationPrintXmlParameters | None = None,
+) -> NiftiInformationParameters:
+    """
+    Build parameters.
+    
+    Args:
+        nifti_file: the nifti/cifti file to examine.
+        print_header: display the header contents.
+        opt_print_matrix: output the values in the matrix (cifti only).
+        print_xml: print the cifti XML (cifti only).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "nifti-information",
+        "nifti_file": nifti_file,
+        "opt_print_matrix": opt_print_matrix,
+    }
+    if print_header is not None:
+        params["print_header"] = print_header
+    if print_xml is not None:
+        params["print_xml"] = print_xml
+    return params
+
+
+def nifti_information_cargs(
+    params: NiftiInformationParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-nifti-information")
+    cargs.append(params.get("nifti_file"))
+    if params.get("print_header") is not None:
+        cargs.extend(dyn_cargs(params.get("print_header")["__STYXTYPE__"])(params.get("print_header"), execution))
+    if params.get("opt_print_matrix"):
+        cargs.append("-print-matrix")
+    if params.get("print_xml") is not None:
+        cargs.extend(dyn_cargs(params.get("print_xml")["__STYXTYPE__"])(params.get("print_xml"), execution))
+    return cargs
+
+
+def nifti_information_outputs(
+    params: NiftiInformationParameters,
+    execution: Execution,
+) -> NiftiInformationOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = NiftiInformationOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def nifti_information_execute(
+    params: NiftiInformationParameters,
+    execution: Execution,
+) -> NiftiInformationOutputs:
+    """
+    Display information about a nifti/cifti file.
+    
+    You must specify at least one -print-* option.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `NiftiInformationOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = nifti_information_cargs(params, execution)
+    ret = nifti_information_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def nifti_information(
     nifti_file: str,
-    print_header: NiftiInformationPrintHeader | None = None,
+    print_header: NiftiInformationPrintHeaderParameters | None = None,
     opt_print_matrix: bool = False,
-    print_xml: NiftiInformationPrintXml | None = None,
+    print_xml: NiftiInformationPrintXmlParameters | None = None,
     runner: Runner | None = None,
 ) -> NiftiInformationOutputs:
     """
@@ -107,27 +271,14 @@ def nifti_information(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NIFTI_INFORMATION_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-nifti-information")
-    cargs.append(nifti_file)
-    if print_header is not None:
-        cargs.extend(print_header.run(execution))
-    if opt_print_matrix:
-        cargs.append("-print-matrix")
-    if print_xml is not None:
-        cargs.extend(print_xml.run(execution))
-    ret = NiftiInformationOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = nifti_information_params(nifti_file=nifti_file, print_header=print_header, opt_print_matrix=opt_print_matrix, print_xml=print_xml)
+    return nifti_information_execute(params, execution)
 
 
 __all__ = [
     "NIFTI_INFORMATION_METADATA",
-    "NiftiInformationOutputs",
-    "NiftiInformationPrintHeader",
-    "NiftiInformationPrintXml",
     "nifti_information",
+    "nifti_information_params",
+    "nifti_information_print_header_params",
+    "nifti_information_print_xml_params",
 ]

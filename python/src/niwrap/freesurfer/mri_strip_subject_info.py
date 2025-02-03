@@ -12,14 +12,127 @@ MRI_STRIP_SUBJECT_INFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriStripSubjectInfoParameters = typing.TypedDict('MriStripSubjectInfoParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_strip_subject_info"],
+    "input_files": list[InputPathType],
+    "output_directory": str,
+})
 
 
-class MriStripSubjectInfoOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_strip_subject_info(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_strip_subject_info": mri_strip_subject_info_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_strip_subject_info_params(
+    input_files: list[InputPathType],
+    output_directory: str,
+) -> MriStripSubjectInfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input file(s) containing MRI data.
+        output_directory: Directory where stripped files will be saved.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_strip_subject_info",
+        "input_files": input_files,
+        "output_directory": output_directory,
+    }
+    return params
+
+
+def mri_strip_subject_info_cargs(
+    params: MriStripSubjectInfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_strip_subject_info")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    cargs.append(params.get("output_directory"))
+    return cargs
+
+
+def mri_strip_subject_info_outputs(
+    params: MriStripSubjectInfoParameters,
+    execution: Execution,
+) -> MriStripSubjectInfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriStripSubjectInfoOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_strip_subject_info_execute(
+    params: MriStripSubjectInfoParameters,
+    execution: Execution,
+) -> MriStripSubjectInfoOutputs:
+    """
+    A tool to strip subject information from MRI data files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriStripSubjectInfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_strip_subject_info_cargs(params, execution)
+    ret = mri_strip_subject_info_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_strip_subject_info(
@@ -43,19 +156,12 @@ def mri_strip_subject_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_STRIP_SUBJECT_INFO_METADATA)
-    cargs = []
-    cargs.append("mri_strip_subject_info")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    cargs.append(output_directory)
-    ret = MriStripSubjectInfoOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_strip_subject_info_params(input_files=input_files, output_directory=output_directory)
+    return mri_strip_subject_info_execute(params, execution)
 
 
 __all__ = [
     "MRI_STRIP_SUBJECT_INFO_METADATA",
-    "MriStripSubjectInfoOutputs",
     "mri_strip_subject_info",
+    "mri_strip_subject_info_params",
 ]

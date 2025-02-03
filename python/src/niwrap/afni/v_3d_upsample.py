@@ -12,6 +12,49 @@ V_3D_UPSAMPLE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dUpsampleParameters = typing.TypedDict('V3dUpsampleParameters', {
+    "__STYX_TYPE__": typing.Literal["3dUpsample"],
+    "upsample_factor": int,
+    "input_dataset": str,
+    "linear_interpolation": bool,
+    "output_prefix": typing.NotRequired[str | None],
+    "verbose_flag": bool,
+    "datatype": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dUpsample": v_3d_upsample_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dUpsample": v_3d_upsample_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dUpsampleOutputs(typing.NamedTuple):
@@ -24,6 +67,130 @@ class V3dUpsampleOutputs(typing.NamedTuple):
     """Upsampled dataset in BRIK format."""
     output_head: OutputPathType | None
     """Header information for the upsampled dataset."""
+
+
+def v_3d_upsample_params(
+    upsample_factor: int,
+    input_dataset: str,
+    linear_interpolation: bool = False,
+    output_prefix: str | None = None,
+    verbose_flag: bool = False,
+    datatype: str | None = None,
+) -> V3dUpsampleParameters:
+    """
+    Build parameters.
+    
+    Args:
+        upsample_factor: Upsampling factor; must be between 2 and 320\
+            (inclusive).
+        input_dataset: Input dataset.
+        linear_interpolation: Use linear interpolation instead of 7th order\
+            polynomial interpolation.
+        output_prefix: Define the prefix name of the output dataset; default is\
+            'Upsam'.
+        verbose_flag: Print verbose output.
+        datatype: Specify the datatype for the output dataset (float, short,\
+            byte); default is float.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dUpsample",
+        "upsample_factor": upsample_factor,
+        "input_dataset": input_dataset,
+        "linear_interpolation": linear_interpolation,
+        "verbose_flag": verbose_flag,
+    }
+    if output_prefix is not None:
+        params["output_prefix"] = output_prefix
+    if datatype is not None:
+        params["datatype"] = datatype
+    return params
+
+
+def v_3d_upsample_cargs(
+    params: V3dUpsampleParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dUpsample")
+    cargs.extend([
+        "-n",
+        str(params.get("upsample_factor"))
+    ])
+    cargs.extend([
+        "-input",
+        params.get("input_dataset")
+    ])
+    if params.get("linear_interpolation"):
+        cargs.append("-1")
+    if params.get("output_prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("output_prefix")
+        ])
+    if params.get("verbose_flag"):
+        cargs.append("-verb")
+    if params.get("datatype") is not None:
+        cargs.extend([
+            "-datum",
+            params.get("datatype")
+        ])
+    return cargs
+
+
+def v_3d_upsample_outputs(
+    params: V3dUpsampleParameters,
+    execution: Execution,
+) -> V3dUpsampleOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dUpsampleOutputs(
+        root=execution.output_file("."),
+        output_brik=execution.output_file(params.get("output_prefix") + "+orig.BRIK") if (params.get("output_prefix") is not None) else None,
+        output_head=execution.output_file(params.get("output_prefix") + "+orig.HEAD") if (params.get("output_prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_upsample_execute(
+    params: V3dUpsampleParameters,
+    execution: Execution,
+) -> V3dUpsampleOutputs:
+    """
+    Upsamples a 3D+time dataset in the time direction by a specified factor.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dUpsampleOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_upsample_cargs(params, execution)
+    ret = v_3d_upsample_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_upsample(
@@ -57,45 +224,15 @@ def v_3d_upsample(
     Returns:
         NamedTuple of outputs (described in `V3dUpsampleOutputs`).
     """
-    if not (2 <= upsample_factor <= 320): 
-        raise ValueError(f"'upsample_factor' must be between 2 <= x <= 320 but was {upsample_factor}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_UPSAMPLE_METADATA)
-    cargs = []
-    cargs.append("3dUpsample")
-    cargs.extend([
-        "-n",
-        str(upsample_factor)
-    ])
-    cargs.extend([
-        "-input",
-        input_dataset
-    ])
-    if linear_interpolation:
-        cargs.append("-1")
-    if output_prefix is not None:
-        cargs.extend([
-            "-prefix",
-            output_prefix
-        ])
-    if verbose_flag:
-        cargs.append("-verb")
-    if datatype is not None:
-        cargs.extend([
-            "-datum",
-            datatype
-        ])
-    ret = V3dUpsampleOutputs(
-        root=execution.output_file("."),
-        output_brik=execution.output_file(output_prefix + "+orig.BRIK") if (output_prefix is not None) else None,
-        output_head=execution.output_file(output_prefix + "+orig.HEAD") if (output_prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_upsample_params(upsample_factor=upsample_factor, input_dataset=input_dataset, linear_interpolation=linear_interpolation, output_prefix=output_prefix, verbose_flag=verbose_flag, datatype=datatype)
+    return v_3d_upsample_execute(params, execution)
 
 
 __all__ = [
     "V3dUpsampleOutputs",
     "V_3D_UPSAMPLE_METADATA",
     "v_3d_upsample",
+    "v_3d_upsample_params",
 ]

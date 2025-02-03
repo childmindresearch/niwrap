@@ -12,14 +12,146 @@ CALC_GRAD_PERC_DEV_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+CalcGradPercDevParameters = typing.TypedDict('CalcGradPercDevParameters', {
+    "__STYX_TYPE__": typing.Literal["calc_grad_perc_dev"],
+    "fullwarp_image": InputPathType,
+    "out_basename": str,
+    "verbose_flag": bool,
+    "help_flag": bool,
+})
 
 
-class CalcGradPercDevOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `calc_grad_perc_dev(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "calc_grad_perc_dev": calc_grad_perc_dev_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def calc_grad_perc_dev_params(
+    fullwarp_image: InputPathType,
+    out_basename: str,
+    verbose_flag: bool = False,
+    help_flag: bool = False,
+) -> CalcGradPercDevParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fullwarp_image: Full warp image from gradient_unwarp.py.
+        out_basename: Output basename.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display the help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "calc_grad_perc_dev",
+        "fullwarp_image": fullwarp_image,
+        "out_basename": out_basename,
+        "verbose_flag": verbose_flag,
+        "help_flag": help_flag,
+    }
+    return params
+
+
+def calc_grad_perc_dev_cargs(
+    params: CalcGradPercDevParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("calc_grad_perc_dev")
+    cargs.extend([
+        "--fullwarp",
+        execution.input_file(params.get("fullwarp_image"))
+    ])
+    cargs.extend([
+        "-o,--out",
+        params.get("out_basename")
+    ])
+    if params.get("verbose_flag"):
+        cargs.append("-v,--verbose")
+    if params.get("help_flag"):
+        cargs.append("-h,--help")
+    return cargs
+
+
+def calc_grad_perc_dev_outputs(
+    params: CalcGradPercDevParameters,
+    execution: Execution,
+) -> CalcGradPercDevOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CalcGradPercDevOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def calc_grad_perc_dev_execute(
+    params: CalcGradPercDevParameters,
+    execution: Execution,
+) -> CalcGradPercDevOutputs:
+    """
+    Compute the gradient percent deviation based on a full warp image from
+    gradient_unwarp.py.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CalcGradPercDevOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = calc_grad_perc_dev_cargs(params, execution)
+    ret = calc_grad_perc_dev_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def calc_grad_perc_dev(
@@ -48,29 +180,12 @@ def calc_grad_perc_dev(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CALC_GRAD_PERC_DEV_METADATA)
-    cargs = []
-    cargs.append("calc_grad_perc_dev")
-    cargs.extend([
-        "--fullwarp",
-        execution.input_file(fullwarp_image)
-    ])
-    cargs.extend([
-        "-o,--out",
-        out_basename
-    ])
-    if verbose_flag:
-        cargs.append("-v,--verbose")
-    if help_flag:
-        cargs.append("-h,--help")
-    ret = CalcGradPercDevOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = calc_grad_perc_dev_params(fullwarp_image=fullwarp_image, out_basename=out_basename, verbose_flag=verbose_flag, help_flag=help_flag)
+    return calc_grad_perc_dev_execute(params, execution)
 
 
 __all__ = [
     "CALC_GRAD_PERC_DEV_METADATA",
-    "CalcGradPercDevOutputs",
     "calc_grad_perc_dev",
+    "calc_grad_perc_dev_params",
 ]

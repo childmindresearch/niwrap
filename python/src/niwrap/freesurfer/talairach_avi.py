@@ -12,6 +12,48 @@ TALAIRACH_AVI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TalairachAviParameters = typing.TypedDict('TalairachAviParameters', {
+    "__STYX_TYPE__": typing.Literal["talairach_avi"],
+    "input_file": InputPathType,
+    "output_xfm": str,
+    "atlas": typing.NotRequired[str | None],
+    "log": typing.NotRequired[str | None],
+    "debug": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "talairach_avi": talairach_avi_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "talairach_avi": talairach_avi_outputs,
+    }
+    return vt.get(t)
 
 
 class TalairachAviOutputs(typing.NamedTuple):
@@ -22,6 +64,121 @@ class TalairachAviOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_xfm_file: OutputPathType
     """Output transform file"""
+
+
+def talairach_avi_params(
+    input_file: InputPathType,
+    output_xfm: str,
+    atlas: str | None = None,
+    log: str | None = None,
+    debug: bool = False,
+) -> TalairachAviParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input volume.
+        output_xfm: Output transform file.
+        atlas: Alternate target atlas (in freesurfer/average dir).
+        log: Log file. Default is outdir/talairach_avi.log.
+        debug: Turn on debugging.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "talairach_avi",
+        "input_file": input_file,
+        "output_xfm": output_xfm,
+        "debug": debug,
+    }
+    if atlas is not None:
+        params["atlas"] = atlas
+    if log is not None:
+        params["log"] = log
+    return params
+
+
+def talairach_avi_cargs(
+    params: TalairachAviParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("talairach_avi")
+    cargs.extend([
+        "--i",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "--xfm",
+        params.get("output_xfm")
+    ])
+    if params.get("atlas") is not None:
+        cargs.extend([
+            "--atlas",
+            params.get("atlas")
+        ])
+    if params.get("log") is not None:
+        cargs.extend([
+            "--log",
+            params.get("log")
+        ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    return cargs
+
+
+def talairach_avi_outputs(
+    params: TalairachAviParameters,
+    execution: Execution,
+) -> TalairachAviOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TalairachAviOutputs(
+        root=execution.output_file("."),
+        output_xfm_file=execution.output_file(params.get("output_xfm")),
+    )
+    return ret
+
+
+def talairach_avi_execute(
+    params: TalairachAviParameters,
+    execution: Execution,
+) -> TalairachAviOutputs:
+    """
+    Front-end for Avi Snyder's image registration tool. Computes the Talairach
+    transform that maps the input volume to the MNI average_305.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TalairachAviOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = talairach_avi_cargs(params, execution)
+    ret = talairach_avi_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def talairach_avi(
@@ -52,38 +209,13 @@ def talairach_avi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_AVI_METADATA)
-    cargs = []
-    cargs.append("talairach_avi")
-    cargs.extend([
-        "--i",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "--xfm",
-        output_xfm
-    ])
-    if atlas is not None:
-        cargs.extend([
-            "--atlas",
-            atlas
-        ])
-    if log is not None:
-        cargs.extend([
-            "--log",
-            log
-        ])
-    if debug:
-        cargs.append("--debug")
-    ret = TalairachAviOutputs(
-        root=execution.output_file("."),
-        output_xfm_file=execution.output_file(output_xfm),
-    )
-    execution.run(cargs)
-    return ret
+    params = talairach_avi_params(input_file=input_file, output_xfm=output_xfm, atlas=atlas, log=log, debug=debug)
+    return talairach_avi_execute(params, execution)
 
 
 __all__ = [
     "TALAIRACH_AVI_METADATA",
     "TalairachAviOutputs",
     "talairach_avi",
+    "talairach_avi_params",
 ]

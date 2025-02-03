@@ -12,14 +12,331 @@ ADJUNCT_APQC_TSNR_GENERAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AdjunctApqcTsnrGeneralParameters = typing.TypedDict('AdjunctApqcTsnrGeneralParameters', {
+    "__STYX_TYPE__": typing.Literal["adjunct_apqc_tsnr_general"],
+    "montgap": typing.NotRequired[str | None],
+    "montcolor": typing.NotRequired[str | None],
+    "montx": typing.NotRequired[str | None],
+    "monty": typing.NotRequired[str | None],
+    "opacity": typing.NotRequired[str | None],
+    "blowup": typing.NotRequired[str | None],
+    "save_ftype": typing.NotRequired[str | None],
+    "set_dicom_xyz": typing.NotRequired[list[str] | None],
+    "set_ijk": typing.NotRequired[list[str] | None],
+    "set_subbricks": typing.NotRequired[list[str] | None],
+    "olay_alpha": typing.NotRequired[str | None],
+    "olay_boxed": typing.NotRequired[str | None],
+    "thr_olay": typing.NotRequired[str | None],
+    "ulay_range_nz": typing.NotRequired[list[str] | None],
+    "ulay_range": typing.NotRequired[list[str] | None],
+    "delta_slices": typing.NotRequired[list[str] | None],
+    "olay_disc_hot_range": typing.NotRequired[list[str] | None],
+    "olay_cont_max": typing.NotRequired[str | None],
+    "cbar_cont": typing.NotRequired[str | None],
+    "no_cor": bool,
+    "no_sag": bool,
+    "no_axi": bool,
+    "echo": bool,
+})
 
 
-class AdjunctApqcTsnrGeneralOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `adjunct_apqc_tsnr_general(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "adjunct_apqc_tsnr_general": adjunct_apqc_tsnr_general_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def adjunct_apqc_tsnr_general_params(
+    montgap: str | None = None,
+    montcolor: str | None = None,
+    montx: str | None = None,
+    monty: str | None = None,
+    opacity: str | None = None,
+    blowup: str | None = None,
+    save_ftype: str | None = None,
+    set_dicom_xyz: list[str] | None = None,
+    set_ijk: list[str] | None = None,
+    set_subbricks: list[str] | None = None,
+    olay_alpha: str | None = None,
+    olay_boxed: str | None = None,
+    thr_olay: str | None = None,
+    ulay_range_nz: list[str] | None = None,
+    ulay_range: list[str] | None = None,
+    delta_slices: list[str] | None = None,
+    olay_disc_hot_range: list[str] | None = None,
+    olay_cont_max: str | None = None,
+    cbar_cont: str | None = None,
+    no_cor: bool = False,
+    no_sag: bool = False,
+    no_axi: bool = False,
+    echo: bool = False,
+) -> AdjunctApqcTsnrGeneralParameters:
+    """
+    Build parameters.
+    
+    Args:
+        montgap: Specify montage gap.
+        montcolor: Specify montage color.
+        montx: Specify montage x coordinate.
+        monty: Specify montage y coordinate.
+        opacity: Specify overlay opacity.
+        blowup: Specify blowup factor.
+        save_ftype: Specify save file type.
+        set_dicom_xyz: Set DICOM x, y, z coordinates.
+        set_ijk: Set IJK coordinates.
+        set_subbricks: Set sub-bricks.
+        olay_alpha: Specify overlay alpha.
+        olay_boxed: Specify boxed overlay.
+        thr_olay: Specify threshold for overlay.
+        ulay_range_nz: Specify non-zero range for underlay.
+        ulay_range: Specify range for underlay.
+        delta_slices: Specify delta slices.
+        olay_disc_hot_range: Specify discrete hot range for overlay.
+        olay_cont_max: Specify continuous max for overlay.
+        cbar_cont: Specify continuous color bar.
+        no_cor: No coronal view.
+        no_sag: No sagittal view.
+        no_axi: No axial view.
+        echo: Echo the command line arguments.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "adjunct_apqc_tsnr_general",
+        "no_cor": no_cor,
+        "no_sag": no_sag,
+        "no_axi": no_axi,
+        "echo": echo,
+    }
+    if montgap is not None:
+        params["montgap"] = montgap
+    if montcolor is not None:
+        params["montcolor"] = montcolor
+    if montx is not None:
+        params["montx"] = montx
+    if monty is not None:
+        params["monty"] = monty
+    if opacity is not None:
+        params["opacity"] = opacity
+    if blowup is not None:
+        params["blowup"] = blowup
+    if save_ftype is not None:
+        params["save_ftype"] = save_ftype
+    if set_dicom_xyz is not None:
+        params["set_dicom_xyz"] = set_dicom_xyz
+    if set_ijk is not None:
+        params["set_ijk"] = set_ijk
+    if set_subbricks is not None:
+        params["set_subbricks"] = set_subbricks
+    if olay_alpha is not None:
+        params["olay_alpha"] = olay_alpha
+    if olay_boxed is not None:
+        params["olay_boxed"] = olay_boxed
+    if thr_olay is not None:
+        params["thr_olay"] = thr_olay
+    if ulay_range_nz is not None:
+        params["ulay_range_nz"] = ulay_range_nz
+    if ulay_range is not None:
+        params["ulay_range"] = ulay_range
+    if delta_slices is not None:
+        params["delta_slices"] = delta_slices
+    if olay_disc_hot_range is not None:
+        params["olay_disc_hot_range"] = olay_disc_hot_range
+    if olay_cont_max is not None:
+        params["olay_cont_max"] = olay_cont_max
+    if cbar_cont is not None:
+        params["cbar_cont"] = cbar_cont
+    return params
+
+
+def adjunct_apqc_tsnr_general_cargs(
+    params: AdjunctApqcTsnrGeneralParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("adjunct_apqc_tsnr_general")
+    if params.get("montgap") is not None:
+        cargs.extend([
+            "-montgap",
+            params.get("montgap")
+        ])
+    if params.get("montcolor") is not None:
+        cargs.extend([
+            "-montcolor",
+            params.get("montcolor")
+        ])
+    if params.get("montx") is not None:
+        cargs.extend([
+            "-montx",
+            params.get("montx")
+        ])
+    if params.get("monty") is not None:
+        cargs.extend([
+            "-monty",
+            params.get("monty")
+        ])
+    if params.get("opacity") is not None:
+        cargs.extend([
+            "-opacity",
+            params.get("opacity")
+        ])
+    if params.get("blowup") is not None:
+        cargs.extend([
+            "-blowup",
+            params.get("blowup")
+        ])
+    if params.get("save_ftype") is not None:
+        cargs.extend([
+            "-save_ftype",
+            params.get("save_ftype")
+        ])
+    if params.get("set_dicom_xyz") is not None:
+        cargs.extend([
+            "-set_dicom_xyz",
+            *params.get("set_dicom_xyz")
+        ])
+    if params.get("set_ijk") is not None:
+        cargs.extend([
+            "-set_ijk",
+            *params.get("set_ijk")
+        ])
+    if params.get("set_subbricks") is not None:
+        cargs.extend([
+            "-set_subbricks",
+            *params.get("set_subbricks")
+        ])
+    if params.get("olay_alpha") is not None:
+        cargs.extend([
+            "-olay_alpha",
+            params.get("olay_alpha")
+        ])
+    if params.get("olay_boxed") is not None:
+        cargs.extend([
+            "-olay_boxed",
+            params.get("olay_boxed")
+        ])
+    if params.get("thr_olay") is not None:
+        cargs.extend([
+            "-thr_olay",
+            params.get("thr_olay")
+        ])
+    if params.get("ulay_range_nz") is not None:
+        cargs.extend([
+            "-ulay_range_nz",
+            *params.get("ulay_range_nz")
+        ])
+    if params.get("ulay_range") is not None:
+        cargs.extend([
+            "-ulay_range",
+            *params.get("ulay_range")
+        ])
+    if params.get("delta_slices") is not None:
+        cargs.extend([
+            "-delta_slices",
+            *params.get("delta_slices")
+        ])
+    if params.get("olay_disc_hot_range") is not None:
+        cargs.extend([
+            "-olay_disc_hot_range",
+            *params.get("olay_disc_hot_range")
+        ])
+    if params.get("olay_cont_max") is not None:
+        cargs.extend([
+            "-olay_cont_max",
+            params.get("olay_cont_max")
+        ])
+    if params.get("cbar_cont") is not None:
+        cargs.extend([
+            "-cbar_cont",
+            params.get("cbar_cont")
+        ])
+    if params.get("no_cor"):
+        cargs.append("-no_cor")
+    if params.get("no_sag"):
+        cargs.append("-no_sag")
+    if params.get("no_axi"):
+        cargs.append("-no_axi")
+    if params.get("echo"):
+        cargs.append("-echo")
+    return cargs
+
+
+def adjunct_apqc_tsnr_general_outputs(
+    params: AdjunctApqcTsnrGeneralParameters,
+    execution: Execution,
+) -> AdjunctApqcTsnrGeneralOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AdjunctApqcTsnrGeneralOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def adjunct_apqc_tsnr_general_execute(
+    params: AdjunctApqcTsnrGeneralParameters,
+    execution: Execution,
+) -> AdjunctApqcTsnrGeneralOutputs:
+    """
+    An adjunct program for making TSNR plots for APQC.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AdjunctApqcTsnrGeneralOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = adjunct_apqc_tsnr_general_cargs(params, execution)
+    ret = adjunct_apqc_tsnr_general_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def adjunct_apqc_tsnr_general(
@@ -83,136 +400,14 @@ def adjunct_apqc_tsnr_general(
     Returns:
         NamedTuple of outputs (described in `AdjunctApqcTsnrGeneralOutputs`).
     """
-    if set_dicom_xyz is not None and not (len(set_dicom_xyz) <= 3): 
-        raise ValueError(f"Length of 'set_dicom_xyz' must be less than 3 but was {len(set_dicom_xyz)}")
-    if set_ijk is not None and not (len(set_ijk) <= 3): 
-        raise ValueError(f"Length of 'set_ijk' must be less than 3 but was {len(set_ijk)}")
-    if set_subbricks is not None and not (len(set_subbricks) <= 3): 
-        raise ValueError(f"Length of 'set_subbricks' must be less than 3 but was {len(set_subbricks)}")
-    if ulay_range_nz is not None and not (len(ulay_range_nz) <= 2): 
-        raise ValueError(f"Length of 'ulay_range_nz' must be less than 2 but was {len(ulay_range_nz)}")
-    if ulay_range is not None and not (len(ulay_range) <= 2): 
-        raise ValueError(f"Length of 'ulay_range' must be less than 2 but was {len(ulay_range)}")
-    if delta_slices is not None and not (len(delta_slices) <= 3): 
-        raise ValueError(f"Length of 'delta_slices' must be less than 3 but was {len(delta_slices)}")
-    if olay_disc_hot_range is not None and not (len(olay_disc_hot_range) <= 2): 
-        raise ValueError(f"Length of 'olay_disc_hot_range' must be less than 2 but was {len(olay_disc_hot_range)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_APQC_TSNR_GENERAL_METADATA)
-    cargs = []
-    cargs.append("adjunct_apqc_tsnr_general")
-    if montgap is not None:
-        cargs.extend([
-            "-montgap",
-            montgap
-        ])
-    if montcolor is not None:
-        cargs.extend([
-            "-montcolor",
-            montcolor
-        ])
-    if montx is not None:
-        cargs.extend([
-            "-montx",
-            montx
-        ])
-    if monty is not None:
-        cargs.extend([
-            "-monty",
-            monty
-        ])
-    if opacity is not None:
-        cargs.extend([
-            "-opacity",
-            opacity
-        ])
-    if blowup is not None:
-        cargs.extend([
-            "-blowup",
-            blowup
-        ])
-    if save_ftype is not None:
-        cargs.extend([
-            "-save_ftype",
-            save_ftype
-        ])
-    if set_dicom_xyz is not None:
-        cargs.extend([
-            "-set_dicom_xyz",
-            *set_dicom_xyz
-        ])
-    if set_ijk is not None:
-        cargs.extend([
-            "-set_ijk",
-            *set_ijk
-        ])
-    if set_subbricks is not None:
-        cargs.extend([
-            "-set_subbricks",
-            *set_subbricks
-        ])
-    if olay_alpha is not None:
-        cargs.extend([
-            "-olay_alpha",
-            olay_alpha
-        ])
-    if olay_boxed is not None:
-        cargs.extend([
-            "-olay_boxed",
-            olay_boxed
-        ])
-    if thr_olay is not None:
-        cargs.extend([
-            "-thr_olay",
-            thr_olay
-        ])
-    if ulay_range_nz is not None:
-        cargs.extend([
-            "-ulay_range_nz",
-            *ulay_range_nz
-        ])
-    if ulay_range is not None:
-        cargs.extend([
-            "-ulay_range",
-            *ulay_range
-        ])
-    if delta_slices is not None:
-        cargs.extend([
-            "-delta_slices",
-            *delta_slices
-        ])
-    if olay_disc_hot_range is not None:
-        cargs.extend([
-            "-olay_disc_hot_range",
-            *olay_disc_hot_range
-        ])
-    if olay_cont_max is not None:
-        cargs.extend([
-            "-olay_cont_max",
-            olay_cont_max
-        ])
-    if cbar_cont is not None:
-        cargs.extend([
-            "-cbar_cont",
-            cbar_cont
-        ])
-    if no_cor:
-        cargs.append("-no_cor")
-    if no_sag:
-        cargs.append("-no_sag")
-    if no_axi:
-        cargs.append("-no_axi")
-    if echo:
-        cargs.append("-echo")
-    ret = AdjunctApqcTsnrGeneralOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = adjunct_apqc_tsnr_general_params(montgap=montgap, montcolor=montcolor, montx=montx, monty=monty, opacity=opacity, blowup=blowup, save_ftype=save_ftype, set_dicom_xyz=set_dicom_xyz, set_ijk=set_ijk, set_subbricks=set_subbricks, olay_alpha=olay_alpha, olay_boxed=olay_boxed, thr_olay=thr_olay, ulay_range_nz=ulay_range_nz, ulay_range=ulay_range, delta_slices=delta_slices, olay_disc_hot_range=olay_disc_hot_range, olay_cont_max=olay_cont_max, cbar_cont=cbar_cont, no_cor=no_cor, no_sag=no_sag, no_axi=no_axi, echo=echo)
+    return adjunct_apqc_tsnr_general_execute(params, execution)
 
 
 __all__ = [
     "ADJUNCT_APQC_TSNR_GENERAL_METADATA",
-    "AdjunctApqcTsnrGeneralOutputs",
     "adjunct_apqc_tsnr_general",
+    "adjunct_apqc_tsnr_general_params",
 ]

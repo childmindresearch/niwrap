@@ -12,6 +12,44 @@ V__NP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VNpParameters = typing.TypedDict('VNpParameters', {
+    "__STYX_TYPE__": typing.Literal["@np"],
+    "prefix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@np": v__np_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@np": v__np_outputs,
+    }
+    return vt.get(t)
 
 
 class VNpOutputs(typing.NamedTuple):
@@ -22,6 +60,89 @@ class VNpOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Output text file with the appropriate new prefix."""
+
+
+def v__np_params(
+    prefix: str,
+) -> VNpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: The prefix to be checked.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@np",
+        "prefix": prefix,
+    }
+    return params
+
+
+def v__np_cargs(
+    params: VNpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@np")
+    cargs.append(params.get("prefix"))
+    return cargs
+
+
+def v__np_outputs(
+    params: VNpParameters,
+    execution: Execution,
+) -> VNpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VNpOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file("appropriate_prefix.txt"),
+    )
+    return ret
+
+
+def v__np_execute(
+    params: VNpParameters,
+    execution: Execution,
+) -> VNpOutputs:
+    """
+    Finds an appropriate new prefix to use, given the files you already have in your
+    directory. It automatically creates a valid prefix when you are repeatedly
+    running similar commands but do not want to delete previous output.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VNpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__np_cargs(params, execution)
+    ret = v__np_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__np(
@@ -45,19 +166,13 @@ def v__np(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__NP_METADATA)
-    cargs = []
-    cargs.append("@np")
-    cargs.append(prefix)
-    ret = VNpOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file("appropriate_prefix.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__np_params(prefix=prefix)
+    return v__np_execute(params, execution)
 
 
 __all__ = [
     "VNpOutputs",
     "V__NP_METADATA",
     "v__np",
+    "v__np_params",
 ]

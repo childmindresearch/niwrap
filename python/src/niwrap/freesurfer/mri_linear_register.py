@@ -12,6 +12,46 @@ MRI_LINEAR_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriLinearRegisterParameters = typing.TypedDict('MriLinearRegisterParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_linear_register"],
+    "input_brain": InputPathType,
+    "template": InputPathType,
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_linear_register": mri_linear_register_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_linear_register": mri_linear_register_outputs,
+    }
+    return vt.get(t)
 
 
 class MriLinearRegisterOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MriLinearRegisterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_registered_image: OutputPathType
     """The registered brain image"""
+
+
+def mri_linear_register_params(
+    input_brain: InputPathType,
+    template: InputPathType,
+    output_file: str,
+) -> MriLinearRegisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_brain: Input brain image to be registered.
+        template: Template to which the brain image will be registered.
+        output_file: Output file name for the registered brain image.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_linear_register",
+        "input_brain": input_brain,
+        "template": template,
+        "output_file": output_file,
+    }
+    return params
+
+
+def mri_linear_register_cargs(
+    params: MriLinearRegisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_linear_register")
+    cargs.append(execution.input_file(params.get("input_brain")))
+    cargs.append(execution.input_file(params.get("template")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def mri_linear_register_outputs(
+    params: MriLinearRegisterParameters,
+    execution: Execution,
+) -> MriLinearRegisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriLinearRegisterOutputs(
+        root=execution.output_file("."),
+        output_registered_image=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def mri_linear_register_execute(
+    params: MriLinearRegisterParameters,
+    execution: Execution,
+) -> MriLinearRegisterOutputs:
+    """
+    A tool for linear registration of MRI brain images to a template.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriLinearRegisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_linear_register_cargs(params, execution)
+    ret = mri_linear_register_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_linear_register(
@@ -47,21 +176,13 @@ def mri_linear_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LINEAR_REGISTER_METADATA)
-    cargs = []
-    cargs.append("mri_linear_register")
-    cargs.append(execution.input_file(input_brain))
-    cargs.append(execution.input_file(template))
-    cargs.append(output_file)
-    ret = MriLinearRegisterOutputs(
-        root=execution.output_file("."),
-        output_registered_image=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_linear_register_params(input_brain=input_brain, template=template, output_file=output_file)
+    return mri_linear_register_execute(params, execution)
 
 
 __all__ = [
     "MRI_LINEAR_REGISTER_METADATA",
     "MriLinearRegisterOutputs",
     "mri_linear_register",
+    "mri_linear_register_params",
 ]

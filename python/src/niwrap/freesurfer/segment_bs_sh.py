@@ -12,14 +12,125 @@ SEGMENT_BS_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SegmentBsShParameters = typing.TypedDict('SegmentBsShParameters', {
+    "__STYX_TYPE__": typing.Literal["segmentBS.sh"],
+    "matlab_runtime": typing.NotRequired[str | None],
+})
 
 
-class SegmentBsShOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `segment_bs_sh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "segmentBS.sh": segment_bs_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def segment_bs_sh_params(
+    matlab_runtime: str | None = "/usr/local/freesurfer/MCRv97",
+) -> SegmentBsShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        matlab_runtime: Path to the Matlab 2019b runtime environment; necessary\
+            for running the segmentation tool.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "segmentBS.sh",
+    }
+    if matlab_runtime is not None:
+        params["matlab_runtime"] = matlab_runtime
+    return params
+
+
+def segment_bs_sh_cargs(
+    params: SegmentBsShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("segmentBS.sh")
+    if params.get("matlab_runtime") is not None:
+        cargs.append(params.get("matlab_runtime"))
+    return cargs
+
+
+def segment_bs_sh_outputs(
+    params: SegmentBsShParameters,
+    execution: Execution,
+) -> SegmentBsShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SegmentBsShOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def segment_bs_sh_execute(
+    params: SegmentBsShParameters,
+    execution: Execution,
+) -> SegmentBsShOutputs:
+    """
+    Segmentation tool for hippocampal/amygdala and brainstem modules.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SegmentBsShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = segment_bs_sh_cargs(params, execution)
+    ret = segment_bs_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def segment_bs_sh(
@@ -42,19 +153,12 @@ def segment_bs_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_BS_SH_METADATA)
-    cargs = []
-    cargs.append("segmentBS.sh")
-    if matlab_runtime is not None:
-        cargs.append(matlab_runtime)
-    ret = SegmentBsShOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = segment_bs_sh_params(matlab_runtime=matlab_runtime)
+    return segment_bs_sh_execute(params, execution)
 
 
 __all__ = [
     "SEGMENT_BS_SH_METADATA",
-    "SegmentBsShOutputs",
     "segment_bs_sh",
+    "segment_bs_sh_params",
 ]

@@ -12,14 +12,139 @@ FLIRT_NEWDEFAULT_20080811_SCH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FlirtNewdefault20080811SchParameters = typing.TypedDict('FlirtNewdefault20080811SchParameters', {
+    "__STYX_TYPE__": typing.Literal["flirt.newdefault.20080811.sch"],
+    "term_option": typing.NotRequired[str | None],
+    "curses_flag": bool,
+    "scrollback_flag": bool,
+})
 
 
-class FlirtNewdefault20080811SchOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `flirt_newdefault_20080811_sch(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "flirt.newdefault.20080811.sch": flirt_newdefault_20080811_sch_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def flirt_newdefault_20080811_sch_params(
+    term_option: str | None = None,
+    curses_flag: bool = False,
+    scrollback_flag: bool = False,
+) -> FlirtNewdefault20080811SchParameters:
+    """
+    Build parameters.
+    
+    Args:
+        term_option: Use this terminal type instead of $TERM.
+        curses_flag: Print curses-version.
+        scrollback_flag: Do not try to clear scrollback.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "flirt.newdefault.20080811.sch",
+        "curses_flag": curses_flag,
+        "scrollback_flag": scrollback_flag,
+    }
+    if term_option is not None:
+        params["term_option"] = term_option
+    return params
+
+
+def flirt_newdefault_20080811_sch_cargs(
+    params: FlirtNewdefault20080811SchParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("flirt.newdefault.20080811.sch")
+    if params.get("term_option") is not None:
+        cargs.extend([
+            "-T",
+            params.get("term_option")
+        ])
+    if params.get("curses_flag"):
+        cargs.append("-V")
+    if params.get("scrollback_flag"):
+        cargs.append("-x")
+    return cargs
+
+
+def flirt_newdefault_20080811_sch_outputs(
+    params: FlirtNewdefault20080811SchParameters,
+    execution: Execution,
+) -> FlirtNewdefault20080811SchOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FlirtNewdefault20080811SchOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def flirt_newdefault_20080811_sch_execute(
+    params: FlirtNewdefault20080811SchParameters,
+    execution: Execution,
+) -> FlirtNewdefault20080811SchOutputs:
+    """
+    FLIRT (FMRIB's Linear Image Registration Tool) new default configuration script.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FlirtNewdefault20080811SchOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = flirt_newdefault_20080811_sch_cargs(params, execution)
+    ret = flirt_newdefault_20080811_sch_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def flirt_newdefault_20080811_sch(
@@ -45,26 +170,12 @@ def flirt_newdefault_20080811_sch(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIRT_NEWDEFAULT_20080811_SCH_METADATA)
-    cargs = []
-    cargs.append("flirt.newdefault.20080811.sch")
-    if term_option is not None:
-        cargs.extend([
-            "-T",
-            term_option
-        ])
-    if curses_flag:
-        cargs.append("-V")
-    if scrollback_flag:
-        cargs.append("-x")
-    ret = FlirtNewdefault20080811SchOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = flirt_newdefault_20080811_sch_params(term_option=term_option, curses_flag=curses_flag, scrollback_flag=scrollback_flag)
+    return flirt_newdefault_20080811_sch_execute(params, execution)
 
 
 __all__ = [
     "FLIRT_NEWDEFAULT_20080811_SCH_METADATA",
-    "FlirtNewdefault20080811SchOutputs",
     "flirt_newdefault_20080811_sch",
+    "flirt_newdefault_20080811_sch_params",
 ]

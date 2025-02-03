@@ -12,35 +12,101 @@ FIXELCROP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+FixelcropConfigParameters = typing.TypedDict('FixelcropConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+FixelcropParameters = typing.TypedDict('FixelcropParameters', {
+    "__STYX_TYPE__": typing.Literal["fixelcrop"],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[FixelcropConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "input_fixel_directory": InputPathType,
+    "input_fixel_mask": InputPathType,
+    "output_fixel_directory": str,
+})
 
 
-@dataclasses.dataclass
-class FixelcropConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fixelcrop": fixelcrop_cargs,
+        "config": fixelcrop_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fixelcrop": fixelcrop_outputs,
+    }
+    return vt.get(t)
+
+
+def fixelcrop_config_params(
+    key: str,
+    value: str,
+) -> FixelcropConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def fixelcrop_config_cargs(
+    params: FixelcropConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class FixelcropOutputs(typing.NamedTuple):
@@ -53,6 +119,154 @@ class FixelcropOutputs(typing.NamedTuple):
     """the output directory to store the cropped directions and data files"""
 
 
+def fixelcrop_params(
+    input_fixel_directory: InputPathType,
+    input_fixel_mask: InputPathType,
+    output_fixel_directory: str,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[FixelcropConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> FixelcropParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_fixel_directory: input fixel directory, all data files and\
+            directions file will be cropped and saved in the output fixel directory.
+        input_fixel_mask: the input fixel data file defining which fixels to\
+            crop. Fixels with zero values will be removed.
+        output_fixel_directory: the output directory to store the cropped\
+            directions and data files.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fixelcrop",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "input_fixel_directory": input_fixel_directory,
+        "input_fixel_mask": input_fixel_mask,
+        "output_fixel_directory": output_fixel_directory,
+    }
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def fixelcrop_cargs(
+    params: FixelcropParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fixelcrop")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("input_fixel_directory")))
+    cargs.append(execution.input_file(params.get("input_fixel_mask")))
+    cargs.append(params.get("output_fixel_directory"))
+    return cargs
+
+
+def fixelcrop_outputs(
+    params: FixelcropParameters,
+    execution: Execution,
+) -> FixelcropOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FixelcropOutputs(
+        root=execution.output_file("."),
+        output_fixel_directory=execution.output_file(params.get("output_fixel_directory")),
+    )
+    return ret
+
+
+def fixelcrop_execute(
+    params: FixelcropParameters,
+    execution: Execution,
+) -> FixelcropOutputs:
+    """
+    Crop/remove fixels from sparse fixel image using a binary fixel mask.
+    
+    The mask must be input as a fixel data file the same dimensions as the fixel
+    data file(s) to be cropped.
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FixelcropOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fixelcrop_cargs(params, execution)
+    ret = fixelcrop_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def fixelcrop(
     input_fixel_directory: InputPathType,
     input_fixel_mask: InputPathType,
@@ -62,7 +276,7 @@ def fixelcrop(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[FixelcropConfig] | None = None,
+    config: list[FixelcropConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -106,41 +320,14 @@ def fixelcrop(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXELCROP_METADATA)
-    cargs = []
-    cargs.append("fixelcrop")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(input_fixel_directory))
-    cargs.append(execution.input_file(input_fixel_mask))
-    cargs.append(output_fixel_directory)
-    ret = FixelcropOutputs(
-        root=execution.output_file("."),
-        output_fixel_directory=execution.output_file(output_fixel_directory),
-    )
-    execution.run(cargs)
-    return ret
+    params = fixelcrop_params(info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_fixel_directory=input_fixel_directory, input_fixel_mask=input_fixel_mask, output_fixel_directory=output_fixel_directory)
+    return fixelcrop_execute(params, execution)
 
 
 __all__ = [
     "FIXELCROP_METADATA",
-    "FixelcropConfig",
     "FixelcropOutputs",
     "fixelcrop",
+    "fixelcrop_config_params",
+    "fixelcrop_params",
 ]

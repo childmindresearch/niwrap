@@ -12,6 +12,49 @@ FSLSWAPDIM_EXE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslswapdimExeParameters = typing.TypedDict('FslswapdimExeParameters', {
+    "__STYX_TYPE__": typing.Literal["fslswapdim_exe"],
+    "input_file": InputPathType,
+    "axis_a": str,
+    "axis_b": str,
+    "axis_c": str,
+    "output_file": typing.NotRequired[str | None],
+    "checkLR_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslswapdim_exe": fslswapdim_exe_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslswapdim_exe": fslswapdim_exe_outputs,
+    }
+    return vt.get(t)
 
 
 class FslswapdimExeOutputs(typing.NamedTuple):
@@ -22,6 +65,112 @@ class FslswapdimExeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType | None
     """Output image file with swapped dimensions"""
+
+
+def fslswapdim_exe_params(
+    input_file: InputPathType,
+    axis_a: str,
+    axis_b: str,
+    axis_c: str,
+    output_file: str | None = None,
+    check_lr_flag: bool = False,
+) -> FslswapdimExeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input image file (e.g., input.nii.gz).
+        axis_a: New x-axis in terms of old axes (-x, x, y, -y, z, -z).
+        axis_b: New y-axis in terms of old axes (-x, x, y, -y, z, -z).
+        axis_c: New z-axis in terms of old axes (-x, x, y, -y, z, -z).
+        output_file: Output image file (optional, cannot be used with --checkLR\
+            flag).
+        check_lr_flag: Option to check if the specified arguments lead to a\
+            Left-Right swap or not, cannot be used with an output name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslswapdim_exe",
+        "input_file": input_file,
+        "axis_a": axis_a,
+        "axis_b": axis_b,
+        "axis_c": axis_c,
+        "checkLR_flag": check_lr_flag,
+    }
+    if output_file is not None:
+        params["output_file"] = output_file
+    return params
+
+
+def fslswapdim_exe_cargs(
+    params: FslswapdimExeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslswapdim_exe")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("axis_a"))
+    cargs.append(params.get("axis_b"))
+    cargs.append(params.get("axis_c"))
+    if params.get("output_file") is not None:
+        cargs.append(params.get("output_file"))
+    if params.get("checkLR_flag"):
+        cargs.append("--checkLR")
+    return cargs
+
+
+def fslswapdim_exe_outputs(
+    params: FslswapdimExeParameters,
+    execution: Execution,
+) -> FslswapdimExeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslswapdimExeOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("output_file")) if (params.get("output_file") is not None) else None,
+    )
+    return ret
+
+
+def fslswapdim_exe_execute(
+    params: FslswapdimExeParameters,
+    execution: Execution,
+) -> FslswapdimExeOutputs:
+    """
+    Tool to swap the x, y, z axes dimensions of an image.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslswapdimExeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslswapdim_exe_cargs(params, execution)
+    ret = fslswapdim_exe_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslswapdim_exe(
@@ -55,26 +204,13 @@ def fslswapdim_exe(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSWAPDIM_EXE_METADATA)
-    cargs = []
-    cargs.append("fslswapdim_exe")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(axis_a)
-    cargs.append(axis_b)
-    cargs.append(axis_c)
-    if output_file is not None:
-        cargs.append(output_file)
-    if check_lr_flag:
-        cargs.append("--checkLR")
-    ret = FslswapdimExeOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(output_file) if (output_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = fslswapdim_exe_params(input_file=input_file, axis_a=axis_a, axis_b=axis_b, axis_c=axis_c, output_file=output_file, check_lr_flag=check_lr_flag)
+    return fslswapdim_exe_execute(params, execution)
 
 
 __all__ = [
     "FSLSWAPDIM_EXE_METADATA",
     "FslswapdimExeOutputs",
     "fslswapdim_exe",
+    "fslswapdim_exe_params",
 ]

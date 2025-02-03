@@ -12,6 +12,47 @@ TRIDEC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TridecParameters = typing.TypedDict('TridecParameters', {
+    "__STYX_TYPE__": typing.Literal["tridec"],
+    "subject_name": str,
+    "fine_file": InputPathType,
+    "ico_file": InputPathType,
+    "out_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tridec": tridec_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tridec": tridec_outputs,
+    }
+    return vt.get(t)
 
 
 class TridecOutputs(typing.NamedTuple):
@@ -22,6 +63,99 @@ class TridecOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file from tridec processing."""
+
+
+def tridec_params(
+    subject_name: str,
+    fine_file: InputPathType,
+    ico_file: InputPathType,
+    out_file: str,
+) -> TridecParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_name: Name of the subject being processed.
+        fine_file: Fine file input for tridec.
+        ico_file: ICO file input for tridec.
+        out_file: Output file for tridec processing result.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tridec",
+        "subject_name": subject_name,
+        "fine_file": fine_file,
+        "ico_file": ico_file,
+        "out_file": out_file,
+    }
+    return params
+
+
+def tridec_cargs(
+    params: TridecParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tridec")
+    cargs.append(params.get("subject_name"))
+    cargs.append(execution.input_file(params.get("fine_file")))
+    cargs.append(execution.input_file(params.get("ico_file")))
+    cargs.append(params.get("out_file"))
+    return cargs
+
+
+def tridec_outputs(
+    params: TridecParameters,
+    execution: Execution,
+) -> TridecOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TridecOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("out_file")),
+    )
+    return ret
+
+
+def tridec_execute(
+    params: TridecParameters,
+    execution: Execution,
+) -> TridecOutputs:
+    """
+    Tridec tool for processing brain images.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TridecOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tridec_cargs(params, execution)
+    ret = tridec_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tridec(
@@ -49,22 +183,13 @@ def tridec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRIDEC_METADATA)
-    cargs = []
-    cargs.append("tridec")
-    cargs.append(subject_name)
-    cargs.append(execution.input_file(fine_file))
-    cargs.append(execution.input_file(ico_file))
-    cargs.append(out_file)
-    ret = TridecOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(out_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = tridec_params(subject_name=subject_name, fine_file=fine_file, ico_file=ico_file, out_file=out_file)
+    return tridec_execute(params, execution)
 
 
 __all__ = [
     "TRIDEC_METADATA",
     "TridecOutputs",
     "tridec",
+    "tridec_params",
 ]

@@ -12,6 +12,51 @@ ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters = typing.TypedDict('AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters', {
+    "__STYX_TYPE__": typing.Literal["ANTSUseLandmarkImagesToGetBSplineDisplacementField"],
+    "fixed_image_with_labeled_landmarks": InputPathType,
+    "moving_image_with_labeled_landmarks": InputPathType,
+    "output_displacement_field": str,
+    "mesh_size": str,
+    "number_of_levels": int,
+    "order": typing.NotRequired[int | None],
+    "enforce_stationary_boundaries": typing.NotRequired[int | None],
+    "landmark_weights": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ANTSUseLandmarkImagesToGetBSplineDisplacementField": antsuse_landmark_images_to_get_bspline_displacement_field_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ANTSUseLandmarkImagesToGetBSplineDisplacementField": antsuse_landmark_images_to_get_bspline_displacement_field_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs(typing.NamedTuple):
@@ -22,6 +67,133 @@ class AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs(typing.NamedTupl
     """Output root folder. This is the root folder for all outputs."""
     displacement_field: OutputPathType
     """The resultant displacement field for the registration process."""
+
+
+def antsuse_landmark_images_to_get_bspline_displacement_field_params(
+    fixed_image_with_labeled_landmarks: InputPathType,
+    moving_image_with_labeled_landmarks: InputPathType,
+    output_displacement_field: str,
+    mesh_size: str,
+    number_of_levels: int,
+    order: int | None = 3,
+    enforce_stationary_boundaries: int | None = 1,
+    landmark_weights: InputPathType | None = None,
+) -> AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fixed_image_with_labeled_landmarks: The fixed image with labeled\
+            landmarks.
+        moving_image_with_labeled_landmarks: The moving image with labeled\
+            landmarks.
+        output_displacement_field: The output displacement field file.
+        mesh_size: The mesh size specified as meshSize[0]xmeshSize[1]x...
+        number_of_levels: The number of levels in the B-spline hierarchy.
+        order: The order of the B-spline (default is 3).
+        enforce_stationary_boundaries: Whether to enforce stationary boundaries\
+            (default is 1).
+        landmark_weights: Optional text file containing landmark weights. Each\
+            row is either "label,labelWeight" or "labelWeight". If the latter\
+            format is used, the weights are assumed to be arranged in ascending\
+            order by label.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ANTSUseLandmarkImagesToGetBSplineDisplacementField",
+        "fixed_image_with_labeled_landmarks": fixed_image_with_labeled_landmarks,
+        "moving_image_with_labeled_landmarks": moving_image_with_labeled_landmarks,
+        "output_displacement_field": output_displacement_field,
+        "mesh_size": mesh_size,
+        "number_of_levels": number_of_levels,
+    }
+    if order is not None:
+        params["order"] = order
+    if enforce_stationary_boundaries is not None:
+        params["enforce_stationary_boundaries"] = enforce_stationary_boundaries
+    if landmark_weights is not None:
+        params["landmark_weights"] = landmark_weights
+    return params
+
+
+def antsuse_landmark_images_to_get_bspline_displacement_field_cargs(
+    params: AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ANTSUseLandmarkImagesToGetBSplineDisplacementField")
+    cargs.append(execution.input_file(params.get("fixed_image_with_labeled_landmarks")))
+    cargs.append(execution.input_file(params.get("moving_image_with_labeled_landmarks")))
+    cargs.append(params.get("output_displacement_field"))
+    cargs.append(params.get("mesh_size"))
+    cargs.append(str(params.get("number_of_levels")))
+    if params.get("order") is not None:
+        cargs.append(str(params.get("order")))
+    if params.get("enforce_stationary_boundaries") is not None:
+        cargs.append(str(params.get("enforce_stationary_boundaries")))
+    if params.get("landmark_weights") is not None:
+        cargs.append(execution.input_file(params.get("landmark_weights")))
+    return cargs
+
+
+def antsuse_landmark_images_to_get_bspline_displacement_field_outputs(
+    params: AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters,
+    execution: Execution,
+) -> AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs(
+        root=execution.output_file("."),
+        displacement_field=execution.output_file(params.get("output_displacement_field")),
+    )
+    return ret
+
+
+def antsuse_landmark_images_to_get_bspline_displacement_field_execute(
+    params: AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters,
+    execution: Execution,
+) -> AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs:
+    """
+    We expect the input images to be (1) N-ary (2) in the same physical space as the
+    images you want to register and (3) to have the same landmark points defined
+    within them. Landmarks will be defined from the center of mass of the labels in
+    the input images. You can use ITK-snap to generate the label images. The
+    optional landmarks weights are read from a text file where each row is either:
+    "label,labelWeight" or "labelWeight". If the latter format is used, the label
+    weights are assumed to be arranged in ascending order by label.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = antsuse_landmark_images_to_get_bspline_displacement_field_cargs(params, execution)
+    ret = antsuse_landmark_images_to_get_bspline_displacement_field_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def antsuse_landmark_images_to_get_bspline_displacement_field(
@@ -69,29 +241,13 @@ def antsuse_landmark_images_to_get_bspline_displacement_field(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA)
-    cargs = []
-    cargs.append("ANTSUseLandmarkImagesToGetBSplineDisplacementField")
-    cargs.append(execution.input_file(fixed_image_with_labeled_landmarks))
-    cargs.append(execution.input_file(moving_image_with_labeled_landmarks))
-    cargs.append(output_displacement_field)
-    cargs.append(mesh_size)
-    cargs.append(str(number_of_levels))
-    if order is not None:
-        cargs.append(str(order))
-    if enforce_stationary_boundaries is not None:
-        cargs.append(str(enforce_stationary_boundaries))
-    if landmark_weights is not None:
-        cargs.append(execution.input_file(landmark_weights))
-    ret = AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs(
-        root=execution.output_file("."),
-        displacement_field=execution.output_file(output_displacement_field),
-    )
-    execution.run(cargs)
-    return ret
+    params = antsuse_landmark_images_to_get_bspline_displacement_field_params(fixed_image_with_labeled_landmarks=fixed_image_with_labeled_landmarks, moving_image_with_labeled_landmarks=moving_image_with_labeled_landmarks, output_displacement_field=output_displacement_field, mesh_size=mesh_size, number_of_levels=number_of_levels, order=order, enforce_stationary_boundaries=enforce_stationary_boundaries, landmark_weights=landmark_weights)
+    return antsuse_landmark_images_to_get_bspline_displacement_field_execute(params, execution)
 
 
 __all__ = [
     "ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA",
     "AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs",
     "antsuse_landmark_images_to_get_bspline_displacement_field",
+    "antsuse_landmark_images_to_get_bspline_displacement_field_params",
 ]

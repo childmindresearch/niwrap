@@ -12,6 +12,48 @@ MAP_ALL_LABELS_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MapAllLabelsLhParameters = typing.TypedDict('MapAllLabelsLhParameters', {
+    "__STYX_TYPE__": typing.Literal["map_all_labels-lh"],
+    "which": str,
+    "fname": str,
+    "hemi": str,
+    "spherical_surf": InputPathType,
+    "output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "map_all_labels-lh": map_all_labels_lh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "map_all_labels-lh": map_all_labels_lh_outputs,
+    }
+    return vt.get(t)
 
 
 class MapAllLabelsLhOutputs(typing.NamedTuple):
@@ -22,6 +64,107 @@ class MapAllLabelsLhOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file generated after processing."""
+
+
+def map_all_labels_lh_params(
+    which: str,
+    fname: str,
+    hemi: str,
+    spherical_surf: InputPathType,
+    output: str,
+) -> MapAllLabelsLhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        which: Which type of data to process. Options are: coords, label, vals,\
+            curv, area.
+        fname: The file name to process.
+        hemi: The hemisphere to process (usually 'lh' for left hemisphere).
+        spherical_surf: The spherical surface file.
+        output: Output file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "map_all_labels-lh",
+        "which": which,
+        "fname": fname,
+        "hemi": hemi,
+        "spherical_surf": spherical_surf,
+        "output": output,
+    }
+    return params
+
+
+def map_all_labels_lh_cargs(
+    params: MapAllLabelsLhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-lh",
+        "map_all_labels" + params.get("which")
+    ])
+    cargs.append(params.get("fname"))
+    cargs.append(params.get("hemi"))
+    cargs.append(execution.input_file(params.get("spherical_surf")))
+    cargs.append("[SUBJECTS...]")
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def map_all_labels_lh_outputs(
+    params: MapAllLabelsLhParameters,
+    execution: Execution,
+) -> MapAllLabelsLhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MapAllLabelsLhOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def map_all_labels_lh_execute(
+    params: MapAllLabelsLhParameters,
+    execution: Execution,
+) -> MapAllLabelsLhOutputs:
+    """
+    Paints output onto a subject's left hemisphere using FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MapAllLabelsLhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = map_all_labels_lh_cargs(params, execution)
+    ret = map_all_labels_lh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def map_all_labels_lh(
@@ -52,26 +195,13 @@ def map_all_labels_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_ALL_LABELS_LH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-lh",
-        "map_all_labels" + which
-    ])
-    cargs.append(fname)
-    cargs.append(hemi)
-    cargs.append(execution.input_file(spherical_surf))
-    cargs.append("[SUBJECTS...]")
-    cargs.append(output)
-    ret = MapAllLabelsLhOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = map_all_labels_lh_params(which=which, fname=fname, hemi=hemi, spherical_surf=spherical_surf, output=output)
+    return map_all_labels_lh_execute(params, execution)
 
 
 __all__ = [
     "MAP_ALL_LABELS_LH_METADATA",
     "MapAllLabelsLhOutputs",
     "map_all_labels_lh",
+    "map_all_labels_lh_params",
 ]

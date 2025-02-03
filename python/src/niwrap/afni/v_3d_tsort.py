@@ -12,6 +12,53 @@ V_3D_TSORT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dTsortParameters = typing.TypedDict('V3dTsortParameters', {
+    "__STYX_TYPE__": typing.Literal["3dTsort"],
+    "input_file": InputPathType,
+    "prefix": typing.NotRequired[str | None],
+    "dec": bool,
+    "rank": bool,
+    "ind": bool,
+    "val": bool,
+    "random": bool,
+    "ranfft": bool,
+    "randft": bool,
+    "datum": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dTsort": v_3d_tsort_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dTsort": v_3d_tsort_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dTsortOutputs(typing.NamedTuple):
@@ -22,6 +69,141 @@ class V3dTsortOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_dataset: OutputPathType | None
     """Main default output of 3dTsort"""
+
+
+def v_3d_tsort_params(
+    input_file: InputPathType,
+    prefix: str | None = None,
+    dec: bool = False,
+    rank: bool = False,
+    ind: bool = False,
+    val: bool = False,
+    random_: bool = False,
+    ranfft: bool = False,
+    randft: bool = False,
+    datum: str | None = None,
+) -> V3dTsortParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input dataset to be sorted.
+        prefix: Prefix for the output dataset.
+        dec: Sort into decreasing order.
+        rank: Output rank instead of sorted values; ranks range from 1 to Nvals.
+        ind: Output sorting index (0 to Nvals -1).
+        val: Output sorted values (default).
+        random_: Randomly shuffle (permute) the time points in each voxel.
+        ranfft: Randomize each time series by scrambling the FFT phase.
+        randft: Randomize each time series by scrambling the DFT phase.
+        datum: Coerce the output data to be stored as the given type (byte,\
+            short, or float).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dTsort",
+        "input_file": input_file,
+        "dec": dec,
+        "rank": rank,
+        "ind": ind,
+        "val": val,
+        "random": random_,
+        "ranfft": ranfft,
+        "randft": randft,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    if datum is not None:
+        params["datum"] = datum
+    return params
+
+
+def v_3d_tsort_cargs(
+    params: V3dTsortParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dTsort")
+    cargs.append(execution.input_file(params.get("input_file")))
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("dec"):
+        cargs.append("-dec")
+    if params.get("rank"):
+        cargs.append("-rank")
+    if params.get("ind"):
+        cargs.append("-ind")
+    if params.get("val"):
+        cargs.append("-val")
+    if params.get("random"):
+        cargs.append("-random")
+    if params.get("ranfft"):
+        cargs.append("-ranFFT")
+    if params.get("randft"):
+        cargs.append("-ranDFT")
+    if params.get("datum") is not None:
+        cargs.extend([
+            "-datum",
+            params.get("datum")
+        ])
+    return cargs
+
+
+def v_3d_tsort_outputs(
+    params: V3dTsortParameters,
+    execution: Execution,
+) -> V3dTsortOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dTsortOutputs(
+        root=execution.output_file("."),
+        output_dataset=execution.output_file(params.get("prefix") + ".nii.gz") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_tsort_execute(
+    params: V3dTsortParameters,
+    execution: Execution,
+) -> V3dTsortOutputs:
+    """
+    Sorts each voxel in a dataset and produces a new dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dTsortOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_tsort_cargs(params, execution)
+    ret = v_3d_tsort_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_tsort(
@@ -62,43 +244,13 @@ def v_3d_tsort(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSORT_METADATA)
-    cargs = []
-    cargs.append("3dTsort")
-    cargs.append(execution.input_file(input_file))
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if dec:
-        cargs.append("-dec")
-    if rank:
-        cargs.append("-rank")
-    if ind:
-        cargs.append("-ind")
-    if val:
-        cargs.append("-val")
-    if random_:
-        cargs.append("-random")
-    if ranfft:
-        cargs.append("-ranFFT")
-    if randft:
-        cargs.append("-ranDFT")
-    if datum is not None:
-        cargs.extend([
-            "-datum",
-            datum
-        ])
-    ret = V3dTsortOutputs(
-        root=execution.output_file("."),
-        output_dataset=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_tsort_params(input_file=input_file, prefix=prefix, dec=dec, rank=rank, ind=ind, val=val, random_=random_, ranfft=ranfft, randft=randft, datum=datum)
+    return v_3d_tsort_execute(params, execution)
 
 
 __all__ = [
     "V3dTsortOutputs",
     "V_3D_TSORT_METADATA",
     "v_3d_tsort",
+    "v_3d_tsort_params",
 ]

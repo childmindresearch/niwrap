@@ -12,35 +12,105 @@ TCKSAMPLE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+TcksampleConfigParameters = typing.TypedDict('TcksampleConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+TcksampleParameters = typing.TypedDict('TcksampleParameters', {
+    "__STYX_TYPE__": typing.Literal["tcksample"],
+    "stat_tck": typing.NotRequired[str | None],
+    "nointerp": bool,
+    "precise": bool,
+    "use_tdi_fraction": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[TcksampleConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "tracks": InputPathType,
+    "image": InputPathType,
+    "values": str,
+})
 
 
-@dataclasses.dataclass
-class TcksampleConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tcksample": tcksample_cargs,
+        "config": tcksample_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tcksample": tcksample_outputs,
+    }
+    return vt.get(t)
+
+
+def tcksample_config_params(
+    key: str,
+    value: str,
+) -> TcksampleConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def tcksample_config_cargs(
+    params: TcksampleConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class TcksampleOutputs(typing.NamedTuple):
@@ -51,6 +121,186 @@ class TcksampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     values_: OutputPathType
     """the output sampled values"""
+
+
+def tcksample_params(
+    tracks: InputPathType,
+    image: InputPathType,
+    values_: str,
+    stat_tck: str | None = None,
+    nointerp: bool = False,
+    precise: bool = False,
+    use_tdi_fraction: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[TcksampleConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> TcksampleParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tracks: the input track file.
+        image: the image to be sampled.
+        values_: the output sampled values.
+        stat_tck: compute some statistic from the values along each streamline\
+            (options are: mean,median,min,max).
+        nointerp: do not use trilinear interpolation when sampling image values.
+        precise: use the precise mechanism for mapping streamlines to voxels\
+            (obviates the need for trilinear interpolation) (only applicable if\
+            some per-streamline statistic is requested).
+        use_tdi_fraction: each streamline is assigned a fraction of the image\
+            intensity in each voxel based on the fraction of the track density\
+            contributed by that streamline (this is only appropriate for processing\
+            a whole-brain tractogram, and images for which the quantiative\
+            parameter is additive).
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tcksample",
+        "nointerp": nointerp,
+        "precise": precise,
+        "use_tdi_fraction": use_tdi_fraction,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "tracks": tracks,
+        "image": image,
+        "values": values_,
+    }
+    if stat_tck is not None:
+        params["stat_tck"] = stat_tck
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def tcksample_cargs(
+    params: TcksampleParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tcksample")
+    if params.get("stat_tck") is not None:
+        cargs.extend([
+            "-stat_tck",
+            params.get("stat_tck")
+        ])
+    if params.get("nointerp"):
+        cargs.append("-nointerp")
+    if params.get("precise"):
+        cargs.append("-precise")
+    if params.get("use_tdi_fraction"):
+        cargs.append("-use_tdi_fraction")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("tracks")))
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(params.get("values"))
+    return cargs
+
+
+def tcksample_outputs(
+    params: TcksampleParameters,
+    execution: Execution,
+) -> TcksampleOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TcksampleOutputs(
+        root=execution.output_file("."),
+        values_=execution.output_file(params.get("values")),
+    )
+    return ret
+
+
+def tcksample_execute(
+    params: TcksampleParameters,
+    execution: Execution,
+) -> TcksampleOutputs:
+    """
+    Sample values of an associated image along tracks.
+    
+    By default, the value of the underlying image at each point along the track
+    is written to either an ASCII file (with all values for each track on the
+    same line), or a track scalar file (.tsf). Alternatively, some statistic can
+    be taken from the values along each streamline and written to a vector file.
+    
+    References:
+    
+    * If using -precise option: Smith, R. E.; Tournier, J.-D.; Calamante, F. &
+    Connelly, A. SIFT: Spherical-deconvolution informed filtering of
+    tractograms. NeuroImage, 2013, 67, 298-312.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TcksampleOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tcksample_cargs(params, execution)
+    ret = tcksample_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tcksample(
@@ -66,7 +316,7 @@ def tcksample(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TcksampleConfig] | None = None,
+    config: list[TcksampleConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -122,52 +372,14 @@ def tcksample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKSAMPLE_METADATA)
-    cargs = []
-    cargs.append("tcksample")
-    if stat_tck is not None:
-        cargs.extend([
-            "-stat_tck",
-            stat_tck
-        ])
-    if nointerp:
-        cargs.append("-nointerp")
-    if precise:
-        cargs.append("-precise")
-    if use_tdi_fraction:
-        cargs.append("-use_tdi_fraction")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(tracks))
-    cargs.append(execution.input_file(image))
-    cargs.append(values_)
-    ret = TcksampleOutputs(
-        root=execution.output_file("."),
-        values_=execution.output_file(values_),
-    )
-    execution.run(cargs)
-    return ret
+    params = tcksample_params(stat_tck=stat_tck, nointerp=nointerp, precise=precise, use_tdi_fraction=use_tdi_fraction, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks, image=image, values_=values_)
+    return tcksample_execute(params, execution)
 
 
 __all__ = [
     "TCKSAMPLE_METADATA",
-    "TcksampleConfig",
     "TcksampleOutputs",
     "tcksample",
+    "tcksample_config_params",
+    "tcksample_params",
 ]

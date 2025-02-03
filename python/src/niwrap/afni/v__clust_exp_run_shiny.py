@@ -12,14 +12,128 @@ V__CLUST_EXP_RUN_SHINY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VClustExpRunShinyParameters = typing.TypedDict('VClustExpRunShinyParameters', {
+    "__STYX_TYPE__": typing.Literal["@ClustExp_run_shiny"],
+    "directory": str,
+    "help": bool,
+})
 
 
-class VClustExpRunShinyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__clust_exp_run_shiny(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@ClustExp_run_shiny": v__clust_exp_run_shiny_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__clust_exp_run_shiny_params(
+    directory: str,
+    help_: bool = False,
+) -> VClustExpRunShinyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        directory: Folder created by ClustExp_StatParse.py.
+        help_: Show help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@ClustExp_run_shiny",
+        "directory": directory,
+        "help": help_,
+    }
+    return params
+
+
+def v__clust_exp_run_shiny_cargs(
+    params: VClustExpRunShinyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@ClustExp_run_shiny")
+    cargs.append(params.get("directory"))
+    if params.get("help"):
+        cargs.append("-help")
+    return cargs
+
+
+def v__clust_exp_run_shiny_outputs(
+    params: VClustExpRunShinyParameters,
+    execution: Execution,
+) -> VClustExpRunShinyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VClustExpRunShinyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__clust_exp_run_shiny_execute(
+    params: VClustExpRunShinyParameters,
+    execution: Execution,
+) -> VClustExpRunShinyOutputs:
+    """
+    Launch a shiny app that was created by ClustExp_StatParse.py.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VClustExpRunShinyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__clust_exp_run_shiny_cargs(params, execution)
+    ret = v__clust_exp_run_shiny_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__clust_exp_run_shiny(
@@ -43,20 +157,12 @@ def v__clust_exp_run_shiny(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CLUST_EXP_RUN_SHINY_METADATA)
-    cargs = []
-    cargs.append("@ClustExp_run_shiny")
-    cargs.append(directory)
-    if help_:
-        cargs.append("-help")
-    ret = VClustExpRunShinyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__clust_exp_run_shiny_params(directory=directory, help_=help_)
+    return v__clust_exp_run_shiny_execute(params, execution)
 
 
 __all__ = [
-    "VClustExpRunShinyOutputs",
     "V__CLUST_EXP_RUN_SHINY_METADATA",
     "v__clust_exp_run_shiny",
+    "v__clust_exp_run_shiny_params",
 ]

@@ -12,6 +12,45 @@ MRI_MAKE_BEM_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMakeBemSurfacesParameters = typing.TypedDict('MriMakeBemSurfacesParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_make_bem_surfaces"],
+    "name": str,
+    "mfile": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_make_bem_surfaces": mri_make_bem_surfaces_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_make_bem_surfaces": mri_make_bem_surfaces_outputs,
+    }
+    return vt.get(t)
 
 
 class MriMakeBemSurfacesOutputs(typing.NamedTuple):
@@ -24,6 +63,94 @@ class MriMakeBemSurfacesOutputs(typing.NamedTuple):
     """Generated inner skull surface triangle file."""
     inner_skull_tmp_tri: OutputPathType
     """Temporary file for best guess at inner skull surface."""
+
+
+def mri_make_bem_surfaces_params(
+    name: str,
+    mfile: InputPathType | None = None,
+) -> MriMakeBemSurfacesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        name: The name of the subject or session to process.
+        mfile: Optional mfile parameter to provide additional settings.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_make_bem_surfaces",
+        "name": name,
+    }
+    if mfile is not None:
+        params["mfile"] = mfile
+    return params
+
+
+def mri_make_bem_surfaces_cargs(
+    params: MriMakeBemSurfacesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_make_bem_surfaces")
+    cargs.append(params.get("name"))
+    if params.get("mfile") is not None:
+        cargs.append(execution.input_file(params.get("mfile")))
+    return cargs
+
+
+def mri_make_bem_surfaces_outputs(
+    params: MriMakeBemSurfacesParameters,
+    execution: Execution,
+) -> MriMakeBemSurfacesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMakeBemSurfacesOutputs(
+        root=execution.output_file("."),
+        inner_skull_tri=execution.output_file("inner_skull.tri"),
+        inner_skull_tmp_tri=execution.output_file("inner_skull_tmp.tri"),
+    )
+    return ret
+
+
+def mri_make_bem_surfaces_execute(
+    params: MriMakeBemSurfacesParameters,
+    execution: Execution,
+) -> MriMakeBemSurfacesOutputs:
+    """
+    Tool to create Boundary Element Method (BEM) surfaces.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMakeBemSurfacesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_make_bem_surfaces_cargs(params, execution)
+    ret = mri_make_bem_surfaces_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_make_bem_surfaces(
@@ -47,22 +174,13 @@ def mri_make_bem_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MAKE_BEM_SURFACES_METADATA)
-    cargs = []
-    cargs.append("mri_make_bem_surfaces")
-    cargs.append(name)
-    if mfile is not None:
-        cargs.append(execution.input_file(mfile))
-    ret = MriMakeBemSurfacesOutputs(
-        root=execution.output_file("."),
-        inner_skull_tri=execution.output_file("inner_skull.tri"),
-        inner_skull_tmp_tri=execution.output_file("inner_skull_tmp.tri"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_make_bem_surfaces_params(name=name, mfile=mfile)
+    return mri_make_bem_surfaces_execute(params, execution)
 
 
 __all__ = [
     "MRI_MAKE_BEM_SURFACES_METADATA",
     "MriMakeBemSurfacesOutputs",
     "mri_make_bem_surfaces",
+    "mri_make_bem_surfaces_params",
 ]

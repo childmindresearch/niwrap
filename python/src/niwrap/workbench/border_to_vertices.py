@@ -12,6 +12,47 @@ BORDER_TO_VERTICES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+BorderToVerticesParameters = typing.TypedDict('BorderToVerticesParameters', {
+    "__STYX_TYPE__": typing.Literal["border-to-vertices"],
+    "surface": InputPathType,
+    "border_file": InputPathType,
+    "metric_out": str,
+    "opt_border_name": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "border-to-vertices": border_to_vertices_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "border-to-vertices": border_to_vertices_outputs,
+    }
+    return vt.get(t)
 
 
 class BorderToVerticesOutputs(typing.NamedTuple):
@@ -22,6 +63,108 @@ class BorderToVerticesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric file"""
+
+
+def border_to_vertices_params(
+    surface: InputPathType,
+    border_file: InputPathType,
+    metric_out: str,
+    opt_border_name: str | None = None,
+) -> BorderToVerticesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface the borders are drawn on.
+        border_file: the border file.
+        metric_out: the output metric file.
+        opt_border_name: create ROI for only one border: the name of the border.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "border-to-vertices",
+        "surface": surface,
+        "border_file": border_file,
+        "metric_out": metric_out,
+    }
+    if opt_border_name is not None:
+        params["opt_border_name"] = opt_border_name
+    return params
+
+
+def border_to_vertices_cargs(
+    params: BorderToVerticesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-border-to-vertices")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("border_file")))
+    cargs.append(params.get("metric_out"))
+    if params.get("opt_border_name") is not None:
+        cargs.extend([
+            "-border",
+            params.get("opt_border_name")
+        ])
+    return cargs
+
+
+def border_to_vertices_outputs(
+    params: BorderToVerticesParameters,
+    execution: Execution,
+) -> BorderToVerticesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BorderToVerticesOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def border_to_vertices_execute(
+    params: BorderToVerticesParameters,
+    execution: Execution,
+) -> BorderToVerticesOutputs:
+    """
+    Draw borders as vertices in a metric file.
+    
+    Outputs a metric with 1s on vertices that follow a border, and 0s elsewhere.
+    By default, a separate metric column is created for each border.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BorderToVerticesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = border_to_vertices_cargs(params, execution)
+    ret = border_to_vertices_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def border_to_vertices(
@@ -52,27 +195,13 @@ def border_to_vertices(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_TO_VERTICES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-border-to-vertices")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(border_file))
-    cargs.append(metric_out)
-    if opt_border_name is not None:
-        cargs.extend([
-            "-border",
-            opt_border_name
-        ])
-    ret = BorderToVerticesOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = border_to_vertices_params(surface=surface, border_file=border_file, metric_out=metric_out, opt_border_name=opt_border_name)
+    return border_to_vertices_execute(params, execution)
 
 
 __all__ = [
     "BORDER_TO_VERTICES_METADATA",
     "BorderToVerticesOutputs",
     "border_to_vertices",
+    "border_to_vertices_params",
 ]

@@ -12,6 +12,47 @@ TILE_IMAGES_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+TileImagesParameters = typing.TypedDict('TileImagesParameters', {
+    "__STYX_TYPE__": typing.Literal["TileImages"],
+    "image_dimension": int,
+    "output_image": str,
+    "layout": str,
+    "input_images": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "TileImages": tile_images_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "TileImages": tile_images_outputs,
+    }
+    return vt.get(t)
 
 
 class TileImagesOutputs(typing.NamedTuple):
@@ -22,6 +63,104 @@ class TileImagesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     tiled_image: OutputPathType
     """The final tiled output image."""
+
+
+def tile_images_params(
+    image_dimension: int,
+    output_image: str,
+    layout: str,
+    input_images: list[InputPathType],
+) -> TileImagesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image_dimension: Dimensionality of the output image.
+        output_image: The path for the output tiled image.
+        layout: Defines the structure of the tiled output image. The layout\
+            dictates the number and arrangement of input images in the output\
+            image.
+        input_images: Input images to be tiled into the output image. The\
+            number of input images should match the layout specification.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "TileImages",
+        "image_dimension": image_dimension,
+        "output_image": output_image,
+        "layout": layout,
+        "input_images": input_images,
+    }
+    return params
+
+
+def tile_images_cargs(
+    params: TileImagesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("TileImages")
+    cargs.append(str(params.get("image_dimension")))
+    cargs.append(params.get("output_image"))
+    cargs.append(params.get("layout"))
+    cargs.extend([execution.input_file(f) for f in params.get("input_images")])
+    return cargs
+
+
+def tile_images_outputs(
+    params: TileImagesParameters,
+    execution: Execution,
+) -> TileImagesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TileImagesOutputs(
+        root=execution.output_file("."),
+        tiled_image=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def tile_images_execute(
+    params: TileImagesParameters,
+    execution: Execution,
+) -> TileImagesOutputs:
+    """
+    TileImages allows assembling images into a multi-dimensional array, producing a
+    single output image. The input images must have a dimension less than or equal
+    to the specified output image dimension.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TileImagesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tile_images_cargs(params, execution)
+    ret = tile_images_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tile_images(
@@ -52,26 +191,15 @@ def tile_images(
     Returns:
         NamedTuple of outputs (described in `TileImagesOutputs`).
     """
-    if not (1 <= len(input_images)): 
-        raise ValueError(f"Length of 'input_images' must be greater than 1 but was {len(input_images)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(TILE_IMAGES_METADATA)
-    cargs = []
-    cargs.append("TileImages")
-    cargs.append(str(image_dimension))
-    cargs.append(output_image)
-    cargs.append(layout)
-    cargs.extend([execution.input_file(f) for f in input_images])
-    ret = TileImagesOutputs(
-        root=execution.output_file("."),
-        tiled_image=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = tile_images_params(image_dimension=image_dimension, output_image=output_image, layout=layout, input_images=input_images)
+    return tile_images_execute(params, execution)
 
 
 __all__ = [
     "TILE_IMAGES_METADATA",
     "TileImagesOutputs",
     "tile_images",
+    "tile_images_params",
 ]

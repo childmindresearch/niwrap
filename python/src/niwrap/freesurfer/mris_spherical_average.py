@@ -12,14 +12,158 @@ MRIS_SPHERICAL_AVERAGE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisSphericalAverageParameters = typing.TypedDict('MrisSphericalAverageParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_spherical_average"],
+    "summary_statistics": typing.NotRequired[str | None],
+    "which": typing.Literal["coords", "label", "vals", "curv", "area"],
+    "fname": str,
+    "hemi": typing.Literal["lh", "rh"],
+    "spherical_surf": str,
+    "subjects": list[str],
+    "output": str,
+})
 
 
-class MrisSphericalAverageOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_spherical_average(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_spherical_average": mris_spherical_average_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_spherical_average_params(
+    which: typing.Literal["coords", "label", "vals", "curv", "area"],
+    fname: str,
+    hemi: typing.Literal["lh", "rh"],
+    spherical_surf: str,
+    subjects: list[str],
+    output: str,
+    summary_statistics: str | None = None,
+) -> MrisSphericalAverageParameters:
+    """
+    Build parameters.
+    
+    Args:
+        which: Specifies the type, one of: coords, label, vals, curv, or area.
+        fname: Input file name.
+        hemi: Hemisphere: one of lh or rh.
+        spherical_surf: The spherical surface file.
+        subjects: List of subjects.
+        output: Output file or directory.
+        summary_statistics: Generate summary statistics and write them into\
+            sigavg<cond #>-<hemi>.w and sigvar<cond #>-<hemi>.w.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_spherical_average",
+        "which": which,
+        "fname": fname,
+        "hemi": hemi,
+        "spherical_surf": spherical_surf,
+        "subjects": subjects,
+        "output": output,
+    }
+    if summary_statistics is not None:
+        params["summary_statistics"] = summary_statistics
+    return params
+
+
+def mris_spherical_average_cargs(
+    params: MrisSphericalAverageParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_spherical_average")
+    if params.get("summary_statistics") is not None:
+        cargs.extend([
+            "-s",
+            params.get("summary_statistics")
+        ])
+    cargs.append(params.get("which"))
+    cargs.append(params.get("fname"))
+    cargs.append(params.get("hemi"))
+    cargs.append(params.get("spherical_surf"))
+    cargs.extend(params.get("subjects"))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def mris_spherical_average_outputs(
+    params: MrisSphericalAverageParameters,
+    execution: Execution,
+) -> MrisSphericalAverageOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisSphericalAverageOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_spherical_average_execute(
+    params: MrisSphericalAverageParameters,
+    execution: Execution,
+) -> MrisSphericalAverageOutputs:
+    """
+    This tool adds a template into an average surface in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisSphericalAverageOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_spherical_average_cargs(params, execution)
+    ret = mris_spherical_average_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_spherical_average(
@@ -54,28 +198,12 @@ def mris_spherical_average(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SPHERICAL_AVERAGE_METADATA)
-    cargs = []
-    cargs.append("mris_spherical_average")
-    if summary_statistics is not None:
-        cargs.extend([
-            "-s",
-            summary_statistics
-        ])
-    cargs.append(which)
-    cargs.append(fname)
-    cargs.append(hemi)
-    cargs.append(spherical_surf)
-    cargs.extend(subjects)
-    cargs.append(output)
-    ret = MrisSphericalAverageOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_spherical_average_params(summary_statistics=summary_statistics, which=which, fname=fname, hemi=hemi, spherical_surf=spherical_surf, subjects=subjects, output=output)
+    return mris_spherical_average_execute(params, execution)
 
 
 __all__ = [
     "MRIS_SPHERICAL_AVERAGE_METADATA",
-    "MrisSphericalAverageOutputs",
     "mris_spherical_average",
+    "mris_spherical_average_params",
 ]

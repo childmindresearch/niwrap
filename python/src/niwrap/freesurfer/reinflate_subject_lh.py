@@ -12,6 +12,44 @@ REINFLATE_SUBJECT_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ReinflateSubjectLhParameters = typing.TypedDict('ReinflateSubjectLhParameters', {
+    "__STYX_TYPE__": typing.Literal["reinflate_subject-lh"],
+    "subject_id": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "reinflate_subject-lh": reinflate_subject_lh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "reinflate_subject-lh": reinflate_subject_lh_outputs,
+    }
+    return vt.get(t)
 
 
 class ReinflateSubjectLhOutputs(typing.NamedTuple):
@@ -22,6 +60,89 @@ class ReinflateSubjectLhOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     inflated_surface: OutputPathType
     """Reinflated left hemisphere cortical surface"""
+
+
+def reinflate_subject_lh_params(
+    subject_id: str,
+) -> ReinflateSubjectLhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: Subject identifier.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reinflate_subject-lh",
+        "subject_id": subject_id,
+    }
+    return params
+
+
+def reinflate_subject_lh_cargs(
+    params: ReinflateSubjectLhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-lh",
+        "reinflate_subject" + params.get("subject_id")
+    ])
+    return cargs
+
+
+def reinflate_subject_lh_outputs(
+    params: ReinflateSubjectLhParameters,
+    execution: Execution,
+) -> ReinflateSubjectLhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ReinflateSubjectLhOutputs(
+        root=execution.output_file("."),
+        inflated_surface=execution.output_file(params.get("subject_id") + "/surf/lh.inflated"),
+    )
+    return ret
+
+
+def reinflate_subject_lh_execute(
+    params: ReinflateSubjectLhParameters,
+    execution: Execution,
+) -> ReinflateSubjectLhOutputs:
+    """
+    Utility to reinflate cortical surfaces for left hemisphere in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ReinflateSubjectLhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reinflate_subject_lh_cargs(params, execution)
+    ret = reinflate_subject_lh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reinflate_subject_lh(
@@ -43,21 +164,13 @@ def reinflate_subject_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REINFLATE_SUBJECT_LH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-lh",
-        "reinflate_subject" + subject_id
-    ])
-    ret = ReinflateSubjectLhOutputs(
-        root=execution.output_file("."),
-        inflated_surface=execution.output_file(subject_id + "/surf/lh.inflated"),
-    )
-    execution.run(cargs)
-    return ret
+    params = reinflate_subject_lh_params(subject_id=subject_id)
+    return reinflate_subject_lh_execute(params, execution)
 
 
 __all__ = [
     "REINFLATE_SUBJECT_LH_METADATA",
     "ReinflateSubjectLhOutputs",
     "reinflate_subject_lh",
+    "reinflate_subject_lh_params",
 ]

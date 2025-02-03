@@ -12,6 +12,46 @@ IMAGES_EQUAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ImagesEqualParameters = typing.TypedDict('ImagesEqualParameters', {
+    "__STYX_TYPE__": typing.Literal["images_equal"],
+    "file_a": InputPathType,
+    "file_b": InputPathType,
+    "all_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "images_equal": images_equal_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "images_equal": images_equal_outputs,
+    }
+    return vt.get(t)
 
 
 class ImagesEqualOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class ImagesEqualOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     comparison_result: OutputPathType
     """Result of the image comparison: 1 if equal, 0 if not."""
+
+
+def images_equal_params(
+    file_a: InputPathType,
+    file_b: InputPathType,
+    all_flag: bool = False,
+) -> ImagesEqualParameters:
+    """
+    Build parameters.
+    
+    Args:
+        file_a: First image file to compare.
+        file_b: Second image file to compare.
+        all_flag: Compare all images in the files; all must be equal for exit\
+            status to be 1.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "images_equal",
+        "file_a": file_a,
+        "file_b": file_b,
+        "all_flag": all_flag,
+    }
+    return params
+
+
+def images_equal_cargs(
+    params: ImagesEqualParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("images_equal")
+    cargs.append(execution.input_file(params.get("file_a")))
+    cargs.append(execution.input_file(params.get("file_b")))
+    if params.get("all_flag"):
+        cargs.append("-all")
+    return cargs
+
+
+def images_equal_outputs(
+    params: ImagesEqualParameters,
+    execution: Execution,
+) -> ImagesEqualOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImagesEqualOutputs(
+        root=execution.output_file("."),
+        comparison_result=execution.output_file("comparison_result.txt"),
+    )
+    return ret
+
+
+def images_equal_execute(
+    params: ImagesEqualParameters,
+    execution: Execution,
+) -> ImagesEqualOutputs:
+    """
+    A simple program to test if two 2D images are identical.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImagesEqualOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = images_equal_cargs(params, execution)
+    ret = images_equal_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def images_equal(
@@ -48,22 +179,13 @@ def images_equal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGES_EQUAL_METADATA)
-    cargs = []
-    cargs.append("images_equal")
-    cargs.append(execution.input_file(file_a))
-    cargs.append(execution.input_file(file_b))
-    if all_flag:
-        cargs.append("-all")
-    ret = ImagesEqualOutputs(
-        root=execution.output_file("."),
-        comparison_result=execution.output_file("comparison_result.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = images_equal_params(file_a=file_a, file_b=file_b, all_flag=all_flag)
+    return images_equal_execute(params, execution)
 
 
 __all__ = [
     "IMAGES_EQUAL_METADATA",
     "ImagesEqualOutputs",
     "images_equal",
+    "images_equal_params",
 ]

@@ -12,6 +12,47 @@ APPLYXFM4_D_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Applyxfm4DParameters = typing.TypedDict('Applyxfm4DParameters', {
+    "__STYX_TYPE__": typing.Literal["applyxfm4D"],
+    "input_volume": InputPathType,
+    "ref_volume": InputPathType,
+    "output_volume": str,
+    "transformation_matrix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "applyxfm4D": applyxfm4_d_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "applyxfm4D": applyxfm4_d_outputs,
+    }
+    return vt.get(t)
 
 
 class Applyxfm4DOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class Applyxfm4DOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Transformed 4D volume output"""
+
+
+def applyxfm4_d_params(
+    input_volume: InputPathType,
+    ref_volume: InputPathType,
+    output_volume: str,
+    transformation_matrix: str,
+) -> Applyxfm4DParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input 4D volume (e.g. img.nii.gz).
+        ref_volume: Reference volume (e.g. ref.nii.gz).
+        output_volume: Output volume after applying transformation (e.g.\
+            output.nii.gz).
+        transformation_matrix: Transformation matrix file or directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "applyxfm4D",
+        "input_volume": input_volume,
+        "ref_volume": ref_volume,
+        "output_volume": output_volume,
+        "transformation_matrix": transformation_matrix,
+    }
+    return params
+
+
+def applyxfm4_d_cargs(
+    params: Applyxfm4DParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("applyxfm4D")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("ref_volume")))
+    cargs.append(params.get("output_volume"))
+    cargs.append(params.get("transformation_matrix"))
+    return cargs
+
+
+def applyxfm4_d_outputs(
+    params: Applyxfm4DParameters,
+    execution: Execution,
+) -> Applyxfm4DOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Applyxfm4DOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume") + ".nii.gz"),
+    )
+    return ret
+
+
+def applyxfm4_d_execute(
+    params: Applyxfm4DParameters,
+    execution: Execution,
+) -> Applyxfm4DOutputs:
+    """
+    Applies 4D transformation matrices to 4D volumes.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Applyxfm4DOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = applyxfm4_d_cargs(params, execution)
+    ret = applyxfm4_d_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def applyxfm4_d(
@@ -50,22 +185,13 @@ def applyxfm4_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APPLYXFM4_D_METADATA)
-    cargs = []
-    cargs.append("applyxfm4D")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(ref_volume))
-    cargs.append(output_volume)
-    cargs.append(transformation_matrix)
-    ret = Applyxfm4DOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = applyxfm4_d_params(input_volume=input_volume, ref_volume=ref_volume, output_volume=output_volume, transformation_matrix=transformation_matrix)
+    return applyxfm4_d_execute(params, execution)
 
 
 __all__ = [
     "APPLYXFM4_D_METADATA",
     "Applyxfm4DOutputs",
     "applyxfm4_d",
+    "applyxfm4_d_params",
 ]

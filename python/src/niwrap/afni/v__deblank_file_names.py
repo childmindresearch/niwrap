@@ -12,14 +12,148 @@ V__DEBLANK_FILE_NAMES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VDeblankFileNamesParameters = typing.TypedDict('VDeblankFileNamesParameters', {
+    "__STYX_TYPE__": typing.Literal["@DeblankFileNames"],
+    "move": bool,
+    "nobrac": bool,
+    "demo_set": bool,
+    "echo": bool,
+    "help": bool,
+})
 
 
-class VDeblankFileNamesOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__deblank_file_names(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@DeblankFileNames": v__deblank_file_names_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__deblank_file_names_params(
+    move: bool = False,
+    nobrac: bool = False,
+    demo_set: bool = False,
+    echo: bool = False,
+    help_: bool = False,
+) -> VDeblankFileNamesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        move: Actually rename the files (opposite of -dry_run).
+        nobrac: Do not replace () and [] in filenames, just spaces.
+        demo_set: Create a toy directory with bad names for testing.
+        echo: Turn on script echo.
+        help_: Display help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@DeblankFileNames",
+        "move": move,
+        "nobrac": nobrac,
+        "demo_set": demo_set,
+        "echo": echo,
+        "help": help_,
+    }
+    return params
+
+
+def v__deblank_file_names_cargs(
+    params: VDeblankFileNamesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@DeblankFileNames")
+    if params.get("move"):
+        cargs.append("-move")
+    if params.get("nobrac"):
+        cargs.append("-nobrac")
+    if params.get("demo_set"):
+        cargs.append("-demo_set")
+    if params.get("echo"):
+        cargs.append("-echo")
+    if params.get("help"):
+        cargs.append("-help")
+    cargs.append("[FILES...]")
+    return cargs
+
+
+def v__deblank_file_names_outputs(
+    params: VDeblankFileNamesParameters,
+    execution: Execution,
+) -> VDeblankFileNamesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VDeblankFileNamesOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__deblank_file_names_execute(
+    params: VDeblankFileNamesParameters,
+    execution: Execution,
+) -> VDeblankFileNamesOutputs:
+    """
+    A script to remove blanks and other annoying characters ([], ()) from filenames.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VDeblankFileNamesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__deblank_file_names_cargs(params, execution)
+    ret = v__deblank_file_names_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__deblank_file_names(
@@ -49,28 +183,12 @@ def v__deblank_file_names(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DEBLANK_FILE_NAMES_METADATA)
-    cargs = []
-    cargs.append("@DeblankFileNames")
-    if move:
-        cargs.append("-move")
-    if nobrac:
-        cargs.append("-nobrac")
-    if demo_set:
-        cargs.append("-demo_set")
-    if echo:
-        cargs.append("-echo")
-    if help_:
-        cargs.append("-help")
-    cargs.append("[FILES...]")
-    ret = VDeblankFileNamesOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__deblank_file_names_params(move=move, nobrac=nobrac, demo_set=demo_set, echo=echo, help_=help_)
+    return v__deblank_file_names_execute(params, execution)
 
 
 __all__ = [
-    "VDeblankFileNamesOutputs",
     "V__DEBLANK_FILE_NAMES_METADATA",
     "v__deblank_file_names",
+    "v__deblank_file_names_params",
 ]

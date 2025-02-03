@@ -12,6 +12,46 @@ V__SCRIPT_CHECK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VScriptCheckParameters = typing.TypedDict('VScriptCheckParameters', {
+    "__STYX_TYPE__": typing.Literal["@ScriptCheck"],
+    "clean": bool,
+    "suffix": typing.NotRequired[str | None],
+    "scripts": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@ScriptCheck": v__script_check_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@ScriptCheck": v__script_check_outputs,
+    }
+    return vt.get(t)
 
 
 class VScriptCheckOutputs(typing.NamedTuple):
@@ -24,6 +64,102 @@ class VScriptCheckOutputs(typing.NamedTuple):
     """Uncleaned original file with specified suffix"""
     cleaned_file: OutputPathType
     """Cleaned file if -clean option is used"""
+
+
+def v__script_check_params(
+    scripts: list[InputPathType],
+    clean: bool = False,
+    suffix: str | None = None,
+) -> VScriptCheckParameters:
+    """
+    Build parameters.
+    
+    Args:
+        scripts: Scripts to be checked for improperly terminated lines.
+        clean: Clean bad line breaks.
+        suffix: Rename uncleaned file with specified suffix. Default is .uncln.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@ScriptCheck",
+        "clean": clean,
+        "scripts": scripts,
+    }
+    if suffix is not None:
+        params["suffix"] = suffix
+    return params
+
+
+def v__script_check_cargs(
+    params: VScriptCheckParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@ScriptCheck")
+    if params.get("clean"):
+        cargs.append("-clean")
+    if params.get("suffix") is not None:
+        cargs.extend([
+            "-suffix",
+            params.get("suffix")
+        ])
+    cargs.extend([execution.input_file(f) for f in params.get("scripts")])
+    return cargs
+
+
+def v__script_check_outputs(
+    params: VScriptCheckParameters,
+    execution: Execution,
+) -> VScriptCheckOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VScriptCheckOutputs(
+        root=execution.output_file("."),
+        uncleaned_file=execution.output_file("{SCRIPT}.uncln"),
+        cleaned_file=execution.output_file("{SCRIPT}"),
+    )
+    return ret
+
+
+def v__script_check_execute(
+    params: VScriptCheckParameters,
+    execution: Execution,
+) -> VScriptCheckOutputs:
+    """
+    Checks scripts for improperly terminated lines and optionally cleans them.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VScriptCheckOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__script_check_cargs(params, execution)
+    ret = v__script_check_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__script_check(
@@ -49,27 +185,13 @@ def v__script_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SCRIPT_CHECK_METADATA)
-    cargs = []
-    cargs.append("@ScriptCheck")
-    if clean:
-        cargs.append("-clean")
-    if suffix is not None:
-        cargs.extend([
-            "-suffix",
-            suffix
-        ])
-    cargs.extend([execution.input_file(f) for f in scripts])
-    ret = VScriptCheckOutputs(
-        root=execution.output_file("."),
-        uncleaned_file=execution.output_file("{SCRIPT}.uncln"),
-        cleaned_file=execution.output_file("{SCRIPT}"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__script_check_params(clean=clean, suffix=suffix, scripts=scripts)
+    return v__script_check_execute(params, execution)
 
 
 __all__ = [
     "VScriptCheckOutputs",
     "V__SCRIPT_CHECK_METADATA",
     "v__script_check",
+    "v__script_check_params",
 ]

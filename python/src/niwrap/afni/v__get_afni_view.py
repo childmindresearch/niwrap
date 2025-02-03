@@ -12,6 +12,44 @@ V__GET_AFNI_VIEW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VGetAfniViewParameters = typing.TypedDict('VGetAfniViewParameters', {
+    "__STYX_TYPE__": typing.Literal["@GetAfniView"],
+    "dataset_name": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@GetAfniView": v__get_afni_view_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@GetAfniView": v__get_afni_view_outputs,
+    }
+    return vt.get(t)
 
 
 class VGetAfniViewOutputs(typing.NamedTuple):
@@ -22,6 +60,88 @@ class VGetAfniViewOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     afni_view: OutputPathType
     """The AFNI view extension retrieved from the dataset name"""
+
+
+def v__get_afni_view_params(
+    dataset_name: str,
+) -> VGetAfniViewParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset_name: Name of the dataset (including path) from which to\
+            retrieve the AFNI view (+orig, +acpc, etc.).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@GetAfniView",
+        "dataset_name": dataset_name,
+    }
+    return params
+
+
+def v__get_afni_view_cargs(
+    params: VGetAfniViewParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@GetAfniView")
+    cargs.append(params.get("dataset_name"))
+    return cargs
+
+
+def v__get_afni_view_outputs(
+    params: VGetAfniViewParameters,
+    execution: Execution,
+) -> VGetAfniViewOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VGetAfniViewOutputs(
+        root=execution.output_file("."),
+        afni_view=execution.output_file("view_extension.txt"),
+    )
+    return ret
+
+
+def v__get_afni_view_execute(
+    params: VGetAfniViewParameters,
+    execution: Execution,
+) -> VGetAfniViewOutputs:
+    """
+    A tool to retrieve the AFNI view of a given dataset name.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VGetAfniViewOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__get_afni_view_cargs(params, execution)
+    ret = v__get_afni_view_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__get_afni_view(
@@ -44,19 +164,13 @@ def v__get_afni_view(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_VIEW_METADATA)
-    cargs = []
-    cargs.append("@GetAfniView")
-    cargs.append(dataset_name)
-    ret = VGetAfniViewOutputs(
-        root=execution.output_file("."),
-        afni_view=execution.output_file("view_extension.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__get_afni_view_params(dataset_name=dataset_name)
+    return v__get_afni_view_execute(params, execution)
 
 
 __all__ = [
     "VGetAfniViewOutputs",
     "V__GET_AFNI_VIEW_METADATA",
     "v__get_afni_view",
+    "v__get_afni_view_params",
 ]

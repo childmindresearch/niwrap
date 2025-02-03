@@ -12,14 +12,124 @@ RUN_QDEC_GLM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RunQdecGlmParameters = typing.TypedDict('RunQdecGlmParameters', {
+    "__STYX_TYPE__": typing.Literal["run-qdec-glm"],
+    "qdec_directory": str,
+})
 
 
-class RunQdecGlmOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `run_qdec_glm(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "run-qdec-glm": run_qdec_glm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def run_qdec_glm_params(
+    qdec_directory: str,
+) -> RunQdecGlmParameters:
+    """
+    Build parameters.
+    
+    Args:
+        qdec_directory: Directory containing QDEC data.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "run-qdec-glm",
+        "qdec_directory": qdec_directory,
+    }
+    return params
+
+
+def run_qdec_glm_cargs(
+    params: RunQdecGlmParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-glm",
+        "run-qdec" + params.get("qdec_directory")
+    ])
+    return cargs
+
+
+def run_qdec_glm_outputs(
+    params: RunQdecGlmParameters,
+    execution: Execution,
+) -> RunQdecGlmOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RunQdecGlmOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def run_qdec_glm_execute(
+    params: RunQdecGlmParameters,
+    execution: Execution,
+) -> RunQdecGlmOutputs:
+    """
+    QDEC GLM (General Linear Model) execution tool for statistical analysis.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RunQdecGlmOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = run_qdec_glm_cargs(params, execution)
+    ret = run_qdec_glm_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def run_qdec_glm(
@@ -41,20 +151,12 @@ def run_qdec_glm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_QDEC_GLM_METADATA)
-    cargs = []
-    cargs.extend([
-        "-glm",
-        "run-qdec" + qdec_directory
-    ])
-    ret = RunQdecGlmOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = run_qdec_glm_params(qdec_directory=qdec_directory)
+    return run_qdec_glm_execute(params, execution)
 
 
 __all__ = [
     "RUN_QDEC_GLM_METADATA",
-    "RunQdecGlmOutputs",
     "run_qdec_glm",
+    "run_qdec_glm_params",
 ]

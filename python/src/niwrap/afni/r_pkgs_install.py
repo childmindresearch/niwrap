@@ -12,6 +12,48 @@ R_PKGS_INSTALL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+RPkgsInstallParameters = typing.TypedDict('RPkgsInstallParameters', {
+    "__STYX_TYPE__": typing.Literal["rPkgsInstall"],
+    "packages": str,
+    "download_site": typing.NotRequired[str | None],
+    "check": bool,
+    "update": bool,
+    "remove": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "rPkgsInstall": r_pkgs_install_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "rPkgsInstall": r_pkgs_install_outputs,
+    }
+    return vt.get(t)
 
 
 class RPkgsInstallOutputs(typing.NamedTuple):
@@ -22,6 +64,118 @@ class RPkgsInstallOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_packages: OutputPathType
     """Output R packages after installation, update, or removal"""
+
+
+def r_pkgs_install_params(
+    packages: str,
+    download_site: str | None = None,
+    check: bool = False,
+    update_: bool = False,
+    remove: bool = False,
+) -> RPkgsInstallParameters:
+    """
+    Build parameters.
+    
+    Args:
+        packages: List of R packages to install, update, or remove. Use 'ALL'\
+            to refer to all AFNI-required packages.
+        download_site: Specify the package repository website. Default is\
+            'http://cloud.r-project.org'.
+        check: Verify whether the specified R packages are installed on the\
+            computer without installing/updating/removing them.
+        update_: Update the specified R packages. If packages are not\
+            installed, they will be installed.
+        remove: Remove the specified R packages from the system.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "rPkgsInstall",
+        "packages": packages,
+        "check": check,
+        "update": update_,
+        "remove": remove,
+    }
+    if download_site is not None:
+        params["download_site"] = download_site
+    return params
+
+
+def r_pkgs_install_cargs(
+    params: RPkgsInstallParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("rPkgsInstall")
+    cargs.extend([
+        "-pkgs",
+        params.get("packages")
+    ])
+    if params.get("download_site") is not None:
+        cargs.extend([
+            "-site",
+            params.get("download_site")
+        ])
+    if params.get("check"):
+        cargs.append("-check")
+    if params.get("update"):
+        cargs.append("-update")
+    if params.get("remove"):
+        cargs.append("-remove")
+    return cargs
+
+
+def r_pkgs_install_outputs(
+    params: RPkgsInstallParameters,
+    execution: Execution,
+) -> RPkgsInstallOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RPkgsInstallOutputs(
+        root=execution.output_file("."),
+        output_packages=execution.output_file(params.get("packages")),
+    )
+    return ret
+
+
+def r_pkgs_install_execute(
+    params: RPkgsInstallParameters,
+    execution: Execution,
+) -> RPkgsInstallOutputs:
+    """
+    A tool for installing, checking, updating, or removing R packages for AFNI.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RPkgsInstallOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = r_pkgs_install_cargs(params, execution)
+    ret = r_pkgs_install_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def r_pkgs_install(
@@ -55,33 +209,13 @@ def r_pkgs_install(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(R_PKGS_INSTALL_METADATA)
-    cargs = []
-    cargs.append("rPkgsInstall")
-    cargs.extend([
-        "-pkgs",
-        packages
-    ])
-    if download_site is not None:
-        cargs.extend([
-            "-site",
-            download_site
-        ])
-    if check:
-        cargs.append("-check")
-    if update_:
-        cargs.append("-update")
-    if remove:
-        cargs.append("-remove")
-    ret = RPkgsInstallOutputs(
-        root=execution.output_file("."),
-        output_packages=execution.output_file(packages),
-    )
-    execution.run(cargs)
-    return ret
+    params = r_pkgs_install_params(packages=packages, download_site=download_site, check=check, update_=update_, remove=remove)
+    return r_pkgs_install_execute(params, execution)
 
 
 __all__ = [
     "RPkgsInstallOutputs",
     "R_PKGS_INSTALL_METADATA",
     "r_pkgs_install",
+    "r_pkgs_install_params",
 ]

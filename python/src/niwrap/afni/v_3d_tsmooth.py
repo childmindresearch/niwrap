@@ -12,6 +12,57 @@ V_3D_TSMOOTH_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dTsmoothParameters = typing.TypedDict('V3dTsmoothParameters', {
+    "__STYX_TYPE__": typing.Literal["3dTsmooth"],
+    "input_dataset": InputPathType,
+    "prefix": typing.NotRequired[str | None],
+    "datum_type": typing.NotRequired[str | None],
+    "lin_filter": bool,
+    "med_filter": bool,
+    "osf_filter": bool,
+    "lin_filter_custom": typing.NotRequired[float | None],
+    "hamming": typing.NotRequired[int | None],
+    "blackman": typing.NotRequired[int | None],
+    "custom_filter": typing.NotRequired[InputPathType | None],
+    "extend": bool,
+    "zero": bool,
+    "trend": bool,
+    "adaptive": typing.NotRequired[int | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dTsmooth": v_3d_tsmooth_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dTsmooth": v_3d_tsmooth_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dTsmoothOutputs(typing.NamedTuple):
@@ -22,6 +73,185 @@ class V3dTsmoothOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_dataset: OutputPathType | None
     """Smoothed 3D+time dataset"""
+
+
+def v_3d_tsmooth_params(
+    input_dataset: InputPathType,
+    prefix: str | None = None,
+    datum_type: str | None = None,
+    lin_filter: bool = False,
+    med_filter: bool = False,
+    osf_filter: bool = False,
+    lin_filter_custom: float | None = None,
+    hamming: int | None = None,
+    blackman: int | None = None,
+    custom_filter: InputPathType | None = None,
+    extend: bool = False,
+    zero: bool = False,
+    trend: bool = False,
+    adaptive: int | None = None,
+) -> V3dTsmoothParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dataset: The input 3D+time dataset.
+        prefix: Sets the prefix of the output dataset.
+        datum_type: Coerce output dataset to be stored as the given type.
+        lin_filter: 3 point linear filter: 0.15*a + 0.70*b + 0.15*c.
+        med_filter: 3 point median filter: median(a,b,c).
+        osf_filter: 3 point order statistics filter: 0.15*min(a,b,c) +\
+            0.70*median(a,b,c) + 0.15*max(a,b,c).
+        lin_filter_custom: 3 point linear filter with custom weight:\
+            0.5*(1-m)*a + m*b + 0.5*(1-m)*c.
+        hamming: Use N point Hamming window filter.
+        blackman: Use N point Blackman window filter.
+        custom_filter: Use custom filter with coefficients from a specified\
+            file.
+        extend: BEFORE: use the first value; AFTER: use the last value.
+        zero: BEFORE and AFTER: use zero.
+        trend: Compute a linear trend, and extrapolate BEFORE and AFTER.
+        adaptive: Use adaptive mean filtering of width N (N must be odd and\
+            bigger than 3).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dTsmooth",
+        "input_dataset": input_dataset,
+        "lin_filter": lin_filter,
+        "med_filter": med_filter,
+        "osf_filter": osf_filter,
+        "extend": extend,
+        "zero": zero,
+        "trend": trend,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    if datum_type is not None:
+        params["datum_type"] = datum_type
+    if lin_filter_custom is not None:
+        params["lin_filter_custom"] = lin_filter_custom
+    if hamming is not None:
+        params["hamming"] = hamming
+    if blackman is not None:
+        params["blackman"] = blackman
+    if custom_filter is not None:
+        params["custom_filter"] = custom_filter
+    if adaptive is not None:
+        params["adaptive"] = adaptive
+    return params
+
+
+def v_3d_tsmooth_cargs(
+    params: V3dTsmoothParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dTsmooth")
+    cargs.append(execution.input_file(params.get("input_dataset")))
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("datum_type") is not None:
+        cargs.extend([
+            "-datum",
+            params.get("datum_type")
+        ])
+    if params.get("lin_filter"):
+        cargs.append("-lin")
+    if params.get("med_filter"):
+        cargs.append("-med")
+    if params.get("osf_filter"):
+        cargs.append("-osf")
+    if params.get("lin_filter_custom") is not None:
+        cargs.extend([
+            "-3lin",
+            str(params.get("lin_filter_custom"))
+        ])
+    if params.get("hamming") is not None:
+        cargs.extend([
+            "-hamming",
+            str(params.get("hamming"))
+        ])
+    if params.get("blackman") is not None:
+        cargs.extend([
+            "-blackman",
+            str(params.get("blackman"))
+        ])
+    if params.get("custom_filter") is not None:
+        cargs.extend([
+            "-custom",
+            execution.input_file(params.get("custom_filter"))
+        ])
+    if params.get("extend"):
+        cargs.append("-EXTEND")
+    if params.get("zero"):
+        cargs.append("-ZERO")
+    if params.get("trend"):
+        cargs.append("-TREND")
+    if params.get("adaptive") is not None:
+        cargs.extend([
+            "-adaptive",
+            str(params.get("adaptive"))
+        ])
+    return cargs
+
+
+def v_3d_tsmooth_outputs(
+    params: V3dTsmoothParameters,
+    execution: Execution,
+) -> V3dTsmoothOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dTsmoothOutputs(
+        root=execution.output_file("."),
+        output_dataset=execution.output_file(params.get("prefix") + ".nii.gz") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_tsmooth_execute(
+    params: V3dTsmoothParameters,
+    execution: Execution,
+) -> V3dTsmoothOutputs:
+    """
+    Smooths each voxel time series in a 3D+time dataset and produces as output a new
+    3D+time dataset (e.g., lowpass filter in time).
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dTsmoothOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_tsmooth_cargs(params, execution)
+    ret = v_3d_tsmooth_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_tsmooth(
@@ -72,70 +302,15 @@ def v_3d_tsmooth(
     Returns:
         NamedTuple of outputs (described in `V3dTsmoothOutputs`).
     """
-    if lin_filter_custom is not None and not (0 <= lin_filter_custom <= 1): 
-        raise ValueError(f"'lin_filter_custom' must be between 0 <= x <= 1 but was {lin_filter_custom}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSMOOTH_METADATA)
-    cargs = []
-    cargs.append("3dTsmooth")
-    cargs.append(execution.input_file(input_dataset))
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if datum_type is not None:
-        cargs.extend([
-            "-datum",
-            datum_type
-        ])
-    if lin_filter:
-        cargs.append("-lin")
-    if med_filter:
-        cargs.append("-med")
-    if osf_filter:
-        cargs.append("-osf")
-    if lin_filter_custom is not None:
-        cargs.extend([
-            "-3lin",
-            str(lin_filter_custom)
-        ])
-    if hamming is not None:
-        cargs.extend([
-            "-hamming",
-            str(hamming)
-        ])
-    if blackman is not None:
-        cargs.extend([
-            "-blackman",
-            str(blackman)
-        ])
-    if custom_filter is not None:
-        cargs.extend([
-            "-custom",
-            execution.input_file(custom_filter)
-        ])
-    if extend:
-        cargs.append("-EXTEND")
-    if zero:
-        cargs.append("-ZERO")
-    if trend:
-        cargs.append("-TREND")
-    if adaptive is not None:
-        cargs.extend([
-            "-adaptive",
-            str(adaptive)
-        ])
-    ret = V3dTsmoothOutputs(
-        root=execution.output_file("."),
-        output_dataset=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_tsmooth_params(input_dataset=input_dataset, prefix=prefix, datum_type=datum_type, lin_filter=lin_filter, med_filter=med_filter, osf_filter=osf_filter, lin_filter_custom=lin_filter_custom, hamming=hamming, blackman=blackman, custom_filter=custom_filter, extend=extend, zero=zero, trend=trend, adaptive=adaptive)
+    return v_3d_tsmooth_execute(params, execution)
 
 
 __all__ = [
     "V3dTsmoothOutputs",
     "V_3D_TSMOOTH_METADATA",
     "v_3d_tsmooth",
+    "v_3d_tsmooth_params",
 ]

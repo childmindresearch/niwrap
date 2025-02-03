@@ -12,14 +12,156 @@ DICOM_HINFO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+DicomHinfoParameters = typing.TypedDict('DicomHinfoParameters', {
+    "__STYX_TYPE__": typing.Literal["dicom_hinfo"],
+    "tag": list[str],
+    "sepstr": typing.NotRequired[str | None],
+    "full_entry": bool,
+    "no_name": bool,
+    "namelast": bool,
+})
 
 
-class DicomHinfoOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `dicom_hinfo(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "dicom_hinfo": dicom_hinfo_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def dicom_hinfo_params(
+    tag: list[str],
+    sepstr: str | None = None,
+    full_entry: bool = False,
+    no_name: bool = False,
+    namelast: bool = False,
+) -> DicomHinfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tag: Specify one or more DICOM tags to print, in the format aaaa,bbbb\
+            where aaaa and bbbb are hexadecimal digits.
+        sepstr: Use the specified string to separate fields instead of space.
+        full_entry: Output the full entry if it is more than one word or\
+            contains white space.
+        no_name: Omit the filename from the output.
+        namelast: Place the filename last in the output instead of first.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dicom_hinfo",
+        "tag": tag,
+        "full_entry": full_entry,
+        "no_name": no_name,
+        "namelast": namelast,
+    }
+    if sepstr is not None:
+        params["sepstr"] = sepstr
+    return params
+
+
+def dicom_hinfo_cargs(
+    params: DicomHinfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dicom_hinfo")
+    cargs.extend([
+        "-tag",
+        *params.get("tag")
+    ])
+    if params.get("sepstr") is not None:
+        cargs.extend([
+            "-sepstr",
+            params.get("sepstr")
+        ])
+    if params.get("full_entry"):
+        cargs.append("-full_entry")
+    if params.get("no_name"):
+        cargs.append("-no_name")
+    if params.get("namelast"):
+        cargs.append("-namelast")
+    cargs.append("[FILES...]")
+    return cargs
+
+
+def dicom_hinfo_outputs(
+    params: DicomHinfoParameters,
+    execution: Execution,
+) -> DicomHinfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DicomHinfoOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def dicom_hinfo_execute(
+    params: DicomHinfoParameters,
+    execution: Execution,
+) -> DicomHinfoOutputs:
+    """
+    Prints selected information from one or more DICOM files to stdout.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DicomHinfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dicom_hinfo_cargs(params, execution)
+    ret = dicom_hinfo_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dicom_hinfo(
@@ -51,33 +193,12 @@ def dicom_hinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DICOM_HINFO_METADATA)
-    cargs = []
-    cargs.append("dicom_hinfo")
-    cargs.extend([
-        "-tag",
-        *tag
-    ])
-    if sepstr is not None:
-        cargs.extend([
-            "-sepstr",
-            sepstr
-        ])
-    if full_entry:
-        cargs.append("-full_entry")
-    if no_name:
-        cargs.append("-no_name")
-    if namelast:
-        cargs.append("-namelast")
-    cargs.append("[FILES...]")
-    ret = DicomHinfoOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = dicom_hinfo_params(tag=tag, sepstr=sepstr, full_entry=full_entry, no_name=no_name, namelast=namelast)
+    return dicom_hinfo_execute(params, execution)
 
 
 __all__ = [
     "DICOM_HINFO_METADATA",
-    "DicomHinfoOutputs",
     "dicom_hinfo",
+    "dicom_hinfo_params",
 ]

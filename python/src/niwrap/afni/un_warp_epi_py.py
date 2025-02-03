@@ -12,14 +12,165 @@ UN_WARP_EPI_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+UnWarpEpiPyParameters = typing.TypedDict('UnWarpEpiPyParameters', {
+    "__STYX_TYPE__": typing.Literal["unWarpEPI.py"],
+    "forward": InputPathType,
+    "reverse": InputPathType,
+    "anat4warp": InputPathType,
+    "data": str,
+    "subjID": str,
+    "giant_move": bool,
+})
 
 
-class UnWarpEpiPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `un_warp_epi_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "unWarpEPI.py": un_warp_epi_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def un_warp_epi_py_params(
+    forward: InputPathType,
+    reverse: InputPathType,
+    anat4warp: InputPathType,
+    data: str,
+    subj_id: str,
+    giant_move: bool = False,
+) -> UnWarpEpiPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        forward: Calibration matching data to be corrected.
+        reverse: Calibration with opposing polarity to data to be corrected.
+        anat4warp: Reference anatomical dataset.
+        data: Data to be corrected (same polarity as forward calibration data).\
+            Separate with commas if specifying multiple datasets.
+        subj_id: ID of subject to be corrected.
+        giant_move: Set giant_move option for align_epi_anat if final align of\
+            anatomy to corrected EPI fails if datasets are far apart in space.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "unWarpEPI.py",
+        "forward": forward,
+        "reverse": reverse,
+        "anat4warp": anat4warp,
+        "data": data,
+        "subjID": subj_id,
+        "giant_move": giant_move,
+    }
+    return params
+
+
+def un_warp_epi_py_cargs(
+    params: UnWarpEpiPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("unWarpEPI.py")
+    cargs.extend([
+        "-f",
+        execution.input_file(params.get("forward"))
+    ])
+    cargs.extend([
+        "-r",
+        execution.input_file(params.get("reverse"))
+    ])
+    cargs.extend([
+        "-a",
+        execution.input_file(params.get("anat4warp"))
+    ])
+    cargs.extend([
+        "-d",
+        params.get("data")
+    ])
+    cargs.extend([
+        "-s",
+        params.get("subjID")
+    ])
+    if params.get("giant_move"):
+        cargs.append("-g")
+    return cargs
+
+
+def un_warp_epi_py_outputs(
+    params: UnWarpEpiPyParameters,
+    execution: Execution,
+) -> UnWarpEpiPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UnWarpEpiPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def un_warp_epi_py_execute(
+    params: UnWarpEpiPyParameters,
+    execution: Execution,
+) -> UnWarpEpiPyOutputs:
+    """
+    Routine to unwarp EPI data set using another data set with opposite polarity.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UnWarpEpiPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = un_warp_epi_py_cargs(params, execution)
+    ret = un_warp_epi_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def un_warp_epi_py(
@@ -53,39 +204,12 @@ def un_warp_epi_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UN_WARP_EPI_PY_METADATA)
-    cargs = []
-    cargs.append("unWarpEPI.py")
-    cargs.extend([
-        "-f",
-        execution.input_file(forward)
-    ])
-    cargs.extend([
-        "-r",
-        execution.input_file(reverse)
-    ])
-    cargs.extend([
-        "-a",
-        execution.input_file(anat4warp)
-    ])
-    cargs.extend([
-        "-d",
-        data
-    ])
-    cargs.extend([
-        "-s",
-        subj_id
-    ])
-    if giant_move:
-        cargs.append("-g")
-    ret = UnWarpEpiPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = un_warp_epi_py_params(forward=forward, reverse=reverse, anat4warp=anat4warp, data=data, subj_id=subj_id, giant_move=giant_move)
+    return un_warp_epi_py_execute(params, execution)
 
 
 __all__ = [
     "UN_WARP_EPI_PY_METADATA",
-    "UnWarpEpiPyOutputs",
     "un_warp_epi_py",
+    "un_warp_epi_py_params",
 ]

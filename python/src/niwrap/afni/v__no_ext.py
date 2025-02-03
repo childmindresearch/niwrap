@@ -12,6 +12,44 @@ V__NO_EXT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VNoExtParameters = typing.TypedDict('VNoExtParameters', {
+    "__STYX_TYPE__": typing.Literal["@NoExt"],
+    "extensions": typing.NotRequired[list[str] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@NoExt": v__no_ext_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@NoExt": v__no_ext_outputs,
+    }
+    return vt.get(t)
 
 
 class VNoExtOutputs(typing.NamedTuple):
@@ -22,6 +60,90 @@ class VNoExtOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """File name with specified extensions removed"""
+
+
+def v__no_ext_params(
+    extensions: list[str] | None = None,
+) -> VNoExtParameters:
+    """
+    Build parameters.
+    
+    Args:
+        extensions: Extensions to be removed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@NoExt",
+    }
+    if extensions is not None:
+        params["extensions"] = extensions
+    return params
+
+
+def v__no_ext_cargs(
+    params: VNoExtParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@NoExt")
+    cargs.append("<inputfile>")
+    if params.get("extensions") is not None:
+        cargs.extend(params.get("extensions"))
+    return cargs
+
+
+def v__no_ext_outputs(
+    params: VNoExtParameters,
+    execution: Execution,
+) -> VNoExtOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VNoExtOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file("output"),
+    )
+    return ret
+
+
+def v__no_ext_execute(
+    params: VNoExtParameters,
+    execution: Execution,
+) -> VNoExtOutputs:
+    """
+    Tool for removing specified extensions from filenames.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VNoExtOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__no_ext_cargs(params, execution)
+    ret = v__no_ext_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__no_ext(
@@ -43,21 +165,13 @@ def v__no_ext(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__NO_EXT_METADATA)
-    cargs = []
-    cargs.append("@NoExt")
-    cargs.append("<inputfile>")
-    if extensions is not None:
-        cargs.extend(extensions)
-    ret = VNoExtOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file("output"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__no_ext_params(extensions=extensions)
+    return v__no_ext_execute(params, execution)
 
 
 __all__ = [
     "VNoExtOutputs",
     "V__NO_EXT_METADATA",
     "v__no_ext",
+    "v__no_ext_params",
 ]

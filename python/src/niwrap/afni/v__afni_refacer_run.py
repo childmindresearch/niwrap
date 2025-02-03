@@ -12,6 +12,53 @@ V__AFNI_REFACER_RUN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VAfniRefacerRunParameters = typing.TypedDict('VAfniRefacerRunParameters', {
+    "__STYX_TYPE__": typing.Literal["@afni_refacer_run"],
+    "input_file": InputPathType,
+    "mode_all": bool,
+    "prefix": str,
+    "anonymize_output": bool,
+    "cost_function": typing.NotRequired[str | None],
+    "shell_option": typing.NotRequired[str | None],
+    "no_clean": bool,
+    "no_images": bool,
+    "overwrite": bool,
+    "verbose": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@afni_refacer_run": v__afni_refacer_run_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@afni_refacer_run": v__afni_refacer_run_outputs,
+    }
+    return vt.get(t)
 
 
 class VAfniRefacerRunOutputs(typing.NamedTuple):
@@ -30,6 +77,160 @@ class VAfniRefacerRunOutputs(typing.NamedTuple):
     """Face+ears used to replace or remove subject data"""
     output_face_plus: OutputPathType
     """Face+ears+skull used to replace subject data"""
+
+
+def v__afni_refacer_run_params(
+    input_file: InputPathType,
+    prefix: str,
+    mode_all: bool = False,
+    anonymize_output: bool = False,
+    cost_function: str | None = None,
+    shell_option: str | None = None,
+    no_clean: bool = False,
+    no_images: bool = False,
+    overwrite: bool = False,
+    verbose: bool = False,
+) -> VAfniRefacerRunParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Name of input dataset; can contain path information.
+        prefix: Name of output dataset.
+        mode_all: Output three volumes: one defaced, one refaced and one\
+            reface_plused.
+        anonymize_output: Use 3drefit and nifti_tool to anonymize the output\
+            datasets.
+        cost_function: Specify any cost function that is allowed by 3dAllineate\
+            (default: lpa).
+        shell_option: Specify which shell to use. Options:\
+            afni_refacer_shell_sym_1.0.nii.gz (traditional),\
+            afni_refacer_shell_sym_2.0.nii.gz (more face/neck removal). Default:\
+            afni_refacer_shell_sym_1.0.nii.gz.
+        no_clean: Don't delete temp working directory (default: remove working\
+            directory).
+        no_images: Don't make pretty images to automatically view the results\
+            of re/defacing.
+        overwrite: Final two file outputs will overwrite any existing files of\
+            the same name (default: don't do this). NB: this option does not apply\
+            to the working directory.
+        verbose: Run the 3dAllineate part herein with '-verb' (for verbosity).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@afni_refacer_run",
+        "input_file": input_file,
+        "mode_all": mode_all,
+        "prefix": prefix,
+        "anonymize_output": anonymize_output,
+        "no_clean": no_clean,
+        "no_images": no_images,
+        "overwrite": overwrite,
+        "verbose": verbose,
+    }
+    if cost_function is not None:
+        params["cost_function"] = cost_function
+    if shell_option is not None:
+        params["shell_option"] = shell_option
+    return params
+
+
+def v__afni_refacer_run_cargs(
+    params: VAfniRefacerRunParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@afni_refacer_run")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    if params.get("mode_all"):
+        cargs.append("-mode_all")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("anonymize_output"):
+        cargs.append("-anonymize_output")
+    if params.get("cost_function") is not None:
+        cargs.extend([
+            "-cost",
+            params.get("cost_function")
+        ])
+    if params.get("shell_option") is not None:
+        cargs.extend([
+            "-shell",
+            params.get("shell_option")
+        ])
+    if params.get("no_clean"):
+        cargs.append("-no_clean")
+    if params.get("no_images"):
+        cargs.append("-no_images")
+    if params.get("overwrite"):
+        cargs.append("-overwrite")
+    if params.get("verbose"):
+        cargs.append("-verb_allin")
+    return cargs
+
+
+def v__afni_refacer_run_outputs(
+    params: VAfniRefacerRunParameters,
+    execution: Execution,
+) -> VAfniRefacerRunOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VAfniRefacerRunOutputs(
+        root=execution.output_file("."),
+        output_deface=execution.output_file(params.get("prefix") + ".deface.nii.gz"),
+        output_reface=execution.output_file(params.get("prefix") + ".reface.nii.gz"),
+        output_reface_plus=execution.output_file(params.get("prefix") + ".reface_plus.nii.gz"),
+        output_face=execution.output_file(params.get("prefix") + ".face.nii.gz"),
+        output_face_plus=execution.output_file(params.get("prefix") + ".face_plus.nii.gz"),
+    )
+    return ret
+
+
+def v__afni_refacer_run_execute(
+    params: VAfniRefacerRunParameters,
+    execution: Execution,
+) -> VAfniRefacerRunOutputs:
+    """
+    This script re-faces one input dataset, using a master shell dataset to write
+    over the subject's 'face' region.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VAfniRefacerRunOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__afni_refacer_run_cargs(params, execution)
+    ret = v__afni_refacer_run_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__afni_refacer_run(
@@ -80,52 +281,13 @@ def v__afni_refacer_run(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_REFACER_RUN_METADATA)
-    cargs = []
-    cargs.append("@afni_refacer_run")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    if mode_all:
-        cargs.append("-mode_all")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if anonymize_output:
-        cargs.append("-anonymize_output")
-    if cost_function is not None:
-        cargs.extend([
-            "-cost",
-            cost_function
-        ])
-    if shell_option is not None:
-        cargs.extend([
-            "-shell",
-            shell_option
-        ])
-    if no_clean:
-        cargs.append("-no_clean")
-    if no_images:
-        cargs.append("-no_images")
-    if overwrite:
-        cargs.append("-overwrite")
-    if verbose:
-        cargs.append("-verb_allin")
-    ret = VAfniRefacerRunOutputs(
-        root=execution.output_file("."),
-        output_deface=execution.output_file(prefix + ".deface.nii.gz"),
-        output_reface=execution.output_file(prefix + ".reface.nii.gz"),
-        output_reface_plus=execution.output_file(prefix + ".reface_plus.nii.gz"),
-        output_face=execution.output_file(prefix + ".face.nii.gz"),
-        output_face_plus=execution.output_file(prefix + ".face_plus.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__afni_refacer_run_params(input_file=input_file, mode_all=mode_all, prefix=prefix, anonymize_output=anonymize_output, cost_function=cost_function, shell_option=shell_option, no_clean=no_clean, no_images=no_images, overwrite=overwrite, verbose=verbose)
+    return v__afni_refacer_run_execute(params, execution)
 
 
 __all__ = [
     "VAfniRefacerRunOutputs",
     "V__AFNI_REFACER_RUN_METADATA",
     "v__afni_refacer_run",
+    "v__afni_refacer_run_params",
 ]

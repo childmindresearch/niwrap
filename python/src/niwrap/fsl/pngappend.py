@@ -12,14 +12,128 @@ PNGAPPEND_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+PngappendParameters = typing.TypedDict('PngappendParameters', {
+    "__STYX_TYPE__": typing.Literal["pngappend"],
+    "input_files_and_options": list[str],
+    "output_file": InputPathType,
+})
 
 
-class PngappendOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `pngappend(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "pngappend": pngappend_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def pngappend_params(
+    input_files_and_options: list[str],
+    output_file: InputPathType,
+) -> PngappendParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files_and_options: List of input files and options for appending\
+            (e.g., file1.png +3 file2.png -2 file3.png).
+        output_file: Output file (e.g., output.png or output.gif).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "pngappend",
+        "input_files_and_options": input_files_and_options,
+        "output_file": output_file,
+    }
+    return params
+
+
+def pngappend_cargs(
+    params: PngappendParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("pngappend")
+    cargs.extend(params.get("input_files_and_options"))
+    cargs.append(execution.input_file(params.get("output_file")))
+    return cargs
+
+
+def pngappend_outputs(
+    params: PngappendParameters,
+    execution: Execution,
+) -> PngappendOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PngappendOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def pngappend_execute(
+    params: PngappendParameters,
+    execution: Execution,
+) -> PngappendOutputs:
+    """
+    Append PNG files horizontally and/or vertically into a new PNG (or GIF) file.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PngappendOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = pngappend_cargs(params, execution)
+    ret = pngappend_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def pngappend(
@@ -44,19 +158,12 @@ def pngappend(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PNGAPPEND_METADATA)
-    cargs = []
-    cargs.append("pngappend")
-    cargs.extend(input_files_and_options)
-    cargs.append(execution.input_file(output_file))
-    ret = PngappendOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = pngappend_params(input_files_and_options=input_files_and_options, output_file=output_file)
+    return pngappend_execute(params, execution)
 
 
 __all__ = [
     "PNGAPPEND_METADATA",
-    "PngappendOutputs",
     "pngappend",
+    "pngappend_params",
 ]

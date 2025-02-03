@@ -12,6 +12,46 @@ VOLUME_ALL_LABELS_TO_ROIS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeAllLabelsToRoisParameters = typing.TypedDict('VolumeAllLabelsToRoisParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-all-labels-to-rois"],
+    "label_in": InputPathType,
+    "map": str,
+    "volume_out": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "volume-all-labels-to-rois": volume_all_labels_to_rois_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "volume-all-labels-to-rois": volume_all_labels_to_rois_outputs,
+    }
+    return vt.get(t)
 
 
 class VolumeAllLabelsToRoisOutputs(typing.NamedTuple):
@@ -22,6 +62,100 @@ class VolumeAllLabelsToRoisOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume file"""
+
+
+def volume_all_labels_to_rois_params(
+    label_in: InputPathType,
+    map_: str,
+    volume_out: str,
+) -> VolumeAllLabelsToRoisParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label_in: the input volume label file.
+        map_: the number or name of the label map to use.
+        volume_out: the output volume file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-all-labels-to-rois",
+        "label_in": label_in,
+        "map": map_,
+        "volume_out": volume_out,
+    }
+    return params
+
+
+def volume_all_labels_to_rois_cargs(
+    params: VolumeAllLabelsToRoisParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-all-labels-to-rois")
+    cargs.append(execution.input_file(params.get("label_in")))
+    cargs.append(params.get("map"))
+    cargs.append(params.get("volume_out"))
+    return cargs
+
+
+def volume_all_labels_to_rois_outputs(
+    params: VolumeAllLabelsToRoisParameters,
+    execution: Execution,
+) -> VolumeAllLabelsToRoisOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeAllLabelsToRoisOutputs(
+        root=execution.output_file("."),
+        volume_out=execution.output_file(params.get("volume_out")),
+    )
+    return ret
+
+
+def volume_all_labels_to_rois_execute(
+    params: VolumeAllLabelsToRoisParameters,
+    execution: Execution,
+) -> VolumeAllLabelsToRoisOutputs:
+    """
+    Make rois from all labels in a volume frame.
+    
+    The output volume has a frame for each label in the specified input frame,
+    other than the ??? label, each of which contains an ROI of all voxels that
+    are set to the corresponding label.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeAllLabelsToRoisOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_all_labels_to_rois_cargs(params, execution)
+    ret = volume_all_labels_to_rois_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def volume_all_labels_to_rois(
@@ -51,22 +185,13 @@ def volume_all_labels_to_rois(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_ALL_LABELS_TO_ROIS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-all-labels-to-rois")
-    cargs.append(execution.input_file(label_in))
-    cargs.append(map_)
-    cargs.append(volume_out)
-    ret = VolumeAllLabelsToRoisOutputs(
-        root=execution.output_file("."),
-        volume_out=execution.output_file(volume_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_all_labels_to_rois_params(label_in=label_in, map_=map_, volume_out=volume_out)
+    return volume_all_labels_to_rois_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_ALL_LABELS_TO_ROIS_METADATA",
     "VolumeAllLabelsToRoisOutputs",
     "volume_all_labels_to_rois",
+    "volume_all_labels_to_rois_params",
 ]

@@ -12,6 +12,46 @@ COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ComputeInterraterVariabilityCshParameters = typing.TypedDict('ComputeInterraterVariabilityCshParameters', {
+    "__STYX_TYPE__": typing.Literal["compute_interrater_variability.csh"],
+    "label_vol1": InputPathType,
+    "label_vol2": InputPathType,
+    "output_prefix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "compute_interrater_variability.csh": compute_interrater_variability_csh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "compute_interrater_variability.csh": compute_interrater_variability_csh_outputs,
+    }
+    return vt.get(t)
 
 
 class ComputeInterraterVariabilityCshOutputs(typing.NamedTuple):
@@ -27,6 +67,108 @@ class ComputeInterraterVariabilityCshOutputs(typing.NamedTuple):
     output_file_3: OutputPathType
     """Output file containing label volume difference, Dice, and Jaccard overlap
     measures."""
+
+
+def compute_interrater_variability_csh_params(
+    label_vol1: InputPathType,
+    label_vol2: InputPathType,
+    output_prefix: str,
+) -> ComputeInterraterVariabilityCshParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label_vol1: Label volume from rater 1.
+        label_vol2: Label volume from rater 2.
+        output_prefix: Prefix for the output text files containing results. A\
+            total of three files will be produced.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "compute_interrater_variability.csh",
+        "label_vol1": label_vol1,
+        "label_vol2": label_vol2,
+        "output_prefix": output_prefix,
+    }
+    return params
+
+
+def compute_interrater_variability_csh_cargs(
+    params: ComputeInterraterVariabilityCshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("compute_interrater_variability")
+    cargs.extend([
+        "--vol1",
+        execution.input_file(params.get("label_vol1"))
+    ])
+    cargs.extend([
+        "--vol2",
+        execution.input_file(params.get("label_vol2"))
+    ])
+    cargs.extend([
+        "--out",
+        params.get("output_prefix")
+    ])
+    return cargs
+
+
+def compute_interrater_variability_csh_outputs(
+    params: ComputeInterraterVariabilityCshParameters,
+    execution: Execution,
+) -> ComputeInterraterVariabilityCshOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ComputeInterraterVariabilityCshOutputs(
+        root=execution.output_file("."),
+        output_file_1=execution.output_file(params.get("output_prefix") + "_file1.txt"),
+        output_file_2=execution.output_file(params.get("output_prefix") + "_file2.txt"),
+        output_file_3=execution.output_file(params.get("output_prefix") + "_file3.txt"),
+    )
+    return ret
+
+
+def compute_interrater_variability_csh_execute(
+    params: ComputeInterraterVariabilityCshParameters,
+    execution: Execution,
+) -> ComputeInterraterVariabilityCshOutputs:
+    """
+    Computes the interrater variability between label volumes from different raters
+    or time points using several metrics.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ComputeInterraterVariabilityCshOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = compute_interrater_variability_csh_cargs(params, execution)
+    ret = compute_interrater_variability_csh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def compute_interrater_variability_csh(
@@ -54,32 +196,13 @@ def compute_interrater_variability_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA)
-    cargs = []
-    cargs.append("compute_interrater_variability")
-    cargs.extend([
-        "--vol1",
-        execution.input_file(label_vol1)
-    ])
-    cargs.extend([
-        "--vol2",
-        execution.input_file(label_vol2)
-    ])
-    cargs.extend([
-        "--out",
-        output_prefix
-    ])
-    ret = ComputeInterraterVariabilityCshOutputs(
-        root=execution.output_file("."),
-        output_file_1=execution.output_file(output_prefix + "_file1.txt"),
-        output_file_2=execution.output_file(output_prefix + "_file2.txt"),
-        output_file_3=execution.output_file(output_prefix + "_file3.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = compute_interrater_variability_csh_params(label_vol1=label_vol1, label_vol2=label_vol2, output_prefix=output_prefix)
+    return compute_interrater_variability_csh_execute(params, execution)
 
 
 __all__ = [
     "COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA",
     "ComputeInterraterVariabilityCshOutputs",
     "compute_interrater_variability_csh",
+    "compute_interrater_variability_csh_params",
 ]

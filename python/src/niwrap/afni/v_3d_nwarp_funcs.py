@@ -12,6 +12,49 @@ V_3D_NWARP_FUNCS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dNwarpFuncsParameters = typing.TypedDict('V3dNwarpFuncsParameters', {
+    "__STYX_TYPE__": typing.Literal["3dNwarpFuncs"],
+    "input_warp": InputPathType,
+    "output_prefix": str,
+    "bulk_flag": bool,
+    "shear_flag": bool,
+    "vorticity_flag": bool,
+    "all_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dNwarpFuncs": v_3d_nwarp_funcs_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dNwarpFuncs": v_3d_nwarp_funcs_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dNwarpFuncsOutputs(typing.NamedTuple):
@@ -22,6 +65,120 @@ class V3dNwarpFuncsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The output dataset with the computed functions."""
+
+
+def v_3d_nwarp_funcs_params(
+    input_warp: InputPathType,
+    output_prefix: str,
+    bulk_flag: bool = False,
+    shear_flag: bool = False,
+    vorticity_flag: bool = False,
+    all_flag: bool = False,
+) -> V3dNwarpFuncsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_warp: 'www' is the name of the 3D warp dataset (mandatory\
+            option).
+        output_prefix: 'ppp' is the name of the new output dataset.
+        bulk_flag: Compute the (fractional) bulk volume change (Jacobian\
+            determinant minus 1).
+        shear_flag: Compute the shear energy.
+        vorticity_flag: Compute the vorticity energy.
+        all_flag: Compute all 3 functions: bulk, shear, and vorticity.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dNwarpFuncs",
+        "input_warp": input_warp,
+        "output_prefix": output_prefix,
+        "bulk_flag": bulk_flag,
+        "shear_flag": shear_flag,
+        "vorticity_flag": vorticity_flag,
+        "all_flag": all_flag,
+    }
+    return params
+
+
+def v_3d_nwarp_funcs_cargs(
+    params: V3dNwarpFuncsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dNwarpFuncs")
+    cargs.extend([
+        "-nwarp",
+        execution.input_file(params.get("input_warp"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("output_prefix")
+    ])
+    if params.get("bulk_flag"):
+        cargs.append("-bulk")
+    if params.get("shear_flag"):
+        cargs.append("-shear")
+    if params.get("vorticity_flag"):
+        cargs.append("-vorticity")
+    if params.get("all_flag"):
+        cargs.append("-all")
+    return cargs
+
+
+def v_3d_nwarp_funcs_outputs(
+    params: V3dNwarpFuncsParameters,
+    execution: Execution,
+) -> V3dNwarpFuncsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dNwarpFuncsOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_prefix") + "_output.nii.gz"),
+    )
+    return ret
+
+
+def v_3d_nwarp_funcs_execute(
+    params: V3dNwarpFuncsParameters,
+    execution: Execution,
+) -> V3dNwarpFuncsOutputs:
+    """
+    Compute functions of 3D warp displacements, such as bulk volume change, shear
+    energy, and vorticity energy.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dNwarpFuncsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_nwarp_funcs_cargs(params, execution)
+    ret = v_3d_nwarp_funcs_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_nwarp_funcs(
@@ -56,34 +213,13 @@ def v_3d_nwarp_funcs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_FUNCS_METADATA)
-    cargs = []
-    cargs.append("3dNwarpFuncs")
-    cargs.extend([
-        "-nwarp",
-        execution.input_file(input_warp)
-    ])
-    cargs.extend([
-        "-prefix",
-        output_prefix
-    ])
-    if bulk_flag:
-        cargs.append("-bulk")
-    if shear_flag:
-        cargs.append("-shear")
-    if vorticity_flag:
-        cargs.append("-vorticity")
-    if all_flag:
-        cargs.append("-all")
-    ret = V3dNwarpFuncsOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_prefix + "_output.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_nwarp_funcs_params(input_warp=input_warp, output_prefix=output_prefix, bulk_flag=bulk_flag, shear_flag=shear_flag, vorticity_flag=vorticity_flag, all_flag=all_flag)
+    return v_3d_nwarp_funcs_execute(params, execution)
 
 
 __all__ = [
     "V3dNwarpFuncsOutputs",
     "V_3D_NWARP_FUNCS_METADATA",
     "v_3d_nwarp_funcs",
+    "v_3d_nwarp_funcs_params",
 ]

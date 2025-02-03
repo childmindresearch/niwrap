@@ -12,6 +12,48 @@ LABEL_SUBJECT_FLASH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LabelSubjectFlashParameters = typing.TypedDict('LabelSubjectFlashParameters', {
+    "__STYX_TYPE__": typing.Literal["label_subject_flash"],
+    "tissue_params": InputPathType,
+    "norm_volume": InputPathType,
+    "transform_file": InputPathType,
+    "classifier_array": InputPathType,
+    "aseg_output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label_subject_flash": label_subject_flash_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label_subject_flash": label_subject_flash_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelSubjectFlashOutputs(typing.NamedTuple):
@@ -22,6 +64,107 @@ class LabelSubjectFlashOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     aseg_outfile: OutputPathType
     """Automatic segmentation (aseg) output file"""
+
+
+def label_subject_flash_params(
+    tissue_params: InputPathType,
+    norm_volume: InputPathType,
+    transform_file: InputPathType,
+    classifier_array: InputPathType,
+    aseg_output: str,
+) -> LabelSubjectFlashParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tissue_params: Path to the tissue parameter file for FLASH sequences.
+        norm_volume: Path to the normalized T1 volume.
+        transform_file: Talairach linear transform file.
+        classifier_array: Path to the classifier array in GCA format.
+        aseg_output: Output path for the automatic segmentation (aseg) file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label_subject_flash",
+        "tissue_params": tissue_params,
+        "norm_volume": norm_volume,
+        "transform_file": transform_file,
+        "classifier_array": classifier_array,
+        "aseg_output": aseg_output,
+    }
+    return params
+
+
+def label_subject_flash_cargs(
+    params: LabelSubjectFlashParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_ca_label")
+    cargs.extend([
+        "-flash",
+        execution.input_file(params.get("tissue_params"))
+    ])
+    cargs.append(execution.input_file(params.get("norm_volume")))
+    cargs.append(execution.input_file(params.get("transform_file")))
+    cargs.append(execution.input_file(params.get("classifier_array")))
+    cargs.append(params.get("aseg_output"))
+    return cargs
+
+
+def label_subject_flash_outputs(
+    params: LabelSubjectFlashParameters,
+    execution: Execution,
+) -> LabelSubjectFlashOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelSubjectFlashOutputs(
+        root=execution.output_file("."),
+        aseg_outfile=execution.output_file(params.get("aseg_output")),
+    )
+    return ret
+
+
+def label_subject_flash_execute(
+    params: LabelSubjectFlashParameters,
+    execution: Execution,
+) -> LabelSubjectFlashOutputs:
+    """
+    A tool for labeling brain structures in an MRI dataset using FLASH sequences and
+    the FreeSurfer software.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelSubjectFlashOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label_subject_flash_cargs(params, execution)
+    ret = label_subject_flash_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def label_subject_flash(
@@ -52,26 +195,13 @@ def label_subject_flash(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_SUBJECT_FLASH_METADATA)
-    cargs = []
-    cargs.append("mri_ca_label")
-    cargs.extend([
-        "-flash",
-        execution.input_file(tissue_params)
-    ])
-    cargs.append(execution.input_file(norm_volume))
-    cargs.append(execution.input_file(transform_file))
-    cargs.append(execution.input_file(classifier_array))
-    cargs.append(aseg_output)
-    ret = LabelSubjectFlashOutputs(
-        root=execution.output_file("."),
-        aseg_outfile=execution.output_file(aseg_output),
-    )
-    execution.run(cargs)
-    return ret
+    params = label_subject_flash_params(tissue_params=tissue_params, norm_volume=norm_volume, transform_file=transform_file, classifier_array=classifier_array, aseg_output=aseg_output)
+    return label_subject_flash_execute(params, execution)
 
 
 __all__ = [
     "LABEL_SUBJECT_FLASH_METADATA",
     "LabelSubjectFlashOutputs",
     "label_subject_flash",
+    "label_subject_flash_params",
 ]

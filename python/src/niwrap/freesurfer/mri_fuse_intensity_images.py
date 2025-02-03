@@ -12,6 +12,47 @@ MRI_FUSE_INTENSITY_IMAGES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriFuseIntensityImagesParameters = typing.TypedDict('MriFuseIntensityImagesParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_fuse_intensity_images"],
+    "longitudinal_time_point_file": InputPathType,
+    "input_volume": InputPathType,
+    "transform_file": InputPathType,
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_fuse_intensity_images": mri_fuse_intensity_images_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_fuse_intensity_images": mri_fuse_intensity_images_outputs,
+    }
+    return vt.get(t)
 
 
 class MriFuseIntensityImagesOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class MriFuseIntensityImagesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     fused_intensity_image: OutputPathType
     """The resulting fused intensity image"""
+
+
+def mri_fuse_intensity_images_params(
+    longitudinal_time_point_file: InputPathType,
+    input_volume: InputPathType,
+    transform_file: InputPathType,
+    output_volume: str,
+) -> MriFuseIntensityImagesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        longitudinal_time_point_file: File containing the longitudinal time\
+            points.
+        input_volume: Input volume to be fused.
+        transform_file: File containing the transforms.
+        output_volume: Output fused volume.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_fuse_intensity_images",
+        "longitudinal_time_point_file": longitudinal_time_point_file,
+        "input_volume": input_volume,
+        "transform_file": transform_file,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_fuse_intensity_images_cargs(
+    params: MriFuseIntensityImagesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_fuse_intensity_images")
+    cargs.append(execution.input_file(params.get("longitudinal_time_point_file")))
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("transform_file")))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_fuse_intensity_images_outputs(
+    params: MriFuseIntensityImagesParameters,
+    execution: Execution,
+) -> MriFuseIntensityImagesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriFuseIntensityImagesOutputs(
+        root=execution.output_file("."),
+        fused_intensity_image=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_fuse_intensity_images_execute(
+    params: MriFuseIntensityImagesParameters,
+    execution: Execution,
+) -> MriFuseIntensityImagesOutputs:
+    """
+    Fuses intensity images based on given transforms.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriFuseIntensityImagesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_fuse_intensity_images_cargs(params, execution)
+    ret = mri_fuse_intensity_images_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_fuse_intensity_images(
@@ -50,22 +185,13 @@ def mri_fuse_intensity_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FUSE_INTENSITY_IMAGES_METADATA)
-    cargs = []
-    cargs.append("mri_fuse_intensity_images")
-    cargs.append(execution.input_file(longitudinal_time_point_file))
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(transform_file))
-    cargs.append(output_volume)
-    ret = MriFuseIntensityImagesOutputs(
-        root=execution.output_file("."),
-        fused_intensity_image=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_fuse_intensity_images_params(longitudinal_time_point_file=longitudinal_time_point_file, input_volume=input_volume, transform_file=transform_file, output_volume=output_volume)
+    return mri_fuse_intensity_images_execute(params, execution)
 
 
 __all__ = [
     "MRI_FUSE_INTENSITY_IMAGES_METADATA",
     "MriFuseIntensityImagesOutputs",
     "mri_fuse_intensity_images",
+    "mri_fuse_intensity_images_params",
 ]

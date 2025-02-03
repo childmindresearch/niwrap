@@ -12,6 +12,52 @@ V_3D_WINSOR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dWinsorParameters = typing.TypedDict('V3dWinsorParameters', {
+    "__STYX_TYPE__": typing.Literal["3dWinsor"],
+    "irad": typing.NotRequired[float | None],
+    "cbot": typing.NotRequired[float | None],
+    "ctop": typing.NotRequired[float | None],
+    "nrep": typing.NotRequired[float | None],
+    "keepzero": bool,
+    "clip": typing.NotRequired[float | None],
+    "prefix": typing.NotRequired[str | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "dataset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dWinsor": v_3d_winsor_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dWinsor": v_3d_winsor_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dWinsorOutputs(typing.NamedTuple):
@@ -24,6 +70,160 @@ class V3dWinsorOutputs(typing.NamedTuple):
     """Output dataset with Winsorizing filter applied."""
     outfile_brik: OutputPathType | None
     """Output dataset with Winsorizing filter applied."""
+
+
+def v_3d_winsor_params(
+    dataset: InputPathType,
+    irad: float | None = None,
+    cbot: float | None = None,
+    ctop: float | None = None,
+    nrep: float | None = None,
+    keepzero: bool = False,
+    clip: float | None = None,
+    prefix: str | None = None,
+    mask: InputPathType | None = None,
+) -> V3dWinsorParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset: Input dataset to apply the filter on.
+        irad: Include all points within 'distance' rr in the operation, where\
+            distance is defined as sqrt(i*i+j*j+k*k), and (i,j,k) are voxel index\
+            offsets.
+        cbot: Set bottom clip index to bb.
+        ctop: Set top clip index to tt.
+        nrep: Repeat filter nn times. If nn < 0, means to repeat filter until\
+            less than abs(n) voxels change.
+        keepzero: Don't filter voxels that are zero.
+        clip: Set voxels at or below 'xx' to zero.
+        prefix: Use 'pp' as the prefix for the output dataset.
+        mask: Use 'mmm' as a mask dataset - voxels NOT in the mask won't be\
+            filtered.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dWinsor",
+        "keepzero": keepzero,
+        "dataset": dataset,
+    }
+    if irad is not None:
+        params["irad"] = irad
+    if cbot is not None:
+        params["cbot"] = cbot
+    if ctop is not None:
+        params["ctop"] = ctop
+    if nrep is not None:
+        params["nrep"] = nrep
+    if clip is not None:
+        params["clip"] = clip
+    if prefix is not None:
+        params["prefix"] = prefix
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_3d_winsor_cargs(
+    params: V3dWinsorParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dWinsor")
+    if params.get("irad") is not None:
+        cargs.extend([
+            "-irad",
+            str(params.get("irad"))
+        ])
+    if params.get("cbot") is not None:
+        cargs.extend([
+            "-cbot",
+            str(params.get("cbot"))
+        ])
+    if params.get("ctop") is not None:
+        cargs.extend([
+            "-ctop",
+            str(params.get("ctop"))
+        ])
+    if params.get("nrep") is not None:
+        cargs.extend([
+            "-nrep",
+            str(params.get("nrep"))
+        ])
+    if params.get("keepzero"):
+        cargs.append("-keepzero")
+    if params.get("clip") is not None:
+        cargs.extend([
+            "-clip",
+            str(params.get("clip"))
+        ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    cargs.append(execution.input_file(params.get("dataset")))
+    return cargs
+
+
+def v_3d_winsor_outputs(
+    params: V3dWinsorParameters,
+    execution: Execution,
+) -> V3dWinsorOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dWinsorOutputs(
+        root=execution.output_file("."),
+        outfile_head=execution.output_file(params.get("prefix") + "+*.HEAD") if (params.get("prefix") is not None) else None,
+        outfile_brik=execution.output_file(params.get("prefix") + "+*.BRIK") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_winsor_execute(
+    params: V3dWinsorParameters,
+    execution: Execution,
+) -> V3dWinsorOutputs:
+    """
+    Apply a 3D 'Winsorizing' filter to a short-valued dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dWinsorOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_winsor_cargs(params, execution)
+    ret = v_3d_winsor_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_winsor(
@@ -65,57 +265,13 @@ def v_3d_winsor(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_WINSOR_METADATA)
-    cargs = []
-    cargs.append("3dWinsor")
-    if irad is not None:
-        cargs.extend([
-            "-irad",
-            str(irad)
-        ])
-    if cbot is not None:
-        cargs.extend([
-            "-cbot",
-            str(cbot)
-        ])
-    if ctop is not None:
-        cargs.extend([
-            "-ctop",
-            str(ctop)
-        ])
-    if nrep is not None:
-        cargs.extend([
-            "-nrep",
-            str(nrep)
-        ])
-    if keepzero:
-        cargs.append("-keepzero")
-    if clip is not None:
-        cargs.extend([
-            "-clip",
-            str(clip)
-        ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    cargs.append(execution.input_file(dataset))
-    ret = V3dWinsorOutputs(
-        root=execution.output_file("."),
-        outfile_head=execution.output_file(prefix + "+*.HEAD") if (prefix is not None) else None,
-        outfile_brik=execution.output_file(prefix + "+*.BRIK") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_winsor_params(irad=irad, cbot=cbot, ctop=ctop, nrep=nrep, keepzero=keepzero, clip=clip, prefix=prefix, mask=mask, dataset=dataset)
+    return v_3d_winsor_execute(params, execution)
 
 
 __all__ = [
     "V3dWinsorOutputs",
     "V_3D_WINSOR_METADATA",
     "v_3d_winsor",
+    "v_3d_winsor_params",
 ]

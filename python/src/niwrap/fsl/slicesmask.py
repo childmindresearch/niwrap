@@ -12,6 +12,46 @@ SLICESMASK_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+SlicesmaskParameters = typing.TypedDict('SlicesmaskParameters', {
+    "__STYX_TYPE__": typing.Literal["slicesmask"],
+    "image": InputPathType,
+    "mask": InputPathType,
+    "output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "slicesmask": slicesmask_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "slicesmask": slicesmask_outputs,
+    }
+    return vt.get(t)
 
 
 class SlicesmaskOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class SlicesmaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     masked_output: OutputPathType
     """The output file resulting from applying the mask"""
+
+
+def slicesmask_params(
+    image: InputPathType,
+    mask: InputPathType,
+    output: str,
+) -> SlicesmaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image: Input image file.
+        mask: Mask file.
+        output: Output file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "slicesmask",
+        "image": image,
+        "mask": mask,
+        "output": output,
+    }
+    return params
+
+
+def slicesmask_cargs(
+    params: SlicesmaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("slicesmask")
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(execution.input_file(params.get("mask")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def slicesmask_outputs(
+    params: SlicesmaskParameters,
+    execution: Execution,
+) -> SlicesmaskOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SlicesmaskOutputs(
+        root=execution.output_file("."),
+        masked_output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def slicesmask_execute(
+    params: SlicesmaskParameters,
+    execution: Execution,
+) -> SlicesmaskOutputs:
+    """
+    Tool for masking slices from an image using a mask.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SlicesmaskOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = slicesmask_cargs(params, execution)
+    ret = slicesmask_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def slicesmask(
@@ -47,21 +176,13 @@ def slicesmask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SLICESMASK_METADATA)
-    cargs = []
-    cargs.append("slicesmask")
-    cargs.append(execution.input_file(image))
-    cargs.append(execution.input_file(mask))
-    cargs.append(output)
-    ret = SlicesmaskOutputs(
-        root=execution.output_file("."),
-        masked_output=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = slicesmask_params(image=image, mask=mask, output=output)
+    return slicesmask_execute(params, execution)
 
 
 __all__ = [
     "SLICESMASK_METADATA",
     "SlicesmaskOutputs",
     "slicesmask",
+    "slicesmask_params",
 ]

@@ -12,38 +12,100 @@ CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiCreateScalarSeriesSeriesParameters = typing.TypedDict('CiftiCreateScalarSeriesSeriesParameters', {
+    "__STYX_TYPE__": typing.Literal["series"],
+    "unit": str,
+    "start": float,
+    "step": float,
+})
+CiftiCreateScalarSeriesParameters = typing.TypedDict('CiftiCreateScalarSeriesParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-create-scalar-series"],
+    "input": str,
+    "cifti_out": str,
+    "opt_transpose": bool,
+    "opt_name_file_file": typing.NotRequired[str | None],
+    "series": typing.NotRequired[CiftiCreateScalarSeriesSeriesParameters | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiCreateScalarSeriesSeries:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    set the units and values of the series.
-    """
-    unit: str
-    """the unit to use"""
-    start: float
-    """the value at the first series point"""
-    step: float
-    """the interval between series points"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-series")
-        cargs.append(self.unit)
-        cargs.append(str(self.start))
-        cargs.append(str(self.step))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-create-scalar-series": cifti_create_scalar_series_cargs,
+        "series": cifti_create_scalar_series_series_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-create-scalar-series": cifti_create_scalar_series_outputs,
+    }
+    return vt.get(t)
+
+
+def cifti_create_scalar_series_series_params(
+    unit: str,
+    start: float,
+    step: float,
+) -> CiftiCreateScalarSeriesSeriesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        unit: the unit to use.
+        start: the value at the first series point.
+        step: the interval between series points.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "series",
+        "unit": unit,
+        "start": start,
+        "step": step,
+    }
+    return params
+
+
+def cifti_create_scalar_series_series_cargs(
+    params: CiftiCreateScalarSeriesSeriesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-series")
+    cargs.append(params.get("unit"))
+    cargs.append(str(params.get("start")))
+    cargs.append(str(params.get("step")))
+    return cargs
 
 
 class CiftiCreateScalarSeriesOutputs(typing.NamedTuple):
@@ -56,12 +118,131 @@ class CiftiCreateScalarSeriesOutputs(typing.NamedTuple):
     """output cifti file"""
 
 
+def cifti_create_scalar_series_params(
+    input_: str,
+    cifti_out: str,
+    opt_transpose: bool = False,
+    opt_name_file_file: str | None = None,
+    series: CiftiCreateScalarSeriesSeriesParameters | None = None,
+) -> CiftiCreateScalarSeriesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: input file.
+        cifti_out: output cifti file.
+        opt_transpose: use if the rows of the text file are along the scalar\
+            dimension.
+        opt_name_file_file: use a text file to set names on scalar dimension:\
+            text file containing names, one per line.
+        series: set the units and values of the series.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-create-scalar-series",
+        "input": input_,
+        "cifti_out": cifti_out,
+        "opt_transpose": opt_transpose,
+    }
+    if opt_name_file_file is not None:
+        params["opt_name_file_file"] = opt_name_file_file
+    if series is not None:
+        params["series"] = series
+    return params
+
+
+def cifti_create_scalar_series_cargs(
+    params: CiftiCreateScalarSeriesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-create-scalar-series")
+    cargs.append(params.get("input"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_transpose"):
+        cargs.append("-transpose")
+    if params.get("opt_name_file_file") is not None:
+        cargs.extend([
+            "-name-file",
+            params.get("opt_name_file_file")
+        ])
+    if params.get("series") is not None:
+        cargs.extend(dyn_cargs(params.get("series")["__STYXTYPE__"])(params.get("series"), execution))
+    return cargs
+
+
+def cifti_create_scalar_series_outputs(
+    params: CiftiCreateScalarSeriesParameters,
+    execution: Execution,
+) -> CiftiCreateScalarSeriesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiCreateScalarSeriesOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_create_scalar_series_execute(
+    params: CiftiCreateScalarSeriesParameters,
+    execution: Execution,
+) -> CiftiCreateScalarSeriesOutputs:
+    """
+    Import series data into cifti.
+    
+    Convert a text file containing series of equal length into a cifti file. The
+    text file should have lines made up of numbers separated by whitespace, with
+    no extra newlines between lines.
+    
+    The <unit> argument must be one of the following:
+    
+    SECOND
+    HERTZ
+    METER
+    RADIAN.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiCreateScalarSeriesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_create_scalar_series_cargs(params, execution)
+    ret = cifti_create_scalar_series_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def cifti_create_scalar_series(
     input_: str,
     cifti_out: str,
     opt_transpose: bool = False,
     opt_name_file_file: str | None = None,
-    series: CiftiCreateScalarSeriesSeries | None = None,
+    series: CiftiCreateScalarSeriesSeriesParameters | None = None,
     runner: Runner | None = None,
 ) -> CiftiCreateScalarSeriesOutputs:
     """
@@ -96,31 +277,14 @@ def cifti_create_scalar_series(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_SCALAR_SERIES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-create-scalar-series")
-    cargs.append(input_)
-    cargs.append(cifti_out)
-    if opt_transpose:
-        cargs.append("-transpose")
-    if opt_name_file_file is not None:
-        cargs.extend([
-            "-name-file",
-            opt_name_file_file
-        ])
-    if series is not None:
-        cargs.extend(series.run(execution))
-    ret = CiftiCreateScalarSeriesOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_create_scalar_series_params(input_=input_, cifti_out=cifti_out, opt_transpose=opt_transpose, opt_name_file_file=opt_name_file_file, series=series)
+    return cifti_create_scalar_series_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_CREATE_SCALAR_SERIES_METADATA",
     "CiftiCreateScalarSeriesOutputs",
-    "CiftiCreateScalarSeriesSeries",
     "cifti_create_scalar_series",
+    "cifti_create_scalar_series_params",
+    "cifti_create_scalar_series_series_params",
 ]

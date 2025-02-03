@@ -12,6 +12,45 @@ LONG_CREATE_ORIG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LongCreateOrigParameters = typing.TypedDict('LongCreateOrigParameters', {
+    "__STYX_TYPE__": typing.Literal["long_create_orig"],
+    "base_id": str,
+    "tp_id": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "long_create_orig": long_create_orig_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "long_create_orig": long_create_orig_outputs,
+    }
+    return vt.get(t)
 
 
 class LongCreateOrigOutputs(typing.NamedTuple):
@@ -23,6 +62,94 @@ class LongCreateOrigOutputs(typing.NamedTuple):
     output_directory: OutputPathType
     """Output directory for processed time point data. Defaults to the specified
     path."""
+
+
+def long_create_orig_params(
+    base_id: str,
+    tp_id: str | None = None,
+) -> LongCreateOrigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        base_id: Base ID to be utilized in the process.
+        tp_id: Time point ID. If omitted, operates on all time points in base.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "long_create_orig",
+        "base_id": base_id,
+    }
+    if tp_id is not None:
+        params["tp_id"] = tp_id
+    return params
+
+
+def long_create_orig_cargs(
+    params: LongCreateOrigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("long_create_orig")
+    cargs.append(params.get("base_id"))
+    if params.get("tp_id") is not None:
+        cargs.append(params.get("tp_id"))
+    return cargs
+
+
+def long_create_orig_outputs(
+    params: LongCreateOrigParameters,
+    execution: Execution,
+) -> LongCreateOrigOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LongCreateOrigOutputs(
+        root=execution.output_file("."),
+        output_directory=execution.output_file("<SUBJECTS_DIR>/<base-id>/longtp/<tp-id>"),
+    )
+    return ret
+
+
+def long_create_orig_execute(
+    params: LongCreateOrigParameters,
+    execution: Execution,
+) -> LongCreateOrigOutputs:
+    """
+    Maps, conforms and averages (motioncorrect) raw inputs from cross-sectional
+    directory to base space in Freesurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LongCreateOrigOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = long_create_orig_cargs(params, execution)
+    ret = long_create_orig_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def long_create_orig(
@@ -47,21 +174,13 @@ def long_create_orig(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_CREATE_ORIG_METADATA)
-    cargs = []
-    cargs.append("long_create_orig")
-    cargs.append(base_id)
-    if tp_id is not None:
-        cargs.append(tp_id)
-    ret = LongCreateOrigOutputs(
-        root=execution.output_file("."),
-        output_directory=execution.output_file("<SUBJECTS_DIR>/<base-id>/longtp/<tp-id>"),
-    )
-    execution.run(cargs)
-    return ret
+    params = long_create_orig_params(base_id=base_id, tp_id=tp_id)
+    return long_create_orig_execute(params, execution)
 
 
 __all__ = [
     "LONG_CREATE_ORIG_METADATA",
     "LongCreateOrigOutputs",
     "long_create_orig",
+    "long_create_orig_params",
 ]

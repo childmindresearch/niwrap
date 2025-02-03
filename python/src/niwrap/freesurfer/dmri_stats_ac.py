@@ -12,6 +12,48 @@ DMRI_STATS_AC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriStatsAcParameters = typing.TypedDict('DmriStatsAcParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_stats_ac"],
+    "anatomicuts_folder": str,
+    "num_clusters": int,
+    "correspondence_file": str,
+    "measures": list[str],
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dmri_stats_ac": dmri_stats_ac_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dmri_stats_ac": dmri_stats_ac_outputs,
+    }
+    return vt.get(t)
 
 
 class DmriStatsAcOutputs(typing.NamedTuple):
@@ -22,6 +64,120 @@ class DmriStatsAcOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output of the dMRI statistical analysis"""
+
+
+def dmri_stats_ac_params(
+    anatomicuts_folder: str,
+    num_clusters: int,
+    correspondence_file: str,
+    measures: list[str],
+    output_file: str,
+) -> DmriStatsAcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        anatomicuts_folder: Input folder containing anatomicuts data.
+        num_clusters: Number of clusters for analysis.
+        correspondence_file: File specifying correspondence details.
+        measures: Number of measures followed by each measure name and file.
+        output_file: Output file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_stats_ac",
+        "anatomicuts_folder": anatomicuts_folder,
+        "num_clusters": num_clusters,
+        "correspondence_file": correspondence_file,
+        "measures": measures,
+        "output_file": output_file,
+    }
+    return params
+
+
+def dmri_stats_ac_cargs(
+    params: DmriStatsAcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_stats_ac")
+    cargs.extend([
+        "-i",
+        params.get("anatomicuts_folder")
+    ])
+    cargs.extend([
+        "-n",
+        str(params.get("num_clusters"))
+    ])
+    cargs.extend([
+        "-c",
+        params.get("correspondence_file")
+    ])
+    cargs.append("-m")
+    cargs.append("[NUM_MEASURES]")
+    cargs.extend([
+        "-m",
+        *params.get("measures")
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_file")
+    ])
+    return cargs
+
+
+def dmri_stats_ac_outputs(
+    params: DmriStatsAcParameters,
+    execution: Execution,
+) -> DmriStatsAcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriStatsAcOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def dmri_stats_ac_execute(
+    params: DmriStatsAcParameters,
+    execution: Execution,
+) -> DmriStatsAcOutputs:
+    """
+    The tool 'dmri_stats_ac' performs statistical analysis on dMRI data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriStatsAcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_stats_ac_cargs(params, execution)
+    ret = dmri_stats_ac_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_stats_ac(
@@ -51,40 +207,13 @@ def dmri_stats_ac(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_STATS_AC_METADATA)
-    cargs = []
-    cargs.append("dmri_stats_ac")
-    cargs.extend([
-        "-i",
-        anatomicuts_folder
-    ])
-    cargs.extend([
-        "-n",
-        str(num_clusters)
-    ])
-    cargs.extend([
-        "-c",
-        correspondence_file
-    ])
-    cargs.append("-m")
-    cargs.append("[NUM_MEASURES]")
-    cargs.extend([
-        "-m",
-        *measures
-    ])
-    cargs.extend([
-        "-o",
-        output_file
-    ])
-    ret = DmriStatsAcOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_stats_ac_params(anatomicuts_folder=anatomicuts_folder, num_clusters=num_clusters, correspondence_file=correspondence_file, measures=measures, output_file=output_file)
+    return dmri_stats_ac_execute(params, execution)
 
 
 __all__ = [
     "DMRI_STATS_AC_METADATA",
     "DmriStatsAcOutputs",
     "dmri_stats_ac",
+    "dmri_stats_ac_params",
 ]

@@ -12,14 +12,140 @@ MRI_POLV_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriPolvParameters = typing.TypedDict('MriPolvParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_polv"],
+    "window_size": typing.NotRequired[float | None],
+    "input_image": InputPathType,
+    "output_image": InputPathType,
+})
 
 
-class MriPolvOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_polv(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_polv": mri_polv_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_polv_params(
+    input_image: InputPathType,
+    output_image: InputPathType,
+    window_size: float | None = None,
+) -> MriPolvParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: The input image file for processing.
+        output_image: The output image file specifying the plane of least\
+            variance.
+        window_size: Specify the window size to be used in the calculation of\
+            the central plane of least variance (default=5).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_polv",
+        "input_image": input_image,
+        "output_image": output_image,
+    }
+    if window_size is not None:
+        params["window_size"] = window_size
+    return params
+
+
+def mri_polv_cargs(
+    params: MriPolvParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_polv")
+    if params.get("window_size") is not None:
+        cargs.extend([
+            "-w",
+            str(params.get("window_size"))
+        ])
+    cargs.append(execution.input_file(params.get("input_image")))
+    cargs.append(execution.input_file(params.get("output_image")))
+    return cargs
+
+
+def mri_polv_outputs(
+    params: MriPolvParameters,
+    execution: Execution,
+) -> MriPolvOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriPolvOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_polv_execute(
+    params: MriPolvParameters,
+    execution: Execution,
+) -> MriPolvOutputs:
+    """
+    Calculate an image specifying the plane of least variance at each point in the
+    input image.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriPolvOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_polv_cargs(params, execution)
+    ret = mri_polv_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_polv(
@@ -48,24 +174,12 @@ def mri_polv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_POLV_METADATA)
-    cargs = []
-    cargs.append("mri_polv")
-    if window_size is not None:
-        cargs.extend([
-            "-w",
-            str(window_size)
-        ])
-    cargs.append(execution.input_file(input_image))
-    cargs.append(execution.input_file(output_image))
-    ret = MriPolvOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_polv_params(window_size=window_size, input_image=input_image, output_image=output_image)
+    return mri_polv_execute(params, execution)
 
 
 __all__ = [
     "MRI_POLV_METADATA",
-    "MriPolvOutputs",
     "mri_polv",
+    "mri_polv_params",
 ]

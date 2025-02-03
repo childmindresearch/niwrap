@@ -12,6 +12,47 @@ SIMPLE_SYN_REGISTRATION_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+SimpleSynRegistrationParameters = typing.TypedDict('SimpleSynRegistrationParameters', {
+    "__STYX_TYPE__": typing.Literal["simpleSynRegistration"],
+    "fixed_image": InputPathType,
+    "moving_image": InputPathType,
+    "initial_transform": str,
+    "output_prefix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "simpleSynRegistration": simple_syn_registration_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "simpleSynRegistration": simple_syn_registration_outputs,
+    }
+    return vt.get(t)
 
 
 class SimpleSynRegistrationOutputs(typing.NamedTuple):
@@ -24,6 +65,100 @@ class SimpleSynRegistrationOutputs(typing.NamedTuple):
     """The output registered image."""
     transform_matrix: OutputPathType
     """The output transformation matrix."""
+
+
+def simple_syn_registration_params(
+    fixed_image: InputPathType,
+    moving_image: InputPathType,
+    initial_transform: str,
+    output_prefix: str,
+) -> SimpleSynRegistrationParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fixed_image: The fixed image for registration.
+        moving_image: The moving image to be registered.
+        initial_transform: The initial transform for registration.
+        output_prefix: Prefix for the output file name without any extension.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "simpleSynRegistration",
+        "fixed_image": fixed_image,
+        "moving_image": moving_image,
+        "initial_transform": initial_transform,
+        "output_prefix": output_prefix,
+    }
+    return params
+
+
+def simple_syn_registration_cargs(
+    params: SimpleSynRegistrationParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("simpleSynRegistration")
+    cargs.append(execution.input_file(params.get("fixed_image")) + ",")
+    cargs.append(execution.input_file(params.get("moving_image")) + ",")
+    cargs.append(params.get("initial_transform") + ",")
+    cargs.append(params.get("output_prefix"))
+    return cargs
+
+
+def simple_syn_registration_outputs(
+    params: SimpleSynRegistrationParameters,
+    execution: Execution,
+) -> SimpleSynRegistrationOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SimpleSynRegistrationOutputs(
+        root=execution.output_file("."),
+        registered_image=execution.output_file(params.get("output_prefix") + "Registered.nii.gz"),
+        transform_matrix=execution.output_file(params.get("output_prefix") + "Transform.mat"),
+    )
+    return ret
+
+
+def simple_syn_registration_execute(
+    params: SimpleSynRegistrationParameters,
+    execution: Execution,
+) -> SimpleSynRegistrationOutputs:
+    """
+    A simple SyN registration tool.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SimpleSynRegistrationOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = simple_syn_registration_cargs(params, execution)
+    ret = simple_syn_registration_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def simple_syn_registration(
@@ -51,23 +186,13 @@ def simple_syn_registration(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SIMPLE_SYN_REGISTRATION_METADATA)
-    cargs = []
-    cargs.append("simpleSynRegistration")
-    cargs.append(execution.input_file(fixed_image) + ",")
-    cargs.append(execution.input_file(moving_image) + ",")
-    cargs.append(initial_transform + ",")
-    cargs.append(output_prefix)
-    ret = SimpleSynRegistrationOutputs(
-        root=execution.output_file("."),
-        registered_image=execution.output_file(output_prefix + "Registered.nii.gz"),
-        transform_matrix=execution.output_file(output_prefix + "Transform.mat"),
-    )
-    execution.run(cargs)
-    return ret
+    params = simple_syn_registration_params(fixed_image=fixed_image, moving_image=moving_image, initial_transform=initial_transform, output_prefix=output_prefix)
+    return simple_syn_registration_execute(params, execution)
 
 
 __all__ = [
     "SIMPLE_SYN_REGISTRATION_METADATA",
     "SimpleSynRegistrationOutputs",
     "simple_syn_registration",
+    "simple_syn_registration_params",
 ]

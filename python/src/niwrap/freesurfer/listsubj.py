@@ -12,14 +12,123 @@ LISTSUBJ_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ListsubjParameters = typing.TypedDict('ListsubjParameters', {
+    "__STYX_TYPE__": typing.Literal["listsubj"],
+    "subject_dir": str,
+})
 
 
-class ListsubjOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `listsubj(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "listsubj": listsubj_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def listsubj_params(
+    subject_dir: str,
+) -> ListsubjParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_dir: Directory where subjects are stored.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "listsubj",
+        "subject_dir": subject_dir,
+    }
+    return params
+
+
+def listsubj_cargs(
+    params: ListsubjParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("listsubj")
+    cargs.append("[OPTIONS]")
+    cargs.append(params.get("subject_dir"))
+    return cargs
+
+
+def listsubj_outputs(
+    params: ListsubjParameters,
+    execution: Execution,
+) -> ListsubjOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ListsubjOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def listsubj_execute(
+    params: ListsubjParameters,
+    execution: Execution,
+) -> ListsubjOutputs:
+    """
+    List subject IDs in SUBJECT_DIR.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ListsubjOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = listsubj_cargs(params, execution)
+    ret = listsubj_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def listsubj(
@@ -41,19 +150,12 @@ def listsubj(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LISTSUBJ_METADATA)
-    cargs = []
-    cargs.append("listsubj")
-    cargs.append("[OPTIONS]")
-    cargs.append(subject_dir)
-    ret = ListsubjOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = listsubj_params(subject_dir=subject_dir)
+    return listsubj_execute(params, execution)
 
 
 __all__ = [
     "LISTSUBJ_METADATA",
-    "ListsubjOutputs",
     "listsubj",
+    "listsubj_params",
 ]

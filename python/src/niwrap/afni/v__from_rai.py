@@ -12,14 +12,133 @@ V__FROM_RAI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VFromRaiParameters = typing.TypedDict('VFromRaiParameters', {
+    "__STYX_TYPE__": typing.Literal["@FromRAI"],
+    "rai_coordinates": list[float],
+    "orientation": str,
+})
 
 
-class VFromRaiOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__from_rai(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@FromRAI": v__from_rai_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__from_rai_params(
+    rai_coordinates: list[float],
+    orientation: str,
+) -> VFromRaiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        rai_coordinates: RAI coordinates X, Y, and Z.
+        orientation: Orientation format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@FromRAI",
+        "rai_coordinates": rai_coordinates,
+        "orientation": orientation,
+    }
+    return params
+
+
+def v__from_rai_cargs(
+    params: VFromRaiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@FromRAI")
+    cargs.extend([
+        "-xyz",
+        *map(str, params.get("rai_coordinates"))
+    ])
+    cargs.extend([
+        "-or",
+        params.get("orientation")
+    ])
+    return cargs
+
+
+def v__from_rai_outputs(
+    params: VFromRaiParameters,
+    execution: Execution,
+) -> VFromRaiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VFromRaiOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__from_rai_execute(
+    params: VFromRaiParameters,
+    execution: Execution,
+) -> VFromRaiOutputs:
+    """
+    Changes the RAI coordinates to the specified orientation.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VFromRaiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__from_rai_cargs(params, execution)
+    ret = v__from_rai_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__from_rai(
@@ -43,25 +162,12 @@ def v__from_rai(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FROM_RAI_METADATA)
-    cargs = []
-    cargs.append("@FromRAI")
-    cargs.extend([
-        "-xyz",
-        *map(str, rai_coordinates)
-    ])
-    cargs.extend([
-        "-or",
-        orientation
-    ])
-    ret = VFromRaiOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__from_rai_params(rai_coordinates=rai_coordinates, orientation=orientation)
+    return v__from_rai_execute(params, execution)
 
 
 __all__ = [
-    "VFromRaiOutputs",
     "V__FROM_RAI_METADATA",
     "v__from_rai",
+    "v__from_rai_params",
 ]

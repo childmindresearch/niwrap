@@ -12,6 +12,44 @@ FIX_SUBJECT_CORRECTED_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FixSubjectCorrectedRhParameters = typing.TypedDict('FixSubjectCorrectedRhParameters', {
+    "__STYX_TYPE__": typing.Literal["fix_subject_corrected-rh"],
+    "subject_dir": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fix_subject_corrected-rh": fix_subject_corrected_rh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fix_subject_corrected-rh": fix_subject_corrected_rh_outputs,
+    }
+    return vt.get(t)
 
 
 class FixSubjectCorrectedRhOutputs(typing.NamedTuple):
@@ -22,6 +60,89 @@ class FixSubjectCorrectedRhOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     log_file: OutputPathType
     """Log file generated during the execution"""
+
+
+def fix_subject_corrected_rh_params(
+    subject_dir: str,
+) -> FixSubjectCorrectedRhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_dir: Path to the FreeSurfer subject directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fix_subject_corrected-rh",
+        "subject_dir": subject_dir,
+    }
+    return params
+
+
+def fix_subject_corrected_rh_cargs(
+    params: FixSubjectCorrectedRhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-rh",
+        "fix_subject_corrected" + params.get("subject_dir")
+    ])
+    return cargs
+
+
+def fix_subject_corrected_rh_outputs(
+    params: FixSubjectCorrectedRhParameters,
+    execution: Execution,
+) -> FixSubjectCorrectedRhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FixSubjectCorrectedRhOutputs(
+        root=execution.output_file("."),
+        log_file=execution.output_file(params.get("subject_dir") + "/scripts_output.log"),
+    )
+    return ret
+
+
+def fix_subject_corrected_rh_execute(
+    params: FixSubjectCorrectedRhParameters,
+    execution: Execution,
+) -> FixSubjectCorrectedRhOutputs:
+    """
+    A tool related to FreeSurfer subject correction.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FixSubjectCorrectedRhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fix_subject_corrected_rh_cargs(params, execution)
+    ret = fix_subject_corrected_rh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fix_subject_corrected_rh(
@@ -43,21 +164,13 @@ def fix_subject_corrected_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIX_SUBJECT_CORRECTED_RH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-rh",
-        "fix_subject_corrected" + subject_dir
-    ])
-    ret = FixSubjectCorrectedRhOutputs(
-        root=execution.output_file("."),
-        log_file=execution.output_file(subject_dir + "/scripts_output.log"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fix_subject_corrected_rh_params(subject_dir=subject_dir)
+    return fix_subject_corrected_rh_execute(params, execution)
 
 
 __all__ = [
     "FIX_SUBJECT_CORRECTED_RH_METADATA",
     "FixSubjectCorrectedRhOutputs",
     "fix_subject_corrected_rh",
+    "fix_subject_corrected_rh_params",
 ]

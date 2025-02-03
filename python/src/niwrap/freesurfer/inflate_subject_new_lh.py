@@ -12,6 +12,44 @@ INFLATE_SUBJECT_NEW_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+InflateSubjectNewLhParameters = typing.TypedDict('InflateSubjectNewLhParameters', {
+    "__STYX_TYPE__": typing.Literal["inflate_subject_new-lh"],
+    "subject_dir": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "inflate_subject_new-lh": inflate_subject_new_lh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "inflate_subject_new-lh": inflate_subject_new_lh_outputs,
+    }
+    return vt.get(t)
 
 
 class InflateSubjectNewLhOutputs(typing.NamedTuple):
@@ -22,6 +60,90 @@ class InflateSubjectNewLhOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     inflated_surface: OutputPathType
     """Inflated surface file for the left hemisphere"""
+
+
+def inflate_subject_new_lh_params(
+    subject_dir: str,
+) -> InflateSubjectNewLhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_dir: Directory of the subject's data in FreeSurfer.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "inflate_subject_new-lh",
+        "subject_dir": subject_dir,
+    }
+    return params
+
+
+def inflate_subject_new_lh_cargs(
+    params: InflateSubjectNewLhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-lh",
+        "inflate_subject_new" + params.get("subject_dir")
+    ])
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def inflate_subject_new_lh_outputs(
+    params: InflateSubjectNewLhParameters,
+    execution: Execution,
+) -> InflateSubjectNewLhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = InflateSubjectNewLhOutputs(
+        root=execution.output_file("."),
+        inflated_surface=execution.output_file(params.get("subject_dir") + "/surf/lh.inflated"),
+    )
+    return ret
+
+
+def inflate_subject_new_lh_execute(
+    params: InflateSubjectNewLhParameters,
+    execution: Execution,
+) -> InflateSubjectNewLhOutputs:
+    """
+    Tool for inflating the left hemisphere of a subject in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `InflateSubjectNewLhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = inflate_subject_new_lh_cargs(params, execution)
+    ret = inflate_subject_new_lh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def inflate_subject_new_lh(
@@ -43,22 +165,13 @@ def inflate_subject_new_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_NEW_LH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-lh",
-        "inflate_subject_new" + subject_dir
-    ])
-    cargs.append("[OPTIONS]")
-    ret = InflateSubjectNewLhOutputs(
-        root=execution.output_file("."),
-        inflated_surface=execution.output_file(subject_dir + "/surf/lh.inflated"),
-    )
-    execution.run(cargs)
-    return ret
+    params = inflate_subject_new_lh_params(subject_dir=subject_dir)
+    return inflate_subject_new_lh_execute(params, execution)
 
 
 __all__ = [
     "INFLATE_SUBJECT_NEW_LH_METADATA",
     "InflateSubjectNewLhOutputs",
     "inflate_subject_new_lh",
+    "inflate_subject_new_lh_params",
 ]

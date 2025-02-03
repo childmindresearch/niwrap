@@ -12,14 +12,216 @@ TRAC_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TracPathsParameters = typing.TypedDict('TracPathsParameters', {
+    "__STYX_TYPE__": typing.Literal["trac-paths"],
+    "dmrirc_file": InputPathType,
+    "log_file": typing.NotRequired[str | None],
+    "no_log": bool,
+    "cmd_file": typing.NotRequired[str | None],
+    "no_cmd": bool,
+    "no_isrunning": bool,
+    "umask": typing.NotRequired[str | None],
+    "group_id": typing.NotRequired[str | None],
+    "allow_core_dump": bool,
+    "debug": bool,
+    "dontrun": bool,
+    "version": bool,
+    "help": bool,
+})
 
 
-class TracPathsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `trac_paths(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "trac-paths": trac_paths_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def trac_paths_params(
+    dmrirc_file: InputPathType,
+    log_file: str | None = None,
+    no_log: bool = False,
+    cmd_file: str | None = None,
+    no_cmd: bool = False,
+    no_isrunning: bool = False,
+    umask: str | None = None,
+    group_id: str | None = None,
+    allow_core_dump: bool = False,
+    debug: bool = False,
+    dontrun: bool = False,
+    version: bool = False,
+    help_: bool = False,
+) -> TracPathsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dmrirc_file: dmrirc file (see dmrirc.example).
+        log_file: Log file, default is trac-all.log in the same directory as\
+            dmrirc.
+        no_log: Do not save a log file.
+        cmd_file: Cmd file, default is trac-all.cmd in the same directory as\
+            dmrirc.
+        no_cmd: Do not save a cmd file.
+        no_isrunning: Do not check whether this subject is currently being\
+            processed.
+        umask: Set Unix file permission mask (default 002).
+        group_id: Check that current group is alpha groupid.
+        allow_core_dump: Set coredump limit to unlimited.
+        debug: Generate much more output.
+        dontrun: Do everything but execute each command.
+        version: Print version of this script and exit.
+        help_: Print full contents of help.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "trac-paths",
+        "dmrirc_file": dmrirc_file,
+        "no_log": no_log,
+        "no_cmd": no_cmd,
+        "no_isrunning": no_isrunning,
+        "allow_core_dump": allow_core_dump,
+        "debug": debug,
+        "dontrun": dontrun,
+        "version": version,
+        "help": help_,
+    }
+    if log_file is not None:
+        params["log_file"] = log_file
+    if cmd_file is not None:
+        params["cmd_file"] = cmd_file
+    if umask is not None:
+        params["umask"] = umask
+    if group_id is not None:
+        params["group_id"] = group_id
+    return params
+
+
+def trac_paths_cargs(
+    params: TracPathsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("trac-paths")
+    cargs.extend([
+        "-c",
+        execution.input_file(params.get("dmrirc_file"))
+    ])
+    if params.get("log_file") is not None:
+        cargs.extend([
+            "-log",
+            params.get("log_file")
+        ])
+    if params.get("no_log"):
+        cargs.append("-nolog")
+    if params.get("cmd_file") is not None:
+        cargs.extend([
+            "-cmd",
+            params.get("cmd_file")
+        ])
+    if params.get("no_cmd"):
+        cargs.append("-nocmd")
+    if params.get("no_isrunning"):
+        cargs.append("-no-isrunning")
+    if params.get("umask") is not None:
+        cargs.extend([
+            "-umask",
+            params.get("umask")
+        ])
+    if params.get("group_id") is not None:
+        cargs.extend([
+            "-grp",
+            params.get("group_id")
+        ])
+    if params.get("allow_core_dump"):
+        cargs.append("-allowcoredump")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("dontrun"):
+        cargs.append("-dontrun")
+    if params.get("version"):
+        cargs.append("-version")
+    if params.get("help"):
+        cargs.append("-help")
+    return cargs
+
+
+def trac_paths_outputs(
+    params: TracPathsParameters,
+    execution: Execution,
+) -> TracPathsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TracPathsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def trac_paths_execute(
+    params: TracPathsParameters,
+    execution: Execution,
+) -> TracPathsOutputs:
+    """
+    Tractography for a single subject.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TracPathsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = trac_paths_cargs(params, execution)
+    ret = trac_paths_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def trac_paths(
@@ -68,57 +270,12 @@ def trac_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRAC_PATHS_METADATA)
-    cargs = []
-    cargs.append("trac-paths")
-    cargs.extend([
-        "-c",
-        execution.input_file(dmrirc_file)
-    ])
-    if log_file is not None:
-        cargs.extend([
-            "-log",
-            log_file
-        ])
-    if no_log:
-        cargs.append("-nolog")
-    if cmd_file is not None:
-        cargs.extend([
-            "-cmd",
-            cmd_file
-        ])
-    if no_cmd:
-        cargs.append("-nocmd")
-    if no_isrunning:
-        cargs.append("-no-isrunning")
-    if umask is not None:
-        cargs.extend([
-            "-umask",
-            umask
-        ])
-    if group_id is not None:
-        cargs.extend([
-            "-grp",
-            group_id
-        ])
-    if allow_core_dump:
-        cargs.append("-allowcoredump")
-    if debug:
-        cargs.append("-debug")
-    if dontrun:
-        cargs.append("-dontrun")
-    if version:
-        cargs.append("-version")
-    if help_:
-        cargs.append("-help")
-    ret = TracPathsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = trac_paths_params(dmrirc_file=dmrirc_file, log_file=log_file, no_log=no_log, cmd_file=cmd_file, no_cmd=no_cmd, no_isrunning=no_isrunning, umask=umask, group_id=group_id, allow_core_dump=allow_core_dump, debug=debug, dontrun=dontrun, version=version, help_=help_)
+    return trac_paths_execute(params, execution)
 
 
 __all__ = [
     "TRAC_PATHS_METADATA",
-    "TracPathsOutputs",
     "trac_paths",
+    "trac_paths_params",
 ]

@@ -12,6 +12,46 @@ FSLMATHS_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FslmathsFslParameters = typing.TypedDict('FslmathsFslParameters', {
+    "__STYX_TYPE__": typing.Literal["fslmaths.fsl"],
+    "first_input": InputPathType,
+    "operations_and_inputs": str,
+    "output_image": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslmaths.fsl": fslmaths_fsl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslmaths.fsl": fslmaths_fsl_outputs,
+    }
+    return vt.get(t)
 
 
 class FslmathsFslOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class FslmathsFslOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The resultant output image after applying the specified operations."""
+
+
+def fslmaths_fsl_params(
+    first_input: InputPathType,
+    operations_and_inputs: str,
+    output_image: str,
+) -> FslmathsFslParameters:
+    """
+    Build parameters.
+    
+    Args:
+        first_input: First input image for fslmaths operations.
+        operations_and_inputs: Operations and inputs to be applied on the first\
+            image.
+        output_image: Output image file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslmaths.fsl",
+        "first_input": first_input,
+        "operations_and_inputs": operations_and_inputs,
+        "output_image": output_image,
+    }
+    return params
+
+
+def fslmaths_fsl_cargs(
+    params: FslmathsFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslmaths")
+    cargs.append(execution.input_file(params.get("first_input")))
+    cargs.append(params.get("operations_and_inputs"))
+    cargs.append(params.get("output_image"))
+    return cargs
+
+
+def fslmaths_fsl_outputs(
+    params: FslmathsFslParameters,
+    execution: Execution,
+) -> FslmathsFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslmathsFslOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_image") + ".nii.gz"),
+    )
+    return ret
+
+
+def fslmaths_fsl_execute(
+    params: FslmathsFslParameters,
+    execution: Execution,
+) -> FslmathsFslOutputs:
+    """
+    FSLmaths: part of FMRIB Software Library (FSL) for manipulating images via
+    various mathematical operations.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslmathsFslOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslmaths_fsl_cargs(params, execution)
+    ret = fslmaths_fsl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslmaths_fsl(
@@ -49,21 +180,13 @@ def fslmaths_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMATHS_FSL_METADATA)
-    cargs = []
-    cargs.append("fslmaths")
-    cargs.append(execution.input_file(first_input))
-    cargs.append(operations_and_inputs)
-    cargs.append(output_image)
-    ret = FslmathsFslOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_image + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslmaths_fsl_params(first_input=first_input, operations_and_inputs=operations_and_inputs, output_image=output_image)
+    return fslmaths_fsl_execute(params, execution)
 
 
 __all__ = [
     "FSLMATHS_FSL_METADATA",
     "FslmathsFslOutputs",
     "fslmaths_fsl",
+    "fslmaths_fsl_params",
 ]

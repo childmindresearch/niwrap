@@ -12,14 +12,166 @@ FIRDESIGN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FirdesignParameters = typing.TypedDict('FirdesignParameters', {
+    "__STYX_TYPE__": typing.Literal["FIRdesign"],
+    "fbot": float,
+    "ftop": float,
+    "ntap": float,
+    "tr": typing.NotRequired[float | None],
+    "alternative_band": typing.NotRequired[list[float] | None],
+    "alternative_ntap": typing.NotRequired[float | None],
+})
 
 
-class FirdesignOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `firdesign(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "FIRdesign": firdesign_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def firdesign_params(
+    fbot: float,
+    ftop: float,
+    ntap: float,
+    tr: float | None = None,
+    alternative_band: list[float] | None = None,
+    alternative_ntap: float | None = None,
+) -> FirdesignParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fbot: Lowest frequency in the pass band.
+        ftop: Highest frequency in the pass band, must be higher than fbot and\
+            <= 0.5/TR.
+        ntap: Number of filter weights (AKA 'taps') to use, must be in the\
+            range 8..2000 (inclusive).
+        tr: Set time grid spacing to 'dd' [default is 1.0].
+        alternative_band: Alternative way to specify the passband.
+        alternative_ntap: Alternative way to specify the number of taps.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "FIRdesign",
+        "fbot": fbot,
+        "ftop": ftop,
+        "ntap": ntap,
+    }
+    if tr is not None:
+        params["tr"] = tr
+    if alternative_band is not None:
+        params["alternative_band"] = alternative_band
+    if alternative_ntap is not None:
+        params["alternative_ntap"] = alternative_ntap
+    return params
+
+
+def firdesign_cargs(
+    params: FirdesignParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("FIRdesign")
+    cargs.append(str(params.get("fbot")))
+    cargs.append(str(params.get("ftop")))
+    cargs.append(str(params.get("ntap")))
+    if params.get("tr") is not None:
+        cargs.extend([
+            "-TR",
+            str(params.get("tr"))
+        ])
+    if params.get("alternative_band") is not None:
+        cargs.extend([
+            "-band",
+            *map(str, params.get("alternative_band"))
+        ])
+    if params.get("alternative_ntap") is not None:
+        cargs.extend([
+            "-ntap",
+            str(params.get("alternative_ntap"))
+        ])
+    return cargs
+
+
+def firdesign_outputs(
+    params: FirdesignParameters,
+    execution: Execution,
+) -> FirdesignOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FirdesignOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def firdesign_execute(
+    params: FirdesignParameters,
+    execution: Execution,
+) -> FirdesignOutputs:
+    """
+    Uses the Remez algorithm to calculate the FIR filter weights for a bandpass
+    filter; results are written to stdout in an unadorned (no header) column of
+    numbers.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FirdesignOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = firdesign_cargs(params, execution)
+    ret = firdesign_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def firdesign(
@@ -53,45 +205,14 @@ def firdesign(
     Returns:
         NamedTuple of outputs (described in `FirdesignOutputs`).
     """
-    if not (0 <= fbot): 
-        raise ValueError(f"'fbot' must be greater than 0 <= x but was {fbot}")
-    if not (0 <= ftop): 
-        raise ValueError(f"'ftop' must be greater than 0 <= x but was {ftop}")
-    if not (8 <= ntap <= 2000): 
-        raise ValueError(f"'ntap' must be between 8 <= x <= 2000 but was {ntap}")
-    if alternative_ntap is not None and not (8 <= alternative_ntap <= 2000): 
-        raise ValueError(f"'alternative_ntap' must be between 8 <= x <= 2000 but was {alternative_ntap}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRDESIGN_METADATA)
-    cargs = []
-    cargs.append("FIRdesign")
-    cargs.append(str(fbot))
-    cargs.append(str(ftop))
-    cargs.append(str(ntap))
-    if tr is not None:
-        cargs.extend([
-            "-TR",
-            str(tr)
-        ])
-    if alternative_band is not None:
-        cargs.extend([
-            "-band",
-            *map(str, alternative_band)
-        ])
-    if alternative_ntap is not None:
-        cargs.extend([
-            "-ntap",
-            str(alternative_ntap)
-        ])
-    ret = FirdesignOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = firdesign_params(fbot=fbot, ftop=ftop, ntap=ntap, tr=tr, alternative_band=alternative_band, alternative_ntap=alternative_ntap)
+    return firdesign_execute(params, execution)
 
 
 __all__ = [
     "FIRDESIGN_METADATA",
-    "FirdesignOutputs",
     "firdesign",
+    "firdesign_params",
 ]

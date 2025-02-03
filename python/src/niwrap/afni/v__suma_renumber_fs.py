@@ -12,6 +12,44 @@ V__SUMA_RENUMBER_FS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSumaRenumberFsParameters = typing.TypedDict('VSumaRenumberFsParameters', {
+    "__STYX_TYPE__": typing.Literal["@SUMA_renumber_FS"],
+    "sumadir": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@SUMA_renumber_FS": v__suma_renumber_fs_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@SUMA_renumber_FS": v__suma_renumber_fs_outputs,
+    }
+    return vt.get(t)
 
 
 class VSumaRenumberFsOutputs(typing.NamedTuple):
@@ -45,6 +83,98 @@ class VSumaRenumberFsOutputs(typing.NamedTuple):
     """Labeltable of the new ROI values."""
 
 
+def v__suma_renumber_fs_params(
+    sumadir: str,
+) -> VSumaRenumberFsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        sumadir: Path to the 'SUMA/' directory created by @SUMA_Make_Spec_FS.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@SUMA_renumber_FS",
+        "sumadir": sumadir,
+    }
+    return params
+
+
+def v__suma_renumber_fs_cargs(
+    params: VSumaRenumberFsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@SUMA_renumber_FS")
+    cargs.append(params.get("sumadir"))
+    return cargs
+
+
+def v__suma_renumber_fs_outputs(
+    params: VSumaRenumberFsParameters,
+    execution: Execution,
+) -> VSumaRenumberFsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSumaRenumberFsOutputs(
+        root=execution.output_file("."),
+        ren_all=execution.output_file("*_REN_all.nii.gz"),
+        ren_gm=execution.output_file("*_REN_gm.nii.gz"),
+        ren_wmat=execution.output_file("*_REN_wmat.nii.gz"),
+        ren_csf=execution.output_file("*_REN_csf.nii.gz"),
+        ren_vent=execution.output_file("*_REN_vent.nii.gz"),
+        ren_othr=execution.output_file("*_REN_othr.nii.gz"),
+        ren_unkn=execution.output_file("*_REN_unkn.nii.gz"),
+        ren_gmrois=execution.output_file("*_REN_gmrois.nii.gz"),
+        fs_ap_wm=execution.output_file("fs_ap_wm.nii.gz"),
+        fs_ap_latvent=execution.output_file("fs_ap_latvent.nii.gz"),
+        ren_lbl_table=execution.output_file("*_REN_all.niml.lt"),
+    )
+    return ret
+
+
+def v__suma_renumber_fs_execute(
+    params: VSumaRenumberFsParameters,
+    execution: Execution,
+) -> VSumaRenumberFsOutputs:
+    """
+    This script processes FreeSurfer-generated parcellation files and produces
+    various derived datasets and segmentation maps.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSumaRenumberFsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__suma_renumber_fs_cargs(params, execution)
+    ret = v__suma_renumber_fs_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def v__suma_renumber_fs(
     sumadir: str,
     runner: Runner | None = None,
@@ -65,29 +195,13 @@ def v__suma_renumber_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_RENUMBER_FS_METADATA)
-    cargs = []
-    cargs.append("@SUMA_renumber_FS")
-    cargs.append(sumadir)
-    ret = VSumaRenumberFsOutputs(
-        root=execution.output_file("."),
-        ren_all=execution.output_file("*_REN_all.nii.gz"),
-        ren_gm=execution.output_file("*_REN_gm.nii.gz"),
-        ren_wmat=execution.output_file("*_REN_wmat.nii.gz"),
-        ren_csf=execution.output_file("*_REN_csf.nii.gz"),
-        ren_vent=execution.output_file("*_REN_vent.nii.gz"),
-        ren_othr=execution.output_file("*_REN_othr.nii.gz"),
-        ren_unkn=execution.output_file("*_REN_unkn.nii.gz"),
-        ren_gmrois=execution.output_file("*_REN_gmrois.nii.gz"),
-        fs_ap_wm=execution.output_file("fs_ap_wm.nii.gz"),
-        fs_ap_latvent=execution.output_file("fs_ap_latvent.nii.gz"),
-        ren_lbl_table=execution.output_file("*_REN_all.niml.lt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__suma_renumber_fs_params(sumadir=sumadir)
+    return v__suma_renumber_fs_execute(params, execution)
 
 
 __all__ = [
     "VSumaRenumberFsOutputs",
     "V__SUMA_RENUMBER_FS_METADATA",
     "v__suma_renumber_fs",
+    "v__suma_renumber_fs_params",
 ]

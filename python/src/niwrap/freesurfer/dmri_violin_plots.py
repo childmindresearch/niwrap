@@ -12,14 +12,141 @@ DMRI_VIOLIN_PLOTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriViolinPlotsParameters = typing.TypedDict('DmriViolinPlotsParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_violinPlots"],
+    "input_directory": str,
+    "labels": InputPathType,
+    "structure": str,
+})
 
 
-class DmriViolinPlotsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `dmri_violin_plots(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "dmri_violinPlots": dmri_violin_plots_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def dmri_violin_plots_params(
+    input_directory: str,
+    labels: InputPathType,
+    structure: str,
+) -> DmriViolinPlotsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_directory: Directory with all subjects.
+        labels: CSV file with group labels.
+        structure: Name of the structure.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_violinPlots",
+        "input_directory": input_directory,
+        "labels": labels,
+        "structure": structure,
+    }
+    return params
+
+
+def dmri_violin_plots_cargs(
+    params: DmriViolinPlotsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_violinPlots")
+    cargs.extend([
+        "-i",
+        params.get("input_directory")
+    ])
+    cargs.extend([
+        "-l",
+        execution.input_file(params.get("labels"))
+    ])
+    cargs.extend([
+        "-s",
+        params.get("structure")
+    ])
+    return cargs
+
+
+def dmri_violin_plots_outputs(
+    params: DmriViolinPlotsParameters,
+    execution: Execution,
+) -> DmriViolinPlotsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriViolinPlotsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def dmri_violin_plots_execute(
+    params: DmriViolinPlotsParameters,
+    execution: Execution,
+) -> DmriViolinPlotsOutputs:
+    """
+    Generate violin plots for dMRI data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriViolinPlotsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_violin_plots_cargs(params, execution)
+    ret = dmri_violin_plots_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_violin_plots(
@@ -45,29 +172,12 @@ def dmri_violin_plots(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_VIOLIN_PLOTS_METADATA)
-    cargs = []
-    cargs.append("dmri_violinPlots")
-    cargs.extend([
-        "-i",
-        input_directory
-    ])
-    cargs.extend([
-        "-l",
-        execution.input_file(labels)
-    ])
-    cargs.extend([
-        "-s",
-        structure
-    ])
-    ret = DmriViolinPlotsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_violin_plots_params(input_directory=input_directory, labels=labels, structure=structure)
+    return dmri_violin_plots_execute(params, execution)
 
 
 __all__ = [
     "DMRI_VIOLIN_PLOTS_METADATA",
-    "DmriViolinPlotsOutputs",
     "dmri_violin_plots",
+    "dmri_violin_plots_params",
 ]

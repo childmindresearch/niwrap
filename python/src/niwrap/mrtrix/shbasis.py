@@ -12,43 +12,262 @@ SHBASIS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+ShbasisConfigParameters = typing.TypedDict('ShbasisConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+ShbasisParameters = typing.TypedDict('ShbasisParameters', {
+    "__STYX_TYPE__": typing.Literal["shbasis"],
+    "convert": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[ShbasisConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "SH": list[InputPathType],
+})
 
 
-@dataclasses.dataclass
-class ShbasisConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "shbasis": shbasis_cargs,
+        "config": shbasis_config_cargs,
+    }
+    return vt.get(t)
 
 
-class ShbasisOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `shbasis(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def shbasis_config_params(
+    key: str,
+    value: str,
+) -> ShbasisConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def shbasis_config_cargs(
+    params: ShbasisConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def shbasis_params(
+    sh: list[InputPathType],
+    convert: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[ShbasisConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> ShbasisParameters:
+    """
+    Build parameters.
+    
+    Args:
+        sh: the input image(s) of SH coefficients.
+        convert: convert the image data in-place to the desired basis; options\
+            are: old,new,force_oldtonew,force_newtoold.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "shbasis",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "SH": sh,
+    }
+    if convert is not None:
+        params["convert"] = convert
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def shbasis_cargs(
+    params: ShbasisParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("shbasis")
+    if params.get("convert") is not None:
+        cargs.extend([
+            "-convert",
+            params.get("convert")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.extend([execution.input_file(f) for f in params.get("SH")])
+    return cargs
+
+
+def shbasis_outputs(
+    params: ShbasisParameters,
+    execution: Execution,
+) -> ShbasisOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ShbasisOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def shbasis_execute(
+    params: ShbasisParameters,
+    execution: Execution,
+) -> ShbasisOutputs:
+    """
+    Examine the values in spherical harmonic images to estimate (and optionally
+    change) the SH basis used.
+    
+    In previous versions of MRtrix, the convention used for storing spherical
+    harmonic coefficients was a non-orthonormal basis (the m!=0 coefficients
+    were a factor of sqrt(2) too large). This error has been rectified in newer
+    versions of MRtrix, but will cause issues if processing SH data that was
+    generated using an older version of MRtrix (or vice-versa).
+    
+    This command provides a mechanism for testing the basis used in storage of
+    image data representing a spherical harmonic series per voxel, and allows
+    the user to forcibly modify the raw image data to conform to the desired
+    basis.
+    
+    Note that the "force_*" conversion choices should only be used in cases
+    where this command has previously been unable to automatically determine the
+    SH basis from the image data, but the user themselves are confident of the
+    SH basis of the data.
+    
+    The spherical harmonic coefficients are stored according the conventions
+    described the main documentation, which can be found at the following link:
+    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ShbasisOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = shbasis_cargs(params, execution)
+    ret = shbasis_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def shbasis(
@@ -59,7 +278,7 @@ def shbasis(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[ShbasisConfig] | None = None,
+    config: list[ShbasisConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -118,43 +337,13 @@ def shbasis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SHBASIS_METADATA)
-    cargs = []
-    cargs.append("shbasis")
-    if convert is not None:
-        cargs.extend([
-            "-convert",
-            convert
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.extend([execution.input_file(f) for f in sh])
-    ret = ShbasisOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = shbasis_params(convert=convert, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, sh=sh)
+    return shbasis_execute(params, execution)
 
 
 __all__ = [
     "SHBASIS_METADATA",
-    "ShbasisConfig",
-    "ShbasisOutputs",
     "shbasis",
+    "shbasis_config_params",
+    "shbasis_params",
 ]

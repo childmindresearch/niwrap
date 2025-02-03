@@ -12,6 +12,48 @@ POINTSET2LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Pointset2labelParameters = typing.TypedDict('Pointset2labelParameters', {
+    "__STYX_TYPE__": typing.Literal["pointset2label"],
+    "waypoint_file": InputPathType,
+    "input_volume": InputPathType,
+    "label_value": float,
+    "output_volume": str,
+    "clear_option": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "pointset2label": pointset2label_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "pointset2label": pointset2label_outputs,
+    }
+    return vt.get(t)
 
 
 class Pointset2labelOutputs(typing.NamedTuple):
@@ -22,6 +64,104 @@ class Pointset2labelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_label_volume: OutputPathType
     """Output volume label file with applied labels."""
+
+
+def pointset2label_params(
+    waypoint_file: InputPathType,
+    input_volume: InputPathType,
+    label_value: float,
+    output_volume: str,
+    clear_option: bool = False,
+) -> Pointset2labelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        waypoint_file: Path to the waypoint file.
+        input_volume: Path to the input volume file.
+        label_value: Label value to apply at the waypoints.
+        output_volume: Path to the output volume label file.
+        clear_option: Clear the input volume before processing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "pointset2label",
+        "waypoint_file": waypoint_file,
+        "input_volume": input_volume,
+        "label_value": label_value,
+        "output_volume": output_volume,
+        "clear_option": clear_option,
+    }
+    return params
+
+
+def pointset2label_cargs(
+    params: Pointset2labelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("pointset2label")
+    cargs.append(execution.input_file(params.get("waypoint_file")))
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(str(params.get("label_value")))
+    cargs.append(params.get("output_volume"))
+    if params.get("clear_option"):
+        cargs.append("-clear")
+    return cargs
+
+
+def pointset2label_outputs(
+    params: Pointset2labelParameters,
+    execution: Execution,
+) -> Pointset2labelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Pointset2labelOutputs(
+        root=execution.output_file("."),
+        output_label_volume=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def pointset2label_execute(
+    params: Pointset2labelParameters,
+    execution: Execution,
+) -> Pointset2labelOutputs:
+    """
+    Tool for applying waypoint labels to a volume.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Pointset2labelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = pointset2label_cargs(params, execution)
+    ret = pointset2label_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def pointset2label(
@@ -51,24 +191,13 @@ def pointset2label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POINTSET2LABEL_METADATA)
-    cargs = []
-    cargs.append("pointset2label")
-    cargs.append(execution.input_file(waypoint_file))
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(str(label_value))
-    cargs.append(output_volume)
-    if clear_option:
-        cargs.append("-clear")
-    ret = Pointset2labelOutputs(
-        root=execution.output_file("."),
-        output_label_volume=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = pointset2label_params(waypoint_file=waypoint_file, input_volume=input_volume, label_value=label_value, output_volume=output_volume, clear_option=clear_option)
+    return pointset2label_execute(params, execution)
 
 
 __all__ = [
     "POINTSET2LABEL_METADATA",
     "Pointset2labelOutputs",
     "pointset2label",
+    "pointset2label_params",
 ]

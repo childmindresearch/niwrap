@@ -12,14 +12,204 @@ SEGMENT_SUBREGIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SegmentSubregionsParameters = typing.TypedDict('SegmentSubregionsParameters', {
+    "__STYX_TYPE__": typing.Literal["segment_subregions"],
+    "structure": str,
+    "cross": typing.NotRequired[str | None],
+    "long_base": typing.NotRequired[str | None],
+    "sd": typing.NotRequired[str | None],
+    "suffix": typing.NotRequired[str | None],
+    "temp_dir": typing.NotRequired[str | None],
+    "out_dir": typing.NotRequired[str | None],
+    "debug": bool,
+    "threads": typing.NotRequired[float | None],
+})
 
 
-class SegmentSubregionsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `segment_subregions(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "segment_subregions": segment_subregions_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def segment_subregions_params(
+    structure: str,
+    cross: str | None = None,
+    long_base: str | None = None,
+    sd: str | None = None,
+    suffix: str | None = None,
+    temp_dir: str | None = None,
+    out_dir: str | None = None,
+    debug: bool = False,
+    threads: float | None = None,
+) -> SegmentSubregionsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        structure: Structure to segment. Options are: thalamus, brainstem,\
+            hippo-amygdala.
+        cross: Subject to segment in cross-sectional analysis.
+        long_base: Base subject for longitudinal analysis. Timepoints are\
+            extracted from the base-tps file.
+        sd: Specify subjects directory (will override SUBJECTS_DIR env\
+            variable).
+        suffix: Optional output file suffix.
+        temp_dir: Use alternative temporary directory. This will get deleted\
+            unless --debug is enabled.
+        out_dir: Use alternative output directory (only for cross-sectional).\
+            Default is the subject's `mri` directory.
+        debug: Write intermediate debugging outputs.
+        threads: Number of threads to use. Defaults to 1.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "segment_subregions",
+        "structure": structure,
+        "debug": debug,
+    }
+    if cross is not None:
+        params["cross"] = cross
+    if long_base is not None:
+        params["long_base"] = long_base
+    if sd is not None:
+        params["sd"] = sd
+    if suffix is not None:
+        params["suffix"] = suffix
+    if temp_dir is not None:
+        params["temp_dir"] = temp_dir
+    if out_dir is not None:
+        params["out_dir"] = out_dir
+    if threads is not None:
+        params["threads"] = threads
+    return params
+
+
+def segment_subregions_cargs(
+    params: SegmentSubregionsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("segment_subregions")
+    cargs.append(params.get("structure"))
+    if params.get("cross") is not None:
+        cargs.extend([
+            "--cross",
+            params.get("cross")
+        ])
+    if params.get("long_base") is not None:
+        cargs.extend([
+            "--long-base",
+            params.get("long_base")
+        ])
+    if params.get("sd") is not None:
+        cargs.extend([
+            "--sd",
+            params.get("sd")
+        ])
+    if params.get("suffix") is not None:
+        cargs.extend([
+            "--suffix",
+            params.get("suffix")
+        ])
+    if params.get("temp_dir") is not None:
+        cargs.extend([
+            "--temp-dir",
+            params.get("temp_dir")
+        ])
+    if params.get("out_dir") is not None:
+        cargs.extend([
+            "--out-dir",
+            params.get("out_dir")
+        ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("threads") is not None:
+        cargs.extend([
+            "--threads",
+            str(params.get("threads"))
+        ])
+    return cargs
+
+
+def segment_subregions_outputs(
+    params: SegmentSubregionsParameters,
+    execution: Execution,
+) -> SegmentSubregionsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SegmentSubregionsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def segment_subregions_execute(
+    params: SegmentSubregionsParameters,
+    execution: Execution,
+) -> SegmentSubregionsOutputs:
+    """
+    Cross-sectional and longitudinal segmentation for brain structures like
+    thalamus, brainstem, and hippo-amygdala.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SegmentSubregionsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = segment_subregions_cargs(params, execution)
+    ret = segment_subregions_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def segment_subregions(
@@ -63,55 +253,12 @@ def segment_subregions(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBREGIONS_METADATA)
-    cargs = []
-    cargs.append("segment_subregions")
-    cargs.append(structure)
-    if cross is not None:
-        cargs.extend([
-            "--cross",
-            cross
-        ])
-    if long_base is not None:
-        cargs.extend([
-            "--long-base",
-            long_base
-        ])
-    if sd is not None:
-        cargs.extend([
-            "--sd",
-            sd
-        ])
-    if suffix is not None:
-        cargs.extend([
-            "--suffix",
-            suffix
-        ])
-    if temp_dir is not None:
-        cargs.extend([
-            "--temp-dir",
-            temp_dir
-        ])
-    if out_dir is not None:
-        cargs.extend([
-            "--out-dir",
-            out_dir
-        ])
-    if debug:
-        cargs.append("--debug")
-    if threads is not None:
-        cargs.extend([
-            "--threads",
-            str(threads)
-        ])
-    ret = SegmentSubregionsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = segment_subregions_params(structure=structure, cross=cross, long_base=long_base, sd=sd, suffix=suffix, temp_dir=temp_dir, out_dir=out_dir, debug=debug, threads=threads)
+    return segment_subregions_execute(params, execution)
 
 
 __all__ = [
     "SEGMENT_SUBREGIONS_METADATA",
-    "SegmentSubregionsOutputs",
     "segment_subregions",
+    "segment_subregions_params",
 ]

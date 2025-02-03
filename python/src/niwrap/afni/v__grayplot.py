@@ -12,6 +12,45 @@ V__GRAYPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VGrayplotParameters = typing.TypedDict('VGrayplotParameters', {
+    "__STYX_TYPE__": typing.Literal["@grayplot"],
+    "dirname": str,
+    "allorder": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@grayplot": v__grayplot_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@grayplot": v__grayplot_outputs,
+    }
+    return vt.get(t)
 
 
 class VGrayplotOutputs(typing.NamedTuple):
@@ -22,6 +61,94 @@ class VGrayplotOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     grayplot_img: OutputPathType
     """Output grayplot image"""
+
+
+def v__grayplot_params(
+    dirname: str,
+    allorder: bool = False,
+) -> VGrayplotParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dirname: Directory containing afni_proc.py results.
+        allorder: Create grayplots for all ordering methods.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@grayplot",
+        "dirname": dirname,
+        "allorder": allorder,
+    }
+    return params
+
+
+def v__grayplot_cargs(
+    params: VGrayplotParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@grayplot")
+    cargs.append(params.get("dirname"))
+    if params.get("allorder"):
+        cargs.append("-ALLorder")
+    return cargs
+
+
+def v__grayplot_outputs(
+    params: VGrayplotParameters,
+    execution: Execution,
+) -> VGrayplotOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VGrayplotOutputs(
+        root=execution.output_file("."),
+        grayplot_img=execution.output_file("Grayplot.errts.*.png"),
+    )
+    return ret
+
+
+def v__grayplot_execute(
+    params: VGrayplotParameters,
+    execution: Execution,
+) -> VGrayplotOutputs:
+    """
+    Script to read files from an afni_proc.py results directory and produce a
+    grayplot from the errts dataset(s), combined with a motion magnitude indicator
+    graph.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VGrayplotOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__grayplot_cargs(params, execution)
+    ret = v__grayplot_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__grayplot(
@@ -47,21 +174,13 @@ def v__grayplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GRAYPLOT_METADATA)
-    cargs = []
-    cargs.append("@grayplot")
-    cargs.append(dirname)
-    if allorder:
-        cargs.append("-ALLorder")
-    ret = VGrayplotOutputs(
-        root=execution.output_file("."),
-        grayplot_img=execution.output_file("Grayplot.errts.*.png"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__grayplot_params(dirname=dirname, allorder=allorder)
+    return v__grayplot_execute(params, execution)
 
 
 __all__ = [
     "VGrayplotOutputs",
     "V__GRAYPLOT_METADATA",
     "v__grayplot",
+    "v__grayplot_params",
 ]

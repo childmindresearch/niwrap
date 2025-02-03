@@ -12,6 +12,45 @@ RUN_SEGMENT_SUBJECT_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RunSegmentSubjectShParameters = typing.TypedDict('RunSegmentSubjectShParameters', {
+    "__STYX_TYPE__": typing.Literal["run_SegmentSubject.sh"],
+    "deployedMCRroot": str,
+    "arguments": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "run_SegmentSubject.sh": run_segment_subject_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "run_SegmentSubject.sh": run_segment_subject_sh_outputs,
+    }
+    return vt.get(t)
 
 
 class RunSegmentSubjectShOutputs(typing.NamedTuple):
@@ -22,6 +61,95 @@ class RunSegmentSubjectShOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """The generated output file from the segmentation process."""
+
+
+def run_segment_subject_sh_params(
+    deployed_mcrroot: str,
+    arguments: str | None = None,
+) -> RunSegmentSubjectShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        deployed_mcrroot: The root directory of the deployed MATLAB Compiler\
+            Runtime.
+        arguments: Additional arguments to be passed to the SegmentSubject\
+            script.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "run_SegmentSubject.sh",
+        "deployedMCRroot": deployed_mcrroot,
+    }
+    if arguments is not None:
+        params["arguments"] = arguments
+    return params
+
+
+def run_segment_subject_sh_cargs(
+    params: RunSegmentSubjectShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("run_SegmentSubject.sh")
+    cargs.append(params.get("deployedMCRroot"))
+    if params.get("arguments") is not None:
+        cargs.append(params.get("arguments"))
+    return cargs
+
+
+def run_segment_subject_sh_outputs(
+    params: RunSegmentSubjectShParameters,
+    execution: Execution,
+) -> RunSegmentSubjectShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RunSegmentSubjectShOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file("outputFileName"),
+    )
+    return ret
+
+
+def run_segment_subject_sh_execute(
+    params: RunSegmentSubjectShParameters,
+    execution: Execution,
+) -> RunSegmentSubjectShOutputs:
+    """
+    A command-line tool for subject segmentation in Freesurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RunSegmentSubjectShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = run_segment_subject_sh_cargs(params, execution)
+    ret = run_segment_subject_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def run_segment_subject_sh(
@@ -47,21 +175,13 @@ def run_segment_subject_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBJECT_SH_METADATA)
-    cargs = []
-    cargs.append("run_SegmentSubject.sh")
-    cargs.append(deployed_mcrroot)
-    if arguments is not None:
-        cargs.append(arguments)
-    ret = RunSegmentSubjectShOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file("outputFileName"),
-    )
-    execution.run(cargs)
-    return ret
+    params = run_segment_subject_sh_params(deployed_mcrroot=deployed_mcrroot, arguments=arguments)
+    return run_segment_subject_sh_execute(params, execution)
 
 
 __all__ = [
     "RUN_SEGMENT_SUBJECT_SH_METADATA",
     "RunSegmentSubjectShOutputs",
     "run_segment_subject_sh",
+    "run_segment_subject_sh_params",
 ]

@@ -12,6 +12,47 @@ MRI_CA_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriCaLabelParameters = typing.TypedDict('MriCaLabelParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_ca_label"],
+    "input_volumes": list[InputPathType],
+    "transform_file": InputPathType,
+    "gca_file": InputPathType,
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_ca_label": mri_ca_label_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_ca_label": mri_ca_label_outputs,
+    }
+    return vt.get(t)
 
 
 class MriCaLabelOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class MriCaLabelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_vol: OutputPathType
     """Output labeled volume."""
+
+
+def mri_ca_label_params(
+    input_volumes: list[InputPathType],
+    transform_file: InputPathType,
+    gca_file: InputPathType,
+    output_volume: str,
+) -> MriCaLabelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volumes: Input MRI volumes.
+        transform_file: Transform file for the registration.
+        gca_file: GCA file for the atlas.
+        output_volume: Output labeled volume.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_ca_label",
+        "input_volumes": input_volumes,
+        "transform_file": transform_file,
+        "gca_file": gca_file,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_ca_label_cargs(
+    params: MriCaLabelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_ca_label")
+    cargs.extend([execution.input_file(f) for f in params.get("input_volumes")])
+    cargs.append(execution.input_file(params.get("transform_file")))
+    cargs.append(execution.input_file(params.get("gca_file")))
+    cargs.append(params.get("output_volume"))
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def mri_ca_label_outputs(
+    params: MriCaLabelParameters,
+    execution: Execution,
+) -> MriCaLabelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriCaLabelOutputs(
+        root=execution.output_file("."),
+        output_vol=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_ca_label_execute(
+    params: MriCaLabelParameters,
+    execution: Execution,
+) -> MriCaLabelOutputs:
+    """
+    MRI cortical annotation labeler using atlas prior (GCA).
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriCaLabelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_ca_label_cargs(params, execution)
+    ret = mri_ca_label_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_ca_label(
@@ -49,23 +184,13 @@ def mri_ca_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_LABEL_METADATA)
-    cargs = []
-    cargs.append("mri_ca_label")
-    cargs.extend([execution.input_file(f) for f in input_volumes])
-    cargs.append(execution.input_file(transform_file))
-    cargs.append(execution.input_file(gca_file))
-    cargs.append(output_volume)
-    cargs.append("[OPTIONS]")
-    ret = MriCaLabelOutputs(
-        root=execution.output_file("."),
-        output_vol=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_ca_label_params(input_volumes=input_volumes, transform_file=transform_file, gca_file=gca_file, output_volume=output_volume)
+    return mri_ca_label_execute(params, execution)
 
 
 __all__ = [
     "MRI_CA_LABEL_METADATA",
     "MriCaLabelOutputs",
     "mri_ca_label",
+    "mri_ca_label_params",
 ]

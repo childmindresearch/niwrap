@@ -12,6 +12,52 @@ INVWARP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+InvwarpParameters = typing.TypedDict('InvwarpParameters', {
+    "__STYX_TYPE__": typing.Literal["invwarp"],
+    "warp": InputPathType,
+    "out_img": str,
+    "ref_img": InputPathType,
+    "absolute": bool,
+    "relative": bool,
+    "noconstraint": bool,
+    "jacobian_min": typing.NotRequired[float | None],
+    "jacobian_max": typing.NotRequired[float | None],
+    "debug": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "invwarp": invwarp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "invwarp": invwarp_outputs,
+    }
+    return vt.get(t)
 
 
 class InvwarpOutputs(typing.NamedTuple):
@@ -25,6 +71,130 @@ class InvwarpOutputs(typing.NamedTuple):
     --warp. this will be a field-file (rather than a file of spline
     coefficients), and it will have any affine component included as part of the
     displacements."""
+
+
+def invwarp_params(
+    warp: InputPathType,
+    out_img: str,
+    ref_img: InputPathType,
+    absolute: bool = False,
+    relative: bool = False,
+    noconstraint: bool = False,
+    jacobian_min: float | None = None,
+    jacobian_max: float | None = None,
+    debug: bool = False,
+) -> InvwarpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        warp: Filename for warp/shiftmap transform (volume).
+        out_img: Filename for output (inverse warped) image.
+        ref_img: Filename for new reference image.
+        absolute: Use absolute warp convention (default): x' = w(x).
+        relative: Use relative warp convention (default): x' = x + w(x).
+        noconstraint: Do not apply jacobian constraint.
+        jacobian_min: Minimum acceptable jacobian value for constraint (default\
+            0.01).
+        jacobian_max: Maximum acceptable jacobian value for constraint (default\
+            100.0).
+        debug: Turn on debugging output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "invwarp",
+        "warp": warp,
+        "out_img": out_img,
+        "ref_img": ref_img,
+        "absolute": absolute,
+        "relative": relative,
+        "noconstraint": noconstraint,
+        "debug": debug,
+    }
+    if jacobian_min is not None:
+        params["jacobian_min"] = jacobian_min
+    if jacobian_max is not None:
+        params["jacobian_max"] = jacobian_max
+    return params
+
+
+def invwarp_cargs(
+    params: InvwarpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("invwarp")
+    cargs.append("--warp=" + execution.input_file(params.get("warp")))
+    cargs.append("--out=" + params.get("out_img"))
+    cargs.append("--ref=" + execution.input_file(params.get("ref_img")))
+    if params.get("absolute"):
+        cargs.append("--abs")
+    if params.get("relative"):
+        cargs.append("--rel")
+    if params.get("noconstraint"):
+        cargs.append("--noconstraint")
+    if params.get("jacobian_min") is not None:
+        cargs.append("--jmin=" + str(params.get("jacobian_min")))
+    if params.get("jacobian_max") is not None:
+        cargs.append("--jmax=" + str(params.get("jacobian_max")))
+    if params.get("debug"):
+        cargs.append("--debug")
+    return cargs
+
+
+def invwarp_outputs(
+    params: InvwarpParameters,
+    execution: Execution,
+) -> InvwarpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = InvwarpOutputs(
+        root=execution.output_file("."),
+        inverse_warp=execution.output_file(params.get("out_img")),
+    )
+    return ret
+
+
+def invwarp_execute(
+    params: InvwarpParameters,
+    execution: Execution,
+) -> InvwarpOutputs:
+    """
+    
+    Use FSL Invwarp to invert a FNIRT warp.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `InvwarpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = invwarp_cargs(params, execution)
+    ret = invwarp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def invwarp(
@@ -65,33 +235,13 @@ def invwarp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INVWARP_METADATA)
-    cargs = []
-    cargs.append("invwarp")
-    cargs.append("--warp=" + execution.input_file(warp))
-    cargs.append("--out=" + out_img)
-    cargs.append("--ref=" + execution.input_file(ref_img))
-    if absolute:
-        cargs.append("--abs")
-    if relative:
-        cargs.append("--rel")
-    if noconstraint:
-        cargs.append("--noconstraint")
-    if jacobian_min is not None:
-        cargs.append("--jmin=" + str(jacobian_min))
-    if jacobian_max is not None:
-        cargs.append("--jmax=" + str(jacobian_max))
-    if debug:
-        cargs.append("--debug")
-    ret = InvwarpOutputs(
-        root=execution.output_file("."),
-        inverse_warp=execution.output_file(out_img),
-    )
-    execution.run(cargs)
-    return ret
+    params = invwarp_params(warp=warp, out_img=out_img, ref_img=ref_img, absolute=absolute, relative=relative, noconstraint=noconstraint, jacobian_min=jacobian_min, jacobian_max=jacobian_max, debug=debug)
+    return invwarp_execute(params, execution)
 
 
 __all__ = [
     "INVWARP_METADATA",
     "InvwarpOutputs",
     "invwarp",
+    "invwarp_params",
 ]

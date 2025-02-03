@@ -12,14 +12,144 @@ THICKDIFFMAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ThickdiffmapParameters = typing.TypedDict('ThickdiffmapParameters', {
+    "__STYX_TYPE__": typing.Literal["thickdiffmap"],
+    "subjscan1": InputPathType,
+    "subjscan2": InputPathType,
+    "commonsubj": str,
+    "hemi": str,
+    "steps": typing.NotRequired[list[str] | None],
+})
 
 
-class ThickdiffmapOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `thickdiffmap(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "thickdiffmap": thickdiffmap_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def thickdiffmap_params(
+    subjscan1: InputPathType,
+    subjscan2: InputPathType,
+    commonsubj: str,
+    hemi: str,
+    steps: list[str] | None = None,
+) -> ThickdiffmapParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjscan1: First scan of a subject.
+        subjscan2: Second (later) scan of the same subject.
+        commonsubj: Subject to use as the common template.
+        hemi: Hemisphere to process.
+        steps: Stages of processing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "thickdiffmap",
+        "subjscan1": subjscan1,
+        "subjscan2": subjscan2,
+        "commonsubj": commonsubj,
+        "hemi": hemi,
+    }
+    if steps is not None:
+        params["steps"] = steps
+    return params
+
+
+def thickdiffmap_cargs(
+    params: ThickdiffmapParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("thickdiffmap")
+    cargs.append(execution.input_file(params.get("subjscan1")))
+    cargs.append(execution.input_file(params.get("subjscan2")))
+    cargs.append(params.get("commonsubj"))
+    cargs.append(params.get("hemi"))
+    if params.get("steps") is not None:
+        cargs.extend(params.get("steps"))
+    return cargs
+
+
+def thickdiffmap_outputs(
+    params: ThickdiffmapParameters,
+    execution: Execution,
+) -> ThickdiffmapOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ThickdiffmapOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def thickdiffmap_execute(
+    params: ThickdiffmapParameters,
+    execution: Execution,
+) -> ThickdiffmapOutputs:
+    """
+    Compute and analyze cortical thickness difference maps.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ThickdiffmapOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = thickdiffmap_cargs(params, execution)
+    ret = thickdiffmap_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def thickdiffmap(
@@ -49,23 +179,12 @@ def thickdiffmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(THICKDIFFMAP_METADATA)
-    cargs = []
-    cargs.append("thickdiffmap")
-    cargs.append(execution.input_file(subjscan1))
-    cargs.append(execution.input_file(subjscan2))
-    cargs.append(commonsubj)
-    cargs.append(hemi)
-    if steps is not None:
-        cargs.extend(steps)
-    ret = ThickdiffmapOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = thickdiffmap_params(subjscan1=subjscan1, subjscan2=subjscan2, commonsubj=commonsubj, hemi=hemi, steps=steps)
+    return thickdiffmap_execute(params, execution)
 
 
 __all__ = [
     "THICKDIFFMAP_METADATA",
-    "ThickdiffmapOutputs",
     "thickdiffmap",
+    "thickdiffmap_params",
 ]

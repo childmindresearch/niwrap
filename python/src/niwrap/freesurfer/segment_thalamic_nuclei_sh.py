@@ -12,6 +12,45 @@ SEGMENT_THALAMIC_NUCLEI_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SegmentThalamicNucleiShParameters = typing.TypedDict('SegmentThalamicNucleiShParameters', {
+    "__STYX_TYPE__": typing.Literal["segmentThalamicNuclei.sh"],
+    "subject_id": str,
+    "output_dir": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "segmentThalamicNuclei.sh": segment_thalamic_nuclei_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "segmentThalamicNuclei.sh": segment_thalamic_nuclei_sh_outputs,
+    }
+    return vt.get(t)
 
 
 class SegmentThalamicNucleiShOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class SegmentThalamicNucleiShOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     thalamic_nuclei_output: OutputPathType
     """Segmented thalamic nuclei output file"""
+
+
+def segment_thalamic_nuclei_sh_params(
+    subject_id: str,
+    output_dir: str,
+) -> SegmentThalamicNucleiShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: Subject ID for segmentation.
+        output_dir: Output directory for the segmented thalamic nuclei.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "segmentThalamicNuclei.sh",
+        "subject_id": subject_id,
+        "output_dir": output_dir,
+    }
+    return params
+
+
+def segment_thalamic_nuclei_sh_cargs(
+    params: SegmentThalamicNucleiShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("segmentThalamicNuclei.sh")
+    cargs.append(params.get("subject_id"))
+    cargs.append(params.get("output_dir"))
+    return cargs
+
+
+def segment_thalamic_nuclei_sh_outputs(
+    params: SegmentThalamicNucleiShParameters,
+    execution: Execution,
+) -> SegmentThalamicNucleiShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SegmentThalamicNucleiShOutputs(
+        root=execution.output_file("."),
+        thalamic_nuclei_output=execution.output_file(params.get("output_dir") + "/" + params.get("subject_id") + "_thalamic_nuclei.mgz"),
+    )
+    return ret
+
+
+def segment_thalamic_nuclei_sh_execute(
+    params: SegmentThalamicNucleiShParameters,
+    execution: Execution,
+) -> SegmentThalamicNucleiShOutputs:
+    """
+    Segment the thalamic nuclei using FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SegmentThalamicNucleiShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = segment_thalamic_nuclei_sh_cargs(params, execution)
+    ret = segment_thalamic_nuclei_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def segment_thalamic_nuclei_sh(
@@ -45,20 +169,13 @@ def segment_thalamic_nuclei_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_THALAMIC_NUCLEI_SH_METADATA)
-    cargs = []
-    cargs.append("segmentThalamicNuclei.sh")
-    cargs.append(subject_id)
-    cargs.append(output_dir)
-    ret = SegmentThalamicNucleiShOutputs(
-        root=execution.output_file("."),
-        thalamic_nuclei_output=execution.output_file(output_dir + "/" + subject_id + "_thalamic_nuclei.mgz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = segment_thalamic_nuclei_sh_params(subject_id=subject_id, output_dir=output_dir)
+    return segment_thalamic_nuclei_sh_execute(params, execution)
 
 
 __all__ = [
     "SEGMENT_THALAMIC_NUCLEI_SH_METADATA",
     "SegmentThalamicNucleiShOutputs",
     "segment_thalamic_nuclei_sh",
+    "segment_thalamic_nuclei_sh_params",
 ]

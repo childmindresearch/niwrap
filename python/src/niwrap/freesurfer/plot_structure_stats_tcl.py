@@ -12,6 +12,45 @@ PLOT_STRUCTURE_STATS_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+PlotStructureStatsTclParameters = typing.TypedDict('PlotStructureStatsTclParameters', {
+    "__STYX_TYPE__": typing.Literal["plot_structure_stats.tcl"],
+    "input_file": InputPathType,
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "plot_structure_stats.tcl": plot_structure_stats_tcl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "plot_structure_stats.tcl": plot_structure_stats_tcl_outputs,
+    }
+    return vt.get(t)
 
 
 class PlotStructureStatsTclOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class PlotStructureStatsTclOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     plot_file: OutputPathType
     """Generated plot"""
+
+
+def plot_structure_stats_tcl_params(
+    input_file: InputPathType,
+    output_file: str,
+) -> PlotStructureStatsTclParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input stats file.
+        output_file: Output plot file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "plot_structure_stats.tcl",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    return params
+
+
+def plot_structure_stats_tcl_cargs(
+    params: PlotStructureStatsTclParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("plot_structure_stats")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def plot_structure_stats_tcl_outputs(
+    params: PlotStructureStatsTclParameters,
+    execution: Execution,
+) -> PlotStructureStatsTclOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PlotStructureStatsTclOutputs(
+        root=execution.output_file("."),
+        plot_file=execution.output_file(params.get("output_file") + ".png"),
+    )
+    return ret
+
+
+def plot_structure_stats_tcl_execute(
+    params: PlotStructureStatsTclParameters,
+    execution: Execution,
+) -> PlotStructureStatsTclOutputs:
+    """
+    Script to plot structural statistics.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PlotStructureStatsTclOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = plot_structure_stats_tcl_cargs(params, execution)
+    ret = plot_structure_stats_tcl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def plot_structure_stats_tcl(
@@ -45,20 +169,13 @@ def plot_structure_stats_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLOT_STRUCTURE_STATS_TCL_METADATA)
-    cargs = []
-    cargs.append("plot_structure_stats")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    ret = PlotStructureStatsTclOutputs(
-        root=execution.output_file("."),
-        plot_file=execution.output_file(output_file + ".png"),
-    )
-    execution.run(cargs)
-    return ret
+    params = plot_structure_stats_tcl_params(input_file=input_file, output_file=output_file)
+    return plot_structure_stats_tcl_execute(params, execution)
 
 
 __all__ = [
     "PLOT_STRUCTURE_STATS_TCL_METADATA",
     "PlotStructureStatsTclOutputs",
     "plot_structure_stats_tcl",
+    "plot_structure_stats_tcl_params",
 ]

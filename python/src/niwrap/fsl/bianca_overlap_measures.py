@@ -12,6 +12,46 @@ BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+BiancaOverlapMeasuresParameters = typing.TypedDict('BiancaOverlapMeasuresParameters', {
+    "__STYX_TYPE__": typing.Literal["bianca_overlap_measures"],
+    "lesion_mask": InputPathType,
+    "manual_mask": InputPathType,
+    "output_dir": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "bianca_overlap_measures": bianca_overlap_measures_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "bianca_overlap_measures": bianca_overlap_measures_outputs,
+    }
+    return vt.get(t)
 
 
 class BiancaOverlapMeasuresOutputs(typing.NamedTuple):
@@ -38,6 +78,102 @@ class BiancaOverlapMeasuresOutputs(typing.NamedTuple):
     """True positive indexed manual mask"""
 
 
+def bianca_overlap_measures_params(
+    lesion_mask: InputPathType,
+    manual_mask: InputPathType,
+    output_dir: str,
+) -> BiancaOverlapMeasuresParameters:
+    """
+    Build parameters.
+    
+    Args:
+        lesion_mask: Lesion mask image file.
+        manual_mask: Manual mask image file.
+        output_dir: Output directory for generated files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "bianca_overlap_measures",
+        "lesion_mask": lesion_mask,
+        "manual_mask": manual_mask,
+        "output_dir": output_dir,
+    }
+    return params
+
+
+def bianca_overlap_measures_cargs(
+    params: BiancaOverlapMeasuresParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("bianca_overlap_measures")
+    cargs.append(execution.input_file(params.get("lesion_mask")))
+    cargs.append(execution.input_file(params.get("manual_mask")))
+    cargs.append(params.get("output_dir"))
+    return cargs
+
+
+def bianca_overlap_measures_outputs(
+    params: BiancaOverlapMeasuresParameters,
+    execution: Execution,
+) -> BiancaOverlapMeasuresOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BiancaOverlapMeasuresOutputs(
+        root=execution.output_file("."),
+        tp_auto=execution.output_file("{OUTPUT_DIR}/TPauto.nii.gz"),
+        tp_manual=execution.output_file("{OUTPUT_DIR}/TPmanual.nii.gz"),
+        fp_vox_tp_overlap=execution.output_file("{OUTPUT_DIR}/FPvox_TP_overlap.nii.gz"),
+        fn_vox_tp_overlap=execution.output_file("{OUTPUT_DIR}/FNvox_TP_overlap.nii.gz"),
+        lesmask_idx=execution.output_file("{OUTPUT_DIR}/lesmask_idx.nii.gz"),
+        manualmask_idx=execution.output_file("{OUTPUT_DIR}/manualmask_idx.nii.gz"),
+        lesmask_idx_tp=execution.output_file("{OUTPUT_DIR}/lesmask_idx_TP.nii.gz"),
+        manualmask_idx_tp=execution.output_file("{OUTPUT_DIR}/manualmask_idx_TP.nii.gz"),
+    )
+    return ret
+
+
+def bianca_overlap_measures_execute(
+    params: BiancaOverlapMeasuresParameters,
+    execution: Execution,
+) -> BiancaOverlapMeasuresOutputs:
+    """
+    BIANCA overlap measures script for FSL.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BiancaOverlapMeasuresOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = bianca_overlap_measures_cargs(params, execution)
+    ret = bianca_overlap_measures_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def bianca_overlap_measures(
     lesion_mask: InputPathType,
     manual_mask: InputPathType,
@@ -61,28 +197,13 @@ def bianca_overlap_measures(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIANCA_OVERLAP_MEASURES_METADATA)
-    cargs = []
-    cargs.append("bianca_overlap_measures")
-    cargs.append(execution.input_file(lesion_mask))
-    cargs.append(execution.input_file(manual_mask))
-    cargs.append(output_dir)
-    ret = BiancaOverlapMeasuresOutputs(
-        root=execution.output_file("."),
-        tp_auto=execution.output_file("{OUTPUT_DIR}/TPauto.nii.gz"),
-        tp_manual=execution.output_file("{OUTPUT_DIR}/TPmanual.nii.gz"),
-        fp_vox_tp_overlap=execution.output_file("{OUTPUT_DIR}/FPvox_TP_overlap.nii.gz"),
-        fn_vox_tp_overlap=execution.output_file("{OUTPUT_DIR}/FNvox_TP_overlap.nii.gz"),
-        lesmask_idx=execution.output_file("{OUTPUT_DIR}/lesmask_idx.nii.gz"),
-        manualmask_idx=execution.output_file("{OUTPUT_DIR}/manualmask_idx.nii.gz"),
-        lesmask_idx_tp=execution.output_file("{OUTPUT_DIR}/lesmask_idx_TP.nii.gz"),
-        manualmask_idx_tp=execution.output_file("{OUTPUT_DIR}/manualmask_idx_TP.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = bianca_overlap_measures_params(lesion_mask=lesion_mask, manual_mask=manual_mask, output_dir=output_dir)
+    return bianca_overlap_measures_execute(params, execution)
 
 
 __all__ = [
     "BIANCA_OVERLAP_MEASURES_METADATA",
     "BiancaOverlapMeasuresOutputs",
     "bianca_overlap_measures",
+    "bianca_overlap_measures_params",
 ]

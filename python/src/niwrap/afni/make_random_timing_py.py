@@ -12,6 +12,68 @@ MAKE_RANDOM_TIMING_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+MakeRandomTimingPyParameters = typing.TypedDict('MakeRandomTimingPyParameters', {
+    "__STYX_TYPE__": typing.Literal["make_random_timing.py"],
+    "num_runs": float,
+    "run_time": list[float],
+    "num_stim": float,
+    "num_reps": list[float],
+    "prefix": str,
+    "stim_dur": typing.NotRequired[list[float] | None],
+    "across_runs": bool,
+    "max_consec": typing.NotRequired[list[float] | None],
+    "max_rest": typing.NotRequired[float | None],
+    "min_rest": typing.NotRequired[float | None],
+    "not_first": typing.NotRequired[list[str] | None],
+    "not_last": typing.NotRequired[list[str] | None],
+    "offset": typing.NotRequired[float | None],
+    "ordered_stimuli": typing.NotRequired[list[str] | None],
+    "pre_stim_rest": typing.NotRequired[float | None],
+    "post_stim_rest": typing.NotRequired[float | None],
+    "save_3dd_cmd": typing.NotRequired[str | None],
+    "seed": typing.NotRequired[float | None],
+    "stim_labels": typing.NotRequired[list[str] | None],
+    "t_digits": typing.NotRequired[float | None],
+    "t_gran": typing.NotRequired[float | None],
+    "tr": typing.NotRequired[float | None],
+    "tr_locked": bool,
+    "verb": typing.NotRequired[float | None],
+    "show_timing_stats": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "make_random_timing.py": make_random_timing_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "make_random_timing.py": make_random_timing_py_outputs,
+    }
+    return vt.get(t)
 
 
 class MakeRandomTimingPyOutputs(typing.NamedTuple):
@@ -22,6 +84,286 @@ class MakeRandomTimingPyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     stim_output: OutputPathType
     """Stimulus timing output file"""
+
+
+def make_random_timing_py_params(
+    num_runs: float,
+    run_time: list[float],
+    num_stim: float,
+    num_reps: list[float],
+    prefix: str,
+    stim_dur: list[float] | None = None,
+    across_runs: bool = False,
+    max_consec: list[float] | None = None,
+    max_rest: float | None = None,
+    min_rest: float | None = None,
+    not_first: list[str] | None = None,
+    not_last: list[str] | None = None,
+    offset: float | None = None,
+    ordered_stimuli: list[str] | None = None,
+    pre_stim_rest: float | None = None,
+    post_stim_rest: float | None = None,
+    save_3dd_cmd: str | None = None,
+    seed: float | None = None,
+    stim_labels: list[str] | None = None,
+    t_digits: float | None = None,
+    t_gran: float | None = None,
+    tr: float | None = None,
+    tr_locked: bool = False,
+    verb: float | None = None,
+    show_timing_stats: bool = False,
+) -> MakeRandomTimingPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        num_runs: Set the number of runs.
+        run_time: Set the total time per run (in seconds).
+        num_stim: Set the number of stimulus classes.
+        num_reps: Set the number of repetitions per class (or across runs).
+        prefix: Set the prefix for output filenames.
+        stim_dur: Set the duration for a single stimulus (in seconds).
+        across_runs: Distribute stimuli across all runs at once.
+        max_consec: Specify maximum consecutive stimuli per class.
+        max_rest: Specify maximum rest between stimuli.
+        min_rest: Specify extra rest after each stimulus.
+        not_first: Specify classes that should not start a run.
+        not_last: Specify classes that should not end a run.
+        offset: Specify an offset to add to every stim time.
+        ordered_stimuli: Specify a partial ordering of stimuli.
+        pre_stim_rest: Specify minimum rest period to start each run.
+        post_stim_rest: Specify minimum rest period to end each run.
+        save_3dd_cmd: Save a 3dDeconvolve -nodata example.
+        seed: Specify a seed for random number generation.
+        stim_labels: Specify labels for the stimulus classes.
+        t_digits: Set the number of decimal places for times.
+        t_gran: Set the time granularity.
+        tr: Set the scanner TR.
+        tr_locked: Make stimuli timing locked to the accompanying TR.
+        verb: Set the verbose level.
+        show_timing_stats: Show statistics from the timing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "make_random_timing.py",
+        "num_runs": num_runs,
+        "run_time": run_time,
+        "num_stim": num_stim,
+        "num_reps": num_reps,
+        "prefix": prefix,
+        "across_runs": across_runs,
+        "tr_locked": tr_locked,
+        "show_timing_stats": show_timing_stats,
+    }
+    if stim_dur is not None:
+        params["stim_dur"] = stim_dur
+    if max_consec is not None:
+        params["max_consec"] = max_consec
+    if max_rest is not None:
+        params["max_rest"] = max_rest
+    if min_rest is not None:
+        params["min_rest"] = min_rest
+    if not_first is not None:
+        params["not_first"] = not_first
+    if not_last is not None:
+        params["not_last"] = not_last
+    if offset is not None:
+        params["offset"] = offset
+    if ordered_stimuli is not None:
+        params["ordered_stimuli"] = ordered_stimuli
+    if pre_stim_rest is not None:
+        params["pre_stim_rest"] = pre_stim_rest
+    if post_stim_rest is not None:
+        params["post_stim_rest"] = post_stim_rest
+    if save_3dd_cmd is not None:
+        params["save_3dd_cmd"] = save_3dd_cmd
+    if seed is not None:
+        params["seed"] = seed
+    if stim_labels is not None:
+        params["stim_labels"] = stim_labels
+    if t_digits is not None:
+        params["t_digits"] = t_digits
+    if t_gran is not None:
+        params["t_gran"] = t_gran
+    if tr is not None:
+        params["tr"] = tr
+    if verb is not None:
+        params["verb"] = verb
+    return params
+
+
+def make_random_timing_py_cargs(
+    params: MakeRandomTimingPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("make_random_timing.py")
+    cargs.extend([
+        "-num_runs",
+        str(params.get("num_runs"))
+    ])
+    cargs.extend([
+        "-run_time",
+        *map(str, params.get("run_time"))
+    ])
+    cargs.extend([
+        "-num_stim",
+        str(params.get("num_stim"))
+    ])
+    cargs.extend([
+        "-num_reps",
+        *map(str, params.get("num_reps"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("stim_dur") is not None:
+        cargs.extend([
+            "-stim_dur",
+            *map(str, params.get("stim_dur"))
+        ])
+    if params.get("across_runs"):
+        cargs.append("-across_runs")
+    if params.get("max_consec") is not None:
+        cargs.extend([
+            "-max_consec",
+            *map(str, params.get("max_consec"))
+        ])
+    if params.get("max_rest") is not None:
+        cargs.extend([
+            "-max_rest",
+            str(params.get("max_rest"))
+        ])
+    if params.get("min_rest") is not None:
+        cargs.extend([
+            "-min_rest",
+            str(params.get("min_rest"))
+        ])
+    if params.get("not_first") is not None:
+        cargs.extend([
+            "-not_first",
+            *params.get("not_first")
+        ])
+    if params.get("not_last") is not None:
+        cargs.extend([
+            "-not_last",
+            *params.get("not_last")
+        ])
+    if params.get("offset") is not None:
+        cargs.extend([
+            "-offset",
+            str(params.get("offset"))
+        ])
+    if params.get("ordered_stimuli") is not None:
+        cargs.extend([
+            "-ordered_stimuli",
+            *params.get("ordered_stimuli")
+        ])
+    if params.get("pre_stim_rest") is not None:
+        cargs.extend([
+            "-pre_stim_rest",
+            str(params.get("pre_stim_rest"))
+        ])
+    if params.get("post_stim_rest") is not None:
+        cargs.extend([
+            "-post_stim_rest",
+            str(params.get("post_stim_rest"))
+        ])
+    if params.get("save_3dd_cmd") is not None:
+        cargs.extend([
+            "-save_3dd_cmd",
+            params.get("save_3dd_cmd")
+        ])
+    if params.get("seed") is not None:
+        cargs.extend([
+            "-seed",
+            str(params.get("seed"))
+        ])
+    if params.get("stim_labels") is not None:
+        cargs.extend([
+            "-stim_labels",
+            *params.get("stim_labels")
+        ])
+    if params.get("t_digits") is not None:
+        cargs.extend([
+            "-t_digits",
+            str(params.get("t_digits"))
+        ])
+    if params.get("t_gran") is not None:
+        cargs.extend([
+            "-t_gran",
+            str(params.get("t_gran"))
+        ])
+    if params.get("tr") is not None:
+        cargs.extend([
+            "-tr",
+            str(params.get("tr"))
+        ])
+    if params.get("tr_locked"):
+        cargs.append("-tr_locked")
+    if params.get("verb") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verb"))
+        ])
+    if params.get("show_timing_stats"):
+        cargs.append("-show_timing_stats")
+    return cargs
+
+
+def make_random_timing_py_outputs(
+    params: MakeRandomTimingPyParameters,
+    execution: Execution,
+) -> MakeRandomTimingPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakeRandomTimingPyOutputs(
+        root=execution.output_file("."),
+        stim_output=execution.output_file(params.get("prefix") + "_*.1D"),
+    )
+    return ret
+
+
+def make_random_timing_py_execute(
+    params: MakeRandomTimingPyParameters,
+    execution: Execution,
+) -> MakeRandomTimingPyOutputs:
+    """
+    Create random stimulus timing files for use with AFNI 3dDeconvolve.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakeRandomTimingPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = make_random_timing_py_cargs(params, execution)
+    ret = make_random_timing_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def make_random_timing_py(
@@ -89,143 +431,15 @@ def make_random_timing_py(
     Returns:
         NamedTuple of outputs (described in `MakeRandomTimingPyOutputs`).
     """
-    if not (1 <= num_runs): 
-        raise ValueError(f"'num_runs' must be greater than 1 <= x but was {num_runs}")
-    if not (1 <= num_stim): 
-        raise ValueError(f"'num_stim' must be greater than 1 <= x but was {num_stim}")
-    if not_first is not None and not (1 <= len(not_first)): 
-        raise ValueError(f"Length of 'not_first' must be greater than 1 but was {len(not_first)}")
-    if not_last is not None and not (1 <= len(not_last)): 
-        raise ValueError(f"Length of 'not_last' must be greater than 1 but was {len(not_last)}")
-    if ordered_stimuli is not None and not (1 <= len(ordered_stimuli)): 
-        raise ValueError(f"Length of 'ordered_stimuli' must be greater than 1 but was {len(ordered_stimuli)}")
-    if stim_labels is not None and not (1 <= len(stim_labels)): 
-        raise ValueError(f"Length of 'stim_labels' must be greater than 1 but was {len(stim_labels)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_RANDOM_TIMING_PY_METADATA)
-    cargs = []
-    cargs.append("make_random_timing.py")
-    cargs.extend([
-        "-num_runs",
-        str(num_runs)
-    ])
-    cargs.extend([
-        "-run_time",
-        *map(str, run_time)
-    ])
-    cargs.extend([
-        "-num_stim",
-        str(num_stim)
-    ])
-    cargs.extend([
-        "-num_reps",
-        *map(str, num_reps)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if stim_dur is not None:
-        cargs.extend([
-            "-stim_dur",
-            *map(str, stim_dur)
-        ])
-    if across_runs:
-        cargs.append("-across_runs")
-    if max_consec is not None:
-        cargs.extend([
-            "-max_consec",
-            *map(str, max_consec)
-        ])
-    if max_rest is not None:
-        cargs.extend([
-            "-max_rest",
-            str(max_rest)
-        ])
-    if min_rest is not None:
-        cargs.extend([
-            "-min_rest",
-            str(min_rest)
-        ])
-    if not_first is not None:
-        cargs.extend([
-            "-not_first",
-            *not_first
-        ])
-    if not_last is not None:
-        cargs.extend([
-            "-not_last",
-            *not_last
-        ])
-    if offset is not None:
-        cargs.extend([
-            "-offset",
-            str(offset)
-        ])
-    if ordered_stimuli is not None:
-        cargs.extend([
-            "-ordered_stimuli",
-            *ordered_stimuli
-        ])
-    if pre_stim_rest is not None:
-        cargs.extend([
-            "-pre_stim_rest",
-            str(pre_stim_rest)
-        ])
-    if post_stim_rest is not None:
-        cargs.extend([
-            "-post_stim_rest",
-            str(post_stim_rest)
-        ])
-    if save_3dd_cmd is not None:
-        cargs.extend([
-            "-save_3dd_cmd",
-            save_3dd_cmd
-        ])
-    if seed is not None:
-        cargs.extend([
-            "-seed",
-            str(seed)
-        ])
-    if stim_labels is not None:
-        cargs.extend([
-            "-stim_labels",
-            *stim_labels
-        ])
-    if t_digits is not None:
-        cargs.extend([
-            "-t_digits",
-            str(t_digits)
-        ])
-    if t_gran is not None:
-        cargs.extend([
-            "-t_gran",
-            str(t_gran)
-        ])
-    if tr is not None:
-        cargs.extend([
-            "-tr",
-            str(tr)
-        ])
-    if tr_locked:
-        cargs.append("-tr_locked")
-    if verb is not None:
-        cargs.extend([
-            "-verb",
-            str(verb)
-        ])
-    if show_timing_stats:
-        cargs.append("-show_timing_stats")
-    ret = MakeRandomTimingPyOutputs(
-        root=execution.output_file("."),
-        stim_output=execution.output_file(prefix + "_*.1D"),
-    )
-    execution.run(cargs)
-    return ret
+    params = make_random_timing_py_params(num_runs=num_runs, run_time=run_time, num_stim=num_stim, num_reps=num_reps, prefix=prefix, stim_dur=stim_dur, across_runs=across_runs, max_consec=max_consec, max_rest=max_rest, min_rest=min_rest, not_first=not_first, not_last=not_last, offset=offset, ordered_stimuli=ordered_stimuli, pre_stim_rest=pre_stim_rest, post_stim_rest=post_stim_rest, save_3dd_cmd=save_3dd_cmd, seed=seed, stim_labels=stim_labels, t_digits=t_digits, t_gran=t_gran, tr=tr, tr_locked=tr_locked, verb=verb, show_timing_stats=show_timing_stats)
+    return make_random_timing_py_execute(params, execution)
 
 
 __all__ = [
     "MAKE_RANDOM_TIMING_PY_METADATA",
     "MakeRandomTimingPyOutputs",
     "make_random_timing_py",
+    "make_random_timing_py_params",
 ]

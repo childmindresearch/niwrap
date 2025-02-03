@@ -12,35 +12,104 @@ FIXEL2VOXEL_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+Fixel2voxelConfigParameters = typing.TypedDict('Fixel2voxelConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Fixel2voxelParameters = typing.TypedDict('Fixel2voxelParameters', {
+    "__STYX_TYPE__": typing.Literal["fixel2voxel"],
+    "number": typing.NotRequired[int | None],
+    "fill": typing.NotRequired[float | None],
+    "weighted": typing.NotRequired[InputPathType | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Fixel2voxelConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "fixel_in": InputPathType,
+    "operation": str,
+    "image_out": str,
+})
 
 
-@dataclasses.dataclass
-class Fixel2voxelConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fixel2voxel": fixel2voxel_cargs,
+        "config": fixel2voxel_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fixel2voxel": fixel2voxel_outputs,
+    }
+    return vt.get(t)
+
+
+def fixel2voxel_config_params(
+    key: str,
+    value: str,
+) -> Fixel2voxelConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def fixel2voxel_config_cargs(
+    params: Fixel2voxelConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Fixel2voxelOutputs(typing.NamedTuple):
@@ -51,6 +120,206 @@ class Fixel2voxelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     image_out: OutputPathType
     """the output scalar image."""
+
+
+def fixel2voxel_params(
+    fixel_in: InputPathType,
+    operation: str,
+    image_out: str,
+    number: int | None = None,
+    fill: float | None = None,
+    weighted: InputPathType | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Fixel2voxelConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Fixel2voxelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fixel_in: the input fixel data file.
+        operation: the operation to apply, one of: mean, sum, product, min,\
+            max, absmax, magmax, count, complexity, sf, dec_unit, dec_scaled, none.
+        image_out: the output scalar image.
+        number: use only the largest N fixels in calculation of the voxel-wise\
+            statistic; in the case of operation "none", output only the largest N\
+            fixels in each voxel.
+        fill: for "none" operation, specify the value to fill when number of\
+            fixels is fewer than the maximum (default: 0.0).
+        weighted: weight the contribution of each fixel to the per-voxel result\
+            according to its volume.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fixel2voxel",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "fixel_in": fixel_in,
+        "operation": operation,
+        "image_out": image_out,
+    }
+    if number is not None:
+        params["number"] = number
+    if fill is not None:
+        params["fill"] = fill
+    if weighted is not None:
+        params["weighted"] = weighted
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def fixel2voxel_cargs(
+    params: Fixel2voxelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fixel2voxel")
+    if params.get("number") is not None:
+        cargs.extend([
+            "-number",
+            str(params.get("number"))
+        ])
+    if params.get("fill") is not None:
+        cargs.extend([
+            "-fill",
+            str(params.get("fill"))
+        ])
+    if params.get("weighted") is not None:
+        cargs.extend([
+            "-weighted",
+            execution.input_file(params.get("weighted"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("fixel_in")))
+    cargs.append(params.get("operation"))
+    cargs.append(params.get("image_out"))
+    return cargs
+
+
+def fixel2voxel_outputs(
+    params: Fixel2voxelParameters,
+    execution: Execution,
+) -> Fixel2voxelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Fixel2voxelOutputs(
+        root=execution.output_file("."),
+        image_out=execution.output_file(params.get("image_out")),
+    )
+    return ret
+
+
+def fixel2voxel_execute(
+    params: Fixel2voxelParameters,
+    execution: Execution,
+) -> Fixel2voxelOutputs:
+    """
+    Convert a fixel-based sparse-data image into some form of scalar image.
+    
+    Fixel data can be reduced to voxel data in a number of ways:
+    
+    - Some statistic computed across all fixel values within a voxel: mean, sum,
+    product, min, max, absmax, magmax
+    
+    - The number of fixels in each voxel: count
+    
+    - Some measure of crossing-fibre organisation: complexity, sf
+    ('single-fibre')
+    
+    - A 4D directionally-encoded colour image: dec_unit, dec_scaled
+    
+    - A 4D image containing all fixel data values in each voxel unmodified: none
+    
+    The -weighted option deals with the case where there is some per-fixel
+    metric of interest that you wish to collapse into a single scalar measure
+    per voxel, but each fixel possesses a different volume, and you wish for
+    those fixels with greater volume to have a greater influence on the
+    calculation than fixels with lesser volume. For instance, when estimating a
+    voxel-based measure of mean axon diameter from per-fixel mean axon
+    diameters, a fixel's mean axon diameter should be weigthed by its relative
+    volume within the voxel in the calculation of that voxel mean.
+    
+    References:
+    
+    * Reference for 'complexity' operation:
+    Riffert, T. W.; Schreiber, J.; Anwander, A. & Knosche, T. R. Beyond
+    Fractional Anisotropy: Extraction of bundle-specific structural metrics from
+    crossing fibre models. NeuroImage, 2014, 100, 176-191.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Fixel2voxelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fixel2voxel_cargs(params, execution)
+    ret = fixel2voxel_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fixel2voxel(
@@ -65,7 +334,7 @@ def fixel2voxel(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Fixel2voxelConfig] | None = None,
+    config: list[Fixel2voxelConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -137,56 +406,14 @@ def fixel2voxel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXEL2VOXEL_METADATA)
-    cargs = []
-    cargs.append("fixel2voxel")
-    if number is not None:
-        cargs.extend([
-            "-number",
-            str(number)
-        ])
-    if fill is not None:
-        cargs.extend([
-            "-fill",
-            str(fill)
-        ])
-    if weighted is not None:
-        cargs.extend([
-            "-weighted",
-            execution.input_file(weighted)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(fixel_in))
-    cargs.append(operation)
-    cargs.append(image_out)
-    ret = Fixel2voxelOutputs(
-        root=execution.output_file("."),
-        image_out=execution.output_file(image_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = fixel2voxel_params(number=number, fill=fill, weighted=weighted, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, fixel_in=fixel_in, operation=operation, image_out=image_out)
+    return fixel2voxel_execute(params, execution)
 
 
 __all__ = [
     "FIXEL2VOXEL_METADATA",
-    "Fixel2voxelConfig",
     "Fixel2voxelOutputs",
     "fixel2voxel",
+    "fixel2voxel_config_params",
+    "fixel2voxel_params",
 ]

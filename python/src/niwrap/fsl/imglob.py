@@ -12,14 +12,128 @@ IMGLOB_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+ImglobParameters = typing.TypedDict('ImglobParameters', {
+    "__STYX_TYPE__": typing.Literal["imglob"],
+    "multiple_extensions": bool,
+    "input_list": list[str],
+})
 
 
-class ImglobOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `imglob(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "imglob": imglob_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def imglob_params(
+    input_list: list[str],
+    multiple_extensions: bool = False,
+) -> ImglobParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_list: List of image names or file paths.
+        multiple_extensions: Output list of images with full extensions.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imglob",
+        "multiple_extensions": multiple_extensions,
+        "input_list": input_list,
+    }
+    return params
+
+
+def imglob_cargs(
+    params: ImglobParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("imglob")
+    if params.get("multiple_extensions"):
+        cargs.append("-extensions")
+    cargs.extend(params.get("input_list"))
+    return cargs
+
+
+def imglob_outputs(
+    params: ImglobParameters,
+    execution: Execution,
+) -> ImglobOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImglobOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def imglob_execute(
+    params: ImglobParameters,
+    execution: Execution,
+) -> ImglobOutputs:
+    """
+    Tool for generating image lists with specific extensions.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImglobOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = imglob_cargs(params, execution)
+    ret = imglob_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def imglob(
@@ -43,20 +157,12 @@ def imglob(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMGLOB_METADATA)
-    cargs = []
-    cargs.append("imglob")
-    if multiple_extensions:
-        cargs.append("-extensions")
-    cargs.extend(input_list)
-    ret = ImglobOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = imglob_params(multiple_extensions=multiple_extensions, input_list=input_list)
+    return imglob_execute(params, execution)
 
 
 __all__ = [
     "IMGLOB_METADATA",
-    "ImglobOutputs",
     "imglob",
+    "imglob_params",
 ]

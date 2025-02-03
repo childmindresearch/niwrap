@@ -12,14 +12,161 @@ SMOOTHEST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+SmoothestParameters = typing.TypedDict('SmoothestParameters', {
+    "__STYX_TYPE__": typing.Literal["smoothest"],
+    "dof": typing.NotRequired[float | None],
+    "residual_fit_image": typing.NotRequired[InputPathType | None],
+    "zstat_image": typing.NotRequired[InputPathType | None],
+    "mask": InputPathType,
+    "verbose_flag": bool,
+})
 
 
-class SmoothestOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `smoothest(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "smoothest": smoothest_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def smoothest_params(
+    mask: InputPathType,
+    dof: float | None = None,
+    residual_fit_image: InputPathType | None = None,
+    zstat_image: InputPathType | None = None,
+    verbose_flag: bool = False,
+) -> SmoothestParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mask: Brain mask volume.
+        dof: Number of degrees of freedom.
+        residual_fit_image: Filename of `residual-fit` image (use -d).
+        zstat_image: Filename of zstat image (not with -d).
+        verbose_flag: Switch on diagnostic messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "smoothest",
+        "mask": mask,
+        "verbose_flag": verbose_flag,
+    }
+    if dof is not None:
+        params["dof"] = dof
+    if residual_fit_image is not None:
+        params["residual_fit_image"] = residual_fit_image
+    if zstat_image is not None:
+        params["zstat_image"] = zstat_image
+    return params
+
+
+def smoothest_cargs(
+    params: SmoothestParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("smoothest")
+    if params.get("dof") is not None:
+        cargs.extend([
+            "-d",
+            str(params.get("dof"))
+        ])
+    if params.get("residual_fit_image") is not None:
+        cargs.extend([
+            "-r",
+            execution.input_file(params.get("residual_fit_image"))
+        ])
+    if params.get("zstat_image") is not None:
+        cargs.extend([
+            "-z",
+            execution.input_file(params.get("zstat_image"))
+        ])
+    cargs.extend([
+        "-m",
+        execution.input_file(params.get("mask"))
+    ])
+    if params.get("verbose_flag"):
+        cargs.append("-V")
+    return cargs
+
+
+def smoothest_outputs(
+    params: SmoothestParameters,
+    execution: Execution,
+) -> SmoothestOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SmoothestOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def smoothest_execute(
+    params: SmoothestParameters,
+    execution: Execution,
+) -> SmoothestOutputs:
+    """
+    Tool to estimate smoothness of data from FSL.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SmoothestOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = smoothest_cargs(params, execution)
+    ret = smoothest_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def smoothest(
@@ -49,38 +196,12 @@ def smoothest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SMOOTHEST_METADATA)
-    cargs = []
-    cargs.append("smoothest")
-    if dof is not None:
-        cargs.extend([
-            "-d",
-            str(dof)
-        ])
-    if residual_fit_image is not None:
-        cargs.extend([
-            "-r",
-            execution.input_file(residual_fit_image)
-        ])
-    if zstat_image is not None:
-        cargs.extend([
-            "-z",
-            execution.input_file(zstat_image)
-        ])
-    cargs.extend([
-        "-m",
-        execution.input_file(mask)
-    ])
-    if verbose_flag:
-        cargs.append("-V")
-    ret = SmoothestOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = smoothest_params(dof=dof, residual_fit_image=residual_fit_image, zstat_image=zstat_image, mask=mask, verbose_flag=verbose_flag)
+    return smoothest_execute(params, execution)
 
 
 __all__ = [
     "SMOOTHEST_METADATA",
-    "SmoothestOutputs",
     "smoothest",
+    "smoothest_params",
 ]

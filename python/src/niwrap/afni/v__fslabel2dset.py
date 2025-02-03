@@ -12,14 +12,154 @@ V__FSLABEL2DSET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VFslabel2dsetParameters = typing.TypedDict('VFslabel2dsetParameters', {
+    "__STYX_TYPE__": typing.Literal["@FSlabel2dset"],
+    "fs_label_file": InputPathType,
+    "val": typing.NotRequired[float | None],
+    "help": bool,
+    "echo": bool,
+    "keep_tmp": bool,
+})
 
 
-class VFslabel2dsetOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__fslabel2dset(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@FSlabel2dset": v__fslabel2dset_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__fslabel2dset_params(
+    fs_label_file: InputPathType,
+    val: float | None = None,
+    help_: bool = False,
+    echo: bool = False,
+    keep_tmp: bool = False,
+) -> VFslabel2dsetParameters:
+    """
+    Build parameters.
+    
+    Args:
+        fs_label_file: Specify the ASCII label file from FreeSurfer.
+        val: Assign integer VAL to the nodes in FS_LABEL_FILE (Default is 1).
+        help_: Display help message.
+        echo: Turn echo for debugging.
+        keep_tmp: Don't cleanup temp files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@FSlabel2dset",
+        "fs_label_file": fs_label_file,
+        "help": help_,
+        "echo": echo,
+        "keep_tmp": keep_tmp,
+    }
+    if val is not None:
+        params["val"] = val
+    return params
+
+
+def v__fslabel2dset_cargs(
+    params: VFslabel2dsetParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@FSlabel2dset")
+    cargs.extend([
+        "-fs",
+        execution.input_file(params.get("fs_label_file"))
+    ])
+    if params.get("val") is not None:
+        cargs.extend([
+            "-val",
+            str(params.get("val"))
+        ])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("echo"):
+        cargs.append("-echo")
+    if params.get("keep_tmp"):
+        cargs.append("-keep_tmp")
+    return cargs
+
+
+def v__fslabel2dset_outputs(
+    params: VFslabel2dsetParameters,
+    execution: Execution,
+) -> VFslabel2dsetOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VFslabel2dsetOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__fslabel2dset_execute(
+    params: VFslabel2dsetParameters,
+    execution: Execution,
+) -> VFslabel2dsetOutputs:
+    """
+    A script to convert a FreeSurfer ASCII label file into a SUMA dataset and a SUMA
+    ROI.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VFslabel2dsetOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__fslabel2dset_cargs(params, execution)
+    ret = v__fslabel2dset_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__fslabel2dset(
@@ -50,32 +190,12 @@ def v__fslabel2dset(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__FSLABEL2DSET_METADATA)
-    cargs = []
-    cargs.append("@FSlabel2dset")
-    cargs.extend([
-        "-fs",
-        execution.input_file(fs_label_file)
-    ])
-    if val is not None:
-        cargs.extend([
-            "-val",
-            str(val)
-        ])
-    if help_:
-        cargs.append("-help")
-    if echo:
-        cargs.append("-echo")
-    if keep_tmp:
-        cargs.append("-keep_tmp")
-    ret = VFslabel2dsetOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__fslabel2dset_params(fs_label_file=fs_label_file, val=val, help_=help_, echo=echo, keep_tmp=keep_tmp)
+    return v__fslabel2dset_execute(params, execution)
 
 
 __all__ = [
-    "VFslabel2dsetOutputs",
     "V__FSLABEL2DSET_METADATA",
     "v__fslabel2dset",
+    "v__fslabel2dset_params",
 ]

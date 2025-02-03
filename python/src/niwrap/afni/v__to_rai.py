@@ -12,14 +12,123 @@ V__TO_RAI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VToRaiParameters = typing.TypedDict('VToRaiParameters', {
+    "__STYX_TYPE__": typing.Literal["@ToRAI"],
+})
 
 
-class VToRaiOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__to_rai(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@ToRAI": v__to_rai_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__to_rai_params(
+) -> VToRaiParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@ToRAI",
+    }
+    return params
+
+
+def v__to_rai_cargs(
+    params: VToRaiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@ToRAI")
+    cargs.append("<-xyz")
+    cargs.append("X")
+    cargs.append("Y")
+    cargs.append("Z>")
+    cargs.append("<-or")
+    cargs.append("ORIENT>")
+    return cargs
+
+
+def v__to_rai_outputs(
+    params: VToRaiParameters,
+    execution: Execution,
+) -> VToRaiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VToRaiOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__to_rai_execute(
+    params: VToRaiParameters,
+    execution: Execution,
+) -> VToRaiOutputs:
+    """
+    Tool to change the ORIENT coordinates to RAI.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VToRaiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__to_rai_cargs(params, execution)
+    ret = v__to_rai_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__to_rai(
@@ -39,23 +148,12 @@ def v__to_rai(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TO_RAI_METADATA)
-    cargs = []
-    cargs.append("@ToRAI")
-    cargs.append("<-xyz")
-    cargs.append("X")
-    cargs.append("Y")
-    cargs.append("Z>")
-    cargs.append("<-or")
-    cargs.append("ORIENT>")
-    ret = VToRaiOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__to_rai_params()
+    return v__to_rai_execute(params, execution)
 
 
 __all__ = [
-    "VToRaiOutputs",
     "V__TO_RAI_METADATA",
     "v__to_rai",
+    "v__to_rai_params",
 ]

@@ -12,14 +12,245 @@ MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisMultimodalSurfacePlacementParameters = typing.TypedDict('MrisMultimodalSurfacePlacementParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_multimodal_surface_placement"],
+    "input_surface": InputPathType,
+    "output_surface": InputPathType,
+    "sphere_surface": InputPathType,
+    "normals": str,
+    "values": str,
+    "debug_vertex": typing.NotRequired[float | None],
+    "step_size": float,
+    "number_of_steps": float,
+    "gradient_sigma": float,
+    "aseg_aparc": InputPathType,
+    "white_surface": InputPathType,
+    "prob_of_csf": float,
+    "t1_image": InputPathType,
+    "t2_image": InputPathType,
+    "flair_image": InputPathType,
+    "min_max": bool,
+})
 
 
-class MrisMultimodalSurfacePlacementOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_multimodal_surface_placement(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_multimodal_surface_placement": mris_multimodal_surface_placement_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_multimodal_surface_placement_params(
+    input_surface: InputPathType,
+    output_surface: InputPathType,
+    sphere_surface: InputPathType,
+    normals: str,
+    values_: str,
+    step_size: float,
+    number_of_steps: float,
+    gradient_sigma: float,
+    aseg_aparc: InputPathType,
+    white_surface: InputPathType,
+    prob_of_csf: float,
+    t1_image: InputPathType,
+    t2_image: InputPathType,
+    flair_image: InputPathType,
+    debug_vertex: float | None = None,
+    min_max: bool = False,
+) -> MrisMultimodalSurfacePlacementParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file.
+        output_surface: Output surface file.
+        sphere_surface: Sphere surface file.
+        normals: Normals file in VTK format.
+        values_: Values file in VTK format.
+        step_size: Step size.
+        number_of_steps: Number of steps.
+        gradient_sigma: Gradient sigma value.
+        aseg_aparc: ASEG APARC image file.
+        white_surface: White surface file.
+        prob_of_csf: Probability of CSF.
+        t1_image: T1-weighted image file.
+        t2_image: T2-weighted image file.
+        flair_image: FLAIR image file.
+        debug_vertex: Debug vertex index.
+        min_max: Toggle between min or max operation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_multimodal_surface_placement",
+        "input_surface": input_surface,
+        "output_surface": output_surface,
+        "sphere_surface": sphere_surface,
+        "normals": normals,
+        "values": values_,
+        "step_size": step_size,
+        "number_of_steps": number_of_steps,
+        "gradient_sigma": gradient_sigma,
+        "aseg_aparc": aseg_aparc,
+        "white_surface": white_surface,
+        "prob_of_csf": prob_of_csf,
+        "t1_image": t1_image,
+        "t2_image": t2_image,
+        "flair_image": flair_image,
+        "min_max": min_max,
+    }
+    if debug_vertex is not None:
+        params["debug_vertex"] = debug_vertex
+    return params
+
+
+def mris_multimodal_surface_placement_cargs(
+    params: MrisMultimodalSurfacePlacementParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_multimodal_surface_placement")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input_surface"))
+    ])
+    cargs.extend([
+        "-o",
+        execution.input_file(params.get("output_surface"))
+    ])
+    cargs.extend([
+        "-b",
+        execution.input_file(params.get("sphere_surface"))
+    ])
+    cargs.extend([
+        "-n",
+        params.get("normals")
+    ])
+    cargs.extend([
+        "-v",
+        params.get("values")
+    ])
+    if params.get("debug_vertex") is not None:
+        cargs.extend([
+            "-d",
+            str(params.get("debug_vertex"))
+        ])
+    cargs.extend([
+        "-s",
+        str(params.get("step_size"))
+    ])
+    cargs.extend([
+        "-k",
+        str(params.get("number_of_steps"))
+    ])
+    cargs.extend([
+        "-g",
+        str(params.get("gradient_sigma"))
+    ])
+    cargs.extend([
+        "-a",
+        execution.input_file(params.get("aseg_aparc"))
+    ])
+    cargs.extend([
+        "-w",
+        execution.input_file(params.get("white_surface"))
+    ])
+    cargs.extend([
+        "-p",
+        str(params.get("prob_of_csf"))
+    ])
+    cargs.extend([
+        "-t1",
+        execution.input_file(params.get("t1_image"))
+    ])
+    cargs.extend([
+        "-t2",
+        execution.input_file(params.get("t2_image"))
+    ])
+    cargs.extend([
+        "-flair",
+        execution.input_file(params.get("flair_image"))
+    ])
+    if params.get("min_max"):
+        cargs.append("-min/max")
+    return cargs
+
+
+def mris_multimodal_surface_placement_outputs(
+    params: MrisMultimodalSurfacePlacementParameters,
+    execution: Execution,
+) -> MrisMultimodalSurfacePlacementOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisMultimodalSurfacePlacementOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_multimodal_surface_placement_execute(
+    params: MrisMultimodalSurfacePlacementParameters,
+    execution: Execution,
+) -> MrisMultimodalSurfacePlacementOutputs:
+    """
+    FreeSurfer command for multimodal surface placement.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisMultimodalSurfacePlacementOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_multimodal_surface_placement_cargs(params, execution)
+    ret = mris_multimodal_surface_placement_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_multimodal_surface_placement(
@@ -71,80 +302,12 @@ def mris_multimodal_surface_placement(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA)
-    cargs = []
-    cargs.append("mris_multimodal_surface_placement")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_surface)
-    ])
-    cargs.extend([
-        "-o",
-        execution.input_file(output_surface)
-    ])
-    cargs.extend([
-        "-b",
-        execution.input_file(sphere_surface)
-    ])
-    cargs.extend([
-        "-n",
-        normals
-    ])
-    cargs.extend([
-        "-v",
-        values_
-    ])
-    if debug_vertex is not None:
-        cargs.extend([
-            "-d",
-            str(debug_vertex)
-        ])
-    cargs.extend([
-        "-s",
-        str(step_size)
-    ])
-    cargs.extend([
-        "-k",
-        str(number_of_steps)
-    ])
-    cargs.extend([
-        "-g",
-        str(gradient_sigma)
-    ])
-    cargs.extend([
-        "-a",
-        execution.input_file(aseg_aparc)
-    ])
-    cargs.extend([
-        "-w",
-        execution.input_file(white_surface)
-    ])
-    cargs.extend([
-        "-p",
-        str(prob_of_csf)
-    ])
-    cargs.extend([
-        "-t1",
-        execution.input_file(t1_image)
-    ])
-    cargs.extend([
-        "-t2",
-        execution.input_file(t2_image)
-    ])
-    cargs.extend([
-        "-flair",
-        execution.input_file(flair_image)
-    ])
-    if min_max:
-        cargs.append("-min/max")
-    ret = MrisMultimodalSurfacePlacementOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_multimodal_surface_placement_params(input_surface=input_surface, output_surface=output_surface, sphere_surface=sphere_surface, normals=normals, values_=values_, debug_vertex=debug_vertex, step_size=step_size, number_of_steps=number_of_steps, gradient_sigma=gradient_sigma, aseg_aparc=aseg_aparc, white_surface=white_surface, prob_of_csf=prob_of_csf, t1_image=t1_image, t2_image=t2_image, flair_image=flair_image, min_max=min_max)
+    return mris_multimodal_surface_placement_execute(params, execution)
 
 
 __all__ = [
     "MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA",
-    "MrisMultimodalSurfacePlacementOutputs",
     "mris_multimodal_surface_placement",
+    "mris_multimodal_surface_placement_params",
 ]

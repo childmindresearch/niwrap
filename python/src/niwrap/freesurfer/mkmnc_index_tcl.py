@@ -12,6 +12,45 @@ MKMNC_INDEX_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MkmncIndexTclParameters = typing.TypedDict('MkmncIndexTclParameters', {
+    "__STYX_TYPE__": typing.Literal["mkmnc_index.tcl"],
+    "infile": InputPathType,
+    "outfile": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mkmnc_index.tcl": mkmnc_index_tcl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mkmnc_index.tcl": mkmnc_index_tcl_outputs,
+    }
+    return vt.get(t)
 
 
 class MkmncIndexTclOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class MkmncIndexTclOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     indexfile: OutputPathType
     """Generated index file"""
+
+
+def mkmnc_index_tcl_params(
+    infile: InputPathType,
+    outfile: str,
+) -> MkmncIndexTclParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input MINC file.
+        outfile: Output index file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mkmnc_index.tcl",
+        "infile": infile,
+        "outfile": outfile,
+    }
+    return params
+
+
+def mkmnc_index_tcl_cargs(
+    params: MkmncIndexTclParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mkmnc_index.tcl")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(params.get("outfile"))
+    return cargs
+
+
+def mkmnc_index_tcl_outputs(
+    params: MkmncIndexTclParameters,
+    execution: Execution,
+) -> MkmncIndexTclOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MkmncIndexTclOutputs(
+        root=execution.output_file("."),
+        indexfile=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def mkmnc_index_tcl_execute(
+    params: MkmncIndexTclParameters,
+    execution: Execution,
+) -> MkmncIndexTclOutputs:
+    """
+    A tool for creating MINC indices.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MkmncIndexTclOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mkmnc_index_tcl_cargs(params, execution)
+    ret = mkmnc_index_tcl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mkmnc_index_tcl(
@@ -45,20 +169,13 @@ def mkmnc_index_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKMNC_INDEX_TCL_METADATA)
-    cargs = []
-    cargs.append("mkmnc_index.tcl")
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
-    ret = MkmncIndexTclOutputs(
-        root=execution.output_file("."),
-        indexfile=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = mkmnc_index_tcl_params(infile=infile, outfile=outfile)
+    return mkmnc_index_tcl_execute(params, execution)
 
 
 __all__ = [
     "MKMNC_INDEX_TCL_METADATA",
     "MkmncIndexTclOutputs",
     "mkmnc_index_tcl",
+    "mkmnc_index_tcl_params",
 ]

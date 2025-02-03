@@ -12,32 +12,88 @@ CIFTI_MERGE_PARCELS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiMergeParcelsCiftiParameters = typing.TypedDict('CiftiMergeParcelsCiftiParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti"],
+    "cifti_in": InputPathType,
+})
+CiftiMergeParcelsParameters = typing.TypedDict('CiftiMergeParcelsParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-merge-parcels"],
+    "direction": str,
+    "cifti_out": str,
+    "cifti": typing.NotRequired[list[CiftiMergeParcelsCiftiParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiMergeParcelsCifti:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    specify an input cifti file.
-    """
-    cifti_in: InputPathType
-    """a cifti file to merge"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cifti")
-        cargs.append(execution.input_file(self.cifti_in))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-merge-parcels": cifti_merge_parcels_cargs,
+        "cifti": cifti_merge_parcels_cifti_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-merge-parcels": cifti_merge_parcels_outputs,
+    }
+    return vt.get(t)
+
+
+def cifti_merge_parcels_cifti_params(
+    cifti_in: InputPathType,
+) -> CiftiMergeParcelsCiftiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_in: a cifti file to merge.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti",
+        "cifti_in": cifti_in,
+    }
+    return params
+
+
+def cifti_merge_parcels_cifti_cargs(
+    params: CiftiMergeParcelsCiftiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cifti")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    return cargs
 
 
 class CiftiMergeParcelsOutputs(typing.NamedTuple):
@@ -50,10 +106,107 @@ class CiftiMergeParcelsOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
+def cifti_merge_parcels_params(
+    direction: str,
+    cifti_out: str,
+    cifti: list[CiftiMergeParcelsCiftiParameters] | None = None,
+) -> CiftiMergeParcelsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        direction: which dimension to merge along (integer, 'ROW', or 'COLUMN').
+        cifti_out: the output cifti file.
+        cifti: specify an input cifti file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-merge-parcels",
+        "direction": direction,
+        "cifti_out": cifti_out,
+    }
+    if cifti is not None:
+        params["cifti"] = cifti
+    return params
+
+
+def cifti_merge_parcels_cargs(
+    params: CiftiMergeParcelsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-merge-parcels")
+    cargs.append(params.get("direction"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("cifti") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("cifti")] for a in c])
+    return cargs
+
+
+def cifti_merge_parcels_outputs(
+    params: CiftiMergeParcelsParameters,
+    execution: Execution,
+) -> CiftiMergeParcelsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiMergeParcelsOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_merge_parcels_execute(
+    params: CiftiMergeParcelsParameters,
+    execution: Execution,
+) -> CiftiMergeParcelsOutputs:
+    """
+    Merge cifti files along parcels dimension.
+    
+    The input cifti files must have matching mappings along the direction not
+    specified, and the mapping along the specified direction must be parcels.
+    The direction can be either an integer starting from 1, or the strings 'ROW'
+    or 'COLUMN'.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiMergeParcelsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_merge_parcels_cargs(params, execution)
+    ret = cifti_merge_parcels_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def cifti_merge_parcels(
     direction: str,
     cifti_out: str,
-    cifti: list[CiftiMergeParcelsCifti] | None = None,
+    cifti: list[CiftiMergeParcelsCiftiParameters] | None = None,
     runner: Runner | None = None,
 ) -> CiftiMergeParcelsOutputs:
     """
@@ -78,24 +231,14 @@ def cifti_merge_parcels(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MERGE_PARCELS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-merge-parcels")
-    cargs.append(direction)
-    cargs.append(cifti_out)
-    if cifti is not None:
-        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
-    ret = CiftiMergeParcelsOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_merge_parcels_params(direction=direction, cifti_out=cifti_out, cifti=cifti)
+    return cifti_merge_parcels_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_MERGE_PARCELS_METADATA",
-    "CiftiMergeParcelsCifti",
     "CiftiMergeParcelsOutputs",
     "cifti_merge_parcels",
+    "cifti_merge_parcels_cifti_params",
+    "cifti_merge_parcels_params",
 ]

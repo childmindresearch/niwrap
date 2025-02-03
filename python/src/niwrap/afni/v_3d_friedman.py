@@ -12,6 +12,48 @@ V_3D_FRIEDMAN_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dFriedmanParameters = typing.TypedDict('V3dFriedmanParameters', {
+    "__STYX_TYPE__": typing.Literal["3dFriedman"],
+    "levels": int,
+    "datasets": list[InputPathType],
+    "workmem": typing.NotRequired[int | None],
+    "voxel_num": typing.NotRequired[int | None],
+    "output_prefix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dFriedman": v_3d_friedman_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dFriedman": v_3d_friedman_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dFriedmanOutputs(typing.NamedTuple):
@@ -22,6 +64,120 @@ class V3dFriedmanOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Friedman statistics output file"""
+
+
+def v_3d_friedman_params(
+    levels: int,
+    datasets: list[InputPathType],
+    output_prefix: str,
+    workmem: int | None = None,
+    voxel_num: int | None = None,
+) -> V3dFriedmanParameters:
+    """
+    Build parameters.
+    
+    Args:
+        levels: Number of treatments.
+        datasets: Data sets for each treatment.
+        output_prefix: Prefix for the output files.
+        workmem: Number of megabytes of RAM to use for statistical workspace.
+        voxel_num: Screen output for a specific voxel number.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dFriedman",
+        "levels": levels,
+        "datasets": datasets,
+        "output_prefix": output_prefix,
+    }
+    if workmem is not None:
+        params["workmem"] = workmem
+    if voxel_num is not None:
+        params["voxel_num"] = voxel_num
+    return params
+
+
+def v_3d_friedman_cargs(
+    params: V3dFriedmanParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dFriedman")
+    cargs.append(str(params.get("levels")))
+    cargs.extend([
+        "-dset",
+        *[execution.input_file(f) for f in params.get("datasets")]
+    ])
+    if params.get("workmem") is not None:
+        cargs.extend([
+            "-workmem",
+            str(params.get("workmem"))
+        ])
+    if params.get("voxel_num") is not None:
+        cargs.extend([
+            "-voxel",
+            str(params.get("voxel_num"))
+        ])
+    cargs.extend([
+        "-out",
+        params.get("output_prefix")
+    ])
+    return cargs
+
+
+def v_3d_friedman_outputs(
+    params: V3dFriedmanParameters,
+    execution: Execution,
+) -> V3dFriedmanOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dFriedmanOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_prefix") + "*"),
+    )
+    return ret
+
+
+def v_3d_friedman_execute(
+    params: V3dFriedmanParameters,
+    execution: Execution,
+) -> V3dFriedmanOutputs:
+    """
+    Performs nonparametric Friedman test for randomized complete block design
+    experiments.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dFriedmanOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_friedman_cargs(params, execution)
+    ret = v_3d_friedman_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_friedman(
@@ -52,37 +208,13 @@ def v_3d_friedman(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_FRIEDMAN_METADATA)
-    cargs = []
-    cargs.append("3dFriedman")
-    cargs.append(str(levels))
-    cargs.extend([
-        "-dset",
-        *[execution.input_file(f) for f in datasets]
-    ])
-    if workmem is not None:
-        cargs.extend([
-            "-workmem",
-            str(workmem)
-        ])
-    if voxel_num is not None:
-        cargs.extend([
-            "-voxel",
-            str(voxel_num)
-        ])
-    cargs.extend([
-        "-out",
-        output_prefix
-    ])
-    ret = V3dFriedmanOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_prefix + "*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_friedman_params(levels=levels, datasets=datasets, workmem=workmem, voxel_num=voxel_num, output_prefix=output_prefix)
+    return v_3d_friedman_execute(params, execution)
 
 
 __all__ = [
     "V3dFriedmanOutputs",
     "V_3D_FRIEDMAN_METADATA",
     "v_3d_friedman",
+    "v_3d_friedman_params",
 ]

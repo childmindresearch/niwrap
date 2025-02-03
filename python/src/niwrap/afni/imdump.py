@@ -12,6 +12,44 @@ IMDUMP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ImdumpParameters = typing.TypedDict('ImdumpParameters', {
+    "__STYX_TYPE__": typing.Literal["imdump"],
+    "input_image": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "imdump": imdump_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "imdump": imdump_outputs,
+    }
+    return vt.get(t)
 
 
 class ImdumpOutputs(typing.NamedTuple):
@@ -23,6 +61,87 @@ class ImdumpOutputs(typing.NamedTuple):
     stdout: OutputPathType
     """Nonzero pixels in the format: x-index y-index value, one pixel per
     line."""
+
+
+def imdump_params(
+    input_image: InputPathType,
+) -> ImdumpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Input image file to be processed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imdump",
+        "input_image": input_image,
+    }
+    return params
+
+
+def imdump_cargs(
+    params: ImdumpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("imdump")
+    cargs.append(execution.input_file(params.get("input_image")))
+    return cargs
+
+
+def imdump_outputs(
+    params: ImdumpParameters,
+    execution: Execution,
+) -> ImdumpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImdumpOutputs(
+        root=execution.output_file("."),
+        stdout=execution.output_file("stdout.txt"),
+    )
+    return ret
+
+
+def imdump_execute(
+    params: ImdumpParameters,
+    execution: Execution,
+) -> ImdumpOutputs:
+    """
+    Prints out nonzero pixels in an image.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImdumpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = imdump_cargs(params, execution)
+    ret = imdump_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def imdump(
@@ -44,19 +163,13 @@ def imdump(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMDUMP_METADATA)
-    cargs = []
-    cargs.append("imdump")
-    cargs.append(execution.input_file(input_image))
-    ret = ImdumpOutputs(
-        root=execution.output_file("."),
-        stdout=execution.output_file("stdout.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = imdump_params(input_image=input_image)
+    return imdump_execute(params, execution)
 
 
 __all__ = [
     "IMDUMP_METADATA",
     "ImdumpOutputs",
     "imdump",
+    "imdump_params",
 ]

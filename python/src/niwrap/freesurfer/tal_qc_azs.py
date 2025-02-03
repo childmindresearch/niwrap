@@ -12,14 +12,122 @@ TAL_QC_AZS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TalQcAzsParameters = typing.TypedDict('TalQcAzsParameters', {
+    "__STYX_TYPE__": typing.Literal["tal_QC_AZS"],
+    "logfile": InputPathType,
+})
 
 
-class TalQcAzsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tal_qc_azs(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "tal_QC_AZS": tal_qc_azs_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def tal_qc_azs_params(
+    logfile: InputPathType,
+) -> TalQcAzsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        logfile: Input logfile for processing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tal_QC_AZS",
+        "logfile": logfile,
+    }
+    return params
+
+
+def tal_qc_azs_cargs(
+    params: TalQcAzsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tal_QC_AZS")
+    cargs.append(execution.input_file(params.get("logfile")))
+    return cargs
+
+
+def tal_qc_azs_outputs(
+    params: TalQcAzsParameters,
+    execution: Execution,
+) -> TalQcAzsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TalQcAzsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tal_qc_azs_execute(
+    params: TalQcAzsParameters,
+    execution: Execution,
+) -> TalQcAzsOutputs:
+    """
+    A tool that processes a logfile.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TalQcAzsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tal_qc_azs_cargs(params, execution)
+    ret = tal_qc_azs_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tal_qc_azs(
@@ -41,18 +149,12 @@ def tal_qc_azs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TAL_QC_AZS_METADATA)
-    cargs = []
-    cargs.append("tal_QC_AZS")
-    cargs.append(execution.input_file(logfile))
-    ret = TalQcAzsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tal_qc_azs_params(logfile=logfile)
+    return tal_qc_azs_execute(params, execution)
 
 
 __all__ = [
     "TAL_QC_AZS_METADATA",
-    "TalQcAzsOutputs",
     "tal_qc_azs",
+    "tal_qc_azs_params",
 ]

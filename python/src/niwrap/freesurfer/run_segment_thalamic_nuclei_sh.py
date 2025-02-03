@@ -12,14 +12,130 @@ RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RunSegmentThalamicNucleiShParameters = typing.TypedDict('RunSegmentThalamicNucleiShParameters', {
+    "__STYX_TYPE__": typing.Literal["run_SegmentThalamicNuclei.sh"],
+    "mcr_root": str,
+    "args": typing.NotRequired[list[str] | None],
+})
 
 
-class RunSegmentThalamicNucleiShOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `run_segment_thalamic_nuclei_sh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "run_SegmentThalamicNuclei.sh": run_segment_thalamic_nuclei_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def run_segment_thalamic_nuclei_sh_params(
+    mcr_root: str,
+    args: list[str] | None = None,
+) -> RunSegmentThalamicNucleiShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mcr_root: The root directory of the deployed MATLAB Compiler Runtime\
+            (MCR).
+        args: Additional arguments for the script.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "run_SegmentThalamicNuclei.sh",
+        "mcr_root": mcr_root,
+    }
+    if args is not None:
+        params["args"] = args
+    return params
+
+
+def run_segment_thalamic_nuclei_sh_cargs(
+    params: RunSegmentThalamicNucleiShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("run_SegmentThalamicNuclei.sh")
+    cargs.append(params.get("mcr_root"))
+    if params.get("args") is not None:
+        cargs.extend(params.get("args"))
+    return cargs
+
+
+def run_segment_thalamic_nuclei_sh_outputs(
+    params: RunSegmentThalamicNucleiShParameters,
+    execution: Execution,
+) -> RunSegmentThalamicNucleiShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RunSegmentThalamicNucleiShOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def run_segment_thalamic_nuclei_sh_execute(
+    params: RunSegmentThalamicNucleiShParameters,
+    execution: Execution,
+) -> RunSegmentThalamicNucleiShOutputs:
+    """
+    Script for segmenting thalamic nuclei using FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RunSegmentThalamicNucleiShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = run_segment_thalamic_nuclei_sh_cargs(params, execution)
+    ret = run_segment_thalamic_nuclei_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def run_segment_thalamic_nuclei_sh(
@@ -44,20 +160,12 @@ def run_segment_thalamic_nuclei_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA)
-    cargs = []
-    cargs.append("run_SegmentThalamicNuclei.sh")
-    cargs.append(mcr_root)
-    if args is not None:
-        cargs.extend(args)
-    ret = RunSegmentThalamicNucleiShOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = run_segment_thalamic_nuclei_sh_params(mcr_root=mcr_root, args=args)
+    return run_segment_thalamic_nuclei_sh_execute(params, execution)
 
 
 __all__ = [
     "RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA",
-    "RunSegmentThalamicNucleiShOutputs",
     "run_segment_thalamic_nuclei_sh",
+    "run_segment_thalamic_nuclei_sh_params",
 ]

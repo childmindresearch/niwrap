@@ -12,14 +12,127 @@ MRI_CORRECT_SEGMENTATIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriCorrectSegmentationsParameters = typing.TypedDict('MriCorrectSegmentationsParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_correct_segmentations"],
+    "input_file_1": InputPathType,
+    "input_file_2": InputPathType,
+})
 
 
-class MriCorrectSegmentationsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_correct_segmentations(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_correct_segmentations": mri_correct_segmentations_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_correct_segmentations_params(
+    input_file_1: InputPathType,
+    input_file_2: InputPathType,
+) -> MriCorrectSegmentationsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file_1: First input file for correction (e.g. segmentation file).
+        input_file_2: Second input file for correction (e.g. reference file).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_correct_segmentations",
+        "input_file_1": input_file_1,
+        "input_file_2": input_file_2,
+    }
+    return params
+
+
+def mri_correct_segmentations_cargs(
+    params: MriCorrectSegmentationsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_correct_segmentations")
+    cargs.append(execution.input_file(params.get("input_file_1")))
+    cargs.append(execution.input_file(params.get("input_file_2")))
+    return cargs
+
+
+def mri_correct_segmentations_outputs(
+    params: MriCorrectSegmentationsParameters,
+    execution: Execution,
+) -> MriCorrectSegmentationsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriCorrectSegmentationsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_correct_segmentations_execute(
+    params: MriCorrectSegmentationsParameters,
+    execution: Execution,
+) -> MriCorrectSegmentationsOutputs:
+    """
+    Tool for correcting automated infant segmentations.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriCorrectSegmentationsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_correct_segmentations_cargs(params, execution)
+    ret = mri_correct_segmentations_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_correct_segmentations(
@@ -43,19 +156,12 @@ def mri_correct_segmentations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CORRECT_SEGMENTATIONS_METADATA)
-    cargs = []
-    cargs.append("mri_correct_segmentations")
-    cargs.append(execution.input_file(input_file_1))
-    cargs.append(execution.input_file(input_file_2))
-    ret = MriCorrectSegmentationsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_correct_segmentations_params(input_file_1=input_file_1, input_file_2=input_file_2)
+    return mri_correct_segmentations_execute(params, execution)
 
 
 __all__ = [
     "MRI_CORRECT_SEGMENTATIONS_METADATA",
-    "MriCorrectSegmentationsOutputs",
     "mri_correct_segmentations",
+    "mri_correct_segmentations_params",
 ]

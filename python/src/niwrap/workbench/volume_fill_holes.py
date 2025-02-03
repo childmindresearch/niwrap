@@ -12,6 +12,45 @@ VOLUME_FILL_HOLES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeFillHolesParameters = typing.TypedDict('VolumeFillHolesParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-fill-holes"],
+    "volume_in": InputPathType,
+    "volume_out": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "volume-fill-holes": volume_fill_holes_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "volume-fill-holes": volume_fill_holes_outputs,
+    }
+    return vt.get(t)
 
 
 class VolumeFillHolesOutputs(typing.NamedTuple):
@@ -22,6 +61,95 @@ class VolumeFillHolesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output ROI volume"""
+
+
+def volume_fill_holes_params(
+    volume_in: InputPathType,
+    volume_out: str,
+) -> VolumeFillHolesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume_in: the input ROI volume.
+        volume_out: the output ROI volume.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-fill-holes",
+        "volume_in": volume_in,
+        "volume_out": volume_out,
+    }
+    return params
+
+
+def volume_fill_holes_cargs(
+    params: VolumeFillHolesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-fill-holes")
+    cargs.append(execution.input_file(params.get("volume_in")))
+    cargs.append(params.get("volume_out"))
+    return cargs
+
+
+def volume_fill_holes_outputs(
+    params: VolumeFillHolesParameters,
+    execution: Execution,
+) -> VolumeFillHolesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeFillHolesOutputs(
+        root=execution.output_file("."),
+        volume_out=execution.output_file(params.get("volume_out")),
+    )
+    return ret
+
+
+def volume_fill_holes_execute(
+    params: VolumeFillHolesParameters,
+    execution: Execution,
+) -> VolumeFillHolesOutputs:
+    """
+    Fill holes in an roi volume.
+    
+    Finds all face-connected parts that are not included in the ROI, and fills
+    all but the largest one with ones.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeFillHolesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_fill_holes_cargs(params, execution)
+    ret = volume_fill_holes_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def volume_fill_holes(
@@ -48,21 +176,13 @@ def volume_fill_holes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_FILL_HOLES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-fill-holes")
-    cargs.append(execution.input_file(volume_in))
-    cargs.append(volume_out)
-    ret = VolumeFillHolesOutputs(
-        root=execution.output_file("."),
-        volume_out=execution.output_file(volume_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_fill_holes_params(volume_in=volume_in, volume_out=volume_out)
+    return volume_fill_holes_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_FILL_HOLES_METADATA",
     "VolumeFillHolesOutputs",
     "volume_fill_holes",
+    "volume_fill_holes_params",
 ]

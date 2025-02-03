@@ -12,65 +12,151 @@ METRIC_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricExtremaPresmoothParameters = typing.TypedDict('MetricExtremaPresmoothParameters', {
+    "__STYX_TYPE__": typing.Literal["presmooth"],
+    "kernel": float,
+    "opt_fwhm": bool,
+})
+MetricExtremaThresholdParameters = typing.TypedDict('MetricExtremaThresholdParameters', {
+    "__STYX_TYPE__": typing.Literal["threshold"],
+    "low": float,
+    "high": float,
+})
+MetricExtremaParameters = typing.TypedDict('MetricExtremaParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-extrema"],
+    "surface": InputPathType,
+    "metric_in": InputPathType,
+    "distance": float,
+    "metric_out": str,
+    "presmooth": typing.NotRequired[MetricExtremaPresmoothParameters | None],
+    "opt_roi_roi_metric": typing.NotRequired[InputPathType | None],
+    "threshold": typing.NotRequired[MetricExtremaThresholdParameters | None],
+    "opt_sum_columns": bool,
+    "opt_consolidate_mode": bool,
+    "opt_only_maxima": bool,
+    "opt_only_minima": bool,
+    "opt_column_column": typing.NotRequired[str | None],
+})
 
 
-@dataclasses.dataclass
-class MetricExtremaPresmooth:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    smooth the metric before finding extrema.
-    """
-    kernel: float
-    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
-    opt_fwhm: bool = False
-    """kernel size is FWHM, not sigma"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-presmooth")
-        cargs.append(str(self.kernel))
-        if self.opt_fwhm:
-            cargs.append("-fwhm")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-extrema": metric_extrema_cargs,
+        "presmooth": metric_extrema_presmooth_cargs,
+        "threshold": metric_extrema_threshold_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MetricExtremaThreshold:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    ignore small extrema.
-    """
-    low: float
-    """the largest value to consider for being a minimum"""
-    high: float
-    """the smallest value to consider for being a maximum"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-threshold")
-        cargs.append(str(self.low))
-        cargs.append(str(self.high))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-extrema": metric_extrema_outputs,
+    }
+    return vt.get(t)
+
+
+def metric_extrema_presmooth_params(
+    kernel: float,
+    opt_fwhm: bool = False,
+) -> MetricExtremaPresmoothParameters:
+    """
+    Build parameters.
+    
+    Args:
+        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\
+            default.
+        opt_fwhm: kernel size is FWHM, not sigma.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "presmooth",
+        "kernel": kernel,
+        "opt_fwhm": opt_fwhm,
+    }
+    return params
+
+
+def metric_extrema_presmooth_cargs(
+    params: MetricExtremaPresmoothParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-presmooth")
+    cargs.append(str(params.get("kernel")))
+    if params.get("opt_fwhm"):
+        cargs.append("-fwhm")
+    return cargs
+
+
+def metric_extrema_threshold_params(
+    low: float,
+    high: float,
+) -> MetricExtremaThresholdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        low: the largest value to consider for being a minimum.
+        high: the smallest value to consider for being a maximum.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "threshold",
+        "low": low,
+        "high": high,
+    }
+    return params
+
+
+def metric_extrema_threshold_cargs(
+    params: MetricExtremaThresholdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-threshold")
+    cargs.append(str(params.get("low")))
+    cargs.append(str(params.get("high")))
+    return cargs
 
 
 class MetricExtremaOutputs(typing.NamedTuple):
@@ -83,14 +169,189 @@ class MetricExtremaOutputs(typing.NamedTuple):
     """the output extrema metric"""
 
 
+def metric_extrema_params(
+    surface: InputPathType,
+    metric_in: InputPathType,
+    distance: float,
+    metric_out: str,
+    presmooth: MetricExtremaPresmoothParameters | None = None,
+    opt_roi_roi_metric: InputPathType | None = None,
+    threshold: MetricExtremaThresholdParameters | None = None,
+    opt_sum_columns: bool = False,
+    opt_consolidate_mode: bool = False,
+    opt_only_maxima: bool = False,
+    opt_only_minima: bool = False,
+    opt_column_column: str | None = None,
+) -> MetricExtremaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to use for distance information.
+        metric_in: the metric to find the extrema of.
+        distance: the minimum distance between identified extrema of the same\
+            type.
+        metric_out: the output extrema metric.
+        presmooth: smooth the metric before finding extrema.
+        opt_roi_roi_metric: ignore values outside the selected area: the area\
+            to find extrema in, as a metric.
+        threshold: ignore small extrema.
+        opt_sum_columns: output the sum of the extrema columns instead of each\
+            column separately.
+        opt_consolidate_mode: use consolidation of local minima instead of a\
+            large neighborhood.
+        opt_only_maxima: only find the maxima.
+        opt_only_minima: only find the minima.
+        opt_column_column: select a single column to find extrema in: the\
+            column number or name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-extrema",
+        "surface": surface,
+        "metric_in": metric_in,
+        "distance": distance,
+        "metric_out": metric_out,
+        "opt_sum_columns": opt_sum_columns,
+        "opt_consolidate_mode": opt_consolidate_mode,
+        "opt_only_maxima": opt_only_maxima,
+        "opt_only_minima": opt_only_minima,
+    }
+    if presmooth is not None:
+        params["presmooth"] = presmooth
+    if opt_roi_roi_metric is not None:
+        params["opt_roi_roi_metric"] = opt_roi_roi_metric
+    if threshold is not None:
+        params["threshold"] = threshold
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    return params
+
+
+def metric_extrema_cargs(
+    params: MetricExtremaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-extrema")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("metric_in")))
+    cargs.append(str(params.get("distance")))
+    cargs.append(params.get("metric_out"))
+    if params.get("presmooth") is not None:
+        cargs.extend(dyn_cargs(params.get("presmooth")["__STYXTYPE__"])(params.get("presmooth"), execution))
+    if params.get("opt_roi_roi_metric") is not None:
+        cargs.extend([
+            "-roi",
+            execution.input_file(params.get("opt_roi_roi_metric"))
+        ])
+    if params.get("threshold") is not None:
+        cargs.extend(dyn_cargs(params.get("threshold")["__STYXTYPE__"])(params.get("threshold"), execution))
+    if params.get("opt_sum_columns"):
+        cargs.append("-sum-columns")
+    if params.get("opt_consolidate_mode"):
+        cargs.append("-consolidate-mode")
+    if params.get("opt_only_maxima"):
+        cargs.append("-only-maxima")
+    if params.get("opt_only_minima"):
+        cargs.append("-only-minima")
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    return cargs
+
+
+def metric_extrema_outputs(
+    params: MetricExtremaParameters,
+    execution: Execution,
+) -> MetricExtremaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricExtremaOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_extrema_execute(
+    params: MetricExtremaParameters,
+    execution: Execution,
+) -> MetricExtremaOutputs:
+    """
+    Find extrema in a metric file.
+    
+    Finds extrema in a metric file, such that no two extrema of the same type
+    are within <distance> of each other. The extrema are labeled as -1 for
+    minima, 1 for maxima, 0 otherwise. If -only-maxima or -only-minima is
+    specified, then it will ignore extrema not of the specified type. These
+    options are mutually exclusive.
+    
+    If -roi is specified, not only is data outside the roi not used, but any
+    vertex on the edge of the ROI will never be counted as an extrema, in case
+    the ROI cuts across a gradient, which would otherwise generate extrema where
+    there should be none.
+    
+    If -sum-columns is specified, these extrema columns are summed, and the
+    output has a single column with this result.
+    
+    By default, a datapoint is an extrema only if it is more extreme than every
+    other datapoint that is within <distance> from it. If -consolidate-mode is
+    used, it instead starts by finding all datapoints that are more extreme than
+    their immediate neighbors, then while there are any extrema within
+    <distance> of each other, take the two extrema closest to each other and
+    merge them into one by a weighted average based on how many original extrema
+    have been merged into each.
+    
+    By default, all input columns are used with no smoothing, use -column to
+    specify a single column to use, and -presmooth to smooth the input before
+    finding the extrema.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricExtremaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_extrema_cargs(params, execution)
+    ret = metric_extrema_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def metric_extrema(
     surface: InputPathType,
     metric_in: InputPathType,
     distance: float,
     metric_out: str,
-    presmooth: MetricExtremaPresmooth | None = None,
+    presmooth: MetricExtremaPresmoothParameters | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
-    threshold: MetricExtremaThreshold | None = None,
+    threshold: MetricExtremaThresholdParameters | None = None,
     opt_sum_columns: bool = False,
     opt_consolidate_mode: bool = False,
     opt_only_maxima: bool = False,
@@ -155,47 +416,15 @@ def metric_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_EXTREMA_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-extrema")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_in))
-    cargs.append(str(distance))
-    cargs.append(metric_out)
-    if presmooth is not None:
-        cargs.extend(presmooth.run(execution))
-    if opt_roi_roi_metric is not None:
-        cargs.extend([
-            "-roi",
-            execution.input_file(opt_roi_roi_metric)
-        ])
-    if threshold is not None:
-        cargs.extend(threshold.run(execution))
-    if opt_sum_columns:
-        cargs.append("-sum-columns")
-    if opt_consolidate_mode:
-        cargs.append("-consolidate-mode")
-    if opt_only_maxima:
-        cargs.append("-only-maxima")
-    if opt_only_minima:
-        cargs.append("-only-minima")
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    ret = MetricExtremaOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_extrema_params(surface=surface, metric_in=metric_in, distance=distance, metric_out=metric_out, presmooth=presmooth, opt_roi_roi_metric=opt_roi_roi_metric, threshold=threshold, opt_sum_columns=opt_sum_columns, opt_consolidate_mode=opt_consolidate_mode, opt_only_maxima=opt_only_maxima, opt_only_minima=opt_only_minima, opt_column_column=opt_column_column)
+    return metric_extrema_execute(params, execution)
 
 
 __all__ = [
     "METRIC_EXTREMA_METADATA",
     "MetricExtremaOutputs",
-    "MetricExtremaPresmooth",
-    "MetricExtremaThreshold",
     "metric_extrema",
+    "metric_extrema_params",
+    "metric_extrema_presmooth_params",
+    "metric_extrema_threshold_params",
 ]

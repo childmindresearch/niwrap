@@ -12,6 +12,58 @@ V_3DPC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dpcParameters = typing.TypedDict('V3dpcParameters', {
+    "__STYX_TYPE__": typing.Literal["3dpc"],
+    "datasets": list[InputPathType],
+    "dmean": bool,
+    "vmean": bool,
+    "vnorm": bool,
+    "normalize": bool,
+    "nscale": bool,
+    "pcsave": typing.NotRequired[str | None],
+    "reduce": typing.NotRequired[list[str] | None],
+    "prefix": typing.NotRequired[str | None],
+    "dummy_lines": typing.NotRequired[int | None],
+    "verbose": bool,
+    "quiet": bool,
+    "eigonly": bool,
+    "float": bool,
+    "mask": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dpc": v_3dpc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dpc": v_3dpc_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dpcOutputs(typing.NamedTuple):
@@ -30,6 +82,184 @@ class V3dpcOutputs(typing.NamedTuple):
     """File with all eigen-timeseries"""
     output_individual_vec: OutputPathType | None
     """File with individual eigenvalue timeseries"""
+
+
+def v_3dpc_params(
+    datasets: list[InputPathType],
+    dmean: bool = False,
+    vmean: bool = False,
+    vnorm: bool = False,
+    normalize: bool = False,
+    nscale: bool = False,
+    pcsave: str | None = None,
+    reduce: list[str] | None = None,
+    prefix: str | None = None,
+    dummy_lines: int | None = None,
+    verbose: bool = False,
+    quiet: bool = False,
+    eigonly: bool = False,
+    float_: bool = False,
+    mask: InputPathType | None = None,
+) -> V3dpcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        datasets: Input dataset(s) with sub-brick selector list support.
+        dmean: Remove the mean from each input brick (across space).
+        vmean: Remove the mean from each input voxel (across bricks).
+        vnorm: L2 normalize each input voxel time series.
+        normalize: L2 normalize each input brick (after mean subtraction).
+        nscale: Scale the covariance matrix by the number of samples.
+        pcsave: 'sss' is the number of components to save in the output.
+        reduce: Compute a dimensionally reduced dataset with top 'r'\
+            eigenvalues and write to disk in dataset 'pp'.
+        prefix: Name for the output dataset.
+        dummy_lines: Add 'ddd' dummy lines to the top of each *.1D file.
+        verbose: Print progress reports during the computations.
+        quiet: Don't print progress reports.
+        eigonly: Only compute eigenvalues, write them to 'pname'_eig.1D, then\
+            stop.
+        float_: Save eigen-bricks as floats (default = shorts).
+        mask: Use the 0 sub-brick of dataset 'mset' as a mask indicating which\
+            voxels to analyze.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dpc",
+        "datasets": datasets,
+        "dmean": dmean,
+        "vmean": vmean,
+        "vnorm": vnorm,
+        "normalize": normalize,
+        "nscale": nscale,
+        "verbose": verbose,
+        "quiet": quiet,
+        "eigonly": eigonly,
+        "float": float_,
+    }
+    if pcsave is not None:
+        params["pcsave"] = pcsave
+    if reduce is not None:
+        params["reduce"] = reduce
+    if prefix is not None:
+        params["prefix"] = prefix
+    if dummy_lines is not None:
+        params["dummy_lines"] = dummy_lines
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_3dpc_cargs(
+    params: V3dpcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dpc")
+    cargs.extend([execution.input_file(f) for f in params.get("datasets")])
+    if params.get("dmean"):
+        cargs.append("-dmean")
+    if params.get("vmean"):
+        cargs.append("-vmean")
+    if params.get("vnorm"):
+        cargs.append("-vnorm")
+    if params.get("normalize"):
+        cargs.append("-normalize")
+    if params.get("nscale"):
+        cargs.append("-nscale")
+    if params.get("pcsave") is not None:
+        cargs.extend([
+            "-pcsave",
+            params.get("pcsave")
+        ])
+    if params.get("reduce") is not None:
+        cargs.extend([
+            "-reduce",
+            *params.get("reduce")
+        ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("dummy_lines") is not None:
+        cargs.extend([
+            "-1ddum",
+            str(params.get("dummy_lines"))
+        ])
+    if params.get("verbose"):
+        cargs.append("-verbose")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("eigonly"):
+        cargs.append("-eigonly")
+    if params.get("float"):
+        cargs.append("-float")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    return cargs
+
+
+def v_3dpc_outputs(
+    params: V3dpcParameters,
+    execution: Execution,
+) -> V3dpcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dpcOutputs(
+        root=execution.output_file("."),
+        output_dataset=execution.output_file(params.get("prefix") + "+orig.BRIK") if (params.get("prefix") is not None) else None,
+        output_header=execution.output_file(params.get("prefix") + "+orig.HEAD") if (params.get("prefix") is not None) else None,
+        output_eig=execution.output_file(params.get("prefix") + "_eig.1D") if (params.get("prefix") is not None) else None,
+        output_vec=execution.output_file(params.get("prefix") + "_vec.1D") if (params.get("prefix") is not None) else None,
+        output_individual_vec=execution.output_file(params.get("prefix") + "[NN].1D") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3dpc_execute(
+    params: V3dpcParameters,
+    execution: Execution,
+) -> V3dpcOutputs:
+    """
+    Principal Component Analysis of 3D Datasets.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dpcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dpc_cargs(params, execution)
+    ret = v_3dpc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dpc(
@@ -80,70 +310,15 @@ def v_3dpc(
     Returns:
         NamedTuple of outputs (described in `V3dpcOutputs`).
     """
-    if reduce is not None and (len(reduce) != 2): 
-        raise ValueError(f"Length of 'reduce' must be 2 but was {len(reduce)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DPC_METADATA)
-    cargs = []
-    cargs.append("3dpc")
-    cargs.extend([execution.input_file(f) for f in datasets])
-    if dmean:
-        cargs.append("-dmean")
-    if vmean:
-        cargs.append("-vmean")
-    if vnorm:
-        cargs.append("-vnorm")
-    if normalize:
-        cargs.append("-normalize")
-    if nscale:
-        cargs.append("-nscale")
-    if pcsave is not None:
-        cargs.extend([
-            "-pcsave",
-            pcsave
-        ])
-    if reduce is not None:
-        cargs.extend([
-            "-reduce",
-            *reduce
-        ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if dummy_lines is not None:
-        cargs.extend([
-            "-1ddum",
-            str(dummy_lines)
-        ])
-    if verbose:
-        cargs.append("-verbose")
-    if quiet:
-        cargs.append("-quiet")
-    if eigonly:
-        cargs.append("-eigonly")
-    if float_:
-        cargs.append("-float")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    ret = V3dpcOutputs(
-        root=execution.output_file("."),
-        output_dataset=execution.output_file(prefix + "+orig.BRIK") if (prefix is not None) else None,
-        output_header=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,
-        output_eig=execution.output_file(prefix + "_eig.1D") if (prefix is not None) else None,
-        output_vec=execution.output_file(prefix + "_vec.1D") if (prefix is not None) else None,
-        output_individual_vec=execution.output_file(prefix + "[NN].1D") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dpc_params(datasets=datasets, dmean=dmean, vmean=vmean, vnorm=vnorm, normalize=normalize, nscale=nscale, pcsave=pcsave, reduce=reduce, prefix=prefix, dummy_lines=dummy_lines, verbose=verbose, quiet=quiet, eigonly=eigonly, float_=float_, mask=mask)
+    return v_3dpc_execute(params, execution)
 
 
 __all__ = [
     "V3dpcOutputs",
     "V_3DPC_METADATA",
     "v_3dpc",
+    "v_3dpc_params",
 ]

@@ -12,14 +12,127 @@ FILMBABESCRIPT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FilmbabescriptParameters = typing.TypedDict('FilmbabescriptParameters', {
+    "__STYX_TYPE__": typing.Literal["filmbabescript"],
+    "feat_dir": str,
+    "flobs_dir": str,
+})
 
 
-class FilmbabescriptOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `filmbabescript(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "filmbabescript": filmbabescript_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def filmbabescript_params(
+    feat_dir: str,
+    flobs_dir: str,
+) -> FilmbabescriptParameters:
+    """
+    Build parameters.
+    
+    Args:
+        feat_dir: Input FEAT directory.
+        flobs_dir: Input FLOBs directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "filmbabescript",
+        "feat_dir": feat_dir,
+        "flobs_dir": flobs_dir,
+    }
+    return params
+
+
+def filmbabescript_cargs(
+    params: FilmbabescriptParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("filmbabescript")
+    cargs.append(params.get("feat_dir"))
+    cargs.append(params.get("flobs_dir"))
+    return cargs
+
+
+def filmbabescript_outputs(
+    params: FilmbabescriptParameters,
+    execution: Execution,
+) -> FilmbabescriptOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FilmbabescriptOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def filmbabescript_execute(
+    params: FilmbabescriptParameters,
+    execution: Execution,
+) -> FilmbabescriptOutputs:
+    """
+    A tool/script for processing FEAT directories and FLOBs directories.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FilmbabescriptOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = filmbabescript_cargs(params, execution)
+    ret = filmbabescript_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def filmbabescript(
@@ -43,19 +156,12 @@ def filmbabescript(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FILMBABESCRIPT_METADATA)
-    cargs = []
-    cargs.append("filmbabescript")
-    cargs.append(feat_dir)
-    cargs.append(flobs_dir)
-    ret = FilmbabescriptOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = filmbabescript_params(feat_dir=feat_dir, flobs_dir=flobs_dir)
+    return filmbabescript_execute(params, execution)
 
 
 __all__ = [
     "FILMBABESCRIPT_METADATA",
-    "FilmbabescriptOutputs",
     "filmbabescript",
+    "filmbabescript_params",
 ]

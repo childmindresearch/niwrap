@@ -12,6 +12,44 @@ HELP_FORMAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+HelpFormatParameters = typing.TypedDict('HelpFormatParameters', {
+    "__STYX_TYPE__": typing.Literal["help_format"],
+    "stdin": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "help_format": help_format_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "help_format": help_format_outputs,
+    }
+    return vt.get(t)
 
 
 class HelpFormatOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class HelpFormatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     formatted_output: OutputPathType
     """The formatted text with hyperlinks"""
+
+
+def help_format_params(
+    stdin: str,
+) -> HelpFormatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        stdin: Standard input text to be formatted.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "help_format",
+        "stdin": stdin,
+    }
+    return params
+
+
+def help_format_cargs(
+    params: HelpFormatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("help_format")
+    cargs.append(params.get("stdin"))
+    return cargs
+
+
+def help_format_outputs(
+    params: HelpFormatParameters,
+    execution: Execution,
+) -> HelpFormatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = HelpFormatOutputs(
+        root=execution.output_file("."),
+        formatted_output=execution.output_file("formatted_output.html"),
+    )
+    return ret
+
+
+def help_format_execute(
+    params: HelpFormatParameters,
+    execution: Execution,
+) -> HelpFormatOutputs:
+    """
+    Formats text by converting URLs into HTML hyperlinks.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `HelpFormatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = help_format_cargs(params, execution)
+    ret = help_format_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def help_format(
@@ -43,19 +162,13 @@ def help_format(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HELP_FORMAT_METADATA)
-    cargs = []
-    cargs.append("help_format")
-    cargs.append(stdin)
-    ret = HelpFormatOutputs(
-        root=execution.output_file("."),
-        formatted_output=execution.output_file("formatted_output.html"),
-    )
-    execution.run(cargs)
-    return ret
+    params = help_format_params(stdin=stdin)
+    return help_format_execute(params, execution)
 
 
 __all__ = [
     "HELP_FORMAT_METADATA",
     "HelpFormatOutputs",
     "help_format",
+    "help_format_params",
 ]

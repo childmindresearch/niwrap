@@ -12,6 +12,46 @@ MRI_DIST_SURF_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriDistSurfLabelParameters = typing.TypedDict('MriDistSurfLabelParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_dist_surf_label"],
+    "surface": InputPathType,
+    "label_file": InputPathType,
+    "output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_dist_surf_label": mri_dist_surf_label_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_dist_surf_label": mri_dist_surf_label_outputs,
+    }
+    return vt.get(t)
 
 
 class MriDistSurfLabelOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MriDistSurfLabelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """Output file containing computed distances."""
+
+
+def mri_dist_surf_label_params(
+    surface: InputPathType,
+    label_file: InputPathType,
+    output: str,
+) -> MriDistSurfLabelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Input surface file.
+        label_file: Input label file.
+        output: Output file for distances.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_dist_surf_label",
+        "surface": surface,
+        "label_file": label_file,
+        "output": output,
+    }
+    return params
+
+
+def mri_dist_surf_label_cargs(
+    params: MriDistSurfLabelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_dist_surf_label")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("label_file")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def mri_dist_surf_label_outputs(
+    params: MriDistSurfLabelParameters,
+    execution: Execution,
+) -> MriDistSurfLabelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriDistSurfLabelOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def mri_dist_surf_label_execute(
+    params: MriDistSurfLabelParameters,
+    execution: Execution,
+) -> MriDistSurfLabelOutputs:
+    """
+    Computes distances from input surface to label points or waypoints.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriDistSurfLabelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_dist_surf_label_cargs(params, execution)
+    ret = mri_dist_surf_label_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_dist_surf_label(
@@ -47,21 +176,13 @@ def mri_dist_surf_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DIST_SURF_LABEL_METADATA)
-    cargs = []
-    cargs.append("mri_dist_surf_label")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(label_file))
-    cargs.append(output)
-    ret = MriDistSurfLabelOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_dist_surf_label_params(surface=surface, label_file=label_file, output=output)
+    return mri_dist_surf_label_execute(params, execution)
 
 
 __all__ = [
     "MRI_DIST_SURF_LABEL_METADATA",
     "MriDistSurfLabelOutputs",
     "mri_dist_surf_label",
+    "mri_dist_surf_label_params",
 ]

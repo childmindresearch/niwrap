@@ -12,14 +12,128 @@ BREC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+BrecParameters = typing.TypedDict('BrecParameters', {
+    "__STYX_TYPE__": typing.Literal["brec"],
+    "my_file": str,
+    "depth_limit": bool,
+})
 
 
-class BrecOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `brec(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "brec": brec_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def brec_params(
+    my_file: str,
+    depth_limit: bool = False,
+) -> BrecParameters:
+    """
+    Build parameters.
+    
+    Args:
+        my_file: Input file with .rec extension.
+        depth_limit: Optional depth limit flag.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "brec",
+        "my_file": my_file,
+        "depth_limit": depth_limit,
+    }
+    return params
+
+
+def brec_cargs(
+    params: BrecParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("brec")
+    cargs.append(params.get("my_file"))
+    if params.get("depth_limit"):
+        cargs.append("-depth_limit")
+    return cargs
+
+
+def brec_outputs(
+    params: BrecParameters,
+    execution: Execution,
+) -> BrecOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BrecOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def brec_execute(
+    params: BrecParameters,
+    execution: Execution,
+) -> BrecOutputs:
+    """
+    A description for brec tool could not be retrieved.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BrecOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = brec_cargs(params, execution)
+    ret = brec_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def brec(
@@ -43,20 +157,12 @@ def brec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BREC_METADATA)
-    cargs = []
-    cargs.append("brec")
-    cargs.append(my_file)
-    if depth_limit:
-        cargs.append("-depth_limit")
-    ret = BrecOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = brec_params(my_file=my_file, depth_limit=depth_limit)
+    return brec_execute(params, execution)
 
 
 __all__ = [
     "BREC_METADATA",
-    "BrecOutputs",
     "brec",
+    "brec_params",
 ]

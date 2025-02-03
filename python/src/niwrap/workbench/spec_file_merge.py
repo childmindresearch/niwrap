@@ -12,14 +12,136 @@ SPEC_FILE_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SpecFileMergeParameters = typing.TypedDict('SpecFileMergeParameters', {
+    "__STYX_TYPE__": typing.Literal["spec-file-merge"],
+    "spec_1": str,
+    "spec_2": str,
+    "out_spec": str,
+})
 
 
-class SpecFileMergeOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `spec_file_merge(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "spec-file-merge": spec_file_merge_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def spec_file_merge_params(
+    spec_1: str,
+    spec_2: str,
+    out_spec: str,
+) -> SpecFileMergeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        spec_1: first spec file to merge.
+        spec_2: second spec file to merge.
+        out_spec: output - output spec file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "spec-file-merge",
+        "spec_1": spec_1,
+        "spec_2": spec_2,
+        "out_spec": out_spec,
+    }
+    return params
+
+
+def spec_file_merge_cargs(
+    params: SpecFileMergeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-spec-file-merge")
+    cargs.append(params.get("spec_1"))
+    cargs.append(params.get("spec_2"))
+    cargs.append(params.get("out_spec"))
+    return cargs
+
+
+def spec_file_merge_outputs(
+    params: SpecFileMergeParameters,
+    execution: Execution,
+) -> SpecFileMergeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SpecFileMergeOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def spec_file_merge_execute(
+    params: SpecFileMergeParameters,
+    execution: Execution,
+) -> SpecFileMergeOutputs:
+    """
+    Merge two spec files into one.
+    
+    The output spec file contains every file that is in either of the input spec
+    files.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SpecFileMergeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = spec_file_merge_cargs(params, execution)
+    ret = spec_file_merge_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def spec_file_merge(
@@ -48,21 +170,12 @@ def spec_file_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPEC_FILE_MERGE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-spec-file-merge")
-    cargs.append(spec_1)
-    cargs.append(spec_2)
-    cargs.append(out_spec)
-    ret = SpecFileMergeOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = spec_file_merge_params(spec_1=spec_1, spec_2=spec_2, out_spec=out_spec)
+    return spec_file_merge_execute(params, execution)
 
 
 __all__ = [
     "SPEC_FILE_MERGE_METADATA",
-    "SpecFileMergeOutputs",
     "spec_file_merge",
+    "spec_file_merge_params",
 ]

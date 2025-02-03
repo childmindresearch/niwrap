@@ -12,6 +12,47 @@ AVI2TALXFM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Avi2talxfmParameters = typing.TypedDict('Avi2talxfmParameters', {
+    "__STYX_TYPE__": typing.Literal["avi2talxfm"],
+    "input_volume": InputPathType,
+    "target_volume": InputPathType,
+    "vox2vox_transform": InputPathType,
+    "output_xfm": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "avi2talxfm": avi2talxfm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "avi2talxfm": avi2talxfm_outputs,
+    }
+    return vt.get(t)
 
 
 class Avi2talxfmOutputs(typing.NamedTuple):
@@ -22,6 +63,99 @@ class Avi2talxfmOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_xfm_file: OutputPathType
     """Resulting MNI transform file"""
+
+
+def avi2talxfm_params(
+    input_volume: InputPathType,
+    target_volume: InputPathType,
+    vox2vox_transform: InputPathType,
+    output_xfm: str,
+) -> Avi2talxfmParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume file.
+        target_volume: Target volume file.
+        vox2vox_transform: Voxel-to-voxel transform file.
+        output_xfm: Output MNI transform file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "avi2talxfm",
+        "input_volume": input_volume,
+        "target_volume": target_volume,
+        "vox2vox_transform": vox2vox_transform,
+        "output_xfm": output_xfm,
+    }
+    return params
+
+
+def avi2talxfm_cargs(
+    params: Avi2talxfmParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("avi2talxfm")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("target_volume")))
+    cargs.append(execution.input_file(params.get("vox2vox_transform")))
+    cargs.append(params.get("output_xfm"))
+    return cargs
+
+
+def avi2talxfm_outputs(
+    params: Avi2talxfmParameters,
+    execution: Execution,
+) -> Avi2talxfmOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Avi2talxfmOutputs(
+        root=execution.output_file("."),
+        output_xfm_file=execution.output_file(params.get("output_xfm")),
+    )
+    return ret
+
+
+def avi2talxfm_execute(
+    params: Avi2talxfmParameters,
+    execution: Execution,
+) -> Avi2talxfmOutputs:
+    """
+    Convert voxel-to-voxel transform to MNI transform.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Avi2talxfmOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = avi2talxfm_cargs(params, execution)
+    ret = avi2talxfm_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def avi2talxfm(
@@ -49,22 +183,13 @@ def avi2talxfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AVI2TALXFM_METADATA)
-    cargs = []
-    cargs.append("avi2talxfm")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(target_volume))
-    cargs.append(execution.input_file(vox2vox_transform))
-    cargs.append(output_xfm)
-    ret = Avi2talxfmOutputs(
-        root=execution.output_file("."),
-        output_xfm_file=execution.output_file(output_xfm),
-    )
-    execution.run(cargs)
-    return ret
+    params = avi2talxfm_params(input_volume=input_volume, target_volume=target_volume, vox2vox_transform=vox2vox_transform, output_xfm=output_xfm)
+    return avi2talxfm_execute(params, execution)
 
 
 __all__ = [
     "AVI2TALXFM_METADATA",
     "Avi2talxfmOutputs",
     "avi2talxfm",
+    "avi2talxfm_params",
 ]

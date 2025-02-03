@@ -12,6 +12,46 @@ MRI_JOINT_DENSITY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriJointDensityParameters = typing.TypedDict('MriJointDensityParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_joint_density"],
+    "vol1": InputPathType,
+    "vol2": InputPathType,
+    "output_density_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_joint_density": mri_joint_density_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_joint_density": mri_joint_density_outputs,
+    }
+    return vt.get(t)
 
 
 class MriJointDensityOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MriJointDensityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file containing the computed joint density"""
+
+
+def mri_joint_density_params(
+    vol1: InputPathType,
+    vol2: InputPathType,
+    output_density_file: str,
+) -> MriJointDensityParameters:
+    """
+    Build parameters.
+    
+    Args:
+        vol1: First input volume.
+        vol2: Second input volume.
+        output_density_file: Output joint density file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_joint_density",
+        "vol1": vol1,
+        "vol2": vol2,
+        "output_density_file": output_density_file,
+    }
+    return params
+
+
+def mri_joint_density_cargs(
+    params: MriJointDensityParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_joint_density")
+    cargs.append(execution.input_file(params.get("vol1")))
+    cargs.append(execution.input_file(params.get("vol2")))
+    cargs.append(params.get("output_density_file"))
+    return cargs
+
+
+def mri_joint_density_outputs(
+    params: MriJointDensityParameters,
+    execution: Execution,
+) -> MriJointDensityOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriJointDensityOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_density_file")),
+    )
+    return ret
+
+
+def mri_joint_density_execute(
+    params: MriJointDensityParameters,
+    execution: Execution,
+) -> MriJointDensityOutputs:
+    """
+    Tool for computing joint density from two volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriJointDensityOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_joint_density_cargs(params, execution)
+    ret = mri_joint_density_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_joint_density(
@@ -47,21 +176,13 @@ def mri_joint_density(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_JOINT_DENSITY_METADATA)
-    cargs = []
-    cargs.append("mri_joint_density")
-    cargs.append(execution.input_file(vol1))
-    cargs.append(execution.input_file(vol2))
-    cargs.append(output_density_file)
-    ret = MriJointDensityOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_density_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_joint_density_params(vol1=vol1, vol2=vol2, output_density_file=output_density_file)
+    return mri_joint_density_execute(params, execution)
 
 
 __all__ = [
     "MRI_JOINT_DENSITY_METADATA",
     "MriJointDensityOutputs",
     "mri_joint_density",
+    "mri_joint_density_params",
 ]

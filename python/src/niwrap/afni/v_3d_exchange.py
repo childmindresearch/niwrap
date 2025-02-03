@@ -12,6 +12,48 @@ V_3D_EXCHANGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dExchangeParameters = typing.TypedDict('V3dExchangeParameters', {
+    "__STYX_TYPE__": typing.Literal["3dExchange"],
+    "prefix": str,
+    "infile": InputPathType,
+    "mapfile": InputPathType,
+    "version": bool,
+    "help": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dExchange": v_3d_exchange_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dExchange": v_3d_exchange_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dExchangeOutputs(typing.NamedTuple):
@@ -24,6 +66,117 @@ class V3dExchangeOutputs(typing.NamedTuple):
     """Output HEAD file"""
     output_brik: OutputPathType
     """Output BRIK file"""
+
+
+def v_3d_exchange_params(
+    prefix: str,
+    infile: InputPathType,
+    mapfile: InputPathType,
+    version: bool = False,
+    help_: bool = False,
+) -> V3dExchangeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Output prefix.
+        infile: Input dataset. Acceptable data types are byte, short, and\
+            floats.
+        mapfile: Mapping columns. Input values in the first column, output\
+            values in the second column.
+        version: Print author and version info.
+        help_: Print this help screen.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dExchange",
+        "prefix": prefix,
+        "infile": infile,
+        "mapfile": mapfile,
+        "version": version,
+        "help": help_,
+    }
+    return params
+
+
+def v_3d_exchange_cargs(
+    params: V3dExchangeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dExchange")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("infile"))
+    ])
+    cargs.extend([
+        "-map",
+        execution.input_file(params.get("mapfile"))
+    ])
+    if params.get("version"):
+        cargs.append("-ver")
+    if params.get("help"):
+        cargs.append("-help")
+    return cargs
+
+
+def v_3d_exchange_outputs(
+    params: V3dExchangeParameters,
+    execution: Execution,
+) -> V3dExchangeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dExchangeOutputs(
+        root=execution.output_file("."),
+        output_head=execution.output_file(params.get("prefix") + "+orig.HEAD"),
+        output_brik=execution.output_file(params.get("prefix") + "+orig.BRIK"),
+    )
+    return ret
+
+
+def v_3d_exchange_execute(
+    params: V3dExchangeParameters,
+    execution: Execution,
+) -> V3dExchangeOutputs:
+    """
+    Replaces voxel values using a mapping file with specified columns.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dExchangeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_exchange_cargs(params, execution)
+    ret = v_3d_exchange_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_exchange(
@@ -55,35 +208,13 @@ def v_3d_exchange(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EXCHANGE_METADATA)
-    cargs = []
-    cargs.append("3dExchange")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.extend([
-        "-input",
-        execution.input_file(infile)
-    ])
-    cargs.extend([
-        "-map",
-        execution.input_file(mapfile)
-    ])
-    if version:
-        cargs.append("-ver")
-    if help_:
-        cargs.append("-help")
-    ret = V3dExchangeOutputs(
-        root=execution.output_file("."),
-        output_head=execution.output_file(prefix + "+orig.HEAD"),
-        output_brik=execution.output_file(prefix + "+orig.BRIK"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_exchange_params(prefix=prefix, infile=infile, mapfile=mapfile, version=version, help_=help_)
+    return v_3d_exchange_execute(params, execution)
 
 
 __all__ = [
     "V3dExchangeOutputs",
     "V_3D_EXCHANGE_METADATA",
     "v_3d_exchange",
+    "v_3d_exchange_params",
 ]

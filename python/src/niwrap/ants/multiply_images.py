@@ -12,6 +12,48 @@ MULTIPLY_IMAGES_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+MultiplyImagesParameters = typing.TypedDict('MultiplyImagesParameters', {
+    "__STYX_TYPE__": typing.Literal["MultiplyImages"],
+    "dimension": typing.Literal[3, 2],
+    "first_input": InputPathType,
+    "second_input_2": typing.NotRequired[float | None],
+    "output_product_image": str,
+    "num_threads": typing.NotRequired[int | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "MultiplyImages": multiply_images_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "MultiplyImages": multiply_images_outputs,
+    }
+    return vt.get(t)
 
 
 class MultiplyImagesOutputs(typing.NamedTuple):
@@ -22,6 +64,111 @@ class MultiplyImagesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_product_image_outfile: OutputPathType
     """Average image file."""
+
+
+def multiply_images_params(
+    dimension: typing.Literal[3, 2],
+    first_input: InputPathType,
+    output_product_image: str,
+    second_input_2: float | None = None,
+    num_threads: int | None = 1,
+) -> MultiplyImagesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dimension: 3 or 2. Image dimension (2 or 3).
+        first_input: Image 1.
+        output_product_image: Outputfname.nii.gz: the name of the resulting\
+            image.
+        second_input_2: file or string or a float. Image 2 or multiplication\
+            weight.
+        num_threads: Number of itk threads to use.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "MultiplyImages",
+        "dimension": dimension,
+        "first_input": first_input,
+        "output_product_image": output_product_image,
+    }
+    if second_input_2 is not None:
+        params["second_input_2"] = second_input_2
+    if num_threads is not None:
+        params["num_threads"] = num_threads
+    return params
+
+
+def multiply_images_cargs(
+    params: MultiplyImagesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("MultiplyImages")
+    cargs.append(str(params.get("dimension")))
+    cargs.append(execution.input_file(params.get("first_input")))
+    if params.get("second_input_2") is not None:
+        cargs.append(str(params.get("second_input_2")))
+    cargs.append(params.get("output_product_image"))
+    if params.get("num_threads") is not None:
+        cargs.append(str(params.get("num_threads")))
+    return cargs
+
+
+def multiply_images_outputs(
+    params: MultiplyImagesParameters,
+    execution: Execution,
+) -> MultiplyImagesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MultiplyImagesOutputs(
+        root=execution.output_file("."),
+        output_product_image_outfile=execution.output_file(params.get("output_product_image")),
+    )
+    return ret
+
+
+def multiply_images_execute(
+    params: MultiplyImagesParameters,
+    execution: Execution,
+) -> MultiplyImagesOutputs:
+    """
+    Multiply 2 images; 2nd image file may also be floating point numerical value,
+    and program will act accordingly -- i.e. read as a number. Program handles
+    vector and tensor images as well.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MultiplyImagesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = multiply_images_cargs(params, execution)
+    ret = multiply_images_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def multiply_images(
@@ -55,25 +202,13 @@ def multiply_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MULTIPLY_IMAGES_METADATA)
-    cargs = []
-    cargs.append("MultiplyImages")
-    cargs.append(str(dimension))
-    cargs.append(execution.input_file(first_input))
-    if second_input_2 is not None:
-        cargs.append(str(second_input_2))
-    cargs.append(output_product_image)
-    if num_threads is not None:
-        cargs.append(str(num_threads))
-    ret = MultiplyImagesOutputs(
-        root=execution.output_file("."),
-        output_product_image_outfile=execution.output_file(output_product_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = multiply_images_params(dimension=dimension, first_input=first_input, second_input_2=second_input_2, output_product_image=output_product_image, num_threads=num_threads)
+    return multiply_images_execute(params, execution)
 
 
 __all__ = [
     "MULTIPLY_IMAGES_METADATA",
     "MultiplyImagesOutputs",
     "multiply_images",
+    "multiply_images_params",
 ]

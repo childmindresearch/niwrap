@@ -12,6 +12,46 @@ MRIS_SEGMENT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisSegmentParameters = typing.TypedDict('MrisSegmentParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_segment"],
+    "subjects": list[str],
+    "output_subject": str,
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_segment": mris_segment_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_segment": mris_segment_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisSegmentOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MrisSegmentOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     segmented_output: OutputPathType
     """Segmented surfaces output file"""
+
+
+def mris_segment_params(
+    subjects: list[str],
+    output_subject: str,
+    output_file: str,
+) -> MrisSegmentParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects: A list of input subjects.
+        output_subject: Output subject name.
+        output_file: Output file path.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_segment",
+        "subjects": subjects,
+        "output_subject": output_subject,
+        "output_file": output_file,
+    }
+    return params
+
+
+def mris_segment_cargs(
+    params: MrisSegmentParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_segment")
+    cargs.extend(params.get("subjects"))
+    cargs.append(params.get("output_subject"))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def mris_segment_outputs(
+    params: MrisSegmentParameters,
+    execution: Execution,
+) -> MrisSegmentOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisSegmentOutputs(
+        root=execution.output_file("."),
+        segmented_output=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def mris_segment_execute(
+    params: MrisSegmentParameters,
+    execution: Execution,
+) -> MrisSegmentOutputs:
+    """
+    A command-line tool for segmenting surfaces in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisSegmentOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_segment_cargs(params, execution)
+    ret = mris_segment_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_segment(
@@ -47,21 +176,13 @@ def mris_segment(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SEGMENT_METADATA)
-    cargs = []
-    cargs.append("mris_segment")
-    cargs.extend(subjects)
-    cargs.append(output_subject)
-    cargs.append(output_file)
-    ret = MrisSegmentOutputs(
-        root=execution.output_file("."),
-        segmented_output=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_segment_params(subjects=subjects, output_subject=output_subject, output_file=output_file)
+    return mris_segment_execute(params, execution)
 
 
 __all__ = [
     "MRIS_SEGMENT_METADATA",
     "MrisSegmentOutputs",
     "mris_segment",
+    "mris_segment_params",
 ]

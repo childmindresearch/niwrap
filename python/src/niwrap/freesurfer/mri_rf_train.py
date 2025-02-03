@@ -12,14 +12,192 @@ MRI_RF_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriRfTrainParameters = typing.TypedDict('MriRfTrainParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_rf_train"],
+    "seg_volume": str,
+    "atlas_transform": str,
+    "mask_volume": typing.NotRequired[str | None],
+    "node_spacing": typing.NotRequired[float | None],
+    "prior_spacing": typing.NotRequired[float | None],
+    "input_training_data": typing.NotRequired[list[str] | None],
+    "sanity_check": bool,
+    "subjects": list[str],
+    "output_rfa": str,
+})
 
 
-class MriRfTrainOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_rf_train(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_rf_train": mri_rf_train_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_rf_train_params(
+    seg_volume: str,
+    atlas_transform: str,
+    subjects: list[str],
+    output_rfa: str,
+    mask_volume: str | None = None,
+    node_spacing: float | None = None,
+    prior_spacing: float | None = None,
+    input_training_data: list[str] | None = None,
+    sanity_check: bool = False,
+) -> MriRfTrainParameters:
+    """
+    Build parameters.
+    
+    Args:
+        seg_volume: Segmentation volume (path relative to $subject/mri).
+        atlas_transform: Atlas transform (path relative to\
+            $subject/mri/transforms).
+        subjects: Input subjects.
+        output_rfa: Output RFA filename.
+        mask_volume: Use volname as a mask (path relative to $subject/mri).
+        node_spacing: Spacing of classifiers in canonical space.
+        prior_spacing: Spacing of class priors in canonical space.
+        input_training_data: Specifying training data (path relative to\
+            $subject/mri). Can specify multiple inputs. If not specified, 'orig' is\
+            used.
+        sanity_check: Conduct sanity-check of labels for obvious edit errors.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_rf_train",
+        "seg_volume": seg_volume,
+        "atlas_transform": atlas_transform,
+        "sanity_check": sanity_check,
+        "subjects": subjects,
+        "output_rfa": output_rfa,
+    }
+    if mask_volume is not None:
+        params["mask_volume"] = mask_volume
+    if node_spacing is not None:
+        params["node_spacing"] = node_spacing
+    if prior_spacing is not None:
+        params["prior_spacing"] = prior_spacing
+    if input_training_data is not None:
+        params["input_training_data"] = input_training_data
+    return params
+
+
+def mri_rf_train_cargs(
+    params: MriRfTrainParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_rf_train")
+    cargs.extend([
+        "-seg",
+        params.get("seg_volume")
+    ])
+    cargs.extend([
+        "-xform",
+        params.get("atlas_transform")
+    ])
+    if params.get("mask_volume") is not None:
+        cargs.extend([
+            "-mask",
+            params.get("mask_volume")
+        ])
+    if params.get("node_spacing") is not None:
+        cargs.extend([
+            "-node_spacing",
+            str(params.get("node_spacing"))
+        ])
+    if params.get("prior_spacing") is not None:
+        cargs.extend([
+            "-prior_spacing",
+            str(params.get("prior_spacing"))
+        ])
+    if params.get("input_training_data") is not None:
+        cargs.extend([
+            "-input",
+            *params.get("input_training_data")
+        ])
+    if params.get("sanity_check"):
+        cargs.append("-check")
+    cargs.extend(params.get("subjects"))
+    cargs.append(params.get("output_rfa"))
+    return cargs
+
+
+def mri_rf_train_outputs(
+    params: MriRfTrainParameters,
+    execution: Execution,
+) -> MriRfTrainOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriRfTrainOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_rf_train_execute(
+    params: MriRfTrainParameters,
+    execution: Execution,
+) -> MriRfTrainOutputs:
+    """
+    Trains GCA data with multiple subjects using MRI data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriRfTrainOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_rf_train_cargs(params, execution)
+    ret = mri_rf_train_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_rf_train(
@@ -60,49 +238,12 @@ def mri_rf_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_TRAIN_METADATA)
-    cargs = []
-    cargs.append("mri_rf_train")
-    cargs.extend([
-        "-seg",
-        seg_volume
-    ])
-    cargs.extend([
-        "-xform",
-        atlas_transform
-    ])
-    if mask_volume is not None:
-        cargs.extend([
-            "-mask",
-            mask_volume
-        ])
-    if node_spacing is not None:
-        cargs.extend([
-            "-node_spacing",
-            str(node_spacing)
-        ])
-    if prior_spacing is not None:
-        cargs.extend([
-            "-prior_spacing",
-            str(prior_spacing)
-        ])
-    if input_training_data is not None:
-        cargs.extend([
-            "-input",
-            *input_training_data
-        ])
-    if sanity_check:
-        cargs.append("-check")
-    cargs.extend(subjects)
-    cargs.append(output_rfa)
-    ret = MriRfTrainOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_rf_train_params(seg_volume=seg_volume, atlas_transform=atlas_transform, mask_volume=mask_volume, node_spacing=node_spacing, prior_spacing=prior_spacing, input_training_data=input_training_data, sanity_check=sanity_check, subjects=subjects, output_rfa=output_rfa)
+    return mri_rf_train_execute(params, execution)
 
 
 __all__ = [
     "MRI_RF_TRAIN_METADATA",
-    "MriRfTrainOutputs",
     "mri_rf_train",
+    "mri_rf_train_params",
 ]

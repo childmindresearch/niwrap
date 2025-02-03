@@ -12,6 +12,46 @@ MRI_COMPUTE_DISTANCES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriComputeDistancesParameters = typing.TypedDict('MriComputeDistancesParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_compute_distances"],
+    "source": InputPathType,
+    "target": InputPathType,
+    "output_xform": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_compute_distances": mri_compute_distances_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_compute_distances": mri_compute_distances_outputs,
+    }
+    return vt.get(t)
 
 
 class MriComputeDistancesOutputs(typing.NamedTuple):
@@ -22,6 +62,96 @@ class MriComputeDistancesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_xform_file: OutputPathType
     """Output transformation file"""
+
+
+def mri_compute_distances_params(
+    source: InputPathType,
+    target: InputPathType,
+    output_xform: str,
+) -> MriComputeDistancesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source: Input source image file.
+        target: Input target image file.
+        output_xform: Output transformation file containing the computed\
+            distances.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_compute_distances",
+        "source": source,
+        "target": target,
+        "output_xform": output_xform,
+    }
+    return params
+
+
+def mri_compute_distances_cargs(
+    params: MriComputeDistancesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_compute_distances")
+    cargs.append(execution.input_file(params.get("source")))
+    cargs.append(execution.input_file(params.get("target")))
+    cargs.append(params.get("output_xform"))
+    return cargs
+
+
+def mri_compute_distances_outputs(
+    params: MriComputeDistancesParameters,
+    execution: Execution,
+) -> MriComputeDistancesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriComputeDistancesOutputs(
+        root=execution.output_file("."),
+        output_xform_file=execution.output_file(params.get("output_xform")),
+    )
+    return ret
+
+
+def mri_compute_distances_execute(
+    params: MriComputeDistancesParameters,
+    execution: Execution,
+) -> MriComputeDistancesOutputs:
+    """
+    A tool to compute distances between source and target images.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriComputeDistancesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_compute_distances_cargs(params, execution)
+    ret = mri_compute_distances_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_compute_distances(
@@ -48,21 +178,13 @@ def mri_compute_distances(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_DISTANCES_METADATA)
-    cargs = []
-    cargs.append("mri_compute_distances")
-    cargs.append(execution.input_file(source))
-    cargs.append(execution.input_file(target))
-    cargs.append(output_xform)
-    ret = MriComputeDistancesOutputs(
-        root=execution.output_file("."),
-        output_xform_file=execution.output_file(output_xform),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_compute_distances_params(source=source, target=target, output_xform=output_xform)
+    return mri_compute_distances_execute(params, execution)
 
 
 __all__ = [
     "MRI_COMPUTE_DISTANCES_METADATA",
     "MriComputeDistancesOutputs",
     "mri_compute_distances",
+    "mri_compute_distances_params",
 ]

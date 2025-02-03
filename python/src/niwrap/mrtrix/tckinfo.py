@@ -12,43 +12,238 @@ TCKINFO_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+TckinfoConfigParameters = typing.TypedDict('TckinfoConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+TckinfoParameters = typing.TypedDict('TckinfoParameters', {
+    "__STYX_TYPE__": typing.Literal["tckinfo"],
+    "count": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[TckinfoConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "tracks": list[InputPathType],
+})
 
 
-@dataclasses.dataclass
-class TckinfoConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tckinfo": tckinfo_cargs,
+        "config": tckinfo_config_cargs,
+    }
+    return vt.get(t)
 
 
-class TckinfoOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tckinfo(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def tckinfo_config_params(
+    key: str,
+    value: str,
+) -> TckinfoConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def tckinfo_config_cargs(
+    params: TckinfoConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def tckinfo_params(
+    tracks: list[InputPathType],
+    count: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[TckinfoConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> TckinfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tracks: the input track file.
+        count: count number of tracks in file explicitly, ignoring the header.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tckinfo",
+        "count": count,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "tracks": tracks,
+    }
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def tckinfo_cargs(
+    params: TckinfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tckinfo")
+    if params.get("count"):
+        cargs.append("-count")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.extend([execution.input_file(f) for f in params.get("tracks")])
+    return cargs
+
+
+def tckinfo_outputs(
+    params: TckinfoParameters,
+    execution: Execution,
+) -> TckinfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TckinfoOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tckinfo_execute(
+    params: TckinfoParameters,
+    execution: Execution,
+) -> TckinfoOutputs:
+    """
+    Print out information about a track file.
+    
+    
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TckinfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tckinfo_cargs(params, execution)
+    ret = tckinfo_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tckinfo(
@@ -59,7 +254,7 @@ def tckinfo(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckinfoConfig] | None = None,
+    config: list[TckinfoConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -98,40 +293,13 @@ def tckinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKINFO_METADATA)
-    cargs = []
-    cargs.append("tckinfo")
-    if count:
-        cargs.append("-count")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.extend([execution.input_file(f) for f in tracks])
-    ret = TckinfoOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tckinfo_params(count=count, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tracks=tracks)
+    return tckinfo_execute(params, execution)
 
 
 __all__ = [
     "TCKINFO_METADATA",
-    "TckinfoConfig",
-    "TckinfoOutputs",
     "tckinfo",
+    "tckinfo_config_params",
+    "tckinfo_params",
 ]

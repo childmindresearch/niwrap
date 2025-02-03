@@ -12,14 +12,185 @@ V_3D_CRUISETO_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dCruisetoAfniParameters = typing.TypedDict('V3dCruisetoAfniParameters', {
+    "__STYX_TYPE__": typing.Literal["3dCRUISEtoAFNI"],
+    "input": InputPathType,
+    "novolreg": bool,
+    "noxform": bool,
+    "setenv": typing.NotRequired[str | None],
+    "TRACE": bool,
+    "TRACE": bool,
+    "nomall": bool,
+    "yesmall": bool,
+    "help": bool,
+    "h": bool,
+})
 
 
-class V3dCruisetoAfniOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v_3d_cruiseto_afni(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "3dCRUISEtoAFNI": v_3d_cruiseto_afni_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v_3d_cruiseto_afni_params(
+    input_: InputPathType,
+    novolreg: bool = False,
+    noxform: bool = False,
+    setenv: str | None = None,
+    trace_: bool = False,
+    trace_2: bool = False,
+    nomall: bool = False,
+    yesmall: bool = False,
+    help_: bool = False,
+    h: bool = False,
+) -> V3dCruisetoAfniParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: Input CRUISE header file in OpenDX format.
+        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\
+            transformations present in the Surface Volume.
+        noxform: Same as -novolreg.
+        setenv: Set environment variable ENVname to be ENVvalue. Quotes are\
+            necessary. Example: suma -setenv "'SUMA_BackgroundColor = 1 0 1'".
+        trace_: Turns on extreme tracing.
+        trace_2: Turns on extreme tracing.
+        nomall: Turn off memory tracing.
+        yesmall: Turn on memory tracing (default).
+        help_: The entire help output.
+        h: Displays mini help; in many cases, it's the same as -help.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dCRUISEtoAFNI",
+        "input": input_,
+        "novolreg": novolreg,
+        "noxform": noxform,
+        "TRACE": trace_,
+        "TRACE": trace_2,
+        "nomall": nomall,
+        "yesmall": yesmall,
+        "help": help_,
+        "h": h,
+    }
+    if setenv is not None:
+        params["setenv"] = setenv
+    return params
+
+
+def v_3d_cruiseto_afni_cargs(
+    params: V3dCruisetoAfniParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dCRUISEtoAFNI")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input"))
+    ])
+    if params.get("novolreg"):
+        cargs.append("-novolreg")
+    if params.get("noxform"):
+        cargs.append("-noxform")
+    if params.get("setenv") is not None:
+        cargs.extend([
+            "-setenv",
+            params.get("setenv")
+        ])
+    if params.get("TRACE"):
+        cargs.append("-TRACE")
+    if params.get("TRACE"):
+        cargs.append("-TRACE")
+    if params.get("nomall"):
+        cargs.append("-nomall")
+    if params.get("yesmall"):
+        cargs.append("-yesmall")
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("h"):
+        cargs.append("-h")
+    return cargs
+
+
+def v_3d_cruiseto_afni_outputs(
+    params: V3dCruisetoAfniParameters,
+    execution: Execution,
+) -> V3dCruisetoAfniOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dCruisetoAfniOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v_3d_cruiseto_afni_execute(
+    params: V3dCruisetoAfniParameters,
+    execution: Execution,
+) -> V3dCruisetoAfniOutputs:
+    """
+    Converts a CRUISE dataset defined by a header in OpenDX format.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dCruisetoAfniOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_cruiseto_afni_cargs(params, execution)
+    ret = v_3d_cruiseto_afni_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_cruiseto_afni(
@@ -61,42 +232,12 @@ def v_3d_cruiseto_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CRUISETO_AFNI_METADATA)
-    cargs = []
-    cargs.append("3dCRUISEtoAFNI")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_)
-    ])
-    if novolreg:
-        cargs.append("-novolreg")
-    if noxform:
-        cargs.append("-noxform")
-    if setenv is not None:
-        cargs.extend([
-            "-setenv",
-            setenv
-        ])
-    if trace_:
-        cargs.append("-TRACE")
-    if trace_2:
-        cargs.append("-TRACE")
-    if nomall:
-        cargs.append("-nomall")
-    if yesmall:
-        cargs.append("-yesmall")
-    if help_:
-        cargs.append("-help")
-    if h:
-        cargs.append("-h")
-    ret = V3dCruisetoAfniOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_cruiseto_afni_params(input_=input_, novolreg=novolreg, noxform=noxform, setenv=setenv, trace_=trace_, trace_2=trace_2, nomall=nomall, yesmall=yesmall, help_=help_, h=h)
+    return v_3d_cruiseto_afni_execute(params, execution)
 
 
 __all__ = [
-    "V3dCruisetoAfniOutputs",
     "V_3D_CRUISETO_AFNI_METADATA",
     "v_3d_cruiseto_afni",
+    "v_3d_cruiseto_afni_params",
 ]

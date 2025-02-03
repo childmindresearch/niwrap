@@ -12,14 +12,139 @@ SURFACE_AFFINE_REGRESSION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceAffineRegressionParameters = typing.TypedDict('SurfaceAffineRegressionParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-affine-regression"],
+    "source": InputPathType,
+    "target": InputPathType,
+    "affine_out": str,
+})
 
 
-class SurfaceAffineRegressionOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `surface_affine_regression(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "surface-affine-regression": surface_affine_regression_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def surface_affine_regression_params(
+    source: InputPathType,
+    target: InputPathType,
+    affine_out: str,
+) -> SurfaceAffineRegressionParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source: the surface to warp.
+        target: the surface to match the coordinates of.
+        affine_out: output - the output affine file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-affine-regression",
+        "source": source,
+        "target": target,
+        "affine_out": affine_out,
+    }
+    return params
+
+
+def surface_affine_regression_cargs(
+    params: SurfaceAffineRegressionParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-affine-regression")
+    cargs.append(execution.input_file(params.get("source")))
+    cargs.append(execution.input_file(params.get("target")))
+    cargs.append(params.get("affine_out"))
+    return cargs
+
+
+def surface_affine_regression_outputs(
+    params: SurfaceAffineRegressionParameters,
+    execution: Execution,
+) -> SurfaceAffineRegressionOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceAffineRegressionOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def surface_affine_regression_execute(
+    params: SurfaceAffineRegressionParameters,
+    execution: Execution,
+) -> SurfaceAffineRegressionOutputs:
+    """
+    Regress the affine transform between surfaces on the same mesh.
+    
+    Use linear regression to compute an affine that minimizes the sum of squares
+    of the coordinate differences between the target surface and the warped
+    source surface. Note that this has a bias to shrink the surface that is
+    being warped. The output is written as a NIFTI 'world' matrix, see
+    -convert-affine to convert it for use in other software.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceAffineRegressionOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_affine_regression_cargs(params, execution)
+    ret = surface_affine_regression_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_affine_regression(
@@ -51,21 +176,12 @@ def surface_affine_regression(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_AFFINE_REGRESSION_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-affine-regression")
-    cargs.append(execution.input_file(source))
-    cargs.append(execution.input_file(target))
-    cargs.append(affine_out)
-    ret = SurfaceAffineRegressionOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_affine_regression_params(source=source, target=target, affine_out=affine_out)
+    return surface_affine_regression_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_AFFINE_REGRESSION_METADATA",
-    "SurfaceAffineRegressionOutputs",
     "surface_affine_regression",
+    "surface_affine_regression_params",
 ]

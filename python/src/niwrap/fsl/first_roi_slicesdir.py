@@ -12,6 +12,45 @@ FIRST_ROI_SLICESDIR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FirstRoiSlicesdirParameters = typing.TypedDict('FirstRoiSlicesdirParameters', {
+    "__STYX_TYPE__": typing.Literal["first_roi_slicesdir"],
+    "input_t1_images": str,
+    "input_label_images": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "first_roi_slicesdir": first_roi_slicesdir_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "first_roi_slicesdir": first_roi_slicesdir_outputs,
+    }
+    return vt.get(t)
 
 
 class FirstRoiSlicesdirOutputs(typing.NamedTuple):
@@ -24,6 +63,94 @@ class FirstRoiSlicesdirOutputs(typing.NamedTuple):
     """Generated slice directory for the input T1 images"""
     label_slicesdir: OutputPathType
     """Generated slice directory for the input label images"""
+
+
+def first_roi_slicesdir_params(
+    input_t1_images: str,
+    input_label_images: str,
+) -> FirstRoiSlicesdirParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_t1_images: Input T1-weighted images of the brain\
+            (pattern-matched); for example, *_t1.nii.gz.
+        input_label_images: Input label images corresponding to the T1 images\
+            (pattern-matched); for example, *_L_Hipp_first.nii.gz.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "first_roi_slicesdir",
+        "input_t1_images": input_t1_images,
+        "input_label_images": input_label_images,
+    }
+    return params
+
+
+def first_roi_slicesdir_cargs(
+    params: FirstRoiSlicesdirParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("first_roi_slicesdir")
+    cargs.append(params.get("input_t1_images"))
+    cargs.append(params.get("input_label_images"))
+    return cargs
+
+
+def first_roi_slicesdir_outputs(
+    params: FirstRoiSlicesdirParameters,
+    execution: Execution,
+) -> FirstRoiSlicesdirOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FirstRoiSlicesdirOutputs(
+        root=execution.output_file("."),
+        t1_slicesdir=execution.output_file(params.get("input_t1_images") + "_slicesdir"),
+        label_slicesdir=execution.output_file(params.get("input_label_images") + "_slicesdir"),
+    )
+    return ret
+
+
+def first_roi_slicesdir_execute(
+    params: FirstRoiSlicesdirParameters,
+    execution: Execution,
+) -> FirstRoiSlicesdirOutputs:
+    """
+    A utility for generating slice directories for FIRST-ROI.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FirstRoiSlicesdirOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = first_roi_slicesdir_cargs(params, execution)
+    ret = first_roi_slicesdir_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def first_roi_slicesdir(
@@ -49,21 +176,13 @@ def first_roi_slicesdir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRST_ROI_SLICESDIR_METADATA)
-    cargs = []
-    cargs.append("first_roi_slicesdir")
-    cargs.append(input_t1_images)
-    cargs.append(input_label_images)
-    ret = FirstRoiSlicesdirOutputs(
-        root=execution.output_file("."),
-        t1_slicesdir=execution.output_file(input_t1_images + "_slicesdir"),
-        label_slicesdir=execution.output_file(input_label_images + "_slicesdir"),
-    )
-    execution.run(cargs)
-    return ret
+    params = first_roi_slicesdir_params(input_t1_images=input_t1_images, input_label_images=input_label_images)
+    return first_roi_slicesdir_execute(params, execution)
 
 
 __all__ = [
     "FIRST_ROI_SLICESDIR_METADATA",
     "FirstRoiSlicesdirOutputs",
     "first_roi_slicesdir",
+    "first_roi_slicesdir_params",
 ]

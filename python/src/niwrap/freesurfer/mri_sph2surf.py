@@ -12,6 +12,52 @@ MRI_SPH2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriSph2surfParameters = typing.TypedDict('MriSph2surfParameters', {
+    "__STYX_TYPE__": typing.Literal["mri-sph2surf"],
+    "instem": str,
+    "outstem": str,
+    "hemi": str,
+    "subject": str,
+    "offset": typing.NotRequired[float | None],
+    "svitdir": typing.NotRequired[str | None],
+    "umask": typing.NotRequired[str | None],
+    "verbose": bool,
+    "version": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri-sph2surf": mri_sph2surf_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri-sph2surf": mri_sph2surf_outputs,
+    }
+    return vt.get(t)
 
 
 class MriSph2surfOutputs(typing.NamedTuple):
@@ -22,6 +68,154 @@ class MriSph2surfOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output surface data file in the form outstem-lh.w (or rh)."""
+
+
+def mri_sph2surf_params(
+    instem: str,
+    outstem: str,
+    hemi: str,
+    subject: str,
+    offset: float | None = 0,
+    svitdir: str | None = "/usr/local/freesurfer/subjects/subject/svit",
+    umask: str | None = None,
+    verbose: bool = False,
+    version: bool = False,
+) -> MriSph2surfParameters:
+    """
+    Build parameters.
+    
+    Args:
+        instem: Input stem of a bfloat file. The full input file name must take\
+            the form instem-lh_000.bfloat (or rh).
+        outstem: Output stem for the resulting file. The output file will have\
+            the name outstem-lh.w (or rh).
+        hemi: Specifies the hemisphere for processing. Acceptable values are\
+            'lh' or 'rh'.
+        subject: Specifies the subject identifier for the FreeSurfer processing\
+            pipeline.
+        offset: Zero-based plane/frame number. Default is 0.
+        svitdir: Directory for svit. Default is\
+            '/usr/local/freesurfer/subjects/subject/svit'.
+        umask: Specifies a new user mask.
+        verbose: Enable verbose output.
+        version: Show version information.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri-sph2surf",
+        "instem": instem,
+        "outstem": outstem,
+        "hemi": hemi,
+        "subject": subject,
+        "verbose": verbose,
+        "version": version,
+    }
+    if offset is not None:
+        params["offset"] = offset
+    if svitdir is not None:
+        params["svitdir"] = svitdir
+    if umask is not None:
+        params["umask"] = umask
+    return params
+
+
+def mri_sph2surf_cargs(
+    params: MriSph2surfParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri-sph2surf")
+    cargs.extend([
+        "-i",
+        params.get("instem")
+    ])
+    cargs.extend([
+        "-o",
+        params.get("outstem")
+    ])
+    cargs.extend([
+        "-hemi",
+        params.get("hemi")
+    ])
+    cargs.extend([
+        "-s",
+        params.get("subject")
+    ])
+    if params.get("offset") is not None:
+        cargs.extend([
+            "-offset",
+            str(params.get("offset"))
+        ])
+    if params.get("svitdir") is not None:
+        cargs.extend([
+            "-svitdir",
+            params.get("svitdir")
+        ])
+    if params.get("umask") is not None:
+        cargs.extend([
+            "-umask",
+            params.get("umask")
+        ])
+    if params.get("verbose"):
+        cargs.append("-verbose")
+    if params.get("version"):
+        cargs.append("-version")
+    return cargs
+
+
+def mri_sph2surf_outputs(
+    params: MriSph2surfParameters,
+    execution: Execution,
+) -> MriSph2surfOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriSph2surfOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("outstem") + "-" + params.get("hemi") + ".w"),
+    )
+    return ret
+
+
+def mri_sph2surf_execute(
+    params: MriSph2surfParameters,
+    execution: Execution,
+) -> MriSph2surfOutputs:
+    """
+    Converts spherical functional data to surface data in the FreeSurfer processing
+    pipeline.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriSph2surfOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_sph2surf_cargs(params, execution)
+    ret = mri_sph2surf_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_sph2surf(
@@ -65,53 +259,13 @@ def mri_sph2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SPH2SURF_METADATA)
-    cargs = []
-    cargs.append("mri-sph2surf")
-    cargs.extend([
-        "-i",
-        instem
-    ])
-    cargs.extend([
-        "-o",
-        outstem
-    ])
-    cargs.extend([
-        "-hemi",
-        hemi
-    ])
-    cargs.extend([
-        "-s",
-        subject
-    ])
-    if offset is not None:
-        cargs.extend([
-            "-offset",
-            str(offset)
-        ])
-    if svitdir is not None:
-        cargs.extend([
-            "-svitdir",
-            svitdir
-        ])
-    if umask is not None:
-        cargs.extend([
-            "-umask",
-            umask
-        ])
-    if verbose:
-        cargs.append("-verbose")
-    if version:
-        cargs.append("-version")
-    ret = MriSph2surfOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(outstem + "-" + hemi + ".w"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_sph2surf_params(instem=instem, outstem=outstem, hemi=hemi, subject=subject, offset=offset, svitdir=svitdir, umask=umask, verbose=verbose, version=version)
+    return mri_sph2surf_execute(params, execution)
 
 
 __all__ = [
     "MRI_SPH2SURF_METADATA",
     "MriSph2surfOutputs",
     "mri_sph2surf",
+    "mri_sph2surf_params",
 ]

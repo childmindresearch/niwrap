@@ -12,6 +12,45 @@ MRI_MOTION_CORRECT_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMotionCorrectFslParameters = typing.TypedDict('MriMotionCorrectFslParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_motion_correct.fsl"],
+    "input_image": InputPathType,
+    "output_image": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_motion_correct.fsl": mri_motion_correct_fsl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_motion_correct.fsl": mri_motion_correct_fsl_outputs,
+    }
+    return vt.get(t)
 
 
 class MriMotionCorrectFslOutputs(typing.NamedTuple):
@@ -22,6 +61,92 @@ class MriMotionCorrectFslOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     corrected_output: OutputPathType
     """Motion corrected output MRI image"""
+
+
+def mri_motion_correct_fsl_params(
+    input_image: InputPathType,
+    output_image: str,
+) -> MriMotionCorrectFslParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Input MRI image to be motion corrected.
+        output_image: Output corrected MRI image.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_motion_correct.fsl",
+        "input_image": input_image,
+        "output_image": output_image,
+    }
+    return params
+
+
+def mri_motion_correct_fsl_cargs(
+    params: MriMotionCorrectFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_motion_correct.fsl")
+    cargs.append(execution.input_file(params.get("input_image")))
+    cargs.append(params.get("output_image"))
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def mri_motion_correct_fsl_outputs(
+    params: MriMotionCorrectFslParameters,
+    execution: Execution,
+) -> MriMotionCorrectFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMotionCorrectFslOutputs(
+        root=execution.output_file("."),
+        corrected_output=execution.output_file(params.get("output_image") + ".nii.gz"),
+    )
+    return ret
+
+
+def mri_motion_correct_fsl_execute(
+    params: MriMotionCorrectFslParameters,
+    execution: Execution,
+) -> MriMotionCorrectFslOutputs:
+    """
+    Tool for motion correction of MRI images using FSL.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMotionCorrectFslOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_motion_correct_fsl_cargs(params, execution)
+    ret = mri_motion_correct_fsl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_motion_correct_fsl(
@@ -45,21 +170,13 @@ def mri_motion_correct_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MOTION_CORRECT_FSL_METADATA)
-    cargs = []
-    cargs.append("mri_motion_correct.fsl")
-    cargs.append(execution.input_file(input_image))
-    cargs.append(output_image)
-    cargs.append("[OPTIONS]")
-    ret = MriMotionCorrectFslOutputs(
-        root=execution.output_file("."),
-        corrected_output=execution.output_file(output_image + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_motion_correct_fsl_params(input_image=input_image, output_image=output_image)
+    return mri_motion_correct_fsl_execute(params, execution)
 
 
 __all__ = [
     "MRI_MOTION_CORRECT_FSL_METADATA",
     "MriMotionCorrectFslOutputs",
     "mri_motion_correct_fsl",
+    "mri_motion_correct_fsl_params",
 ]

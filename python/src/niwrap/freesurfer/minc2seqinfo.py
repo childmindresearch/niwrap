@@ -12,6 +12,45 @@ MINC2SEQINFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Minc2seqinfoParameters = typing.TypedDict('Minc2seqinfoParameters', {
+    "__STYX_TYPE__": typing.Literal["minc2seqinfo"],
+    "mincfile": InputPathType,
+    "seqinfofile": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "minc2seqinfo": minc2seqinfo_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "minc2seqinfo": minc2seqinfo_outputs,
+    }
+    return vt.get(t)
 
 
 class Minc2seqinfoOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class Minc2seqinfoOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_seqinfofile: OutputPathType
     """File containing the extracted sequence information."""
+
+
+def minc2seqinfo_params(
+    mincfile: InputPathType,
+    seqinfofile: str,
+) -> Minc2seqinfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mincfile: Input MINC file from which to extract sequence information.
+        seqinfofile: Output file where the sequence information will be stored.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "minc2seqinfo",
+        "mincfile": mincfile,
+        "seqinfofile": seqinfofile,
+    }
+    return params
+
+
+def minc2seqinfo_cargs(
+    params: Minc2seqinfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("minc2seqinfo")
+    cargs.append(execution.input_file(params.get("mincfile")))
+    cargs.append(params.get("seqinfofile"))
+    return cargs
+
+
+def minc2seqinfo_outputs(
+    params: Minc2seqinfoParameters,
+    execution: Execution,
+) -> Minc2seqinfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Minc2seqinfoOutputs(
+        root=execution.output_file("."),
+        out_seqinfofile=execution.output_file(params.get("seqinfofile")),
+    )
+    return ret
+
+
+def minc2seqinfo_execute(
+    params: Minc2seqinfoParameters,
+    execution: Execution,
+) -> Minc2seqinfoOutputs:
+    """
+    Tool for extracting sequence information from MINC files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Minc2seqinfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = minc2seqinfo_cargs(params, execution)
+    ret = minc2seqinfo_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def minc2seqinfo(
@@ -45,20 +169,13 @@ def minc2seqinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MINC2SEQINFO_METADATA)
-    cargs = []
-    cargs.append("minc2seqinfo")
-    cargs.append(execution.input_file(mincfile))
-    cargs.append(seqinfofile)
-    ret = Minc2seqinfoOutputs(
-        root=execution.output_file("."),
-        out_seqinfofile=execution.output_file(seqinfofile),
-    )
-    execution.run(cargs)
-    return ret
+    params = minc2seqinfo_params(mincfile=mincfile, seqinfofile=seqinfofile)
+    return minc2seqinfo_execute(params, execution)
 
 
 __all__ = [
     "MINC2SEQINFO_METADATA",
     "Minc2seqinfoOutputs",
     "minc2seqinfo",
+    "minc2seqinfo_params",
 ]

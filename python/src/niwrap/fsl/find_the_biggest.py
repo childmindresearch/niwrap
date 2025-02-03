@@ -12,6 +12,45 @@ FIND_THE_BIGGEST_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FindTheBiggestParameters = typing.TypedDict('FindTheBiggestParameters', {
+    "__STYX_TYPE__": typing.Literal["find_the_biggest"],
+    "volumes_surfaces": list[InputPathType],
+    "output_index": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "find_the_biggest": find_the_biggest_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "find_the_biggest": find_the_biggest_outputs,
+    }
+    return vt.get(t)
 
 
 class FindTheBiggestOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class FindTheBiggestOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Index of the largest volume or surface"""
+
+
+def find_the_biggest_params(
+    volumes_surfaces: list[InputPathType],
+    output_index: str,
+) -> FindTheBiggestParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volumes_surfaces: List of input volumes or surfaces.
+        output_index: Output index of the largest volume or surface.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "find_the_biggest",
+        "volumes_surfaces": volumes_surfaces,
+        "output_index": output_index,
+    }
+    return params
+
+
+def find_the_biggest_cargs(
+    params: FindTheBiggestParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("find_the_biggest")
+    cargs.extend([execution.input_file(f) for f in params.get("volumes_surfaces")])
+    cargs.append(params.get("output_index"))
+    return cargs
+
+
+def find_the_biggest_outputs(
+    params: FindTheBiggestParameters,
+    execution: Execution,
+) -> FindTheBiggestOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FindTheBiggestOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_index")),
+    )
+    return ret
+
+
+def find_the_biggest_execute(
+    params: FindTheBiggestParameters,
+    execution: Execution,
+) -> FindTheBiggestOutputs:
+    """
+    Tool to find the largest volume or surface from a set of inputs.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FindTheBiggestOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = find_the_biggest_cargs(params, execution)
+    ret = find_the_biggest_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def find_the_biggest(
@@ -45,20 +169,13 @@ def find_the_biggest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIND_THE_BIGGEST_METADATA)
-    cargs = []
-    cargs.append("find_the_biggest")
-    cargs.extend([execution.input_file(f) for f in volumes_surfaces])
-    cargs.append(output_index)
-    ret = FindTheBiggestOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_index),
-    )
-    execution.run(cargs)
-    return ret
+    params = find_the_biggest_params(volumes_surfaces=volumes_surfaces, output_index=output_index)
+    return find_the_biggest_execute(params, execution)
 
 
 __all__ = [
     "FIND_THE_BIGGEST_METADATA",
     "FindTheBiggestOutputs",
     "find_the_biggest",
+    "find_the_biggest_params",
 ]

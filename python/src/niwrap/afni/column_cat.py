@@ -12,6 +12,46 @@ COLUMN_CAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ColumnCatParameters = typing.TypedDict('ColumnCatParameters', {
+    "__STYX_TYPE__": typing.Literal["column_cat"],
+    "line_number": typing.NotRequired[float | None],
+    "separator_string": typing.NotRequired[str | None],
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "column_cat": column_cat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "column_cat": column_cat_outputs,
+    }
+    return vt.get(t)
 
 
 class ColumnCatOutputs(typing.NamedTuple):
@@ -22,6 +62,108 @@ class ColumnCatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Redirect output of concatenation to a file"""
+
+
+def column_cat_params(
+    input_files: list[InputPathType],
+    line_number: float | None = None,
+    separator_string: str | None = None,
+) -> ColumnCatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input files to be concatenated.
+        line_number: Print only the specified line number (1-based).
+        separator_string: Use the specified string as a separator between\
+            columns.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "column_cat",
+        "input_files": input_files,
+    }
+    if line_number is not None:
+        params["line_number"] = line_number
+    if separator_string is not None:
+        params["separator_string"] = separator_string
+    return params
+
+
+def column_cat_cargs(
+    params: ColumnCatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("column_cat")
+    if params.get("line_number") is not None:
+        cargs.extend([
+            "-line",
+            str(params.get("line_number"))
+        ])
+    if params.get("separator_string") is not None:
+        cargs.extend([
+            "-sep",
+            params.get("separator_string")
+        ])
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def column_cat_outputs(
+    params: ColumnCatParameters,
+    execution: Execution,
+) -> ColumnCatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ColumnCatOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("output_file.txt"),
+    )
+    return ret
+
+
+def column_cat_execute(
+    params: ColumnCatParameters,
+    execution: Execution,
+) -> ColumnCatOutputs:
+    """
+    Catenate files horizontally. Each line of output is the concatenation of each
+    current line from the input files, all on the same line, separated by a space or
+    a user-defined separator.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ColumnCatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = column_cat_cargs(params, execution)
+    ret = column_cat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def column_cat(
@@ -50,29 +192,13 @@ def column_cat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COLUMN_CAT_METADATA)
-    cargs = []
-    cargs.append("column_cat")
-    if line_number is not None:
-        cargs.extend([
-            "-line",
-            str(line_number)
-        ])
-    if separator_string is not None:
-        cargs.extend([
-            "-sep",
-            separator_string
-        ])
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = ColumnCatOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("output_file.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = column_cat_params(line_number=line_number, separator_string=separator_string, input_files=input_files)
+    return column_cat_execute(params, execution)
 
 
 __all__ = [
     "COLUMN_CAT_METADATA",
     "ColumnCatOutputs",
     "column_cat",
+    "column_cat_params",
 ]

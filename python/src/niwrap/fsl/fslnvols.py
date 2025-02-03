@@ -12,14 +12,122 @@ FSLNVOLS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslnvolsParameters = typing.TypedDict('FslnvolsParameters', {
+    "__STYX_TYPE__": typing.Literal["fslnvols"],
+    "infile": InputPathType,
+})
 
 
-class FslnvolsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fslnvols(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fslnvols": fslnvols_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fslnvols_params(
+    infile: InputPathType,
+) -> FslnvolsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input NIfTI file (e.g., fmri.nii.gz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslnvols",
+        "infile": infile,
+    }
+    return params
+
+
+def fslnvols_cargs(
+    params: FslnvolsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslnvols")
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def fslnvols_outputs(
+    params: FslnvolsParameters,
+    execution: Execution,
+) -> FslnvolsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslnvolsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fslnvols_execute(
+    params: FslnvolsParameters,
+    execution: Execution,
+) -> FslnvolsOutputs:
+    """
+    Retrieve the number of volumes in a 4D NIfTI file.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslnvolsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslnvols_cargs(params, execution)
+    ret = fslnvols_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslnvols(
@@ -41,18 +149,12 @@ def fslnvols(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLNVOLS_METADATA)
-    cargs = []
-    cargs.append("fslnvols")
-    cargs.append(execution.input_file(infile))
-    ret = FslnvolsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslnvols_params(infile=infile)
+    return fslnvols_execute(params, execution)
 
 
 __all__ = [
     "FSLNVOLS_METADATA",
-    "FslnvolsOutputs",
     "fslnvols",
+    "fslnvols_params",
 ]

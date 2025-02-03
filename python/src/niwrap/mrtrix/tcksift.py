@@ -12,35 +12,117 @@ TCKSIFT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+TcksiftConfigParameters = typing.TypedDict('TcksiftConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+TcksiftParameters = typing.TypedDict('TcksiftParameters', {
+    "__STYX_TYPE__": typing.Literal["tcksift"],
+    "nofilter": bool,
+    "output_at_counts": typing.NotRequired[list[int] | None],
+    "proc_mask": typing.NotRequired[InputPathType | None],
+    "act": typing.NotRequired[InputPathType | None],
+    "fd_scale_gm": bool,
+    "no_dilate_lut": bool,
+    "make_null_lobes": bool,
+    "remove_untracked": bool,
+    "fd_thresh": typing.NotRequired[float | None],
+    "csv": typing.NotRequired[str | None],
+    "out_mu": typing.NotRequired[str | None],
+    "output_debug": bool,
+    "out_selection": typing.NotRequired[str | None],
+    "term_number": typing.NotRequired[int | None],
+    "term_ratio": typing.NotRequired[float | None],
+    "term_mu": typing.NotRequired[float | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[TcksiftConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "in_tracks": InputPathType,
+    "in_fod": InputPathType,
+    "out_tracks": str,
+})
 
 
-@dataclasses.dataclass
-class TcksiftConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tcksift": tcksift_cargs,
+        "config": tcksift_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tcksift": tcksift_outputs,
+    }
+    return vt.get(t)
+
+
+def tcksift_config_params(
+    key: str,
+    value: str,
+) -> TcksiftConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def tcksift_config_cargs(
+    params: TcksiftConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class TcksiftOutputs(typing.NamedTuple):
@@ -58,6 +140,302 @@ class TcksiftOutputs(typing.NamedTuple):
     file """
     out_selection: OutputPathType | None
     """output a text file containing the binary selection of streamlines """
+
+
+def tcksift_params(
+    in_tracks: InputPathType,
+    in_fod: InputPathType,
+    out_tracks: str,
+    nofilter: bool = False,
+    output_at_counts: list[int] | None = None,
+    proc_mask: InputPathType | None = None,
+    act: InputPathType | None = None,
+    fd_scale_gm: bool = False,
+    no_dilate_lut: bool = False,
+    make_null_lobes: bool = False,
+    remove_untracked: bool = False,
+    fd_thresh: float | None = None,
+    csv_: str | None = None,
+    out_mu: str | None = None,
+    output_debug: bool = False,
+    out_selection: str | None = None,
+    term_number: int | None = None,
+    term_ratio: float | None = None,
+    term_mu: float | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[TcksiftConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> TcksiftParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in_tracks: the input track file.
+        in_fod: input image containing the spherical harmonics of the fibre\
+            orientation distributions.
+        out_tracks: the output filtered tracks file.
+        nofilter: do NOT perform track filtering - just construct the model in\
+            order to provide output debugging images.
+        output_at_counts: output filtered track files (and optionally debugging\
+            images if -output_debug is specified) at specific numbers of remaining\
+            streamlines; provide as comma-separated list of integers.
+        proc_mask: provide an image containing the processing mask weights for\
+            the model; image spatial dimensions must match the fixel image.
+        act: use an ACT five-tissue-type segmented anatomical image to derive\
+            the processing mask.
+        fd_scale_gm: provide this option (in conjunction with -act) to\
+            heuristically downsize the fibre density estimates based on the\
+            presence of GM in the voxel. This can assist in reducing tissue\
+            interface effects when using a single-tissue deconvolution algorithm.
+        no_dilate_lut: do NOT dilate FOD lobe lookup tables; only map\
+            streamlines to FOD lobes if the precise tangent lies within the angular\
+            spread of that lobe.
+        make_null_lobes: add an additional FOD lobe to each voxel, with zero\
+            integral, that covers all directions with zero / negative FOD\
+            amplitudes.
+        remove_untracked: remove FOD lobes that do not have any streamline\
+            density attributed to them; this improves filtering slightly, at the\
+            expense of longer computation time (and you can no longer do\
+            quantitative comparisons between reconstructions if this is enabled).
+        fd_thresh: fibre density threshold; exclude an FOD lobe from filtering\
+            processing if its integral is less than this amount (streamlines will\
+            still be mapped to it, but it will not contribute to the cost function\
+            or the filtering).
+        csv_: output statistics of execution per iteration to a .csv file.
+        out_mu: output the final value of SIFT proportionality coefficient mu\
+            to a text file.
+        output_debug: provide various output images for assessing & debugging\
+            performance etc.
+        out_selection: output a text file containing the binary selection of\
+            streamlines.
+        term_number: number of streamlines - continue filtering until this\
+            number of streamlines remain.
+        term_ratio: termination ratio - defined as the ratio between reduction\
+            in cost function, and reduction in density of streamlines.\
+            Smaller values result in more streamlines being filtered out.
+        term_mu: terminate filtering once the SIFT proportionality coefficient\
+            reaches a given value.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tcksift",
+        "nofilter": nofilter,
+        "fd_scale_gm": fd_scale_gm,
+        "no_dilate_lut": no_dilate_lut,
+        "make_null_lobes": make_null_lobes,
+        "remove_untracked": remove_untracked,
+        "output_debug": output_debug,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "in_tracks": in_tracks,
+        "in_fod": in_fod,
+        "out_tracks": out_tracks,
+    }
+    if output_at_counts is not None:
+        params["output_at_counts"] = output_at_counts
+    if proc_mask is not None:
+        params["proc_mask"] = proc_mask
+    if act is not None:
+        params["act"] = act
+    if fd_thresh is not None:
+        params["fd_thresh"] = fd_thresh
+    if csv_ is not None:
+        params["csv"] = csv_
+    if out_mu is not None:
+        params["out_mu"] = out_mu
+    if out_selection is not None:
+        params["out_selection"] = out_selection
+    if term_number is not None:
+        params["term_number"] = term_number
+    if term_ratio is not None:
+        params["term_ratio"] = term_ratio
+    if term_mu is not None:
+        params["term_mu"] = term_mu
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def tcksift_cargs(
+    params: TcksiftParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tcksift")
+    if params.get("nofilter"):
+        cargs.append("-nofilter")
+    if params.get("output_at_counts") is not None:
+        cargs.extend([
+            "-output_at_counts",
+            ",".join(map(str, params.get("output_at_counts")))
+        ])
+    if params.get("proc_mask") is not None:
+        cargs.extend([
+            "-proc_mask",
+            execution.input_file(params.get("proc_mask"))
+        ])
+    if params.get("act") is not None:
+        cargs.extend([
+            "-act",
+            execution.input_file(params.get("act"))
+        ])
+    if params.get("fd_scale_gm"):
+        cargs.append("-fd_scale_gm")
+    if params.get("no_dilate_lut"):
+        cargs.append("-no_dilate_lut")
+    if params.get("make_null_lobes"):
+        cargs.append("-make_null_lobes")
+    if params.get("remove_untracked"):
+        cargs.append("-remove_untracked")
+    if params.get("fd_thresh") is not None:
+        cargs.extend([
+            "-fd_thresh",
+            str(params.get("fd_thresh"))
+        ])
+    if params.get("csv") is not None:
+        cargs.extend([
+            "-csv",
+            params.get("csv")
+        ])
+    if params.get("out_mu") is not None:
+        cargs.extend([
+            "-out_mu",
+            params.get("out_mu")
+        ])
+    if params.get("output_debug"):
+        cargs.append("-output_debug")
+    if params.get("out_selection") is not None:
+        cargs.extend([
+            "-out_selection",
+            params.get("out_selection")
+        ])
+    if params.get("term_number") is not None:
+        cargs.extend([
+            "-term_number",
+            str(params.get("term_number"))
+        ])
+    if params.get("term_ratio") is not None:
+        cargs.extend([
+            "-term_ratio",
+            str(params.get("term_ratio"))
+        ])
+    if params.get("term_mu") is not None:
+        cargs.extend([
+            "-term_mu",
+            str(params.get("term_mu"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("in_tracks")))
+    cargs.append(execution.input_file(params.get("in_fod")))
+    cargs.append(params.get("out_tracks"))
+    return cargs
+
+
+def tcksift_outputs(
+    params: TcksiftParameters,
+    execution: Execution,
+) -> TcksiftOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TcksiftOutputs(
+        root=execution.output_file("."),
+        out_tracks=execution.output_file(params.get("out_tracks")),
+        csv_=execution.output_file(params.get("csv")) if (params.get("csv") is not None) else None,
+        out_mu=execution.output_file(params.get("out_mu")) if (params.get("out_mu") is not None) else None,
+        out_selection=execution.output_file(params.get("out_selection")) if (params.get("out_selection") is not None) else None,
+    )
+    return ret
+
+
+def tcksift_execute(
+    params: TcksiftParameters,
+    execution: Execution,
+) -> TcksiftOutputs:
+    """
+    Filter a whole-brain fibre-tracking data set such that the streamline densities
+    match the FOD lobe integrals.
+    
+    
+    
+    References:
+    
+    Smith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A. SIFT:
+    Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
+    67, 298-312.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TcksiftOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tcksift_cargs(params, execution)
+    ret = tcksift_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tcksift(
@@ -85,7 +463,7 @@ def tcksift(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TcksiftConfig] | None = None,
+    config: list[TcksiftConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -170,106 +548,14 @@ def tcksift(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKSIFT_METADATA)
-    cargs = []
-    cargs.append("tcksift")
-    if nofilter:
-        cargs.append("-nofilter")
-    if output_at_counts is not None:
-        cargs.extend([
-            "-output_at_counts",
-            ",".join(map(str, output_at_counts))
-        ])
-    if proc_mask is not None:
-        cargs.extend([
-            "-proc_mask",
-            execution.input_file(proc_mask)
-        ])
-    if act is not None:
-        cargs.extend([
-            "-act",
-            execution.input_file(act)
-        ])
-    if fd_scale_gm:
-        cargs.append("-fd_scale_gm")
-    if no_dilate_lut:
-        cargs.append("-no_dilate_lut")
-    if make_null_lobes:
-        cargs.append("-make_null_lobes")
-    if remove_untracked:
-        cargs.append("-remove_untracked")
-    if fd_thresh is not None:
-        cargs.extend([
-            "-fd_thresh",
-            str(fd_thresh)
-        ])
-    if csv_ is not None:
-        cargs.extend([
-            "-csv",
-            csv_
-        ])
-    if out_mu is not None:
-        cargs.extend([
-            "-out_mu",
-            out_mu
-        ])
-    if output_debug:
-        cargs.append("-output_debug")
-    if out_selection is not None:
-        cargs.extend([
-            "-out_selection",
-            out_selection
-        ])
-    if term_number is not None:
-        cargs.extend([
-            "-term_number",
-            str(term_number)
-        ])
-    if term_ratio is not None:
-        cargs.extend([
-            "-term_ratio",
-            str(term_ratio)
-        ])
-    if term_mu is not None:
-        cargs.extend([
-            "-term_mu",
-            str(term_mu)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(in_tracks))
-    cargs.append(execution.input_file(in_fod))
-    cargs.append(out_tracks)
-    ret = TcksiftOutputs(
-        root=execution.output_file("."),
-        out_tracks=execution.output_file(out_tracks),
-        csv_=execution.output_file(csv_) if (csv_ is not None) else None,
-        out_mu=execution.output_file(out_mu) if (out_mu is not None) else None,
-        out_selection=execution.output_file(out_selection) if (out_selection is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = tcksift_params(nofilter=nofilter, output_at_counts=output_at_counts, proc_mask=proc_mask, act=act, fd_scale_gm=fd_scale_gm, no_dilate_lut=no_dilate_lut, make_null_lobes=make_null_lobes, remove_untracked=remove_untracked, fd_thresh=fd_thresh, csv_=csv_, out_mu=out_mu, output_debug=output_debug, out_selection=out_selection, term_number=term_number, term_ratio=term_ratio, term_mu=term_mu, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_tracks=in_tracks, in_fod=in_fod, out_tracks=out_tracks)
+    return tcksift_execute(params, execution)
 
 
 __all__ = [
     "TCKSIFT_METADATA",
-    "TcksiftConfig",
     "TcksiftOutputs",
     "tcksift",
+    "tcksift_config_params",
+    "tcksift_params",
 ]

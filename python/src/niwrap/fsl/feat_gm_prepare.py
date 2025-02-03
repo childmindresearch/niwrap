@@ -12,14 +12,127 @@ FEAT_GM_PREPARE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FeatGmPrepareParameters = typing.TypedDict('FeatGmPrepareParameters', {
+    "__STYX_TYPE__": typing.Literal["feat_gm_prepare"],
+    "gm_output": str,
+    "feat_dirs_list": list[InputPathType],
+})
 
 
-class FeatGmPrepareOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `feat_gm_prepare(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "feat_gm_prepare": feat_gm_prepare_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def feat_gm_prepare_params(
+    gm_output: str,
+    feat_dirs_list: list[InputPathType],
+) -> FeatGmPrepareParameters:
+    """
+    Build parameters.
+    
+    Args:
+        gm_output: 4D grey matter output file.
+        feat_dirs_list: List of first-level FEAT output directories.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "feat_gm_prepare",
+        "gm_output": gm_output,
+        "feat_dirs_list": feat_dirs_list,
+    }
+    return params
+
+
+def feat_gm_prepare_cargs(
+    params: FeatGmPrepareParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("feat_gm_prepare")
+    cargs.append(params.get("gm_output"))
+    cargs.extend([execution.input_file(f) for f in params.get("feat_dirs_list")])
+    return cargs
+
+
+def feat_gm_prepare_outputs(
+    params: FeatGmPrepareParameters,
+    execution: Execution,
+) -> FeatGmPrepareOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FeatGmPrepareOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def feat_gm_prepare_execute(
+    params: FeatGmPrepareParameters,
+    execution: Execution,
+) -> FeatGmPrepareOutputs:
+    """
+    Prepare 4D grey matter files for higher-level analysis in FEAT.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FeatGmPrepareOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = feat_gm_prepare_cargs(params, execution)
+    ret = feat_gm_prepare_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def feat_gm_prepare(
@@ -43,19 +156,12 @@ def feat_gm_prepare(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT_GM_PREPARE_METADATA)
-    cargs = []
-    cargs.append("feat_gm_prepare")
-    cargs.append(gm_output)
-    cargs.extend([execution.input_file(f) for f in feat_dirs_list])
-    ret = FeatGmPrepareOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = feat_gm_prepare_params(gm_output=gm_output, feat_dirs_list=feat_dirs_list)
+    return feat_gm_prepare_execute(params, execution)
 
 
 __all__ = [
     "FEAT_GM_PREPARE_METADATA",
-    "FeatGmPrepareOutputs",
     "feat_gm_prepare",
+    "feat_gm_prepare_params",
 ]

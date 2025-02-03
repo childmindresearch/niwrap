@@ -12,14 +12,123 @@ FSR_GETXOPTS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsrGetxoptsParameters = typing.TypedDict('FsrGetxoptsParameters', {
+    "__STYX_TYPE__": typing.Literal["fsr-getxopts"],
+    "help": bool,
+})
 
 
-class FsrGetxoptsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fsr_getxopts(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fsr-getxopts": fsr_getxopts_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fsr_getxopts_params(
+    help_: bool = False,
+) -> FsrGetxoptsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        help_: Display the help message and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsr-getxopts",
+        "help": help_,
+    }
+    return params
+
+
+def fsr_getxopts_cargs(
+    params: FsrGetxoptsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsr-getxopts")
+    if params.get("help"):
+        cargs.append("--help")
+    return cargs
+
+
+def fsr_getxopts_outputs(
+    params: FsrGetxoptsParameters,
+    execution: Execution,
+) -> FsrGetxoptsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsrGetxoptsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fsr_getxopts_execute(
+    params: FsrGetxoptsParameters,
+    execution: Execution,
+) -> FsrGetxoptsOutputs:
+    """
+    Tool to retrieve extended options for a specific context or configuration.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsrGetxoptsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsr_getxopts_cargs(params, execution)
+    ret = fsr_getxopts_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsr_getxopts(
@@ -41,19 +150,12 @@ def fsr_getxopts(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSR_GETXOPTS_METADATA)
-    cargs = []
-    cargs.append("fsr-getxopts")
-    if help_:
-        cargs.append("--help")
-    ret = FsrGetxoptsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsr_getxopts_params(help_=help_)
+    return fsr_getxopts_execute(params, execution)
 
 
 __all__ = [
     "FSR_GETXOPTS_METADATA",
-    "FsrGetxoptsOutputs",
     "fsr_getxopts",
+    "fsr_getxopts_params",
 ]

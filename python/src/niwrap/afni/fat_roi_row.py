@@ -12,6 +12,47 @@ FAT_ROI_ROW_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FatRoiRowParameters = typing.TypedDict('FatRoiRowParameters', {
+    "__STYX_TYPE__": typing.Literal["fat_roi_row"],
+    "roi": str,
+    "matrix_files": typing.NotRequired[str | None],
+    "list_file": typing.NotRequired[InputPathType | None],
+    "extern_labs_no": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fat_roi_row": fat_roi_row_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fat_roi_row": fat_roi_row_outputs,
+    }
+    return vt.get(t)
 
 
 class FatRoiRowOutputs(typing.NamedTuple):
@@ -22,6 +63,124 @@ class FatRoiRowOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Selected ROI row output file in .row format."""
+
+
+def fat_roi_row_params(
+    roi: str,
+    matrix_files: str | None = None,
+    list_file: InputPathType | None = None,
+    extern_labs_no: bool = False,
+) -> FatRoiRowParameters:
+    """
+    Build parameters.
+    
+    Args:
+        roi: Specify which ROI's row of connectivity you want to select out. If\
+            labeltables were used, you may select the ROI by either the string\
+            label or the ROI mask number.
+        matrix_files: Provide the set of matrix (*.grid or *.netcc) files by\
+            searchable path. This can be a globbable entry in quotes containing\
+            wildcard characters.
+        list_file: Provide the set of matrix (*.grid or *.netcc) files by\
+            explicit path in a text file. The LIST text file must contain at least\
+            one column with the path to subject matrix file.
+        extern_labs_no: Switch to turn off the writing/usage of user-defined\
+            labels in the *.grid/*.netcc files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fat_roi_row",
+        "roi": roi,
+        "extern_labs_no": extern_labs_no,
+    }
+    if matrix_files is not None:
+        params["matrix_files"] = matrix_files
+    if list_file is not None:
+        params["list_file"] = list_file
+    return params
+
+
+def fat_roi_row_cargs(
+    params: FatRoiRowParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fat_roi_row.py")
+    cargs.extend([
+        "-r",
+        params.get("roi")
+    ])
+    cargs.append("{")
+    if params.get("matrix_files") is not None:
+        cargs.extend([
+            "-m",
+            params.get("matrix_files")
+        ])
+    cargs.append("|")
+    if params.get("list_file") is not None:
+        cargs.extend([
+            "-l",
+            execution.input_file(params.get("list_file"))
+        ])
+    cargs.append("}")
+    if params.get("extern_labs_no"):
+        cargs.append("-E")
+    return cargs
+
+
+def fat_roi_row_outputs(
+    params: FatRoiRowParameters,
+    execution: Execution,
+) -> FatRoiRowOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FatRoiRowOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("roi") + "_selected.row"),
+    )
+    return ret
+
+
+def fat_roi_row_execute(
+    params: FatRoiRowParameters,
+    execution: Execution,
+) -> FatRoiRowOutputs:
+    """
+    Select a single ROI's row out of a connectivity matrix file (*.grid or *.netcc)
+    for viewing and/or further analysis.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FatRoiRowOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fat_roi_row_cargs(params, execution)
+    ret = fat_roi_row_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fat_roi_row(
@@ -57,37 +216,13 @@ def fat_roi_row(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_ROI_ROW_METADATA)
-    cargs = []
-    cargs.append("fat_roi_row.py")
-    cargs.extend([
-        "-r",
-        roi
-    ])
-    cargs.append("{")
-    if matrix_files is not None:
-        cargs.extend([
-            "-m",
-            matrix_files
-        ])
-    cargs.append("|")
-    if list_file is not None:
-        cargs.extend([
-            "-l",
-            execution.input_file(list_file)
-        ])
-    cargs.append("}")
-    if extern_labs_no:
-        cargs.append("-E")
-    ret = FatRoiRowOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(roi + "_selected.row"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fat_roi_row_params(roi=roi, matrix_files=matrix_files, list_file=list_file, extern_labs_no=extern_labs_no)
+    return fat_roi_row_execute(params, execution)
 
 
 __all__ = [
     "FAT_ROI_ROW_METADATA",
     "FatRoiRowOutputs",
     "fat_roi_row",
+    "fat_roi_row_params",
 ]

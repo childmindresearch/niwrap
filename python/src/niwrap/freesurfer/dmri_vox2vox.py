@@ -12,14 +12,219 @@ DMRI_VOX2VOX_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriVox2voxParameters = typing.TypedDict('DmriVox2voxParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_vox2vox"],
+    "input_files": list[InputPathType],
+    "input_directory": typing.NotRequired[str | None],
+    "output_files": list[str],
+    "output_directory": typing.NotRequired[str | None],
+    "input_reference": InputPathType,
+    "output_reference": InputPathType,
+    "affine_registration": InputPathType,
+    "nonlinear_registration": InputPathType,
+    "inverse_nonlinear": bool,
+    "debug": bool,
+    "check_options": bool,
+    "help": bool,
+    "version": bool,
+})
 
 
-class DmriVox2voxOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `dmri_vox2vox(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "dmri_vox2vox": dmri_vox2vox_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def dmri_vox2vox_params(
+    input_files: list[InputPathType],
+    output_files: list[str],
+    input_reference: InputPathType,
+    output_reference: InputPathType,
+    affine_registration: InputPathType,
+    nonlinear_registration: InputPathType,
+    input_directory: str | None = None,
+    output_directory: str | None = None,
+    inverse_nonlinear: bool = False,
+    debug: bool = False,
+    check_options: bool = False,
+    help_: bool = False,
+    version: bool = False,
+) -> DmriVox2voxParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input text file(s).
+        output_files: Output text file(s), as many as inputs.
+        input_reference: Input reference volume.
+        output_reference: Output reference volume.
+        affine_registration: Affine registration file (.mat) to be applied\
+            first.
+        nonlinear_registration: Nonlinear registration file (.m3z) to be\
+            applied second.
+        input_directory: Input directory, if specified, names of input text\
+            files are relative to this.
+        output_directory: Output directory, if specified, names of output text\
+            files are relative to this.
+        inverse_nonlinear: Apply inverse of nonlinear warp when --regnl is used.
+        debug: Turn on debugging.
+        check_options: Check options and exit without running.
+        help_: Print out information on how to use this program.
+        version: Print out version and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_vox2vox",
+        "input_files": input_files,
+        "output_files": output_files,
+        "input_reference": input_reference,
+        "output_reference": output_reference,
+        "affine_registration": affine_registration,
+        "nonlinear_registration": nonlinear_registration,
+        "inverse_nonlinear": inverse_nonlinear,
+        "debug": debug,
+        "check_options": check_options,
+        "help": help_,
+        "version": version,
+    }
+    if input_directory is not None:
+        params["input_directory"] = input_directory
+    if output_directory is not None:
+        params["output_directory"] = output_directory
+    return params
+
+
+def dmri_vox2vox_cargs(
+    params: DmriVox2voxParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_vox2vox")
+    cargs.extend([
+        "--in",
+        *[execution.input_file(f) for f in params.get("input_files")]
+    ])
+    if params.get("input_directory") is not None:
+        cargs.extend([
+            "--indir",
+            params.get("input_directory")
+        ])
+    cargs.extend([
+        "--out",
+        *params.get("output_files")
+    ])
+    if params.get("output_directory") is not None:
+        cargs.extend([
+            "--outdir",
+            params.get("output_directory")
+        ])
+    cargs.extend([
+        "--inref",
+        execution.input_file(params.get("input_reference"))
+    ])
+    cargs.extend([
+        "--outref",
+        execution.input_file(params.get("output_reference"))
+    ])
+    cargs.extend([
+        "--reg",
+        execution.input_file(params.get("affine_registration"))
+    ])
+    cargs.extend([
+        "--regnl",
+        execution.input_file(params.get("nonlinear_registration"))
+    ])
+    if params.get("inverse_nonlinear"):
+        cargs.append("--invnl")
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("check_options"):
+        cargs.append("--checkopts")
+    if params.get("help"):
+        cargs.append("--help")
+    if params.get("version"):
+        cargs.append("--version")
+    return cargs
+
+
+def dmri_vox2vox_outputs(
+    params: DmriVox2voxParameters,
+    execution: Execution,
+) -> DmriVox2voxOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriVox2voxOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def dmri_vox2vox_execute(
+    params: DmriVox2voxParameters,
+    execution: Execution,
+) -> DmriVox2voxOutputs:
+    """
+    Tool for voxel-to-voxel transformations in diffusion MRI data processing.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriVox2voxOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_vox2vox_cargs(params, execution)
+    ret = dmri_vox2vox_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_vox2vox(
@@ -69,61 +274,12 @@ def dmri_vox2vox(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_VOX2VOX_METADATA)
-    cargs = []
-    cargs.append("dmri_vox2vox")
-    cargs.extend([
-        "--in",
-        *[execution.input_file(f) for f in input_files]
-    ])
-    if input_directory is not None:
-        cargs.extend([
-            "--indir",
-            input_directory
-        ])
-    cargs.extend([
-        "--out",
-        *output_files
-    ])
-    if output_directory is not None:
-        cargs.extend([
-            "--outdir",
-            output_directory
-        ])
-    cargs.extend([
-        "--inref",
-        execution.input_file(input_reference)
-    ])
-    cargs.extend([
-        "--outref",
-        execution.input_file(output_reference)
-    ])
-    cargs.extend([
-        "--reg",
-        execution.input_file(affine_registration)
-    ])
-    cargs.extend([
-        "--regnl",
-        execution.input_file(nonlinear_registration)
-    ])
-    if inverse_nonlinear:
-        cargs.append("--invnl")
-    if debug:
-        cargs.append("--debug")
-    if check_options:
-        cargs.append("--checkopts")
-    if help_:
-        cargs.append("--help")
-    if version:
-        cargs.append("--version")
-    ret = DmriVox2voxOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_vox2vox_params(input_files=input_files, input_directory=input_directory, output_files=output_files, output_directory=output_directory, input_reference=input_reference, output_reference=output_reference, affine_registration=affine_registration, nonlinear_registration=nonlinear_registration, inverse_nonlinear=inverse_nonlinear, debug=debug, check_options=check_options, help_=help_, version=version)
+    return dmri_vox2vox_execute(params, execution)
 
 
 __all__ = [
     "DMRI_VOX2VOX_METADATA",
-    "DmriVox2voxOutputs",
     "dmri_vox2vox",
+    "dmri_vox2vox_params",
 ]

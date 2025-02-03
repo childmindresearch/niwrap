@@ -12,14 +12,127 @@ TBSS_X_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+TbssXParameters = typing.TypedDict('TbssXParameters', {
+    "__STYX_TYPE__": typing.Literal["tbss_x"],
+    "scalar_dirs": list[str],
+    "vector_dirs": list[str],
+})
 
 
-class TbssXOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tbss_x(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "tbss_x": tbss_x_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def tbss_x_params(
+    scalar_dirs: list[str],
+    vector_dirs: list[str],
+) -> TbssXParameters:
+    """
+    Build parameters.
+    
+    Args:
+        scalar_dirs: List of scalar directories (e.g., F1, F2).
+        vector_dirs: List of vector directories (e.g., D1, D2).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tbss_x",
+        "scalar_dirs": scalar_dirs,
+        "vector_dirs": vector_dirs,
+    }
+    return params
+
+
+def tbss_x_cargs(
+    params: TbssXParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tbss_x")
+    cargs.extend(params.get("scalar_dirs"))
+    cargs.extend(params.get("vector_dirs"))
+    return cargs
+
+
+def tbss_x_outputs(
+    params: TbssXParameters,
+    execution: Execution,
+) -> TbssXOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TbssXOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tbss_x_execute(
+    params: TbssXParameters,
+    execution: Execution,
+) -> TbssXOutputs:
+    """
+    TBSS cross-subject script for processing scalar and vector directories.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TbssXOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tbss_x_cargs(params, execution)
+    ret = tbss_x_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tbss_x(
@@ -43,19 +156,12 @@ def tbss_x(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_X_METADATA)
-    cargs = []
-    cargs.append("tbss_x")
-    cargs.extend(scalar_dirs)
-    cargs.extend(vector_dirs)
-    ret = TbssXOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tbss_x_params(scalar_dirs=scalar_dirs, vector_dirs=vector_dirs)
+    return tbss_x_execute(params, execution)
 
 
 __all__ = [
     "TBSS_X_METADATA",
-    "TbssXOutputs",
     "tbss_x",
+    "tbss_x_params",
 ]

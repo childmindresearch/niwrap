@@ -12,6 +12,45 @@ MRI_TOPOLOGYCORRECTION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriTopologycorrectionParameters = typing.TypedDict('MriTopologycorrectionParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_topologycorrection"],
+    "input_orig_file": InputPathType,
+    "input_segmented_file": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_topologycorrection": mri_topologycorrection_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_topologycorrection": mri_topologycorrection_outputs,
+    }
+    return vt.get(t)
 
 
 class MriTopologycorrectionOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class MriTopologycorrectionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_folder: OutputPathType
     """Directory where output files will be stored."""
+
+
+def mri_topologycorrection_params(
+    input_orig_file: InputPathType,
+    input_segmented_file: InputPathType,
+) -> MriTopologycorrectionParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_orig_file: Path to the original image file.
+        input_segmented_file: Path to the segmented image file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_topologycorrection",
+        "input_orig_file": input_orig_file,
+        "input_segmented_file": input_segmented_file,
+    }
+    return params
+
+
+def mri_topologycorrection_cargs(
+    params: MriTopologycorrectionParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_topologycorrection")
+    cargs.append(execution.input_file(params.get("input_orig_file")))
+    cargs.append(execution.input_file(params.get("input_segmented_file")))
+    return cargs
+
+
+def mri_topologycorrection_outputs(
+    params: MriTopologycorrectionParameters,
+    execution: Execution,
+) -> MriTopologycorrectionOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriTopologycorrectionOutputs(
+        root=execution.output_file("."),
+        output_folder=execution.output_file("[OUTPUT_FOLDER]"),
+    )
+    return ret
+
+
+def mri_topologycorrection_execute(
+    params: MriTopologycorrectionParameters,
+    execution: Execution,
+) -> MriTopologycorrectionOutputs:
+    """
+    Corrects the topology of segmented MRI images.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriTopologycorrectionOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_topologycorrection_cargs(params, execution)
+    ret = mri_topologycorrection_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_topologycorrection(
@@ -45,20 +169,13 @@ def mri_topologycorrection(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TOPOLOGYCORRECTION_METADATA)
-    cargs = []
-    cargs.append("mri_topologycorrection")
-    cargs.append(execution.input_file(input_orig_file))
-    cargs.append(execution.input_file(input_segmented_file))
-    ret = MriTopologycorrectionOutputs(
-        root=execution.output_file("."),
-        output_folder=execution.output_file("[OUTPUT_FOLDER]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_topologycorrection_params(input_orig_file=input_orig_file, input_segmented_file=input_segmented_file)
+    return mri_topologycorrection_execute(params, execution)
 
 
 __all__ = [
     "MRI_TOPOLOGYCORRECTION_METADATA",
     "MriTopologycorrectionOutputs",
     "mri_topologycorrection",
+    "mri_topologycorrection_params",
 ]

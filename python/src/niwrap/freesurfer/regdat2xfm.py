@@ -12,14 +12,127 @@ REGDAT2XFM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Regdat2xfmParameters = typing.TypedDict('Regdat2xfmParameters', {
+    "__STYX_TYPE__": typing.Literal["regdat2xfm"],
+    "input_file": InputPathType,
+    "output_file": str,
+})
 
 
-class Regdat2xfmOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `regdat2xfm(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "regdat2xfm": regdat2xfm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def regdat2xfm_params(
+    input_file: InputPathType,
+    output_file: str,
+) -> Regdat2xfmParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input file (registration data).
+        output_file: Output file (transformation matrix).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "regdat2xfm",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    return params
+
+
+def regdat2xfm_cargs(
+    params: Regdat2xfmParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("regdat2xfm")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def regdat2xfm_outputs(
+    params: Regdat2xfmParameters,
+    execution: Execution,
+) -> Regdat2xfmOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Regdat2xfmOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def regdat2xfm_execute(
+    params: Regdat2xfmParameters,
+    execution: Execution,
+) -> Regdat2xfmOutputs:
+    """
+    This tool has been removed from the current version of FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Regdat2xfmOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = regdat2xfm_cargs(params, execution)
+    ret = regdat2xfm_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def regdat2xfm(
@@ -43,19 +156,12 @@ def regdat2xfm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGDAT2XFM_METADATA)
-    cargs = []
-    cargs.append("regdat2xfm")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    ret = Regdat2xfmOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = regdat2xfm_params(input_file=input_file, output_file=output_file)
+    return regdat2xfm_execute(params, execution)
 
 
 __all__ = [
     "REGDAT2XFM_METADATA",
-    "Regdat2xfmOutputs",
     "regdat2xfm",
+    "regdat2xfm_params",
 ]

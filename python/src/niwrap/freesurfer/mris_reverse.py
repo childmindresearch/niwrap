@@ -12,6 +12,45 @@ MRIS_REVERSE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisReverseParameters = typing.TypedDict('MrisReverseParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_reverse"],
+    "input_surface": InputPathType,
+    "output_surface": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_reverse": mris_reverse_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_reverse": mris_reverse_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisReverseOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class MrisReverseOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     reversed_surface: OutputPathType
     """Reversed cortical surface file."""
+
+
+def mris_reverse_params(
+    input_surface: InputPathType,
+    output_surface: str,
+) -> MrisReverseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input cortical surface file.
+        output_surface: Output cortical surface file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_reverse",
+        "input_surface": input_surface,
+        "output_surface": output_surface,
+    }
+    return params
+
+
+def mris_reverse_cargs(
+    params: MrisReverseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_reverse")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(params.get("output_surface"))
+    return cargs
+
+
+def mris_reverse_outputs(
+    params: MrisReverseParameters,
+    execution: Execution,
+) -> MrisReverseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisReverseOutputs(
+        root=execution.output_file("."),
+        reversed_surface=execution.output_file(params.get("output_surface") + ".surf"),
+    )
+    return ret
+
+
+def mris_reverse_execute(
+    params: MrisReverseParameters,
+    execution: Execution,
+) -> MrisReverseOutputs:
+    """
+    This tool reverses a cortical surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisReverseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_reverse_cargs(params, execution)
+    ret = mris_reverse_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_reverse(
@@ -45,20 +169,13 @@ def mris_reverse(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REVERSE_METADATA)
-    cargs = []
-    cargs.append("mris_reverse")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(output_surface)
-    ret = MrisReverseOutputs(
-        root=execution.output_file("."),
-        reversed_surface=execution.output_file(output_surface + ".surf"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_reverse_params(input_surface=input_surface, output_surface=output_surface)
+    return mris_reverse_execute(params, execution)
 
 
 __all__ = [
     "MRIS_REVERSE_METADATA",
     "MrisReverseOutputs",
     "mris_reverse",
+    "mris_reverse_params",
 ]

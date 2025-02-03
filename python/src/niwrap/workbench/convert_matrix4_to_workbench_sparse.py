@@ -12,43 +12,219 @@ CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters = typing.TypedDict('ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters', {
+    "__STYX_TYPE__": typing.Literal["volume_seeds"],
+    "cifti_template": InputPathType,
+    "direction": str,
+})
+ConvertMatrix4ToWorkbenchSparseParameters = typing.TypedDict('ConvertMatrix4ToWorkbenchSparseParameters', {
+    "__STYX_TYPE__": typing.Literal["convert-matrix4-to-workbench-sparse"],
+    "matrix4_1": str,
+    "matrix4_2": str,
+    "matrix4_3": str,
+    "orientation_file": InputPathType,
+    "voxel_list": str,
+    "wb_sparse_out": str,
+    "opt_surface_seeds_seed_roi": typing.NotRequired[InputPathType | None],
+    "volume_seeds": typing.NotRequired[ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters | None],
+})
 
 
-@dataclasses.dataclass
-class ConvertMatrix4ToWorkbenchSparseVolumeSeeds:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    specify the volume seed space.
-    """
-    cifti_template: InputPathType
-    """cifti file to use the volume mappings from"""
-    direction: str
-    """dimension along the cifti file to take the mapping from, ROW or COLUMN"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-volume-seeds")
-        cargs.append(execution.input_file(self.cifti_template))
-        cargs.append(self.direction)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "convert-matrix4-to-workbench-sparse": convert_matrix4_to_workbench_sparse_cargs,
+        "volume_seeds": convert_matrix4_to_workbench_sparse_volume_seeds_cargs,
+    }
+    return vt.get(t)
 
 
-class ConvertMatrix4ToWorkbenchSparseOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `convert_matrix4_to_workbench_sparse(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def convert_matrix4_to_workbench_sparse_volume_seeds_params(
+    cifti_template: InputPathType,
+    direction: str,
+) -> ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_template: cifti file to use the volume mappings from.
+        direction: dimension along the cifti file to take the mapping from, ROW\
+            or COLUMN.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume_seeds",
+        "cifti_template": cifti_template,
+        "direction": direction,
+    }
+    return params
+
+
+def convert_matrix4_to_workbench_sparse_volume_seeds_cargs(
+    params: ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-volume-seeds")
+    cargs.append(execution.input_file(params.get("cifti_template")))
+    cargs.append(params.get("direction"))
+    return cargs
+
+
+def convert_matrix4_to_workbench_sparse_params(
+    matrix4_1: str,
+    matrix4_2: str,
+    matrix4_3: str,
+    orientation_file: InputPathType,
+    voxel_list: str,
+    wb_sparse_out: str,
+    opt_surface_seeds_seed_roi: InputPathType | None = None,
+    volume_seeds: ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters | None = None,
+) -> ConvertMatrix4ToWorkbenchSparseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        matrix4_1: the first matrix4 file.
+        matrix4_2: the second matrix4 file.
+        matrix4_3: the third matrix4 file.
+        orientation_file: the .fiberTEMP.nii file this trajectory file applies\
+            to.
+        voxel_list: list of white matter voxel index triplets as used in the\
+            trajectory matrix.
+        wb_sparse_out: output - the output workbench sparse file.
+        opt_surface_seeds_seed_roi: specify the surface seed space: metric roi\
+            file of all vertices used in the seed space.
+        volume_seeds: specify the volume seed space.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "convert-matrix4-to-workbench-sparse",
+        "matrix4_1": matrix4_1,
+        "matrix4_2": matrix4_2,
+        "matrix4_3": matrix4_3,
+        "orientation_file": orientation_file,
+        "voxel_list": voxel_list,
+        "wb_sparse_out": wb_sparse_out,
+    }
+    if opt_surface_seeds_seed_roi is not None:
+        params["opt_surface_seeds_seed_roi"] = opt_surface_seeds_seed_roi
+    if volume_seeds is not None:
+        params["volume_seeds"] = volume_seeds
+    return params
+
+
+def convert_matrix4_to_workbench_sparse_cargs(
+    params: ConvertMatrix4ToWorkbenchSparseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-convert-matrix4-to-workbench-sparse")
+    cargs.append(params.get("matrix4_1"))
+    cargs.append(params.get("matrix4_2"))
+    cargs.append(params.get("matrix4_3"))
+    cargs.append(execution.input_file(params.get("orientation_file")))
+    cargs.append(params.get("voxel_list"))
+    cargs.append(params.get("wb_sparse_out"))
+    if params.get("opt_surface_seeds_seed_roi") is not None:
+        cargs.extend([
+            "-surface-seeds",
+            execution.input_file(params.get("opt_surface_seeds_seed_roi"))
+        ])
+    if params.get("volume_seeds") is not None:
+        cargs.extend(dyn_cargs(params.get("volume_seeds")["__STYXTYPE__"])(params.get("volume_seeds"), execution))
+    return cargs
+
+
+def convert_matrix4_to_workbench_sparse_outputs(
+    params: ConvertMatrix4ToWorkbenchSparseParameters,
+    execution: Execution,
+) -> ConvertMatrix4ToWorkbenchSparseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ConvertMatrix4ToWorkbenchSparseOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def convert_matrix4_to_workbench_sparse_execute(
+    params: ConvertMatrix4ToWorkbenchSparseParameters,
+    execution: Execution,
+) -> ConvertMatrix4ToWorkbenchSparseOutputs:
+    """
+    Convert a 3-file matrix4 to a workbench sparse file.
+    
+    Converts the matrix 4 output of probtrackx to workbench sparse file format.
+    Exactly one of -surface-seeds and -volume-seeds must be specified.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ConvertMatrix4ToWorkbenchSparseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = convert_matrix4_to_workbench_sparse_cargs(params, execution)
+    ret = convert_matrix4_to_workbench_sparse_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def convert_matrix4_to_workbench_sparse(
@@ -59,7 +235,7 @@ def convert_matrix4_to_workbench_sparse(
     voxel_list: str,
     wb_sparse_out: str,
     opt_surface_seeds_seed_roi: InputPathType | None = None,
-    volume_seeds: ConvertMatrix4ToWorkbenchSparseVolumeSeeds | None = None,
+    volume_seeds: ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters | None = None,
     runner: Runner | None = None,
 ) -> ConvertMatrix4ToWorkbenchSparseOutputs:
     """
@@ -90,32 +266,13 @@ def convert_matrix4_to_workbench_sparse(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-convert-matrix4-to-workbench-sparse")
-    cargs.append(matrix4_1)
-    cargs.append(matrix4_2)
-    cargs.append(matrix4_3)
-    cargs.append(execution.input_file(orientation_file))
-    cargs.append(voxel_list)
-    cargs.append(wb_sparse_out)
-    if opt_surface_seeds_seed_roi is not None:
-        cargs.extend([
-            "-surface-seeds",
-            execution.input_file(opt_surface_seeds_seed_roi)
-        ])
-    if volume_seeds is not None:
-        cargs.extend(volume_seeds.run(execution))
-    ret = ConvertMatrix4ToWorkbenchSparseOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = convert_matrix4_to_workbench_sparse_params(matrix4_1=matrix4_1, matrix4_2=matrix4_2, matrix4_3=matrix4_3, orientation_file=orientation_file, voxel_list=voxel_list, wb_sparse_out=wb_sparse_out, opt_surface_seeds_seed_roi=opt_surface_seeds_seed_roi, volume_seeds=volume_seeds)
+    return convert_matrix4_to_workbench_sparse_execute(params, execution)
 
 
 __all__ = [
     "CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA",
-    "ConvertMatrix4ToWorkbenchSparseOutputs",
-    "ConvertMatrix4ToWorkbenchSparseVolumeSeeds",
     "convert_matrix4_to_workbench_sparse",
+    "convert_matrix4_to_workbench_sparse_params",
+    "convert_matrix4_to_workbench_sparse_volume_seeds_params",
 ]

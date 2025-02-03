@@ -12,14 +12,123 @@ V_3D_WARP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dWarpParameters = typing.TypedDict('V3dWarpParameters', {
+    "__STYX_TYPE__": typing.Literal["3dWarp"],
+    "dataset": str,
+})
 
 
-class V3dWarpOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v_3d_warp(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "3dWarp": v_3d_warp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v_3d_warp_params(
+    dataset: str,
+) -> V3dWarpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset: Input dataset to be warped.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dWarp",
+        "dataset": dataset,
+    }
+    return params
+
+
+def v_3d_warp_cargs(
+    params: V3dWarpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dWarp")
+    cargs.append("[OPTIONS]")
+    cargs.append(params.get("dataset"))
+    return cargs
+
+
+def v_3d_warp_outputs(
+    params: V3dWarpParameters,
+    execution: Execution,
+) -> V3dWarpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dWarpOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v_3d_warp_execute(
+    params: V3dWarpParameters,
+    execution: Execution,
+) -> V3dWarpOutputs:
+    """
+    Warp (spatially transform) one 3D dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dWarpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_warp_cargs(params, execution)
+    ret = v_3d_warp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_warp(
@@ -41,19 +150,12 @@ def v_3d_warp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_WARP_METADATA)
-    cargs = []
-    cargs.append("3dWarp")
-    cargs.append("[OPTIONS]")
-    cargs.append(dataset)
-    ret = V3dWarpOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_warp_params(dataset=dataset)
+    return v_3d_warp_execute(params, execution)
 
 
 __all__ = [
-    "V3dWarpOutputs",
     "V_3D_WARP_METADATA",
     "v_3d_warp",
+    "v_3d_warp_params",
 ]

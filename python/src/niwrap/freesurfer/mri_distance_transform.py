@@ -12,6 +12,48 @@ MRI_DISTANCE_TRANSFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriDistanceTransformParameters = typing.TypedDict('MriDistanceTransformParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_distance_transform"],
+    "input_volume": InputPathType,
+    "label": int,
+    "max_distance": int,
+    "mode": typing.NotRequired[int | None],
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_distance_transform": mri_distance_transform_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_distance_transform": mri_distance_transform_outputs,
+    }
+    return vt.get(t)
 
 
 class MriDistanceTransformOutputs(typing.NamedTuple):
@@ -22,6 +64,106 @@ class MriDistanceTransformOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output volume file after distance transform"""
+
+
+def mri_distance_transform_params(
+    input_volume: InputPathType,
+    label: int,
+    max_distance: int,
+    output_volume: str,
+    mode: int | None = 1,
+) -> MriDistanceTransformParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume file.
+        label: Label value for distance transform calculation.
+        max_distance: Maximum distance for the transform.
+        output_volume: Output volume file.
+        mode: Mode of the distance transform: 1 = outside, 2 = inside, 3 =\
+            both, 4 = both unsigned.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_distance_transform",
+        "input_volume": input_volume,
+        "label": label,
+        "max_distance": max_distance,
+        "output_volume": output_volume,
+    }
+    if mode is not None:
+        params["mode"] = mode
+    return params
+
+
+def mri_distance_transform_cargs(
+    params: MriDistanceTransformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_distance_transform")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(str(params.get("label")))
+    cargs.append(str(params.get("max_distance")))
+    if params.get("mode") is not None:
+        cargs.append(str(params.get("mode")))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_distance_transform_outputs(
+    params: MriDistanceTransformParameters,
+    execution: Execution,
+) -> MriDistanceTransformOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriDistanceTransformOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_distance_transform_execute(
+    params: MriDistanceTransformParameters,
+    execution: Execution,
+) -> MriDistanceTransformOutputs:
+    """
+    Tool to compute distance transforms on MRI volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriDistanceTransformOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_distance_transform_cargs(params, execution)
+    ret = mri_distance_transform_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_distance_transform(
@@ -52,24 +194,13 @@ def mri_distance_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DISTANCE_TRANSFORM_METADATA)
-    cargs = []
-    cargs.append("mri_distance_transform")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(str(label))
-    cargs.append(str(max_distance))
-    if mode is not None:
-        cargs.append(str(mode))
-    cargs.append(output_volume)
-    ret = MriDistanceTransformOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_distance_transform_params(input_volume=input_volume, label=label, max_distance=max_distance, mode=mode, output_volume=output_volume)
+    return mri_distance_transform_execute(params, execution)
 
 
 __all__ = [
     "MRI_DISTANCE_TRANSFORM_METADATA",
     "MriDistanceTransformOutputs",
     "mri_distance_transform",
+    "mri_distance_transform_params",
 ]

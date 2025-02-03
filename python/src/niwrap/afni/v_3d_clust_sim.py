@@ -12,6 +12,43 @@ V_3D_CLUST_SIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dClustSimParameters = typing.TypedDict('V3dClustSimParameters', {
+    "__STYX_TYPE__": typing.Literal["3dClustSim"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dClustSim": v_3d_clust_sim_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dClustSim": v_3d_clust_sim_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dClustSimOutputs(typing.NamedTuple):
@@ -42,6 +79,93 @@ class V3dClustSimOutputs(typing.NamedTuple):
     """Compressed ASCII encoding of the mask volume"""
 
 
+def v_3d_clust_sim_params(
+) -> V3dClustSimParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dClustSim",
+    }
+    return params
+
+
+def v_3d_clust_sim_cargs(
+    params: V3dClustSimParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dClustSim")
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def v_3d_clust_sim_outputs(
+    params: V3dClustSimParameters,
+    execution: Execution,
+) -> V3dClustSimOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dClustSimOutputs(
+        root=execution.output_file("."),
+        output_nn1_1sided=execution.output_file("[PREFIX].NN1_1sided.1D"),
+        output_nn1_2sided=execution.output_file("[PREFIX].NN1_2sided.1D"),
+        output_nn1_bisided=execution.output_file("[PREFIX].NN1_bisided.1D"),
+        output_nn2_1sided=execution.output_file("[PREFIX].NN2_1sided.1D"),
+        output_nn2_2sided=execution.output_file("[PREFIX].NN2_2sided.1D"),
+        output_nn2_bisided=execution.output_file("[PREFIX].NN2_bisided.1D"),
+        output_nn3_1sided=execution.output_file("[PREFIX].NN3_1sided.1D"),
+        output_nn3_2sided=execution.output_file("[PREFIX].NN3_2sided.1D"),
+        output_nn3_bisided=execution.output_file("[PREFIX].NN3_bisided.1D"),
+        mask_compressed=execution.output_file("[PREFIX].mask"),
+    )
+    return ret
+
+
+def v_3d_clust_sim_execute(
+    params: V3dClustSimParameters,
+    execution: Execution,
+) -> V3dClustSimOutputs:
+    """
+    Program to estimate the probability of false positive (noise-only) clusters.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dClustSimOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_clust_sim_cargs(params, execution)
+    ret = v_3d_clust_sim_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def v_3d_clust_sim(
     runner: Runner | None = None,
 ) -> V3dClustSimOutputs:
@@ -59,28 +183,13 @@ def v_3d_clust_sim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CLUST_SIM_METADATA)
-    cargs = []
-    cargs.append("3dClustSim")
-    cargs.append("[OPTIONS]")
-    ret = V3dClustSimOutputs(
-        root=execution.output_file("."),
-        output_nn1_1sided=execution.output_file("[PREFIX].NN1_1sided.1D"),
-        output_nn1_2sided=execution.output_file("[PREFIX].NN1_2sided.1D"),
-        output_nn1_bisided=execution.output_file("[PREFIX].NN1_bisided.1D"),
-        output_nn2_1sided=execution.output_file("[PREFIX].NN2_1sided.1D"),
-        output_nn2_2sided=execution.output_file("[PREFIX].NN2_2sided.1D"),
-        output_nn2_bisided=execution.output_file("[PREFIX].NN2_bisided.1D"),
-        output_nn3_1sided=execution.output_file("[PREFIX].NN3_1sided.1D"),
-        output_nn3_2sided=execution.output_file("[PREFIX].NN3_2sided.1D"),
-        output_nn3_bisided=execution.output_file("[PREFIX].NN3_bisided.1D"),
-        mask_compressed=execution.output_file("[PREFIX].mask"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_clust_sim_params()
+    return v_3d_clust_sim_execute(params, execution)
 
 
 __all__ = [
     "V3dClustSimOutputs",
     "V_3D_CLUST_SIM_METADATA",
     "v_3d_clust_sim",
+    "v_3d_clust_sim_params",
 ]

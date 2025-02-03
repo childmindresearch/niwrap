@@ -12,6 +12,46 @@ FSLFFT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslfftParameters = typing.TypedDict('FslfftParameters', {
+    "__STYX_TYPE__": typing.Literal["fslfft"],
+    "input_volume": InputPathType,
+    "output_volume": str,
+    "inverse_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslfft": fslfft_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslfft": fslfft_outputs,
+    }
+    return vt.get(t)
 
 
 class FslfftOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class FslfftOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output volume result of the Fourier transform"""
+
+
+def fslfft_params(
+    input_volume: InputPathType,
+    output_volume: str,
+    inverse_flag: bool = False,
+) -> FslfftParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume file (e.g. invol.nii.gz).
+        output_volume: Output volume file (e.g. outvol.nii.gz).
+        inverse_flag: Flag to perform the inverse Fourier transform.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslfft",
+        "input_volume": input_volume,
+        "output_volume": output_volume,
+        "inverse_flag": inverse_flag,
+    }
+    return params
+
+
+def fslfft_cargs(
+    params: FslfftParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslfft")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(params.get("output_volume"))
+    if params.get("inverse_flag"):
+        cargs.append("-inv")
+    return cargs
+
+
+def fslfft_outputs(
+    params: FslfftParameters,
+    execution: Execution,
+) -> FslfftOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslfftOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume") + ".nii.gz"),
+    )
+    return ret
+
+
+def fslfft_execute(
+    params: FslfftParameters,
+    execution: Execution,
+) -> FslfftOutputs:
+    """
+    A tool to compute the Fourier transform of an input volume and save the result
+    in an output volume.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslfftOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslfft_cargs(params, execution)
+    ret = fslfft_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslfft(
@@ -48,22 +179,13 @@ def fslfft(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLFFT_METADATA)
-    cargs = []
-    cargs.append("fslfft")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(output_volume)
-    if inverse_flag:
-        cargs.append("-inv")
-    ret = FslfftOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslfft_params(input_volume=input_volume, output_volume=output_volume, inverse_flag=inverse_flag)
+    return fslfft_execute(params, execution)
 
 
 __all__ = [
     "FSLFFT_METADATA",
     "FslfftOutputs",
     "fslfft",
+    "fslfft_params",
 ]

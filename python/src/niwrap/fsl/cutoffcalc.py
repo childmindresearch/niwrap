@@ -12,6 +12,50 @@ CUTOFFCALC_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+CutoffcalcParameters = typing.TypedDict('CutoffcalcParameters', {
+    "__STYX_TYPE__": typing.Literal["cutoffcalc"],
+    "input_design": InputPathType,
+    "threshold": typing.NotRequired[float | None],
+    "tr": typing.NotRequired[float | None],
+    "lower_limit": typing.NotRequired[float | None],
+    "example_sigma": typing.NotRequired[float | None],
+    "verbose_flag": bool,
+    "debug_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cutoffcalc": cutoffcalc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cutoffcalc": cutoffcalc_outputs,
+    }
+    return vt.get(t)
 
 
 class CutoffcalcOutputs(typing.NamedTuple):
@@ -22,6 +66,124 @@ class CutoffcalcOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     example_output: OutputPathType
     """Filtered output file if example sigma is provided"""
+
+
+def cutoffcalc_params(
+    input_design: InputPathType,
+    threshold: float | None = 0.9,
+    tr: float | None = 3.0,
+    lower_limit: float | None = 90.0,
+    example_sigma: float | None = None,
+    verbose_flag: bool = False,
+    debug_flag: bool = False,
+) -> CutoffcalcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_design: Input design matrix (e.g. design.mat).
+        threshold: Threshold for retained variance (default=0.9).
+        tr: Time between successive data points (default=3.0s).
+        lower_limit: Lower limit on period due to autocorr estimation\
+            (default=90s).
+        example_sigma: Example sigma (in sec) to produce output called\
+            example_filt.mtx.
+        verbose_flag: Switch on diagnostic messages.
+        debug_flag: Switch on debugging messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cutoffcalc",
+        "input_design": input_design,
+        "verbose_flag": verbose_flag,
+        "debug_flag": debug_flag,
+    }
+    if threshold is not None:
+        params["threshold"] = threshold
+    if tr is not None:
+        params["tr"] = tr
+    if lower_limit is not None:
+        params["lower_limit"] = lower_limit
+    if example_sigma is not None:
+        params["example_sigma"] = example_sigma
+    return params
+
+
+def cutoffcalc_cargs(
+    params: CutoffcalcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("cutoffcalc")
+    cargs.append("-i " + execution.input_file(params.get("input_design")))
+    if params.get("threshold") is not None:
+        cargs.append("-t " + str(params.get("threshold")))
+    if params.get("tr") is not None:
+        cargs.append("--tr " + str(params.get("tr")))
+    if params.get("lower_limit") is not None:
+        cargs.append("--limit " + str(params.get("lower_limit")))
+    if params.get("example_sigma") is not None:
+        cargs.append("--example_sig " + str(params.get("example_sigma")))
+    if params.get("verbose_flag"):
+        cargs.append("-v")
+    if params.get("debug_flag"):
+        cargs.append("--debug")
+    return cargs
+
+
+def cutoffcalc_outputs(
+    params: CutoffcalcParameters,
+    execution: Execution,
+) -> CutoffcalcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CutoffcalcOutputs(
+        root=execution.output_file("."),
+        example_output=execution.output_file("example_filt.mtx"),
+    )
+    return ret
+
+
+def cutoffcalc_execute(
+    params: CutoffcalcParameters,
+    execution: Execution,
+) -> CutoffcalcOutputs:
+    """
+    Calculates the minimal period for the highpass filter that still preserves a
+    specified amount of variance in all the design matrix regressors.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CutoffcalcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cutoffcalc_cargs(params, execution)
+    ret = cutoffcalc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cutoffcalc(
@@ -58,31 +220,13 @@ def cutoffcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CUTOFFCALC_METADATA)
-    cargs = []
-    cargs.append("cutoffcalc")
-    cargs.append("-i " + execution.input_file(input_design))
-    if threshold is not None:
-        cargs.append("-t " + str(threshold))
-    if tr is not None:
-        cargs.append("--tr " + str(tr))
-    if lower_limit is not None:
-        cargs.append("--limit " + str(lower_limit))
-    if example_sigma is not None:
-        cargs.append("--example_sig " + str(example_sigma))
-    if verbose_flag:
-        cargs.append("-v")
-    if debug_flag:
-        cargs.append("--debug")
-    ret = CutoffcalcOutputs(
-        root=execution.output_file("."),
-        example_output=execution.output_file("example_filt.mtx"),
-    )
-    execution.run(cargs)
-    return ret
+    params = cutoffcalc_params(input_design=input_design, threshold=threshold, tr=tr, lower_limit=lower_limit, example_sigma=example_sigma, verbose_flag=verbose_flag, debug_flag=debug_flag)
+    return cutoffcalc_execute(params, execution)
 
 
 __all__ = [
     "CUTOFFCALC_METADATA",
     "CutoffcalcOutputs",
     "cutoffcalc",
+    "cutoffcalc_params",
 ]

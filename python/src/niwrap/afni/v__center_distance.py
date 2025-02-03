@@ -12,6 +12,45 @@ V__CENTER_DISTANCE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VCenterDistanceParameters = typing.TypedDict('VCenterDistanceParameters', {
+    "__STYX_TYPE__": typing.Literal["@Center_Distance"],
+    "dset1": InputPathType,
+    "dset2": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@Center_Distance": v__center_distance_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@Center_Distance": v__center_distance_outputs,
+    }
+    return vt.get(t)
 
 
 class VCenterDistanceOutputs(typing.NamedTuple):
@@ -22,6 +61,94 @@ class VCenterDistanceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     distance_output: OutputPathType
     """The calculated distance between the centers of DSET_1 and DSET_2"""
+
+
+def v__center_distance_params(
+    dset1: InputPathType,
+    dset2: InputPathType,
+) -> VCenterDistanceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dset1: First dataset file (e.g. file1.nii.gz).
+        dset2: Second dataset file (e.g. file2.nii.gz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@Center_Distance",
+        "dset1": dset1,
+        "dset2": dset2,
+    }
+    return params
+
+
+def v__center_distance_cargs(
+    params: VCenterDistanceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@Center_Distance")
+    cargs.extend([
+        "-dset",
+        execution.input_file(params.get("dset1"))
+    ])
+    cargs.append(execution.input_file(params.get("dset2")))
+    return cargs
+
+
+def v__center_distance_outputs(
+    params: VCenterDistanceParameters,
+    execution: Execution,
+) -> VCenterDistanceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VCenterDistanceOutputs(
+        root=execution.output_file("."),
+        distance_output=execution.output_file("distance.txt"),
+    )
+    return ret
+
+
+def v__center_distance_execute(
+    params: VCenterDistanceParameters,
+    execution: Execution,
+) -> VCenterDistanceOutputs:
+    """
+    Tool to calculate the distance between the centers of two datasets.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VCenterDistanceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__center_distance_cargs(params, execution)
+    ret = v__center_distance_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__center_distance(
@@ -45,23 +172,13 @@ def v__center_distance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CENTER_DISTANCE_METADATA)
-    cargs = []
-    cargs.append("@Center_Distance")
-    cargs.extend([
-        "-dset",
-        execution.input_file(dset1)
-    ])
-    cargs.append(execution.input_file(dset2))
-    ret = VCenterDistanceOutputs(
-        root=execution.output_file("."),
-        distance_output=execution.output_file("distance.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__center_distance_params(dset1=dset1, dset2=dset2)
+    return v__center_distance_execute(params, execution)
 
 
 __all__ = [
     "VCenterDistanceOutputs",
     "V__CENTER_DISTANCE_METADATA",
     "v__center_distance",
+    "v__center_distance_params",
 ]

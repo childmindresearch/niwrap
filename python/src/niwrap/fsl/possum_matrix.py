@@ -12,6 +12,50 @@ POSSUM_MATRIX_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+PossumMatrixParameters = typing.TypedDict('PossumMatrixParameters', {
+    "__STYX_TYPE__": typing.Literal["possum_matrix"],
+    "pulse_sequence": str,
+    "motion_matrix": str,
+    "output_matrix": str,
+    "verbose_flag": bool,
+    "help_flag": bool,
+    "old_version_flag": bool,
+    "segment_size": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "possum_matrix": possum_matrix_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "possum_matrix": possum_matrix_outputs,
+    }
+    return vt.get(t)
 
 
 class PossumMatrixOutputs(typing.NamedTuple):
@@ -22,6 +66,134 @@ class PossumMatrixOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_main_matrix: OutputPathType
     """Main event matrix output file"""
+
+
+def possum_matrix_params(
+    pulse_sequence: str,
+    motion_matrix: str,
+    output_matrix: str,
+    verbose_flag: bool = False,
+    help_flag: bool = False,
+    old_version_flag: bool = False,
+    segment_size: float | None = None,
+) -> PossumMatrixParameters:
+    """
+    Build parameters.
+    
+    Args:
+        pulse_sequence: Pulse sequence - all additional files with extensions\
+            .posx, .posy, etc., expected to be in the same directory.
+        motion_matrix: Motion matrix [time(s) Tx(m) Ty(m) Tz(m) Rx(rad) Ry(rad)\
+            Rz(rad)].
+        output_matrix: Main event matrix [t(s), rf_ang(rad), rf_freq_band(Hz),\
+            (4)=rf_cent_freq(Hz), read(1/0), Gx, Gy, Gz(T/m), Tx, Ty, Tz(m),\
+            angle_of_rot B(rad), rot_axis Bx, By, Bz(m), angle_of_rot A(rad),\
+            rot_axis Ax, Ay, Az(m)].
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display this help message.
+        old_version_flag: Allows for the old version of the sorter to run.
+        segment_size: Setting the size of the segment of the matrix that is\
+            read in one at a time.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "possum_matrix",
+        "pulse_sequence": pulse_sequence,
+        "motion_matrix": motion_matrix,
+        "output_matrix": output_matrix,
+        "verbose_flag": verbose_flag,
+        "help_flag": help_flag,
+        "old_version_flag": old_version_flag,
+    }
+    if segment_size is not None:
+        params["segment_size"] = segment_size
+    return params
+
+
+def possum_matrix_cargs(
+    params: PossumMatrixParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("possum_matrix")
+    cargs.extend([
+        "-p",
+        params.get("pulse_sequence")
+    ])
+    cargs.extend([
+        "-m",
+        params.get("motion_matrix")
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_matrix")
+    ])
+    if params.get("verbose_flag"):
+        cargs.append("-v")
+    if params.get("help_flag"):
+        cargs.append("-h")
+    if params.get("old_version_flag"):
+        cargs.append("--old")
+    if params.get("segment_size") is not None:
+        cargs.extend([
+            "--seg",
+            str(params.get("segment_size"))
+        ])
+    return cargs
+
+
+def possum_matrix_outputs(
+    params: PossumMatrixParameters,
+    execution: Execution,
+) -> PossumMatrixOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PossumMatrixOutputs(
+        root=execution.output_file("."),
+        output_main_matrix=execution.output_file(params.get("output_matrix")),
+    )
+    return ret
+
+
+def possum_matrix_execute(
+    params: PossumMatrixParameters,
+    execution: Execution,
+) -> PossumMatrixOutputs:
+    """
+    Event matrix generator for POSSUM simulation in FSL.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PossumMatrixOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = possum_matrix_cargs(params, execution)
+    ret = possum_matrix_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def possum_matrix(
@@ -61,41 +233,13 @@ def possum_matrix(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_MATRIX_METADATA)
-    cargs = []
-    cargs.append("possum_matrix")
-    cargs.extend([
-        "-p",
-        pulse_sequence
-    ])
-    cargs.extend([
-        "-m",
-        motion_matrix
-    ])
-    cargs.extend([
-        "-o",
-        output_matrix
-    ])
-    if verbose_flag:
-        cargs.append("-v")
-    if help_flag:
-        cargs.append("-h")
-    if old_version_flag:
-        cargs.append("--old")
-    if segment_size is not None:
-        cargs.extend([
-            "--seg",
-            str(segment_size)
-        ])
-    ret = PossumMatrixOutputs(
-        root=execution.output_file("."),
-        output_main_matrix=execution.output_file(output_matrix),
-    )
-    execution.run(cargs)
-    return ret
+    params = possum_matrix_params(pulse_sequence=pulse_sequence, motion_matrix=motion_matrix, output_matrix=output_matrix, verbose_flag=verbose_flag, help_flag=help_flag, old_version_flag=old_version_flag, segment_size=segment_size)
+    return possum_matrix_execute(params, execution)
 
 
 __all__ = [
     "POSSUM_MATRIX_METADATA",
     "PossumMatrixOutputs",
     "possum_matrix",
+    "possum_matrix_params",
 ]

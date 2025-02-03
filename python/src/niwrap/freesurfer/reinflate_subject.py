@@ -12,14 +12,124 @@ REINFLATE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ReinflateSubjectParameters = typing.TypedDict('ReinflateSubjectParameters', {
+    "__STYX_TYPE__": typing.Literal["reinflate_subject"],
+    "args": typing.NotRequired[str | None],
+})
 
 
-class ReinflateSubjectOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `reinflate_subject(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "reinflate_subject": reinflate_subject_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def reinflate_subject_params(
+    args: str | None = None,
+) -> ReinflateSubjectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        args: Arguments for reinflate_subject.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reinflate_subject",
+    }
+    if args is not None:
+        params["args"] = args
+    return params
+
+
+def reinflate_subject_cargs(
+    params: ReinflateSubjectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("reinflate_subject")
+    if params.get("args") is not None:
+        cargs.append(params.get("args"))
+    return cargs
+
+
+def reinflate_subject_outputs(
+    params: ReinflateSubjectParameters,
+    execution: Execution,
+) -> ReinflateSubjectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ReinflateSubjectOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def reinflate_subject_execute(
+    params: ReinflateSubjectParameters,
+    execution: Execution,
+) -> ReinflateSubjectOutputs:
+    """
+    Tool for reinflating brain surfaces.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ReinflateSubjectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reinflate_subject_cargs(params, execution)
+    ret = reinflate_subject_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reinflate_subject(
@@ -41,19 +151,12 @@ def reinflate_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REINFLATE_SUBJECT_METADATA)
-    cargs = []
-    cargs.append("reinflate_subject")
-    if args is not None:
-        cargs.append(args)
-    ret = ReinflateSubjectOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = reinflate_subject_params(args=args)
+    return reinflate_subject_execute(params, execution)
 
 
 __all__ = [
     "REINFLATE_SUBJECT_METADATA",
-    "ReinflateSubjectOutputs",
     "reinflate_subject",
+    "reinflate_subject_params",
 ]

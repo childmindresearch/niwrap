@@ -12,6 +12,55 @@ NICCC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+NicccParameters = typing.TypedDict('NicccParameters', {
+    "__STYX_TYPE__": typing.Literal["niccc"],
+    "streamspec": str,
+    "duplicate": bool,
+    "nodata": bool,
+    "attribute": typing.NotRequired[str | None],
+    "match": typing.NotRequired[str | None],
+    "file": bool,
+    "string": bool,
+    "stdout": bool,
+    "hash": bool,
+    "quiet": bool,
+    "find_attr": typing.NotRequired[list[str] | None],
+    "skip_attr": typing.NotRequired[list[str] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "niccc": niccc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "niccc": niccc_outputs,
+    }
+    return vt.get(t)
 
 
 class NicccOutputs(typing.NamedTuple):
@@ -22,6 +71,166 @@ class NicccOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     stderr_output: OutputPathType
     """Results output to stderr"""
+
+
+def niccc_params(
+    streamspec: str,
+    duplicate: bool = False,
+    nodata: bool = False,
+    attribute: str | None = None,
+    match: str | None = None,
+    file: bool = False,
+    string_: bool = False,
+    stdout: bool = False,
+    hash_: bool = False,
+    quiet: bool = False,
+    find_attr: list[str] | None = None,
+    skip_attr: list[str] | None = None,
+) -> NicccParameters:
+    """
+    Build parameters.
+    
+    Args:
+        streamspec: A string defining a NIML stream.
+        duplicate: Duplicate the element before showing it. This is to test\
+            NI_duplicate function.
+        nodata: Show header parts only in output.
+        attribute: Dump the value of attribute ATTR.
+        match: Match attribute: If MATCH is exact, then attribute name is\
+            matched exactly. If MATCH is partial, then a match of all the\
+            characters in ATTR is enough.
+        file: Streamspec is a filename.
+        string_: Streamspec is an element string like: '<T font=9 coords="2.3\
+            23 2"/>'.
+        stdout: Write elements to stdout, instead of stderr.
+        hash_: Put the # at the beginning of lines with no data.
+        quiet: Quiet stderr messages, and don't echo attribute name with\
+            -attribute option.
+        find_attr: Only output elements that have an attribute ATTR of value\
+            ATTRVAL.
+        skip_attr: Do not output elements that have an attribute ATTR of value\
+            ATTRVAL.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "niccc",
+        "streamspec": streamspec,
+        "duplicate": duplicate,
+        "nodata": nodata,
+        "file": file,
+        "string": string_,
+        "stdout": stdout,
+        "hash": hash_,
+        "quiet": quiet,
+    }
+    if attribute is not None:
+        params["attribute"] = attribute
+    if match is not None:
+        params["match"] = match
+    if find_attr is not None:
+        params["find_attr"] = find_attr
+    if skip_attr is not None:
+        params["skip_attr"] = skip_attr
+    return params
+
+
+def niccc_cargs(
+    params: NicccParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("niccc")
+    cargs.append(params.get("streamspec"))
+    if params.get("duplicate"):
+        cargs.append("-dup")
+    if params.get("nodata"):
+        cargs.append("-nodata")
+    if params.get("attribute") is not None:
+        cargs.extend([
+            "-attribute",
+            params.get("attribute")
+        ])
+    if params.get("match") is not None:
+        cargs.extend([
+            "-match",
+            params.get("match")
+        ])
+    if params.get("file"):
+        cargs.append("-f")
+    if params.get("string"):
+        cargs.append("-s")
+    if params.get("stdout"):
+        cargs.append("-stdout")
+    if params.get("hash"):
+        cargs.append("-#")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("find_attr") is not None:
+        cargs.extend([
+            "-find_nel_with_attr",
+            *params.get("find_attr")
+        ])
+    if params.get("skip_attr") is not None:
+        cargs.extend([
+            "-skip_nel_with_attr",
+            *params.get("skip_attr")
+        ])
+    return cargs
+
+
+def niccc_outputs(
+    params: NicccParameters,
+    execution: Execution,
+) -> NicccOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = NicccOutputs(
+        root=execution.output_file("."),
+        stderr_output=execution.output_file("stderr"),
+    )
+    return ret
+
+
+def niccc_execute(
+    params: NicccParameters,
+    execution: Execution,
+) -> NicccOutputs:
+    """
+    A program for conducting certain NIML tests on input from streamspec and write
+    the results to stderr.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `NicccOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = niccc_cargs(params, execution)
+    ret = niccc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def niccc(
@@ -71,59 +280,15 @@ def niccc(
     Returns:
         NamedTuple of outputs (described in `NicccOutputs`).
     """
-    if find_attr is not None and (len(find_attr) != 2): 
-        raise ValueError(f"Length of 'find_attr' must be 2 but was {len(find_attr)}")
-    if skip_attr is not None and (len(skip_attr) != 2): 
-        raise ValueError(f"Length of 'skip_attr' must be 2 but was {len(skip_attr)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(NICCC_METADATA)
-    cargs = []
-    cargs.append("niccc")
-    cargs.append(streamspec)
-    if duplicate:
-        cargs.append("-dup")
-    if nodata:
-        cargs.append("-nodata")
-    if attribute is not None:
-        cargs.extend([
-            "-attribute",
-            attribute
-        ])
-    if match is not None:
-        cargs.extend([
-            "-match",
-            match
-        ])
-    if file:
-        cargs.append("-f")
-    if string_:
-        cargs.append("-s")
-    if stdout:
-        cargs.append("-stdout")
-    if hash_:
-        cargs.append("-#")
-    if quiet:
-        cargs.append("-quiet")
-    if find_attr is not None:
-        cargs.extend([
-            "-find_nel_with_attr",
-            *find_attr
-        ])
-    if skip_attr is not None:
-        cargs.extend([
-            "-skip_nel_with_attr",
-            *skip_attr
-        ])
-    ret = NicccOutputs(
-        root=execution.output_file("."),
-        stderr_output=execution.output_file("stderr"),
-    )
-    execution.run(cargs)
-    return ret
+    params = niccc_params(streamspec=streamspec, duplicate=duplicate, nodata=nodata, attribute=attribute, match=match, file=file, string_=string_, stdout=stdout, hash_=hash_, quiet=quiet, find_attr=find_attr, skip_attr=skip_attr)
+    return niccc_execute(params, execution)
 
 
 __all__ = [
     "NICCC_METADATA",
     "NicccOutputs",
     "niccc",
+    "niccc_params",
 ]

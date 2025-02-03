@@ -12,6 +12,48 @@ ANTS_NEUROIMAGING_BATTERY_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsNeuroimagingBatteryParameters = typing.TypedDict('AntsNeuroimagingBatteryParameters', {
+    "__STYX_TYPE__": typing.Literal["antsNeuroimagingBattery"],
+    "input_directory": str,
+    "output_directory": str,
+    "output_name": str,
+    "anatomical_image": InputPathType,
+    "anatomical_mask": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "antsNeuroimagingBattery": ants_neuroimaging_battery_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "antsNeuroimagingBattery": ants_neuroimaging_battery_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsNeuroimagingBatteryOutputs(typing.NamedTuple):
@@ -22,6 +64,121 @@ class AntsNeuroimagingBatteryOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_transform: OutputPathType
     """Output transform files."""
+
+
+def ants_neuroimaging_battery_params(
+    input_directory: str,
+    output_directory: str,
+    output_name: str,
+    anatomical_image: InputPathType,
+    anatomical_mask: InputPathType,
+) -> AntsNeuroimagingBatteryParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_directory: Directory where to look for modality images.
+        output_directory: Directory where output goes (where\
+            antsCorticalThickness output lives).
+        output_name: File prefix for outputs.
+        anatomical_image: Reference subject image (usually T1).
+        anatomical_mask: Mask of anatomical image, should contain cerebrum,\
+            cerebellum, and brainstem.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "antsNeuroimagingBattery",
+        "input_directory": input_directory,
+        "output_directory": output_directory,
+        "output_name": output_name,
+        "anatomical_image": anatomical_image,
+        "anatomical_mask": anatomical_mask,
+    }
+    return params
+
+
+def ants_neuroimaging_battery_cargs(
+    params: AntsNeuroimagingBatteryParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("antsNeuroimagingBattery.pl")
+    cargs.extend([
+        "--input-directory",
+        params.get("input_directory")
+    ])
+    cargs.extend([
+        "--output-directory",
+        params.get("output_directory")
+    ])
+    cargs.extend([
+        "--output-name",
+        params.get("output_name")
+    ])
+    cargs.extend([
+        "--anatomical",
+        execution.input_file(params.get("anatomical_image"))
+    ])
+    cargs.extend([
+        "--anatomical-mask",
+        execution.input_file(params.get("anatomical_mask"))
+    ])
+    cargs.append("[OPTIONAL_INPUTS]")
+    return cargs
+
+
+def ants_neuroimaging_battery_outputs(
+    params: AntsNeuroimagingBatteryParameters,
+    execution: Execution,
+) -> AntsNeuroimagingBatteryOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsNeuroimagingBatteryOutputs(
+        root=execution.output_file("."),
+        output_transform=execution.output_file(params.get("output_directory") + "/" + params.get("output_name") + ".*"),
+    )
+    return ret
+
+
+def ants_neuroimaging_battery_execute(
+    params: AntsNeuroimagingBatteryParameters,
+    execution: Execution,
+) -> AntsNeuroimagingBatteryOutputs:
+    """
+    Align MR modalities to a common within-subject (and optional template) space.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsNeuroimagingBatteryOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ants_neuroimaging_battery_cargs(params, execution)
+    ret = ants_neuroimaging_battery_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ants_neuroimaging_battery(
@@ -53,39 +210,13 @@ def ants_neuroimaging_battery(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_NEUROIMAGING_BATTERY_METADATA)
-    cargs = []
-    cargs.append("antsNeuroimagingBattery.pl")
-    cargs.extend([
-        "--input-directory",
-        input_directory
-    ])
-    cargs.extend([
-        "--output-directory",
-        output_directory
-    ])
-    cargs.extend([
-        "--output-name",
-        output_name
-    ])
-    cargs.extend([
-        "--anatomical",
-        execution.input_file(anatomical_image)
-    ])
-    cargs.extend([
-        "--anatomical-mask",
-        execution.input_file(anatomical_mask)
-    ])
-    cargs.append("[OPTIONAL_INPUTS]")
-    ret = AntsNeuroimagingBatteryOutputs(
-        root=execution.output_file("."),
-        output_transform=execution.output_file(output_directory + "/" + output_name + ".*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = ants_neuroimaging_battery_params(input_directory=input_directory, output_directory=output_directory, output_name=output_name, anatomical_image=anatomical_image, anatomical_mask=anatomical_mask)
+    return ants_neuroimaging_battery_execute(params, execution)
 
 
 __all__ = [
     "ANTS_NEUROIMAGING_BATTERY_METADATA",
     "AntsNeuroimagingBatteryOutputs",
     "ants_neuroimaging_battery",
+    "ants_neuroimaging_battery_params",
 ]

@@ -12,14 +12,124 @@ DMRI_AC_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriAcShParameters = typing.TypedDict('DmriAcShParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_ac.sh"],
+    "additional_args": typing.NotRequired[str | None],
+})
 
 
-class DmriAcShOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `dmri_ac_sh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "dmri_ac.sh": dmri_ac_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def dmri_ac_sh_params(
+    additional_args: str | None = None,
+) -> DmriAcShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        additional_args: Additional arguments for dmri_ac.sh script.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_ac.sh",
+    }
+    if additional_args is not None:
+        params["additional_args"] = additional_args
+    return params
+
+
+def dmri_ac_sh_cargs(
+    params: DmriAcShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_ac.sh")
+    if params.get("additional_args") is not None:
+        cargs.append(params.get("additional_args"))
+    return cargs
+
+
+def dmri_ac_sh_outputs(
+    params: DmriAcShParameters,
+    execution: Execution,
+) -> DmriAcShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriAcShOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def dmri_ac_sh_execute(
+    params: DmriAcShParameters,
+    execution: Execution,
+) -> DmriAcShOutputs:
+    """
+    A script related to diffusion MRI processing in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriAcShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_ac_sh_cargs(params, execution)
+    ret = dmri_ac_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_ac_sh(
@@ -41,19 +151,12 @@ def dmri_ac_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_AC_SH_METADATA)
-    cargs = []
-    cargs.append("dmri_ac.sh")
-    if additional_args is not None:
-        cargs.append(additional_args)
-    ret = DmriAcShOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_ac_sh_params(additional_args=additional_args)
+    return dmri_ac_sh_execute(params, execution)
 
 
 __all__ = [
     "DMRI_AC_SH_METADATA",
-    "DmriAcShOutputs",
     "dmri_ac_sh",
+    "dmri_ac_sh_params",
 ]

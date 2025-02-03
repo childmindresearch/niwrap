@@ -12,6 +12,47 @@ METRIC_MASK_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricMaskParameters = typing.TypedDict('MetricMaskParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-mask"],
+    "metric": InputPathType,
+    "mask": InputPathType,
+    "metric_out": str,
+    "opt_column_column": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-mask": metric_mask_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-mask": metric_mask_outputs,
+    }
+    return vt.get(t)
 
 
 class MetricMaskOutputs(typing.NamedTuple):
@@ -22,6 +63,110 @@ class MetricMaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
+
+
+def metric_mask_params(
+    metric: InputPathType,
+    mask: InputPathType,
+    metric_out: str,
+    opt_column_column: str | None = None,
+) -> MetricMaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric: the input metric.
+        mask: the mask metric.
+        metric_out: the output metric.
+        opt_column_column: select a single column: the column number or name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-mask",
+        "metric": metric,
+        "mask": mask,
+        "metric_out": metric_out,
+    }
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    return params
+
+
+def metric_mask_cargs(
+    params: MetricMaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-mask")
+    cargs.append(execution.input_file(params.get("metric")))
+    cargs.append(execution.input_file(params.get("mask")))
+    cargs.append(params.get("metric_out"))
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    return cargs
+
+
+def metric_mask_outputs(
+    params: MetricMaskParameters,
+    execution: Execution,
+) -> MetricMaskOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricMaskOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_mask_execute(
+    params: MetricMaskParameters,
+    execution: Execution,
+) -> MetricMaskOutputs:
+    """
+    Mask a metric file.
+    
+    By default, the output metric is a copy of the input metric, but with zeros
+    wherever the mask metric is zero or negative. if -column is specified, the
+    output contains only one column, the masked version of the specified input
+    column.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricMaskOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_mask_cargs(params, execution)
+    ret = metric_mask_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def metric_mask(
@@ -54,27 +199,13 @@ def metric_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_MASK_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-mask")
-    cargs.append(execution.input_file(metric))
-    cargs.append(execution.input_file(mask))
-    cargs.append(metric_out)
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    ret = MetricMaskOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_mask_params(metric=metric, mask=mask, metric_out=metric_out, opt_column_column=opt_column_column)
+    return metric_mask_execute(params, execution)
 
 
 __all__ = [
     "METRIC_MASK_METADATA",
     "MetricMaskOutputs",
     "metric_mask",
+    "metric_mask_params",
 ]

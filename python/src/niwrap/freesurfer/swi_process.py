@@ -12,6 +12,54 @@ SWI_PROCESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SwiProcessParameters = typing.TypedDict('SwiProcessParameters', {
+    "__STYX_TYPE__": typing.Literal["swi_process"],
+    "magnitude_image": InputPathType,
+    "phase_image": InputPathType,
+    "swi_output": str,
+    "stddev": typing.NotRequired[float | None],
+    "phase_mask_cutoff": typing.NotRequired[float | None],
+    "phase_mask_right_cutoff": typing.NotRequired[float | None],
+    "sigmoid_a": typing.NotRequired[float | None],
+    "sigmoid_b": typing.NotRequired[float | None],
+    "phase_multiplications": typing.NotRequired[float | None],
+    "mip_level": typing.NotRequired[float | None],
+    "phase_mask_method": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "swi_process": swi_process_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "swi_process": swi_process_outputs,
+    }
+    return vt.get(t)
 
 
 class SwiProcessOutputs(typing.NamedTuple):
@@ -22,6 +70,179 @@ class SwiProcessOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     swi_output_file: OutputPathType
     """SWI processed output image"""
+
+
+def swi_process_params(
+    magnitude_image: InputPathType,
+    phase_image: InputPathType,
+    swi_output: str,
+    stddev: float | None = None,
+    phase_mask_cutoff: float | None = None,
+    phase_mask_right_cutoff: float | None = None,
+    sigmoid_a: float | None = None,
+    sigmoid_b: float | None = None,
+    phase_multiplications: float | None = None,
+    mip_level: float | None = None,
+    phase_mask_method: str | None = None,
+) -> SwiProcessParameters:
+    """
+    Build parameters.
+    
+    Args:
+        magnitude_image: The magnitude image (Output from the PRELUDE program).
+        phase_image: The phase image (Output from the PRELUDE program).
+        swi_output: Name of the SWI processed output image.
+        stddev: Specify the standard deviation of the Gaussian Smoothing\
+            Filter. Default is 2.0.
+        phase_mask_cutoff: Specify the negative phase mask cutoff frequency (in\
+            radians). Default is the minimum value of the phase image.
+        phase_mask_right_cutoff: Specify the positive phase mask cutoff\
+            frequency (in radians). Default is the maximum value of the phase\
+            image.
+        sigmoid_a: Specify 'a' for the sigmoid formula\
+            f(phase)=1/(1+exp(-a*(phase-b))). Default is 1.0. Meaningless with\
+            phase_method != sigmoid.
+        sigmoid_b: Specify 'b' for the sigmoid formula\
+            f(phase)=1/(1+exp(-a*(phase-b))). Default is 0.0. Meaningless with\
+            phase_method != sigmoid.
+        phase_multiplications: Specify the number of phase multiplications.\
+            Default is 4.
+        mip_level: Specify the number of levels of mIP across the y direction.\
+            Default is 4.
+        phase_mask_method: Specify the phase mask method. One of negative,\
+            positive, symmetric, asymmetric, sigmoid. Default is negative.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "swi_process",
+        "magnitude_image": magnitude_image,
+        "phase_image": phase_image,
+        "swi_output": swi_output,
+    }
+    if stddev is not None:
+        params["stddev"] = stddev
+    if phase_mask_cutoff is not None:
+        params["phase_mask_cutoff"] = phase_mask_cutoff
+    if phase_mask_right_cutoff is not None:
+        params["phase_mask_right_cutoff"] = phase_mask_right_cutoff
+    if sigmoid_a is not None:
+        params["sigmoid_a"] = sigmoid_a
+    if sigmoid_b is not None:
+        params["sigmoid_b"] = sigmoid_b
+    if phase_multiplications is not None:
+        params["phase_multiplications"] = phase_multiplications
+    if mip_level is not None:
+        params["mip_level"] = mip_level
+    if phase_mask_method is not None:
+        params["phase_mask_method"] = phase_mask_method
+    return params
+
+
+def swi_process_cargs(
+    params: SwiProcessParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("swi_process")
+    cargs.append(execution.input_file(params.get("magnitude_image")))
+    cargs.append(execution.input_file(params.get("phase_image")))
+    cargs.append(params.get("swi_output"))
+    if params.get("stddev") is not None:
+        cargs.extend([
+            "--stddev",
+            str(params.get("stddev"))
+        ])
+    if params.get("phase_mask_cutoff") is not None:
+        cargs.extend([
+            "--phase_mask_cutoff",
+            str(params.get("phase_mask_cutoff"))
+        ])
+    if params.get("phase_mask_right_cutoff") is not None:
+        cargs.extend([
+            "--phase_mask_right_cutoff",
+            str(params.get("phase_mask_right_cutoff"))
+        ])
+    if params.get("sigmoid_a") is not None:
+        cargs.extend([
+            "--sigmoid_a",
+            str(params.get("sigmoid_a"))
+        ])
+    if params.get("sigmoid_b") is not None:
+        cargs.extend([
+            "--sigmoid_b",
+            str(params.get("sigmoid_b"))
+        ])
+    if params.get("phase_multiplications") is not None:
+        cargs.extend([
+            "--phase_multiplications",
+            str(params.get("phase_multiplications"))
+        ])
+    if params.get("mip_level") is not None:
+        cargs.extend([
+            "--mip_level",
+            str(params.get("mip_level"))
+        ])
+    if params.get("phase_mask_method") is not None:
+        cargs.extend([
+            "--phase_mask_method",
+            params.get("phase_mask_method")
+        ])
+    return cargs
+
+
+def swi_process_outputs(
+    params: SwiProcessParameters,
+    execution: Execution,
+) -> SwiProcessOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SwiProcessOutputs(
+        root=execution.output_file("."),
+        swi_output_file=execution.output_file(params.get("swi_output")),
+    )
+    return ret
+
+
+def swi_process_execute(
+    params: SwiProcessParameters,
+    execution: Execution,
+) -> SwiProcessOutputs:
+    """
+    Process the Susceptibility-weighted images. Ensure the inputs are post-phase
+    unwrapping using PRELUDE.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SwiProcessOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = swi_process_cargs(params, execution)
+    ret = swi_process_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def swi_process(
@@ -75,61 +296,13 @@ def swi_process(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWI_PROCESS_METADATA)
-    cargs = []
-    cargs.append("swi_process")
-    cargs.append(execution.input_file(magnitude_image))
-    cargs.append(execution.input_file(phase_image))
-    cargs.append(swi_output)
-    if stddev is not None:
-        cargs.extend([
-            "--stddev",
-            str(stddev)
-        ])
-    if phase_mask_cutoff is not None:
-        cargs.extend([
-            "--phase_mask_cutoff",
-            str(phase_mask_cutoff)
-        ])
-    if phase_mask_right_cutoff is not None:
-        cargs.extend([
-            "--phase_mask_right_cutoff",
-            str(phase_mask_right_cutoff)
-        ])
-    if sigmoid_a is not None:
-        cargs.extend([
-            "--sigmoid_a",
-            str(sigmoid_a)
-        ])
-    if sigmoid_b is not None:
-        cargs.extend([
-            "--sigmoid_b",
-            str(sigmoid_b)
-        ])
-    if phase_multiplications is not None:
-        cargs.extend([
-            "--phase_multiplications",
-            str(phase_multiplications)
-        ])
-    if mip_level is not None:
-        cargs.extend([
-            "--mip_level",
-            str(mip_level)
-        ])
-    if phase_mask_method is not None:
-        cargs.extend([
-            "--phase_mask_method",
-            phase_mask_method
-        ])
-    ret = SwiProcessOutputs(
-        root=execution.output_file("."),
-        swi_output_file=execution.output_file(swi_output),
-    )
-    execution.run(cargs)
-    return ret
+    params = swi_process_params(magnitude_image=magnitude_image, phase_image=phase_image, swi_output=swi_output, stddev=stddev, phase_mask_cutoff=phase_mask_cutoff, phase_mask_right_cutoff=phase_mask_right_cutoff, sigmoid_a=sigmoid_a, sigmoid_b=sigmoid_b, phase_multiplications=phase_multiplications, mip_level=mip_level, phase_mask_method=phase_mask_method)
+    return swi_process_execute(params, execution)
 
 
 __all__ = [
     "SWI_PROCESS_METADATA",
     "SwiProcessOutputs",
     "swi_process",
+    "swi_process_params",
 ]

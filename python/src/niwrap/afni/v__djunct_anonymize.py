@@ -12,14 +12,148 @@ V__DJUNCT_ANONYMIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VDjunctAnonymizeParameters = typing.TypedDict('VDjunctAnonymizeParameters', {
+    "__STYX_TYPE__": typing.Literal["@djunct_anonymize"],
+    "input": InputPathType,
+    "add_note": typing.NotRequired[str | None],
+    "copy_to": typing.NotRequired[InputPathType | None],
+    "overwrite": bool,
+})
 
 
-class VDjunctAnonymizeOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__djunct_anonymize(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@djunct_anonymize": v__djunct_anonymize_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__djunct_anonymize_params(
+    input_: InputPathType,
+    add_note: str | None = None,
+    copy_to: InputPathType | None = None,
+    overwrite: bool = False,
+) -> VDjunctAnonymizeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: Input dataset.
+        add_note: Add a note to the history after anonymizing.
+        copy_to: Copy the input to a new file, which is then anonymized.
+        overwrite: Overwrite the existing file if using -copy_to.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@djunct_anonymize",
+        "input": input_,
+        "overwrite": overwrite,
+    }
+    if add_note is not None:
+        params["add_note"] = add_note
+    if copy_to is not None:
+        params["copy_to"] = copy_to
+    return params
+
+
+def v__djunct_anonymize_cargs(
+    params: VDjunctAnonymizeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@djunct_anonymize")
+    cargs.append(execution.input_file(params.get("input")))
+    if params.get("add_note") is not None:
+        cargs.extend([
+            "-add_note",
+            params.get("add_note")
+        ])
+    if params.get("copy_to") is not None:
+        cargs.extend([
+            "-copy_to",
+            execution.input_file(params.get("copy_to"))
+        ])
+    if params.get("overwrite"):
+        cargs.append("-overwrite")
+    return cargs
+
+
+def v__djunct_anonymize_outputs(
+    params: VDjunctAnonymizeParameters,
+    execution: Execution,
+) -> VDjunctAnonymizeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VDjunctAnonymizeOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__djunct_anonymize_execute(
+    params: VDjunctAnonymizeParameters,
+    execution: Execution,
+) -> VDjunctAnonymizeOutputs:
+    """
+    Helper program to anonymize files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VDjunctAnonymizeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__djunct_anonymize_cargs(params, execution)
+    ret = v__djunct_anonymize_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__djunct_anonymize(
@@ -47,30 +181,12 @@ def v__djunct_anonymize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_ANONYMIZE_METADATA)
-    cargs = []
-    cargs.append("@djunct_anonymize")
-    cargs.append(execution.input_file(input_))
-    if add_note is not None:
-        cargs.extend([
-            "-add_note",
-            add_note
-        ])
-    if copy_to is not None:
-        cargs.extend([
-            "-copy_to",
-            execution.input_file(copy_to)
-        ])
-    if overwrite:
-        cargs.append("-overwrite")
-    ret = VDjunctAnonymizeOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__djunct_anonymize_params(input_=input_, add_note=add_note, copy_to=copy_to, overwrite=overwrite)
+    return v__djunct_anonymize_execute(params, execution)
 
 
 __all__ = [
-    "VDjunctAnonymizeOutputs",
     "V__DJUNCT_ANONYMIZE_METADATA",
     "v__djunct_anonymize",
+    "v__djunct_anonymize_params",
 ]

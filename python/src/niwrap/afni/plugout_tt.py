@@ -12,14 +12,228 @@ PLUGOUT_TT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+PlugoutTtParameters = typing.TypedDict('PlugoutTtParameters', {
+    "__STYX_TYPE__": typing.Literal["plugout_tt"],
+    "host": typing.NotRequired[str | None],
+    "ijk_option": bool,
+    "verbose": bool,
+    "port": typing.NotRequired[float | None],
+    "name": typing.NotRequired[str | None],
+    "port_offset": typing.NotRequired[float | None],
+    "port_offset_quiet": typing.NotRequired[float | None],
+    "port_bloc": typing.NotRequired[float | None],
+    "max_port_bloc": bool,
+    "max_port_bloc_quiet": bool,
+    "num_assigned_ports": bool,
+    "num_assigned_ports_quiet": bool,
+})
 
 
-class PlugoutTtOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `plugout_tt(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "plugout_tt": plugout_tt_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def plugout_tt_params(
+    host: str | None = None,
+    ijk_option: bool = False,
+    verbose: bool = False,
+    port: float | None = None,
+    name: str | None = None,
+    port_offset: float | None = None,
+    port_offset_quiet: float | None = None,
+    port_bloc: float | None = None,
+    max_port_bloc: bool = False,
+    max_port_bloc_quiet: bool = False,
+    num_assigned_ports: bool = False,
+    num_assigned_ports_quiet: bool = False,
+) -> PlugoutTtParameters:
+    """
+    Build parameters.
+    
+    Args:
+        host: Name of the host computer to connect to AFNI on. The default is\
+            to connect on the current host using shared memory.
+        ijk_option: Get voxel indices from AFNI instead of Talairach\
+            coordinates.
+        verbose: Enable verbose mode (prints lots of diagnostic messages).
+        port: TCP/IP port number to use. The default is 8001.
+        name: String to use as the name that AFNI assigns to this plugout. The\
+            default is something silly.
+        port_offset: Provide a port offset to allow multiple instances of\
+            communicating programs to operate on the same computer. Use an integer\
+            in the inclusive range [1025 to 65500].
+        port_offset_quiet: Provide a port offset to allow multiple instances of\
+            communicating programs to operate on the same computer with quiet\
+            output in case of issues. Use an integer in the inclusive range [1025\
+            to 65500].
+        port_bloc: Provide a port offset bloc for easier configuration of\
+            multiple instances. PORT_OFFSET_BLOC is an integer between 0 and\
+            MAX_BLOC (around 4000).
+        max_port_bloc: Print the current value of MAX_BLOC and exit. Stay under\
+            2000 for safety.
+        max_port_bloc_quiet: Print the current value of MAX_BLOC quietly and\
+            exit.
+        num_assigned_ports: Print the number of assigned ports used by AFNI,\
+            then quit.
+        num_assigned_ports_quiet: Print the number of assigned ports used by\
+            AFNI quietly, then quit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "plugout_tt",
+        "ijk_option": ijk_option,
+        "verbose": verbose,
+        "max_port_bloc": max_port_bloc,
+        "max_port_bloc_quiet": max_port_bloc_quiet,
+        "num_assigned_ports": num_assigned_ports,
+        "num_assigned_ports_quiet": num_assigned_ports_quiet,
+    }
+    if host is not None:
+        params["host"] = host
+    if port is not None:
+        params["port"] = port
+    if name is not None:
+        params["name"] = name
+    if port_offset is not None:
+        params["port_offset"] = port_offset
+    if port_offset_quiet is not None:
+        params["port_offset_quiet"] = port_offset_quiet
+    if port_bloc is not None:
+        params["port_bloc"] = port_bloc
+    return params
+
+
+def plugout_tt_cargs(
+    params: PlugoutTtParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("plugout_tt")
+    if params.get("host") is not None:
+        cargs.extend([
+            "-host",
+            params.get("host")
+        ])
+    if params.get("ijk_option"):
+        cargs.append("-ijk")
+    if params.get("verbose"):
+        cargs.append("-v")
+    if params.get("port") is not None:
+        cargs.extend([
+            "-port",
+            str(params.get("port"))
+        ])
+    if params.get("name") is not None:
+        cargs.extend([
+            "-name",
+            params.get("name")
+        ])
+    if params.get("port_offset") is not None:
+        cargs.extend([
+            "-np",
+            str(params.get("port_offset"))
+        ])
+    if params.get("port_offset_quiet") is not None:
+        cargs.extend([
+            "-npq",
+            str(params.get("port_offset_quiet"))
+        ])
+    if params.get("port_bloc") is not None:
+        cargs.extend([
+            "-npb",
+            str(params.get("port_bloc"))
+        ])
+    if params.get("max_port_bloc"):
+        cargs.append("-max_port_bloc")
+    if params.get("max_port_bloc_quiet"):
+        cargs.append("-max_port_bloc_quiet")
+    if params.get("num_assigned_ports"):
+        cargs.append("-num_assigned_ports")
+    if params.get("num_assigned_ports_quiet"):
+        cargs.append("-num_assigned_ports_quiet")
+    return cargs
+
+
+def plugout_tt_outputs(
+    params: PlugoutTtParameters,
+    execution: Execution,
+) -> PlugoutTtOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PlugoutTtOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def plugout_tt_execute(
+    params: PlugoutTtParameters,
+    execution: Execution,
+) -> PlugoutTtOutputs:
+    """
+    This program connects to AFNI and receives notification whenever the user
+    changes Talairach coordinates.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PlugoutTtOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = plugout_tt_cargs(params, execution)
+    ret = plugout_tt_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def plugout_tt(
@@ -78,59 +292,12 @@ def plugout_tt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_TT_METADATA)
-    cargs = []
-    cargs.append("plugout_tt")
-    if host is not None:
-        cargs.extend([
-            "-host",
-            host
-        ])
-    if ijk_option:
-        cargs.append("-ijk")
-    if verbose:
-        cargs.append("-v")
-    if port is not None:
-        cargs.extend([
-            "-port",
-            str(port)
-        ])
-    if name is not None:
-        cargs.extend([
-            "-name",
-            name
-        ])
-    if port_offset is not None:
-        cargs.extend([
-            "-np",
-            str(port_offset)
-        ])
-    if port_offset_quiet is not None:
-        cargs.extend([
-            "-npq",
-            str(port_offset_quiet)
-        ])
-    if port_bloc is not None:
-        cargs.extend([
-            "-npb",
-            str(port_bloc)
-        ])
-    if max_port_bloc:
-        cargs.append("-max_port_bloc")
-    if max_port_bloc_quiet:
-        cargs.append("-max_port_bloc_quiet")
-    if num_assigned_ports:
-        cargs.append("-num_assigned_ports")
-    if num_assigned_ports_quiet:
-        cargs.append("-num_assigned_ports_quiet")
-    ret = PlugoutTtOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = plugout_tt_params(host=host, ijk_option=ijk_option, verbose=verbose, port=port, name=name, port_offset=port_offset, port_offset_quiet=port_offset_quiet, port_bloc=port_bloc, max_port_bloc=max_port_bloc, max_port_bloc_quiet=max_port_bloc_quiet, num_assigned_ports=num_assigned_ports, num_assigned_ports_quiet=num_assigned_ports_quiet)
+    return plugout_tt_execute(params, execution)
 
 
 __all__ = [
     "PLUGOUT_TT_METADATA",
-    "PlugoutTtOutputs",
     "plugout_tt",
+    "plugout_tt_params",
 ]

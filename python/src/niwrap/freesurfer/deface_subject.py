@@ -12,6 +12,47 @@ DEFACE_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DefaceSubjectParameters = typing.TypedDict('DefaceSubjectParameters', {
+    "__STYX_TYPE__": typing.Literal["deface_subject"],
+    "subjects_dir": str,
+    "subject_id": str,
+    "volume_input": InputPathType,
+    "volume_output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "deface_subject": deface_subject_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "deface_subject": deface_subject_outputs,
+    }
+    return vt.get(t)
 
 
 class DefaceSubjectOutputs(typing.NamedTuple):
@@ -22,6 +63,111 @@ class DefaceSubjectOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_volume: OutputPathType
     """Defaced output volume."""
+
+
+def deface_subject_params(
+    subjects_dir: str,
+    subject_id: str,
+    volume_input: InputPathType,
+    volume_output: str,
+) -> DefaceSubjectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects_dir: Directory containing FreeSurfer subject directories.
+        subject_id: Subject ID that specifies the subject directory.
+        volume_input: Input volume to be defaced.
+        volume_output: Output volume after defacing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "deface_subject",
+        "subjects_dir": subjects_dir,
+        "subject_id": subject_id,
+        "volume_input": volume_input,
+        "volume_output": volume_output,
+    }
+    return params
+
+
+def deface_subject_cargs(
+    params: DefaceSubjectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("deface_subject")
+    cargs.extend([
+        "-sdir",
+        params.get("subjects_dir")
+    ])
+    cargs.extend([
+        "-id",
+        params.get("subject_id")
+    ])
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("volume_input"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("volume_output")
+    ])
+    return cargs
+
+
+def deface_subject_outputs(
+    params: DefaceSubjectParameters,
+    execution: Execution,
+) -> DefaceSubjectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DefaceSubjectOutputs(
+        root=execution.output_file("."),
+        output_volume=execution.output_file(params.get("volume_output")),
+    )
+    return ret
+
+
+def deface_subject_execute(
+    params: DefaceSubjectParameters,
+    execution: Execution,
+) -> DefaceSubjectOutputs:
+    """
+    Tool for defacing MRI images to anonymize patient data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DefaceSubjectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = deface_subject_cargs(params, execution)
+    ret = deface_subject_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def deface_subject(
@@ -49,34 +195,13 @@ def deface_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DEFACE_SUBJECT_METADATA)
-    cargs = []
-    cargs.append("deface_subject")
-    cargs.extend([
-        "-sdir",
-        subjects_dir
-    ])
-    cargs.extend([
-        "-id",
-        subject_id
-    ])
-    cargs.extend([
-        "-i",
-        execution.input_file(volume_input)
-    ])
-    cargs.extend([
-        "-o",
-        volume_output
-    ])
-    ret = DefaceSubjectOutputs(
-        root=execution.output_file("."),
-        output_volume=execution.output_file(volume_output),
-    )
-    execution.run(cargs)
-    return ret
+    params = deface_subject_params(subjects_dir=subjects_dir, subject_id=subject_id, volume_input=volume_input, volume_output=volume_output)
+    return deface_subject_execute(params, execution)
 
 
 __all__ = [
     "DEFACE_SUBJECT_METADATA",
     "DefaceSubjectOutputs",
     "deface_subject",
+    "deface_subject_params",
 ]

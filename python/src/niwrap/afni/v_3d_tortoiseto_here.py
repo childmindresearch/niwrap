@@ -12,6 +12,49 @@ V_3D_TORTOISETO_HERE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dTortoisetoHereParameters = typing.TypedDict('V3dTortoisetoHereParameters', {
+    "__STYX_TYPE__": typing.Literal["3dTORTOISEtoHere"],
+    "dt_tort": InputPathType,
+    "prefix": str,
+    "scale_factor": typing.NotRequired[float | None],
+    "flip_x": bool,
+    "flip_y": bool,
+    "flip_z": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dTORTOISEtoHere": v_3d_tortoiseto_here_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dTORTOISEtoHere": v_3d_tortoiseto_here_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dTortoisetoHereOutputs(typing.NamedTuple):
@@ -23,6 +66,125 @@ class V3dTortoisetoHereOutputs(typing.NamedTuple):
     output_dt_file: OutputPathType
     """Output AFNI-style DT file with the following ordering of the 6 bricks:
     Dxx, Dxy, Dyy, Dxz, Dyz, Dzz."""
+
+
+def v_3d_tortoiseto_here_params(
+    dt_tort: InputPathType,
+    prefix: str,
+    scale_factor: float | None = None,
+    flip_x: bool = False,
+    flip_y: bool = False,
+    flip_z: bool = False,
+) -> V3dTortoisetoHereParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dt_tort: Diffusion tensor file with six bricks of DT components ordered\
+            in the TORTOISE manner (Dxx, Dyy, Dzz, Dxy, Dxz, Dyz).
+        prefix: Output file name prefix. Will have N+1 bricks when GRADFILE has\
+            N rows of gradients.
+        scale_factor: Optional switch to rescale the DT elements, dividing by a\
+            number X>0.
+        flip_x: Change sign of the first element of (inner) eigenvectors.
+        flip_y: Change sign of the second element of (inner) eigenvectors.
+        flip_z: Change sign of the third element of (inner) eigenvectors.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dTORTOISEtoHere",
+        "dt_tort": dt_tort,
+        "prefix": prefix,
+        "flip_x": flip_x,
+        "flip_y": flip_y,
+        "flip_z": flip_z,
+    }
+    if scale_factor is not None:
+        params["scale_factor"] = scale_factor
+    return params
+
+
+def v_3d_tortoiseto_here_cargs(
+    params: V3dTortoisetoHereParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dTORTOISEtoHere")
+    cargs.extend([
+        "-dt_tort",
+        execution.input_file(params.get("dt_tort"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("scale_factor") is not None:
+        cargs.extend([
+            "-scale_fac",
+            str(params.get("scale_factor"))
+        ])
+    if params.get("flip_x"):
+        cargs.append("-flip_x")
+    if params.get("flip_y"):
+        cargs.append("-flip_y")
+    if params.get("flip_z"):
+        cargs.append("-flip_z")
+    return cargs
+
+
+def v_3d_tortoiseto_here_outputs(
+    params: V3dTortoisetoHereParameters,
+    execution: Execution,
+) -> V3dTortoisetoHereOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dTortoisetoHereOutputs(
+        root=execution.output_file("."),
+        output_dt_file=execution.output_file(params.get("prefix") + ".nii.gz"),
+    )
+    return ret
+
+
+def v_3d_tortoiseto_here_execute(
+    params: V3dTortoisetoHereParameters,
+    execution: Execution,
+) -> V3dTortoisetoHereOutputs:
+    """
+    Convert standard TORTOISE DTs (diagonal-first format) to standard AFNI (lower
+    triangular, row-wise) format.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dTortoisetoHereOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_tortoiseto_here_cargs(params, execution)
+    ret = v_3d_tortoiseto_here_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_tortoiseto_here(
@@ -58,37 +220,13 @@ def v_3d_tortoiseto_here(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TORTOISETO_HERE_METADATA)
-    cargs = []
-    cargs.append("3dTORTOISEtoHere")
-    cargs.extend([
-        "-dt_tort",
-        execution.input_file(dt_tort)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if scale_factor is not None:
-        cargs.extend([
-            "-scale_fac",
-            str(scale_factor)
-        ])
-    if flip_x:
-        cargs.append("-flip_x")
-    if flip_y:
-        cargs.append("-flip_y")
-    if flip_z:
-        cargs.append("-flip_z")
-    ret = V3dTortoisetoHereOutputs(
-        root=execution.output_file("."),
-        output_dt_file=execution.output_file(prefix + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_tortoiseto_here_params(dt_tort=dt_tort, prefix=prefix, scale_factor=scale_factor, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z)
+    return v_3d_tortoiseto_here_execute(params, execution)
 
 
 __all__ = [
     "V3dTortoisetoHereOutputs",
     "V_3D_TORTOISETO_HERE_METADATA",
     "v_3d_tortoiseto_here",
+    "v_3d_tortoiseto_here_params",
 ]

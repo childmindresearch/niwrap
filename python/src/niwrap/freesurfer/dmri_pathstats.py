@@ -12,6 +12,62 @@ DMRI_PATHSTATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriPathstatsParameters = typing.TypedDict('DmriPathstatsParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_pathstats"],
+    "intrk": InputPathType,
+    "rois": typing.NotRequired[list[InputPathType] | None],
+    "intrc": InputPathType,
+    "meas": typing.NotRequired[list[InputPathType] | None],
+    "measname": typing.NotRequired[list[str] | None],
+    "dtbase": typing.NotRequired[str | None],
+    "path": typing.NotRequired[str | None],
+    "subj": typing.NotRequired[str | None],
+    "out": typing.NotRequired[str | None],
+    "outvox": typing.NotRequired[str | None],
+    "median": typing.NotRequired[InputPathType | None],
+    "ends": typing.NotRequired[str | None],
+    "ref": typing.NotRequired[InputPathType | None],
+    "pthr": typing.NotRequired[float | None],
+    "fthr": typing.NotRequired[float | None],
+    "debug": bool,
+    "checkopts": bool,
+    "help": bool,
+    "version": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dmri_pathstats": dmri_pathstats_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dmri_pathstats": dmri_pathstats_outputs,
+    }
+    return vt.get(t)
 
 
 class DmriPathstatsOutputs(typing.NamedTuple):
@@ -26,6 +82,239 @@ class DmriPathstatsOutputs(typing.NamedTuple):
     """Text file for voxel-by-voxel measures along path"""
     median_file: OutputPathType | None
     """.trk file of median streamline"""
+
+
+def dmri_pathstats_params(
+    intrk: InputPathType,
+    intrc: InputPathType,
+    rois: list[InputPathType] | None = None,
+    meas: list[InputPathType] | None = None,
+    measname: list[str] | None = None,
+    dtbase: str | None = None,
+    path: str | None = None,
+    subj: str | None = None,
+    out: str | None = None,
+    outvox: str | None = None,
+    median: InputPathType | None = None,
+    ends: str | None = None,
+    ref: InputPathType | None = None,
+    pthr: float | None = None,
+    fthr: float | None = None,
+    debug: bool = False,
+    checkopts: bool = False,
+    help_: bool = False,
+    version: bool = False,
+) -> DmriPathstatsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        intrk: Input .trk file.
+        intrc: Input tracula directory.
+        rois: Input labeling ROIs for .trk file (optional).
+        meas: Input microstructural measure volume(s) (optional).
+        measname: Name(s) of microstructural measure(s) (as many as volumes).
+        dtbase: Base name of input dtifit volumes (optional).
+        path: Name of pathway (optional, written to output files).
+        subj: Name of subject (optional, written to output files).
+        out: Output text file for overall path measures.
+        outvox: Output text file for voxel-by-voxel measures along path\
+            (optional).
+        median: Output .trk file of median streamline (optional).
+        ends: Base name of output volumes of streamline ends (optional).
+        ref: Reference volume (needed only if using --ends without --dtbase).
+        pthr: Lower threshold on path posterior distribution, as a portion of\
+            the maximum (range: 0-1, default: 0.2).
+        fthr: Lower threshold on FA (range: 0-1, default: no threshold).
+        debug: Turn on debugging.
+        checkopts: Don't run anything, just check options and exit.
+        help_: Print out information on how to use this program.
+        version: Print out version and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_pathstats",
+        "intrk": intrk,
+        "intrc": intrc,
+        "debug": debug,
+        "checkopts": checkopts,
+        "help": help_,
+        "version": version,
+    }
+    if rois is not None:
+        params["rois"] = rois
+    if meas is not None:
+        params["meas"] = meas
+    if measname is not None:
+        params["measname"] = measname
+    if dtbase is not None:
+        params["dtbase"] = dtbase
+    if path is not None:
+        params["path"] = path
+    if subj is not None:
+        params["subj"] = subj
+    if out is not None:
+        params["out"] = out
+    if outvox is not None:
+        params["outvox"] = outvox
+    if median is not None:
+        params["median"] = median
+    if ends is not None:
+        params["ends"] = ends
+    if ref is not None:
+        params["ref"] = ref
+    if pthr is not None:
+        params["pthr"] = pthr
+    if fthr is not None:
+        params["fthr"] = fthr
+    return params
+
+
+def dmri_pathstats_cargs(
+    params: DmriPathstatsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("./dmri_pathstats")
+    cargs.extend([
+        "--intrk",
+        execution.input_file(params.get("intrk"))
+    ])
+    if params.get("rois") is not None:
+        cargs.extend([
+            "--rois",
+            *[execution.input_file(f) for f in params.get("rois")]
+        ])
+    cargs.extend([
+        "--intrc",
+        execution.input_file(params.get("intrc"))
+    ])
+    if params.get("meas") is not None:
+        cargs.extend([
+            "--meas",
+            *[execution.input_file(f) for f in params.get("meas")]
+        ])
+    if params.get("measname") is not None:
+        cargs.extend([
+            "--measname",
+            *params.get("measname")
+        ])
+    if params.get("dtbase") is not None:
+        cargs.extend([
+            "--dtbase",
+            params.get("dtbase")
+        ])
+    if params.get("path") is not None:
+        cargs.extend([
+            "--path",
+            params.get("path")
+        ])
+    if params.get("subj") is not None:
+        cargs.extend([
+            "--subj",
+            params.get("subj")
+        ])
+    if params.get("out") is not None:
+        cargs.extend([
+            "--out",
+            params.get("out")
+        ])
+    if params.get("outvox") is not None:
+        cargs.extend([
+            "--outvox",
+            params.get("outvox")
+        ])
+    if params.get("median") is not None:
+        cargs.extend([
+            "--median",
+            execution.input_file(params.get("median"))
+        ])
+    if params.get("ends") is not None:
+        cargs.extend([
+            "--ends",
+            params.get("ends")
+        ])
+    if params.get("ref") is not None:
+        cargs.extend([
+            "--ref",
+            execution.input_file(params.get("ref"))
+        ])
+    if params.get("pthr") is not None:
+        cargs.extend([
+            "--pthr",
+            str(params.get("pthr"))
+        ])
+    if params.get("fthr") is not None:
+        cargs.extend([
+            "--fthr",
+            str(params.get("fthr"))
+        ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("checkopts"):
+        cargs.append("--checkopts")
+    if params.get("help"):
+        cargs.append("--help")
+    if params.get("version"):
+        cargs.append("--version")
+    return cargs
+
+
+def dmri_pathstats_outputs(
+    params: DmriPathstatsParameters,
+    execution: Execution,
+) -> DmriPathstatsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriPathstatsOutputs(
+        root=execution.output_file("."),
+        out_file=execution.output_file(params.get("out")) if (params.get("out") is not None) else None,
+        out_vox_file=execution.output_file(params.get("outvox")) if (params.get("outvox") is not None) else None,
+        median_file=execution.output_file(pathlib.Path(params.get("median")).name) if (params.get("median") is not None) else None,
+    )
+    return ret
+
+
+def dmri_pathstats_execute(
+    params: DmriPathstatsParameters,
+    execution: Execution,
+) -> DmriPathstatsOutputs:
+    """
+    Compute path statistics for diffusion MRI data based on input .trk file and
+    optional various measures.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriPathstatsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_pathstats_cargs(params, execution)
+    ret = dmri_pathstats_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_pathstats(
@@ -84,113 +373,15 @@ def dmri_pathstats(
     Returns:
         NamedTuple of outputs (described in `DmriPathstatsOutputs`).
     """
-    if rois is not None and not (0 <= len(rois)): 
-        raise ValueError(f"Length of 'rois' must be greater than 0 but was {len(rois)}")
-    if meas is not None and not (0 <= len(meas)): 
-        raise ValueError(f"Length of 'meas' must be greater than 0 but was {len(meas)}")
-    if measname is not None and not (0 <= len(measname)): 
-        raise ValueError(f"Length of 'measname' must be greater than 0 but was {len(measname)}")
-    if pthr is not None and not (0 <= pthr <= 1): 
-        raise ValueError(f"'pthr' must be between 0 <= x <= 1 but was {pthr}")
-    if fthr is not None and not (0 <= fthr <= 1): 
-        raise ValueError(f"'fthr' must be between 0 <= x <= 1 but was {fthr}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_PATHSTATS_METADATA)
-    cargs = []
-    cargs.append("./dmri_pathstats")
-    cargs.extend([
-        "--intrk",
-        execution.input_file(intrk)
-    ])
-    if rois is not None:
-        cargs.extend([
-            "--rois",
-            *[execution.input_file(f) for f in rois]
-        ])
-    cargs.extend([
-        "--intrc",
-        execution.input_file(intrc)
-    ])
-    if meas is not None:
-        cargs.extend([
-            "--meas",
-            *[execution.input_file(f) for f in meas]
-        ])
-    if measname is not None:
-        cargs.extend([
-            "--measname",
-            *measname
-        ])
-    if dtbase is not None:
-        cargs.extend([
-            "--dtbase",
-            dtbase
-        ])
-    if path is not None:
-        cargs.extend([
-            "--path",
-            path
-        ])
-    if subj is not None:
-        cargs.extend([
-            "--subj",
-            subj
-        ])
-    if out is not None:
-        cargs.extend([
-            "--out",
-            out
-        ])
-    if outvox is not None:
-        cargs.extend([
-            "--outvox",
-            outvox
-        ])
-    if median is not None:
-        cargs.extend([
-            "--median",
-            execution.input_file(median)
-        ])
-    if ends is not None:
-        cargs.extend([
-            "--ends",
-            ends
-        ])
-    if ref is not None:
-        cargs.extend([
-            "--ref",
-            execution.input_file(ref)
-        ])
-    if pthr is not None:
-        cargs.extend([
-            "--pthr",
-            str(pthr)
-        ])
-    if fthr is not None:
-        cargs.extend([
-            "--fthr",
-            str(fthr)
-        ])
-    if debug:
-        cargs.append("--debug")
-    if checkopts:
-        cargs.append("--checkopts")
-    if help_:
-        cargs.append("--help")
-    if version:
-        cargs.append("--version")
-    ret = DmriPathstatsOutputs(
-        root=execution.output_file("."),
-        out_file=execution.output_file(out) if (out is not None) else None,
-        out_vox_file=execution.output_file(outvox) if (outvox is not None) else None,
-        median_file=execution.output_file(pathlib.Path(median).name) if (median is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_pathstats_params(intrk=intrk, rois=rois, intrc=intrc, meas=meas, measname=measname, dtbase=dtbase, path=path, subj=subj, out=out, outvox=outvox, median=median, ends=ends, ref=ref, pthr=pthr, fthr=fthr, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    return dmri_pathstats_execute(params, execution)
 
 
 __all__ = [
     "DMRI_PATHSTATS_METADATA",
     "DmriPathstatsOutputs",
     "dmri_pathstats",
+    "dmri_pathstats_params",
 ]

@@ -12,6 +12,51 @@ MAP_TRACK_ID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+MapTrackIdParameters = typing.TypedDict('MapTrackIdParameters', {
+    "__STYX_TYPE__": typing.Literal["map_TrackID"],
+    "prefix": str,
+    "in_trk": InputPathType,
+    "in_map": InputPathType,
+    "reference": InputPathType,
+    "verbose": bool,
+    "orig_zero": bool,
+    "line_only_num": bool,
+    "already_inv": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "map_TrackID": map_track_id_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "map_TrackID": map_track_id_outputs,
+    }
+    return vt.get(t)
 
 
 class MapTrackIdOutputs(typing.NamedTuple):
@@ -22,6 +67,134 @@ class MapTrackIdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_trk_file: OutputPathType
     """Mapped track file to new space"""
+
+
+def map_track_id_params(
+    prefix: str,
+    in_trk: InputPathType,
+    in_map: InputPathType,
+    reference: InputPathType,
+    verbose: bool = False,
+    orig_zero: bool = False,
+    line_only_num: bool = False,
+    already_inv: bool = False,
+) -> MapTrackIdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Prefix for the output track file.
+        in_trk: The name of the *.trk file to be mapped.
+        in_map: Single line of matrix values for the transformation.
+        reference: 3D data set in the space to which the TRK file is being\
+            mapped.
+        verbose: Verbose output.
+        orig_zero: Put (0,0,0) as the origin in the output *.trk file.
+        line_only_num: If your 1D_MATR file is just 12 numbers in a row.
+        already_inv: If you have inverted the mapping or use another program\
+            than 3dAllineate.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "map_TrackID",
+        "prefix": prefix,
+        "in_trk": in_trk,
+        "in_map": in_map,
+        "reference": reference,
+        "verbose": verbose,
+        "orig_zero": orig_zero,
+        "line_only_num": line_only_num,
+        "already_inv": already_inv,
+    }
+    return params
+
+
+def map_track_id_cargs(
+    params: MapTrackIdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("map_TrackID")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.extend([
+        "-in_trk",
+        execution.input_file(params.get("in_trk"))
+    ])
+    cargs.extend([
+        "-in_map",
+        execution.input_file(params.get("in_map"))
+    ])
+    cargs.extend([
+        "-ref",
+        execution.input_file(params.get("reference"))
+    ])
+    if params.get("verbose"):
+        cargs.append("-verb")
+    if params.get("orig_zero"):
+        cargs.append("-orig_zero")
+    if params.get("line_only_num"):
+        cargs.append("-line_only_num")
+    if params.get("already_inv"):
+        cargs.append("-already_inv")
+    return cargs
+
+
+def map_track_id_outputs(
+    params: MapTrackIdParameters,
+    execution: Execution,
+) -> MapTrackIdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MapTrackIdOutputs(
+        root=execution.output_file("."),
+        output_trk_file=execution.output_file(params.get("prefix") + ".trk"),
+    )
+    return ret
+
+
+def map_track_id_execute(
+    params: MapTrackIdParameters,
+    execution: Execution,
+) -> MapTrackIdOutputs:
+    """
+    Maps the track file (*.trk) output of 3dTrackID to another space using the
+    1Dmatrix_save info of 3dAllineate.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MapTrackIdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = map_track_id_cargs(params, execution)
+    ret = map_track_id_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def map_track_id(
@@ -60,42 +233,13 @@ def map_track_id(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_TRACK_ID_METADATA)
-    cargs = []
-    cargs.append("map_TrackID")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.extend([
-        "-in_trk",
-        execution.input_file(in_trk)
-    ])
-    cargs.extend([
-        "-in_map",
-        execution.input_file(in_map)
-    ])
-    cargs.extend([
-        "-ref",
-        execution.input_file(reference)
-    ])
-    if verbose:
-        cargs.append("-verb")
-    if orig_zero:
-        cargs.append("-orig_zero")
-    if line_only_num:
-        cargs.append("-line_only_num")
-    if already_inv:
-        cargs.append("-already_inv")
-    ret = MapTrackIdOutputs(
-        root=execution.output_file("."),
-        output_trk_file=execution.output_file(prefix + ".trk"),
-    )
-    execution.run(cargs)
-    return ret
+    params = map_track_id_params(prefix=prefix, in_trk=in_trk, in_map=in_map, reference=reference, verbose=verbose, orig_zero=orig_zero, line_only_num=line_only_num, already_inv=already_inv)
+    return map_track_id_execute(params, execution)
 
 
 __all__ = [
     "MAP_TRACK_ID_METADATA",
     "MapTrackIdOutputs",
     "map_track_id",
+    "map_track_id_params",
 ]

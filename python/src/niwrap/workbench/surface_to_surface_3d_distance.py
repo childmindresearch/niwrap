@@ -12,6 +12,47 @@ SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceToSurface3dDistanceParameters = typing.TypedDict('SurfaceToSurface3dDistanceParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-to-surface-3d-distance"],
+    "surface_comp": InputPathType,
+    "surface_ref": InputPathType,
+    "dists_out": str,
+    "opt_vectors_vectors_out": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "surface-to-surface-3d-distance": surface_to_surface_3d_distance_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "surface-to-surface-3d-distance": surface_to_surface_3d_distance_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfaceToSurface3dDistanceOutputs(typing.NamedTuple):
@@ -24,6 +65,111 @@ class SurfaceToSurface3dDistanceOutputs(typing.NamedTuple):
     """the output distances"""
     opt_vectors_vectors_out: OutputPathType | None
     """output the displacement vectors: the output vectors"""
+
+
+def surface_to_surface_3d_distance_params(
+    surface_comp: InputPathType,
+    surface_ref: InputPathType,
+    dists_out: str,
+    opt_vectors_vectors_out: str | None = None,
+) -> SurfaceToSurface3dDistanceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface_comp: the surface to compare to the reference.
+        surface_ref: the surface to use as the reference.
+        dists_out: the output distances.
+        opt_vectors_vectors_out: output the displacement vectors: the output\
+            vectors.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-to-surface-3d-distance",
+        "surface_comp": surface_comp,
+        "surface_ref": surface_ref,
+        "dists_out": dists_out,
+    }
+    if opt_vectors_vectors_out is not None:
+        params["opt_vectors_vectors_out"] = opt_vectors_vectors_out
+    return params
+
+
+def surface_to_surface_3d_distance_cargs(
+    params: SurfaceToSurface3dDistanceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-to-surface-3d-distance")
+    cargs.append(execution.input_file(params.get("surface_comp")))
+    cargs.append(execution.input_file(params.get("surface_ref")))
+    cargs.append(params.get("dists_out"))
+    if params.get("opt_vectors_vectors_out") is not None:
+        cargs.extend([
+            "-vectors",
+            params.get("opt_vectors_vectors_out")
+        ])
+    return cargs
+
+
+def surface_to_surface_3d_distance_outputs(
+    params: SurfaceToSurface3dDistanceParameters,
+    execution: Execution,
+) -> SurfaceToSurface3dDistanceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceToSurface3dDistanceOutputs(
+        root=execution.output_file("."),
+        dists_out=execution.output_file(params.get("dists_out")),
+        opt_vectors_vectors_out=execution.output_file(params.get("opt_vectors_vectors_out")) if (params.get("opt_vectors_vectors_out") is not None) else None,
+    )
+    return ret
+
+
+def surface_to_surface_3d_distance_execute(
+    params: SurfaceToSurface3dDistanceParameters,
+    execution: Execution,
+) -> SurfaceToSurface3dDistanceOutputs:
+    """
+    Compute distance between corresponding vertices.
+    
+    Computes the vector difference between the vertices of each surface with the
+    same index, as (comp - ref), and output the magnitudes, and optionally the
+    displacement vectors.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceToSurface3dDistanceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_to_surface_3d_distance_cargs(params, execution)
+    ret = surface_to_surface_3d_distance_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_to_surface_3d_distance(
@@ -56,28 +202,13 @@ def surface_to_surface_3d_distance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_TO_SURFACE_3D_DISTANCE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-to-surface-3d-distance")
-    cargs.append(execution.input_file(surface_comp))
-    cargs.append(execution.input_file(surface_ref))
-    cargs.append(dists_out)
-    if opt_vectors_vectors_out is not None:
-        cargs.extend([
-            "-vectors",
-            opt_vectors_vectors_out
-        ])
-    ret = SurfaceToSurface3dDistanceOutputs(
-        root=execution.output_file("."),
-        dists_out=execution.output_file(dists_out),
-        opt_vectors_vectors_out=execution.output_file(opt_vectors_vectors_out) if (opt_vectors_vectors_out is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_to_surface_3d_distance_params(surface_comp=surface_comp, surface_ref=surface_ref, dists_out=dists_out, opt_vectors_vectors_out=opt_vectors_vectors_out)
+    return surface_to_surface_3d_distance_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_TO_SURFACE_3D_DISTANCE_METADATA",
     "SurfaceToSurface3dDistanceOutputs",
     "surface_to_surface_3d_distance",
+    "surface_to_surface_3d_distance_params",
 ]

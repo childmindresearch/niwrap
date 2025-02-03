@@ -12,6 +12,44 @@ FS_TUTORIAL_DATA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsTutorialDataParameters = typing.TypedDict('FsTutorialDataParameters', {
+    "__STYX_TYPE__": typing.Literal["fs_tutorial_data"],
+    "rsync_options": typing.NotRequired[list[str] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fs_tutorial_data": fs_tutorial_data_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fs_tutorial_data": fs_tutorial_data_outputs,
+    }
+    return vt.get(t)
 
 
 class FsTutorialDataOutputs(typing.NamedTuple):
@@ -22,6 +60,89 @@ class FsTutorialDataOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     tutorial_data_dir: OutputPathType
     """Directory where tutorial data will be downloaded and installed."""
+
+
+def fs_tutorial_data_params(
+    rsync_options: list[str] | None = None,
+) -> FsTutorialDataParameters:
+    """
+    Build parameters.
+    
+    Args:
+        rsync_options: Additional rsync options for downloading tutorial data.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fs_tutorial_data",
+    }
+    if rsync_options is not None:
+        params["rsync_options"] = rsync_options
+    return params
+
+
+def fs_tutorial_data_cargs(
+    params: FsTutorialDataParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fs_tutorial_data")
+    if params.get("rsync_options") is not None:
+        cargs.extend(params.get("rsync_options"))
+    return cargs
+
+
+def fs_tutorial_data_outputs(
+    params: FsTutorialDataParameters,
+    execution: Execution,
+) -> FsTutorialDataOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsTutorialDataOutputs(
+        root=execution.output_file("."),
+        tutorial_data_dir=execution.output_file("/usr/local/freesurfer/subjects/tutorial_data"),
+    )
+    return ret
+
+
+def fs_tutorial_data_execute(
+    params: FsTutorialDataParameters,
+    execution: Execution,
+) -> FsTutorialDataOutputs:
+    """
+    Tool to download and install FreeSurfer tutorial data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsTutorialDataOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_tutorial_data_cargs(params, execution)
+    ret = fs_tutorial_data_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_tutorial_data(
@@ -43,20 +164,13 @@ def fs_tutorial_data(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TUTORIAL_DATA_METADATA)
-    cargs = []
-    cargs.append("fs_tutorial_data")
-    if rsync_options is not None:
-        cargs.extend(rsync_options)
-    ret = FsTutorialDataOutputs(
-        root=execution.output_file("."),
-        tutorial_data_dir=execution.output_file("/usr/local/freesurfer/subjects/tutorial_data"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_tutorial_data_params(rsync_options=rsync_options)
+    return fs_tutorial_data_execute(params, execution)
 
 
 __all__ = [
     "FS_TUTORIAL_DATA_METADATA",
     "FsTutorialDataOutputs",
     "fs_tutorial_data",
+    "fs_tutorial_data_params",
 ]

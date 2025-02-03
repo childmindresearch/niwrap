@@ -12,6 +12,44 @@ V__IS_OBLIQUE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VIsObliqueParameters = typing.TypedDict('VIsObliqueParameters', {
+    "__STYX_TYPE__": typing.Literal["@isOblique"],
+    "infile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@isOblique": v__is_oblique_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@isOblique": v__is_oblique_outputs,
+    }
+    return vt.get(t)
 
 
 class VIsObliqueOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class VIsObliqueOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     result: OutputPathType
     """Output result indicating if the file is oblique or plumb"""
+
+
+def v__is_oblique_params(
+    infile: InputPathType,
+) -> VIsObliqueParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input file (e.g., Hello+orig.HEAD).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@isOblique",
+        "infile": infile,
+    }
+    return params
+
+
+def v__is_oblique_cargs(
+    params: VIsObliqueParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@isOblique")
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def v__is_oblique_outputs(
+    params: VIsObliqueParameters,
+    execution: Execution,
+) -> VIsObliqueOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VIsObliqueOutputs(
+        root=execution.output_file("."),
+        result=execution.output_file("oblique_check_result.txt"),
+    )
+    return ret
+
+
+def v__is_oblique_execute(
+    params: VIsObliqueParameters,
+    execution: Execution,
+) -> VIsObliqueOutputs:
+    """
+    Determine if a file is oblique or plumb.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VIsObliqueOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__is_oblique_cargs(params, execution)
+    ret = v__is_oblique_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__is_oblique(
@@ -43,19 +162,13 @@ def v__is_oblique(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__IS_OBLIQUE_METADATA)
-    cargs = []
-    cargs.append("@isOblique")
-    cargs.append(execution.input_file(infile))
-    ret = VIsObliqueOutputs(
-        root=execution.output_file("."),
-        result=execution.output_file("oblique_check_result.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__is_oblique_params(infile=infile)
+    return v__is_oblique_execute(params, execution)
 
 
 __all__ = [
     "VIsObliqueOutputs",
     "V__IS_OBLIQUE_METADATA",
     "v__is_oblique",
+    "v__is_oblique_params",
 ]

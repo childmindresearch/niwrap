@@ -12,35 +12,106 @@ V_5TT2VIS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+V5tt2visConfigParameters = typing.TypedDict('V5tt2visConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+V5tt2visParameters = typing.TypedDict('V5tt2visParameters', {
+    "__STYX_TYPE__": typing.Literal["5tt2vis"],
+    "bg": typing.NotRequired[float | None],
+    "cgm": typing.NotRequired[float | None],
+    "sgm": typing.NotRequired[float | None],
+    "wm": typing.NotRequired[float | None],
+    "csf": typing.NotRequired[float | None],
+    "path": typing.NotRequired[float | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[V5tt2visConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "input": InputPathType,
+    "output": str,
+})
 
 
-@dataclasses.dataclass
-class V5tt2visConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "5tt2vis": v_5tt2vis_cargs,
+        "config": v_5tt2vis_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "5tt2vis": v_5tt2vis_outputs,
+    }
+    return vt.get(t)
+
+
+def v_5tt2vis_config_params(
+    key: str,
+    value: str,
+) -> V5tt2visConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def v_5tt2vis_config_cargs(
+    params: V5tt2visConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class V5tt2visOutputs(typing.NamedTuple):
@@ -51,6 +122,201 @@ class V5tt2visOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output 3D image for visualisation"""
+
+
+def v_5tt2vis_params(
+    input_: InputPathType,
+    output: str,
+    bg: float | None = None,
+    cgm: float | None = None,
+    sgm: float | None = None,
+    wm: float | None = None,
+    csf: float | None = None,
+    path: float | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[V5tt2visConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> V5tt2visParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: the input 4D tissue-segmented image.
+        output: the output 3D image for visualisation.
+        bg: image intensity of background (default: 0).
+        cgm: image intensity of cortical grey matter (default: 0.5).
+        sgm: image intensity of sub-cortical grey matter (default: 0.75).
+        wm: image intensity of white matter (default: 1).
+        csf: image intensity of CSF (default: 0.15).
+        path: image intensity of pathological tissue (default: 2).
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "5tt2vis",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "input": input_,
+        "output": output,
+    }
+    if bg is not None:
+        params["bg"] = bg
+    if cgm is not None:
+        params["cgm"] = cgm
+    if sgm is not None:
+        params["sgm"] = sgm
+    if wm is not None:
+        params["wm"] = wm
+    if csf is not None:
+        params["csf"] = csf
+    if path is not None:
+        params["path"] = path
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def v_5tt2vis_cargs(
+    params: V5tt2visParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("5tt2vis")
+    if params.get("bg") is not None:
+        cargs.extend([
+            "-bg",
+            str(params.get("bg"))
+        ])
+    if params.get("cgm") is not None:
+        cargs.extend([
+            "-cgm",
+            str(params.get("cgm"))
+        ])
+    if params.get("sgm") is not None:
+        cargs.extend([
+            "-sgm",
+            str(params.get("sgm"))
+        ])
+    if params.get("wm") is not None:
+        cargs.extend([
+            "-wm",
+            str(params.get("wm"))
+        ])
+    if params.get("csf") is not None:
+        cargs.extend([
+            "-csf",
+            str(params.get("csf"))
+        ])
+    if params.get("path") is not None:
+        cargs.extend([
+            "-path",
+            str(params.get("path"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def v_5tt2vis_outputs(
+    params: V5tt2visParameters,
+    execution: Execution,
+) -> V5tt2visOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5tt2visOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def v_5tt2vis_execute(
+    params: V5tt2visParameters,
+    execution: Execution,
+) -> V5tt2visOutputs:
+    """
+    Generate an image for visualisation purposes from an ACT 5TT segmented
+    anatomical image.
+    
+    
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V5tt2visOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_5tt2vis_cargs(params, execution)
+    ret = v_5tt2vis_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_5tt2vis(
@@ -67,7 +333,7 @@ def v_5tt2vis(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5tt2visConfig] | None = None,
+    config: list[V5tt2visConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -113,70 +379,14 @@ def v_5tt2vis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TT2VIS_METADATA)
-    cargs = []
-    cargs.append("5tt2vis")
-    if bg is not None:
-        cargs.extend([
-            "-bg",
-            str(bg)
-        ])
-    if cgm is not None:
-        cargs.extend([
-            "-cgm",
-            str(cgm)
-        ])
-    if sgm is not None:
-        cargs.extend([
-            "-sgm",
-            str(sgm)
-        ])
-    if wm is not None:
-        cargs.extend([
-            "-wm",
-            str(wm)
-        ])
-    if csf is not None:
-        cargs.extend([
-            "-csf",
-            str(csf)
-        ])
-    if path is not None:
-        cargs.extend([
-            "-path",
-            str(path)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(input_))
-    cargs.append(output)
-    ret = V5tt2visOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_5tt2vis_params(bg=bg, cgm=cgm, sgm=sgm, wm=wm, csf=csf, path=path, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, output=output)
+    return v_5tt2vis_execute(params, execution)
 
 
 __all__ = [
-    "V5tt2visConfig",
     "V5tt2visOutputs",
     "V_5TT2VIS_METADATA",
     "v_5tt2vis",
+    "v_5tt2vis_config_params",
+    "v_5tt2vis_params",
 ]

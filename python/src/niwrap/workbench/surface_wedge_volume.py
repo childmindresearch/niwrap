@@ -12,6 +12,46 @@ SURFACE_WEDGE_VOLUME_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceWedgeVolumeParameters = typing.TypedDict('SurfaceWedgeVolumeParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-wedge-volume"],
+    "inner_surface": InputPathType,
+    "outer_surface": InputPathType,
+    "metric": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "surface-wedge-volume": surface_wedge_volume_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "surface-wedge-volume": surface_wedge_volume_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfaceWedgeVolumeOutputs(typing.NamedTuple):
@@ -22,6 +62,100 @@ class SurfaceWedgeVolumeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric: OutputPathType
     """the output metric"""
+
+
+def surface_wedge_volume_params(
+    inner_surface: InputPathType,
+    outer_surface: InputPathType,
+    metric: str,
+) -> SurfaceWedgeVolumeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        inner_surface: the inner surface.
+        outer_surface: the outer surface.
+        metric: the output metric.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-wedge-volume",
+        "inner_surface": inner_surface,
+        "outer_surface": outer_surface,
+        "metric": metric,
+    }
+    return params
+
+
+def surface_wedge_volume_cargs(
+    params: SurfaceWedgeVolumeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-wedge-volume")
+    cargs.append(execution.input_file(params.get("inner_surface")))
+    cargs.append(execution.input_file(params.get("outer_surface")))
+    cargs.append(params.get("metric"))
+    return cargs
+
+
+def surface_wedge_volume_outputs(
+    params: SurfaceWedgeVolumeParameters,
+    execution: Execution,
+) -> SurfaceWedgeVolumeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceWedgeVolumeOutputs(
+        root=execution.output_file("."),
+        metric=execution.output_file(params.get("metric")),
+    )
+    return ret
+
+
+def surface_wedge_volume_execute(
+    params: SurfaceWedgeVolumeParameters,
+    execution: Execution,
+) -> SurfaceWedgeVolumeOutputs:
+    """
+    Measure per-vertex volume between surfaces.
+    
+    Compute the volume of each vertex's area from one surface to another. The
+    surfaces must have vertex correspondence, and have consistent triangle
+    orientation.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceWedgeVolumeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_wedge_volume_cargs(params, execution)
+    ret = surface_wedge_volume_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_wedge_volume(
@@ -51,22 +185,13 @@ def surface_wedge_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_WEDGE_VOLUME_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-wedge-volume")
-    cargs.append(execution.input_file(inner_surface))
-    cargs.append(execution.input_file(outer_surface))
-    cargs.append(metric)
-    ret = SurfaceWedgeVolumeOutputs(
-        root=execution.output_file("."),
-        metric=execution.output_file(metric),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_wedge_volume_params(inner_surface=inner_surface, outer_surface=outer_surface, metric=metric)
+    return surface_wedge_volume_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_WEDGE_VOLUME_METADATA",
     "SurfaceWedgeVolumeOutputs",
     "surface_wedge_volume",
+    "surface_wedge_volume_params",
 ]

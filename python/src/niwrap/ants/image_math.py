@@ -12,6 +12,48 @@ IMAGE_MATH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+ImageMathParameters = typing.TypedDict('ImageMathParameters', {
+    "__STYX_TYPE__": typing.Literal["ImageMath"],
+    "image_dimension": typing.Literal[2, 3, 4],
+    "output_image": str,
+    "operations_and_inputs": str,
+    "image1": InputPathType,
+    "image2": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ImageMath": image_math_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ImageMath": image_math_outputs,
+    }
+    return vt.get(t)
 
 
 class ImageMathOutputs(typing.NamedTuple):
@@ -22,6 +64,108 @@ class ImageMathOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_image: OutputPathType
     """The resulting image after processing."""
+
+
+def image_math_params(
+    image_dimension: typing.Literal[2, 3, 4],
+    output_image: str,
+    operations_and_inputs: str,
+    image1: InputPathType,
+    image2: InputPathType | None = None,
+) -> ImageMathParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image_dimension: The dimensionality of the image. Use 2 or 3 for\
+            spatial images, and 4 for 4D images like time-series data.
+        output_image: The output image file resulting from the operations.
+        operations_and_inputs: Mathematical operations and inputs to be applied\
+            on the images.
+        image1: The first input image for the operation.
+        image2: The second input image for the operation, if required.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ImageMath",
+        "image_dimension": image_dimension,
+        "output_image": output_image,
+        "operations_and_inputs": operations_and_inputs,
+        "image1": image1,
+    }
+    if image2 is not None:
+        params["image2"] = image2
+    return params
+
+
+def image_math_cargs(
+    params: ImageMathParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ImageMath")
+    cargs.append(str(params.get("image_dimension")))
+    cargs.append(params.get("output_image"))
+    cargs.append(params.get("operations_and_inputs"))
+    cargs.append(execution.input_file(params.get("image1")))
+    if params.get("image2") is not None:
+        cargs.append(execution.input_file(params.get("image2")))
+    return cargs
+
+
+def image_math_outputs(
+    params: ImageMathParameters,
+    execution: Execution,
+) -> ImageMathOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImageMathOutputs(
+        root=execution.output_file("."),
+        output_image=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def image_math_execute(
+    params: ImageMathParameters,
+    execution: Execution,
+) -> ImageMathOutputs:
+    """
+    A versatile tool for performing various mathematical and manipulation operations
+    on images.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImageMathOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = image_math_cargs(params, execution)
+    ret = image_math_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def image_math(
@@ -54,24 +198,13 @@ def image_math(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGE_MATH_METADATA)
-    cargs = []
-    cargs.append("ImageMath")
-    cargs.append(str(image_dimension))
-    cargs.append(output_image)
-    cargs.append(operations_and_inputs)
-    cargs.append(execution.input_file(image1))
-    if image2 is not None:
-        cargs.append(execution.input_file(image2))
-    ret = ImageMathOutputs(
-        root=execution.output_file("."),
-        output_image=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = image_math_params(image_dimension=image_dimension, output_image=output_image, operations_and_inputs=operations_and_inputs, image1=image1, image2=image2)
+    return image_math_execute(params, execution)
 
 
 __all__ = [
     "IMAGE_MATH_METADATA",
     "ImageMathOutputs",
     "image_math",
+    "image_math_params",
 ]

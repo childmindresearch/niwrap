@@ -12,14 +12,127 @@ MORPH_TABLES_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MorphTablesRhParameters = typing.TypedDict('MorphTablesRhParameters', {
+    "__STYX_TYPE__": typing.Literal["morph_tables-rh"],
+    "options": typing.NotRequired[str | None],
+})
 
 
-class MorphTablesRhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `morph_tables_rh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "morph_tables-rh": morph_tables_rh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def morph_tables_rh_params(
+    options: str | None = None,
+) -> MorphTablesRhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        options: Options used by morph_tables-rh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "morph_tables-rh",
+    }
+    if options is not None:
+        params["options"] = options
+    return params
+
+
+def morph_tables_rh_cargs(
+    params: MorphTablesRhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("options") is not None:
+        cargs.extend([
+            "-rh",
+            "morph_tables" + params.get("options")
+        ])
+    return cargs
+
+
+def morph_tables_rh_outputs(
+    params: MorphTablesRhParameters,
+    execution: Execution,
+) -> MorphTablesRhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MorphTablesRhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def morph_tables_rh_execute(
+    params: MorphTablesRhParameters,
+    execution: Execution,
+) -> MorphTablesRhOutputs:
+    """
+    A tool from Freesurfer associated with morphological tables for the right
+    hemisphere.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MorphTablesRhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = morph_tables_rh_cargs(params, execution)
+    ret = morph_tables_rh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def morph_tables_rh(
@@ -42,21 +155,12 @@ def morph_tables_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_TABLES_RH_METADATA)
-    cargs = []
-    if options is not None:
-        cargs.extend([
-            "-rh",
-            "morph_tables" + options
-        ])
-    ret = MorphTablesRhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = morph_tables_rh_params(options=options)
+    return morph_tables_rh_execute(params, execution)
 
 
 __all__ = [
     "MORPH_TABLES_RH_METADATA",
-    "MorphTablesRhOutputs",
     "morph_tables_rh",
+    "morph_tables_rh_params",
 ]

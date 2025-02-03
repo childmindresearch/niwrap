@@ -12,6 +12,45 @@ CONVERT_TO_JPG_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+ConvertToJpgParameters = typing.TypedDict('ConvertToJpgParameters', {
+    "__STYX_TYPE__": typing.Literal["ConvertToJpg"],
+    "infile": InputPathType,
+    "outfile": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ConvertToJpg": convert_to_jpg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ConvertToJpg": convert_to_jpg_outputs,
+    }
+    return vt.get(t)
 
 
 class ConvertToJpgOutputs(typing.NamedTuple):
@@ -22,6 +61,89 @@ class ConvertToJpgOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_jpg: OutputPathType
     """The converted JPG image."""
+
+
+def convert_to_jpg_params(
+    infile: InputPathType,
+    outfile: str,
+) -> ConvertToJpgParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: The input file in NIfTI format.
+        outfile: The output file in JPG format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ConvertToJpg",
+        "infile": infile,
+        "outfile": outfile,
+    }
+    return params
+
+
+def convert_to_jpg_cargs(
+    params: ConvertToJpgParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ConvertToJpg" + execution.input_file(params.get("infile")) + params.get("outfile"))
+    return cargs
+
+
+def convert_to_jpg_outputs(
+    params: ConvertToJpgParameters,
+    execution: Execution,
+) -> ConvertToJpgOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ConvertToJpgOutputs(
+        root=execution.output_file("."),
+        output_jpg=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def convert_to_jpg_execute(
+    params: ConvertToJpgParameters,
+    execution: Execution,
+) -> ConvertToJpgOutputs:
+    """
+    A tool to convert NIfTI images to JPG format.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ConvertToJpgOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = convert_to_jpg_cargs(params, execution)
+    ret = convert_to_jpg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def convert_to_jpg(
@@ -45,18 +167,13 @@ def convert_to_jpg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_TO_JPG_METADATA)
-    cargs = []
-    cargs.append("ConvertToJpg" + execution.input_file(infile) + outfile)
-    ret = ConvertToJpgOutputs(
-        root=execution.output_file("."),
-        output_jpg=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = convert_to_jpg_params(infile=infile, outfile=outfile)
+    return convert_to_jpg_execute(params, execution)
 
 
 __all__ = [
     "CONVERT_TO_JPG_METADATA",
     "ConvertToJpgOutputs",
     "convert_to_jpg",
+    "convert_to_jpg_params",
 ]

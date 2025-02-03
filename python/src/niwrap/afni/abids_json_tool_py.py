@@ -12,14 +12,151 @@ ABIDS_JSON_TOOL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AbidsJsonToolPyParameters = typing.TypedDict('AbidsJsonToolPyParameters', {
+    "__STYX_TYPE__": typing.Literal["abids_json_tool.py"],
+    "input_file": InputPathType,
+    "prefix": str,
+    "del_json": typing.NotRequired[str | None],
+    "values_stay_str": bool,
+})
 
 
-class AbidsJsonToolPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `abids_json_tool_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "abids_json_tool.py": abids_json_tool_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def abids_json_tool_py_params(
+    input_file: InputPathType,
+    prefix: str,
+    del_json: str | None = None,
+    values_stay_str: bool = False,
+) -> AbidsJsonToolPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: One file to convert. Enter NULL with -add_json to create\
+            new json file.
+        prefix: Output file name.
+        del_json: Remove attribute (KEY) from the -input json file.
+        values_stay_str: Each numeric or str item gets saved as a str;\
+            otherwise, guess at int and float.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "abids_json_tool.py",
+        "input_file": input_file,
+        "prefix": prefix,
+        "values_stay_str": values_stay_str,
+    }
+    if del_json is not None:
+        params["del_json"] = del_json
+    return params
+
+
+def abids_json_tool_py_cargs(
+    params: AbidsJsonToolPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("abids_json_tool.py")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("del_json") is not None:
+        cargs.extend([
+            "-del_json",
+            params.get("del_json")
+        ])
+    if params.get("values_stay_str"):
+        cargs.append("-values_stay_str")
+    return cargs
+
+
+def abids_json_tool_py_outputs(
+    params: AbidsJsonToolPyParameters,
+    execution: Execution,
+) -> AbidsJsonToolPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AbidsJsonToolPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def abids_json_tool_py_execute(
+    params: AbidsJsonToolPyParameters,
+    execution: Execution,
+) -> AbidsJsonToolPyOutputs:
+    """
+    This script helps to manipulate json files in various ways.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AbidsJsonToolPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = abids_json_tool_py_cargs(params, execution)
+    ret = abids_json_tool_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def abids_json_tool_py(
@@ -49,32 +186,12 @@ def abids_json_tool_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_JSON_TOOL_PY_METADATA)
-    cargs = []
-    cargs.append("abids_json_tool.py")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if del_json is not None:
-        cargs.extend([
-            "-del_json",
-            del_json
-        ])
-    if values_stay_str:
-        cargs.append("-values_stay_str")
-    ret = AbidsJsonToolPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = abids_json_tool_py_params(input_file=input_file, prefix=prefix, del_json=del_json, values_stay_str=values_stay_str)
+    return abids_json_tool_py_execute(params, execution)
 
 
 __all__ = [
     "ABIDS_JSON_TOOL_PY_METADATA",
-    "AbidsJsonToolPyOutputs",
     "abids_json_tool_py",
+    "abids_json_tool_py_params",
 ]

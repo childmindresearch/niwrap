@@ -12,6 +12,46 @@ SPLINE3_TEST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Spline3TestParameters = typing.TypedDict('Spline3TestParameters', {
+    "__STYX_TYPE__": typing.Literal["Spline3_test"],
+    "x_values": list[float],
+    "y_values": list[float],
+    "x_new_values": list[float],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "Spline3_test": spline3_test_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "Spline3_test": spline3_test_outputs,
+    }
+    return vt.get(t)
 
 
 class Spline3TestOutputs(typing.NamedTuple):
@@ -24,6 +64,96 @@ class Spline3TestOutputs(typing.NamedTuple):
     """Interpolated y values at new x positions."""
     output_ynewarr: OutputPathType
     """Array format of interpolated y values at new x positions."""
+
+
+def spline3_test_params(
+    x_values: list[float],
+    y_values: list[float],
+    x_new_values: list[float],
+) -> Spline3TestParameters:
+    """
+    Build parameters.
+    
+    Args:
+        x_values: Original x values for interpolation.
+        y_values: Original y values corresponding to x values.
+        x_new_values: New x values where interpolation is evaluated.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "Spline3_test",
+        "x_values": x_values,
+        "y_values": y_values,
+        "x_new_values": x_new_values,
+    }
+    return params
+
+
+def spline3_test_cargs(
+    params: Spline3TestParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("Spline3_test")
+    cargs.extend(map(str, params.get("x_values")))
+    cargs.extend(map(str, params.get("y_values")))
+    cargs.extend(map(str, params.get("x_new_values")))
+    return cargs
+
+
+def spline3_test_outputs(
+    params: Spline3TestParameters,
+    execution: Execution,
+) -> Spline3TestOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Spline3TestOutputs(
+        root=execution.output_file("."),
+        output_ynew=execution.output_file("Ynew.txt"),
+        output_ynewarr=execution.output_file("Ynewarr.txt"),
+    )
+    return ret
+
+
+def spline3_test_execute(
+    params: Spline3TestParameters,
+    execution: Execution,
+) -> Spline3TestOutputs:
+    """
+    A tool for cubic spline interpolation.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Spline3TestOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = spline3_test_cargs(params, execution)
+    ret = spline3_test_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def spline3_test(
@@ -49,22 +179,13 @@ def spline3_test(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPLINE3_TEST_METADATA)
-    cargs = []
-    cargs.append("Spline3_test")
-    cargs.extend(map(str, x_values))
-    cargs.extend(map(str, y_values))
-    cargs.extend(map(str, x_new_values))
-    ret = Spline3TestOutputs(
-        root=execution.output_file("."),
-        output_ynew=execution.output_file("Ynew.txt"),
-        output_ynewarr=execution.output_file("Ynewarr.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = spline3_test_params(x_values=x_values, y_values=y_values, x_new_values=x_new_values)
+    return spline3_test_execute(params, execution)
 
 
 __all__ = [
     "SPLINE3_TEST_METADATA",
     "Spline3TestOutputs",
     "spline3_test",
+    "spline3_test_params",
 ]

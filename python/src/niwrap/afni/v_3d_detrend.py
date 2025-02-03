@@ -12,6 +12,45 @@ V_3D_DETREND_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dDetrendParameters = typing.TypedDict('V3dDetrendParameters', {
+    "__STYX_TYPE__": typing.Literal["3dDetrend"],
+    "in_file": InputPathType,
+    "outputtype": typing.NotRequired[typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dDetrend": v_3d_detrend_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dDetrend": v_3d_detrend_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dDetrendOutputs(typing.NamedTuple):
@@ -24,6 +63,95 @@ class V3dDetrendOutputs(typing.NamedTuple):
     """Output image file name."""
     out_file_: OutputPathType
     """Output file."""
+
+
+def v_3d_detrend_params(
+    in_file: InputPathType,
+    outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
+) -> V3dDetrendParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in_file: Input file to 3ddetrend.
+        outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dDetrend",
+        "in_file": in_file,
+    }
+    if outputtype is not None:
+        params["outputtype"] = outputtype
+    return params
+
+
+def v_3d_detrend_cargs(
+    params: V3dDetrendParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dDetrend")
+    cargs.append(execution.input_file(params.get("in_file")))
+    if params.get("outputtype") is not None:
+        cargs.append(params.get("outputtype"))
+    return cargs
+
+
+def v_3d_detrend_outputs(
+    params: V3dDetrendParameters,
+    execution: Execution,
+) -> V3dDetrendOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dDetrendOutputs(
+        root=execution.output_file("."),
+        out_file=execution.output_file(pathlib.Path(params.get("in_file")).name + "_detrend"),
+        out_file_=execution.output_file("out_file"),
+    )
+    return ret
+
+
+def v_3d_detrend_execute(
+    params: V3dDetrendParameters,
+    execution: Execution,
+) -> V3dDetrendOutputs:
+    """
+    This program removes components from voxel time series using linear least
+    squares.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dDetrendOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_detrend_cargs(params, execution)
+    ret = v_3d_detrend_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_detrend(
@@ -48,22 +176,13 @@ def v_3d_detrend(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DETREND_METADATA)
-    cargs = []
-    cargs.append("3dDetrend")
-    cargs.append(execution.input_file(in_file))
-    if outputtype is not None:
-        cargs.append(outputtype)
-    ret = V3dDetrendOutputs(
-        root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_detrend"),
-        out_file_=execution.output_file("out_file"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_detrend_params(in_file=in_file, outputtype=outputtype)
+    return v_3d_detrend_execute(params, execution)
 
 
 __all__ = [
     "V3dDetrendOutputs",
     "V_3D_DETREND_METADATA",
     "v_3d_detrend",
+    "v_3d_detrend_params",
 ]

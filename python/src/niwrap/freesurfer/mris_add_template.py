@@ -12,6 +12,43 @@ MRIS_ADD_TEMPLATE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisAddTemplateParameters = typing.TypedDict('MrisAddTemplateParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_add_template"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_add_template": mris_add_template_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_add_template": mris_add_template_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisAddTemplateOutputs(typing.NamedTuple):
@@ -22,6 +59,83 @@ class MrisAddTemplateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     placeholder_output: OutputPathType
     """No outputs available as the tool has been removed."""
+
+
+def mris_add_template_params(
+) -> MrisAddTemplateParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_add_template",
+    }
+    return params
+
+
+def mris_add_template_cargs(
+    params: MrisAddTemplateParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_add_template")
+    return cargs
+
+
+def mris_add_template_outputs(
+    params: MrisAddTemplateParameters,
+    execution: Execution,
+) -> MrisAddTemplateOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisAddTemplateOutputs(
+        root=execution.output_file("."),
+        placeholder_output=execution.output_file("[PLACEHOLDER_OUTPUT]"),
+    )
+    return ret
+
+
+def mris_add_template_execute(
+    params: MrisAddTemplateParameters,
+    execution: Execution,
+) -> MrisAddTemplateOutputs:
+    """
+    This tool has been removed from the current version of FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisAddTemplateOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_add_template_cargs(params, execution)
+    ret = mris_add_template_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_add_template(
@@ -41,18 +155,13 @@ def mris_add_template(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ADD_TEMPLATE_METADATA)
-    cargs = []
-    cargs.append("mris_add_template")
-    ret = MrisAddTemplateOutputs(
-        root=execution.output_file("."),
-        placeholder_output=execution.output_file("[PLACEHOLDER_OUTPUT]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_add_template_params()
+    return mris_add_template_execute(params, execution)
 
 
 __all__ = [
     "MRIS_ADD_TEMPLATE_METADATA",
     "MrisAddTemplateOutputs",
     "mris_add_template",
+    "mris_add_template_params",
 ]

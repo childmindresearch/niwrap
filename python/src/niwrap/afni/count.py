@@ -12,14 +12,237 @@ COUNT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+CountParameters = typing.TypedDict('CountParameters', {
+    "__STYX_TYPE__": typing.Literal["count"],
+    "bot": str,
+    "top": str,
+    "step": typing.NotRequired[str | None],
+    "seed": typing.NotRequired[float | None],
+    "sseed": typing.NotRequired[str | None],
+    "column": bool,
+    "digits": typing.NotRequired[float | None],
+    "form": typing.NotRequired[str | None],
+    "root": typing.NotRequired[str | None],
+    "sep": typing.NotRequired[str | None],
+    "suffix": typing.NotRequired[str | None],
+    "scale": typing.NotRequired[float | None],
+    "comma": bool,
+    "skipnmodm": typing.NotRequired[str | None],
+})
 
 
-class CountOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `count(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "count": count_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def count_params(
+    bot: str,
+    top: str,
+    step: str | None = None,
+    seed: float | None = None,
+    sseed: str | None = None,
+    column: bool = False,
+    digits: float | None = None,
+    form: str | None = None,
+    root: str | None = None,
+    sep: str | None = None,
+    suffix: str | None = None,
+    scale: float | None = None,
+    comma: bool = False,
+    skipnmodm: str | None = None,
+) -> CountParameters:
+    """
+    Build parameters.
+    
+    Args:
+        bot: Starting number or character.
+        top: Ending number or character.
+        step: Stride step or mode (integer step size, R#, S# or S).
+        seed: Seed number for random number generator.
+        sseed: Seed string for random number generator.
+        column: Write output, one number per line.
+        digits: Number of digits to print.
+        form: Custom format string for printing the numbers.
+        root: String to print before the number.
+        sep: Separator character between the numbers.
+        suffix: String to print after the number.
+        scale: Scale factor to multiply each number.
+        comma: Put commas between the outputs.
+        skipnmodm: Skip numbers with modulus.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "count",
+        "bot": bot,
+        "top": top,
+        "column": column,
+        "comma": comma,
+    }
+    if step is not None:
+        params["step"] = step
+    if seed is not None:
+        params["seed"] = seed
+    if sseed is not None:
+        params["sseed"] = sseed
+    if digits is not None:
+        params["digits"] = digits
+    if form is not None:
+        params["form"] = form
+    if root is not None:
+        params["root"] = root
+    if sep is not None:
+        params["sep"] = sep
+    if suffix is not None:
+        params["suffix"] = suffix
+    if scale is not None:
+        params["scale"] = scale
+    if skipnmodm is not None:
+        params["skipnmodm"] = skipnmodm
+    return params
+
+
+def count_cargs(
+    params: CountParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("count")
+    cargs.append(params.get("bot"))
+    cargs.append(params.get("top"))
+    if params.get("step") is not None:
+        cargs.append(params.get("step"))
+    if params.get("seed") is not None:
+        cargs.extend([
+            "-seed",
+            str(params.get("seed"))
+        ])
+    if params.get("sseed") is not None:
+        cargs.extend([
+            "-sseed",
+            params.get("sseed")
+        ])
+    if params.get("column"):
+        cargs.append("-column")
+    if params.get("digits") is not None:
+        cargs.extend([
+            "-digits",
+            str(params.get("digits"))
+        ])
+    if params.get("form") is not None:
+        cargs.extend([
+            "-form",
+            params.get("form")
+        ])
+    if params.get("root") is not None:
+        cargs.extend([
+            "-root",
+            params.get("root")
+        ])
+    if params.get("sep") is not None:
+        cargs.extend([
+            "-sep",
+            params.get("sep")
+        ])
+    if params.get("suffix") is not None:
+        cargs.extend([
+            "-suffix",
+            params.get("suffix")
+        ])
+    if params.get("scale") is not None:
+        cargs.extend([
+            "-scale",
+            str(params.get("scale"))
+        ])
+    if params.get("comma"):
+        cargs.append("-comma")
+    if params.get("skipnmodm") is not None:
+        cargs.extend([
+            "-skipnmodm",
+            params.get("skipnmodm")
+        ])
+    return cargs
+
+
+def count_outputs(
+    params: CountParameters,
+    execution: Execution,
+) -> CountOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CountOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def count_execute(
+    params: CountParameters,
+    execution: Execution,
+) -> CountOutputs:
+    """
+    Numbered copies generator with custom format support and random sequence
+    options.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CountOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = count_cargs(params, execution)
+    ret = count_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def count(
@@ -68,70 +291,12 @@ def count(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COUNT_METADATA)
-    cargs = []
-    cargs.append("count")
-    cargs.append(bot)
-    cargs.append(top)
-    if step is not None:
-        cargs.append(step)
-    if seed is not None:
-        cargs.extend([
-            "-seed",
-            str(seed)
-        ])
-    if sseed is not None:
-        cargs.extend([
-            "-sseed",
-            sseed
-        ])
-    if column:
-        cargs.append("-column")
-    if digits is not None:
-        cargs.extend([
-            "-digits",
-            str(digits)
-        ])
-    if form is not None:
-        cargs.extend([
-            "-form",
-            form
-        ])
-    if root is not None:
-        cargs.extend([
-            "-root",
-            root
-        ])
-    if sep is not None:
-        cargs.extend([
-            "-sep",
-            sep
-        ])
-    if suffix is not None:
-        cargs.extend([
-            "-suffix",
-            suffix
-        ])
-    if scale is not None:
-        cargs.extend([
-            "-scale",
-            str(scale)
-        ])
-    if comma:
-        cargs.append("-comma")
-    if skipnmodm is not None:
-        cargs.extend([
-            "-skipnmodm",
-            skipnmodm
-        ])
-    ret = CountOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = count_params(bot=bot, top=top, step=step, seed=seed, sseed=sseed, column=column, digits=digits, form=form, root=root, sep=sep, suffix=suffix, scale=scale, comma=comma, skipnmodm=skipnmodm)
+    return count_execute(params, execution)
 
 
 __all__ = [
     "COUNT_METADATA",
-    "CountOutputs",
     "count",
+    "count_params",
 ]

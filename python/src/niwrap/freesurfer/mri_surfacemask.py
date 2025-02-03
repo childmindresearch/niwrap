@@ -12,6 +12,46 @@ MRI_SURFACEMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriSurfacemaskParameters = typing.TypedDict('MriSurfacemaskParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_surfacemask"],
+    "input_volume": InputPathType,
+    "input_surface": InputPathType,
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_surfacemask": mri_surfacemask_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_surfacemask": mri_surfacemask_outputs,
+    }
+    return vt.get(t)
 
 
 class MriSurfacemaskOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class MriSurfacemaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_volume_file: OutputPathType
     """The resulting surface-masked volume"""
+
+
+def mri_surfacemask_params(
+    input_volume: InputPathType,
+    input_surface: InputPathType,
+    output_volume: str,
+) -> MriSurfacemaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume which will be masked.
+        input_surface: Surface file used for masking the volume.
+        output_volume: Output volume file where pixels outside the surface are\
+            set to zero.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_surfacemask",
+        "input_volume": input_volume,
+        "input_surface": input_surface,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_surfacemask_cargs(
+    params: MriSurfacemaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_surfacemask")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_surfacemask_outputs(
+    params: MriSurfacemaskParameters,
+    execution: Execution,
+) -> MriSurfacemaskOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriSurfacemaskOutputs(
+        root=execution.output_file("."),
+        output_volume_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_surfacemask_execute(
+    params: MriSurfacemaskParameters,
+    execution: Execution,
+) -> MriSurfacemaskOutputs:
+    """
+    Tool to produce a new volume where all pixels outside the surface are set to
+    zero.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriSurfacemaskOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_surfacemask_cargs(params, execution)
+    ret = mri_surfacemask_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_surfacemask(
@@ -49,21 +180,13 @@ def mri_surfacemask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURFACEMASK_METADATA)
-    cargs = []
-    cargs.append("mri_surfacemask")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(output_volume)
-    ret = MriSurfacemaskOutputs(
-        root=execution.output_file("."),
-        output_volume_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_surfacemask_params(input_volume=input_volume, input_surface=input_surface, output_volume=output_volume)
+    return mri_surfacemask_execute(params, execution)
 
 
 __all__ = [
     "MRI_SURFACEMASK_METADATA",
     "MriSurfacemaskOutputs",
     "mri_surfacemask",
+    "mri_surfacemask_params",
 ]

@@ -12,14 +12,122 @@ FSLINFO_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslinfoParameters = typing.TypedDict('FslinfoParameters', {
+    "__STYX_TYPE__": typing.Literal["fslinfo"],
+    "filename": InputPathType,
+})
 
 
-class FslinfoOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fslinfo(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fslinfo": fslinfo_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fslinfo_params(
+    filename: InputPathType,
+) -> FslinfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        filename: Input NIFTI-1 image file (e.g. img.nii.gz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslinfo",
+        "filename": filename,
+    }
+    return params
+
+
+def fslinfo_cargs(
+    params: FslinfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslinfo")
+    cargs.append(execution.input_file(params.get("filename")))
+    return cargs
+
+
+def fslinfo_outputs(
+    params: FslinfoParameters,
+    execution: Execution,
+) -> FslinfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslinfoOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fslinfo_execute(
+    params: FslinfoParameters,
+    execution: Execution,
+) -> FslinfoOutputs:
+    """
+    Display information about NIFTI-1 image file.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslinfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslinfo_cargs(params, execution)
+    ret = fslinfo_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslinfo(
@@ -41,18 +149,12 @@ def fslinfo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLINFO_METADATA)
-    cargs = []
-    cargs.append("fslinfo")
-    cargs.append(execution.input_file(filename))
-    ret = FslinfoOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslinfo_params(filename=filename)
+    return fslinfo_execute(params, execution)
 
 
 __all__ = [
     "FSLINFO_METADATA",
-    "FslinfoOutputs",
     "fslinfo",
+    "fslinfo_params",
 ]

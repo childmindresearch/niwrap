@@ -12,14 +12,223 @@ MRI_MODIFY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriModifyParameters = typing.TypedDict('MriModifyParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_modify"],
+    "x_ras": list[float],
+    "y_ras": list[float],
+    "z_ras": list[float],
+    "cras": list[float],
+    "x_size": float,
+    "y_size": float,
+    "z_size": float,
+    "tr": float,
+    "te": float,
+    "ti": float,
+    "fa": float,
+    "xform": str,
+    "input_volume": InputPathType,
+    "output_volume": str,
+})
 
 
-class MriModifyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_modify(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_modify": mri_modify_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_modify_params(
+    x_ras: list[float],
+    y_ras: list[float],
+    z_ras: list[float],
+    cras: list[float],
+    x_size: float,
+    y_size: float,
+    z_size: float,
+    tr: float,
+    te: float,
+    ti: float,
+    fa: float,
+    xform: str,
+    input_volume: InputPathType,
+    output_volume: str,
+) -> MriModifyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        x_ras: X direction cosines (xr, xa, xs).
+        y_ras: Y direction cosines (yr, ya, ys).
+        z_ras: Z direction cosines (zr, za, zs).
+        cras: Center RAS coordinates (cr, ca, cs).
+        x_size: Size of voxel in X dimension.
+        y_size: Size of voxel in Y dimension.
+        z_size: Size of voxel in Z dimension.
+        tr: Repetition time (TR).
+        te: Echo time (TE).
+        ti: Inversion time (TI).
+        fa: Flip angle (degrees).
+        xform: New transformation file name.
+        input_volume: Input volume.
+        output_volume: Output volume.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_modify",
+        "x_ras": x_ras,
+        "y_ras": y_ras,
+        "z_ras": z_ras,
+        "cras": cras,
+        "x_size": x_size,
+        "y_size": y_size,
+        "z_size": z_size,
+        "tr": tr,
+        "te": te,
+        "ti": ti,
+        "fa": fa,
+        "xform": xform,
+        "input_volume": input_volume,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_modify_cargs(
+    params: MriModifyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_modify")
+    cargs.extend([
+        "-xras",
+        *map(str, params.get("x_ras"))
+    ])
+    cargs.extend([
+        "-yras",
+        *map(str, params.get("y_ras"))
+    ])
+    cargs.extend([
+        "-zras",
+        *map(str, params.get("z_ras"))
+    ])
+    cargs.extend([
+        "-cras",
+        *map(str, params.get("cras"))
+    ])
+    cargs.extend([
+        "-xsize",
+        str(params.get("x_size"))
+    ])
+    cargs.extend([
+        "-ysize",
+        str(params.get("y_size"))
+    ])
+    cargs.extend([
+        "-zsize",
+        str(params.get("z_size"))
+    ])
+    cargs.extend([
+        "-tr",
+        str(params.get("tr"))
+    ])
+    cargs.extend([
+        "-te",
+        str(params.get("te"))
+    ])
+    cargs.extend([
+        "-ti",
+        str(params.get("ti"))
+    ])
+    cargs.extend([
+        "-fa",
+        str(params.get("fa"))
+    ])
+    cargs.extend([
+        "-xform",
+        params.get("xform")
+    ])
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_modify_outputs(
+    params: MriModifyParameters,
+    execution: Execution,
+) -> MriModifyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriModifyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_modify_execute(
+    params: MriModifyParameters,
+    execution: Execution,
+) -> MriModifyOutputs:
+    """
+    Tool for modifying MRI image headers.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriModifyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_modify_cargs(params, execution)
+    ret = mri_modify_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_modify(
@@ -67,67 +276,12 @@ def mri_modify(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MODIFY_METADATA)
-    cargs = []
-    cargs.append("mri_modify")
-    cargs.extend([
-        "-xras",
-        *map(str, x_ras)
-    ])
-    cargs.extend([
-        "-yras",
-        *map(str, y_ras)
-    ])
-    cargs.extend([
-        "-zras",
-        *map(str, z_ras)
-    ])
-    cargs.extend([
-        "-cras",
-        *map(str, cras)
-    ])
-    cargs.extend([
-        "-xsize",
-        str(x_size)
-    ])
-    cargs.extend([
-        "-ysize",
-        str(y_size)
-    ])
-    cargs.extend([
-        "-zsize",
-        str(z_size)
-    ])
-    cargs.extend([
-        "-tr",
-        str(tr)
-    ])
-    cargs.extend([
-        "-te",
-        str(te)
-    ])
-    cargs.extend([
-        "-ti",
-        str(ti)
-    ])
-    cargs.extend([
-        "-fa",
-        str(fa)
-    ])
-    cargs.extend([
-        "-xform",
-        xform
-    ])
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(output_volume)
-    ret = MriModifyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_modify_params(x_ras=x_ras, y_ras=y_ras, z_ras=z_ras, cras=cras, x_size=x_size, y_size=y_size, z_size=z_size, tr=tr, te=te, ti=ti, fa=fa, xform=xform, input_volume=input_volume, output_volume=output_volume)
+    return mri_modify_execute(params, execution)
 
 
 __all__ = [
     "MRI_MODIFY_METADATA",
-    "MriModifyOutputs",
     "mri_modify",
+    "mri_modify_params",
 ]

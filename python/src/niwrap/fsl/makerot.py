@@ -12,6 +12,50 @@ MAKEROT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+MakerotParameters = typing.TypedDict('MakerotParameters', {
+    "__STYX_TYPE__": typing.Literal["makerot"],
+    "axis": typing.NotRequired[str | None],
+    "cov": typing.NotRequired[InputPathType | None],
+    "center": typing.NotRequired[str | None],
+    "output_file": typing.NotRequired[str | None],
+    "verbose_flag": bool,
+    "help_flag": bool,
+    "theta": float,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "makerot": makerot_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "makerot": makerot_outputs,
+    }
+    return vt.get(t)
 
 
 class MakerotOutputs(typing.NamedTuple):
@@ -22,6 +66,136 @@ class MakerotOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     matrix_output: OutputPathType | None
     """Output file for the rotation matrix"""
+
+
+def makerot_params(
+    theta: float,
+    axis: str | None = None,
+    cov: InputPathType | None = None,
+    center: str | None = None,
+    output_file: str | None = None,
+    verbose_flag: bool = False,
+    help_flag: bool = False,
+) -> MakerotParameters:
+    """
+    Build parameters.
+    
+    Args:
+        theta: Angle of rotation (in degrees).
+        axis: Unnormalized axis vector (comma separated).
+        cov: Image filename used for center of volume.
+        center: Center of rotation in mm (comma separated).
+        output_file: Output filename for matrix.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "makerot",
+        "verbose_flag": verbose_flag,
+        "help_flag": help_flag,
+        "theta": theta,
+    }
+    if axis is not None:
+        params["axis"] = axis
+    if cov is not None:
+        params["cov"] = cov
+    if center is not None:
+        params["center"] = center
+    if output_file is not None:
+        params["output_file"] = output_file
+    return params
+
+
+def makerot_cargs(
+    params: MakerotParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("makerot")
+    if params.get("axis") is not None:
+        cargs.extend([
+            "--axis",
+            params.get("axis")
+        ])
+    if params.get("cov") is not None:
+        cargs.extend([
+            "--cov",
+            execution.input_file(params.get("cov"))
+        ])
+    if params.get("center") is not None:
+        cargs.extend([
+            "--centre",
+            params.get("center")
+        ])
+    if params.get("output_file") is not None:
+        cargs.extend([
+            "--out",
+            params.get("output_file")
+        ])
+    if params.get("verbose_flag"):
+        cargs.append("--verbose")
+    if params.get("help_flag"):
+        cargs.append("--help")
+    cargs.extend([
+        "--theta",
+        str(params.get("theta"))
+    ])
+    return cargs
+
+
+def makerot_outputs(
+    params: MakerotParameters,
+    execution: Execution,
+) -> MakerotOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakerotOutputs(
+        root=execution.output_file("."),
+        matrix_output=execution.output_file(params.get("output_file")) if (params.get("output_file") is not None) else None,
+    )
+    return ret
+
+
+def makerot_execute(
+    params: MakerotParameters,
+    execution: Execution,
+) -> MakerotOutputs:
+    """
+    Tool to create a rotation matrix for a given angle and axis of rotation.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakerotOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = makerot_cargs(params, execution)
+    ret = makerot_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def makerot(
@@ -55,46 +229,13 @@ def makerot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKEROT_METADATA)
-    cargs = []
-    cargs.append("makerot")
-    if axis is not None:
-        cargs.extend([
-            "--axis",
-            axis
-        ])
-    if cov is not None:
-        cargs.extend([
-            "--cov",
-            execution.input_file(cov)
-        ])
-    if center is not None:
-        cargs.extend([
-            "--centre",
-            center
-        ])
-    if output_file is not None:
-        cargs.extend([
-            "--out",
-            output_file
-        ])
-    if verbose_flag:
-        cargs.append("--verbose")
-    if help_flag:
-        cargs.append("--help")
-    cargs.extend([
-        "--theta",
-        str(theta)
-    ])
-    ret = MakerotOutputs(
-        root=execution.output_file("."),
-        matrix_output=execution.output_file(output_file) if (output_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = makerot_params(axis=axis, cov=cov, center=center, output_file=output_file, verbose_flag=verbose_flag, help_flag=help_flag, theta=theta)
+    return makerot_execute(params, execution)
 
 
 __all__ = [
     "MAKEROT_METADATA",
     "MakerotOutputs",
     "makerot",
+    "makerot_params",
 ]

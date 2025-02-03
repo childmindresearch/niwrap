@@ -12,6 +12,44 @@ MRI_GRADIENT_INFO_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriGradientInfoParameters = typing.TypedDict('MriGradientInfoParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_gradient_info"],
+    "input_image": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_gradient_info": mri_gradient_info_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_gradient_info": mri_gradient_info_outputs,
+    }
+    return vt.get(t)
 
 
 class MriGradientInfoOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class MriGradientInfoOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     gradient_info_output: OutputPathType
     """Text file containing the extracted gradient information."""
+
+
+def mri_gradient_info_params(
+    input_image: InputPathType,
+) -> MriGradientInfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Input MRI image file, typically in .mgz format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_gradient_info",
+        "input_image": input_image,
+    }
+    return params
+
+
+def mri_gradient_info_cargs(
+    params: MriGradientInfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_gradient_info")
+    cargs.append(execution.input_file(params.get("input_image")))
+    return cargs
+
+
+def mri_gradient_info_outputs(
+    params: MriGradientInfoParameters,
+    execution: Execution,
+) -> MriGradientInfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriGradientInfoOutputs(
+        root=execution.output_file("."),
+        gradient_info_output=execution.output_file("gradient_info_output.txt"),
+    )
+    return ret
+
+
+def mri_gradient_info_execute(
+    params: MriGradientInfoParameters,
+    execution: Execution,
+) -> MriGradientInfoOutputs:
+    """
+    A utility to obtain gradient information from MRI images using FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriGradientInfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_gradient_info_cargs(params, execution)
+    ret = mri_gradient_info_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_gradient_info(
@@ -43,19 +162,13 @@ def mri_gradient_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GRADIENT_INFO_METADATA)
-    cargs = []
-    cargs.append("mri_gradient_info")
-    cargs.append(execution.input_file(input_image))
-    ret = MriGradientInfoOutputs(
-        root=execution.output_file("."),
-        gradient_info_output=execution.output_file("gradient_info_output.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_gradient_info_params(input_image=input_image)
+    return mri_gradient_info_execute(params, execution)
 
 
 __all__ = [
     "MRI_GRADIENT_INFO_METADATA",
     "MriGradientInfoOutputs",
     "mri_gradient_info",
+    "mri_gradient_info_params",
 ]

@@ -12,14 +12,124 @@ MORPH_SUBJECT_RH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MorphSubjectRhParameters = typing.TypedDict('MorphSubjectRhParameters', {
+    "__STYX_TYPE__": typing.Literal["morph_subject-rh"],
+    "subject_id": str,
+})
 
 
-class MorphSubjectRhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `morph_subject_rh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "morph_subject-rh": morph_subject_rh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def morph_subject_rh_params(
+    subject_id: str,
+) -> MorphSubjectRhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: Subject ID to morph the right hemisphere.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "morph_subject-rh",
+        "subject_id": subject_id,
+    }
+    return params
+
+
+def morph_subject_rh_cargs(
+    params: MorphSubjectRhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-rh",
+        "morph_subject" + params.get("subject_id")
+    ])
+    return cargs
+
+
+def morph_subject_rh_outputs(
+    params: MorphSubjectRhParameters,
+    execution: Execution,
+) -> MorphSubjectRhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MorphSubjectRhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def morph_subject_rh_execute(
+    params: MorphSubjectRhParameters,
+    execution: Execution,
+) -> MorphSubjectRhOutputs:
+    """
+    A tool for morphing the right hemisphere of subject data in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MorphSubjectRhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = morph_subject_rh_cargs(params, execution)
+    ret = morph_subject_rh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def morph_subject_rh(
@@ -41,20 +151,12 @@ def morph_subject_rh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_SUBJECT_RH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-rh",
-        "morph_subject" + subject_id
-    ])
-    ret = MorphSubjectRhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = morph_subject_rh_params(subject_id=subject_id)
+    return morph_subject_rh_execute(params, execution)
 
 
 __all__ = [
     "MORPH_SUBJECT_RH_METADATA",
-    "MorphSubjectRhOutputs",
     "morph_subject_rh",
+    "morph_subject_rh_params",
 ]

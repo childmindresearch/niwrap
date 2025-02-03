@@ -12,14 +12,155 @@ PARSE_FS_LT_LOG_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ParseFsLtLogPyParameters = typing.TypedDict('ParseFsLtLogPyParameters', {
+    "__STYX_TYPE__": typing.Literal["parse_fs_lt_log.py"],
+    "logfile": InputPathType,
+    "labels": list[str],
+    "show_orig": bool,
+    "show_all_orig": bool,
+    "verbosity": typing.NotRequired[float | None],
+})
 
 
-class ParseFsLtLogPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `parse_fs_lt_log_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "parse_fs_lt_log.py": parse_fs_lt_log_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def parse_fs_lt_log_py_params(
+    logfile: InputPathType,
+    labels: list[str],
+    show_orig: bool = False,
+    show_all_orig: bool = False,
+    verbosity: float | None = None,
+) -> ParseFsLtLogPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        logfile: Specify rank log file.
+        labels: Specify a list of labels to search for.
+        show_orig: Show original label indices.
+        show_all_orig: Show all original label indices.
+        verbosity: Specify verbosity level.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "parse_fs_lt_log.py",
+        "logfile": logfile,
+        "labels": labels,
+        "show_orig": show_orig,
+        "show_all_orig": show_all_orig,
+    }
+    if verbosity is not None:
+        params["verbosity"] = verbosity
+    return params
+
+
+def parse_fs_lt_log_py_cargs(
+    params: ParseFsLtLogPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("parse_fs_lt_log.py")
+    cargs.extend([
+        "-logfile",
+        execution.input_file(params.get("logfile"))
+    ])
+    cargs.extend([
+        "-labels",
+        *params.get("labels")
+    ])
+    if params.get("show_orig"):
+        cargs.append("-show_orig")
+    if params.get("show_all_orig"):
+        cargs.append("-show_all_orig")
+    if params.get("verbosity") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verbosity"))
+        ])
+    return cargs
+
+
+def parse_fs_lt_log_py_outputs(
+    params: ParseFsLtLogPyParameters,
+    execution: Execution,
+) -> ParseFsLtLogPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ParseFsLtLogPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def parse_fs_lt_log_py_execute(
+    params: ParseFsLtLogPyParameters,
+    execution: Execution,
+) -> ParseFsLtLogPyOutputs:
+    """
+    Parses FreeSurfer labeltable log file and retrieves labeltable indices.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ParseFsLtLogPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = parse_fs_lt_log_py_cargs(params, execution)
+    ret = parse_fs_lt_log_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def parse_fs_lt_log_py(
@@ -49,34 +190,12 @@ def parse_fs_lt_log_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PARSE_FS_LT_LOG_PY_METADATA)
-    cargs = []
-    cargs.append("parse_fs_lt_log.py")
-    cargs.extend([
-        "-logfile",
-        execution.input_file(logfile)
-    ])
-    cargs.extend([
-        "-labels",
-        *labels
-    ])
-    if show_orig:
-        cargs.append("-show_orig")
-    if show_all_orig:
-        cargs.append("-show_all_orig")
-    if verbosity is not None:
-        cargs.extend([
-            "-verb",
-            str(verbosity)
-        ])
-    ret = ParseFsLtLogPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = parse_fs_lt_log_py_params(logfile=logfile, labels=labels, show_orig=show_orig, show_all_orig=show_all_orig, verbosity=verbosity)
+    return parse_fs_lt_log_py_execute(params, execution)
 
 
 __all__ = [
     "PARSE_FS_LT_LOG_PY_METADATA",
-    "ParseFsLtLogPyOutputs",
     "parse_fs_lt_log_py",
+    "parse_fs_lt_log_py_params",
 ]

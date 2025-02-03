@@ -12,14 +12,178 @@ V_1D_APAR2MAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dApar2matParameters = typing.TypedDict('V1dApar2matParameters', {
+    "__STYX_TYPE__": typing.Literal["1dApar2mat"],
+    "x_shift": float,
+    "y_shift": float,
+    "z_shift": float,
+    "z_angle": float,
+    "x_angle": float,
+    "y_angle": float,
+    "x_scale": float,
+    "y_scale": float,
+    "z_scale": float,
+    "y_x_shear": float,
+    "z_x_shear": float,
+    "z_y_shear": float,
+})
 
 
-class V1dApar2matOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v_1d_apar2mat(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "1dApar2mat": v_1d_apar2mat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v_1d_apar2mat_params(
+    x_shift: float,
+    y_shift: float,
+    z_shift: float,
+    z_angle: float,
+    x_angle: float,
+    y_angle: float,
+    x_scale: float,
+    y_scale: float,
+    z_scale: float,
+    y_x_shear: float,
+    z_x_shear: float,
+    z_y_shear: float,
+) -> V1dApar2matParameters:
+    """
+    Build parameters.
+    
+    Args:
+        x_shift: x-shift in mm.
+        y_shift: y-shift in mm.
+        z_shift: z-shift in mm.
+        z_angle: z-angle (roll) in degrees.
+        x_angle: x-angle (pitch) in degrees.
+        y_angle: y-angle (yaw) in degrees.
+        x_scale: x-scale factor in [0.10,10.0].
+        y_scale: y-scale factor in [0.10,10.0].
+        z_scale: z-scale factor in [0.10,10.0].
+        y_x_shear: y/x-shear factor in [-0.3333,0.3333].
+        z_x_shear: z/x-shear factor in [-0.3333,0.3333].
+        z_y_shear: z/y-shear factor in [-0.3333,0.3333].
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dApar2mat",
+        "x_shift": x_shift,
+        "y_shift": y_shift,
+        "z_shift": z_shift,
+        "z_angle": z_angle,
+        "x_angle": x_angle,
+        "y_angle": y_angle,
+        "x_scale": x_scale,
+        "y_scale": y_scale,
+        "z_scale": z_scale,
+        "y_x_shear": y_x_shear,
+        "z_x_shear": z_x_shear,
+        "z_y_shear": z_y_shear,
+    }
+    return params
+
+
+def v_1d_apar2mat_cargs(
+    params: V1dApar2matParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dApar2mat")
+    cargs.append(str(params.get("x_shift")))
+    cargs.append(str(params.get("y_shift")))
+    cargs.append(str(params.get("z_shift")))
+    cargs.append(str(params.get("z_angle")))
+    cargs.append(str(params.get("x_angle")))
+    cargs.append(str(params.get("y_angle")))
+    cargs.append(str(params.get("x_scale")))
+    cargs.append(str(params.get("y_scale")))
+    cargs.append(str(params.get("z_scale")))
+    cargs.append(str(params.get("y_x_shear")))
+    cargs.append(str(params.get("z_x_shear")))
+    cargs.append(str(params.get("z_y_shear")))
+    return cargs
+
+
+def v_1d_apar2mat_outputs(
+    params: V1dApar2matParameters,
+    execution: Execution,
+) -> V1dApar2matOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dApar2matOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v_1d_apar2mat_execute(
+    params: V1dApar2matParameters,
+    execution: Execution,
+) -> V1dApar2matOutputs:
+    """
+    Computes the affine transformation matrix from the set of 3dAllineate
+    parameters.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dApar2matOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1d_apar2mat_cargs(params, execution)
+    ret = v_1d_apar2mat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1d_apar2mat(
@@ -62,43 +226,14 @@ def v_1d_apar2mat(
     Returns:
         NamedTuple of outputs (described in `V1dApar2matOutputs`).
     """
-    if not (0.1 <= x_scale <= 10.0): 
-        raise ValueError(f"'x_scale' must be between 0.1 <= x <= 10.0 but was {x_scale}")
-    if not (0.1 <= y_scale <= 10.0): 
-        raise ValueError(f"'y_scale' must be between 0.1 <= x <= 10.0 but was {y_scale}")
-    if not (0.1 <= z_scale <= 10.0): 
-        raise ValueError(f"'z_scale' must be between 0.1 <= x <= 10.0 but was {z_scale}")
-    if not (-0.3333 <= y_x_shear <= 0.3333): 
-        raise ValueError(f"'y_x_shear' must be between -0.3333 <= x <= 0.3333 but was {y_x_shear}")
-    if not (-0.3333 <= z_x_shear <= 0.3333): 
-        raise ValueError(f"'z_x_shear' must be between -0.3333 <= x <= 0.3333 but was {z_x_shear}")
-    if not (-0.3333 <= z_y_shear <= 0.3333): 
-        raise ValueError(f"'z_y_shear' must be between -0.3333 <= x <= 0.3333 but was {z_y_shear}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_APAR2MAT_METADATA)
-    cargs = []
-    cargs.append("1dApar2mat")
-    cargs.append(str(x_shift))
-    cargs.append(str(y_shift))
-    cargs.append(str(z_shift))
-    cargs.append(str(z_angle))
-    cargs.append(str(x_angle))
-    cargs.append(str(y_angle))
-    cargs.append(str(x_scale))
-    cargs.append(str(y_scale))
-    cargs.append(str(z_scale))
-    cargs.append(str(y_x_shear))
-    cargs.append(str(z_x_shear))
-    cargs.append(str(z_y_shear))
-    ret = V1dApar2matOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1d_apar2mat_params(x_shift=x_shift, y_shift=y_shift, z_shift=z_shift, z_angle=z_angle, x_angle=x_angle, y_angle=y_angle, x_scale=x_scale, y_scale=y_scale, z_scale=z_scale, y_x_shear=y_x_shear, z_x_shear=z_x_shear, z_y_shear=z_y_shear)
+    return v_1d_apar2mat_execute(params, execution)
 
 
 __all__ = [
-    "V1dApar2matOutputs",
     "V_1D_APAR2MAT_METADATA",
     "v_1d_apar2mat",
+    "v_1d_apar2mat_params",
 ]

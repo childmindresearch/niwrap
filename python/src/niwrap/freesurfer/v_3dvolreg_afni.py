@@ -12,6 +12,46 @@ V_3DVOLREG_AFNI_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+V3dvolregAfniParameters = typing.TypedDict('V3dvolregAfniParameters', {
+    "__STYX_TYPE__": typing.Literal["3dvolreg.afni"],
+    "input_file": InputPathType,
+    "output_file": str,
+    "options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dvolreg.afni": v_3dvolreg_afni_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dvolreg.afni": v_3dvolreg_afni_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dvolregAfniOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class V3dvolregAfniOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     registered_output: OutputPathType
     """Output of the registered dataset"""
+
+
+def v_3dvolreg_afni_params(
+    input_file: InputPathType,
+    output_file: str,
+    options: str | None = None,
+) -> V3dvolregAfniParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input dataset to be registered.
+        output_file: Output dataset with applied registration.
+        options: Options for 3dvolreg (consult AFNI documentation for details).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dvolreg.afni",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    if options is not None:
+        params["options"] = options
+    return params
+
+
+def v_3dvolreg_afni_cargs(
+    params: V3dvolregAfniParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dvolreg.afni")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    if params.get("options") is not None:
+        cargs.append(params.get("options"))
+    return cargs
+
+
+def v_3dvolreg_afni_outputs(
+    params: V3dvolregAfniParameters,
+    execution: Execution,
+) -> V3dvolregAfniOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dvolregAfniOutputs(
+        root=execution.output_file("."),
+        registered_output=execution.output_file(params.get("output_file") + ".nii"),
+    )
+    return ret
+
+
+def v_3dvolreg_afni_execute(
+    params: V3dvolregAfniParameters,
+    execution: Execution,
+) -> V3dvolregAfniOutputs:
+    """
+    AFNI program for volume registration.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dvolregAfniOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dvolreg_afni_cargs(params, execution)
+    ret = v_3dvolreg_afni_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dvolreg_afni(
@@ -47,22 +178,13 @@ def v_3dvolreg_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DVOLREG_AFNI_METADATA)
-    cargs = []
-    cargs.append("3dvolreg.afni")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    if options is not None:
-        cargs.append(options)
-    ret = V3dvolregAfniOutputs(
-        root=execution.output_file("."),
-        registered_output=execution.output_file(output_file + ".nii"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dvolreg_afni_params(input_file=input_file, output_file=output_file, options=options)
+    return v_3dvolreg_afni_execute(params, execution)
 
 
 __all__ = [
     "V3dvolregAfniOutputs",
     "V_3DVOLREG_AFNI_METADATA",
     "v_3dvolreg_afni",
+    "v_3dvolreg_afni_params",
 ]

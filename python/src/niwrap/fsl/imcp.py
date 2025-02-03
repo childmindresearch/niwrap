@@ -12,6 +12,45 @@ IMCP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+ImcpParameters = typing.TypedDict('ImcpParameters', {
+    "__STYX_TYPE__": typing.Literal["imcp"],
+    "infiles": list[InputPathType],
+    "output_location": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "imcp": imcp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "imcp": imcp_outputs,
+    }
+    return vt.get(t)
 
 
 class ImcpOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class ImcpOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfiles: OutputPathType
     """Output file or directory"""
+
+
+def imcp_params(
+    infiles: list[InputPathType],
+    output_location: str,
+) -> ImcpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infiles: Input image files (e.g. img1.nii.gz, img2.nii.gz).
+        output_location: Output file or directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imcp",
+        "infiles": infiles,
+        "output_location": output_location,
+    }
+    return params
+
+
+def imcp_cargs(
+    params: ImcpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("imcp")
+    cargs.extend([execution.input_file(f) for f in params.get("infiles")])
+    cargs.append(params.get("output_location"))
+    return cargs
+
+
+def imcp_outputs(
+    params: ImcpParameters,
+    execution: Execution,
+) -> ImcpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImcpOutputs(
+        root=execution.output_file("."),
+        outfiles=execution.output_file(params.get("output_location")),
+    )
+    return ret
+
+
+def imcp_execute(
+    params: ImcpParameters,
+    execution: Execution,
+) -> ImcpOutputs:
+    """
+    Copy images from one location to another.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImcpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = imcp_cargs(params, execution)
+    ret = imcp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def imcp(
@@ -45,20 +169,13 @@ def imcp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCP_METADATA)
-    cargs = []
-    cargs.append("imcp")
-    cargs.extend([execution.input_file(f) for f in infiles])
-    cargs.append(output_location)
-    ret = ImcpOutputs(
-        root=execution.output_file("."),
-        outfiles=execution.output_file(output_location),
-    )
-    execution.run(cargs)
-    return ret
+    params = imcp_params(infiles=infiles, output_location=output_location)
+    return imcp_execute(params, execution)
 
 
 __all__ = [
     "IMCP_METADATA",
     "ImcpOutputs",
     "imcp",
+    "imcp_params",
 ]

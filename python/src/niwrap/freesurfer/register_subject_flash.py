@@ -12,6 +12,44 @@ REGISTER_SUBJECT_FLASH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RegisterSubjectFlashParameters = typing.TypedDict('RegisterSubjectFlashParameters', {
+    "__STYX_TYPE__": typing.Literal["register_subject_flash"],
+    "input_volumes": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "register_subject_flash": register_subject_flash_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "register_subject_flash": register_subject_flash_outputs,
+    }
+    return vt.get(t)
 
 
 class RegisterSubjectFlashOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class RegisterSubjectFlashOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     log_file: OutputPathType
     """Log file output with registration results."""
+
+
+def register_subject_flash_params(
+    input_volumes: list[InputPathType],
+) -> RegisterSubjectFlashParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volumes: Input volumes to register.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "register_subject_flash",
+        "input_volumes": input_volumes,
+    }
+    return params
+
+
+def register_subject_flash_cargs(
+    params: RegisterSubjectFlashParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("register_subject_flash")
+    cargs.extend([execution.input_file(f) for f in params.get("input_volumes")])
+    return cargs
+
+
+def register_subject_flash_outputs(
+    params: RegisterSubjectFlashParameters,
+    execution: Execution,
+) -> RegisterSubjectFlashOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RegisterSubjectFlashOutputs(
+        root=execution.output_file("."),
+        log_file=execution.output_file("talairach.log"),
+    )
+    return ret
+
+
+def register_subject_flash_execute(
+    params: RegisterSubjectFlashParameters,
+    execution: Execution,
+) -> RegisterSubjectFlashOutputs:
+    """
+    Register subject using the FLASH forward model to predict intensity values.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RegisterSubjectFlashOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = register_subject_flash_cargs(params, execution)
+    ret = register_subject_flash_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def register_subject_flash(
@@ -43,19 +162,13 @@ def register_subject_flash(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_SUBJECT_FLASH_METADATA)
-    cargs = []
-    cargs.append("register_subject_flash")
-    cargs.extend([execution.input_file(f) for f in input_volumes])
-    ret = RegisterSubjectFlashOutputs(
-        root=execution.output_file("."),
-        log_file=execution.output_file("talairach.log"),
-    )
-    execution.run(cargs)
-    return ret
+    params = register_subject_flash_params(input_volumes=input_volumes)
+    return register_subject_flash_execute(params, execution)
 
 
 __all__ = [
     "REGISTER_SUBJECT_FLASH_METADATA",
     "RegisterSubjectFlashOutputs",
     "register_subject_flash",
+    "register_subject_flash_params",
 ]

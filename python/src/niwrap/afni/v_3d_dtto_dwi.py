@@ -12,6 +12,46 @@ V_3D_DTTO_DWI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dDttoDwiParameters = typing.TypedDict('V3dDttoDwiParameters', {
+    "__STYX_TYPE__": typing.Literal["3dDTtoDWI"],
+    "gradient_file": InputPathType,
+    "i0_dataset": InputPathType,
+    "dt_dataset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dDTtoDWI": v_3d_dtto_dwi_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dDTtoDWI": v_3d_dtto_dwi_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dDttoDwiOutputs(typing.NamedTuple):
@@ -22,6 +62,99 @@ class V3dDttoDwiOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_dwi: OutputPathType
     """Computed DWI images including sub-brick for each gradient vector."""
+
+
+def v_3d_dtto_dwi_params(
+    gradient_file: InputPathType,
+    i0_dataset: InputPathType,
+    dt_dataset: InputPathType,
+) -> V3dDttoDwiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        gradient_file: 1D file containing the gradient vectors (ASCII floats)\
+            for non-zero gradients.
+        i0_dataset: Volume without any gradient applied.
+        dt_dataset: 6-sub-brick dataset containing the diffusion tensor data\
+            (Dxx, Dxy, Dyy, Dxz, Dyz, Dzz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dDTtoDWI",
+        "gradient_file": gradient_file,
+        "i0_dataset": i0_dataset,
+        "dt_dataset": dt_dataset,
+    }
+    return params
+
+
+def v_3d_dtto_dwi_cargs(
+    params: V3dDttoDwiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dDTtoDWI")
+    cargs.append("[OPTIONS]")
+    cargs.append(execution.input_file(params.get("gradient_file")))
+    cargs.append(execution.input_file(params.get("i0_dataset")))
+    cargs.append(execution.input_file(params.get("dt_dataset")))
+    return cargs
+
+
+def v_3d_dtto_dwi_outputs(
+    params: V3dDttoDwiParameters,
+    execution: Execution,
+) -> V3dDttoDwiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dDttoDwiOutputs(
+        root=execution.output_file("."),
+        output_dwi=execution.output_file("[PREFIX]*.HEAD"),
+    )
+    return ret
+
+
+def v_3d_dtto_dwi_execute(
+    params: V3dDttoDwiParameters,
+    execution: Execution,
+) -> V3dDttoDwiOutputs:
+    """
+    Tool to compute multiple gradient images from tensors and gradient vector
+    coordinates applied to the I0-dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dDttoDwiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_dtto_dwi_cargs(params, execution)
+    ret = v_3d_dtto_dwi_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_dtto_dwi(
@@ -50,22 +183,13 @@ def v_3d_dtto_dwi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_DTTO_DWI_METADATA)
-    cargs = []
-    cargs.append("3dDTtoDWI")
-    cargs.append("[OPTIONS]")
-    cargs.append(execution.input_file(gradient_file))
-    cargs.append(execution.input_file(i0_dataset))
-    cargs.append(execution.input_file(dt_dataset))
-    ret = V3dDttoDwiOutputs(
-        root=execution.output_file("."),
-        output_dwi=execution.output_file("[PREFIX]*.HEAD"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_dtto_dwi_params(gradient_file=gradient_file, i0_dataset=i0_dataset, dt_dataset=dt_dataset)
+    return v_3d_dtto_dwi_execute(params, execution)
 
 
 __all__ = [
     "V3dDttoDwiOutputs",
     "V_3D_DTTO_DWI_METADATA",
     "v_3d_dtto_dwi",
+    "v_3d_dtto_dwi_params",
 ]

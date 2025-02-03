@@ -12,14 +12,127 @@ SPM_T_TO_B_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SpmTToBParameters = typing.TypedDict('SpmTToBParameters', {
+    "__STYX_TYPE__": typing.Literal["spm_t_to_b"],
+    "spm_stem_format": str,
+    "bshort_stem": str,
+})
 
 
-class SpmTToBOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `spm_t_to_b(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "spm_t_to_b": spm_t_to_b_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def spm_t_to_b_params(
+    spm_stem_format: str,
+    bshort_stem: str,
+) -> SpmTToBParameters:
+    """
+    Build parameters.
+    
+    Args:
+        spm_stem_format: Input SPM stem format.
+        bshort_stem: Output bshort stem.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "spm_t_to_b",
+        "spm_stem_format": spm_stem_format,
+        "bshort_stem": bshort_stem,
+    }
+    return params
+
+
+def spm_t_to_b_cargs(
+    params: SpmTToBParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("spm_t_to_b")
+    cargs.append(params.get("spm_stem_format"))
+    cargs.append(params.get("bshort_stem"))
+    return cargs
+
+
+def spm_t_to_b_outputs(
+    params: SpmTToBParameters,
+    execution: Execution,
+) -> SpmTToBOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SpmTToBOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def spm_t_to_b_execute(
+    params: SpmTToBParameters,
+    execution: Execution,
+) -> SpmTToBOutputs:
+    """
+    Converts SPM format to Bshort format.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SpmTToBOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = spm_t_to_b_cargs(params, execution)
+    ret = spm_t_to_b_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def spm_t_to_b(
@@ -43,19 +156,12 @@ def spm_t_to_b(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPM_T_TO_B_METADATA)
-    cargs = []
-    cargs.append("spm_t_to_b")
-    cargs.append(spm_stem_format)
-    cargs.append(bshort_stem)
-    ret = SpmTToBOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = spm_t_to_b_params(spm_stem_format=spm_stem_format, bshort_stem=bshort_stem)
+    return spm_t_to_b_execute(params, execution)
 
 
 __all__ = [
     "SPM_T_TO_B_METADATA",
-    "SpmTToBOutputs",
     "spm_t_to_b",
+    "spm_t_to_b_params",
 ]

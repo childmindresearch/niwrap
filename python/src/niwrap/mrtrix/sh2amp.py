@@ -12,117 +12,241 @@ SH2AMP_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+Sh2ampFslgradParameters = typing.TypedDict('Sh2ampFslgradParameters', {
+    "__STYX_TYPE__": typing.Literal["fslgrad"],
+    "bvecs": InputPathType,
+    "bvals": InputPathType,
+})
+Sh2ampVariousStringParameters = typing.TypedDict('Sh2ampVariousStringParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+Sh2ampVariousFileParameters = typing.TypedDict('Sh2ampVariousFileParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+Sh2ampConfigParameters = typing.TypedDict('Sh2ampConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Sh2ampParameters = typing.TypedDict('Sh2ampParameters', {
+    "__STYX_TYPE__": typing.Literal["sh2amp"],
+    "nonnegative": bool,
+    "grad": typing.NotRequired[InputPathType | None],
+    "fslgrad": typing.NotRequired[Sh2ampFslgradParameters | None],
+    "strides": typing.NotRequired[typing.Union[Sh2ampVariousStringParameters, Sh2ampVariousFileParameters] | None],
+    "datatype": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Sh2ampConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "input": InputPathType,
+    "directions": InputPathType,
+    "output": str,
+})
 
 
-@dataclasses.dataclass
-class Sh2ampFslgrad:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    bvecs: InputPathType
-    """Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used."""
-    bvals: InputPathType
-    """Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-fslgrad")
-        cargs.append(execution.input_file(self.bvecs))
-        cargs.append(execution.input_file(self.bvals))
-        return cargs
+    vt = {
+        "sh2amp": sh2amp_cargs,
+        "fslgrad": sh2amp_fslgrad_cargs,
+        "VariousString": sh2amp_various_string_cargs,
+        "VariousFile": sh2amp_various_file_cargs,
+        "config": sh2amp_config_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class Sh2ampVariousString:
-    obj: str
-    """String object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
-
-
-@dataclasses.dataclass
-class Sh2ampVariousFile:
-    obj: InputPathType
-    """File object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
-
-
-@dataclasses.dataclass
-class Sh2ampConfig:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "sh2amp": sh2amp_outputs,
+    }
+    return vt.get(t)
+
+
+def sh2amp_fslgrad_params(
+    bvecs: InputPathType,
+    bvals: InputPathType,
+) -> Sh2ampFslgradParameters:
+    """
+    Build parameters.
+    
+    Args:
+        bvecs: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        bvals: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslgrad",
+        "bvecs": bvecs,
+        "bvals": bvals,
+    }
+    return params
+
+
+def sh2amp_fslgrad_cargs(
+    params: Sh2ampFslgradParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-fslgrad")
+    cargs.append(execution.input_file(params.get("bvecs")))
+    cargs.append(execution.input_file(params.get("bvals")))
+    return cargs
+
+
+def sh2amp_various_string_params(
+    obj: str,
+) -> Sh2ampVariousStringParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def sh2amp_various_string_cargs(
+    params: Sh2ampVariousStringParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def sh2amp_various_file_params(
+    obj: InputPathType,
+) -> Sh2ampVariousFileParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def sh2amp_various_file_cargs(
+    params: Sh2ampVariousFileParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def sh2amp_config_params(
+    key: str,
+    value: str,
+) -> Sh2ampConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def sh2amp_config_cargs(
+    params: Sh2ampConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Sh2ampOutputs(typing.NamedTuple):
@@ -136,21 +260,250 @@ class Sh2ampOutputs(typing.NamedTuple):
     the specified directions."""
 
 
-def sh2amp(
+def sh2amp_params(
     input_: InputPathType,
     directions: InputPathType,
     output: str,
     nonnegative: bool = False,
     grad: InputPathType | None = None,
-    fslgrad: Sh2ampFslgrad | None = None,
-    strides: typing.Union[Sh2ampVariousString, Sh2ampVariousFile] | None = None,
+    fslgrad: Sh2ampFslgradParameters | None = None,
+    strides: typing.Union[Sh2ampVariousStringParameters, Sh2ampVariousFileParameters] | None = None,
     datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Sh2ampConfig] | None = None,
+    config: list[Sh2ampConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Sh2ampParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: the input image consisting of spherical harmonic (SH)\
+            coefficients.
+        directions: the list of directions along which the SH functions will be\
+            sampled, generated using the dirgen command.
+        output: the output image consisting of the amplitude of the SH\
+            functions along the specified directions.
+        nonnegative: cap all negative amplitudes to zero.
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
+            header, the data provided with this option will be instead used.
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        strides: specify the strides of the output data in memory; either as a\
+            comma-separated list of (signed) integers, or as a template image from\
+            which the strides shall be extracted and used. The actual strides\
+            produced will depend on whether the output image format can support it.
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
+            int8, uint8, bit.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sh2amp",
+        "nonnegative": nonnegative,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "input": input_,
+        "directions": directions,
+        "output": output,
+    }
+    if grad is not None:
+        params["grad"] = grad
+    if fslgrad is not None:
+        params["fslgrad"] = fslgrad
+    if strides is not None:
+        params["strides"] = strides
+    if datatype is not None:
+        params["datatype"] = datatype
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def sh2amp_cargs(
+    params: Sh2ampParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("sh2amp")
+    if params.get("nonnegative"):
+        cargs.append("-nonnegative")
+    if params.get("grad") is not None:
+        cargs.extend([
+            "-grad",
+            execution.input_file(params.get("grad"))
+        ])
+    if params.get("fslgrad") is not None:
+        cargs.extend(dyn_cargs(params.get("fslgrad")["__STYXTYPE__"])(params.get("fslgrad"), execution))
+    if params.get("strides") is not None:
+        cargs.extend([
+            "-strides",
+            *dyn_cargs(params.get("strides")["__STYXTYPE__"])(params.get("strides"), execution)
+        ])
+    if params.get("datatype") is not None:
+        cargs.extend([
+            "-datatype",
+            params.get("datatype")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("directions")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def sh2amp_outputs(
+    params: Sh2ampParameters,
+    execution: Execution,
+) -> Sh2ampOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Sh2ampOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def sh2amp_execute(
+    params: Sh2ampParameters,
+    execution: Execution,
+) -> Sh2ampOutputs:
+    """
+    Evaluate the amplitude of an image of spherical harmonic functions along
+    specified directions.
+    
+    The input image should consist of a 4D or 5D image, with SH coefficients
+    along the 4th dimension according to the convention below. If 4D (or size 1
+    along the 5th dimension), the program expects to be provided with a single
+    shell of directions. If 5D, each set of coefficients along the 5th dimension
+    is understood to correspond to a different shell.
+    
+    The directions can be provided as:
+    - a 2-column ASCII text file contained azimuth / elevation pairs (as
+    produced by dirgen)
+    - a 3-column ASCII text file containing x, y, z Cartesian direction vectors
+    (as produced by dirgen -cart)
+    - a 4-column ASCII text file containing the x, y, z, b components of a full
+    DW encoding scheme (in MRtrix format, see main documentation for details).
+    - an image file whose header contains a valid DW encoding scheme
+    
+    If a full DW encoding is provided, the number of shells needs to match those
+    found in the input image of coefficients (i.e. its size along the 5th
+    dimension). If needed, the -shell option can be used to pick out the
+    specific shell(s) of interest.
+    
+    If the input image contains multiple shells (its size along the 5th
+    dimension is greater than one), the program will expect the direction set to
+    contain multiple shells, which can only be provided as a full DW encodings
+    (the last two options in the list above).
+    
+    The spherical harmonic coefficients are stored according the conventions
+    described the main documentation, which can be found at the following link:
+    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Sh2ampOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = sh2amp_cargs(params, execution)
+    ret = sh2amp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def sh2amp(
+    input_: InputPathType,
+    directions: InputPathType,
+    output: str,
+    nonnegative: bool = False,
+    grad: InputPathType | None = None,
+    fslgrad: Sh2ampFslgradParameters | None = None,
+    strides: typing.Union[Sh2ampVariousStringParameters, Sh2ampVariousFileParameters] | None = None,
+    datatype: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Sh2ampConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -242,63 +595,17 @@ def sh2amp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SH2AMP_METADATA)
-    cargs = []
-    cargs.append("sh2amp")
-    if nonnegative:
-        cargs.append("-nonnegative")
-    if grad is not None:
-        cargs.extend([
-            "-grad",
-            execution.input_file(grad)
-        ])
-    if fslgrad is not None:
-        cargs.extend(fslgrad.run(execution))
-    if strides is not None:
-        cargs.extend([
-            "-strides",
-            *strides.run(execution)
-        ])
-    if datatype is not None:
-        cargs.extend([
-            "-datatype",
-            datatype
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(input_))
-    cargs.append(execution.input_file(directions))
-    cargs.append(output)
-    ret = Sh2ampOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = sh2amp_params(nonnegative=nonnegative, grad=grad, fslgrad=fslgrad, strides=strides, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_, directions=directions, output=output)
+    return sh2amp_execute(params, execution)
 
 
 __all__ = [
     "SH2AMP_METADATA",
-    "Sh2ampConfig",
-    "Sh2ampFslgrad",
     "Sh2ampOutputs",
-    "Sh2ampVariousFile",
-    "Sh2ampVariousString",
     "sh2amp",
+    "sh2amp_config_params",
+    "sh2amp_fslgrad_params",
+    "sh2amp_params",
+    "sh2amp_various_file_params",
+    "sh2amp_various_string_params",
 ]

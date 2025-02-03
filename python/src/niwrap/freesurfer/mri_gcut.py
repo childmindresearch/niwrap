@@ -12,6 +12,48 @@ MRI_GCUT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriGcutParameters = typing.TypedDict('MriGcutParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_gcut"],
+    "wmmask_110": bool,
+    "mult_file": typing.NotRequired[InputPathType | None],
+    "threshold_value": typing.NotRequired[float | None],
+    "infile": InputPathType,
+    "outfile": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_gcut": mri_gcut_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_gcut": mri_gcut_outputs,
+    }
+    return vt.get(t)
 
 
 class MriGcutOutputs(typing.NamedTuple):
@@ -22,6 +64,118 @@ class MriGcutOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_mask_file: OutputPathType
     """The output file containing the skull-stripped brain volume."""
+
+
+def mri_gcut_params(
+    infile: InputPathType,
+    outfile: str,
+    wmmask_110: bool = False,
+    mult_file: InputPathType | None = None,
+    threshold_value: float | None = None,
+) -> MriGcutParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input brain volume file, e.g. T1.mgz.
+        outfile: Output file name, e.g. brainmask.auto.mgz.
+        wmmask_110: Use voxels with intensity 110 as white matter mask (when\
+            applied on T1.mgz, FreeSurfer only).
+        mult_file: Intersect the skull-stripped 'in_filename' and an existing\
+            skull-stripped volume specified by 'filename', storing the result in\
+            'out_filename'.
+        threshold_value: Set threshold to value (%) of WM intensity, where the\
+            value should be >0 and <1; defaults to 0.40.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_gcut",
+        "wmmask_110": wmmask_110,
+        "infile": infile,
+        "outfile": outfile,
+    }
+    if mult_file is not None:
+        params["mult_file"] = mult_file
+    if threshold_value is not None:
+        params["threshold_value"] = threshold_value
+    return params
+
+
+def mri_gcut_cargs(
+    params: MriGcutParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_gcut")
+    if params.get("wmmask_110"):
+        cargs.append("-110")
+    if params.get("mult_file") is not None:
+        cargs.extend([
+            "-mult",
+            execution.input_file(params.get("mult_file"))
+        ])
+    if params.get("threshold_value") is not None:
+        cargs.extend([
+            "-T",
+            str(params.get("threshold_value"))
+        ])
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(params.get("outfile"))
+    return cargs
+
+
+def mri_gcut_outputs(
+    params: MriGcutParameters,
+    execution: Execution,
+) -> MriGcutOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriGcutOutputs(
+        root=execution.output_file("."),
+        output_mask_file=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def mri_gcut_execute(
+    params: MriGcutParameters,
+    execution: Execution,
+) -> MriGcutOutputs:
+    """
+    Skull stripping algorithm based on graph cuts.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriGcutOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_gcut_cargs(params, execution)
+    ret = mri_gcut_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_gcut(
@@ -53,36 +207,15 @@ def mri_gcut(
     Returns:
         NamedTuple of outputs (described in `MriGcutOutputs`).
     """
-    if threshold_value is not None and not (0 <= threshold_value <= 1): 
-        raise ValueError(f"'threshold_value' must be between 0 <= x <= 1 but was {threshold_value}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GCUT_METADATA)
-    cargs = []
-    cargs.append("mri_gcut")
-    if wmmask_110:
-        cargs.append("-110")
-    if mult_file is not None:
-        cargs.extend([
-            "-mult",
-            execution.input_file(mult_file)
-        ])
-    if threshold_value is not None:
-        cargs.extend([
-            "-T",
-            str(threshold_value)
-        ])
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
-    ret = MriGcutOutputs(
-        root=execution.output_file("."),
-        output_mask_file=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_gcut_params(wmmask_110=wmmask_110, mult_file=mult_file, threshold_value=threshold_value, infile=infile, outfile=outfile)
+    return mri_gcut_execute(params, execution)
 
 
 __all__ = [
     "MRI_GCUT_METADATA",
     "MriGcutOutputs",
     "mri_gcut",
+    "mri_gcut_params",
 ]

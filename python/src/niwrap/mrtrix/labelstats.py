@@ -12,43 +12,249 @@ LABELSTATS_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+LabelstatsConfigParameters = typing.TypedDict('LabelstatsConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+LabelstatsParameters = typing.TypedDict('LabelstatsParameters', {
+    "__STYX_TYPE__": typing.Literal["labelstats"],
+    "output": typing.NotRequired[str | None],
+    "voxelspace": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[LabelstatsConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "input": InputPathType,
+})
 
 
-@dataclasses.dataclass
-class LabelstatsConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "labelstats": labelstats_cargs,
+        "config": labelstats_config_cargs,
+    }
+    return vt.get(t)
 
 
-class LabelstatsOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `labelstats(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def labelstats_config_params(
+    key: str,
+    value: str,
+) -> LabelstatsConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def labelstats_config_cargs(
+    params: LabelstatsConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def labelstats_params(
+    input_: InputPathType,
+    output: str | None = None,
+    voxelspace: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[LabelstatsConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> LabelstatsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: the input label image.
+        output: output only the field specified; options are: mass,centre.
+        voxelspace: report parcel centres of mass in voxel space rather than\
+            scanner space.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "labelstats",
+        "voxelspace": voxelspace,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "input": input_,
+    }
+    if output is not None:
+        params["output"] = output
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def labelstats_cargs(
+    params: LabelstatsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("labelstats")
+    if params.get("output") is not None:
+        cargs.extend([
+            "-output",
+            params.get("output")
+        ])
+    if params.get("voxelspace"):
+        cargs.append("-voxelspace")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("input")))
+    return cargs
+
+
+def labelstats_outputs(
+    params: LabelstatsParameters,
+    execution: Execution,
+) -> LabelstatsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelstatsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def labelstats_execute(
+    params: LabelstatsParameters,
+    execution: Execution,
+) -> LabelstatsOutputs:
+    """
+    Compute statistics of parcels within a label image.
+    
+    
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelstatsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = labelstats_cargs(params, execution)
+    ret = labelstats_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def labelstats(
@@ -60,7 +266,7 @@ def labelstats(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[LabelstatsConfig] | None = None,
+    config: list[LabelstatsConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -101,45 +307,13 @@ def labelstats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELSTATS_METADATA)
-    cargs = []
-    cargs.append("labelstats")
-    if output is not None:
-        cargs.extend([
-            "-output",
-            output
-        ])
-    if voxelspace:
-        cargs.append("-voxelspace")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(input_))
-    ret = LabelstatsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = labelstats_params(output=output, voxelspace=voxelspace, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_=input_)
+    return labelstats_execute(params, execution)
 
 
 __all__ = [
     "LABELSTATS_METADATA",
-    "LabelstatsConfig",
-    "LabelstatsOutputs",
     "labelstats",
+    "labelstats_config_params",
+    "labelstats_params",
 ]

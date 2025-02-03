@@ -12,6 +12,46 @@ UNCONFOUND_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+UnconfoundParameters = typing.TypedDict('UnconfoundParameters', {
+    "__STYX_TYPE__": typing.Literal["unconfound"],
+    "in4d": InputPathType,
+    "out4d": str,
+    "confound_mat": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "unconfound": unconfound_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "unconfound": unconfound_outputs,
+    }
+    return vt.get(t)
 
 
 class UnconfoundOutputs(typing.NamedTuple):
@@ -22,6 +62,96 @@ class UnconfoundOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_4d: OutputPathType
     """Output 4D fMRI data after removing confounds"""
+
+
+def unconfound_params(
+    in4d: InputPathType,
+    out4d: str,
+    confound_mat: InputPathType,
+) -> UnconfoundParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in4d: Input 4D fMRI data (e.g., in4d.nii.gz).
+        out4d: Output 4D fMRI data after removing confounds (e.g.,\
+            out4d.nii.gz).
+        confound_mat: Confound matrix file (e.g., confound.mat).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "unconfound",
+        "in4d": in4d,
+        "out4d": out4d,
+        "confound_mat": confound_mat,
+    }
+    return params
+
+
+def unconfound_cargs(
+    params: UnconfoundParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("unconfound")
+    cargs.append(execution.input_file(params.get("in4d")))
+    cargs.append(params.get("out4d"))
+    cargs.append(execution.input_file(params.get("confound_mat")))
+    return cargs
+
+
+def unconfound_outputs(
+    params: UnconfoundParameters,
+    execution: Execution,
+) -> UnconfoundOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UnconfoundOutputs(
+        root=execution.output_file("."),
+        output_4d=execution.output_file(params.get("out4d") + ".nii.gz"),
+    )
+    return ret
+
+
+def unconfound_execute(
+    params: UnconfoundParameters,
+    execution: Execution,
+) -> UnconfoundOutputs:
+    """
+    Removing confounds from 4D fMRI data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UnconfoundOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = unconfound_cargs(params, execution)
+    ret = unconfound_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def unconfound(
@@ -48,21 +178,13 @@ def unconfound(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNCONFOUND_METADATA)
-    cargs = []
-    cargs.append("unconfound")
-    cargs.append(execution.input_file(in4d))
-    cargs.append(out4d)
-    cargs.append(execution.input_file(confound_mat))
-    ret = UnconfoundOutputs(
-        root=execution.output_file("."),
-        output_4d=execution.output_file(out4d + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = unconfound_params(in4d=in4d, out4d=out4d, confound_mat=confound_mat)
+    return unconfound_execute(params, execution)
 
 
 __all__ = [
     "UNCONFOUND_METADATA",
     "UnconfoundOutputs",
     "unconfound",
+    "unconfound_params",
 ]

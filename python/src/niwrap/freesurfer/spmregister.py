@@ -12,6 +12,56 @@ SPMREGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SpmregisterParameters = typing.TypedDict('SpmregisterParameters', {
+    "__STYX_TYPE__": typing.Literal["spmregister"],
+    "subjid": str,
+    "mov": str,
+    "reg": str,
+    "frame": typing.NotRequired[float | None],
+    "mid_frame": bool,
+    "template_out": typing.NotRequired[str | None],
+    "fsvol": typing.NotRequired[str | None],
+    "force_ras": bool,
+    "outvol": typing.NotRequired[str | None],
+    "tmpdir": typing.NotRequired[str | None],
+    "nocleanup": bool,
+    "version": bool,
+    "help": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "spmregister": spmregister_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "spmregister": spmregister_outputs,
+    }
+    return vt.get(t)
 
 
 class SpmregisterOutputs(typing.NamedTuple):
@@ -24,6 +74,180 @@ class SpmregisterOutputs(typing.NamedTuple):
     """Output registration file."""
     resampled_mov: OutputPathType | None
     """Resampled mov volume."""
+
+
+def spmregister_params(
+    subjid: str,
+    mov: str,
+    reg: str,
+    frame: float | None = None,
+    mid_frame: bool = False,
+    template_out: str | None = None,
+    fsvol: str | None = None,
+    force_ras: bool = False,
+    outvol: str | None = None,
+    tmpdir: str | None = None,
+    nocleanup: bool = False,
+    version: bool = False,
+    help_: bool = False,
+) -> SpmregisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjid: Id of the subject as found in SUBJECTS_DIR. This is converted\
+            to analyze using mri_convert.
+        mov: Volume identifier of the movable volume. Must be specified in a\
+            way suitable for mri_convert.
+        reg: Output registration file. Maps RAS in the reference to RAS in the\
+            movable.
+        frame: Use something other than the first frame. Specify the frame\
+            number you want.
+        mid_frame: Use the middle frame of the mov volume as the template.
+        template_out: Save the mov template when template is something other\
+            than the first frame.
+        fsvol: Use FreeSurfer volid (default brainmask).
+        force_ras: Force input geometry to be RAS.
+        outvol: Resample mov and save as outvol.
+        tmpdir: Temporary directory (implies --nocleanup).
+        nocleanup: Do not delete temporary files.
+        version: Print version and exit.
+        help_: Print help and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "spmregister",
+        "subjid": subjid,
+        "mov": mov,
+        "reg": reg,
+        "mid_frame": mid_frame,
+        "force_ras": force_ras,
+        "nocleanup": nocleanup,
+        "version": version,
+        "help": help_,
+    }
+    if frame is not None:
+        params["frame"] = frame
+    if template_out is not None:
+        params["template_out"] = template_out
+    if fsvol is not None:
+        params["fsvol"] = fsvol
+    if outvol is not None:
+        params["outvol"] = outvol
+    if tmpdir is not None:
+        params["tmpdir"] = tmpdir
+    return params
+
+
+def spmregister_cargs(
+    params: SpmregisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("spmregister")
+    cargs.extend([
+        "--s",
+        params.get("subjid")
+    ])
+    cargs.extend([
+        "--mov",
+        params.get("mov")
+    ])
+    cargs.extend([
+        "--reg",
+        params.get("reg")
+    ])
+    if params.get("frame") is not None:
+        cargs.extend([
+            "--frame",
+            str(params.get("frame"))
+        ])
+    if params.get("mid_frame"):
+        cargs.append("--mid-frame")
+    if params.get("template_out") is not None:
+        cargs.extend([
+            "--template-out",
+            params.get("template_out")
+        ])
+    if params.get("fsvol") is not None:
+        cargs.extend([
+            "--fsvol",
+            params.get("fsvol")
+        ])
+    if params.get("force_ras"):
+        cargs.append("--force-ras")
+    if params.get("outvol") is not None:
+        cargs.extend([
+            "--o",
+            params.get("outvol")
+        ])
+    if params.get("tmpdir") is not None:
+        cargs.extend([
+            "--tmp",
+            params.get("tmpdir")
+        ])
+    if params.get("nocleanup"):
+        cargs.append("--nocleanup")
+    if params.get("version"):
+        cargs.append("--version")
+    if params.get("help"):
+        cargs.append("--help")
+    return cargs
+
+
+def spmregister_outputs(
+    params: SpmregisterParameters,
+    execution: Execution,
+) -> SpmregisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SpmregisterOutputs(
+        root=execution.output_file("."),
+        registration_file=execution.output_file("register.dat"),
+        resampled_mov=execution.output_file(params.get("outvol")) if (params.get("outvol") is not None) else None,
+    )
+    return ret
+
+
+def spmregister_execute(
+    params: SpmregisterParameters,
+    execution: Execution,
+) -> SpmregisterOutputs:
+    """
+    Registers a volume to its FreeSurfer anatomical using SPM's spm_coreg.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SpmregisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = spmregister_cargs(params, execution)
+    ret = spmregister_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def spmregister(
@@ -74,66 +298,13 @@ def spmregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SPMREGISTER_METADATA)
-    cargs = []
-    cargs.append("spmregister")
-    cargs.extend([
-        "--s",
-        subjid
-    ])
-    cargs.extend([
-        "--mov",
-        mov
-    ])
-    cargs.extend([
-        "--reg",
-        reg
-    ])
-    if frame is not None:
-        cargs.extend([
-            "--frame",
-            str(frame)
-        ])
-    if mid_frame:
-        cargs.append("--mid-frame")
-    if template_out is not None:
-        cargs.extend([
-            "--template-out",
-            template_out
-        ])
-    if fsvol is not None:
-        cargs.extend([
-            "--fsvol",
-            fsvol
-        ])
-    if force_ras:
-        cargs.append("--force-ras")
-    if outvol is not None:
-        cargs.extend([
-            "--o",
-            outvol
-        ])
-    if tmpdir is not None:
-        cargs.extend([
-            "--tmp",
-            tmpdir
-        ])
-    if nocleanup:
-        cargs.append("--nocleanup")
-    if version:
-        cargs.append("--version")
-    if help_:
-        cargs.append("--help")
-    ret = SpmregisterOutputs(
-        root=execution.output_file("."),
-        registration_file=execution.output_file("register.dat"),
-        resampled_mov=execution.output_file(outvol) if (outvol is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = spmregister_params(subjid=subjid, mov=mov, reg=reg, frame=frame, mid_frame=mid_frame, template_out=template_out, fsvol=fsvol, force_ras=force_ras, outvol=outvol, tmpdir=tmpdir, nocleanup=nocleanup, version=version, help_=help_)
+    return spmregister_execute(params, execution)
 
 
 __all__ = [
     "SPMREGISTER_METADATA",
     "SpmregisterOutputs",
     "spmregister",
+    "spmregister_params",
 ]

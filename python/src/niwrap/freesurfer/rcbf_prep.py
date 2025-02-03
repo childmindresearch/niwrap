@@ -12,6 +12,49 @@ RCBF_PREP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RcbfPrepParameters = typing.TypedDict('RcbfPrepParameters', {
+    "__STYX_TYPE__": typing.Literal["rcbf-prep"],
+    "outdir": str,
+    "rcbfvol": InputPathType,
+    "subject": typing.NotRequired[str | None],
+    "roitab": typing.NotRequired[InputPathType | None],
+    "register": typing.NotRequired[InputPathType | None],
+    "template": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "rcbf-prep": rcbf_prep_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "rcbf-prep": rcbf_prep_outputs,
+    }
+    return vt.get(t)
 
 
 class RcbfPrepOutputs(typing.NamedTuple):
@@ -26,6 +69,138 @@ class RcbfPrepOutputs(typing.NamedTuple):
     """rCBF volume resampled to MNI305 space."""
     roi_stats: OutputPathType
     """Stats file summarizing the ROIs."""
+
+
+def rcbf_prep_params(
+    outdir: str,
+    rcbfvol: InputPathType,
+    subject: str | None = None,
+    roitab: InputPathType | None = None,
+    register: InputPathType | None = None,
+    template: InputPathType | None = None,
+) -> RcbfPrepParameters:
+    """
+    Build parameters.
+    
+    Args:
+        outdir: Output directory where results will be stored.
+        rcbfvol: Input rCBF volume to be registered to the FreeSurfer\
+            anatomical.
+        subject: Subject identifier for FreeSurfer anatomical registration.
+        roitab: ROI table specifying which ROIs will be summarized, e.g.,\
+            FreeSurferColorLUT.txt.
+        register: Registration data file instead of a subject.
+        template: Template file used instead of rCBF itself.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "rcbf-prep",
+        "outdir": outdir,
+        "rcbfvol": rcbfvol,
+    }
+    if subject is not None:
+        params["subject"] = subject
+    if roitab is not None:
+        params["roitab"] = roitab
+    if register is not None:
+        params["register"] = register
+    if template is not None:
+        params["template"] = template
+    return params
+
+
+def rcbf_prep_cargs(
+    params: RcbfPrepParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("rcbf-prep")
+    cargs.extend([
+        "--o",
+        params.get("outdir")
+    ])
+    cargs.extend([
+        "--rcbf",
+        execution.input_file(params.get("rcbfvol"))
+    ])
+    if params.get("subject") is not None:
+        cargs.extend([
+            "--s",
+            params.get("subject")
+        ])
+    if params.get("roitab") is not None:
+        cargs.extend([
+            "--roitab",
+            execution.input_file(params.get("roitab"))
+        ])
+    if params.get("register") is not None:
+        cargs.extend([
+            "--reg",
+            execution.input_file(params.get("register"))
+        ])
+    if params.get("template") is not None:
+        cargs.extend([
+            "--t",
+            execution.input_file(params.get("template"))
+        ])
+    return cargs
+
+
+def rcbf_prep_outputs(
+    params: RcbfPrepParameters,
+    execution: Execution,
+) -> RcbfPrepOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RcbfPrepOutputs(
+        root=execution.output_file("."),
+        hemisphere_rcbf=execution.output_file(params.get("outdir") + "/?h.rcbf.mgh"),
+        mni305_rcbf=execution.output_file(params.get("outdir") + "/rcbf.mni305.nii"),
+        roi_stats=execution.output_file(params.get("outdir") + "/roi.dat"),
+    )
+    return ret
+
+
+def rcbf_prep_execute(
+    params: RcbfPrepParameters,
+    execution: Execution,
+) -> RcbfPrepOutputs:
+    """
+    Performs integration of rCBF as produced by Siemens scanners with FreeSurfer
+    analysis in preparation for group analysis.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RcbfPrepOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = rcbf_prep_cargs(params, execution)
+    ret = rcbf_prep_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def rcbf_prep(
@@ -60,48 +235,13 @@ def rcbf_prep(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCBF_PREP_METADATA)
-    cargs = []
-    cargs.append("rcbf-prep")
-    cargs.extend([
-        "--o",
-        outdir
-    ])
-    cargs.extend([
-        "--rcbf",
-        execution.input_file(rcbfvol)
-    ])
-    if subject is not None:
-        cargs.extend([
-            "--s",
-            subject
-        ])
-    if roitab is not None:
-        cargs.extend([
-            "--roitab",
-            execution.input_file(roitab)
-        ])
-    if register is not None:
-        cargs.extend([
-            "--reg",
-            execution.input_file(register)
-        ])
-    if template is not None:
-        cargs.extend([
-            "--t",
-            execution.input_file(template)
-        ])
-    ret = RcbfPrepOutputs(
-        root=execution.output_file("."),
-        hemisphere_rcbf=execution.output_file(outdir + "/?h.rcbf.mgh"),
-        mni305_rcbf=execution.output_file(outdir + "/rcbf.mni305.nii"),
-        roi_stats=execution.output_file(outdir + "/roi.dat"),
-    )
-    execution.run(cargs)
-    return ret
+    params = rcbf_prep_params(outdir=outdir, rcbfvol=rcbfvol, subject=subject, roitab=roitab, register=register, template=template)
+    return rcbf_prep_execute(params, execution)
 
 
 __all__ = [
     "RCBF_PREP_METADATA",
     "RcbfPrepOutputs",
     "rcbf_prep",
+    "rcbf_prep_params",
 ]

@@ -12,32 +12,89 @@ CIFTI_MERGE_DENSE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiMergeDenseCiftiParameters = typing.TypedDict('CiftiMergeDenseCiftiParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti"],
+    "cifti_in": InputPathType,
+})
+CiftiMergeDenseParameters = typing.TypedDict('CiftiMergeDenseParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-merge-dense"],
+    "direction": str,
+    "cifti_out": str,
+    "opt_label_collision_action": typing.NotRequired[str | None],
+    "cifti": typing.NotRequired[list[CiftiMergeDenseCiftiParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiMergeDenseCifti:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    specify an input cifti file.
-    """
-    cifti_in: InputPathType
-    """a cifti file to merge"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cifti")
-        cargs.append(execution.input_file(self.cifti_in))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-merge-dense": cifti_merge_dense_cargs,
+        "cifti": cifti_merge_dense_cifti_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-merge-dense": cifti_merge_dense_outputs,
+    }
+    return vt.get(t)
+
+
+def cifti_merge_dense_cifti_params(
+    cifti_in: InputPathType,
+) -> CiftiMergeDenseCiftiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_in: a cifti file to merge.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti",
+        "cifti_in": cifti_in,
+    }
+    return params
+
+
+def cifti_merge_dense_cifti_cargs(
+    params: CiftiMergeDenseCiftiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cifti")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    return cargs
 
 
 class CiftiMergeDenseOutputs(typing.NamedTuple):
@@ -50,11 +107,118 @@ class CiftiMergeDenseOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
+def cifti_merge_dense_params(
+    direction: str,
+    cifti_out: str,
+    opt_label_collision_action: str | None = None,
+    cifti: list[CiftiMergeDenseCiftiParameters] | None = None,
+) -> CiftiMergeDenseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        direction: which dimension to merge along, ROW or COLUMN.
+        cifti_out: the output cifti file.
+        opt_label_collision_action: how to handle conflicts between label keys:\
+            'ERROR', 'FIRST', or 'LEGACY', default 'ERROR', use 'LEGACY' to match\
+            v1.4.2 and earlier.
+        cifti: specify an input cifti file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-merge-dense",
+        "direction": direction,
+        "cifti_out": cifti_out,
+    }
+    if opt_label_collision_action is not None:
+        params["opt_label_collision_action"] = opt_label_collision_action
+    if cifti is not None:
+        params["cifti"] = cifti
+    return params
+
+
+def cifti_merge_dense_cargs(
+    params: CiftiMergeDenseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-merge-dense")
+    cargs.append(params.get("direction"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_label_collision_action") is not None:
+        cargs.extend([
+            "-label-collision",
+            params.get("opt_label_collision_action")
+        ])
+    if params.get("cifti") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("cifti")] for a in c])
+    return cargs
+
+
+def cifti_merge_dense_outputs(
+    params: CiftiMergeDenseParameters,
+    execution: Execution,
+) -> CiftiMergeDenseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiMergeDenseOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_merge_dense_execute(
+    params: CiftiMergeDenseParameters,
+    execution: Execution,
+) -> CiftiMergeDenseOutputs:
+    """
+    Merge cifti files along dense dimension.
+    
+    The input cifti files must have matching mappings along the direction not
+    specified, and the mapping along the specified direction must be brain
+    models.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiMergeDenseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_merge_dense_cargs(params, execution)
+    ret = cifti_merge_dense_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def cifti_merge_dense(
     direction: str,
     cifti_out: str,
     opt_label_collision_action: str | None = None,
-    cifti: list[CiftiMergeDenseCifti] | None = None,
+    cifti: list[CiftiMergeDenseCiftiParameters] | None = None,
     runner: Runner | None = None,
 ) -> CiftiMergeDenseOutputs:
     """
@@ -81,29 +245,14 @@ def cifti_merge_dense(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_MERGE_DENSE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-merge-dense")
-    cargs.append(direction)
-    cargs.append(cifti_out)
-    if opt_label_collision_action is not None:
-        cargs.extend([
-            "-label-collision",
-            opt_label_collision_action
-        ])
-    if cifti is not None:
-        cargs.extend([a for c in [s.run(execution) for s in cifti] for a in c])
-    ret = CiftiMergeDenseOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_merge_dense_params(direction=direction, cifti_out=cifti_out, opt_label_collision_action=opt_label_collision_action, cifti=cifti)
+    return cifti_merge_dense_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_MERGE_DENSE_METADATA",
-    "CiftiMergeDenseCifti",
     "CiftiMergeDenseOutputs",
     "cifti_merge_dense",
+    "cifti_merge_dense_cifti_params",
+    "cifti_merge_dense_params",
 ]

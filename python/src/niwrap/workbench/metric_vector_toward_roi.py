@@ -12,6 +12,47 @@ METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricVectorTowardRoiParameters = typing.TypedDict('MetricVectorTowardRoiParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-vector-toward-roi"],
+    "surface": InputPathType,
+    "target_roi": InputPathType,
+    "metric_out": str,
+    "opt_roi_roi_metric": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-vector-toward-roi": metric_vector_toward_roi_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-vector-toward-roi": metric_vector_toward_roi_outputs,
+    }
+    return vt.get(t)
 
 
 class MetricVectorTowardRoiOutputs(typing.NamedTuple):
@@ -22,6 +63,109 @@ class MetricVectorTowardRoiOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
+
+
+def metric_vector_toward_roi_params(
+    surface: InputPathType,
+    target_roi: InputPathType,
+    metric_out: str,
+    opt_roi_roi_metric: InputPathType | None = None,
+) -> MetricVectorTowardRoiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to compute on.
+        target_roi: the roi to find the shortest path to.
+        metric_out: the output metric.
+        opt_roi_roi_metric: don't compute for vertices outside an roi: the\
+            region to compute inside, as a metric.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-vector-toward-roi",
+        "surface": surface,
+        "target_roi": target_roi,
+        "metric_out": metric_out,
+    }
+    if opt_roi_roi_metric is not None:
+        params["opt_roi_roi_metric"] = opt_roi_roi_metric
+    return params
+
+
+def metric_vector_toward_roi_cargs(
+    params: MetricVectorTowardRoiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-vector-toward-roi")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("target_roi")))
+    cargs.append(params.get("metric_out"))
+    if params.get("opt_roi_roi_metric") is not None:
+        cargs.extend([
+            "-roi",
+            execution.input_file(params.get("opt_roi_roi_metric"))
+        ])
+    return cargs
+
+
+def metric_vector_toward_roi_outputs(
+    params: MetricVectorTowardRoiParameters,
+    execution: Execution,
+) -> MetricVectorTowardRoiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricVectorTowardRoiOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_vector_toward_roi_execute(
+    params: MetricVectorTowardRoiParameters,
+    execution: Execution,
+) -> MetricVectorTowardRoiOutputs:
+    """
+    Find if vectors point toward an roi.
+    
+    At each vertex, compute the vector along the start of the shortest path to
+    the ROI.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricVectorTowardRoiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_vector_toward_roi_cargs(params, execution)
+    ret = metric_vector_toward_roi_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def metric_vector_toward_roi(
@@ -53,27 +197,13 @@ def metric_vector_toward_roi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_VECTOR_TOWARD_ROI_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-vector-toward-roi")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(target_roi))
-    cargs.append(metric_out)
-    if opt_roi_roi_metric is not None:
-        cargs.extend([
-            "-roi",
-            execution.input_file(opt_roi_roi_metric)
-        ])
-    ret = MetricVectorTowardRoiOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_vector_toward_roi_params(surface=surface, target_roi=target_roi, metric_out=metric_out, opt_roi_roi_metric=opt_roi_roi_metric)
+    return metric_vector_toward_roi_execute(params, execution)
 
 
 __all__ = [
     "METRIC_VECTOR_TOWARD_ROI_METADATA",
     "MetricVectorTowardRoiOutputs",
     "metric_vector_toward_roi",
+    "metric_vector_toward_roi_params",
 ]

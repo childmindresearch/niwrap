@@ -12,6 +12,47 @@ V_3D_TSPLIT4_D_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dTsplit4DParameters = typing.TypedDict('V3dTsplit4DParameters', {
+    "__STYX_TYPE__": typing.Literal["3dTsplit4D"],
+    "prefix": str,
+    "infile": InputPathType,
+    "keep_datum": bool,
+    "digits": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dTsplit4D": v_3d_tsplit4_d_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dTsplit4D": v_3d_tsplit4_d_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dTsplit4DOutputs(typing.NamedTuple):
@@ -22,6 +63,108 @@ class V3dTsplit4DOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfiles: OutputPathType
     """Multiple 3D single-brick output files"""
+
+
+def v_3d_tsplit4_d_params(
+    prefix: str,
+    infile: InputPathType,
+    keep_datum: bool = False,
+    digits: float | None = None,
+) -> V3dTsplit4DParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Prefix of the output datasets (e.g., out/epi).
+        infile: Input 3D+time dataset (e.g., epi_r1+orig).
+        keep_datum: Output uses original datum (no conversion to float).
+        digits: Number of digits to use for output filenames.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dTsplit4D",
+        "prefix": prefix,
+        "infile": infile,
+        "keep_datum": keep_datum,
+    }
+    if digits is not None:
+        params["digits"] = digits
+    return params
+
+
+def v_3d_tsplit4_d_cargs(
+    params: V3dTsplit4DParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dTsplit4D")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.append(execution.input_file(params.get("infile")))
+    if params.get("keep_datum"):
+        cargs.append("-keep_datum")
+    if params.get("digits") is not None:
+        cargs.extend([
+            "-digits",
+            str(params.get("digits"))
+        ])
+    return cargs
+
+
+def v_3d_tsplit4_d_outputs(
+    params: V3dTsplit4DParameters,
+    execution: Execution,
+) -> V3dTsplit4DOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dTsplit4DOutputs(
+        root=execution.output_file("."),
+        outfiles=execution.output_file(params.get("prefix") + "*"),
+    )
+    return ret
+
+
+def v_3d_tsplit4_d_execute(
+    params: V3dTsplit4DParameters,
+    execution: Execution,
+) -> V3dTsplit4DOutputs:
+    """
+    Convert a 3D+time dataset into multiple 3D single-brick files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dTsplit4DOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_tsplit4_d_cargs(params, execution)
+    ret = v_3d_tsplit4_d_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_tsplit4_d(
@@ -49,30 +192,13 @@ def v_3d_tsplit4_d(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSPLIT4_D_METADATA)
-    cargs = []
-    cargs.append("3dTsplit4D")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.append(execution.input_file(infile))
-    if keep_datum:
-        cargs.append("-keep_datum")
-    if digits is not None:
-        cargs.extend([
-            "-digits",
-            str(digits)
-        ])
-    ret = V3dTsplit4DOutputs(
-        root=execution.output_file("."),
-        outfiles=execution.output_file(prefix + "*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_tsplit4_d_params(prefix=prefix, infile=infile, keep_datum=keep_datum, digits=digits)
+    return v_3d_tsplit4_d_execute(params, execution)
 
 
 __all__ = [
     "V3dTsplit4DOutputs",
     "V_3D_TSPLIT4_D_METADATA",
     "v_3d_tsplit4_d",
+    "v_3d_tsplit4_d_params",
 ]

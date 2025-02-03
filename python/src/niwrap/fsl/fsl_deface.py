@@ -12,6 +12,56 @@ FSL_DEFACE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslDefaceParameters = typing.TypedDict('FslDefaceParameters', {
+    "__STYX_TYPE__": typing.Literal["fsl_deface"],
+    "infile": InputPathType,
+    "outfile": str,
+    "cropped_defacing_flag": bool,
+    "defacing_mask": typing.NotRequired[str | None],
+    "cropped_struc": typing.NotRequired[str | None],
+    "orig_to_std_mat": typing.NotRequired[str | None],
+    "orig_to_cropped_mat": typing.NotRequired[str | None],
+    "cropped_to_std_mat": typing.NotRequired[str | None],
+    "shift_nud": typing.NotRequired[list[float] | None],
+    "fractional_intensity": typing.NotRequired[float | None],
+    "bias_correct_flag": bool,
+    "center_of_gravity": typing.NotRequired[list[float] | None],
+    "qc_images": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fsl_deface": fsl_deface_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fsl_deface": fsl_deface_outputs,
+    }
+    return vt.get(t)
 
 
 class FslDefaceOutputs(typing.NamedTuple):
@@ -36,6 +86,196 @@ class FslDefaceOutputs(typing.NamedTuple):
     """QC image for defacing (original)"""
     qc_image_cropped: OutputPathType | None
     """QC image for defacing (cropped)"""
+
+
+def fsl_deface_params(
+    infile: InputPathType,
+    outfile: str,
+    cropped_defacing_flag: bool = False,
+    defacing_mask: str | None = None,
+    cropped_struc: str | None = None,
+    orig_to_std_mat: str | None = None,
+    orig_to_cropped_mat: str | None = None,
+    cropped_to_std_mat: str | None = None,
+    shift_nud: list[float] | None = None,
+    fractional_intensity: float | None = None,
+    bias_correct_flag: bool = False,
+    center_of_gravity: list[float] | None = None,
+    qc_images: str | None = None,
+) -> FslDefaceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input T1w image.
+        outfile: Output defaced T1w image.
+        cropped_defacing_flag: Apply the defacing to the cropped image instead\
+            of the original image.
+        defacing_mask: Filename to save the defacing mask.
+        cropped_struc: Filename to save the new cropped struct.
+        orig_to_std_mat: Filename to save affine matrix from original struct to\
+            std.
+        orig_to_cropped_mat: Filename to save affine matrix from original\
+            struct to cropped struct.
+        cropped_to_std_mat: Filename to save affine matrix from cropped struct\
+            to std.
+        shift_nud: Shift, in mm, x-, y- and z-directions, to shift face mask by\
+            (These matrices will only work if the input has been previously\
+            reoriented to std).
+        fractional_intensity: Fractional intensity for bet (0->1); default=0.5.
+        bias_correct_flag: Bias-correct the input image (with fast).
+        center_of_gravity: Center-of-gravity for bet (voxels, not mm).
+        qc_images: Generate 2 pngs to show how the defacing worked for QC\
+            purposes.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsl_deface",
+        "infile": infile,
+        "outfile": outfile,
+        "cropped_defacing_flag": cropped_defacing_flag,
+        "bias_correct_flag": bias_correct_flag,
+    }
+    if defacing_mask is not None:
+        params["defacing_mask"] = defacing_mask
+    if cropped_struc is not None:
+        params["cropped_struc"] = cropped_struc
+    if orig_to_std_mat is not None:
+        params["orig_to_std_mat"] = orig_to_std_mat
+    if orig_to_cropped_mat is not None:
+        params["orig_to_cropped_mat"] = orig_to_cropped_mat
+    if cropped_to_std_mat is not None:
+        params["cropped_to_std_mat"] = cropped_to_std_mat
+    if shift_nud is not None:
+        params["shift_nud"] = shift_nud
+    if fractional_intensity is not None:
+        params["fractional_intensity"] = fractional_intensity
+    if center_of_gravity is not None:
+        params["center_of_gravity"] = center_of_gravity
+    if qc_images is not None:
+        params["qc_images"] = qc_images
+    return params
+
+
+def fsl_deface_cargs(
+    params: FslDefaceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsl_deface")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(params.get("outfile"))
+    if params.get("cropped_defacing_flag"):
+        cargs.append("-k")
+    if params.get("defacing_mask") is not None:
+        cargs.extend([
+            "-d",
+            params.get("defacing_mask")
+        ])
+    if params.get("cropped_struc") is not None:
+        cargs.extend([
+            "-n",
+            params.get("cropped_struc")
+        ])
+    if params.get("orig_to_std_mat") is not None:
+        cargs.extend([
+            "-m13",
+            params.get("orig_to_std_mat")
+        ])
+    if params.get("orig_to_cropped_mat") is not None:
+        cargs.extend([
+            "-m12",
+            params.get("orig_to_cropped_mat")
+        ])
+    if params.get("cropped_to_std_mat") is not None:
+        cargs.extend([
+            "-m23",
+            params.get("cropped_to_std_mat")
+        ])
+    if params.get("shift_nud") is not None:
+        cargs.extend([
+            "-nud",
+            *map(str, params.get("shift_nud"))
+        ])
+    if params.get("fractional_intensity") is not None:
+        cargs.extend([
+            "-f",
+            str(params.get("fractional_intensity"))
+        ])
+    if params.get("bias_correct_flag"):
+        cargs.append("-B")
+    if params.get("center_of_gravity") is not None:
+        cargs.extend([
+            "-c",
+            *map(str, params.get("center_of_gravity"))
+        ])
+    if params.get("qc_images") is not None:
+        cargs.extend([
+            "-p",
+            params.get("qc_images")
+        ])
+    return cargs
+
+
+def fsl_deface_outputs(
+    params: FslDefaceParameters,
+    execution: Execution,
+) -> FslDefaceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslDefaceOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("outfile") + ".nii.gz"),
+        out_defacing_mask=execution.output_file(params.get("defacing_mask") + ".nii.gz") if (params.get("defacing_mask") is not None) else None,
+        out_cropped_struc=execution.output_file(params.get("cropped_struc") + ".nii.gz") if (params.get("cropped_struc") is not None) else None,
+        out_orig_to_std_mat=execution.output_file(params.get("orig_to_std_mat") + ".mat") if (params.get("orig_to_std_mat") is not None) else None,
+        out_orig_to_cropped_mat=execution.output_file(params.get("orig_to_cropped_mat") + ".mat") if (params.get("orig_to_cropped_mat") is not None) else None,
+        out_cropped_to_std_mat=execution.output_file(params.get("cropped_to_std_mat") + ".mat") if (params.get("cropped_to_std_mat") is not None) else None,
+        qc_image_original=execution.output_file(params.get("qc_images") + "_defaced_original.png") if (params.get("qc_images") is not None) else None,
+        qc_image_cropped=execution.output_file(params.get("qc_images") + "_defaced_cropped.png") if (params.get("qc_images") is not None) else None,
+    )
+    return ret
+
+
+def fsl_deface_execute(
+    params: FslDefaceParameters,
+    execution: Execution,
+) -> FslDefaceOutputs:
+    """
+    Tool to deface a structural T1w image.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslDefaceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsl_deface_cargs(params, execution)
+    ret = fsl_deface_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsl_deface(
@@ -86,80 +326,15 @@ def fsl_deface(
     Returns:
         NamedTuple of outputs (described in `FslDefaceOutputs`).
     """
-    if fractional_intensity is not None and not (0 <= fractional_intensity <= 1): 
-        raise ValueError(f"'fractional_intensity' must be between 0 <= x <= 1 but was {fractional_intensity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_DEFACE_METADATA)
-    cargs = []
-    cargs.append("fsl_deface")
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
-    if cropped_defacing_flag:
-        cargs.append("-k")
-    if defacing_mask is not None:
-        cargs.extend([
-            "-d",
-            defacing_mask
-        ])
-    if cropped_struc is not None:
-        cargs.extend([
-            "-n",
-            cropped_struc
-        ])
-    if orig_to_std_mat is not None:
-        cargs.extend([
-            "-m13",
-            orig_to_std_mat
-        ])
-    if orig_to_cropped_mat is not None:
-        cargs.extend([
-            "-m12",
-            orig_to_cropped_mat
-        ])
-    if cropped_to_std_mat is not None:
-        cargs.extend([
-            "-m23",
-            cropped_to_std_mat
-        ])
-    if shift_nud is not None:
-        cargs.extend([
-            "-nud",
-            *map(str, shift_nud)
-        ])
-    if fractional_intensity is not None:
-        cargs.extend([
-            "-f",
-            str(fractional_intensity)
-        ])
-    if bias_correct_flag:
-        cargs.append("-B")
-    if center_of_gravity is not None:
-        cargs.extend([
-            "-c",
-            *map(str, center_of_gravity)
-        ])
-    if qc_images is not None:
-        cargs.extend([
-            "-p",
-            qc_images
-        ])
-    ret = FslDefaceOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(outfile + ".nii.gz"),
-        out_defacing_mask=execution.output_file(defacing_mask + ".nii.gz") if (defacing_mask is not None) else None,
-        out_cropped_struc=execution.output_file(cropped_struc + ".nii.gz") if (cropped_struc is not None) else None,
-        out_orig_to_std_mat=execution.output_file(orig_to_std_mat + ".mat") if (orig_to_std_mat is not None) else None,
-        out_orig_to_cropped_mat=execution.output_file(orig_to_cropped_mat + ".mat") if (orig_to_cropped_mat is not None) else None,
-        out_cropped_to_std_mat=execution.output_file(cropped_to_std_mat + ".mat") if (cropped_to_std_mat is not None) else None,
-        qc_image_original=execution.output_file(qc_images + "_defaced_original.png") if (qc_images is not None) else None,
-        qc_image_cropped=execution.output_file(qc_images + "_defaced_cropped.png") if (qc_images is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = fsl_deface_params(infile=infile, outfile=outfile, cropped_defacing_flag=cropped_defacing_flag, defacing_mask=defacing_mask, cropped_struc=cropped_struc, orig_to_std_mat=orig_to_std_mat, orig_to_cropped_mat=orig_to_cropped_mat, cropped_to_std_mat=cropped_to_std_mat, shift_nud=shift_nud, fractional_intensity=fractional_intensity, bias_correct_flag=bias_correct_flag, center_of_gravity=center_of_gravity, qc_images=qc_images)
+    return fsl_deface_execute(params, execution)
 
 
 __all__ = [
     "FSL_DEFACE_METADATA",
     "FslDefaceOutputs",
     "fsl_deface",
+    "fsl_deface_params",
 ]

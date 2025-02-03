@@ -12,14 +12,124 @@ AFNI_CHECK_OMP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AfniCheckOmpParameters = typing.TypedDict('AfniCheckOmpParameters', {
+    "__STYX_TYPE__": typing.Literal["afni_check_omp"],
+    "iterations": typing.NotRequired[float | None],
+})
 
 
-class AfniCheckOmpOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `afni_check_omp(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "afni_check_omp": afni_check_omp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def afni_check_omp_params(
+    iterations: float | None = None,
+) -> AfniCheckOmpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        iterations: Number of iterations to run.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "afni_check_omp",
+    }
+    if iterations is not None:
+        params["iterations"] = iterations
+    return params
+
+
+def afni_check_omp_cargs(
+    params: AfniCheckOmpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("afni_check_omp")
+    if params.get("iterations") is not None:
+        cargs.append(str(params.get("iterations")))
+    return cargs
+
+
+def afni_check_omp_outputs(
+    params: AfniCheckOmpParameters,
+    execution: Execution,
+) -> AfniCheckOmpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AfniCheckOmpOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def afni_check_omp_execute(
+    params: AfniCheckOmpParameters,
+    execution: Execution,
+) -> AfniCheckOmpOutputs:
+    """
+    Tool to check the OpenMP multi-threading environment for AFNI.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AfniCheckOmpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = afni_check_omp_cargs(params, execution)
+    ret = afni_check_omp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def afni_check_omp(
@@ -41,19 +151,12 @@ def afni_check_omp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_CHECK_OMP_METADATA)
-    cargs = []
-    cargs.append("afni_check_omp")
-    if iterations is not None:
-        cargs.append(str(iterations))
-    ret = AfniCheckOmpOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = afni_check_omp_params(iterations=iterations)
+    return afni_check_omp_execute(params, execution)
 
 
 __all__ = [
     "AFNI_CHECK_OMP_METADATA",
-    "AfniCheckOmpOutputs",
     "afni_check_omp",
+    "afni_check_omp_params",
 ]

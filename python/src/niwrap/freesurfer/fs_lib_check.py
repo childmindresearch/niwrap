@@ -12,14 +12,147 @@ FS_LIB_CHECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsLibCheckParameters = typing.TypedDict('FsLibCheckParameters', {
+    "__STYX_TYPE__": typing.Literal["fs_lib_check"],
+    "use_ldconfig": bool,
+    "use_rpm": bool,
+    "show_help": bool,
+    "show_version": bool,
+})
 
 
-class FsLibCheckOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fs_lib_check(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fs_lib_check": fs_lib_check_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fs_lib_check_params(
+    use_ldconfig: bool = False,
+    use_rpm: bool = False,
+    show_help: bool = False,
+    show_version: bool = False,
+) -> FsLibCheckParameters:
+    """
+    Build parameters.
+    
+    Args:
+        use_ldconfig: Force use of 'ldconfig' to check for instances of\
+            required system libraries. This is useful on rpm systems if system\
+            libraries were installed from source code, and are thus not known to\
+            the system rpm database.
+        use_rpm: Force use of 'rpm -qa' to check for installed library\
+            packages. If -r and -l are both specified concurrently, then behavior\
+            is unspecified.
+        show_help: Show this synopsis and exit.
+        show_version: Show a version number and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fs_lib_check",
+        "use_ldconfig": use_ldconfig,
+        "use_rpm": use_rpm,
+        "show_help": show_help,
+        "show_version": show_version,
+    }
+    return params
+
+
+def fs_lib_check_cargs(
+    params: FsLibCheckParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fs_lib_check")
+    if params.get("use_ldconfig"):
+        cargs.append("-l")
+    if params.get("use_rpm"):
+        cargs.append("-r")
+    if params.get("show_help"):
+        cargs.append("-h")
+    if params.get("show_version"):
+        cargs.append("-v")
+    return cargs
+
+
+def fs_lib_check_outputs(
+    params: FsLibCheckParameters,
+    execution: Execution,
+) -> FsLibCheckOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsLibCheckOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fs_lib_check_execute(
+    params: FsLibCheckParameters,
+    execution: Execution,
+) -> FsLibCheckOutputs:
+    """
+    Checks if the operating system has the necessary system libraries required to
+    run FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsLibCheckOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_lib_check_cargs(params, execution)
+    ret = fs_lib_check_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_lib_check(
@@ -53,25 +186,12 @@ def fs_lib_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_LIB_CHECK_METADATA)
-    cargs = []
-    cargs.append("fs_lib_check")
-    if use_ldconfig:
-        cargs.append("-l")
-    if use_rpm:
-        cargs.append("-r")
-    if show_help:
-        cargs.append("-h")
-    if show_version:
-        cargs.append("-v")
-    ret = FsLibCheckOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_lib_check_params(use_ldconfig=use_ldconfig, use_rpm=use_rpm, show_help=show_help, show_version=show_version)
+    return fs_lib_check_execute(params, execution)
 
 
 __all__ = [
     "FS_LIB_CHECK_METADATA",
-    "FsLibCheckOutputs",
     "fs_lib_check",
+    "fs_lib_check_params",
 ]

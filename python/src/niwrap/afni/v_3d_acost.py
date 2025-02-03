@@ -12,6 +12,47 @@ V_3D_ACOST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dAcostParameters = typing.TypedDict('V3dAcostParameters', {
+    "__STYX_TYPE__": typing.Literal["3dAcost"],
+    "infile": InputPathType,
+    "basefile": InputPathType,
+    "outfile": str,
+    "all_cost": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dAcost": v_3d_acost_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dAcost": v_3d_acost_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dAcostOutputs(typing.NamedTuple):
@@ -24,6 +65,107 @@ class V3dAcostOutputs(typing.NamedTuple):
     """Output aligned dataset (HEAD file)"""
     output_brik: OutputPathType
     """Output aligned dataset (BRIK file)"""
+
+
+def v_3d_acost_params(
+    infile: InputPathType,
+    basefile: InputPathType,
+    outfile: str,
+    all_cost: bool = False,
+) -> V3dAcostParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input dataset for allineation.
+        basefile: Base dataset for allineation.
+        outfile: Prefix for the output dataset.
+        all_cost: Prints all alignment cost metrics.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dAcost",
+        "infile": infile,
+        "basefile": basefile,
+        "outfile": outfile,
+        "all_cost": all_cost,
+    }
+    return params
+
+
+def v_3d_acost_cargs(
+    params: V3dAcostParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dAcost")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.extend([
+        "-base",
+        execution.input_file(params.get("basefile"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("outfile")
+    ])
+    if params.get("all_cost"):
+        cargs.append("-allcostX")
+    return cargs
+
+
+def v_3d_acost_outputs(
+    params: V3dAcostParameters,
+    execution: Execution,
+) -> V3dAcostOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dAcostOutputs(
+        root=execution.output_file("."),
+        output_head=execution.output_file(params.get("outfile") + "+orig.HEAD"),
+        output_brik=execution.output_file(params.get("outfile") + "+orig.BRIK"),
+    )
+    return ret
+
+
+def v_3d_acost_execute(
+    params: V3dAcostParameters,
+    execution: Execution,
+) -> V3dAcostOutputs:
+    """
+    Allineate dataset to a base dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dAcostOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_acost_cargs(params, execution)
+    ret = v_3d_acost_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_acost(
@@ -51,30 +193,13 @@ def v_3d_acost(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ACOST_METADATA)
-    cargs = []
-    cargs.append("3dAcost")
-    cargs.append(execution.input_file(infile))
-    cargs.extend([
-        "-base",
-        execution.input_file(basefile)
-    ])
-    cargs.extend([
-        "-prefix",
-        outfile
-    ])
-    if all_cost:
-        cargs.append("-allcostX")
-    ret = V3dAcostOutputs(
-        root=execution.output_file("."),
-        output_head=execution.output_file(outfile + "+orig.HEAD"),
-        output_brik=execution.output_file(outfile + "+orig.BRIK"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_acost_params(infile=infile, basefile=basefile, outfile=outfile, all_cost=all_cost)
+    return v_3d_acost_execute(params, execution)
 
 
 __all__ = [
     "V3dAcostOutputs",
     "V_3D_ACOST_METADATA",
     "v_3d_acost",
+    "v_3d_acost_params",
 ]

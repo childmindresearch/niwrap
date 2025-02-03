@@ -12,14 +12,145 @@ BALLOON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+BalloonParameters = typing.TypedDict('BalloonParameters', {
+    "__STYX_TYPE__": typing.Literal["balloon"],
+    "tr": float,
+    "num_scans": int,
+    "event_times": InputPathType,
+    "t_fall": typing.NotRequired[list[float] | None],
+})
 
 
-class BalloonOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `balloon(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "balloon": balloon_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def balloon_params(
+    tr: float,
+    num_scans: int,
+    event_times: InputPathType,
+    t_fall: list[float] | None = None,
+) -> BalloonParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tr: Scan repetition time in seconds (TR), the interval at which the\
+            output curve will be sampled.
+        num_scans: Number of scans (N), the output curve will comprise this\
+            number of samples.
+        event_times: The name of a file containing the event timings, in\
+            seconds, as ASCII strings separated by white space, with time 0 being\
+            the time at which the initial scan occurred.
+        t_fall: Haemodynamic fall time in seconds (typically between 4s and\
+            6s).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "balloon",
+        "tr": tr,
+        "num_scans": num_scans,
+        "event_times": event_times,
+    }
+    if t_fall is not None:
+        params["t_fall"] = t_fall
+    return params
+
+
+def balloon_cargs(
+    params: BalloonParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("balloon")
+    cargs.append(str(params.get("tr")))
+    cargs.append(str(params.get("num_scans")))
+    cargs.append(execution.input_file(params.get("event_times")))
+    if params.get("t_fall") is not None:
+        cargs.extend(map(str, params.get("t_fall")))
+    return cargs
+
+
+def balloon_outputs(
+    params: BalloonParameters,
+    execution: Execution,
+) -> BalloonOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BalloonOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def balloon_execute(
+    params: BalloonParameters,
+    execution: Execution,
+) -> BalloonOutputs:
+    """
+    Simulation of haemodynamic response using the balloon model. Based on the
+    theoretical model proposed by Buxton et al. (1998).
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BalloonOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = balloon_cargs(params, execution)
+    ret = balloon_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def balloon(
@@ -53,22 +184,12 @@ def balloon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BALLOON_METADATA)
-    cargs = []
-    cargs.append("balloon")
-    cargs.append(str(tr))
-    cargs.append(str(num_scans))
-    cargs.append(execution.input_file(event_times))
-    if t_fall is not None:
-        cargs.extend(map(str, t_fall))
-    ret = BalloonOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = balloon_params(tr=tr, num_scans=num_scans, event_times=event_times, t_fall=t_fall)
+    return balloon_execute(params, execution)
 
 
 __all__ = [
     "BALLOON_METADATA",
-    "BalloonOutputs",
     "balloon",
+    "balloon_params",
 ]

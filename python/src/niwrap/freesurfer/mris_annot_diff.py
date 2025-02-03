@@ -12,14 +12,139 @@ MRIS_ANNOT_DIFF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisAnnotDiffParameters = typing.TypedDict('MrisAnnotDiffParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_annot_diff"],
+    "annot1": InputPathType,
+    "annot2": InputPathType,
+    "diff_ctab": bool,
+    "verbose": bool,
+})
 
 
-class MrisAnnotDiffOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_annot_diff(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_annot_diff": mris_annot_diff_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_annot_diff_params(
+    annot1: InputPathType,
+    annot2: InputPathType,
+    diff_ctab: bool = False,
+    verbose: bool = False,
+) -> MrisAnnotDiffParameters:
+    """
+    Build parameters.
+    
+    Args:
+        annot1: Input .annot file 1.
+        annot2: Input .annot file 2.
+        diff_ctab: Diff colortable included in .annot.
+        verbose: Print details of annotation/colortable differences.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_annot_diff",
+        "annot1": annot1,
+        "annot2": annot2,
+        "diff_ctab": diff_ctab,
+        "verbose": verbose,
+    }
+    return params
+
+
+def mris_annot_diff_cargs(
+    params: MrisAnnotDiffParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_annot_diff")
+    cargs.append(execution.input_file(params.get("annot1")))
+    cargs.append(execution.input_file(params.get("annot2")))
+    if params.get("diff_ctab"):
+        cargs.append("--diff-ctab")
+    if params.get("verbose"):
+        cargs.append("--verbose")
+    return cargs
+
+
+def mris_annot_diff_outputs(
+    params: MrisAnnotDiffParameters,
+    execution: Execution,
+) -> MrisAnnotDiffOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisAnnotDiffOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_annot_diff_execute(
+    params: MrisAnnotDiffParameters,
+    execution: Execution,
+) -> MrisAnnotDiffOutputs:
+    """
+    Compare two surface annotation files. The program works with .annot only.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisAnnotDiffOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_annot_diff_cargs(params, execution)
+    ret = mris_annot_diff_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_annot_diff(
@@ -47,23 +172,12 @@ def mris_annot_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ANNOT_DIFF_METADATA)
-    cargs = []
-    cargs.append("mris_annot_diff")
-    cargs.append(execution.input_file(annot1))
-    cargs.append(execution.input_file(annot2))
-    if diff_ctab:
-        cargs.append("--diff-ctab")
-    if verbose:
-        cargs.append("--verbose")
-    ret = MrisAnnotDiffOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_annot_diff_params(annot1=annot1, annot2=annot2, diff_ctab=diff_ctab, verbose=verbose)
+    return mris_annot_diff_execute(params, execution)
 
 
 __all__ = [
     "MRIS_ANNOT_DIFF_METADATA",
-    "MrisAnnotDiffOutputs",
     "mris_annot_diff",
+    "mris_annot_diff_params",
 ]

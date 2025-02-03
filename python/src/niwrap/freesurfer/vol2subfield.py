@@ -12,6 +12,55 @@ VOL2SUBFIELD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Vol2subfieldParameters = typing.TypedDict('Vol2subfieldParameters', {
+    "__STYX_TYPE__": typing.Literal["vol2subfield"],
+    "input_volume": InputPathType,
+    "subfield_volume": InputPathType,
+    "registration_file": InputPathType,
+    "output_volume": typing.NotRequired[str | None],
+    "output_registration": typing.NotRequired[str | None],
+    "stats_output": typing.NotRequired[str | None],
+    "avgwf_output": typing.NotRequired[str | None],
+    "avgwfvol_output": typing.NotRequired[str | None],
+    "color_table": typing.NotRequired[InputPathType | None],
+    "interpolation_cubic": bool,
+    "tmp_directory": typing.NotRequired[str | None],
+    "preset_subfield_brainstem": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "vol2subfield": vol2subfield_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "vol2subfield": vol2subfield_outputs,
+    }
+    return vt.get(t)
 
 
 class Vol2subfieldOutputs(typing.NamedTuple):
@@ -30,6 +79,183 @@ class Vol2subfieldOutputs(typing.NamedTuple):
     """Average waveform output file"""
     average_waveform_volume_file: OutputPathType | None
     """Average waveform volume output file"""
+
+
+def vol2subfield_params(
+    input_volume: InputPathType,
+    subfield_volume: InputPathType,
+    registration_file: InputPathType,
+    output_volume: str | None = None,
+    output_registration: str | None = None,
+    stats_output: str | None = None,
+    avgwf_output: str | None = None,
+    avgwfvol_output: str | None = None,
+    color_table: InputPathType | None = None,
+    interpolation_cubic: bool = False,
+    tmp_directory: str | None = None,
+    preset_subfield_brainstem: bool = False,
+) -> Vol2subfieldParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume.
+        subfield_volume: Subfield volume (full path or relative to subject/mri).
+        registration_file: Registration that maps input volume to conformed\
+            space.
+        output_volume: Output volume.
+        output_registration: Registration between input volume and subfield.
+        stats_output: Run mri_segstats with --sum output to this file.
+        avgwf_output: Run mri_segstats with --avgwf output to this file.
+        avgwfvol_output: Run mri_segstats with --avgwfvol output to this file.
+        color_table: Color table to use with mri_segstats.
+        interpolation_cubic: Use cubic interpolation.
+        tmp_directory: Temporary directory for debugging.
+        preset_subfield_brainstem: Set subfield to brainstemSsLabels.v12.mgz.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "vol2subfield",
+        "input_volume": input_volume,
+        "subfield_volume": subfield_volume,
+        "registration_file": registration_file,
+        "interpolation_cubic": interpolation_cubic,
+        "preset_subfield_brainstem": preset_subfield_brainstem,
+    }
+    if output_volume is not None:
+        params["output_volume"] = output_volume
+    if output_registration is not None:
+        params["output_registration"] = output_registration
+    if stats_output is not None:
+        params["stats_output"] = stats_output
+    if avgwf_output is not None:
+        params["avgwf_output"] = avgwf_output
+    if avgwfvol_output is not None:
+        params["avgwfvol_output"] = avgwfvol_output
+    if color_table is not None:
+        params["color_table"] = color_table
+    if tmp_directory is not None:
+        params["tmp_directory"] = tmp_directory
+    return params
+
+
+def vol2subfield_cargs(
+    params: Vol2subfieldParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("vol2subfield")
+    cargs.extend([
+        "--i",
+        execution.input_file(params.get("input_volume"))
+    ])
+    cargs.extend([
+        "--sf",
+        execution.input_file(params.get("subfield_volume"))
+    ])
+    cargs.extend([
+        "--reg",
+        execution.input_file(params.get("registration_file"))
+    ])
+    if params.get("output_volume") is not None:
+        cargs.extend([
+            "--o",
+            params.get("output_volume")
+        ])
+    if params.get("output_registration") is not None:
+        cargs.extend([
+            "--outreg",
+            params.get("output_registration")
+        ])
+    if params.get("stats_output") is not None:
+        cargs.extend([
+            "--stats",
+            params.get("stats_output")
+        ])
+    if params.get("avgwf_output") is not None:
+        cargs.extend([
+            "--avgwf",
+            params.get("avgwf_output")
+        ])
+    if params.get("avgwfvol_output") is not None:
+        cargs.extend([
+            "--avgwfvol",
+            params.get("avgwfvol_output")
+        ])
+    if params.get("color_table") is not None:
+        cargs.extend([
+            "--ctab",
+            execution.input_file(params.get("color_table"))
+        ])
+    if params.get("interpolation_cubic"):
+        cargs.append("--cubic")
+    if params.get("tmp_directory") is not None:
+        cargs.extend([
+            "--tmp",
+            params.get("tmp_directory")
+        ])
+    if params.get("preset_subfield_brainstem"):
+        cargs.append("--brainstem")
+    return cargs
+
+
+def vol2subfield_outputs(
+    params: Vol2subfieldParameters,
+    execution: Execution,
+) -> Vol2subfieldOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Vol2subfieldOutputs(
+        root=execution.output_file("."),
+        mapped_output_volume=execution.output_file(params.get("output_volume")) if (params.get("output_volume") is not None) else None,
+        output_registration_file=execution.output_file(params.get("output_registration")) if (params.get("output_registration") is not None) else None,
+        segmentation_stats_file=execution.output_file(params.get("stats_output")) if (params.get("stats_output") is not None) else None,
+        average_waveform_file=execution.output_file(params.get("avgwf_output")) if (params.get("avgwf_output") is not None) else None,
+        average_waveform_volume_file=execution.output_file(params.get("avgwfvol_output")) if (params.get("avgwfvol_output") is not None) else None,
+    )
+    return ret
+
+
+def vol2subfield_execute(
+    params: Vol2subfieldParameters,
+    execution: Execution,
+) -> Vol2subfieldOutputs:
+    """
+    A tool for integrating arbitrary volumes with volumes that share a RAS space
+    with the orig volume in the FreeSurfer mri folder.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Vol2subfieldOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = vol2subfield_cargs(params, execution)
+    ret = vol2subfield_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def vol2subfield(
@@ -75,73 +301,13 @@ def vol2subfield(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOL2SUBFIELD_METADATA)
-    cargs = []
-    cargs.append("vol2subfield")
-    cargs.extend([
-        "--i",
-        execution.input_file(input_volume)
-    ])
-    cargs.extend([
-        "--sf",
-        execution.input_file(subfield_volume)
-    ])
-    cargs.extend([
-        "--reg",
-        execution.input_file(registration_file)
-    ])
-    if output_volume is not None:
-        cargs.extend([
-            "--o",
-            output_volume
-        ])
-    if output_registration is not None:
-        cargs.extend([
-            "--outreg",
-            output_registration
-        ])
-    if stats_output is not None:
-        cargs.extend([
-            "--stats",
-            stats_output
-        ])
-    if avgwf_output is not None:
-        cargs.extend([
-            "--avgwf",
-            avgwf_output
-        ])
-    if avgwfvol_output is not None:
-        cargs.extend([
-            "--avgwfvol",
-            avgwfvol_output
-        ])
-    if color_table is not None:
-        cargs.extend([
-            "--ctab",
-            execution.input_file(color_table)
-        ])
-    if interpolation_cubic:
-        cargs.append("--cubic")
-    if tmp_directory is not None:
-        cargs.extend([
-            "--tmp",
-            tmp_directory
-        ])
-    if preset_subfield_brainstem:
-        cargs.append("--brainstem")
-    ret = Vol2subfieldOutputs(
-        root=execution.output_file("."),
-        mapped_output_volume=execution.output_file(output_volume) if (output_volume is not None) else None,
-        output_registration_file=execution.output_file(output_registration) if (output_registration is not None) else None,
-        segmentation_stats_file=execution.output_file(stats_output) if (stats_output is not None) else None,
-        average_waveform_file=execution.output_file(avgwf_output) if (avgwf_output is not None) else None,
-        average_waveform_volume_file=execution.output_file(avgwfvol_output) if (avgwfvol_output is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = vol2subfield_params(input_volume=input_volume, subfield_volume=subfield_volume, registration_file=registration_file, output_volume=output_volume, output_registration=output_registration, stats_output=stats_output, avgwf_output=avgwf_output, avgwfvol_output=avgwfvol_output, color_table=color_table, interpolation_cubic=interpolation_cubic, tmp_directory=tmp_directory, preset_subfield_brainstem=preset_subfield_brainstem)
+    return vol2subfield_execute(params, execution)
 
 
 __all__ = [
     "VOL2SUBFIELD_METADATA",
     "Vol2subfieldOutputs",
     "vol2subfield",
+    "vol2subfield_params",
 ]

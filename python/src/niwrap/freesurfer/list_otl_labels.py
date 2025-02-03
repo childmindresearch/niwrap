@@ -12,14 +12,125 @@ LIST_OTL_LABELS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ListOtlLabelsParameters = typing.TypedDict('ListOtlLabelsParameters', {
+    "__STYX_TYPE__": typing.Literal["list_otl_labels"],
+    "input_file": InputPathType,
+})
 
 
-class ListOtlLabelsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `list_otl_labels(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "list_otl_labels": list_otl_labels_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def list_otl_labels_params(
+    input_file: InputPathType,
+) -> ListOtlLabelsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input volume filename.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "list_otl_labels",
+        "input_file": input_file,
+    }
+    return params
+
+
+def list_otl_labels_cargs(
+    params: ListOtlLabelsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("list_otl_labels")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input_file"))
+    ])
+    return cargs
+
+
+def list_otl_labels_outputs(
+    params: ListOtlLabelsParameters,
+    execution: Execution,
+) -> ListOtlLabelsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ListOtlLabelsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def list_otl_labels_execute(
+    params: ListOtlLabelsParameters,
+    execution: Execution,
+) -> ListOtlLabelsOutputs:
+    """
+    Tool for listing labels in an imaging file.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ListOtlLabelsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = list_otl_labels_cargs(params, execution)
+    ret = list_otl_labels_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def list_otl_labels(
@@ -41,21 +152,12 @@ def list_otl_labels(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LIST_OTL_LABELS_METADATA)
-    cargs = []
-    cargs.append("list_otl_labels")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_file)
-    ])
-    ret = ListOtlLabelsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = list_otl_labels_params(input_file=input_file)
+    return list_otl_labels_execute(params, execution)
 
 
 __all__ = [
     "LIST_OTL_LABELS_METADATA",
-    "ListOtlLabelsOutputs",
     "list_otl_labels",
+    "list_otl_labels_params",
 ]

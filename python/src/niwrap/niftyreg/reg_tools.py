@@ -12,6 +12,55 @@ REG_TOOLS_METADATA = Metadata(
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
 )
+RegToolsParameters = typing.TypedDict('RegToolsParameters', {
+    "__STYX_TYPE__": typing.Literal["reg_tools"],
+    "input_image": InputPathType,
+    "output_image": typing.NotRequired[str | None],
+    "add_value_or_image": typing.NotRequired[str | None],
+    "sub_value_or_image": typing.NotRequired[str | None],
+    "mul_value_or_image": typing.NotRequired[str | None],
+    "div_value_or_image": typing.NotRequired[str | None],
+    "smooth_value": typing.NotRequired[float | None],
+    "smooth_gaussian": typing.NotRequired[list[float] | None],
+    "rms_image": typing.NotRequired[InputPathType | None],
+    "binarize": bool,
+    "threshold_value": typing.NotRequired[float | None],
+    "nan_mask_image": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "reg_tools": reg_tools_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "reg_tools": reg_tools_outputs,
+    }
+    return vt.get(t)
 
 
 class RegToolsOutputs(typing.NamedTuple):
@@ -22,6 +71,186 @@ class RegToolsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_image_file: OutputPathType | None
     """File containing the output image"""
+
+
+def reg_tools_params(
+    input_image: InputPathType,
+    output_image: str | None = None,
+    add_value_or_image: str | None = None,
+    sub_value_or_image: str | None = None,
+    mul_value_or_image: str | None = None,
+    div_value_or_image: str | None = None,
+    smooth_value: float | None = None,
+    smooth_gaussian: list[float] | None = None,
+    rms_image: InputPathType | None = None,
+    binarize: bool = False,
+    threshold_value: float | None = None,
+    nan_mask_image: InputPathType | None = None,
+) -> RegToolsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Filename of the input image.
+        output_image: Filename of the output image.
+        add_value_or_image: This image (or value) is added to the input.
+        sub_value_or_image: This image (or value) is subtracted from the input.
+        mul_value_or_image: This image (or value) is multiplied with the input.
+        div_value_or_image: This image (or value) is divided by the input.
+        smooth_value: The input image is smoothed using a B-spline curve.
+        smooth_gaussian: The input image is smoothed using a Gaussian kernel.
+        rms_image: Compute the mean RMS between the input image and this image.
+        binarize: Binarize the input image (val!=0?val=1:val=0).
+        threshold_value: Threshold the input image (val<thr?val=0:val=1).
+        nan_mask_image: This image is used to mask the input image. Voxels\
+            outside of the mask are set to NaN.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reg_tools",
+        "input_image": input_image,
+        "binarize": binarize,
+    }
+    if output_image is not None:
+        params["output_image"] = output_image
+    if add_value_or_image is not None:
+        params["add_value_or_image"] = add_value_or_image
+    if sub_value_or_image is not None:
+        params["sub_value_or_image"] = sub_value_or_image
+    if mul_value_or_image is not None:
+        params["mul_value_or_image"] = mul_value_or_image
+    if div_value_or_image is not None:
+        params["div_value_or_image"] = div_value_or_image
+    if smooth_value is not None:
+        params["smooth_value"] = smooth_value
+    if smooth_gaussian is not None:
+        params["smooth_gaussian"] = smooth_gaussian
+    if rms_image is not None:
+        params["rms_image"] = rms_image
+    if threshold_value is not None:
+        params["threshold_value"] = threshold_value
+    if nan_mask_image is not None:
+        params["nan_mask_image"] = nan_mask_image
+    return params
+
+
+def reg_tools_cargs(
+    params: RegToolsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("reg_tools")
+    cargs.extend([
+        "-in",
+        execution.input_file(params.get("input_image"))
+    ])
+    if params.get("output_image") is not None:
+        cargs.extend([
+            "-out",
+            params.get("output_image")
+        ])
+    if params.get("add_value_or_image") is not None:
+        cargs.extend([
+            "-add",
+            params.get("add_value_or_image")
+        ])
+    if params.get("sub_value_or_image") is not None:
+        cargs.extend([
+            "-sub",
+            params.get("sub_value_or_image")
+        ])
+    if params.get("mul_value_or_image") is not None:
+        cargs.extend([
+            "-mul",
+            params.get("mul_value_or_image")
+        ])
+    if params.get("div_value_or_image") is not None:
+        cargs.extend([
+            "-div",
+            params.get("div_value_or_image")
+        ])
+    if params.get("smooth_value") is not None:
+        cargs.extend([
+            "-smo",
+            str(params.get("smooth_value"))
+        ])
+    if params.get("smooth_gaussian") is not None:
+        cargs.extend([
+            "-smoG",
+            *map(str, params.get("smooth_gaussian"))
+        ])
+    if params.get("rms_image") is not None:
+        cargs.extend([
+            "-rms",
+            execution.input_file(params.get("rms_image"))
+        ])
+    if params.get("binarize"):
+        cargs.append("-bin")
+    if params.get("threshold_value") is not None:
+        cargs.extend([
+            "-thr",
+            str(params.get("threshold_value"))
+        ])
+    if params.get("nan_mask_image") is not None:
+        cargs.extend([
+            "-nan",
+            execution.input_file(params.get("nan_mask_image"))
+        ])
+    return cargs
+
+
+def reg_tools_outputs(
+    params: RegToolsParameters,
+    execution: Execution,
+) -> RegToolsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RegToolsOutputs(
+        root=execution.output_file("."),
+        output_image_file=execution.output_file(params.get("output_image")) if (params.get("output_image") is not None) else None,
+    )
+    return ret
+
+
+def reg_tools_execute(
+    params: RegToolsParameters,
+    execution: Execution,
+) -> RegToolsOutputs:
+    """
+    A versatile tool for manipulating and processing medical images.
+    
+    Author: NiftyReg Developers
+    
+    URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RegToolsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reg_tools_cargs(params, execution)
+    ret = reg_tools_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reg_tools(
@@ -66,74 +295,13 @@ def reg_tools(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REG_TOOLS_METADATA)
-    cargs = []
-    cargs.append("reg_tools")
-    cargs.extend([
-        "-in",
-        execution.input_file(input_image)
-    ])
-    if output_image is not None:
-        cargs.extend([
-            "-out",
-            output_image
-        ])
-    if add_value_or_image is not None:
-        cargs.extend([
-            "-add",
-            add_value_or_image
-        ])
-    if sub_value_or_image is not None:
-        cargs.extend([
-            "-sub",
-            sub_value_or_image
-        ])
-    if mul_value_or_image is not None:
-        cargs.extend([
-            "-mul",
-            mul_value_or_image
-        ])
-    if div_value_or_image is not None:
-        cargs.extend([
-            "-div",
-            div_value_or_image
-        ])
-    if smooth_value is not None:
-        cargs.extend([
-            "-smo",
-            str(smooth_value)
-        ])
-    if smooth_gaussian is not None:
-        cargs.extend([
-            "-smoG",
-            *map(str, smooth_gaussian)
-        ])
-    if rms_image is not None:
-        cargs.extend([
-            "-rms",
-            execution.input_file(rms_image)
-        ])
-    if binarize:
-        cargs.append("-bin")
-    if threshold_value is not None:
-        cargs.extend([
-            "-thr",
-            str(threshold_value)
-        ])
-    if nan_mask_image is not None:
-        cargs.extend([
-            "-nan",
-            execution.input_file(nan_mask_image)
-        ])
-    ret = RegToolsOutputs(
-        root=execution.output_file("."),
-        output_image_file=execution.output_file(output_image) if (output_image is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = reg_tools_params(input_image=input_image, output_image=output_image, add_value_or_image=add_value_or_image, sub_value_or_image=sub_value_or_image, mul_value_or_image=mul_value_or_image, div_value_or_image=div_value_or_image, smooth_value=smooth_value, smooth_gaussian=smooth_gaussian, rms_image=rms_image, binarize=binarize, threshold_value=threshold_value, nan_mask_image=nan_mask_image)
+    return reg_tools_execute(params, execution)
 
 
 __all__ = [
     "REG_TOOLS_METADATA",
     "RegToolsOutputs",
     "reg_tools",
+    "reg_tools_params",
 ]

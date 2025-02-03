@@ -12,14 +12,138 @@ FFTEST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FftestParameters = typing.TypedDict('FftestParameters', {
+    "__STYX_TYPE__": typing.Literal["fftest"],
+    "length": float,
+    "num_tests": float,
+    "vector_size": float,
+    "quiet_mode": bool,
+})
 
 
-class FftestOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fftest(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fftest": fftest_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fftest_params(
+    length: float,
+    num_tests: float,
+    vector_size: float,
+    quiet_mode: bool = False,
+) -> FftestParameters:
+    """
+    Build parameters.
+    
+    Args:
+        length: Length of the test.
+        num_tests: Number of tests to run.
+        vector_size: Vector size for the test.
+        quiet_mode: Quiet mode.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fftest",
+        "length": length,
+        "num_tests": num_tests,
+        "vector_size": vector_size,
+        "quiet_mode": quiet_mode,
+    }
+    return params
+
+
+def fftest_cargs(
+    params: FftestParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fftest")
+    cargs.append(str(params.get("length")))
+    cargs.append(str(params.get("num_tests")))
+    cargs.append(str(params.get("vector_size")))
+    if params.get("quiet_mode"):
+        cargs.append("-q")
+    return cargs
+
+
+def fftest_outputs(
+    params: FftestParameters,
+    execution: Execution,
+) -> FftestOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FftestOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fftest_execute(
+    params: FftestParameters,
+    execution: Execution,
+) -> FftestOutputs:
+    """
+    A command line tool for testing purposes.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FftestOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fftest_cargs(params, execution)
+    ret = fftest_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fftest(
@@ -47,22 +171,12 @@ def fftest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FFTEST_METADATA)
-    cargs = []
-    cargs.append("fftest")
-    cargs.append(str(length))
-    cargs.append(str(num_tests))
-    cargs.append(str(vector_size))
-    if quiet_mode:
-        cargs.append("-q")
-    ret = FftestOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fftest_params(length=length, num_tests=num_tests, vector_size=vector_size, quiet_mode=quiet_mode)
+    return fftest_execute(params, execution)
 
 
 __all__ = [
     "FFTEST_METADATA",
-    "FftestOutputs",
     "fftest",
+    "fftest_params",
 ]

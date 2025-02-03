@@ -12,14 +12,186 @@ V_3D_LOCAL_SVD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dLocalSvdParameters = typing.TypedDict('V3dLocalSvdParameters', {
+    "__STYX_TYPE__": typing.Literal["3dLocalSVD"],
+    "auto_mask": bool,
+    "input_file": InputPathType,
+    "mask_file": typing.NotRequired[InputPathType | None],
+    "output_file": str,
+    "nbhd": typing.NotRequired[str | None],
+    "polort": typing.NotRequired[str | None],
+    "vnorm": bool,
+    "vproj": typing.NotRequired[float | None],
+})
 
 
-class V3dLocalSvdOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v_3d_local_svd(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "3dLocalSVD": v_3d_local_svd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v_3d_local_svd_params(
+    input_file: InputPathType,
+    output_file: str,
+    auto_mask: bool = False,
+    mask_file: InputPathType | None = None,
+    nbhd: str | None = None,
+    polort: str | None = None,
+    vnorm: bool = False,
+    vproj: float | None = None,
+) -> V3dLocalSvdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input time series dataset file.
+        output_file: Prefix for the output SVD vector result dataset file.
+        auto_mask: Create a mask from time series dataset.
+        mask_file: Restrict operations to this mask dataset.
+        nbhd: Neighborhood for SVD calculation, e.g., 'SPHERE(5)'.
+        polort: Detrending option, ['+' means to add trend back].
+        vnorm: Normalize data vectors [strongly recommended].
+        vproj: Project central data time series onto local SVD subspace of\
+            dimension 'ndim'.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dLocalSVD",
+        "auto_mask": auto_mask,
+        "input_file": input_file,
+        "output_file": output_file,
+        "vnorm": vnorm,
+    }
+    if mask_file is not None:
+        params["mask_file"] = mask_file
+    if nbhd is not None:
+        params["nbhd"] = nbhd
+    if polort is not None:
+        params["polort"] = polort
+    if vproj is not None:
+        params["vproj"] = vproj
+    return params
+
+
+def v_3d_local_svd_cargs(
+    params: V3dLocalSvdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dLocalSVD")
+    if params.get("auto_mask"):
+        cargs.append("-automask")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    if params.get("mask_file") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask_file"))
+        ])
+    cargs.extend([
+        "-prefix",
+        params.get("output_file")
+    ])
+    if params.get("nbhd") is not None:
+        cargs.extend([
+            "-nbhd",
+            params.get("nbhd")
+        ])
+    if params.get("polort") is not None:
+        cargs.extend([
+            "-polort",
+            params.get("polort")
+        ])
+    if params.get("vnorm"):
+        cargs.append("-vnorm")
+    if params.get("vproj") is not None:
+        cargs.extend([
+            "-vproj",
+            str(params.get("vproj"))
+        ])
+    return cargs
+
+
+def v_3d_local_svd_outputs(
+    params: V3dLocalSvdParameters,
+    execution: Execution,
+) -> V3dLocalSvdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dLocalSvdOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v_3d_local_svd_execute(
+    params: V3dLocalSvdParameters,
+    execution: Execution,
+) -> V3dLocalSvdOutputs:
+    """
+    Computes the SVD of time series from a neighborhood of each voxel.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dLocalSvdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_local_svd_cargs(params, execution)
+    ret = v_3d_local_svd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_local_svd(
@@ -56,49 +228,12 @@ def v_3d_local_svd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_SVD_METADATA)
-    cargs = []
-    cargs.append("3dLocalSVD")
-    if auto_mask:
-        cargs.append("-automask")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    if mask_file is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask_file)
-        ])
-    cargs.extend([
-        "-prefix",
-        output_file
-    ])
-    if nbhd is not None:
-        cargs.extend([
-            "-nbhd",
-            nbhd
-        ])
-    if polort is not None:
-        cargs.extend([
-            "-polort",
-            polort
-        ])
-    if vnorm:
-        cargs.append("-vnorm")
-    if vproj is not None:
-        cargs.extend([
-            "-vproj",
-            str(vproj)
-        ])
-    ret = V3dLocalSvdOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_local_svd_params(auto_mask=auto_mask, input_file=input_file, mask_file=mask_file, output_file=output_file, nbhd=nbhd, polort=polort, vnorm=vnorm, vproj=vproj)
+    return v_3d_local_svd_execute(params, execution)
 
 
 __all__ = [
-    "V3dLocalSvdOutputs",
     "V_3D_LOCAL_SVD_METADATA",
     "v_3d_local_svd",
+    "v_3d_local_svd_params",
 ]

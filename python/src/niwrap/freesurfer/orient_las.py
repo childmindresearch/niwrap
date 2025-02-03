@@ -12,6 +12,46 @@ ORIENT_LAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+OrientLasParameters = typing.TypedDict('OrientLasParameters', {
+    "__STYX_TYPE__": typing.Literal["orientLAS"],
+    "input_image": InputPathType,
+    "output_image": str,
+    "check": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "orientLAS": orient_las_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "orientLAS": orient_las_outputs,
+    }
+    return vt.get(t)
 
 
 class OrientLasOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class OrientLasOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_las_image: OutputPathType
     """Output image with LAS orientation"""
+
+
+def orient_las_params(
+    input_image: InputPathType,
+    output_image: str,
+    check: bool = False,
+) -> OrientLasParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Input image in NIfTI format.
+        output_image: Output image in NIfTI format with LAS orientation.
+        check: Check the match of input and output images using tkregister, and\
+            for diffusion data, run dtifit and show tensors with fslview.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "orientLAS",
+        "input_image": input_image,
+        "output_image": output_image,
+        "check": check,
+    }
+    return params
+
+
+def orient_las_cargs(
+    params: OrientLasParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("orientLAS")
+    cargs.append(execution.input_file(params.get("input_image")))
+    cargs.append(params.get("output_image"))
+    if params.get("check"):
+        cargs.append("--check")
+    return cargs
+
+
+def orient_las_outputs(
+    params: OrientLasParameters,
+    execution: Execution,
+) -> OrientLasOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = OrientLasOutputs(
+        root=execution.output_file("."),
+        output_las_image=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def orient_las_execute(
+    params: OrientLasParameters,
+    execution: Execution,
+) -> OrientLasOutputs:
+    """
+    Convert image to LAS orientation.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `OrientLasOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = orient_las_cargs(params, execution)
+    ret = orient_las_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def orient_las(
@@ -48,22 +179,13 @@ def orient_las(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ORIENT_LAS_METADATA)
-    cargs = []
-    cargs.append("orientLAS")
-    cargs.append(execution.input_file(input_image))
-    cargs.append(output_image)
-    if check:
-        cargs.append("--check")
-    ret = OrientLasOutputs(
-        root=execution.output_file("."),
-        output_las_image=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = orient_las_params(input_image=input_image, output_image=output_image, check=check)
+    return orient_las_execute(params, execution)
 
 
 __all__ = [
     "ORIENT_LAS_METADATA",
     "OrientLasOutputs",
     "orient_las",
+    "orient_las_params",
 ]

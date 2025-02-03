@@ -12,35 +12,101 @@ SH2POWER_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+Sh2powerConfigParameters = typing.TypedDict('Sh2powerConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Sh2powerParameters = typing.TypedDict('Sh2powerParameters', {
+    "__STYX_TYPE__": typing.Literal["sh2power"],
+    "spectrum": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Sh2powerConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "SH": InputPathType,
+    "power": str,
+})
 
 
-@dataclasses.dataclass
-class Sh2powerConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "sh2power": sh2power_cargs,
+        "config": sh2power_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "sh2power": sh2power_outputs,
+    }
+    return vt.get(t)
+
+
+def sh2power_config_params(
+    key: str,
+    value: str,
+) -> Sh2powerConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def sh2power_config_cargs(
+    params: Sh2powerConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Sh2powerOutputs(typing.NamedTuple):
@@ -53,6 +119,157 @@ class Sh2powerOutputs(typing.NamedTuple):
     """the output power image."""
 
 
+def sh2power_params(
+    sh: InputPathType,
+    power: str,
+    spectrum: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Sh2powerConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Sh2powerParameters:
+    """
+    Build parameters.
+    
+    Args:
+        sh: the input spherical harmonics coefficients image.
+        power: the output power image.
+        spectrum: output the power spectrum, i.e., the power contained within\
+            each harmonic degree (l=0, 2, 4, ...) as a 4-D image.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sh2power",
+        "spectrum": spectrum,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "SH": sh,
+        "power": power,
+    }
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def sh2power_cargs(
+    params: Sh2powerParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("sh2power")
+    if params.get("spectrum"):
+        cargs.append("-spectrum")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("SH")))
+    cargs.append(params.get("power"))
+    return cargs
+
+
+def sh2power_outputs(
+    params: Sh2powerParameters,
+    execution: Execution,
+) -> Sh2powerOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Sh2powerOutputs(
+        root=execution.output_file("."),
+        power=execution.output_file(params.get("power")),
+    )
+    return ret
+
+
+def sh2power_execute(
+    params: Sh2powerParameters,
+    execution: Execution,
+) -> Sh2powerOutputs:
+    """
+    Compute the total power of a spherical harmonics image.
+    
+    This command computes the sum of squared SH coefficients, which equals the
+    mean-squared amplitude of the spherical function it represents.
+    
+    The spherical harmonic coefficients are stored according the conventions
+    described the main documentation, which can be found at the following link:
+    https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Sh2powerOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = sh2power_cargs(params, execution)
+    ret = sh2power_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def sh2power(
     sh: InputPathType,
     power: str,
@@ -62,7 +279,7 @@ def sh2power(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Sh2powerConfig] | None = None,
+    config: list[Sh2powerConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -108,42 +325,14 @@ def sh2power(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SH2POWER_METADATA)
-    cargs = []
-    cargs.append("sh2power")
-    if spectrum:
-        cargs.append("-spectrum")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(sh))
-    cargs.append(power)
-    ret = Sh2powerOutputs(
-        root=execution.output_file("."),
-        power=execution.output_file(power),
-    )
-    execution.run(cargs)
-    return ret
+    params = sh2power_params(spectrum=spectrum, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, sh=sh, power=power)
+    return sh2power_execute(params, execution)
 
 
 __all__ = [
     "SH2POWER_METADATA",
-    "Sh2powerConfig",
     "Sh2powerOutputs",
     "sh2power",
+    "sh2power_config_params",
+    "sh2power_params",
 ]

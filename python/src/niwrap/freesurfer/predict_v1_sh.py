@@ -12,14 +12,155 @@ PREDICT_V1_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+PredictV1ShParameters = typing.TypedDict('PredictV1ShParameters', {
+    "__STYX_TYPE__": typing.Literal["predict_v1.sh"],
+    "template": typing.NotRequired[str | None],
+    "inflated_surface_flag": bool,
+    "hemisphere": typing.NotRequired[str | None],
+    "print_mode_flag": bool,
+    "subjects": list[str],
+})
 
 
-class PredictV1ShOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `predict_v1_sh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "predict_v1.sh": predict_v1_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def predict_v1_sh_params(
+    subjects: list[str],
+    template: str | None = None,
+    inflated_surface_flag: bool = False,
+    hemisphere: str | None = None,
+    print_mode_flag: bool = False,
+) -> PredictV1ShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects: Subjects for prediction.
+        template: Target image for registration (exvivo or invivo [default]).
+        inflated_surface_flag: Don't use inflated surface as initial\
+            registration (backward compatibility).
+        hemisphere: Hemisphere (rh or lh) default is both hemispheres.
+        print_mode_flag: Print mode (do not run commands, just print them).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "predict_v1.sh",
+        "inflated_surface_flag": inflated_surface_flag,
+        "print_mode_flag": print_mode_flag,
+        "subjects": subjects,
+    }
+    if template is not None:
+        params["template"] = template
+    if hemisphere is not None:
+        params["hemisphere"] = hemisphere
+    return params
+
+
+def predict_v1_sh_cargs(
+    params: PredictV1ShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("predict_v1.sh")
+    if params.get("template") is not None:
+        cargs.extend([
+            "-t",
+            params.get("template")
+        ])
+    if params.get("inflated_surface_flag"):
+        cargs.append("-i")
+    if params.get("hemisphere") is not None:
+        cargs.extend([
+            "-h",
+            params.get("hemisphere")
+        ])
+    if params.get("print_mode_flag"):
+        cargs.append("-p")
+    cargs.append("".join(params.get("subjects")) + "...")
+    return cargs
+
+
+def predict_v1_sh_outputs(
+    params: PredictV1ShParameters,
+    execution: Execution,
+) -> PredictV1ShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PredictV1ShOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def predict_v1_sh_execute(
+    params: PredictV1ShParameters,
+    execution: Execution,
+) -> PredictV1ShOutputs:
+    """
+    A script for predicting brain images using registration.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PredictV1ShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = predict_v1_sh_cargs(params, execution)
+    ret = predict_v1_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def predict_v1_sh(
@@ -50,32 +191,12 @@ def predict_v1_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PREDICT_V1_SH_METADATA)
-    cargs = []
-    cargs.append("predict_v1.sh")
-    if template is not None:
-        cargs.extend([
-            "-t",
-            template
-        ])
-    if inflated_surface_flag:
-        cargs.append("-i")
-    if hemisphere is not None:
-        cargs.extend([
-            "-h",
-            hemisphere
-        ])
-    if print_mode_flag:
-        cargs.append("-p")
-    cargs.append("".join(subjects) + "...")
-    ret = PredictV1ShOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = predict_v1_sh_params(template=template, inflated_surface_flag=inflated_surface_flag, hemisphere=hemisphere, print_mode_flag=print_mode_flag, subjects=subjects)
+    return predict_v1_sh_execute(params, execution)
 
 
 __all__ = [
     "PREDICT_V1_SH_METADATA",
-    "PredictV1ShOutputs",
     "predict_v1_sh",
+    "predict_v1_sh_params",
 ]

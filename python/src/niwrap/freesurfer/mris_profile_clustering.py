@@ -12,6 +12,46 @@ MRIS_PROFILE_CLUSTERING_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisProfileClusteringParameters = typing.TypedDict('MrisProfileClusteringParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_profileClustering"],
+    "input_file": InputPathType,
+    "output_file": str,
+    "other_options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_profileClustering": mris_profile_clustering_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_profileClustering": mris_profile_clustering_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisProfileClusteringOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class MrisProfileClusteringOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     clustering_output: OutputPathType
     """File with the clustering results."""
+
+
+def mris_profile_clustering_params(
+    input_file: InputPathType,
+    output_file: str,
+    other_options: str | None = None,
+) -> MrisProfileClusteringParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input file required for clustering.
+        output_file: Output file to store clustering results.
+        other_options: Other various options for tuning the clustering process.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_profileClustering",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    if other_options is not None:
+        params["other_options"] = other_options
+    return params
+
+
+def mris_profile_clustering_cargs(
+    params: MrisProfileClusteringParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_profileClustering")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    if params.get("other_options") is not None:
+        cargs.append(params.get("other_options"))
+    return cargs
+
+
+def mris_profile_clustering_outputs(
+    params: MrisProfileClusteringParameters,
+    execution: Execution,
+) -> MrisProfileClusteringOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisProfileClusteringOutputs(
+        root=execution.output_file("."),
+        clustering_output=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def mris_profile_clustering_execute(
+    params: MrisProfileClusteringParameters,
+    execution: Execution,
+) -> MrisProfileClusteringOutputs:
+    """
+    A tool from Freesurfer for clustering based on profile data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisProfileClusteringOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_profile_clustering_cargs(params, execution)
+    ret = mris_profile_clustering_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_profile_clustering(
@@ -47,22 +178,13 @@ def mris_profile_clustering(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PROFILE_CLUSTERING_METADATA)
-    cargs = []
-    cargs.append("mris_profileClustering")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    if other_options is not None:
-        cargs.append(other_options)
-    ret = MrisProfileClusteringOutputs(
-        root=execution.output_file("."),
-        clustering_output=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_profile_clustering_params(input_file=input_file, output_file=output_file, other_options=other_options)
+    return mris_profile_clustering_execute(params, execution)
 
 
 __all__ = [
     "MRIS_PROFILE_CLUSTERING_METADATA",
     "MrisProfileClusteringOutputs",
     "mris_profile_clustering",
+    "mris_profile_clustering_params",
 ]

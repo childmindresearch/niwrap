@@ -12,14 +12,135 @@ V__AFNI_RUN_ME_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VAfniRunMeParameters = typing.TypedDict('VAfniRunMeParameters', {
+    "__STYX_TYPE__": typing.Literal["@afni.run.me"],
+    "go": bool,
+    "curl": bool,
+    "help": bool,
+})
 
 
-class VAfniRunMeOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__afni_run_me(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@afni.run.me": v__afni_run_me_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__afni_run_me_params(
+    go: bool = False,
+    curl: bool = False,
+    help_: bool = False,
+) -> VAfniRunMeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        go: Execute the work.
+        curl: Default to curl instead of wget.
+        help_: Show help message.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@afni.run.me",
+        "go": go,
+        "curl": curl,
+        "help": help_,
+    }
+    return params
+
+
+def v__afni_run_me_cargs(
+    params: VAfniRunMeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@afni.run.me")
+    if params.get("go"):
+        cargs.append("-go")
+    if params.get("curl"):
+        cargs.append("-curl")
+    if params.get("help"):
+        cargs.append("-help")
+    return cargs
+
+
+def v__afni_run_me_outputs(
+    params: VAfniRunMeParameters,
+    execution: Execution,
+) -> VAfniRunMeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VAfniRunMeOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__afni_run_me_execute(
+    params: VAfniRunMeParameters,
+    execution: Execution,
+) -> VAfniRunMeOutputs:
+    """
+    A tool to execute a specific command.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VAfniRunMeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__afni_run_me_cargs(params, execution)
+    ret = v__afni_run_me_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__afni_run_me(
@@ -45,23 +166,12 @@ def v__afni_run_me(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__AFNI_RUN_ME_METADATA)
-    cargs = []
-    cargs.append("@afni.run.me")
-    if go:
-        cargs.append("-go")
-    if curl:
-        cargs.append("-curl")
-    if help_:
-        cargs.append("-help")
-    ret = VAfniRunMeOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__afni_run_me_params(go=go, curl=curl, help_=help_)
+    return v__afni_run_me_execute(params, execution)
 
 
 __all__ = [
-    "VAfniRunMeOutputs",
     "V__AFNI_RUN_ME_METADATA",
     "v__afni_run_me",
+    "v__afni_run_me_params",
 ]

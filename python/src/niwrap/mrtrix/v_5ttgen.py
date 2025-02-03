@@ -12,11 +12,104 @@ V_5TTGEN_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+V5ttgenFreesurferParameters = typing.TypedDict('V5ttgenFreesurferParameters', {
+    "__STYX_TYPE__": typing.Literal["freesurfer"],
+    "input": InputPathType,
+    "output": InputPathType,
+    "lut": typing.NotRequired[InputPathType | None],
+})
+V5ttgenFslParameters = typing.TypedDict('V5ttgenFslParameters', {
+    "__STYX_TYPE__": typing.Literal["fsl"],
+    "input": InputPathType,
+    "output": InputPathType,
+    "t2": typing.NotRequired[InputPathType | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "premasked": bool,
+})
+V5ttgenGifParameters = typing.TypedDict('V5ttgenGifParameters', {
+    "__STYX_TYPE__": typing.Literal["gif"],
+    "input": InputPathType,
+    "output": InputPathType,
+})
+V5ttgenHsvsParameters = typing.TypedDict('V5ttgenHsvsParameters', {
+    "__STYX_TYPE__": typing.Literal["hsvs"],
+    "input": InputPathType,
+    "output": InputPathType,
+    "template": typing.NotRequired[InputPathType | None],
+    "hippocampi": typing.NotRequired[typing.Literal["subfields", "first", "aseg"] | None],
+    "thalami": typing.NotRequired[typing.Literal["nuclei", "first", "aseg"] | None],
+    "white_stem": bool,
+})
+V5ttgenConfigParameters = typing.TypedDict('V5ttgenConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+V5ttgenParameters = typing.TypedDict('V5ttgenParameters', {
+    "__STYX_TYPE__": typing.Literal["5ttgen"],
+    "algorithm": typing.Union[V5ttgenFreesurferParameters, V5ttgenFslParameters, V5ttgenGifParameters, V5ttgenHsvsParameters],
+    "nocrop": bool,
+    "sgm_amyg_hipp": bool,
+    "nocleanup": bool,
+    "scratch": typing.NotRequired[str | None],
+    "continue": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[V5ttgenConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "5ttgen": v_5ttgen_cargs,
+        "freesurfer": v_5ttgen_freesurfer_cargs,
+        "fsl": v_5ttgen_fsl_cargs,
+        "gif": v_5ttgen_gif_cargs,
+        "hsvs": v_5ttgen_hsvs_cargs,
+        "config": v_5ttgen_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "5ttgen": v_5ttgen_outputs,
+        "freesurfer": v_5ttgen_freesurfer_outputs,
+        "fsl": v_5ttgen_fsl_outputs,
+        "gif": v_5ttgen_gif_outputs,
+        "hsvs": v_5ttgen_hsvs_outputs,
+    }
+    return vt.get(t)
 
 
 class V5ttgenFreesurferOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `V5ttgenFreesurfer(...)`.
+    Output object returned when calling `V5ttgenFreesurferParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -24,65 +117,81 @@ class V5ttgenFreesurferOutputs(typing.NamedTuple):
     """The output 5TT image"""
 
 
-@dataclasses.dataclass
-class V5ttgenFreesurfer:
+def v_5ttgen_freesurfer_params(
+    input_: InputPathType,
+    output: InputPathType,
+    lut: InputPathType | None = None,
+) -> V5ttgenFreesurferParameters:
     """
-    Generate the 5TT image based on a FreeSurfer parcellation image.
+    Build parameters.
+    
+    Args:
+        input_: The input FreeSurfer parcellation image (any image containing\
+            'aseg' in its name).
+        output: The output 5TT image.
+        lut: Manually provide path to the lookup table on which the input\
+            parcellation image is based (e.g. FreeSurferColorLUT.txt).
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input FreeSurfer parcellation image (any image containing 'aseg' in
-    its name)"""
-    output: InputPathType
-    """The output 5TT image"""
-    lut: InputPathType | None = None
-    """Manually provide path to the lookup table on which the input parcellation
-    image is based (e.g. FreeSurferColorLUT.txt)"""
+    params = {
+        "__STYXTYPE__": "freesurfer",
+        "input": input_,
+        "output": output,
+    }
+    if lut is not None:
+        params["lut"] = lut
+    return params
+
+
+def v_5ttgen_freesurfer_cargs(
+    params: V5ttgenFreesurferParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("freesurfer")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(execution.input_file(self.output))
-        if self.lut is not None:
-            cargs.extend([
-                "-lut",
-                execution.input_file(self.lut)
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("freesurfer")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("output")))
+    if params.get("lut") is not None:
+        cargs.extend([
+            "-lut",
+            execution.input_file(params.get("lut"))
+        ])
+    return cargs
+
+
+def v_5ttgen_freesurfer_outputs(
+    params: V5ttgenFreesurferParameters,
+    execution: Execution,
+) -> V5ttgenFreesurferOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> V5ttgenFreesurferOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `V5ttgenFreesurferOutputs`).
-        """
-        ret = V5ttgenFreesurferOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(pathlib.Path(self.output).name),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5ttgenFreesurferOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(pathlib.Path(params.get("output")).name),
+    )
+    return ret
 
 
 class V5ttgenFslOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `V5ttgenFsl(...)`.
+    Output object returned when calling `V5ttgenFslParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -90,76 +199,96 @@ class V5ttgenFslOutputs(typing.NamedTuple):
     """The output 5TT image"""
 
 
-@dataclasses.dataclass
-class V5ttgenFsl:
+def v_5ttgen_fsl_params(
+    input_: InputPathType,
+    output: InputPathType,
+    t2: InputPathType | None = None,
+    mask: InputPathType | None = None,
+    premasked: bool = False,
+) -> V5ttgenFslParameters:
     """
-    Use FSL commands to generate the 5TT image based on a T1-weighted image.
+    Build parameters.
+    
+    Args:
+        input_: The input T1-weighted image.
+        output: The output 5TT image.
+        t2: Provide a T2-weighted image in addition to the default T1-weighted\
+            image; this will be used as a second input to FSL FAST.
+        mask: Manually provide a brain mask, rather than deriving one in the\
+            script.
+        premasked: Indicate that brain masking has already been applied to the\
+            input image.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input T1-weighted image"""
-    output: InputPathType
-    """The output 5TT image"""
-    t2: InputPathType | None = None
-    """Provide a T2-weighted image in addition to the default T1-weighted image;
-    this will be used as a second input to FSL FAST"""
-    mask: InputPathType | None = None
-    """Manually provide a brain mask, rather than deriving one in the script"""
-    premasked: bool = False
-    """Indicate that brain masking has already been applied to the input
-    image"""
+    params = {
+        "__STYXTYPE__": "fsl",
+        "input": input_,
+        "output": output,
+        "premasked": premasked,
+    }
+    if t2 is not None:
+        params["t2"] = t2
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_5ttgen_fsl_cargs(
+    params: V5ttgenFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("fsl")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(execution.input_file(self.output))
-        if self.t2 is not None:
-            cargs.extend([
-                "-t2",
-                execution.input_file(self.t2)
-            ])
-        if self.mask is not None:
-            cargs.extend([
-                "-mask",
-                execution.input_file(self.mask)
-            ])
-        if self.premasked:
-            cargs.append("-premasked")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsl")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("output")))
+    if params.get("t2") is not None:
+        cargs.extend([
+            "-t2",
+            execution.input_file(params.get("t2"))
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("premasked"):
+        cargs.append("-premasked")
+    return cargs
+
+
+def v_5ttgen_fsl_outputs(
+    params: V5ttgenFslParameters,
+    execution: Execution,
+) -> V5ttgenFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> V5ttgenFslOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `V5ttgenFslOutputs`).
-        """
-        ret = V5ttgenFslOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(pathlib.Path(self.output).name),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5ttgenFslOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(pathlib.Path(params.get("output")).name),
+    )
+    return ret
 
 
 class V5ttgenGifOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `V5ttgenGif(...)`.
+    Output object returned when calling `V5ttgenGifParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -167,57 +296,70 @@ class V5ttgenGifOutputs(typing.NamedTuple):
     """The output 5TT image"""
 
 
-@dataclasses.dataclass
-class V5ttgenGif:
+def v_5ttgen_gif_params(
+    input_: InputPathType,
+    output: InputPathType,
+) -> V5ttgenGifParameters:
     """
-    Generate the 5TT image based on a Geodesic Information Flow (GIF)
-    segmentation image.
+    Build parameters.
+    
+    Args:
+        input_: The input Geodesic Information Flow (GIF) segmentation image.
+        output: The output 5TT image.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input Geodesic Information Flow (GIF) segmentation image"""
-    output: InputPathType
-    """The output 5TT image"""
+    params = {
+        "__STYXTYPE__": "gif",
+        "input": input_,
+        "output": output,
+    }
+    return params
+
+
+def v_5ttgen_gif_cargs(
+    params: V5ttgenGifParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("gif")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(execution.input_file(self.output))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("gif")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("output")))
+    return cargs
+
+
+def v_5ttgen_gif_outputs(
+    params: V5ttgenGifParameters,
+    execution: Execution,
+) -> V5ttgenGifOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> V5ttgenGifOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `V5ttgenGifOutputs`).
-        """
-        ret = V5ttgenGifOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(pathlib.Path(self.output).name),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5ttgenGifOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(pathlib.Path(params.get("output")).name),
+    )
+    return ret
 
 
 class V5ttgenHsvsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `V5ttgenHsvs(...)`.
+    Output object returned when calling `V5ttgenHsvsParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -225,103 +367,135 @@ class V5ttgenHsvsOutputs(typing.NamedTuple):
     """The output 5TT image"""
 
 
-@dataclasses.dataclass
-class V5ttgenHsvs:
+def v_5ttgen_hsvs_params(
+    input_: InputPathType,
+    output: InputPathType,
+    template: InputPathType | None = None,
+    hippocampi: typing.Literal["subfields", "first", "aseg"] | None = None,
+    thalami: typing.Literal["nuclei", "first", "aseg"] | None = None,
+    white_stem: bool = False,
+) -> V5ttgenHsvsParameters:
     """
-    Generate a 5TT image based on Hybrid Surface and Volume Segmentation (HSVS),
-    using FreeSurfer and FSL tools.
+    Build parameters.
+    
+    Args:
+        input_: The input FreeSurfer subject directory.
+        output: The output 5TT image.
+        template: Provide an image that will form the template for the\
+            generated 5TT image.
+        hippocampi: Select method to be used for hippocampi (& amygdalae)\
+            segmentation; options are: subfields,first,aseg.
+        thalami: Select method to be used for thalamic segmentation; options\
+            are: nuclei,first,aseg.
+        white_stem: Classify the brainstem as white matter.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input FreeSurfer subject directory"""
-    output: InputPathType
-    """The output 5TT image"""
-    template: InputPathType | None = None
-    """Provide an image that will form the template for the generated 5TT
-    image"""
-    hippocampi: typing.Literal["subfields", "first", "aseg"] | None = None
-    """Select method to be used for hippocampi (& amygdalae) segmentation;
-    options are: subfields,first,aseg"""
-    thalami: typing.Literal["nuclei", "first", "aseg"] | None = None
-    """Select method to be used for thalamic segmentation; options are:
-    nuclei,first,aseg"""
-    white_stem: bool = False
-    """Classify the brainstem as white matter"""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("hsvs")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(execution.input_file(self.output))
-        if self.template is not None:
-            cargs.extend([
-                "-template",
-                execution.input_file(self.template)
-            ])
-        if self.hippocampi is not None:
-            cargs.append(self.hippocampi)
-        if self.thalami is not None:
-            cargs.append(self.thalami)
-        if self.white_stem:
-            cargs.append("-white_stem")
-        return cargs
-    
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> V5ttgenHsvsOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `V5ttgenHsvsOutputs`).
-        """
-        ret = V5ttgenHsvsOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(pathlib.Path(self.output).name),
-        )
-        return ret
+    params = {
+        "__STYXTYPE__": "hsvs",
+        "input": input_,
+        "output": output,
+        "white_stem": white_stem,
+    }
+    if template is not None:
+        params["template"] = template
+    if hippocampi is not None:
+        params["hippocampi"] = hippocampi
+    if thalami is not None:
+        params["thalami"] = thalami
+    return params
 
 
-@dataclasses.dataclass
-class V5ttgenConfig:
+def v_5ttgen_hsvs_cargs(
+    params: V5ttgenHsvsParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("hsvs")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("output")))
+    if params.get("template") is not None:
+        cargs.extend([
+            "-template",
+            execution.input_file(params.get("template"))
+        ])
+    if params.get("hippocampi") is not None:
+        cargs.append(params.get("hippocampi"))
+    if params.get("thalami") is not None:
+        cargs.append(params.get("thalami"))
+    if params.get("white_stem"):
+        cargs.append("-white_stem")
+    return cargs
+
+
+def v_5ttgen_hsvs_outputs(
+    params: V5ttgenHsvsParameters,
+    execution: Execution,
+) -> V5ttgenHsvsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5ttgenHsvsOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(pathlib.Path(params.get("output")).name),
+    )
+    return ret
+
+
+def v_5ttgen_config_params(
+    key: str,
+    value: str,
+) -> V5ttgenConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def v_5ttgen_config_cargs(
+    params: V5ttgenConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class V5ttgenOutputs(typing.NamedTuple):
@@ -331,12 +505,12 @@ class V5ttgenOutputs(typing.NamedTuple):
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     algorithm: typing.Union[V5ttgenFreesurferOutputs, V5ttgenFslOutputs, V5ttgenGifOutputs, V5ttgenHsvsOutputs]
-    """Outputs from `V5ttgenFreesurfer` or `V5ttgenFsl` or `V5ttgenGif` or
-    `V5ttgenHsvs`."""
+    """Outputs from `V5ttgenFreesurferParameters` or `V5ttgenFslParameters` or
+    `V5ttgenGifParameters` or `V5ttgenHsvsParameters`."""
 
 
-def v_5ttgen(
-    algorithm: typing.Union[V5ttgenFreesurfer, V5ttgenFsl, V5ttgenGif, V5ttgenHsvs],
+def v_5ttgen_params(
+    algorithm: typing.Union[V5ttgenFreesurferParameters, V5ttgenFslParameters, V5ttgenGifParameters, V5ttgenHsvsParameters],
     nocrop: bool = False,
     sgm_amyg_hipp: bool = False,
     nocleanup: bool = False,
@@ -347,7 +521,189 @@ def v_5ttgen(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5ttgenConfig] | None = None,
+    config: list[V5ttgenConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> V5ttgenParameters:
+    """
+    Build parameters.
+    
+    Args:
+        algorithm: Select the algorithm to be used to complete the script\
+            operation; additional details and options become available once an\
+            algorithm is nominated. Options are: freesurfer, fsl, gif, hsvs.
+        nocrop: Do NOT crop the resulting 5TT image to reduce its size (keep\
+            the same dimensions as the input image).
+        sgm_amyg_hipp: Represent the amygdalae and hippocampi as sub-cortical\
+            grey matter in the 5TT image.
+        nocleanup: do not delete intermediate files during script execution,\
+            and do not delete scratch directory at script completion.
+        scratch: manually specify the path in which to generate the scratch\
+            directory.
+        continue_: continue the script from a previous execution; must provide\
+            the scratch directory path, and the name of the last\
+            successfully-generated file.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "5ttgen",
+        "algorithm": algorithm,
+        "nocrop": nocrop,
+        "sgm_amyg_hipp": sgm_amyg_hipp,
+        "nocleanup": nocleanup,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+    }
+    if scratch is not None:
+        params["scratch"] = scratch
+    if continue_ is not None:
+        params["continue"] = continue_
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def v_5ttgen_cargs(
+    params: V5ttgenParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("5ttgen")
+    cargs.extend(dyn_cargs(params.get("algorithm")["__STYXTYPE__"])(params.get("algorithm"), execution))
+    if params.get("nocrop"):
+        cargs.append("-nocrop")
+    if params.get("sgm_amyg_hipp"):
+        cargs.append("-sgm_amyg_hipp")
+    if params.get("nocleanup"):
+        cargs.append("-nocleanup")
+    if params.get("scratch") is not None:
+        cargs.extend([
+            "-scratch",
+            params.get("scratch")
+        ])
+    if params.get("continue") is not None:
+        cargs.extend([
+            "-continue",
+            params.get("continue")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    return cargs
+
+
+def v_5ttgen_outputs(
+    params: V5ttgenParameters,
+    execution: Execution,
+) -> V5ttgenOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5ttgenOutputs(
+        root=execution.output_file("."),
+        algorithm=dyn_outputs(algorithm["__STYXTYPE__"])(algorithm, execution),
+    )
+    return ret
+
+
+def v_5ttgen_execute(
+    params: V5ttgenParameters,
+    execution: Execution,
+) -> V5ttgenOutputs:
+    """
+    Generate a 5TT image suitable for ACT.
+    
+    5ttgen acts as a 'master' script for generating a five-tissue-type (5TT)
+    segmented tissue image suitable for use in Anatomically-Constrained
+    Tractography (ACT). A range of different algorithms are available for
+    completing this task. When using this script, the name of the algorithm to
+    be used must appear as the first argument on the command-line after
+    '5ttgen'. The subsequent compulsory arguments and options available depend
+    on the particular algorithm being invoked.
+    Each algorithm available also has its own help page, including necessary
+    references; e.g. to see the help page of the 'fsl' algorithm, type '5ttgen
+    fsl'.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V5ttgenOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_5ttgen_cargs(params, execution)
+    ret = v_5ttgen_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def v_5ttgen(
+    algorithm: typing.Union[V5ttgenFreesurferParameters, V5ttgenFslParameters, V5ttgenGifParameters, V5ttgenHsvsParameters],
+    nocrop: bool = False,
+    sgm_amyg_hipp: bool = False,
+    nocleanup: bool = False,
+    scratch: str | None = None,
+    continue_: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[V5ttgenConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -403,63 +759,22 @@ def v_5ttgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TTGEN_METADATA)
-    cargs = []
-    cargs.append("5ttgen")
-    cargs.extend(algorithm.run(execution))
-    if nocrop:
-        cargs.append("-nocrop")
-    if sgm_amyg_hipp:
-        cargs.append("-sgm_amyg_hipp")
-    if nocleanup:
-        cargs.append("-nocleanup")
-    if scratch is not None:
-        cargs.extend([
-            "-scratch",
-            scratch
-        ])
-    if continue_ is not None:
-        cargs.extend([
-            "-continue",
-            continue_
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    ret = V5ttgenOutputs(
-        root=execution.output_file("."),
-        algorithm=algorithm.outputs(execution),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_5ttgen_params(algorithm=algorithm, nocrop=nocrop, sgm_amyg_hipp=sgm_amyg_hipp, nocleanup=nocleanup, scratch=scratch, continue_=continue_, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version)
+    return v_5ttgen_execute(params, execution)
 
 
 __all__ = [
-    "V5ttgenConfig",
-    "V5ttgenFreesurfer",
     "V5ttgenFreesurferOutputs",
-    "V5ttgenFsl",
     "V5ttgenFslOutputs",
-    "V5ttgenGif",
     "V5ttgenGifOutputs",
-    "V5ttgenHsvs",
     "V5ttgenHsvsOutputs",
     "V5ttgenOutputs",
     "V_5TTGEN_METADATA",
     "v_5ttgen",
+    "v_5ttgen_config_params",
+    "v_5ttgen_freesurfer_params",
+    "v_5ttgen_fsl_params",
+    "v_5ttgen_gif_params",
+    "v_5ttgen_hsvs_params",
+    "v_5ttgen_params",
 ]

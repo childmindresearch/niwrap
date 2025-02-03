@@ -12,6 +12,45 @@ MRIS_TOPO_FIXER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisTopoFixerParameters = typing.TypedDict('MrisTopoFixerParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_topo_fixer"],
+    "input_surface": InputPathType,
+    "output_surface": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_topo_fixer": mris_topo_fixer_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_topo_fixer": mris_topo_fixer_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisTopoFixerOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class MrisTopoFixerOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     fixed_surface: OutputPathType
     """Surface file with fixed topology."""
+
+
+def mris_topo_fixer_params(
+    input_surface: InputPathType,
+    output_surface: str,
+) -> MrisTopoFixerParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file that needs topological fixing.
+        output_surface: Output surface file with fixed topology.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_topo_fixer",
+        "input_surface": input_surface,
+        "output_surface": output_surface,
+    }
+    return params
+
+
+def mris_topo_fixer_cargs(
+    params: MrisTopoFixerParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_topo_fixer")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(params.get("output_surface"))
+    return cargs
+
+
+def mris_topo_fixer_outputs(
+    params: MrisTopoFixerParameters,
+    execution: Execution,
+) -> MrisTopoFixerOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisTopoFixerOutputs(
+        root=execution.output_file("."),
+        fixed_surface=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def mris_topo_fixer_execute(
+    params: MrisTopoFixerParameters,
+    execution: Execution,
+) -> MrisTopoFixerOutputs:
+    """
+    FreeSurfer tool for fixing topological defects in cortical surface meshes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisTopoFixerOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_topo_fixer_cargs(params, execution)
+    ret = mris_topo_fixer_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_topo_fixer(
@@ -45,20 +169,13 @@ def mris_topo_fixer(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TOPO_FIXER_METADATA)
-    cargs = []
-    cargs.append("mris_topo_fixer")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(output_surface)
-    ret = MrisTopoFixerOutputs(
-        root=execution.output_file("."),
-        fixed_surface=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_topo_fixer_params(input_surface=input_surface, output_surface=output_surface)
+    return mris_topo_fixer_execute(params, execution)
 
 
 __all__ = [
     "MRIS_TOPO_FIXER_METADATA",
     "MrisTopoFixerOutputs",
     "mris_topo_fixer",
+    "mris_topo_fixer_params",
 ]

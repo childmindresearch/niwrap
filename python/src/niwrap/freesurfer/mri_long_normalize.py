@@ -12,6 +12,54 @@ MRI_LONG_NORMALIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriLongNormalizeParameters = typing.TypedDict('MriLongNormalizeParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_long_normalize"],
+    "input_vol": InputPathType,
+    "base_tp_file": InputPathType,
+    "output_vol": str,
+    "normalization_iters": typing.NotRequired[int | None],
+    "disable_1d": bool,
+    "smooth_bias": typing.NotRequired[float | None],
+    "aseg": typing.NotRequired[InputPathType | None],
+    "debug_gvx": typing.NotRequired[list[float] | None],
+    "debug_gx": typing.NotRequired[list[float] | None],
+    "reading": typing.NotRequired[list[str] | None],
+    "print_usage": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_long_normalize": mri_long_normalize_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_long_normalize": mri_long_normalize_outputs,
+    }
+    return vt.get(t)
 
 
 class MriLongNormalizeOutputs(typing.NamedTuple):
@@ -22,6 +70,160 @@ class MriLongNormalizeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output MRI volume file."""
+
+
+def mri_long_normalize_params(
+    input_vol: InputPathType,
+    base_tp_file: InputPathType,
+    output_vol: str,
+    normalization_iters: int | None = None,
+    disable_1d: bool = False,
+    smooth_bias: float | None = None,
+    aseg: InputPathType | None = None,
+    debug_gvx: list[float] | None = None,
+    debug_gx: list[float] | None = None,
+    reading: list[str] | None = None,
+    print_usage: bool = False,
+) -> MriLongNormalizeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_vol: Input MRI volume file.
+        base_tp_file: Base time point file.
+        output_vol: Output MRI volume file.
+        normalization_iters: Use n 3D normalization iterations (default is 2).
+        disable_1d: Disable 1D normalization.
+        smooth_bias: Smooth the bias field.
+        aseg: Aseg file specification.
+        debug_gvx: For debugging: specify Gvx, Gvy, Gvz.
+        debug_gx: For debugging: specify Gx, Gy, Gz.
+        reading: For reading: specify control points and bias field.
+        print_usage: Print usage information.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_long_normalize",
+        "input_vol": input_vol,
+        "base_tp_file": base_tp_file,
+        "output_vol": output_vol,
+        "disable_1d": disable_1d,
+        "print_usage": print_usage,
+    }
+    if normalization_iters is not None:
+        params["normalization_iters"] = normalization_iters
+    if smooth_bias is not None:
+        params["smooth_bias"] = smooth_bias
+    if aseg is not None:
+        params["aseg"] = aseg
+    if debug_gvx is not None:
+        params["debug_gvx"] = debug_gvx
+    if debug_gx is not None:
+        params["debug_gx"] = debug_gx
+    if reading is not None:
+        params["reading"] = reading
+    return params
+
+
+def mri_long_normalize_cargs(
+    params: MriLongNormalizeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_long_normalize")
+    cargs.append(execution.input_file(params.get("input_vol")))
+    cargs.append(execution.input_file(params.get("base_tp_file")))
+    cargs.append(params.get("output_vol"))
+    if params.get("normalization_iters") is not None:
+        cargs.extend([
+            "-n",
+            str(params.get("normalization_iters"))
+        ])
+    if params.get("disable_1d"):
+        cargs.append("-no1d")
+    if params.get("smooth_bias") is not None:
+        cargs.extend([
+            "-sigma",
+            str(params.get("smooth_bias"))
+        ])
+    if params.get("aseg") is not None:
+        cargs.extend([
+            "-a",
+            execution.input_file(params.get("aseg"))
+        ])
+    if params.get("debug_gvx") is not None:
+        cargs.extend([
+            "-v",
+            *map(str, params.get("debug_gvx"))
+        ])
+    if params.get("debug_gx") is not None:
+        cargs.extend([
+            "-d",
+            *map(str, params.get("debug_gx"))
+        ])
+    if params.get("reading") is not None:
+        cargs.extend([
+            "-r",
+            *params.get("reading")
+        ])
+    if params.get("print_usage"):
+        cargs.append("-u")
+    return cargs
+
+
+def mri_long_normalize_outputs(
+    params: MriLongNormalizeParameters,
+    execution: Execution,
+) -> MriLongNormalizeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriLongNormalizeOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_vol")),
+    )
+    return ret
+
+
+def mri_long_normalize_execute(
+    params: MriLongNormalizeParameters,
+    execution: Execution,
+) -> MriLongNormalizeOutputs:
+    """
+    Tool to normalize the white-matter of MRI volumes, optionally based on control
+    points.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriLongNormalizeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_long_normalize_cargs(params, execution)
+    ret = mri_long_normalize_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_long_normalize(
@@ -62,59 +264,15 @@ def mri_long_normalize(
     Returns:
         NamedTuple of outputs (described in `MriLongNormalizeOutputs`).
     """
-    if reading is not None and (len(reading) != 2): 
-        raise ValueError(f"Length of 'reading' must be 2 but was {len(reading)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LONG_NORMALIZE_METADATA)
-    cargs = []
-    cargs.append("mri_long_normalize")
-    cargs.append(execution.input_file(input_vol))
-    cargs.append(execution.input_file(base_tp_file))
-    cargs.append(output_vol)
-    if normalization_iters is not None:
-        cargs.extend([
-            "-n",
-            str(normalization_iters)
-        ])
-    if disable_1d:
-        cargs.append("-no1d")
-    if smooth_bias is not None:
-        cargs.extend([
-            "-sigma",
-            str(smooth_bias)
-        ])
-    if aseg is not None:
-        cargs.extend([
-            "-a",
-            execution.input_file(aseg)
-        ])
-    if debug_gvx is not None:
-        cargs.extend([
-            "-v",
-            *map(str, debug_gvx)
-        ])
-    if debug_gx is not None:
-        cargs.extend([
-            "-d",
-            *map(str, debug_gx)
-        ])
-    if reading is not None:
-        cargs.extend([
-            "-r",
-            *reading
-        ])
-    if print_usage:
-        cargs.append("-u")
-    ret = MriLongNormalizeOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_vol),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_long_normalize_params(input_vol=input_vol, base_tp_file=base_tp_file, output_vol=output_vol, normalization_iters=normalization_iters, disable_1d=disable_1d, smooth_bias=smooth_bias, aseg=aseg, debug_gvx=debug_gvx, debug_gx=debug_gx, reading=reading, print_usage=print_usage)
+    return mri_long_normalize_execute(params, execution)
 
 
 __all__ = [
     "MRI_LONG_NORMALIZE_METADATA",
     "MriLongNormalizeOutputs",
     "mri_long_normalize",
+    "mri_long_normalize_params",
 ]

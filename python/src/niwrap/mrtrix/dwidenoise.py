@@ -12,35 +12,105 @@ DWIDENOISE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+DwidenoiseConfigParameters = typing.TypedDict('DwidenoiseConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+DwidenoiseParameters = typing.TypedDict('DwidenoiseParameters', {
+    "__STYX_TYPE__": typing.Literal["dwidenoise"],
+    "mask": typing.NotRequired[InputPathType | None],
+    "extent": typing.NotRequired[list[int] | None],
+    "noise": typing.NotRequired[str | None],
+    "datatype": typing.NotRequired[str | None],
+    "estimator": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[DwidenoiseConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "dwi": InputPathType,
+    "out": str,
+})
 
 
-@dataclasses.dataclass
-class DwidenoiseConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dwidenoise": dwidenoise_cargs,
+        "config": dwidenoise_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dwidenoise": dwidenoise_outputs,
+    }
+    return vt.get(t)
+
+
+def dwidenoise_config_params(
+    key: str,
+    value: str,
+) -> DwidenoiseConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def dwidenoise_config_cargs(
+    params: DwidenoiseConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class DwidenoiseOutputs(typing.NamedTuple):
@@ -57,6 +127,230 @@ class DwidenoiseOutputs(typing.NamedTuple):
     across real and imaginary channels, so a scale factor sqrt(2) applies. """
 
 
+def dwidenoise_params(
+    dwi: InputPathType,
+    out: str,
+    mask: InputPathType | None = None,
+    extent: list[int] | None = None,
+    noise: str | None = None,
+    datatype: str | None = None,
+    estimator: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[DwidenoiseConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> DwidenoiseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dwi: the input diffusion-weighted image.
+        out: the output denoised DWI image.
+        mask: Only process voxels within the specified binary brain mask image.
+        extent: Set the patch size of the denoising filter. By default, the\
+            command will select the smallest isotropic patch size that exceeds the\
+            number of DW images in the input data, e.g., 5x5x5 for data with <= 125\
+            DWI volumes, 7x7x7 for data with <= 343 DWI volumes, etc.
+        noise: The output noise map, i.e., the estimated noise level 'sigma' in\
+            the data. Note that on complex input data, this will be the total noise\
+            level across real and imaginary channels, so a scale factor sqrt(2)\
+            applies.
+        datatype: Datatype for the eigenvalue decomposition (single or double\
+            precision). For complex input data, this will select complex float32 or\
+            complex float64 datatypes.
+        estimator: Select the noise level estimator (default = Exp2), either:\
+            * Exp1: the original estimator used in Veraart et al. (2016), or\
+            * Exp2: the improved estimator introduced in Cordero-Grande et al.\
+            (2019).
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dwidenoise",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "dwi": dwi,
+        "out": out,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if extent is not None:
+        params["extent"] = extent
+    if noise is not None:
+        params["noise"] = noise
+    if datatype is not None:
+        params["datatype"] = datatype
+    if estimator is not None:
+        params["estimator"] = estimator
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def dwidenoise_cargs(
+    params: DwidenoiseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dwidenoise")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("extent") is not None:
+        cargs.extend([
+            "-extent",
+            *map(str, params.get("extent"))
+        ])
+    if params.get("noise") is not None:
+        cargs.extend([
+            "-noise",
+            params.get("noise")
+        ])
+    if params.get("datatype") is not None:
+        cargs.extend([
+            "-datatype",
+            params.get("datatype")
+        ])
+    if params.get("estimator") is not None:
+        cargs.extend([
+            "-estimator",
+            params.get("estimator")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("dwi")))
+    cargs.append(params.get("out"))
+    return cargs
+
+
+def dwidenoise_outputs(
+    params: DwidenoiseParameters,
+    execution: Execution,
+) -> DwidenoiseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DwidenoiseOutputs(
+        root=execution.output_file("."),
+        out=execution.output_file(params.get("out")),
+        noise=execution.output_file(params.get("noise")) if (params.get("noise") is not None) else None,
+    )
+    return ret
+
+
+def dwidenoise_execute(
+    params: DwidenoiseParameters,
+    execution: Execution,
+) -> DwidenoiseOutputs:
+    """
+    dMRI noise level estimation and denoising using Marchenko-Pastur PCA.
+    
+    DWI data denoising and noise map estimation by exploiting data redundancy in
+    the PCA domain using the prior knowledge that the eigenspectrum of random
+    covariance matrices is described by the universal Marchenko-Pastur (MP)
+    distribution. Fitting the MP distribution to the spectrum of patch-wise
+    signal matrices hence provides an estimator of the noise level 'sigma', as
+    was first shown in Veraart et al. (2016) and later improved in
+    Cordero-Grande et al. (2019). This noise level estimate then determines the
+    optimal cut-off for PCA denoising.
+    
+    Important note: image denoising must be performed as the first step of the
+    image processing pipeline. The routine will fail if interpolation or
+    smoothing has been applied to the data prior to denoising.
+    
+    Note that this function does not correct for non-Gaussian noise biases
+    present in magnitude-reconstructed MRI images. If available, including the
+    MRI phase data can reduce such non-Gaussian biases, and the command now
+    supports complex input data.
+    
+    References:
+    
+    Veraart, J.; Novikov, D.S.; Christiaens, D.; Ades-aron, B.; Sijbers, J. &
+    Fieremans, E. Denoising of diffusion MRI using random matrix theory.
+    NeuroImage, 2016, 142, 394-406, doi: 10.1016/j.neuroimage.2016.08.016
+    
+    Veraart, J.; Fieremans, E. & Novikov, D.S. Diffusion MRI noise mapping using
+    random matrix theory. Magn. Res. Med., 2016, 76(5), 1582-1593, doi:
+    10.1002/mrm.26059
+    
+    Cordero-Grande, L.; Christiaens, D.; Hutter, J.; Price, A.N.; Hajnal, J.V.
+    Complex diffusion-weighted image estimation via matrix recovery under
+    general noise models. NeuroImage, 2019, 200, 391-404, doi:
+    10.1016/j.neuroimage.2019.06.039.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DwidenoiseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dwidenoise_cargs(params, execution)
+    ret = dwidenoise_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def dwidenoise(
     dwi: InputPathType,
     out: str,
@@ -70,7 +364,7 @@ def dwidenoise(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[DwidenoiseConfig] | None = None,
+    config: list[DwidenoiseConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -152,66 +446,14 @@ def dwidenoise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWIDENOISE_METADATA)
-    cargs = []
-    cargs.append("dwidenoise")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if extent is not None:
-        cargs.extend([
-            "-extent",
-            *map(str, extent)
-        ])
-    if noise is not None:
-        cargs.extend([
-            "-noise",
-            noise
-        ])
-    if datatype is not None:
-        cargs.extend([
-            "-datatype",
-            datatype
-        ])
-    if estimator is not None:
-        cargs.extend([
-            "-estimator",
-            estimator
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(dwi))
-    cargs.append(out)
-    ret = DwidenoiseOutputs(
-        root=execution.output_file("."),
-        out=execution.output_file(out),
-        noise=execution.output_file(noise) if (noise is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = dwidenoise_params(mask=mask, extent=extent, noise=noise, datatype=datatype, estimator=estimator, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, dwi=dwi, out=out)
+    return dwidenoise_execute(params, execution)
 
 
 __all__ = [
     "DWIDENOISE_METADATA",
-    "DwidenoiseConfig",
     "DwidenoiseOutputs",
     "dwidenoise",
+    "dwidenoise_config_params",
+    "dwidenoise_params",
 ]

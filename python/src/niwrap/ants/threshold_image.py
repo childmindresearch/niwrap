@@ -12,6 +12,53 @@ THRESHOLD_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+ThresholdImageParameters = typing.TypedDict('ThresholdImageParameters', {
+    "__STYX_TYPE__": typing.Literal["ThresholdImage"],
+    "image_dimension": int,
+    "image_in": InputPathType,
+    "out_image": str,
+    "threshlo": typing.NotRequired[float | None],
+    "threshhi": typing.NotRequired[float | None],
+    "inside_value": typing.NotRequired[float | None],
+    "outside_value": typing.NotRequired[float | None],
+    "otsu_number_of_thresholds": typing.NotRequired[float | None],
+    "kmeans_number_of_thresholds": typing.NotRequired[float | None],
+    "mask_image": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ThresholdImage": threshold_image_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ThresholdImage": threshold_image_outputs,
+    }
+    return vt.get(t)
 
 
 class ThresholdImageOutputs(typing.NamedTuple):
@@ -22,6 +69,141 @@ class ThresholdImageOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_image: OutputPathType
     """The resulting image after thresholding."""
+
+
+def threshold_image_params(
+    image_dimension: int,
+    image_in: InputPathType,
+    out_image: str,
+    threshlo: float | None = None,
+    threshhi: float | None = None,
+    inside_value: float | None = None,
+    outside_value: float | None = None,
+    otsu_number_of_thresholds: float | None = None,
+    kmeans_number_of_thresholds: float | None = None,
+    mask_image: InputPathType | None = None,
+) -> ThresholdImageParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image_dimension: The dimension of the input image.
+        image_in: The input image file to be thresholded.
+        out_image: The output image file after thresholding.
+        threshlo: The lower threshold value for fixed thresholding.
+        threshhi: The upper threshold value for fixed thresholding.
+        inside_value: The pixel value to be used inside the threshold range.
+        outside_value: The pixel value to be used outside the threshold range.
+        otsu_number_of_thresholds: Number of thresholds to use when applying\
+            the Otsu method.
+        kmeans_number_of_thresholds: Number of thresholds to use when applying\
+            the K-means method.
+        mask_image: Optional mask image for the thresholding operation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ThresholdImage",
+        "image_dimension": image_dimension,
+        "image_in": image_in,
+        "out_image": out_image,
+    }
+    if threshlo is not None:
+        params["threshlo"] = threshlo
+    if threshhi is not None:
+        params["threshhi"] = threshhi
+    if inside_value is not None:
+        params["inside_value"] = inside_value
+    if outside_value is not None:
+        params["outside_value"] = outside_value
+    if otsu_number_of_thresholds is not None:
+        params["otsu_number_of_thresholds"] = otsu_number_of_thresholds
+    if kmeans_number_of_thresholds is not None:
+        params["kmeans_number_of_thresholds"] = kmeans_number_of_thresholds
+    if mask_image is not None:
+        params["mask_image"] = mask_image
+    return params
+
+
+def threshold_image_cargs(
+    params: ThresholdImageParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ThresholdImage")
+    cargs.append(str(params.get("image_dimension")))
+    cargs.append(execution.input_file(params.get("image_in")))
+    cargs.append(params.get("out_image"))
+    if params.get("threshlo") is not None:
+        cargs.append(str(params.get("threshlo")))
+    if params.get("threshhi") is not None:
+        cargs.append(str(params.get("threshhi")))
+    if params.get("inside_value") is not None:
+        cargs.append(str(params.get("inside_value")))
+    if params.get("outside_value") is not None:
+        cargs.append(str(params.get("outside_value")))
+    if params.get("otsu_number_of_thresholds") is not None:
+        cargs.append(str(params.get("otsu_number_of_thresholds")))
+    if params.get("kmeans_number_of_thresholds") is not None:
+        cargs.append(str(params.get("kmeans_number_of_thresholds")))
+    if params.get("mask_image") is not None:
+        cargs.append(execution.input_file(params.get("mask_image")))
+    return cargs
+
+
+def threshold_image_outputs(
+    params: ThresholdImageParameters,
+    execution: Execution,
+) -> ThresholdImageOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ThresholdImageOutputs(
+        root=execution.output_file("."),
+        output_image=execution.output_file(params.get("out_image")),
+    )
+    return ret
+
+
+def threshold_image_execute(
+    params: ThresholdImageParameters,
+    execution: Execution,
+) -> ThresholdImageOutputs:
+    """
+    Image thresholding utility that applies different thresholding techniques to an
+    input image. It can use fixed thresholds, Otsu method, or K-means for
+    thresholding.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ThresholdImageOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = threshold_image_cargs(params, execution)
+    ret = threshold_image_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def threshold_image(
@@ -65,35 +247,13 @@ def threshold_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(THRESHOLD_IMAGE_METADATA)
-    cargs = []
-    cargs.append("ThresholdImage")
-    cargs.append(str(image_dimension))
-    cargs.append(execution.input_file(image_in))
-    cargs.append(out_image)
-    if threshlo is not None:
-        cargs.append(str(threshlo))
-    if threshhi is not None:
-        cargs.append(str(threshhi))
-    if inside_value is not None:
-        cargs.append(str(inside_value))
-    if outside_value is not None:
-        cargs.append(str(outside_value))
-    if otsu_number_of_thresholds is not None:
-        cargs.append(str(otsu_number_of_thresholds))
-    if kmeans_number_of_thresholds is not None:
-        cargs.append(str(kmeans_number_of_thresholds))
-    if mask_image is not None:
-        cargs.append(execution.input_file(mask_image))
-    ret = ThresholdImageOutputs(
-        root=execution.output_file("."),
-        output_image=execution.output_file(out_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = threshold_image_params(image_dimension=image_dimension, image_in=image_in, out_image=out_image, threshlo=threshlo, threshhi=threshhi, inside_value=inside_value, outside_value=outside_value, otsu_number_of_thresholds=otsu_number_of_thresholds, kmeans_number_of_thresholds=kmeans_number_of_thresholds, mask_image=mask_image)
+    return threshold_image_execute(params, execution)
 
 
 __all__ = [
     "THRESHOLD_IMAGE_METADATA",
     "ThresholdImageOutputs",
     "threshold_image",
+    "threshold_image_params",
 ]

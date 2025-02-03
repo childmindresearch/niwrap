@@ -12,14 +12,123 @@ BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+BuildDesikanKillianyGcsCshParameters = typing.TypedDict('BuildDesikanKillianyGcsCshParameters', {
+    "__STYX_TYPE__": typing.Literal["build_desikan_killiany_gcs.csh"],
+    "hemi": str,
+})
 
 
-class BuildDesikanKillianyGcsCshOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `build_desikan_killiany_gcs_csh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "build_desikan_killiany_gcs.csh": build_desikan_killiany_gcs_csh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def build_desikan_killiany_gcs_csh_params(
+    hemi: str,
+) -> BuildDesikanKillianyGcsCshParameters:
+    """
+    Build parameters.
+    
+    Args:
+        hemi: Hemisphere designation for the operation. Should be 'rh' for\
+            right hemisphere or 'lh' for left hemisphere.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "build_desikan_killiany_gcs.csh",
+        "hemi": hemi,
+    }
+    return params
+
+
+def build_desikan_killiany_gcs_csh_cargs(
+    params: BuildDesikanKillianyGcsCshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("build_desikan_killiany_gcs.csh")
+    cargs.append(params.get("hemi"))
+    return cargs
+
+
+def build_desikan_killiany_gcs_csh_outputs(
+    params: BuildDesikanKillianyGcsCshParameters,
+    execution: Execution,
+) -> BuildDesikanKillianyGcsCshOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BuildDesikanKillianyGcsCshOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def build_desikan_killiany_gcs_csh_execute(
+    params: BuildDesikanKillianyGcsCshParameters,
+    execution: Execution,
+) -> BuildDesikanKillianyGcsCshOutputs:
+    """
+    Tool to build Desikan-Killiany cortical parcellation in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BuildDesikanKillianyGcsCshOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = build_desikan_killiany_gcs_csh_cargs(params, execution)
+    ret = build_desikan_killiany_gcs_csh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def build_desikan_killiany_gcs_csh(
@@ -42,18 +151,12 @@ def build_desikan_killiany_gcs_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA)
-    cargs = []
-    cargs.append("build_desikan_killiany_gcs.csh")
-    cargs.append(hemi)
-    ret = BuildDesikanKillianyGcsCshOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = build_desikan_killiany_gcs_csh_params(hemi=hemi)
+    return build_desikan_killiany_gcs_csh_execute(params, execution)
 
 
 __all__ = [
     "BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA",
-    "BuildDesikanKillianyGcsCshOutputs",
     "build_desikan_killiany_gcs_csh",
+    "build_desikan_killiany_gcs_csh_params",
 ]

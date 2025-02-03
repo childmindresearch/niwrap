@@ -12,14 +12,132 @@ ADJUNCT_SELECT_STR_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AdjunctSelectStrPyParameters = typing.TypedDict('AdjunctSelectStrPyParameters', {
+    "__STYX_TYPE__": typing.Literal["adjunct_select_str.py"],
+    "input_file": InputPathType,
+    "num_bricks": float,
+    "output_file": str,
+})
 
 
-class AdjunctSelectStrPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `adjunct_select_str_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "adjunct_select_str.py": adjunct_select_str_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def adjunct_select_str_py_params(
+    input_file: InputPathType,
+    num_bricks: float,
+    output_file: str,
+) -> AdjunctSelectStrPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: File containing a list of integers.
+        num_bricks: The number N of bricks in the dataset (so max index is N-1).
+        output_file: Output file name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "adjunct_select_str.py",
+        "input_file": input_file,
+        "num_bricks": num_bricks,
+        "output_file": output_file,
+    }
+    return params
+
+
+def adjunct_select_str_py_cargs(
+    params: AdjunctSelectStrPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("adjunct_select_str.py")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(str(params.get("num_bricks")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def adjunct_select_str_py_outputs(
+    params: AdjunctSelectStrPyParameters,
+    execution: Execution,
+) -> AdjunctSelectStrPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AdjunctSelectStrPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def adjunct_select_str_py_execute(
+    params: AdjunctSelectStrPyParameters,
+    execution: Execution,
+) -> AdjunctSelectStrPyOutputs:
+    """
+    A simple helper function for the fat_proc* scripts.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AdjunctSelectStrPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = adjunct_select_str_py_cargs(params, execution)
+    ret = adjunct_select_str_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def adjunct_select_str_py(
@@ -45,20 +163,12 @@ def adjunct_select_str_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_SELECT_STR_PY_METADATA)
-    cargs = []
-    cargs.append("adjunct_select_str.py")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(str(num_bricks))
-    cargs.append(output_file)
-    ret = AdjunctSelectStrPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = adjunct_select_str_py_params(input_file=input_file, num_bricks=num_bricks, output_file=output_file)
+    return adjunct_select_str_py_execute(params, execution)
 
 
 __all__ = [
     "ADJUNCT_SELECT_STR_PY_METADATA",
-    "AdjunctSelectStrPyOutputs",
     "adjunct_select_str_py",
+    "adjunct_select_str_py_params",
 ]

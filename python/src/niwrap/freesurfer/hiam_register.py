@@ -12,6 +12,46 @@ HIAM_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+HiamRegisterParameters = typing.TypedDict('HiamRegisterParameters', {
+    "__STYX_TYPE__": typing.Literal["hiam_register"],
+    "input_surface": InputPathType,
+    "average_surface": InputPathType,
+    "output_surface": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "hiam_register": hiam_register_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "hiam_register": hiam_register_outputs,
+    }
+    return vt.get(t)
 
 
 class HiamRegisterOutputs(typing.NamedTuple):
@@ -22,6 +62,96 @@ class HiamRegisterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     registered_surface: OutputPathType
     """The output surface after registration."""
+
+
+def hiam_register_params(
+    input_surface: InputPathType,
+    average_surface: InputPathType,
+    output_surface: str,
+) -> HiamRegisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: The input surface to be registered.
+        average_surface: The average surface to register against.
+        output_surface: The path where the output registered surface will be\
+            saved.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "hiam_register",
+        "input_surface": input_surface,
+        "average_surface": average_surface,
+        "output_surface": output_surface,
+    }
+    return params
+
+
+def hiam_register_cargs(
+    params: HiamRegisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("hiam_register")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(execution.input_file(params.get("average_surface")))
+    cargs.append(params.get("output_surface"))
+    return cargs
+
+
+def hiam_register_outputs(
+    params: HiamRegisterParameters,
+    execution: Execution,
+) -> HiamRegisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = HiamRegisterOutputs(
+        root=execution.output_file("."),
+        registered_surface=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def hiam_register_execute(
+    params: HiamRegisterParameters,
+    execution: Execution,
+) -> HiamRegisterOutputs:
+    """
+    This program registers a surface with an average surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `HiamRegisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = hiam_register_cargs(params, execution)
+    ret = hiam_register_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def hiam_register(
@@ -48,21 +178,13 @@ def hiam_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIAM_REGISTER_METADATA)
-    cargs = []
-    cargs.append("hiam_register")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(execution.input_file(average_surface))
-    cargs.append(output_surface)
-    ret = HiamRegisterOutputs(
-        root=execution.output_file("."),
-        registered_surface=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = hiam_register_params(input_surface=input_surface, average_surface=average_surface, output_surface=output_surface)
+    return hiam_register_execute(params, execution)
 
 
 __all__ = [
     "HIAM_REGISTER_METADATA",
     "HiamRegisterOutputs",
     "hiam_register",
+    "hiam_register_params",
 ]

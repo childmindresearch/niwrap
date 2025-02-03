@@ -12,6 +12,49 @@ LESION_FILLING_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+LesionFillingParameters = typing.TypedDict('LesionFillingParameters', {
+    "__STYX_TYPE__": typing.Literal["lesion_filling"],
+    "infile": InputPathType,
+    "outfile": str,
+    "lesionmask": InputPathType,
+    "wmmask": typing.NotRequired[InputPathType | None],
+    "verbose_flag": bool,
+    "components_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "lesion_filling": lesion_filling_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "lesion_filling": lesion_filling_outputs,
+    }
+    return vt.get(t)
 
 
 class LesionFillingOutputs(typing.NamedTuple):
@@ -22,6 +65,123 @@ class LesionFillingOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Lesion filled output image"""
+
+
+def lesion_filling_params(
+    infile: InputPathType,
+    outfile: str,
+    lesionmask: InputPathType,
+    wmmask: InputPathType | None = None,
+    verbose_flag: bool = False,
+    components_flag: bool = False,
+) -> LesionFillingParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input image filename (e.g., T1w image).
+        outfile: Output filename (lesion filled image).
+        lesionmask: Filename of lesion mask image.
+        wmmask: Filename of white matter mask image.
+        verbose_flag: Switch on diagnostic messages.
+        components_flag: Save all lesion components as volumes.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "lesion_filling",
+        "infile": infile,
+        "outfile": outfile,
+        "lesionmask": lesionmask,
+        "verbose_flag": verbose_flag,
+        "components_flag": components_flag,
+    }
+    if wmmask is not None:
+        params["wmmask"] = wmmask
+    return params
+
+
+def lesion_filling_cargs(
+    params: LesionFillingParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("lesion_filling")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("infile"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("outfile")
+    ])
+    cargs.extend([
+        "-l",
+        execution.input_file(params.get("lesionmask"))
+    ])
+    if params.get("wmmask") is not None:
+        cargs.extend([
+            "-w",
+            execution.input_file(params.get("wmmask"))
+        ])
+    if params.get("verbose_flag"):
+        cargs.append("-v")
+    if params.get("components_flag"):
+        cargs.append("-c")
+    return cargs
+
+
+def lesion_filling_outputs(
+    params: LesionFillingParameters,
+    execution: Execution,
+) -> LesionFillingOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LesionFillingOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def lesion_filling_execute(
+    params: LesionFillingParameters,
+    execution: Execution,
+) -> LesionFillingOutputs:
+    """
+    Lesion filling tool as part of FSL.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LesionFillingOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = lesion_filling_cargs(params, execution)
+    ret = lesion_filling_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def lesion_filling(
@@ -53,39 +213,13 @@ def lesion_filling(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LESION_FILLING_METADATA)
-    cargs = []
-    cargs.append("lesion_filling")
-    cargs.extend([
-        "-i",
-        execution.input_file(infile)
-    ])
-    cargs.extend([
-        "-o",
-        outfile
-    ])
-    cargs.extend([
-        "-l",
-        execution.input_file(lesionmask)
-    ])
-    if wmmask is not None:
-        cargs.extend([
-            "-w",
-            execution.input_file(wmmask)
-        ])
-    if verbose_flag:
-        cargs.append("-v")
-    if components_flag:
-        cargs.append("-c")
-    ret = LesionFillingOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = lesion_filling_params(infile=infile, outfile=outfile, lesionmask=lesionmask, wmmask=wmmask, verbose_flag=verbose_flag, components_flag=components_flag)
+    return lesion_filling_execute(params, execution)
 
 
 __all__ = [
     "LESION_FILLING_METADATA",
     "LesionFillingOutputs",
     "lesion_filling",
+    "lesion_filling_params",
 ]

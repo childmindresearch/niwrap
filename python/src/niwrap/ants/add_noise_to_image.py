@@ -12,6 +12,48 @@ ADD_NOISE_TO_IMAGE_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AddNoiseToImageParameters = typing.TypedDict('AddNoiseToImageParameters', {
+    "__STYX_TYPE__": typing.Literal["AddNoiseToImage"],
+    "image_dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
+    "input_image": InputPathType,
+    "noise_model": typing.Literal["AdditiveGaussian", "SaltAndPepper", "Shot", "Speckle"],
+    "output": str,
+    "verbose": typing.NotRequired[typing.Literal[0, 1] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "AddNoiseToImage": add_noise_to_image_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "AddNoiseToImage": add_noise_to_image_outputs,
+    }
+    return vt.get(t)
 
 
 class AddNoiseToImageOutputs(typing.NamedTuple):
@@ -22,6 +64,126 @@ class AddNoiseToImageOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     noise_corrupted_image: OutputPathType
     """The output is the noise corrupted version of the input image."""
+
+
+def add_noise_to_image_params(
+    input_image: InputPathType,
+    noise_model: typing.Literal["AdditiveGaussian", "SaltAndPepper", "Shot", "Speckle"],
+    output: str,
+    image_dimensionality: typing.Literal[2, 3, 4] | None = None,
+    verbose: typing.Literal[0, 1] | None = None,
+) -> AddNoiseToImageParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: A scalar image is expected as input for noise correction.
+        noise_model: Use different noise models each with its own (default)\
+            parameters.
+        output: The output consists of the noise corrupted version of the input\
+            image.
+        image_dimensionality: This option forces the image to be treated as a\
+            specified-dimensional image. If not specified, the program tries to\
+            infer the dimensionality from the input image.
+        verbose: Verbose output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "AddNoiseToImage",
+        "input_image": input_image,
+        "noise_model": noise_model,
+        "output": output,
+    }
+    if image_dimensionality is not None:
+        params["image_dimensionality"] = image_dimensionality
+    if verbose is not None:
+        params["verbose"] = verbose
+    return params
+
+
+def add_noise_to_image_cargs(
+    params: AddNoiseToImageParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("AddNoiseToImage")
+    if params.get("image_dimensionality") is not None:
+        cargs.extend([
+            "--image-dimensionality",
+            str(params.get("image_dimensionality"))
+        ])
+    cargs.extend([
+        "--input-image",
+        execution.input_file(params.get("input_image"))
+    ])
+    cargs.extend([
+        "--noise-model",
+        params.get("noise_model")
+    ])
+    cargs.extend([
+        "--output",
+        params.get("output")
+    ])
+    if params.get("verbose") is not None:
+        cargs.extend([
+            "--verbose",
+            str(params.get("verbose"))
+        ])
+    return cargs
+
+
+def add_noise_to_image_outputs(
+    params: AddNoiseToImageParameters,
+    execution: Execution,
+) -> AddNoiseToImageOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AddNoiseToImageOutputs(
+        root=execution.output_file("."),
+        noise_corrupted_image=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def add_noise_to_image_execute(
+    params: AddNoiseToImageParameters,
+    execution: Execution,
+) -> AddNoiseToImageOutputs:
+    """
+    Add various types of noise to an image.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AddNoiseToImageOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = add_noise_to_image_cargs(params, execution)
+    ret = add_noise_to_image_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def add_noise_to_image(
@@ -55,40 +217,13 @@ def add_noise_to_image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADD_NOISE_TO_IMAGE_METADATA)
-    cargs = []
-    cargs.append("AddNoiseToImage")
-    if image_dimensionality is not None:
-        cargs.extend([
-            "--image-dimensionality",
-            str(image_dimensionality)
-        ])
-    cargs.extend([
-        "--input-image",
-        execution.input_file(input_image)
-    ])
-    cargs.extend([
-        "--noise-model",
-        noise_model
-    ])
-    cargs.extend([
-        "--output",
-        output
-    ])
-    if verbose is not None:
-        cargs.extend([
-            "--verbose",
-            str(verbose)
-        ])
-    ret = AddNoiseToImageOutputs(
-        root=execution.output_file("."),
-        noise_corrupted_image=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = add_noise_to_image_params(image_dimensionality=image_dimensionality, input_image=input_image, noise_model=noise_model, output=output, verbose=verbose)
+    return add_noise_to_image_execute(params, execution)
 
 
 __all__ = [
     "ADD_NOISE_TO_IMAGE_METADATA",
     "AddNoiseToImageOutputs",
     "add_noise_to_image",
+    "add_noise_to_image_params",
 ]

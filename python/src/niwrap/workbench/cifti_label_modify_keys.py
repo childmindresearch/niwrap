@@ -12,6 +12,47 @@ CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiLabelModifyKeysParameters = typing.TypedDict('CiftiLabelModifyKeysParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-label-modify-keys"],
+    "cifti_in": InputPathType,
+    "remap_file": str,
+    "cifti_out": str,
+    "opt_column_column": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-label-modify-keys": cifti_label_modify_keys_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-label-modify-keys": cifti_label_modify_keys_outputs,
+    }
+    return vt.get(t)
 
 
 class CiftiLabelModifyKeysOutputs(typing.NamedTuple):
@@ -22,6 +63,120 @@ class CiftiLabelModifyKeysOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output dlabel file"""
+
+
+def cifti_label_modify_keys_params(
+    cifti_in: InputPathType,
+    remap_file: str,
+    cifti_out: str,
+    opt_column_column: str | None = None,
+) -> CiftiLabelModifyKeysParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_in: the input dlabel file.
+        remap_file: text file with old and new key values.
+        cifti_out: the output dlabel file.
+        opt_column_column: select a single column to use: the column number or\
+            name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-label-modify-keys",
+        "cifti_in": cifti_in,
+        "remap_file": remap_file,
+        "cifti_out": cifti_out,
+    }
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    return params
+
+
+def cifti_label_modify_keys_cargs(
+    params: CiftiLabelModifyKeysParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-label-modify-keys")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    cargs.append(params.get("remap_file"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    return cargs
+
+
+def cifti_label_modify_keys_outputs(
+    params: CiftiLabelModifyKeysParameters,
+    execution: Execution,
+) -> CiftiLabelModifyKeysOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiLabelModifyKeysOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_label_modify_keys_execute(
+    params: CiftiLabelModifyKeysParameters,
+    execution: Execution,
+) -> CiftiLabelModifyKeysOutputs:
+    """
+    Change key values in a dlabel file.
+    
+    <remap-file> should have lines of the form 'oldkey newkey', like so:
+    
+    3 5
+    5 8
+    8 2
+    
+    This would change the current label with key '3' to use the key '5' instead,
+    5 would use 8, and 8 would use 2. Any collision in key values results in the
+    label that was not specified in the remap file getting remapped to an
+    otherwise unused key. Remapping more than one key to the same new key, or
+    the same key to more than one new key, results in an error. This will not
+    change the appearance of the file when displayed, as it will change the key
+    values in the data at the same time.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiLabelModifyKeysOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_label_modify_keys_cargs(params, execution)
+    ret = cifti_label_modify_keys_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cifti_label_modify_keys(
@@ -64,27 +219,13 @@ def cifti_label_modify_keys(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_LABEL_MODIFY_KEYS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-label-modify-keys")
-    cargs.append(execution.input_file(cifti_in))
-    cargs.append(remap_file)
-    cargs.append(cifti_out)
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    ret = CiftiLabelModifyKeysOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_label_modify_keys_params(cifti_in=cifti_in, remap_file=remap_file, cifti_out=cifti_out, opt_column_column=opt_column_column)
+    return cifti_label_modify_keys_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_LABEL_MODIFY_KEYS_METADATA",
     "CiftiLabelModifyKeysOutputs",
     "cifti_label_modify_keys",
+    "cifti_label_modify_keys_params",
 ]

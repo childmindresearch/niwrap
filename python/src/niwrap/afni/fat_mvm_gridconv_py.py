@@ -12,6 +12,45 @@ FAT_MVM_GRIDCONV_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FatMvmGridconvPyParameters = typing.TypedDict('FatMvmGridconvPyParameters', {
+    "__STYX_TYPE__": typing.Literal["fat_mvm_gridconv.py"],
+    "matrix_files": typing.NotRequired[str | None],
+    "list_file": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fat_mvm_gridconv.py": fat_mvm_gridconv_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fat_mvm_gridconv.py": fat_mvm_gridconv_py_outputs,
+    }
+    return vt.get(t)
 
 
 class FatMvmGridconvPyOutputs(typing.NamedTuple):
@@ -23,6 +62,107 @@ class FatMvmGridconvPyOutputs(typing.NamedTuple):
     converted_grid_files: OutputPathType
     """Output converted grid files, with '_MOD.grid' postfix or custom output
     name provided in the list file."""
+
+
+def fat_mvm_gridconv_py_params(
+    matrix_files: str | None = None,
+    list_file: InputPathType | None = None,
+) -> FatMvmGridconvPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        matrix_files: Provide the set of matrix (*.grid) files as a searchable\
+            path. This can be a globbable entry in quotes containing wildcard\
+            characters.
+        list_file: Provide the matrix (*.grid) files by explicit path in a text\
+            file. The LIST text file must contain at least one column (path to\
+            subject matrix file) with an optional second column (output file\
+            names). If no second column is given, the default '_MOD.grid' postfix\
+            is applied.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fat_mvm_gridconv.py",
+    }
+    if matrix_files is not None:
+        params["matrix_files"] = matrix_files
+    if list_file is not None:
+        params["list_file"] = list_file
+    return params
+
+
+def fat_mvm_gridconv_py_cargs(
+    params: FatMvmGridconvPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fat_mvm_gridconv.py")
+    if params.get("matrix_files") is not None:
+        cargs.extend([
+            "-m",
+            params.get("matrix_files")
+        ])
+    if params.get("list_file") is not None:
+        cargs.extend([
+            "-l",
+            execution.input_file(params.get("list_file"))
+        ])
+    return cargs
+
+
+def fat_mvm_gridconv_py_outputs(
+    params: FatMvmGridconvPyParameters,
+    execution: Execution,
+) -> FatMvmGridconvPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FatMvmGridconvPyOutputs(
+        root=execution.output_file("."),
+        converted_grid_files=execution.output_file("*_MOD.grid"),
+    )
+    return ret
+
+
+def fat_mvm_gridconv_py_execute(
+    params: FatMvmGridconvPyParameters,
+    execution: Execution,
+) -> FatMvmGridconvPyOutputs:
+    """
+    Preprocess 'old school' *.grid files for statistical modeling using 3dMVM.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FatMvmGridconvPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fat_mvm_gridconv_py_cargs(params, execution)
+    ret = fat_mvm_gridconv_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fat_mvm_gridconv_py(
@@ -52,28 +192,13 @@ def fat_mvm_gridconv_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MVM_GRIDCONV_PY_METADATA)
-    cargs = []
-    cargs.append("fat_mvm_gridconv.py")
-    if matrix_files is not None:
-        cargs.extend([
-            "-m",
-            matrix_files
-        ])
-    if list_file is not None:
-        cargs.extend([
-            "-l",
-            execution.input_file(list_file)
-        ])
-    ret = FatMvmGridconvPyOutputs(
-        root=execution.output_file("."),
-        converted_grid_files=execution.output_file("*_MOD.grid"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fat_mvm_gridconv_py_params(matrix_files=matrix_files, list_file=list_file)
+    return fat_mvm_gridconv_py_execute(params, execution)
 
 
 __all__ = [
     "FAT_MVM_GRIDCONV_PY_METADATA",
     "FatMvmGridconvPyOutputs",
     "fat_mvm_gridconv_py",
+    "fat_mvm_gridconv_py_params",
 ]

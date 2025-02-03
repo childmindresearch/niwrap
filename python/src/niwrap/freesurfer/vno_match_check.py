@@ -12,14 +12,141 @@ VNO_MATCH_CHECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+VnoMatchCheckParameters = typing.TypedDict('VnoMatchCheckParameters', {
+    "__STYX_TYPE__": typing.Literal["vno_match_check"],
+    "subjid": str,
+    "debug": bool,
+    "right_hemi": bool,
+    "left_hemi": bool,
+})
 
 
-class VnoMatchCheckOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `vno_match_check(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "vno_match_check": vno_match_check_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def vno_match_check_params(
+    subjid: str,
+    debug: bool = False,
+    right_hemi: bool = False,
+    left_hemi: bool = False,
+) -> VnoMatchCheckParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjid: Subject ID for which the vertex number check is performed.
+        debug: Prints progress text.
+        right_hemi: Checks only the right hemisphere.
+        left_hemi: Checks only the left hemisphere.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "vno_match_check",
+        "subjid": subjid,
+        "debug": debug,
+        "right_hemi": right_hemi,
+        "left_hemi": left_hemi,
+    }
+    return params
+
+
+def vno_match_check_cargs(
+    params: VnoMatchCheckParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("vno_match_check")
+    cargs.append(params.get("subjid"))
+    if params.get("debug"):
+        cargs.append("debug")
+    if params.get("right_hemi"):
+        cargs.append("rh")
+    if params.get("left_hemi"):
+        cargs.append("lh")
+    return cargs
+
+
+def vno_match_check_outputs(
+    params: VnoMatchCheckParameters,
+    execution: Execution,
+) -> VnoMatchCheckOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VnoMatchCheckOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def vno_match_check_execute(
+    params: VnoMatchCheckParameters,
+    execution: Execution,
+) -> VnoMatchCheckOutputs:
+    """
+    Checks that all surfaces and surface data files for a subject have the same
+    number of vertices.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VnoMatchCheckOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = vno_match_check_cargs(params, execution)
+    ret = vno_match_check_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def vno_match_check(
@@ -48,24 +175,12 @@ def vno_match_check(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VNO_MATCH_CHECK_METADATA)
-    cargs = []
-    cargs.append("vno_match_check")
-    cargs.append(subjid)
-    if debug:
-        cargs.append("debug")
-    if right_hemi:
-        cargs.append("rh")
-    if left_hemi:
-        cargs.append("lh")
-    ret = VnoMatchCheckOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = vno_match_check_params(subjid=subjid, debug=debug, right_hemi=right_hemi, left_hemi=left_hemi)
+    return vno_match_check_execute(params, execution)
 
 
 __all__ = [
     "VNO_MATCH_CHECK_METADATA",
-    "VnoMatchCheckOutputs",
     "vno_match_check",
+    "vno_match_check_params",
 ]

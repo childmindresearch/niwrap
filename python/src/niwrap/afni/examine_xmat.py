@@ -12,6 +12,51 @@ EXAMINE_XMAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ExamineXmatParameters = typing.TypedDict('ExamineXmatParameters', {
+    "__STYX_TYPE__": typing.Literal["ExamineXmat"],
+    "input_file": typing.NotRequired[InputPathType | None],
+    "interactive": bool,
+    "prefix": typing.NotRequired[str | None],
+    "cprefix": typing.NotRequired[str | None],
+    "pprefix": typing.NotRequired[str | None],
+    "select": typing.NotRequired[str | None],
+    "msg_trace": bool,
+    "verbosity": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ExamineXmat": examine_xmat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ExamineXmat": examine_xmat_outputs,
+    }
+    return vt.get(t)
 
 
 class ExamineXmatOutputs(typing.NamedTuple):
@@ -30,6 +75,153 @@ class ExamineXmatOutputs(typing.NamedTuple):
     """Output cor image"""
     plot_image_prefix: OutputPathType | None
     """Output plot image"""
+
+
+def examine_xmat_params(
+    input_file: InputPathType | None = None,
+    interactive: bool = False,
+    prefix: str | None = None,
+    cprefix: str | None = None,
+    pprefix: str | None = None,
+    select_: str | None = None,
+    msg_trace: bool = False,
+    verbosity: float | None = None,
+) -> ExamineXmatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: xmat file to plot.
+        interactive: Run ExamineXmat in interactive mode. This is the default\
+            if -prefix is not given. If -interactive is used with -prefix, the last\
+            plot you see is the plot saved to file.
+        prefix: Prefix of plot image and cor image.
+        cprefix: Prefix of cor image only.
+        pprefix: Prefix of plot image only.
+        select_: What to plot. Selection strings to specify regressors.
+        msg_trace: Output trace information along with errors and notices.
+        verbosity: Verbosity level. 0 for quiet, 1 or more for talkative.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ExamineXmat",
+        "interactive": interactive,
+        "msg_trace": msg_trace,
+    }
+    if input_file is not None:
+        params["input_file"] = input_file
+    if prefix is not None:
+        params["prefix"] = prefix
+    if cprefix is not None:
+        params["cprefix"] = cprefix
+    if pprefix is not None:
+        params["pprefix"] = pprefix
+    if select_ is not None:
+        params["select"] = select_
+    if verbosity is not None:
+        params["verbosity"] = verbosity
+    return params
+
+
+def examine_xmat_cargs(
+    params: ExamineXmatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ExamineXmat")
+    if params.get("input_file") is not None:
+        cargs.extend([
+            "-input",
+            execution.input_file(params.get("input_file"))
+        ])
+    if params.get("interactive"):
+        cargs.append("-interactive")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("cprefix") is not None:
+        cargs.extend([
+            "-cprefix",
+            params.get("cprefix")
+        ])
+    if params.get("pprefix") is not None:
+        cargs.extend([
+            "-pprefix",
+            params.get("pprefix")
+        ])
+    if params.get("select") is not None:
+        cargs.extend([
+            "-select",
+            params.get("select")
+        ])
+    if params.get("msg_trace"):
+        cargs.append("-msg.trace")
+    if params.get("verbosity") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verbosity"))
+        ])
+    return cargs
+
+
+def examine_xmat_outputs(
+    params: ExamineXmatParameters,
+    execution: Execution,
+) -> ExamineXmatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ExamineXmatOutputs(
+        root=execution.output_file("."),
+        plot_image=execution.output_file(params.get("prefix") + ".jpg") if (params.get("prefix") is not None) else None,
+        plot_image_png=execution.output_file(params.get("prefix") + ".png") if (params.get("prefix") is not None) else None,
+        plot_image_pdf=execution.output_file(params.get("prefix") + ".pdf") if (params.get("prefix") is not None) else None,
+        cor_image=execution.output_file(params.get("cprefix") + ".jpg") if (params.get("cprefix") is not None) else None,
+        plot_image_prefix=execution.output_file(params.get("pprefix") + ".jpg") if (params.get("pprefix") is not None) else None,
+    )
+    return ret
+
+
+def examine_xmat_execute(
+    params: ExamineXmatParameters,
+    execution: Execution,
+) -> ExamineXmatOutputs:
+    """
+    A program for examining the design matrix generated by 3dDeconvolve.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ExamineXmatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = examine_xmat_cargs(params, execution)
+    ret = examine_xmat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def examine_xmat(
@@ -65,60 +257,15 @@ def examine_xmat(
     Returns:
         NamedTuple of outputs (described in `ExamineXmatOutputs`).
     """
-    if verbosity is not None and not (0 <= verbosity): 
-        raise ValueError(f"'verbosity' must be greater than 0 <= x but was {verbosity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXAMINE_XMAT_METADATA)
-    cargs = []
-    cargs.append("ExamineXmat")
-    if input_file is not None:
-        cargs.extend([
-            "-input",
-            execution.input_file(input_file)
-        ])
-    if interactive:
-        cargs.append("-interactive")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if cprefix is not None:
-        cargs.extend([
-            "-cprefix",
-            cprefix
-        ])
-    if pprefix is not None:
-        cargs.extend([
-            "-pprefix",
-            pprefix
-        ])
-    if select_ is not None:
-        cargs.extend([
-            "-select",
-            select_
-        ])
-    if msg_trace:
-        cargs.append("-msg.trace")
-    if verbosity is not None:
-        cargs.extend([
-            "-verb",
-            str(verbosity)
-        ])
-    ret = ExamineXmatOutputs(
-        root=execution.output_file("."),
-        plot_image=execution.output_file(prefix + ".jpg") if (prefix is not None) else None,
-        plot_image_png=execution.output_file(prefix + ".png") if (prefix is not None) else None,
-        plot_image_pdf=execution.output_file(prefix + ".pdf") if (prefix is not None) else None,
-        cor_image=execution.output_file(cprefix + ".jpg") if (cprefix is not None) else None,
-        plot_image_prefix=execution.output_file(pprefix + ".jpg") if (pprefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = examine_xmat_params(input_file=input_file, interactive=interactive, prefix=prefix, cprefix=cprefix, pprefix=pprefix, select_=select_, msg_trace=msg_trace, verbosity=verbosity)
+    return examine_xmat_execute(params, execution)
 
 
 __all__ = [
     "EXAMINE_XMAT_METADATA",
     "ExamineXmatOutputs",
     "examine_xmat",
+    "examine_xmat_params",
 ]

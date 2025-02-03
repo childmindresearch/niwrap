@@ -12,6 +12,47 @@ FSLADD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FsladdParameters = typing.TypedDict('FsladdParameters', {
+    "__STYX_TYPE__": typing.Literal["fsladd"],
+    "output_file": str,
+    "mean_flag": bool,
+    "scale_flag": bool,
+    "volume_list": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fsladd": fsladd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fsladd": fsladd_outputs,
+    }
+    return vt.get(t)
 
 
 class FsladdOutputs(typing.NamedTuple):
@@ -22,6 +63,101 @@ class FsladdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     resulting_output: OutputPathType
     """Resulting output file"""
+
+
+def fsladd_params(
+    output_file: str,
+    volume_list: list[InputPathType],
+    mean_flag: bool = False,
+    scale_flag: bool = False,
+) -> FsladdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_file: Output volume file.
+        volume_list: List of input volumes.
+        mean_flag: Calculate mean instead of sum.
+        scale_flag: Scale each input image mean to 1000 before processing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsladd",
+        "output_file": output_file,
+        "mean_flag": mean_flag,
+        "scale_flag": scale_flag,
+        "volume_list": volume_list,
+    }
+    return params
+
+
+def fsladd_cargs(
+    params: FsladdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsladd")
+    cargs.append(params.get("output_file"))
+    if params.get("mean_flag"):
+        cargs.append("-m")
+    if params.get("scale_flag"):
+        cargs.append("-s")
+    cargs.extend([execution.input_file(f) for f in params.get("volume_list")])
+    return cargs
+
+
+def fsladd_outputs(
+    params: FsladdParameters,
+    execution: Execution,
+) -> FsladdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsladdOutputs(
+        root=execution.output_file("."),
+        resulting_output=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def fsladd_execute(
+    params: FsladdParameters,
+    execution: Execution,
+) -> FsladdOutputs:
+    """
+    Tool for adding or averaging multiple input volumes.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsladdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsladd_cargs(params, execution)
+    ret = fsladd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsladd(
@@ -49,24 +185,13 @@ def fsladd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLADD_METADATA)
-    cargs = []
-    cargs.append("fsladd")
-    cargs.append(output_file)
-    if mean_flag:
-        cargs.append("-m")
-    if scale_flag:
-        cargs.append("-s")
-    cargs.extend([execution.input_file(f) for f in volume_list])
-    ret = FsladdOutputs(
-        root=execution.output_file("."),
-        resulting_output=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsladd_params(output_file=output_file, mean_flag=mean_flag, scale_flag=scale_flag, volume_list=volume_list)
+    return fsladd_execute(params, execution)
 
 
 __all__ = [
     "FSLADD_METADATA",
     "FsladdOutputs",
     "fsladd",
+    "fsladd_params",
 ]

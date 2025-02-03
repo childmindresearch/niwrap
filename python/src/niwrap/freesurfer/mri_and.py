@@ -12,14 +12,122 @@ MRI_AND_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriAndParameters = typing.TypedDict('MriAndParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_and"],
+    "input_files": list[InputPathType],
+})
 
 
-class MriAndOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_and(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_and": mri_and_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_and_params(
+    input_files: list[InputPathType],
+) -> MriAndParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input volume files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_and",
+        "input_files": input_files,
+    }
+    return params
+
+
+def mri_and_cargs(
+    params: MriAndParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_and")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def mri_and_outputs(
+    params: MriAndParameters,
+    execution: Execution,
+) -> MriAndOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriAndOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_and_execute(
+    params: MriAndParameters,
+    execution: Execution,
+) -> MriAndOutputs:
+    """
+    Performs a logical voxel-wise AND on a series of volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriAndOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_and_cargs(params, execution)
+    ret = mri_and_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_and(
@@ -41,18 +149,12 @@ def mri_and(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_AND_METADATA)
-    cargs = []
-    cargs.append("mri_and")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = MriAndOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_and_params(input_files=input_files)
+    return mri_and_execute(params, execution)
 
 
 __all__ = [
     "MRI_AND_METADATA",
-    "MriAndOutputs",
     "mri_and",
+    "mri_and_params",
 ]

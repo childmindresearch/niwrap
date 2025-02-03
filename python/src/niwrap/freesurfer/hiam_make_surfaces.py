@@ -12,14 +12,129 @@ HIAM_MAKE_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+HiamMakeSurfacesParameters = typing.TypedDict('HiamMakeSurfacesParameters', {
+    "__STYX_TYPE__": typing.Literal["hiam_make_surfaces"],
+    "subject_name": str,
+    "structure": typing.Literal["RA", "LA", "RH", "LH"],
+})
 
 
-class HiamMakeSurfacesOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `hiam_make_surfaces(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "hiam_make_surfaces": hiam_make_surfaces_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def hiam_make_surfaces_params(
+    subject_name: str,
+    structure: typing.Literal["RA", "LA", "RH", "LH"],
+) -> HiamMakeSurfacesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_name: Subject name for which surfaces are to be created.
+        structure: Structure for which surfaces will be created. Valid values\
+            are RA, LA, RH, and LH.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "hiam_make_surfaces",
+        "subject_name": subject_name,
+        "structure": structure,
+    }
+    return params
+
+
+def hiam_make_surfaces_cargs(
+    params: HiamMakeSurfacesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("hiam_make_surfaces")
+    cargs.append("[OPTIONS]")
+    cargs.append(params.get("subject_name"))
+    cargs.append(params.get("structure"))
+    return cargs
+
+
+def hiam_make_surfaces_outputs(
+    params: HiamMakeSurfacesParameters,
+    execution: Execution,
+) -> HiamMakeSurfacesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = HiamMakeSurfacesOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def hiam_make_surfaces_execute(
+    params: HiamMakeSurfacesParameters,
+    execution: Execution,
+) -> HiamMakeSurfacesOutputs:
+    """
+    Surface creation tool for specified brain structures.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `HiamMakeSurfacesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = hiam_make_surfaces_cargs(params, execution)
+    ret = hiam_make_surfaces_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def hiam_make_surfaces(
@@ -44,20 +159,12 @@ def hiam_make_surfaces(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIAM_MAKE_SURFACES_METADATA)
-    cargs = []
-    cargs.append("hiam_make_surfaces")
-    cargs.append("[OPTIONS]")
-    cargs.append(subject_name)
-    cargs.append(structure)
-    ret = HiamMakeSurfacesOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = hiam_make_surfaces_params(subject_name=subject_name, structure=structure)
+    return hiam_make_surfaces_execute(params, execution)
 
 
 __all__ = [
     "HIAM_MAKE_SURFACES_METADATA",
-    "HiamMakeSurfacesOutputs",
     "hiam_make_surfaces",
+    "hiam_make_surfaces_params",
 ]

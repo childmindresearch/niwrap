@@ -12,6 +12,48 @@ LABEL_TO_BORDER_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+LabelToBorderParameters = typing.TypedDict('LabelToBorderParameters', {
+    "__STYX_TYPE__": typing.Literal["label-to-border"],
+    "surface": InputPathType,
+    "label_in": InputPathType,
+    "border_out": str,
+    "opt_placement_fraction": typing.NotRequired[float | None],
+    "opt_column_column": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label-to-border": label_to_border_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label-to-border": label_to_border_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelToBorderOutputs(typing.NamedTuple):
@@ -22,6 +64,120 @@ class LabelToBorderOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     border_out: OutputPathType
     """the output border file"""
+
+
+def label_to_border_params(
+    surface: InputPathType,
+    label_in: InputPathType,
+    border_out: str,
+    opt_placement_fraction: float | None = None,
+    opt_column_column: str | None = None,
+) -> LabelToBorderParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to use for neighbor information.
+        label_in: the input label file.
+        border_out: the output border file.
+        opt_placement_fraction: set how far along the edge border points are\
+            drawn: fraction along edge from inside vertex (default 0.33).
+        opt_column_column: select a single column: the column number or name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label-to-border",
+        "surface": surface,
+        "label_in": label_in,
+        "border_out": border_out,
+    }
+    if opt_placement_fraction is not None:
+        params["opt_placement_fraction"] = opt_placement_fraction
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    return params
+
+
+def label_to_border_cargs(
+    params: LabelToBorderParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-label-to-border")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("label_in")))
+    cargs.append(params.get("border_out"))
+    if params.get("opt_placement_fraction") is not None:
+        cargs.extend([
+            "-placement",
+            str(params.get("opt_placement_fraction"))
+        ])
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    return cargs
+
+
+def label_to_border_outputs(
+    params: LabelToBorderParameters,
+    execution: Execution,
+) -> LabelToBorderOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelToBorderOutputs(
+        root=execution.output_file("."),
+        border_out=execution.output_file(params.get("border_out")),
+    )
+    return ret
+
+
+def label_to_border_execute(
+    params: LabelToBorderParameters,
+    execution: Execution,
+) -> LabelToBorderOutputs:
+    """
+    Draw borders around labels.
+    
+    For each label, finds all edges on the mesh that cross the boundary of the
+    label, and draws borders through them. By default, this is done on all
+    columns in the input file, using the map name as the class name for the
+    border.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelToBorderOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label_to_border_cargs(params, execution)
+    ret = label_to_border_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def label_to_border(
@@ -57,32 +213,13 @@ def label_to_border(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_TO_BORDER_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-label-to-border")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(label_in))
-    cargs.append(border_out)
-    if opt_placement_fraction is not None:
-        cargs.extend([
-            "-placement",
-            str(opt_placement_fraction)
-        ])
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    ret = LabelToBorderOutputs(
-        root=execution.output_file("."),
-        border_out=execution.output_file(border_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = label_to_border_params(surface=surface, label_in=label_in, border_out=border_out, opt_placement_fraction=opt_placement_fraction, opt_column_column=opt_column_column)
+    return label_to_border_execute(params, execution)
 
 
 __all__ = [
     "LABEL_TO_BORDER_METADATA",
     "LabelToBorderOutputs",
     "label_to_border",
+    "label_to_border_params",
 ]

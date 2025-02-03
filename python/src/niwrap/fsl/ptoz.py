@@ -12,14 +12,138 @@ PTOZ_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+PtozParameters = typing.TypedDict('PtozParameters', {
+    "__STYX_TYPE__": typing.Literal["ptoz"],
+    "p_value": float,
+    "tail_flag": bool,
+    "grf_flag": typing.NotRequired[float | None],
+})
 
 
-class PtozOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `ptoz(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "ptoz": ptoz_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def ptoz_params(
+    p_value: float,
+    tail_flag: bool = False,
+    grf_flag: float | None = None,
+) -> PtozParameters:
+    """
+    Build parameters.
+    
+    Args:
+        p_value: p-value to convert.
+        tail_flag: Use 2-tailed conversion.
+        grf_flag: Use GRF maximum-height theory instead of Gaussian pdf.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ptoz",
+        "p_value": p_value,
+        "tail_flag": tail_flag,
+    }
+    if grf_flag is not None:
+        params["grf_flag"] = grf_flag
+    return params
+
+
+def ptoz_cargs(
+    params: PtozParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ptoz")
+    cargs.append(str(params.get("p_value")))
+    if params.get("tail_flag"):
+        cargs.append("-2")
+    if params.get("grf_flag") is not None:
+        cargs.extend([
+            "-g",
+            str(params.get("grf_flag"))
+        ])
+    return cargs
+
+
+def ptoz_outputs(
+    params: PtozParameters,
+    execution: Execution,
+) -> PtozOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PtozOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def ptoz_execute(
+    params: PtozParameters,
+    execution: Execution,
+) -> PtozOutputs:
+    """
+    Convert p-values to z-values.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PtozOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ptoz_cargs(params, execution)
+    ret = ptoz_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ptoz(
@@ -45,25 +169,12 @@ def ptoz(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PTOZ_METADATA)
-    cargs = []
-    cargs.append("ptoz")
-    cargs.append(str(p_value))
-    if tail_flag:
-        cargs.append("-2")
-    if grf_flag is not None:
-        cargs.extend([
-            "-g",
-            str(grf_flag)
-        ])
-    ret = PtozOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = ptoz_params(p_value=p_value, tail_flag=tail_flag, grf_flag=grf_flag)
+    return ptoz_execute(params, execution)
 
 
 __all__ = [
     "PTOZ_METADATA",
-    "PtozOutputs",
     "ptoz",
+    "ptoz_params",
 ]

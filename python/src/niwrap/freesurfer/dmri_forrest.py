@@ -12,14 +12,183 @@ DMRI_FORREST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DmriForrestParameters = typing.TypedDict('DmriForrestParameters', {
+    "__STYX_TYPE__": typing.Literal["dmri_forrest"],
+    "test_dir": str,
+    "train_file": InputPathType,
+    "mask_file": InputPathType,
+    "tract_files": list[InputPathType],
+    "seg_file": typing.NotRequired[InputPathType | None],
+    "diff_file": typing.NotRequired[InputPathType | None],
+    "debug": bool,
+    "checkopts": bool,
+})
 
 
-class DmriForrestOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `dmri_forrest(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "dmri_forrest": dmri_forrest_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def dmri_forrest_params(
+    test_dir: str,
+    train_file: InputPathType,
+    mask_file: InputPathType,
+    tract_files: list[InputPathType],
+    seg_file: InputPathType | None = None,
+    diff_file: InputPathType | None = None,
+    debug: bool = False,
+    checkopts: bool = False,
+) -> DmriForrestParameters:
+    """
+    Build parameters.
+    
+    Args:
+        test_dir: Directory containing the test subject data.
+        train_file: File listing training subject directories, one per line.
+        mask_file: Input brain mask volume name, relative to subject directory.
+        tract_files: Input tract label volume(s), relative to subject directory.
+        seg_file: Input aparc+aseg volume name, relative to subject directory.
+        diff_file: Input diffusion orientation volume name, relative to subject\
+            directory.
+        debug: Turn on debugging mode.
+        checkopts: Only check options and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dmri_forrest",
+        "test_dir": test_dir,
+        "train_file": train_file,
+        "mask_file": mask_file,
+        "tract_files": tract_files,
+        "debug": debug,
+        "checkopts": checkopts,
+    }
+    if seg_file is not None:
+        params["seg_file"] = seg_file
+    if diff_file is not None:
+        params["diff_file"] = diff_file
+    return params
+
+
+def dmri_forrest_cargs(
+    params: DmriForrestParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dmri_forrest")
+    cargs.extend([
+        "--test",
+        params.get("test_dir")
+    ])
+    cargs.extend([
+        "--train",
+        execution.input_file(params.get("train_file"))
+    ])
+    cargs.extend([
+        "--mask",
+        execution.input_file(params.get("mask_file"))
+    ])
+    cargs.extend([
+        "--tract",
+        *[execution.input_file(f) for f in params.get("tract_files")]
+    ])
+    if params.get("seg_file") is not None:
+        cargs.extend([
+            "--seg",
+            execution.input_file(params.get("seg_file"))
+        ])
+    if params.get("diff_file") is not None:
+        cargs.extend([
+            "--diff",
+            execution.input_file(params.get("diff_file"))
+        ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("checkopts"):
+        cargs.append("--checkopts")
+    return cargs
+
+
+def dmri_forrest_outputs(
+    params: DmriForrestParameters,
+    execution: Execution,
+) -> DmriForrestOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DmriForrestOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def dmri_forrest_execute(
+    params: DmriForrestParameters,
+    execution: Execution,
+) -> DmriForrestOutputs:
+    """
+    dmri_forrest is a tool for processing diffusion MRI data using a random
+    forest-based method.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DmriForrestOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dmri_forrest_cargs(params, execution)
+    ret = dmri_forrest_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dmri_forrest(
@@ -57,47 +226,12 @@ def dmri_forrest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_FORREST_METADATA)
-    cargs = []
-    cargs.append("dmri_forrest")
-    cargs.extend([
-        "--test",
-        test_dir
-    ])
-    cargs.extend([
-        "--train",
-        execution.input_file(train_file)
-    ])
-    cargs.extend([
-        "--mask",
-        execution.input_file(mask_file)
-    ])
-    cargs.extend([
-        "--tract",
-        *[execution.input_file(f) for f in tract_files]
-    ])
-    if seg_file is not None:
-        cargs.extend([
-            "--seg",
-            execution.input_file(seg_file)
-        ])
-    if diff_file is not None:
-        cargs.extend([
-            "--diff",
-            execution.input_file(diff_file)
-        ])
-    if debug:
-        cargs.append("--debug")
-    if checkopts:
-        cargs.append("--checkopts")
-    ret = DmriForrestOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = dmri_forrest_params(test_dir=test_dir, train_file=train_file, mask_file=mask_file, tract_files=tract_files, seg_file=seg_file, diff_file=diff_file, debug=debug, checkopts=checkopts)
+    return dmri_forrest_execute(params, execution)
 
 
 __all__ = [
     "DMRI_FORREST_METADATA",
-    "DmriForrestOutputs",
     "dmri_forrest",
+    "dmri_forrest_params",
 ]

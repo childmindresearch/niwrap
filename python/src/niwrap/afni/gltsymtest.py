@@ -12,14 +12,135 @@ GLTSYMTEST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+GltsymtestParameters = typing.TypedDict('GltsymtestParameters', {
+    "__STYX_TYPE__": typing.Literal["GLTsymtest"],
+    "badonly": bool,
+    "varlist": str,
+    "expr": list[str],
+})
 
 
-class GltsymtestOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `gltsymtest(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "GLTsymtest": gltsymtest_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def gltsymtest_params(
+    varlist: str,
+    expr: list[str],
+    badonly: bool = False,
+) -> GltsymtestParameters:
+    """
+    Build parameters.
+    
+    Args:
+        varlist: A list of allowed variable names in the expression, separated\
+            by commas, semicolons, and/or spaces.
+        expr: GLT symbolic expression(s), enclosed in quotes.
+        badonly: A flag to only output BAD messages rather than all messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "GLTsymtest",
+        "badonly": badonly,
+        "varlist": varlist,
+        "expr": expr,
+    }
+    return params
+
+
+def gltsymtest_cargs(
+    params: GltsymtestParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("GLTsymtest")
+    if params.get("badonly"):
+        cargs.append("-badonly")
+    cargs.append(params.get("varlist"))
+    cargs.extend(params.get("expr"))
+    return cargs
+
+
+def gltsymtest_outputs(
+    params: GltsymtestParameters,
+    execution: Execution,
+) -> GltsymtestOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = GltsymtestOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def gltsymtest_execute(
+    params: GltsymtestParameters,
+    execution: Execution,
+) -> GltsymtestOutputs:
+    """
+    A tool to test the validity of '-gltsym' strings for use with 3dDeconvolve or
+    3dREMLfit.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `GltsymtestOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = gltsymtest_cargs(params, execution)
+    ret = gltsymtest_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def gltsymtest(
@@ -47,21 +168,12 @@ def gltsymtest(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GLTSYMTEST_METADATA)
-    cargs = []
-    cargs.append("GLTsymtest")
-    if badonly:
-        cargs.append("-badonly")
-    cargs.append(varlist)
-    cargs.extend(expr)
-    ret = GltsymtestOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = gltsymtest_params(badonly=badonly, varlist=varlist, expr=expr)
+    return gltsymtest_execute(params, execution)
 
 
 __all__ = [
     "GLTSYMTEST_METADATA",
-    "GltsymtestOutputs",
     "gltsymtest",
+    "gltsymtest_params",
 ]

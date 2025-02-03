@@ -12,6 +12,46 @@ LABELS_DISJOINT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LabelsDisjointParameters = typing.TypedDict('LabelsDisjointParameters', {
+    "__STYX_TYPE__": typing.Literal["labels_disjoint"],
+    "label1": InputPathType,
+    "label2": InputPathType,
+    "outputname": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "labels_disjoint": labels_disjoint_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "labels_disjoint": labels_disjoint_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelsDisjointOutputs(typing.NamedTuple):
@@ -22,6 +62,98 @@ class LabelsDisjointOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Resulting output label file after subtraction."""
+
+
+def labels_disjoint_params(
+    label1: InputPathType,
+    label2: InputPathType,
+    outputname: str,
+) -> LabelsDisjointParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label1: First label file (e.g., rh.Occ.label).
+        label2: Second label file to subtract from the first (e.g.,\
+            rh.V1.label).
+        outputname: Output label file name where the result will be saved\
+            (e.g., rh.Occ_V1.label).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "labels_disjoint",
+        "label1": label1,
+        "label2": label2,
+        "outputname": outputname,
+    }
+    return params
+
+
+def labels_disjoint_cargs(
+    params: LabelsDisjointParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("labels_disjoint")
+    cargs.append(execution.input_file(params.get("label1")))
+    cargs.append(execution.input_file(params.get("label2")))
+    cargs.append(params.get("outputname"))
+    return cargs
+
+
+def labels_disjoint_outputs(
+    params: LabelsDisjointParameters,
+    execution: Execution,
+) -> LabelsDisjointOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelsDisjointOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("outputname")),
+    )
+    return ret
+
+
+def labels_disjoint_execute(
+    params: LabelsDisjointParameters,
+    execution: Execution,
+) -> LabelsDisjointOutputs:
+    """
+    Subtracts one label file from another, effectively creating a label that
+    represents label1 minus label2.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelsDisjointOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = labels_disjoint_cargs(params, execution)
+    ret = labels_disjoint_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def labels_disjoint(
@@ -50,21 +182,13 @@ def labels_disjoint(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_DISJOINT_METADATA)
-    cargs = []
-    cargs.append("labels_disjoint")
-    cargs.append(execution.input_file(label1))
-    cargs.append(execution.input_file(label2))
-    cargs.append(outputname)
-    ret = LabelsDisjointOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(outputname),
-    )
-    execution.run(cargs)
-    return ret
+    params = labels_disjoint_params(label1=label1, label2=label2, outputname=outputname)
+    return labels_disjoint_execute(params, execution)
 
 
 __all__ = [
     "LABELS_DISJOINT_METADATA",
     "LabelsDisjointOutputs",
     "labels_disjoint",
+    "labels_disjoint_params",
 ]

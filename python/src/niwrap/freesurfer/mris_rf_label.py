@@ -12,14 +12,152 @@ MRIS_RF_LABEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisRfLabelParameters = typing.TypedDict('MrisRfLabelParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_rf_label"],
+    "subject": str,
+    "rf_classifier": str,
+    "output_name": str,
+    "hemi": typing.NotRequired[str | None],
+    "surf": typing.NotRequired[str | None],
+})
 
 
-class MrisRfLabelOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_rf_label(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_rf_label": mris_rf_label_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_rf_label_params(
+    subject: str,
+    rf_classifier: str,
+    output_name: str,
+    hemi: str | None = None,
+    surf: str | None = None,
+) -> MrisRfLabelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Subject identifier.
+        rf_classifier: Random Forest classifier.
+        output_name: Output name.
+        hemi: Process specified hemisphere instead of default (lh).
+        surf: Change default surface name from 'white' to specified surface.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_rf_label",
+        "subject": subject,
+        "rf_classifier": rf_classifier,
+        "output_name": output_name,
+    }
+    if hemi is not None:
+        params["hemi"] = hemi
+    if surf is not None:
+        params["surf"] = surf
+    return params
+
+
+def mris_rf_label_cargs(
+    params: MrisRfLabelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_rf_label")
+    cargs.append(params.get("subject"))
+    cargs.append(params.get("rf_classifier"))
+    cargs.append(params.get("output_name"))
+    if params.get("hemi") is not None:
+        cargs.extend([
+            "--hemi",
+            params.get("hemi")
+        ])
+    if params.get("surf") is not None:
+        cargs.extend([
+            "--surf",
+            params.get("surf")
+        ])
+    return cargs
+
+
+def mris_rf_label_outputs(
+    params: MrisRfLabelParameters,
+    execution: Execution,
+) -> MrisRfLabelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisRfLabelOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_rf_label_execute(
+    params: MrisRfLabelParameters,
+    execution: Execution,
+) -> MrisRfLabelOutputs:
+    """
+    A tool for labeling regions of a surface using random forest classification.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisRfLabelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_rf_label_cargs(params, execution)
+    ret = mris_rf_label_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_rf_label(
@@ -49,30 +187,12 @@ def mris_rf_label(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RF_LABEL_METADATA)
-    cargs = []
-    cargs.append("mris_rf_label")
-    cargs.append(subject)
-    cargs.append(rf_classifier)
-    cargs.append(output_name)
-    if hemi is not None:
-        cargs.extend([
-            "--hemi",
-            hemi
-        ])
-    if surf is not None:
-        cargs.extend([
-            "--surf",
-            surf
-        ])
-    ret = MrisRfLabelOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_rf_label_params(subject=subject, rf_classifier=rf_classifier, output_name=output_name, hemi=hemi, surf=surf)
+    return mris_rf_label_execute(params, execution)
 
 
 __all__ = [
     "MRIS_RF_LABEL_METADATA",
-    "MrisRfLabelOutputs",
     "mris_rf_label",
+    "mris_rf_label_params",
 ]

@@ -12,6 +12,47 @@ CREATE_DISPLACEMENT_FIELD_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+CreateDisplacementFieldParameters = typing.TypedDict('CreateDisplacementFieldParameters', {
+    "__STYX_TYPE__": typing.Literal["CreateDisplacementField"],
+    "image_dimension": int,
+    "enforce_zero_boundary_flag": typing.Literal[0, 1],
+    "component_images": list[InputPathType],
+    "output_image": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "CreateDisplacementField": create_displacement_field_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "CreateDisplacementField": create_displacement_field_outputs,
+    }
+    return vt.get(t)
 
 
 class CreateDisplacementFieldOutputs(typing.NamedTuple):
@@ -23,6 +64,110 @@ class CreateDisplacementFieldOutputs(typing.NamedTuple):
     output_displacement_field: OutputPathType
     """The generated itkImage of itkVector pixels representing the displacement
     field."""
+
+
+def create_displacement_field_params(
+    image_dimension: int,
+    enforce_zero_boundary_flag: typing.Literal[0, 1],
+    component_images: list[InputPathType],
+    output_image: str,
+) -> CreateDisplacementFieldParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image_dimension: The dimension of the image, typically 2 or 3.
+        enforce_zero_boundary_flag: Create zero-valued vectors along the\
+            borders when enabled (pass 1), recommended for better displacement\
+            field behavior.
+        component_images: Input component images, each used for a vector\
+            component. All component images must have the same size, offset,\
+            origin, and spacing.
+        output_image: The output displacement field image with itkVector\
+            pixels.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "CreateDisplacementField",
+        "image_dimension": image_dimension,
+        "enforce_zero_boundary_flag": enforce_zero_boundary_flag,
+        "component_images": component_images,
+        "output_image": output_image,
+    }
+    return params
+
+
+def create_displacement_field_cargs(
+    params: CreateDisplacementFieldParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("CreateDisplacementField")
+    cargs.append(str(params.get("image_dimension")))
+    cargs.append(str(params.get("enforce_zero_boundary_flag")))
+    cargs.extend([execution.input_file(f) for f in params.get("component_images")])
+    cargs.append(params.get("output_image"))
+    return cargs
+
+
+def create_displacement_field_outputs(
+    params: CreateDisplacementFieldParameters,
+    execution: Execution,
+) -> CreateDisplacementFieldOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CreateDisplacementFieldOutputs(
+        root=execution.output_file("."),
+        output_displacement_field=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def create_displacement_field_execute(
+    params: CreateDisplacementFieldParameters,
+    execution: Execution,
+) -> CreateDisplacementFieldOutputs:
+    """
+    Create an itkImage of itkVector pixels (NOT an itkVectorImage), using each
+    scalar input component image for each vector component. An itkImage of
+    itkVectors is the standard type for displacement fields in ITK. All component
+    images (up to 8) are assumed to have the same size, offset, origin, and spacing.
+    The 'EnforceZeroBoundaryFlag' option will create zero-valued vectors along the
+    borders when enabled (pass 1), and is recommended for better displacement field
+    behavior.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CreateDisplacementFieldOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = create_displacement_field_cargs(params, execution)
+    ret = create_displacement_field_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def create_displacement_field(
@@ -59,26 +204,15 @@ def create_displacement_field(
     Returns:
         NamedTuple of outputs (described in `CreateDisplacementFieldOutputs`).
     """
-    if not (1 <= len(component_images) <= 8): 
-        raise ValueError(f"Length of 'component_images' must be between 1 and 8 but was {len(component_images)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_DISPLACEMENT_FIELD_METADATA)
-    cargs = []
-    cargs.append("CreateDisplacementField")
-    cargs.append(str(image_dimension))
-    cargs.append(str(enforce_zero_boundary_flag))
-    cargs.extend([execution.input_file(f) for f in component_images])
-    cargs.append(output_image)
-    ret = CreateDisplacementFieldOutputs(
-        root=execution.output_file("."),
-        output_displacement_field=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = create_displacement_field_params(image_dimension=image_dimension, enforce_zero_boundary_flag=enforce_zero_boundary_flag, component_images=component_images, output_image=output_image)
+    return create_displacement_field_execute(params, execution)
 
 
 __all__ = [
     "CREATE_DISPLACEMENT_FIELD_METADATA",
     "CreateDisplacementFieldOutputs",
     "create_displacement_field",
+    "create_displacement_field_params",
 ]

@@ -12,14 +12,238 @@ MRIS_PMAKE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisPmakeParameters = typing.TypedDict('MrisPmakeParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_pmake"],
+    "options_file": typing.NotRequired[str | None],
+    "working_dir": typing.NotRequired[str | None],
+    "listen_mode": bool,
+    "listen_on_port": typing.NotRequired[float | None],
+    "subject": str,
+    "hemisphere": str,
+    "surface0": typing.NotRequired[str | None],
+    "surface1": typing.NotRequired[str | None],
+    "curve0": typing.NotRequired[str | None],
+    "curve1": typing.NotRequired[str | None],
+    "use_abs_curvs": bool,
+    "mpm_prog": typing.NotRequired[str | None],
+    "mpm_args": typing.NotRequired[str | None],
+})
 
 
-class MrisPmakeOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_pmake(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_pmake": mris_pmake_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_pmake_params(
+    subject: str,
+    hemisphere: str,
+    options_file: str | None = "options.txt",
+    working_dir: str | None = ".",
+    listen_mode: bool = False,
+    listen_on_port: float | None = None,
+    surface0: str | None = "inflated",
+    surface1: str | None = "smoothwm",
+    curve0: str | None = "smoothwm.H.crv",
+    curve1: str | None = "sulc",
+    use_abs_curvs: bool = False,
+    mpm_prog: str | None = None,
+    mpm_args: str | None = None,
+) -> MrisPmakeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Set the subject to <subj>.
+        hemisphere: The hemisphere to process.
+        options_file: The main configuration file specifying the startup\
+            run-time behaviour.
+        working_dir: The working directory.
+        listen_mode: Start in LISTEN mode without calculating a path.
+        listen_on_port: Create the server port on specified port and do nothing\
+            else.
+        surface0: The main mesh surface to read.
+        surface1: The aux mesh surface to read.
+        curve0: The main curvature function maps.
+        curve1: The aux curvature function maps.
+        use_abs_curvs: Use absolute values on each curvature map.
+        mpm_prog: The mpmProg to run.
+        mpm_args: Arguments for the specified mpmProg.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_pmake",
+        "listen_mode": listen_mode,
+        "subject": subject,
+        "hemisphere": hemisphere,
+        "use_abs_curvs": use_abs_curvs,
+    }
+    if options_file is not None:
+        params["options_file"] = options_file
+    if working_dir is not None:
+        params["working_dir"] = working_dir
+    if listen_on_port is not None:
+        params["listen_on_port"] = listen_on_port
+    if surface0 is not None:
+        params["surface0"] = surface0
+    if surface1 is not None:
+        params["surface1"] = surface1
+    if curve0 is not None:
+        params["curve0"] = curve0
+    if curve1 is not None:
+        params["curve1"] = curve1
+    if mpm_prog is not None:
+        params["mpm_prog"] = mpm_prog
+    if mpm_args is not None:
+        params["mpm_args"] = mpm_args
+    return params
+
+
+def mris_pmake_cargs(
+    params: MrisPmakeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_pmake")
+    if params.get("options_file") is not None:
+        cargs.extend([
+            "--optionsFile",
+            params.get("options_file")
+        ])
+    if params.get("working_dir") is not None:
+        cargs.extend([
+            "--dir",
+            params.get("working_dir")
+        ])
+    if params.get("listen_mode"):
+        cargs.append("--listen")
+    if params.get("listen_on_port") is not None:
+        cargs.extend([
+            "--listenOnPort",
+            str(params.get("listen_on_port"))
+        ])
+    cargs.extend([
+        "--subject",
+        params.get("subject")
+    ])
+    cargs.extend([
+        "--hemi",
+        params.get("hemisphere")
+    ])
+    if params.get("surface0") is not None:
+        cargs.extend([
+            "--surface0",
+            params.get("surface0")
+        ])
+    if params.get("surface1") is not None:
+        cargs.extend([
+            "--surface1",
+            params.get("surface1")
+        ])
+    if params.get("curve0") is not None:
+        cargs.extend([
+            "--curve0",
+            params.get("curve0")
+        ])
+    if params.get("curve1") is not None:
+        cargs.extend([
+            "--curve1",
+            params.get("curve1")
+        ])
+    if params.get("use_abs_curvs"):
+        cargs.append("--useAbsCurvs")
+    if params.get("mpm_prog") is not None:
+        cargs.extend([
+            "--mpmProg",
+            params.get("mpm_prog")
+        ])
+    if params.get("mpm_args") is not None:
+        cargs.extend([
+            "--mpmArgs",
+            params.get("mpm_args")
+        ])
+    return cargs
+
+
+def mris_pmake_outputs(
+    params: MrisPmakeParameters,
+    execution: Execution,
+) -> MrisPmakeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisPmakeOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_pmake_execute(
+    params: MrisPmakeParameters,
+    execution: Execution,
+) -> MrisPmakeOutputs:
+    """
+    Calculates paths and related costs on FreeSurfer surfaces based on an edge cost
+    and Dijkstra's algorithm.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisPmakeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_pmake_cargs(params, execution)
+    ret = mris_pmake_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_pmake(
@@ -68,74 +292,12 @@ def mris_pmake(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_PMAKE_METADATA)
-    cargs = []
-    cargs.append("mris_pmake")
-    if options_file is not None:
-        cargs.extend([
-            "--optionsFile",
-            options_file
-        ])
-    if working_dir is not None:
-        cargs.extend([
-            "--dir",
-            working_dir
-        ])
-    if listen_mode:
-        cargs.append("--listen")
-    if listen_on_port is not None:
-        cargs.extend([
-            "--listenOnPort",
-            str(listen_on_port)
-        ])
-    cargs.extend([
-        "--subject",
-        subject
-    ])
-    cargs.extend([
-        "--hemi",
-        hemisphere
-    ])
-    if surface0 is not None:
-        cargs.extend([
-            "--surface0",
-            surface0
-        ])
-    if surface1 is not None:
-        cargs.extend([
-            "--surface1",
-            surface1
-        ])
-    if curve0 is not None:
-        cargs.extend([
-            "--curve0",
-            curve0
-        ])
-    if curve1 is not None:
-        cargs.extend([
-            "--curve1",
-            curve1
-        ])
-    if use_abs_curvs:
-        cargs.append("--useAbsCurvs")
-    if mpm_prog is not None:
-        cargs.extend([
-            "--mpmProg",
-            mpm_prog
-        ])
-    if mpm_args is not None:
-        cargs.extend([
-            "--mpmArgs",
-            mpm_args
-        ])
-    ret = MrisPmakeOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_pmake_params(options_file=options_file, working_dir=working_dir, listen_mode=listen_mode, listen_on_port=listen_on_port, subject=subject, hemisphere=hemisphere, surface0=surface0, surface1=surface1, curve0=curve0, curve1=curve1, use_abs_curvs=use_abs_curvs, mpm_prog=mpm_prog, mpm_args=mpm_args)
+    return mris_pmake_execute(params, execution)
 
 
 __all__ = [
     "MRIS_PMAKE_METADATA",
-    "MrisPmakeOutputs",
     "mris_pmake",
+    "mris_pmake_params",
 ]

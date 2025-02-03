@@ -12,6 +12,56 @@ V_3D_FWHMX_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dFwhmxParameters = typing.TypedDict('V3dFwhmxParameters', {
+    "__STYX_TYPE__": typing.Literal["3dFWHMx"],
+    "mask": typing.NotRequired[InputPathType | None],
+    "automask": bool,
+    "demed": bool,
+    "unif": bool,
+    "detrend": typing.NotRequired[float | None],
+    "detprefix": typing.NotRequired[str | None],
+    "geom": bool,
+    "arith": bool,
+    "combine": bool,
+    "out": typing.NotRequired[str | None],
+    "compat": bool,
+    "acf": typing.NotRequired[str | None],
+    "infile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dFWHMx": v_3d_fwhmx_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dFWHMx": v_3d_fwhmx_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dFwhmxOutputs(typing.NamedTuple):
@@ -24,6 +74,175 @@ class V3dFwhmxOutputs(typing.NamedTuple):
     """Output file containing FWHM/ACF estimates"""
     detrended_dataset: OutputPathType | None
     """Detrended dataset file"""
+
+
+def v_3d_fwhmx_params(
+    infile: InputPathType,
+    mask: InputPathType | None = None,
+    automask: bool = False,
+    demed: bool = False,
+    unif: bool = False,
+    detrend: float | None = None,
+    detprefix: str | None = None,
+    geom: bool = False,
+    arith: bool = False,
+    combine: bool = False,
+    out: str | None = None,
+    compat: bool = False,
+    acf: str | None = None,
+) -> V3dFwhmxParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input dataset.
+        mask: Use only voxels that are nonzero in dataset 'mmm'.
+        automask: Compute a mask from THIS dataset.
+        demed: if the input dataset has more than one sub-brick then subtract\
+            the median of each voxel's time series before processing FWHM.
+        unif: Normalize each voxel's time series to have the same MAD before\
+            processing FWHM, implies -demed.
+        detrend: Detrend to order 'q'. If q is not given, the program picks\
+            q=NT/30; -detrend disables -demed, and includes -unif.
+        detprefix: Save the detrended file into a dataset with prefix 'd'.
+        geom: Compute the final estimate as the geometric mean.
+        arith: Compute the final estimate as the arithmetic mean.
+        combine: Combine the final measurements along each axis into one result.
+        out: Write output to file 'ttt' (3 columns of numbers). If not given,\
+            the sub-brick outputs are not written. Use '-out -' to write to stdout,\
+            if desired.
+        compat: Be compatible with the older 3dFWHM.
+        acf: Compute the spatial autocorrelation of the data as a function of\
+            radius, then fit that to a model and output the model parameters.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dFWHMx",
+        "automask": automask,
+        "demed": demed,
+        "unif": unif,
+        "geom": geom,
+        "arith": arith,
+        "combine": combine,
+        "compat": compat,
+        "infile": infile,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if detrend is not None:
+        params["detrend"] = detrend
+    if detprefix is not None:
+        params["detprefix"] = detprefix
+    if out is not None:
+        params["out"] = out
+    if acf is not None:
+        params["acf"] = acf
+    return params
+
+
+def v_3d_fwhmx_cargs(
+    params: V3dFwhmxParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dFWHMx")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("automask"):
+        cargs.append("-automask")
+    if params.get("demed"):
+        cargs.append("-demed")
+    if params.get("unif"):
+        cargs.append("-unif")
+    if params.get("detrend") is not None:
+        cargs.extend([
+            "-detrend",
+            str(params.get("detrend"))
+        ])
+    if params.get("detprefix") is not None:
+        cargs.extend([
+            "-detprefix",
+            params.get("detprefix")
+        ])
+    if params.get("geom"):
+        cargs.append("-geom")
+    if params.get("arith"):
+        cargs.append("-arith")
+    if params.get("combine"):
+        cargs.append("-combine")
+    if params.get("out") is not None:
+        cargs.extend([
+            "-out",
+            params.get("out")
+        ])
+    if params.get("compat"):
+        cargs.append("-compat")
+    if params.get("acf") is not None:
+        cargs.extend([
+            "-acf",
+            params.get("acf")
+        ])
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def v_3d_fwhmx_outputs(
+    params: V3dFwhmxParameters,
+    execution: Execution,
+) -> V3dFwhmxOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dFwhmxOutputs(
+        root=execution.output_file("."),
+        out_file=execution.output_file(params.get("out") + ".1D") if (params.get("out") is not None) else None,
+        detrended_dataset=execution.output_file(params.get("detprefix") + ".nii.gz") if (params.get("detprefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_fwhmx_execute(
+    params: V3dFwhmxParameters,
+    execution: Execution,
+) -> V3dFwhmxOutputs:
+    """
+    Compute Full Width at Half Maximum (FWHM) for FMRI datasets using
+    AutoCorrelation Function (ACF).
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dFwhmxOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_fwhmx_cargs(params, execution)
+    ret = v_3d_fwhmx_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_fwhmx(
@@ -76,59 +295,13 @@ def v_3d_fwhmx(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_FWHMX_METADATA)
-    cargs = []
-    cargs.append("3dFWHMx")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if automask:
-        cargs.append("-automask")
-    if demed:
-        cargs.append("-demed")
-    if unif:
-        cargs.append("-unif")
-    if detrend is not None:
-        cargs.extend([
-            "-detrend",
-            str(detrend)
-        ])
-    if detprefix is not None:
-        cargs.extend([
-            "-detprefix",
-            detprefix
-        ])
-    if geom:
-        cargs.append("-geom")
-    if arith:
-        cargs.append("-arith")
-    if combine:
-        cargs.append("-combine")
-    if out is not None:
-        cargs.extend([
-            "-out",
-            out
-        ])
-    if compat:
-        cargs.append("-compat")
-    if acf is not None:
-        cargs.extend([
-            "-acf",
-            acf
-        ])
-    cargs.append(execution.input_file(infile))
-    ret = V3dFwhmxOutputs(
-        root=execution.output_file("."),
-        out_file=execution.output_file(out + ".1D") if (out is not None) else None,
-        detrended_dataset=execution.output_file(detprefix + ".nii.gz") if (detprefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_fwhmx_params(mask=mask, automask=automask, demed=demed, unif=unif, detrend=detrend, detprefix=detprefix, geom=geom, arith=arith, combine=combine, out=out, compat=compat, acf=acf, infile=infile)
+    return v_3d_fwhmx_execute(params, execution)
 
 
 __all__ = [
     "V3dFwhmxOutputs",
     "V_3D_FWHMX_METADATA",
     "v_3d_fwhmx",
+    "v_3d_fwhmx_params",
 ]

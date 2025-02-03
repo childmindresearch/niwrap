@@ -12,6 +12,45 @@ SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SegmentSubjectT1AutoEstimateAlveusMlParameters = typing.TypedDict('SegmentSubjectT1AutoEstimateAlveusMlParameters', {
+    "__STYX_TYPE__": typing.Literal["segmentSubjectT1_autoEstimateAlveusML"],
+    "t1_file": InputPathType,
+    "output_folder": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "segmentSubjectT1_autoEstimateAlveusML": segment_subject_t1_auto_estimate_alveus_ml_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "segmentSubjectT1_autoEstimateAlveusML": segment_subject_t1_auto_estimate_alveus_ml_outputs,
+    }
+    return vt.get(t)
 
 
 class SegmentSubjectT1AutoEstimateAlveusMlOutputs(typing.NamedTuple):
@@ -22,6 +61,92 @@ class SegmentSubjectT1AutoEstimateAlveusMlOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     segmentation_output: OutputPathType
     """The file containing segmented MRI data."""
+
+
+def segment_subject_t1_auto_estimate_alveus_ml_params(
+    t1_file: InputPathType,
+    output_folder: str,
+) -> SegmentSubjectT1AutoEstimateAlveusMlParameters:
+    """
+    Build parameters.
+    
+    Args:
+        t1_file: Input T1-weighted MRI file to be segmented.
+        output_folder: Path to the folder where the outputs will be saved.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "segmentSubjectT1_autoEstimateAlveusML",
+        "t1_file": t1_file,
+        "output_folder": output_folder,
+    }
+    return params
+
+
+def segment_subject_t1_auto_estimate_alveus_ml_cargs(
+    params: SegmentSubjectT1AutoEstimateAlveusMlParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("segmentSubjectT1_autoEstimateAlveusML")
+    cargs.append(execution.input_file(params.get("t1_file")))
+    cargs.append(params.get("output_folder"))
+    return cargs
+
+
+def segment_subject_t1_auto_estimate_alveus_ml_outputs(
+    params: SegmentSubjectT1AutoEstimateAlveusMlParameters,
+    execution: Execution,
+) -> SegmentSubjectT1AutoEstimateAlveusMlOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SegmentSubjectT1AutoEstimateAlveusMlOutputs(
+        root=execution.output_file("."),
+        segmentation_output=execution.output_file(params.get("output_folder") + "/segmented_output.nii.gz"),
+    )
+    return ret
+
+
+def segment_subject_t1_auto_estimate_alveus_ml_execute(
+    params: SegmentSubjectT1AutoEstimateAlveusMlParameters,
+    execution: Execution,
+) -> SegmentSubjectT1AutoEstimateAlveusMlOutputs:
+    """
+    A tool that segments T1-weighted MRI data and automatically estimates the
+    Alveus.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SegmentSubjectT1AutoEstimateAlveusMlOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = segment_subject_t1_auto_estimate_alveus_ml_cargs(params, execution)
+    ret = segment_subject_t1_auto_estimate_alveus_ml_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def segment_subject_t1_auto_estimate_alveus_ml(
@@ -46,20 +171,13 @@ def segment_subject_t1_auto_estimate_alveus_ml(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_METADATA)
-    cargs = []
-    cargs.append("segmentSubjectT1_autoEstimateAlveusML")
-    cargs.append(execution.input_file(t1_file))
-    cargs.append(output_folder)
-    ret = SegmentSubjectT1AutoEstimateAlveusMlOutputs(
-        root=execution.output_file("."),
-        segmentation_output=execution.output_file(output_folder + "/segmented_output.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = segment_subject_t1_auto_estimate_alveus_ml_params(t1_file=t1_file, output_folder=output_folder)
+    return segment_subject_t1_auto_estimate_alveus_ml_execute(params, execution)
 
 
 __all__ = [
     "SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_METADATA",
     "SegmentSubjectT1AutoEstimateAlveusMlOutputs",
     "segment_subject_t1_auto_estimate_alveus_ml",
+    "segment_subject_t1_auto_estimate_alveus_ml_params",
 ]

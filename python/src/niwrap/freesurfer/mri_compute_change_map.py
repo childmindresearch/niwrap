@@ -12,6 +12,49 @@ MRI_COMPUTE_CHANGE_MAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriComputeChangeMapParameters = typing.TypedDict('MriComputeChangeMapParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_compute_change_map"],
+    "mean_filter": bool,
+    "gaussian_sigma": typing.NotRequired[float | None],
+    "volume1": InputPathType,
+    "volume2": InputPathType,
+    "transform": InputPathType,
+    "outvolume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_compute_change_map": mri_compute_change_map_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_compute_change_map": mri_compute_change_map_outputs,
+    }
+    return vt.get(t)
 
 
 class MriComputeChangeMapOutputs(typing.NamedTuple):
@@ -22,6 +65,116 @@ class MriComputeChangeMapOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_change_map: OutputPathType
     """Output change map registered with Volume 1"""
+
+
+def mri_compute_change_map_params(
+    volume1: InputPathType,
+    volume2: InputPathType,
+    transform: InputPathType,
+    outvolume: str,
+    mean_filter: bool = False,
+    gaussian_sigma: float | None = None,
+) -> MriComputeChangeMapParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume1: First volume (e.g. volume1.mgz).
+        volume2: Second volume, transformed into the space of Volume 1 (e.g.\
+            volume2.mgz).
+        transform: Transform that takes Volume 2 coordinates into Volume 1\
+            space.
+        outvolume: Output change map volume (e.g. change_map.mgz).
+        mean_filter: Apply mean filter to the output before writing.
+        gaussian_sigma: Smooth with Gaussian filter of specified sigma before\
+            writing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_compute_change_map",
+        "mean_filter": mean_filter,
+        "volume1": volume1,
+        "volume2": volume2,
+        "transform": transform,
+        "outvolume": outvolume,
+    }
+    if gaussian_sigma is not None:
+        params["gaussian_sigma"] = gaussian_sigma
+    return params
+
+
+def mri_compute_change_map_cargs(
+    params: MriComputeChangeMapParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_compute_change_map")
+    if params.get("mean_filter"):
+        cargs.append("-m")
+    if params.get("gaussian_sigma") is not None:
+        cargs.extend([
+            "-s",
+            str(params.get("gaussian_sigma"))
+        ])
+    cargs.append(execution.input_file(params.get("volume1")))
+    cargs.append(execution.input_file(params.get("volume2")))
+    cargs.append(execution.input_file(params.get("transform")))
+    cargs.append(params.get("outvolume"))
+    return cargs
+
+
+def mri_compute_change_map_outputs(
+    params: MriComputeChangeMapParameters,
+    execution: Execution,
+) -> MriComputeChangeMapOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriComputeChangeMapOutputs(
+        root=execution.output_file("."),
+        out_change_map=execution.output_file(params.get("outvolume")),
+    )
+    return ret
+
+
+def mri_compute_change_map_execute(
+    params: MriComputeChangeMapParameters,
+    execution: Execution,
+) -> MriComputeChangeMapOutputs:
+    """
+    Compute the change map between two MRI volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriComputeChangeMapOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_compute_change_map_cargs(params, execution)
+    ret = mri_compute_change_map_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_compute_change_map(
@@ -56,29 +209,13 @@ def mri_compute_change_map(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_CHANGE_MAP_METADATA)
-    cargs = []
-    cargs.append("mri_compute_change_map")
-    if mean_filter:
-        cargs.append("-m")
-    if gaussian_sigma is not None:
-        cargs.extend([
-            "-s",
-            str(gaussian_sigma)
-        ])
-    cargs.append(execution.input_file(volume1))
-    cargs.append(execution.input_file(volume2))
-    cargs.append(execution.input_file(transform))
-    cargs.append(outvolume)
-    ret = MriComputeChangeMapOutputs(
-        root=execution.output_file("."),
-        out_change_map=execution.output_file(outvolume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_compute_change_map_params(mean_filter=mean_filter, gaussian_sigma=gaussian_sigma, volume1=volume1, volume2=volume2, transform=transform, outvolume=outvolume)
+    return mri_compute_change_map_execute(params, execution)
 
 
 __all__ = [
     "MRI_COMPUTE_CHANGE_MAP_METADATA",
     "MriComputeChangeMapOutputs",
     "mri_compute_change_map",
+    "mri_compute_change_map_params",
 ]

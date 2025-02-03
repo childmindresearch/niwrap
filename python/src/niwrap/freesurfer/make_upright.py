@@ -12,6 +12,46 @@ MAKE_UPRIGHT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MakeUprightParameters = typing.TypedDict('MakeUprightParameters', {
+    "__STYX_TYPE__": typing.Literal["make_upright"],
+    "input_image": InputPathType,
+    "output_image": str,
+    "transformation_map": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "make_upright": make_upright_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "make_upright": make_upright_outputs,
+    }
+    return vt.get(t)
 
 
 class MakeUprightOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class MakeUprightOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     registered_image: OutputPathType
     """Registered upright MRI image"""
+
+
+def make_upright_params(
+    input_image: InputPathType,
+    output_image: str,
+    transformation_map: InputPathType,
+) -> MakeUprightParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Input MRI image file in .mgz format.
+        output_image: Output MRI image file in .mgz format.
+        transformation_map: Transformation map file in .lta format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "make_upright",
+        "input_image": input_image,
+        "output_image": output_image,
+        "transformation_map": transformation_map,
+    }
+    return params
+
+
+def make_upright_cargs(
+    params: MakeUprightParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("make_upright")
+    cargs.append(execution.input_file(params.get("input_image")))
+    cargs.append(params.get("output_image"))
+    cargs.append(execution.input_file(params.get("transformation_map")))
+    return cargs
+
+
+def make_upright_outputs(
+    params: MakeUprightParameters,
+    execution: Execution,
+) -> MakeUprightOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakeUprightOutputs(
+        root=execution.output_file("."),
+        registered_image=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def make_upright_execute(
+    params: MakeUprightParameters,
+    execution: Execution,
+) -> MakeUprightOutputs:
+    """
+    Registers MRI input to the left/right reversed version using mri_robust_register
+    and making use of the half-way space, resulting in an upright, forward facing
+    head position.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakeUprightOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = make_upright_cargs(params, execution)
+    ret = make_upright_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def make_upright(
@@ -49,21 +180,13 @@ def make_upright(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_UPRIGHT_METADATA)
-    cargs = []
-    cargs.append("make_upright")
-    cargs.append(execution.input_file(input_image))
-    cargs.append(output_image)
-    cargs.append(execution.input_file(transformation_map))
-    ret = MakeUprightOutputs(
-        root=execution.output_file("."),
-        registered_image=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = make_upright_params(input_image=input_image, output_image=output_image, transformation_map=transformation_map)
+    return make_upright_execute(params, execution)
 
 
 __all__ = [
     "MAKE_UPRIGHT_METADATA",
     "MakeUprightOutputs",
     "make_upright",
+    "make_upright_params",
 ]

@@ -12,14 +12,123 @@ NMOVIE_QT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+NmovieQtParameters = typing.TypedDict('NmovieQtParameters', {
+    "__STYX_TYPE__": typing.Literal["nmovie_qt"],
+    "images": list[InputPathType],
+})
 
 
-class NmovieQtOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `nmovie_qt(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "nmovie_qt": nmovie_qt_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def nmovie_qt_params(
+    images: list[InputPathType],
+) -> NmovieQtParameters:
+    """
+    Build parameters.
+    
+    Args:
+        images: Input image files to be displayed. Multiple files can be\
+            provided.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "nmovie_qt",
+        "images": images,
+    }
+    return params
+
+
+def nmovie_qt_cargs(
+    params: NmovieQtParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("nmovie_qt")
+    cargs.extend([execution.input_file(f) for f in params.get("images")])
+    return cargs
+
+
+def nmovie_qt_outputs(
+    params: NmovieQtParameters,
+    execution: Execution,
+) -> NmovieQtOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = NmovieQtOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def nmovie_qt_execute(
+    params: NmovieQtParameters,
+    execution: Execution,
+) -> NmovieQtOutputs:
+    """
+    An image viewer using Qt for displaying images in sequence.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `NmovieQtOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = nmovie_qt_cargs(params, execution)
+    ret = nmovie_qt_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def nmovie_qt(
@@ -42,18 +151,12 @@ def nmovie_qt(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(NMOVIE_QT_METADATA)
-    cargs = []
-    cargs.append("nmovie_qt")
-    cargs.extend([execution.input_file(f) for f in images])
-    ret = NmovieQtOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = nmovie_qt_params(images=images)
+    return nmovie_qt_execute(params, execution)
 
 
 __all__ = [
     "NMOVIE_QT_METADATA",
-    "NmovieQtOutputs",
     "nmovie_qt",
+    "nmovie_qt_params",
 ]

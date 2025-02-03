@@ -12,6 +12,64 @@ QHULL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+QhullParameters = typing.TypedDict('QhullParameters', {
+    "__STYX_TYPE__": typing.Literal["qhull"],
+    "input_coords": str,
+    "delaunay": bool,
+    "furthest_delaunay": bool,
+    "voronoi": bool,
+    "furthest_voronoi": bool,
+    "halfspace_intersection": bool,
+    "triangulated_output": bool,
+    "joggled_input": bool,
+    "verify": bool,
+    "summary": bool,
+    "vertices_incident": bool,
+    "normals": bool,
+    "vertex_coordinates": bool,
+    "halfspace_intersections": bool,
+    "extreme_points": bool,
+    "total_area_volume": bool,
+    "off_format": bool,
+    "geomview_output": bool,
+    "mathematica_output": bool,
+    "print_facets": typing.NotRequired[str | None],
+    "output_file": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "qhull": qhull_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "qhull": qhull_outputs,
+    }
+    return vt.get(t)
 
 
 class QhullOutputs(typing.NamedTuple):
@@ -22,6 +80,201 @@ class QhullOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_results: OutputPathType | None
     """Output file with the specified results."""
+
+
+def qhull_params(
+    input_coords: str,
+    delaunay: bool = False,
+    furthest_delaunay: bool = False,
+    voronoi: bool = False,
+    furthest_voronoi: bool = False,
+    halfspace_intersection: bool = False,
+    triangulated_output: bool = False,
+    joggled_input: bool = False,
+    verify: bool = False,
+    summary: bool = False,
+    vertices_incident: bool = False,
+    normals: bool = False,
+    vertex_coordinates: bool = False,
+    halfspace_intersections: bool = False,
+    extreme_points: bool = False,
+    total_area_volume: bool = False,
+    off_format: bool = False,
+    geomview_output: bool = False,
+    mathematica_output: bool = False,
+    print_facets: str | None = None,
+    output_file: str | None = None,
+) -> QhullParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_coords: Dimension, number of points, and point coordinates\
+            provided via stdin.
+        delaunay: Compute Delaunay triangulation by lifting points to a\
+            paraboloid.
+        furthest_delaunay: Compute furthest-site Delaunay triangulation (upper\
+            convex hull).
+        voronoi: Compute Voronoi diagram as the dual of the Delaunay\
+            triangulation.
+        furthest_voronoi: Compute furthest-site Voronoi diagram.
+        halfspace_intersection: Compute halfspace intersection about\
+            [1,1,0,...] via polar duality.
+        triangulated_output: Triangulated output.
+        joggled_input: Joggled input instead of merged facets.
+        verify: Verify result: structure, convexity, and point inclusion.
+        summary: Summary of results.
+        vertices_incident: Vertices incident to each facet.
+        normals: Normals with offsets.
+        vertex_coordinates: Vertex coordinates (if 'Qc', includes coplanar\
+            points). If 'v', Voronoi vertices.
+        halfspace_intersections: Halfspace intersections.
+        extreme_points: Extreme points (convex hull vertices).
+        total_area_volume: Compute total area and volume.
+        off_format: OFF format (if 'v', outputs Voronoi regions).
+        geomview_output: Geomview output (2-d, 3-d and 4-d).
+        mathematica_output: Mathematica output (2-d and 3-d).
+        print_facets: Print facets that include point n, -n if not.
+        output_file: Output results to file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "qhull",
+        "input_coords": input_coords,
+        "delaunay": delaunay,
+        "furthest_delaunay": furthest_delaunay,
+        "voronoi": voronoi,
+        "furthest_voronoi": furthest_voronoi,
+        "halfspace_intersection": halfspace_intersection,
+        "triangulated_output": triangulated_output,
+        "joggled_input": joggled_input,
+        "verify": verify,
+        "summary": summary,
+        "vertices_incident": vertices_incident,
+        "normals": normals,
+        "vertex_coordinates": vertex_coordinates,
+        "halfspace_intersections": halfspace_intersections,
+        "extreme_points": extreme_points,
+        "total_area_volume": total_area_volume,
+        "off_format": off_format,
+        "geomview_output": geomview_output,
+        "mathematica_output": mathematica_output,
+    }
+    if print_facets is not None:
+        params["print_facets"] = print_facets
+    if output_file is not None:
+        params["output_file"] = output_file
+    return params
+
+
+def qhull_cargs(
+    params: QhullParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("qhull")
+    cargs.append(params.get("input_coords"))
+    if params.get("delaunay"):
+        cargs.append("d")
+    if params.get("furthest_delaunay"):
+        cargs.append("d Qu")
+    if params.get("voronoi"):
+        cargs.append("v")
+    if params.get("furthest_voronoi"):
+        cargs.append("v Qu")
+    if params.get("halfspace_intersection"):
+        cargs.append("H1,1")
+    if params.get("triangulated_output"):
+        cargs.append("Qt")
+    if params.get("joggled_input"):
+        cargs.append("QJ")
+    if params.get("verify"):
+        cargs.append("Tv")
+    if params.get("summary"):
+        cargs.append("s")
+    if params.get("vertices_incident"):
+        cargs.append("i")
+    if params.get("normals"):
+        cargs.append("n")
+    if params.get("vertex_coordinates"):
+        cargs.append("p")
+    if params.get("halfspace_intersections"):
+        cargs.append("Fp")
+    if params.get("extreme_points"):
+        cargs.append("Fx")
+    if params.get("total_area_volume"):
+        cargs.append("FA")
+    if params.get("off_format"):
+        cargs.append("o")
+    if params.get("geomview_output"):
+        cargs.append("G")
+    if params.get("mathematica_output"):
+        cargs.append("m")
+    if params.get("print_facets") is not None:
+        cargs.extend([
+            "QVn",
+            params.get("print_facets")
+        ])
+    if params.get("output_file") is not None:
+        cargs.extend([
+            "TO",
+            params.get("output_file")
+        ])
+    return cargs
+
+
+def qhull_outputs(
+    params: QhullParameters,
+    execution: Execution,
+) -> QhullOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = QhullOutputs(
+        root=execution.output_file("."),
+        output_results=execution.output_file(params.get("output_file") + ".txt") if (params.get("output_file") is not None) else None,
+    )
+    return ret
+
+
+def qhull_execute(
+    params: QhullParameters,
+    execution: Execution,
+) -> QhullOutputs:
+    """
+    Tool to compute convex hulls and related structures.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `QhullOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = qhull_cargs(params, execution)
+    ret = qhull_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def qhull(
@@ -89,65 +342,13 @@ def qhull(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(QHULL_METADATA)
-    cargs = []
-    cargs.append("qhull")
-    cargs.append(input_coords)
-    if delaunay:
-        cargs.append("d")
-    if furthest_delaunay:
-        cargs.append("d Qu")
-    if voronoi:
-        cargs.append("v")
-    if furthest_voronoi:
-        cargs.append("v Qu")
-    if halfspace_intersection:
-        cargs.append("H1,1")
-    if triangulated_output:
-        cargs.append("Qt")
-    if joggled_input:
-        cargs.append("QJ")
-    if verify:
-        cargs.append("Tv")
-    if summary:
-        cargs.append("s")
-    if vertices_incident:
-        cargs.append("i")
-    if normals:
-        cargs.append("n")
-    if vertex_coordinates:
-        cargs.append("p")
-    if halfspace_intersections:
-        cargs.append("Fp")
-    if extreme_points:
-        cargs.append("Fx")
-    if total_area_volume:
-        cargs.append("FA")
-    if off_format:
-        cargs.append("o")
-    if geomview_output:
-        cargs.append("G")
-    if mathematica_output:
-        cargs.append("m")
-    if print_facets is not None:
-        cargs.extend([
-            "QVn",
-            print_facets
-        ])
-    if output_file is not None:
-        cargs.extend([
-            "TO",
-            output_file
-        ])
-    ret = QhullOutputs(
-        root=execution.output_file("."),
-        output_results=execution.output_file(output_file + ".txt") if (output_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = qhull_params(input_coords=input_coords, delaunay=delaunay, furthest_delaunay=furthest_delaunay, voronoi=voronoi, furthest_voronoi=furthest_voronoi, halfspace_intersection=halfspace_intersection, triangulated_output=triangulated_output, joggled_input=joggled_input, verify=verify, summary=summary, vertices_incident=vertices_incident, normals=normals, vertex_coordinates=vertex_coordinates, halfspace_intersections=halfspace_intersections, extreme_points=extreme_points, total_area_volume=total_area_volume, off_format=off_format, geomview_output=geomview_output, mathematica_output=mathematica_output, print_facets=print_facets, output_file=output_file)
+    return qhull_execute(params, execution)
 
 
 __all__ = [
     "QHULL_METADATA",
     "QhullOutputs",
     "qhull",
+    "qhull_params",
 ]

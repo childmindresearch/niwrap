@@ -12,6 +12,47 @@ SFIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+SfimParameters = typing.TypedDict('SfimParameters', {
+    "__STYX_TYPE__": typing.Literal["sfim"],
+    "sfint_file": typing.NotRequired[str | None],
+    "baseline_state": typing.NotRequired[str | None],
+    "local_base_option": bool,
+    "output_prefix": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "sfim": sfim_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "sfim": sfim_outputs,
+    }
+    return vt.get(t)
 
 
 class SfimOutputs(typing.NamedTuple):
@@ -22,6 +63,122 @@ class SfimOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_files: OutputPathType | None
     """Output image file for interval 'i' with task state name."""
+
+
+def sfim_params(
+    sfint_file: str | None = None,
+    baseline_state: str | None = None,
+    local_base_option: bool = False,
+    output_prefix: str | None = None,
+) -> SfimParameters:
+    """
+    Build parameters.
+    
+    Args:
+        sfint_file: Filename which contains the interval definitions. Default\
+            is 'sfint'. Example: '3*# 5*rest 4*A 5*rest 4*B 5*rest 4*A 5*rest'.
+        baseline_state: Task state name to use as the baseline. Default is\
+            'rest'.
+        local_base_option: Flag to indicate if each non-base task state\
+            interval should have the mean of the two nearest base intervals\
+            subtracted instead of the grand mean of all the base task intervals.
+        output_prefix: Prefix for output image filenames for all states. The\
+            i'th interval with task state name 'fred' will be written to file\
+            'pname.fred.i'. Default is 'sfim'.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sfim",
+        "local_base_option": local_base_option,
+    }
+    if sfint_file is not None:
+        params["sfint_file"] = sfint_file
+    if baseline_state is not None:
+        params["baseline_state"] = baseline_state
+    if output_prefix is not None:
+        params["output_prefix"] = output_prefix
+    return params
+
+
+def sfim_cargs(
+    params: SfimParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("sfim")
+    if params.get("sfint_file") is not None:
+        cargs.extend([
+            "-sfint",
+            params.get("sfint_file")
+        ])
+    if params.get("baseline_state") is not None:
+        cargs.extend([
+            "-base",
+            params.get("baseline_state")
+        ])
+    if params.get("local_base_option"):
+        cargs.append("-localbase")
+    if params.get("output_prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("output_prefix")
+        ])
+    cargs.append("[INPUT_FILES...]")
+    return cargs
+
+
+def sfim_outputs(
+    params: SfimParameters,
+    execution: Execution,
+) -> SfimOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SfimOutputs(
+        root=execution.output_file("."),
+        output_files=execution.output_file(params.get("output_prefix") + ".*.i") if (params.get("output_prefix") is not None) else None,
+    )
+    return ret
+
+
+def sfim_execute(
+    params: SfimParameters,
+    execution: Execution,
+) -> SfimOutputs:
+    """
+    Stepwise Functional IMages.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SfimOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = sfim_cargs(params, execution)
+    ret = sfim_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def sfim(
@@ -55,36 +212,13 @@ def sfim(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SFIM_METADATA)
-    cargs = []
-    cargs.append("sfim")
-    if sfint_file is not None:
-        cargs.extend([
-            "-sfint",
-            sfint_file
-        ])
-    if baseline_state is not None:
-        cargs.extend([
-            "-base",
-            baseline_state
-        ])
-    if local_base_option:
-        cargs.append("-localbase")
-    if output_prefix is not None:
-        cargs.extend([
-            "-prefix",
-            output_prefix
-        ])
-    cargs.append("[INPUT_FILES...]")
-    ret = SfimOutputs(
-        root=execution.output_file("."),
-        output_files=execution.output_file(output_prefix + ".*.i") if (output_prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = sfim_params(sfint_file=sfint_file, baseline_state=baseline_state, local_base_option=local_base_option, output_prefix=output_prefix)
+    return sfim_execute(params, execution)
 
 
 __all__ = [
     "SFIM_METADATA",
     "SfimOutputs",
     "sfim",
+    "sfim_params",
 ]

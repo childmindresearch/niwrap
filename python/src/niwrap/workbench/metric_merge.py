@@ -12,96 +12,191 @@ METRIC_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricMergeUpToParameters = typing.TypedDict('MetricMergeUpToParameters', {
+    "__STYX_TYPE__": typing.Literal["up_to"],
+    "last_column": str,
+    "opt_reverse": bool,
+})
+MetricMergeColumnParameters = typing.TypedDict('MetricMergeColumnParameters', {
+    "__STYX_TYPE__": typing.Literal["column"],
+    "column": str,
+    "up_to": typing.NotRequired[MetricMergeUpToParameters | None],
+})
+MetricMergeMetricParameters = typing.TypedDict('MetricMergeMetricParameters', {
+    "__STYX_TYPE__": typing.Literal["metric"],
+    "metric_in": InputPathType,
+    "column": typing.NotRequired[list[MetricMergeColumnParameters] | None],
+})
+MetricMergeParameters = typing.TypedDict('MetricMergeParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-merge"],
+    "metric_out": str,
+    "metric": typing.NotRequired[list[MetricMergeMetricParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class MetricMergeUpTo:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    use an inclusive range of columns.
-    """
-    last_column: str
-    """the number or name of the last column to include"""
-    opt_reverse: bool = False
-    """use the range in reverse order"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-up-to")
-        cargs.append(self.last_column)
-        if self.opt_reverse:
-            cargs.append("-reverse")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-merge": metric_merge_cargs,
+        "metric": metric_merge_metric_cargs,
+        "column": metric_merge_column_cargs,
+        "up_to": metric_merge_up_to_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MetricMergeColumn:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    select a single column to use.
-    """
-    column: str
-    """the column number or name"""
-    up_to: MetricMergeUpTo | None = None
-    """use an inclusive range of columns"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-column")
-        cargs.append(self.column)
-        if self.up_to is not None:
-            cargs.extend(self.up_to.run(execution))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-merge": metric_merge_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MetricMergeMetric:
+def metric_merge_up_to_params(
+    last_column: str,
+    opt_reverse: bool = False,
+) -> MetricMergeUpToParameters:
     """
-    specify an input metric.
-    """
-    metric_in: InputPathType
-    """a metric file to use columns from"""
-    column: list[MetricMergeColumn] | None = None
-    """select a single column to use"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-metric")
-        cargs.append(execution.input_file(self.metric_in))
-        if self.column is not None:
-            cargs.extend([a for c in [s.run(execution) for s in self.column] for a in c])
-        return cargs
+    Args:
+        last_column: the number or name of the last column to include.
+        opt_reverse: use the range in reverse order.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "up_to",
+        "last_column": last_column,
+        "opt_reverse": opt_reverse,
+    }
+    return params
+
+
+def metric_merge_up_to_cargs(
+    params: MetricMergeUpToParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-up-to")
+    cargs.append(params.get("last_column"))
+    if params.get("opt_reverse"):
+        cargs.append("-reverse")
+    return cargs
+
+
+def metric_merge_column_params(
+    column: str,
+    up_to: MetricMergeUpToParameters | None = None,
+) -> MetricMergeColumnParameters:
+    """
+    Build parameters.
+    
+    Args:
+        column: the column number or name.
+        up_to: use an inclusive range of columns.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "column",
+        "column": column,
+    }
+    if up_to is not None:
+        params["up_to"] = up_to
+    return params
+
+
+def metric_merge_column_cargs(
+    params: MetricMergeColumnParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-column")
+    cargs.append(params.get("column"))
+    if params.get("up_to") is not None:
+        cargs.extend(dyn_cargs(params.get("up_to")["__STYXTYPE__"])(params.get("up_to"), execution))
+    return cargs
+
+
+def metric_merge_metric_params(
+    metric_in: InputPathType,
+    column: list[MetricMergeColumnParameters] | None = None,
+) -> MetricMergeMetricParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric_in: a metric file to use columns from.
+        column: select a single column to use.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric",
+        "metric_in": metric_in,
+    }
+    if column is not None:
+        params["column"] = column
+    return params
+
+
+def metric_merge_metric_cargs(
+    params: MetricMergeMetricParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-metric")
+    cargs.append(execution.input_file(params.get("metric_in")))
+    if params.get("column") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("column")] for a in c])
+    return cargs
 
 
 class MetricMergeOutputs(typing.NamedTuple):
@@ -114,9 +209,107 @@ class MetricMergeOutputs(typing.NamedTuple):
     """the output metric"""
 
 
+def metric_merge_params(
+    metric_out: str,
+    metric: list[MetricMergeMetricParameters] | None = None,
+) -> MetricMergeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric_out: the output metric.
+        metric: specify an input metric.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-merge",
+        "metric_out": metric_out,
+    }
+    if metric is not None:
+        params["metric"] = metric
+    return params
+
+
+def metric_merge_cargs(
+    params: MetricMergeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-merge")
+    cargs.append(params.get("metric_out"))
+    if params.get("metric") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("metric")] for a in c])
+    return cargs
+
+
+def metric_merge_outputs(
+    params: MetricMergeParameters,
+    execution: Execution,
+) -> MetricMergeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricMergeOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_merge_execute(
+    params: MetricMergeParameters,
+    execution: Execution,
+) -> MetricMergeOutputs:
+    """
+    Merge metric files into a new file.
+    
+    Takes one or more metric files and constructs a new metric file by
+    concatenating columns from them. The input metric files must have the same
+    number of vertices and same structure.
+    
+    Example: wb_command -metric-merge out.func.gii -metric first.func.gii
+    -column 1 -metric second.func.gii
+    
+    This example would take the first column from first.func.gii, followed by
+    all columns from second.func.gii, and write these columns to out.func.gii.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricMergeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_merge_cargs(params, execution)
+    ret = metric_merge_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def metric_merge(
     metric_out: str,
-    metric: list[MetricMergeMetric] | None = None,
+    metric: list[MetricMergeMetricParameters] | None = None,
     runner: Runner | None = None,
 ) -> MetricMergeOutputs:
     """
@@ -145,25 +338,16 @@ def metric_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_MERGE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-merge")
-    cargs.append(metric_out)
-    if metric is not None:
-        cargs.extend([a for c in [s.run(execution) for s in metric] for a in c])
-    ret = MetricMergeOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_merge_params(metric_out=metric_out, metric=metric)
+    return metric_merge_execute(params, execution)
 
 
 __all__ = [
     "METRIC_MERGE_METADATA",
-    "MetricMergeColumn",
-    "MetricMergeMetric",
     "MetricMergeOutputs",
-    "MetricMergeUpTo",
     "metric_merge",
+    "metric_merge_column_params",
+    "metric_merge_metric_params",
+    "metric_merge_params",
+    "metric_merge_up_to_params",
 ]

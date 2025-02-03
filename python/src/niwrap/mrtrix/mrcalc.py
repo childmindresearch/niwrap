@@ -12,1305 +12,2622 @@ MRCALC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+MrcalcAbsParameters = typing.TypedDict('MrcalcAbsParameters', {
+    "__STYX_TYPE__": typing.Literal["abs"],
+})
+MrcalcNegParameters = typing.TypedDict('MrcalcNegParameters', {
+    "__STYX_TYPE__": typing.Literal["neg"],
+})
+MrcalcAddParameters = typing.TypedDict('MrcalcAddParameters', {
+    "__STYX_TYPE__": typing.Literal["add"],
+})
+MrcalcSubtractParameters = typing.TypedDict('MrcalcSubtractParameters', {
+    "__STYX_TYPE__": typing.Literal["subtract"],
+})
+MrcalcMultiplyParameters = typing.TypedDict('MrcalcMultiplyParameters', {
+    "__STYX_TYPE__": typing.Literal["multiply"],
+})
+MrcalcDivideParameters = typing.TypedDict('MrcalcDivideParameters', {
+    "__STYX_TYPE__": typing.Literal["divide"],
+})
+MrcalcMinParameters = typing.TypedDict('MrcalcMinParameters', {
+    "__STYX_TYPE__": typing.Literal["min"],
+})
+MrcalcMaxParameters = typing.TypedDict('MrcalcMaxParameters', {
+    "__STYX_TYPE__": typing.Literal["max"],
+})
+MrcalcLtParameters = typing.TypedDict('MrcalcLtParameters', {
+    "__STYX_TYPE__": typing.Literal["lt"],
+})
+MrcalcGtParameters = typing.TypedDict('MrcalcGtParameters', {
+    "__STYX_TYPE__": typing.Literal["gt"],
+})
+MrcalcLeParameters = typing.TypedDict('MrcalcLeParameters', {
+    "__STYX_TYPE__": typing.Literal["le"],
+})
+MrcalcGeParameters = typing.TypedDict('MrcalcGeParameters', {
+    "__STYX_TYPE__": typing.Literal["ge"],
+})
+MrcalcEqParameters = typing.TypedDict('MrcalcEqParameters', {
+    "__STYX_TYPE__": typing.Literal["eq"],
+})
+MrcalcNeqParameters = typing.TypedDict('MrcalcNeqParameters', {
+    "__STYX_TYPE__": typing.Literal["neq"],
+})
+MrcalcIfParameters = typing.TypedDict('MrcalcIfParameters', {
+    "__STYX_TYPE__": typing.Literal["if"],
+})
+MrcalcReplaceParameters = typing.TypedDict('MrcalcReplaceParameters', {
+    "__STYX_TYPE__": typing.Literal["replace"],
+})
+MrcalcSqrtParameters = typing.TypedDict('MrcalcSqrtParameters', {
+    "__STYX_TYPE__": typing.Literal["sqrt"],
+})
+MrcalcPowParameters = typing.TypedDict('MrcalcPowParameters', {
+    "__STYX_TYPE__": typing.Literal["pow"],
+})
+MrcalcRoundParameters = typing.TypedDict('MrcalcRoundParameters', {
+    "__STYX_TYPE__": typing.Literal["round"],
+})
+MrcalcCeilParameters = typing.TypedDict('MrcalcCeilParameters', {
+    "__STYX_TYPE__": typing.Literal["ceil"],
+})
+MrcalcFloorParameters = typing.TypedDict('MrcalcFloorParameters', {
+    "__STYX_TYPE__": typing.Literal["floor"],
+})
+MrcalcNotParameters = typing.TypedDict('MrcalcNotParameters', {
+    "__STYX_TYPE__": typing.Literal["not"],
+})
+MrcalcAndParameters = typing.TypedDict('MrcalcAndParameters', {
+    "__STYX_TYPE__": typing.Literal["and"],
+})
+MrcalcOrParameters = typing.TypedDict('MrcalcOrParameters', {
+    "__STYX_TYPE__": typing.Literal["or"],
+})
+MrcalcXorParameters = typing.TypedDict('MrcalcXorParameters', {
+    "__STYX_TYPE__": typing.Literal["xor"],
+})
+MrcalcIsnanParameters = typing.TypedDict('MrcalcIsnanParameters', {
+    "__STYX_TYPE__": typing.Literal["isnan"],
+})
+MrcalcIsinfParameters = typing.TypedDict('MrcalcIsinfParameters', {
+    "__STYX_TYPE__": typing.Literal["isinf"],
+})
+MrcalcFiniteParameters = typing.TypedDict('MrcalcFiniteParameters', {
+    "__STYX_TYPE__": typing.Literal["finite"],
+})
+MrcalcComplexParameters = typing.TypedDict('MrcalcComplexParameters', {
+    "__STYX_TYPE__": typing.Literal["complex"],
+})
+MrcalcPolarParameters = typing.TypedDict('MrcalcPolarParameters', {
+    "__STYX_TYPE__": typing.Literal["polar"],
+})
+MrcalcRealParameters = typing.TypedDict('MrcalcRealParameters', {
+    "__STYX_TYPE__": typing.Literal["real"],
+})
+MrcalcImagParameters = typing.TypedDict('MrcalcImagParameters', {
+    "__STYX_TYPE__": typing.Literal["imag"],
+})
+MrcalcPhaseParameters = typing.TypedDict('MrcalcPhaseParameters', {
+    "__STYX_TYPE__": typing.Literal["phase"],
+})
+MrcalcConjParameters = typing.TypedDict('MrcalcConjParameters', {
+    "__STYX_TYPE__": typing.Literal["conj"],
+})
+MrcalcProjParameters = typing.TypedDict('MrcalcProjParameters', {
+    "__STYX_TYPE__": typing.Literal["proj"],
+})
+MrcalcExpParameters = typing.TypedDict('MrcalcExpParameters', {
+    "__STYX_TYPE__": typing.Literal["exp"],
+})
+MrcalcLogParameters = typing.TypedDict('MrcalcLogParameters', {
+    "__STYX_TYPE__": typing.Literal["log"],
+})
+MrcalcLog10Parameters = typing.TypedDict('MrcalcLog10Parameters', {
+    "__STYX_TYPE__": typing.Literal["log10"],
+})
+MrcalcCosParameters = typing.TypedDict('MrcalcCosParameters', {
+    "__STYX_TYPE__": typing.Literal["cos"],
+})
+MrcalcSinParameters = typing.TypedDict('MrcalcSinParameters', {
+    "__STYX_TYPE__": typing.Literal["sin"],
+})
+MrcalcTanParameters = typing.TypedDict('MrcalcTanParameters', {
+    "__STYX_TYPE__": typing.Literal["tan"],
+})
+MrcalcAcosParameters = typing.TypedDict('MrcalcAcosParameters', {
+    "__STYX_TYPE__": typing.Literal["acos"],
+})
+MrcalcAsinParameters = typing.TypedDict('MrcalcAsinParameters', {
+    "__STYX_TYPE__": typing.Literal["asin"],
+})
+MrcalcAtanParameters = typing.TypedDict('MrcalcAtanParameters', {
+    "__STYX_TYPE__": typing.Literal["atan"],
+})
+MrcalcCoshParameters = typing.TypedDict('MrcalcCoshParameters', {
+    "__STYX_TYPE__": typing.Literal["cosh"],
+})
+MrcalcSinhParameters = typing.TypedDict('MrcalcSinhParameters', {
+    "__STYX_TYPE__": typing.Literal["sinh"],
+})
+MrcalcTanhParameters = typing.TypedDict('MrcalcTanhParameters', {
+    "__STYX_TYPE__": typing.Literal["tanh"],
+})
+MrcalcAcoshParameters = typing.TypedDict('MrcalcAcoshParameters', {
+    "__STYX_TYPE__": typing.Literal["acosh"],
+})
+MrcalcAsinhParameters = typing.TypedDict('MrcalcAsinhParameters', {
+    "__STYX_TYPE__": typing.Literal["asinh"],
+})
+MrcalcAtanhParameters = typing.TypedDict('MrcalcAtanhParameters', {
+    "__STYX_TYPE__": typing.Literal["atanh"],
+})
+MrcalcConfigParameters = typing.TypedDict('MrcalcConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+MrcalcVariousStringParameters = typing.TypedDict('MrcalcVariousStringParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+MrcalcVariousFileParameters = typing.TypedDict('MrcalcVariousFileParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+MrcalcParameters = typing.TypedDict('MrcalcParameters', {
+    "__STYX_TYPE__": typing.Literal["mrcalc"],
+    "abs": typing.NotRequired[list[MrcalcAbsParameters] | None],
+    "neg": typing.NotRequired[list[MrcalcNegParameters] | None],
+    "add": typing.NotRequired[list[MrcalcAddParameters] | None],
+    "subtract": typing.NotRequired[list[MrcalcSubtractParameters] | None],
+    "multiply": typing.NotRequired[list[MrcalcMultiplyParameters] | None],
+    "divide": typing.NotRequired[list[MrcalcDivideParameters] | None],
+    "min": typing.NotRequired[list[MrcalcMinParameters] | None],
+    "max": typing.NotRequired[list[MrcalcMaxParameters] | None],
+    "lt": typing.NotRequired[list[MrcalcLtParameters] | None],
+    "gt": typing.NotRequired[list[MrcalcGtParameters] | None],
+    "le": typing.NotRequired[list[MrcalcLeParameters] | None],
+    "ge": typing.NotRequired[list[MrcalcGeParameters] | None],
+    "eq": typing.NotRequired[list[MrcalcEqParameters] | None],
+    "neq": typing.NotRequired[list[MrcalcNeqParameters] | None],
+    "if": typing.NotRequired[list[MrcalcIfParameters] | None],
+    "replace": typing.NotRequired[list[MrcalcReplaceParameters] | None],
+    "sqrt": typing.NotRequired[list[MrcalcSqrtParameters] | None],
+    "pow": typing.NotRequired[list[MrcalcPowParameters] | None],
+    "round": typing.NotRequired[list[MrcalcRoundParameters] | None],
+    "ceil": typing.NotRequired[list[MrcalcCeilParameters] | None],
+    "floor": typing.NotRequired[list[MrcalcFloorParameters] | None],
+    "not": typing.NotRequired[list[MrcalcNotParameters] | None],
+    "and": typing.NotRequired[list[MrcalcAndParameters] | None],
+    "or": typing.NotRequired[list[MrcalcOrParameters] | None],
+    "xor": typing.NotRequired[list[MrcalcXorParameters] | None],
+    "isnan": typing.NotRequired[list[MrcalcIsnanParameters] | None],
+    "isinf": typing.NotRequired[list[MrcalcIsinfParameters] | None],
+    "finite": typing.NotRequired[list[MrcalcFiniteParameters] | None],
+    "complex": typing.NotRequired[list[MrcalcComplexParameters] | None],
+    "polar": typing.NotRequired[list[MrcalcPolarParameters] | None],
+    "real": typing.NotRequired[list[MrcalcRealParameters] | None],
+    "imag": typing.NotRequired[list[MrcalcImagParameters] | None],
+    "phase": typing.NotRequired[list[MrcalcPhaseParameters] | None],
+    "conj": typing.NotRequired[list[MrcalcConjParameters] | None],
+    "proj": typing.NotRequired[list[MrcalcProjParameters] | None],
+    "exp": typing.NotRequired[list[MrcalcExpParameters] | None],
+    "log": typing.NotRequired[list[MrcalcLogParameters] | None],
+    "log10": typing.NotRequired[list[MrcalcLog10Parameters] | None],
+    "cos": typing.NotRequired[list[MrcalcCosParameters] | None],
+    "sin": typing.NotRequired[list[MrcalcSinParameters] | None],
+    "tan": typing.NotRequired[list[MrcalcTanParameters] | None],
+    "acos": typing.NotRequired[list[MrcalcAcosParameters] | None],
+    "asin": typing.NotRequired[list[MrcalcAsinParameters] | None],
+    "atan": typing.NotRequired[list[MrcalcAtanParameters] | None],
+    "cosh": typing.NotRequired[list[MrcalcCoshParameters] | None],
+    "sinh": typing.NotRequired[list[MrcalcSinhParameters] | None],
+    "tanh": typing.NotRequired[list[MrcalcTanhParameters] | None],
+    "acosh": typing.NotRequired[list[MrcalcAcoshParameters] | None],
+    "asinh": typing.NotRequired[list[MrcalcAsinhParameters] | None],
+    "atanh": typing.NotRequired[list[MrcalcAtanhParameters] | None],
+    "datatype": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[MrcalcConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "operand": list[typing.Union[MrcalcVariousStringParameters, MrcalcVariousFileParameters]],
+})
 
 
-@dataclasses.dataclass
-class MrcalcAbs:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    |%1| : return absolute value (magnitude) of real or complex number.
-    """
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-abs")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mrcalc": mrcalc_cargs,
+        "abs": mrcalc_abs_cargs,
+        "neg": mrcalc_neg_cargs,
+        "add": mrcalc_add_cargs,
+        "subtract": mrcalc_subtract_cargs,
+        "multiply": mrcalc_multiply_cargs,
+        "divide": mrcalc_divide_cargs,
+        "min": mrcalc_min_cargs,
+        "max": mrcalc_max_cargs,
+        "lt": mrcalc_lt_cargs,
+        "gt": mrcalc_gt_cargs,
+        "le": mrcalc_le_cargs,
+        "ge": mrcalc_ge_cargs,
+        "eq": mrcalc_eq_cargs,
+        "neq": mrcalc_neq_cargs,
+        "if": mrcalc_if_cargs,
+        "replace": mrcalc_replace_cargs,
+        "sqrt": mrcalc_sqrt_cargs,
+        "pow": mrcalc_pow_cargs,
+        "round": mrcalc_round_cargs,
+        "ceil": mrcalc_ceil_cargs,
+        "floor": mrcalc_floor_cargs,
+        "not": mrcalc_not_cargs,
+        "and": mrcalc_and_cargs,
+        "or": mrcalc_or_cargs,
+        "xor": mrcalc_xor_cargs,
+        "isnan": mrcalc_isnan_cargs,
+        "isinf": mrcalc_isinf_cargs,
+        "finite": mrcalc_finite_cargs,
+        "complex": mrcalc_complex_cargs,
+        "polar": mrcalc_polar_cargs,
+        "real": mrcalc_real_cargs,
+        "imag": mrcalc_imag_cargs,
+        "phase": mrcalc_phase_cargs,
+        "conj": mrcalc_conj_cargs,
+        "proj": mrcalc_proj_cargs,
+        "exp": mrcalc_exp_cargs,
+        "log": mrcalc_log_cargs,
+        "log10": mrcalc_log10_cargs,
+        "cos": mrcalc_cos_cargs,
+        "sin": mrcalc_sin_cargs,
+        "tan": mrcalc_tan_cargs,
+        "acos": mrcalc_acos_cargs,
+        "asin": mrcalc_asin_cargs,
+        "atan": mrcalc_atan_cargs,
+        "cosh": mrcalc_cosh_cargs,
+        "sinh": mrcalc_sinh_cargs,
+        "tanh": mrcalc_tanh_cargs,
+        "acosh": mrcalc_acosh_cargs,
+        "asinh": mrcalc_asinh_cargs,
+        "atanh": mrcalc_atanh_cargs,
+        "config": mrcalc_config_cargs,
+        "VariousString": mrcalc_various_string_cargs,
+        "VariousFile": mrcalc_various_file_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MrcalcNeg:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    -%1 : negative value.
-    """
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-neg")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MrcalcAdd:
+def mrcalc_abs_params(
+) -> MrcalcAbsParameters:
     """
-    (%1 + %2) : add values.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-add")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "abs",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcSubtract:
+def mrcalc_abs_cargs(
+    params: MrcalcAbsParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 - %2) : subtract nth operand from (n-1)th.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-subtract")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-abs")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcMultiply:
+def mrcalc_neg_params(
+) -> MrcalcNegParameters:
     """
-    (%1 * %2) : multiply values.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-multiply")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "neg",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcDivide:
+def mrcalc_neg_cargs(
+    params: MrcalcNegParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 / %2) : divide (n-1)th operand by nth.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-divide")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-neg")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcMin:
+def mrcalc_add_params(
+) -> MrcalcAddParameters:
     """
-    min (%1, %2) : smallest of last two operands.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-min")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "add",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcMax:
+def mrcalc_add_cargs(
+    params: MrcalcAddParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    max (%1, %2) : greatest of last two operands.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-max")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-add")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcLt:
+def mrcalc_subtract_params(
+) -> MrcalcSubtractParameters:
     """
-    (%1 < %2) : less-than operator (true=1, false=0).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-lt")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "subtract",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcGt:
+def mrcalc_subtract_cargs(
+    params: MrcalcSubtractParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 > %2) : greater-than operator (true=1, false=0).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-gt")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-subtract")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcLe:
+def mrcalc_multiply_params(
+) -> MrcalcMultiplyParameters:
     """
-    (%1 <= %2) : less-than-or-equal-to operator (true=1, false=0).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-le")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "multiply",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcGe:
+def mrcalc_multiply_cargs(
+    params: MrcalcMultiplyParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-ge")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-multiply")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcEq:
+def mrcalc_divide_params(
+) -> MrcalcDivideParameters:
     """
-    (%1 == %2) : equal-to operator (true=1, false=0).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-eq")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "divide",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcNeq:
+def mrcalc_divide_cargs(
+    params: MrcalcDivideParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 != %2) : not-equal-to operator (true=1, false=0).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-neq")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-divide")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcIf:
+def mrcalc_min_params(
+) -> MrcalcMinParameters:
     """
-    (%1 ? %2 : %3) : if first operand is true (non-zero), return second operand,
-    otherwise return third operand.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-if")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "min",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcReplace:
+def mrcalc_min_cargs(
+    params: MrcalcMinParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1, %2 -> %3) : Wherever first operand is equal to the second operand,
-    replace with third operand.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-replace")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-min")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcSqrt:
+def mrcalc_max_params(
+) -> MrcalcMaxParameters:
     """
-    sqrt (%1) : square root.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-sqrt")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "max",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcPow:
+def mrcalc_max_cargs(
+    params: MrcalcMaxParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    %1^%2 : raise (n-1)th operand to nth power.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-pow")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-max")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcRound:
+def mrcalc_lt_params(
+) -> MrcalcLtParameters:
     """
-    round (%1) : round to nearest integer.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-round")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "lt",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcCeil:
+def mrcalc_lt_cargs(
+    params: MrcalcLtParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    ceil (%1) : round up to nearest integer.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-ceil")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-lt")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcFloor:
+def mrcalc_gt_params(
+) -> MrcalcGtParameters:
     """
-    floor (%1) : round down to nearest integer.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-floor")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "gt",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcNot:
+def mrcalc_gt_cargs(
+    params: MrcalcGtParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    !%1 : NOT operator: true (1) if operand is false (i.e. zero).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-not")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-gt")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcAnd:
+def mrcalc_le_params(
+) -> MrcalcLeParameters:
     """
-    (%1 && %2) : AND operator: true (1) if both operands are true (i.e.
-    non-zero).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-and")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "le",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcOr:
+def mrcalc_le_cargs(
+    params: MrcalcLeParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 || %2) : OR operator: true (1) if either operand is true (i.e.
-    non-zero).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-or")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-le")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcXor:
+def mrcalc_ge_params(
+) -> MrcalcGeParameters:
     """
-    (%1 ^^ %2) : XOR operator: true (1) if only one of the operands is true
-    (i.e. non-zero).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-xor")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ge",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcIsnan:
+def mrcalc_ge_cargs(
+    params: MrcalcGeParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    isnan (%1) : true (1) if operand is not-a-number (NaN).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-isnan")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-ge")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcIsinf:
+def mrcalc_eq_params(
+) -> MrcalcEqParameters:
     """
-    isinf (%1) : true (1) if operand is infinite (Inf).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-isinf")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "eq",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcFinite:
+def mrcalc_eq_cargs(
+    params: MrcalcEqParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    finite (%1) : true (1) if operand is finite (i.e. not NaN or Inf).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-finite")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-eq")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcComplex:
+def mrcalc_neq_params(
+) -> MrcalcNeqParameters:
     """
-    (%1 + %2 i) : create complex number using the last two operands as
-    real,imaginary components.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-complex")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "neq",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcPolar:
+def mrcalc_neq_cargs(
+    params: MrcalcNeqParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    (%1 /_ %2) : create complex number using the last two operands as
-    magnitude,phase components (phase in radians).
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-polar")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-neq")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcReal:
+def mrcalc_if_params(
+) -> MrcalcIfParameters:
     """
-    real (%1) : real part of complex number.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-real")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "if",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcImag:
+def mrcalc_if_cargs(
+    params: MrcalcIfParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    imag (%1) : imaginary part of complex number.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-imag")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-if")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcPhase:
+def mrcalc_replace_params(
+) -> MrcalcReplaceParameters:
     """
-    phase (%1) : phase of complex number (use -abs for magnitude).
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-phase")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "replace",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcConj:
+def mrcalc_replace_cargs(
+    params: MrcalcReplaceParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    conj (%1) : complex conjugate.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-conj")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-replace")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcProj:
+def mrcalc_sqrt_params(
+) -> MrcalcSqrtParameters:
     """
-    proj (%1) : projection onto the Riemann sphere.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-proj")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sqrt",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcExp:
+def mrcalc_sqrt_cargs(
+    params: MrcalcSqrtParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    exp (%1) : exponential function.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-exp")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-sqrt")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcLog:
+def mrcalc_pow_params(
+) -> MrcalcPowParameters:
     """
-    log (%1) : natural logarithm.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-log")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "pow",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcLog10:
+def mrcalc_pow_cargs(
+    params: MrcalcPowParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    log10 (%1) : common logarithm.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-log10")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-pow")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcCos:
+def mrcalc_round_params(
+) -> MrcalcRoundParameters:
     """
-    cos (%1) : cosine.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cos")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "round",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcSin:
+def mrcalc_round_cargs(
+    params: MrcalcRoundParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    sin (%1) : sine.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-sin")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-round")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcTan:
+def mrcalc_ceil_params(
+) -> MrcalcCeilParameters:
     """
-    tan (%1) : tangent.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-tan")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ceil",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcAcos:
+def mrcalc_ceil_cargs(
+    params: MrcalcCeilParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    acos (%1) : inverse cosine.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-acos")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-ceil")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcAsin:
+def mrcalc_floor_params(
+) -> MrcalcFloorParameters:
     """
-    asin (%1) : inverse sine.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-asin")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "floor",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcAtan:
+def mrcalc_floor_cargs(
+    params: MrcalcFloorParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    atan (%1) : inverse tangent.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-atan")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-floor")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcCosh:
+def mrcalc_not_params(
+) -> MrcalcNotParameters:
     """
-    cosh (%1) : hyperbolic cosine.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cosh")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "not",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcSinh:
+def mrcalc_not_cargs(
+    params: MrcalcNotParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    sinh (%1) : hyperbolic sine.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-sinh")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-not")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcTanh:
+def mrcalc_and_params(
+) -> MrcalcAndParameters:
     """
-    tanh (%1) : hyperbolic tangent.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-tanh")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "and",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcAcosh:
+def mrcalc_and_cargs(
+    params: MrcalcAndParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    acosh (%1) : inverse hyperbolic cosine.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-acosh")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-and")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcAsinh:
+def mrcalc_or_params(
+) -> MrcalcOrParameters:
     """
-    asinh (%1) : inverse hyperbolic sine.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-asinh")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "or",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class MrcalcAtanh:
+def mrcalc_or_cargs(
+    params: MrcalcOrParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    atanh (%1) : inverse hyperbolic tangent.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-atanh")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-or")
+    return cargs
 
 
-@dataclasses.dataclass
-class MrcalcConfig:
+def mrcalc_xor_params(
+) -> MrcalcXorParameters:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
-
-
-@dataclasses.dataclass
-class MrcalcVariousString:
-    obj: str
-    """String object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
-
-
-@dataclasses.dataclass
-class MrcalcVariousFile:
-    obj: InputPathType
-    """File object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
-
-
-class MrcalcOutputs(typing.NamedTuple):
+    Args:
+    Returns:
+        Parameter dictionary
     """
-    Output object returned when calling `mrcalc(...)`.
+    params = {
+        "__STYXTYPE__": "xor",
+    }
+    return params
+
+
+def mrcalc_xor_cargs(
+    params: MrcalcXorParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-xor")
+    return cargs
 
 
-def mrcalc(
-    operand: list[typing.Union[MrcalcVariousString, MrcalcVariousFile]],
-    abs_: list[MrcalcAbs] | None = None,
-    neg: list[MrcalcNeg] | None = None,
-    add: list[MrcalcAdd] | None = None,
-    subtract: list[MrcalcSubtract] | None = None,
-    multiply: list[MrcalcMultiply] | None = None,
-    divide: list[MrcalcDivide] | None = None,
-    min_: list[MrcalcMin] | None = None,
-    max_: list[MrcalcMax] | None = None,
-    lt: list[MrcalcLt] | None = None,
-    gt: list[MrcalcGt] | None = None,
-    le: list[MrcalcLe] | None = None,
-    ge: list[MrcalcGe] | None = None,
-    eq: list[MrcalcEq] | None = None,
-    neq: list[MrcalcNeq] | None = None,
-    if_: list[MrcalcIf] | None = None,
-    replace: list[MrcalcReplace] | None = None,
-    sqrt: list[MrcalcSqrt] | None = None,
-    pow_: list[MrcalcPow] | None = None,
-    round_: list[MrcalcRound] | None = None,
-    ceil: list[MrcalcCeil] | None = None,
-    floor: list[MrcalcFloor] | None = None,
-    not_: list[MrcalcNot] | None = None,
-    and_: list[MrcalcAnd] | None = None,
-    or_: list[MrcalcOr] | None = None,
-    xor: list[MrcalcXor] | None = None,
-    isnan: list[MrcalcIsnan] | None = None,
-    isinf: list[MrcalcIsinf] | None = None,
-    finite: list[MrcalcFinite] | None = None,
-    complex_: list[MrcalcComplex] | None = None,
-    polar: list[MrcalcPolar] | None = None,
-    real: list[MrcalcReal] | None = None,
-    imag: list[MrcalcImag] | None = None,
-    phase: list[MrcalcPhase] | None = None,
-    conj: list[MrcalcConj] | None = None,
-    proj: list[MrcalcProj] | None = None,
-    exp: list[MrcalcExp] | None = None,
-    log: list[MrcalcLog] | None = None,
-    log10: list[MrcalcLog10] | None = None,
-    cos: list[MrcalcCos] | None = None,
-    sin: list[MrcalcSin] | None = None,
-    tan: list[MrcalcTan] | None = None,
-    acos: list[MrcalcAcos] | None = None,
-    asin: list[MrcalcAsin] | None = None,
-    atan: list[MrcalcAtan] | None = None,
-    cosh: list[MrcalcCosh] | None = None,
-    sinh: list[MrcalcSinh] | None = None,
-    tanh: list[MrcalcTanh] | None = None,
-    acosh: list[MrcalcAcosh] | None = None,
-    asinh: list[MrcalcAsinh] | None = None,
-    atanh: list[MrcalcAtanh] | None = None,
+def mrcalc_isnan_params(
+) -> MrcalcIsnanParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "isnan",
+    }
+    return params
+
+
+def mrcalc_isnan_cargs(
+    params: MrcalcIsnanParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-isnan")
+    return cargs
+
+
+def mrcalc_isinf_params(
+) -> MrcalcIsinfParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "isinf",
+    }
+    return params
+
+
+def mrcalc_isinf_cargs(
+    params: MrcalcIsinfParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-isinf")
+    return cargs
+
+
+def mrcalc_finite_params(
+) -> MrcalcFiniteParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "finite",
+    }
+    return params
+
+
+def mrcalc_finite_cargs(
+    params: MrcalcFiniteParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-finite")
+    return cargs
+
+
+def mrcalc_complex_params(
+) -> MrcalcComplexParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "complex",
+    }
+    return params
+
+
+def mrcalc_complex_cargs(
+    params: MrcalcComplexParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-complex")
+    return cargs
+
+
+def mrcalc_polar_params(
+) -> MrcalcPolarParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "polar",
+    }
+    return params
+
+
+def mrcalc_polar_cargs(
+    params: MrcalcPolarParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-polar")
+    return cargs
+
+
+def mrcalc_real_params(
+) -> MrcalcRealParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "real",
+    }
+    return params
+
+
+def mrcalc_real_cargs(
+    params: MrcalcRealParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-real")
+    return cargs
+
+
+def mrcalc_imag_params(
+) -> MrcalcImagParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imag",
+    }
+    return params
+
+
+def mrcalc_imag_cargs(
+    params: MrcalcImagParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-imag")
+    return cargs
+
+
+def mrcalc_phase_params(
+) -> MrcalcPhaseParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "phase",
+    }
+    return params
+
+
+def mrcalc_phase_cargs(
+    params: MrcalcPhaseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-phase")
+    return cargs
+
+
+def mrcalc_conj_params(
+) -> MrcalcConjParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "conj",
+    }
+    return params
+
+
+def mrcalc_conj_cargs(
+    params: MrcalcConjParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-conj")
+    return cargs
+
+
+def mrcalc_proj_params(
+) -> MrcalcProjParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "proj",
+    }
+    return params
+
+
+def mrcalc_proj_cargs(
+    params: MrcalcProjParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-proj")
+    return cargs
+
+
+def mrcalc_exp_params(
+) -> MrcalcExpParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "exp",
+    }
+    return params
+
+
+def mrcalc_exp_cargs(
+    params: MrcalcExpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-exp")
+    return cargs
+
+
+def mrcalc_log_params(
+) -> MrcalcLogParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "log",
+    }
+    return params
+
+
+def mrcalc_log_cargs(
+    params: MrcalcLogParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-log")
+    return cargs
+
+
+def mrcalc_log10_params(
+) -> MrcalcLog10Parameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "log10",
+    }
+    return params
+
+
+def mrcalc_log10_cargs(
+    params: MrcalcLog10Parameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-log10")
+    return cargs
+
+
+def mrcalc_cos_params(
+) -> MrcalcCosParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cos",
+    }
+    return params
+
+
+def mrcalc_cos_cargs(
+    params: MrcalcCosParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cos")
+    return cargs
+
+
+def mrcalc_sin_params(
+) -> MrcalcSinParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sin",
+    }
+    return params
+
+
+def mrcalc_sin_cargs(
+    params: MrcalcSinParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-sin")
+    return cargs
+
+
+def mrcalc_tan_params(
+) -> MrcalcTanParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tan",
+    }
+    return params
+
+
+def mrcalc_tan_cargs(
+    params: MrcalcTanParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-tan")
+    return cargs
+
+
+def mrcalc_acos_params(
+) -> MrcalcAcosParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "acos",
+    }
+    return params
+
+
+def mrcalc_acos_cargs(
+    params: MrcalcAcosParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-acos")
+    return cargs
+
+
+def mrcalc_asin_params(
+) -> MrcalcAsinParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "asin",
+    }
+    return params
+
+
+def mrcalc_asin_cargs(
+    params: MrcalcAsinParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-asin")
+    return cargs
+
+
+def mrcalc_atan_params(
+) -> MrcalcAtanParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "atan",
+    }
+    return params
+
+
+def mrcalc_atan_cargs(
+    params: MrcalcAtanParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-atan")
+    return cargs
+
+
+def mrcalc_cosh_params(
+) -> MrcalcCoshParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cosh",
+    }
+    return params
+
+
+def mrcalc_cosh_cargs(
+    params: MrcalcCoshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cosh")
+    return cargs
+
+
+def mrcalc_sinh_params(
+) -> MrcalcSinhParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sinh",
+    }
+    return params
+
+
+def mrcalc_sinh_cargs(
+    params: MrcalcSinhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-sinh")
+    return cargs
+
+
+def mrcalc_tanh_params(
+) -> MrcalcTanhParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tanh",
+    }
+    return params
+
+
+def mrcalc_tanh_cargs(
+    params: MrcalcTanhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-tanh")
+    return cargs
+
+
+def mrcalc_acosh_params(
+) -> MrcalcAcoshParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "acosh",
+    }
+    return params
+
+
+def mrcalc_acosh_cargs(
+    params: MrcalcAcoshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-acosh")
+    return cargs
+
+
+def mrcalc_asinh_params(
+) -> MrcalcAsinhParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "asinh",
+    }
+    return params
+
+
+def mrcalc_asinh_cargs(
+    params: MrcalcAsinhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-asinh")
+    return cargs
+
+
+def mrcalc_atanh_params(
+) -> MrcalcAtanhParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "atanh",
+    }
+    return params
+
+
+def mrcalc_atanh_cargs(
+    params: MrcalcAtanhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-atanh")
+    return cargs
+
+
+def mrcalc_config_params(
+    key: str,
+    value: str,
+) -> MrcalcConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def mrcalc_config_cargs(
+    params: MrcalcConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
+
+
+def mrcalc_various_string_params(
+    obj: str,
+) -> MrcalcVariousStringParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def mrcalc_various_string_cargs(
+    params: MrcalcVariousStringParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def mrcalc_various_file_params(
+    obj: InputPathType,
+) -> MrcalcVariousFileParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def mrcalc_various_file_cargs(
+    params: MrcalcVariousFileParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def mrcalc_params(
+    operand: list[typing.Union[MrcalcVariousStringParameters, MrcalcVariousFileParameters]],
+    abs_: list[MrcalcAbsParameters] | None = None,
+    neg: list[MrcalcNegParameters] | None = None,
+    add: list[MrcalcAddParameters] | None = None,
+    subtract: list[MrcalcSubtractParameters] | None = None,
+    multiply: list[MrcalcMultiplyParameters] | None = None,
+    divide: list[MrcalcDivideParameters] | None = None,
+    min_: list[MrcalcMinParameters] | None = None,
+    max_: list[MrcalcMaxParameters] | None = None,
+    lt: list[MrcalcLtParameters] | None = None,
+    gt: list[MrcalcGtParameters] | None = None,
+    le: list[MrcalcLeParameters] | None = None,
+    ge: list[MrcalcGeParameters] | None = None,
+    eq: list[MrcalcEqParameters] | None = None,
+    neq: list[MrcalcNeqParameters] | None = None,
+    if_: list[MrcalcIfParameters] | None = None,
+    replace: list[MrcalcReplaceParameters] | None = None,
+    sqrt: list[MrcalcSqrtParameters] | None = None,
+    pow_: list[MrcalcPowParameters] | None = None,
+    round_: list[MrcalcRoundParameters] | None = None,
+    ceil: list[MrcalcCeilParameters] | None = None,
+    floor: list[MrcalcFloorParameters] | None = None,
+    not_: list[MrcalcNotParameters] | None = None,
+    and_: list[MrcalcAndParameters] | None = None,
+    or_: list[MrcalcOrParameters] | None = None,
+    xor: list[MrcalcXorParameters] | None = None,
+    isnan: list[MrcalcIsnanParameters] | None = None,
+    isinf: list[MrcalcIsinfParameters] | None = None,
+    finite: list[MrcalcFiniteParameters] | None = None,
+    complex_: list[MrcalcComplexParameters] | None = None,
+    polar: list[MrcalcPolarParameters] | None = None,
+    real: list[MrcalcRealParameters] | None = None,
+    imag: list[MrcalcImagParameters] | None = None,
+    phase: list[MrcalcPhaseParameters] | None = None,
+    conj: list[MrcalcConjParameters] | None = None,
+    proj: list[MrcalcProjParameters] | None = None,
+    exp: list[MrcalcExpParameters] | None = None,
+    log: list[MrcalcLogParameters] | None = None,
+    log10: list[MrcalcLog10Parameters] | None = None,
+    cos: list[MrcalcCosParameters] | None = None,
+    sin: list[MrcalcSinParameters] | None = None,
+    tan: list[MrcalcTanParameters] | None = None,
+    acos: list[MrcalcAcosParameters] | None = None,
+    asin: list[MrcalcAsinParameters] | None = None,
+    atan: list[MrcalcAtanParameters] | None = None,
+    cosh: list[MrcalcCoshParameters] | None = None,
+    sinh: list[MrcalcSinhParameters] | None = None,
+    tanh: list[MrcalcTanhParameters] | None = None,
+    acosh: list[MrcalcAcoshParameters] | None = None,
+    asinh: list[MrcalcAsinhParameters] | None = None,
+    atanh: list[MrcalcAtanhParameters] | None = None,
     datatype: str | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrcalcConfig] | None = None,
+    config: list[MrcalcConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> MrcalcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        operand: an input image, intensity value, or the special keywords\
+            'rand' (random number between 0 and 1) or 'randn' (random number from\
+            unit std.dev. normal distribution) or the mathematical constants 'e'\
+            and 'pi'.
+        abs_: |%1| : return absolute value (magnitude) of real or complex\
+            number.
+        neg: -%1 : negative value.
+        add: (%1 + %2) : add values.
+        subtract: (%1 - %2) : subtract nth operand from (n-1)th.
+        multiply: (%1 * %2) : multiply values.
+        divide: (%1 / %2) : divide (n-1)th operand by nth.
+        min_: min (%1, %2) : smallest of last two operands.
+        max_: max (%1, %2) : greatest of last two operands.
+        lt: (%1 < %2) : less-than operator (true=1, false=0).
+        gt: (%1 > %2) : greater-than operator (true=1, false=0).
+        le: (%1 <= %2) : less-than-or-equal-to operator (true=1, false=0).
+        ge: (%1 >= %2) : greater-than-or-equal-to operator (true=1, false=0).
+        eq: (%1 == %2) : equal-to operator (true=1, false=0).
+        neq: (%1 != %2) : not-equal-to operator (true=1, false=0).
+        if_: (%1 ? %2 : %3) : if first operand is true (non-zero), return\
+            second operand, otherwise return third operand.
+        replace: (%1, %2 -> %3) : Wherever first operand is equal to the second\
+            operand, replace with third operand.
+        sqrt: sqrt (%1) : square root.
+        pow_: %1^%2 : raise (n-1)th operand to nth power.
+        round_: round (%1) : round to nearest integer.
+        ceil: ceil (%1) : round up to nearest integer.
+        floor: floor (%1) : round down to nearest integer.
+        not_: !%1 : NOT operator: true (1) if operand is false (i.e. zero).
+        and_: (%1 && %2) : AND operator: true (1) if both operands are true\
+            (i.e. non-zero).
+        or_: (%1 || %2) : OR operator: true (1) if either operand is true (i.e.\
+            non-zero).
+        xor: (%1 ^^ %2) : XOR operator: true (1) if only one of the operands is\
+            true (i.e. non-zero).
+        isnan: isnan (%1) : true (1) if operand is not-a-number (NaN).
+        isinf: isinf (%1) : true (1) if operand is infinite (Inf).
+        finite: finite (%1) : true (1) if operand is finite (i.e. not NaN or\
+            Inf).
+        complex_: (%1 + %2 i) : create complex number using the last two\
+            operands as real,imaginary components.
+        polar: (%1 /_ %2) : create complex number using the last two operands\
+            as magnitude,phase components (phase in radians).
+        real: real (%1) : real part of complex number.
+        imag: imag (%1) : imaginary part of complex number.
+        phase: phase (%1) : phase of complex number (use -abs for magnitude).
+        conj: conj (%1) : complex conjugate.
+        proj: proj (%1) : projection onto the Riemann sphere.
+        exp: exp (%1) : exponential function.
+        log: log (%1) : natural logarithm.
+        log10: log10 (%1) : common logarithm.
+        cos: cos (%1) : cosine.
+        sin: sin (%1) : sine.
+        tan: tan (%1) : tangent.
+        acos: acos (%1) : inverse cosine.
+        asin: asin (%1) : inverse sine.
+        atan: atan (%1) : inverse tangent.
+        cosh: cosh (%1) : hyperbolic cosine.
+        sinh: sinh (%1) : hyperbolic sine.
+        tanh: tanh (%1) : hyperbolic tangent.
+        acosh: acosh (%1) : inverse hyperbolic cosine.
+        asinh: asinh (%1) : inverse hyperbolic sine.
+        atanh: atanh (%1) : inverse hyperbolic tangent.
+        datatype: specify output image data type. Valid choices are: float32,\
+            float32le, float32be, float64, float64le, float64be, int64, uint64,\
+            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\
+            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\
+            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\
+            int8, uint8, bit.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mrcalc",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "operand": operand,
+    }
+    if abs_ is not None:
+        params["abs"] = abs_
+    if neg is not None:
+        params["neg"] = neg
+    if add is not None:
+        params["add"] = add
+    if subtract is not None:
+        params["subtract"] = subtract
+    if multiply is not None:
+        params["multiply"] = multiply
+    if divide is not None:
+        params["divide"] = divide
+    if min_ is not None:
+        params["min"] = min_
+    if max_ is not None:
+        params["max"] = max_
+    if lt is not None:
+        params["lt"] = lt
+    if gt is not None:
+        params["gt"] = gt
+    if le is not None:
+        params["le"] = le
+    if ge is not None:
+        params["ge"] = ge
+    if eq is not None:
+        params["eq"] = eq
+    if neq is not None:
+        params["neq"] = neq
+    if if_ is not None:
+        params["if"] = if_
+    if replace is not None:
+        params["replace"] = replace
+    if sqrt is not None:
+        params["sqrt"] = sqrt
+    if pow_ is not None:
+        params["pow"] = pow_
+    if round_ is not None:
+        params["round"] = round_
+    if ceil is not None:
+        params["ceil"] = ceil
+    if floor is not None:
+        params["floor"] = floor
+    if not_ is not None:
+        params["not"] = not_
+    if and_ is not None:
+        params["and"] = and_
+    if or_ is not None:
+        params["or"] = or_
+    if xor is not None:
+        params["xor"] = xor
+    if isnan is not None:
+        params["isnan"] = isnan
+    if isinf is not None:
+        params["isinf"] = isinf
+    if finite is not None:
+        params["finite"] = finite
+    if complex_ is not None:
+        params["complex"] = complex_
+    if polar is not None:
+        params["polar"] = polar
+    if real is not None:
+        params["real"] = real
+    if imag is not None:
+        params["imag"] = imag
+    if phase is not None:
+        params["phase"] = phase
+    if conj is not None:
+        params["conj"] = conj
+    if proj is not None:
+        params["proj"] = proj
+    if exp is not None:
+        params["exp"] = exp
+    if log is not None:
+        params["log"] = log
+    if log10 is not None:
+        params["log10"] = log10
+    if cos is not None:
+        params["cos"] = cos
+    if sin is not None:
+        params["sin"] = sin
+    if tan is not None:
+        params["tan"] = tan
+    if acos is not None:
+        params["acos"] = acos
+    if asin is not None:
+        params["asin"] = asin
+    if atan is not None:
+        params["atan"] = atan
+    if cosh is not None:
+        params["cosh"] = cosh
+    if sinh is not None:
+        params["sinh"] = sinh
+    if tanh is not None:
+        params["tanh"] = tanh
+    if acosh is not None:
+        params["acosh"] = acosh
+    if asinh is not None:
+        params["asinh"] = asinh
+    if atanh is not None:
+        params["atanh"] = atanh
+    if datatype is not None:
+        params["datatype"] = datatype
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def mrcalc_cargs(
+    params: MrcalcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mrcalc")
+    if params.get("abs") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("abs")] for a in c])
+    if params.get("neg") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("neg")] for a in c])
+    if params.get("add") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("add")] for a in c])
+    if params.get("subtract") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("subtract")] for a in c])
+    if params.get("multiply") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("multiply")] for a in c])
+    if params.get("divide") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("divide")] for a in c])
+    if params.get("min") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("min")] for a in c])
+    if params.get("max") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("max")] for a in c])
+    if params.get("lt") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("lt")] for a in c])
+    if params.get("gt") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("gt")] for a in c])
+    if params.get("le") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("le")] for a in c])
+    if params.get("ge") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("ge")] for a in c])
+    if params.get("eq") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("eq")] for a in c])
+    if params.get("neq") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("neq")] for a in c])
+    if params.get("if") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("if")] for a in c])
+    if params.get("replace") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("replace")] for a in c])
+    if params.get("sqrt") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("sqrt")] for a in c])
+    if params.get("pow") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("pow")] for a in c])
+    if params.get("round") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("round")] for a in c])
+    if params.get("ceil") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("ceil")] for a in c])
+    if params.get("floor") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("floor")] for a in c])
+    if params.get("not") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("not")] for a in c])
+    if params.get("and") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("and")] for a in c])
+    if params.get("or") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("or")] for a in c])
+    if params.get("xor") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("xor")] for a in c])
+    if params.get("isnan") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("isnan")] for a in c])
+    if params.get("isinf") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("isinf")] for a in c])
+    if params.get("finite") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("finite")] for a in c])
+    if params.get("complex") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("complex")] for a in c])
+    if params.get("polar") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("polar")] for a in c])
+    if params.get("real") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("real")] for a in c])
+    if params.get("imag") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("imag")] for a in c])
+    if params.get("phase") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("phase")] for a in c])
+    if params.get("conj") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("conj")] for a in c])
+    if params.get("proj") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("proj")] for a in c])
+    if params.get("exp") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("exp")] for a in c])
+    if params.get("log") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("log")] for a in c])
+    if params.get("log10") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("log10")] for a in c])
+    if params.get("cos") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("cos")] for a in c])
+    if params.get("sin") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("sin")] for a in c])
+    if params.get("tan") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("tan")] for a in c])
+    if params.get("acos") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("acos")] for a in c])
+    if params.get("asin") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("asin")] for a in c])
+    if params.get("atan") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("atan")] for a in c])
+    if params.get("cosh") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("cosh")] for a in c])
+    if params.get("sinh") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("sinh")] for a in c])
+    if params.get("tanh") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("tanh")] for a in c])
+    if params.get("acosh") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("acosh")] for a in c])
+    if params.get("asinh") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("asinh")] for a in c])
+    if params.get("atanh") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("atanh")] for a in c])
+    if params.get("datatype") is not None:
+        cargs.extend([
+            "-datatype",
+            params.get("datatype")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("operand")] for a in c])
+    return cargs
+
+
+def mrcalc_outputs(
+    params: MrcalcParameters,
+    execution: Execution,
+) -> MrcalcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrcalcOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mrcalc_execute(
+    params: MrcalcParameters,
+    execution: Execution,
+) -> MrcalcOutputs:
+    """
+    Apply generic voxel-wise mathematical operations to images.
+    
+    This command will only compute per-voxel operations. Use 'mrmath' to compute
+    summary statistics across images or along image axes.
+    
+    This command uses a stack-based syntax, with operators (specified using
+    options) operating on the top-most entries (i.e. images or values) in the
+    stack. Operands (values or images) are pushed onto the stack in the order
+    they appear (as arguments) on the command-line, and operators (specified as
+    options) operate on and consume the top-most entries in the stack, and push
+    their output as a new entry on the stack.
+    
+    As an additional feature, this command will allow images with different
+    dimensions to be processed, provided they satisfy the following conditions:
+    for each axis, the dimensions match if they are the same size, or one of
+    them has size one. In the latter case, the entire image will be replicated
+    along that axis. This allows for example a 4D image of size [ X Y Z N ] to
+    be added to a 3D image of size [ X Y Z ], as if it consisted of N copies of
+    the 3D image along the 4th axis (the missing dimension is assumed to have
+    size 1). Another example would a single-voxel 4D image of size [ 1 1 1 N ],
+    multiplied by a 3D image of size [ X Y Z ], which would allow the creation
+    of a 4D image where each volume consists of the 3D image scaled by the
+    corresponding value for that volume in the single-voxel image.
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrcalcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mrcalc_cargs(params, execution)
+    ret = mrcalc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def mrcalc(
+    operand: list[typing.Union[MrcalcVariousStringParameters, MrcalcVariousFileParameters]],
+    abs_: list[MrcalcAbsParameters] | None = None,
+    neg: list[MrcalcNegParameters] | None = None,
+    add: list[MrcalcAddParameters] | None = None,
+    subtract: list[MrcalcSubtractParameters] | None = None,
+    multiply: list[MrcalcMultiplyParameters] | None = None,
+    divide: list[MrcalcDivideParameters] | None = None,
+    min_: list[MrcalcMinParameters] | None = None,
+    max_: list[MrcalcMaxParameters] | None = None,
+    lt: list[MrcalcLtParameters] | None = None,
+    gt: list[MrcalcGtParameters] | None = None,
+    le: list[MrcalcLeParameters] | None = None,
+    ge: list[MrcalcGeParameters] | None = None,
+    eq: list[MrcalcEqParameters] | None = None,
+    neq: list[MrcalcNeqParameters] | None = None,
+    if_: list[MrcalcIfParameters] | None = None,
+    replace: list[MrcalcReplaceParameters] | None = None,
+    sqrt: list[MrcalcSqrtParameters] | None = None,
+    pow_: list[MrcalcPowParameters] | None = None,
+    round_: list[MrcalcRoundParameters] | None = None,
+    ceil: list[MrcalcCeilParameters] | None = None,
+    floor: list[MrcalcFloorParameters] | None = None,
+    not_: list[MrcalcNotParameters] | None = None,
+    and_: list[MrcalcAndParameters] | None = None,
+    or_: list[MrcalcOrParameters] | None = None,
+    xor: list[MrcalcXorParameters] | None = None,
+    isnan: list[MrcalcIsnanParameters] | None = None,
+    isinf: list[MrcalcIsinfParameters] | None = None,
+    finite: list[MrcalcFiniteParameters] | None = None,
+    complex_: list[MrcalcComplexParameters] | None = None,
+    polar: list[MrcalcPolarParameters] | None = None,
+    real: list[MrcalcRealParameters] | None = None,
+    imag: list[MrcalcImagParameters] | None = None,
+    phase: list[MrcalcPhaseParameters] | None = None,
+    conj: list[MrcalcConjParameters] | None = None,
+    proj: list[MrcalcProjParameters] | None = None,
+    exp: list[MrcalcExpParameters] | None = None,
+    log: list[MrcalcLogParameters] | None = None,
+    log10: list[MrcalcLog10Parameters] | None = None,
+    cos: list[MrcalcCosParameters] | None = None,
+    sin: list[MrcalcSinParameters] | None = None,
+    tan: list[MrcalcTanParameters] | None = None,
+    acos: list[MrcalcAcosParameters] | None = None,
+    asin: list[MrcalcAsinParameters] | None = None,
+    atan: list[MrcalcAtanParameters] | None = None,
+    cosh: list[MrcalcCoshParameters] | None = None,
+    sinh: list[MrcalcSinhParameters] | None = None,
+    tanh: list[MrcalcTanhParameters] | None = None,
+    acosh: list[MrcalcAcoshParameters] | None = None,
+    asinh: list[MrcalcAsinhParameters] | None = None,
+    atanh: list[MrcalcAtanhParameters] | None = None,
+    datatype: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[MrcalcConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -1436,195 +2753,65 @@ def mrcalc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRCALC_METADATA)
-    cargs = []
-    cargs.append("mrcalc")
-    if abs_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in abs_] for a in c])
-    if neg is not None:
-        cargs.extend([a for c in [s.run(execution) for s in neg] for a in c])
-    if add is not None:
-        cargs.extend([a for c in [s.run(execution) for s in add] for a in c])
-    if subtract is not None:
-        cargs.extend([a for c in [s.run(execution) for s in subtract] for a in c])
-    if multiply is not None:
-        cargs.extend([a for c in [s.run(execution) for s in multiply] for a in c])
-    if divide is not None:
-        cargs.extend([a for c in [s.run(execution) for s in divide] for a in c])
-    if min_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in min_] for a in c])
-    if max_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in max_] for a in c])
-    if lt is not None:
-        cargs.extend([a for c in [s.run(execution) for s in lt] for a in c])
-    if gt is not None:
-        cargs.extend([a for c in [s.run(execution) for s in gt] for a in c])
-    if le is not None:
-        cargs.extend([a for c in [s.run(execution) for s in le] for a in c])
-    if ge is not None:
-        cargs.extend([a for c in [s.run(execution) for s in ge] for a in c])
-    if eq is not None:
-        cargs.extend([a for c in [s.run(execution) for s in eq] for a in c])
-    if neq is not None:
-        cargs.extend([a for c in [s.run(execution) for s in neq] for a in c])
-    if if_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in if_] for a in c])
-    if replace is not None:
-        cargs.extend([a for c in [s.run(execution) for s in replace] for a in c])
-    if sqrt is not None:
-        cargs.extend([a for c in [s.run(execution) for s in sqrt] for a in c])
-    if pow_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in pow_] for a in c])
-    if round_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in round_] for a in c])
-    if ceil is not None:
-        cargs.extend([a for c in [s.run(execution) for s in ceil] for a in c])
-    if floor is not None:
-        cargs.extend([a for c in [s.run(execution) for s in floor] for a in c])
-    if not_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in not_] for a in c])
-    if and_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in and_] for a in c])
-    if or_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in or_] for a in c])
-    if xor is not None:
-        cargs.extend([a for c in [s.run(execution) for s in xor] for a in c])
-    if isnan is not None:
-        cargs.extend([a for c in [s.run(execution) for s in isnan] for a in c])
-    if isinf is not None:
-        cargs.extend([a for c in [s.run(execution) for s in isinf] for a in c])
-    if finite is not None:
-        cargs.extend([a for c in [s.run(execution) for s in finite] for a in c])
-    if complex_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in complex_] for a in c])
-    if polar is not None:
-        cargs.extend([a for c in [s.run(execution) for s in polar] for a in c])
-    if real is not None:
-        cargs.extend([a for c in [s.run(execution) for s in real] for a in c])
-    if imag is not None:
-        cargs.extend([a for c in [s.run(execution) for s in imag] for a in c])
-    if phase is not None:
-        cargs.extend([a for c in [s.run(execution) for s in phase] for a in c])
-    if conj is not None:
-        cargs.extend([a for c in [s.run(execution) for s in conj] for a in c])
-    if proj is not None:
-        cargs.extend([a for c in [s.run(execution) for s in proj] for a in c])
-    if exp is not None:
-        cargs.extend([a for c in [s.run(execution) for s in exp] for a in c])
-    if log is not None:
-        cargs.extend([a for c in [s.run(execution) for s in log] for a in c])
-    if log10 is not None:
-        cargs.extend([a for c in [s.run(execution) for s in log10] for a in c])
-    if cos is not None:
-        cargs.extend([a for c in [s.run(execution) for s in cos] for a in c])
-    if sin is not None:
-        cargs.extend([a for c in [s.run(execution) for s in sin] for a in c])
-    if tan is not None:
-        cargs.extend([a for c in [s.run(execution) for s in tan] for a in c])
-    if acos is not None:
-        cargs.extend([a for c in [s.run(execution) for s in acos] for a in c])
-    if asin is not None:
-        cargs.extend([a for c in [s.run(execution) for s in asin] for a in c])
-    if atan is not None:
-        cargs.extend([a for c in [s.run(execution) for s in atan] for a in c])
-    if cosh is not None:
-        cargs.extend([a for c in [s.run(execution) for s in cosh] for a in c])
-    if sinh is not None:
-        cargs.extend([a for c in [s.run(execution) for s in sinh] for a in c])
-    if tanh is not None:
-        cargs.extend([a for c in [s.run(execution) for s in tanh] for a in c])
-    if acosh is not None:
-        cargs.extend([a for c in [s.run(execution) for s in acosh] for a in c])
-    if asinh is not None:
-        cargs.extend([a for c in [s.run(execution) for s in asinh] for a in c])
-    if atanh is not None:
-        cargs.extend([a for c in [s.run(execution) for s in atanh] for a in c])
-    if datatype is not None:
-        cargs.extend([
-            "-datatype",
-            datatype
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.extend([a for c in [s.run(execution) for s in operand] for a in c])
-    ret = MrcalcOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mrcalc_params(abs_=abs_, neg=neg, add=add, subtract=subtract, multiply=multiply, divide=divide, min_=min_, max_=max_, lt=lt, gt=gt, le=le, ge=ge, eq=eq, neq=neq, if_=if_, replace=replace, sqrt=sqrt, pow_=pow_, round_=round_, ceil=ceil, floor=floor, not_=not_, and_=and_, or_=or_, xor=xor, isnan=isnan, isinf=isinf, finite=finite, complex_=complex_, polar=polar, real=real, imag=imag, phase=phase, conj=conj, proj=proj, exp=exp, log=log, log10=log10, cos=cos, sin=sin, tan=tan, acos=acos, asin=asin, atan=atan, cosh=cosh, sinh=sinh, tanh=tanh, acosh=acosh, asinh=asinh, atanh=atanh, datatype=datatype, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, operand=operand)
+    return mrcalc_execute(params, execution)
 
 
 __all__ = [
     "MRCALC_METADATA",
-    "MrcalcAbs",
-    "MrcalcAcos",
-    "MrcalcAcosh",
-    "MrcalcAdd",
-    "MrcalcAnd",
-    "MrcalcAsin",
-    "MrcalcAsinh",
-    "MrcalcAtan",
-    "MrcalcAtanh",
-    "MrcalcCeil",
-    "MrcalcComplex",
-    "MrcalcConfig",
-    "MrcalcConj",
-    "MrcalcCos",
-    "MrcalcCosh",
-    "MrcalcDivide",
-    "MrcalcEq",
-    "MrcalcExp",
-    "MrcalcFinite",
-    "MrcalcFloor",
-    "MrcalcGe",
-    "MrcalcGt",
-    "MrcalcIf",
-    "MrcalcImag",
-    "MrcalcIsinf",
-    "MrcalcIsnan",
-    "MrcalcLe",
-    "MrcalcLog",
-    "MrcalcLog10",
-    "MrcalcLt",
-    "MrcalcMax",
-    "MrcalcMin",
-    "MrcalcMultiply",
-    "MrcalcNeg",
-    "MrcalcNeq",
-    "MrcalcNot",
-    "MrcalcOr",
-    "MrcalcOutputs",
-    "MrcalcPhase",
-    "MrcalcPolar",
-    "MrcalcPow",
-    "MrcalcProj",
-    "MrcalcReal",
-    "MrcalcReplace",
-    "MrcalcRound",
-    "MrcalcSin",
-    "MrcalcSinh",
-    "MrcalcSqrt",
-    "MrcalcSubtract",
-    "MrcalcTan",
-    "MrcalcTanh",
-    "MrcalcVariousFile",
-    "MrcalcVariousString",
-    "MrcalcXor",
     "mrcalc",
+    "mrcalc_abs_params",
+    "mrcalc_acos_params",
+    "mrcalc_acosh_params",
+    "mrcalc_add_params",
+    "mrcalc_and_params",
+    "mrcalc_asin_params",
+    "mrcalc_asinh_params",
+    "mrcalc_atan_params",
+    "mrcalc_atanh_params",
+    "mrcalc_ceil_params",
+    "mrcalc_complex_params",
+    "mrcalc_config_params",
+    "mrcalc_conj_params",
+    "mrcalc_cos_params",
+    "mrcalc_cosh_params",
+    "mrcalc_divide_params",
+    "mrcalc_eq_params",
+    "mrcalc_exp_params",
+    "mrcalc_finite_params",
+    "mrcalc_floor_params",
+    "mrcalc_ge_params",
+    "mrcalc_gt_params",
+    "mrcalc_if_params",
+    "mrcalc_imag_params",
+    "mrcalc_isinf_params",
+    "mrcalc_isnan_params",
+    "mrcalc_le_params",
+    "mrcalc_log10_params",
+    "mrcalc_log_params",
+    "mrcalc_lt_params",
+    "mrcalc_max_params",
+    "mrcalc_min_params",
+    "mrcalc_multiply_params",
+    "mrcalc_neg_params",
+    "mrcalc_neq_params",
+    "mrcalc_not_params",
+    "mrcalc_or_params",
+    "mrcalc_params",
+    "mrcalc_phase_params",
+    "mrcalc_polar_params",
+    "mrcalc_pow_params",
+    "mrcalc_proj_params",
+    "mrcalc_real_params",
+    "mrcalc_replace_params",
+    "mrcalc_round_params",
+    "mrcalc_sin_params",
+    "mrcalc_sinh_params",
+    "mrcalc_sqrt_params",
+    "mrcalc_subtract_params",
+    "mrcalc_tan_params",
+    "mrcalc_tanh_params",
+    "mrcalc_various_file_params",
+    "mrcalc_various_string_params",
+    "mrcalc_xor_params",
 ]

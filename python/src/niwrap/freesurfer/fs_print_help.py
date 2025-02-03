@@ -12,14 +12,125 @@ FS_PRINT_HELP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsPrintHelpParameters = typing.TypedDict('FsPrintHelpParameters', {
+    "__STYX_TYPE__": typing.Literal["fsPrintHelp"],
+    "arguments": typing.NotRequired[str | None],
+})
 
 
-class FsPrintHelpOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fs_print_help(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fsPrintHelp": fs_print_help_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fs_print_help_params(
+    arguments: str | None = None,
+) -> FsPrintHelpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        arguments: Any arguments that fsPrintHelp accepts.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsPrintHelp",
+    }
+    if arguments is not None:
+        params["arguments"] = arguments
+    return params
+
+
+def fs_print_help_cargs(
+    params: FsPrintHelpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsPrintHelp")
+    if params.get("arguments") is not None:
+        cargs.append(params.get("arguments"))
+    return cargs
+
+
+def fs_print_help_outputs(
+    params: FsPrintHelpParameters,
+    execution: Execution,
+) -> FsPrintHelpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsPrintHelpOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fs_print_help_execute(
+    params: FsPrintHelpParameters,
+    execution: Execution,
+) -> FsPrintHelpOutputs:
+    """
+    fsPrintHelp - A tool that attempts to provide help documentation for FreeSurfer
+    commands.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsPrintHelpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_print_help_cargs(params, execution)
+    ret = fs_print_help_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_print_help(
@@ -42,19 +153,12 @@ def fs_print_help(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_PRINT_HELP_METADATA)
-    cargs = []
-    cargs.append("fsPrintHelp")
-    if arguments is not None:
-        cargs.append(arguments)
-    ret = FsPrintHelpOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_print_help_params(arguments=arguments)
+    return fs_print_help_execute(params, execution)
 
 
 __all__ = [
     "FS_PRINT_HELP_METADATA",
-    "FsPrintHelpOutputs",
     "fs_print_help",
+    "fs_print_help_params",
 ]

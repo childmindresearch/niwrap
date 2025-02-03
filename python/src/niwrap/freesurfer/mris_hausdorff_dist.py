@@ -12,6 +12,47 @@ MRIS_HAUSDORFF_DIST_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisHausdorffDistParameters = typing.TypedDict('MrisHausdorffDistParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_hausdorff_dist"],
+    "surface": InputPathType,
+    "label1": InputPathType,
+    "label2": InputPathType,
+    "annot_name": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_hausdorff_dist": mris_hausdorff_dist_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_hausdorff_dist": mris_hausdorff_dist_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisHausdorffDistOutputs(typing.NamedTuple):
@@ -22,6 +63,105 @@ class MrisHausdorffDistOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file containing the Hausdorff distance computation results"""
+
+
+def mris_hausdorff_dist_params(
+    surface: InputPathType,
+    label1: InputPathType,
+    label2: InputPathType,
+    annot_name: str | None = None,
+) -> MrisHausdorffDistParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Surface file on which the labels exist.
+        label1: First label file.
+        label2: Second label file.
+        annot_name: Compute pairwise Hausdorff Distance (HD) between all\
+            annotations with the given name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_hausdorff_dist",
+        "surface": surface,
+        "label1": label1,
+        "label2": label2,
+    }
+    if annot_name is not None:
+        params["annot_name"] = annot_name
+    return params
+
+
+def mris_hausdorff_dist_cargs(
+    params: MrisHausdorffDistParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_hausdorff_dist")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("label1")))
+    cargs.append(execution.input_file(params.get("label2")))
+    if params.get("annot_name") is not None:
+        cargs.extend([
+            "-a",
+            params.get("annot_name")
+        ])
+    return cargs
+
+
+def mris_hausdorff_dist_outputs(
+    params: MrisHausdorffDistParameters,
+    execution: Execution,
+) -> MrisHausdorffDistOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisHausdorffDistOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("hausdorff_output.txt"),
+    )
+    return ret
+
+
+def mris_hausdorff_dist_execute(
+    params: MrisHausdorffDistParameters,
+    execution: Execution,
+) -> MrisHausdorffDistOutputs:
+    """
+    This program computes the Hausdorff distance between two labels on a surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisHausdorffDistOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_hausdorff_dist_cargs(params, execution)
+    ret = mris_hausdorff_dist_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_hausdorff_dist(
@@ -50,26 +190,13 @@ def mris_hausdorff_dist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_HAUSDORFF_DIST_METADATA)
-    cargs = []
-    cargs.append("mris_hausdorff_dist")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(label1))
-    cargs.append(execution.input_file(label2))
-    if annot_name is not None:
-        cargs.extend([
-            "-a",
-            annot_name
-        ])
-    ret = MrisHausdorffDistOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("hausdorff_output.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_hausdorff_dist_params(surface=surface, label1=label1, label2=label2, annot_name=annot_name)
+    return mris_hausdorff_dist_execute(params, execution)
 
 
 __all__ = [
     "MRIS_HAUSDORFF_DIST_METADATA",
     "MrisHausdorffDistOutputs",
     "mris_hausdorff_dist",
+    "mris_hausdorff_dist_params",
 ]

@@ -12,6 +12,50 @@ MRIS_EXVIVO_SURFACES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisExvivoSurfacesParameters = typing.TypedDict('MrisExvivoSurfacesParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_exvivo_surfaces"],
+    "subject_name": str,
+    "hemisphere": str,
+    "omit_self_intersection": bool,
+    "create_curvature_area": bool,
+    "average_curvature": typing.NotRequired[float | None],
+    "white_only": bool,
+    "formalin": typing.NotRequired[int | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_exvivo_surfaces": mris_exvivo_surfaces_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_exvivo_surfaces": mris_exvivo_surfaces_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisExvivoSurfacesOutputs(typing.NamedTuple):
@@ -28,6 +72,132 @@ class MrisExvivoSurfacesOutputs(typing.NamedTuple):
     """Curvature file for cortical thickness"""
     layer_iv_surface: OutputPathType
     """Surface file approximating layer IV of the cortical sheet"""
+
+
+def mris_exvivo_surfaces_params(
+    subject_name: str,
+    hemisphere: str,
+    omit_self_intersection: bool = False,
+    create_curvature_area: bool = False,
+    average_curvature: float | None = 10,
+    white_only: bool = False,
+    formalin: int | None = None,
+) -> MrisExvivoSurfacesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_name: Name of the subject.
+        hemisphere: Hemisphere (e.g., lh or rh).
+        omit_self_intersection: Omit self-intersection check and only generate\
+            gray/white surface.
+        create_curvature_area: Create curvature and area files from white\
+            matter surface.
+        average_curvature: Average curvature values a specified number of\
+            times.
+        white_only: Only generate the white matter surface.
+        formalin: Assume hemisphere is in formalin, with provided value\
+            indicating presence (0,1).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_exvivo_surfaces",
+        "subject_name": subject_name,
+        "hemisphere": hemisphere,
+        "omit_self_intersection": omit_self_intersection,
+        "create_curvature_area": create_curvature_area,
+        "white_only": white_only,
+    }
+    if average_curvature is not None:
+        params["average_curvature"] = average_curvature
+    if formalin is not None:
+        params["formalin"] = formalin
+    return params
+
+
+def mris_exvivo_surfaces_cargs(
+    params: MrisExvivoSurfacesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_exvivo_surfaces")
+    cargs.append(params.get("subject_name"))
+    cargs.append(params.get("hemisphere"))
+    if params.get("omit_self_intersection"):
+        cargs.append("-q")
+    if params.get("create_curvature_area"):
+        cargs.append("-c")
+    if params.get("average_curvature") is not None:
+        cargs.extend([
+            "-a",
+            str(params.get("average_curvature"))
+        ])
+    if params.get("white_only"):
+        cargs.append("-whiteonly")
+    if params.get("formalin") is not None:
+        cargs.extend([
+            "-formalin",
+            str(params.get("formalin"))
+        ])
+    return cargs
+
+
+def mris_exvivo_surfaces_outputs(
+    params: MrisExvivoSurfacesParameters,
+    execution: Execution,
+) -> MrisExvivoSurfacesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisExvivoSurfacesOutputs(
+        root=execution.output_file("."),
+        white_surface=execution.output_file("<subject_name>_<hemisphere>_white"),
+        gray_surface=execution.output_file("<subject_name>_<hemisphere>_gray"),
+        curvature_file=execution.output_file("<subject_name>_<hemisphere>_curvature"),
+        layer_iv_surface=execution.output_file("<subject_name>_<hemisphere>_layerIV"),
+    )
+    return ret
+
+
+def mris_exvivo_surfaces_execute(
+    params: MrisExvivoSurfacesParameters,
+    execution: Execution,
+) -> MrisExvivoSurfacesOutputs:
+    """
+    FreeSurfer tool to position tessellation of the cortical surface at the white
+    and gray matter surfaces, and generate relevant surface files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisExvivoSurfacesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_exvivo_surfaces_cargs(params, execution)
+    ret = mris_exvivo_surfaces_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_exvivo_surfaces(
@@ -64,43 +234,15 @@ def mris_exvivo_surfaces(
     Returns:
         NamedTuple of outputs (described in `MrisExvivoSurfacesOutputs`).
     """
-    if formalin is not None and not (0 <= formalin <= 1): 
-        raise ValueError(f"'formalin' must be between 0 <= x <= 1 but was {formalin}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXVIVO_SURFACES_METADATA)
-    cargs = []
-    cargs.append("mris_exvivo_surfaces")
-    cargs.append(subject_name)
-    cargs.append(hemisphere)
-    if omit_self_intersection:
-        cargs.append("-q")
-    if create_curvature_area:
-        cargs.append("-c")
-    if average_curvature is not None:
-        cargs.extend([
-            "-a",
-            str(average_curvature)
-        ])
-    if white_only:
-        cargs.append("-whiteonly")
-    if formalin is not None:
-        cargs.extend([
-            "-formalin",
-            str(formalin)
-        ])
-    ret = MrisExvivoSurfacesOutputs(
-        root=execution.output_file("."),
-        white_surface=execution.output_file("<subject_name>_<hemisphere>_white"),
-        gray_surface=execution.output_file("<subject_name>_<hemisphere>_gray"),
-        curvature_file=execution.output_file("<subject_name>_<hemisphere>_curvature"),
-        layer_iv_surface=execution.output_file("<subject_name>_<hemisphere>_layerIV"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_exvivo_surfaces_params(subject_name=subject_name, hemisphere=hemisphere, omit_self_intersection=omit_self_intersection, create_curvature_area=create_curvature_area, average_curvature=average_curvature, white_only=white_only, formalin=formalin)
+    return mris_exvivo_surfaces_execute(params, execution)
 
 
 __all__ = [
     "MRIS_EXVIVO_SURFACES_METADATA",
     "MrisExvivoSurfacesOutputs",
     "mris_exvivo_surfaces",
+    "mris_exvivo_surfaces_params",
 ]

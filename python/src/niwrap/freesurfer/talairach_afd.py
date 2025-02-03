@@ -12,14 +12,164 @@ TALAIRACH_AFD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TalairachAfdParameters = typing.TypedDict('TalairachAfdParameters', {
+    "__STYX_TYPE__": typing.Literal["talairach_afd"],
+    "subject_name": typing.NotRequired[str | None],
+    "xfm_file": typing.NotRequired[InputPathType | None],
+    "p_value_threshold": typing.NotRequired[float | None],
+    "afd_directory": typing.NotRequired[str | None],
+    "verbose": bool,
+})
 
 
-class TalairachAfdOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `talairach_afd(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "talairach_afd": talairach_afd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def talairach_afd_params(
+    subject_name: str | None = None,
+    xfm_file: InputPathType | None = None,
+    p_value_threshold: float | None = 0.01,
+    afd_directory: str | None = None,
+    verbose: bool = False,
+) -> TalairachAfdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_name: Specify subject's name.
+        xfm_file: Specify the talairach.xfm file to check.
+        p_value_threshold: Threshold the p-values at #; Talairach transforms\
+            for subjects with p-values <= T are considered as very unlikely.
+        afd_directory: Specify directory containing .afd data files.
+        verbose: Enable verbose output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "talairach_afd",
+        "verbose": verbose,
+    }
+    if subject_name is not None:
+        params["subject_name"] = subject_name
+    if xfm_file is not None:
+        params["xfm_file"] = xfm_file
+    if p_value_threshold is not None:
+        params["p_value_threshold"] = p_value_threshold
+    if afd_directory is not None:
+        params["afd_directory"] = afd_directory
+    return params
+
+
+def talairach_afd_cargs(
+    params: TalairachAfdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("talairach_afd")
+    if params.get("subject_name") is not None:
+        cargs.extend([
+            "-subj",
+            params.get("subject_name")
+        ])
+    if params.get("xfm_file") is not None:
+        cargs.extend([
+            "-xfm",
+            execution.input_file(params.get("xfm_file"))
+        ])
+    if params.get("p_value_threshold") is not None:
+        cargs.extend([
+            "-T",
+            str(params.get("p_value_threshold"))
+        ])
+    if params.get("afd_directory") is not None:
+        cargs.extend([
+            "-afd",
+            params.get("afd_directory")
+        ])
+    if params.get("verbose"):
+        cargs.append("-V")
+    return cargs
+
+
+def talairach_afd_outputs(
+    params: TalairachAfdParameters,
+    execution: Execution,
+) -> TalairachAfdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TalairachAfdOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def talairach_afd_execute(
+    params: TalairachAfdParameters,
+    execution: Execution,
+) -> TalairachAfdOutputs:
+    """
+    Detects Talairach alignment failures.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TalairachAfdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = talairach_afd_cargs(params, execution)
+    ret = talairach_afd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def talairach_afd(
@@ -50,39 +200,12 @@ def talairach_afd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_AFD_METADATA)
-    cargs = []
-    cargs.append("talairach_afd")
-    if subject_name is not None:
-        cargs.extend([
-            "-subj",
-            subject_name
-        ])
-    if xfm_file is not None:
-        cargs.extend([
-            "-xfm",
-            execution.input_file(xfm_file)
-        ])
-    if p_value_threshold is not None:
-        cargs.extend([
-            "-T",
-            str(p_value_threshold)
-        ])
-    if afd_directory is not None:
-        cargs.extend([
-            "-afd",
-            afd_directory
-        ])
-    if verbose:
-        cargs.append("-V")
-    ret = TalairachAfdOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = talairach_afd_params(subject_name=subject_name, xfm_file=xfm_file, p_value_threshold=p_value_threshold, afd_directory=afd_directory, verbose=verbose)
+    return talairach_afd_execute(params, execution)
 
 
 __all__ = [
     "TALAIRACH_AFD_METADATA",
-    "TalairachAfdOutputs",
     "talairach_afd",
+    "talairach_afd_params",
 ]

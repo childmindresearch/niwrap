@@ -12,35 +12,101 @@ LABEL2MESH_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+Label2meshConfigParameters = typing.TypedDict('Label2meshConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Label2meshParameters = typing.TypedDict('Label2meshParameters', {
+    "__STYX_TYPE__": typing.Literal["label2mesh"],
+    "blocky": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Label2meshConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "nodes_in": InputPathType,
+    "mesh_out": str,
+})
 
 
-@dataclasses.dataclass
-class Label2meshConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label2mesh": label2mesh_cargs,
+        "config": label2mesh_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label2mesh": label2mesh_outputs,
+    }
+    return vt.get(t)
+
+
+def label2mesh_config_params(
+    key: str,
+    value: str,
+) -> Label2meshConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def label2mesh_config_cargs(
+    params: Label2meshConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Label2meshOutputs(typing.NamedTuple):
@@ -53,6 +119,152 @@ class Label2meshOutputs(typing.NamedTuple):
     """the output mesh file"""
 
 
+def label2mesh_params(
+    nodes_in: InputPathType,
+    mesh_out: str,
+    blocky: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Label2meshConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Label2meshParameters:
+    """
+    Build parameters.
+    
+    Args:
+        nodes_in: the input node parcellation image.
+        mesh_out: the output mesh file.
+        blocky: generate 'blocky' meshes with precise delineation of voxel\
+            edges, rather than the default Marching Cubes approach.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label2mesh",
+        "blocky": blocky,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "nodes_in": nodes_in,
+        "mesh_out": mesh_out,
+    }
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def label2mesh_cargs(
+    params: Label2meshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("label2mesh")
+    if params.get("blocky"):
+        cargs.append("-blocky")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("nodes_in")))
+    cargs.append(params.get("mesh_out"))
+    return cargs
+
+
+def label2mesh_outputs(
+    params: Label2meshParameters,
+    execution: Execution,
+) -> Label2meshOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Label2meshOutputs(
+        root=execution.output_file("."),
+        mesh_out=execution.output_file(params.get("mesh_out")),
+    )
+    return ret
+
+
+def label2mesh_execute(
+    params: Label2meshParameters,
+    execution: Execution,
+) -> Label2meshOutputs:
+    """
+    Generate meshes from a label image.
+    
+    
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Label2meshOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label2mesh_cargs(params, execution)
+    ret = label2mesh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def label2mesh(
     nodes_in: InputPathType,
     mesh_out: str,
@@ -62,7 +274,7 @@ def label2mesh(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Label2meshConfig] | None = None,
+    config: list[Label2meshConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -103,42 +315,14 @@ def label2mesh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2MESH_METADATA)
-    cargs = []
-    cargs.append("label2mesh")
-    if blocky:
-        cargs.append("-blocky")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(nodes_in))
-    cargs.append(mesh_out)
-    ret = Label2meshOutputs(
-        root=execution.output_file("."),
-        mesh_out=execution.output_file(mesh_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = label2mesh_params(blocky=blocky, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, nodes_in=nodes_in, mesh_out=mesh_out)
+    return label2mesh_execute(params, execution)
 
 
 __all__ = [
     "LABEL2MESH_METADATA",
-    "Label2meshConfig",
     "Label2meshOutputs",
     "label2mesh",
+    "label2mesh_config_params",
+    "label2mesh_params",
 ]

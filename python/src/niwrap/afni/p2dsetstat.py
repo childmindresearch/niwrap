@@ -12,6 +12,47 @@ P2DSETSTAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+P2dsetstatParameters = typing.TypedDict('P2dsetstatParameters', {
+    "__STYX_TYPE__": typing.Literal["p2dsetstat"],
+    "dataset": str,
+    "pvalue": float,
+    "onesided": bool,
+    "quiet": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "p2dsetstat": p2dsetstat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "p2dsetstat": p2dsetstat_outputs,
+    }
+    return vt.get(t)
 
 
 class P2dsetstatOutputs(typing.NamedTuple):
@@ -22,6 +63,111 @@ class P2dsetstatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     stat_value: OutputPathType
     """The converted statistic value."""
+
+
+def p2dsetstat_params(
+    dataset: str,
+    pvalue: float,
+    onesided: bool = False,
+    quiet: bool = False,
+) -> P2dsetstatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset: Specify a dataset DDD and, if it has multiple sub-bricks, the\
+            [i]th subbrick with the statistic of interest MUST be selected\
+            explicitly; note the use of quotation marks around the brick selector\
+            (because of the square-brackets). 'i' can be either a number or a\
+            string label selector.
+        pvalue: Input p-value P, which MUST be in the interval [0,1].
+        onesided: One-sided test.
+        quiet: Output only the final statistic value.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "p2dsetstat",
+        "dataset": dataset,
+        "pvalue": pvalue,
+        "onesided": onesided,
+        "quiet": quiet,
+    }
+    return params
+
+
+def p2dsetstat_cargs(
+    params: P2dsetstatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("p2dsetstat")
+    cargs.extend([
+        "-inset",
+        params.get("dataset")
+    ])
+    cargs.extend([
+        "-pval",
+        str(params.get("pvalue"))
+    ])
+    if params.get("onesided"):
+        cargs.append("-1sided")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    return cargs
+
+
+def p2dsetstat_outputs(
+    params: P2dsetstatParameters,
+    execution: Execution,
+) -> P2dsetstatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = P2dsetstatOutputs(
+        root=execution.output_file("."),
+        stat_value=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def p2dsetstat_execute(
+    params: P2dsetstatParameters,
+    execution: Execution,
+) -> P2dsetstatOutputs:
+    """
+    Convert a p-value to a statistic of choice with reference to a specific dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `P2dsetstatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = p2dsetstat_cargs(params, execution)
+    ret = p2dsetstat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def p2dsetstat(
@@ -51,34 +197,15 @@ def p2dsetstat(
     Returns:
         NamedTuple of outputs (described in `P2dsetstatOutputs`).
     """
-    if not (0 <= pvalue <= 1): 
-        raise ValueError(f"'pvalue' must be between 0 <= x <= 1 but was {pvalue}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(P2DSETSTAT_METADATA)
-    cargs = []
-    cargs.append("p2dsetstat")
-    cargs.extend([
-        "-inset",
-        dataset
-    ])
-    cargs.extend([
-        "-pval",
-        str(pvalue)
-    ])
-    if onesided:
-        cargs.append("-1sided")
-    if quiet:
-        cargs.append("-quiet")
-    ret = P2dsetstatOutputs(
-        root=execution.output_file("."),
-        stat_value=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = p2dsetstat_params(dataset=dataset, pvalue=pvalue, onesided=onesided, quiet=quiet)
+    return p2dsetstat_execute(params, execution)
 
 
 __all__ = [
     "P2DSETSTAT_METADATA",
     "P2dsetstatOutputs",
     "p2dsetstat",
+    "p2dsetstat_params",
 ]

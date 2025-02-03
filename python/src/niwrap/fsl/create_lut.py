@@ -12,6 +12,44 @@ CREATE_LUT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+CreateLutParameters = typing.TypedDict('CreateLutParameters', {
+    "__STYX_TYPE__": typing.Literal["create_lut"],
+    "output_file_root": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "create_lut": create_lut_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "create_lut": create_lut_outputs,
+    }
+    return vt.get(t)
 
 
 class CreateLutOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class CreateLutOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_files: OutputPathType
     """Generated lookup table files"""
+
+
+def create_lut_params(
+    output_file_root: str,
+) -> CreateLutParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_file_root: The root name of the output file to be generated.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "create_lut",
+        "output_file_root": output_file_root,
+    }
+    return params
+
+
+def create_lut_cargs(
+    params: CreateLutParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("create_lut")
+    cargs.append(params.get("output_file_root"))
+    return cargs
+
+
+def create_lut_outputs(
+    params: CreateLutParameters,
+    execution: Execution,
+) -> CreateLutOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CreateLutOutputs(
+        root=execution.output_file("."),
+        output_files=execution.output_file(params.get("output_file_root") + ".*"),
+    )
+    return ret
+
+
+def create_lut_execute(
+    params: CreateLutParameters,
+    execution: Execution,
+) -> CreateLutOutputs:
+    """
+    A tool to create lookup tables.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CreateLutOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = create_lut_cargs(params, execution)
+    ret = create_lut_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def create_lut(
@@ -43,19 +162,13 @@ def create_lut(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CREATE_LUT_METADATA)
-    cargs = []
-    cargs.append("create_lut")
-    cargs.append(output_file_root)
-    ret = CreateLutOutputs(
-        root=execution.output_file("."),
-        output_files=execution.output_file(output_file_root + ".*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = create_lut_params(output_file_root=output_file_root)
+    return create_lut_execute(params, execution)
 
 
 __all__ = [
     "CREATE_LUT_METADATA",
     "CreateLutOutputs",
     "create_lut",
+    "create_lut_params",
 ]

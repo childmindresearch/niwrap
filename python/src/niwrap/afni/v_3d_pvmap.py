@@ -12,6 +12,47 @@ V_3D_PVMAP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dPvmapParameters = typing.TypedDict('V3dPvmapParameters', {
+    "__STYX_TYPE__": typing.Literal["3dPVmap"],
+    "prefix": typing.NotRequired[str | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "automask": bool,
+    "inputdataset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dPVmap": v_3d_pvmap_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dPVmap": v_3d_pvmap_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dPvmapOutputs(typing.NamedTuple):
@@ -26,6 +67,114 @@ class V3dPvmapOutputs(typing.NamedTuple):
     """Output PVmap header file"""
     pc_vectors: OutputPathType | None
     """Principal component time series vectors"""
+
+
+def v_3d_pvmap_params(
+    inputdataset: InputPathType,
+    prefix: str | None = None,
+    mask: InputPathType | None = None,
+    automask: bool = False,
+) -> V3dPvmapParameters:
+    """
+    Build parameters.
+    
+    Args:
+        inputdataset: Input dataset (e.g., fred.nii).
+        prefix: Output prefix for generated files.
+        mask: Mask dataset (e.g., brainmask.nii).
+        automask: Automatically generate a mask from the input dataset.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dPVmap",
+        "automask": automask,
+        "inputdataset": inputdataset,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_3d_pvmap_cargs(
+    params: V3dPvmapParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dPVmap")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("automask"):
+        cargs.append("-automask")
+    cargs.append(execution.input_file(params.get("inputdataset")))
+    return cargs
+
+
+def v_3d_pvmap_outputs(
+    params: V3dPvmapParameters,
+    execution: Execution,
+) -> V3dPvmapOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dPvmapOutputs(
+        root=execution.output_file("."),
+        outbrik=execution.output_file(params.get("prefix") + "+orig.BRIK") if (params.get("prefix") is not None) else None,
+        outhead=execution.output_file(params.get("prefix") + "+orig.HEAD") if (params.get("prefix") is not None) else None,
+        pc_vectors=execution.output_file(params.get("prefix") + ".1D") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_pvmap_execute(
+    params: V3dPvmapParameters,
+    execution: Execution,
+) -> V3dPvmapOutputs:
+    """
+    Computes the first two principal component vectors of a time series dataset,
+    then outputs the R-squared coefficient of each voxel time series with these
+    first two components.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dPvmapOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_pvmap_cargs(params, execution)
+    ret = v_3d_pvmap_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_pvmap(
@@ -55,33 +204,13 @@ def v_3d_pvmap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PVMAP_METADATA)
-    cargs = []
-    cargs.append("3dPVmap")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if automask:
-        cargs.append("-automask")
-    cargs.append(execution.input_file(inputdataset))
-    ret = V3dPvmapOutputs(
-        root=execution.output_file("."),
-        outbrik=execution.output_file(prefix + "+orig.BRIK") if (prefix is not None) else None,
-        outhead=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,
-        pc_vectors=execution.output_file(prefix + ".1D") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_pvmap_params(prefix=prefix, mask=mask, automask=automask, inputdataset=inputdataset)
+    return v_3d_pvmap_execute(params, execution)
 
 
 __all__ = [
     "V3dPvmapOutputs",
     "V_3D_PVMAP_METADATA",
     "v_3d_pvmap",
+    "v_3d_pvmap_params",
 ]

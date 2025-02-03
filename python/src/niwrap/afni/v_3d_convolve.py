@@ -12,6 +12,46 @@ V_3D_CONVOLVE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dConvolveParameters = typing.TypedDict('V3dConvolveParameters', {
+    "__STYX_TYPE__": typing.Literal["3dConvolve"],
+    "infile": InputPathType,
+    "outfile": str,
+    "options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dConvolve": v_3d_convolve_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dConvolve": v_3d_convolve_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dConvolveOutputs(typing.NamedTuple):
@@ -22,6 +62,100 @@ class V3dConvolveOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Main output file of 3dConvolve"""
+
+
+def v_3d_convolve_params(
+    infile: InputPathType,
+    outfile: str,
+    options: str | None = None,
+) -> V3dConvolveParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input file for 3dConvolve.
+        outfile: Output file for 3dConvolve.
+        options: Additional options for 3dConvolve.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dConvolve",
+        "infile": infile,
+        "outfile": outfile,
+    }
+    if options is not None:
+        params["options"] = options
+    return params
+
+
+def v_3d_convolve_cargs(
+    params: V3dConvolveParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dConvolve")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(params.get("outfile"))
+    if params.get("options") is not None:
+        cargs.extend([
+            "-options",
+            params.get("options")
+        ])
+    return cargs
+
+
+def v_3d_convolve_outputs(
+    params: V3dConvolveParameters,
+    execution: Execution,
+) -> V3dConvolveOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dConvolveOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def v_3d_convolve_execute(
+    params: V3dConvolveParameters,
+    execution: Execution,
+) -> V3dConvolveOutputs:
+    """
+    3dConvolve is no longer supported in AFNI.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dConvolveOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_convolve_cargs(params, execution)
+    ret = v_3d_convolve_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_convolve(
@@ -47,25 +181,13 @@ def v_3d_convolve(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CONVOLVE_METADATA)
-    cargs = []
-    cargs.append("3dConvolve")
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
-    if options is not None:
-        cargs.extend([
-            "-options",
-            options
-        ])
-    ret = V3dConvolveOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_convolve_params(infile=infile, outfile=outfile, options=options)
+    return v_3d_convolve_execute(params, execution)
 
 
 __all__ = [
     "V3dConvolveOutputs",
     "V_3D_CONVOLVE_METADATA",
     "v_3d_convolve",
+    "v_3d_convolve_params",
 ]

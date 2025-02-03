@@ -12,6 +12,45 @@ MRI_MOTION_CORRECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMotionCorrectParameters = typing.TypedDict('MriMotionCorrectParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_motion_correct"],
+    "outfile": str,
+    "infiles": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_motion_correct": mri_motion_correct_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_motion_correct": mri_motion_correct_outputs,
+    }
+    return vt.get(t)
 
 
 class MriMotionCorrectOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class MriMotionCorrectOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     corrected_outfile: OutputPathType
     """Corrected MRI image output file."""
+
+
+def mri_motion_correct_params(
+    outfile: str,
+    infiles: list[InputPathType],
+) -> MriMotionCorrectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        outfile: Output file where the corrected MRI image(s) will be stored.
+        infiles: Input MRI image files to be corrected.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_motion_correct",
+        "outfile": outfile,
+        "infiles": infiles,
+    }
+    return params
+
+
+def mri_motion_correct_cargs(
+    params: MriMotionCorrectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_motion_correct")
+    cargs.append(params.get("outfile"))
+    cargs.extend([execution.input_file(f) for f in params.get("infiles")])
+    return cargs
+
+
+def mri_motion_correct_outputs(
+    params: MriMotionCorrectParameters,
+    execution: Execution,
+) -> MriMotionCorrectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMotionCorrectOutputs(
+        root=execution.output_file("."),
+        corrected_outfile=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def mri_motion_correct_execute(
+    params: MriMotionCorrectParameters,
+    execution: Execution,
+) -> MriMotionCorrectOutputs:
+    """
+    Tool for correcting motion in MRI scans.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMotionCorrectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_motion_correct_cargs(params, execution)
+    ret = mri_motion_correct_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_motion_correct(
@@ -45,20 +169,13 @@ def mri_motion_correct(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MOTION_CORRECT_METADATA)
-    cargs = []
-    cargs.append("mri_motion_correct")
-    cargs.append(outfile)
-    cargs.extend([execution.input_file(f) for f in infiles])
-    ret = MriMotionCorrectOutputs(
-        root=execution.output_file("."),
-        corrected_outfile=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_motion_correct_params(outfile=outfile, infiles=infiles)
+    return mri_motion_correct_execute(params, execution)
 
 
 __all__ = [
     "MRI_MOTION_CORRECT_METADATA",
     "MriMotionCorrectOutputs",
     "mri_motion_correct",
+    "mri_motion_correct_params",
 ]

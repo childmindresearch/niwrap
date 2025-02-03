@@ -12,6 +12,65 @@ EPIDEWARP_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+EpidewarpFslParameters = typing.TypedDict('EpidewarpFslParameters', {
+    "__STYX_TYPE__": typing.Literal["epidewarp.fsl"],
+    "mag": typing.NotRequired[InputPathType | None],
+    "dph": typing.NotRequired[InputPathType | None],
+    "ph": typing.NotRequired[InputPathType | None],
+    "complex": typing.NotRequired[list[float] | None],
+    "exf": typing.NotRequired[InputPathType | None],
+    "epi": typing.NotRequired[InputPathType | None],
+    "tediff": typing.NotRequired[float | None],
+    "esp": typing.NotRequired[float | None],
+    "perev": bool,
+    "sigma": typing.NotRequired[float | None],
+    "vsm_fwhm": typing.NotRequired[float | None],
+    "vsm": str,
+    "vsmmag": typing.NotRequired[str | None],
+    "exfdw": typing.NotRequired[str | None],
+    "epidw": typing.NotRequired[str | None],
+    "nomagexfreg": bool,
+    "head": bool,
+    "tmpdir": typing.NotRequired[str | None],
+    "log": typing.NotRequired[str | None],
+    "nocleanup": bool,
+    "cleanup": bool,
+    "debug": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "epidewarp.fsl": epidewarp_fsl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "epidewarp.fsl": epidewarp_fsl_outputs,
+    }
+    return vt.get(t)
 
 
 class EpidewarpFslOutputs(typing.NamedTuple):
@@ -28,6 +87,259 @@ class EpidewarpFslOutputs(typing.NamedTuple):
     """Dewarped EPI volume"""
     vsmmag_output: OutputPathType | None
     """Voxel shift map in mag space output"""
+
+
+def epidewarp_fsl_params(
+    vsm: str,
+    mag: InputPathType | None = None,
+    dph: InputPathType | None = None,
+    ph: InputPathType | None = None,
+    complex_: list[float] | None = None,
+    exf: InputPathType | None = None,
+    epi: InputPathType | None = None,
+    tediff: float | None = None,
+    esp: float | None = None,
+    perev: bool = False,
+    sigma: float | None = None,
+    vsm_fwhm: float | None = None,
+    vsmmag: str | None = None,
+    exfdw: str | None = None,
+    epidw: str | None = None,
+    nomagexfreg: bool = False,
+    head: bool = False,
+    tmpdir: str | None = None,
+    log: str | None = None,
+    nocleanup: bool = False,
+    cleanup: bool = False,
+    debug: bool = False,
+) -> EpidewarpFslParameters:
+    """
+    Build parameters.
+    
+    Args:
+        vsm: Voxel shift map (required).
+        mag: B0 magnitude volume.
+        dph: B0 phase difference volume.
+        ph: B0 phase volume.
+        complex_: B0 map in complex values: real1 imag1 real2 imag2.
+        exf: Example func volume.
+        epi: EPI volume to unwarp.
+        tediff: Difference in B0 field map TEs.
+        esp: EPI echo spacing.
+        perev: Assume reversed phase encode direction.
+        sigma: 2D spatial gaussian smoothing stddev (default 2mm).
+        vsm_fwhm: Allows VSM to be extended outside of the mask.
+        vsmmag: Voxel shift map in mag space.
+        exfdw: Dewarped example func volume.
+        epidw: Dewarped EPI volume.
+        nomagexfreg: Assume mag and exf are in register.
+        head: Mask to head instead of brain.
+        tmpdir: Save intermediate results here.
+        log: Use logfile instead of default.
+        nocleanup: Do not delete tmpdir.
+        cleanup: Force deletion of tmpdir.
+        debug: Prints copious amounts to the screen.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "epidewarp.fsl",
+        "perev": perev,
+        "vsm": vsm,
+        "nomagexfreg": nomagexfreg,
+        "head": head,
+        "nocleanup": nocleanup,
+        "cleanup": cleanup,
+        "debug": debug,
+    }
+    if mag is not None:
+        params["mag"] = mag
+    if dph is not None:
+        params["dph"] = dph
+    if ph is not None:
+        params["ph"] = ph
+    if complex_ is not None:
+        params["complex"] = complex_
+    if exf is not None:
+        params["exf"] = exf
+    if epi is not None:
+        params["epi"] = epi
+    if tediff is not None:
+        params["tediff"] = tediff
+    if esp is not None:
+        params["esp"] = esp
+    if sigma is not None:
+        params["sigma"] = sigma
+    if vsm_fwhm is not None:
+        params["vsm_fwhm"] = vsm_fwhm
+    if vsmmag is not None:
+        params["vsmmag"] = vsmmag
+    if exfdw is not None:
+        params["exfdw"] = exfdw
+    if epidw is not None:
+        params["epidw"] = epidw
+    if tmpdir is not None:
+        params["tmpdir"] = tmpdir
+    if log is not None:
+        params["log"] = log
+    return params
+
+
+def epidewarp_fsl_cargs(
+    params: EpidewarpFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("epidewarp.fsl")
+    if params.get("mag") is not None:
+        cargs.extend([
+            "--mag",
+            execution.input_file(params.get("mag"))
+        ])
+    if params.get("dph") is not None:
+        cargs.extend([
+            "--dph",
+            execution.input_file(params.get("dph"))
+        ])
+    if params.get("ph") is not None:
+        cargs.extend([
+            "--ph",
+            execution.input_file(params.get("ph"))
+        ])
+    if params.get("complex") is not None:
+        cargs.extend([
+            "--complex",
+            *map(str, params.get("complex"))
+        ])
+    if params.get("exf") is not None:
+        cargs.extend([
+            "--exf",
+            execution.input_file(params.get("exf"))
+        ])
+    if params.get("epi") is not None:
+        cargs.extend([
+            "--epi",
+            execution.input_file(params.get("epi"))
+        ])
+    if params.get("tediff") is not None:
+        cargs.extend([
+            "--tediff",
+            str(params.get("tediff"))
+        ])
+    if params.get("esp") is not None:
+        cargs.extend([
+            "--esp",
+            str(params.get("esp"))
+        ])
+    if params.get("perev"):
+        cargs.append("--perev")
+    if params.get("sigma") is not None:
+        cargs.extend([
+            "--sigma",
+            str(params.get("sigma"))
+        ])
+    if params.get("vsm_fwhm") is not None:
+        cargs.extend([
+            "--vsm-fwhm",
+            str(params.get("vsm_fwhm"))
+        ])
+    cargs.extend([
+        "--vsm",
+        params.get("vsm")
+    ])
+    if params.get("vsmmag") is not None:
+        cargs.extend([
+            "--vsmmag",
+            params.get("vsmmag")
+        ])
+    if params.get("exfdw") is not None:
+        cargs.extend([
+            "--exfdw",
+            params.get("exfdw")
+        ])
+    if params.get("epidw") is not None:
+        cargs.extend([
+            "--epidw",
+            params.get("epidw")
+        ])
+    if params.get("nomagexfreg"):
+        cargs.append("--nomagexfreg")
+    if params.get("head"):
+        cargs.append("--head")
+    if params.get("tmpdir") is not None:
+        cargs.extend([
+            "--tmpdir",
+            params.get("tmpdir")
+        ])
+    if params.get("log") is not None:
+        cargs.extend([
+            "--log",
+            params.get("log")
+        ])
+    if params.get("nocleanup"):
+        cargs.append("--nocleanup")
+    if params.get("cleanup"):
+        cargs.append("--cleanup")
+    if params.get("debug"):
+        cargs.append("--debug")
+    return cargs
+
+
+def epidewarp_fsl_outputs(
+    params: EpidewarpFslParameters,
+    execution: Execution,
+) -> EpidewarpFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = EpidewarpFslOutputs(
+        root=execution.output_file("."),
+        vsm_output=execution.output_file(params.get("vsm") + ".nii.gz"),
+        exfdw_output=execution.output_file(params.get("exfdw") + ".nii.gz") if (params.get("exfdw") is not None) else None,
+        epidw_output=execution.output_file(params.get("epidw") + ".nii.gz") if (params.get("epidw") is not None) else None,
+        vsmmag_output=execution.output_file(params.get("vsmmag") + ".nii.gz") if (params.get("vsmmag") is not None) else None,
+    )
+    return ret
+
+
+def epidewarp_fsl_execute(
+    params: EpidewarpFslParameters,
+    execution: Execution,
+) -> EpidewarpFslOutputs:
+    """
+    Front end for FSL's PRELUDE and FUGUE programs to correct B0 distortion in EPI
+    scans.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `EpidewarpFslOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = epidewarp_fsl_cargs(params, execution)
+    ret = epidewarp_fsl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def epidewarp_fsl(
@@ -92,112 +404,13 @@ def epidewarp_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EPIDEWARP_FSL_METADATA)
-    cargs = []
-    cargs.append("epidewarp.fsl")
-    if mag is not None:
-        cargs.extend([
-            "--mag",
-            execution.input_file(mag)
-        ])
-    if dph is not None:
-        cargs.extend([
-            "--dph",
-            execution.input_file(dph)
-        ])
-    if ph is not None:
-        cargs.extend([
-            "--ph",
-            execution.input_file(ph)
-        ])
-    if complex_ is not None:
-        cargs.extend([
-            "--complex",
-            *map(str, complex_)
-        ])
-    if exf is not None:
-        cargs.extend([
-            "--exf",
-            execution.input_file(exf)
-        ])
-    if epi is not None:
-        cargs.extend([
-            "--epi",
-            execution.input_file(epi)
-        ])
-    if tediff is not None:
-        cargs.extend([
-            "--tediff",
-            str(tediff)
-        ])
-    if esp is not None:
-        cargs.extend([
-            "--esp",
-            str(esp)
-        ])
-    if perev:
-        cargs.append("--perev")
-    if sigma is not None:
-        cargs.extend([
-            "--sigma",
-            str(sigma)
-        ])
-    if vsm_fwhm is not None:
-        cargs.extend([
-            "--vsm-fwhm",
-            str(vsm_fwhm)
-        ])
-    cargs.extend([
-        "--vsm",
-        vsm
-    ])
-    if vsmmag is not None:
-        cargs.extend([
-            "--vsmmag",
-            vsmmag
-        ])
-    if exfdw is not None:
-        cargs.extend([
-            "--exfdw",
-            exfdw
-        ])
-    if epidw is not None:
-        cargs.extend([
-            "--epidw",
-            epidw
-        ])
-    if nomagexfreg:
-        cargs.append("--nomagexfreg")
-    if head:
-        cargs.append("--head")
-    if tmpdir is not None:
-        cargs.extend([
-            "--tmpdir",
-            tmpdir
-        ])
-    if log is not None:
-        cargs.extend([
-            "--log",
-            log
-        ])
-    if nocleanup:
-        cargs.append("--nocleanup")
-    if cleanup:
-        cargs.append("--cleanup")
-    if debug:
-        cargs.append("--debug")
-    ret = EpidewarpFslOutputs(
-        root=execution.output_file("."),
-        vsm_output=execution.output_file(vsm + ".nii.gz"),
-        exfdw_output=execution.output_file(exfdw + ".nii.gz") if (exfdw is not None) else None,
-        epidw_output=execution.output_file(epidw + ".nii.gz") if (epidw is not None) else None,
-        vsmmag_output=execution.output_file(vsmmag + ".nii.gz") if (vsmmag is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = epidewarp_fsl_params(mag=mag, dph=dph, ph=ph, complex_=complex_, exf=exf, epi=epi, tediff=tediff, esp=esp, perev=perev, sigma=sigma, vsm_fwhm=vsm_fwhm, vsm=vsm, vsmmag=vsmmag, exfdw=exfdw, epidw=epidw, nomagexfreg=nomagexfreg, head=head, tmpdir=tmpdir, log=log, nocleanup=nocleanup, cleanup=cleanup, debug=debug)
+    return epidewarp_fsl_execute(params, execution)
 
 
 __all__ = [
     "EPIDEWARP_FSL_METADATA",
     "EpidewarpFslOutputs",
     "epidewarp_fsl",
+    "epidewarp_fsl_params",
 ]

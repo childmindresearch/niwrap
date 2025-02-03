@@ -12,14 +12,129 @@ LONG_CREATE_BASE_SIGMA_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LongCreateBaseSigmaParameters = typing.TypedDict('LongCreateBaseSigmaParameters', {
+    "__STYX_TYPE__": typing.Literal["long_create_base_sigma"],
+    "base_id": str,
+    "sigma": int,
+})
 
 
-class LongCreateBaseSigmaOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `long_create_base_sigma(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "long_create_base_sigma": long_create_base_sigma_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def long_create_base_sigma_params(
+    base_id: str,
+    sigma: int,
+) -> LongCreateBaseSigmaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        base_id: Subject ID of the base.
+        sigma: Integer value of sigma smoothing (usually 2..6).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "long_create_base_sigma",
+        "base_id": base_id,
+        "sigma": sigma,
+    }
+    return params
+
+
+def long_create_base_sigma_cargs(
+    params: LongCreateBaseSigmaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("long_create_base_sigma")
+    cargs.append(params.get("base_id"))
+    cargs.append(str(params.get("sigma")))
+    return cargs
+
+
+def long_create_base_sigma_outputs(
+    params: LongCreateBaseSigmaParameters,
+    execution: Execution,
+) -> LongCreateBaseSigmaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LongCreateBaseSigmaOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def long_create_base_sigma_execute(
+    params: LongCreateBaseSigmaParameters,
+    execution: Execution,
+) -> LongCreateBaseSigmaOutputs:
+    """
+    Performs a joint normalization and atlas renormalization at a specific sigma
+    smoothing level. This is usually done as part of the base stream but can be
+    performed to add files for a different sigma level to an existing base.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LongCreateBaseSigmaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = long_create_base_sigma_cargs(params, execution)
+    ret = long_create_base_sigma_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def long_create_base_sigma(
@@ -45,19 +160,12 @@ def long_create_base_sigma(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LONG_CREATE_BASE_SIGMA_METADATA)
-    cargs = []
-    cargs.append("long_create_base_sigma")
-    cargs.append(base_id)
-    cargs.append(str(sigma))
-    ret = LongCreateBaseSigmaOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = long_create_base_sigma_params(base_id=base_id, sigma=sigma)
+    return long_create_base_sigma_execute(params, execution)
 
 
 __all__ = [
     "LONG_CREATE_BASE_SIGMA_METADATA",
-    "LongCreateBaseSigmaOutputs",
     "long_create_base_sigma",
+    "long_create_base_sigma_params",
 ]

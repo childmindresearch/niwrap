@@ -12,14 +12,172 @@ ADD_TO_SPEC_FILE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+AddToSpecFileParameters = typing.TypedDict('AddToSpecFileParameters', {
+    "__STYX_TYPE__": typing.Literal["add-to-spec-file"],
+    "specfile": str,
+    "structure": str,
+    "filename": str,
+})
 
 
-class AddToSpecFileOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `add_to_spec_file(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "add-to-spec-file": add_to_spec_file_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def add_to_spec_file_params(
+    specfile: str,
+    structure: str,
+    filename: str,
+) -> AddToSpecFileParameters:
+    """
+    Build parameters.
+    
+    Args:
+        specfile: the specification file to add to.
+        structure: the structure of the data file.
+        filename: the path to the file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "add-to-spec-file",
+        "specfile": specfile,
+        "structure": structure,
+        "filename": filename,
+    }
+    return params
+
+
+def add_to_spec_file_cargs(
+    params: AddToSpecFileParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-add-to-spec-file")
+    cargs.append(params.get("specfile"))
+    cargs.append(params.get("structure"))
+    cargs.append(params.get("filename"))
+    return cargs
+
+
+def add_to_spec_file_outputs(
+    params: AddToSpecFileParameters,
+    execution: Execution,
+) -> AddToSpecFileOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AddToSpecFileOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def add_to_spec_file_execute(
+    params: AddToSpecFileParameters,
+    execution: Execution,
+) -> AddToSpecFileOutputs:
+    """
+    Add a file to a specification file.
+    
+    The resulting spec file overwrites the existing spec file. If the spec file
+    doesn't exist, it is created with default metadata. The structure argument
+    must be one of the following:
+    
+    CORTEX_LEFT
+    CORTEX_RIGHT
+    CEREBELLUM
+    ACCUMBENS_LEFT
+    ACCUMBENS_RIGHT
+    ALL_GREY_MATTER
+    ALL_WHITE_MATTER
+    AMYGDALA_LEFT
+    AMYGDALA_RIGHT
+    BRAIN_STEM
+    CAUDATE_LEFT
+    CAUDATE_RIGHT
+    CEREBELLAR_WHITE_MATTER_LEFT
+    CEREBELLAR_WHITE_MATTER_RIGHT
+    CEREBELLUM_LEFT
+    CEREBELLUM_RIGHT
+    CEREBRAL_WHITE_MATTER_LEFT
+    CEREBRAL_WHITE_MATTER_RIGHT
+    CORTEX
+    DIENCEPHALON_VENTRAL_LEFT
+    DIENCEPHALON_VENTRAL_RIGHT
+    HIPPOCAMPUS_LEFT
+    HIPPOCAMPUS_RIGHT
+    INVALID
+    OTHER
+    OTHER_GREY_MATTER
+    OTHER_WHITE_MATTER
+    PALLIDUM_LEFT
+    PALLIDUM_RIGHT
+    PUTAMEN_LEFT
+    PUTAMEN_RIGHT
+    THALAMUS_LEFT
+    THALAMUS_RIGHT
+    .
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AddToSpecFileOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = add_to_spec_file_cargs(params, execution)
+    ret = add_to_spec_file_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def add_to_spec_file(
@@ -84,21 +242,12 @@ def add_to_spec_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADD_TO_SPEC_FILE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-add-to-spec-file")
-    cargs.append(specfile)
-    cargs.append(structure)
-    cargs.append(filename)
-    ret = AddToSpecFileOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = add_to_spec_file_params(specfile=specfile, structure=structure, filename=filename)
+    return add_to_spec_file_execute(params, execution)
 
 
 __all__ = [
     "ADD_TO_SPEC_FILE_METADATA",
-    "AddToSpecFileOutputs",
     "add_to_spec_file",
+    "add_to_spec_file_params",
 ]

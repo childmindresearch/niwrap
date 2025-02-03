@@ -12,6 +12,46 @@ V_3D_NWARP_ADJUST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dNwarpAdjustParameters = typing.TypedDict('V3dNwarpAdjustParameters', {
+    "__STYX_TYPE__": typing.Literal["3dNwarpAdjust"],
+    "input_warps": list[InputPathType],
+    "source_datasets": typing.NotRequired[list[InputPathType] | None],
+    "output_prefix": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dNwarpAdjust": v_3d_nwarp_adjust_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dNwarpAdjust": v_3d_nwarp_adjust_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dNwarpAdjustOutputs(typing.NamedTuple):
@@ -24,6 +64,114 @@ class V3dNwarpAdjustOutputs(typing.NamedTuple):
     """Output mean dataset BRIK file"""
     output_head: OutputPathType | None
     """Output mean dataset HEAD file"""
+
+
+def v_3d_nwarp_adjust_params(
+    input_warps: list[InputPathType],
+    source_datasets: list[InputPathType] | None = None,
+    output_prefix: str | None = None,
+) -> V3dNwarpAdjustParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_warps: List of input 3D warp datasets (at least 5).
+        source_datasets: List of input 3D datasets to be warped by the adjusted\
+            warp datasets. There must be exactly as many of these datasets as there\
+            are input warps.
+        output_prefix: Prefix for the output mean dataset (only needed if the\
+            '-source' option is also given).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dNwarpAdjust",
+        "input_warps": input_warps,
+    }
+    if source_datasets is not None:
+        params["source_datasets"] = source_datasets
+    if output_prefix is not None:
+        params["output_prefix"] = output_prefix
+    return params
+
+
+def v_3d_nwarp_adjust_cargs(
+    params: V3dNwarpAdjustParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dNwarpAdjust")
+    cargs.extend([
+        "-nwarp",
+        *[execution.input_file(f) for f in params.get("input_warps")]
+    ])
+    if params.get("source_datasets") is not None:
+        cargs.extend([
+            "-source",
+            *[execution.input_file(f) for f in params.get("source_datasets")]
+        ])
+    if params.get("output_prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("output_prefix")
+        ])
+    return cargs
+
+
+def v_3d_nwarp_adjust_outputs(
+    params: V3dNwarpAdjustParameters,
+    execution: Execution,
+) -> V3dNwarpAdjustOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dNwarpAdjustOutputs(
+        root=execution.output_file("."),
+        output_brik=execution.output_file(params.get("output_prefix") + "+tlrc.BRIK") if (params.get("output_prefix") is not None) else None,
+        output_head=execution.output_file(params.get("output_prefix") + "+tlrc.HEAD") if (params.get("output_prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_nwarp_adjust_execute(
+    params: V3dNwarpAdjustParameters,
+    execution: Execution,
+) -> V3dNwarpAdjustOutputs:
+    """
+    Program to adjust 3D warp datasets by composing them with the inverse of their
+    average, optionally warping input datasets and generating an output mean
+    dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dNwarpAdjustOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_nwarp_adjust_cargs(params, execution)
+    ret = v_3d_nwarp_adjust_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_nwarp_adjust(
@@ -54,33 +202,13 @@ def v_3d_nwarp_adjust(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_ADJUST_METADATA)
-    cargs = []
-    cargs.append("3dNwarpAdjust")
-    cargs.extend([
-        "-nwarp",
-        *[execution.input_file(f) for f in input_warps]
-    ])
-    if source_datasets is not None:
-        cargs.extend([
-            "-source",
-            *[execution.input_file(f) for f in source_datasets]
-        ])
-    if output_prefix is not None:
-        cargs.extend([
-            "-prefix",
-            output_prefix
-        ])
-    ret = V3dNwarpAdjustOutputs(
-        root=execution.output_file("."),
-        output_brik=execution.output_file(output_prefix + "+tlrc.BRIK") if (output_prefix is not None) else None,
-        output_head=execution.output_file(output_prefix + "+tlrc.HEAD") if (output_prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_nwarp_adjust_params(input_warps=input_warps, source_datasets=source_datasets, output_prefix=output_prefix)
+    return v_3d_nwarp_adjust_execute(params, execution)
 
 
 __all__ = [
     "V3dNwarpAdjustOutputs",
     "V_3D_NWARP_ADJUST_METADATA",
     "v_3d_nwarp_adjust",
+    "v_3d_nwarp_adjust_params",
 ]

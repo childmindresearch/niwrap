@@ -12,6 +12,68 @@ AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AfniParameters = typing.TypedDict('AfniParameters', {
+    "__STYX_TYPE__": typing.Literal["afni"],
+    "session_directories": typing.NotRequired[str | None],
+    "bysub": typing.NotRequired[list[str] | None],
+    "all_dsets": bool,
+    "purge": bool,
+    "posfunc": bool,
+    "recursive": bool,
+    "no1D": bool,
+    "nocsv": bool,
+    "notsv": bool,
+    "unique": bool,
+    "orient": typing.NotRequired[str | None],
+    "noplugins": bool,
+    "seehidden": bool,
+    "allow_all_plugins": bool,
+    "yesplugouts": bool,
+    "debug_plugouts": bool,
+    "noplugouts": bool,
+    "skip_afnirc": bool,
+    "layout": typing.NotRequired[InputPathType | None],
+    "niml": bool,
+    "np": typing.NotRequired[int | None],
+    "npq": typing.NotRequired[int | None],
+    "npb": typing.NotRequired[int | None],
+    "com": typing.NotRequired[str | None],
+    "comsep": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "afni": afni_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "afni": afni_outputs,
+    }
+    return vt.get(t)
 
 
 class AfniOutputs(typing.NamedTuple):
@@ -22,6 +84,242 @@ class AfniOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     session_output: OutputPathType
     """Output file for the session data"""
+
+
+def afni_params(
+    session_directories: str | None = None,
+    bysub: list[str] | None = None,
+    all_dsets: bool = False,
+    purge: bool = False,
+    posfunc: bool = False,
+    recursive: bool = False,
+    no1_d: bool = False,
+    nocsv: bool = False,
+    notsv: bool = False,
+    unique: bool = False,
+    orient: str | None = None,
+    noplugins: bool = False,
+    seehidden: bool = False,
+    allow_all_plugins: bool = False,
+    yesplugouts: bool = False,
+    debug_plugouts: bool = False,
+    noplugouts: bool = False,
+    skip_afnirc: bool = False,
+    layout: InputPathType | None = None,
+    niml: bool = False,
+    np: int | None = None,
+    npq: int | None = None,
+    npb: int | None = None,
+    com: str | None = None,
+    comsep: str | None = None,
+) -> AfniParameters:
+    """
+    Build parameters.
+    
+    Args:
+        session_directories: Input session directories containing the datasets.
+        bysub: Gather all datasets corresponding to a single subject identifier.
+        all_dsets: Read in all datasets from all listed folders together.
+        purge: Conserve memory by purging unused datasets.
+        posfunc: Start up the color 'pbar' to use only positive function values.
+        recursive: Recursively search each session_directory for more session\
+            subdirectories.
+        no1_d: Tells AFNI not to read *.1D timeseries files.
+        nocsv: Tells AFNI not to read *.csv files.
+        notsv: Tells AFNI not to read *.tsv files.
+        unique: Create a unique set of colors for each AFNI controller window.
+        orient: Orientation code for displaying x-y-z coordinates.
+        noplugins: Do not load plugins.
+        seehidden: Show hidden plugins.
+        allow_all_plugins: Do not hide plugins.
+        yesplugouts: Listen for plugouts.
+        debug_plugouts: Plugout code prints lots of messages (for debugging).
+        noplugouts: Do not listen for plugouts.
+        skip_afnirc: Do not read .afnirc file.
+        layout: Read initial windows layout from a file.
+        niml: Turn on listening for NIML-formatted data from SUMA.
+        np: Provide a port offset for multiple instances.
+        npq: Like -np but quieter in case of errors.
+        npb: Provide a block of port numbers.
+        com: Specify command strings to drive AFNI on startup.
+        comsep: Character to use as a separator for commands.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "afni",
+        "all_dsets": all_dsets,
+        "purge": purge,
+        "posfunc": posfunc,
+        "recursive": recursive,
+        "no1D": no1_d,
+        "nocsv": nocsv,
+        "notsv": notsv,
+        "unique": unique,
+        "noplugins": noplugins,
+        "seehidden": seehidden,
+        "allow_all_plugins": allow_all_plugins,
+        "yesplugouts": yesplugouts,
+        "debug_plugouts": debug_plugouts,
+        "noplugouts": noplugouts,
+        "skip_afnirc": skip_afnirc,
+        "niml": niml,
+    }
+    if session_directories is not None:
+        params["session_directories"] = session_directories
+    if bysub is not None:
+        params["bysub"] = bysub
+    if orient is not None:
+        params["orient"] = orient
+    if layout is not None:
+        params["layout"] = layout
+    if np is not None:
+        params["np"] = np
+    if npq is not None:
+        params["npq"] = npq
+    if npb is not None:
+        params["npb"] = npb
+    if com is not None:
+        params["com"] = com
+    if comsep is not None:
+        params["comsep"] = comsep
+    return params
+
+
+def afni_cargs(
+    params: AfniParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("afni")
+    if params.get("session_directories") is not None:
+        cargs.append(params.get("session_directories"))
+    if params.get("bysub") is not None:
+        cargs.extend([
+            "-bysub",
+            *params.get("bysub")
+        ])
+    if params.get("all_dsets"):
+        cargs.append("-all_dsets")
+    if params.get("purge"):
+        cargs.append("-purge")
+    if params.get("posfunc"):
+        cargs.append("-posfunc")
+    if params.get("recursive"):
+        cargs.append("-R")
+    if params.get("no1D"):
+        cargs.append("-no1D")
+    if params.get("nocsv"):
+        cargs.append("-nocsv")
+    if params.get("notsv"):
+        cargs.append("-notsv")
+    if params.get("unique"):
+        cargs.append("-unique")
+    if params.get("orient") is not None:
+        cargs.extend([
+            "-orient",
+            params.get("orient")
+        ])
+    if params.get("noplugins"):
+        cargs.append("-noplugins")
+    if params.get("seehidden"):
+        cargs.append("-seehidden")
+    if params.get("allow_all_plugins"):
+        cargs.append("-DAFNI_ALLOW_ALL_PLUGINS=YES")
+    if params.get("yesplugouts"):
+        cargs.append("-yesplugouts")
+    if params.get("debug_plugouts"):
+        cargs.append("-YESplugouts")
+    if params.get("noplugouts"):
+        cargs.append("-noplugouts")
+    if params.get("skip_afnirc"):
+        cargs.append("-skip_afnirc")
+    if params.get("layout") is not None:
+        cargs.extend([
+            "-layout",
+            execution.input_file(params.get("layout"))
+        ])
+    if params.get("niml"):
+        cargs.append("-niml")
+    if params.get("np") is not None:
+        cargs.extend([
+            "-np",
+            str(params.get("np"))
+        ])
+    if params.get("npq") is not None:
+        cargs.extend([
+            "-npq",
+            str(params.get("npq"))
+        ])
+    if params.get("npb") is not None:
+        cargs.extend([
+            "-npb",
+            str(params.get("npb"))
+        ])
+    if params.get("com") is not None:
+        cargs.extend([
+            "-com",
+            params.get("com")
+        ])
+    if params.get("comsep") is not None:
+        cargs.extend([
+            "-comsep",
+            params.get("comsep")
+        ])
+    return cargs
+
+
+def afni_outputs(
+    params: AfniParameters,
+    execution: Execution,
+) -> AfniOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AfniOutputs(
+        root=execution.output_file("."),
+        session_output=execution.output_file("output_session.nii.gz"),
+    )
+    return ret
+
+
+def afni_execute(
+    params: AfniParameters,
+    execution: Execution,
+) -> AfniOutputs:
+    """
+    Tool for reading in sessions of 3D datasets and visualizing them.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AfniOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = afni_cargs(params, execution)
+    ret = afni_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def afni_(
@@ -92,92 +390,13 @@ def afni_(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_METADATA)
-    cargs = []
-    cargs.append("afni")
-    if session_directories is not None:
-        cargs.append(session_directories)
-    if bysub is not None:
-        cargs.extend([
-            "-bysub",
-            *bysub
-        ])
-    if all_dsets:
-        cargs.append("-all_dsets")
-    if purge:
-        cargs.append("-purge")
-    if posfunc:
-        cargs.append("-posfunc")
-    if recursive:
-        cargs.append("-R")
-    if no1_d:
-        cargs.append("-no1D")
-    if nocsv:
-        cargs.append("-nocsv")
-    if notsv:
-        cargs.append("-notsv")
-    if unique:
-        cargs.append("-unique")
-    if orient is not None:
-        cargs.extend([
-            "-orient",
-            orient
-        ])
-    if noplugins:
-        cargs.append("-noplugins")
-    if seehidden:
-        cargs.append("-seehidden")
-    if allow_all_plugins:
-        cargs.append("-DAFNI_ALLOW_ALL_PLUGINS=YES")
-    if yesplugouts:
-        cargs.append("-yesplugouts")
-    if debug_plugouts:
-        cargs.append("-YESplugouts")
-    if noplugouts:
-        cargs.append("-noplugouts")
-    if skip_afnirc:
-        cargs.append("-skip_afnirc")
-    if layout is not None:
-        cargs.extend([
-            "-layout",
-            execution.input_file(layout)
-        ])
-    if niml:
-        cargs.append("-niml")
-    if np is not None:
-        cargs.extend([
-            "-np",
-            str(np)
-        ])
-    if npq is not None:
-        cargs.extend([
-            "-npq",
-            str(npq)
-        ])
-    if npb is not None:
-        cargs.extend([
-            "-npb",
-            str(npb)
-        ])
-    if com is not None:
-        cargs.extend([
-            "-com",
-            com
-        ])
-    if comsep is not None:
-        cargs.extend([
-            "-comsep",
-            comsep
-        ])
-    ret = AfniOutputs(
-        root=execution.output_file("."),
-        session_output=execution.output_file("output_session.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = afni_params(session_directories=session_directories, bysub=bysub, all_dsets=all_dsets, purge=purge, posfunc=posfunc, recursive=recursive, no1_d=no1_d, nocsv=nocsv, notsv=notsv, unique=unique, orient=orient, noplugins=noplugins, seehidden=seehidden, allow_all_plugins=allow_all_plugins, yesplugouts=yesplugouts, debug_plugouts=debug_plugouts, noplugouts=noplugouts, skip_afnirc=skip_afnirc, layout=layout, niml=niml, np=np, npq=npq, npb=npb, com=com, comsep=comsep)
+    return afni_execute(params, execution)
 
 
 __all__ = [
     "AFNI_METADATA",
     "AfniOutputs",
     "afni_",
+    "afni_params",
 ]

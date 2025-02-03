@@ -12,6 +12,47 @@ SURFACE_CUT_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceCutResampleParameters = typing.TypedDict('SurfaceCutResampleParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-cut-resample"],
+    "surface_in": InputPathType,
+    "current_sphere": InputPathType,
+    "new_sphere": InputPathType,
+    "surface_out": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "surface-cut-resample": surface_cut_resample_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "surface-cut-resample": surface_cut_resample_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfaceCutResampleOutputs(typing.NamedTuple):
@@ -22,6 +63,106 @@ class SurfaceCutResampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output surface file"""
+
+
+def surface_cut_resample_params(
+    surface_in: InputPathType,
+    current_sphere: InputPathType,
+    new_sphere: InputPathType,
+    surface_out: str,
+) -> SurfaceCutResampleParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface_in: the surface file to resample.
+        current_sphere: a sphere surface with the mesh that the input surface\
+            is currently on.
+        new_sphere: a sphere surface that is in register with <current-sphere>\
+            and has the desired output mesh.
+        surface_out: the output surface file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-cut-resample",
+        "surface_in": surface_in,
+        "current_sphere": current_sphere,
+        "new_sphere": new_sphere,
+        "surface_out": surface_out,
+    }
+    return params
+
+
+def surface_cut_resample_cargs(
+    params: SurfaceCutResampleParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-cut-resample")
+    cargs.append(execution.input_file(params.get("surface_in")))
+    cargs.append(execution.input_file(params.get("current_sphere")))
+    cargs.append(execution.input_file(params.get("new_sphere")))
+    cargs.append(params.get("surface_out"))
+    return cargs
+
+
+def surface_cut_resample_outputs(
+    params: SurfaceCutResampleParameters,
+    execution: Execution,
+) -> SurfaceCutResampleOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceCutResampleOutputs(
+        root=execution.output_file("."),
+        surface_out=execution.output_file(params.get("surface_out")),
+    )
+    return ret
+
+
+def surface_cut_resample_execute(
+    params: SurfaceCutResampleParameters,
+    execution: Execution,
+) -> SurfaceCutResampleOutputs:
+    """
+    Resample a cut surface.
+    
+    Resamples a surface file, given two spherical surfaces that are in register.
+    Barycentric resampling is used, because it is usually better for resampling
+    surfaces, and because it is needed to figure out the new topology anyway.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceCutResampleOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_cut_resample_cargs(params, execution)
+    ret = surface_cut_resample_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_cut_resample(
@@ -55,23 +196,13 @@ def surface_cut_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CUT_RESAMPLE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-cut-resample")
-    cargs.append(execution.input_file(surface_in))
-    cargs.append(execution.input_file(current_sphere))
-    cargs.append(execution.input_file(new_sphere))
-    cargs.append(surface_out)
-    ret = SurfaceCutResampleOutputs(
-        root=execution.output_file("."),
-        surface_out=execution.output_file(surface_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_cut_resample_params(surface_in=surface_in, current_sphere=current_sphere, new_sphere=new_sphere, surface_out=surface_out)
+    return surface_cut_resample_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_CUT_RESAMPLE_METADATA",
     "SurfaceCutResampleOutputs",
     "surface_cut_resample",
+    "surface_cut_resample_params",
 ]

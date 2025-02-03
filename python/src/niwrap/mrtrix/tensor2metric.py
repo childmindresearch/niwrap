@@ -12,35 +12,111 @@ TENSOR2METRIC_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+Tensor2metricConfigParameters = typing.TypedDict('Tensor2metricConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Tensor2metricParameters = typing.TypedDict('Tensor2metricParameters', {
+    "__STYX_TYPE__": typing.Literal["tensor2metric"],
+    "adc": typing.NotRequired[str | None],
+    "fa": typing.NotRequired[str | None],
+    "ad": typing.NotRequired[str | None],
+    "rd": typing.NotRequired[str | None],
+    "cl": typing.NotRequired[str | None],
+    "cp": typing.NotRequired[str | None],
+    "cs": typing.NotRequired[str | None],
+    "value": typing.NotRequired[str | None],
+    "vector": typing.NotRequired[str | None],
+    "num": typing.NotRequired[list[int] | None],
+    "modulate": typing.NotRequired[str | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Tensor2metricConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "tensor": InputPathType,
+})
 
 
-@dataclasses.dataclass
-class Tensor2metricConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tensor2metric": tensor2metric_cargs,
+        "config": tensor2metric_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tensor2metric": tensor2metric_outputs,
+    }
+    return vt.get(t)
+
+
+def tensor2metric_config_params(
+    key: str,
+    value: str,
+) -> Tensor2metricConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def tensor2metric_config_cargs(
+    params: Tensor2metricConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Tensor2metricOutputs(typing.NamedTuple):
@@ -75,6 +151,275 @@ class Tensor2metricOutputs(typing.NamedTuple):
     """compute the selected eigenvector(s) of the diffusion tensor. """
 
 
+def tensor2metric_params(
+    tensor: InputPathType,
+    adc: str | None = None,
+    fa: str | None = None,
+    ad: str | None = None,
+    rd: str | None = None,
+    cl: str | None = None,
+    cp: str | None = None,
+    cs: str | None = None,
+    value: str | None = None,
+    vector: str | None = None,
+    num: list[int] | None = None,
+    modulate: str | None = None,
+    mask: InputPathType | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Tensor2metricConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Tensor2metricParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tensor: the input tensor image.
+        adc: compute the mean apparent diffusion coefficient (ADC) of the\
+            diffusion tensor. (sometimes also referred to as the mean diffusivity\
+            (MD)).
+        fa: compute the fractional anisotropy (FA) of the diffusion tensor.
+        ad: compute the axial diffusivity (AD) of the diffusion tensor.\
+            (equivalent to the principal eigenvalue).
+        rd: compute the radial diffusivity (RD) of the diffusion tensor.\
+            (equivalent to the mean of the two non-principal eigenvalues).
+        cl: compute the linearity metric of the diffusion tensor. (one of the\
+            three Westin shape metrics).
+        cp: compute the planarity metric of the diffusion tensor. (one of the\
+            three Westin shape metrics).
+        cs: compute the sphericity metric of the diffusion tensor. (one of the\
+            three Westin shape metrics).
+        value: compute the selected eigenvalue(s) of the diffusion tensor.
+        vector: compute the selected eigenvector(s) of the diffusion tensor.
+        num: specify the desired eigenvalue/eigenvector(s). Note that several\
+            eigenvalues can be specified as a number sequence. For example, '1,3'\
+            specifies the principal (1) and minor (3) eigenvalues/eigenvectors\
+            (default = 1).
+        modulate: specify how to modulate the magnitude of the eigenvectors.\
+            Valid choices are: none, FA, eigval (default = FA).
+        mask: only perform computation within the specified binary brain mask\
+            image.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tensor2metric",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "tensor": tensor,
+    }
+    if adc is not None:
+        params["adc"] = adc
+    if fa is not None:
+        params["fa"] = fa
+    if ad is not None:
+        params["ad"] = ad
+    if rd is not None:
+        params["rd"] = rd
+    if cl is not None:
+        params["cl"] = cl
+    if cp is not None:
+        params["cp"] = cp
+    if cs is not None:
+        params["cs"] = cs
+    if value is not None:
+        params["value"] = value
+    if vector is not None:
+        params["vector"] = vector
+    if num is not None:
+        params["num"] = num
+    if modulate is not None:
+        params["modulate"] = modulate
+    if mask is not None:
+        params["mask"] = mask
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def tensor2metric_cargs(
+    params: Tensor2metricParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tensor2metric")
+    if params.get("adc") is not None:
+        cargs.extend([
+            "-adc",
+            params.get("adc")
+        ])
+    if params.get("fa") is not None:
+        cargs.extend([
+            "-fa",
+            params.get("fa")
+        ])
+    if params.get("ad") is not None:
+        cargs.extend([
+            "-ad",
+            params.get("ad")
+        ])
+    if params.get("rd") is not None:
+        cargs.extend([
+            "-rd",
+            params.get("rd")
+        ])
+    if params.get("cl") is not None:
+        cargs.extend([
+            "-cl",
+            params.get("cl")
+        ])
+    if params.get("cp") is not None:
+        cargs.extend([
+            "-cp",
+            params.get("cp")
+        ])
+    if params.get("cs") is not None:
+        cargs.extend([
+            "-cs",
+            params.get("cs")
+        ])
+    if params.get("value") is not None:
+        cargs.extend([
+            "-value",
+            params.get("value")
+        ])
+    if params.get("vector") is not None:
+        cargs.extend([
+            "-vector",
+            params.get("vector")
+        ])
+    if params.get("num") is not None:
+        cargs.extend([
+            "-num",
+            *map(str, params.get("num"))
+        ])
+    if params.get("modulate") is not None:
+        cargs.extend([
+            "-modulate",
+            params.get("modulate")
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("tensor")))
+    return cargs
+
+
+def tensor2metric_outputs(
+    params: Tensor2metricParameters,
+    execution: Execution,
+) -> Tensor2metricOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Tensor2metricOutputs(
+        root=execution.output_file("."),
+        adc=execution.output_file(params.get("adc")) if (params.get("adc") is not None) else None,
+        fa=execution.output_file(params.get("fa")) if (params.get("fa") is not None) else None,
+        ad=execution.output_file(params.get("ad")) if (params.get("ad") is not None) else None,
+        rd=execution.output_file(params.get("rd")) if (params.get("rd") is not None) else None,
+        cl=execution.output_file(params.get("cl")) if (params.get("cl") is not None) else None,
+        cp=execution.output_file(params.get("cp")) if (params.get("cp") is not None) else None,
+        cs=execution.output_file(params.get("cs")) if (params.get("cs") is not None) else None,
+        value=execution.output_file(params.get("value")) if (params.get("value") is not None) else None,
+        vector=execution.output_file(params.get("vector")) if (params.get("vector") is not None) else None,
+    )
+    return ret
+
+
+def tensor2metric_execute(
+    params: Tensor2metricParameters,
+    execution: Execution,
+) -> Tensor2metricOutputs:
+    """
+    Generate maps of tensor-derived parameters.
+    
+    
+    
+    References:
+    
+    Basser, P. J.; Mattiello, J. & Lebihan, D. MR diffusion tensor spectroscopy
+    and imaging. Biophysical Journal, 1994, 66, 259-267
+    
+    Westin, C. F.; Peled, S.; Gudbjartsson, H.; Kikinis, R. & Jolesz, F. A.
+    Geometrical diffusion measures for MRI from tensor basis analysis. Proc Intl
+    Soc Mag Reson Med, 1997, 5, 1742.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Tensor2metricOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tensor2metric_cargs(params, execution)
+    ret = tensor2metric_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def tensor2metric(
     tensor: InputPathType,
     adc: str | None = None,
@@ -94,7 +439,7 @@ def tensor2metric(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Tensor2metricConfig] | None = None,
+    config: list[Tensor2metricConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -161,107 +506,14 @@ def tensor2metric(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TENSOR2METRIC_METADATA)
-    cargs = []
-    cargs.append("tensor2metric")
-    if adc is not None:
-        cargs.extend([
-            "-adc",
-            adc
-        ])
-    if fa is not None:
-        cargs.extend([
-            "-fa",
-            fa
-        ])
-    if ad is not None:
-        cargs.extend([
-            "-ad",
-            ad
-        ])
-    if rd is not None:
-        cargs.extend([
-            "-rd",
-            rd
-        ])
-    if cl is not None:
-        cargs.extend([
-            "-cl",
-            cl
-        ])
-    if cp is not None:
-        cargs.extend([
-            "-cp",
-            cp
-        ])
-    if cs is not None:
-        cargs.extend([
-            "-cs",
-            cs
-        ])
-    if value is not None:
-        cargs.extend([
-            "-value",
-            value
-        ])
-    if vector is not None:
-        cargs.extend([
-            "-vector",
-            vector
-        ])
-    if num is not None:
-        cargs.extend([
-            "-num",
-            *map(str, num)
-        ])
-    if modulate is not None:
-        cargs.extend([
-            "-modulate",
-            modulate
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(tensor))
-    ret = Tensor2metricOutputs(
-        root=execution.output_file("."),
-        adc=execution.output_file(adc) if (adc is not None) else None,
-        fa=execution.output_file(fa) if (fa is not None) else None,
-        ad=execution.output_file(ad) if (ad is not None) else None,
-        rd=execution.output_file(rd) if (rd is not None) else None,
-        cl=execution.output_file(cl) if (cl is not None) else None,
-        cp=execution.output_file(cp) if (cp is not None) else None,
-        cs=execution.output_file(cs) if (cs is not None) else None,
-        value=execution.output_file(value) if (value is not None) else None,
-        vector=execution.output_file(vector) if (vector is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = tensor2metric_params(adc=adc, fa=fa, ad=ad, rd=rd, cl=cl, cp=cp, cs=cs, value=value, vector=vector, num=num, modulate=modulate, mask=mask, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, tensor=tensor)
+    return tensor2metric_execute(params, execution)
 
 
 __all__ = [
     "TENSOR2METRIC_METADATA",
-    "Tensor2metricConfig",
     "Tensor2metricOutputs",
     "tensor2metric",
+    "tensor2metric_config_params",
+    "tensor2metric_params",
 ]

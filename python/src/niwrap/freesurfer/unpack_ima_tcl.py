@@ -12,14 +12,122 @@ UNPACK_IMA_TCL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+UnpackImaTclParameters = typing.TypedDict('UnpackImaTclParameters', {
+    "__STYX_TYPE__": typing.Literal["unpack_ima.tcl"],
+    "target_dir": str,
+})
 
 
-class UnpackImaTclOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `unpack_ima_tcl(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "unpack_ima.tcl": unpack_ima_tcl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def unpack_ima_tcl_params(
+    target_dir: str = "~",
+) -> UnpackImaTclParameters:
+    """
+    Build parameters.
+    
+    Args:
+        target_dir: Target directory to unpack the files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "unpack_ima.tcl",
+        "target_dir": target_dir,
+    }
+    return params
+
+
+def unpack_ima_tcl_cargs(
+    params: UnpackImaTclParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("unpack_ima.tcl")
+    cargs.append(params.get("target_dir"))
+    return cargs
+
+
+def unpack_ima_tcl_outputs(
+    params: UnpackImaTclParameters,
+    execution: Execution,
+) -> UnpackImaTclOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UnpackImaTclOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def unpack_ima_tcl_execute(
+    params: UnpackImaTclParameters,
+    execution: Execution,
+) -> UnpackImaTclOutputs:
+    """
+    A tool to unpack MRI DICOM .ima files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UnpackImaTclOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = unpack_ima_tcl_cargs(params, execution)
+    ret = unpack_ima_tcl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def unpack_ima_tcl(
@@ -41,18 +149,12 @@ def unpack_ima_tcl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACK_IMA_TCL_METADATA)
-    cargs = []
-    cargs.append("unpack_ima.tcl")
-    cargs.append(target_dir)
-    ret = UnpackImaTclOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = unpack_ima_tcl_params(target_dir=target_dir)
+    return unpack_ima_tcl_execute(params, execution)
 
 
 __all__ = [
     "UNPACK_IMA_TCL_METADATA",
-    "UnpackImaTclOutputs",
     "unpack_ima_tcl",
+    "unpack_ima_tcl_params",
 ]

@@ -12,6 +12,51 @@ MRIS_DISTANCE_TRANSFORM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisDistanceTransformParameters = typing.TypedDict('MrisDistanceTransformParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_distance_transform"],
+    "surface": InputPathType,
+    "label": InputPathType,
+    "mode": typing.Literal["signed", "unsigned", "outside"],
+    "output_file": str,
+    "anterior": typing.NotRequired[float | None],
+    "posterior": typing.NotRequired[float | None],
+    "divide": typing.NotRequired[float | None],
+    "olabel": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_distance_transform": mris_distance_transform_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_distance_transform": mris_distance_transform_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisDistanceTransformOutputs(typing.NamedTuple):
@@ -22,6 +67,132 @@ class MrisDistanceTransformOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     result_file: OutputPathType
     """Resulting file after applying the distance transform."""
+
+
+def mris_distance_transform_params(
+    surface: InputPathType,
+    label: InputPathType,
+    mode: typing.Literal["signed", "unsigned", "outside"],
+    output_file: str,
+    anterior: float | None = None,
+    posterior: float | None = None,
+    divide: float | None = None,
+    olabel: bool = False,
+) -> MrisDistanceTransformParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Surface file for processing.
+        label: Label file to apply distance transform.
+        mode: Mode of the distance transform, can be 'signed', 'unsigned', or\
+            'outside'.
+        output_file: Output file for the distance transform results.
+        anterior: Only use anteriormost <dist> portion of the label.
+        posterior: Only use posteriormost <dist> portion of the label.
+        divide: Divide label into <n> units along primary eigendirection.
+        olabel: Output label subdivisions.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_distance_transform",
+        "surface": surface,
+        "label": label,
+        "mode": mode,
+        "output_file": output_file,
+        "olabel": olabel,
+    }
+    if anterior is not None:
+        params["anterior"] = anterior
+    if posterior is not None:
+        params["posterior"] = posterior
+    if divide is not None:
+        params["divide"] = divide
+    return params
+
+
+def mris_distance_transform_cargs(
+    params: MrisDistanceTransformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_distance_transform")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("label")))
+    cargs.append(params.get("mode"))
+    cargs.append(params.get("output_file"))
+    if params.get("anterior") is not None:
+        cargs.extend([
+            "-anterior",
+            str(params.get("anterior"))
+        ])
+    if params.get("posterior") is not None:
+        cargs.extend([
+            "-posterior",
+            str(params.get("posterior"))
+        ])
+    if params.get("divide") is not None:
+        cargs.extend([
+            "-divide",
+            str(params.get("divide"))
+        ])
+    if params.get("olabel"):
+        cargs.append("-olabel")
+    return cargs
+
+
+def mris_distance_transform_outputs(
+    params: MrisDistanceTransformParameters,
+    execution: Execution,
+) -> MrisDistanceTransformOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisDistanceTransformOutputs(
+        root=execution.output_file("."),
+        result_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def mris_distance_transform_execute(
+    params: MrisDistanceTransformParameters,
+    execution: Execution,
+) -> MrisDistanceTransformOutputs:
+    """
+    Computes the distance transform of a label on the surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisDistanceTransformOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_distance_transform_cargs(params, execution)
+    ret = mris_distance_transform_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_distance_transform(
@@ -58,39 +229,13 @@ def mris_distance_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DISTANCE_TRANSFORM_METADATA)
-    cargs = []
-    cargs.append("mris_distance_transform")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(label))
-    cargs.append(mode)
-    cargs.append(output_file)
-    if anterior is not None:
-        cargs.extend([
-            "-anterior",
-            str(anterior)
-        ])
-    if posterior is not None:
-        cargs.extend([
-            "-posterior",
-            str(posterior)
-        ])
-    if divide is not None:
-        cargs.extend([
-            "-divide",
-            str(divide)
-        ])
-    if olabel:
-        cargs.append("-olabel")
-    ret = MrisDistanceTransformOutputs(
-        root=execution.output_file("."),
-        result_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_distance_transform_params(surface=surface, label=label, mode=mode, output_file=output_file, anterior=anterior, posterior=posterior, divide=divide, olabel=olabel)
+    return mris_distance_transform_execute(params, execution)
 
 
 __all__ = [
     "MRIS_DISTANCE_TRANSFORM_METADATA",
     "MrisDistanceTransformOutputs",
     "mris_distance_transform",
+    "mris_distance_transform_params",
 ]

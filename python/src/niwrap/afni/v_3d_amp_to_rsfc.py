@@ -12,6 +12,48 @@ V_3D_AMP_TO_RSFC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dAmpToRsfcParameters = typing.TypedDict('V3dAmpToRsfcParameters', {
+    "__STYX_TYPE__": typing.Literal["3dAmpToRSFC"],
+    "in_amp": typing.NotRequired[InputPathType | None],
+    "in_pow": typing.NotRequired[InputPathType | None],
+    "prefix": str,
+    "band": list[float],
+    "mask": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dAmpToRSFC": v_3d_amp_to_rsfc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dAmpToRSFC": v_3d_amp_to_rsfc_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dAmpToRsfcOutputs(typing.NamedTuple):
@@ -34,6 +76,141 @@ class V3dAmpToRsfcOutputs(typing.NamedTuple):
     mask (mean-scaled RSFA)."""
     output_frsfa: OutputPathType
     """ALFF divided by sum of full amplitude spectrum (fractional RSFA)."""
+
+
+def v_3d_amp_to_rsfc_params(
+    prefix: str,
+    band: list[float],
+    in_amp: InputPathType | None = None,
+    in_pow: InputPathType | None = None,
+    mask: InputPathType | None = None,
+) -> V3dAmpToRsfcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Output file prefix; file names will be: PREFIX_ALFF,\
+            PREFIX_FALFF, etc.
+        band: Lower and upper boundaries of the low frequency fluctuations\
+            (LFFs), within the interval [FBOT, FTOP].
+        in_amp: Input file of one-sided spectral amplitudes, such as output by\
+            3dLombScargle.
+        in_pow: Input file of a one-sided power spectrum, such as output by\
+            3dLombScargle.
+        mask: Volume mask of voxels to include for calculations.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dAmpToRSFC",
+        "prefix": prefix,
+        "band": band,
+    }
+    if in_amp is not None:
+        params["in_amp"] = in_amp
+    if in_pow is not None:
+        params["in_pow"] = in_pow
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_3d_amp_to_rsfc_cargs(
+    params: V3dAmpToRsfcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dAmpToRSFC")
+    cargs.append("{")
+    if params.get("in_amp") is not None:
+        cargs.extend([
+            "-in_amp",
+            execution.input_file(params.get("in_amp"))
+        ])
+    cargs.append("|")
+    if params.get("in_pow") is not None:
+        cargs.extend([
+            "-in_pow",
+            execution.input_file(params.get("in_pow"))
+        ])
+    cargs.append("}")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.extend([
+        "-band",
+        *map(str, params.get("band"))
+    ])
+    cargs.append("{")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    cargs.append("}")
+    cargs.append("{")
+    cargs.append("-nifti")
+    cargs.append("}")
+    return cargs
+
+
+def v_3d_amp_to_rsfc_outputs(
+    params: V3dAmpToRsfcParameters,
+    execution: Execution,
+) -> V3dAmpToRsfcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dAmpToRsfcOutputs(
+        root=execution.output_file("."),
+        output_alff=execution.output_file(params.get("prefix") + "_ALFF*"),
+        output_malff=execution.output_file(params.get("prefix") + "_MALFF*"),
+        output_falff=execution.output_file(params.get("prefix") + "_FALFF*"),
+        output_rsfa=execution.output_file(params.get("prefix") + "_RSFA*"),
+        output_mrsfa=execution.output_file(params.get("prefix") + "_MRSFA*"),
+        output_frsfa=execution.output_file(params.get("prefix") + "_FRSFA*"),
+    )
+    return ret
+
+
+def v_3d_amp_to_rsfc_execute(
+    params: V3dAmpToRsfcParameters,
+    execution: Execution,
+) -> V3dAmpToRsfcOutputs:
+    """
+    Convert spectral amplitudes into standard RSFC parameters.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dAmpToRsfcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_amp_to_rsfc_cargs(params, execution)
+    ret = v_3d_amp_to_rsfc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_amp_to_rsfc(
@@ -67,54 +244,13 @@ def v_3d_amp_to_rsfc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_AMP_TO_RSFC_METADATA)
-    cargs = []
-    cargs.append("3dAmpToRSFC")
-    cargs.append("{")
-    if in_amp is not None:
-        cargs.extend([
-            "-in_amp",
-            execution.input_file(in_amp)
-        ])
-    cargs.append("|")
-    if in_pow is not None:
-        cargs.extend([
-            "-in_pow",
-            execution.input_file(in_pow)
-        ])
-    cargs.append("}")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.extend([
-        "-band",
-        *map(str, band)
-    ])
-    cargs.append("{")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    cargs.append("}")
-    cargs.append("{")
-    cargs.append("-nifti")
-    cargs.append("}")
-    ret = V3dAmpToRsfcOutputs(
-        root=execution.output_file("."),
-        output_alff=execution.output_file(prefix + "_ALFF*"),
-        output_malff=execution.output_file(prefix + "_MALFF*"),
-        output_falff=execution.output_file(prefix + "_FALFF*"),
-        output_rsfa=execution.output_file(prefix + "_RSFA*"),
-        output_mrsfa=execution.output_file(prefix + "_MRSFA*"),
-        output_frsfa=execution.output_file(prefix + "_FRSFA*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_amp_to_rsfc_params(in_amp=in_amp, in_pow=in_pow, prefix=prefix, band=band, mask=mask)
+    return v_3d_amp_to_rsfc_execute(params, execution)
 
 
 __all__ = [
     "V3dAmpToRsfcOutputs",
     "V_3D_AMP_TO_RSFC_METADATA",
     "v_3d_amp_to_rsfc",
+    "v_3d_amp_to_rsfc_params",
 ]

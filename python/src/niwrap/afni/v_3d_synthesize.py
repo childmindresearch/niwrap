@@ -12,14 +12,179 @@ V_3D_SYNTHESIZE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dSynthesizeParameters = typing.TypedDict('V3dSynthesizeParameters', {
+    "__STYX_TYPE__": typing.Literal["3dSynthesize"],
+    "c_bucket": InputPathType,
+    "matrix": InputPathType,
+    "select": str,
+    "prefix": str,
+    "dry_flag": bool,
+    "tr": typing.NotRequired[float | None],
+    "cenfill": typing.NotRequired[typing.Literal["zero", "nbhr", "none"] | None],
+})
 
 
-class V3dSynthesizeOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v_3d_synthesize(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "3dSynthesize": v_3d_synthesize_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v_3d_synthesize_params(
+    c_bucket: InputPathType,
+    matrix: InputPathType,
+    select_: str,
+    prefix: str,
+    dry_flag: bool = False,
+    tr: float | None = None,
+    cenfill: typing.Literal["zero", "nbhr", "none"] | None = None,
+) -> V3dSynthesizeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        c_bucket: Input dataset from 3dDeconvolve via the '-cbucket' option.
+        matrix: Matrix file from 3dDeconvolve via the '-x1D' option.
+        select_: Select columns from the matrix and corresponding sub-bricks\
+            from the cbucket. Can use forms like 'baseline', 'polort', 'allfunc',\
+            'allstim', 'all', 'something', or numbers/ranges.
+        prefix: Output result into dataset with the specified name.
+        dry_flag: Don't compute the output, just check the inputs.
+        tr: Set TR in the output to the specified value.
+        cenfill: How censored time points from 3dDeconvolve will be filled\
+            (options: 'zero', 'nbhr', 'none').
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dSynthesize",
+        "c_bucket": c_bucket,
+        "matrix": matrix,
+        "select": select_,
+        "prefix": prefix,
+        "dry_flag": dry_flag,
+    }
+    if tr is not None:
+        params["tr"] = tr
+    if cenfill is not None:
+        params["cenfill"] = cenfill
+    return params
+
+
+def v_3d_synthesize_cargs(
+    params: V3dSynthesizeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dSynthesize")
+    cargs.extend([
+        "-cbucket",
+        execution.input_file(params.get("c_bucket"))
+    ])
+    cargs.extend([
+        "-matrix",
+        execution.input_file(params.get("matrix"))
+    ])
+    cargs.extend([
+        "-select",
+        params.get("select")
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("dry_flag"):
+        cargs.append("-dry")
+    if params.get("tr") is not None:
+        cargs.extend([
+            "-TR",
+            str(params.get("tr"))
+        ])
+    if params.get("cenfill") is not None:
+        cargs.extend([
+            "-cenfill",
+            params.get("cenfill")
+        ])
+    return cargs
+
+
+def v_3d_synthesize_outputs(
+    params: V3dSynthesizeParameters,
+    execution: Execution,
+) -> V3dSynthesizeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dSynthesizeOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v_3d_synthesize_execute(
+    params: V3dSynthesizeParameters,
+    execution: Execution,
+) -> V3dSynthesizeOutputs:
+    """
+    Reads a '-cbucket' dataset and a '.xmat.1D' matrix from 3dDeconvolve, and
+    synthesizes a fit dataset using selected sub-bricks and matrix columns.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dSynthesizeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_synthesize_cargs(params, execution)
+    ret = v_3d_synthesize_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_synthesize(
@@ -57,45 +222,12 @@ def v_3d_synthesize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SYNTHESIZE_METADATA)
-    cargs = []
-    cargs.append("3dSynthesize")
-    cargs.extend([
-        "-cbucket",
-        execution.input_file(c_bucket)
-    ])
-    cargs.extend([
-        "-matrix",
-        execution.input_file(matrix)
-    ])
-    cargs.extend([
-        "-select",
-        select_
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if dry_flag:
-        cargs.append("-dry")
-    if tr is not None:
-        cargs.extend([
-            "-TR",
-            str(tr)
-        ])
-    if cenfill is not None:
-        cargs.extend([
-            "-cenfill",
-            cenfill
-        ])
-    ret = V3dSynthesizeOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_synthesize_params(c_bucket=c_bucket, matrix=matrix, select_=select_, prefix=prefix, dry_flag=dry_flag, tr=tr, cenfill=cenfill)
+    return v_3d_synthesize_execute(params, execution)
 
 
 __all__ = [
-    "V3dSynthesizeOutputs",
     "V_3D_SYNTHESIZE_METADATA",
     "v_3d_synthesize",
+    "v_3d_synthesize_params",
 ]

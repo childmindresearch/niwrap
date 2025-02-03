@@ -12,6 +12,48 @@ ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AdjunctMakeScriptAndRstPyParameters = typing.TypedDict('AdjunctMakeScriptAndRstPyParameters', {
+    "__STYX_TYPE__": typing.Literal["adjunct_make_script_and_rst.py"],
+    "input_script": InputPathType,
+    "prefix_rst": str,
+    "prefix_script": str,
+    "reflink": str,
+    "execute_script": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "adjunct_make_script_and_rst.py": adjunct_make_script_and_rst_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "adjunct_make_script_and_rst.py": adjunct_make_script_and_rst_py_outputs,
+    }
+    return vt.get(t)
 
 
 class AdjunctMakeScriptAndRstPyOutputs(typing.NamedTuple):
@@ -26,6 +68,123 @@ class AdjunctMakeScriptAndRstPyOutputs(typing.NamedTuple):
     """Generated script file."""
     output_directory: OutputPathType
     """Output directory in Sphinx tree."""
+
+
+def adjunct_make_script_and_rst_py_params(
+    input_script: InputPathType,
+    prefix_rst: str,
+    prefix_script: str,
+    reflink: str,
+    execute_script: bool = False,
+) -> AdjunctMakeScriptAndRstPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_script: Input script file with special markup.
+        prefix_rst: Output filename including any path of the RST/Sphinx file.\
+            Must include file extension '.rst'.
+        prefix_script: Output filename of the script file. Should include file\
+            extension such as '.tcsh'.
+        reflink: A string tag that will serve as the subdirectory name holding\
+            images for the given demo, and the RST internal reference label.
+        execute_script: Flag to create the RST and script files, and also\
+            execute the script.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "adjunct_make_script_and_rst.py",
+        "input_script": input_script,
+        "prefix_rst": prefix_rst,
+        "prefix_script": prefix_script,
+        "reflink": reflink,
+        "execute_script": execute_script,
+    }
+    return params
+
+
+def adjunct_make_script_and_rst_py_cargs(
+    params: AdjunctMakeScriptAndRstPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("adjunct_make_script_and_rst.py")
+    cargs.extend([
+        "-input",
+        "-" + execution.input_file(params.get("input_script"))
+    ])
+    cargs.extend([
+        "--prefix_rst",
+        params.get("prefix_rst")
+    ])
+    cargs.extend([
+        "--prefix_script",
+        params.get("prefix_script")
+    ])
+    cargs.extend([
+        "--reflink",
+        params.get("reflink")
+    ])
+    if params.get("execute_script"):
+        cargs.append("--execute_script")
+    return cargs
+
+
+def adjunct_make_script_and_rst_py_outputs(
+    params: AdjunctMakeScriptAndRstPyParameters,
+    execution: Execution,
+) -> AdjunctMakeScriptAndRstPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AdjunctMakeScriptAndRstPyOutputs(
+        root=execution.output_file("."),
+        rst_file=execution.output_file(params.get("prefix_rst")),
+        script_file=execution.output_file(params.get("prefix_script")),
+        output_directory=execution.output_file(params.get("prefix_rst") + "/media/" + params.get("reflink")),
+    )
+    return ret
+
+
+def adjunct_make_script_and_rst_py_execute(
+    params: AdjunctMakeScriptAndRstPyParameters,
+    execution: Execution,
+) -> AdjunctMakeScriptAndRstPyOutputs:
+    """
+    Program to take a script with some special markup and turn it into both an RST
+    page and a script for the online Sphinx documentation.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AdjunctMakeScriptAndRstPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = adjunct_make_script_and_rst_py_cargs(params, execution)
+    ret = adjunct_make_script_and_rst_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def adjunct_make_script_and_rst_py(
@@ -60,38 +219,13 @@ def adjunct_make_script_and_rst_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA)
-    cargs = []
-    cargs.append("adjunct_make_script_and_rst.py")
-    cargs.extend([
-        "-input",
-        "-" + execution.input_file(input_script)
-    ])
-    cargs.extend([
-        "--prefix_rst",
-        prefix_rst
-    ])
-    cargs.extend([
-        "--prefix_script",
-        prefix_script
-    ])
-    cargs.extend([
-        "--reflink",
-        reflink
-    ])
-    if execute_script:
-        cargs.append("--execute_script")
-    ret = AdjunctMakeScriptAndRstPyOutputs(
-        root=execution.output_file("."),
-        rst_file=execution.output_file(prefix_rst),
-        script_file=execution.output_file(prefix_script),
-        output_directory=execution.output_file(prefix_rst + "/media/" + reflink),
-    )
-    execution.run(cargs)
-    return ret
+    params = adjunct_make_script_and_rst_py_params(input_script=input_script, prefix_rst=prefix_rst, prefix_script=prefix_script, reflink=reflink, execute_script=execute_script)
+    return adjunct_make_script_and_rst_py_execute(params, execution)
 
 
 __all__ = [
     "ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA",
     "AdjunctMakeScriptAndRstPyOutputs",
     "adjunct_make_script_and_rst_py",
+    "adjunct_make_script_and_rst_py_params",
 ]

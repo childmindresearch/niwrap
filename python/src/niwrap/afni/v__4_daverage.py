@@ -12,14 +12,123 @@ V__4_DAVERAGE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V4DaverageParameters = typing.TypedDict('V4DaverageParameters', {
+    "__STYX_TYPE__": typing.Literal["@4Daverage"],
+    "output_prefix": str,
+})
 
 
-class V4DaverageOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__4_daverage(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@4Daverage": v__4_daverage_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__4_daverage_params(
+    output_prefix: str,
+) -> V4DaverageParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_prefix: Prefix for the output 3D+t brick.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@4Daverage",
+        "output_prefix": output_prefix,
+    }
+    return params
+
+
+def v__4_daverage_cargs(
+    params: V4DaverageParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@4Daverage")
+    cargs.append(params.get("output_prefix"))
+    cargs.append("[INPUT_FILES...]")
+    return cargs
+
+
+def v__4_daverage_outputs(
+    params: V4DaverageParameters,
+    execution: Execution,
+) -> V4DaverageOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V4DaverageOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__4_daverage_execute(
+    params: V4DaverageParameters,
+    execution: Execution,
+) -> V4DaverageOutputs:
+    """
+    Script for computing average 3D+time bricks using 3Dcalc.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V4DaverageOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__4_daverage_cargs(params, execution)
+    ret = v__4_daverage_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__4_daverage(
@@ -41,19 +150,12 @@ def v__4_daverage(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__4_DAVERAGE_METADATA)
-    cargs = []
-    cargs.append("@4Daverage")
-    cargs.append(output_prefix)
-    cargs.append("[INPUT_FILES...]")
-    ret = V4DaverageOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__4_daverage_params(output_prefix=output_prefix)
+    return v__4_daverage_execute(params, execution)
 
 
 __all__ = [
-    "V4DaverageOutputs",
     "V__4_DAVERAGE_METADATA",
     "v__4_daverage",
+    "v__4_daverage_params",
 ]

@@ -12,6 +12,49 @@ ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AdjunctAwTableizeRoiInfoPyParameters = typing.TypedDict('AdjunctAwTableizeRoiInfoPyParameters', {
+    "__STYX_TYPE__": typing.Literal["adjunct_aw_tableize_roi_info.py"],
+    "output_file": str,
+    "warped_atlas": InputPathType,
+    "warped_mask": InputPathType,
+    "reference_atlas": InputPathType,
+    "reference_mask": InputPathType,
+    "modesmooth_value": float,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "adjunct_aw_tableize_roi_info.py": adjunct_aw_tableize_roi_info_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "adjunct_aw_tableize_roi_info.py": adjunct_aw_tableize_roi_info_py_outputs,
+    }
+    return vt.get(t)
 
 
 class AdjunctAwTableizeRoiInfoPyOutputs(typing.NamedTuple):
@@ -22,6 +65,111 @@ class AdjunctAwTableizeRoiInfoPyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType
     """Text file containing ROI count/size information"""
+
+
+def adjunct_aw_tableize_roi_info_py_params(
+    output_file: str,
+    warped_atlas: InputPathType,
+    warped_mask: InputPathType,
+    reference_atlas: InputPathType,
+    reference_mask: InputPathType,
+    modesmooth_value: float,
+) -> AdjunctAwTableizeRoiInfoPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        output_file: Output file name.
+        warped_atlas: Warped atlas of interest, with subbrick selector if\
+            necessary.
+        warped_mask: Mask for the warped atlas (same grid).
+        reference_atlas: Reference atlas (unwarped), with subbrick selector if\
+            necessary.
+        reference_mask: Mask for the reference atlas (same grid).
+        modesmooth_value: Modesmooth value, from modal smoothing used after\
+            warping.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "adjunct_aw_tableize_roi_info.py",
+        "output_file": output_file,
+        "warped_atlas": warped_atlas,
+        "warped_mask": warped_mask,
+        "reference_atlas": reference_atlas,
+        "reference_mask": reference_mask,
+        "modesmooth_value": modesmooth_value,
+    }
+    return params
+
+
+def adjunct_aw_tableize_roi_info_py_cargs(
+    params: AdjunctAwTableizeRoiInfoPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("adjunct_aw_tableize_roi_info.py")
+    cargs.append(params.get("output_file"))
+    cargs.append(execution.input_file(params.get("warped_atlas")))
+    cargs.append(execution.input_file(params.get("warped_mask")))
+    cargs.append(execution.input_file(params.get("reference_atlas")))
+    cargs.append(execution.input_file(params.get("reference_mask")))
+    cargs.append(str(params.get("modesmooth_value")))
+    return cargs
+
+
+def adjunct_aw_tableize_roi_info_py_outputs(
+    params: AdjunctAwTableizeRoiInfoPyParameters,
+    execution: Execution,
+) -> AdjunctAwTableizeRoiInfoPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AdjunctAwTableizeRoiInfoPyOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def adjunct_aw_tableize_roi_info_py_execute(
+    params: AdjunctAwTableizeRoiInfoPyParameters,
+    execution: Execution,
+) -> AdjunctAwTableizeRoiInfoPyOutputs:
+    """
+    A simple helper function for the fat_proc scripts that generates a text file
+    containing ROI count/size information based on provided atlases and masks.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AdjunctAwTableizeRoiInfoPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = adjunct_aw_tableize_roi_info_py_cargs(params, execution)
+    ret = adjunct_aw_tableize_roi_info_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def adjunct_aw_tableize_roi_info_py(
@@ -57,24 +205,13 @@ def adjunct_aw_tableize_roi_info_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA)
-    cargs = []
-    cargs.append("adjunct_aw_tableize_roi_info.py")
-    cargs.append(output_file)
-    cargs.append(execution.input_file(warped_atlas))
-    cargs.append(execution.input_file(warped_mask))
-    cargs.append(execution.input_file(reference_atlas))
-    cargs.append(execution.input_file(reference_mask))
-    cargs.append(str(modesmooth_value))
-    ret = AdjunctAwTableizeRoiInfoPyOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = adjunct_aw_tableize_roi_info_py_params(output_file=output_file, warped_atlas=warped_atlas, warped_mask=warped_mask, reference_atlas=reference_atlas, reference_mask=reference_mask, modesmooth_value=modesmooth_value)
+    return adjunct_aw_tableize_roi_info_py_execute(params, execution)
 
 
 __all__ = [
     "ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA",
     "AdjunctAwTableizeRoiInfoPyOutputs",
     "adjunct_aw_tableize_roi_info_py",
+    "adjunct_aw_tableize_roi_info_py_params",
 ]

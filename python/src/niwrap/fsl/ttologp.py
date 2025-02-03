@@ -12,6 +12,48 @@ TTOLOGP_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+TtologpParameters = typing.TypedDict('TtologpParameters', {
+    "__STYX_TYPE__": typing.Literal["ttologp"],
+    "varsfile": InputPathType,
+    "cbsfile": InputPathType,
+    "dof": str,
+    "outputvol": typing.NotRequired[str | None],
+    "help_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ttologp": ttologp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ttologp": ttologp_outputs,
+    }
+    return vt.get(t)
 
 
 class TtologpOutputs(typing.NamedTuple):
@@ -22,6 +64,109 @@ class TtologpOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_logpvol: OutputPathType | None
     """Output volume for logp value"""
+
+
+def ttologp_params(
+    varsfile: InputPathType,
+    cbsfile: InputPathType,
+    dof: str,
+    outputvol: str | None = "logps",
+    help_flag: bool = False,
+) -> TtologpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        varsfile: Path to the vars file.
+        cbsfile: Path to the cbs file.
+        dof: Degree of freedom.
+        outputvol: Output volume for logp value (default is logps).
+        help_flag: Display help information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ttologp",
+        "varsfile": varsfile,
+        "cbsfile": cbsfile,
+        "dof": dof,
+        "help_flag": help_flag,
+    }
+    if outputvol is not None:
+        params["outputvol"] = outputvol
+    return params
+
+
+def ttologp_cargs(
+    params: TtologpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ttologp")
+    cargs.append(execution.input_file(params.get("varsfile")))
+    cargs.append(execution.input_file(params.get("cbsfile")))
+    cargs.append(params.get("dof"))
+    if params.get("outputvol") is not None:
+        cargs.extend([
+            "-logpout",
+            params.get("outputvol")
+        ])
+    if params.get("help_flag"):
+        cargs.append("-help")
+    return cargs
+
+
+def ttologp_outputs(
+    params: TtologpParameters,
+    execution: Execution,
+) -> TtologpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TtologpOutputs(
+        root=execution.output_file("."),
+        output_logpvol=execution.output_file(params.get("outputvol") + ".nii.gz") if (params.get("outputvol") is not None) else None,
+    )
+    return ret
+
+
+def ttologp_execute(
+    params: TtologpParameters,
+    execution: Execution,
+) -> TtologpOutputs:
+    """
+    Tool for computing logp.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TtologpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ttologp_cargs(params, execution)
+    ret = ttologp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ttologp(
@@ -51,28 +196,13 @@ def ttologp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TTOLOGP_METADATA)
-    cargs = []
-    cargs.append("ttologp")
-    cargs.append(execution.input_file(varsfile))
-    cargs.append(execution.input_file(cbsfile))
-    cargs.append(dof)
-    if outputvol is not None:
-        cargs.extend([
-            "-logpout",
-            outputvol
-        ])
-    if help_flag:
-        cargs.append("-help")
-    ret = TtologpOutputs(
-        root=execution.output_file("."),
-        output_logpvol=execution.output_file(outputvol + ".nii.gz") if (outputvol is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = ttologp_params(varsfile=varsfile, cbsfile=cbsfile, dof=dof, outputvol=outputvol, help_flag=help_flag)
+    return ttologp_execute(params, execution)
 
 
 __all__ = [
     "TTOLOGP_METADATA",
     "TtologpOutputs",
     "ttologp",
+    "ttologp_params",
 ]

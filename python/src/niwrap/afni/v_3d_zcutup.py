@@ -12,6 +12,46 @@ V_3D_ZCUTUP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dZcutupParameters = typing.TypedDict('V3dZcutupParameters', {
+    "__STYX_TYPE__": typing.Literal["3dZcutup"],
+    "keep_slices": str,
+    "prefix": typing.NotRequired[str | None],
+    "dataset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dZcutup": v_3d_zcutup_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dZcutup": v_3d_zcutup_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dZcutupOutputs(typing.NamedTuple):
@@ -24,6 +64,107 @@ class V3dZcutupOutputs(typing.NamedTuple):
     """The output dataset HEAD file"""
     output_brik: OutputPathType | None
     """The output dataset BRIK file"""
+
+
+def v_3d_zcutup_params(
+    keep_slices: str,
+    dataset: InputPathType,
+    prefix: str | None = None,
+) -> V3dZcutupParameters:
+    """
+    Build parameters.
+    
+    Args:
+        keep_slices: Keep slices numbered 'b' through 't', inclusive. This is a\
+            mandatory option. Slice numbers start at 0.
+        dataset: The input dataset (e.g., epi07+orig). You can use a sub-brick\
+            selector on the input dataset.
+        prefix: Write result into dataset with the given prefix [default =\
+            'zcutup'].
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dZcutup",
+        "keep_slices": keep_slices,
+        "dataset": dataset,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    return params
+
+
+def v_3d_zcutup_cargs(
+    params: V3dZcutupParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dZcutup")
+    cargs.extend([
+        "-keep",
+        params.get("keep_slices")
+    ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    cargs.append(execution.input_file(params.get("dataset")))
+    return cargs
+
+
+def v_3d_zcutup_outputs(
+    params: V3dZcutupParameters,
+    execution: Execution,
+) -> V3dZcutupOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dZcutupOutputs(
+        root=execution.output_file("."),
+        output_head=execution.output_file(params.get("prefix") + "+orig.HEAD") if (params.get("prefix") is not None) else None,
+        output_brik=execution.output_file(params.get("prefix") + "+orig.BRIK") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_zcutup_execute(
+    params: V3dZcutupParameters,
+    execution: Execution,
+) -> V3dZcutupOutputs:
+    """
+    Cut slices off a dataset in its z-direction and write a new dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dZcutupOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_zcutup_cargs(params, execution)
+    ret = v_3d_zcutup_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_zcutup(
@@ -52,29 +193,13 @@ def v_3d_zcutup(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ZCUTUP_METADATA)
-    cargs = []
-    cargs.append("3dZcutup")
-    cargs.extend([
-        "-keep",
-        keep_slices
-    ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    cargs.append(execution.input_file(dataset))
-    ret = V3dZcutupOutputs(
-        root=execution.output_file("."),
-        output_head=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,
-        output_brik=execution.output_file(prefix + "+orig.BRIK") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_zcutup_params(keep_slices=keep_slices, prefix=prefix, dataset=dataset)
+    return v_3d_zcutup_execute(params, execution)
 
 
 __all__ = [
     "V3dZcutupOutputs",
     "V_3D_ZCUTUP_METADATA",
     "v_3d_zcutup",
+    "v_3d_zcutup_params",
 ]

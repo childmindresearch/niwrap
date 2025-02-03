@@ -12,14 +12,118 @@ FSFIRST_FSL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsfirstFslParameters = typing.TypedDict('FsfirstFslParameters', {
+    "__STYX_TYPE__": typing.Literal["fsfirst.fsl"],
+})
 
 
-class FsfirstFslOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fsfirst_fsl(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fsfirst.fsl": fsfirst_fsl_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fsfirst_fsl_params(
+) -> FsfirstFslParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsfirst.fsl",
+    }
+    return params
+
+
+def fsfirst_fsl_cargs(
+    params: FsfirstFslParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsfirst.fsl")
+    return cargs
+
+
+def fsfirst_fsl_outputs(
+    params: FsfirstFslParameters,
+    execution: Execution,
+) -> FsfirstFslOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsfirstFslOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fsfirst_fsl_execute(
+    params: FsfirstFslParameters,
+    execution: Execution,
+) -> FsfirstFslOutputs:
+    """
+    The tool intended for FSL's FIRST module, responsible for model-based
+    segmentation and registration of subcortical structures.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsfirstFslOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsfirst_fsl_cargs(params, execution)
+    ret = fsfirst_fsl_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsfirst_fsl(
@@ -40,17 +144,12 @@ def fsfirst_fsl(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSFIRST_FSL_METADATA)
-    cargs = []
-    cargs.append("fsfirst.fsl")
-    ret = FsfirstFslOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsfirst_fsl_params()
+    return fsfirst_fsl_execute(params, execution)
 
 
 __all__ = [
     "FSFIRST_FSL_METADATA",
-    "FsfirstFslOutputs",
     "fsfirst_fsl",
+    "fsfirst_fsl_params",
 ]

@@ -12,14 +12,123 @@ IMRM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+ImrmParameters = typing.TypedDict('ImrmParameters', {
+    "__STYX_TYPE__": typing.Literal["imrm"],
+    "images_to_remove": list[str],
+})
 
 
-class ImrmOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `imrm(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "imrm": imrm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def imrm_params(
+    images_to_remove: list[str],
+) -> ImrmParameters:
+    """
+    Build parameters.
+    
+    Args:
+        images_to_remove: List of image names to remove. Filenames can be\
+            basenames or full names.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imrm",
+        "images_to_remove": images_to_remove,
+    }
+    return params
+
+
+def imrm_cargs(
+    params: ImrmParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("imrm")
+    cargs.extend(params.get("images_to_remove"))
+    return cargs
+
+
+def imrm_outputs(
+    params: ImrmParameters,
+    execution: Execution,
+) -> ImrmOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImrmOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def imrm_execute(
+    params: ImrmParameters,
+    execution: Execution,
+) -> ImrmOutputs:
+    """
+    Remove specified image files.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImrmOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = imrm_cargs(params, execution)
+    ret = imrm_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def imrm(
@@ -42,18 +151,12 @@ def imrm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMRM_METADATA)
-    cargs = []
-    cargs.append("imrm")
-    cargs.extend(images_to_remove)
-    ret = ImrmOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = imrm_params(images_to_remove=images_to_remove)
+    return imrm_execute(params, execution)
 
 
 __all__ = [
     "IMRM_METADATA",
-    "ImrmOutputs",
     "imrm",
+    "imrm_params",
 ]

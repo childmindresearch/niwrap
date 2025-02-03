@@ -12,6 +12,48 @@ MRI_SYNTHSR_HYPERFINE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriSynthsrHyperfineParameters = typing.TypedDict('MriSynthsrHyperfineParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_synthsr_hyperfine"],
+    "t1_image": InputPathType,
+    "t2_image": InputPathType,
+    "output": str,
+    "threads": typing.NotRequired[float | None],
+    "cpu": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_synthsr_hyperfine": mri_synthsr_hyperfine_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_synthsr_hyperfine": mri_synthsr_hyperfine_outputs,
+    }
+    return vt.get(t)
 
 
 class MriSynthsrHyperfineOutputs(typing.NamedTuple):
@@ -22,6 +64,124 @@ class MriSynthsrHyperfineOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     synthetic_mprage: OutputPathType
     """Synthetic 1mm MP-RAGE(s) generated from T1 and T2 inputs"""
+
+
+def mri_synthsr_hyperfine_params(
+    t1_image: InputPathType,
+    t2_image: InputPathType,
+    output: str,
+    threads: float | None = 1,
+    cpu: bool = False,
+) -> MriSynthsrHyperfineParameters:
+    """
+    Build parameters.
+    
+    Args:
+        t1_image: T1 image(s) to super-resolve, at native 1.5x1.5x5 axial\
+            resolution. Can be a path to an image or to a folder.
+        t2_image: T2 image(s). Must be a folder if --t1 designates a folder.\
+            These must be registered to the T1s, in physical coordinates (i.e.,\
+            with the headers, do NOT resample when registering; see instructions on\
+            FreeSurfer wiki).
+        output: Output(s), i.e. synthetic 1mm MP-RAGE(s). Must be a folder if\
+            --t1 designates a folder.
+        threads: (optional) Number of cores to be used. Default is 1.
+        cpu: (optional) Enforce running with CPU rather than GPU.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_synthsr_hyperfine",
+        "t1_image": t1_image,
+        "t2_image": t2_image,
+        "output": output,
+        "cpu": cpu,
+    }
+    if threads is not None:
+        params["threads"] = threads
+    return params
+
+
+def mri_synthsr_hyperfine_cargs(
+    params: MriSynthsrHyperfineParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_synthsr_hyperfine")
+    cargs.extend([
+        "--t1",
+        execution.input_file(params.get("t1_image"))
+    ])
+    cargs.extend([
+        "--t2",
+        execution.input_file(params.get("t2_image"))
+    ])
+    cargs.extend([
+        "--o",
+        params.get("output")
+    ])
+    if params.get("threads") is not None:
+        cargs.extend([
+            "--threads",
+            str(params.get("threads"))
+        ])
+    if params.get("cpu"):
+        cargs.append("--cpu")
+    return cargs
+
+
+def mri_synthsr_hyperfine_outputs(
+    params: MriSynthsrHyperfineParameters,
+    execution: Execution,
+) -> MriSynthsrHyperfineOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriSynthsrHyperfineOutputs(
+        root=execution.output_file("."),
+        synthetic_mprage=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def mri_synthsr_hyperfine_execute(
+    params: MriSynthsrHyperfineParameters,
+    execution: Execution,
+) -> MriSynthsrHyperfineOutputs:
+    """
+    Implementation of SynthSR that generates a synthetic 1mm MP-RAGE from a pair of
+    T1-T2 standard Hyperfine scans (1.5x1.5x5mm axial).
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriSynthsrHyperfineOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_synthsr_hyperfine_cargs(params, execution)
+    ret = mri_synthsr_hyperfine_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_synthsr_hyperfine(
@@ -57,37 +217,13 @@ def mri_synthsr_hyperfine(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHSR_HYPERFINE_METADATA)
-    cargs = []
-    cargs.append("mri_synthsr_hyperfine")
-    cargs.extend([
-        "--t1",
-        execution.input_file(t1_image)
-    ])
-    cargs.extend([
-        "--t2",
-        execution.input_file(t2_image)
-    ])
-    cargs.extend([
-        "--o",
-        output
-    ])
-    if threads is not None:
-        cargs.extend([
-            "--threads",
-            str(threads)
-        ])
-    if cpu:
-        cargs.append("--cpu")
-    ret = MriSynthsrHyperfineOutputs(
-        root=execution.output_file("."),
-        synthetic_mprage=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_synthsr_hyperfine_params(t1_image=t1_image, t2_image=t2_image, output=output, threads=threads, cpu=cpu)
+    return mri_synthsr_hyperfine_execute(params, execution)
 
 
 __all__ = [
     "MRI_SYNTHSR_HYPERFINE_METADATA",
     "MriSynthsrHyperfineOutputs",
     "mri_synthsr_hyperfine",
+    "mri_synthsr_hyperfine_params",
 ]

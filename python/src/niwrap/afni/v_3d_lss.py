@@ -12,6 +12,43 @@ V_3D_LSS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dLssParameters = typing.TypedDict('V3dLssParameters', {
+    "__STYX_TYPE__": typing.Literal["3dLSS"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dLSS": v_3d_lss_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dLSS": v_3d_lss_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dLssOutputs(typing.NamedTuple):
@@ -25,6 +62,86 @@ class V3dLssOutputs(typing.NamedTuple):
     '-stim_times_IM' stimuli."""
     save1_d_output: OutputPathType
     """Estimator vectors saved in a 1D formatted file."""
+
+
+def v_3d_lss_params(
+) -> V3dLssParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dLSS",
+    }
+    return params
+
+
+def v_3d_lss_cargs(
+    params: V3dLssParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dLSS")
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def v_3d_lss_outputs(
+    params: V3dLssParameters,
+    execution: Execution,
+) -> V3dLssOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dLssOutputs(
+        root=execution.output_file("."),
+        output_dataset=execution.output_file("LSSout+orig.HEAD"),
+        save1_d_output=execution.output_file("[SAVE1D]"),
+    )
+    return ret
+
+
+def v_3d_lss_execute(
+    params: V3dLssParameters,
+    execution: Execution,
+) -> V3dLssOutputs:
+    """
+    Least-Squares-Sum (LSS) estimation tool from a -stim_times_IM matrix for
+    multivoxel pattern classification analyses.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dLssOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_lss_cargs(params, execution)
+    ret = v_3d_lss_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_lss(
@@ -45,20 +162,13 @@ def v_3d_lss(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LSS_METADATA)
-    cargs = []
-    cargs.append("3dLSS")
-    cargs.append("[OPTIONS]")
-    ret = V3dLssOutputs(
-        root=execution.output_file("."),
-        output_dataset=execution.output_file("LSSout+orig.HEAD"),
-        save1_d_output=execution.output_file("[SAVE1D]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_lss_params()
+    return v_3d_lss_execute(params, execution)
 
 
 __all__ = [
     "V3dLssOutputs",
     "V_3D_LSS_METADATA",
     "v_3d_lss",
+    "v_3d_lss_params",
 ]

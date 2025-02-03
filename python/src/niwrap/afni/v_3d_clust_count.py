@@ -12,6 +12,47 @@ V_3D_CLUST_COUNT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dClustCountParameters = typing.TypedDict('V3dClustCountParameters', {
+    "__STYX_TYPE__": typing.Literal["3dClustCount"],
+    "datasets": list[InputPathType],
+    "prefix": typing.NotRequired[str | None],
+    "final": bool,
+    "quiet": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dClustCount": v_3d_clust_count_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dClustCount": v_3d_clust_count_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dClustCountOutputs(typing.NamedTuple):
@@ -26,6 +67,116 @@ class V3dClustCountOutputs(typing.NamedTuple):
     """Summed results file in 1D format (when '-final' is used)."""
     final_clustcount_niml: OutputPathType | None
     """Summed results file in NIML format (when '-final' is used)."""
+
+
+def v_3d_clust_count_params(
+    datasets: list[InputPathType],
+    prefix: str | None = None,
+    final: bool = False,
+    quiet: bool = False,
+) -> V3dClustCountParameters:
+    """
+    Build parameters.
+    
+    Args:
+        datasets: Input datasets to be processed.
+        prefix: Prefix of the filename into which results will be summed.\
+            Actual filename will be 'sss.clustcount.niml'. If this file already\
+            exists, results from the current run will be summed into the existing\
+            results and the file then re-written.
+        final: Output results in a format similar to 3dClustSim -- as 1D and\
+            NIML formatted files with probabilities of various cluster sizes. This\
+            option can be used without any input datasets to create final output\
+            files from saved '.clustcount.niml' output file from earlier runs.
+        quiet: Suppresses progress reports and other informational messages.\
+            Should be placed first in the command line to quiet most messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dClustCount",
+        "datasets": datasets,
+        "final": final,
+        "quiet": quiet,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    return params
+
+
+def v_3d_clust_count_cargs(
+    params: V3dClustCountParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dClustCount")
+    cargs.extend([execution.input_file(f) for f in params.get("datasets")])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("final"):
+        cargs.append("-final")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    return cargs
+
+
+def v_3d_clust_count_outputs(
+    params: V3dClustCountParameters,
+    execution: Execution,
+) -> V3dClustCountOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dClustCountOutputs(
+        root=execution.output_file("."),
+        clustcount_niml=execution.output_file(params.get("prefix") + ".clustcount.niml") if (params.get("prefix") is not None) else None,
+        clustcount_1_d=execution.output_file(params.get("prefix") + ".1D") if (params.get("prefix") is not None) else None,
+        final_clustcount_niml=execution.output_file(params.get("prefix") + ".niml") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_clust_count_execute(
+    params: V3dClustCountParameters,
+    execution: Execution,
+) -> V3dClustCountOutputs:
+    """
+    This program takes as input 1 or more datasets, thresholds them at various
+    levels, and counts up the number of clusters of various sizes.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dClustCountOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_clust_count_cargs(params, execution)
+    ret = v_3d_clust_count_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_clust_count(
@@ -61,30 +212,13 @@ def v_3d_clust_count(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CLUST_COUNT_METADATA)
-    cargs = []
-    cargs.append("3dClustCount")
-    cargs.extend([execution.input_file(f) for f in datasets])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if final:
-        cargs.append("-final")
-    if quiet:
-        cargs.append("-quiet")
-    ret = V3dClustCountOutputs(
-        root=execution.output_file("."),
-        clustcount_niml=execution.output_file(prefix + ".clustcount.niml") if (prefix is not None) else None,
-        clustcount_1_d=execution.output_file(prefix + ".1D") if (prefix is not None) else None,
-        final_clustcount_niml=execution.output_file(prefix + ".niml") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_clust_count_params(datasets=datasets, prefix=prefix, final=final, quiet=quiet)
+    return v_3d_clust_count_execute(params, execution)
 
 
 __all__ = [
     "V3dClustCountOutputs",
     "V_3D_CLUST_COUNT_METADATA",
     "v_3d_clust_count",
+    "v_3d_clust_count_params",
 ]

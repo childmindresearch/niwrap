@@ -12,6 +12,47 @@ V__SNAPSHOT_VOLREG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSnapshotVolregParameters = typing.TypedDict('VSnapshotVolregParameters', {
+    "__STYX_TYPE__": typing.Literal["@snapshot_volreg"],
+    "anatdataset": InputPathType,
+    "epidataset": InputPathType,
+    "jname": typing.NotRequired[str | None],
+    "xdisplay": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@snapshot_volreg": v__snapshot_volreg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@snapshot_volreg": v__snapshot_volreg_outputs,
+    }
+    return vt.get(t)
 
 
 class VSnapshotVolregOutputs(typing.NamedTuple):
@@ -23,6 +64,104 @@ class VSnapshotVolregOutputs(typing.NamedTuple):
     output_jpeg: OutputPathType | None
     """JPEG image showing the edges of the EPI dataset overlayed on the
     anatomical dataset"""
+
+
+def v__snapshot_volreg_params(
+    anatdataset: InputPathType,
+    epidataset: InputPathType,
+    jname: str | None = None,
+    xdisplay: str | None = None,
+) -> VSnapshotVolregParameters:
+    """
+    Build parameters.
+    
+    Args:
+        anatdataset: Anatomical dataset file.
+        epidataset: EPI dataset file.
+        jname: Name for the output JPEG file.
+        xdisplay: Display number of an already running Xvfb instance.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@snapshot_volreg",
+        "anatdataset": anatdataset,
+        "epidataset": epidataset,
+    }
+    if jname is not None:
+        params["jname"] = jname
+    if xdisplay is not None:
+        params["xdisplay"] = xdisplay
+    return params
+
+
+def v__snapshot_volreg_cargs(
+    params: VSnapshotVolregParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@snapshot_volreg")
+    cargs.append(execution.input_file(params.get("anatdataset")))
+    cargs.append(execution.input_file(params.get("epidataset")))
+    if params.get("jname") is not None:
+        cargs.append(params.get("jname"))
+    if params.get("xdisplay") is not None:
+        cargs.append(params.get("xdisplay"))
+    return cargs
+
+
+def v__snapshot_volreg_outputs(
+    params: VSnapshotVolregParameters,
+    execution: Execution,
+) -> VSnapshotVolregOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSnapshotVolregOutputs(
+        root=execution.output_file("."),
+        output_jpeg=execution.output_file(params.get("jname") + ".jpg") if (params.get("jname") is not None) else None,
+    )
+    return ret
+
+
+def v__snapshot_volreg_execute(
+    params: VSnapshotVolregParameters,
+    execution: Execution,
+) -> VSnapshotVolregOutputs:
+    """
+    Create a JPEG image showing the edges of an EPI dataset overlayed on an
+    anatomical dataset to judge 3D registration quality.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSnapshotVolregOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__snapshot_volreg_cargs(params, execution)
+    ret = v__snapshot_volreg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__snapshot_volreg(
@@ -51,24 +190,13 @@ def v__snapshot_volreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SNAPSHOT_VOLREG_METADATA)
-    cargs = []
-    cargs.append("@snapshot_volreg")
-    cargs.append(execution.input_file(anatdataset))
-    cargs.append(execution.input_file(epidataset))
-    if jname is not None:
-        cargs.append(jname)
-    if xdisplay is not None:
-        cargs.append(xdisplay)
-    ret = VSnapshotVolregOutputs(
-        root=execution.output_file("."),
-        output_jpeg=execution.output_file(jname + ".jpg") if (jname is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v__snapshot_volreg_params(anatdataset=anatdataset, epidataset=epidataset, jname=jname, xdisplay=xdisplay)
+    return v__snapshot_volreg_execute(params, execution)
 
 
 __all__ = [
     "VSnapshotVolregOutputs",
     "V__SNAPSHOT_VOLREG_METADATA",
     "v__snapshot_volreg",
+    "v__snapshot_volreg_params",
 ]

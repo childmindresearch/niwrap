@@ -12,6 +12,52 @@ V_1DFFT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dfftParameters = typing.TypedDict('V1dfftParameters', {
+    "__STYX_TYPE__": typing.Literal["1dfft"],
+    "infile": InputPathType,
+    "outfile": str,
+    "ignore": typing.NotRequired[float | None],
+    "use": typing.NotRequired[float | None],
+    "nfft": typing.NotRequired[float | None],
+    "tocx": bool,
+    "fromcx": bool,
+    "hilbert": bool,
+    "nodetrend": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1dfft": v_1dfft_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1dfft": v_1dfft_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dfftOutputs(typing.NamedTuple):
@@ -22,6 +68,143 @@ class V1dfftOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_fft: OutputPathType
     """Output file with the absolute value of the FFT of the input columns."""
+
+
+def v_1dfft_params(
+    infile: InputPathType,
+    outfile: str,
+    ignore: float | None = None,
+    use: float | None = None,
+    nfft: float | None = None,
+    tocx: bool = False,
+    fromcx: bool = False,
+    hilbert: bool = False,
+    nodetrend: bool = False,
+) -> V1dfftParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input .1D file containing an ASCII list of numbers arranged in\
+            columns.
+        outfile: Output file to store the FFT results.
+        ignore: Skip the first 'sss' lines in the input file. [default = no\
+            skipping].
+        use: Use only 'uuu' lines of the input file. [default = use them all].
+        nfft: Set FFT length to 'nnn'. [default = length of data (# of lines\
+            used)].
+        tocx: Save Re and Im parts of transform in 2 columns.
+        fromcx: Convert 2 column complex input into 1 column real output. Note:\
+            This will not work if the original data FFT length was an odd number.
+        hilbert: When -fromcx is used, the inverse FFT will do the Hilbert\
+            transform instead.
+        nodetrend: Skip the detrending of the input.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1dfft",
+        "infile": infile,
+        "outfile": outfile,
+        "tocx": tocx,
+        "fromcx": fromcx,
+        "hilbert": hilbert,
+        "nodetrend": nodetrend,
+    }
+    if ignore is not None:
+        params["ignore"] = ignore
+    if use is not None:
+        params["use"] = use
+    if nfft is not None:
+        params["nfft"] = nfft
+    return params
+
+
+def v_1dfft_cargs(
+    params: V1dfftParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1dfft")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(params.get("outfile"))
+    if params.get("ignore") is not None:
+        cargs.extend([
+            "-ignore",
+            str(params.get("ignore"))
+        ])
+    if params.get("use") is not None:
+        cargs.extend([
+            "-use",
+            str(params.get("use"))
+        ])
+    if params.get("nfft") is not None:
+        cargs.extend([
+            "-nfft",
+            str(params.get("nfft"))
+        ])
+    if params.get("tocx"):
+        cargs.append("-tocx")
+    if params.get("fromcx"):
+        cargs.append("-fromcx")
+    if params.get("hilbert"):
+        cargs.append("-hilbert")
+    if params.get("nodetrend"):
+        cargs.append("-nodetrend")
+    return cargs
+
+
+def v_1dfft_outputs(
+    params: V1dfftParameters,
+    execution: Execution,
+) -> V1dfftOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dfftOutputs(
+        root=execution.output_file("."),
+        out_fft=execution.output_file(params.get("outfile")),
+    )
+    return ret
+
+
+def v_1dfft_execute(
+    params: V1dfftParameters,
+    execution: Execution,
+) -> V1dfftOutputs:
+    """
+    Compute the absolute value of the FFT of input columns from an AFNI 1D file.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dfftOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1dfft_cargs(params, execution)
+    ret = v_1dfft_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1dfft(
@@ -62,51 +245,15 @@ def v_1dfft(
     Returns:
         NamedTuple of outputs (described in `V1dfftOutputs`).
     """
-    if ignore is not None and not (0 <= ignore): 
-        raise ValueError(f"'ignore' must be greater than 0 <= x but was {ignore}")
-    if use is not None and not (0 <= use): 
-        raise ValueError(f"'use' must be greater than 0 <= x but was {use}")
-    if nfft is not None and not (1 <= nfft): 
-        raise ValueError(f"'nfft' must be greater than 1 <= x but was {nfft}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DFFT_METADATA)
-    cargs = []
-    cargs.append("1dfft")
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
-    if ignore is not None:
-        cargs.extend([
-            "-ignore",
-            str(ignore)
-        ])
-    if use is not None:
-        cargs.extend([
-            "-use",
-            str(use)
-        ])
-    if nfft is not None:
-        cargs.extend([
-            "-nfft",
-            str(nfft)
-        ])
-    if tocx:
-        cargs.append("-tocx")
-    if fromcx:
-        cargs.append("-fromcx")
-    if hilbert:
-        cargs.append("-hilbert")
-    if nodetrend:
-        cargs.append("-nodetrend")
-    ret = V1dfftOutputs(
-        root=execution.output_file("."),
-        out_fft=execution.output_file(outfile),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1dfft_params(infile=infile, outfile=outfile, ignore=ignore, use=use, nfft=nfft, tocx=tocx, fromcx=fromcx, hilbert=hilbert, nodetrend=nodetrend)
+    return v_1dfft_execute(params, execution)
 
 
 __all__ = [
     "V1dfftOutputs",
     "V_1DFFT_METADATA",
     "v_1dfft",
+    "v_1dfft_params",
 ]

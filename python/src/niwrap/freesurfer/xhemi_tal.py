@@ -12,14 +12,126 @@ XHEMI_TAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+XhemiTalParameters = typing.TypedDict('XhemiTalParameters', {
+    "__STYX_TYPE__": typing.Literal["xhemi-tal"],
+    "subject": str,
+})
 
 
-class XhemiTalOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `xhemi_tal(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "xhemi-tal": xhemi_tal_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def xhemi_tal_params(
+    subject: str,
+) -> XhemiTalParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Subject for which to compute the talairach.xfm.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "xhemi-tal",
+        "subject": subject,
+    }
+    return params
+
+
+def xhemi_tal_cargs(
+    params: XhemiTalParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("xhemi-tal")
+    cargs.extend([
+        "--s",
+        params.get("subject")
+    ])
+    return cargs
+
+
+def xhemi_tal_outputs(
+    params: XhemiTalParameters,
+    execution: Execution,
+) -> XhemiTalOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = XhemiTalOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def xhemi_tal_execute(
+    params: XhemiTalParameters,
+    execution: Execution,
+) -> XhemiTalOutputs:
+    """
+    Computes the talairach.xfm for xhemi based on the original (unflipped)
+    talairach.xfm.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `XhemiTalOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = xhemi_tal_cargs(params, execution)
+    ret = xhemi_tal_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def xhemi_tal(
@@ -42,21 +154,12 @@ def xhemi_tal(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XHEMI_TAL_METADATA)
-    cargs = []
-    cargs.append("xhemi-tal")
-    cargs.extend([
-        "--s",
-        subject
-    ])
-    ret = XhemiTalOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = xhemi_tal_params(subject=subject)
+    return xhemi_tal_execute(params, execution)
 
 
 __all__ = [
     "XHEMI_TAL_METADATA",
-    "XhemiTalOutputs",
     "xhemi_tal",
+    "xhemi_tal_params",
 ]

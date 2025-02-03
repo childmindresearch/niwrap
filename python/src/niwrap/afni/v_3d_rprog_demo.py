@@ -12,6 +12,54 @@ V_3D_RPROG_DEMO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dRprogDemoParameters = typing.TypedDict('V3dRprogDemoParameters', {
+    "__STYX_TYPE__": typing.Literal["3dRprogDemo"],
+    "input_dsets": list[InputPathType],
+    "mask": typing.NotRequired[InputPathType | None],
+    "scale": float,
+    "prefix": str,
+    "help_aspx": bool,
+    "help_raw": bool,
+    "help_spx": bool,
+    "help_txt": bool,
+    "help": bool,
+    "show_allowed_options": bool,
+    "verbosity_level": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dRprogDemo": v_3d_rprog_demo_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dRprogDemo": v_3d_rprog_demo_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dRprogDemoOutputs(typing.NamedTuple):
@@ -22,6 +70,151 @@ class V3dRprogDemoOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file with the specified prefix."""
+
+
+def v_3d_rprog_demo_params(
+    input_dsets: list[InputPathType],
+    scale: float,
+    prefix: str,
+    mask: InputPathType | None = None,
+    help_aspx: bool = False,
+    help_raw: bool = False,
+    help_spx: bool = False,
+    help_txt: bool = False,
+    help_: bool = False,
+    show_allowed_options: bool = False,
+    verbosity_level: float | None = None,
+) -> V3dRprogDemoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dsets: Input dataset(s) to be scaled.
+        scale: Multiply each voxel by SS.
+        prefix: Output prefix (just prefix, no view+suffix needed).
+        mask: Process voxels inside this mask only. Default is no masking.
+        help_aspx: Display help message with autolabeling.
+        help_raw: Display raw help message as in the code.
+        help_spx: Display help message in sphinx format.
+        help_txt: Display help message in simple text.
+        help_: Display help message in simple text.
+        show_allowed_options: List of allowed options.
+        verbosity_level: Verbosity level. 0 for quiet (Default). 1 or more:\
+            talkative.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dRprogDemo",
+        "input_dsets": input_dsets,
+        "scale": scale,
+        "prefix": prefix,
+        "help_aspx": help_aspx,
+        "help_raw": help_raw,
+        "help_spx": help_spx,
+        "help_txt": help_txt,
+        "help": help_,
+        "show_allowed_options": show_allowed_options,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if verbosity_level is not None:
+        params["verbosity_level"] = verbosity_level
+    return params
+
+
+def v_3d_rprog_demo_cargs(
+    params: V3dRprogDemoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dRprogDemo")
+    cargs.extend([execution.input_file(f) for f in params.get("input_dsets")])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    cargs.extend([
+        "-scale",
+        str(params.get("scale"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("help_aspx"):
+        cargs.append("-h_aspx")
+    if params.get("help_raw"):
+        cargs.append("-h_raw")
+    if params.get("help_spx"):
+        cargs.append("-h_spx")
+    if params.get("help_txt"):
+        cargs.append("-h_txt")
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("show_allowed_options"):
+        cargs.append("-show_allowed_options")
+    if params.get("verbosity_level") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verbosity_level"))
+        ])
+    return cargs
+
+
+def v_3d_rprog_demo_outputs(
+    params: V3dRprogDemoParameters,
+    execution: Execution,
+) -> V3dRprogDemoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dRprogDemoOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("prefix") + ".nii"),
+    )
+    return ret
+
+
+def v_3d_rprog_demo_execute(
+    params: V3dRprogDemoParameters,
+    execution: Execution,
+) -> V3dRprogDemoOutputs:
+    """
+    Template program to help users write their own R processing routines on MRI
+    volumes.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dRprogDemoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_rprog_demo_cargs(params, execution)
+    ret = v_3d_rprog_demo_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_rprog_demo(
@@ -65,49 +258,13 @@ def v_3d_rprog_demo(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RPROG_DEMO_METADATA)
-    cargs = []
-    cargs.append("3dRprogDemo")
-    cargs.extend([execution.input_file(f) for f in input_dsets])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    cargs.extend([
-        "-scale",
-        str(scale)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if help_aspx:
-        cargs.append("-h_aspx")
-    if help_raw:
-        cargs.append("-h_raw")
-    if help_spx:
-        cargs.append("-h_spx")
-    if help_txt:
-        cargs.append("-h_txt")
-    if help_:
-        cargs.append("-help")
-    if show_allowed_options:
-        cargs.append("-show_allowed_options")
-    if verbosity_level is not None:
-        cargs.extend([
-            "-verb",
-            str(verbosity_level)
-        ])
-    ret = V3dRprogDemoOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(prefix + ".nii"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_rprog_demo_params(input_dsets=input_dsets, mask=mask, scale=scale, prefix=prefix, help_aspx=help_aspx, help_raw=help_raw, help_spx=help_spx, help_txt=help_txt, help_=help_, show_allowed_options=show_allowed_options, verbosity_level=verbosity_level)
+    return v_3d_rprog_demo_execute(params, execution)
 
 
 __all__ = [
     "V3dRprogDemoOutputs",
     "V_3D_RPROG_DEMO_METADATA",
     "v_3d_rprog_demo",
+    "v_3d_rprog_demo_params",
 ]

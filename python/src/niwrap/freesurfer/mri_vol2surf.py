@@ -12,6 +12,52 @@ MRI_VOL2SURF_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriVol2surfParameters = typing.TypedDict('MriVol2surfParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_vol2surf"],
+    "input_volume": InputPathType,
+    "registration_file": InputPathType,
+    "output_path": str,
+    "reference_volume": typing.NotRequired[str | None],
+    "regheader_subject": typing.NotRequired[str | None],
+    "mni152reg_flag": bool,
+    "target_subject": typing.NotRequired[str | None],
+    "hemisphere": typing.NotRequired[typing.Literal["lh", "rh"] | None],
+    "surface": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_vol2surf": mri_vol2surf_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_vol2surf": mri_vol2surf_outputs,
+    }
+    return vt.get(t)
 
 
 class MriVol2surfOutputs(typing.NamedTuple):
@@ -22,6 +68,161 @@ class MriVol2surfOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     resampled_volume_output: OutputPathType
     """Output file containing the resampled volume onto the surface"""
+
+
+def mri_vol2surf_params(
+    input_volume: InputPathType,
+    registration_file: InputPathType,
+    output_path: str,
+    reference_volume: str | None = None,
+    regheader_subject: str | None = None,
+    mni152reg_flag: bool = False,
+    target_subject: str | None = None,
+    hemisphere: typing.Literal["lh", "rh"] | None = None,
+    surface: str | None = None,
+) -> MriVol2surfParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Path to input volume file.
+        registration_file: Registration file as computed by tkregister,\
+            spmregister, bbregister, etc.
+        output_path: Output path for the resampled volume.
+        reference_volume: Reference volume name, default is orig.mgz.
+        regheader_subject: Compute registration from header information,\
+            aligning the current volume with the subject/mri/orig.mgz.
+        mni152reg_flag: Use MNI152 registration:\
+            $FREESURFER_HOME/average/mni152.register.dat.
+        target_subject: Target subject for resampling, can be a subject name or\
+            'ico' for icosahedron.
+        hemisphere: Hemisphere to process: lh = left hemisphere or rh = right\
+            hemisphere.
+        surface: Target surface on which to resample, default is 'white'.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_vol2surf",
+        "input_volume": input_volume,
+        "registration_file": registration_file,
+        "output_path": output_path,
+        "mni152reg_flag": mni152reg_flag,
+    }
+    if reference_volume is not None:
+        params["reference_volume"] = reference_volume
+    if regheader_subject is not None:
+        params["regheader_subject"] = regheader_subject
+    if target_subject is not None:
+        params["target_subject"] = target_subject
+    if hemisphere is not None:
+        params["hemisphere"] = hemisphere
+    if surface is not None:
+        params["surface"] = surface
+    return params
+
+
+def mri_vol2surf_cargs(
+    params: MriVol2surfParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_vol2surf")
+    cargs.extend([
+        "--mov",
+        execution.input_file(params.get("input_volume"))
+    ])
+    cargs.extend([
+        "--reg",
+        execution.input_file(params.get("registration_file"))
+    ])
+    cargs.extend([
+        "--o",
+        params.get("output_path")
+    ])
+    if params.get("reference_volume") is not None:
+        cargs.extend([
+            "--ref",
+            params.get("reference_volume")
+        ])
+    if params.get("regheader_subject") is not None:
+        cargs.extend([
+            "--regheader",
+            params.get("regheader_subject")
+        ])
+    if params.get("mni152reg_flag"):
+        cargs.append("--mni152reg")
+    if params.get("target_subject") is not None:
+        cargs.extend([
+            "--trgsubject",
+            params.get("target_subject")
+        ])
+    if params.get("hemisphere") is not None:
+        cargs.extend([
+            "--hemi",
+            params.get("hemisphere")
+        ])
+    if params.get("surface") is not None:
+        cargs.extend([
+            "--surf",
+            params.get("surface")
+        ])
+    return cargs
+
+
+def mri_vol2surf_outputs(
+    params: MriVol2surfParameters,
+    execution: Execution,
+) -> MriVol2surfOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriVol2surfOutputs(
+        root=execution.output_file("."),
+        resampled_volume_output=execution.output_file(params.get("output_path")),
+    )
+    return ret
+
+
+def mri_vol2surf_execute(
+    params: MriVol2surfParameters,
+    execution: Execution,
+) -> MriVol2surfOutputs:
+    """
+    This program resamples a volume onto a surface of a subject or the sphere. The
+    output can be viewed on the surface (using tksurfer) or can be used for
+    surface-based intersubject averaging.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriVol2surfOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_vol2surf_cargs(params, execution)
+    ret = mri_vol2surf_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_vol2surf(
@@ -66,57 +267,13 @@ def mri_vol2surf(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOL2SURF_METADATA)
-    cargs = []
-    cargs.append("mri_vol2surf")
-    cargs.extend([
-        "--mov",
-        execution.input_file(input_volume)
-    ])
-    cargs.extend([
-        "--reg",
-        execution.input_file(registration_file)
-    ])
-    cargs.extend([
-        "--o",
-        output_path
-    ])
-    if reference_volume is not None:
-        cargs.extend([
-            "--ref",
-            reference_volume
-        ])
-    if regheader_subject is not None:
-        cargs.extend([
-            "--regheader",
-            regheader_subject
-        ])
-    if mni152reg_flag:
-        cargs.append("--mni152reg")
-    if target_subject is not None:
-        cargs.extend([
-            "--trgsubject",
-            target_subject
-        ])
-    if hemisphere is not None:
-        cargs.extend([
-            "--hemi",
-            hemisphere
-        ])
-    if surface is not None:
-        cargs.extend([
-            "--surf",
-            surface
-        ])
-    ret = MriVol2surfOutputs(
-        root=execution.output_file("."),
-        resampled_volume_output=execution.output_file(output_path),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_vol2surf_params(input_volume=input_volume, registration_file=registration_file, output_path=output_path, reference_volume=reference_volume, regheader_subject=regheader_subject, mni152reg_flag=mni152reg_flag, target_subject=target_subject, hemisphere=hemisphere, surface=surface)
+    return mri_vol2surf_execute(params, execution)
 
 
 __all__ = [
     "MRI_VOL2SURF_METADATA",
     "MriVol2surfOutputs",
     "mri_vol2surf",
+    "mri_vol2surf_params",
 ]

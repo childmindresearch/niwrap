@@ -12,14 +12,132 @@ MRIS_INTERPOLATE_WARP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisInterpolateWarpParameters = typing.TypedDict('MrisInterpolateWarpParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_interpolate_warp"],
+    "start_surface": InputPathType,
+    "end_surface": InputPathType,
+    "warp_field": InputPathType,
+})
 
 
-class MrisInterpolateWarpOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_interpolate_warp(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_interpolate_warp": mris_interpolate_warp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_interpolate_warp_params(
+    start_surface: InputPathType,
+    end_surface: InputPathType,
+    warp_field: InputPathType,
+) -> MrisInterpolateWarpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        start_surface: The starting surface file.
+        end_surface: The ending surface file.
+        warp_field: The warp field file with .m3z extension.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_interpolate_warp",
+        "start_surface": start_surface,
+        "end_surface": end_surface,
+        "warp_field": warp_field,
+    }
+    return params
+
+
+def mris_interpolate_warp_cargs(
+    params: MrisInterpolateWarpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_interpolate_warp")
+    cargs.append(execution.input_file(params.get("start_surface")))
+    cargs.append(execution.input_file(params.get("end_surface")))
+    cargs.append(execution.input_file(params.get("warp_field")))
+    return cargs
+
+
+def mris_interpolate_warp_outputs(
+    params: MrisInterpolateWarpParameters,
+    execution: Execution,
+) -> MrisInterpolateWarpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisInterpolateWarpOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_interpolate_warp_execute(
+    params: MrisInterpolateWarpParameters,
+    execution: Execution,
+) -> MrisInterpolateWarpOutputs:
+    """
+    Interpolate warp on cortical surfaces.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisInterpolateWarpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_interpolate_warp_cargs(params, execution)
+    ret = mris_interpolate_warp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_interpolate_warp(
@@ -45,20 +163,12 @@ def mris_interpolate_warp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INTERPOLATE_WARP_METADATA)
-    cargs = []
-    cargs.append("mris_interpolate_warp")
-    cargs.append(execution.input_file(start_surface))
-    cargs.append(execution.input_file(end_surface))
-    cargs.append(execution.input_file(warp_field))
-    ret = MrisInterpolateWarpOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_interpolate_warp_params(start_surface=start_surface, end_surface=end_surface, warp_field=warp_field)
+    return mris_interpolate_warp_execute(params, execution)
 
 
 __all__ = [
     "MRIS_INTERPOLATE_WARP_METADATA",
-    "MrisInterpolateWarpOutputs",
     "mris_interpolate_warp",
+    "mris_interpolate_warp_params",
 ]

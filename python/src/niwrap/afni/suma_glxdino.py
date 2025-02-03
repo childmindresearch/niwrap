@@ -12,14 +12,124 @@ SUMA_GLXDINO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+SumaGlxdinoParameters = typing.TypedDict('SumaGlxdinoParameters', {
+    "__STYX_TYPE__": typing.Literal["SUMA_glxdino"],
+    "verbose": bool,
+})
 
 
-class SumaGlxdinoOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `suma_glxdino(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "SUMA_glxdino": suma_glxdino_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def suma_glxdino_params(
+    verbose: bool = False,
+) -> SumaGlxdinoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        verbose: Switch on diagnostic messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "SUMA_glxdino",
+        "verbose": verbose,
+    }
+    return params
+
+
+def suma_glxdino_cargs(
+    params: SumaGlxdinoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("SUMA_glxdino")
+    if params.get("verbose"):
+        cargs.append("-v")
+    return cargs
+
+
+def suma_glxdino_outputs(
+    params: SumaGlxdinoParameters,
+    execution: Execution,
+) -> SumaGlxdinoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SumaGlxdinoOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def suma_glxdino_execute(
+    params: SumaGlxdinoParameters,
+    execution: Execution,
+) -> SumaGlxdinoOutputs:
+    """
+    A simple openGL test program using GLX. If it does not run, then SUMA certainly
+    won't.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SumaGlxdinoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = suma_glxdino_cargs(params, execution)
+    ret = suma_glxdino_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def suma_glxdino(
@@ -42,19 +152,12 @@ def suma_glxdino(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SUMA_GLXDINO_METADATA)
-    cargs = []
-    cargs.append("SUMA_glxdino")
-    if verbose:
-        cargs.append("-v")
-    ret = SumaGlxdinoOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = suma_glxdino_params(verbose=verbose)
+    return suma_glxdino_execute(params, execution)
 
 
 __all__ = [
     "SUMA_GLXDINO_METADATA",
-    "SumaGlxdinoOutputs",
     "suma_glxdino",
+    "suma_glxdino_params",
 ]

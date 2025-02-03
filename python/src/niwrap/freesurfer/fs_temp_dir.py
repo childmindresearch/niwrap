@@ -12,6 +12,45 @@ FS_TEMP_DIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsTempDirParameters = typing.TypedDict('FsTempDirParameters', {
+    "__STYX_TYPE__": typing.Literal["fs_temp_dir"],
+    "base_directory": typing.NotRequired[str | None],
+    "scratch": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fs_temp_dir": fs_temp_dir_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fs_temp_dir": fs_temp_dir_outputs,
+    }
+    return vt.get(t)
 
 
 class FsTempDirOutputs(typing.NamedTuple):
@@ -22,6 +61,98 @@ class FsTempDirOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_directory: OutputPathType
     """The created temporary directory path"""
+
+
+def fs_temp_dir_params(
+    base_directory: str | None = None,
+    scratch: bool = False,
+) -> FsTempDirParameters:
+    """
+    Build parameters.
+    
+    Args:
+        base_directory: Manually specify base temporary directory.
+        scratch: Use /scratch directory if available, but FS_TMPDIR takes\
+            priority.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fs_temp_dir",
+        "scratch": scratch,
+    }
+    if base_directory is not None:
+        params["base_directory"] = base_directory
+    return params
+
+
+def fs_temp_dir_cargs(
+    params: FsTempDirParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fs_temp_dir")
+    if params.get("base_directory") is not None:
+        cargs.extend([
+            "-b",
+            params.get("base_directory")
+        ])
+    if params.get("scratch"):
+        cargs.append("--scratch")
+    return cargs
+
+
+def fs_temp_dir_outputs(
+    params: FsTempDirParameters,
+    execution: Execution,
+) -> FsTempDirOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsTempDirOutputs(
+        root=execution.output_file("."),
+        output_directory=execution.output_file("/tmp/tmp.SF5J66"),
+    )
+    return ret
+
+
+def fs_temp_dir_execute(
+    params: FsTempDirParameters,
+    execution: Execution,
+) -> FsTempDirOutputs:
+    """
+    Generates and creates an empty temporary directory.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsTempDirOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_temp_dir_cargs(params, execution)
+    ret = fs_temp_dir_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_temp_dir(
@@ -46,25 +177,13 @@ def fs_temp_dir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TEMP_DIR_METADATA)
-    cargs = []
-    cargs.append("fs_temp_dir")
-    if base_directory is not None:
-        cargs.extend([
-            "-b",
-            base_directory
-        ])
-    if scratch:
-        cargs.append("--scratch")
-    ret = FsTempDirOutputs(
-        root=execution.output_file("."),
-        output_directory=execution.output_file("/tmp/tmp.SF5J66"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_temp_dir_params(base_directory=base_directory, scratch=scratch)
+    return fs_temp_dir_execute(params, execution)
 
 
 __all__ = [
     "FS_TEMP_DIR_METADATA",
     "FsTempDirOutputs",
     "fs_temp_dir",
+    "fs_temp_dir_params",
 ]

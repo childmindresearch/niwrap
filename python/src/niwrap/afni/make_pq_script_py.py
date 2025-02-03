@@ -12,6 +12,47 @@ MAKE_PQ_SCRIPT_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+MakePqScriptPyParameters = typing.TypedDict('MakePqScriptPyParameters', {
+    "__STYX_TYPE__": typing.Literal["make_pq_script.py"],
+    "dataset": InputPathType,
+    "brick_index": float,
+    "mask": InputPathType,
+    "out_script": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "make_pq_script.py": make_pq_script_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "make_pq_script.py": make_pq_script_py_outputs,
+    }
+    return vt.get(t)
 
 
 class MakePqScriptPyOutputs(typing.NamedTuple):
@@ -22,6 +63,99 @@ class MakePqScriptPyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     script: OutputPathType
     """Generated output script"""
+
+
+def make_pq_script_py_params(
+    dataset: InputPathType,
+    brick_index: float,
+    mask: InputPathType,
+    out_script: str,
+) -> MakePqScriptPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dataset: Input dataset (no sub-brick selectors).
+        brick_index: Volume sub-brick for specific t-stat.
+        mask: Mask volume dataset.
+        out_script: Name for output script to write.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "make_pq_script.py",
+        "dataset": dataset,
+        "brick_index": brick_index,
+        "mask": mask,
+        "out_script": out_script,
+    }
+    return params
+
+
+def make_pq_script_py_cargs(
+    params: MakePqScriptPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("make_pq_script.py")
+    cargs.append(execution.input_file(params.get("dataset")))
+    cargs.append(str(params.get("brick_index")))
+    cargs.append(execution.input_file(params.get("mask")))
+    cargs.append(params.get("out_script"))
+    return cargs
+
+
+def make_pq_script_py_outputs(
+    params: MakePqScriptPyParameters,
+    execution: Execution,
+) -> MakePqScriptPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakePqScriptPyOutputs(
+        root=execution.output_file("."),
+        script=execution.output_file(params.get("out_script")),
+    )
+    return ret
+
+
+def make_pq_script_py_execute(
+    params: MakePqScriptPyParameters,
+    execution: Execution,
+) -> MakePqScriptPyOutputs:
+    """
+    Creates a script to compute p-value and q-value curves.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakePqScriptPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = make_pq_script_py_cargs(params, execution)
+    ret = make_pq_script_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def make_pq_script_py(
@@ -49,22 +183,13 @@ def make_pq_script_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_PQ_SCRIPT_PY_METADATA)
-    cargs = []
-    cargs.append("make_pq_script.py")
-    cargs.append(execution.input_file(dataset))
-    cargs.append(str(brick_index))
-    cargs.append(execution.input_file(mask))
-    cargs.append(out_script)
-    ret = MakePqScriptPyOutputs(
-        root=execution.output_file("."),
-        script=execution.output_file(out_script),
-    )
-    execution.run(cargs)
-    return ret
+    params = make_pq_script_py_params(dataset=dataset, brick_index=brick_index, mask=mask, out_script=out_script)
+    return make_pq_script_py_execute(params, execution)
 
 
 __all__ = [
     "MAKE_PQ_SCRIPT_PY_METADATA",
     "MakePqScriptPyOutputs",
     "make_pq_script_py",
+    "make_pq_script_py_params",
 ]

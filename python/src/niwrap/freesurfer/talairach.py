@@ -12,6 +12,47 @@ TALAIRACH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+TalairachParameters = typing.TypedDict('TalairachParameters', {
+    "__STYX_TYPE__": typing.Literal["talairach"],
+    "input_volume": InputPathType,
+    "output_transform": str,
+    "log_flag": bool,
+    "debug_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "talairach": talairach_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "talairach": talairach_outputs,
+    }
+    return vt.get(t)
 
 
 class TalairachOutputs(typing.NamedTuple):
@@ -22,6 +63,108 @@ class TalairachOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     xfm_output: OutputPathType
     """Output transformation file."""
+
+
+def talairach_params(
+    input_volume: InputPathType,
+    output_transform: str,
+    log_flag: bool = False,
+    debug_flag: bool = False,
+) -> TalairachParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume.
+        output_transform: Output transform file (xfm).
+        log_flag: Specify log file. Default is outdir/talarach.log.
+        debug_flag: Turn on debugging.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "talairach",
+        "input_volume": input_volume,
+        "output_transform": output_transform,
+        "log_flag": log_flag,
+        "debug_flag": debug_flag,
+    }
+    return params
+
+
+def talairach_cargs(
+    params: TalairachParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_nu_correct.mni")
+    cargs.extend([
+        "-i",
+        "-" + execution.input_file(params.get("input_volume"))
+    ])
+    cargs.extend([
+        "-xfm",
+        "-" + params.get("output_transform")
+    ])
+    if params.get("log_flag"):
+        cargs.append("--log")
+    if params.get("debug_flag"):
+        cargs.append("--debug")
+    return cargs
+
+
+def talairach_outputs(
+    params: TalairachParameters,
+    execution: Execution,
+) -> TalairachOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TalairachOutputs(
+        root=execution.output_file("."),
+        xfm_output=execution.output_file(params.get("output_transform")),
+    )
+    return ret
+
+
+def talairach_execute(
+    params: TalairachParameters,
+    execution: Execution,
+) -> TalairachOutputs:
+    """
+    Front-end for MINC's mritotal to compute the Talairach transform mapping the
+    input volume to the MNI305.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TalairachOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = talairach_cargs(params, execution)
+    ret = talairach_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def talairach(
@@ -50,30 +193,13 @@ def talairach(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TALAIRACH_METADATA)
-    cargs = []
-    cargs.append("mri_nu_correct.mni")
-    cargs.extend([
-        "-i",
-        "-" + execution.input_file(input_volume)
-    ])
-    cargs.extend([
-        "-xfm",
-        "-" + output_transform
-    ])
-    if log_flag:
-        cargs.append("--log")
-    if debug_flag:
-        cargs.append("--debug")
-    ret = TalairachOutputs(
-        root=execution.output_file("."),
-        xfm_output=execution.output_file(output_transform),
-    )
-    execution.run(cargs)
-    return ret
+    params = talairach_params(input_volume=input_volume, output_transform=output_transform, log_flag=log_flag, debug_flag=debug_flag)
+    return talairach_execute(params, execution)
 
 
 __all__ = [
     "TALAIRACH_METADATA",
     "TalairachOutputs",
     "talairach",
+    "talairach_params",
 ]

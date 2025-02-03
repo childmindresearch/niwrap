@@ -12,14 +12,122 @@ MPR2MNI305_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Mpr2mni305Parameters = typing.TypedDict('Mpr2mni305Parameters', {
+    "__STYX_TYPE__": typing.Literal["mpr2mni305"],
+    "mpr_anat": str,
+})
 
 
-class Mpr2mni305Outputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mpr2mni305(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mpr2mni305": mpr2mni305_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mpr2mni305_params(
+    mpr_anat: str,
+) -> Mpr2mni305Parameters:
+    """
+    Build parameters.
+    
+    Args:
+        mpr_anat: MPRAGE anatomical input file (e.g., 131).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mpr2mni305",
+        "mpr_anat": mpr_anat,
+    }
+    return params
+
+
+def mpr2mni305_cargs(
+    params: Mpr2mni305Parameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mpr2mni305")
+    cargs.append(params.get("mpr_anat"))
+    return cargs
+
+
+def mpr2mni305_outputs(
+    params: Mpr2mni305Parameters,
+    execution: Execution,
+) -> Mpr2mni305Outputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Mpr2mni305Outputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mpr2mni305_execute(
+    params: Mpr2mni305Parameters,
+    execution: Execution,
+) -> Mpr2mni305Outputs:
+    """
+    Tool for transforming MPRAGE dataset to MNI305 coordinate space.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Mpr2mni305Outputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mpr2mni305_cargs(params, execution)
+    ret = mpr2mni305_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mpr2mni305(
@@ -41,18 +149,12 @@ def mpr2mni305(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MPR2MNI305_METADATA)
-    cargs = []
-    cargs.append("mpr2mni305")
-    cargs.append(mpr_anat)
-    ret = Mpr2mni305Outputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mpr2mni305_params(mpr_anat=mpr_anat)
+    return mpr2mni305_execute(params, execution)
 
 
 __all__ = [
     "MPR2MNI305_METADATA",
-    "Mpr2mni305Outputs",
     "mpr2mni305",
+    "mpr2mni305_params",
 ]

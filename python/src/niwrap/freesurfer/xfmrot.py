@@ -12,6 +12,46 @@ XFMROT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+XfmrotParameters = typing.TypedDict('XfmrotParameters', {
+    "__STYX_TYPE__": typing.Literal["xfmrot"],
+    "transform_file": InputPathType,
+    "input_vector_file": InputPathType,
+    "output_vector_file": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "xfmrot": xfmrot_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "xfmrot": xfmrot_outputs,
+    }
+    return vt.get(t)
 
 
 class XfmrotOutputs(typing.NamedTuple):
@@ -22,6 +62,101 @@ class XfmrotOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     transformed_vector: OutputPathType | None
     """The transformed output vector file with the same format as input."""
+
+
+def xfmrot_params(
+    transform_file: InputPathType,
+    input_vector_file: InputPathType,
+    output_vector_file: str | None = None,
+) -> XfmrotParameters:
+    """
+    Build parameters.
+    
+    Args:
+        transform_file: Transform file, can be an eddy_correct/eddy log file or\
+            a .mat file.
+        input_vector_file: Input vector file which can be formatted in 3 rows\
+            or 3 columns.
+        output_vector_file: Output vector file will have the same format as\
+            input.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "xfmrot",
+        "transform_file": transform_file,
+        "input_vector_file": input_vector_file,
+    }
+    if output_vector_file is not None:
+        params["output_vector_file"] = output_vector_file
+    return params
+
+
+def xfmrot_cargs(
+    params: XfmrotParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("xfmrot")
+    cargs.append(execution.input_file(params.get("transform_file")))
+    cargs.append(execution.input_file(params.get("input_vector_file")))
+    if params.get("output_vector_file") is not None:
+        cargs.append(params.get("output_vector_file"))
+    return cargs
+
+
+def xfmrot_outputs(
+    params: XfmrotParameters,
+    execution: Execution,
+) -> XfmrotOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = XfmrotOutputs(
+        root=execution.output_file("."),
+        transformed_vector=execution.output_file(params.get("output_vector_file")) if (params.get("output_vector_file") is not None) else None,
+    )
+    return ret
+
+
+def xfmrot_execute(
+    params: XfmrotParameters,
+    execution: Execution,
+) -> XfmrotOutputs:
+    """
+    Tool to apply a transformation defined in a transform file to an input vector
+    file.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `XfmrotOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = xfmrot_cargs(params, execution)
+    ret = xfmrot_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def xfmrot(
@@ -51,22 +186,13 @@ def xfmrot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XFMROT_METADATA)
-    cargs = []
-    cargs.append("xfmrot")
-    cargs.append(execution.input_file(transform_file))
-    cargs.append(execution.input_file(input_vector_file))
-    if output_vector_file is not None:
-        cargs.append(output_vector_file)
-    ret = XfmrotOutputs(
-        root=execution.output_file("."),
-        transformed_vector=execution.output_file(output_vector_file) if (output_vector_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = xfmrot_params(transform_file=transform_file, input_vector_file=input_vector_file, output_vector_file=output_vector_file)
+    return xfmrot_execute(params, execution)
 
 
 __all__ = [
     "XFMROT_METADATA",
     "XfmrotOutputs",
     "xfmrot",
+    "xfmrot_params",
 ]

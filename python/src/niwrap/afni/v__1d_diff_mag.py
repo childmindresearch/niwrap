@@ -12,6 +12,44 @@ V__1D_DIFF_MAG_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dDiffMagParameters = typing.TypedDict('V1dDiffMagParameters', {
+    "__STYX_TYPE__": typing.Literal["@1dDiffMag"],
+    "infile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@1dDiffMag": v__1d_diff_mag_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@1dDiffMag": v__1d_diff_mag_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dDiffMagOutputs(typing.NamedTuple):
@@ -22,6 +60,88 @@ class V1dDiffMagOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     result_stdout: OutputPathType
     """The result as a single number displayed on stdout"""
+
+
+def v__1d_diff_mag_params(
+    infile: InputPathType,
+) -> V1dDiffMagParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: 1D input file to compute the magnitude estimate of the first\
+            differences.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@1dDiffMag",
+        "infile": infile,
+    }
+    return params
+
+
+def v__1d_diff_mag_cargs(
+    params: V1dDiffMagParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@1dDiffMag")
+    cargs.append(execution.input_file(params.get("infile")))
+    return cargs
+
+
+def v__1d_diff_mag_outputs(
+    params: V1dDiffMagParameters,
+    execution: Execution,
+) -> V1dDiffMagOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dDiffMagOutputs(
+        root=execution.output_file("."),
+        result_stdout=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def v__1d_diff_mag_execute(
+    params: V1dDiffMagParameters,
+    execution: Execution,
+) -> V1dDiffMagOutputs:
+    """
+    Computes a magnitude estimate of the first differences of a 1D file.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dDiffMagOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__1d_diff_mag_cargs(params, execution)
+    ret = v__1d_diff_mag_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__1d_diff_mag(
@@ -44,19 +164,13 @@ def v__1d_diff_mag(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__1D_DIFF_MAG_METADATA)
-    cargs = []
-    cargs.append("@1dDiffMag")
-    cargs.append(execution.input_file(infile))
-    ret = V1dDiffMagOutputs(
-        root=execution.output_file("."),
-        result_stdout=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__1d_diff_mag_params(infile=infile)
+    return v__1d_diff_mag_execute(params, execution)
 
 
 __all__ = [
     "V1dDiffMagOutputs",
     "V__1D_DIFF_MAG_METADATA",
     "v__1d_diff_mag",
+    "v__1d_diff_mag_params",
 ]

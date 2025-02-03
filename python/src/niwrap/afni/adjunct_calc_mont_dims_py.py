@@ -12,14 +12,123 @@ ADJUNCT_CALC_MONT_DIMS_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AdjunctCalcMontDimsPyParameters = typing.TypedDict('AdjunctCalcMontDimsPyParameters', {
+    "__STYX_TYPE__": typing.Literal["adjunct_calc_mont_dims.py"],
+    "help": bool,
+})
 
 
-class AdjunctCalcMontDimsPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `adjunct_calc_mont_dims_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "adjunct_calc_mont_dims.py": adjunct_calc_mont_dims_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def adjunct_calc_mont_dims_py_params(
+    help_: bool = False,
+) -> AdjunctCalcMontDimsPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        help_: Display help information.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "adjunct_calc_mont_dims.py",
+        "help": help_,
+    }
+    return params
+
+
+def adjunct_calc_mont_dims_py_cargs(
+    params: AdjunctCalcMontDimsPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("adjunct_calc_mont_dims.py")
+    if params.get("help"):
+        cargs.append("-help")
+    return cargs
+
+
+def adjunct_calc_mont_dims_py_outputs(
+    params: AdjunctCalcMontDimsPyParameters,
+    execution: Execution,
+) -> AdjunctCalcMontDimsPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AdjunctCalcMontDimsPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def adjunct_calc_mont_dims_py_execute(
+    params: AdjunctCalcMontDimsPyParameters,
+    execution: Execution,
+) -> AdjunctCalcMontDimsPyOutputs:
+    """
+    A helper function for the fat_proc* scripts.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AdjunctCalcMontDimsPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = adjunct_calc_mont_dims_py_cargs(params, execution)
+    ret = adjunct_calc_mont_dims_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def adjunct_calc_mont_dims_py(
@@ -41,19 +150,12 @@ def adjunct_calc_mont_dims_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_CALC_MONT_DIMS_PY_METADATA)
-    cargs = []
-    cargs.append("adjunct_calc_mont_dims.py")
-    if help_:
-        cargs.append("-help")
-    ret = AdjunctCalcMontDimsPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = adjunct_calc_mont_dims_py_params(help_=help_)
+    return adjunct_calc_mont_dims_py_execute(params, execution)
 
 
 __all__ = [
     "ADJUNCT_CALC_MONT_DIMS_PY_METADATA",
-    "AdjunctCalcMontDimsPyOutputs",
     "adjunct_calc_mont_dims_py",
+    "adjunct_calc_mont_dims_py_params",
 ]

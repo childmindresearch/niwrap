@@ -12,6 +12,45 @@ FSL_FIX_TEXT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslFixTextParameters = typing.TypedDict('FslFixTextParameters', {
+    "__STYX_TYPE__": typing.Literal["fslFixText"],
+    "input_text_file": InputPathType,
+    "output_text_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslFixText": fsl_fix_text_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslFixText": fsl_fix_text_outputs,
+    }
+    return vt.get(t)
 
 
 class FslFixTextOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class FslFixTextOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_text_file: OutputPathType
     """Output text file with standard UNIX line endings"""
+
+
+def fsl_fix_text_params(
+    input_text_file: InputPathType,
+    output_text_file: str,
+) -> FslFixTextParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_text_file: Input text file.
+        output_text_file: Output text file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslFixText",
+        "input_text_file": input_text_file,
+        "output_text_file": output_text_file,
+    }
+    return params
+
+
+def fsl_fix_text_cargs(
+    params: FslFixTextParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslFixText")
+    cargs.append(execution.input_file(params.get("input_text_file")))
+    cargs.append(params.get("output_text_file"))
+    return cargs
+
+
+def fsl_fix_text_outputs(
+    params: FslFixTextParameters,
+    execution: Execution,
+) -> FslFixTextOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslFixTextOutputs(
+        root=execution.output_file("."),
+        output_text_file=execution.output_file(params.get("output_text_file")),
+    )
+    return ret
+
+
+def fsl_fix_text_execute(
+    params: FslFixTextParameters,
+    execution: Execution,
+) -> FslFixTextOutputs:
+    """
+    Ensures standard UNIX line endings in the output text file.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslFixTextOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsl_fix_text_cargs(params, execution)
+    ret = fsl_fix_text_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsl_fix_text(
@@ -45,20 +169,13 @@ def fsl_fix_text(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_FIX_TEXT_METADATA)
-    cargs = []
-    cargs.append("fslFixText")
-    cargs.append(execution.input_file(input_text_file))
-    cargs.append(output_text_file)
-    ret = FslFixTextOutputs(
-        root=execution.output_file("."),
-        output_text_file=execution.output_file(output_text_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsl_fix_text_params(input_text_file=input_text_file, output_text_file=output_text_file)
+    return fsl_fix_text_execute(params, execution)
 
 
 __all__ = [
     "FSL_FIX_TEXT_METADATA",
     "FslFixTextOutputs",
     "fsl_fix_text",
+    "fsl_fix_text_params",
 ]

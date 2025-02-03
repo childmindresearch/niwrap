@@ -12,6 +12,52 @@ V_3D_INTRACRANIAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dIntracranialParameters = typing.TypedDict('V3dIntracranialParameters', {
+    "__STYX_TYPE__": typing.Literal["3dIntracranial"],
+    "infile": InputPathType,
+    "prefix": str,
+    "min_val": typing.NotRequired[float | None],
+    "max_val": typing.NotRequired[float | None],
+    "min_conn": typing.NotRequired[float | None],
+    "max_conn": typing.NotRequired[float | None],
+    "no_smooth": bool,
+    "mask": bool,
+    "quiet": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dIntracranial": v_3d_intracranial_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dIntracranial": v_3d_intracranial_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dIntracranialOutputs(typing.NamedTuple):
@@ -22,6 +68,151 @@ class V3dIntracranialOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     segmented_image: OutputPathType
     """Output file containing segmented image"""
+
+
+def v_3d_intracranial_params(
+    infile: InputPathType,
+    prefix: str,
+    min_val: float | None = None,
+    max_val: float | None = None,
+    min_conn: float | None = None,
+    max_conn: float | None = None,
+    no_smooth: bool = False,
+    mask: bool = False,
+    quiet: bool = False,
+) -> V3dIntracranialParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Filename of anat dataset to be segmented.
+        prefix: Prefix name for file to contain segmented image.
+        min_val: Minimum voxel intensity limit. Default is internal PDF\
+            estimate for lower bound.
+        max_val: Maximum voxel intensity limit. Default is internal PDF\
+            estimate for upper bound.
+        min_conn: Minimum voxel connectivity to enter. Default is 4.
+        max_conn: Maximum voxel connectivity to leave. Default is 2.
+        no_smooth: Suppress spatial smoothing of segmentation mask.
+        mask: Generate functional image mask (complement). Default is to\
+            generate anatomical image.
+        quiet: Suppress output to screen.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dIntracranial",
+        "infile": infile,
+        "prefix": prefix,
+        "no_smooth": no_smooth,
+        "mask": mask,
+        "quiet": quiet,
+    }
+    if min_val is not None:
+        params["min_val"] = min_val
+    if max_val is not None:
+        params["max_val"] = max_val
+    if min_conn is not None:
+        params["min_conn"] = min_conn
+    if max_conn is not None:
+        params["max_conn"] = max_conn
+    return params
+
+
+def v_3d_intracranial_cargs(
+    params: V3dIntracranialParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dIntracranial")
+    cargs.extend([
+        "-anat",
+        execution.input_file(params.get("infile"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("min_val") is not None:
+        cargs.extend([
+            "-min_val",
+            str(params.get("min_val"))
+        ])
+    if params.get("max_val") is not None:
+        cargs.extend([
+            "-max_val",
+            str(params.get("max_val"))
+        ])
+    if params.get("min_conn") is not None:
+        cargs.extend([
+            "-min_conn",
+            str(params.get("min_conn"))
+        ])
+    if params.get("max_conn") is not None:
+        cargs.extend([
+            "-max_conn",
+            str(params.get("max_conn"))
+        ])
+    if params.get("no_smooth"):
+        cargs.append("-nosmooth")
+    if params.get("mask"):
+        cargs.append("-mask")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    return cargs
+
+
+def v_3d_intracranial_outputs(
+    params: V3dIntracranialParameters,
+    execution: Execution,
+) -> V3dIntracranialOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dIntracranialOutputs(
+        root=execution.output_file("."),
+        segmented_image=execution.output_file(params.get("prefix") + "+orig"),
+    )
+    return ret
+
+
+def v_3d_intracranial_execute(
+    params: V3dIntracranialParameters,
+    execution: Execution,
+) -> V3dIntracranialOutputs:
+    """
+    Performs automatic segmentation of intracranial region.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dIntracranialOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_intracranial_cargs(params, execution)
+    ret = v_3d_intracranial_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_intracranial(
@@ -62,52 +253,13 @@ def v_3d_intracranial(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_INTRACRANIAL_METADATA)
-    cargs = []
-    cargs.append("3dIntracranial")
-    cargs.extend([
-        "-anat",
-        execution.input_file(infile)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if min_val is not None:
-        cargs.extend([
-            "-min_val",
-            str(min_val)
-        ])
-    if max_val is not None:
-        cargs.extend([
-            "-max_val",
-            str(max_val)
-        ])
-    if min_conn is not None:
-        cargs.extend([
-            "-min_conn",
-            str(min_conn)
-        ])
-    if max_conn is not None:
-        cargs.extend([
-            "-max_conn",
-            str(max_conn)
-        ])
-    if no_smooth:
-        cargs.append("-nosmooth")
-    if mask:
-        cargs.append("-mask")
-    if quiet:
-        cargs.append("-quiet")
-    ret = V3dIntracranialOutputs(
-        root=execution.output_file("."),
-        segmented_image=execution.output_file(prefix + "+orig"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_intracranial_params(infile=infile, prefix=prefix, min_val=min_val, max_val=max_val, min_conn=min_conn, max_conn=max_conn, no_smooth=no_smooth, mask=mask, quiet=quiet)
+    return v_3d_intracranial_execute(params, execution)
 
 
 __all__ = [
     "V3dIntracranialOutputs",
     "V_3D_INTRACRANIAL_METADATA",
     "v_3d_intracranial",
+    "v_3d_intracranial_params",
 ]

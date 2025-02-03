@@ -12,6 +12,45 @@ V_3D_NWARP_XYZ_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dNwarpXyzParameters = typing.TypedDict('V3dNwarpXyzParameters', {
+    "__STYX_TYPE__": typing.Literal["3dNwarpXYZ"],
+    "warp_spec": str,
+    "xyzfile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dNwarpXYZ": v_3d_nwarp_xyz_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dNwarpXYZ": v_3d_nwarp_xyz_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dNwarpXyzOutputs(typing.NamedTuple):
@@ -22,6 +61,99 @@ class V3dNwarpXyzOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Warped XYZ coordinates output file"""
+
+
+def v_3d_nwarp_xyz_params(
+    warp_spec: str,
+    xyzfile: InputPathType,
+) -> V3dNwarpXyzParameters:
+    """
+    Build parameters.
+    
+    Args:
+        warp_spec: Warp specification as in 3dNwarpApply.
+        xyzfile: XYZ coordinate file containing 3 columns.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dNwarpXYZ",
+        "warp_spec": warp_spec,
+        "xyzfile": xyzfile,
+    }
+    return params
+
+
+def v_3d_nwarp_xyz_cargs(
+    params: V3dNwarpXyzParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dNwarpXYZ")
+    cargs.append("[OPTIONS]")
+    cargs.append("-nwarp")
+    cargs.extend([
+        "-nwarp",
+        params.get("warp_spec")
+    ])
+    cargs.append(execution.input_file(params.get("xyzfile")))
+    cargs.append(">")
+    cargs.append("[OUTPUT_FILE]")
+    return cargs
+
+
+def v_3d_nwarp_xyz_outputs(
+    params: V3dNwarpXyzParameters,
+    execution: Execution,
+) -> V3dNwarpXyzOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dNwarpXyzOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("[OUTPUT_FILE]"),
+    )
+    return ret
+
+
+def v_3d_nwarp_xyz_execute(
+    params: V3dNwarpXyzParameters,
+    execution: Execution,
+) -> V3dNwarpXyzOutputs:
+    """
+    Transforms the DICOM xyz coordinates in the input XYZfile.1D based on specified
+    warp.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dNwarpXyzOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_nwarp_xyz_cargs(params, execution)
+    ret = v_3d_nwarp_xyz_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_nwarp_xyz(
@@ -46,27 +178,13 @@ def v_3d_nwarp_xyz(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_NWARP_XYZ_METADATA)
-    cargs = []
-    cargs.append("3dNwarpXYZ")
-    cargs.append("[OPTIONS]")
-    cargs.append("-nwarp")
-    cargs.extend([
-        "-nwarp",
-        warp_spec
-    ])
-    cargs.append(execution.input_file(xyzfile))
-    cargs.append(">")
-    cargs.append("[OUTPUT_FILE]")
-    ret = V3dNwarpXyzOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_FILE]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_nwarp_xyz_params(warp_spec=warp_spec, xyzfile=xyzfile)
+    return v_3d_nwarp_xyz_execute(params, execution)
 
 
 __all__ = [
     "V3dNwarpXyzOutputs",
     "V_3D_NWARP_XYZ_METADATA",
     "v_3d_nwarp_xyz",
+    "v_3d_nwarp_xyz_params",
 ]

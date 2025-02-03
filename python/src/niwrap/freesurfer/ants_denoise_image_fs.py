@@ -12,6 +12,46 @@ ANTS_DENOISE_IMAGE_FS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+AntsDenoiseImageFsParameters = typing.TypedDict('AntsDenoiseImageFsParameters', {
+    "__STYX_TYPE__": typing.Literal["AntsDenoiseImageFs"],
+    "input_image": InputPathType,
+    "output_image": str,
+    "rician_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "AntsDenoiseImageFs": ants_denoise_image_fs_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "AntsDenoiseImageFs": ants_denoise_image_fs_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsDenoiseImageFsOutputs(typing.NamedTuple):
@@ -22,6 +62,103 @@ class AntsDenoiseImageFsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     denoised_output: OutputPathType
     """Resulting denoised volume file"""
+
+
+def ants_denoise_image_fs_params(
+    input_image: InputPathType,
+    output_image: str = "output.nii",
+    rician_flag: bool = False,
+) -> AntsDenoiseImageFsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Input volume file.
+        output_image: Denoised volume file.
+        rician_flag: Enable Rician noise model (otherwise Gaussian is used).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "AntsDenoiseImageFs",
+        "input_image": input_image,
+        "output_image": output_image,
+        "rician_flag": rician_flag,
+    }
+    return params
+
+
+def ants_denoise_image_fs_cargs(
+    params: AntsDenoiseImageFsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("AntsDenoiseImageFs")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input_image"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_image")
+    ])
+    if params.get("rician_flag"):
+        cargs.append("--rician")
+    return cargs
+
+
+def ants_denoise_image_fs_outputs(
+    params: AntsDenoiseImageFsParameters,
+    execution: Execution,
+) -> AntsDenoiseImageFsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsDenoiseImageFsOutputs(
+        root=execution.output_file("."),
+        denoised_output=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def ants_denoise_image_fs_execute(
+    params: AntsDenoiseImageFsParameters,
+    execution: Execution,
+) -> AntsDenoiseImageFsOutputs:
+    """
+    Denoises an image with a spatially adaptive filter. This program wraps the
+    AntsDenoiseImage utility available in the ANTs package.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsDenoiseImageFsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ants_denoise_image_fs_cargs(params, execution)
+    ret = ants_denoise_image_fs_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ants_denoise_image_fs(
@@ -48,28 +185,13 @@ def ants_denoise_image_fs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_DENOISE_IMAGE_FS_METADATA)
-    cargs = []
-    cargs.append("AntsDenoiseImageFs")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_image)
-    ])
-    cargs.extend([
-        "-o",
-        output_image
-    ])
-    if rician_flag:
-        cargs.append("--rician")
-    ret = AntsDenoiseImageFsOutputs(
-        root=execution.output_file("."),
-        denoised_output=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = ants_denoise_image_fs_params(input_image=input_image, output_image=output_image, rician_flag=rician_flag)
+    return ants_denoise_image_fs_execute(params, execution)
 
 
 __all__ = [
     "ANTS_DENOISE_IMAGE_FS_METADATA",
     "AntsDenoiseImageFsOutputs",
     "ants_denoise_image_fs",
+    "ants_denoise_image_fs_params",
 ]

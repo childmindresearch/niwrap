@@ -12,14 +12,155 @@ MRI_PARSE_SDCMDIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriParseSdcmdirParameters = typing.TypedDict('MriParseSdcmdirParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_parse_sdcmdir"],
+    "sdicomdir": str,
+    "outfile": typing.NotRequired[str | None],
+    "sortbyrun": bool,
+    "summarize": bool,
+    "dwi": bool,
+})
 
 
-class MriParseSdcmdirOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_parse_sdcmdir(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_parse_sdcmdir": mri_parse_sdcmdir_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_parse_sdcmdir_params(
+    sdicomdir: str,
+    outfile: str | None = None,
+    sortbyrun: bool = False,
+    summarize: bool = False,
+    dwi: bool = False,
+) -> MriParseSdcmdirParameters:
+    """
+    Build parameters.
+    
+    Args:
+        sdicomdir: Path to Siemens DICOM directory.
+        outfile: Name of a file to which the results will be printed. If\
+            unspecified, the results will be printed to stdout.
+        sortbyrun: Assign run numbers.
+        summarize: Only print out info for run leaders.
+        dwi: Try to read DWI params. Generally no need to.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_parse_sdcmdir",
+        "sdicomdir": sdicomdir,
+        "sortbyrun": sortbyrun,
+        "summarize": summarize,
+        "dwi": dwi,
+    }
+    if outfile is not None:
+        params["outfile"] = outfile
+    return params
+
+
+def mri_parse_sdcmdir_cargs(
+    params: MriParseSdcmdirParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_parse_sdcmdir")
+    cargs.extend([
+        "--d",
+        params.get("sdicomdir")
+    ])
+    if params.get("outfile") is not None:
+        cargs.extend([
+            "--o",
+            params.get("outfile")
+        ])
+    if params.get("sortbyrun"):
+        cargs.append("--sortbyrun")
+    if params.get("summarize"):
+        cargs.append("--summarize")
+    if params.get("dwi"):
+        cargs.append("--dwi")
+    return cargs
+
+
+def mri_parse_sdcmdir_outputs(
+    params: MriParseSdcmdirParameters,
+    execution: Execution,
+) -> MriParseSdcmdirOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriParseSdcmdirOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_parse_sdcmdir_execute(
+    params: MriParseSdcmdirParameters,
+    execution: Execution,
+) -> MriParseSdcmdirOutputs:
+    """
+    This program parses the Siemens DICOM files in a given directory and prints out
+    information about each file.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriParseSdcmdirOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_parse_sdcmdir_cargs(params, execution)
+    ret = mri_parse_sdcmdir_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_parse_sdcmdir(
@@ -51,32 +192,12 @@ def mri_parse_sdcmdir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PARSE_SDCMDIR_METADATA)
-    cargs = []
-    cargs.append("mri_parse_sdcmdir")
-    cargs.extend([
-        "--d",
-        sdicomdir
-    ])
-    if outfile is not None:
-        cargs.extend([
-            "--o",
-            outfile
-        ])
-    if sortbyrun:
-        cargs.append("--sortbyrun")
-    if summarize:
-        cargs.append("--summarize")
-    if dwi:
-        cargs.append("--dwi")
-    ret = MriParseSdcmdirOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_parse_sdcmdir_params(sdicomdir=sdicomdir, outfile=outfile, sortbyrun=sortbyrun, summarize=summarize, dwi=dwi)
+    return mri_parse_sdcmdir_execute(params, execution)
 
 
 __all__ = [
     "MRI_PARSE_SDCMDIR_METADATA",
-    "MriParseSdcmdirOutputs",
     "mri_parse_sdcmdir",
+    "mri_parse_sdcmdir_params",
 ]

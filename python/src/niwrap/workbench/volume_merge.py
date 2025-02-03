@@ -12,96 +12,191 @@ VOLUME_MERGE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeMergeUpToParameters = typing.TypedDict('VolumeMergeUpToParameters', {
+    "__STYX_TYPE__": typing.Literal["up_to"],
+    "last_subvol": str,
+    "opt_reverse": bool,
+})
+VolumeMergeSubvolumeParameters = typing.TypedDict('VolumeMergeSubvolumeParameters', {
+    "__STYX_TYPE__": typing.Literal["subvolume"],
+    "subvol": str,
+    "up_to": typing.NotRequired[VolumeMergeUpToParameters | None],
+})
+VolumeMergeVolumeParameters = typing.TypedDict('VolumeMergeVolumeParameters', {
+    "__STYX_TYPE__": typing.Literal["volume"],
+    "volume_in": InputPathType,
+    "subvolume": typing.NotRequired[list[VolumeMergeSubvolumeParameters] | None],
+})
+VolumeMergeParameters = typing.TypedDict('VolumeMergeParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-merge"],
+    "volume_out": str,
+    "volume": typing.NotRequired[list[VolumeMergeVolumeParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class VolumeMergeUpTo:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    use an inclusive range of subvolumes.
-    """
-    last_subvol: str
-    """the number or name of the last subvolume to include"""
-    opt_reverse: bool = False
-    """use the range in reverse order"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-up-to")
-        cargs.append(self.last_subvol)
-        if self.opt_reverse:
-            cargs.append("-reverse")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "volume-merge": volume_merge_cargs,
+        "volume": volume_merge_volume_cargs,
+        "subvolume": volume_merge_subvolume_cargs,
+        "up_to": volume_merge_up_to_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class VolumeMergeSubvolume:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    select a single subvolume to use.
-    """
-    subvol: str
-    """the subvolume number or name"""
-    up_to: VolumeMergeUpTo | None = None
-    """use an inclusive range of subvolumes"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-subvolume")
-        cargs.append(self.subvol)
-        if self.up_to is not None:
-            cargs.extend(self.up_to.run(execution))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "volume-merge": volume_merge_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class VolumeMergeVolume:
+def volume_merge_up_to_params(
+    last_subvol: str,
+    opt_reverse: bool = False,
+) -> VolumeMergeUpToParameters:
     """
-    specify an input volume file.
-    """
-    volume_in: InputPathType
-    """a volume file to use subvolumes from"""
-    subvolume: list[VolumeMergeSubvolume] | None = None
-    """select a single subvolume to use"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-volume")
-        cargs.append(execution.input_file(self.volume_in))
-        if self.subvolume is not None:
-            cargs.extend([a for c in [s.run(execution) for s in self.subvolume] for a in c])
-        return cargs
+    Args:
+        last_subvol: the number or name of the last subvolume to include.
+        opt_reverse: use the range in reverse order.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "up_to",
+        "last_subvol": last_subvol,
+        "opt_reverse": opt_reverse,
+    }
+    return params
+
+
+def volume_merge_up_to_cargs(
+    params: VolumeMergeUpToParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-up-to")
+    cargs.append(params.get("last_subvol"))
+    if params.get("opt_reverse"):
+        cargs.append("-reverse")
+    return cargs
+
+
+def volume_merge_subvolume_params(
+    subvol: str,
+    up_to: VolumeMergeUpToParameters | None = None,
+) -> VolumeMergeSubvolumeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subvol: the subvolume number or name.
+        up_to: use an inclusive range of subvolumes.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "subvolume",
+        "subvol": subvol,
+    }
+    if up_to is not None:
+        params["up_to"] = up_to
+    return params
+
+
+def volume_merge_subvolume_cargs(
+    params: VolumeMergeSubvolumeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-subvolume")
+    cargs.append(params.get("subvol"))
+    if params.get("up_to") is not None:
+        cargs.extend(dyn_cargs(params.get("up_to")["__STYXTYPE__"])(params.get("up_to"), execution))
+    return cargs
+
+
+def volume_merge_volume_params(
+    volume_in: InputPathType,
+    subvolume: list[VolumeMergeSubvolumeParameters] | None = None,
+) -> VolumeMergeVolumeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume_in: a volume file to use subvolumes from.
+        subvolume: select a single subvolume to use.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume",
+        "volume_in": volume_in,
+    }
+    if subvolume is not None:
+        params["subvolume"] = subvolume
+    return params
+
+
+def volume_merge_volume_cargs(
+    params: VolumeMergeVolumeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-volume")
+    cargs.append(execution.input_file(params.get("volume_in")))
+    if params.get("subvolume") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("subvolume")] for a in c])
+    return cargs
 
 
 class VolumeMergeOutputs(typing.NamedTuple):
@@ -114,9 +209,107 @@ class VolumeMergeOutputs(typing.NamedTuple):
     """the output volume file"""
 
 
+def volume_merge_params(
+    volume_out: str,
+    volume: list[VolumeMergeVolumeParameters] | None = None,
+) -> VolumeMergeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume_out: the output volume file.
+        volume: specify an input volume file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-merge",
+        "volume_out": volume_out,
+    }
+    if volume is not None:
+        params["volume"] = volume
+    return params
+
+
+def volume_merge_cargs(
+    params: VolumeMergeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-merge")
+    cargs.append(params.get("volume_out"))
+    if params.get("volume") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("volume")] for a in c])
+    return cargs
+
+
+def volume_merge_outputs(
+    params: VolumeMergeParameters,
+    execution: Execution,
+) -> VolumeMergeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeMergeOutputs(
+        root=execution.output_file("."),
+        volume_out=execution.output_file(params.get("volume_out")),
+    )
+    return ret
+
+
+def volume_merge_execute(
+    params: VolumeMergeParameters,
+    execution: Execution,
+) -> VolumeMergeOutputs:
+    """
+    Merge volume files into a new file.
+    
+    Takes one or more volume files and constructs a new volume file by
+    concatenating subvolumes from them. The input volume files must have the
+    same volume space.
+    
+    Example: wb_command -volume-merge out.nii -volume first.nii -subvolume 1
+    -volume second.nii
+    
+    This example would take the first subvolume from first.nii, followed by all
+    subvolumes from second.nii, and write these to out.nii.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeMergeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_merge_cargs(params, execution)
+    ret = volume_merge_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def volume_merge(
     volume_out: str,
-    volume: list[VolumeMergeVolume] | None = None,
+    volume: list[VolumeMergeVolumeParameters] | None = None,
     runner: Runner | None = None,
 ) -> VolumeMergeOutputs:
     """
@@ -145,25 +338,16 @@ def volume_merge(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_MERGE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-merge")
-    cargs.append(volume_out)
-    if volume is not None:
-        cargs.extend([a for c in [s.run(execution) for s in volume] for a in c])
-    ret = VolumeMergeOutputs(
-        root=execution.output_file("."),
-        volume_out=execution.output_file(volume_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_merge_params(volume_out=volume_out, volume=volume)
+    return volume_merge_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_MERGE_METADATA",
     "VolumeMergeOutputs",
-    "VolumeMergeSubvolume",
-    "VolumeMergeUpTo",
-    "VolumeMergeVolume",
     "volume_merge",
+    "volume_merge_params",
+    "volume_merge_subvolume_params",
+    "volume_merge_up_to_params",
+    "volume_merge_volume_params",
 ]

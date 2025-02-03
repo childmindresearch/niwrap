@@ -12,6 +12,49 @@ XCORR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+XcorrParameters = typing.TypedDict('XcorrParameters', {
+    "__STYX_TYPE__": typing.Literal["xcorr"],
+    "input1": InputPathType,
+    "input2": InputPathType,
+    "output": str,
+    "log_file": typing.NotRequired[str | None],
+    "tmp_dir": typing.NotRequired[str | None],
+    "no_cleanup": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "xcorr": xcorr_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "xcorr": xcorr_outputs,
+    }
+    return vt.get(t)
 
 
 class XcorrOutputs(typing.NamedTuple):
@@ -24,6 +67,128 @@ class XcorrOutputs(typing.NamedTuple):
     """Output xcorr file"""
     log_output: OutputPathType | None
     """Log of xcorr execution"""
+
+
+def xcorr_params(
+    input1: InputPathType,
+    input2: InputPathType,
+    output: str,
+    log_file: str | None = None,
+    tmp_dir: str | None = None,
+    no_cleanup: bool = False,
+) -> XcorrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input1: First input volume file.
+        input2: Second input volume file.
+        output: Output xcorr file.
+        log_file: Log file.
+        tmp_dir: Temporary directory.
+        no_cleanup: Prevent cleanup of temporary files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "xcorr",
+        "input1": input1,
+        "input2": input2,
+        "output": output,
+        "no_cleanup": no_cleanup,
+    }
+    if log_file is not None:
+        params["log_file"] = log_file
+    if tmp_dir is not None:
+        params["tmp_dir"] = tmp_dir
+    return params
+
+
+def xcorr_cargs(
+    params: XcorrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("xcorr")
+    cargs.extend([
+        "--i1",
+        execution.input_file(params.get("input1"))
+    ])
+    cargs.extend([
+        "--i2",
+        execution.input_file(params.get("input2"))
+    ])
+    cargs.extend([
+        "--o",
+        params.get("output")
+    ])
+    if params.get("log_file") is not None:
+        cargs.extend([
+            "--log",
+            params.get("log_file")
+        ])
+    if params.get("tmp_dir") is not None:
+        cargs.extend([
+            "--tmp",
+            params.get("tmp_dir")
+        ])
+    if params.get("no_cleanup"):
+        cargs.append("--no-cleanup")
+    return cargs
+
+
+def xcorr_outputs(
+    params: XcorrParameters,
+    execution: Execution,
+) -> XcorrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = XcorrOutputs(
+        root=execution.output_file("."),
+        out_xcorrfile=execution.output_file(params.get("output")),
+        log_output=execution.output_file(params.get("log_file")) if (params.get("log_file") is not None) else None,
+    )
+    return ret
+
+
+def xcorr_execute(
+    params: XcorrParameters,
+    execution: Execution,
+) -> XcorrOutputs:
+    """
+    Computes the voxel-for-voxel correlation coefficient between two volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `XcorrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = xcorr_cargs(params, execution)
+    ret = xcorr_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def xcorr(
@@ -55,43 +220,13 @@ def xcorr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(XCORR_METADATA)
-    cargs = []
-    cargs.append("xcorr")
-    cargs.extend([
-        "--i1",
-        execution.input_file(input1)
-    ])
-    cargs.extend([
-        "--i2",
-        execution.input_file(input2)
-    ])
-    cargs.extend([
-        "--o",
-        output
-    ])
-    if log_file is not None:
-        cargs.extend([
-            "--log",
-            log_file
-        ])
-    if tmp_dir is not None:
-        cargs.extend([
-            "--tmp",
-            tmp_dir
-        ])
-    if no_cleanup:
-        cargs.append("--no-cleanup")
-    ret = XcorrOutputs(
-        root=execution.output_file("."),
-        out_xcorrfile=execution.output_file(output),
-        log_output=execution.output_file(log_file) if (log_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = xcorr_params(input1=input1, input2=input2, output=output, log_file=log_file, tmp_dir=tmp_dir, no_cleanup=no_cleanup)
+    return xcorr_execute(params, execution)
 
 
 __all__ = [
     "XCORR_METADATA",
     "XcorrOutputs",
     "xcorr",
+    "xcorr_params",
 ]

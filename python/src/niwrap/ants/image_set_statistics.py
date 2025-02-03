@@ -12,6 +12,49 @@ IMAGE_SET_STATISTICS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+ImageSetStatisticsParameters = typing.TypedDict('ImageSetStatisticsParameters', {
+    "__STYX_TYPE__": typing.Literal["ImageSetStatistics"],
+    "image_dimension": int,
+    "controls_list": InputPathType,
+    "output_image": str,
+    "which_stat": typing.Literal[0, 1, 2, 3, 4, 5, 6, 7],
+    "roi": typing.NotRequired[InputPathType | None],
+    "imagelist2": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ImageSetStatistics": image_set_statistics_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ImageSetStatistics": image_set_statistics_outputs,
+    }
+    return vt.get(t)
 
 
 class ImageSetStatisticsOutputs(typing.NamedTuple):
@@ -22,6 +65,135 @@ class ImageSetStatisticsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     computed_statistics_image: OutputPathType
     """The output image containing the computed statistics."""
+
+
+def image_set_statistics_params(
+    image_dimension: int,
+    controls_list: InputPathType,
+    output_image: str,
+    which_stat: typing.Literal[0, 1, 2, 3, 4, 5, 6, 7],
+    roi: InputPathType | None = None,
+    imagelist2: InputPathType | None = None,
+) -> ImageSetStatisticsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image_dimension: The dimensionality of the images to be processed by\
+            ImageSetStatistics.
+        controls_list: Text file containing the list of control images.
+        output_image: The output image file where the computed statistics are\
+            stored.
+        which_stat: Choice of statistic to compute: 0 for median, 1 for max\
+            probability appearance, 2 for weighted mean appearance, 3 for trimmed\
+            mean, 4 for max value, 5 for similarity-weighted (requires imagelist2),\
+            6 for best local match label, 7 for max value from ROI.
+        roi: Region of interest image file, optional depending on the whichstat\
+            option.
+        imagelist2: List of similarity images used for similarity-weighted\
+            statistics. Required if whichstat equals 5 or 6.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ImageSetStatistics",
+        "image_dimension": image_dimension,
+        "controls_list": controls_list,
+        "output_image": output_image,
+        "which_stat": which_stat,
+    }
+    if roi is not None:
+        params["roi"] = roi
+    if imagelist2 is not None:
+        params["imagelist2"] = imagelist2
+    return params
+
+
+def image_set_statistics_cargs(
+    params: ImageSetStatisticsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ImageSetStatistics")
+    cargs.append(str(params.get("image_dimension")))
+    cargs.extend([
+        "[CONTROLS_LIST]",
+        execution.input_file(params.get("controls_list"))
+    ])
+    cargs.extend([
+        "[OUTPUT_IMAGE]",
+        params.get("output_image")
+    ])
+    cargs.extend([
+        "[WHICH_STAT]",
+        str(params.get("which_stat"))
+    ])
+    if params.get("roi") is not None:
+        cargs.extend([
+            "[ROI]",
+            execution.input_file(params.get("roi"))
+        ])
+    if params.get("imagelist2") is not None:
+        cargs.extend([
+            "[IMAGELIST2]",
+            execution.input_file(params.get("imagelist2"))
+        ])
+    return cargs
+
+
+def image_set_statistics_outputs(
+    params: ImageSetStatisticsParameters,
+    execution: Execution,
+) -> ImageSetStatisticsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImageSetStatisticsOutputs(
+        root=execution.output_file("."),
+        computed_statistics_image=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def image_set_statistics_execute(
+    params: ImageSetStatisticsParameters,
+    execution: Execution,
+) -> ImageSetStatisticsOutputs:
+    """
+    ImageSetStatistics computes statistics from a set of images. The whichstat
+    option defines the type of statistic to compute, ranging from median to
+    similarity-weighted metrics.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImageSetStatisticsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = image_set_statistics_cargs(params, execution)
+    ret = image_set_statistics_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def image_set_statistics(
@@ -62,41 +234,13 @@ def image_set_statistics(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMAGE_SET_STATISTICS_METADATA)
-    cargs = []
-    cargs.append("ImageSetStatistics")
-    cargs.append(str(image_dimension))
-    cargs.extend([
-        "[CONTROLS_LIST]",
-        execution.input_file(controls_list)
-    ])
-    cargs.extend([
-        "[OUTPUT_IMAGE]",
-        output_image
-    ])
-    cargs.extend([
-        "[WHICH_STAT]",
-        str(which_stat)
-    ])
-    if roi is not None:
-        cargs.extend([
-            "[ROI]",
-            execution.input_file(roi)
-        ])
-    if imagelist2 is not None:
-        cargs.extend([
-            "[IMAGELIST2]",
-            execution.input_file(imagelist2)
-        ])
-    ret = ImageSetStatisticsOutputs(
-        root=execution.output_file("."),
-        computed_statistics_image=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = image_set_statistics_params(image_dimension=image_dimension, controls_list=controls_list, output_image=output_image, which_stat=which_stat, roi=roi, imagelist2=imagelist2)
+    return image_set_statistics_execute(params, execution)
 
 
 __all__ = [
     "IMAGE_SET_STATISTICS_METADATA",
     "ImageSetStatisticsOutputs",
     "image_set_statistics",
+    "image_set_statistics_params",
 ]

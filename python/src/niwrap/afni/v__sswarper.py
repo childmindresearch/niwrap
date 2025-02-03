@@ -12,6 +12,66 @@ V__SSWARPER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSswarperParameters = typing.TypedDict('VSswarperParameters', {
+    "__STYX_TYPE__": typing.Literal["@SSwarper"],
+    "input_file": InputPathType,
+    "base_template": InputPathType,
+    "subject_id": str,
+    "output_dir": typing.NotRequired[str | None],
+    "min_patch_size": typing.NotRequired[float | None],
+    "no_lite": bool,
+    "skip_warp": bool,
+    "unifize_off": bool,
+    "init_skullstr_off": bool,
+    "extra_qc_off": bool,
+    "jump_to_extra_qc": bool,
+    "cost_nl_init": typing.NotRequired[str | None],
+    "cost_nl_final": typing.NotRequired[str | None],
+    "deoblique": bool,
+    "deoblique_refitly": bool,
+    "warp_scale": typing.NotRequired[float | None],
+    "ssopt_flag": typing.NotRequired[str | None],
+    "aniso_off": bool,
+    "ceil_off": bool,
+    "tmp_name_nice": bool,
+    "echo": bool,
+    "verbose": bool,
+    "noclean": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@SSwarper": v__sswarper_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@SSwarper": v__sswarper_outputs,
+    }
+    return vt.get(t)
 
 
 class VSswarperOutputs(typing.NamedTuple):
@@ -51,6 +111,250 @@ class VSswarperOutputs(typing.NamedTuple):
     """Snapshot image to check skullstripping in original space"""
     init_overlap_qc: OutputPathType
     """Montage to check initial overlap of source and base datasets"""
+
+
+def v__sswarper_params(
+    input_file: InputPathType,
+    base_template: InputPathType,
+    subject_id: str,
+    output_dir: str | None = None,
+    min_patch_size: float | None = None,
+    no_lite: bool = False,
+    skip_warp: bool = False,
+    unifize_off: bool = False,
+    init_skullstr_off: bool = False,
+    extra_qc_off: bool = False,
+    jump_to_extra_qc: bool = False,
+    cost_nl_init: str | None = None,
+    cost_nl_final: str | None = None,
+    deoblique: bool = False,
+    deoblique_refitly: bool = False,
+    warp_scale: float | None = None,
+    ssopt_flag: str | None = None,
+    aniso_off: bool = False,
+    ceil_off: bool = False,
+    tmp_name_nice: bool = False,
+    echo: bool = False,
+    verbose: bool = False,
+    noclean: bool = False,
+) -> VSswarperParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: An anatomical dataset, not skull-stripped, with about 1 mm\
+            resolution.
+        base_template: A base template dataset with similar contrast to the\
+            input dataset.
+        subject_id: Name code for output datasets (e.g., 'sub007').
+        output_dir: Output directory for all files from this program.
+        min_patch_size: Minimum patch size on final 3dQwarp.
+        no_lite: Do not use the '-lite' option with 3dQwarp.
+        skip_warp: Do not compute past the output of anatSS.<subid>.nii.
+        unifize_off: Do not start with a 3dUnifize command.
+        init_skullstr_off: Do not preprocess with a 3dSkullstrip command.
+        extra_qc_off: Do not make extra QC images.
+        jump_to_extra_qc: Just make the two QC*jpg images from a previous run.
+        cost_nl_init: Specify cost function for initial nonlinear (3dQwarp)\
+            part of alignment.
+        cost_nl_final: Specify cost function for final nonlinear (3dQwarp)\
+            parts of alignment.
+        deoblique: Apply obliquity information to deoblique the input volume.
+        deoblique_refitly: Purge obliquity information to deoblique the input\
+            volume.
+        warp_scale: Control flexibility of warps in 3dQwarp.
+        ssopt_flag: Append a string of options for 3dSkullStrip.
+        aniso_off: Do not preprocess with a 3danisosmooth command.
+        ceil_off: Turn off capping on values after anisosmoothing.
+        tmp_name_nice: Use nicer, non-random intermediate file prefix for\
+            temporary files.
+        echo: Run the script with 'set echo' for extra verbosity in the\
+            terminal output.
+        verbose: Apply the '-verb' option to 3dQwarp for verbose progress\
+            information.
+        noclean: Do not delete the 'junk' files at the end of computations.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@SSwarper",
+        "input_file": input_file,
+        "base_template": base_template,
+        "subject_id": subject_id,
+        "no_lite": no_lite,
+        "skip_warp": skip_warp,
+        "unifize_off": unifize_off,
+        "init_skullstr_off": init_skullstr_off,
+        "extra_qc_off": extra_qc_off,
+        "jump_to_extra_qc": jump_to_extra_qc,
+        "deoblique": deoblique,
+        "deoblique_refitly": deoblique_refitly,
+        "aniso_off": aniso_off,
+        "ceil_off": ceil_off,
+        "tmp_name_nice": tmp_name_nice,
+        "echo": echo,
+        "verbose": verbose,
+        "noclean": noclean,
+    }
+    if output_dir is not None:
+        params["output_dir"] = output_dir
+    if min_patch_size is not None:
+        params["min_patch_size"] = min_patch_size
+    if cost_nl_init is not None:
+        params["cost_nl_init"] = cost_nl_init
+    if cost_nl_final is not None:
+        params["cost_nl_final"] = cost_nl_final
+    if warp_scale is not None:
+        params["warp_scale"] = warp_scale
+    if ssopt_flag is not None:
+        params["ssopt_flag"] = ssopt_flag
+    return params
+
+
+def v__sswarper_cargs(
+    params: VSswarperParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@SSwarper")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "-base",
+        execution.input_file(params.get("base_template"))
+    ])
+    cargs.extend([
+        "-subid",
+        params.get("subject_id")
+    ])
+    if params.get("output_dir") is not None:
+        cargs.extend([
+            "-odir",
+            params.get("output_dir")
+        ])
+    if params.get("min_patch_size") is not None:
+        cargs.extend([
+            "-minp",
+            str(params.get("min_patch_size"))
+        ])
+    if params.get("no_lite"):
+        cargs.append("-nolite")
+    if params.get("skip_warp"):
+        cargs.append("-skipwarp")
+    if params.get("unifize_off"):
+        cargs.append("-unifize_off")
+    if params.get("init_skullstr_off"):
+        cargs.append("-init_skullstr_off")
+    if params.get("extra_qc_off"):
+        cargs.append("-extra_qc_off")
+    if params.get("jump_to_extra_qc"):
+        cargs.append("-jump_to_extra_qc")
+    if params.get("cost_nl_init") is not None:
+        cargs.extend([
+            "-cost_nl_init",
+            params.get("cost_nl_init")
+        ])
+    if params.get("cost_nl_final") is not None:
+        cargs.extend([
+            "-cost_nl_final",
+            params.get("cost_nl_final")
+        ])
+    if params.get("deoblique"):
+        cargs.append("-deoblique")
+    if params.get("deoblique_refitly"):
+        cargs.append("-deoblique_refitly")
+    if params.get("warp_scale") is not None:
+        cargs.extend([
+            "-warpscale",
+            str(params.get("warp_scale"))
+        ])
+    if params.get("ssopt_flag") is not None:
+        cargs.extend([
+            "-SSopt",
+            params.get("ssopt_flag")
+        ])
+    if params.get("aniso_off"):
+        cargs.append("-aniso_off")
+    if params.get("ceil_off"):
+        cargs.append("-ceil_off")
+    if params.get("tmp_name_nice"):
+        cargs.append("-tmp_name_nice")
+    if params.get("echo"):
+        cargs.append("-echo")
+    if params.get("verbose"):
+        cargs.append("-verb")
+    if params.get("noclean"):
+        cargs.append("-noclean")
+    return cargs
+
+
+def v__sswarper_outputs(
+    params: VSswarperParameters,
+    execution: Execution,
+) -> VSswarperOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSswarperOutputs(
+        root=execution.output_file("."),
+        anat_do=execution.output_file("anatDO." + params.get("subject_id") + ".nii"),
+        anat_u=execution.output_file("anatU." + params.get("subject_id") + ".nii"),
+        anat_ua=execution.output_file("anatUA." + params.get("subject_id") + ".nii"),
+        anat_uac=execution.output_file("anatUAC." + params.get("subject_id") + ".nii"),
+        anat_s=execution.output_file("anatS." + params.get("subject_id") + ".nii"),
+        anat_ss=execution.output_file("anatSS." + params.get("subject_id") + ".nii"),
+        anat_qq=execution.output_file("anatQQ." + params.get("subject_id") + ".nii"),
+        anat_qq_affine=execution.output_file("anatQQ." + params.get("subject_id") + ".aff12.1D"),
+        anat_qq_warp=execution.output_file("anatQQ." + params.get("subject_id") + "_WARP.nii"),
+        am_snapshot=execution.output_file("AM" + params.get("subject_id") + ".jpg"),
+        ma_snapshot=execution.output_file("MA" + params.get("subject_id") + ".jpg"),
+        qc_anat_qq=execution.output_file("QC_anatQQ." + params.get("subject_id") + ".jpg"),
+        qc_anat_ss=execution.output_file("QC_anatSS." + params.get("subject_id") + ".jpg"),
+        init_overlap_qc=execution.output_file("init_qc_00_overlap_uinp_obase.jpg"),
+    )
+    return ret
+
+
+def v__sswarper_execute(
+    params: VSswarperParameters,
+    execution: Execution,
+) -> VSswarperOutputs:
+    """
+    Dual purposes for processing a given subject's anatomical volume: skull-strip
+    the brain and calculate the warp to a reference template/standard space.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSswarperOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__sswarper_cargs(params, execution)
+    ret = v__sswarper_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__sswarper(
@@ -123,105 +427,15 @@ def v__sswarper(
     Returns:
         NamedTuple of outputs (described in `VSswarperOutputs`).
     """
-    if warp_scale is not None and not (0.1 <= warp_scale <= 1.0): 
-        raise ValueError(f"'warp_scale' must be between 0.1 <= x <= 1.0 but was {warp_scale}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SSWARPER_METADATA)
-    cargs = []
-    cargs.append("@SSwarper")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "-base",
-        execution.input_file(base_template)
-    ])
-    cargs.extend([
-        "-subid",
-        subject_id
-    ])
-    if output_dir is not None:
-        cargs.extend([
-            "-odir",
-            output_dir
-        ])
-    if min_patch_size is not None:
-        cargs.extend([
-            "-minp",
-            str(min_patch_size)
-        ])
-    if no_lite:
-        cargs.append("-nolite")
-    if skip_warp:
-        cargs.append("-skipwarp")
-    if unifize_off:
-        cargs.append("-unifize_off")
-    if init_skullstr_off:
-        cargs.append("-init_skullstr_off")
-    if extra_qc_off:
-        cargs.append("-extra_qc_off")
-    if jump_to_extra_qc:
-        cargs.append("-jump_to_extra_qc")
-    if cost_nl_init is not None:
-        cargs.extend([
-            "-cost_nl_init",
-            cost_nl_init
-        ])
-    if cost_nl_final is not None:
-        cargs.extend([
-            "-cost_nl_final",
-            cost_nl_final
-        ])
-    if deoblique:
-        cargs.append("-deoblique")
-    if deoblique_refitly:
-        cargs.append("-deoblique_refitly")
-    if warp_scale is not None:
-        cargs.extend([
-            "-warpscale",
-            str(warp_scale)
-        ])
-    if ssopt_flag is not None:
-        cargs.extend([
-            "-SSopt",
-            ssopt_flag
-        ])
-    if aniso_off:
-        cargs.append("-aniso_off")
-    if ceil_off:
-        cargs.append("-ceil_off")
-    if tmp_name_nice:
-        cargs.append("-tmp_name_nice")
-    if echo:
-        cargs.append("-echo")
-    if verbose:
-        cargs.append("-verb")
-    if noclean:
-        cargs.append("-noclean")
-    ret = VSswarperOutputs(
-        root=execution.output_file("."),
-        anat_do=execution.output_file("anatDO." + subject_id + ".nii"),
-        anat_u=execution.output_file("anatU." + subject_id + ".nii"),
-        anat_ua=execution.output_file("anatUA." + subject_id + ".nii"),
-        anat_uac=execution.output_file("anatUAC." + subject_id + ".nii"),
-        anat_s=execution.output_file("anatS." + subject_id + ".nii"),
-        anat_ss=execution.output_file("anatSS." + subject_id + ".nii"),
-        anat_qq=execution.output_file("anatQQ." + subject_id + ".nii"),
-        anat_qq_affine=execution.output_file("anatQQ." + subject_id + ".aff12.1D"),
-        anat_qq_warp=execution.output_file("anatQQ." + subject_id + "_WARP.nii"),
-        am_snapshot=execution.output_file("AM" + subject_id + ".jpg"),
-        ma_snapshot=execution.output_file("MA" + subject_id + ".jpg"),
-        qc_anat_qq=execution.output_file("QC_anatQQ." + subject_id + ".jpg"),
-        qc_anat_ss=execution.output_file("QC_anatSS." + subject_id + ".jpg"),
-        init_overlap_qc=execution.output_file("init_qc_00_overlap_uinp_obase.jpg"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__sswarper_params(input_file=input_file, base_template=base_template, subject_id=subject_id, output_dir=output_dir, min_patch_size=min_patch_size, no_lite=no_lite, skip_warp=skip_warp, unifize_off=unifize_off, init_skullstr_off=init_skullstr_off, extra_qc_off=extra_qc_off, jump_to_extra_qc=jump_to_extra_qc, cost_nl_init=cost_nl_init, cost_nl_final=cost_nl_final, deoblique=deoblique, deoblique_refitly=deoblique_refitly, warp_scale=warp_scale, ssopt_flag=ssopt_flag, aniso_off=aniso_off, ceil_off=ceil_off, tmp_name_nice=tmp_name_nice, echo=echo, verbose=verbose, noclean=noclean)
+    return v__sswarper_execute(params, execution)
 
 
 __all__ = [
     "VSswarperOutputs",
     "V__SSWARPER_METADATA",
     "v__sswarper",
+    "v__sswarper_params",
 ]

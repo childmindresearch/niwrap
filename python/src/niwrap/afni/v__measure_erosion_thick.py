@@ -12,6 +12,53 @@ V__MEASURE_EROSION_THICK_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VMeasureErosionThickParameters = typing.TypedDict('VMeasureErosionThickParameters', {
+    "__STYX_TYPE__": typing.Literal["@measure_erosion_thick"],
+    "maskset": InputPathType,
+    "surfset": InputPathType,
+    "outdir": typing.NotRequired[str | None],
+    "resample": typing.NotRequired[str | None],
+    "surfsmooth": typing.NotRequired[float | None],
+    "smoothmm": typing.NotRequired[float | None],
+    "maxthick": typing.NotRequired[float | None],
+    "depthsearch": typing.NotRequired[float | None],
+    "keep_temp_files": bool,
+    "surfsmooth_method": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@measure_erosion_thick": v__measure_erosion_thick_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@measure_erosion_thick": v__measure_erosion_thick_outputs,
+    }
+    return vt.get(t)
 
 
 class VMeasureErosionThickOutputs(typing.NamedTuple):
@@ -38,6 +85,180 @@ class VMeasureErosionThickOutputs(typing.NamedTuple):
     """Surface representation of mask volume."""
     quick_spec: OutputPathType
     """Simple specification file for surface to use with suma commands."""
+
+
+def v__measure_erosion_thick_params(
+    maskset: InputPathType,
+    surfset: InputPathType,
+    outdir: str | None = None,
+    resample: str | None = None,
+    surfsmooth: float | None = None,
+    smoothmm: float | None = None,
+    maxthick: float | None = None,
+    depthsearch: float | None = None,
+    keep_temp_files: bool = False,
+    surfsmooth_method: str | None = None,
+) -> VMeasureErosionThickParameters:
+    """
+    Build parameters.
+    
+    Args:
+        maskset: Mask dataset for input.
+        surfset: Surface dataset onto which to map thickness (probably a\
+            pial/gray matter surface).
+        outdir: Output directory. If not specified, erosion_thickdir is used.
+        resample: Resample input to mm in millimeters (put a number here).\
+            Recommended for most 1mm data.
+        surfsmooth: Smooth surface map of thickness by mm millimeters. Default\
+            is 8 mm.
+        smoothmm: Smooth volume by mm FWHM in mask. Default is 2*voxelsize of\
+            mask or resampled mask.
+        maxthick: Search for maximum thickness value of mm millimeters. Default\
+            is 6 mm.
+        depthsearch: Map to surface by looking for max along mm millimeter\
+            normal vectors. Default is 3 mm.
+        keep_temp_files: Do not delete the intermediate files (for testing).
+        surfsmooth_method: Heat method used for smoothing surfaces. Default is\
+            HEAT_07 but HEAT_05 is also useful for models.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@measure_erosion_thick",
+        "maskset": maskset,
+        "surfset": surfset,
+        "keep_temp_files": keep_temp_files,
+    }
+    if outdir is not None:
+        params["outdir"] = outdir
+    if resample is not None:
+        params["resample"] = resample
+    if surfsmooth is not None:
+        params["surfsmooth"] = surfsmooth
+    if smoothmm is not None:
+        params["smoothmm"] = smoothmm
+    if maxthick is not None:
+        params["maxthick"] = maxthick
+    if depthsearch is not None:
+        params["depthsearch"] = depthsearch
+    if surfsmooth_method is not None:
+        params["surfsmooth_method"] = surfsmooth_method
+    return params
+
+
+def v__measure_erosion_thick_cargs(
+    params: VMeasureErosionThickParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@measure_erosion_thick")
+    cargs.extend([
+        "-maskset",
+        execution.input_file(params.get("maskset"))
+    ])
+    cargs.extend([
+        "-surfset",
+        execution.input_file(params.get("surfset"))
+    ])
+    if params.get("outdir") is not None:
+        cargs.extend([
+            "-outdir",
+            params.get("outdir")
+        ])
+    if params.get("resample") is not None:
+        cargs.extend([
+            "-resample",
+            params.get("resample")
+        ])
+    if params.get("surfsmooth") is not None:
+        cargs.extend([
+            "-surfsmooth",
+            str(params.get("surfsmooth"))
+        ])
+    if params.get("smoothmm") is not None:
+        cargs.extend([
+            "-smoothmm",
+            str(params.get("smoothmm"))
+        ])
+    if params.get("maxthick") is not None:
+        cargs.extend([
+            "-maxthick",
+            str(params.get("maxthick"))
+        ])
+    if params.get("depthsearch") is not None:
+        cargs.extend([
+            "-depthsearch",
+            str(params.get("depthsearch"))
+        ])
+    if params.get("keep_temp_files"):
+        cargs.append("-keep_temp_files")
+    if params.get("surfsmooth_method") is not None:
+        cargs.extend([
+            "-surfsmooth_method",
+            params.get("surfsmooth_method")
+        ])
+    return cargs
+
+
+def v__measure_erosion_thick_outputs(
+    params: VMeasureErosionThickParameters,
+    execution: Execution,
+) -> VMeasureErosionThickOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VMeasureErosionThickOutputs(
+        root=execution.output_file("."),
+        erosion_depth=execution.output_file("erosion_depth.nii.gz"),
+        erosion_thick=execution.output_file("erosion_thick.nii.gz"),
+        erosion_thick_smooth=execution.output_file("erosion_thick_smooth.nii.gz"),
+        erosion_thick_niml=execution.output_file("erosion_thick.niml.dset"),
+        erosion_thick_smooth_niml=execution.output_file("erosion_thick_smooth_nn_mm.niml.dset"),
+        maskset_output=execution.output_file("maskset.nii.gz"),
+        resampled_maskset=execution.output_file("maskset_rs.nii.gz"),
+        anat_gii=execution.output_file("anat.gii"),
+        quick_spec=execution.output_file("quick.spec"),
+    )
+    return ret
+
+
+def v__measure_erosion_thick_execute(
+    params: VMeasureErosionThickParameters,
+    execution: Execution,
+) -> VMeasureErosionThickOutputs:
+    """
+    Compute thickness of mask using erosion method.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VMeasureErosionThickOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__measure_erosion_thick_cargs(params, execution)
+    ret = v__measure_erosion_thick_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__measure_erosion_thick(
@@ -84,71 +305,13 @@ def v__measure_erosion_thick(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__MEASURE_EROSION_THICK_METADATA)
-    cargs = []
-    cargs.append("@measure_erosion_thick")
-    cargs.extend([
-        "-maskset",
-        execution.input_file(maskset)
-    ])
-    cargs.extend([
-        "-surfset",
-        execution.input_file(surfset)
-    ])
-    if outdir is not None:
-        cargs.extend([
-            "-outdir",
-            outdir
-        ])
-    if resample is not None:
-        cargs.extend([
-            "-resample",
-            resample
-        ])
-    if surfsmooth is not None:
-        cargs.extend([
-            "-surfsmooth",
-            str(surfsmooth)
-        ])
-    if smoothmm is not None:
-        cargs.extend([
-            "-smoothmm",
-            str(smoothmm)
-        ])
-    if maxthick is not None:
-        cargs.extend([
-            "-maxthick",
-            str(maxthick)
-        ])
-    if depthsearch is not None:
-        cargs.extend([
-            "-depthsearch",
-            str(depthsearch)
-        ])
-    if keep_temp_files:
-        cargs.append("-keep_temp_files")
-    if surfsmooth_method is not None:
-        cargs.extend([
-            "-surfsmooth_method",
-            surfsmooth_method
-        ])
-    ret = VMeasureErosionThickOutputs(
-        root=execution.output_file("."),
-        erosion_depth=execution.output_file("erosion_depth.nii.gz"),
-        erosion_thick=execution.output_file("erosion_thick.nii.gz"),
-        erosion_thick_smooth=execution.output_file("erosion_thick_smooth.nii.gz"),
-        erosion_thick_niml=execution.output_file("erosion_thick.niml.dset"),
-        erosion_thick_smooth_niml=execution.output_file("erosion_thick_smooth_nn_mm.niml.dset"),
-        maskset_output=execution.output_file("maskset.nii.gz"),
-        resampled_maskset=execution.output_file("maskset_rs.nii.gz"),
-        anat_gii=execution.output_file("anat.gii"),
-        quick_spec=execution.output_file("quick.spec"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__measure_erosion_thick_params(maskset=maskset, surfset=surfset, outdir=outdir, resample=resample, surfsmooth=surfsmooth, smoothmm=smoothmm, maxthick=maxthick, depthsearch=depthsearch, keep_temp_files=keep_temp_files, surfsmooth_method=surfsmooth_method)
+    return v__measure_erosion_thick_execute(params, execution)
 
 
 __all__ = [
     "VMeasureErosionThickOutputs",
     "V__MEASURE_EROSION_THICK_METADATA",
     "v__measure_erosion_thick",
+    "v__measure_erosion_thick_params",
 ]

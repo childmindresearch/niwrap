@@ -12,6 +12,46 @@ LABELS_UNION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LabelsUnionParameters = typing.TypedDict('LabelsUnionParameters', {
+    "__STYX_TYPE__": typing.Literal["labels_union"],
+    "label1": InputPathType,
+    "label2": InputPathType,
+    "outputname": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "labels_union": labels_union_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "labels_union": labels_union_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelsUnionOutputs(typing.NamedTuple):
@@ -22,6 +62,96 @@ class LabelsUnionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     union_label: OutputPathType
     """Union of the two label files"""
+
+
+def labels_union_params(
+    label1: InputPathType,
+    label2: InputPathType,
+    outputname: str,
+) -> LabelsUnionParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label1: First label file (e.g., rh.BA3a.label).
+        label2: Second label file (e.g., rh.BA3b.label).
+        outputname: Output name for the union label file (e.g.,\
+            rh.BA3ab.union.label).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "labels_union",
+        "label1": label1,
+        "label2": label2,
+        "outputname": outputname,
+    }
+    return params
+
+
+def labels_union_cargs(
+    params: LabelsUnionParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("labels_union")
+    cargs.append(execution.input_file(params.get("label1")))
+    cargs.append(execution.input_file(params.get("label2")))
+    cargs.append(params.get("outputname"))
+    return cargs
+
+
+def labels_union_outputs(
+    params: LabelsUnionParameters,
+    execution: Execution,
+) -> LabelsUnionOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelsUnionOutputs(
+        root=execution.output_file("."),
+        union_label=execution.output_file(params.get("outputname")),
+    )
+    return ret
+
+
+def labels_union_execute(
+    params: LabelsUnionParameters,
+    execution: Execution,
+) -> LabelsUnionOutputs:
+    """
+    Utility to create the union of two label files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelsUnionOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = labels_union_cargs(params, execution)
+    ret = labels_union_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def labels_union(
@@ -48,21 +178,13 @@ def labels_union(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_UNION_METADATA)
-    cargs = []
-    cargs.append("labels_union")
-    cargs.append(execution.input_file(label1))
-    cargs.append(execution.input_file(label2))
-    cargs.append(outputname)
-    ret = LabelsUnionOutputs(
-        root=execution.output_file("."),
-        union_label=execution.output_file(outputname),
-    )
-    execution.run(cargs)
-    return ret
+    params = labels_union_params(label1=label1, label2=label2, outputname=outputname)
+    return labels_union_execute(params, execution)
 
 
 __all__ = [
     "LABELS_UNION_METADATA",
     "LabelsUnionOutputs",
     "labels_union",
+    "labels_union_params",
 ]

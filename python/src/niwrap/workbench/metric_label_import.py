@@ -12,6 +12,50 @@ METRIC_LABEL_IMPORT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricLabelImportParameters = typing.TypedDict('MetricLabelImportParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-label-import"],
+    "input": InputPathType,
+    "label_list_file": str,
+    "output": str,
+    "opt_discard_others": bool,
+    "opt_unlabeled_value_value": typing.NotRequired[int | None],
+    "opt_column_column": typing.NotRequired[str | None],
+    "opt_drop_unused_labels": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-label-import": metric_label_import_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-label-import": metric_label_import_outputs,
+    }
+    return vt.get(t)
 
 
 class MetricLabelImportOutputs(typing.NamedTuple):
@@ -22,6 +66,152 @@ class MetricLabelImportOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the output gifti label file"""
+
+
+def metric_label_import_params(
+    input_: InputPathType,
+    label_list_file: str,
+    output: str,
+    opt_discard_others: bool = False,
+    opt_unlabeled_value_value: int | None = None,
+    opt_column_column: str | None = None,
+    opt_drop_unused_labels: bool = False,
+) -> MetricLabelImportParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: the input metric file.
+        label_list_file: text file containing the values and names for labels.
+        output: the output gifti label file.
+        opt_discard_others: set any values not mentioned in the label list to\
+            the ??? label.
+        opt_unlabeled_value_value: set the value that will be interpreted as\
+            unlabeled: the numeric value for unlabeled (default 0).
+        opt_column_column: select a single column to import: the column number\
+            or name.
+        opt_drop_unused_labels: remove any unused label values from the label\
+            table.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-label-import",
+        "input": input_,
+        "label_list_file": label_list_file,
+        "output": output,
+        "opt_discard_others": opt_discard_others,
+        "opt_drop_unused_labels": opt_drop_unused_labels,
+    }
+    if opt_unlabeled_value_value is not None:
+        params["opt_unlabeled_value_value"] = opt_unlabeled_value_value
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    return params
+
+
+def metric_label_import_cargs(
+    params: MetricLabelImportParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-label-import")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("label_list_file"))
+    cargs.append(params.get("output"))
+    if params.get("opt_discard_others"):
+        cargs.append("-discard-others")
+    if params.get("opt_unlabeled_value_value") is not None:
+        cargs.extend([
+            "-unlabeled-value",
+            str(params.get("opt_unlabeled_value_value"))
+        ])
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    if params.get("opt_drop_unused_labels"):
+        cargs.append("-drop-unused-labels")
+    return cargs
+
+
+def metric_label_import_outputs(
+    params: MetricLabelImportParameters,
+    execution: Execution,
+) -> MetricLabelImportOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricLabelImportOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def metric_label_import_execute(
+    params: MetricLabelImportParameters,
+    execution: Execution,
+) -> MetricLabelImportOutputs:
+    """
+    Import a gifti label file from a metric file.
+    
+    Creates a gifti label file from a metric file with label-like values. You
+    may specify the empty string (use "") for <label-list-file>, which will be
+    treated as if it is an empty file. The label list file must have the
+    following format (2 lines per label):
+    
+    <labelname>
+    <key> <red> <green> <blue> <alpha>
+    ...
+    
+    Label names are specified on a separate line from their value and color, in
+    order to let label names contain spaces. Whitespace is trimmed from both
+    ends of the label name, but is kept if it is in the middle of a label. Do
+    not specify the "unlabeled" key in the file, it is assumed that 0 means not
+    labeled unless -unlabeled-value is specified. The value of <key> specifies
+    what value in the imported file should be used as this label (these same key
+    values are also used in the output file). The values of <red>, <green>,
+    <blue> and <alpha> must be integers from 0 to 255, and will specify the
+    color the label is drawn as (alpha of 255 means fully opaque, which is
+    probably what you want).
+    
+    By default, it will create new label names with names like LABEL_5 for any
+    values encountered that are not mentioned in the list file, specify
+    -discard-others to instead set these values to the "unlabeled" key.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricLabelImportOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_label_import_cargs(params, execution)
+    ret = metric_label_import_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def metric_label_import(
@@ -83,36 +273,13 @@ def metric_label_import(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_LABEL_IMPORT_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-label-import")
-    cargs.append(execution.input_file(input_))
-    cargs.append(label_list_file)
-    cargs.append(output)
-    if opt_discard_others:
-        cargs.append("-discard-others")
-    if opt_unlabeled_value_value is not None:
-        cargs.extend([
-            "-unlabeled-value",
-            str(opt_unlabeled_value_value)
-        ])
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    if opt_drop_unused_labels:
-        cargs.append("-drop-unused-labels")
-    ret = MetricLabelImportOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_label_import_params(input_=input_, label_list_file=label_list_file, output=output, opt_discard_others=opt_discard_others, opt_unlabeled_value_value=opt_unlabeled_value_value, opt_column_column=opt_column_column, opt_drop_unused_labels=opt_drop_unused_labels)
+    return metric_label_import_execute(params, execution)
 
 
 __all__ = [
     "METRIC_LABEL_IMPORT_METADATA",
     "MetricLabelImportOutputs",
     "metric_label_import",
+    "metric_label_import_params",
 ]

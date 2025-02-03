@@ -12,6 +12,46 @@ MRI_RIGID_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriRigidRegisterParameters = typing.TypedDict('MriRigidRegisterParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_rigid_register"],
+    "source_volume": InputPathType,
+    "target_volume": InputPathType,
+    "transform_output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_rigid_register": mri_rigid_register_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_rigid_register": mri_rigid_register_outputs,
+    }
+    return vt.get(t)
 
 
 class MriRigidRegisterOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MriRigidRegisterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     transform_file: OutputPathType
     """Output file for transform matrix"""
+
+
+def mri_rigid_register_params(
+    source_volume: InputPathType,
+    target_volume: InputPathType,
+    transform_output: str,
+) -> MriRigidRegisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source_volume: Source volume file for registration.
+        target_volume: Target volume file for registration.
+        transform_output: Output file name for the transform.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_rigid_register",
+        "source_volume": source_volume,
+        "target_volume": target_volume,
+        "transform_output": transform_output,
+    }
+    return params
+
+
+def mri_rigid_register_cargs(
+    params: MriRigidRegisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_rigid_register")
+    cargs.append(execution.input_file(params.get("source_volume")))
+    cargs.append(execution.input_file(params.get("target_volume")))
+    cargs.append(params.get("transform_output"))
+    return cargs
+
+
+def mri_rigid_register_outputs(
+    params: MriRigidRegisterParameters,
+    execution: Execution,
+) -> MriRigidRegisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriRigidRegisterOutputs(
+        root=execution.output_file("."),
+        transform_file=execution.output_file(params.get("transform_output")),
+    )
+    return ret
+
+
+def mri_rigid_register_execute(
+    params: MriRigidRegisterParameters,
+    execution: Execution,
+) -> MriRigidRegisterOutputs:
+    """
+    Rigid registration tool for MRI volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriRigidRegisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_rigid_register_cargs(params, execution)
+    ret = mri_rigid_register_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_rigid_register(
@@ -47,21 +176,13 @@ def mri_rigid_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RIGID_REGISTER_METADATA)
-    cargs = []
-    cargs.append("mri_rigid_register")
-    cargs.append(execution.input_file(source_volume))
-    cargs.append(execution.input_file(target_volume))
-    cargs.append(transform_output)
-    ret = MriRigidRegisterOutputs(
-        root=execution.output_file("."),
-        transform_file=execution.output_file(transform_output),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_rigid_register_params(source_volume=source_volume, target_volume=target_volume, transform_output=transform_output)
+    return mri_rigid_register_execute(params, execution)
 
 
 __all__ = [
     "MRI_RIGID_REGISTER_METADATA",
     "MriRigidRegisterOutputs",
     "mri_rigid_register",
+    "mri_rigid_register_params",
 ]

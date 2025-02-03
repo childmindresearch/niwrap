@@ -12,6 +12,44 @@ V__GET_AFNI_DIMS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VGetAfniDimsParameters = typing.TypedDict('VGetAfniDimsParameters', {
+    "__STYX_TYPE__": typing.Literal["@GetAfniDims"],
+    "input_dset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@GetAfniDims": v__get_afni_dims_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@GetAfniDims": v__get_afni_dims_outputs,
+    }
+    return vt.get(t)
 
 
 class VGetAfniDimsOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class VGetAfniDimsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     dims_output: OutputPathType
     """Text file containing the dimensions of the input dataset"""
+
+
+def v__get_afni_dims_params(
+    input_dset: InputPathType,
+) -> VGetAfniDimsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dset: Input AFNI dataset.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@GetAfniDims",
+        "input_dset": input_dset,
+    }
+    return params
+
+
+def v__get_afni_dims_cargs(
+    params: VGetAfniDimsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@GetAfniDims")
+    cargs.append(execution.input_file(params.get("input_dset")))
+    return cargs
+
+
+def v__get_afni_dims_outputs(
+    params: VGetAfniDimsParameters,
+    execution: Execution,
+) -> VGetAfniDimsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VGetAfniDimsOutputs(
+        root=execution.output_file("."),
+        dims_output=execution.output_file("dims_output.txt"),
+    )
+    return ret
+
+
+def v__get_afni_dims_execute(
+    params: VGetAfniDimsParameters,
+    execution: Execution,
+) -> VGetAfniDimsOutputs:
+    """
+    A utility tool to return dimensions of AFNI dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VGetAfniDimsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__get_afni_dims_cargs(params, execution)
+    ret = v__get_afni_dims_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__get_afni_dims(
@@ -43,19 +162,13 @@ def v__get_afni_dims(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_DIMS_METADATA)
-    cargs = []
-    cargs.append("@GetAfniDims")
-    cargs.append(execution.input_file(input_dset))
-    ret = VGetAfniDimsOutputs(
-        root=execution.output_file("."),
-        dims_output=execution.output_file("dims_output.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__get_afni_dims_params(input_dset=input_dset)
+    return v__get_afni_dims_execute(params, execution)
 
 
 __all__ = [
     "VGetAfniDimsOutputs",
     "V__GET_AFNI_DIMS_METADATA",
     "v__get_afni_dims",
+    "v__get_afni_dims_params",
 ]

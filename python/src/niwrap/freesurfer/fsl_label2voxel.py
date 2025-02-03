@@ -12,6 +12,47 @@ FSL_LABEL2VOXEL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FslLabel2voxelParameters = typing.TypedDict('FslLabel2voxelParameters', {
+    "__STYX_TYPE__": typing.Literal["fsl_label2voxel"],
+    "label_value": float,
+    "labeled_volume": InputPathType,
+    "src_volume": InputPathType,
+    "output_filename": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fsl_label2voxel": fsl_label2voxel_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fsl_label2voxel": fsl_label2voxel_outputs,
+    }
+    return vt.get(t)
 
 
 class FslLabel2voxelOutputs(typing.NamedTuple):
@@ -22,6 +63,99 @@ class FslLabel2voxelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_voxel_data: OutputPathType
     """Output voxel data based on the specified label value"""
+
+
+def fsl_label2voxel_params(
+    label_value: float,
+    labeled_volume: InputPathType,
+    src_volume: InputPathType,
+    output_filename: str,
+) -> FslLabel2voxelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label_value: Label value to convert.
+        labeled_volume: Labeled volume file.
+        src_volume: Source volume file.
+        output_filename: Output filename for voxel data.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsl_label2voxel",
+        "label_value": label_value,
+        "labeled_volume": labeled_volume,
+        "src_volume": src_volume,
+        "output_filename": output_filename,
+    }
+    return params
+
+
+def fsl_label2voxel_cargs(
+    params: FslLabel2voxelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsl_label2voxel")
+    cargs.append(str(params.get("label_value")))
+    cargs.append(execution.input_file(params.get("labeled_volume")))
+    cargs.append(execution.input_file(params.get("src_volume")))
+    cargs.append(params.get("output_filename"))
+    return cargs
+
+
+def fsl_label2voxel_outputs(
+    params: FslLabel2voxelParameters,
+    execution: Execution,
+) -> FslLabel2voxelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslLabel2voxelOutputs(
+        root=execution.output_file("."),
+        output_voxel_data=execution.output_file(params.get("output_filename")),
+    )
+    return ret
+
+
+def fsl_label2voxel_execute(
+    params: FslLabel2voxelParameters,
+    execution: Execution,
+) -> FslLabel2voxelOutputs:
+    """
+    Converts labeled volumes to voxels based on specified labels.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslLabel2voxelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsl_label2voxel_cargs(params, execution)
+    ret = fsl_label2voxel_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsl_label2voxel(
@@ -49,22 +183,13 @@ def fsl_label2voxel(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_LABEL2VOXEL_METADATA)
-    cargs = []
-    cargs.append("fsl_label2voxel")
-    cargs.append(str(label_value))
-    cargs.append(execution.input_file(labeled_volume))
-    cargs.append(execution.input_file(src_volume))
-    cargs.append(output_filename)
-    ret = FslLabel2voxelOutputs(
-        root=execution.output_file("."),
-        output_voxel_data=execution.output_file(output_filename),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsl_label2voxel_params(label_value=label_value, labeled_volume=labeled_volume, src_volume=src_volume, output_filename=output_filename)
+    return fsl_label2voxel_execute(params, execution)
 
 
 __all__ = [
     "FSL_LABEL2VOXEL_METADATA",
     "FslLabel2voxelOutputs",
     "fsl_label2voxel",
+    "fsl_label2voxel_params",
 ]

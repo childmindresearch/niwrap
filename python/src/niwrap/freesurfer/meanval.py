@@ -12,6 +12,47 @@ MEANVAL_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MeanvalParameters = typing.TypedDict('MeanvalParameters', {
+    "__STYX_TYPE__": typing.Literal["meanval"],
+    "input_file": InputPathType,
+    "mask_file": InputPathType,
+    "output_file": str,
+    "avgwf_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "meanval": meanval_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "meanval": meanval_outputs,
+    }
+    return vt.get(t)
 
 
 class MeanvalOutputs(typing.NamedTuple):
@@ -22,6 +63,109 @@ class MeanvalOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     mean_output_file: OutputPathType
     """File containing the mean value calculated"""
+
+
+def meanval_params(
+    input_file: InputPathType,
+    mask_file: InputPathType,
+    output_file: str,
+    avgwf_flag: bool = False,
+) -> MeanvalParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input volume file.
+        mask_file: Mask file.
+        output_file: Output file where mean value will be stored.
+        avgwf_flag: Flag to calculate the average waveform.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "meanval",
+        "input_file": input_file,
+        "mask_file": mask_file,
+        "output_file": output_file,
+        "avgwf_flag": avgwf_flag,
+    }
+    return params
+
+
+def meanval_cargs(
+    params: MeanvalParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("meanval")
+    cargs.extend([
+        "--i",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "--m",
+        execution.input_file(params.get("mask_file"))
+    ])
+    cargs.extend([
+        "--o",
+        params.get("output_file")
+    ])
+    if params.get("avgwf_flag"):
+        cargs.append("--avgwf")
+    return cargs
+
+
+def meanval_outputs(
+    params: MeanvalParameters,
+    execution: Execution,
+) -> MeanvalOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MeanvalOutputs(
+        root=execution.output_file("."),
+        mean_output_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def meanval_execute(
+    params: MeanvalParameters,
+    execution: Execution,
+) -> MeanvalOutputs:
+    """
+    Tool to calculate the mean value of an image within a mask.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MeanvalOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = meanval_cargs(params, execution)
+    ret = meanval_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def meanval(
@@ -49,32 +193,13 @@ def meanval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MEANVAL_METADATA)
-    cargs = []
-    cargs.append("meanval")
-    cargs.extend([
-        "--i",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "--m",
-        execution.input_file(mask_file)
-    ])
-    cargs.extend([
-        "--o",
-        output_file
-    ])
-    if avgwf_flag:
-        cargs.append("--avgwf")
-    ret = MeanvalOutputs(
-        root=execution.output_file("."),
-        mean_output_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = meanval_params(input_file=input_file, mask_file=mask_file, output_file=output_file, avgwf_flag=avgwf_flag)
+    return meanval_execute(params, execution)
 
 
 __all__ = [
     "MEANVAL_METADATA",
     "MeanvalOutputs",
     "meanval",
+    "meanval_params",
 ]

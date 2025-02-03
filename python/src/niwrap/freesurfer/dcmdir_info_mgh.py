@@ -12,6 +12,48 @@ DCMDIR_INFO_MGH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+DcmdirInfoMghParameters = typing.TypedDict('DcmdirInfoMghParameters', {
+    "__STYX_TYPE__": typing.Literal["dcmdir-info-mgh"],
+    "dicomdir": str,
+    "unpackdir": typing.NotRequired[str | None],
+    "version": bool,
+    "help": bool,
+    "nopre": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dcmdir-info-mgh": dcmdir_info_mgh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dcmdir-info-mgh": dcmdir_info_mgh_outputs,
+    }
+    return vt.get(t)
 
 
 class DcmdirInfoMghOutputs(typing.NamedTuple):
@@ -23,6 +65,111 @@ class DcmdirInfoMghOutputs(typing.NamedTuple):
     converted_mgz_files: OutputPathType
     """Converted DICOM files to MGZ format with naming sequencename_runR.mgz,
     where R is the run number"""
+
+
+def dcmdir_info_mgh_params(
+    dicomdir: str,
+    unpackdir: str | None = None,
+    version: bool = False,
+    help_: bool = False,
+    nopre: bool = False,
+) -> DcmdirInfoMghParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dicomdir: Input DICOM directory.
+        unpackdir: Directory where the unpacked data will be stored (optional).\
+            If specified, DICOM files are converted to MGZ format.
+        version: Print version and exit.
+        help_: Print help and exit.
+        nopre: Do not assume filenames use the NNNNNN- prefix convention.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dcmdir-info-mgh",
+        "dicomdir": dicomdir,
+        "version": version,
+        "help": help_,
+        "nopre": nopre,
+    }
+    if unpackdir is not None:
+        params["unpackdir"] = unpackdir
+    return params
+
+
+def dcmdir_info_mgh_cargs(
+    params: DcmdirInfoMghParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-mgh",
+        "dcmdir-info" + params.get("dicomdir")
+    ])
+    if params.get("unpackdir") is not None:
+        cargs.append(params.get("unpackdir"))
+    if params.get("version"):
+        cargs.append("--version")
+    if params.get("help"):
+        cargs.append("--help")
+    if params.get("nopre"):
+        cargs.append("--nopre")
+    return cargs
+
+
+def dcmdir_info_mgh_outputs(
+    params: DcmdirInfoMghParameters,
+    execution: Execution,
+) -> DcmdirInfoMghOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = DcmdirInfoMghOutputs(
+        root=execution.output_file("."),
+        converted_mgz_files=execution.output_file("sequencename_run*.mgz"),
+    )
+    return ret
+
+
+def dcmdir_info_mgh_execute(
+    params: DcmdirInfoMghParameters,
+    execution: Execution,
+) -> DcmdirInfoMghOutputs:
+    """
+    Scans a DICOM directory and extracts information about each series.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `DcmdirInfoMghOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dcmdir_info_mgh_cargs(params, execution)
+    ret = dcmdir_info_mgh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def dcmdir_info_mgh(
@@ -53,29 +200,13 @@ def dcmdir_info_mgh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DCMDIR_INFO_MGH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-mgh",
-        "dcmdir-info" + dicomdir
-    ])
-    if unpackdir is not None:
-        cargs.append(unpackdir)
-    if version:
-        cargs.append("--version")
-    if help_:
-        cargs.append("--help")
-    if nopre:
-        cargs.append("--nopre")
-    ret = DcmdirInfoMghOutputs(
-        root=execution.output_file("."),
-        converted_mgz_files=execution.output_file("sequencename_run*.mgz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = dcmdir_info_mgh_params(dicomdir=dicomdir, unpackdir=unpackdir, version=version, help_=help_, nopre=nopre)
+    return dcmdir_info_mgh_execute(params, execution)
 
 
 __all__ = [
     "DCMDIR_INFO_MGH_METADATA",
     "DcmdirInfoMghOutputs",
     "dcmdir_info_mgh",
+    "dcmdir_info_mgh_params",
 ]

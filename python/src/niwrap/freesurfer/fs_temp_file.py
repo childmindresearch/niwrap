@@ -12,14 +12,151 @@ FS_TEMP_FILE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsTempFileParameters = typing.TypedDict('FsTempFileParameters', {
+    "__STYX_TYPE__": typing.Literal["fs_temp_file"],
+    "base_dir_alt": typing.NotRequired[str | None],
+    "suffix_alt": typing.NotRequired[str | None],
+    "scratch": bool,
+    "help_alt": bool,
+})
 
 
-class FsTempFileOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fs_temp_file(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fs_temp_file": fs_temp_file_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fs_temp_file_params(
+    base_dir_alt: str | None = None,
+    suffix_alt: str | None = None,
+    scratch: bool = False,
+    help_alt: bool = False,
+) -> FsTempFileParameters:
+    """
+    Build parameters.
+    
+    Args:
+        base_dir_alt: Manually specify base temporary directory.
+        suffix_alt: Optional file suffix.
+        scratch: Use /scratch directory if available, but FS_TMPDIR takes\
+            priority.
+        help_alt: Print help text and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fs_temp_file",
+        "scratch": scratch,
+        "help_alt": help_alt,
+    }
+    if base_dir_alt is not None:
+        params["base_dir_alt"] = base_dir_alt
+    if suffix_alt is not None:
+        params["suffix_alt"] = suffix_alt
+    return params
+
+
+def fs_temp_file_cargs(
+    params: FsTempFileParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fs_temp_file")
+    if params.get("base_dir_alt") is not None:
+        cargs.extend([
+            "--base",
+            params.get("base_dir_alt")
+        ])
+    if params.get("suffix_alt") is not None:
+        cargs.extend([
+            "--suffix",
+            params.get("suffix_alt")
+        ])
+    if params.get("scratch"):
+        cargs.append("--scratch")
+    if params.get("help_alt"):
+        cargs.append("--help")
+    return cargs
+
+
+def fs_temp_file_outputs(
+    params: FsTempFileParameters,
+    execution: Execution,
+) -> FsTempFileOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsTempFileOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fs_temp_file_execute(
+    params: FsTempFileParameters,
+    execution: Execution,
+) -> FsTempFileOutputs:
+    """
+    Generates and creates an empty temporary file, printing the resulting path to
+    stdout.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsTempFileOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_temp_file_cargs(params, execution)
+    ret = fs_temp_file_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_temp_file(
@@ -49,31 +186,12 @@ def fs_temp_file(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_TEMP_FILE_METADATA)
-    cargs = []
-    cargs.append("fs_temp_file")
-    if base_dir_alt is not None:
-        cargs.extend([
-            "--base",
-            base_dir_alt
-        ])
-    if suffix_alt is not None:
-        cargs.extend([
-            "--suffix",
-            suffix_alt
-        ])
-    if scratch:
-        cargs.append("--scratch")
-    if help_alt:
-        cargs.append("--help")
-    ret = FsTempFileOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_temp_file_params(base_dir_alt=base_dir_alt, suffix_alt=suffix_alt, scratch=scratch, help_alt=help_alt)
+    return fs_temp_file_execute(params, execution)
 
 
 __all__ = [
     "FS_TEMP_FILE_METADATA",
-    "FsTempFileOutputs",
     "fs_temp_file",
+    "fs_temp_file_params",
 ]

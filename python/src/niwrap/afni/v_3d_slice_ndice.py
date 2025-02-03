@@ -12,6 +12,48 @@ V_3D_SLICE_NDICE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dSliceNdiceParameters = typing.TypedDict('V3dSliceNdiceParameters', {
+    "__STYX_TYPE__": typing.Literal["3dSliceNDice"],
+    "infile_a": InputPathType,
+    "infile_b": InputPathType,
+    "output_prefix": str,
+    "out_domain": typing.NotRequired[typing.Literal["all", "AorB", "AandB", "Amask", "Bmask"] | None],
+    "no_cmd_echo": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dSliceNDice": v_3d_slice_ndice_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dSliceNDice": v_3d_slice_ndice_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dSliceNdiceOutputs(typing.NamedTuple):
@@ -28,6 +70,122 @@ class V3dSliceNdiceOutputs(typing.NamedTuple):
     output_is: OutputPathType
     """Output file containing Dice coefficients along the inferior-superior
     axis."""
+
+
+def v_3d_slice_ndice_params(
+    infile_a: InputPathType,
+    infile_b: InputPathType,
+    output_prefix: str,
+    out_domain: typing.Literal["all", "AorB", "AandB", "Amask", "Bmask"] | None = None,
+    no_cmd_echo: bool = False,
+) -> V3dSliceNdiceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile_a: Input dataset A (e.g. mask_1.nii.gz).
+        infile_b: Input dataset B (e.g. mask_2.nii.gz).
+        output_prefix: Prefix for output files (e.g. result_prefix).
+        out_domain: Specify which slices to include in the Dice coefficient\
+            report. Options are: all (default), AorB, AandB, Amask, Bmask.
+        no_cmd_echo: Turn OFF recording the command line call in the output\
+            *.1D files. Default is to do the recording.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dSliceNDice",
+        "infile_a": infile_a,
+        "infile_b": infile_b,
+        "output_prefix": output_prefix,
+        "no_cmd_echo": no_cmd_echo,
+    }
+    if out_domain is not None:
+        params["out_domain"] = out_domain
+    return params
+
+
+def v_3d_slice_ndice_cargs(
+    params: V3dSliceNdiceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dSliceNDice")
+    cargs.extend([
+        "-insetA",
+        execution.input_file(params.get("infile_a"))
+    ])
+    cargs.extend([
+        "-insetB",
+        execution.input_file(params.get("infile_b"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("output_prefix")
+    ])
+    if params.get("out_domain") is not None:
+        cargs.extend([
+            "-out_domain",
+            params.get("out_domain")
+        ])
+    if params.get("no_cmd_echo"):
+        cargs.append("-no_cmd_echo")
+    return cargs
+
+
+def v_3d_slice_ndice_outputs(
+    params: V3dSliceNdiceParameters,
+    execution: Execution,
+) -> V3dSliceNdiceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dSliceNdiceOutputs(
+        root=execution.output_file("."),
+        output_rl=execution.output_file(params.get("output_prefix") + "_0_RL.1D"),
+        output_ap=execution.output_file(params.get("output_prefix") + "_1_AP.1D"),
+        output_is=execution.output_file(params.get("output_prefix") + "_2_IS.1D"),
+    )
+    return ret
+
+
+def v_3d_slice_ndice_execute(
+    params: V3dSliceNdiceParameters,
+    execution: Execution,
+) -> V3dSliceNdiceOutputs:
+    """
+    Calculates the Dice coefficient between two volumes on a slice-by-slice basis.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dSliceNdiceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_slice_ndice_cargs(params, execution)
+    ret = v_3d_slice_ndice_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_slice_ndice(
@@ -59,39 +217,13 @@ def v_3d_slice_ndice(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SLICE_NDICE_METADATA)
-    cargs = []
-    cargs.append("3dSliceNDice")
-    cargs.extend([
-        "-insetA",
-        execution.input_file(infile_a)
-    ])
-    cargs.extend([
-        "-insetB",
-        execution.input_file(infile_b)
-    ])
-    cargs.extend([
-        "-prefix",
-        output_prefix
-    ])
-    if out_domain is not None:
-        cargs.extend([
-            "-out_domain",
-            out_domain
-        ])
-    if no_cmd_echo:
-        cargs.append("-no_cmd_echo")
-    ret = V3dSliceNdiceOutputs(
-        root=execution.output_file("."),
-        output_rl=execution.output_file(output_prefix + "_0_RL.1D"),
-        output_ap=execution.output_file(output_prefix + "_1_AP.1D"),
-        output_is=execution.output_file(output_prefix + "_2_IS.1D"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_slice_ndice_params(infile_a=infile_a, infile_b=infile_b, output_prefix=output_prefix, out_domain=out_domain, no_cmd_echo=no_cmd_echo)
+    return v_3d_slice_ndice_execute(params, execution)
 
 
 __all__ = [
     "V3dSliceNdiceOutputs",
     "V_3D_SLICE_NDICE_METADATA",
     "v_3d_slice_ndice",
+    "v_3d_slice_ndice_params",
 ]

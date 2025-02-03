@@ -12,35 +12,104 @@ WARPCONVERT_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+WarpconvertConfigParameters = typing.TypedDict('WarpconvertConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+WarpconvertParameters = typing.TypedDict('WarpconvertParameters', {
+    "__STYX_TYPE__": typing.Literal["warpconvert"],
+    "template": typing.NotRequired[InputPathType | None],
+    "midway_space": bool,
+    "from": typing.NotRequired[int | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[WarpconvertConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "in": InputPathType,
+    "type": str,
+    "out": str,
+})
 
 
-@dataclasses.dataclass
-class WarpconvertConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "warpconvert": warpconvert_cargs,
+        "config": warpconvert_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "warpconvert": warpconvert_outputs,
+    }
+    return vt.get(t)
+
+
+def warpconvert_config_params(
+    key: str,
+    value: str,
+) -> WarpconvertConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def warpconvert_config_cargs(
+    params: WarpconvertConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class WarpconvertOutputs(typing.NamedTuple):
@@ -51,6 +120,191 @@ class WarpconvertOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out: OutputPathType
     """the output warp image."""
+
+
+def warpconvert_params(
+    in_: InputPathType,
+    type_: str,
+    out: str,
+    template: InputPathType | None = None,
+    midway_space: bool = False,
+    from_: int | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[WarpconvertConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> WarpconvertParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in_: the input warp image.
+        type_: the conversion type required. Valid choices are:\
+            deformation2displacement, displacement2deformation,\
+            warpfull2deformation, warpfull2displacement.
+        out: the output warp image.
+        template: define a template image when converting a warpfull file\
+            (which is defined on a grid in the midway space between image 1 & 2).\
+            For example to generate the deformation field that maps image1 to\
+            image2, then supply image2 as the template image.
+        midway_space: to be used only with warpfull2deformation and\
+            warpfull2displacement conversion types. The output will only contain\
+            the non-linear warp to map an input image to the midway space (defined\
+            by the warpfull grid). If a linear transform exists in the warpfull\
+            file header then it will be composed and included in the output.
+        from_: to be used only with warpfull2deformation and\
+            warpfull2displacement conversion types. Used to define the direction of\
+            the desired output field.Use -from 1 to obtain the image1->image2 field\
+            and from 2 for image2->image1. Can be used in combination with the\
+            -midway_space option to produce a field that only maps to midway space.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "warpconvert",
+        "midway_space": midway_space,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "in": in_,
+        "type": type_,
+        "out": out,
+    }
+    if template is not None:
+        params["template"] = template
+    if from_ is not None:
+        params["from"] = from_
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def warpconvert_cargs(
+    params: WarpconvertParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("warpconvert")
+    if params.get("template") is not None:
+        cargs.extend([
+            "-template",
+            execution.input_file(params.get("template"))
+        ])
+    if params.get("midway_space"):
+        cargs.append("-midway_space")
+    if params.get("from") is not None:
+        cargs.extend([
+            "-from",
+            str(params.get("from"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("in")))
+    cargs.append(params.get("type"))
+    cargs.append(params.get("out"))
+    return cargs
+
+
+def warpconvert_outputs(
+    params: WarpconvertParameters,
+    execution: Execution,
+) -> WarpconvertOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = WarpconvertOutputs(
+        root=execution.output_file("."),
+        out=execution.output_file(params.get("out")),
+    )
+    return ret
+
+
+def warpconvert_execute(
+    params: WarpconvertParameters,
+    execution: Execution,
+) -> WarpconvertOutputs:
+    """
+    Convert between different representations of a non-linear warp.
+    
+    A deformation field is defined as an image where each voxel defines the
+    corresponding position in the other image (in scanner space coordinates). A
+    displacement field stores the displacements (in mm) to the other image from
+    the each voxel's position (in scanner space). The warpfull file is the 5D
+    format output from mrregister -nl_warp_full, which contains linear
+    transforms, warps and their inverses that map each image to a midway space.
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `WarpconvertOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = warpconvert_cargs(params, execution)
+    ret = warpconvert_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def warpconvert(
@@ -65,7 +319,7 @@ def warpconvert(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[WarpconvertConfig] | None = None,
+    config: list[WarpconvertConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -126,53 +380,14 @@ def warpconvert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARPCONVERT_METADATA)
-    cargs = []
-    cargs.append("warpconvert")
-    if template is not None:
-        cargs.extend([
-            "-template",
-            execution.input_file(template)
-        ])
-    if midway_space:
-        cargs.append("-midway_space")
-    if from_ is not None:
-        cargs.extend([
-            "-from",
-            str(from_)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(in_))
-    cargs.append(type_)
-    cargs.append(out)
-    ret = WarpconvertOutputs(
-        root=execution.output_file("."),
-        out=execution.output_file(out),
-    )
-    execution.run(cargs)
-    return ret
+    params = warpconvert_params(template=template, midway_space=midway_space, from_=from_, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, in_=in_, type_=type_, out=out)
+    return warpconvert_execute(params, execution)
 
 
 __all__ = [
     "WARPCONVERT_METADATA",
-    "WarpconvertConfig",
     "WarpconvertOutputs",
     "warpconvert",
+    "warpconvert_config_params",
+    "warpconvert_params",
 ]

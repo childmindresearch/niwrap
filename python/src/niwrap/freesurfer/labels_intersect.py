@@ -12,6 +12,46 @@ LABELS_INTERSECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+LabelsIntersectParameters = typing.TypedDict('LabelsIntersectParameters', {
+    "__STYX_TYPE__": typing.Literal["labels_intersect"],
+    "label1": InputPathType,
+    "label2": InputPathType,
+    "outputname": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "labels_intersect": labels_intersect_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "labels_intersect": labels_intersect_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelsIntersectOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class LabelsIntersectOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_label: OutputPathType
     """The resulting intersected label file"""
+
+
+def labels_intersect_params(
+    label1: InputPathType,
+    label2: InputPathType,
+    outputname: str,
+) -> LabelsIntersectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label1: First input label file.
+        label2: Second input label file.
+        outputname: Output label file name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "labels_intersect",
+        "label1": label1,
+        "label2": label2,
+        "outputname": outputname,
+    }
+    return params
+
+
+def labels_intersect_cargs(
+    params: LabelsIntersectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("labels_intersect")
+    cargs.append(execution.input_file(params.get("label1")))
+    cargs.append(execution.input_file(params.get("label2")))
+    cargs.append(params.get("outputname"))
+    return cargs
+
+
+def labels_intersect_outputs(
+    params: LabelsIntersectParameters,
+    execution: Execution,
+) -> LabelsIntersectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelsIntersectOutputs(
+        root=execution.output_file("."),
+        output_label=execution.output_file(params.get("outputname")),
+    )
+    return ret
+
+
+def labels_intersect_execute(
+    params: LabelsIntersectParameters,
+    execution: Execution,
+) -> LabelsIntersectOutputs:
+    """
+    Tool to find the intersection of two label files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelsIntersectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = labels_intersect_cargs(params, execution)
+    ret = labels_intersect_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def labels_intersect(
@@ -47,21 +176,13 @@ def labels_intersect(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_INTERSECT_METADATA)
-    cargs = []
-    cargs.append("labels_intersect")
-    cargs.append(execution.input_file(label1))
-    cargs.append(execution.input_file(label2))
-    cargs.append(outputname)
-    ret = LabelsIntersectOutputs(
-        root=execution.output_file("."),
-        output_label=execution.output_file(outputname),
-    )
-    execution.run(cargs)
-    return ret
+    params = labels_intersect_params(label1=label1, label2=label2, outputname=outputname)
+    return labels_intersect_execute(params, execution)
 
 
 __all__ = [
     "LABELS_INTERSECT_METADATA",
     "LabelsIntersectOutputs",
     "labels_intersect",
+    "labels_intersect_params",
 ]

@@ -12,14 +12,213 @@ MAP_ICOSAHEDRON_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+MapIcosahedronParameters = typing.TypedDict('MapIcosahedronParameters', {
+    "__STYX_TYPE__": typing.Literal["MapIcosahedron"],
+    "spec_file": InputPathType,
+    "rec_depth": typing.NotRequired[float | None],
+    "lin_depth": typing.NotRequired[float | None],
+    "morph_surf": typing.NotRequired[str | None],
+    "num_it": typing.NotRequired[float | None],
+    "prefix": typing.NotRequired[str | None],
+    "nn_dset": typing.NotRequired[str | None],
+    "dset": typing.NotRequired[str | None],
+    "fix_cut_surfaces": bool,
+    "verbosity": bool,
+    "help": bool,
+})
 
 
-class MapIcosahedronOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `map_icosahedron(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "MapIcosahedron": map_icosahedron_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def map_icosahedron_params(
+    spec_file: InputPathType,
+    rec_depth: float | None = None,
+    lin_depth: float | None = None,
+    morph_surf: str | None = None,
+    num_it: float | None = None,
+    prefix: str | None = None,
+    nn_dset: str | None = None,
+    dset: str | None = None,
+    fix_cut_surfaces: bool = False,
+    verbosity: bool = False,
+    help_: bool = False,
+) -> MapIcosahedronParameters:
+    """
+    Build parameters.
+    
+    Args:
+        spec_file: Spec file containing original-mesh surfaces.
+        rec_depth: Recursive (binary) tessellation depth for icosahedron\
+            (default: 3).
+        lin_depth: Number of edge divides for linear icosahedron tessellation.
+        morph_surf: Specifies the morphSurf surface.
+        num_it: Number of smoothing iterations.
+        prefix: Prefix for output files (default: 'std.').
+        nn_dset: Map DSET onto the new mesh using Nearest Neighbor\
+            interpolation.
+        dset: Map DSET onto the new mesh using barycentric interpolation.
+        fix_cut_surfaces: Check and fix standard-mesh surfaces with cuts for\
+            cross-cut connections.
+        verbosity: Enable verbose output.
+        help_: Display the help text.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "MapIcosahedron",
+        "spec_file": spec_file,
+        "fix_cut_surfaces": fix_cut_surfaces,
+        "verbosity": verbosity,
+        "help": help_,
+    }
+    if rec_depth is not None:
+        params["rec_depth"] = rec_depth
+    if lin_depth is not None:
+        params["lin_depth"] = lin_depth
+    if morph_surf is not None:
+        params["morph_surf"] = morph_surf
+    if num_it is not None:
+        params["num_it"] = num_it
+    if prefix is not None:
+        params["prefix"] = prefix
+    if nn_dset is not None:
+        params["nn_dset"] = nn_dset
+    if dset is not None:
+        params["dset"] = dset
+    return params
+
+
+def map_icosahedron_cargs(
+    params: MapIcosahedronParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("MapIcosahedron")
+    cargs.append(execution.input_file(params.get("spec_file")))
+    if params.get("rec_depth") is not None:
+        cargs.extend([
+            "-rd",
+            str(params.get("rec_depth"))
+        ])
+    if params.get("lin_depth") is not None:
+        cargs.extend([
+            "-ld",
+            str(params.get("lin_depth"))
+        ])
+    if params.get("morph_surf") is not None:
+        cargs.extend([
+            "-morph",
+            params.get("morph_surf")
+        ])
+    if params.get("num_it") is not None:
+        cargs.extend([
+            "-it",
+            str(params.get("num_it"))
+        ])
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("nn_dset") is not None:
+        cargs.extend([
+            "-NN_dset_map",
+            params.get("nn_dset")
+        ])
+    if params.get("dset") is not None:
+        cargs.extend([
+            "-dset_map",
+            params.get("dset")
+        ])
+    if params.get("fix_cut_surfaces"):
+        cargs.append("-fix_cut_surfaces")
+    if params.get("verbosity"):
+        cargs.append("-verb")
+    if params.get("help"):
+        cargs.append("-help")
+    return cargs
+
+
+def map_icosahedron_outputs(
+    params: MapIcosahedronParameters,
+    execution: Execution,
+) -> MapIcosahedronOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MapIcosahedronOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def map_icosahedron_execute(
+    params: MapIcosahedronParameters,
+    execution: Execution,
+) -> MapIcosahedronOutputs:
+    """
+    Creates new versions of original-mesh surfaces using the mesh of an icosahedron.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MapIcosahedronOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = map_icosahedron_cargs(params, execution)
+    ret = map_icosahedron_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def map_icosahedron(
@@ -64,59 +263,12 @@ def map_icosahedron(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAP_ICOSAHEDRON_METADATA)
-    cargs = []
-    cargs.append("MapIcosahedron")
-    cargs.append(execution.input_file(spec_file))
-    if rec_depth is not None:
-        cargs.extend([
-            "-rd",
-            str(rec_depth)
-        ])
-    if lin_depth is not None:
-        cargs.extend([
-            "-ld",
-            str(lin_depth)
-        ])
-    if morph_surf is not None:
-        cargs.extend([
-            "-morph",
-            morph_surf
-        ])
-    if num_it is not None:
-        cargs.extend([
-            "-it",
-            str(num_it)
-        ])
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if nn_dset is not None:
-        cargs.extend([
-            "-NN_dset_map",
-            nn_dset
-        ])
-    if dset is not None:
-        cargs.extend([
-            "-dset_map",
-            dset
-        ])
-    if fix_cut_surfaces:
-        cargs.append("-fix_cut_surfaces")
-    if verbosity:
-        cargs.append("-verb")
-    if help_:
-        cargs.append("-help")
-    ret = MapIcosahedronOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = map_icosahedron_params(spec_file=spec_file, rec_depth=rec_depth, lin_depth=lin_depth, morph_surf=morph_surf, num_it=num_it, prefix=prefix, nn_dset=nn_dset, dset=dset, fix_cut_surfaces=fix_cut_surfaces, verbosity=verbosity, help_=help_)
+    return map_icosahedron_execute(params, execution)
 
 
 __all__ = [
     "MAP_ICOSAHEDRON_METADATA",
-    "MapIcosahedronOutputs",
     "map_icosahedron",
+    "map_icosahedron_params",
 ]

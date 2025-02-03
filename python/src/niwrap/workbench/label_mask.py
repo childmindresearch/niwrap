@@ -12,6 +12,47 @@ LABEL_MASK_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+LabelMaskParameters = typing.TypedDict('LabelMaskParameters', {
+    "__STYX_TYPE__": typing.Literal["label-mask"],
+    "label": InputPathType,
+    "mask": InputPathType,
+    "label_out": str,
+    "opt_column_column": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label-mask": label_mask_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label-mask": label_mask_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelMaskOutputs(typing.NamedTuple):
@@ -22,6 +63,110 @@ class LabelMaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label file"""
+
+
+def label_mask_params(
+    label: InputPathType,
+    mask: InputPathType,
+    label_out: str,
+    opt_column_column: str | None = None,
+) -> LabelMaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label: the label file to mask.
+        mask: the mask metric.
+        label_out: the output label file.
+        opt_column_column: select a single column: the column number or name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label-mask",
+        "label": label,
+        "mask": mask,
+        "label_out": label_out,
+    }
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    return params
+
+
+def label_mask_cargs(
+    params: LabelMaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-label-mask")
+    cargs.append(execution.input_file(params.get("label")))
+    cargs.append(execution.input_file(params.get("mask")))
+    cargs.append(params.get("label_out"))
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    return cargs
+
+
+def label_mask_outputs(
+    params: LabelMaskParameters,
+    execution: Execution,
+) -> LabelMaskOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelMaskOutputs(
+        root=execution.output_file("."),
+        label_out=execution.output_file(params.get("label_out")),
+    )
+    return ret
+
+
+def label_mask_execute(
+    params: LabelMaskParameters,
+    execution: Execution,
+) -> LabelMaskOutputs:
+    """
+    Mask a label file.
+    
+    By default, the output label is a copy of the input label, but with the
+    'unused' label wherever the mask metric is zero or negative. if -column is
+    specified, the output contains only one column, the masked version of the
+    specified input column.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelMaskOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label_mask_cargs(params, execution)
+    ret = label_mask_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def label_mask(
@@ -54,27 +199,13 @@ def label_mask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_MASK_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-label-mask")
-    cargs.append(execution.input_file(label))
-    cargs.append(execution.input_file(mask))
-    cargs.append(label_out)
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    ret = LabelMaskOutputs(
-        root=execution.output_file("."),
-        label_out=execution.output_file(label_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = label_mask_params(label=label, mask=mask, label_out=label_out, opt_column_column=opt_column_column)
+    return label_mask_execute(params, execution)
 
 
 __all__ = [
     "LABEL_MASK_METADATA",
     "LabelMaskOutputs",
     "label_mask",
+    "label_mask_params",
 ]

@@ -12,65 +12,147 @@ METRIC_TFCE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricTfcePresmoothParameters = typing.TypedDict('MetricTfcePresmoothParameters', {
+    "__STYX_TYPE__": typing.Literal["presmooth"],
+    "kernel": float,
+    "opt_fwhm": bool,
+})
+MetricTfceParametersParameters = typing.TypedDict('MetricTfceParametersParameters', {
+    "__STYX_TYPE__": typing.Literal["parameters"],
+    "e": float,
+    "h": float,
+})
+MetricTfceParameters = typing.TypedDict('MetricTfceParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-tfce"],
+    "surface": InputPathType,
+    "metric_in": InputPathType,
+    "metric_out": str,
+    "presmooth": typing.NotRequired[MetricTfcePresmoothParameters | None],
+    "opt_roi_roi_metric": typing.NotRequired[InputPathType | None],
+    "parameters": typing.NotRequired[MetricTfceParametersParameters | None],
+    "opt_column_column": typing.NotRequired[str | None],
+    "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
+})
 
 
-@dataclasses.dataclass
-class MetricTfcePresmooth:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    smooth the metric before running TFCE.
-    """
-    kernel: float
-    """the size of the gaussian smoothing kernel in mm, as sigma by default"""
-    opt_fwhm: bool = False
-    """kernel size is FWHM, not sigma"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-presmooth")
-        cargs.append(str(self.kernel))
-        if self.opt_fwhm:
-            cargs.append("-fwhm")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-tfce": metric_tfce_cargs,
+        "presmooth": metric_tfce_presmooth_cargs,
+        "parameters": metric_tfce_parameters_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class MetricTfceParameters:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    set parameters for TFCE integral.
-    """
-    e: float
-    """exponent for cluster area (default 1.0)"""
-    h: float
-    """exponent for threshold value (default 2.0)"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-parameters")
-        cargs.append(str(self.e))
-        cargs.append(str(self.h))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-tfce": metric_tfce_outputs,
+    }
+    return vt.get(t)
+
+
+def metric_tfce_presmooth_params(
+    kernel: float,
+    opt_fwhm: bool = False,
+) -> MetricTfcePresmoothParameters:
+    """
+    Build parameters.
+    
+    Args:
+        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\
+            default.
+        opt_fwhm: kernel size is FWHM, not sigma.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "presmooth",
+        "kernel": kernel,
+        "opt_fwhm": opt_fwhm,
+    }
+    return params
+
+
+def metric_tfce_presmooth_cargs(
+    params: MetricTfcePresmoothParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-presmooth")
+    cargs.append(str(params.get("kernel")))
+    if params.get("opt_fwhm"):
+        cargs.append("-fwhm")
+    return cargs
+
+
+def metric_tfce_parameters_params(
+    e: float,
+    h: float,
+) -> MetricTfceParametersParameters:
+    """
+    Build parameters.
+    
+    Args:
+        e: exponent for cluster area (default 1.0).
+        h: exponent for threshold value (default 2.0).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "parameters",
+        "e": e,
+        "h": h,
+    }
+    return params
+
+
+def metric_tfce_parameters_cargs(
+    params: MetricTfceParametersParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-parameters")
+    cargs.append(str(params.get("e")))
+    cargs.append(str(params.get("h")))
+    return cargs
 
 
 class MetricTfceOutputs(typing.NamedTuple):
@@ -83,13 +165,170 @@ class MetricTfceOutputs(typing.NamedTuple):
     """the output metric"""
 
 
+def metric_tfce_params(
+    surface: InputPathType,
+    metric_in: InputPathType,
+    metric_out: str,
+    presmooth: MetricTfcePresmoothParameters | None = None,
+    opt_roi_roi_metric: InputPathType | None = None,
+    parameters: MetricTfceParametersParameters | None = None,
+    opt_column_column: str | None = None,
+    opt_corrected_areas_area_metric: InputPathType | None = None,
+) -> MetricTfceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to compute on.
+        metric_in: the metric to run TFCE on.
+        metric_out: the output metric.
+        presmooth: smooth the metric before running TFCE.
+        opt_roi_roi_metric: select a region of interest to run TFCE on: the\
+            area to run TFCE on, as a metric.
+        parameters: set parameters for TFCE integral.
+        opt_column_column: select a single column: the column number or name.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-tfce",
+        "surface": surface,
+        "metric_in": metric_in,
+        "metric_out": metric_out,
+    }
+    if presmooth is not None:
+        params["presmooth"] = presmooth
+    if opt_roi_roi_metric is not None:
+        params["opt_roi_roi_metric"] = opt_roi_roi_metric
+    if parameters is not None:
+        params["parameters"] = parameters
+    if opt_column_column is not None:
+        params["opt_column_column"] = opt_column_column
+    if opt_corrected_areas_area_metric is not None:
+        params["opt_corrected_areas_area_metric"] = opt_corrected_areas_area_metric
+    return params
+
+
+def metric_tfce_cargs(
+    params: MetricTfceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-tfce")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("metric_in")))
+    cargs.append(params.get("metric_out"))
+    if params.get("presmooth") is not None:
+        cargs.extend(dyn_cargs(params.get("presmooth")["__STYXTYPE__"])(params.get("presmooth"), execution))
+    if params.get("opt_roi_roi_metric") is not None:
+        cargs.extend([
+            "-roi",
+            execution.input_file(params.get("opt_roi_roi_metric"))
+        ])
+    if params.get("parameters") is not None:
+        cargs.extend(dyn_cargs(params.get("parameters")["__STYXTYPE__"])(params.get("parameters"), execution))
+    if params.get("opt_column_column") is not None:
+        cargs.extend([
+            "-column",
+            params.get("opt_column_column")
+        ])
+    if params.get("opt_corrected_areas_area_metric") is not None:
+        cargs.extend([
+            "-corrected-areas",
+            execution.input_file(params.get("opt_corrected_areas_area_metric"))
+        ])
+    return cargs
+
+
+def metric_tfce_outputs(
+    params: MetricTfceParameters,
+    execution: Execution,
+) -> MetricTfceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricTfceOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_tfce_execute(
+    params: MetricTfceParameters,
+    execution: Execution,
+) -> MetricTfceOutputs:
+    """
+    Do tfce on a metric file.
+    
+    This command does not do any statistical analysis. Please use something like
+    PALM if you are just trying to do statistics on your data.
+    
+    Threshold-free cluster enhancement is a method to increase the relative
+    value of regions that would form clusters in a standard thresholding test.
+    This is accomplished by evaluating the integral of:
+    
+    e(h, p)^E * h^H * dh
+    
+    at each vertex p, where h ranges from 0 to the maximum value in the data,
+    and e(h, p) is the extent of the cluster containing vertex p at threshold h.
+    Negative values are similarly enhanced by negating the data, running the
+    same process, and negating the result.
+    
+    When using -presmooth with -corrected-areas, note that it is an approximate
+    correction within the smoothing algorithm (the TFCE correction is exact).
+    Doing smoothing on individual surfaces before averaging/TFCE is preferred,
+    when possible, in order to better tie the smoothing kernel size to the
+    original feature size.
+    
+    The TFCE method is explained in: Smith SM, Nichols TE., "Threshold-free
+    cluster enhancement: addressing problems of smoothing, threshold dependence
+    and localisation in cluster inference." Neuroimage. 2009 Jan 1;44(1):83-98.
+    PMID: 18501637.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricTfceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_tfce_cargs(params, execution)
+    ret = metric_tfce_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def metric_tfce(
     surface: InputPathType,
     metric_in: InputPathType,
     metric_out: str,
-    presmooth: MetricTfcePresmooth | None = None,
+    presmooth: MetricTfcePresmoothParameters | None = None,
     opt_roi_roi_metric: InputPathType | None = None,
-    parameters: MetricTfceParameters | None = None,
+    parameters: MetricTfceParametersParameters | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     runner: Runner | None = None,
@@ -144,43 +383,15 @@ def metric_tfce(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_TFCE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-tfce")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_in))
-    cargs.append(metric_out)
-    if presmooth is not None:
-        cargs.extend(presmooth.run(execution))
-    if opt_roi_roi_metric is not None:
-        cargs.extend([
-            "-roi",
-            execution.input_file(opt_roi_roi_metric)
-        ])
-    if parameters is not None:
-        cargs.extend(parameters.run(execution))
-    if opt_column_column is not None:
-        cargs.extend([
-            "-column",
-            opt_column_column
-        ])
-    if opt_corrected_areas_area_metric is not None:
-        cargs.extend([
-            "-corrected-areas",
-            execution.input_file(opt_corrected_areas_area_metric)
-        ])
-    ret = MetricTfceOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_tfce_params(surface=surface, metric_in=metric_in, metric_out=metric_out, presmooth=presmooth, opt_roi_roi_metric=opt_roi_roi_metric, parameters=parameters, opt_column_column=opt_column_column, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    return metric_tfce_execute(params, execution)
 
 
 __all__ = [
     "METRIC_TFCE_METADATA",
     "MetricTfceOutputs",
-    "MetricTfceParameters",
-    "MetricTfcePresmooth",
     "metric_tfce",
+    "metric_tfce_parameters_params",
+    "metric_tfce_params",
+    "metric_tfce_presmooth_params",
 ]

@@ -12,6 +12,47 @@ V_3DDOT_BETA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3ddotBetaParameters = typing.TypedDict('V3ddotBetaParameters', {
+    "__STYX_TYPE__": typing.Literal["3ddot_beta"],
+    "input_file": InputPathType,
+    "prefix": str,
+    "doeta2": bool,
+    "mask": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3ddot_beta": v_3ddot_beta_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3ddot_beta": v_3ddot_beta_outputs,
+    }
+    return vt.get(t)
 
 
 class V3ddotBetaOutputs(typing.NamedTuple):
@@ -22,6 +63,112 @@ class V3ddotBetaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output text file containing the correlation-like matrix"""
+
+
+def v_3ddot_beta_params(
+    input_file: InputPathType,
+    prefix: str,
+    doeta2: bool = False,
+    mask: InputPathType | None = None,
+) -> V3ddotBetaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input file with N bricks.
+        prefix: Output prefix for the result file.
+        doeta2: Required flag for performing eta2 tests.
+        mask: Optional mask file within which to take values.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3ddot_beta",
+        "input_file": input_file,
+        "prefix": prefix,
+        "doeta2": doeta2,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    return params
+
+
+def v_3ddot_beta_cargs(
+    params: V3ddotBetaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3ddot_beta")
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("doeta2"):
+        cargs.append("-doeta2")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    return cargs
+
+
+def v_3ddot_beta_outputs(
+    params: V3ddotBetaParameters,
+    execution: Execution,
+) -> V3ddotBetaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3ddotBetaOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("prefix") + "_eta2.dat"),
+    )
+    return ret
+
+
+def v_3ddot_beta_execute(
+    params: V3ddotBetaParameters,
+    execution: Execution,
+) -> V3ddotBetaOutputs:
+    """
+    Beta version of updating 3ddot, currently only performing eta2 tests and
+    outputting a full matrix to a text file.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3ddotBetaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3ddot_beta_cargs(params, execution)
+    ret = v_3ddot_beta_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3ddot_beta(
@@ -50,33 +197,13 @@ def v_3ddot_beta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DDOT_BETA_METADATA)
-    cargs = []
-    cargs.append("3ddot_beta")
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if doeta2:
-        cargs.append("-doeta2")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    ret = V3ddotBetaOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(prefix + "_eta2.dat"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3ddot_beta_params(input_file=input_file, prefix=prefix, doeta2=doeta2, mask=mask)
+    return v_3ddot_beta_execute(params, execution)
 
 
 __all__ = [
     "V3ddotBetaOutputs",
     "V_3DDOT_BETA_METADATA",
     "v_3ddot_beta",
+    "v_3ddot_beta_params",
 ]

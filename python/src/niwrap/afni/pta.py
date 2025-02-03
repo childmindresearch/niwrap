@@ -12,6 +12,51 @@ PTA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+PtaParameters = typing.TypedDict('PtaParameters', {
+    "__STYX_TYPE__": typing.Literal["PTA"],
+    "prefix": str,
+    "input_file": InputPathType,
+    "model_formula": str,
+    "vt_formulation": typing.NotRequired[str | None],
+    "prediction_table": typing.NotRequired[InputPathType | None],
+    "verbosity_level": typing.NotRequired[float | None],
+    "response_var": typing.NotRequired[str | None],
+    "dbg_args": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "PTA": pta_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "PTA": pta_outputs,
+    }
+    return vt.get(t)
 
 
 class PtaOutputs(typing.NamedTuple):
@@ -24,6 +69,153 @@ class PtaOutputs(typing.NamedTuple):
     """Statistical evidence output of PTA"""
     prediction_output: OutputPathType
     """Predicted values and their standard errors"""
+
+
+def pta_params(
+    prefix: str,
+    input_file: InputPathType,
+    model_formula: str,
+    vt_formulation: str | None = None,
+    prediction_table: InputPathType | None = None,
+    verbosity_level: float | None = None,
+    response_var: str | None = None,
+    dbg_args: bool = False,
+) -> PtaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Prefix for output files.
+        input_file: Input data file in table format (data frame structure of\
+            long format in R).
+        model_formula: Model formulation through multilevel smoothing splines.
+        vt_formulation: Specify varying smoothing terms. Two components are\
+            required: the first one 'var' indicates the variable (e.g., subject)\
+            around which the smoothing will vary while the second component\
+            specifies the smoothing formulation (e.g., s(age,subject)).
+        prediction_table: Data table to generate predicted values for graphical\
+            illustration.
+        verbosity_level: Verbosity level (0 for quiet, 1 or more for talkative).
+        response_var: Column name designated as the response/outcome variable\
+            (default is 'Y').
+        dbg_args: Enable R to save parameters for debugging.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "PTA",
+        "prefix": prefix,
+        "input_file": input_file,
+        "model_formula": model_formula,
+        "dbg_args": dbg_args,
+    }
+    if vt_formulation is not None:
+        params["vt_formulation"] = vt_formulation
+    if prediction_table is not None:
+        params["prediction_table"] = prediction_table
+    if verbosity_level is not None:
+        params["verbosity_level"] = verbosity_level
+    if response_var is not None:
+        params["response_var"] = response_var
+    return params
+
+
+def pta_cargs(
+    params: PtaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("PTA")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.extend([
+        "-input",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "-model",
+        params.get("model_formula")
+    ])
+    if params.get("vt_formulation") is not None:
+        cargs.extend([
+            "-vt",
+            params.get("vt_formulation")
+        ])
+    if params.get("prediction_table") is not None:
+        cargs.extend([
+            "-prediction",
+            execution.input_file(params.get("prediction_table"))
+        ])
+    if params.get("verbosity_level") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verbosity_level"))
+        ])
+    if params.get("response_var") is not None:
+        cargs.extend([
+            "-Y",
+            params.get("response_var")
+        ])
+    if params.get("dbg_args"):
+        cargs.append("-dbgArgs")
+    return cargs
+
+
+def pta_outputs(
+    params: PtaParameters,
+    execution: Execution,
+) -> PtaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PtaOutputs(
+        root=execution.output_file("."),
+        stat_output=execution.output_file(params.get("prefix") + "-stat.txt"),
+        prediction_output=execution.output_file(params.get("prefix") + "-prediction.txt"),
+    )
+    return ret
+
+
+def pta_execute(
+    params: PtaParameters,
+    execution: Execution,
+) -> PtaOutputs:
+    """
+    Program for Profile Tracking Analysis - estimates nonlinear trajectories through
+    smoothing splines.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PtaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = pta_cargs(params, execution)
+    ret = pta_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def pta(
@@ -66,53 +258,13 @@ def pta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PTA_METADATA)
-    cargs = []
-    cargs.append("PTA")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.extend([
-        "-input",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "-model",
-        model_formula
-    ])
-    if vt_formulation is not None:
-        cargs.extend([
-            "-vt",
-            vt_formulation
-        ])
-    if prediction_table is not None:
-        cargs.extend([
-            "-prediction",
-            execution.input_file(prediction_table)
-        ])
-    if verbosity_level is not None:
-        cargs.extend([
-            "-verb",
-            str(verbosity_level)
-        ])
-    if response_var is not None:
-        cargs.extend([
-            "-Y",
-            response_var
-        ])
-    if dbg_args:
-        cargs.append("-dbgArgs")
-    ret = PtaOutputs(
-        root=execution.output_file("."),
-        stat_output=execution.output_file(prefix + "-stat.txt"),
-        prediction_output=execution.output_file(prefix + "-prediction.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = pta_params(prefix=prefix, input_file=input_file, model_formula=model_formula, vt_formulation=vt_formulation, prediction_table=prediction_table, verbosity_level=verbosity_level, response_var=response_var, dbg_args=dbg_args)
+    return pta_execute(params, execution)
 
 
 __all__ = [
     "PTA_METADATA",
     "PtaOutputs",
     "pta",
+    "pta_params",
 ]

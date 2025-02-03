@@ -12,6 +12,45 @@ VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeComponentsToFramesParameters = typing.TypedDict('VolumeComponentsToFramesParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-components-to-frames"],
+    "input": InputPathType,
+    "output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "volume-components-to-frames": volume_components_to_frames_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "volume-components-to-frames": volume_components_to_frames_outputs,
+    }
+    return vt.get(t)
 
 
 class VolumeComponentsToFramesOutputs(typing.NamedTuple):
@@ -22,6 +61,95 @@ class VolumeComponentsToFramesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """the input volume converted to multiple frames of scalar type"""
+
+
+def volume_components_to_frames_params(
+    input_: InputPathType,
+    output: str,
+) -> VolumeComponentsToFramesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: the RGB/complex-type volume.
+        output: the input volume converted to multiple frames of scalar type.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-components-to-frames",
+        "input": input_,
+        "output": output,
+    }
+    return params
+
+
+def volume_components_to_frames_cargs(
+    params: VolumeComponentsToFramesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-components-to-frames")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def volume_components_to_frames_outputs(
+    params: VolumeComponentsToFramesParameters,
+    execution: Execution,
+) -> VolumeComponentsToFramesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeComponentsToFramesOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def volume_components_to_frames_execute(
+    params: VolumeComponentsToFramesParameters,
+    execution: Execution,
+) -> VolumeComponentsToFramesOutputs:
+    """
+    Convert rgb/complex volume to frames.
+    
+    RGB and complex datatypes are not always well supported, this command allows
+    separating them into standard subvolumes for better support.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeComponentsToFramesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_components_to_frames_cargs(params, execution)
+    ret = volume_components_to_frames_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def volume_components_to_frames(
@@ -48,21 +176,13 @@ def volume_components_to_frames(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_COMPONENTS_TO_FRAMES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-components-to-frames")
-    cargs.append(execution.input_file(input_))
-    cargs.append(output)
-    ret = VolumeComponentsToFramesOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(output),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_components_to_frames_params(input_=input_, output=output)
+    return volume_components_to_frames_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_COMPONENTS_TO_FRAMES_METADATA",
     "VolumeComponentsToFramesOutputs",
     "volume_components_to_frames",
+    "volume_components_to_frames_params",
 ]

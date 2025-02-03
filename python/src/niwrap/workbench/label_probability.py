@@ -12,6 +12,46 @@ LABEL_PROBABILITY_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+LabelProbabilityParameters = typing.TypedDict('LabelProbabilityParameters', {
+    "__STYX_TYPE__": typing.Literal["label-probability"],
+    "label_maps": InputPathType,
+    "probability_metric_out": str,
+    "opt_exclude_unlabeled": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "label-probability": label_probability_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "label-probability": label_probability_outputs,
+    }
+    return vt.get(t)
 
 
 class LabelProbabilityOutputs(typing.NamedTuple):
@@ -22,6 +62,104 @@ class LabelProbabilityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     probability_metric_out: OutputPathType
     """the relative frequencies of each label at each vertex"""
+
+
+def label_probability_params(
+    label_maps: InputPathType,
+    probability_metric_out: str,
+    opt_exclude_unlabeled: bool = False,
+) -> LabelProbabilityParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label_maps: label file containing individual label maps from many\
+            subjects.
+        probability_metric_out: the relative frequencies of each label at each\
+            vertex.
+        opt_exclude_unlabeled: don't make a probability map of the unlabeled\
+            key.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "label-probability",
+        "label_maps": label_maps,
+        "probability_metric_out": probability_metric_out,
+        "opt_exclude_unlabeled": opt_exclude_unlabeled,
+    }
+    return params
+
+
+def label_probability_cargs(
+    params: LabelProbabilityParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-label-probability")
+    cargs.append(execution.input_file(params.get("label_maps")))
+    cargs.append(params.get("probability_metric_out"))
+    if params.get("opt_exclude_unlabeled"):
+        cargs.append("-exclude-unlabeled")
+    return cargs
+
+
+def label_probability_outputs(
+    params: LabelProbabilityParameters,
+    execution: Execution,
+) -> LabelProbabilityOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = LabelProbabilityOutputs(
+        root=execution.output_file("."),
+        probability_metric_out=execution.output_file(params.get("probability_metric_out")),
+    )
+    return ret
+
+
+def label_probability_execute(
+    params: LabelProbabilityParameters,
+    execution: Execution,
+) -> LabelProbabilityOutputs:
+    """
+    Find frequency of surface labels.
+    
+    This command outputs a set of soft ROIs, one for each label in the input,
+    where the value is how many of the input maps had that label at that vertex,
+    divided by the number of input maps.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `LabelProbabilityOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = label_probability_cargs(params, execution)
+    ret = label_probability_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def label_probability(
@@ -54,23 +192,13 @@ def label_probability(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL_PROBABILITY_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-label-probability")
-    cargs.append(execution.input_file(label_maps))
-    cargs.append(probability_metric_out)
-    if opt_exclude_unlabeled:
-        cargs.append("-exclude-unlabeled")
-    ret = LabelProbabilityOutputs(
-        root=execution.output_file("."),
-        probability_metric_out=execution.output_file(probability_metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = label_probability_params(label_maps=label_maps, probability_metric_out=probability_metric_out, opt_exclude_unlabeled=opt_exclude_unlabeled)
+    return label_probability_execute(params, execution)
 
 
 __all__ = [
     "LABEL_PROBABILITY_METADATA",
     "LabelProbabilityOutputs",
     "label_probability",
+    "label_probability_params",
 ]

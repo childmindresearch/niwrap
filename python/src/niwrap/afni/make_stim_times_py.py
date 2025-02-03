@@ -12,6 +12,55 @@ MAKE_STIM_TIMES_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+MakeStimTimesPyParameters = typing.TypedDict('MakeStimTimesPyParameters', {
+    "__STYX_TYPE__": typing.Literal["make_stim_times.py"],
+    "files": list[InputPathType],
+    "prefix": str,
+    "tr": float,
+    "nruns": float,
+    "nt": float,
+    "run_trs": typing.NotRequired[list[float] | None],
+    "offset": typing.NotRequired[float | None],
+    "labels": typing.NotRequired[list[str] | None],
+    "no_consec_events": bool,
+    "amplitudes": bool,
+    "show_valid_opts": bool,
+    "verbose": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "make_stim_times.py": make_stim_times_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "make_stim_times.py": make_stim_times_py_outputs,
+    }
+    return vt.get(t)
 
 
 class MakeStimTimesPyOutputs(typing.NamedTuple):
@@ -26,6 +75,166 @@ class MakeStimTimesPyOutputs(typing.NamedTuple):
     """Output stim_times file for second stimulus class"""
     out_stim_times_03: OutputPathType
     """Output stim_times file for third stimulus class"""
+
+
+def make_stim_times_py_params(
+    files: list[InputPathType],
+    prefix: str,
+    tr: float,
+    nruns: float,
+    nt_: float,
+    run_trs: list[float] | None = None,
+    offset: float | None = None,
+    labels: list[str] | None = None,
+    no_consec_events: bool = False,
+    amplitudes: bool = False,
+    show_valid_opts: bool = False,
+    verbose: float | None = None,
+) -> MakeStimTimesPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        files: Specify stim files.
+        prefix: Output prefix for files.
+        tr: TR time, in seconds.
+        nruns: Number of runs.
+        nt_: Number of TRs per run.
+        run_trs: Specify TRs per run, if they differ.
+        offset: Add OFFSET to all output times.
+        labels: Provide labels for filenames.
+        no_consec_events: Do not allow consecutive events.
+        amplitudes: Marry times with amplitudes.
+        show_valid_opts: Output all options.
+        verbose: Provide verbose output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "make_stim_times.py",
+        "files": files,
+        "prefix": prefix,
+        "tr": tr,
+        "nruns": nruns,
+        "nt": nt_,
+        "no_consec_events": no_consec_events,
+        "amplitudes": amplitudes,
+        "show_valid_opts": show_valid_opts,
+    }
+    if run_trs is not None:
+        params["run_trs"] = run_trs
+    if offset is not None:
+        params["offset"] = offset
+    if labels is not None:
+        params["labels"] = labels
+    if verbose is not None:
+        params["verbose"] = verbose
+    return params
+
+
+def make_stim_times_py_cargs(
+    params: MakeStimTimesPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("make_stim_times.py")
+    cargs.extend([execution.input_file(f) for f in params.get("files")])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.extend([
+        "-tr",
+        str(params.get("tr"))
+    ])
+    cargs.extend([
+        "-nruns",
+        str(params.get("nruns"))
+    ])
+    cargs.extend([
+        "-nt",
+        str(params.get("nt"))
+    ])
+    if params.get("run_trs") is not None:
+        cargs.extend(map(str, params.get("run_trs")))
+    if params.get("offset") is not None:
+        cargs.extend([
+            "-offset",
+            str(params.get("offset"))
+        ])
+    if params.get("labels") is not None:
+        cargs.extend([
+            "-labels",
+            *params.get("labels")
+        ])
+    if params.get("no_consec_events"):
+        cargs.append("-no_consec")
+    if params.get("amplitudes"):
+        cargs.append("-amplitudes")
+    if params.get("show_valid_opts"):
+        cargs.append("-show_valid_opts")
+    if params.get("verbose") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verbose"))
+        ])
+    return cargs
+
+
+def make_stim_times_py_outputs(
+    params: MakeStimTimesPyParameters,
+    execution: Execution,
+) -> MakeStimTimesPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MakeStimTimesPyOutputs(
+        root=execution.output_file("."),
+        out_stim_times_01=execution.output_file(params.get("prefix") + ".01.1D"),
+        out_stim_times_02=execution.output_file(params.get("prefix") + ".02.1D"),
+        out_stim_times_03=execution.output_file(params.get("prefix") + ".03.1D"),
+    )
+    return ret
+
+
+def make_stim_times_py_execute(
+    params: MakeStimTimesPyParameters,
+    execution: Execution,
+) -> MakeStimTimesPyOutputs:
+    """
+    Convert a set of 0/1 stim files into a set of stim_times files, or convert
+    real-valued files into those for use with -stim_times_AM2.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MakeStimTimesPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = make_stim_times_py_cargs(params, execution)
+    ret = make_stim_times_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def make_stim_times_py(
@@ -70,60 +279,13 @@ def make_stim_times_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_STIM_TIMES_PY_METADATA)
-    cargs = []
-    cargs.append("make_stim_times.py")
-    cargs.extend([execution.input_file(f) for f in files])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.extend([
-        "-tr",
-        str(tr)
-    ])
-    cargs.extend([
-        "-nruns",
-        str(nruns)
-    ])
-    cargs.extend([
-        "-nt",
-        str(nt_)
-    ])
-    if run_trs is not None:
-        cargs.extend(map(str, run_trs))
-    if offset is not None:
-        cargs.extend([
-            "-offset",
-            str(offset)
-        ])
-    if labels is not None:
-        cargs.extend([
-            "-labels",
-            *labels
-        ])
-    if no_consec_events:
-        cargs.append("-no_consec")
-    if amplitudes:
-        cargs.append("-amplitudes")
-    if show_valid_opts:
-        cargs.append("-show_valid_opts")
-    if verbose is not None:
-        cargs.extend([
-            "-verb",
-            str(verbose)
-        ])
-    ret = MakeStimTimesPyOutputs(
-        root=execution.output_file("."),
-        out_stim_times_01=execution.output_file(prefix + ".01.1D"),
-        out_stim_times_02=execution.output_file(prefix + ".02.1D"),
-        out_stim_times_03=execution.output_file(prefix + ".03.1D"),
-    )
-    execution.run(cargs)
-    return ret
+    params = make_stim_times_py_params(files=files, prefix=prefix, tr=tr, nruns=nruns, nt_=nt_, run_trs=run_trs, offset=offset, labels=labels, no_consec_events=no_consec_events, amplitudes=amplitudes, show_valid_opts=show_valid_opts, verbose=verbose)
+    return make_stim_times_py_execute(params, execution)
 
 
 __all__ = [
     "MAKE_STIM_TIMES_PY_METADATA",
     "MakeStimTimesPyOutputs",
     "make_stim_times_py",
+    "make_stim_times_py_params",
 ]

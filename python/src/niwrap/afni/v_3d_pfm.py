@@ -12,6 +12,43 @@ V_3D_PFM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dPfmParameters = typing.TypedDict('V3dPfmParameters', {
+    "__STYX_TYPE__": typing.Literal["3dPFM"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dPFM": v_3d_pfm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dPFM": v_3d_pfm_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dPfmOutputs(typing.NamedTuple):
@@ -76,27 +113,53 @@ class V3dPfmOutputs(typing.NamedTuple):
     """Prefix for Adjusted R² coefficient for the full model."""
 
 
-def v_3d_pfm(
-    runner: Runner | None = None,
-) -> V3dPfmOutputs:
+def v_3d_pfm_params(
+) -> V3dPfmParameters:
     """
-    Program for identifying brief BOLD events in fMRI time series using Paradigm
-    Free Mapping.
-    
-    Author: AFNI Developers
-    
-    URL: https://afni.nimh.nih.gov/
+    Build parameters.
     
     Args:
-        runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `V3dPfmOutputs`).
+        Parameter dictionary
     """
-    runner = runner or get_global_runner()
-    execution = runner.start_execution(V_3D_PFM_METADATA)
+    params = {
+        "__STYXTYPE__": "3dPFM",
+    }
+    return params
+
+
+def v_3d_pfm_cargs(
+    params: V3dPfmParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
     cargs = []
     cargs.append("3dPFM")
     cargs.append("[PARAMETERS]")
+    return cargs
+
+
+def v_3d_pfm_outputs(
+    params: V3dPfmParameters,
+    execution: Execution,
+) -> V3dPfmOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
     ret = V3dPfmOutputs(
         root=execution.output_file("."),
         beta=execution.output_file("[BETA]"),
@@ -126,12 +189,59 @@ def v_3d_pfm(
         r2_full=execution.output_file("[R2_FULL]"),
         r2adj_full=execution.output_file("[R2ADJ_FULL]"),
     )
+    return ret
+
+
+def v_3d_pfm_execute(
+    params: V3dPfmParameters,
+    execution: Execution,
+) -> V3dPfmOutputs:
+    """
+    Program for identifying brief BOLD events in fMRI time series using Paradigm
+    Free Mapping.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dPfmOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_pfm_cargs(params, execution)
+    ret = v_3d_pfm_outputs(params, execution)
     execution.run(cargs)
     return ret
+
+
+def v_3d_pfm(
+    runner: Runner | None = None,
+) -> V3dPfmOutputs:
+    """
+    Program for identifying brief BOLD events in fMRI time series using Paradigm
+    Free Mapping.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        runner: Command runner.
+    Returns:
+        NamedTuple of outputs (described in `V3dPfmOutputs`).
+    """
+    runner = runner or get_global_runner()
+    execution = runner.start_execution(V_3D_PFM_METADATA)
+    params = v_3d_pfm_params()
+    return v_3d_pfm_execute(params, execution)
 
 
 __all__ = [
     "V3dPfmOutputs",
     "V_3D_PFM_METADATA",
     "v_3d_pfm",
+    "v_3d_pfm_params",
 ]

@@ -12,507 +12,885 @@ TCKGEN_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+TckgenSeedImageParameters = typing.TypedDict('TckgenSeedImageParameters', {
+    "__STYX_TYPE__": typing.Literal["seed_image"],
+    "image": InputPathType,
+})
+TckgenSeedSphereParameters = typing.TypedDict('TckgenSeedSphereParameters', {
+    "__STYX_TYPE__": typing.Literal["seed_sphere"],
+    "spec": list[float],
+})
+TckgenSeedRandomPerVoxelParameters = typing.TypedDict('TckgenSeedRandomPerVoxelParameters', {
+    "__STYX_TYPE__": typing.Literal["seed_random_per_voxel"],
+    "image": InputPathType,
+    "num_per_voxel": int,
+})
+TckgenSeedGridPerVoxelParameters = typing.TypedDict('TckgenSeedGridPerVoxelParameters', {
+    "__STYX_TYPE__": typing.Literal["seed_grid_per_voxel"],
+    "image": InputPathType,
+    "grid_size": int,
+})
+TckgenSeedRejectionParameters = typing.TypedDict('TckgenSeedRejectionParameters', {
+    "__STYX_TYPE__": typing.Literal["seed_rejection"],
+    "image": InputPathType,
+})
+TckgenSeedGmwmiParameters = typing.TypedDict('TckgenSeedGmwmiParameters', {
+    "__STYX_TYPE__": typing.Literal["seed_gmwmi"],
+    "image": InputPathType,
+})
+TckgenVariousStringParameters = typing.TypedDict('TckgenVariousStringParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+TckgenVariousFileParameters = typing.TypedDict('TckgenVariousFileParameters', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+TckgenIncludeParameters = typing.TypedDict('TckgenIncludeParameters', {
+    "__STYX_TYPE__": typing.Literal["include"],
+    "spec": typing.Union[TckgenVariousStringParameters, TckgenVariousFileParameters],
+})
+TckgenIncludeOrderedParameters = typing.TypedDict('TckgenIncludeOrderedParameters', {
+    "__STYX_TYPE__": typing.Literal["include_ordered"],
+    "image": str,
+})
+TckgenVariousStringParameters_ = typing.TypedDict('TckgenVariousStringParameters_', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+TckgenVariousFileParameters_ = typing.TypedDict('TckgenVariousFileParameters_', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+TckgenExcludeParameters = typing.TypedDict('TckgenExcludeParameters', {
+    "__STYX_TYPE__": typing.Literal["exclude"],
+    "spec": typing.Union[TckgenVariousStringParameters_, TckgenVariousFileParameters_],
+})
+TckgenVariousStringParameters_2 = typing.TypedDict('TckgenVariousStringParameters_2', {
+    "__STYX_TYPE__": typing.Literal["VariousString"],
+    "obj": str,
+})
+TckgenVariousFileParameters_2 = typing.TypedDict('TckgenVariousFileParameters_2', {
+    "__STYX_TYPE__": typing.Literal["VariousFile"],
+    "obj": InputPathType,
+})
+TckgenMaskParameters = typing.TypedDict('TckgenMaskParameters', {
+    "__STYX_TYPE__": typing.Literal["mask"],
+    "spec": typing.Union[TckgenVariousStringParameters_2, TckgenVariousFileParameters_2],
+})
+TckgenFslgradParameters = typing.TypedDict('TckgenFslgradParameters', {
+    "__STYX_TYPE__": typing.Literal["fslgrad"],
+    "bvecs": InputPathType,
+    "bvals": InputPathType,
+})
+TckgenConfigParameters = typing.TypedDict('TckgenConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+TckgenParameters = typing.TypedDict('TckgenParameters', {
+    "__STYX_TYPE__": typing.Literal["tckgen"],
+    "algorithm": typing.NotRequired[str | None],
+    "select": typing.NotRequired[int | None],
+    "step": typing.NotRequired[float | None],
+    "angle": typing.NotRequired[float | None],
+    "minlength": typing.NotRequired[float | None],
+    "maxlength": typing.NotRequired[float | None],
+    "cutoff": typing.NotRequired[float | None],
+    "trials": typing.NotRequired[int | None],
+    "noprecomputed": bool,
+    "rk4": bool,
+    "stop": bool,
+    "downsample": typing.NotRequired[int | None],
+    "seed_image": typing.NotRequired[list[TckgenSeedImageParameters] | None],
+    "seed_sphere": typing.NotRequired[list[TckgenSeedSphereParameters] | None],
+    "seed_random_per_voxel": typing.NotRequired[list[TckgenSeedRandomPerVoxelParameters] | None],
+    "seed_grid_per_voxel": typing.NotRequired[list[TckgenSeedGridPerVoxelParameters] | None],
+    "seed_rejection": typing.NotRequired[list[TckgenSeedRejectionParameters] | None],
+    "seed_gmwmi": typing.NotRequired[list[TckgenSeedGmwmiParameters] | None],
+    "seed_dynamic": typing.NotRequired[InputPathType | None],
+    "seeds": typing.NotRequired[int | None],
+    "max_attempts_per_seed": typing.NotRequired[int | None],
+    "seed_cutoff": typing.NotRequired[float | None],
+    "seed_unidirectional": bool,
+    "seed_direction": typing.NotRequired[list[float] | None],
+    "output_seeds": typing.NotRequired[str | None],
+    "include": typing.NotRequired[list[TckgenIncludeParameters] | None],
+    "include_ordered": typing.NotRequired[list[TckgenIncludeOrderedParameters] | None],
+    "exclude": typing.NotRequired[list[TckgenExcludeParameters] | None],
+    "mask": typing.NotRequired[list[TckgenMaskParameters] | None],
+    "act": typing.NotRequired[InputPathType | None],
+    "backtrack": bool,
+    "crop_at_gmwmi": bool,
+    "power": typing.NotRequired[float | None],
+    "samples": typing.NotRequired[int | None],
+    "grad": typing.NotRequired[InputPathType | None],
+    "fslgrad": typing.NotRequired[TckgenFslgradParameters | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[TckgenConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "source": InputPathType,
+    "tracks": str,
+})
 
 
-@dataclasses.dataclass
-class TckgenSeedImage:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    seed streamlines entirely at random within a mask image .
-    """
-    image: InputPathType
-    """seed streamlines entirely at random within a mask image """
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-seed_image")
-        cargs.append(execution.input_file(self.image))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tckgen": tckgen_cargs,
+        "seed_image": tckgen_seed_image_cargs,
+        "seed_sphere": tckgen_seed_sphere_cargs,
+        "seed_random_per_voxel": tckgen_seed_random_per_voxel_cargs,
+        "seed_grid_per_voxel": tckgen_seed_grid_per_voxel_cargs,
+        "seed_rejection": tckgen_seed_rejection_cargs,
+        "seed_gmwmi": tckgen_seed_gmwmi_cargs,
+        "include": tckgen_include_cargs,
+        "VariousString": tckgen_various_string_cargs,
+        "VariousFile": tckgen_various_file_cargs,
+        "include_ordered": tckgen_include_ordered_cargs,
+        "exclude": tckgen_exclude_cargs,
+        "VariousString": tckgen_various_string_cargs_,
+        "VariousFile": tckgen_various_file_cargs_,
+        "mask": tckgen_mask_cargs,
+        "VariousString": tckgen_various_string_cargs_2,
+        "VariousFile": tckgen_various_file_cargs_2,
+        "fslgrad": tckgen_fslgrad_cargs,
+        "config": tckgen_config_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class TckgenSeedSphere:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    spherical seed as four comma-separated values (XYZ position and radius).
-    """
-    spec: list[float]
-    """spherical seed as four comma-separated values (XYZ position and
-    radius)"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-seed_sphere")
-        cargs.append(",".join(map(str, self.spec)))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tckgen": tckgen_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class TckgenSeedRandomPerVoxel:
+def tckgen_seed_image_params(
+    image: InputPathType,
+) -> TckgenSeedImageParameters:
     """
-    seed a fixed number of streamlines per voxel in a mask image; random
-    placement of seeds in each voxel.
-    """
-    image: InputPathType
-    """seed a fixed number of streamlines per voxel in a mask image; random
-    placement of seeds in each voxel"""
-    num_per_voxel: int
-    """seed a fixed number of streamlines per voxel in a mask image; random
-    placement of seeds in each voxel"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-seed_random_per_voxel")
-        cargs.append(execution.input_file(self.image))
-        cargs.append(str(self.num_per_voxel))
-        return cargs
+    Args:
+        image: seed streamlines entirely at random within a mask image.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "seed_image",
+        "image": image,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class TckgenSeedGridPerVoxel:
+def tckgen_seed_image_cargs(
+    params: TckgenSeedImageParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    seed a fixed number of streamlines per voxel in a mask image; place seeds on
-    a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results
-    in 27 seeds per voxel).
-    """
-    image: InputPathType
-    """seed a fixed number of streamlines per voxel in a mask image; place seeds
-    on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3
-    results in 27 seeds per voxel)"""
-    grid_size: int
-    """seed a fixed number of streamlines per voxel in a mask image; place seeds
-    on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3
-    results in 27 seeds per voxel)"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-seed_grid_per_voxel")
-        cargs.append(execution.input_file(self.image))
-        cargs.append(str(self.grid_size))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-seed_image")
+    cargs.append(execution.input_file(params.get("image")))
+    return cargs
 
 
-@dataclasses.dataclass
-class TckgenSeedRejection:
+def tckgen_seed_sphere_params(
+    spec: list[float],
+) -> TckgenSeedSphereParameters:
     """
-    seed from an image using rejection sampling (higher values = more probable
-    to seed from).
-    """
-    image: InputPathType
-    """seed from an image using rejection sampling (higher values = more
-    probable to seed from)"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-seed_rejection")
-        cargs.append(execution.input_file(self.image))
-        return cargs
+    Args:
+        spec: spherical seed as four comma-separated values (XYZ position and\
+            radius).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "seed_sphere",
+        "spec": spec,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class TckgenSeedGmwmi:
+def tckgen_seed_sphere_cargs(
+    params: TckgenSeedSphereParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    seed from the grey matter - white matter interface (only valid if using ACT
-    framework). Input image should be a 3D seeding volume; seeds drawn within
-    this image will be optimised to the interface using the 5TT image provided
-    using the -act option.
-    """
-    image: InputPathType
-    """seed from the grey matter - white matter interface (only valid if using
-    ACT framework). Input image should be a 3D seeding volume; seeds drawn
-    within this image will be optimised to the interface using the 5TT image
-    provided using the -act option."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-seed_gmwmi")
-        cargs.append(execution.input_file(self.image))
-        return cargs
-
-
-@dataclasses.dataclass
-class TckgenVariousString:
-    obj: str
-    """String object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
-
-
-@dataclasses.dataclass
-class TckgenVariousFile:
-    obj: InputPathType
-    """File object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
-
-
-@dataclasses.dataclass
-class TckgenInclude:
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
     """
-    specify an inclusion region of interest, as either a binary mask image, or
-    as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must
-    traverse ALL inclusion regions to be accepted.
+    cargs = []
+    cargs.append("-seed_sphere")
+    cargs.append(",".join(map(str, params.get("spec"))))
+    return cargs
+
+
+def tckgen_seed_random_per_voxel_params(
+    image: InputPathType,
+    num_per_voxel: int,
+) -> TckgenSeedRandomPerVoxelParameters:
     """
-    spec: typing.Union[TckgenVariousString, TckgenVariousFile]
-    """specify an inclusion region of interest, as either a binary mask image,
-    or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
-    must traverse ALL inclusion regions to be accepted."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-include")
-        cargs.extend(self.spec.run(execution))
-        return cargs
+    Args:
+        image: seed a fixed number of streamlines per voxel in a mask image;\
+            random placement of seeds in each voxel.
+        num_per_voxel: seed a fixed number of streamlines per voxel in a mask\
+            image; random placement of seeds in each voxel.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "seed_random_per_voxel",
+        "image": image,
+        "num_per_voxel": num_per_voxel,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class TckgenIncludeOrdered:
+def tckgen_seed_random_per_voxel_cargs(
+    params: TckgenSeedRandomPerVoxelParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    specify an inclusion region of interest, as either a binary mask image, or
-    as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must
-    traverse ALL inclusion_ordered regions in the order they are specified in
-    order to be accepted.
-    """
-    image: str
-    """specify an inclusion region of interest, as either a binary mask image,
-    or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
-    must traverse ALL inclusion_ordered regions in the order they are specified
-    in order to be accepted."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-include_ordered")
-        cargs.append(self.image)
-        return cargs
-
-
-@dataclasses.dataclass
-class TckgenVariousString_:
-    obj: str
-    """String object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
-
-
-@dataclasses.dataclass
-class TckgenVariousFile_:
-    obj: InputPathType
-    """File object."""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
-
-
-@dataclasses.dataclass
-class TckgenExclude:
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
     """
-    specify an exclusion region of interest, as either a binary mask image, or
-    as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that
-    enter ANY exclude region will be discarded.
+    cargs = []
+    cargs.append("-seed_random_per_voxel")
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(str(params.get("num_per_voxel")))
+    return cargs
+
+
+def tckgen_seed_grid_per_voxel_params(
+    image: InputPathType,
+    grid_size: int,
+) -> TckgenSeedGridPerVoxelParameters:
     """
-    spec: typing.Union[TckgenVariousString_, TckgenVariousFile_]
-    """specify an exclusion region of interest, as either a binary mask image,
-    or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines
-    that enter ANY exclude region will be discarded."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-exclude")
-        cargs.extend(self.spec.run(execution))
-        return cargs
+    Args:
+        image: seed a fixed number of streamlines per voxel in a mask image;\
+            place seeds on a 3D mesh grid (grid_size argument is per axis; so a\
+            grid_size of 3 results in 27 seeds per voxel).
+        grid_size: seed a fixed number of streamlines per voxel in a mask\
+            image; place seeds on a 3D mesh grid (grid_size argument is per axis;\
+            so a grid_size of 3 results in 27 seeds per voxel).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "seed_grid_per_voxel",
+        "image": image,
+        "grid_size": grid_size,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class TckgenVariousString_2:
-    obj: str
-    """String object."""
+def tckgen_seed_grid_per_voxel_cargs(
+    params: TckgenSeedGridPerVoxelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.obj)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-seed_grid_per_voxel")
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(str(params.get("grid_size")))
+    return cargs
 
 
-@dataclasses.dataclass
-class TckgenVariousFile_2:
-    obj: InputPathType
-    """File object."""
+def tckgen_seed_rejection_params(
+    image: InputPathType,
+) -> TckgenSeedRejectionParameters:
+    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.obj))
-        return cargs
+    Args:
+        image: seed from an image using rejection sampling (higher values =\
+            more probable to seed from).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "seed_rejection",
+        "image": image,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class TckgenMask:
+def tckgen_seed_rejection_cargs(
+    params: TckgenSeedRejectionParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    specify a masking region of interest, as either a binary mask image, or as a
-    sphere using 4 comma-separared values (x,y,z,radius). If defined,
-    streamlines exiting the mask will be truncated.
-    """
-    spec: typing.Union[TckgenVariousString_2, TckgenVariousFile_2]
-    """specify a masking region of interest, as either a binary mask image, or
-    as a sphere using 4 comma-separared values (x,y,z,radius). If defined,
-    streamlines exiting the mask will be truncated."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-mask")
-        cargs.extend(self.spec.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-seed_rejection")
+    cargs.append(execution.input_file(params.get("image")))
+    return cargs
 
 
-@dataclasses.dataclass
-class TckgenFslgrad:
+def tckgen_seed_gmwmi_params(
+    image: InputPathType,
+) -> TckgenSeedGmwmiParameters:
     """
-    Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used.
-    """
-    bvecs: InputPathType
-    """Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used."""
-    bvals: InputPathType
-    """Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-fslgrad")
-        cargs.append(execution.input_file(self.bvecs))
-        cargs.append(execution.input_file(self.bvals))
-        return cargs
+    Args:
+        image: seed from the grey matter - white matter interface (only valid\
+            if using ACT framework). Input image should be a 3D seeding volume;\
+            seeds drawn within this image will be optimised to the interface using\
+            the 5TT image provided using the -act option.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "seed_gmwmi",
+        "image": image,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class TckgenConfig:
+def tckgen_seed_gmwmi_cargs(
+    params: TckgenSeedGmwmiParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-seed_gmwmi")
+    cargs.append(execution.input_file(params.get("image")))
+    return cargs
+
+
+def tckgen_various_string_params(
+    obj: str,
+) -> TckgenVariousStringParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def tckgen_various_string_cargs(
+    params: TckgenVariousStringParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def tckgen_various_file_params(
+    obj: InputPathType,
+) -> TckgenVariousFileParameters:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def tckgen_various_file_cargs(
+    params: TckgenVariousFileParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def tckgen_include_params(
+    spec: typing.Union[TckgenVariousStringParameters, TckgenVariousFileParameters],
+) -> TckgenIncludeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        spec: specify an inclusion region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius).\
+            Streamlines must traverse ALL inclusion regions to be accepted.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "include",
+        "spec": spec,
+    }
+    return params
+
+
+def tckgen_include_cargs(
+    params: TckgenIncludeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-include")
+    cargs.extend(dyn_cargs(params.get("spec")["__STYXTYPE__"])(params.get("spec"), execution))
+    return cargs
+
+
+def tckgen_include_ordered_params(
+    image: str,
+) -> TckgenIncludeOrderedParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image: specify an inclusion region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius).\
+            Streamlines must traverse ALL inclusion_ordered regions in the order\
+            they are specified in order to be accepted.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "include_ordered",
+        "image": image,
+    }
+    return params
+
+
+def tckgen_include_ordered_cargs(
+    params: TckgenIncludeOrderedParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-include_ordered")
+    cargs.append(params.get("image"))
+    return cargs
+
+
+def tckgen_various_string_params_(
+    obj: str,
+) -> TckgenVariousStringParameters_:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def tckgen_various_string_cargs_(
+    params: TckgenVariousStringParameters_,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def tckgen_various_file_params_(
+    obj: InputPathType,
+) -> TckgenVariousFileParameters_:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def tckgen_various_file_cargs_(
+    params: TckgenVariousFileParameters_,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def tckgen_exclude_params(
+    spec: typing.Union[TckgenVariousStringParameters_, TckgenVariousFileParameters_],
+) -> TckgenExcludeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        spec: specify an exclusion region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius).\
+            Streamlines that enter ANY exclude region will be discarded.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "exclude",
+        "spec": spec,
+    }
+    return params
+
+
+def tckgen_exclude_cargs(
+    params: TckgenExcludeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-exclude")
+    cargs.extend(dyn_cargs(params.get("spec")["__STYXTYPE__"])(params.get("spec"), execution))
+    return cargs
+
+
+def tckgen_various_string_params_2(
+    obj: str,
+) -> TckgenVariousStringParameters_2:
+    """
+    Build parameters.
+    
+    Args:
+        obj: String object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousString",
+        "obj": obj,
+    }
+    return params
+
+
+def tckgen_various_string_cargs_2(
+    params: TckgenVariousStringParameters_2,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("obj"))
+    return cargs
+
+
+def tckgen_various_file_params_2(
+    obj: InputPathType,
+) -> TckgenVariousFileParameters_2:
+    """
+    Build parameters.
+    
+    Args:
+        obj: File object.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "VariousFile",
+        "obj": obj,
+    }
+    return params
+
+
+def tckgen_various_file_cargs_2(
+    params: TckgenVariousFileParameters_2,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("obj")))
+    return cargs
+
+
+def tckgen_mask_params(
+    spec: typing.Union[TckgenVariousStringParameters_2, TckgenVariousFileParameters_2],
+) -> TckgenMaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        spec: specify a masking region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius). If\
+            defined, streamlines exiting the mask will be truncated.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mask",
+        "spec": spec,
+    }
+    return params
+
+
+def tckgen_mask_cargs(
+    params: TckgenMaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-mask")
+    cargs.extend(dyn_cargs(params.get("spec")["__STYXTYPE__"])(params.get("spec"), execution))
+    return cargs
+
+
+def tckgen_fslgrad_params(
+    bvecs: InputPathType,
+    bvals: InputPathType,
+) -> TckgenFslgradParameters:
+    """
+    Build parameters.
+    
+    Args:
+        bvecs: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        bvals: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslgrad",
+        "bvecs": bvecs,
+        "bvals": bvals,
+    }
+    return params
+
+
+def tckgen_fslgrad_cargs(
+    params: TckgenFslgradParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-fslgrad")
+    cargs.append(execution.input_file(params.get("bvecs")))
+    cargs.append(execution.input_file(params.get("bvals")))
+    return cargs
+
+
+def tckgen_config_params(
+    key: str,
+    value: str,
+) -> TckgenConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def tckgen_config_cargs(
+    params: TckgenConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class TckgenOutputs(typing.NamedTuple):
@@ -525,6 +903,624 @@ class TckgenOutputs(typing.NamedTuple):
     """the output file containing the tracks generated."""
     output_seeds: OutputPathType | None
     """output the seed location of all successful streamlines to a file """
+
+
+def tckgen_params(
+    source: InputPathType,
+    tracks: str,
+    algorithm: str | None = None,
+    select_: int | None = None,
+    step: float | None = None,
+    angle: float | None = None,
+    minlength: float | None = None,
+    maxlength: float | None = None,
+    cutoff: float | None = None,
+    trials: int | None = None,
+    noprecomputed: bool = False,
+    rk4: bool = False,
+    stop: bool = False,
+    downsample: int | None = None,
+    seed_image: list[TckgenSeedImageParameters] | None = None,
+    seed_sphere: list[TckgenSeedSphereParameters] | None = None,
+    seed_random_per_voxel: list[TckgenSeedRandomPerVoxelParameters] | None = None,
+    seed_grid_per_voxel: list[TckgenSeedGridPerVoxelParameters] | None = None,
+    seed_rejection: list[TckgenSeedRejectionParameters] | None = None,
+    seed_gmwmi: list[TckgenSeedGmwmiParameters] | None = None,
+    seed_dynamic: InputPathType | None = None,
+    seeds: int | None = None,
+    max_attempts_per_seed: int | None = None,
+    seed_cutoff: float | None = None,
+    seed_unidirectional: bool = False,
+    seed_direction: list[float] | None = None,
+    output_seeds: str | None = None,
+    include: list[TckgenIncludeParameters] | None = None,
+    include_ordered: list[TckgenIncludeOrderedParameters] | None = None,
+    exclude: list[TckgenExcludeParameters] | None = None,
+    mask: list[TckgenMaskParameters] | None = None,
+    act: InputPathType | None = None,
+    backtrack: bool = False,
+    crop_at_gmwmi: bool = False,
+    power: float | None = None,
+    samples: int | None = None,
+    grad: InputPathType | None = None,
+    fslgrad: TckgenFslgradParameters | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[TckgenConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> TckgenParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source: The image containing the source data. The type of image data\
+            required depends on the algorithm used (see Description section).
+        tracks: the output file containing the tracks generated.
+        algorithm: specify the tractography algorithm to use. Valid choices\
+            are: FACT, iFOD1, iFOD2, Nulldist1, Nulldist2, SD_Stream, Seedtest,\
+            Tensor_Det, Tensor_Prob (default: iFOD2).
+        select_: set the desired number of streamlines to be selected by\
+            tckgen, after all selection criteria have been applied (i.e.\
+            inclusion/exclusion ROIs, min/max length, etc). tckgen will keep\
+            seeding streamlines until this number of streamlines have been\
+            selected, or the maximum allowed number of seeds has been exceeded (see\
+            -seeds option). By default, 5000 streamlines are to be selected. Set to\
+            zero to disable, which will result in streamlines being seeded until\
+            the number specified by -seeds has been reached.
+        step: set the step size of the algorithm in mm (defaults: for\
+            first-order algorithms, 0.1 x voxelsize; if using RK4, 0.25 x\
+            voxelsize; for iFOD2: 0.5 x voxelsize).
+        angle: set the maximum angle in degrees between successive steps\
+            (defaults: 60 for deterministic algorithms; 15 for iFOD1 / nulldist1;\
+            45 for iFOD2 / nulldist2).
+        minlength: set the minimum length of any track in mm (defaults: without\
+            ACT, 5 x voxelsize; with ACT, 2 x voxelsize).
+        maxlength: set the maximum length of any track in mm (default: 100 x\
+            voxelsize).
+        cutoff: set the FOD amplitude / fixel size / tensor FA cutoff for\
+            terminating tracks (defaults: 0.1 for FOD-based algorithms; 0.1 for\
+            fixel-based algorithms; 0.1 for tensor-based algorithms; threshold\
+            multiplied by 0.5 when using ACT).
+        trials: set the maximum number of sampling trials at each point (only\
+            used for iFOD1 / iFOD2) (default: 1000).
+        noprecomputed: do NOT pre-compute legendre polynomial values. Warning:\
+            this will slow down the algorithm by a factor of approximately 4.
+        rk4: use 4th-order Runge-Kutta integration (slower, but eliminates\
+            curvature overshoot in 1st-order deterministic methods).
+        stop: stop propagating a streamline once it has traversed all include\
+            regions.
+        downsample: downsample the generated streamlines to reduce output file\
+            size (default is (samples-1) for iFOD2, no downsampling for all other\
+            algorithms).
+        seed_image: seed streamlines entirely at random within a mask image.
+        seed_sphere: spherical seed as four comma-separated values (XYZ\
+            position and radius).
+        seed_random_per_voxel: seed a fixed number of streamlines per voxel in\
+            a mask image; random placement of seeds in each voxel.
+        seed_grid_per_voxel: seed a fixed number of streamlines per voxel in a\
+            mask image; place seeds on a 3D mesh grid (grid_size argument is per\
+            axis; so a grid_size of 3 results in 27 seeds per voxel).
+        seed_rejection: seed from an image using rejection sampling (higher\
+            values = more probable to seed from).
+        seed_gmwmi: seed from the grey matter - white matter interface (only\
+            valid if using ACT framework). Input image should be a 3D seeding\
+            volume; seeds drawn within this image will be optimised to the\
+            interface using the 5TT image provided using the -act option.
+        seed_dynamic: determine seed points dynamically using the SIFT model\
+            (must not provide any other seeding mechanism). Note that while this\
+            seeding mechanism improves the distribution of reconstructed\
+            streamlines density, it should NOT be used as a substitute for the SIFT\
+            method itself.
+        seeds: set the number of seeds that tckgen will attempt to track from.\
+            If this option is NOT provided, the default number of seeds is set to\
+            1000Ã— the number of selected streamlines. If -select is NOT also\
+            specified, tckgen will continue tracking until this number of seeds has\
+            been attempted. However, if -select is also specified, tckgen will stop\
+            when the number of seeds attempted reaches the number specified here,\
+            OR when the number of streamlines selected reaches the number requested\
+            with the -select option. This can be used to prevent the program from\
+            running indefinitely when no or very few streamlines can be found that\
+            match the selection criteria. Setting this to zero will cause tckgen to\
+            keep attempting seeds until the number specified by -select has been\
+            reached.
+        max_attempts_per_seed: set the maximum number of times that the\
+            tracking algorithm should attempt to find an appropriate tracking\
+            direction from a given seed point. This should be set high enough to\
+            ensure that an actual plausible seed point is not discarded prematurely\
+            as being unable to initiate tracking from. Higher settings may affect\
+            performance if many seeds are genuinely impossible to track from, as\
+            many attempts will still be made in vain for such seeds. (default:\
+            1000).
+        seed_cutoff: set the minimum FA or FOD amplitude for seeding tracks\
+            (default is the same as the normal -cutoff).
+        seed_unidirectional: track from the seed point in one direction only\
+            (default is to track in both directions).
+        seed_direction: specify a seeding direction for the tracking (this\
+            should be supplied as a vector of 3 comma-separated values.
+        output_seeds: output the seed location of all successful streamlines to\
+            a file.
+        include: specify an inclusion region of interest, as either a binary\
+            mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be\
+            accepted.
+        include_ordered: specify an inclusion region of interest, as either a\
+            binary mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions\
+            in the order they are specified in order to be accepted.
+        exclude: specify an exclusion region of interest, as either a binary\
+            mask image, or as a sphere using 4 comma-separared values\
+            (x,y,z,radius). Streamlines that enter ANY exclude region will be\
+            discarded.
+        mask: specify a masking region of interest, as either a binary mask\
+            image, or as a sphere using 4 comma-separared values (x,y,z,radius). If\
+            defined, streamlines exiting the mask will be truncated.
+        act: use the Anatomically-Constrained Tractography framework during\
+            tracking; provided image must be in the 5TT (five-tissue-type) format.
+        backtrack: allow tracks to be truncated and re-tracked if a poor\
+            structural termination is encountered.
+        crop_at_gmwmi: crop streamline endpoints more precisely as they cross\
+            the GM-WM interface.
+        power: raise the FOD to the power specified (defaults are: 1.0 for\
+            iFOD1; 1.0/nsamples for iFOD2).
+        samples: set the number of FOD samples to take per step (Default: 4).
+        grad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in a text file. This should be supplied as a 4xN text file\
+            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\
+            the direction of the applied gradient, and b gives the b-value in units\
+            of s/mm^2. If a diffusion gradient scheme is present in the input image\
+            header, the data provided with this option will be instead used.
+        fslgrad: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tckgen",
+        "noprecomputed": noprecomputed,
+        "rk4": rk4,
+        "stop": stop,
+        "seed_unidirectional": seed_unidirectional,
+        "backtrack": backtrack,
+        "crop_at_gmwmi": crop_at_gmwmi,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "source": source,
+        "tracks": tracks,
+    }
+    if algorithm is not None:
+        params["algorithm"] = algorithm
+    if select_ is not None:
+        params["select"] = select_
+    if step is not None:
+        params["step"] = step
+    if angle is not None:
+        params["angle"] = angle
+    if minlength is not None:
+        params["minlength"] = minlength
+    if maxlength is not None:
+        params["maxlength"] = maxlength
+    if cutoff is not None:
+        params["cutoff"] = cutoff
+    if trials is not None:
+        params["trials"] = trials
+    if downsample is not None:
+        params["downsample"] = downsample
+    if seed_image is not None:
+        params["seed_image"] = seed_image
+    if seed_sphere is not None:
+        params["seed_sphere"] = seed_sphere
+    if seed_random_per_voxel is not None:
+        params["seed_random_per_voxel"] = seed_random_per_voxel
+    if seed_grid_per_voxel is not None:
+        params["seed_grid_per_voxel"] = seed_grid_per_voxel
+    if seed_rejection is not None:
+        params["seed_rejection"] = seed_rejection
+    if seed_gmwmi is not None:
+        params["seed_gmwmi"] = seed_gmwmi
+    if seed_dynamic is not None:
+        params["seed_dynamic"] = seed_dynamic
+    if seeds is not None:
+        params["seeds"] = seeds
+    if max_attempts_per_seed is not None:
+        params["max_attempts_per_seed"] = max_attempts_per_seed
+    if seed_cutoff is not None:
+        params["seed_cutoff"] = seed_cutoff
+    if seed_direction is not None:
+        params["seed_direction"] = seed_direction
+    if output_seeds is not None:
+        params["output_seeds"] = output_seeds
+    if include is not None:
+        params["include"] = include
+    if include_ordered is not None:
+        params["include_ordered"] = include_ordered
+    if exclude is not None:
+        params["exclude"] = exclude
+    if mask is not None:
+        params["mask"] = mask
+    if act is not None:
+        params["act"] = act
+    if power is not None:
+        params["power"] = power
+    if samples is not None:
+        params["samples"] = samples
+    if grad is not None:
+        params["grad"] = grad
+    if fslgrad is not None:
+        params["fslgrad"] = fslgrad
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def tckgen_cargs(
+    params: TckgenParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tckgen")
+    if params.get("algorithm") is not None:
+        cargs.extend([
+            "-algorithm",
+            params.get("algorithm")
+        ])
+    if params.get("select") is not None:
+        cargs.extend([
+            "-select",
+            str(params.get("select"))
+        ])
+    if params.get("step") is not None:
+        cargs.extend([
+            "-step",
+            str(params.get("step"))
+        ])
+    if params.get("angle") is not None:
+        cargs.extend([
+            "-angle",
+            str(params.get("angle"))
+        ])
+    if params.get("minlength") is not None:
+        cargs.extend([
+            "-minlength",
+            str(params.get("minlength"))
+        ])
+    if params.get("maxlength") is not None:
+        cargs.extend([
+            "-maxlength",
+            str(params.get("maxlength"))
+        ])
+    if params.get("cutoff") is not None:
+        cargs.extend([
+            "-cutoff",
+            str(params.get("cutoff"))
+        ])
+    if params.get("trials") is not None:
+        cargs.extend([
+            "-trials",
+            str(params.get("trials"))
+        ])
+    if params.get("noprecomputed"):
+        cargs.append("-noprecomputed")
+    if params.get("rk4"):
+        cargs.append("-rk4")
+    if params.get("stop"):
+        cargs.append("-stop")
+    if params.get("downsample") is not None:
+        cargs.extend([
+            "-downsample",
+            str(params.get("downsample"))
+        ])
+    if params.get("seed_image") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("seed_image")] for a in c])
+    if params.get("seed_sphere") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("seed_sphere")] for a in c])
+    if params.get("seed_random_per_voxel") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("seed_random_per_voxel")] for a in c])
+    if params.get("seed_grid_per_voxel") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("seed_grid_per_voxel")] for a in c])
+    if params.get("seed_rejection") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("seed_rejection")] for a in c])
+    if params.get("seed_gmwmi") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("seed_gmwmi")] for a in c])
+    if params.get("seed_dynamic") is not None:
+        cargs.extend([
+            "-seed_dynamic",
+            execution.input_file(params.get("seed_dynamic"))
+        ])
+    if params.get("seeds") is not None:
+        cargs.extend([
+            "-seeds",
+            str(params.get("seeds"))
+        ])
+    if params.get("max_attempts_per_seed") is not None:
+        cargs.extend([
+            "-max_attempts_per_seed",
+            str(params.get("max_attempts_per_seed"))
+        ])
+    if params.get("seed_cutoff") is not None:
+        cargs.extend([
+            "-seed_cutoff",
+            str(params.get("seed_cutoff"))
+        ])
+    if params.get("seed_unidirectional"):
+        cargs.append("-seed_unidirectional")
+    if params.get("seed_direction") is not None:
+        cargs.extend([
+            "-seed_direction",
+            ",".join(map(str, params.get("seed_direction")))
+        ])
+    if params.get("output_seeds") is not None:
+        cargs.extend([
+            "-output_seeds",
+            params.get("output_seeds")
+        ])
+    if params.get("include") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("include")] for a in c])
+    if params.get("include_ordered") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("include_ordered")] for a in c])
+    if params.get("exclude") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("exclude")] for a in c])
+    if params.get("mask") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("mask")] for a in c])
+    if params.get("act") is not None:
+        cargs.extend([
+            "-act",
+            execution.input_file(params.get("act"))
+        ])
+    if params.get("backtrack"):
+        cargs.append("-backtrack")
+    if params.get("crop_at_gmwmi"):
+        cargs.append("-crop_at_gmwmi")
+    if params.get("power") is not None:
+        cargs.extend([
+            "-power",
+            str(params.get("power"))
+        ])
+    if params.get("samples") is not None:
+        cargs.extend([
+            "-samples",
+            str(params.get("samples"))
+        ])
+    if params.get("grad") is not None:
+        cargs.extend([
+            "-grad",
+            execution.input_file(params.get("grad"))
+        ])
+    if params.get("fslgrad") is not None:
+        cargs.extend(dyn_cargs(params.get("fslgrad")["__STYXTYPE__"])(params.get("fslgrad"), execution))
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("source")))
+    cargs.append(params.get("tracks"))
+    return cargs
+
+
+def tckgen_outputs(
+    params: TckgenParameters,
+    execution: Execution,
+) -> TckgenOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TckgenOutputs(
+        root=execution.output_file("."),
+        tracks=execution.output_file(params.get("tracks")),
+        output_seeds=execution.output_file(params.get("output_seeds")) if (params.get("output_seeds") is not None) else None,
+    )
+    return ret
+
+
+def tckgen_execute(
+    params: TckgenParameters,
+    execution: Execution,
+) -> TckgenOutputs:
+    """
+    Perform streamlines tractography.
+    
+    By default, tckgen produces a fixed number of streamlines, by attempting to
+    seed from new random locations until the target number of streamlines have
+    been selected (in other words, after all inclusion & exclusion criteria have
+    been applied), or the maximum number of seeds has been exceeded (by default,
+    this is 1000 x the desired number of selected streamlines). Use the -select
+    and/or -seeds options to modify as required. See also the Seeding options
+    section for alternative seeding strategies.
+    
+    Below is a list of available tracking algorithms, the input image data that
+    they require, and a brief description of their behaviour:
+    
+    - FACT: Fiber Assigned by Continuous Tracking. A deterministic algorithm
+    that takes as input a 4D image, with 3xN volumes, where N is the maximum
+    number of fiber orientations in a voxel. Each triplet of volumes represents
+    a 3D vector corresponding to a fiber orientation; the length of the vector
+    additionally indicates some measure of density or anisotropy. As streamlines
+    move from one voxel to another, the fiber orientation most collinear with
+    the streamline orientation is selected (i.e. there is no intra-voxel
+    interpolation).
+    
+    - iFOD1: First-order Integration over Fiber Orientation Distributions. A
+    probabilistic algorithm that takes as input a Fiber Orientation Distribution
+    (FOD) image represented in the Spherical Harmonic (SH) basis. At each
+    streamline step, random samples from the local (trilinear interpolated) FOD
+    are taken. A streamline is more probable to follow orientations where the
+    FOD amplitude is large; but it may also rarely traverse orientations with
+    small FOD amplitude.
+    
+    - iFOD2 (default): Second-order Integration over Fiber Orientation
+    Distributions. A probabilistic algorithm that takes as input a Fiber
+    Orientation Distribution (FOD) image represented in the Spherical Harmonic
+    (SH) basis. Candidate streamline paths (based on short curved "arcs") are
+    drawn, and the underlying (trilinear-interpolated) FOD amplitudes along
+    those arcs are sampled. A streamline is more probable to follow a path where
+    the FOD amplitudes along that path are large; but it may also rarely
+    traverse orientations where the FOD amplitudes are small, as long as the
+    amplitude remains above the FOD amplitude threshold along the entire path.
+    
+    - NullDist1 / NullDist2: Null Distribution tracking algorithms. These
+    probabilistic algorithms expect as input the same image that was used when
+    invoking the corresponding algorithm for which the null distribution is
+    sought. These algorithms generate streamlines based on random orientation
+    samples; that is, no image information relating to fiber orientations is
+    used, and streamlines trajectories are determined entirely from random
+    sampling. The NullDist2 algorithm is designed to be used in conjunction with
+    iFOD2; NullDist1 should be used in conjunction with any first-order
+    algorithm.
+    
+    - SD_STREAM: Streamlines tractography based on Spherical Deconvolution (SD).
+    A deterministic algorithm that takes as input a Fiber Orientation
+    Distribution (FOD) image represented in the Spherical Harmonic (SH) basis.
+    At each streamline step, the local (trilinear-interpolated) FOD is sampled,
+    and from the current streamline tangent orientation, a Newton optimisation
+    on the sphere is performed in order to locate the orientation of the nearest
+    FOD amplitude peak.
+    
+    - SeedTest: A dummy streamlines algorithm used for testing streamline
+    seeding mechanisms. Any image can be used as input; the image will not be
+    used in any way. For each seed point generated by the seeding mechanism(s),
+    a streamline containing a single point corresponding to that seed location
+    will be written to the output track file.
+    
+    - Tensor_Det: A deterministic algorithm that takes as input a 4D
+    diffusion-weighted image (DWI) series. At each streamline step, the
+    diffusion tensor is fitted to the local (trilinear-interpolated) diffusion
+    data, and the streamline trajectory is determined as the principal
+    eigenvector of that tensor.
+    
+    - Tensor_Prob: A probabilistic algorithm that takes as input a 4D
+    diffusion-weighted image (DWI) series. Within each image voxel, a residual
+    bootstrap is performed to obtain a unique realisation of the DWI data in
+    that voxel for each streamline. These data are then sampled via trilinear
+    interpolation at each streamline step, the diffusion tensor model is fitted,
+    and the streamline follows the orientation of the principal eigenvector of
+    that tensor.
+    
+    Note that the behaviour of the -angle option varies slightly depending on
+    the order of integration: for any first-order method, this angle corresponds
+    to the deviation in streamline trajectory per step; for higher-order
+    methods, this corresponds to the change in underlying fibre orientation
+    between the start and end points of each step.
+    
+    References:
+    
+    References based on streamlines algorithm used:
+    
+    * FACT:
+    Mori, S.; Crain, B. J.; Chacko, V. P. & van Zijl, P. C. M. Three-dimensional
+    tracking of axonal projections in the brain by magnetic resonance imaging.
+    Annals of Neurology, 1999, 45, 265-269
+    
+    * iFOD1 or SD_STREAM:
+    Tournier, J.-D.; Calamante, F. & Connelly, A. MRtrix: Diffusion tractography
+    in crossing fiber regions. Int. J. Imaging Syst. Technol., 2012, 22, 53-66
+    
+    * iFOD2:
+    Tournier, J.-D.; Calamante, F. & Connelly, A. Improved probabilistic
+    streamlines tractography by 2nd order integration over fibre orientation
+    distributions. Proceedings of the International Society for Magnetic
+    Resonance in Medicine, 2010, 1670
+    
+    * Nulldist1 / Nulldist2:
+    Morris, D. M.; Embleton, K. V. & Parker, G. J. Probabilistic fibre tracking:
+    Differentiation of connections from chance events. NeuroImage, 2008, 42,
+    1329-1339
+    
+    * Tensor_Det:
+    Basser, P. J.; Pajevic, S.; Pierpaoli, C.; Duda, J. & Aldroubi, A. In vivo
+    fiber tractography using DT-MRI data. Magnetic Resonance in Medicine, 2000,
+    44, 625-632
+    
+    * Tensor_Prob:
+    Jones, D. Tractography Gone Wild: Probabilistic Fibre Tracking Using the
+    Wild Bootstrap With Diffusion Tensor MRI. IEEE Transactions on Medical
+    Imaging, 2008, 27, 1268-1274
+    
+    References based on command-line options:
+    
+    * -rk4:
+    Basser, P. J.; Pajevic, S.; Pierpaoli, C.; Duda, J. & Aldroubi, A. In vivo
+    fiber tractography using DT-MRI data. Magnetic Resonance in Medicine, 2000,
+    44, 625-632
+    
+    * -act, -backtrack, -seed_gmwmi:
+    Smith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A.
+    Anatomically-constrained tractography: Improved diffusion MRI streamlines
+    tractography through effective use of anatomical information. NeuroImage,
+    2012, 62, 1924-1938
+    
+    * -seed_dynamic:
+    Smith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A. SIFT2: Enabling
+    dense quantitative assessment of brain white matter connectivity using
+    streamlines tractography. NeuroImage, 2015, 119, 338-351.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TckgenOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tckgen_cargs(params, execution)
+    ret = tckgen_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tckgen(
@@ -542,12 +1538,12 @@ def tckgen(
     rk4: bool = False,
     stop: bool = False,
     downsample: int | None = None,
-    seed_image: list[TckgenSeedImage] | None = None,
-    seed_sphere: list[TckgenSeedSphere] | None = None,
-    seed_random_per_voxel: list[TckgenSeedRandomPerVoxel] | None = None,
-    seed_grid_per_voxel: list[TckgenSeedGridPerVoxel] | None = None,
-    seed_rejection: list[TckgenSeedRejection] | None = None,
-    seed_gmwmi: list[TckgenSeedGmwmi] | None = None,
+    seed_image: list[TckgenSeedImageParameters] | None = None,
+    seed_sphere: list[TckgenSeedSphereParameters] | None = None,
+    seed_random_per_voxel: list[TckgenSeedRandomPerVoxelParameters] | None = None,
+    seed_grid_per_voxel: list[TckgenSeedGridPerVoxelParameters] | None = None,
+    seed_rejection: list[TckgenSeedRejectionParameters] | None = None,
+    seed_gmwmi: list[TckgenSeedGmwmiParameters] | None = None,
     seed_dynamic: InputPathType | None = None,
     seeds: int | None = None,
     max_attempts_per_seed: int | None = None,
@@ -555,23 +1551,23 @@ def tckgen(
     seed_unidirectional: bool = False,
     seed_direction: list[float] | None = None,
     output_seeds: str | None = None,
-    include: list[TckgenInclude] | None = None,
-    include_ordered: list[TckgenIncludeOrdered] | None = None,
-    exclude: list[TckgenExclude] | None = None,
-    mask: list[TckgenMask] | None = None,
+    include: list[TckgenIncludeParameters] | None = None,
+    include_ordered: list[TckgenIncludeOrderedParameters] | None = None,
+    exclude: list[TckgenExcludeParameters] | None = None,
+    mask: list[TckgenMaskParameters] | None = None,
     act: InputPathType | None = None,
     backtrack: bool = False,
     crop_at_gmwmi: bool = False,
     power: float | None = None,
     samples: int | None = None,
     grad: InputPathType | None = None,
-    fslgrad: TckgenFslgrad | None = None,
+    fslgrad: TckgenFslgradParameters | None = None,
     info: bool = False,
     quiet: bool = False,
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[TckgenConfig] | None = None,
+    config: list[TckgenConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -856,187 +1852,31 @@ def tckgen(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCKGEN_METADATA)
-    cargs = []
-    cargs.append("tckgen")
-    if algorithm is not None:
-        cargs.extend([
-            "-algorithm",
-            algorithm
-        ])
-    if select_ is not None:
-        cargs.extend([
-            "-select",
-            str(select_)
-        ])
-    if step is not None:
-        cargs.extend([
-            "-step",
-            str(step)
-        ])
-    if angle is not None:
-        cargs.extend([
-            "-angle",
-            str(angle)
-        ])
-    if minlength is not None:
-        cargs.extend([
-            "-minlength",
-            str(minlength)
-        ])
-    if maxlength is not None:
-        cargs.extend([
-            "-maxlength",
-            str(maxlength)
-        ])
-    if cutoff is not None:
-        cargs.extend([
-            "-cutoff",
-            str(cutoff)
-        ])
-    if trials is not None:
-        cargs.extend([
-            "-trials",
-            str(trials)
-        ])
-    if noprecomputed:
-        cargs.append("-noprecomputed")
-    if rk4:
-        cargs.append("-rk4")
-    if stop:
-        cargs.append("-stop")
-    if downsample is not None:
-        cargs.extend([
-            "-downsample",
-            str(downsample)
-        ])
-    if seed_image is not None:
-        cargs.extend([a for c in [s.run(execution) for s in seed_image] for a in c])
-    if seed_sphere is not None:
-        cargs.extend([a for c in [s.run(execution) for s in seed_sphere] for a in c])
-    if seed_random_per_voxel is not None:
-        cargs.extend([a for c in [s.run(execution) for s in seed_random_per_voxel] for a in c])
-    if seed_grid_per_voxel is not None:
-        cargs.extend([a for c in [s.run(execution) for s in seed_grid_per_voxel] for a in c])
-    if seed_rejection is not None:
-        cargs.extend([a for c in [s.run(execution) for s in seed_rejection] for a in c])
-    if seed_gmwmi is not None:
-        cargs.extend([a for c in [s.run(execution) for s in seed_gmwmi] for a in c])
-    if seed_dynamic is not None:
-        cargs.extend([
-            "-seed_dynamic",
-            execution.input_file(seed_dynamic)
-        ])
-    if seeds is not None:
-        cargs.extend([
-            "-seeds",
-            str(seeds)
-        ])
-    if max_attempts_per_seed is not None:
-        cargs.extend([
-            "-max_attempts_per_seed",
-            str(max_attempts_per_seed)
-        ])
-    if seed_cutoff is not None:
-        cargs.extend([
-            "-seed_cutoff",
-            str(seed_cutoff)
-        ])
-    if seed_unidirectional:
-        cargs.append("-seed_unidirectional")
-    if seed_direction is not None:
-        cargs.extend([
-            "-seed_direction",
-            ",".join(map(str, seed_direction))
-        ])
-    if output_seeds is not None:
-        cargs.extend([
-            "-output_seeds",
-            output_seeds
-        ])
-    if include is not None:
-        cargs.extend([a for c in [s.run(execution) for s in include] for a in c])
-    if include_ordered is not None:
-        cargs.extend([a for c in [s.run(execution) for s in include_ordered] for a in c])
-    if exclude is not None:
-        cargs.extend([a for c in [s.run(execution) for s in exclude] for a in c])
-    if mask is not None:
-        cargs.extend([a for c in [s.run(execution) for s in mask] for a in c])
-    if act is not None:
-        cargs.extend([
-            "-act",
-            execution.input_file(act)
-        ])
-    if backtrack:
-        cargs.append("-backtrack")
-    if crop_at_gmwmi:
-        cargs.append("-crop_at_gmwmi")
-    if power is not None:
-        cargs.extend([
-            "-power",
-            str(power)
-        ])
-    if samples is not None:
-        cargs.extend([
-            "-samples",
-            str(samples)
-        ])
-    if grad is not None:
-        cargs.extend([
-            "-grad",
-            execution.input_file(grad)
-        ])
-    if fslgrad is not None:
-        cargs.extend(fslgrad.run(execution))
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(source))
-    cargs.append(tracks)
-    ret = TckgenOutputs(
-        root=execution.output_file("."),
-        tracks=execution.output_file(tracks),
-        output_seeds=execution.output_file(output_seeds) if (output_seeds is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = tckgen_params(algorithm=algorithm, select_=select_, step=step, angle=angle, minlength=minlength, maxlength=maxlength, cutoff=cutoff, trials=trials, noprecomputed=noprecomputed, rk4=rk4, stop=stop, downsample=downsample, seed_image=seed_image, seed_sphere=seed_sphere, seed_random_per_voxel=seed_random_per_voxel, seed_grid_per_voxel=seed_grid_per_voxel, seed_rejection=seed_rejection, seed_gmwmi=seed_gmwmi, seed_dynamic=seed_dynamic, seeds=seeds, max_attempts_per_seed=max_attempts_per_seed, seed_cutoff=seed_cutoff, seed_unidirectional=seed_unidirectional, seed_direction=seed_direction, output_seeds=output_seeds, include=include, include_ordered=include_ordered, exclude=exclude, mask=mask, act=act, backtrack=backtrack, crop_at_gmwmi=crop_at_gmwmi, power=power, samples=samples, grad=grad, fslgrad=fslgrad, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, source=source, tracks=tracks)
+    return tckgen_execute(params, execution)
 
 
 __all__ = [
     "TCKGEN_METADATA",
-    "TckgenConfig",
-    "TckgenExclude",
-    "TckgenFslgrad",
-    "TckgenInclude",
-    "TckgenIncludeOrdered",
-    "TckgenMask",
     "TckgenOutputs",
-    "TckgenSeedGmwmi",
-    "TckgenSeedGridPerVoxel",
-    "TckgenSeedImage",
-    "TckgenSeedRandomPerVoxel",
-    "TckgenSeedRejection",
-    "TckgenSeedSphere",
-    "TckgenVariousFile",
-    "TckgenVariousFile_",
-    "TckgenVariousFile_2",
-    "TckgenVariousString",
-    "TckgenVariousString_",
-    "TckgenVariousString_2",
     "tckgen",
+    "tckgen_config_params",
+    "tckgen_exclude_params",
+    "tckgen_fslgrad_params",
+    "tckgen_include_ordered_params",
+    "tckgen_include_params",
+    "tckgen_mask_params",
+    "tckgen_params",
+    "tckgen_seed_gmwmi_params",
+    "tckgen_seed_grid_per_voxel_params",
+    "tckgen_seed_image_params",
+    "tckgen_seed_random_per_voxel_params",
+    "tckgen_seed_rejection_params",
+    "tckgen_seed_sphere_params",
+    "tckgen_various_file_params",
+    "tckgen_various_file_params_",
+    "tckgen_various_file_params_2",
+    "tckgen_various_string_params",
+    "tckgen_various_string_params_",
+    "tckgen_various_string_params_2",
 ]

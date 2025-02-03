@@ -12,159 +12,296 @@ VOLUME_RESAMPLE_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeResampleFlirtParameters = typing.TypedDict('VolumeResampleFlirtParameters', {
+    "__STYX_TYPE__": typing.Literal["flirt"],
+    "source_volume": str,
+    "target_volume": str,
+})
+VolumeResampleAffineParameters = typing.TypedDict('VolumeResampleAffineParameters', {
+    "__STYX_TYPE__": typing.Literal["affine"],
+    "affine": str,
+    "flirt": typing.NotRequired[VolumeResampleFlirtParameters | None],
+})
+VolumeResampleFlirtParameters_ = typing.TypedDict('VolumeResampleFlirtParameters_', {
+    "__STYX_TYPE__": typing.Literal["flirt"],
+    "source_volume": str,
+    "target_volume": str,
+})
+VolumeResampleAffineSeriesParameters = typing.TypedDict('VolumeResampleAffineSeriesParameters', {
+    "__STYX_TYPE__": typing.Literal["affine_series"],
+    "affine_series": str,
+    "flirt": typing.NotRequired[VolumeResampleFlirtParameters_ | None],
+})
+VolumeResampleWarpParameters = typing.TypedDict('VolumeResampleWarpParameters', {
+    "__STYX_TYPE__": typing.Literal["warp"],
+    "warpfield": str,
+    "opt_fnirt_source_volume": typing.NotRequired[str | None],
+})
+VolumeResampleParameters = typing.TypedDict('VolumeResampleParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-resample"],
+    "volume_in": InputPathType,
+    "volume_space": str,
+    "method": str,
+    "volume_out": str,
+    "affine": typing.NotRequired[list[VolumeResampleAffineParameters] | None],
+    "affine_series": typing.NotRequired[list[VolumeResampleAffineSeriesParameters] | None],
+    "warp": typing.NotRequired[list[VolumeResampleWarpParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class VolumeResampleFlirt:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    MUST be used if affine is a flirt affine.
-    """
-    source_volume: str
-    """the source volume used when generating the affine"""
-    target_volume: str
-    """the target volume used when generating the affine"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-flirt")
-        cargs.append(self.source_volume)
-        cargs.append(self.target_volume)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "volume-resample": volume_resample_cargs,
+        "affine": volume_resample_affine_cargs,
+        "flirt": volume_resample_flirt_cargs,
+        "affine_series": volume_resample_affine_series_cargs,
+        "flirt": volume_resample_flirt_cargs_,
+        "warp": volume_resample_warp_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class VolumeResampleAffine:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    add an affine transform.
-    """
-    affine: str
-    """the affine file to use"""
-    flirt: VolumeResampleFlirt | None = None
-    """MUST be used if affine is a flirt affine"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-affine")
-        cargs.append(self.affine)
-        if self.flirt is not None:
-            cargs.extend(self.flirt.run(execution))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "volume-resample": volume_resample_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class VolumeResampleFlirt_:
+def volume_resample_flirt_params(
+    source_volume: str,
+    target_volume: str,
+) -> VolumeResampleFlirtParameters:
     """
-    MUST be used if the affines are flirt affines.
-    """
-    source_volume: str
-    """the source volume used when generating the affine"""
-    target_volume: str
-    """the target volume used when generating the affine"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-flirt")
-        cargs.append(self.source_volume)
-        cargs.append(self.target_volume)
-        return cargs
+    Args:
+        source_volume: the source volume used when generating the affine.
+        target_volume: the target volume used when generating the affine.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "flirt",
+        "source_volume": source_volume,
+        "target_volume": target_volume,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class VolumeResampleAffineSeries:
+def volume_resample_flirt_cargs(
+    params: VolumeResampleFlirtParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    add an independent affine per-frame.
-    """
-    affine_series: str
-    """text file containing 12 or 16 numbers per line, each being a row-major
-    flattened affine"""
-    flirt: VolumeResampleFlirt_ | None = None
-    """MUST be used if the affines are flirt affines"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-affine-series")
-        cargs.append(self.affine_series)
-        if self.flirt is not None:
-            cargs.extend(self.flirt.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-flirt")
+    cargs.append(params.get("source_volume"))
+    cargs.append(params.get("target_volume"))
+    return cargs
 
 
-@dataclasses.dataclass
-class VolumeResampleWarp:
+def volume_resample_affine_params(
+    affine: str,
+    flirt: VolumeResampleFlirtParameters | None = None,
+) -> VolumeResampleAffineParameters:
     """
-    add a nonlinear warpfield transform.
-    """
-    warpfield: str
-    """the warpfield file"""
-    opt_fnirt_source_volume: str | None = None
-    """MUST be used if using a fnirt warpfield: the source volume used when
-    generating the warpfield"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-warp")
-        cargs.append(self.warpfield)
-        if self.opt_fnirt_source_volume is not None:
-            cargs.extend([
-                "-fnirt",
-                self.opt_fnirt_source_volume
-            ])
-        return cargs
+    Args:
+        affine: the affine file to use.
+        flirt: MUST be used if affine is a flirt affine.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "affine",
+        "affine": affine,
+    }
+    if flirt is not None:
+        params["flirt"] = flirt
+    return params
+
+
+def volume_resample_affine_cargs(
+    params: VolumeResampleAffineParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-affine")
+    cargs.append(params.get("affine"))
+    if params.get("flirt") is not None:
+        cargs.extend(dyn_cargs(params.get("flirt")["__STYXTYPE__"])(params.get("flirt"), execution))
+    return cargs
+
+
+def volume_resample_flirt_params_(
+    source_volume: str,
+    target_volume: str,
+) -> VolumeResampleFlirtParameters_:
+    """
+    Build parameters.
+    
+    Args:
+        source_volume: the source volume used when generating the affine.
+        target_volume: the target volume used when generating the affine.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "flirt",
+        "source_volume": source_volume,
+        "target_volume": target_volume,
+    }
+    return params
+
+
+def volume_resample_flirt_cargs_(
+    params: VolumeResampleFlirtParameters_,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-flirt")
+    cargs.append(params.get("source_volume"))
+    cargs.append(params.get("target_volume"))
+    return cargs
+
+
+def volume_resample_affine_series_params(
+    affine_series: str,
+    flirt: VolumeResampleFlirtParameters_ | None = None,
+) -> VolumeResampleAffineSeriesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        affine_series: text file containing 12 or 16 numbers per line, each\
+            being a row-major flattened affine.
+        flirt: MUST be used if the affines are flirt affines.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "affine_series",
+        "affine_series": affine_series,
+    }
+    if flirt is not None:
+        params["flirt"] = flirt
+    return params
+
+
+def volume_resample_affine_series_cargs(
+    params: VolumeResampleAffineSeriesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-affine-series")
+    cargs.append(params.get("affine_series"))
+    if params.get("flirt") is not None:
+        cargs.extend(dyn_cargs(params.get("flirt")["__STYXTYPE__"])(params.get("flirt"), execution))
+    return cargs
+
+
+def volume_resample_warp_params(
+    warpfield: str,
+    opt_fnirt_source_volume: str | None = None,
+) -> VolumeResampleWarpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        warpfield: the warpfield file.
+        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\
+            source volume used when generating the warpfield.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "warp",
+        "warpfield": warpfield,
+    }
+    if opt_fnirt_source_volume is not None:
+        params["opt_fnirt_source_volume"] = opt_fnirt_source_volume
+    return params
+
+
+def volume_resample_warp_cargs(
+    params: VolumeResampleWarpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-warp")
+    cargs.append(params.get("warpfield"))
+    if params.get("opt_fnirt_source_volume") is not None:
+        cargs.extend([
+            "-fnirt",
+            params.get("opt_fnirt_source_volume")
+        ])
+    return cargs
 
 
 class VolumeResampleOutputs(typing.NamedTuple):
@@ -177,14 +314,138 @@ class VolumeResampleOutputs(typing.NamedTuple):
     """the output volume"""
 
 
+def volume_resample_params(
+    volume_in: InputPathType,
+    volume_space: str,
+    method: str,
+    volume_out: str,
+    affine: list[VolumeResampleAffineParameters] | None = None,
+    affine_series: list[VolumeResampleAffineSeriesParameters] | None = None,
+    warp: list[VolumeResampleWarpParameters] | None = None,
+) -> VolumeResampleParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume_in: volume to resample.
+        volume_space: a volume file in the volume space you want for the output.
+        method: the resampling method.
+        volume_out: the output volume.
+        affine: add an affine transform.
+        affine_series: add an independent affine per-frame.
+        warp: add a nonlinear warpfield transform.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-resample",
+        "volume_in": volume_in,
+        "volume_space": volume_space,
+        "method": method,
+        "volume_out": volume_out,
+    }
+    if affine is not None:
+        params["affine"] = affine
+    if affine_series is not None:
+        params["affine_series"] = affine_series
+    if warp is not None:
+        params["warp"] = warp
+    return params
+
+
+def volume_resample_cargs(
+    params: VolumeResampleParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-resample")
+    cargs.append(execution.input_file(params.get("volume_in")))
+    cargs.append(params.get("volume_space"))
+    cargs.append(params.get("method"))
+    cargs.append(params.get("volume_out"))
+    if params.get("affine") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("affine")] for a in c])
+    if params.get("affine_series") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("affine_series")] for a in c])
+    if params.get("warp") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("warp")] for a in c])
+    return cargs
+
+
+def volume_resample_outputs(
+    params: VolumeResampleParameters,
+    execution: Execution,
+) -> VolumeResampleOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeResampleOutputs(
+        root=execution.output_file("."),
+        volume_out=execution.output_file(params.get("volume_out")),
+    )
+    return ret
+
+
+def volume_resample_execute(
+    params: VolumeResampleParameters,
+    execution: Execution,
+) -> VolumeResampleOutputs:
+    """
+    Transform and resample a volume file.
+    
+    Resample a volume file with an arbitrary list of transformations. You may
+    specify -affine, -warp, and -affine-series multiple times each, and they
+    will be used in the order specified. For instance, for rigid motion
+    correction followed by nonlinear atlas registration, specify -affine-series
+    first, then -warp. The recommended methods are CUBIC (cubic spline) for most
+    data, and ENCLOSING_VOXEL for label data. The parameter <method> must be one
+    of:
+    
+    CUBIC
+    ENCLOSING_VOXEL
+    TRILINEAR.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeResampleOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_resample_cargs(params, execution)
+    ret = volume_resample_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def volume_resample(
     volume_in: InputPathType,
     volume_space: str,
     method: str,
     volume_out: str,
-    affine: list[VolumeResampleAffine] | None = None,
-    affine_series: list[VolumeResampleAffineSeries] | None = None,
-    warp: list[VolumeResampleWarp] | None = None,
+    affine: list[VolumeResampleAffineParameters] | None = None,
+    affine_series: list[VolumeResampleAffineSeriesParameters] | None = None,
+    warp: list[VolumeResampleWarpParameters] | None = None,
     runner: Runner | None = None,
 ) -> VolumeResampleOutputs:
     """
@@ -220,34 +481,18 @@ def volume_resample(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_RESAMPLE_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-resample")
-    cargs.append(execution.input_file(volume_in))
-    cargs.append(volume_space)
-    cargs.append(method)
-    cargs.append(volume_out)
-    if affine is not None:
-        cargs.extend([a for c in [s.run(execution) for s in affine] for a in c])
-    if affine_series is not None:
-        cargs.extend([a for c in [s.run(execution) for s in affine_series] for a in c])
-    if warp is not None:
-        cargs.extend([a for c in [s.run(execution) for s in warp] for a in c])
-    ret = VolumeResampleOutputs(
-        root=execution.output_file("."),
-        volume_out=execution.output_file(volume_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_resample_params(volume_in=volume_in, volume_space=volume_space, method=method, volume_out=volume_out, affine=affine, affine_series=affine_series, warp=warp)
+    return volume_resample_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_RESAMPLE_METADATA",
-    "VolumeResampleAffine",
-    "VolumeResampleAffineSeries",
-    "VolumeResampleFlirt",
-    "VolumeResampleFlirt_",
     "VolumeResampleOutputs",
-    "VolumeResampleWarp",
     "volume_resample",
+    "volume_resample_affine_params",
+    "volume_resample_affine_series_params",
+    "volume_resample_flirt_params",
+    "volume_resample_flirt_params_",
+    "volume_resample_params",
+    "volume_resample_warp_params",
 ]

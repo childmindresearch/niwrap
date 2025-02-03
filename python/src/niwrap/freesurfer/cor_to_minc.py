@@ -12,6 +12,45 @@ COR_TO_MINC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+CorToMincParameters = typing.TypedDict('CorToMincParameters', {
+    "__STYX_TYPE__": typing.Literal["cor_to_minc"],
+    "cor_directory": str,
+    "minc_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cor_to_minc": cor_to_minc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cor_to_minc": cor_to_minc_outputs,
+    }
+    return vt.get(t)
 
 
 class CorToMincOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class CorToMincOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_minc: OutputPathType
     """Converted MINC file"""
+
+
+def cor_to_minc_params(
+    cor_directory: str,
+    minc_file: str,
+) -> CorToMincParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cor_directory: Directory containing COR files.
+        minc_file: Output MINC file name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cor_to_minc",
+        "cor_directory": cor_directory,
+        "minc_file": minc_file,
+    }
+    return params
+
+
+def cor_to_minc_cargs(
+    params: CorToMincParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("cor_to_minc")
+    cargs.append(params.get("cor_directory"))
+    cargs.append(params.get("minc_file"))
+    return cargs
+
+
+def cor_to_minc_outputs(
+    params: CorToMincParameters,
+    execution: Execution,
+) -> CorToMincOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CorToMincOutputs(
+        root=execution.output_file("."),
+        output_minc=execution.output_file(params.get("minc_file")),
+    )
+    return ret
+
+
+def cor_to_minc_execute(
+    params: CorToMincParameters,
+    execution: Execution,
+) -> CorToMincOutputs:
+    """
+    Converts a directory of COR files to a MINC file.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CorToMincOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cor_to_minc_cargs(params, execution)
+    ret = cor_to_minc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cor_to_minc(
@@ -45,20 +169,13 @@ def cor_to_minc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(COR_TO_MINC_METADATA)
-    cargs = []
-    cargs.append("cor_to_minc")
-    cargs.append(cor_directory)
-    cargs.append(minc_file)
-    ret = CorToMincOutputs(
-        root=execution.output_file("."),
-        output_minc=execution.output_file(minc_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = cor_to_minc_params(cor_directory=cor_directory, minc_file=minc_file)
+    return cor_to_minc_execute(params, execution)
 
 
 __all__ = [
     "COR_TO_MINC_METADATA",
     "CorToMincOutputs",
     "cor_to_minc",
+    "cor_to_minc_params",
 ]

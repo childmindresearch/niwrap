@@ -12,6 +12,47 @@ METRIC_FILL_HOLES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+MetricFillHolesParameters = typing.TypedDict('MetricFillHolesParameters', {
+    "__STYX_TYPE__": typing.Literal["metric-fill-holes"],
+    "surface": InputPathType,
+    "metric_in": InputPathType,
+    "metric_out": str,
+    "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "metric-fill-holes": metric_fill_holes_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "metric-fill-holes": metric_fill_holes_outputs,
+    }
+    return vt.get(t)
 
 
 class MetricFillHolesOutputs(typing.NamedTuple):
@@ -22,6 +63,110 @@ class MetricFillHolesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output ROI metric"""
+
+
+def metric_fill_holes_params(
+    surface: InputPathType,
+    metric_in: InputPathType,
+    metric_out: str,
+    opt_corrected_areas_area_metric: InputPathType | None = None,
+) -> MetricFillHolesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to use for neighbor information.
+        metric_in: the input ROI metric.
+        metric_out: the output ROI metric.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "metric-fill-holes",
+        "surface": surface,
+        "metric_in": metric_in,
+        "metric_out": metric_out,
+    }
+    if opt_corrected_areas_area_metric is not None:
+        params["opt_corrected_areas_area_metric"] = opt_corrected_areas_area_metric
+    return params
+
+
+def metric_fill_holes_cargs(
+    params: MetricFillHolesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-metric-fill-holes")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("metric_in")))
+    cargs.append(params.get("metric_out"))
+    if params.get("opt_corrected_areas_area_metric") is not None:
+        cargs.extend([
+            "-corrected-areas",
+            execution.input_file(params.get("opt_corrected_areas_area_metric"))
+        ])
+    return cargs
+
+
+def metric_fill_holes_outputs(
+    params: MetricFillHolesParameters,
+    execution: Execution,
+) -> MetricFillHolesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MetricFillHolesOutputs(
+        root=execution.output_file("."),
+        metric_out=execution.output_file(params.get("metric_out")),
+    )
+    return ret
+
+
+def metric_fill_holes_execute(
+    params: MetricFillHolesParameters,
+    execution: Execution,
+) -> MetricFillHolesOutputs:
+    """
+    Fill holes in an roi metric.
+    
+    Finds all connected areas that are not included in the ROI, and writes ones
+    into all but the largest one, in terms of surface area.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MetricFillHolesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = metric_fill_holes_cargs(params, execution)
+    ret = metric_fill_holes_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def metric_fill_holes(
@@ -54,27 +199,13 @@ def metric_fill_holes(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(METRIC_FILL_HOLES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-metric-fill-holes")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(metric_in))
-    cargs.append(metric_out)
-    if opt_corrected_areas_area_metric is not None:
-        cargs.extend([
-            "-corrected-areas",
-            execution.input_file(opt_corrected_areas_area_metric)
-        ])
-    ret = MetricFillHolesOutputs(
-        root=execution.output_file("."),
-        metric_out=execution.output_file(metric_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = metric_fill_holes_params(surface=surface, metric_in=metric_in, metric_out=metric_out, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric)
+    return metric_fill_holes_execute(params, execution)
 
 
 __all__ = [
     "METRIC_FILL_HOLES_METADATA",
     "MetricFillHolesOutputs",
     "metric_fill_holes",
+    "metric_fill_holes_params",
 ]

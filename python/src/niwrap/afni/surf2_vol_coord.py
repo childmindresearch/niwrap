@@ -12,6 +12,54 @@ SURF2_VOL_COORD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+Surf2VolCoordParameters = typing.TypedDict('Surf2VolCoordParameters', {
+    "__STYX_TYPE__": typing.Literal["Surf2VolCoord"],
+    "surface": str,
+    "grid_vol": InputPathType,
+    "grid_subbrick": typing.NotRequired[float | None],
+    "sv": typing.NotRequired[InputPathType | None],
+    "one_node": typing.NotRequired[str | None],
+    "closest_nodes": InputPathType,
+    "qual": typing.NotRequired[str | None],
+    "lpi": bool,
+    "rai": bool,
+    "verb_level": typing.NotRequired[float | None],
+    "prefix": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "Surf2VolCoord": surf2_vol_coord_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "Surf2VolCoord": surf2_vol_coord_outputs,
+    }
+    return vt.get(t)
 
 
 class Surf2VolCoordOutputs(typing.NamedTuple):
@@ -22,6 +70,171 @@ class Surf2VolCoordOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     results_file: OutputPathType
     """Output results file."""
+
+
+def surf2_vol_coord_params(
+    surface: str,
+    grid_vol: InputPathType,
+    closest_nodes: InputPathType,
+    prefix: str,
+    grid_subbrick: float | None = None,
+    sv: InputPathType | None = None,
+    one_node: str | None = None,
+    qual: str | None = None,
+    lpi: bool = False,
+    rai: bool = False,
+    verb_level: float | None = None,
+) -> Surf2VolCoordParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Specify input surface.
+        grid_vol: Specifies the grid for the output volume.
+        closest_nodes: A coordinate file specifying coordinates for which the\
+            closest nodes will be found.
+        prefix: Output results to file PREFIX (will overwrite). Default is\
+            stdout.
+        grid_subbrick: Sub-brick from which data are taken.
+        sv: Surface Volume file aligning with the surface.
+        one_node: Specify a single node's coordinates.
+        qual: A string of characters that qualify the surface in which the\
+            closest node was found.
+        lpi: Coordinate axis direction for values in XYZ.1D are in LPI.
+        rai: Coordinate axis direction for values in XYZ.1D are in RAI\
+            (default).
+        verb_level: Verbosity level, default is 0.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "Surf2VolCoord",
+        "surface": surface,
+        "grid_vol": grid_vol,
+        "closest_nodes": closest_nodes,
+        "lpi": lpi,
+        "rai": rai,
+        "prefix": prefix,
+    }
+    if grid_subbrick is not None:
+        params["grid_subbrick"] = grid_subbrick
+    if sv is not None:
+        params["sv"] = sv
+    if one_node is not None:
+        params["one_node"] = one_node
+    if qual is not None:
+        params["qual"] = qual
+    if verb_level is not None:
+        params["verb_level"] = verb_level
+    return params
+
+
+def surf2_vol_coord_cargs(
+    params: Surf2VolCoordParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("Surf2VolCoord")
+    cargs.extend([
+        "-i_TYPE",
+        params.get("surface")
+    ])
+    cargs.extend([
+        "-grid_parent",
+        execution.input_file(params.get("grid_vol"))
+    ])
+    if params.get("grid_subbrick") is not None:
+        cargs.extend([
+            "-grid_subbrick",
+            str(params.get("grid_subbrick"))
+        ])
+    if params.get("sv") is not None:
+        cargs.extend([
+            "-sv",
+            execution.input_file(params.get("sv"))
+        ])
+    if params.get("one_node") is not None:
+        cargs.extend([
+            "-one_node",
+            params.get("one_node")
+        ])
+    cargs.extend([
+        "-closest_nodes",
+        execution.input_file(params.get("closest_nodes"))
+    ])
+    if params.get("qual") is not None:
+        cargs.extend([
+            "-qual",
+            params.get("qual")
+        ])
+    if params.get("lpi"):
+        cargs.append("-LPI")
+    if params.get("rai"):
+        cargs.append("-RAI")
+    if params.get("verb_level") is not None:
+        cargs.extend([
+            "-verb",
+            str(params.get("verb_level"))
+        ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    return cargs
+
+
+def surf2_vol_coord_outputs(
+    params: Surf2VolCoordParameters,
+    execution: Execution,
+) -> Surf2VolCoordOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Surf2VolCoordOutputs(
+        root=execution.output_file("."),
+        results_file=execution.output_file(params.get("prefix")),
+    )
+    return ret
+
+
+def surf2_vol_coord_execute(
+    params: Surf2VolCoordParameters,
+    execution: Execution,
+) -> Surf2VolCoordOutputs:
+    """
+    Relates node indices to coordinates given x y z coordinates and returns the
+    nodes closest to them.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Surf2VolCoordOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surf2_vol_coord_cargs(params, execution)
+    ret = surf2_vol_coord_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surf2_vol_coord(
@@ -68,63 +281,13 @@ def surf2_vol_coord(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF2_VOL_COORD_METADATA)
-    cargs = []
-    cargs.append("Surf2VolCoord")
-    cargs.extend([
-        "-i_TYPE",
-        surface
-    ])
-    cargs.extend([
-        "-grid_parent",
-        execution.input_file(grid_vol)
-    ])
-    if grid_subbrick is not None:
-        cargs.extend([
-            "-grid_subbrick",
-            str(grid_subbrick)
-        ])
-    if sv is not None:
-        cargs.extend([
-            "-sv",
-            execution.input_file(sv)
-        ])
-    if one_node is not None:
-        cargs.extend([
-            "-one_node",
-            one_node
-        ])
-    cargs.extend([
-        "-closest_nodes",
-        execution.input_file(closest_nodes)
-    ])
-    if qual is not None:
-        cargs.extend([
-            "-qual",
-            qual
-        ])
-    if lpi:
-        cargs.append("-LPI")
-    if rai:
-        cargs.append("-RAI")
-    if verb_level is not None:
-        cargs.extend([
-            "-verb",
-            str(verb_level)
-        ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    ret = Surf2VolCoordOutputs(
-        root=execution.output_file("."),
-        results_file=execution.output_file(prefix),
-    )
-    execution.run(cargs)
-    return ret
+    params = surf2_vol_coord_params(surface=surface, grid_vol=grid_vol, grid_subbrick=grid_subbrick, sv=sv, one_node=one_node, closest_nodes=closest_nodes, qual=qual, lpi=lpi, rai=rai, verb_level=verb_level, prefix=prefix)
+    return surf2_vol_coord_execute(params, execution)
 
 
 __all__ = [
     "SURF2_VOL_COORD_METADATA",
     "Surf2VolCoordOutputs",
     "surf2_vol_coord",
+    "surf2_vol_coord_params",
 ]

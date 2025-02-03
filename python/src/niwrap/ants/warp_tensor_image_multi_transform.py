@@ -12,6 +12,51 @@ WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+WarpTensorImageMultiTransformParameters = typing.TypedDict('WarpTensorImageMultiTransformParameters', {
+    "__STYX_TYPE__": typing.Literal["WarpTensorImageMultiTransform"],
+    "image_dimension": int,
+    "moving_image": InputPathType,
+    "output_image": str,
+    "reference_image": typing.NotRequired[InputPathType | None],
+    "tightest_bounding_box": bool,
+    "reslice_by_header": bool,
+    "use_nearest_neighbor": bool,
+    "transforms": list[str],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "WarpTensorImageMultiTransform": warp_tensor_image_multi_transform_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "WarpTensorImageMultiTransform": warp_tensor_image_multi_transform_outputs,
+    }
+    return vt.get(t)
 
 
 class WarpTensorImageMultiTransformOutputs(typing.NamedTuple):
@@ -22,6 +67,130 @@ class WarpTensorImageMultiTransformOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_image_file: OutputPathType
     """The resultant transformed output image."""
+
+
+def warp_tensor_image_multi_transform_params(
+    image_dimension: int,
+    moving_image: InputPathType,
+    output_image: str,
+    transforms: list[str],
+    reference_image: InputPathType | None = None,
+    tightest_bounding_box: bool = False,
+    reslice_by_header: bool = False,
+    use_nearest_neighbor: bool = False,
+) -> WarpTensorImageMultiTransformParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image_dimension: Dimensionality of the image (e.g., 2D or 3D).
+        moving_image: The moving image that will be transformed.
+        output_image: Path for saving the transformed output image.
+        transforms: List of transformations to apply, which can include\
+            deformation fields or affine transforms.
+        reference_image: Reference image for reslicing or defining the\
+            transformation domain.
+        tightest_bounding_box: Compute the tightest bounding box using all\
+            affine transformations.
+        reslice_by_header: Use the orientation matrix and origin encoded in the\
+            image file header for reslicing.
+        use_nearest_neighbor: Use Nearest Neighbor Interpolator for the\
+            transformation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "WarpTensorImageMultiTransform",
+        "image_dimension": image_dimension,
+        "moving_image": moving_image,
+        "output_image": output_image,
+        "tightest_bounding_box": tightest_bounding_box,
+        "reslice_by_header": reslice_by_header,
+        "use_nearest_neighbor": use_nearest_neighbor,
+        "transforms": transforms,
+    }
+    if reference_image is not None:
+        params["reference_image"] = reference_image
+    return params
+
+
+def warp_tensor_image_multi_transform_cargs(
+    params: WarpTensorImageMultiTransformParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("WarpImageMultiTransform")
+    cargs.append(str(params.get("image_dimension")))
+    cargs.append(execution.input_file(params.get("moving_image")))
+    cargs.append(params.get("output_image"))
+    if params.get("reference_image") is not None:
+        cargs.extend([
+            "-R",
+            execution.input_file(params.get("reference_image"))
+        ])
+    if params.get("tightest_bounding_box"):
+        cargs.append("--tightest-bounding-box")
+    if params.get("reslice_by_header"):
+        cargs.append("--reslice-by-header")
+    if params.get("use_nearest_neighbor"):
+        cargs.append("--use-NN")
+    cargs.extend(params.get("transforms"))
+    return cargs
+
+
+def warp_tensor_image_multi_transform_outputs(
+    params: WarpTensorImageMultiTransformParameters,
+    execution: Execution,
+) -> WarpTensorImageMultiTransformOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = WarpTensorImageMultiTransformOutputs(
+        root=execution.output_file("."),
+        output_image_file=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def warp_tensor_image_multi_transform_execute(
+    params: WarpTensorImageMultiTransformParameters,
+    execution: Execution,
+) -> WarpTensorImageMultiTransformOutputs:
+    """
+    WarpImageMultiTransform is used to apply transformations including affine and
+    deformation fields to an image, supporting various interpolation techniques,
+    image header reslicing, and compatibility with ANTS-generated transformations.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `WarpTensorImageMultiTransformOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = warp_tensor_image_multi_transform_cargs(params, execution)
+    ret = warp_tensor_image_multi_transform_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def warp_tensor_image_multi_transform(
@@ -64,33 +233,13 @@ def warp_tensor_image_multi_transform(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA)
-    cargs = []
-    cargs.append("WarpImageMultiTransform")
-    cargs.append(str(image_dimension))
-    cargs.append(execution.input_file(moving_image))
-    cargs.append(output_image)
-    if reference_image is not None:
-        cargs.extend([
-            "-R",
-            execution.input_file(reference_image)
-        ])
-    if tightest_bounding_box:
-        cargs.append("--tightest-bounding-box")
-    if reslice_by_header:
-        cargs.append("--reslice-by-header")
-    if use_nearest_neighbor:
-        cargs.append("--use-NN")
-    cargs.extend(transforms)
-    ret = WarpTensorImageMultiTransformOutputs(
-        root=execution.output_file("."),
-        output_image_file=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = warp_tensor_image_multi_transform_params(image_dimension=image_dimension, moving_image=moving_image, output_image=output_image, reference_image=reference_image, tightest_bounding_box=tightest_bounding_box, reslice_by_header=reslice_by_header, use_nearest_neighbor=use_nearest_neighbor, transforms=transforms)
+    return warp_tensor_image_multi_transform_execute(params, execution)
 
 
 __all__ = [
     "WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA",
     "WarpTensorImageMultiTransformOutputs",
     "warp_tensor_image_multi_transform",
+    "warp_tensor_image_multi_transform_params",
 ]

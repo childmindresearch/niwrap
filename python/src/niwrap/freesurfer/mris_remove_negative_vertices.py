@@ -12,6 +12,46 @@ MRIS_REMOVE_NEGATIVE_VERTICES_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisRemoveNegativeVerticesParameters = typing.TypedDict('MrisRemoveNegativeVerticesParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_remove_negative_vertices"],
+    "surface_file": InputPathType,
+    "patch_file": InputPathType,
+    "output_patch": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_remove_negative_vertices": mris_remove_negative_vertices_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_remove_negative_vertices": mris_remove_negative_vertices_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisRemoveNegativeVerticesOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MrisRemoveNegativeVerticesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_patch_file: OutputPathType
     """The resulting output patch file"""
+
+
+def mris_remove_negative_vertices_params(
+    surface_file: InputPathType,
+    patch_file: InputPathType,
+    output_patch: str,
+) -> MrisRemoveNegativeVerticesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface_file: Input surface file.
+        patch_file: Patch file name.
+        output_patch: Output patch file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_remove_negative_vertices",
+        "surface_file": surface_file,
+        "patch_file": patch_file,
+        "output_patch": output_patch,
+    }
+    return params
+
+
+def mris_remove_negative_vertices_cargs(
+    params: MrisRemoveNegativeVerticesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_remove_negative_vertices")
+    cargs.append(execution.input_file(params.get("surface_file")))
+    cargs.append(execution.input_file(params.get("patch_file")))
+    cargs.append(params.get("output_patch"))
+    return cargs
+
+
+def mris_remove_negative_vertices_outputs(
+    params: MrisRemoveNegativeVerticesParameters,
+    execution: Execution,
+) -> MrisRemoveNegativeVerticesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisRemoveNegativeVerticesOutputs(
+        root=execution.output_file("."),
+        output_patch_file=execution.output_file(params.get("output_patch")),
+    )
+    return ret
+
+
+def mris_remove_negative_vertices_execute(
+    params: MrisRemoveNegativeVerticesParameters,
+    execution: Execution,
+) -> MrisRemoveNegativeVerticesOutputs:
+    """
+    This program adds a template into an average surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisRemoveNegativeVerticesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_remove_negative_vertices_cargs(params, execution)
+    ret = mris_remove_negative_vertices_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_remove_negative_vertices(
@@ -47,21 +176,13 @@ def mris_remove_negative_vertices(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REMOVE_NEGATIVE_VERTICES_METADATA)
-    cargs = []
-    cargs.append("mris_remove_negative_vertices")
-    cargs.append(execution.input_file(surface_file))
-    cargs.append(execution.input_file(patch_file))
-    cargs.append(output_patch)
-    ret = MrisRemoveNegativeVerticesOutputs(
-        root=execution.output_file("."),
-        output_patch_file=execution.output_file(output_patch),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_remove_negative_vertices_params(surface_file=surface_file, patch_file=patch_file, output_patch=output_patch)
+    return mris_remove_negative_vertices_execute(params, execution)
 
 
 __all__ = [
     "MRIS_REMOVE_NEGATIVE_VERTICES_METADATA",
     "MrisRemoveNegativeVerticesOutputs",
     "mris_remove_negative_vertices",
+    "mris_remove_negative_vertices_params",
 ]

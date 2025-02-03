@@ -12,6 +12,49 @@ V_3D_SIGNATURES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dSignaturesParameters = typing.TypedDict('V3dSignaturesParameters', {
+    "__STYX_TYPE__": typing.Literal["3dSignatures"],
+    "infile": InputPathType,
+    "outfile": str,
+    "segmentation": bool,
+    "filter": bool,
+    "threshold": typing.NotRequired[float | None],
+    "smoothing": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dSignatures": v_3d_signatures_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dSignatures": v_3d_signatures_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dSignaturesOutputs(typing.NamedTuple):
@@ -22,6 +65,120 @@ class V3dSignaturesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     results_file: OutputPathType
     """Main analysis results file"""
+
+
+def v_3d_signatures_params(
+    infile: InputPathType,
+    outfile: str,
+    segmentation: bool = False,
+    filter_: bool = False,
+    threshold: float | None = None,
+    smoothing: float | None = None,
+) -> V3dSignaturesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input file containing 3D genome data (e.g. genome_data.txt).
+        outfile: Output file to store analysis results (e.g.\
+            analysis_results.txt).
+        segmentation: Flag to apply genome segmentation.
+        filter_: Flag to apply data filtering.
+        threshold: Threshold level for data filtering; default=0.5.
+        smoothing: Apply smoothing with specified kernel size.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dSignatures",
+        "infile": infile,
+        "outfile": outfile,
+        "segmentation": segmentation,
+        "filter": filter_,
+    }
+    if threshold is not None:
+        params["threshold"] = threshold
+    if smoothing is not None:
+        params["smoothing"] = smoothing
+    return params
+
+
+def v_3d_signatures_cargs(
+    params: V3dSignaturesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dSignatures")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(params.get("outfile"))
+    if params.get("segmentation"):
+        cargs.append("--segmentation")
+    if params.get("filter"):
+        cargs.append("--filter")
+    if params.get("threshold") is not None:
+        cargs.extend([
+            "--threshold",
+            str(params.get("threshold"))
+        ])
+    if params.get("smoothing") is not None:
+        cargs.extend([
+            "--smoothing",
+            str(params.get("smoothing"))
+        ])
+    return cargs
+
+
+def v_3d_signatures_outputs(
+    params: V3dSignaturesParameters,
+    execution: Execution,
+) -> V3dSignaturesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dSignaturesOutputs(
+        root=execution.output_file("."),
+        results_file=execution.output_file(params.get("outfile") + ".txt"),
+    )
+    return ret
+
+
+def v_3d_signatures_execute(
+    params: V3dSignaturesParameters,
+    execution: Execution,
+) -> V3dSignaturesOutputs:
+    """
+    3dSignatures analysis tool for 3D genome organization.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dSignaturesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_signatures_cargs(params, execution)
+    ret = v_3d_signatures_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_signatures(
@@ -52,38 +209,15 @@ def v_3d_signatures(
     Returns:
         NamedTuple of outputs (described in `V3dSignaturesOutputs`).
     """
-    if threshold is not None and not (0 <= threshold <= 1): 
-        raise ValueError(f"'threshold' must be between 0 <= x <= 1 but was {threshold}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SIGNATURES_METADATA)
-    cargs = []
-    cargs.append("3dSignatures")
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
-    if segmentation:
-        cargs.append("--segmentation")
-    if filter_:
-        cargs.append("--filter")
-    if threshold is not None:
-        cargs.extend([
-            "--threshold",
-            str(threshold)
-        ])
-    if smoothing is not None:
-        cargs.extend([
-            "--smoothing",
-            str(smoothing)
-        ])
-    ret = V3dSignaturesOutputs(
-        root=execution.output_file("."),
-        results_file=execution.output_file(outfile + ".txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_signatures_params(infile=infile, outfile=outfile, segmentation=segmentation, filter_=filter_, threshold=threshold, smoothing=smoothing)
+    return v_3d_signatures_execute(params, execution)
 
 
 __all__ = [
     "V3dSignaturesOutputs",
     "V_3D_SIGNATURES_METADATA",
     "v_3d_signatures",
+    "v_3d_signatures_params",
 ]

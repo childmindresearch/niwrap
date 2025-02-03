@@ -12,6 +12,48 @@ MRI_RIBBON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriRibbonParameters = typing.TypedDict('MriRibbonParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_ribbon"],
+    "label_file": typing.NotRequired[InputPathType | None],
+    "inner_surface": InputPathType,
+    "outer_surface": InputPathType,
+    "input_volume": str,
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_ribbon": mri_ribbon_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_ribbon": mri_ribbon_outputs,
+    }
+    return vt.get(t)
 
 
 class MriRibbonOutputs(typing.NamedTuple):
@@ -22,6 +64,108 @@ class MriRibbonOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     ribbon_output: OutputPathType
     """Output ribbon volume"""
+
+
+def mri_ribbon_params(
+    inner_surface: InputPathType,
+    outer_surface: InputPathType,
+    input_volume: str,
+    output_volume: str,
+    label_file: InputPathType | None = None,
+) -> MriRibbonParameters:
+    """
+    Build parameters.
+    
+    Args:
+        inner_surface: File name of the inner surface.
+        outer_surface: File name of the outer surface.
+        input_volume: Prefix for the input volume file.
+        output_volume: Prefix for the output volume file.
+        label_file: Label file specifying regions of interest (optional).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_ribbon",
+        "inner_surface": inner_surface,
+        "outer_surface": outer_surface,
+        "input_volume": input_volume,
+        "output_volume": output_volume,
+    }
+    if label_file is not None:
+        params["label_file"] = label_file
+    return params
+
+
+def mri_ribbon_cargs(
+    params: MriRibbonParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_ribbon")
+    if params.get("label_file") is not None:
+        cargs.extend([
+            "-l",
+            execution.input_file(params.get("label_file"))
+        ])
+    cargs.append(execution.input_file(params.get("inner_surface")))
+    cargs.append(execution.input_file(params.get("outer_surface")))
+    cargs.append(params.get("input_volume"))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_ribbon_outputs(
+    params: MriRibbonParameters,
+    execution: Execution,
+) -> MriRibbonOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriRibbonOutputs(
+        root=execution.output_file("."),
+        ribbon_output=execution.output_file(params.get("output_volume") + "_ribbon.nii.gz"),
+    )
+    return ret
+
+
+def mri_ribbon_execute(
+    params: MriRibbonParameters,
+    execution: Execution,
+) -> MriRibbonOutputs:
+    """
+    MRI Ribbon tool to create ribbon volumes from surface files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriRibbonOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_ribbon_cargs(params, execution)
+    ret = mri_ribbon_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_ribbon(
@@ -51,27 +195,13 @@ def mri_ribbon(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RIBBON_METADATA)
-    cargs = []
-    cargs.append("mri_ribbon")
-    if label_file is not None:
-        cargs.extend([
-            "-l",
-            execution.input_file(label_file)
-        ])
-    cargs.append(execution.input_file(inner_surface))
-    cargs.append(execution.input_file(outer_surface))
-    cargs.append(input_volume)
-    cargs.append(output_volume)
-    ret = MriRibbonOutputs(
-        root=execution.output_file("."),
-        ribbon_output=execution.output_file(output_volume + "_ribbon.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_ribbon_params(label_file=label_file, inner_surface=inner_surface, outer_surface=outer_surface, input_volume=input_volume, output_volume=output_volume)
+    return mri_ribbon_execute(params, execution)
 
 
 __all__ = [
     "MRI_RIBBON_METADATA",
     "MriRibbonOutputs",
     "mri_ribbon",
+    "mri_ribbon_params",
 ]

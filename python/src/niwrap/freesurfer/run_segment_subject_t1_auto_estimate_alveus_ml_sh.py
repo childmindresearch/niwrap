@@ -12,14 +12,130 @@ RUN_SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RunSegmentSubjectT1AutoEstimateAlveusMlShParameters = typing.TypedDict('RunSegmentSubjectT1AutoEstimateAlveusMlShParameters', {
+    "__STYX_TYPE__": typing.Literal["run_segmentSubjectT1_autoEstimateAlveusML.sh"],
+    "deployed_mcr_root": str,
+    "additional_args": typing.NotRequired[str | None],
+})
 
 
-class RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `run_segment_subject_t1_auto_estimate_alveus_ml_sh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "run_segmentSubjectT1_autoEstimateAlveusML.sh": run_segment_subject_t1_auto_estimate_alveus_ml_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def run_segment_subject_t1_auto_estimate_alveus_ml_sh_params(
+    deployed_mcr_root: str,
+    additional_args: str | None = None,
+) -> RunSegmentSubjectT1AutoEstimateAlveusMlShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        deployed_mcr_root: The root directory of the deployed MATLAB Runtime.
+        additional_args: Additional arguments for the script.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "run_segmentSubjectT1_autoEstimateAlveusML.sh",
+        "deployed_mcr_root": deployed_mcr_root,
+    }
+    if additional_args is not None:
+        params["additional_args"] = additional_args
+    return params
+
+
+def run_segment_subject_t1_auto_estimate_alveus_ml_sh_cargs(
+    params: RunSegmentSubjectT1AutoEstimateAlveusMlShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("run_segmentSubjectT1_autoEstimateAlveusML.sh")
+    cargs.append(params.get("deployed_mcr_root"))
+    if params.get("additional_args") is not None:
+        cargs.append(params.get("additional_args"))
+    return cargs
+
+
+def run_segment_subject_t1_auto_estimate_alveus_ml_sh_outputs(
+    params: RunSegmentSubjectT1AutoEstimateAlveusMlShParameters,
+    execution: Execution,
+) -> RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def run_segment_subject_t1_auto_estimate_alveus_ml_sh_execute(
+    params: RunSegmentSubjectT1AutoEstimateAlveusMlShParameters,
+    execution: Execution,
+) -> RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs:
+    """
+    A script to automatically estimate Alveus using machine learning with the given
+    subject T1 image.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = run_segment_subject_t1_auto_estimate_alveus_ml_sh_cargs(params, execution)
+    ret = run_segment_subject_t1_auto_estimate_alveus_ml_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def run_segment_subject_t1_auto_estimate_alveus_ml_sh(
@@ -44,20 +160,12 @@ def run_segment_subject_t1_auto_estimate_alveus_ml_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA)
-    cargs = []
-    cargs.append("run_segmentSubjectT1_autoEstimateAlveusML.sh")
-    cargs.append(deployed_mcr_root)
-    if additional_args is not None:
-        cargs.append(additional_args)
-    ret = RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = run_segment_subject_t1_auto_estimate_alveus_ml_sh_params(deployed_mcr_root=deployed_mcr_root, additional_args=additional_args)
+    return run_segment_subject_t1_auto_estimate_alveus_ml_sh_execute(params, execution)
 
 
 __all__ = [
     "RUN_SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA",
-    "RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs",
     "run_segment_subject_t1_auto_estimate_alveus_ml_sh",
+    "run_segment_subject_t1_auto_estimate_alveus_ml_sh_params",
 ]

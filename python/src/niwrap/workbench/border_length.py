@@ -12,14 +12,161 @@ BORDER_LENGTH_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+BorderLengthParameters = typing.TypedDict('BorderLengthParameters', {
+    "__STYX_TYPE__": typing.Literal["border-length"],
+    "border": InputPathType,
+    "surface": InputPathType,
+    "opt_corrected_areas_area_metric": typing.NotRequired[InputPathType | None],
+    "opt_separate_pieces": bool,
+    "opt_hide_border_name": bool,
+})
 
 
-class BorderLengthOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `border_length(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "border-length": border_length_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def border_length_params(
+    border: InputPathType,
+    surface: InputPathType,
+    opt_corrected_areas_area_metric: InputPathType | None = None,
+    opt_separate_pieces: bool = False,
+    opt_hide_border_name: bool = False,
+) -> BorderLengthParameters:
+    """
+    Build parameters.
+    
+    Args:
+        border: the input border file.
+        surface: the surface to measure the borders on.
+        opt_corrected_areas_area_metric: vertex areas to use instead of\
+            computing them from the surface: the corrected vertex areas, as a\
+            metric.
+        opt_separate_pieces: report lengths for multi-part borders as separate\
+            numbers.
+        opt_hide_border_name: don't print border name before each output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "border-length",
+        "border": border,
+        "surface": surface,
+        "opt_separate_pieces": opt_separate_pieces,
+        "opt_hide_border_name": opt_hide_border_name,
+    }
+    if opt_corrected_areas_area_metric is not None:
+        params["opt_corrected_areas_area_metric"] = opt_corrected_areas_area_metric
+    return params
+
+
+def border_length_cargs(
+    params: BorderLengthParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-border-length")
+    cargs.append(execution.input_file(params.get("border")))
+    cargs.append(execution.input_file(params.get("surface")))
+    if params.get("opt_corrected_areas_area_metric") is not None:
+        cargs.extend([
+            "-corrected-areas",
+            execution.input_file(params.get("opt_corrected_areas_area_metric"))
+        ])
+    if params.get("opt_separate_pieces"):
+        cargs.append("-separate-pieces")
+    if params.get("opt_hide_border_name"):
+        cargs.append("-hide-border-name")
+    return cargs
+
+
+def border_length_outputs(
+    params: BorderLengthParameters,
+    execution: Execution,
+) -> BorderLengthOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BorderLengthOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def border_length_execute(
+    params: BorderLengthParameters,
+    execution: Execution,
+) -> BorderLengthOutputs:
+    """
+    Report length of borders.
+    
+    For each border, print its length along the surface, in mm. If a border has
+    multiple parts, their lengths are summed before printing, unless
+    -separate-pieces is specified.
+    
+    The -corrected-areas option is intended for when the length is not
+    meaningfully measurable on individual surfaces, it is only an approximate
+    correction for the reduction in structure of a group average surface.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BorderLengthOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = border_length_cargs(params, execution)
+    ret = border_length_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def border_length(
@@ -60,29 +207,12 @@ def border_length(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BORDER_LENGTH_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-border-length")
-    cargs.append(execution.input_file(border))
-    cargs.append(execution.input_file(surface))
-    if opt_corrected_areas_area_metric is not None:
-        cargs.extend([
-            "-corrected-areas",
-            execution.input_file(opt_corrected_areas_area_metric)
-        ])
-    if opt_separate_pieces:
-        cargs.append("-separate-pieces")
-    if opt_hide_border_name:
-        cargs.append("-hide-border-name")
-    ret = BorderLengthOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = border_length_params(border=border, surface=surface, opt_corrected_areas_area_metric=opt_corrected_areas_area_metric, opt_separate_pieces=opt_separate_pieces, opt_hide_border_name=opt_hide_border_name)
+    return border_length_execute(params, execution)
 
 
 __all__ = [
     "BORDER_LENGTH_METADATA",
-    "BorderLengthOutputs",
     "border_length",
+    "border_length_params",
 ]

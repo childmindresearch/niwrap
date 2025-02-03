@@ -12,14 +12,122 @@ INFLATE_SUBJECT_NEW_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+InflateSubjectNewParameters = typing.TypedDict('InflateSubjectNewParameters', {
+    "__STYX_TYPE__": typing.Literal["inflate_subject_new"],
+    "subject_dir": str,
+})
 
 
-class InflateSubjectNewOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `inflate_subject_new(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "inflate_subject_new": inflate_subject_new_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def inflate_subject_new_params(
+    subject_dir: str,
+) -> InflateSubjectNewParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_dir: Directory containing the subject data to be inflated.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "inflate_subject_new",
+        "subject_dir": subject_dir,
+    }
+    return params
+
+
+def inflate_subject_new_cargs(
+    params: InflateSubjectNewParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("inflate_subject_new")
+    cargs.append(params.get("subject_dir"))
+    return cargs
+
+
+def inflate_subject_new_outputs(
+    params: InflateSubjectNewParameters,
+    execution: Execution,
+) -> InflateSubjectNewOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = InflateSubjectNewOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def inflate_subject_new_execute(
+    params: InflateSubjectNewParameters,
+    execution: Execution,
+) -> InflateSubjectNewOutputs:
+    """
+    Tool to inflate subject surfaces.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `InflateSubjectNewOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = inflate_subject_new_cargs(params, execution)
+    ret = inflate_subject_new_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def inflate_subject_new(
@@ -41,18 +149,12 @@ def inflate_subject_new(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_NEW_METADATA)
-    cargs = []
-    cargs.append("inflate_subject_new")
-    cargs.append(subject_dir)
-    ret = InflateSubjectNewOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = inflate_subject_new_params(subject_dir=subject_dir)
+    return inflate_subject_new_execute(params, execution)
 
 
 __all__ = [
     "INFLATE_SUBJECT_NEW_METADATA",
-    "InflateSubjectNewOutputs",
     "inflate_subject_new",
+    "inflate_subject_new_params",
 ]

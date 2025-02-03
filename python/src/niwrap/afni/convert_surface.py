@@ -12,6 +12,50 @@ CONVERT_SURFACE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ConvertSurfaceParameters = typing.TypedDict('ConvertSurfaceParameters', {
+    "__STYX_TYPE__": typing.Literal["ConvertSurface"],
+    "input_surface": str,
+    "output_surface": str,
+    "surface_volume": typing.NotRequired[str | None],
+    "transform_tlrc": bool,
+    "mni_lpi": bool,
+    "ixmat_1D": typing.NotRequired[str | None],
+    "native": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "ConvertSurface": convert_surface_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "ConvertSurface": convert_surface_outputs,
+    }
+    return vt.get(t)
 
 
 class ConvertSurfaceOutputs(typing.NamedTuple):
@@ -22,6 +66,132 @@ class ConvertSurfaceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_surface_file: OutputPathType
     """The converted output surface file."""
+
+
+def convert_surface_params(
+    input_surface: str,
+    output_surface: str,
+    surface_volume: str | None = None,
+    transform_tlrc: bool = False,
+    mni_lpi: bool = False,
+    ixmat_1_d: str | None = None,
+    native: bool = False,
+) -> ConvertSurfaceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Specifies the input surface.
+        output_surface: Specifies the output surface.
+        surface_volume: Specifies a surface volume.
+        transform_tlrc: Apply Talairach transform.
+        mni_lpi: Turn AFNI tlrc coordinates (RAI) into MNI coord space in LPI.
+        ixmat_1_d: Apply inverse transformation specified in 1D file.
+        native: Write the output surface in the coordinate system native to its\
+            format.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "ConvertSurface",
+        "input_surface": input_surface,
+        "output_surface": output_surface,
+        "transform_tlrc": transform_tlrc,
+        "mni_lpi": mni_lpi,
+        "native": native,
+    }
+    if surface_volume is not None:
+        params["surface_volume"] = surface_volume
+    if ixmat_1_d is not None:
+        params["ixmat_1D"] = ixmat_1_d
+    return params
+
+
+def convert_surface_cargs(
+    params: ConvertSurfaceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("ConvertSurface")
+    cargs.extend([
+        "-i",
+        params.get("input_surface")
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_surface")
+    ])
+    if params.get("surface_volume") is not None:
+        cargs.extend([
+            "-sv",
+            params.get("surface_volume")
+        ])
+    if params.get("transform_tlrc"):
+        cargs.append("-tlrc")
+    if params.get("mni_lpi"):
+        cargs.append("-MNI_lpi")
+    if params.get("ixmat_1D") is not None:
+        cargs.extend([
+            "-ixmat_1D",
+            params.get("ixmat_1D")
+        ])
+    if params.get("native"):
+        cargs.append("-native")
+    return cargs
+
+
+def convert_surface_outputs(
+    params: ConvertSurfaceParameters,
+    execution: Execution,
+) -> ConvertSurfaceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ConvertSurfaceOutputs(
+        root=execution.output_file("."),
+        output_surface_file=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def convert_surface_execute(
+    params: ConvertSurfaceParameters,
+    execution: Execution,
+) -> ConvertSurfaceOutputs:
+    """
+    Reads in a surface and writes it out in another format. Only fields pertinent to
+    SUMA are preserved.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ConvertSurfaceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = convert_surface_cargs(params, execution)
+    ret = convert_surface_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def convert_surface(
@@ -57,42 +227,13 @@ def convert_surface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_SURFACE_METADATA)
-    cargs = []
-    cargs.append("ConvertSurface")
-    cargs.extend([
-        "-i",
-        input_surface
-    ])
-    cargs.extend([
-        "-o",
-        output_surface
-    ])
-    if surface_volume is not None:
-        cargs.extend([
-            "-sv",
-            surface_volume
-        ])
-    if transform_tlrc:
-        cargs.append("-tlrc")
-    if mni_lpi:
-        cargs.append("-MNI_lpi")
-    if ixmat_1_d is not None:
-        cargs.extend([
-            "-ixmat_1D",
-            ixmat_1_d
-        ])
-    if native:
-        cargs.append("-native")
-    ret = ConvertSurfaceOutputs(
-        root=execution.output_file("."),
-        output_surface_file=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = convert_surface_params(input_surface=input_surface, output_surface=output_surface, surface_volume=surface_volume, transform_tlrc=transform_tlrc, mni_lpi=mni_lpi, ixmat_1_d=ixmat_1_d, native=native)
+    return convert_surface_execute(params, execution)
 
 
 __all__ = [
     "CONVERT_SURFACE_METADATA",
     "ConvertSurfaceOutputs",
     "convert_surface",
+    "convert_surface_params",
 ]

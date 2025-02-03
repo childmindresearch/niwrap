@@ -12,6 +12,50 @@ V_3D_SPACE_TIME_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dSpaceTimeCorrParameters = typing.TypedDict('V3dSpaceTimeCorrParameters', {
+    "__STYX_TYPE__": typing.Literal["3dSpaceTimeCorr"],
+    "insetA": InputPathType,
+    "insetB": InputPathType,
+    "prefix": str,
+    "mask": typing.NotRequired[InputPathType | None],
+    "out_Zcorr": bool,
+    "freeze_insetA_ijk": typing.NotRequired[list[float] | None],
+    "freeze_insetA_xyz": typing.NotRequired[list[float] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dSpaceTimeCorr": v_3d_space_time_corr_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dSpaceTimeCorr": v_3d_space_time_corr_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dSpaceTimeCorrOutputs(typing.NamedTuple):
@@ -22,6 +66,144 @@ class V3dSpaceTimeCorrOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """Output data set with space-time correlation coefficients."""
+
+
+def v_3d_space_time_corr_params(
+    inset_a: InputPathType,
+    inset_b: InputPathType,
+    prefix: str,
+    mask: InputPathType | None = None,
+    out_zcorr: bool = False,
+    freeze_inset_a_ijk: list[float] | None = None,
+    freeze_inset_a_xyz: list[float] | None = None,
+) -> V3dSpaceTimeCorrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        inset_a: First 4D data set.
+        inset_b: Second 4D data set. Must have the same spatial dimensions and\
+            number of time points as insetA.
+        prefix: Output filename/base.
+        mask: Optional mask for calculations. Recommended for speed and\
+            interpretability.
+        out_zcorr: Switch to output Fisher Z transform of spatial map\
+            correlation instead of Pearson r values.
+        freeze_inset_a_ijk: Freeze the seed voxel location in the insetA data\
+            set using ijk indices while the seed location in insetB moves\
+            throughout the volume or mask. Provide three ijk values.
+        freeze_inset_a_xyz: Freeze the seed voxel location in the insetA data\
+            set using xyz coordinates while the seed location in insetB moves\
+            throughout the volume or mask. Provide three xyz values.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dSpaceTimeCorr",
+        "insetA": inset_a,
+        "insetB": inset_b,
+        "prefix": prefix,
+        "out_Zcorr": out_zcorr,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if freeze_inset_a_ijk is not None:
+        params["freeze_insetA_ijk"] = freeze_inset_a_ijk
+    if freeze_inset_a_xyz is not None:
+        params["freeze_insetA_xyz"] = freeze_inset_a_xyz
+    return params
+
+
+def v_3d_space_time_corr_cargs(
+    params: V3dSpaceTimeCorrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dSpaceTimeCorr")
+    cargs.extend([
+        "-insetA",
+        execution.input_file(params.get("insetA"))
+    ])
+    cargs.extend([
+        "-insetB",
+        execution.input_file(params.get("insetB"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("out_Zcorr"):
+        cargs.append("-out_Zcorr")
+    if params.get("freeze_insetA_ijk") is not None:
+        cargs.extend([
+            "-freeze_insetA_ijk",
+            *map(str, params.get("freeze_insetA_ijk"))
+        ])
+    if params.get("freeze_insetA_xyz") is not None:
+        cargs.extend([
+            "-freeze_insetA_xyz",
+            *map(str, params.get("freeze_insetA_xyz"))
+        ])
+    return cargs
+
+
+def v_3d_space_time_corr_outputs(
+    params: V3dSpaceTimeCorrParameters,
+    execution: Execution,
+) -> V3dSpaceTimeCorrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dSpaceTimeCorrOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("prefix") + ".nii.gz"),
+    )
+    return ret
+
+
+def v_3d_space_time_corr_execute(
+    params: V3dSpaceTimeCorrParameters,
+    execution: Execution,
+) -> V3dSpaceTimeCorrOutputs:
+    """
+    Calculates correlation coefficients between two 4D datasets using space+time
+    patterns.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dSpaceTimeCorrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_space_time_corr_cargs(params, execution)
+    ret = v_3d_space_time_corr_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_space_time_corr(
@@ -63,47 +245,13 @@ def v_3d_space_time_corr(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SPACE_TIME_CORR_METADATA)
-    cargs = []
-    cargs.append("3dSpaceTimeCorr")
-    cargs.extend([
-        "-insetA",
-        execution.input_file(inset_a)
-    ])
-    cargs.extend([
-        "-insetB",
-        execution.input_file(inset_b)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if out_zcorr:
-        cargs.append("-out_Zcorr")
-    if freeze_inset_a_ijk is not None:
-        cargs.extend([
-            "-freeze_insetA_ijk",
-            *map(str, freeze_inset_a_ijk)
-        ])
-    if freeze_inset_a_xyz is not None:
-        cargs.extend([
-            "-freeze_insetA_xyz",
-            *map(str, freeze_inset_a_xyz)
-        ])
-    ret = V3dSpaceTimeCorrOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file(prefix + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_space_time_corr_params(inset_a=inset_a, inset_b=inset_b, prefix=prefix, mask=mask, out_zcorr=out_zcorr, freeze_inset_a_ijk=freeze_inset_a_ijk, freeze_inset_a_xyz=freeze_inset_a_xyz)
+    return v_3d_space_time_corr_execute(params, execution)
 
 
 __all__ = [
     "V3dSpaceTimeCorrOutputs",
     "V_3D_SPACE_TIME_CORR_METADATA",
     "v_3d_space_time_corr",
+    "v_3d_space_time_corr_params",
 ]

@@ -12,14 +12,142 @@ RCA_CONFIG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RcaConfigParameters = typing.TypedDict('RcaConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["rca-config"],
+    "source_config": InputPathType,
+    "updated_config": InputPathType,
+    "unknown_args_file": InputPathType,
+    "args": typing.NotRequired[list[str] | None],
+})
 
 
-class RcaConfigOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `rca_config(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "rca-config": rca_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def rca_config_params(
+    source_config: InputPathType,
+    updated_config: InputPathType,
+    unknown_args_file: InputPathType,
+    args: list[str] | None = None,
+) -> RcaConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source_config: Path to the source configuration file.
+        updated_config: Path to the updated configuration file.
+        unknown_args_file: Path to the file where unknown arguments are\
+            recorded.
+        args: Additional arguments to be processed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "rca-config",
+        "source_config": source_config,
+        "updated_config": updated_config,
+        "unknown_args_file": unknown_args_file,
+    }
+    if args is not None:
+        params["args"] = args
+    return params
+
+
+def rca_config_cargs(
+    params: RcaConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-config",
+        "recon" + execution.input_file(params.get("source_config"))
+    ])
+    cargs.append(execution.input_file(params.get("updated_config")))
+    cargs.append(execution.input_file(params.get("unknown_args_file")))
+    if params.get("args") is not None:
+        cargs.extend(params.get("args"))
+    return cargs
+
+
+def rca_config_outputs(
+    params: RcaConfigParameters,
+    execution: Execution,
+) -> RcaConfigOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RcaConfigOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def rca_config_execute(
+    params: RcaConfigParameters,
+    execution: Execution,
+) -> RcaConfigOutputs:
+    """
+    A command-line tool that processes configuration files and arguments.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RcaConfigOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = rca_config_cargs(params, execution)
+    ret = rca_config_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def rca_config(
@@ -48,24 +176,12 @@ def rca_config(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RCA_CONFIG_METADATA)
-    cargs = []
-    cargs.extend([
-        "-config",
-        "recon" + execution.input_file(source_config)
-    ])
-    cargs.append(execution.input_file(updated_config))
-    cargs.append(execution.input_file(unknown_args_file))
-    if args is not None:
-        cargs.extend(args)
-    ret = RcaConfigOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = rca_config_params(source_config=source_config, updated_config=updated_config, unknown_args_file=unknown_args_file, args=args)
+    return rca_config_execute(params, execution)
 
 
 __all__ = [
     "RCA_CONFIG_METADATA",
-    "RcaConfigOutputs",
     "rca_config",
+    "rca_config_params",
 ]

@@ -12,6 +12,45 @@ SURFACE_FLIP_NORMALS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceFlipNormalsParameters = typing.TypedDict('SurfaceFlipNormalsParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-flip-normals"],
+    "surface": InputPathType,
+    "surface_out": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "surface-flip-normals": surface_flip_normals_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "surface-flip-normals": surface_flip_normals_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfaceFlipNormalsOutputs(typing.NamedTuple):
@@ -22,6 +61,99 @@ class SurfaceFlipNormalsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output surface"""
+
+
+def surface_flip_normals_params(
+    surface: InputPathType,
+    surface_out: str,
+) -> SurfaceFlipNormalsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to flip the normals of.
+        surface_out: the output surface.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-flip-normals",
+        "surface": surface,
+        "surface_out": surface_out,
+    }
+    return params
+
+
+def surface_flip_normals_cargs(
+    params: SurfaceFlipNormalsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-flip-normals")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(params.get("surface_out"))
+    return cargs
+
+
+def surface_flip_normals_outputs(
+    params: SurfaceFlipNormalsParameters,
+    execution: Execution,
+) -> SurfaceFlipNormalsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceFlipNormalsOutputs(
+        root=execution.output_file("."),
+        surface_out=execution.output_file(params.get("surface_out")),
+    )
+    return ret
+
+
+def surface_flip_normals_execute(
+    params: SurfaceFlipNormalsParameters,
+    execution: Execution,
+) -> SurfaceFlipNormalsOutputs:
+    """
+    Flip all tiles on a surface.
+    
+    Flips all triangles on a surface, resulting in surface normals being flipped
+    the other direction (inward vs outward). If you transform a surface with an
+    affine that has negative determinant, or a warpfield that similarly flips
+    the surface, you may end up with a surface that has normals pointing
+    inwards, which may have display problems. Using this command will solve that
+    problem.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceFlipNormalsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_flip_normals_cargs(params, execution)
+    ret = surface_flip_normals_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_flip_normals(
@@ -52,21 +184,13 @@ def surface_flip_normals(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_FLIP_NORMALS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-flip-normals")
-    cargs.append(execution.input_file(surface))
-    cargs.append(surface_out)
-    ret = SurfaceFlipNormalsOutputs(
-        root=execution.output_file("."),
-        surface_out=execution.output_file(surface_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_flip_normals_params(surface=surface, surface_out=surface_out)
+    return surface_flip_normals_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_FLIP_NORMALS_METADATA",
     "SurfaceFlipNormalsOutputs",
     "surface_flip_normals",
+    "surface_flip_normals_params",
 ]

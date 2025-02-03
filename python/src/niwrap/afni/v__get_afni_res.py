@@ -12,14 +12,129 @@ V__GET_AFNI_RES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VGetAfniResParameters = typing.TypedDict('VGetAfniResParameters', {
+    "__STYX_TYPE__": typing.Literal["@GetAfniRes"],
+    "output_type": typing.NotRequired[typing.Literal["-min", "-max", "-mean"] | None],
+    "input_dataset": InputPathType,
+})
 
 
-class VGetAfniResOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__get_afni_res(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@GetAfniRes": v__get_afni_res_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__get_afni_res_params(
+    input_dataset: InputPathType,
+    output_type: typing.Literal["-min", "-max", "-mean"] | None = None,
+) -> VGetAfniResParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dataset: Input dataset.
+        output_type: Output type specifying whether to return the minimum,\
+            maximum, or mean resolution.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@GetAfniRes",
+        "input_dataset": input_dataset,
+    }
+    if output_type is not None:
+        params["output_type"] = output_type
+    return params
+
+
+def v__get_afni_res_cargs(
+    params: VGetAfniResParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("output_type") is not None:
+        cargs.append("@GetAfniRes" + params.get("output_type"))
+    cargs.append(execution.input_file(params.get("input_dataset")))
+    return cargs
+
+
+def v__get_afni_res_outputs(
+    params: VGetAfniResParameters,
+    execution: Execution,
+) -> VGetAfniResOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VGetAfniResOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__get_afni_res_execute(
+    params: VGetAfniResParameters,
+    execution: Execution,
+) -> VGetAfniResOutputs:
+    """
+    Tool to return the voxel resolution of a dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VGetAfniResOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__get_afni_res_cargs(params, execution)
+    ret = v__get_afni_res_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__get_afni_res(
@@ -44,19 +159,12 @@ def v__get_afni_res(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_RES_METADATA)
-    cargs = []
-    if output_type is not None:
-        cargs.append("@GetAfniRes" + output_type)
-    cargs.append(execution.input_file(input_dataset))
-    ret = VGetAfniResOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__get_afni_res_params(output_type=output_type, input_dataset=input_dataset)
+    return v__get_afni_res_execute(params, execution)
 
 
 __all__ = [
-    "VGetAfniResOutputs",
     "V__GET_AFNI_RES_METADATA",
     "v__get_afni_res",
+    "v__get_afni_res_params",
 ]

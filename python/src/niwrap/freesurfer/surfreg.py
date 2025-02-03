@@ -12,6 +12,59 @@ SURFREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+SurfregParameters = typing.TypedDict('SurfregParameters', {
+    "__STYX_TYPE__": typing.Literal["surfreg"],
+    "subject": str,
+    "target": str,
+    "cross_hemi": bool,
+    "reg_lh": bool,
+    "reg_rh": bool,
+    "reg_both": bool,
+    "no_annot": bool,
+    "annot": typing.NotRequired[str | None],
+    "aparc": bool,
+    "noneg": bool,
+    "init_reg": typing.NotRequired[str | None],
+    "lta": typing.NotRequired[str | None],
+    "init_from_tal": bool,
+    "outsurf": typing.NotRequired[str | None],
+    "no_set_vol_geom": bool,
+    "threads": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "surfreg": surfreg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "surfreg": surfreg_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfregOutputs(typing.NamedTuple):
@@ -22,6 +75,188 @@ class SurfregOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_surface: OutputPathType
     """Output surface registration file"""
+
+
+def surfreg_params(
+    subject: str,
+    target: str,
+    cross_hemi: bool = False,
+    reg_lh: bool = False,
+    reg_rh: bool = False,
+    reg_both: bool = False,
+    no_annot: bool = False,
+    annot: str | None = None,
+    aparc: bool = False,
+    noneg: bool = False,
+    init_reg: str | None = None,
+    lta: str | None = None,
+    init_from_tal: bool = False,
+    outsurf: str | None = None,
+    no_set_vol_geom: bool = False,
+    threads: float | None = None,
+) -> SurfregParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Subject to register.
+        target: Target average subject to use as a registration target.
+        cross_hemi: Perform cross-hemi registration.
+        reg_lh: Register left hemisphere only.
+        reg_rh: Register right hemisphere only.
+        reg_both: Register both left and right hemispheres.
+        no_annot: Do not use annot to rip.
+        annot: Use specified annotation name.
+        aparc: Set annotation name to aparc.annot.
+        noneg: Option flag with unspecified behavior in the provided help text.
+        init_reg: Initial registration name, default is sphere.
+        lta: Apply rotational components of affine registration.
+        init_from_tal: Use talaiach.xfm.lta for initial spherical registration.
+        outsurf: Output surface name, default depends on the target.
+        no_set_vol_geom: Do not set volume geometry and center the sphere.
+        threads: Number of threads to run in parallel.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surfreg",
+        "subject": subject,
+        "target": target,
+        "cross_hemi": cross_hemi,
+        "reg_lh": reg_lh,
+        "reg_rh": reg_rh,
+        "reg_both": reg_both,
+        "no_annot": no_annot,
+        "aparc": aparc,
+        "noneg": noneg,
+        "init_from_tal": init_from_tal,
+        "no_set_vol_geom": no_set_vol_geom,
+    }
+    if annot is not None:
+        params["annot"] = annot
+    if init_reg is not None:
+        params["init_reg"] = init_reg
+    if lta is not None:
+        params["lta"] = lta
+    if outsurf is not None:
+        params["outsurf"] = outsurf
+    if threads is not None:
+        params["threads"] = threads
+    return params
+
+
+def surfreg_cargs(
+    params: SurfregParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("surfreg")
+    cargs.extend([
+        "--s",
+        params.get("subject")
+    ])
+    cargs.extend([
+        "--t",
+        params.get("target")
+    ])
+    if params.get("cross_hemi"):
+        cargs.append("--xhemi")
+    if params.get("reg_lh"):
+        cargs.append("--lh")
+    if params.get("reg_rh"):
+        cargs.append("--rh")
+    if params.get("reg_both"):
+        cargs.append("--lhrh")
+    if params.get("no_annot"):
+        cargs.append("--no-annot")
+    if params.get("annot") is not None:
+        cargs.extend([
+            "--annot",
+            params.get("annot")
+        ])
+    if params.get("aparc"):
+        cargs.append("--aparc")
+    if params.get("noneg"):
+        cargs.append("--noneg")
+    if params.get("init_reg") is not None:
+        cargs.extend([
+            "--init-reg",
+            params.get("init_reg")
+        ])
+    if params.get("lta") is not None:
+        cargs.extend([
+            "--lta",
+            params.get("lta")
+        ])
+    if params.get("init_from_tal"):
+        cargs.append("--init-from-tal")
+    if params.get("outsurf") is not None:
+        cargs.extend([
+            "--o",
+            params.get("outsurf")
+        ])
+    if params.get("no_set_vol_geom"):
+        cargs.append("--no-set-vol-geom")
+    if params.get("threads") is not None:
+        cargs.extend([
+            "--threads",
+            str(params.get("threads"))
+        ])
+    return cargs
+
+
+def surfreg_outputs(
+    params: SurfregParameters,
+    execution: Execution,
+) -> SurfregOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfregOutputs(
+        root=execution.output_file("."),
+        output_surface=execution.output_file("subject/surf/hemi.target.sphere.reg"),
+    )
+    return ret
+
+
+def surfreg_execute(
+    params: SurfregParameters,
+    execution: Execution,
+) -> SurfregOutputs:
+    """
+    Performs surface registration (mris_register) between a subject and a target
+    average subject based on the hemi.reg.template.tif atlas in the average subject.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfregOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surfreg_cargs(params, execution)
+    ret = surfreg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surfreg(
@@ -74,69 +309,13 @@ def surfreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFREG_METADATA)
-    cargs = []
-    cargs.append("surfreg")
-    cargs.extend([
-        "--s",
-        subject
-    ])
-    cargs.extend([
-        "--t",
-        target
-    ])
-    if cross_hemi:
-        cargs.append("--xhemi")
-    if reg_lh:
-        cargs.append("--lh")
-    if reg_rh:
-        cargs.append("--rh")
-    if reg_both:
-        cargs.append("--lhrh")
-    if no_annot:
-        cargs.append("--no-annot")
-    if annot is not None:
-        cargs.extend([
-            "--annot",
-            annot
-        ])
-    if aparc:
-        cargs.append("--aparc")
-    if noneg:
-        cargs.append("--noneg")
-    if init_reg is not None:
-        cargs.extend([
-            "--init-reg",
-            init_reg
-        ])
-    if lta is not None:
-        cargs.extend([
-            "--lta",
-            lta
-        ])
-    if init_from_tal:
-        cargs.append("--init-from-tal")
-    if outsurf is not None:
-        cargs.extend([
-            "--o",
-            outsurf
-        ])
-    if no_set_vol_geom:
-        cargs.append("--no-set-vol-geom")
-    if threads is not None:
-        cargs.extend([
-            "--threads",
-            str(threads)
-        ])
-    ret = SurfregOutputs(
-        root=execution.output_file("."),
-        output_surface=execution.output_file("subject/surf/hemi.target.sphere.reg"),
-    )
-    execution.run(cargs)
-    return ret
+    params = surfreg_params(subject=subject, target=target, cross_hemi=cross_hemi, reg_lh=reg_lh, reg_rh=reg_rh, reg_both=reg_both, no_annot=no_annot, annot=annot, aparc=aparc, noneg=noneg, init_reg=init_reg, lta=lta, init_from_tal=init_from_tal, outsurf=outsurf, no_set_vol_geom=no_set_vol_geom, threads=threads)
+    return surfreg_execute(params, execution)
 
 
 __all__ = [
     "SURFREG_METADATA",
     "SurfregOutputs",
     "surfreg",
+    "surfreg_params",
 ]

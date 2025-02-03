@@ -12,14 +12,145 @@ VOLUME_REORIENT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+VolumeReorientParameters = typing.TypedDict('VolumeReorientParameters', {
+    "__STYX_TYPE__": typing.Literal["volume-reorient"],
+    "volume": InputPathType,
+    "orient_string": str,
+    "volume_out": str,
+})
 
 
-class VolumeReorientOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `volume_reorient(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "volume-reorient": volume_reorient_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def volume_reorient_params(
+    volume: InputPathType,
+    orient_string: str,
+    volume_out: str,
+) -> VolumeReorientParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume: the volume to reorient.
+        orient_string: the desired orientation.
+        volume_out: out - the reoriented volume.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume-reorient",
+        "volume": volume,
+        "orient_string": orient_string,
+        "volume_out": volume_out,
+    }
+    return params
+
+
+def volume_reorient_cargs(
+    params: VolumeReorientParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-volume-reorient")
+    cargs.append(execution.input_file(params.get("volume")))
+    cargs.append(params.get("orient_string"))
+    cargs.append(params.get("volume_out"))
+    return cargs
+
+
+def volume_reorient_outputs(
+    params: VolumeReorientParameters,
+    execution: Execution,
+) -> VolumeReorientOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VolumeReorientOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def volume_reorient_execute(
+    params: VolumeReorientParameters,
+    execution: Execution,
+) -> VolumeReorientOutputs:
+    """
+    Change voxel order of a volume file.
+    
+    Changes the voxel order and the header spacing/origin information such that
+    the value of any spatial point is unchanged. Orientation strings look like
+    'LPI', which means first index is left to right, second is posterior to
+    anterior, and third is inferior to superior. The valid characters are:
+    
+    L left to right
+    R right to left
+    P posterior to anterior
+    A anterior to posterior
+    I inferior to superior
+    S superior to inferior.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VolumeReorientOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = volume_reorient_cargs(params, execution)
+    ret = volume_reorient_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def volume_reorient(
@@ -57,21 +188,12 @@ def volume_reorient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VOLUME_REORIENT_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-volume-reorient")
-    cargs.append(execution.input_file(volume))
-    cargs.append(orient_string)
-    cargs.append(volume_out)
-    ret = VolumeReorientOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = volume_reorient_params(volume=volume, orient_string=orient_string, volume_out=volume_out)
+    return volume_reorient_execute(params, execution)
 
 
 __all__ = [
     "VOLUME_REORIENT_METADATA",
-    "VolumeReorientOutputs",
     "volume_reorient",
+    "volume_reorient_params",
 ]

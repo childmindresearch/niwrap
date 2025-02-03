@@ -12,6 +12,45 @@ ROTCOM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+RotcomParameters = typing.TypedDict('RotcomParameters', {
+    "__STYX_TYPE__": typing.Literal["rotcom"],
+    "rotate_ashift": str,
+    "dataset": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "rotcom": rotcom_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "rotcom": rotcom_outputs,
+    }
+    return vt.get(t)
 
 
 class RotcomOutputs(typing.NamedTuple):
@@ -22,6 +61,95 @@ class RotcomOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     stdout: OutputPathType
     """The 4x3 transformation matrix+vector output"""
+
+
+def rotcom_params(
+    rotate_ashift: str,
+    dataset: InputPathType | None = None,
+) -> RotcomParameters:
+    """
+    Build parameters.
+    
+    Args:
+        rotate_ashift: Combination of rotate and ashift options in a single\
+            quoted string (e.g., '-rotate 10I 0R 0A -ashift 5S 0 0').
+        dataset: Input dataset for determining coordinate order.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "rotcom",
+        "rotate_ashift": rotate_ashift,
+    }
+    if dataset is not None:
+        params["dataset"] = dataset
+    return params
+
+
+def rotcom_cargs(
+    params: RotcomParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("rotcom")
+    cargs.append(params.get("rotate_ashift"))
+    if params.get("dataset") is not None:
+        cargs.append(execution.input_file(params.get("dataset")))
+    return cargs
+
+
+def rotcom_outputs(
+    params: RotcomParameters,
+    execution: Execution,
+) -> RotcomOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RotcomOutputs(
+        root=execution.output_file("."),
+        stdout=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def rotcom_execute(
+    params: RotcomParameters,
+    execution: Execution,
+) -> RotcomOutputs:
+    """
+    Prints to stdout the 4x3 transformation matrix+vector that would be applied by
+    3drotate to the given dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RotcomOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = rotcom_cargs(params, execution)
+    ret = rotcom_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def rotcom(
@@ -47,21 +175,13 @@ def rotcom(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ROTCOM_METADATA)
-    cargs = []
-    cargs.append("rotcom")
-    cargs.append(rotate_ashift)
-    if dataset is not None:
-        cargs.append(execution.input_file(dataset))
-    ret = RotcomOutputs(
-        root=execution.output_file("."),
-        stdout=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = rotcom_params(rotate_ashift=rotate_ashift, dataset=dataset)
+    return rotcom_execute(params, execution)
 
 
 __all__ = [
     "ROTCOM_METADATA",
     "RotcomOutputs",
     "rotcom",
+    "rotcom_params",
 ]

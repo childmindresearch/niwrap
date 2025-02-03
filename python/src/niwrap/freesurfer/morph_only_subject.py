@@ -12,14 +12,126 @@ MORPH_ONLY_SUBJECT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MorphOnlySubjectParameters = typing.TypedDict('MorphOnlySubjectParameters', {
+    "__STYX_TYPE__": typing.Literal["morph_only_subject"],
+    "placeholder_input": typing.NotRequired[str | None],
+})
 
 
-class MorphOnlySubjectOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `morph_only_subject(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "morph_only_subject": morph_only_subject_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def morph_only_subject_params(
+    placeholder_input: str | None = None,
+) -> MorphOnlySubjectParameters:
+    """
+    Build parameters.
+    
+    Args:
+        placeholder_input: Placeholder input argument for morph_only_subject\
+            tool.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "morph_only_subject",
+    }
+    if placeholder_input is not None:
+        params["placeholder_input"] = placeholder_input
+    return params
+
+
+def morph_only_subject_cargs(
+    params: MorphOnlySubjectParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("morph_only_subject")
+    if params.get("placeholder_input") is not None:
+        cargs.append(params.get("placeholder_input"))
+    return cargs
+
+
+def morph_only_subject_outputs(
+    params: MorphOnlySubjectParameters,
+    execution: Execution,
+) -> MorphOnlySubjectOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MorphOnlySubjectOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def morph_only_subject_execute(
+    params: MorphOnlySubjectParameters,
+    execution: Execution,
+) -> MorphOnlySubjectOutputs:
+    """
+    A placeholder descriptor for morph_only_subject tool as help content is
+    unavailable.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MorphOnlySubjectOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = morph_only_subject_cargs(params, execution)
+    ret = morph_only_subject_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def morph_only_subject(
@@ -43,19 +155,12 @@ def morph_only_subject(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_ONLY_SUBJECT_METADATA)
-    cargs = []
-    cargs.append("morph_only_subject")
-    if placeholder_input is not None:
-        cargs.append(placeholder_input)
-    ret = MorphOnlySubjectOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = morph_only_subject_params(placeholder_input=placeholder_input)
+    return morph_only_subject_execute(params, execution)
 
 
 __all__ = [
     "MORPH_ONLY_SUBJECT_METADATA",
-    "MorphOnlySubjectOutputs",
     "morph_only_subject",
+    "morph_only_subject_params",
 ]

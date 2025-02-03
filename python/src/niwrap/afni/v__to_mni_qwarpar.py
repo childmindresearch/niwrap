@@ -12,6 +12,43 @@ V__TO_MNI_QWARPAR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VToMniQwarparParameters = typing.TypedDict('VToMniQwarparParameters', {
+    "__STYX_TYPE__": typing.Literal["@toMNI_Qwarpar"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@toMNI_Qwarpar": v__to_mni_qwarpar_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@toMNI_Qwarpar": v__to_mni_qwarpar_outputs,
+    }
+    return vt.get(t)
 
 
 class VToMniQwarparOutputs(typing.NamedTuple):
@@ -22,6 +59,84 @@ class VToMniQwarparOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output dataset created after processing."""
+
+
+def v__to_mni_qwarpar_params(
+) -> VToMniQwarparParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@toMNI_Qwarpar",
+    }
+    return params
+
+
+def v__to_mni_qwarpar_cargs(
+    params: VToMniQwarparParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@toMNI_Qwarpar")
+    return cargs
+
+
+def v__to_mni_qwarpar_outputs(
+    params: VToMniQwarparParameters,
+    execution: Execution,
+) -> VToMniQwarparOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VToMniQwarparOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("*_uni+tlrc.HEAD"),
+    )
+    return ret
+
+
+def v__to_mni_qwarpar_execute(
+    params: VToMniQwarparParameters,
+    execution: Execution,
+) -> VToMniQwarparOutputs:
+    """
+    Transforms datasets to MNI space, then collectively re-transforms them to
+    produce a refined average.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VToMniQwarparOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__to_mni_qwarpar_cargs(params, execution)
+    ret = v__to_mni_qwarpar_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__to_mni_qwarpar(
@@ -42,18 +157,13 @@ def v__to_mni_qwarpar(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TO_MNI_QWARPAR_METADATA)
-    cargs = []
-    cargs.append("@toMNI_Qwarpar")
-    ret = VToMniQwarparOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("*_uni+tlrc.HEAD"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__to_mni_qwarpar_params()
+    return v__to_mni_qwarpar_execute(params, execution)
 
 
 __all__ = [
     "VToMniQwarparOutputs",
     "V__TO_MNI_QWARPAR_METADATA",
     "v__to_mni_qwarpar",
+    "v__to_mni_qwarpar_params",
 ]

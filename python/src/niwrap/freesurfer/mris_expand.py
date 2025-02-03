@@ -12,6 +12,50 @@ MRIS_EXPAND_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisExpandParameters = typing.TypedDict('MrisExpandParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_expand"],
+    "input_surface": InputPathType,
+    "expansion_distance": float,
+    "output_surface": str,
+    "thickness": bool,
+    "label": typing.NotRequired[str | None],
+    "tmap": typing.NotRequired[str | None],
+    "tmap_random": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_expand": mris_expand_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_expand": mris_expand_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisExpandOutputs(typing.NamedTuple):
@@ -22,6 +66,129 @@ class MrisExpandOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_surface_file: OutputPathType
     """Expanded output surface file"""
+
+
+def mris_expand_params(
+    input_surface: InputPathType,
+    expansion_distance: float,
+    output_surface: str,
+    thickness: bool = False,
+    label: str | None = None,
+    tmap: str | None = None,
+    tmap_random: str | None = None,
+) -> MrisExpandParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file (e.g. lh.white).
+        expansion_distance: Expansion distance in mm.
+        output_surface: Output surface file.
+        thickness: Use thickness for expansion.
+        label: Use label file for expansion.
+        tmap: Use a prespecified map of percent thickness to compute the target\
+            locations for expansion.
+        tmap_random: Create a random target distance map with Gaussian sampling\
+            for the target locations.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_expand",
+        "input_surface": input_surface,
+        "expansion_distance": expansion_distance,
+        "output_surface": output_surface,
+        "thickness": thickness,
+    }
+    if label is not None:
+        params["label"] = label
+    if tmap is not None:
+        params["tmap"] = tmap
+    if tmap_random is not None:
+        params["tmap_random"] = tmap_random
+    return params
+
+
+def mris_expand_cargs(
+    params: MrisExpandParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_expand")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    cargs.append(str(params.get("expansion_distance")))
+    cargs.append(params.get("output_surface"))
+    if params.get("thickness"):
+        cargs.append("-thickness")
+    if params.get("label") is not None:
+        cargs.extend([
+            "-label",
+            params.get("label")
+        ])
+    if params.get("tmap") is not None:
+        cargs.extend([
+            "-tmap",
+            params.get("tmap")
+        ])
+    if params.get("tmap_random") is not None:
+        cargs.extend([
+            "-tmap random",
+            params.get("tmap_random")
+        ])
+    return cargs
+
+
+def mris_expand_outputs(
+    params: MrisExpandParameters,
+    execution: Execution,
+) -> MrisExpandOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisExpandOutputs(
+        root=execution.output_file("."),
+        output_surface_file=execution.output_file(params.get("output_surface")),
+    )
+    return ret
+
+
+def mris_expand_execute(
+    params: MrisExpandParameters,
+    execution: Execution,
+) -> MrisExpandOutputs:
+    """
+    Expand a given surface by a specified distance.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisExpandOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_expand_cargs(params, execution)
+    ret = mris_expand_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_expand(
@@ -57,38 +224,13 @@ def mris_expand(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXPAND_METADATA)
-    cargs = []
-    cargs.append("mris_expand")
-    cargs.append(execution.input_file(input_surface))
-    cargs.append(str(expansion_distance))
-    cargs.append(output_surface)
-    if thickness:
-        cargs.append("-thickness")
-    if label is not None:
-        cargs.extend([
-            "-label",
-            label
-        ])
-    if tmap is not None:
-        cargs.extend([
-            "-tmap",
-            tmap
-        ])
-    if tmap_random is not None:
-        cargs.extend([
-            "-tmap random",
-            tmap_random
-        ])
-    ret = MrisExpandOutputs(
-        root=execution.output_file("."),
-        output_surface_file=execution.output_file(output_surface),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_expand_params(input_surface=input_surface, expansion_distance=expansion_distance, output_surface=output_surface, thickness=thickness, label=label, tmap=tmap, tmap_random=tmap_random)
+    return mris_expand_execute(params, execution)
 
 
 __all__ = [
     "MRIS_EXPAND_METADATA",
     "MrisExpandOutputs",
     "mris_expand",
+    "mris_expand_params",
 ]

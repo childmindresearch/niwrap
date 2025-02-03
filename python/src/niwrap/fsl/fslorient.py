@@ -12,14 +12,128 @@ FSLORIENT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslorientParameters = typing.TypedDict('FslorientParameters', {
+    "__STYX_TYPE__": typing.Literal["fslorient"],
+    "swap_orient": bool,
+    "filename": InputPathType,
+})
 
 
-class FslorientOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fslorient(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fslorient": fslorient_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fslorient_params(
+    filename: InputPathType,
+    swap_orient: bool = False,
+) -> FslorientParameters:
+    """
+    Build parameters.
+    
+    Args:
+        filename: Filename of the image to operate on (e.g. img.nii.gz).
+        swap_orient: Swaps FSL radiological and FSL neurological.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslorient",
+        "swap_orient": swap_orient,
+        "filename": filename,
+    }
+    return params
+
+
+def fslorient_cargs(
+    params: FslorientParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslorient")
+    if params.get("swap_orient"):
+        cargs.append("-swaporient")
+    cargs.append(execution.input_file(params.get("filename")))
+    return cargs
+
+
+def fslorient_outputs(
+    params: FslorientParameters,
+    execution: Execution,
+) -> FslorientOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslorientOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fslorient_execute(
+    params: FslorientParameters,
+    execution: Execution,
+) -> FslorientOutputs:
+    """
+    FSL tool to manipulate NIfTI header orientation information.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslorientOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslorient_cargs(params, execution)
+    ret = fslorient_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslorient(
@@ -43,20 +157,12 @@ def fslorient(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLORIENT_METADATA)
-    cargs = []
-    cargs.append("fslorient")
-    if swap_orient:
-        cargs.append("-swaporient")
-    cargs.append(execution.input_file(filename))
-    ret = FslorientOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslorient_params(swap_orient=swap_orient, filename=filename)
+    return fslorient_execute(params, execution)
 
 
 __all__ = [
     "FSLORIENT_METADATA",
-    "FslorientOutputs",
     "fslorient",
+    "fslorient_params",
 ]

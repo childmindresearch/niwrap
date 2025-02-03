@@ -12,14 +12,124 @@ MORPH_SUBJECT_LH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MorphSubjectLhParameters = typing.TypedDict('MorphSubjectLhParameters', {
+    "__STYX_TYPE__": typing.Literal["morph_subject-lh"],
+    "subject_id": str,
+})
 
 
-class MorphSubjectLhOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `morph_subject_lh(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "morph_subject-lh": morph_subject_lh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def morph_subject_lh_params(
+    subject_id: str,
+) -> MorphSubjectLhParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: Subject ID.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "morph_subject-lh",
+        "subject_id": subject_id,
+    }
+    return params
+
+
+def morph_subject_lh_cargs(
+    params: MorphSubjectLhParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.extend([
+        "-lh",
+        "morph_subject" + params.get("subject_id")
+    ])
+    return cargs
+
+
+def morph_subject_lh_outputs(
+    params: MorphSubjectLhParameters,
+    execution: Execution,
+) -> MorphSubjectLhOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MorphSubjectLhOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def morph_subject_lh_execute(
+    params: MorphSubjectLhParameters,
+    execution: Execution,
+) -> MorphSubjectLhOutputs:
+    """
+    A tool for morphing subject's left hemisphere.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MorphSubjectLhOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = morph_subject_lh_cargs(params, execution)
+    ret = morph_subject_lh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def morph_subject_lh(
@@ -41,20 +151,12 @@ def morph_subject_lh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MORPH_SUBJECT_LH_METADATA)
-    cargs = []
-    cargs.extend([
-        "-lh",
-        "morph_subject" + subject_id
-    ])
-    ret = MorphSubjectLhOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = morph_subject_lh_params(subject_id=subject_id)
+    return morph_subject_lh_execute(params, execution)
 
 
 __all__ = [
     "MORPH_SUBJECT_LH_METADATA",
-    "MorphSubjectLhOutputs",
     "morph_subject_lh",
+    "morph_subject_lh_params",
 ]

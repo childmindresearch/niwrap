@@ -12,35 +12,105 @@ MRHISTOGRAM_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+MrhistogramConfigParameters = typing.TypedDict('MrhistogramConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+MrhistogramParameters = typing.TypedDict('MrhistogramParameters', {
+    "__STYX_TYPE__": typing.Literal["mrhistogram"],
+    "bins": typing.NotRequired[int | None],
+    "template": typing.NotRequired[InputPathType | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "ignorezero": bool,
+    "allvolumes": bool,
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[MrhistogramConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "image": InputPathType,
+    "hist": str,
+})
 
 
-@dataclasses.dataclass
-class MrhistogramConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mrhistogram": mrhistogram_cargs,
+        "config": mrhistogram_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mrhistogram": mrhistogram_outputs,
+    }
+    return vt.get(t)
+
+
+def mrhistogram_config_params(
+    key: str,
+    value: str,
+) -> MrhistogramConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def mrhistogram_config_cargs(
+    params: MrhistogramConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class MrhistogramOutputs(typing.NamedTuple):
@@ -51,6 +121,185 @@ class MrhistogramOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     hist: OutputPathType
     """the output histogram file"""
+
+
+def mrhistogram_params(
+    image: InputPathType,
+    hist: str,
+    bins: int | None = None,
+    template: InputPathType | None = None,
+    mask: InputPathType | None = None,
+    ignorezero: bool = False,
+    allvolumes: bool = False,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[MrhistogramConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> MrhistogramParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image: the input image from which the histogram will be computed.
+        hist: the output histogram file.
+        bins: Manually set the number of bins to use to generate the histogram.
+        template: Use an existing histogram file as the template for histogram\
+            formation.
+        mask: Calculate the histogram only within a mask image.
+        ignorezero: ignore zero-valued data during histogram construction.
+        allvolumes: generate one histogram across all image volumes, rather\
+            than one per image volume.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mrhistogram",
+        "ignorezero": ignorezero,
+        "allvolumes": allvolumes,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "image": image,
+        "hist": hist,
+    }
+    if bins is not None:
+        params["bins"] = bins
+    if template is not None:
+        params["template"] = template
+    if mask is not None:
+        params["mask"] = mask
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def mrhistogram_cargs(
+    params: MrhistogramParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mrhistogram")
+    if params.get("bins") is not None:
+        cargs.extend([
+            "-bins",
+            str(params.get("bins"))
+        ])
+    if params.get("template") is not None:
+        cargs.extend([
+            "-template",
+            execution.input_file(params.get("template"))
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("ignorezero"):
+        cargs.append("-ignorezero")
+    if params.get("allvolumes"):
+        cargs.append("-allvolumes")
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(params.get("hist"))
+    return cargs
+
+
+def mrhistogram_outputs(
+    params: MrhistogramParameters,
+    execution: Execution,
+) -> MrhistogramOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrhistogramOutputs(
+        root=execution.output_file("."),
+        hist=execution.output_file(params.get("hist")),
+    )
+    return ret
+
+
+def mrhistogram_execute(
+    params: MrhistogramParameters,
+    execution: Execution,
+) -> MrhistogramOutputs:
+    """
+    Generate a histogram of image intensities.
+    
+    
+    
+    References:
+    
+    .
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrhistogramOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mrhistogram_cargs(params, execution)
+    ret = mrhistogram_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mrhistogram(
@@ -66,7 +315,7 @@ def mrhistogram(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MrhistogramConfig] | None = None,
+    config: list[MrhistogramConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -112,59 +361,14 @@ def mrhistogram(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRHISTOGRAM_METADATA)
-    cargs = []
-    cargs.append("mrhistogram")
-    if bins is not None:
-        cargs.extend([
-            "-bins",
-            str(bins)
-        ])
-    if template is not None:
-        cargs.extend([
-            "-template",
-            execution.input_file(template)
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if ignorezero:
-        cargs.append("-ignorezero")
-    if allvolumes:
-        cargs.append("-allvolumes")
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(image))
-    cargs.append(hist)
-    ret = MrhistogramOutputs(
-        root=execution.output_file("."),
-        hist=execution.output_file(hist),
-    )
-    execution.run(cargs)
-    return ret
+    params = mrhistogram_params(bins=bins, template=template, mask=mask, ignorezero=ignorezero, allvolumes=allvolumes, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, image=image, hist=hist)
+    return mrhistogram_execute(params, execution)
 
 
 __all__ = [
     "MRHISTOGRAM_METADATA",
-    "MrhistogramConfig",
     "MrhistogramOutputs",
     "mrhistogram",
+    "mrhistogram_config_params",
+    "mrhistogram_params",
 ]

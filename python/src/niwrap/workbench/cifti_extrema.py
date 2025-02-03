@@ -12,35 +12,107 @@ CIFTI_EXTREMA_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiExtremaThresholdParameters = typing.TypedDict('CiftiExtremaThresholdParameters', {
+    "__STYX_TYPE__": typing.Literal["threshold"],
+    "low": float,
+    "high": float,
+})
+CiftiExtremaParameters = typing.TypedDict('CiftiExtremaParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-extrema"],
+    "cifti": InputPathType,
+    "surface_distance": float,
+    "volume_distance": float,
+    "direction": str,
+    "cifti_out": str,
+    "opt_left_surface_surface": typing.NotRequired[InputPathType | None],
+    "opt_right_surface_surface": typing.NotRequired[InputPathType | None],
+    "opt_cerebellum_surface_surface": typing.NotRequired[InputPathType | None],
+    "opt_surface_presmooth_surface_kernel": typing.NotRequired[float | None],
+    "opt_volume_presmooth_volume_kernel": typing.NotRequired[float | None],
+    "opt_presmooth_fwhm": bool,
+    "threshold": typing.NotRequired[CiftiExtremaThresholdParameters | None],
+    "opt_merged_volume": bool,
+    "opt_sum_maps": bool,
+    "opt_consolidate_mode": bool,
+    "opt_only_maxima": bool,
+    "opt_only_minima": bool,
+})
 
 
-@dataclasses.dataclass
-class CiftiExtremaThreshold:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    ignore small extrema.
-    """
-    low: float
-    """the largest value to consider for being a minimum"""
-    high: float
-    """the smallest value to consider for being a maximum"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-threshold")
-        cargs.append(str(self.low))
-        cargs.append(str(self.high))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-extrema": cifti_extrema_cargs,
+        "threshold": cifti_extrema_threshold_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-extrema": cifti_extrema_outputs,
+    }
+    return vt.get(t)
+
+
+def cifti_extrema_threshold_params(
+    low: float,
+    high: float,
+) -> CiftiExtremaThresholdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        low: the largest value to consider for being a minimum.
+        high: the smallest value to consider for being a maximum.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "threshold",
+        "low": low,
+        "high": high,
+    }
+    return params
+
+
+def cifti_extrema_threshold_cargs(
+    params: CiftiExtremaThresholdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-threshold")
+    cargs.append(str(params.get("low")))
+    cargs.append(str(params.get("high")))
+    return cargs
 
 
 class CiftiExtremaOutputs(typing.NamedTuple):
@@ -51,6 +123,203 @@ class CiftiExtremaOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
+
+
+def cifti_extrema_params(
+    cifti: InputPathType,
+    surface_distance: float,
+    volume_distance: float,
+    direction: str,
+    cifti_out: str,
+    opt_left_surface_surface: InputPathType | None = None,
+    opt_right_surface_surface: InputPathType | None = None,
+    opt_cerebellum_surface_surface: InputPathType | None = None,
+    opt_surface_presmooth_surface_kernel: float | None = None,
+    opt_volume_presmooth_volume_kernel: float | None = None,
+    opt_presmooth_fwhm: bool = False,
+    threshold: CiftiExtremaThresholdParameters | None = None,
+    opt_merged_volume: bool = False,
+    opt_sum_maps: bool = False,
+    opt_consolidate_mode: bool = False,
+    opt_only_maxima: bool = False,
+    opt_only_minima: bool = False,
+) -> CiftiExtremaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti: the input cifti.
+        surface_distance: the minimum distance between extrema of the same\
+            type, for surface components.
+        volume_distance: the minimum distance between extrema of the same type,\
+            for volume components.
+        direction: which dimension to find extrema along, ROW or COLUMN.
+        cifti_out: the output cifti.
+        opt_left_surface_surface: specify the left surface to use: the left\
+            surface file.
+        opt_right_surface_surface: specify the right surface to use: the right\
+            surface file.
+        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\
+            the cerebellum surface file.
+        opt_surface_presmooth_surface_kernel: smooth on the surface before\
+            finding extrema: the size of the gaussian surface smoothing kernel in\
+            mm, as sigma by default.
+        opt_volume_presmooth_volume_kernel: smooth volume components before\
+            finding extrema: the size of the gaussian volume smoothing kernel in\
+            mm, as sigma by default.
+        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma.
+        threshold: ignore small extrema.
+        opt_merged_volume: treat volume components as if they were a single\
+            component.
+        opt_sum_maps: output the sum of the extrema maps instead of each map\
+            separately.
+        opt_consolidate_mode: use consolidation of local minima instead of a\
+            large neighborhood.
+        opt_only_maxima: only find the maxima.
+        opt_only_minima: only find the minima.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-extrema",
+        "cifti": cifti,
+        "surface_distance": surface_distance,
+        "volume_distance": volume_distance,
+        "direction": direction,
+        "cifti_out": cifti_out,
+        "opt_presmooth_fwhm": opt_presmooth_fwhm,
+        "opt_merged_volume": opt_merged_volume,
+        "opt_sum_maps": opt_sum_maps,
+        "opt_consolidate_mode": opt_consolidate_mode,
+        "opt_only_maxima": opt_only_maxima,
+        "opt_only_minima": opt_only_minima,
+    }
+    if opt_left_surface_surface is not None:
+        params["opt_left_surface_surface"] = opt_left_surface_surface
+    if opt_right_surface_surface is not None:
+        params["opt_right_surface_surface"] = opt_right_surface_surface
+    if opt_cerebellum_surface_surface is not None:
+        params["opt_cerebellum_surface_surface"] = opt_cerebellum_surface_surface
+    if opt_surface_presmooth_surface_kernel is not None:
+        params["opt_surface_presmooth_surface_kernel"] = opt_surface_presmooth_surface_kernel
+    if opt_volume_presmooth_volume_kernel is not None:
+        params["opt_volume_presmooth_volume_kernel"] = opt_volume_presmooth_volume_kernel
+    if threshold is not None:
+        params["threshold"] = threshold
+    return params
+
+
+def cifti_extrema_cargs(
+    params: CiftiExtremaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-extrema")
+    cargs.append(execution.input_file(params.get("cifti")))
+    cargs.append(str(params.get("surface_distance")))
+    cargs.append(str(params.get("volume_distance")))
+    cargs.append(params.get("direction"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_left_surface_surface") is not None:
+        cargs.extend([
+            "-left-surface",
+            execution.input_file(params.get("opt_left_surface_surface"))
+        ])
+    if params.get("opt_right_surface_surface") is not None:
+        cargs.extend([
+            "-right-surface",
+            execution.input_file(params.get("opt_right_surface_surface"))
+        ])
+    if params.get("opt_cerebellum_surface_surface") is not None:
+        cargs.extend([
+            "-cerebellum-surface",
+            execution.input_file(params.get("opt_cerebellum_surface_surface"))
+        ])
+    if params.get("opt_surface_presmooth_surface_kernel") is not None:
+        cargs.extend([
+            "-surface-presmooth",
+            str(params.get("opt_surface_presmooth_surface_kernel"))
+        ])
+    if params.get("opt_volume_presmooth_volume_kernel") is not None:
+        cargs.extend([
+            "-volume-presmooth",
+            str(params.get("opt_volume_presmooth_volume_kernel"))
+        ])
+    if params.get("opt_presmooth_fwhm"):
+        cargs.append("-presmooth-fwhm")
+    if params.get("threshold") is not None:
+        cargs.extend(dyn_cargs(params.get("threshold")["__STYXTYPE__"])(params.get("threshold"), execution))
+    if params.get("opt_merged_volume"):
+        cargs.append("-merged-volume")
+    if params.get("opt_sum_maps"):
+        cargs.append("-sum-maps")
+    if params.get("opt_consolidate_mode"):
+        cargs.append("-consolidate-mode")
+    if params.get("opt_only_maxima"):
+        cargs.append("-only-maxima")
+    if params.get("opt_only_minima"):
+        cargs.append("-only-minima")
+    return cargs
+
+
+def cifti_extrema_outputs(
+    params: CiftiExtremaParameters,
+    execution: Execution,
+) -> CiftiExtremaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiExtremaOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_extrema_execute(
+    params: CiftiExtremaParameters,
+    execution: Execution,
+) -> CiftiExtremaOutputs:
+    """
+    Find extrema in a cifti file.
+    
+    Finds spatial locations in a cifti file that have more extreme values than
+    all nearby locations in the same component (surface or volume structure).
+    The input cifti file must have a brain models mapping along the specified
+    direction. COLUMN is the direction that works on dtseries and dscalar. For
+    dconn, if it is symmetric use COLUMN, otherwise use ROW.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiExtremaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_extrema_cargs(params, execution)
+    ret = cifti_extrema_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cifti_extrema(
@@ -65,7 +334,7 @@ def cifti_extrema(
     opt_surface_presmooth_surface_kernel: float | None = None,
     opt_volume_presmooth_volume_kernel: float | None = None,
     opt_presmooth_fwhm: bool = False,
-    threshold: CiftiExtremaThreshold | None = None,
+    threshold: CiftiExtremaThresholdParameters | None = None,
     opt_merged_volume: bool = False,
     opt_sum_maps: bool = False,
     opt_consolidate_mode: bool = False,
@@ -122,64 +391,14 @@ def cifti_extrema(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_EXTREMA_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-extrema")
-    cargs.append(execution.input_file(cifti))
-    cargs.append(str(surface_distance))
-    cargs.append(str(volume_distance))
-    cargs.append(direction)
-    cargs.append(cifti_out)
-    if opt_left_surface_surface is not None:
-        cargs.extend([
-            "-left-surface",
-            execution.input_file(opt_left_surface_surface)
-        ])
-    if opt_right_surface_surface is not None:
-        cargs.extend([
-            "-right-surface",
-            execution.input_file(opt_right_surface_surface)
-        ])
-    if opt_cerebellum_surface_surface is not None:
-        cargs.extend([
-            "-cerebellum-surface",
-            execution.input_file(opt_cerebellum_surface_surface)
-        ])
-    if opt_surface_presmooth_surface_kernel is not None:
-        cargs.extend([
-            "-surface-presmooth",
-            str(opt_surface_presmooth_surface_kernel)
-        ])
-    if opt_volume_presmooth_volume_kernel is not None:
-        cargs.extend([
-            "-volume-presmooth",
-            str(opt_volume_presmooth_volume_kernel)
-        ])
-    if opt_presmooth_fwhm:
-        cargs.append("-presmooth-fwhm")
-    if threshold is not None:
-        cargs.extend(threshold.run(execution))
-    if opt_merged_volume:
-        cargs.append("-merged-volume")
-    if opt_sum_maps:
-        cargs.append("-sum-maps")
-    if opt_consolidate_mode:
-        cargs.append("-consolidate-mode")
-    if opt_only_maxima:
-        cargs.append("-only-maxima")
-    if opt_only_minima:
-        cargs.append("-only-minima")
-    ret = CiftiExtremaOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_extrema_params(cifti=cifti, surface_distance=surface_distance, volume_distance=volume_distance, direction=direction, cifti_out=cifti_out, opt_left_surface_surface=opt_left_surface_surface, opt_right_surface_surface=opt_right_surface_surface, opt_cerebellum_surface_surface=opt_cerebellum_surface_surface, opt_surface_presmooth_surface_kernel=opt_surface_presmooth_surface_kernel, opt_volume_presmooth_volume_kernel=opt_volume_presmooth_volume_kernel, opt_presmooth_fwhm=opt_presmooth_fwhm, threshold=threshold, opt_merged_volume=opt_merged_volume, opt_sum_maps=opt_sum_maps, opt_consolidate_mode=opt_consolidate_mode, opt_only_maxima=opt_only_maxima, opt_only_minima=opt_only_minima)
+    return cifti_extrema_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_EXTREMA_METADATA",
     "CiftiExtremaOutputs",
-    "CiftiExtremaThreshold",
     "cifti_extrema",
+    "cifti_extrema_params",
+    "cifti_extrema_threshold_params",
 ]

@@ -12,14 +12,127 @@ RECONBATCHJOBS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+ReconbatchjobsParameters = typing.TypedDict('ReconbatchjobsParameters', {
+    "__STYX_TYPE__": typing.Literal["reconbatchjobs"],
+    "logfile": str,
+    "cmdfiles": list[str],
+})
 
 
-class ReconbatchjobsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `reconbatchjobs(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "reconbatchjobs": reconbatchjobs_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def reconbatchjobs_params(
+    logfile: str,
+    cmdfiles: list[str],
+) -> ReconbatchjobsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        logfile: Log file to capture output of batch jobs.
+        cmdfiles: Command files for batch processing.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reconbatchjobs",
+        "logfile": logfile,
+        "cmdfiles": cmdfiles,
+    }
+    return params
+
+
+def reconbatchjobs_cargs(
+    params: ReconbatchjobsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("reconbatchjobs")
+    cargs.append(params.get("logfile"))
+    cargs.extend(params.get("cmdfiles"))
+    return cargs
+
+
+def reconbatchjobs_outputs(
+    params: ReconbatchjobsParameters,
+    execution: Execution,
+) -> ReconbatchjobsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ReconbatchjobsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def reconbatchjobs_execute(
+    params: ReconbatchjobsParameters,
+    execution: Execution,
+) -> ReconbatchjobsOutputs:
+    """
+    Batch job processor for reconstruction scripts.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ReconbatchjobsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = reconbatchjobs_cargs(params, execution)
+    ret = reconbatchjobs_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def reconbatchjobs(
@@ -43,19 +156,12 @@ def reconbatchjobs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(RECONBATCHJOBS_METADATA)
-    cargs = []
-    cargs.append("reconbatchjobs")
-    cargs.append(logfile)
-    cargs.extend(cmdfiles)
-    ret = ReconbatchjobsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = reconbatchjobs_params(logfile=logfile, cmdfiles=cmdfiles)
+    return reconbatchjobs_execute(params, execution)
 
 
 __all__ = [
     "RECONBATCHJOBS_METADATA",
-    "ReconbatchjobsOutputs",
     "reconbatchjobs",
+    "reconbatchjobs_params",
 ]

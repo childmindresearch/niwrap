@@ -12,6 +12,46 @@ HISTO_SYNTHESIZE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+HistoSynthesizeParameters = typing.TypedDict('HistoSynthesizeParameters', {
+    "__STYX_TYPE__": typing.Literal["histo_synthesize"],
+    "mri_volume": InputPathType,
+    "histo_volume": InputPathType,
+    "synthetic_histo": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "histo_synthesize": histo_synthesize_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "histo_synthesize": histo_synthesize_outputs,
+    }
+    return vt.get(t)
 
 
 class HistoSynthesizeOutputs(typing.NamedTuple):
@@ -22,6 +62,96 @@ class HistoSynthesizeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_synthetic_histo: OutputPathType
     """Output file of the synthetic histo volume."""
+
+
+def histo_synthesize_params(
+    mri_volume: InputPathType,
+    histo_volume: InputPathType,
+    synthetic_histo: str,
+) -> HistoSynthesizeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mri_volume: Input MRI volume file.
+        histo_volume: Input HISTO volume file.
+        synthetic_histo: Output synthetic histo volume file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "histo_synthesize",
+        "mri_volume": mri_volume,
+        "histo_volume": histo_volume,
+        "synthetic_histo": synthetic_histo,
+    }
+    return params
+
+
+def histo_synthesize_cargs(
+    params: HistoSynthesizeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("histo_synthesize")
+    cargs.append("[OPTIONS]")
+    cargs.append(execution.input_file(params.get("mri_volume")))
+    cargs.append(execution.input_file(params.get("histo_volume")))
+    cargs.append(params.get("synthetic_histo"))
+    return cargs
+
+
+def histo_synthesize_outputs(
+    params: HistoSynthesizeParameters,
+    execution: Execution,
+) -> HistoSynthesizeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = HistoSynthesizeOutputs(
+        root=execution.output_file("."),
+        output_synthetic_histo=execution.output_file(params.get("synthetic_histo")),
+    )
+    return ret
+
+
+def histo_synthesize_execute(
+    params: HistoSynthesizeParameters,
+    execution: Execution,
+) -> HistoSynthesizeOutputs:
+    """
+    Tool for synthesizing histology-like volumes from MRI data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `HistoSynthesizeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = histo_synthesize_cargs(params, execution)
+    ret = histo_synthesize_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def histo_synthesize(
@@ -47,22 +177,13 @@ def histo_synthesize(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_SYNTHESIZE_METADATA)
-    cargs = []
-    cargs.append("histo_synthesize")
-    cargs.append("[OPTIONS]")
-    cargs.append(execution.input_file(mri_volume))
-    cargs.append(execution.input_file(histo_volume))
-    cargs.append(synthetic_histo)
-    ret = HistoSynthesizeOutputs(
-        root=execution.output_file("."),
-        output_synthetic_histo=execution.output_file(synthetic_histo),
-    )
-    execution.run(cargs)
-    return ret
+    params = histo_synthesize_params(mri_volume=mri_volume, histo_volume=histo_volume, synthetic_histo=synthetic_histo)
+    return histo_synthesize_execute(params, execution)
 
 
 __all__ = [
     "HISTO_SYNTHESIZE_METADATA",
     "HistoSynthesizeOutputs",
     "histo_synthesize",
+    "histo_synthesize_params",
 ]

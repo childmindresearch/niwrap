@@ -12,6 +12,50 @@ TFIM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+TfimParameters = typing.TypedDict('TfimParameters', {
+    "__STYX_TYPE__": typing.Literal["tfim"],
+    "prefix": typing.NotRequired[str | None],
+    "pthresh": typing.NotRequired[float | None],
+    "eqcorr": typing.NotRequired[float | None],
+    "paired": bool,
+    "set1_images": list[InputPathType],
+    "set2_images": list[InputPathType],
+    "base1_value": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "tfim": tfim_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "tfim": tfim_outputs,
+    }
+    return vt.get(t)
 
 
 class TfimOutputs(typing.NamedTuple):
@@ -26,6 +70,145 @@ class TfimOutputs(typing.NamedTuple):
     """T-statistic of difference. Default prefix is 'tfim'."""
     corr_output: OutputPathType | None
     """Equivalent correlation statistic output. Written if -eqcorr is used."""
+
+
+def tfim_params(
+    set1_images: list[InputPathType],
+    set2_images: list[InputPathType],
+    prefix: str | None = None,
+    pthresh: float | None = None,
+    eqcorr: float | None = None,
+    paired: bool = False,
+    base1_value: float | None = None,
+) -> TfimParameters:
+    """
+    Build parameters.
+    
+    Args:
+        set1_images: First set of image files.
+        set2_images: Second set of image files.
+        prefix: Prefix for output filenames. Default is 'tfim'.
+        pthresh: Significance level (per voxel) to threshold the output with.\
+            Voxels with t-statistic less significant than this will have their diff\
+            output zeroed. Default is no threshold.
+        eqcorr: Write out the equivalent correlation statistic. The number\
+            'dval' is the value to use for 'dof'. Default is not to write this\
+            file.
+        paired: Compare -set1 and -set2 using a paired sample t-test. Illegal\
+            with the -base1 option.
+        base1_value: Base value for the first set of images. Used for Usage 2.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tfim",
+        "paired": paired,
+        "set1_images": set1_images,
+        "set2_images": set2_images,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    if pthresh is not None:
+        params["pthresh"] = pthresh
+    if eqcorr is not None:
+        params["eqcorr"] = eqcorr
+    if base1_value is not None:
+        params["base1_value"] = base1_value
+    return params
+
+
+def tfim_cargs(
+    params: TfimParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tfim")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("pthresh") is not None:
+        cargs.extend([
+            "-pthresh",
+            str(params.get("pthresh"))
+        ])
+    if params.get("eqcorr") is not None:
+        cargs.extend([
+            "-eqcorr",
+            str(params.get("eqcorr"))
+        ])
+    if params.get("paired"):
+        cargs.append("-paired")
+    cargs.extend([
+        "-set1",
+        *[execution.input_file(f) for f in params.get("set1_images")]
+    ])
+    cargs.extend([
+        "-set2",
+        *[execution.input_file(f) for f in params.get("set2_images")]
+    ])
+    if params.get("base1_value") is not None:
+        cargs.extend([
+            "-base1",
+            str(params.get("base1_value"))
+        ])
+    return cargs
+
+
+def tfim_outputs(
+    params: TfimParameters,
+    execution: Execution,
+) -> TfimOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = TfimOutputs(
+        root=execution.output_file("."),
+        diff_output=execution.output_file(params.get("prefix") + ".diff") if (params.get("prefix") is not None) else None,
+        tspm_output=execution.output_file(params.get("prefix") + ".tspm") if (params.get("prefix") is not None) else None,
+        corr_output=execution.output_file(params.get("prefix") + ".corr") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def tfim_execute(
+    params: TfimParameters,
+    execution: Execution,
+) -> TfimOutputs:
+    """
+    MCW TFIM: t-tests on sets of functional images.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `TfimOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tfim_cargs(params, execution)
+    ret = tfim_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tfim(
@@ -62,54 +245,15 @@ def tfim(
     Returns:
         NamedTuple of outputs (described in `TfimOutputs`).
     """
-    if pthresh is not None and not (0 <= pthresh <= 1): 
-        raise ValueError(f"'pthresh' must be between 0 <= x <= 1 but was {pthresh}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(TFIM_METADATA)
-    cargs = []
-    cargs.append("tfim")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if pthresh is not None:
-        cargs.extend([
-            "-pthresh",
-            str(pthresh)
-        ])
-    if eqcorr is not None:
-        cargs.extend([
-            "-eqcorr",
-            str(eqcorr)
-        ])
-    if paired:
-        cargs.append("-paired")
-    cargs.extend([
-        "-set1",
-        *[execution.input_file(f) for f in set1_images]
-    ])
-    cargs.extend([
-        "-set2",
-        *[execution.input_file(f) for f in set2_images]
-    ])
-    if base1_value is not None:
-        cargs.extend([
-            "-base1",
-            str(base1_value)
-        ])
-    ret = TfimOutputs(
-        root=execution.output_file("."),
-        diff_output=execution.output_file(prefix + ".diff") if (prefix is not None) else None,
-        tspm_output=execution.output_file(prefix + ".tspm") if (prefix is not None) else None,
-        corr_output=execution.output_file(prefix + ".corr") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = tfim_params(prefix=prefix, pthresh=pthresh, eqcorr=eqcorr, paired=paired, set1_images=set1_images, set2_images=set2_images, base1_value=base1_value)
+    return tfim_execute(params, execution)
 
 
 __all__ = [
     "TFIM_METADATA",
     "TfimOutputs",
     "tfim",
+    "tfim_params",
 ]

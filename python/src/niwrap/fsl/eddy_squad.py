@@ -12,6 +12,48 @@ EDDY_SQUAD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+EddySquadParameters = typing.TypedDict('EddySquadParameters', {
+    "__STYX_TYPE__": typing.Literal["eddy_squad"],
+    "grouping": typing.NotRequired[str | None],
+    "group_db": typing.NotRequired[InputPathType | None],
+    "update": bool,
+    "output_dir": typing.NotRequired[str | None],
+    "subject_list": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "eddy_squad": eddy_squad_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "eddy_squad": eddy_squad_outputs,
+    }
+    return vt.get(t)
 
 
 class EddySquadOutputs(typing.NamedTuple):
@@ -22,6 +64,119 @@ class EddySquadOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     qc_results: OutputPathType | None
     """QC results in JSON format"""
+
+
+def eddy_squad_params(
+    subject_list: str,
+    grouping: str | None = None,
+    group_db: InputPathType | None = None,
+    update_: bool = False,
+    output_dir: str | None = None,
+) -> EddySquadParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_list: List of subject IDs for the QC.
+        grouping: Specifies the grouping of studies.
+        group_db: Path to the group database.
+        update_: Option to update the QC results.
+        output_dir: Output directory for the QC results.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "eddy_squad",
+        "update": update_,
+        "subject_list": subject_list,
+    }
+    if grouping is not None:
+        params["grouping"] = grouping
+    if group_db is not None:
+        params["group_db"] = group_db
+    if output_dir is not None:
+        params["output_dir"] = output_dir
+    return params
+
+
+def eddy_squad_cargs(
+    params: EddySquadParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("eddy_squad")
+    if params.get("grouping") is not None:
+        cargs.extend([
+            "-g",
+            params.get("grouping")
+        ])
+    if params.get("group_db") is not None:
+        cargs.extend([
+            "-gdb",
+            execution.input_file(params.get("group_db"))
+        ])
+    if params.get("update"):
+        cargs.append("-u")
+    if params.get("output_dir") is not None:
+        cargs.extend([
+            "-o",
+            params.get("output_dir")
+        ])
+    cargs.append(params.get("subject_list"))
+    return cargs
+
+
+def eddy_squad_outputs(
+    params: EddySquadParameters,
+    execution: Execution,
+) -> EddySquadOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = EddySquadOutputs(
+        root=execution.output_file("."),
+        qc_results=execution.output_file(params.get("output_dir") + "/qc_results.json") if (params.get("output_dir") is not None) else None,
+    )
+    return ret
+
+
+def eddy_squad_execute(
+    params: EddySquadParameters,
+    execution: Execution,
+) -> EddySquadOutputs:
+    """
+    Study-wise QC for dMRI data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `EddySquadOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = eddy_squad_cargs(params, execution)
+    ret = eddy_squad_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def eddy_squad(
@@ -51,36 +206,13 @@ def eddy_squad(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(EDDY_SQUAD_METADATA)
-    cargs = []
-    cargs.append("eddy_squad")
-    if grouping is not None:
-        cargs.extend([
-            "-g",
-            grouping
-        ])
-    if group_db is not None:
-        cargs.extend([
-            "-gdb",
-            execution.input_file(group_db)
-        ])
-    if update_:
-        cargs.append("-u")
-    if output_dir is not None:
-        cargs.extend([
-            "-o",
-            output_dir
-        ])
-    cargs.append(subject_list)
-    ret = EddySquadOutputs(
-        root=execution.output_file("."),
-        qc_results=execution.output_file(output_dir + "/qc_results.json") if (output_dir is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = eddy_squad_params(grouping=grouping, group_db=group_db, update_=update_, output_dir=output_dir, subject_list=subject_list)
+    return eddy_squad_execute(params, execution)
 
 
 __all__ = [
     "EDDY_SQUAD_METADATA",
     "EddySquadOutputs",
     "eddy_squad",
+    "eddy_squad_params",
 ]

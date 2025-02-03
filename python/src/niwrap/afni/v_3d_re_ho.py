@@ -12,6 +12,57 @@ V_3D_RE_HO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dReHoParameters = typing.TypedDict('V3dReHoParameters', {
+    "__STYX_TYPE__": typing.Literal["3dReHo"],
+    "prefix": str,
+    "inset": InputPathType,
+    "nneigh": typing.NotRequired[str | None],
+    "chi_sq": bool,
+    "mask": typing.NotRequired[InputPathType | None],
+    "neigh_rad": typing.NotRequired[float | None],
+    "neigh_x": typing.NotRequired[float | None],
+    "neigh_y": typing.NotRequired[float | None],
+    "neigh_z": typing.NotRequired[float | None],
+    "box_rad": typing.NotRequired[float | None],
+    "box_x": typing.NotRequired[float | None],
+    "box_y": typing.NotRequired[float | None],
+    "box_z": typing.NotRequired[float | None],
+    "in_rois": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dReHo": v_3d_re_ho_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dReHo": v_3d_re_ho_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dReHoOutputs(typing.NamedTuple):
@@ -29,6 +80,216 @@ class V3dReHoOutputs(typing.NamedTuple):
     voxel."""
     roi_chi_vals: OutputPathType
     """ROI Chi-square values file."""
+
+
+def v_3d_re_ho_params(
+    prefix: str,
+    inset: InputPathType,
+    nneigh: str | None = None,
+    chi_sq: bool = False,
+    mask: InputPathType | None = None,
+    neigh_rad: float | None = None,
+    neigh_x: float | None = None,
+    neigh_y: float | None = None,
+    neigh_z: float | None = None,
+    box_rad: float | None = None,
+    box_x: float | None = None,
+    box_y: float | None = None,
+    box_z: float | None = None,
+    in_rois: InputPathType | None = None,
+) -> V3dReHoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        prefix: Output file name part.
+        inset: Time series input file.
+        nneigh: Number of voxels in neighborhood, inclusive; can be 7 (for\
+            facewise neighbors), 19 (for face- and edge-wise neighbors), 27 (for\
+            face-, edge-, and node-wise neighbors). Default is 27.
+        chi_sq: Switch to output Friedman chi-square value per voxel as a\
+            subbrick.
+        mask: Include a whole brain mask within which to calculate ReHo.\
+            Otherwise, data should be masked already.
+        neigh_rad: Radius R of a desired neighborhood for voxelwise control,\
+            must be a floating point number >1. Examples: R=2.0 -> V=33, R=2.3 ->\
+            V=57, etc.
+        neigh_x: Semi-radius length A for ellipsoidal neighborhood.
+        neigh_y: Semi-radius length B for ellipsoidal neighborhood.
+        neigh_z: Semi-radius length C for ellipsoidal neighborhood.
+        box_rad: Cubic box radius BR centered on a given voxel for neighborhood\
+            control. Examples: BR=1 -> V=27, BR=2 -> V=125, etc.
+        box_x: Box volume neighborhood dimension X. Values put in get added in\
+            the +/- directions of each axis.
+        box_y: Box volume neighborhood dimension Y. Values put in get added in\
+            the +/- directions of each axis.
+        box_z: Box volume neighborhood dimension Z. Values put in get added in\
+            the +/- directions of each axis.
+        in_rois: Input a set of ROIs, each labeled with distinct integers. ReHo\
+            will be calculated per ROI.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dReHo",
+        "prefix": prefix,
+        "inset": inset,
+        "chi_sq": chi_sq,
+    }
+    if nneigh is not None:
+        params["nneigh"] = nneigh
+    if mask is not None:
+        params["mask"] = mask
+    if neigh_rad is not None:
+        params["neigh_rad"] = neigh_rad
+    if neigh_x is not None:
+        params["neigh_x"] = neigh_x
+    if neigh_y is not None:
+        params["neigh_y"] = neigh_y
+    if neigh_z is not None:
+        params["neigh_z"] = neigh_z
+    if box_rad is not None:
+        params["box_rad"] = box_rad
+    if box_x is not None:
+        params["box_x"] = box_x
+    if box_y is not None:
+        params["box_y"] = box_y
+    if box_z is not None:
+        params["box_z"] = box_z
+    if in_rois is not None:
+        params["in_rois"] = in_rois
+    return params
+
+
+def v_3d_re_ho_cargs(
+    params: V3dReHoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dReHo")
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    cargs.extend([
+        "-inset",
+        execution.input_file(params.get("inset"))
+    ])
+    if params.get("nneigh") is not None:
+        cargs.extend([
+            "-nneigh",
+            params.get("nneigh")
+        ])
+    if params.get("chi_sq"):
+        cargs.append("-chi_sq")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("neigh_rad") is not None:
+        cargs.extend([
+            "-neigh_RAD",
+            str(params.get("neigh_rad"))
+        ])
+    if params.get("neigh_x") is not None:
+        cargs.extend([
+            "-neigh_X",
+            str(params.get("neigh_x"))
+        ])
+    if params.get("neigh_y") is not None:
+        cargs.extend([
+            "-neigh_Y",
+            str(params.get("neigh_y"))
+        ])
+    if params.get("neigh_z") is not None:
+        cargs.extend([
+            "-neigh_Z",
+            str(params.get("neigh_z"))
+        ])
+    if params.get("box_rad") is not None:
+        cargs.extend([
+            "-box_RAD",
+            str(params.get("box_rad"))
+        ])
+    if params.get("box_x") is not None:
+        cargs.extend([
+            "-box_X",
+            str(params.get("box_x"))
+        ])
+    if params.get("box_y") is not None:
+        cargs.extend([
+            "-box_Y",
+            str(params.get("box_y"))
+        ])
+    if params.get("box_z") is not None:
+        cargs.extend([
+            "-box_Z",
+            str(params.get("box_z"))
+        ])
+    if params.get("in_rois") is not None:
+        cargs.extend([
+            "-in_rois",
+            execution.input_file(params.get("in_rois"))
+        ])
+    return cargs
+
+
+def v_3d_re_ho_outputs(
+    params: V3dReHoParameters,
+    execution: Execution,
+) -> V3dReHoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dReHoOutputs(
+        root=execution.output_file("."),
+        reho_output=execution.output_file(params.get("prefix") + "+orig.BRIK"),
+        roi_reho_vals=execution.output_file(params.get("prefix") + "_ROI_reho.vals"),
+        chi_square=execution.output_file(params.get("prefix") + "+orig.BRIK[1]"),
+        roi_chi_vals=execution.output_file(params.get("prefix") + "_ROI_reho.chi"),
+    )
+    return ret
+
+
+def v_3d_re_ho_execute(
+    params: V3dReHoParameters,
+    execution: Execution,
+) -> V3dReHoOutputs:
+    """
+    3dReHo calculates Kendall's W per voxel using neighborhood voxels from 4D time
+    series data set.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dReHoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_re_ho_cargs(params, execution)
+    ret = v_3d_re_ho_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_re_ho(
@@ -88,86 +349,13 @@ def v_3d_re_ho(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_RE_HO_METADATA)
-    cargs = []
-    cargs.append("3dReHo")
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    cargs.extend([
-        "-inset",
-        execution.input_file(inset)
-    ])
-    if nneigh is not None:
-        cargs.extend([
-            "-nneigh",
-            nneigh
-        ])
-    if chi_sq:
-        cargs.append("-chi_sq")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if neigh_rad is not None:
-        cargs.extend([
-            "-neigh_RAD",
-            str(neigh_rad)
-        ])
-    if neigh_x is not None:
-        cargs.extend([
-            "-neigh_X",
-            str(neigh_x)
-        ])
-    if neigh_y is not None:
-        cargs.extend([
-            "-neigh_Y",
-            str(neigh_y)
-        ])
-    if neigh_z is not None:
-        cargs.extend([
-            "-neigh_Z",
-            str(neigh_z)
-        ])
-    if box_rad is not None:
-        cargs.extend([
-            "-box_RAD",
-            str(box_rad)
-        ])
-    if box_x is not None:
-        cargs.extend([
-            "-box_X",
-            str(box_x)
-        ])
-    if box_y is not None:
-        cargs.extend([
-            "-box_Y",
-            str(box_y)
-        ])
-    if box_z is not None:
-        cargs.extend([
-            "-box_Z",
-            str(box_z)
-        ])
-    if in_rois is not None:
-        cargs.extend([
-            "-in_rois",
-            execution.input_file(in_rois)
-        ])
-    ret = V3dReHoOutputs(
-        root=execution.output_file("."),
-        reho_output=execution.output_file(prefix + "+orig.BRIK"),
-        roi_reho_vals=execution.output_file(prefix + "_ROI_reho.vals"),
-        chi_square=execution.output_file(prefix + "+orig.BRIK[1]"),
-        roi_chi_vals=execution.output_file(prefix + "_ROI_reho.chi"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_re_ho_params(prefix=prefix, inset=inset, nneigh=nneigh, chi_sq=chi_sq, mask=mask, neigh_rad=neigh_rad, neigh_x=neigh_x, neigh_y=neigh_y, neigh_z=neigh_z, box_rad=box_rad, box_x=box_x, box_y=box_y, box_z=box_z, in_rois=in_rois)
+    return v_3d_re_ho_execute(params, execution)
 
 
 __all__ = [
     "V3dReHoOutputs",
     "V_3D_RE_HO_METADATA",
     "v_3d_re_ho",
+    "v_3d_re_ho_params",
 ]

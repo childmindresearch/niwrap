@@ -12,6 +12,47 @@ ESTNOISE_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+EstnoiseParameters = typing.TypedDict('EstnoiseParameters', {
+    "__STYX_TYPE__": typing.Literal["estnoise"],
+    "input_4d_data": InputPathType,
+    "spatial_sigma": typing.NotRequired[float | None],
+    "temp_hp_sigma": typing.NotRequired[float | None],
+    "temp_lp_sigma": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "estnoise": estnoise_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "estnoise": estnoise_outputs,
+    }
+    return vt.get(t)
 
 
 class EstnoiseOutputs(typing.NamedTuple):
@@ -22,6 +63,105 @@ class EstnoiseOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_noise_file: OutputPathType
     """Output text file containing noise estimates"""
+
+
+def estnoise_params(
+    input_4d_data: InputPathType,
+    spatial_sigma: float | None = None,
+    temp_hp_sigma: float | None = None,
+    temp_lp_sigma: float | None = None,
+) -> EstnoiseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_4d_data: Input 4D fMRI data (e.g., fmri_data.nii.gz).
+        spatial_sigma: Spatial smoothing sigma.
+        temp_hp_sigma: Temporal high-pass filter sigma.
+        temp_lp_sigma: Temporal low-pass filter sigma.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "estnoise",
+        "input_4d_data": input_4d_data,
+    }
+    if spatial_sigma is not None:
+        params["spatial_sigma"] = spatial_sigma
+    if temp_hp_sigma is not None:
+        params["temp_hp_sigma"] = temp_hp_sigma
+    if temp_lp_sigma is not None:
+        params["temp_lp_sigma"] = temp_lp_sigma
+    return params
+
+
+def estnoise_cargs(
+    params: EstnoiseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("estnoise")
+    cargs.append(execution.input_file(params.get("input_4d_data")))
+    if params.get("spatial_sigma") is not None:
+        cargs.append(str(params.get("spatial_sigma")))
+    if params.get("temp_hp_sigma") is not None:
+        cargs.append(str(params.get("temp_hp_sigma")))
+    if params.get("temp_lp_sigma") is not None:
+        cargs.append(str(params.get("temp_lp_sigma")))
+    return cargs
+
+
+def estnoise_outputs(
+    params: EstnoiseParameters,
+    execution: Execution,
+) -> EstnoiseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = EstnoiseOutputs(
+        root=execution.output_file("."),
+        output_noise_file=execution.output_file("noise_estimate.txt"),
+    )
+    return ret
+
+
+def estnoise_execute(
+    params: EstnoiseParameters,
+    execution: Execution,
+) -> EstnoiseOutputs:
+    """
+    Estimate noise in 4D fMRI data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `EstnoiseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = estnoise_cargs(params, execution)
+    ret = estnoise_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def estnoise(
@@ -49,25 +189,13 @@ def estnoise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ESTNOISE_METADATA)
-    cargs = []
-    cargs.append("estnoise")
-    cargs.append(execution.input_file(input_4d_data))
-    if spatial_sigma is not None:
-        cargs.append(str(spatial_sigma))
-    if temp_hp_sigma is not None:
-        cargs.append(str(temp_hp_sigma))
-    if temp_lp_sigma is not None:
-        cargs.append(str(temp_lp_sigma))
-    ret = EstnoiseOutputs(
-        root=execution.output_file("."),
-        output_noise_file=execution.output_file("noise_estimate.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = estnoise_params(input_4d_data=input_4d_data, spatial_sigma=spatial_sigma, temp_hp_sigma=temp_hp_sigma, temp_lp_sigma=temp_lp_sigma)
+    return estnoise_execute(params, execution)
 
 
 __all__ = [
     "ESTNOISE_METADATA",
     "EstnoiseOutputs",
     "estnoise",
+    "estnoise_params",
 ]

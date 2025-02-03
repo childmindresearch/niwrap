@@ -12,6 +12,49 @@ V_3D_PVAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dPvalParameters = typing.TypedDict('V3dPvalParameters', {
+    "__STYX_TYPE__": typing.Literal["3dPval"],
+    "input_dataset": InputPathType,
+    "zscore": bool,
+    "log2": bool,
+    "log10": bool,
+    "qval": bool,
+    "prefix": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dPval": v_3d_pval_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dPval": v_3d_pval_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dPvalOutputs(typing.NamedTuple):
@@ -23,6 +66,119 @@ class V3dPvalOutputs(typing.NamedTuple):
     output_file: OutputPathType | None
     """Output dataset with converted statistical values. Default output filename
     is 'Pval.nii.gz'."""
+
+
+def v_3d_pval_params(
+    input_dataset: InputPathType,
+    zscore: bool = False,
+    log2: bool = False,
+    log10: bool = False,
+    qval: bool = False,
+    prefix: str | None = None,
+) -> V3dPvalParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dataset: Input dataset (e.g., InputDataset.nii).
+        zscore: Convert statistic to a z-score instead, an N(0,1) deviate that\
+            represents the same p-value.
+        log2: Convert statistic to -log2(p).
+        log10: Convert statistic to -log10(p).
+        qval: Convert statistic to a q-value (FDR) instead. This option only\
+            works with datasets that have FDR curves inserted in their headers.
+        prefix: Prefix name for output file (default name is 'Pval').
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dPval",
+        "input_dataset": input_dataset,
+        "zscore": zscore,
+        "log2": log2,
+        "log10": log10,
+        "qval": qval,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    return params
+
+
+def v_3d_pval_cargs(
+    params: V3dPvalParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dPval")
+    cargs.append(execution.input_file(params.get("input_dataset")))
+    if params.get("zscore"):
+        cargs.append("-zscore")
+    if params.get("log2"):
+        cargs.append("-log2")
+    if params.get("log10"):
+        cargs.append("-log10")
+    if params.get("qval"):
+        cargs.append("-qval")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    return cargs
+
+
+def v_3d_pval_outputs(
+    params: V3dPvalParameters,
+    execution: Execution,
+) -> V3dPvalOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dPvalOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("prefix") + ".nii.gz") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_pval_execute(
+    params: V3dPvalParameters,
+    execution: Execution,
+) -> V3dPvalOutputs:
+    """
+    Convert a dataset's statistical sub-bricks to p-values or other statistical
+    representations.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dPvalOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_pval_cargs(params, execution)
+    ret = v_3d_pval_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_pval(
@@ -57,32 +213,13 @@ def v_3d_pval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PVAL_METADATA)
-    cargs = []
-    cargs.append("3dPval")
-    cargs.append(execution.input_file(input_dataset))
-    if zscore:
-        cargs.append("-zscore")
-    if log2:
-        cargs.append("-log2")
-    if log10:
-        cargs.append("-log10")
-    if qval:
-        cargs.append("-qval")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    ret = V3dPvalOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_pval_params(input_dataset=input_dataset, zscore=zscore, log2=log2, log10=log10, qval=qval, prefix=prefix)
+    return v_3d_pval_execute(params, execution)
 
 
 __all__ = [
     "V3dPvalOutputs",
     "V_3D_PVAL_METADATA",
     "v_3d_pval",
+    "v_3d_pval_params",
 ]

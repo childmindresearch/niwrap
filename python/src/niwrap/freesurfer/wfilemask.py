@@ -12,6 +12,49 @@ WFILEMASK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+WfilemaskParameters = typing.TypedDict('WfilemaskParameters', {
+    "__STYX_TYPE__": typing.Literal["wfilemask"],
+    "w_file": InputPathType,
+    "label_file": InputPathType,
+    "output_file": str,
+    "permission_mask": typing.NotRequired[str | None],
+    "help_flag": bool,
+    "version_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "wfilemask": wfilemask_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "wfilemask": wfilemask_outputs,
+    }
+    return vt.get(t)
 
 
 class WfilemaskOutputs(typing.NamedTuple):
@@ -22,6 +65,123 @@ class WfilemaskOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_w_file: OutputPathType
     """Output file with specified label regions zeroed out"""
+
+
+def wfilemask_params(
+    w_file: InputPathType,
+    label_file: InputPathType,
+    output_file: str,
+    permission_mask: str | None = None,
+    help_flag: bool = False,
+    version_flag: bool = False,
+) -> WfilemaskParameters:
+    """
+    Build parameters.
+    
+    Args:
+        w_file: Input w file.
+        label_file: Label file to use as a mask.
+        output_file: Output w file.
+        permission_mask: Set Unix file permission mask.
+        help_flag: Display help message and exit.
+        version_flag: Print version and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "wfilemask",
+        "w_file": w_file,
+        "label_file": label_file,
+        "output_file": output_file,
+        "help_flag": help_flag,
+        "version_flag": version_flag,
+    }
+    if permission_mask is not None:
+        params["permission_mask"] = permission_mask
+    return params
+
+
+def wfilemask_cargs(
+    params: WfilemaskParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wfilemask")
+    cargs.extend([
+        "-w",
+        execution.input_file(params.get("w_file"))
+    ])
+    cargs.extend([
+        "-l",
+        execution.input_file(params.get("label_file"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_file")
+    ])
+    if params.get("permission_mask") is not None:
+        cargs.extend([
+            "-umask",
+            params.get("permission_mask")
+        ])
+    if params.get("help_flag"):
+        cargs.append("-help")
+    if params.get("version_flag"):
+        cargs.append("-version")
+    return cargs
+
+
+def wfilemask_outputs(
+    params: WfilemaskParameters,
+    execution: Execution,
+) -> WfilemaskOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = WfilemaskOutputs(
+        root=execution.output_file("."),
+        output_w_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def wfilemask_execute(
+    params: WfilemaskParameters,
+    execution: Execution,
+) -> WfilemaskOutputs:
+    """
+    Zero-out regions of a surface value file (.w file) using a label.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `WfilemaskOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = wfilemask_cargs(params, execution)
+    ret = wfilemask_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def wfilemask(
@@ -53,39 +213,13 @@ def wfilemask(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(WFILEMASK_METADATA)
-    cargs = []
-    cargs.append("wfilemask")
-    cargs.extend([
-        "-w",
-        execution.input_file(w_file)
-    ])
-    cargs.extend([
-        "-l",
-        execution.input_file(label_file)
-    ])
-    cargs.extend([
-        "-o",
-        output_file
-    ])
-    if permission_mask is not None:
-        cargs.extend([
-            "-umask",
-            permission_mask
-        ])
-    if help_flag:
-        cargs.append("-help")
-    if version_flag:
-        cargs.append("-version")
-    ret = WfilemaskOutputs(
-        root=execution.output_file("."),
-        output_w_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = wfilemask_params(w_file=w_file, label_file=label_file, output_file=output_file, permission_mask=permission_mask, help_flag=help_flag, version_flag=version_flag)
+    return wfilemask_execute(params, execution)
 
 
 __all__ = [
     "WFILEMASK_METADATA",
     "WfilemaskOutputs",
     "wfilemask",
+    "wfilemask_params",
 ]

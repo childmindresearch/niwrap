@@ -12,6 +12,47 @@ MRI_REMOVE_NECK_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriRemoveNeckParameters = typing.TypedDict('MriRemoveNeckParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_remove_neck"],
+    "input_volume": InputPathType,
+    "transform": InputPathType,
+    "gca": InputPathType,
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_remove_neck": mri_remove_neck_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_remove_neck": mri_remove_neck_outputs,
+    }
+    return vt.get(t)
 
 
 class MriRemoveNeckOutputs(typing.NamedTuple):
@@ -22,6 +63,99 @@ class MriRemoveNeckOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_volume_file: OutputPathType
     """Processed MRI volume with neck removed."""
+
+
+def mri_remove_neck_params(
+    input_volume: InputPathType,
+    transform: InputPathType,
+    gca: InputPathType,
+    output_volume: str,
+) -> MriRemoveNeckParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input MRI volume.
+        transform: Transformation matrix to register the volume.
+        gca: GCA file needed for processing.
+        output_volume: Output MRI volume with the neck removed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_remove_neck",
+        "input_volume": input_volume,
+        "transform": transform,
+        "gca": gca,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_remove_neck_cargs(
+    params: MriRemoveNeckParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_remove_neck")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("transform")))
+    cargs.append(execution.input_file(params.get("gca")))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_remove_neck_outputs(
+    params: MriRemoveNeckParameters,
+    execution: Execution,
+) -> MriRemoveNeckOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriRemoveNeckOutputs(
+        root=execution.output_file("."),
+        output_volume_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_remove_neck_execute(
+    params: MriRemoveNeckParameters,
+    execution: Execution,
+) -> MriRemoveNeckOutputs:
+    """
+    Tool for removing neck from MRI volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriRemoveNeckOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_remove_neck_cargs(params, execution)
+    ret = mri_remove_neck_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_remove_neck(
@@ -49,22 +183,13 @@ def mri_remove_neck(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_REMOVE_NECK_METADATA)
-    cargs = []
-    cargs.append("mri_remove_neck")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(transform))
-    cargs.append(execution.input_file(gca))
-    cargs.append(output_volume)
-    ret = MriRemoveNeckOutputs(
-        root=execution.output_file("."),
-        output_volume_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_remove_neck_params(input_volume=input_volume, transform=transform, gca=gca, output_volume=output_volume)
+    return mri_remove_neck_execute(params, execution)
 
 
 __all__ = [
     "MRI_REMOVE_NECK_METADATA",
     "MriRemoveNeckOutputs",
     "mri_remove_neck",
+    "mri_remove_neck_params",
 ]

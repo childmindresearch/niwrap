@@ -12,14 +12,129 @@ FEAT_MODEL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FeatModelParameters = typing.TypedDict('FeatModelParameters', {
+    "__STYX_TYPE__": typing.Literal["feat_model"],
+    "design_name_root": str,
+    "confound_matrix": typing.NotRequired[InputPathType | None],
+})
 
 
-class FeatModelOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `feat_model(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "feat_model": feat_model_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def feat_model_params(
+    design_name_root: str,
+    confound_matrix: InputPathType | None = None,
+) -> FeatModelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        design_name_root: Design name root.
+        confound_matrix: Confound matrix text file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "feat_model",
+        "design_name_root": design_name_root,
+    }
+    if confound_matrix is not None:
+        params["confound_matrix"] = confound_matrix
+    return params
+
+
+def feat_model_cargs(
+    params: FeatModelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("feat_model")
+    cargs.append(params.get("design_name_root"))
+    if params.get("confound_matrix") is not None:
+        cargs.append(execution.input_file(params.get("confound_matrix")))
+    return cargs
+
+
+def feat_model_outputs(
+    params: FeatModelParameters,
+    execution: Execution,
+) -> FeatModelOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FeatModelOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def feat_model_execute(
+    params: FeatModelParameters,
+    execution: Execution,
+) -> FeatModelOutputs:
+    """
+    Generate design matrices for use by FEAT.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FeatModelOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = feat_model_cargs(params, execution)
+    ret = feat_model_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def feat_model(
@@ -43,20 +158,12 @@ def feat_model(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FEAT_MODEL_METADATA)
-    cargs = []
-    cargs.append("feat_model")
-    cargs.append(design_name_root)
-    if confound_matrix is not None:
-        cargs.append(execution.input_file(confound_matrix))
-    ret = FeatModelOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = feat_model_params(design_name_root=design_name_root, confound_matrix=confound_matrix)
+    return feat_model_execute(params, execution)
 
 
 __all__ = [
     "FEAT_MODEL_METADATA",
-    "FeatModelOutputs",
     "feat_model",
+    "feat_model_params",
 ]

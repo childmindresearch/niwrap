@@ -12,6 +12,43 @@ INFLATE_SUBJECT_SC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+InflateSubjectScParameters = typing.TypedDict('InflateSubjectScParameters', {
+    "__STYX_TYPE__": typing.Literal["inflate_subject_sc"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "inflate_subject_sc": inflate_subject_sc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "inflate_subject_sc": inflate_subject_sc_outputs,
+    }
+    return vt.get(t)
 
 
 class InflateSubjectScOutputs(typing.NamedTuple):
@@ -22,6 +59,85 @@ class InflateSubjectScOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     inflated_output: OutputPathType
     """Inflated subject surface output."""
+
+
+def inflate_subject_sc_params(
+) -> InflateSubjectScParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "inflate_subject_sc",
+    }
+    return params
+
+
+def inflate_subject_sc_cargs(
+    params: InflateSubjectScParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("inflate_subject_sc")
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def inflate_subject_sc_outputs(
+    params: InflateSubjectScParameters,
+    execution: Execution,
+) -> InflateSubjectScOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = InflateSubjectScOutputs(
+        root=execution.output_file("."),
+        inflated_output=execution.output_file("[SUBJECT_DIR]/inflated_output"),
+    )
+    return ret
+
+
+def inflate_subject_sc_execute(
+    params: InflateSubjectScParameters,
+    execution: Execution,
+) -> InflateSubjectScOutputs:
+    """
+    Inferred description: Tool for inflating subject surfaces, specific details
+    unavailable.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `InflateSubjectScOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = inflate_subject_sc_cargs(params, execution)
+    ret = inflate_subject_sc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def inflate_subject_sc(
@@ -42,19 +158,13 @@ def inflate_subject_sc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INFLATE_SUBJECT_SC_METADATA)
-    cargs = []
-    cargs.append("inflate_subject_sc")
-    cargs.append("[OPTIONS]")
-    ret = InflateSubjectScOutputs(
-        root=execution.output_file("."),
-        inflated_output=execution.output_file("[SUBJECT_DIR]/inflated_output"),
-    )
-    execution.run(cargs)
-    return ret
+    params = inflate_subject_sc_params()
+    return inflate_subject_sc_execute(params, execution)
 
 
 __all__ = [
     "INFLATE_SUBJECT_SC_METADATA",
     "InflateSubjectScOutputs",
     "inflate_subject_sc",
+    "inflate_subject_sc_params",
 ]

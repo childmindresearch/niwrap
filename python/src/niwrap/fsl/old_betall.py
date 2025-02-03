@@ -12,6 +12,45 @@ OLD_BETALL_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+OldBetallParameters = typing.TypedDict('OldBetallParameters', {
+    "__STYX_TYPE__": typing.Literal["old_betall"],
+    "t1_filerout": str,
+    "t2_filerout": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "old_betall": old_betall_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "old_betall": old_betall_outputs,
+    }
+    return vt.get(t)
 
 
 class OldBetallOutputs(typing.NamedTuple):
@@ -24,6 +63,92 @@ class OldBetallOutputs(typing.NamedTuple):
     """Output file root for T1 image"""
     output_t2: OutputPathType
     """Output file root for T2 image"""
+
+
+def old_betall_params(
+    t1_filerout: str,
+    t2_filerout: str,
+) -> OldBetallParameters:
+    """
+    Build parameters.
+    
+    Args:
+        t1_filerout: Input T1 image file root (e.g. img_t1.nii.gz).
+        t2_filerout: Input T2 image file root (e.g. img_t2.nii.gz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "old_betall",
+        "t1_filerout": t1_filerout,
+        "t2_filerout": t2_filerout,
+    }
+    return params
+
+
+def old_betall_cargs(
+    params: OldBetallParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("old_betall")
+    cargs.append(params.get("t1_filerout"))
+    cargs.append(params.get("t2_filerout"))
+    return cargs
+
+
+def old_betall_outputs(
+    params: OldBetallParameters,
+    execution: Execution,
+) -> OldBetallOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = OldBetallOutputs(
+        root=execution.output_file("."),
+        output_t1=execution.output_file(params.get("t1_filerout")),
+        output_t2=execution.output_file(params.get("t2_filerout")),
+    )
+    return ret
+
+
+def old_betall_execute(
+    params: OldBetallParameters,
+    execution: Execution,
+) -> OldBetallOutputs:
+    """
+    Automated brain extraction tool for FSL involving both T1 and T2 images.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `OldBetallOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = old_betall_cargs(params, execution)
+    ret = old_betall_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def old_betall(
@@ -47,21 +172,13 @@ def old_betall(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OLD_BETALL_METADATA)
-    cargs = []
-    cargs.append("old_betall")
-    cargs.append(t1_filerout)
-    cargs.append(t2_filerout)
-    ret = OldBetallOutputs(
-        root=execution.output_file("."),
-        output_t1=execution.output_file(t1_filerout),
-        output_t2=execution.output_file(t2_filerout),
-    )
-    execution.run(cargs)
-    return ret
+    params = old_betall_params(t1_filerout=t1_filerout, t2_filerout=t2_filerout)
+    return old_betall_execute(params, execution)
 
 
 __all__ = [
     "OLD_BETALL_METADATA",
     "OldBetallOutputs",
     "old_betall",
+    "old_betall_params",
 ]

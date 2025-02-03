@@ -12,6 +12,67 @@ V_3D_ANOVA2_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dAnova2Parameters = typing.TypedDict('V3dAnova2Parameters', {
+    "__STYX_TYPE__": typing.Literal["3dANOVA2"],
+    "type": int,
+    "alevels": int,
+    "blevels": int,
+    "dataset": typing.NotRequired[list[str] | None],
+    "voxel": typing.NotRequired[int | None],
+    "diskspace": bool,
+    "mask": typing.NotRequired[InputPathType | None],
+    "ftr": typing.NotRequired[str | None],
+    "fa": typing.NotRequired[str | None],
+    "fb": typing.NotRequired[str | None],
+    "fab": typing.NotRequired[str | None],
+    "amean": typing.NotRequired[str | None],
+    "bmean": typing.NotRequired[str | None],
+    "xmean": typing.NotRequired[str | None],
+    "adiff": typing.NotRequired[str | None],
+    "bdiff": typing.NotRequired[str | None],
+    "xdiff": typing.NotRequired[str | None],
+    "acontr": typing.NotRequired[str | None],
+    "bcontr": typing.NotRequired[str | None],
+    "xcontr": typing.NotRequired[str | None],
+    "bucket": typing.NotRequired[str | None],
+    "old_method": bool,
+    "ok": bool,
+    "assume_sph": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dANOVA2": v_3d_anova2_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dANOVA2": v_3d_anova2_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dAnova2Outputs(typing.NamedTuple):
@@ -50,6 +111,298 @@ class V3dAnova2Outputs(typing.NamedTuple):
     """Contrast in cell means output file"""
     output_bucket: OutputPathType | None
     """Create one AFNI 'bucket' dataset file"""
+
+
+def v_3d_anova2_params(
+    type_: int,
+    alevels: int,
+    blevels: int,
+    dataset: list[str] | None = None,
+    voxel: int | None = None,
+    diskspace: bool = False,
+    mask: InputPathType | None = None,
+    ftr: str | None = None,
+    fa: str | None = None,
+    fb: str | None = None,
+    fab: str | None = None,
+    amean: str | None = None,
+    bmean: str | None = None,
+    xmean: str | None = None,
+    adiff: str | None = None,
+    bdiff: str | None = None,
+    xdiff: str | None = None,
+    acontr: str | None = None,
+    bcontr: str | None = None,
+    xcontr: str | None = None,
+    bucket: str | None = None,
+    old_method: bool = False,
+    ok: bool = False,
+    assume_sph: bool = False,
+) -> V3dAnova2Parameters:
+    """
+    Build parameters.
+    
+    Args:
+        type_: Type of ANOVA model to be used: 1=fixed, 2=random, 3=mixed.
+        alevels: Number of levels of factor A.
+        blevels: Number of levels of factor B.
+        dataset: Data set for levels of factor A and factor B.
+        voxel: Screen output for voxel number.
+        diskspace: Print out disk space required for program execution.
+        mask: Use sub-brick #0 of dataset 'mset' to define which voxels to\
+            process.
+        ftr: F-statistic for treatment effect.
+        fa: F-statistic for factor A effect.
+        fb: F-statistic for factor B effect.
+        fab: F-statistic for interaction.
+        amean: Estimate mean of factor A level.
+        bmean: Estimate mean of factor B level.
+        xmean: Estimate mean of cell at level i of factor A and level j of\
+            factor B.
+        adiff: Difference between levels i and j of factor A.
+        bdiff: Difference between levels i and j of factor B.
+        xdiff: Difference between cell mean at A=i, B=j and cell mean at A=k,\
+            B=l.
+        acontr: Contrast in factor A levels.
+        bcontr: Contrast in factor B levels.
+        xcontr: Contrast in cell means.
+        bucket: Create one AFNI 'bucket' dataset whose sub-bricks are obtained\
+            by concatenating the above output files.
+        old_method: Request to perform ANOVA using the previous functionality\
+            (requires -OK, also).
+        ok: Confirm understanding that contrasts that do not sum to zero have\
+            inflated t-stats, and contrasts that do sum to zero assume sphericity\
+            (to be used with -old_method).
+        assume_sph: Assume sphericity (zero-sum contrasts, only). This allows\
+            use of the old_method for computing contrasts which sum to zero.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dANOVA2",
+        "type": type_,
+        "alevels": alevels,
+        "blevels": blevels,
+        "diskspace": diskspace,
+        "old_method": old_method,
+        "ok": ok,
+        "assume_sph": assume_sph,
+    }
+    if dataset is not None:
+        params["dataset"] = dataset
+    if voxel is not None:
+        params["voxel"] = voxel
+    if mask is not None:
+        params["mask"] = mask
+    if ftr is not None:
+        params["ftr"] = ftr
+    if fa is not None:
+        params["fa"] = fa
+    if fb is not None:
+        params["fb"] = fb
+    if fab is not None:
+        params["fab"] = fab
+    if amean is not None:
+        params["amean"] = amean
+    if bmean is not None:
+        params["bmean"] = bmean
+    if xmean is not None:
+        params["xmean"] = xmean
+    if adiff is not None:
+        params["adiff"] = adiff
+    if bdiff is not None:
+        params["bdiff"] = bdiff
+    if xdiff is not None:
+        params["xdiff"] = xdiff
+    if acontr is not None:
+        params["acontr"] = acontr
+    if bcontr is not None:
+        params["bcontr"] = bcontr
+    if xcontr is not None:
+        params["xcontr"] = xcontr
+    if bucket is not None:
+        params["bucket"] = bucket
+    return params
+
+
+def v_3d_anova2_cargs(
+    params: V3dAnova2Parameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dANOVA2")
+    cargs.extend([
+        "-type",
+        str(params.get("type"))
+    ])
+    cargs.extend([
+        "-alevels",
+        str(params.get("alevels"))
+    ])
+    cargs.extend([
+        "-blevels",
+        str(params.get("blevels"))
+    ])
+    if params.get("dataset") is not None:
+        cargs.extend([
+            "-dset",
+            *params.get("dataset")
+        ])
+    if params.get("voxel") is not None:
+        cargs.extend([
+            "-voxel",
+            str(params.get("voxel"))
+        ])
+    if params.get("diskspace"):
+        cargs.append("-diskspace")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("ftr") is not None:
+        cargs.extend([
+            "-ftr",
+            params.get("ftr")
+        ])
+    if params.get("fa") is not None:
+        cargs.extend([
+            "-fa",
+            params.get("fa")
+        ])
+    if params.get("fb") is not None:
+        cargs.extend([
+            "-fb",
+            params.get("fb")
+        ])
+    if params.get("fab") is not None:
+        cargs.extend([
+            "-fab",
+            params.get("fab")
+        ])
+    if params.get("amean") is not None:
+        cargs.extend([
+            "-amean",
+            params.get("amean")
+        ])
+    if params.get("bmean") is not None:
+        cargs.extend([
+            "-bmean",
+            params.get("bmean")
+        ])
+    if params.get("xmean") is not None:
+        cargs.extend([
+            "-xmean",
+            params.get("xmean")
+        ])
+    if params.get("adiff") is not None:
+        cargs.extend([
+            "-adiff",
+            params.get("adiff")
+        ])
+    if params.get("bdiff") is not None:
+        cargs.extend([
+            "-bdiff",
+            params.get("bdiff")
+        ])
+    if params.get("xdiff") is not None:
+        cargs.extend([
+            "-xdiff",
+            params.get("xdiff")
+        ])
+    if params.get("acontr") is not None:
+        cargs.extend([
+            "-acontr",
+            params.get("acontr")
+        ])
+    if params.get("bcontr") is not None:
+        cargs.extend([
+            "-bcontr",
+            params.get("bcontr")
+        ])
+    if params.get("xcontr") is not None:
+        cargs.extend([
+            "-xcontr",
+            params.get("xcontr")
+        ])
+    if params.get("bucket") is not None:
+        cargs.extend([
+            "-bucket",
+            params.get("bucket")
+        ])
+    if params.get("old_method"):
+        cargs.append("-old_method")
+    if params.get("ok"):
+        cargs.append("-OK")
+    if params.get("assume_sph"):
+        cargs.append("-assume_sph")
+    return cargs
+
+
+def v_3d_anova2_outputs(
+    params: V3dAnova2Parameters,
+    execution: Execution,
+) -> V3dAnova2Outputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dAnova2Outputs(
+        root=execution.output_file("."),
+        output_ftr=execution.output_file(params.get("ftr") + ".+tlrc") if (params.get("ftr") is not None) else None,
+        output_fa=execution.output_file(params.get("fa") + ".+tlrc") if (params.get("fa") is not None) else None,
+        output_fb=execution.output_file(params.get("fb") + ".+tlrc") if (params.get("fb") is not None) else None,
+        output_fab=execution.output_file(params.get("fab") + ".+tlrc") if (params.get("fab") is not None) else None,
+        output_amean=execution.output_file(params.get("amean") + ".+tlrc") if (params.get("amean") is not None) else None,
+        output_bmean=execution.output_file(params.get("bmean") + ".+tlrc") if (params.get("bmean") is not None) else None,
+        output_xmean=execution.output_file(params.get("xmean") + ".+tlrc") if (params.get("xmean") is not None) else None,
+        output_adiff=execution.output_file(params.get("adiff") + ".+tlrc") if (params.get("adiff") is not None) else None,
+        output_bdiff=execution.output_file(params.get("bdiff") + ".+tlrc") if (params.get("bdiff") is not None) else None,
+        output_xdiff=execution.output_file(params.get("xdiff") + ".+tlrc") if (params.get("xdiff") is not None) else None,
+        output_acontr=execution.output_file(params.get("acontr") + ".+tlrc") if (params.get("acontr") is not None) else None,
+        output_bcontr=execution.output_file(params.get("bcontr") + ".+tlrc") if (params.get("bcontr") is not None) else None,
+        output_xcontr=execution.output_file(params.get("xcontr") + ".+tlrc") if (params.get("xcontr") is not None) else None,
+        output_bucket=execution.output_file(params.get("bucket") + ".+tlrc") if (params.get("bucket") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_anova2_execute(
+    params: V3dAnova2Parameters,
+    execution: Execution,
+) -> V3dAnova2Outputs:
+    """
+    This program performs a two-factor Analysis of Variance (ANOVA) on 3D datasets.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dAnova2Outputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_anova2_cargs(params, execution)
+    ret = v_3d_anova2_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_anova2(
@@ -123,142 +476,15 @@ def v_3d_anova2(
     Returns:
         NamedTuple of outputs (described in `V3dAnova2Outputs`).
     """
-    if not (1 <= type_ <= 3): 
-        raise ValueError(f"'type_' must be between 1 <= x <= 3 but was {type_}")
-    if dataset is not None and not (1 <= len(dataset)): 
-        raise ValueError(f"Length of 'dataset' must be greater than 1 but was {len(dataset)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ANOVA2_METADATA)
-    cargs = []
-    cargs.append("3dANOVA2")
-    cargs.extend([
-        "-type",
-        str(type_)
-    ])
-    cargs.extend([
-        "-alevels",
-        str(alevels)
-    ])
-    cargs.extend([
-        "-blevels",
-        str(blevels)
-    ])
-    if dataset is not None:
-        cargs.extend([
-            "-dset",
-            *dataset
-        ])
-    if voxel is not None:
-        cargs.extend([
-            "-voxel",
-            str(voxel)
-        ])
-    if diskspace:
-        cargs.append("-diskspace")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if ftr is not None:
-        cargs.extend([
-            "-ftr",
-            ftr
-        ])
-    if fa is not None:
-        cargs.extend([
-            "-fa",
-            fa
-        ])
-    if fb is not None:
-        cargs.extend([
-            "-fb",
-            fb
-        ])
-    if fab is not None:
-        cargs.extend([
-            "-fab",
-            fab
-        ])
-    if amean is not None:
-        cargs.extend([
-            "-amean",
-            amean
-        ])
-    if bmean is not None:
-        cargs.extend([
-            "-bmean",
-            bmean
-        ])
-    if xmean is not None:
-        cargs.extend([
-            "-xmean",
-            xmean
-        ])
-    if adiff is not None:
-        cargs.extend([
-            "-adiff",
-            adiff
-        ])
-    if bdiff is not None:
-        cargs.extend([
-            "-bdiff",
-            bdiff
-        ])
-    if xdiff is not None:
-        cargs.extend([
-            "-xdiff",
-            xdiff
-        ])
-    if acontr is not None:
-        cargs.extend([
-            "-acontr",
-            acontr
-        ])
-    if bcontr is not None:
-        cargs.extend([
-            "-bcontr",
-            bcontr
-        ])
-    if xcontr is not None:
-        cargs.extend([
-            "-xcontr",
-            xcontr
-        ])
-    if bucket is not None:
-        cargs.extend([
-            "-bucket",
-            bucket
-        ])
-    if old_method:
-        cargs.append("-old_method")
-    if ok:
-        cargs.append("-OK")
-    if assume_sph:
-        cargs.append("-assume_sph")
-    ret = V3dAnova2Outputs(
-        root=execution.output_file("."),
-        output_ftr=execution.output_file(ftr + ".+tlrc") if (ftr is not None) else None,
-        output_fa=execution.output_file(fa + ".+tlrc") if (fa is not None) else None,
-        output_fb=execution.output_file(fb + ".+tlrc") if (fb is not None) else None,
-        output_fab=execution.output_file(fab + ".+tlrc") if (fab is not None) else None,
-        output_amean=execution.output_file(amean + ".+tlrc") if (amean is not None) else None,
-        output_bmean=execution.output_file(bmean + ".+tlrc") if (bmean is not None) else None,
-        output_xmean=execution.output_file(xmean + ".+tlrc") if (xmean is not None) else None,
-        output_adiff=execution.output_file(adiff + ".+tlrc") if (adiff is not None) else None,
-        output_bdiff=execution.output_file(bdiff + ".+tlrc") if (bdiff is not None) else None,
-        output_xdiff=execution.output_file(xdiff + ".+tlrc") if (xdiff is not None) else None,
-        output_acontr=execution.output_file(acontr + ".+tlrc") if (acontr is not None) else None,
-        output_bcontr=execution.output_file(bcontr + ".+tlrc") if (bcontr is not None) else None,
-        output_xcontr=execution.output_file(xcontr + ".+tlrc") if (xcontr is not None) else None,
-        output_bucket=execution.output_file(bucket + ".+tlrc") if (bucket is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_anova2_params(type_=type_, alevels=alevels, blevels=blevels, dataset=dataset, voxel=voxel, diskspace=diskspace, mask=mask, ftr=ftr, fa=fa, fb=fb, fab=fab, amean=amean, bmean=bmean, xmean=xmean, adiff=adiff, bdiff=bdiff, xdiff=xdiff, acontr=acontr, bcontr=bcontr, xcontr=xcontr, bucket=bucket, old_method=old_method, ok=ok, assume_sph=assume_sph)
+    return v_3d_anova2_execute(params, execution)
 
 
 __all__ = [
     "V3dAnova2Outputs",
     "V_3D_ANOVA2_METADATA",
     "v_3d_anova2",
+    "v_3d_anova2_params",
 ]

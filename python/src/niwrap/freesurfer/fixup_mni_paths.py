@@ -12,6 +12,44 @@ FIXUP_MNI_PATHS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FixupMniPathsParameters = typing.TypedDict('FixupMniPathsParameters', {
+    "__STYX_TYPE__": typing.Literal["fixup_mni_paths"],
+    "verbose": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fixup_mni_paths": fixup_mni_paths_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fixup_mni_paths": fixup_mni_paths_outputs,
+    }
+    return vt.get(t)
 
 
 class FixupMniPathsOutputs(typing.NamedTuple):
@@ -48,6 +86,100 @@ class FixupMniPathsOutputs(typing.NamedTuple):
     """Original file backup for xfmtool"""
 
 
+def fixup_mni_paths_params(
+    verbose: bool = False,
+) -> FixupMniPathsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        verbose: Provide verbose output during the patch process.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fixup_mni_paths",
+        "verbose": verbose,
+    }
+    return params
+
+
+def fixup_mni_paths_cargs(
+    params: FixupMniPathsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fixup_mni_paths")
+    if params.get("verbose"):
+        cargs.append("-v")
+    return cargs
+
+
+def fixup_mni_paths_outputs(
+    params: FixupMniPathsParameters,
+    execution: Execution,
+) -> FixupMniPathsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FixupMniPathsOutputs(
+        root=execution.output_file("."),
+        autocrop_backup=execution.output_file("autocrop.old"),
+        field2imp_backup=execution.output_file("field2imp.old"),
+        imp2field_backup=execution.output_file("imp2field.old"),
+        make_template_backup=execution.output_file("make_template.old"),
+        mritoself_backup=execution.output_file("mritoself.old"),
+        mritotal_backup=execution.output_file("mritotal.old"),
+        nu_correct_backup=execution.output_file("nu_correct.old"),
+        nu_estimate_backup=execution.output_file("nu_estimate.old"),
+        nu_estimate_np_and_em_backup=execution.output_file("nu_estimate_np_and_em.old"),
+        nu_evaluate_backup=execution.output_file("nu_evaluate.old"),
+        resample_labels_backup=execution.output_file("resample_labels.old"),
+        sharpen_volume_backup=execution.output_file("sharpen_volume.old"),
+        xfmtool_backup=execution.output_file("xfmtool.old"),
+    )
+    return ret
+
+
+def fixup_mni_paths_execute(
+    params: FixupMniPathsParameters,
+    execution: Execution,
+) -> FixupMniPathsOutputs:
+    """
+    A utility for patching MNI tools to ensure correct paths are used.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FixupMniPathsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fixup_mni_paths_cargs(params, execution)
+    ret = fixup_mni_paths_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def fixup_mni_paths(
     verbose: bool = False,
     runner: Runner | None = None,
@@ -67,32 +199,13 @@ def fixup_mni_paths(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIXUP_MNI_PATHS_METADATA)
-    cargs = []
-    cargs.append("fixup_mni_paths")
-    if verbose:
-        cargs.append("-v")
-    ret = FixupMniPathsOutputs(
-        root=execution.output_file("."),
-        autocrop_backup=execution.output_file("autocrop.old"),
-        field2imp_backup=execution.output_file("field2imp.old"),
-        imp2field_backup=execution.output_file("imp2field.old"),
-        make_template_backup=execution.output_file("make_template.old"),
-        mritoself_backup=execution.output_file("mritoself.old"),
-        mritotal_backup=execution.output_file("mritotal.old"),
-        nu_correct_backup=execution.output_file("nu_correct.old"),
-        nu_estimate_backup=execution.output_file("nu_estimate.old"),
-        nu_estimate_np_and_em_backup=execution.output_file("nu_estimate_np_and_em.old"),
-        nu_evaluate_backup=execution.output_file("nu_evaluate.old"),
-        resample_labels_backup=execution.output_file("resample_labels.old"),
-        sharpen_volume_backup=execution.output_file("sharpen_volume.old"),
-        xfmtool_backup=execution.output_file("xfmtool.old"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fixup_mni_paths_params(verbose=verbose)
+    return fixup_mni_paths_execute(params, execution)
 
 
 __all__ = [
     "FIXUP_MNI_PATHS_METADATA",
     "FixupMniPathsOutputs",
     "fixup_mni_paths",
+    "fixup_mni_paths_params",
 ]

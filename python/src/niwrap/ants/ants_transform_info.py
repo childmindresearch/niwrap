@@ -12,6 +12,44 @@ ANTS_TRANSFORM_INFO_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsTransformInfoParameters = typing.TypedDict('AntsTransformInfoParameters', {
+    "__STYX_TYPE__": typing.Literal["antsTransformInfo"],
+    "transform_file": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "antsTransformInfo": ants_transform_info_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "antsTransformInfo": ants_transform_info_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsTransformInfoOutputs(typing.NamedTuple):
@@ -22,6 +60,91 @@ class AntsTransformInfoOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_info: OutputPathType
     """Information of the provided transform file."""
+
+
+def ants_transform_info_params(
+    transform_file: InputPathType,
+) -> AntsTransformInfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        transform_file: The transform file to read. Supported formats include\
+            HDF5, MINC, Matlab, and Txt.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "antsTransformInfo",
+        "transform_file": transform_file,
+    }
+    return params
+
+
+def ants_transform_info_cargs(
+    params: AntsTransformInfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("antsTransformInfo")
+    cargs.extend([
+        "--file",
+        execution.input_file(params.get("transform_file"))
+    ])
+    return cargs
+
+
+def ants_transform_info_outputs(
+    params: AntsTransformInfoParameters,
+    execution: Execution,
+) -> AntsTransformInfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsTransformInfoOutputs(
+        root=execution.output_file("."),
+        output_info=execution.output_file("transform_info.txt"),
+    )
+    return ret
+
+
+def ants_transform_info_execute(
+    params: AntsTransformInfoParameters,
+    execution: Execution,
+) -> AntsTransformInfoOutputs:
+    """
+    Provide information about an ITK transform file.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsTransformInfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ants_transform_info_cargs(params, execution)
+    ret = ants_transform_info_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ants_transform_info(
@@ -44,22 +167,13 @@ def ants_transform_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_TRANSFORM_INFO_METADATA)
-    cargs = []
-    cargs.append("antsTransformInfo")
-    cargs.extend([
-        "--file",
-        execution.input_file(transform_file)
-    ])
-    ret = AntsTransformInfoOutputs(
-        root=execution.output_file("."),
-        output_info=execution.output_file("transform_info.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = ants_transform_info_params(transform_file=transform_file)
+    return ants_transform_info_execute(params, execution)
 
 
 __all__ = [
     "ANTS_TRANSFORM_INFO_METADATA",
     "AntsTransformInfoOutputs",
     "ants_transform_info",
+    "ants_transform_info_params",
 ]

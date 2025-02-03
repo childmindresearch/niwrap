@@ -12,6 +12,47 @@ MRI_DEFACE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriDefaceParameters = typing.TypedDict('MriDefaceParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_deface"],
+    "input_volume": InputPathType,
+    "brain_template": InputPathType,
+    "face_template": InputPathType,
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_deface": mri_deface_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_deface": mri_deface_outputs,
+    }
+    return vt.get(t)
 
 
 class MriDefaceOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class MriDefaceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     defaced_output_file: OutputPathType
     """The resulting defaced MRI volume."""
+
+
+def mri_deface_params(
+    input_volume: InputPathType,
+    brain_template: InputPathType,
+    face_template: InputPathType,
+    output_volume: str,
+) -> MriDefaceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: The input volume to be defaced (e.g. anatomical MRI\
+            image).
+        brain_template: Template volume of the brain to be used for defacing.
+        face_template: Template volume of the face to be used for defacing.
+        output_volume: The output volume path for the defaced image.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_deface",
+        "input_volume": input_volume,
+        "brain_template": brain_template,
+        "face_template": face_template,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_deface_cargs(
+    params: MriDefaceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_deface")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("brain_template")))
+    cargs.append(execution.input_file(params.get("face_template")))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_deface_outputs(
+    params: MriDefaceParameters,
+    execution: Execution,
+) -> MriDefaceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriDefaceOutputs(
+        root=execution.output_file("."),
+        defaced_output_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_deface_execute(
+    params: MriDefaceParameters,
+    execution: Execution,
+) -> MriDefaceOutputs:
+    """
+    MRI Deface utility for removing facial features from MRI images.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriDefaceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_deface_cargs(params, execution)
+    ret = mri_deface_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_deface(
@@ -50,22 +185,13 @@ def mri_deface(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DEFACE_METADATA)
-    cargs = []
-    cargs.append("mri_deface")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(brain_template))
-    cargs.append(execution.input_file(face_template))
-    cargs.append(output_volume)
-    ret = MriDefaceOutputs(
-        root=execution.output_file("."),
-        defaced_output_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_deface_params(input_volume=input_volume, brain_template=brain_template, face_template=face_template, output_volume=output_volume)
+    return mri_deface_execute(params, execution)
 
 
 __all__ = [
     "MRI_DEFACE_METADATA",
     "MriDefaceOutputs",
     "mri_deface",
+    "mri_deface_params",
 ]

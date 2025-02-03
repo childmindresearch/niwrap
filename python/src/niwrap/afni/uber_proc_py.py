@@ -12,14 +12,125 @@ UBER_PROC_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+UberProcPyParameters = typing.TypedDict('UberProcPyParameters', {
+    "__STYX_TYPE__": typing.Literal["uber_proc.py"],
+    "results_dir": typing.NotRequired[str | None],
+})
 
 
-class UberProcPyOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `uber_proc_py(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "uber_proc.py": uber_proc_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def uber_proc_py_params(
+    results_dir: str | None = None,
+) -> UberProcPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        results_dir: Directory where results will be placed. Default is a new\
+            'uber_results' directory in the current working directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "uber_proc.py",
+    }
+    if results_dir is not None:
+        params["results_dir"] = results_dir
+    return params
+
+
+def uber_proc_py_cargs(
+    params: UberProcPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("uber_proc.py")
+    if params.get("results_dir") is not None:
+        cargs.append(params.get("results_dir"))
+    return cargs
+
+
+def uber_proc_py_outputs(
+    params: UberProcPyParameters,
+    execution: Execution,
+) -> UberProcPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UberProcPyOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def uber_proc_py_execute(
+    params: UberProcPyParameters,
+    execution: Execution,
+) -> UberProcPyOutputs:
+    """
+    Uber processing tool - work in progress.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UberProcPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = uber_proc_py_cargs(params, execution)
+    ret = uber_proc_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def uber_proc_py(
@@ -42,19 +153,12 @@ def uber_proc_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_PROC_PY_METADATA)
-    cargs = []
-    cargs.append("uber_proc.py")
-    if results_dir is not None:
-        cargs.append(results_dir)
-    ret = UberProcPyOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = uber_proc_py_params(results_dir=results_dir)
+    return uber_proc_py_execute(params, execution)
 
 
 __all__ = [
     "UBER_PROC_PY_METADATA",
-    "UberProcPyOutputs",
     "uber_proc_py",
+    "uber_proc_py_params",
 ]

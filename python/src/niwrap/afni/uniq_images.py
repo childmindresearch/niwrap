@@ -12,6 +12,44 @@ UNIQ_IMAGES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+UniqImagesParameters = typing.TypedDict('UniqImagesParameters', {
+    "__STYX_TYPE__": typing.Literal["uniq_images"],
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "uniq_images": uniq_images_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "uniq_images": uniq_images_outputs,
+    }
+    return vt.get(t)
 
 
 class UniqImagesOutputs(typing.NamedTuple):
@@ -22,6 +60,89 @@ class UniqImagesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     unique_files_list: OutputPathType
     """Generated list of filenames with unique images"""
+
+
+def uniq_images_params(
+    input_files: list[InputPathType],
+) -> UniqImagesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: List of image filenames to be processed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "uniq_images",
+        "input_files": input_files,
+    }
+    return params
+
+
+def uniq_images_cargs(
+    params: UniqImagesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("uniq_images")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def uniq_images_outputs(
+    params: UniqImagesParameters,
+    execution: Execution,
+) -> UniqImagesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UniqImagesOutputs(
+        root=execution.output_file("."),
+        unique_files_list=execution.output_file("unique_images_list.txt"),
+    )
+    return ret
+
+
+def uniq_images_execute(
+    params: UniqImagesParameters,
+    execution: Execution,
+) -> UniqImagesOutputs:
+    """
+    Simple program to read in a list of image filenames, determine which files have
+    unique images inside, and echo out only a list of the filenames with unique
+    images.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UniqImagesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = uniq_images_cargs(params, execution)
+    ret = uniq_images_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def uniq_images(
@@ -45,19 +166,13 @@ def uniq_images(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNIQ_IMAGES_METADATA)
-    cargs = []
-    cargs.append("uniq_images")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = UniqImagesOutputs(
-        root=execution.output_file("."),
-        unique_files_list=execution.output_file("unique_images_list.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = uniq_images_params(input_files=input_files)
+    return uniq_images_execute(params, execution)
 
 
 __all__ = [
     "UNIQ_IMAGES_METADATA",
     "UniqImagesOutputs",
     "uniq_images",
+    "uniq_images_params",
 ]

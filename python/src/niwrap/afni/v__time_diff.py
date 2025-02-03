@@ -12,14 +12,127 @@ V__TIME_DIFF_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VTimeDiffParameters = typing.TypedDict('VTimeDiffParameters', {
+    "__STYX_TYPE__": typing.Literal["@TimeDiff"],
+    "file1": InputPathType,
+    "file2": InputPathType,
+})
 
 
-class VTimeDiffOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__time_diff(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@TimeDiff": v__time_diff_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__time_diff_params(
+    file1: InputPathType,
+    file2: InputPathType,
+) -> VTimeDiffParameters:
+    """
+    Build parameters.
+    
+    Args:
+        file1: First file to compare (e.g., file1.txt).
+        file2: Second file to compare (e.g., file2.txt).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@TimeDiff",
+        "file1": file1,
+        "file2": file2,
+    }
+    return params
+
+
+def v__time_diff_cargs(
+    params: VTimeDiffParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@TimeDiff")
+    cargs.append(execution.input_file(params.get("file1")))
+    cargs.append(execution.input_file(params.get("file2")))
+    return cargs
+
+
+def v__time_diff_outputs(
+    params: VTimeDiffParameters,
+    execution: Execution,
+) -> VTimeDiffOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VTimeDiffOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__time_diff_execute(
+    params: VTimeDiffParameters,
+    execution: Execution,
+) -> VTimeDiffOutputs:
+    """
+    A tool to compare the modification times of two files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VTimeDiffOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__time_diff_cargs(params, execution)
+    ret = v__time_diff_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__time_diff(
@@ -43,19 +156,12 @@ def v__time_diff(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__TIME_DIFF_METADATA)
-    cargs = []
-    cargs.append("@TimeDiff")
-    cargs.append(execution.input_file(file1))
-    cargs.append(execution.input_file(file2))
-    ret = VTimeDiffOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__time_diff_params(file1=file1, file2=file2)
+    return v__time_diff_execute(params, execution)
 
 
 __all__ = [
-    "VTimeDiffOutputs",
     "V__TIME_DIFF_METADATA",
     "v__time_diff",
+    "v__time_diff_params",
 ]

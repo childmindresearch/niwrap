@@ -12,6 +12,47 @@ BBREGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+BbregisterParameters = typing.TypedDict('BbregisterParameters', {
+    "__STYX_TYPE__": typing.Literal["bbregister"],
+    "subject": str,
+    "moveable_volume": InputPathType,
+    "reg_file": str,
+    "contrast_type_t2": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "bbregister": bbregister_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "bbregister": bbregister_outputs,
+    }
+    return vt.get(t)
 
 
 class BbregisterOutputs(typing.NamedTuple):
@@ -24,6 +65,115 @@ class BbregisterOutputs(typing.NamedTuple):
     """Output registration file in dat or lta format."""
     out_volume: OutputPathType
     """Resampled moveable volume."""
+
+
+def bbregister_params(
+    subject: str,
+    moveable_volume: InputPathType,
+    reg_file: str,
+    contrast_type_t2: bool = False,
+) -> BbregisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: FreeSurfer subject name as found in $SUBJECTS_DIR.
+        moveable_volume: "Moveable" volume template for cross-modal volume.\
+            E.g., fMRI volume used for motion correction.
+        reg_file: Output FreeSurfer registration file (tkregister-style or LTA\
+            format).
+        contrast_type_t2: Assume T2 contrast, Grey Matter brighter than White\
+            Matter. Same as --bold and --dti.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "bbregister",
+        "subject": subject,
+        "moveable_volume": moveable_volume,
+        "reg_file": reg_file,
+        "contrast_type_t2": contrast_type_t2,
+    }
+    return params
+
+
+def bbregister_cargs(
+    params: BbregisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("bbregister")
+    cargs.extend([
+        "--s",
+        params.get("subject")
+    ])
+    cargs.extend([
+        "--mov",
+        execution.input_file(params.get("moveable_volume"))
+    ])
+    cargs.extend([
+        "--reg",
+        params.get("reg_file")
+    ])
+    if params.get("contrast_type_t2"):
+        cargs.append("--t2")
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def bbregister_outputs(
+    params: BbregisterParameters,
+    execution: Execution,
+) -> BbregisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BbregisterOutputs(
+        root=execution.output_file("."),
+        reg_output=execution.output_file(params.get("reg_file")),
+        out_volume=execution.output_file("[O_OUTVOL]"),
+    )
+    return ret
+
+
+def bbregister_execute(
+    params: BbregisterParameters,
+    execution: Execution,
+) -> BbregisterOutputs:
+    """
+    Performs within-subject, cross-modal registration using a boundary-based cost
+    function.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BbregisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = bbregister_cargs(params, execution)
+    ret = bbregister_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def bbregister(
@@ -55,34 +205,13 @@ def bbregister(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BBREGISTER_METADATA)
-    cargs = []
-    cargs.append("bbregister")
-    cargs.extend([
-        "--s",
-        subject
-    ])
-    cargs.extend([
-        "--mov",
-        execution.input_file(moveable_volume)
-    ])
-    cargs.extend([
-        "--reg",
-        reg_file
-    ])
-    if contrast_type_t2:
-        cargs.append("--t2")
-    cargs.append("[OPTIONS]")
-    ret = BbregisterOutputs(
-        root=execution.output_file("."),
-        reg_output=execution.output_file(reg_file),
-        out_volume=execution.output_file("[O_OUTVOL]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = bbregister_params(subject=subject, moveable_volume=moveable_volume, reg_file=reg_file, contrast_type_t2=contrast_type_t2)
+    return bbregister_execute(params, execution)
 
 
 __all__ = [
     "BBREGISTER_METADATA",
     "BbregisterOutputs",
     "bbregister",
+    "bbregister_params",
 ]

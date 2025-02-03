@@ -12,6 +12,46 @@ MRI_EDIT_SEGMENTATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriEditSegmentationParameters = typing.TypedDict('MriEditSegmentationParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_edit_segmentation"],
+    "input_segmentation": InputPathType,
+    "t1_volume": InputPathType,
+    "output_segmentation": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_edit_segmentation": mri_edit_segmentation_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_edit_segmentation": mri_edit_segmentation_outputs,
+    }
+    return vt.get(t)
 
 
 class MriEditSegmentationOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class MriEditSegmentationOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_segmentation_file: OutputPathType
     """The resulting edited segmentation file."""
+
+
+def mri_edit_segmentation_params(
+    input_segmentation: InputPathType,
+    t1_volume: InputPathType,
+    output_segmentation: str,
+) -> MriEditSegmentationParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_segmentation: Input segmentation file.
+        t1_volume: T1 volume file.
+        output_segmentation: Output segmentation file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_edit_segmentation",
+        "input_segmentation": input_segmentation,
+        "t1_volume": t1_volume,
+        "output_segmentation": output_segmentation,
+    }
+    return params
+
+
+def mri_edit_segmentation_cargs(
+    params: MriEditSegmentationParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_edit_segmentation")
+    cargs.append(execution.input_file(params.get("input_segmentation")))
+    cargs.append(execution.input_file(params.get("t1_volume")))
+    cargs.append(params.get("output_segmentation"))
+    return cargs
+
+
+def mri_edit_segmentation_outputs(
+    params: MriEditSegmentationParameters,
+    execution: Execution,
+) -> MriEditSegmentationOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriEditSegmentationOutputs(
+        root=execution.output_file("."),
+        output_segmentation_file=execution.output_file(params.get("output_segmentation")),
+    )
+    return ret
+
+
+def mri_edit_segmentation_execute(
+    params: MriEditSegmentationParameters,
+    execution: Execution,
+) -> MriEditSegmentationOutputs:
+    """
+    A tool used for editing segmentations.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriEditSegmentationOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_edit_segmentation_cargs(params, execution)
+    ret = mri_edit_segmentation_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_edit_segmentation(
@@ -47,21 +176,13 @@ def mri_edit_segmentation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_EDIT_SEGMENTATION_METADATA)
-    cargs = []
-    cargs.append("mri_edit_segmentation")
-    cargs.append(execution.input_file(input_segmentation))
-    cargs.append(execution.input_file(t1_volume))
-    cargs.append(output_segmentation)
-    ret = MriEditSegmentationOutputs(
-        root=execution.output_file("."),
-        output_segmentation_file=execution.output_file(output_segmentation),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_edit_segmentation_params(input_segmentation=input_segmentation, t1_volume=t1_volume, output_segmentation=output_segmentation)
+    return mri_edit_segmentation_execute(params, execution)
 
 
 __all__ = [
     "MRI_EDIT_SEGMENTATION_METADATA",
     "MriEditSegmentationOutputs",
     "mri_edit_segmentation",
+    "mri_edit_segmentation_params",
 ]

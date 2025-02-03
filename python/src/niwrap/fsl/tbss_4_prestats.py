@@ -12,14 +12,123 @@ TBSS_4_PRESTATS_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Tbss4PrestatsParameters = typing.TypedDict('Tbss4PrestatsParameters', {
+    "__STYX_TYPE__": typing.Literal["tbss_4_prestats"],
+    "threshold": float,
+})
 
 
-class Tbss4PrestatsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tbss_4_prestats(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "tbss_4_prestats": tbss_4_prestats_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def tbss_4_prestats_params(
+    threshold: float = 0.2,
+) -> Tbss4PrestatsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        threshold: Thresholding value for the Mean FA Skeleton; recommended\
+            value is 0.2.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tbss_4_prestats",
+        "threshold": threshold,
+    }
+    return params
+
+
+def tbss_4_prestats_cargs(
+    params: Tbss4PrestatsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tbss_4_prestats")
+    cargs.append(str(params.get("threshold")))
+    return cargs
+
+
+def tbss_4_prestats_outputs(
+    params: Tbss4PrestatsParameters,
+    execution: Execution,
+) -> Tbss4PrestatsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Tbss4PrestatsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tbss_4_prestats_execute(
+    params: Tbss4PrestatsParameters,
+    execution: Execution,
+) -> Tbss4PrestatsOutputs:
+    """
+    A tool for thresholding the Mean FA Skeleton in TBSS analysis.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Tbss4PrestatsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tbss_4_prestats_cargs(params, execution)
+    ret = tbss_4_prestats_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tbss_4_prestats(
@@ -42,18 +151,12 @@ def tbss_4_prestats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_4_PRESTATS_METADATA)
-    cargs = []
-    cargs.append("tbss_4_prestats")
-    cargs.append(str(threshold))
-    ret = Tbss4PrestatsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tbss_4_prestats_params(threshold=threshold)
+    return tbss_4_prestats_execute(params, execution)
 
 
 __all__ = [
     "TBSS_4_PRESTATS_METADATA",
-    "Tbss4PrestatsOutputs",
     "tbss_4_prestats",
+    "tbss_4_prestats_params",
 ]

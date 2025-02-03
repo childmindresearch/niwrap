@@ -12,6 +12,51 @@ FAT_PROC_SELECT_VOLS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FatProcSelectVolsParameters = typing.TypedDict('FatProcSelectVolsParameters', {
+    "__STYX_TYPE__": typing.Literal["fat_proc_select_vols"],
+    "dwi_input": InputPathType,
+    "img_input": InputPathType,
+    "prefix": str,
+    "in_bads": typing.NotRequired[InputPathType | None],
+    "apply_to_vols": bool,
+    "do_movie": typing.NotRequired[str | None],
+    "workdir": typing.NotRequired[str | None],
+    "no_cmd_out": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fat_proc_select_vols": fat_proc_select_vols_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fat_proc_select_vols": fat_proc_select_vols_outputs,
+    }
+    return vt.get(t)
 
 
 class FatProcSelectVolsOutputs(typing.NamedTuple):
@@ -22,6 +67,145 @@ class FatProcSelectVolsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_selector_string: OutputPathType
     """Text file with AFNI-usable selector string"""
+
+
+def fat_proc_select_vols_params(
+    dwi_input: InputPathType,
+    img_input: InputPathType,
+    prefix: str,
+    in_bads: InputPathType | None = None,
+    apply_to_vols: bool = False,
+    do_movie: str | None = None,
+    workdir: str | None = None,
+    no_cmd_out: bool = False,
+) -> FatProcSelectVolsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dwi_input: Input DWI dataset.
+        img_input: 2D image of the DWI dataset.
+        prefix: Output prefix for files.
+        in_bads: A single column file of integers representing bad volumes\
+            indices (optional).
+        apply_to_vols: Apply the created selection of good volumes to the DWI\
+            dataset.
+        do_movie: Output a movie of the newly created dataset. Only 'AGIF' or\
+            'MPEG' arguments can be used.
+        workdir: Specify a working directory.
+        no_cmd_out: Don't save the command line call of this program and the\
+            location where it was run.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fat_proc_select_vols",
+        "dwi_input": dwi_input,
+        "img_input": img_input,
+        "prefix": prefix,
+        "apply_to_vols": apply_to_vols,
+        "no_cmd_out": no_cmd_out,
+    }
+    if in_bads is not None:
+        params["in_bads"] = in_bads
+    if do_movie is not None:
+        params["do_movie"] = do_movie
+    if workdir is not None:
+        params["workdir"] = workdir
+    return params
+
+
+def fat_proc_select_vols_cargs(
+    params: FatProcSelectVolsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fat_proc_select_vols")
+    cargs.extend([
+        "-in_dwi",
+        execution.input_file(params.get("dwi_input"))
+    ])
+    cargs.extend([
+        "-in_img",
+        execution.input_file(params.get("img_input"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("in_bads") is not None:
+        cargs.extend([
+            "-in_bads",
+            execution.input_file(params.get("in_bads"))
+        ])
+    if params.get("apply_to_vols"):
+        cargs.append("-apply_to_vols")
+    if params.get("do_movie") is not None:
+        cargs.extend([
+            "-do_movie",
+            params.get("do_movie")
+        ])
+    if params.get("workdir") is not None:
+        cargs.extend([
+            "-workdir",
+            params.get("workdir")
+        ])
+    if params.get("no_cmd_out"):
+        cargs.append("-no_cmd_out")
+    return cargs
+
+
+def fat_proc_select_vols_outputs(
+    params: FatProcSelectVolsParameters,
+    execution: Execution,
+) -> FatProcSelectVolsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FatProcSelectVolsOutputs(
+        root=execution.output_file("."),
+        output_selector_string=execution.output_file(params.get("prefix") + "_bads.txt"),
+    )
+    return ret
+
+
+def fat_proc_select_vols_execute(
+    params: FatProcSelectVolsParameters,
+    execution: Execution,
+) -> FatProcSelectVolsOutputs:
+    """
+    Tool for building a selector string for AFNI subbricks and/or 1D text files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FatProcSelectVolsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fat_proc_select_vols_cargs(params, execution)
+    ret = fat_proc_select_vols_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fat_proc_select_vols(
@@ -61,49 +245,13 @@ def fat_proc_select_vols(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_SELECT_VOLS_METADATA)
-    cargs = []
-    cargs.append("fat_proc_select_vols")
-    cargs.extend([
-        "-in_dwi",
-        execution.input_file(dwi_input)
-    ])
-    cargs.extend([
-        "-in_img",
-        execution.input_file(img_input)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if in_bads is not None:
-        cargs.extend([
-            "-in_bads",
-            execution.input_file(in_bads)
-        ])
-    if apply_to_vols:
-        cargs.append("-apply_to_vols")
-    if do_movie is not None:
-        cargs.extend([
-            "-do_movie",
-            do_movie
-        ])
-    if workdir is not None:
-        cargs.extend([
-            "-workdir",
-            workdir
-        ])
-    if no_cmd_out:
-        cargs.append("-no_cmd_out")
-    ret = FatProcSelectVolsOutputs(
-        root=execution.output_file("."),
-        output_selector_string=execution.output_file(prefix + "_bads.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fat_proc_select_vols_params(dwi_input=dwi_input, img_input=img_input, prefix=prefix, in_bads=in_bads, apply_to_vols=apply_to_vols, do_movie=do_movie, workdir=workdir, no_cmd_out=no_cmd_out)
+    return fat_proc_select_vols_execute(params, execution)
 
 
 __all__ = [
     "FAT_PROC_SELECT_VOLS_METADATA",
     "FatProcSelectVolsOutputs",
     "fat_proc_select_vols",
+    "fat_proc_select_vols_params",
 ]

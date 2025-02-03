@@ -12,11 +12,148 @@ DWI2RESPONSE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+Dwi2responseDhollanderParameters = typing.TypedDict('Dwi2responseDhollanderParameters', {
+    "__STYX_TYPE__": typing.Literal["dhollander"],
+    "input": InputPathType,
+    "out_sfwm": str,
+    "out_gm": str,
+    "out_csf": str,
+    "erode": typing.NotRequired[int | None],
+    "fa": typing.NotRequired[float | None],
+    "sfwm": typing.NotRequired[float | None],
+    "gm": typing.NotRequired[float | None],
+    "csf": typing.NotRequired[float | None],
+    "wm_algo": typing.NotRequired[typing.Literal["fa", "tax", "tournier"] | None],
+})
+Dwi2responseFaParameters = typing.TypedDict('Dwi2responseFaParameters', {
+    "__STYX_TYPE__": typing.Literal["fa"],
+    "input": InputPathType,
+    "output": str,
+    "erode": typing.NotRequired[int | None],
+    "number": typing.NotRequired[int | None],
+    "threshold": typing.NotRequired[float | None],
+})
+Dwi2responseManualParameters = typing.TypedDict('Dwi2responseManualParameters', {
+    "__STYX_TYPE__": typing.Literal["manual"],
+    "input": InputPathType,
+    "in_voxels": InputPathType,
+    "output": str,
+    "dirs": typing.NotRequired[InputPathType | None],
+})
+Dwi2responseMsmt5ttParameters = typing.TypedDict('Dwi2responseMsmt5ttParameters', {
+    "__STYX_TYPE__": typing.Literal["msmt_5tt"],
+    "input": InputPathType,
+    "in_5tt": InputPathType,
+    "out_wm": str,
+    "out_gm": str,
+    "out_csf": str,
+    "dirs": typing.NotRequired[InputPathType | None],
+    "fa": typing.NotRequired[float | None],
+    "pvf": typing.NotRequired[float | None],
+    "wm_algo": typing.NotRequired[typing.Literal["fa", "tax", "tournier"] | None],
+    "sfwm_fa_threshold": typing.NotRequired[float | None],
+})
+Dwi2responseTaxParameters = typing.TypedDict('Dwi2responseTaxParameters', {
+    "__STYX_TYPE__": typing.Literal["tax"],
+    "input": InputPathType,
+    "output": str,
+    "peak_ratio": typing.NotRequired[float | None],
+    "max_iters": typing.NotRequired[int | None],
+    "convergence": typing.NotRequired[float | None],
+})
+Dwi2responseTournierParameters = typing.TypedDict('Dwi2responseTournierParameters', {
+    "__STYX_TYPE__": typing.Literal["tournier"],
+    "input": InputPathType,
+    "output": str,
+    "number": typing.NotRequired[int | None],
+    "iter_voxels": typing.NotRequired[int | None],
+    "dilate": typing.NotRequired[int | None],
+    "max_iters": typing.NotRequired[int | None],
+})
+Dwi2responseFslgradParameters = typing.TypedDict('Dwi2responseFslgradParameters', {
+    "__STYX_TYPE__": typing.Literal["fslgrad"],
+    "bvecs": InputPathType,
+    "bvals": InputPathType,
+})
+Dwi2responseConfigParameters = typing.TypedDict('Dwi2responseConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+Dwi2responseParameters = typing.TypedDict('Dwi2responseParameters', {
+    "__STYX_TYPE__": typing.Literal["dwi2response"],
+    "algorithm": typing.Union[Dwi2responseDhollanderParameters, Dwi2responseFaParameters, Dwi2responseManualParameters, Dwi2responseMsmt5ttParameters, Dwi2responseTaxParameters, Dwi2responseTournierParameters],
+    "grad": typing.NotRequired[InputPathType | None],
+    "fslgrad": typing.NotRequired[Dwi2responseFslgradParameters | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "voxels": typing.NotRequired[str | None],
+    "shells": typing.NotRequired[list[int] | None],
+    "lmax": typing.NotRequired[list[int] | None],
+    "nocleanup": bool,
+    "scratch": typing.NotRequired[str | None],
+    "continue": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[Dwi2responseConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "dwi2response": dwi2response_cargs,
+        "dhollander": dwi2response_dhollander_cargs,
+        "fa": dwi2response_fa_cargs,
+        "manual": dwi2response_manual_cargs,
+        "msmt_5tt": dwi2response_msmt_5tt_cargs,
+        "tax": dwi2response_tax_cargs,
+        "tournier": dwi2response_tournier_cargs,
+        "fslgrad": dwi2response_fslgrad_cargs,
+        "config": dwi2response_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "dwi2response": dwi2response_outputs,
+        "dhollander": dwi2response_dhollander_outputs,
+        "fa": dwi2response_fa_outputs,
+        "manual": dwi2response_manual_outputs,
+        "msmt_5tt": dwi2response_msmt_5tt_outputs,
+        "tax": dwi2response_tax_outputs,
+        "tournier": dwi2response_tournier_outputs,
+    }
+    return vt.get(t)
 
 
 class Dwi2responseDhollanderOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dwi2responseDhollander(...)`.
+    Output object returned when calling `Dwi2responseDhollanderParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -28,118 +165,140 @@ class Dwi2responseDhollanderOutputs(typing.NamedTuple):
     """Output CSF response function text file"""
 
 
-@dataclasses.dataclass
-class Dwi2responseDhollander:
+def dwi2response_dhollander_params(
+    input_: InputPathType,
+    out_sfwm: str,
+    out_gm: str,
+    out_csf: str,
+    erode: int | None = None,
+    fa: float | None = None,
+    sfwm: float | None = None,
+    gm: float | None = None,
+    csf: float | None = None,
+    wm_algo: typing.Literal["fa", "tax", "tournier"] | None = None,
+) -> Dwi2responseDhollanderParameters:
     """
-    Unsupervised estimation of WM, GM and CSF response functions that does not
-    require a T1 image (or segmentation thereof).
-    This is an improved version of the Dhollander et al. (2016) algorithm for
-    unsupervised estimation of WM, GM and CSF response functions, which includes
-    the Dhollander et al. (2019) improvements for single-fibre WM response
-    function estimation (prior to this update, the "dwi2response tournier"
-    algorithm had been utilised specifically for the single-fibre WM response
-    function estimation step).
+    Build parameters.
+    
+    Args:
+        input_: Input DWI dataset.
+        out_sfwm: Output single-fibre WM response function text file.
+        out_gm: Output GM response function text file.
+        out_csf: Output CSF response function text file.
+        erode: Number of erosion passes to apply to initial (whole brain) mask.\
+            Set to 0 to not erode the brain mask. (default: 3).
+        fa: FA threshold for crude WM versus GM-CSF separation. (default: 0.2).
+        sfwm: Final number of single-fibre WM voxels to select, as a percentage\
+            of refined WM. (default: 0.5 per cent).
+        gm: Final number of GM voxels to select, as a percentage of refined GM.\
+            (default: 2 per cent).
+        csf: Final number of CSF voxels to select, as a percentage of refined\
+            CSF. (default: 10 per cent).
+        wm_algo: Use external dwi2response algorithm for WM single-fibre voxel\
+            selection (options: fa, tax, tournier) (default: built-in Dhollander\
+            2019).
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """Input DWI dataset"""
-    out_sfwm: str
-    """Output single-fibre WM response function text file"""
-    out_gm: str
-    """Output GM response function text file"""
-    out_csf: str
-    """Output CSF response function text file"""
-    erode: int | None = None
-    """Number of erosion passes to apply to initial (whole brain) mask. Set to 0
-    to not erode the brain mask. (default: 3)"""
-    fa: float | None = None
-    """FA threshold for crude WM versus GM-CSF separation. (default: 0.2)"""
-    sfwm: float | None = None
-    """Final number of single-fibre WM voxels to select, as a percentage of
-    refined WM. (default: 0.5 per cent)"""
-    gm: float | None = None
-    """Final number of GM voxels to select, as a percentage of refined GM.
-    (default: 2 per cent)"""
-    csf: float | None = None
-    """Final number of CSF voxels to select, as a percentage of refined CSF.
-    (default: 10 per cent)"""
-    wm_algo: typing.Literal["fa", "tax", "tournier"] | None = None
-    """Use external dwi2response algorithm for WM single-fibre voxel selection
-    (options: fa, tax, tournier) (default: built-in Dhollander 2019)"""
+    params = {
+        "__STYXTYPE__": "dhollander",
+        "input": input_,
+        "out_sfwm": out_sfwm,
+        "out_gm": out_gm,
+        "out_csf": out_csf,
+    }
+    if erode is not None:
+        params["erode"] = erode
+    if fa is not None:
+        params["fa"] = fa
+    if sfwm is not None:
+        params["sfwm"] = sfwm
+    if gm is not None:
+        params["gm"] = gm
+    if csf is not None:
+        params["csf"] = csf
+    if wm_algo is not None:
+        params["wm_algo"] = wm_algo
+    return params
+
+
+def dwi2response_dhollander_cargs(
+    params: Dwi2responseDhollanderParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("dhollander")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(self.out_sfwm)
-        cargs.append(self.out_gm)
-        cargs.append(self.out_csf)
-        if self.erode is not None:
-            cargs.extend([
-                "-erode",
-                str(self.erode)
-            ])
-        if self.fa is not None:
-            cargs.extend([
-                "-fa",
-                str(self.fa)
-            ])
-        if self.sfwm is not None:
-            cargs.extend([
-                "-sfwm",
-                str(self.sfwm)
-            ])
-        if self.gm is not None:
-            cargs.extend([
-                "-gm",
-                str(self.gm)
-            ])
-        if self.csf is not None:
-            cargs.extend([
-                "-csf",
-                str(self.csf)
-            ])
-        if self.wm_algo is not None:
-            cargs.extend([
-                "-wm_algo",
-                self.wm_algo
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dhollander")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("out_sfwm"))
+    cargs.append(params.get("out_gm"))
+    cargs.append(params.get("out_csf"))
+    if params.get("erode") is not None:
+        cargs.extend([
+            "-erode",
+            str(params.get("erode"))
+        ])
+    if params.get("fa") is not None:
+        cargs.extend([
+            "-fa",
+            str(params.get("fa"))
+        ])
+    if params.get("sfwm") is not None:
+        cargs.extend([
+            "-sfwm",
+            str(params.get("sfwm"))
+        ])
+    if params.get("gm") is not None:
+        cargs.extend([
+            "-gm",
+            str(params.get("gm"))
+        ])
+    if params.get("csf") is not None:
+        cargs.extend([
+            "-csf",
+            str(params.get("csf"))
+        ])
+    if params.get("wm_algo") is not None:
+        cargs.extend([
+            "-wm_algo",
+            params.get("wm_algo")
+        ])
+    return cargs
+
+
+def dwi2response_dhollander_outputs(
+    params: Dwi2responseDhollanderParameters,
+    execution: Execution,
+) -> Dwi2responseDhollanderOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Dwi2responseDhollanderOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Dwi2responseDhollanderOutputs`).
-        """
-        ret = Dwi2responseDhollanderOutputs(
-            root=execution.output_file("."),
-            out_sfwm=execution.output_file(self.out_sfwm),
-            out_gm=execution.output_file(self.out_gm),
-            out_csf=execution.output_file(self.out_csf),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseDhollanderOutputs(
+        root=execution.output_file("."),
+        out_sfwm=execution.output_file(params.get("out_sfwm")),
+        out_gm=execution.output_file(params.get("out_gm")),
+        out_csf=execution.output_file(params.get("out_csf")),
+    )
+    return ret
 
 
 class Dwi2responseFaOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dwi2responseFa(...)`.
+    Output object returned when calling `Dwi2responseFaParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -147,79 +306,99 @@ class Dwi2responseFaOutputs(typing.NamedTuple):
     """The output response function text file"""
 
 
-@dataclasses.dataclass
-class Dwi2responseFa:
+def dwi2response_fa_params(
+    input_: InputPathType,
+    output: str,
+    erode: int | None = None,
+    number: int | None = None,
+    threshold: float | None = None,
+) -> Dwi2responseFaParameters:
     """
-    Use the old FA-threshold heuristic for single-fibre voxel selection and
-    response function estimation.
+    Build parameters.
+    
+    Args:
+        input_: The input DWI.
+        output: The output response function text file.
+        erode: Number of brain mask erosion steps to apply prior to threshold\
+            (not used if mask is provided manually).
+        number: The number of highest-FA voxels to use.
+        threshold: Apply a hard FA threshold, rather than selecting the top\
+            voxels.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input DWI"""
-    output: str
-    """The output response function text file"""
-    erode: int | None = None
-    """Number of brain mask erosion steps to apply prior to threshold (not used
-    if mask is provided manually)"""
-    number: int | None = None
-    """The number of highest-FA voxels to use"""
-    threshold: float | None = None
-    """Apply a hard FA threshold, rather than selecting the top voxels"""
+    params = {
+        "__STYXTYPE__": "fa",
+        "input": input_,
+        "output": output,
+    }
+    if erode is not None:
+        params["erode"] = erode
+    if number is not None:
+        params["number"] = number
+    if threshold is not None:
+        params["threshold"] = threshold
+    return params
+
+
+def dwi2response_fa_cargs(
+    params: Dwi2responseFaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("fa")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(self.output)
-        if self.erode is not None:
-            cargs.extend([
-                "-erode",
-                str(self.erode)
-            ])
-        if self.number is not None:
-            cargs.extend([
-                "-number",
-                str(self.number)
-            ])
-        if self.threshold is not None:
-            cargs.extend([
-                "-threshold",
-                str(self.threshold)
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fa")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("output"))
+    if params.get("erode") is not None:
+        cargs.extend([
+            "-erode",
+            str(params.get("erode"))
+        ])
+    if params.get("number") is not None:
+        cargs.extend([
+            "-number",
+            str(params.get("number"))
+        ])
+    if params.get("threshold") is not None:
+        cargs.extend([
+            "-threshold",
+            str(params.get("threshold"))
+        ])
+    return cargs
+
+
+def dwi2response_fa_outputs(
+    params: Dwi2responseFaParameters,
+    execution: Execution,
+) -> Dwi2responseFaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Dwi2responseFaOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Dwi2responseFaOutputs`).
-        """
-        ret = Dwi2responseFaOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(self.output),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseFaOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
 
 
 class Dwi2responseManualOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dwi2responseManual(...)`.
+    Output object returned when calling `Dwi2responseManualParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -227,68 +406,84 @@ class Dwi2responseManualOutputs(typing.NamedTuple):
     """Output response function text file"""
 
 
-@dataclasses.dataclass
-class Dwi2responseManual:
+def dwi2response_manual_params(
+    input_: InputPathType,
+    in_voxels: InputPathType,
+    output: str,
+    dirs: InputPathType | None = None,
+) -> Dwi2responseManualParameters:
     """
-    Derive a response function using an input mask image alone (i.e.
-    pre-selected voxels).
+    Build parameters.
+    
+    Args:
+        input_: The input DWI.
+        in_voxels: Input voxel selection mask.
+        output: Output response function text file.
+        dirs: Manually provide the fibre direction in each voxel (a tensor fit\
+            will be used otherwise).
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input DWI"""
-    in_voxels: InputPathType
-    """Input voxel selection mask"""
-    output: str
-    """Output response function text file"""
-    dirs: InputPathType | None = None
-    """Manually provide the fibre direction in each voxel (a tensor fit will be
-    used otherwise)"""
+    params = {
+        "__STYXTYPE__": "manual",
+        "input": input_,
+        "in_voxels": in_voxels,
+        "output": output,
+    }
+    if dirs is not None:
+        params["dirs"] = dirs
+    return params
+
+
+def dwi2response_manual_cargs(
+    params: Dwi2responseManualParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("manual")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(execution.input_file(self.in_voxels))
-        cargs.append(self.output)
-        if self.dirs is not None:
-            cargs.extend([
-                "-dirs",
-                execution.input_file(self.dirs)
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("manual")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("in_voxels")))
+    cargs.append(params.get("output"))
+    if params.get("dirs") is not None:
+        cargs.extend([
+            "-dirs",
+            execution.input_file(params.get("dirs"))
+        ])
+    return cargs
+
+
+def dwi2response_manual_outputs(
+    params: Dwi2responseManualParameters,
+    execution: Execution,
+) -> Dwi2responseManualOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Dwi2responseManualOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Dwi2responseManualOutputs`).
-        """
-        ret = Dwi2responseManualOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(self.output),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseManualOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
 
 
 class Dwi2responseMsmt5ttOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dwi2responseMsmt5tt(...)`.
+    Output object returned when calling `Dwi2responseMsmt5ttParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -300,109 +495,135 @@ class Dwi2responseMsmt5ttOutputs(typing.NamedTuple):
     """Output CSF response text file"""
 
 
-@dataclasses.dataclass
-class Dwi2responseMsmt5tt:
+def dwi2response_msmt_5tt_params(
+    input_: InputPathType,
+    in_5tt: InputPathType,
+    out_wm: str,
+    out_gm: str,
+    out_csf: str,
+    dirs: InputPathType | None = None,
+    fa: float | None = None,
+    pvf: float | None = None,
+    wm_algo: typing.Literal["fa", "tax", "tournier"] | None = None,
+    sfwm_fa_threshold: float | None = None,
+) -> Dwi2responseMsmt5ttParameters:
     """
-    Derive MSMT-CSD tissue response functions based on a co-registered
-    five-tissue-type (5TT) image.
+    Build parameters.
+    
+    Args:
+        input_: The input DWI.
+        in_5tt: Input co-registered 5TT image.
+        out_wm: Output WM response text file.
+        out_gm: Output GM response text file.
+        out_csf: Output CSF response text file.
+        dirs: Manually provide the fibre direction in each voxel (a tensor fit\
+            will be used otherwise).
+        fa: Upper fractional anisotropy threshold for GM and CSF voxel\
+            selection (default: 0.2).
+        pvf: Partial volume fraction threshold for tissue voxel selection\
+            (default: 0.95).
+        wm_algo: algorithm dwi2response algorithm to use for WM single-fibre\
+            voxel selection (options: fa, tax, tournier; default: tournier).
+        sfwm_fa_threshold: Sets -wm_algo to fa and allows to specify a hard FA\
+            threshold for single-fibre WM voxels, which is passed to the -threshold\
+            option of the fa algorithm (warning: overrides -wm_algo option).
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input DWI"""
-    in_5tt: InputPathType
-    """Input co-registered 5TT image"""
-    out_wm: str
-    """Output WM response text file"""
-    out_gm: str
-    """Output GM response text file"""
-    out_csf: str
-    """Output CSF response text file"""
-    dirs: InputPathType | None = None
-    """Manually provide the fibre direction in each voxel (a tensor fit will be
-    used otherwise)"""
-    fa: float | None = None
-    """Upper fractional anisotropy threshold for GM and CSF voxel selection
-    (default: 0.2)"""
-    pvf: float | None = None
-    """Partial volume fraction threshold for tissue voxel selection (default:
-    0.95)"""
-    wm_algo: typing.Literal["fa", "tax", "tournier"] | None = None
-    """algorithm dwi2response algorithm to use for WM single-fibre voxel
-    selection (options: fa, tax, tournier; default: tournier)"""
-    sfwm_fa_threshold: float | None = None
-    """Sets -wm_algo to fa and allows to specify a hard FA threshold for
-    single-fibre WM voxels, which is passed to the -threshold option of the fa
-    algorithm (warning: overrides -wm_algo option)"""
+    params = {
+        "__STYXTYPE__": "msmt_5tt",
+        "input": input_,
+        "in_5tt": in_5tt,
+        "out_wm": out_wm,
+        "out_gm": out_gm,
+        "out_csf": out_csf,
+    }
+    if dirs is not None:
+        params["dirs"] = dirs
+    if fa is not None:
+        params["fa"] = fa
+    if pvf is not None:
+        params["pvf"] = pvf
+    if wm_algo is not None:
+        params["wm_algo"] = wm_algo
+    if sfwm_fa_threshold is not None:
+        params["sfwm_fa_threshold"] = sfwm_fa_threshold
+    return params
+
+
+def dwi2response_msmt_5tt_cargs(
+    params: Dwi2responseMsmt5ttParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("msmt_5tt")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(execution.input_file(self.in_5tt))
-        cargs.append(self.out_wm)
-        cargs.append(self.out_gm)
-        cargs.append(self.out_csf)
-        if self.dirs is not None:
-            cargs.extend([
-                "-dirs",
-                execution.input_file(self.dirs)
-            ])
-        if self.fa is not None:
-            cargs.extend([
-                "-fa",
-                str(self.fa)
-            ])
-        if self.pvf is not None:
-            cargs.extend([
-                "-pvf",
-                str(self.pvf)
-            ])
-        if self.wm_algo is not None:
-            cargs.extend([
-                "-wm_algo",
-                self.wm_algo
-            ])
-        if self.sfwm_fa_threshold is not None:
-            cargs.extend([
-                "-sfwm_fa_threshold",
-                str(self.sfwm_fa_threshold)
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("msmt_5tt")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(execution.input_file(params.get("in_5tt")))
+    cargs.append(params.get("out_wm"))
+    cargs.append(params.get("out_gm"))
+    cargs.append(params.get("out_csf"))
+    if params.get("dirs") is not None:
+        cargs.extend([
+            "-dirs",
+            execution.input_file(params.get("dirs"))
+        ])
+    if params.get("fa") is not None:
+        cargs.extend([
+            "-fa",
+            str(params.get("fa"))
+        ])
+    if params.get("pvf") is not None:
+        cargs.extend([
+            "-pvf",
+            str(params.get("pvf"))
+        ])
+    if params.get("wm_algo") is not None:
+        cargs.extend([
+            "-wm_algo",
+            params.get("wm_algo")
+        ])
+    if params.get("sfwm_fa_threshold") is not None:
+        cargs.extend([
+            "-sfwm_fa_threshold",
+            str(params.get("sfwm_fa_threshold"))
+        ])
+    return cargs
+
+
+def dwi2response_msmt_5tt_outputs(
+    params: Dwi2responseMsmt5ttParameters,
+    execution: Execution,
+) -> Dwi2responseMsmt5ttOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Dwi2responseMsmt5ttOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Dwi2responseMsmt5ttOutputs`).
-        """
-        ret = Dwi2responseMsmt5ttOutputs(
-            root=execution.output_file("."),
-            out_wm=execution.output_file(self.out_wm),
-            out_gm=execution.output_file(self.out_gm),
-            out_csf=execution.output_file(self.out_csf),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseMsmt5ttOutputs(
+        root=execution.output_file("."),
+        out_wm=execution.output_file(params.get("out_wm")),
+        out_gm=execution.output_file(params.get("out_gm")),
+        out_csf=execution.output_file(params.get("out_csf")),
+    )
+    return ret
 
 
 class Dwi2responseTaxOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dwi2responseTax(...)`.
+    Output object returned when calling `Dwi2responseTaxParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -410,78 +631,98 @@ class Dwi2responseTaxOutputs(typing.NamedTuple):
     """The output response function text file"""
 
 
-@dataclasses.dataclass
-class Dwi2responseTax:
+def dwi2response_tax_params(
+    input_: InputPathType,
+    output: str,
+    peak_ratio: float | None = None,
+    max_iters: int | None = None,
+    convergence: float | None = None,
+) -> Dwi2responseTaxParameters:
     """
-    Use the Tax et al. (2014) recursive calibration algorithm for single-fibre
-    voxel selection and response function estimation.
+    Build parameters.
+    
+    Args:
+        input_: The input DWI.
+        output: The output response function text file.
+        peak_ratio: Second-to-first-peak amplitude ratio threshold.
+        max_iters: Maximum number of iterations.
+        convergence: Percentile change in any RF coefficient required to\
+            continue iterating.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input DWI"""
-    output: str
-    """The output response function text file"""
-    peak_ratio: float | None = None
-    """Second-to-first-peak amplitude ratio threshold"""
-    max_iters: int | None = None
-    """Maximum number of iterations"""
-    convergence: float | None = None
-    """Percentile change in any RF coefficient required to continue iterating"""
+    params = {
+        "__STYXTYPE__": "tax",
+        "input": input_,
+        "output": output,
+    }
+    if peak_ratio is not None:
+        params["peak_ratio"] = peak_ratio
+    if max_iters is not None:
+        params["max_iters"] = max_iters
+    if convergence is not None:
+        params["convergence"] = convergence
+    return params
+
+
+def dwi2response_tax_cargs(
+    params: Dwi2responseTaxParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("tax")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(self.output)
-        if self.peak_ratio is not None:
-            cargs.extend([
-                "-peak_ratio",
-                str(self.peak_ratio)
-            ])
-        if self.max_iters is not None:
-            cargs.extend([
-                "-max_iters",
-                str(self.max_iters)
-            ])
-        if self.convergence is not None:
-            cargs.extend([
-                "-convergence",
-                str(self.convergence)
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tax")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("output"))
+    if params.get("peak_ratio") is not None:
+        cargs.extend([
+            "-peak_ratio",
+            str(params.get("peak_ratio"))
+        ])
+    if params.get("max_iters") is not None:
+        cargs.extend([
+            "-max_iters",
+            str(params.get("max_iters"))
+        ])
+    if params.get("convergence") is not None:
+        cargs.extend([
+            "-convergence",
+            str(params.get("convergence"))
+        ])
+    return cargs
+
+
+def dwi2response_tax_outputs(
+    params: Dwi2responseTaxParameters,
+    execution: Execution,
+) -> Dwi2responseTaxOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Dwi2responseTaxOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Dwi2responseTaxOutputs`).
-        """
-        ret = Dwi2responseTaxOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(self.output),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseTaxOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
 
 
 class Dwi2responseTournierOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `Dwi2responseTournier(...)`.
+    Output object returned when calling `Dwi2responseTournierParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -489,147 +730,192 @@ class Dwi2responseTournierOutputs(typing.NamedTuple):
     """The output response function text file"""
 
 
-@dataclasses.dataclass
-class Dwi2responseTournier:
+def dwi2response_tournier_params(
+    input_: InputPathType,
+    output: str,
+    number: int | None = None,
+    iter_voxels: int | None = None,
+    dilate: int | None = None,
+    max_iters: int | None = None,
+) -> Dwi2responseTournierParameters:
     """
-    Use the Tournier et al. (2013) iterative algorithm for single-fibre voxel
-    selection and response function estimation.
+    Build parameters.
+    
+    Args:
+        input_: The input DWI.
+        output: The output response function text file.
+        number: Number of single-fibre voxels to use when calculating response\
+            function.
+        iter_voxels: Number of single-fibre voxels to select when preparing for\
+            the next iteration (default = 10 x value given in -number).
+        dilate: Number of mask dilation steps to apply when deriving voxel mask\
+            to test in the next iteration.
+        max_iters: Maximum number of iterations.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """The input DWI"""
-    output: str
-    """The output response function text file"""
-    number: int | None = None
-    """Number of single-fibre voxels to use when calculating response
-    function"""
-    iter_voxels: int | None = None
-    """Number of single-fibre voxels to select when preparing for the next
-    iteration (default = 10 x value given in -number)"""
-    dilate: int | None = None
-    """Number of mask dilation steps to apply when deriving voxel mask to test
-    in the next iteration"""
-    max_iters: int | None = None
-    """Maximum number of iterations"""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("tournier")
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(self.output)
-        if self.number is not None:
-            cargs.extend([
-                "-number",
-                str(self.number)
-            ])
-        if self.iter_voxels is not None:
-            cargs.extend([
-                "-iter_voxels",
-                str(self.iter_voxels)
-            ])
-        if self.dilate is not None:
-            cargs.extend([
-                "-dilate",
-                str(self.dilate)
-            ])
-        if self.max_iters is not None:
-            cargs.extend([
-                "-max_iters",
-                str(self.max_iters)
-            ])
-        return cargs
-    
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> Dwi2responseTournierOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `Dwi2responseTournierOutputs`).
-        """
-        ret = Dwi2responseTournierOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(self.output),
-        )
-        return ret
+    params = {
+        "__STYXTYPE__": "tournier",
+        "input": input_,
+        "output": output,
+    }
+    if number is not None:
+        params["number"] = number
+    if iter_voxels is not None:
+        params["iter_voxels"] = iter_voxels
+    if dilate is not None:
+        params["dilate"] = dilate
+    if max_iters is not None:
+        params["max_iters"] = max_iters
+    return params
 
 
-@dataclasses.dataclass
-class Dwi2responseFslgrad:
+def dwi2response_tournier_cargs(
+    params: Dwi2responseTournierParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Provide the diffusion gradient table in FSL bvecs/bvals format.
-    """
-    bvecs: InputPathType
-    """Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used."""
-    bvals: InputPathType
-    """Provide the diffusion-weighted gradient scheme used in the acquisition in
-    FSL bvecs/bvals format files. If a diffusion gradient scheme is present in
-    the input image header, the data provided with this option will be instead
-    used."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-fslgrad")
-        cargs.append(execution.input_file(self.bvecs))
-        cargs.append(execution.input_file(self.bvals))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tournier")
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("output"))
+    if params.get("number") is not None:
+        cargs.extend([
+            "-number",
+            str(params.get("number"))
+        ])
+    if params.get("iter_voxels") is not None:
+        cargs.extend([
+            "-iter_voxels",
+            str(params.get("iter_voxels"))
+        ])
+    if params.get("dilate") is not None:
+        cargs.extend([
+            "-dilate",
+            str(params.get("dilate"))
+        ])
+    if params.get("max_iters") is not None:
+        cargs.extend([
+            "-max_iters",
+            str(params.get("max_iters"))
+        ])
+    return cargs
 
 
-@dataclasses.dataclass
-class Dwi2responseConfig:
+def dwi2response_tournier_outputs(
+    params: Dwi2responseTournierParameters,
+    execution: Execution,
+) -> Dwi2responseTournierOutputs:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseTournierOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
+
+
+def dwi2response_fslgrad_params(
+    bvecs: InputPathType,
+    bvals: InputPathType,
+) -> Dwi2responseFslgradParameters:
+    """
+    Build parameters.
+    
+    Args:
+        bvecs: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+        bvals: Provide the diffusion-weighted gradient scheme used in the\
+            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\
+            scheme is present in the input image header, the data provided with\
+            this option will be instead used.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslgrad",
+        "bvecs": bvecs,
+        "bvals": bvals,
+    }
+    return params
+
+
+def dwi2response_fslgrad_cargs(
+    params: Dwi2responseFslgradParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-fslgrad")
+    cargs.append(execution.input_file(params.get("bvecs")))
+    cargs.append(execution.input_file(params.get("bvals")))
+    return cargs
+
+
+def dwi2response_config_params(
+    key: str,
+    value: str,
+) -> Dwi2responseConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def dwi2response_config_cargs(
+    params: Dwi2responseConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class Dwi2responseOutputs(typing.NamedTuple):
@@ -639,15 +925,16 @@ class Dwi2responseOutputs(typing.NamedTuple):
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     algorithm: typing.Union[Dwi2responseDhollanderOutputs, Dwi2responseFaOutputs, Dwi2responseManualOutputs, Dwi2responseMsmt5ttOutputs, Dwi2responseTaxOutputs, Dwi2responseTournierOutputs]
-    """Outputs from `Dwi2responseDhollander` or `Dwi2responseFa` or
-    `Dwi2responseManual` or `Dwi2responseMsmt5tt` or `Dwi2responseTax` or
-    `Dwi2responseTournier`."""
+    """Outputs from `Dwi2responseDhollanderParameters` or
+    `Dwi2responseFaParameters` or `Dwi2responseManualParameters` or
+    `Dwi2responseMsmt5ttParameters` or `Dwi2responseTaxParameters` or
+    `Dwi2responseTournierParameters`."""
 
 
-def dwi2response(
-    algorithm: typing.Union[Dwi2responseDhollander, Dwi2responseFa, Dwi2responseManual, Dwi2responseMsmt5tt, Dwi2responseTax, Dwi2responseTournier],
+def dwi2response_params(
+    algorithm: typing.Union[Dwi2responseDhollanderParameters, Dwi2responseFaParameters, Dwi2responseManualParameters, Dwi2responseMsmt5ttParameters, Dwi2responseTaxParameters, Dwi2responseTournierParameters],
     grad: InputPathType | None = None,
-    fslgrad: Dwi2responseFslgrad | None = None,
+    fslgrad: Dwi2responseFslgradParameters | None = None,
     mask: InputPathType | None = None,
     voxels: str | None = None,
     shells: list[int] | None = None,
@@ -660,7 +947,228 @@ def dwi2response(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[Dwi2responseConfig] | None = None,
+    config: list[Dwi2responseConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> Dwi2responseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        algorithm: Select the algorithm to be used to complete the script\
+            operation; additional details and options become available once an\
+            algorithm is nominated. Options are: dhollander, fa, manual, msmt_5tt,\
+            tax, tournier.
+        grad: Provide the diffusion gradient table in MRtrix format.
+        fslgrad: Provide the diffusion gradient table in FSL bvecs/bvals format.
+        mask: Only process voxels within the specified binary brain mask image.
+        voxels: Output an image showing the final voxel selection(s).
+        shells: b-value(s) to use in response function estimation\
+            (comma-separated list in case of multiple b-values, b=0 must be\
+            included explicitly).
+        lmax: maximum harmonic degree(s) for response function estimation\
+            (comma-separated list in case of multiple b-values).
+        nocleanup: do not delete intermediate files during script execution,\
+            and do not delete scratch directory at script completion.
+        scratch: manually specify the path in which to generate the scratch\
+            directory.
+        continue_: continue the script from a previous execution; must provide\
+            the scratch directory path, and the name of the last\
+            successfully-generated file.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "dwi2response",
+        "algorithm": algorithm,
+        "nocleanup": nocleanup,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+    }
+    if grad is not None:
+        params["grad"] = grad
+    if fslgrad is not None:
+        params["fslgrad"] = fslgrad
+    if mask is not None:
+        params["mask"] = mask
+    if voxels is not None:
+        params["voxels"] = voxels
+    if shells is not None:
+        params["shells"] = shells
+    if lmax is not None:
+        params["lmax"] = lmax
+    if scratch is not None:
+        params["scratch"] = scratch
+    if continue_ is not None:
+        params["continue"] = continue_
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def dwi2response_cargs(
+    params: Dwi2responseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("dwi2response")
+    cargs.extend(dyn_cargs(params.get("algorithm")["__STYXTYPE__"])(params.get("algorithm"), execution))
+    if params.get("grad") is not None:
+        cargs.extend([
+            "-grad",
+            execution.input_file(params.get("grad"))
+        ])
+    if params.get("fslgrad") is not None:
+        cargs.extend(dyn_cargs(params.get("fslgrad")["__STYXTYPE__"])(params.get("fslgrad"), execution))
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("voxels") is not None:
+        cargs.extend([
+            "-voxels",
+            params.get("voxels")
+        ])
+    if params.get("shells") is not None:
+        cargs.extend([
+            "-shells",
+            ",".join(map(str, params.get("shells")))
+        ])
+    if params.get("lmax") is not None:
+        cargs.extend([
+            "-lmax",
+            ",".join(map(str, params.get("lmax")))
+        ])
+    if params.get("nocleanup"):
+        cargs.append("-nocleanup")
+    if params.get("scratch") is not None:
+        cargs.extend([
+            "-scratch",
+            params.get("scratch")
+        ])
+    if params.get("continue") is not None:
+        cargs.extend([
+            "-continue",
+            params.get("continue")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    return cargs
+
+
+def dwi2response_outputs(
+    params: Dwi2responseParameters,
+    execution: Execution,
+) -> Dwi2responseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Dwi2responseOutputs(
+        root=execution.output_file("."),
+        algorithm=dyn_outputs(algorithm["__STYXTYPE__"])(algorithm, execution),
+    )
+    return ret
+
+
+def dwi2response_execute(
+    params: Dwi2responseParameters,
+    execution: Execution,
+) -> Dwi2responseOutputs:
+    """
+    Estimate response function(s) for spherical deconvolution.
+    dwi2response offers different algorithms for performing various types of
+    response function estimation. The name of the algorithm must appear as the
+    first argument on the command-line after â€˜dwi2responseâ€™. The subsequent
+    arguments and options depend on the particular algorithm being invoked.
+    Each algorithm available has its own help page, including necessary
+    references; e.g. to see the help page of the 'fa' algorithm, type
+    'dwi2response fa'.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Dwi2responseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = dwi2response_cargs(params, execution)
+    ret = dwi2response_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def dwi2response(
+    algorithm: typing.Union[Dwi2responseDhollanderParameters, Dwi2responseFaParameters, Dwi2responseManualParameters, Dwi2responseMsmt5ttParameters, Dwi2responseTaxParameters, Dwi2responseTournierParameters],
+    grad: InputPathType | None = None,
+    fslgrad: Dwi2responseFslgradParameters | None = None,
+    mask: InputPathType | None = None,
+    voxels: str | None = None,
+    shells: list[int] | None = None,
+    lmax: list[int] | None = None,
+    nocleanup: bool = False,
+    scratch: str | None = None,
+    continue_: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[Dwi2responseConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -718,91 +1226,27 @@ def dwi2response(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(DWI2RESPONSE_METADATA)
-    cargs = []
-    cargs.append("dwi2response")
-    cargs.extend(algorithm.run(execution))
-    if grad is not None:
-        cargs.extend([
-            "-grad",
-            execution.input_file(grad)
-        ])
-    if fslgrad is not None:
-        cargs.extend(fslgrad.run(execution))
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if voxels is not None:
-        cargs.extend([
-            "-voxels",
-            voxels
-        ])
-    if shells is not None:
-        cargs.extend([
-            "-shells",
-            ",".join(map(str, shells))
-        ])
-    if lmax is not None:
-        cargs.extend([
-            "-lmax",
-            ",".join(map(str, lmax))
-        ])
-    if nocleanup:
-        cargs.append("-nocleanup")
-    if scratch is not None:
-        cargs.extend([
-            "-scratch",
-            scratch
-        ])
-    if continue_ is not None:
-        cargs.extend([
-            "-continue",
-            continue_
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    ret = Dwi2responseOutputs(
-        root=execution.output_file("."),
-        algorithm=algorithm.outputs(execution),
-    )
-    execution.run(cargs)
-    return ret
+    params = dwi2response_params(algorithm=algorithm, grad=grad, fslgrad=fslgrad, mask=mask, voxels=voxels, shells=shells, lmax=lmax, nocleanup=nocleanup, scratch=scratch, continue_=continue_, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version)
+    return dwi2response_execute(params, execution)
 
 
 __all__ = [
     "DWI2RESPONSE_METADATA",
-    "Dwi2responseConfig",
-    "Dwi2responseDhollander",
     "Dwi2responseDhollanderOutputs",
-    "Dwi2responseFa",
     "Dwi2responseFaOutputs",
-    "Dwi2responseFslgrad",
-    "Dwi2responseManual",
     "Dwi2responseManualOutputs",
-    "Dwi2responseMsmt5tt",
     "Dwi2responseMsmt5ttOutputs",
     "Dwi2responseOutputs",
-    "Dwi2responseTax",
     "Dwi2responseTaxOutputs",
-    "Dwi2responseTournier",
     "Dwi2responseTournierOutputs",
     "dwi2response",
+    "dwi2response_config_params",
+    "dwi2response_dhollander_params",
+    "dwi2response_fa_params",
+    "dwi2response_fslgrad_params",
+    "dwi2response_manual_params",
+    "dwi2response_msmt_5tt_params",
+    "dwi2response_params",
+    "dwi2response_tax_params",
+    "dwi2response_tournier_params",
 ]

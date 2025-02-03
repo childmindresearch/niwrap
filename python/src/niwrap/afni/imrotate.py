@@ -12,6 +12,49 @@ IMROTATE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ImrotateParameters = typing.TypedDict('ImrotateParameters', {
+    "__STYX_TYPE__": typing.Literal["imrotate"],
+    "fourier_interpolation": bool,
+    "dx": float,
+    "dy": float,
+    "phi": float,
+    "input_image": InputPathType,
+    "output_image": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "imrotate": imrotate_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "imrotate": imrotate_outputs,
+    }
+    return vt.get(t)
 
 
 class ImrotateOutputs(typing.NamedTuple):
@@ -22,6 +65,108 @@ class ImrotateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_image_file: OutputPathType
     """Path to the output image file"""
+
+
+def imrotate_params(
+    dx: float,
+    dy: float,
+    phi: float,
+    input_image: InputPathType,
+    output_image: str,
+    fourier_interpolation: bool = False,
+) -> ImrotateParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dx: Pixels to shift rightwards (can be non-integer).
+        dy: Pixels to shift downwards (can be non-integer).
+        phi: Degrees to rotate clockwise.
+        input_image: Input image file.
+        output_image: Output image file.
+        fourier_interpolation: Use Fourier interpolation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "imrotate",
+        "fourier_interpolation": fourier_interpolation,
+        "dx": dx,
+        "dy": dy,
+        "phi": phi,
+        "input_image": input_image,
+        "output_image": output_image,
+    }
+    return params
+
+
+def imrotate_cargs(
+    params: ImrotateParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("imrotate")
+    if params.get("fourier_interpolation"):
+        cargs.append("-Fourier")
+    cargs.append(str(params.get("dx")))
+    cargs.append(str(params.get("dy")))
+    cargs.append(str(params.get("phi")))
+    cargs.append(execution.input_file(params.get("input_image")))
+    cargs.append(params.get("output_image"))
+    return cargs
+
+
+def imrotate_outputs(
+    params: ImrotateParameters,
+    execution: Execution,
+) -> ImrotateOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ImrotateOutputs(
+        root=execution.output_file("."),
+        output_image_file=execution.output_file(params.get("output_image")),
+    )
+    return ret
+
+
+def imrotate_execute(
+    params: ImrotateParameters,
+    execution: Execution,
+) -> ImrotateOutputs:
+    """
+    Shifts and rotates an image.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ImrotateOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = imrotate_cargs(params, execution)
+    ret = imrotate_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def imrotate(
@@ -53,25 +198,13 @@ def imrotate(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMROTATE_METADATA)
-    cargs = []
-    cargs.append("imrotate")
-    if fourier_interpolation:
-        cargs.append("-Fourier")
-    cargs.append(str(dx))
-    cargs.append(str(dy))
-    cargs.append(str(phi))
-    cargs.append(execution.input_file(input_image))
-    cargs.append(output_image)
-    ret = ImrotateOutputs(
-        root=execution.output_file("."),
-        output_image_file=execution.output_file(output_image),
-    )
-    execution.run(cargs)
-    return ret
+    params = imrotate_params(fourier_interpolation=fourier_interpolation, dx=dx, dy=dy, phi=phi, input_image=input_image, output_image=output_image)
+    return imrotate_execute(params, execution)
 
 
 __all__ = [
     "IMROTATE_METADATA",
     "ImrotateOutputs",
     "imrotate",
+    "imrotate_params",
 ]

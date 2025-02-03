@@ -12,6 +12,44 @@ V__GET_AFNI_VERSION_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VGetAfniVersionParameters = typing.TypedDict('VGetAfniVersionParameters', {
+    "__STYX_TYPE__": typing.Literal["@get.afni.version"],
+    "version": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@get.afni.version": v__get_afni_version_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@get.afni.version": v__get_afni_version_outputs,
+    }
+    return vt.get(t)
 
 
 class VGetAfniVersionOutputs(typing.NamedTuple):
@@ -23,6 +61,87 @@ class VGetAfniVersionOutputs(typing.NamedTuple):
     src_dir: OutputPathType
     """Directory containing the downloaded AFNI source code for the specified
     version."""
+
+
+def v__get_afni_version_params(
+    version: str,
+) -> VGetAfniVersionParameters:
+    """
+    Build parameters.
+    
+    Args:
+        version: AFNI version number to get (e.g., 16.0.01).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@get.afni.version",
+        "version": version,
+    }
+    return params
+
+
+def v__get_afni_version_cargs(
+    params: VGetAfniVersionParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@get.afni.version")
+    cargs.append(params.get("version"))
+    return cargs
+
+
+def v__get_afni_version_outputs(
+    params: VGetAfniVersionParameters,
+    execution: Execution,
+) -> VGetAfniVersionOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VGetAfniVersionOutputs(
+        root=execution.output_file("."),
+        src_dir=execution.output_file("AFNI_" + params.get("version") + "/AFNI/src"),
+    )
+    return ret
+
+
+def v__get_afni_version_execute(
+    params: VGetAfniVersionParameters,
+    execution: Execution,
+) -> VGetAfniVersionOutputs:
+    """
+    Downloads the source code for a specified AFNI version.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VGetAfniVersionOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__get_afni_version_cargs(params, execution)
+    ret = v__get_afni_version_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__get_afni_version(
@@ -44,19 +163,13 @@ def v__get_afni_version(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_VERSION_METADATA)
-    cargs = []
-    cargs.append("@get.afni.version")
-    cargs.append(version)
-    ret = VGetAfniVersionOutputs(
-        root=execution.output_file("."),
-        src_dir=execution.output_file("AFNI_" + version + "/AFNI/src"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__get_afni_version_params(version=version)
+    return v__get_afni_version_execute(params, execution)
 
 
 __all__ = [
     "VGetAfniVersionOutputs",
     "V__GET_AFNI_VERSION_METADATA",
     "v__get_afni_version",
+    "v__get_afni_version_params",
 ]

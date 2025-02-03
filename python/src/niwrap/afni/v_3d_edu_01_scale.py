@@ -12,6 +12,47 @@ V_3D_EDU_01_SCALE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dEdu01ScaleParameters = typing.TypedDict('V3dEdu01ScaleParameters', {
+    "__STYX_TYPE__": typing.Literal["3dEdu_01_scale"],
+    "input": InputPathType,
+    "mask": typing.NotRequired[InputPathType | None],
+    "mult_factors": typing.NotRequired[list[float] | None],
+    "option_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dEdu_01_scale": v_3d_edu_01_scale_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dEdu_01_scale": v_3d_edu_01_scale_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dEdu01ScaleOutputs(typing.NamedTuple):
@@ -23,6 +64,112 @@ class V3dEdu01ScaleOutputs(typing.NamedTuple):
     outfile: OutputPathType
     """Output scaled and/or masked copy of the [0]th volume of the input
     dataset"""
+
+
+def v_3d_edu_01_scale_params(
+    input_: InputPathType,
+    mask: InputPathType | None = None,
+    mult_factors: list[float] | None = None,
+    option_flag: bool = False,
+) -> V3dEdu01ScaleParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: Input dataset.
+        mask: Mask dataset on same grid/data structure as the input dataset.
+        mult_factors: Numerical factors for multiplying each voxel; each voxel\
+            is multiplied by both A and B.
+        option_flag: Option flag to do something.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dEdu_01_scale",
+        "input": input_,
+        "option_flag": option_flag,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if mult_factors is not None:
+        params["mult_factors"] = mult_factors
+    return params
+
+
+def v_3d_edu_01_scale_cargs(
+    params: V3dEdu01ScaleParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dEdu_01_scale")
+    cargs.append(execution.input_file(params.get("input")))
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("mult_factors") is not None:
+        cargs.extend([
+            "-mult_facs",
+            *map(str, params.get("mult_factors"))
+        ])
+    if params.get("option_flag"):
+        cargs.append("-some_opt")
+    return cargs
+
+
+def v_3d_edu_01_scale_outputs(
+    params: V3dEdu01ScaleParameters,
+    execution: Execution,
+) -> V3dEdu01ScaleOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dEdu01ScaleOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file("OUT_edu_[1-9]*"),
+    )
+    return ret
+
+
+def v_3d_edu_01_scale_execute(
+    params: V3dEdu01ScaleParameters,
+    execution: Execution,
+) -> V3dEdu01ScaleOutputs:
+    """
+    Educational program to create a new AFNI program. Scales and masks dataset
+    volumes.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dEdu01ScaleOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_edu_01_scale_cargs(params, execution)
+    ret = v_3d_edu_01_scale_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_edu_01_scale(
@@ -52,31 +199,13 @@ def v_3d_edu_01_scale(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_EDU_01_SCALE_METADATA)
-    cargs = []
-    cargs.append("3dEdu_01_scale")
-    cargs.append(execution.input_file(input_))
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if mult_factors is not None:
-        cargs.extend([
-            "-mult_facs",
-            *map(str, mult_factors)
-        ])
-    if option_flag:
-        cargs.append("-some_opt")
-    ret = V3dEdu01ScaleOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file("OUT_edu_[1-9]*"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_edu_01_scale_params(input_=input_, mask=mask, mult_factors=mult_factors, option_flag=option_flag)
+    return v_3d_edu_01_scale_execute(params, execution)
 
 
 __all__ = [
     "V3dEdu01ScaleOutputs",
     "V_3D_EDU_01_SCALE_METADATA",
     "v_3d_edu_01_scale",
+    "v_3d_edu_01_scale_params",
 ]

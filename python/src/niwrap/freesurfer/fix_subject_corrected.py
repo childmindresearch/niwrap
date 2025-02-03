@@ -12,14 +12,127 @@ FIX_SUBJECT_CORRECTED_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FixSubjectCorrectedParameters = typing.TypedDict('FixSubjectCorrectedParameters', {
+    "__STYX_TYPE__": typing.Literal["fix_subject_corrected"],
+    "subject_directory": str,
+    "output_directory": str,
+})
 
 
-class FixSubjectCorrectedOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fix_subject_corrected(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fix_subject_corrected": fix_subject_corrected_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fix_subject_corrected_params(
+    subject_directory: str,
+    output_directory: str,
+) -> FixSubjectCorrectedParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_directory: Path to the subject's directory.
+        output_directory: Path to the output directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fix_subject_corrected",
+        "subject_directory": subject_directory,
+        "output_directory": output_directory,
+    }
+    return params
+
+
+def fix_subject_corrected_cargs(
+    params: FixSubjectCorrectedParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fix_subject_corrected")
+    cargs.append(params.get("subject_directory"))
+    cargs.append(params.get("output_directory"))
+    return cargs
+
+
+def fix_subject_corrected_outputs(
+    params: FixSubjectCorrectedParameters,
+    execution: Execution,
+) -> FixSubjectCorrectedOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FixSubjectCorrectedOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fix_subject_corrected_execute(
+    params: FixSubjectCorrectedParameters,
+    execution: Execution,
+) -> FixSubjectCorrectedOutputs:
+    """
+    Corrects subject data in FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FixSubjectCorrectedOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fix_subject_corrected_cargs(params, execution)
+    ret = fix_subject_corrected_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fix_subject_corrected(
@@ -43,19 +156,12 @@ def fix_subject_corrected(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIX_SUBJECT_CORRECTED_METADATA)
-    cargs = []
-    cargs.append("fix_subject_corrected")
-    cargs.append(subject_directory)
-    cargs.append(output_directory)
-    ret = FixSubjectCorrectedOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fix_subject_corrected_params(subject_directory=subject_directory, output_directory=output_directory)
+    return fix_subject_corrected_execute(params, execution)
 
 
 __all__ = [
     "FIX_SUBJECT_CORRECTED_METADATA",
-    "FixSubjectCorrectedOutputs",
     "fix_subject_corrected",
+    "fix_subject_corrected_params",
 ]

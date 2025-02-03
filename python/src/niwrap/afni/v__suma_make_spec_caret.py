@@ -12,6 +12,44 @@ V__SUMA_MAKE_SPEC_CARET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSumaMakeSpecCaretParameters = typing.TypedDict('VSumaMakeSpecCaretParameters', {
+    "__STYX_TYPE__": typing.Literal["@SUMA_Make_Spec_Caret"],
+    "subject_id": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@SUMA_Make_Spec_Caret": v__suma_make_spec_caret_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@SUMA_Make_Spec_Caret": v__suma_make_spec_caret_outputs,
+    }
+    return vt.get(t)
 
 
 class VSumaMakeSpecCaretOutputs(typing.NamedTuple):
@@ -24,6 +62,92 @@ class VSumaMakeSpecCaretOutputs(typing.NamedTuple):
     """Output spec file for the left hemisphere"""
     right_hemisphere_spec: OutputPathType
     """Output spec file for the right hemisphere"""
+
+
+def v__suma_make_spec_caret_params(
+    subject_id: str,
+) -> VSumaMakeSpecCaretParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: Subject ID for file naming.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@SUMA_Make_Spec_Caret",
+        "subject_id": subject_id,
+    }
+    return params
+
+
+def v__suma_make_spec_caret_cargs(
+    params: VSumaMakeSpecCaretParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@SUMA_Make_Spec_Caret")
+    cargs.append("[OPTIONS]")
+    cargs.extend([
+        "-sid",
+        params.get("subject_id")
+    ])
+    return cargs
+
+
+def v__suma_make_spec_caret_outputs(
+    params: VSumaMakeSpecCaretParameters,
+    execution: Execution,
+) -> VSumaMakeSpecCaretOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSumaMakeSpecCaretOutputs(
+        root=execution.output_file("."),
+        left_hemisphere_spec=execution.output_file(params.get("subject_id") + "_lh.spec"),
+        right_hemisphere_spec=execution.output_file(params.get("subject_id") + "_rh.spec"),
+    )
+    return ret
+
+
+def v__suma_make_spec_caret_execute(
+    params: VSumaMakeSpecCaretParameters,
+    execution: Execution,
+) -> VSumaMakeSpecCaretOutputs:
+    """
+    Prepare surfaces for viewing in SUMA, tested with Caret-5.2 surfaces.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSumaMakeSpecCaretOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__suma_make_spec_caret_cargs(params, execution)
+    ret = v__suma_make_spec_caret_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__suma_make_spec_caret(
@@ -45,24 +169,13 @@ def v__suma_make_spec_caret(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SUMA_MAKE_SPEC_CARET_METADATA)
-    cargs = []
-    cargs.append("@SUMA_Make_Spec_Caret")
-    cargs.append("[OPTIONS]")
-    cargs.extend([
-        "-sid",
-        subject_id
-    ])
-    ret = VSumaMakeSpecCaretOutputs(
-        root=execution.output_file("."),
-        left_hemisphere_spec=execution.output_file(subject_id + "_lh.spec"),
-        right_hemisphere_spec=execution.output_file(subject_id + "_rh.spec"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__suma_make_spec_caret_params(subject_id=subject_id)
+    return v__suma_make_spec_caret_execute(params, execution)
 
 
 __all__ = [
     "VSumaMakeSpecCaretOutputs",
     "V__SUMA_MAKE_SPEC_CARET_METADATA",
     "v__suma_make_spec_caret",
+    "v__suma_make_spec_caret_params",
 ]

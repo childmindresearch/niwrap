@@ -12,6 +12,49 @@ MRI_MAP_CPDAT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMapCpdatParameters = typing.TypedDict('MriMapCpdatParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_map_cpdat"],
+    "input_file": InputPathType,
+    "output_file": str,
+    "lta_file": typing.NotRequired[InputPathType | None],
+    "to_mni305": typing.NotRequired[str | None],
+    "from_mni305": typing.NotRequired[str | None],
+    "subject_list_file": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_map_cpdat": mri_map_cpdat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_map_cpdat": mri_map_cpdat_outputs,
+    }
+    return vt.get(t)
 
 
 class MriMapCpdatOutputs(typing.NamedTuple):
@@ -22,6 +65,134 @@ class MriMapCpdatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_ctrl_file: OutputPathType
     """Output control point text file"""
+
+
+def mri_map_cpdat_params(
+    input_file: InputPathType,
+    output_file: str,
+    lta_file: InputPathType | None = None,
+    to_mni305: str | None = None,
+    from_mni305: str | None = None,
+    subject_list_file: InputPathType | None = None,
+) -> MriMapCpdatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input control point text file.
+        output_file: Output control point text file.
+        lta_file: LTA transform file to be applied.
+        to_mni305: Get LTA from talairach.xfm for a specific subject.
+        from_mni305: Get LTA from talairach.xfm from a specific subject.
+        subject_list_file: Maps all control points from all subjects listed in\
+            the text/ascii subjectlistfile to MNI305 (talairach) space.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_map_cpdat",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    if lta_file is not None:
+        params["lta_file"] = lta_file
+    if to_mni305 is not None:
+        params["to_mni305"] = to_mni305
+    if from_mni305 is not None:
+        params["from_mni305"] = from_mni305
+    if subject_list_file is not None:
+        params["subject_list_file"] = subject_list_file
+    return params
+
+
+def mri_map_cpdat_cargs(
+    params: MriMapCpdatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_map_cpdat")
+    cargs.extend([
+        "-in",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "-out",
+        params.get("output_file")
+    ])
+    if params.get("lta_file") is not None:
+        cargs.extend([
+            "-lta",
+            execution.input_file(params.get("lta_file"))
+        ])
+    if params.get("to_mni305") is not None:
+        cargs.extend([
+            "-tomni305",
+            params.get("to_mni305")
+        ])
+    if params.get("from_mni305") is not None:
+        cargs.extend([
+            "-frommni305",
+            params.get("from_mni305")
+        ])
+    if params.get("subject_list_file") is not None:
+        cargs.extend([
+            "-slf",
+            execution.input_file(params.get("subject_list_file"))
+        ])
+    return cargs
+
+
+def mri_map_cpdat_outputs(
+    params: MriMapCpdatParameters,
+    execution: Execution,
+) -> MriMapCpdatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMapCpdatOutputs(
+        root=execution.output_file("."),
+        output_ctrl_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def mri_map_cpdat_execute(
+    params: MriMapCpdatParameters,
+    execution: Execution,
+) -> MriMapCpdatOutputs:
+    """
+    Maps a control.dat file to a different space using an LTA.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMapCpdatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_map_cpdat_cargs(params, execution)
+    ret = mri_map_cpdat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_map_cpdat(
@@ -54,46 +225,13 @@ def mri_map_cpdat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MAP_CPDAT_METADATA)
-    cargs = []
-    cargs.append("mri_map_cpdat")
-    cargs.extend([
-        "-in",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "-out",
-        output_file
-    ])
-    if lta_file is not None:
-        cargs.extend([
-            "-lta",
-            execution.input_file(lta_file)
-        ])
-    if to_mni305 is not None:
-        cargs.extend([
-            "-tomni305",
-            to_mni305
-        ])
-    if from_mni305 is not None:
-        cargs.extend([
-            "-frommni305",
-            from_mni305
-        ])
-    if subject_list_file is not None:
-        cargs.extend([
-            "-slf",
-            execution.input_file(subject_list_file)
-        ])
-    ret = MriMapCpdatOutputs(
-        root=execution.output_file("."),
-        output_ctrl_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_map_cpdat_params(input_file=input_file, output_file=output_file, lta_file=lta_file, to_mni305=to_mni305, from_mni305=from_mni305, subject_list_file=subject_list_file)
+    return mri_map_cpdat_execute(params, execution)
 
 
 __all__ = [
     "MRI_MAP_CPDAT_METADATA",
     "MriMapCpdatOutputs",
     "mri_map_cpdat",
+    "mri_map_cpdat_params",
 ]

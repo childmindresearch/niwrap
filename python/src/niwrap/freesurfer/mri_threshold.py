@@ -12,6 +12,49 @@ MRI_THRESHOLD_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriThresholdParameters = typing.TypedDict('MriThresholdParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_threshold"],
+    "input_vol": InputPathType,
+    "threshold": float,
+    "output_vol": str,
+    "binarize": typing.NotRequired[float | None],
+    "upper_threshold": bool,
+    "frame_number": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_threshold": mri_threshold_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_threshold": mri_threshold_outputs,
+    }
+    return vt.get(t)
 
 
 class MriThresholdOutputs(typing.NamedTuple):
@@ -22,6 +65,119 @@ class MriThresholdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_vol_file: OutputPathType
     """Thresholded output volume"""
+
+
+def mri_threshold_params(
+    input_vol: InputPathType,
+    threshold: float,
+    output_vol: str,
+    binarize: float | None = None,
+    upper_threshold: bool = False,
+    frame_number: float | None = None,
+) -> MriThresholdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_vol: Input volume file.
+        threshold: Threshold value for the volume.
+        output_vol: Output volume file.
+        binarize: Binarize the output volume with specified bval.
+        upper_threshold: Upper threshold the volume instead of lower\
+            thresholding.
+        frame_number: Apply thresholding to a specific frame indexed by fnum.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_threshold",
+        "input_vol": input_vol,
+        "threshold": threshold,
+        "output_vol": output_vol,
+        "upper_threshold": upper_threshold,
+    }
+    if binarize is not None:
+        params["binarize"] = binarize
+    if frame_number is not None:
+        params["frame_number"] = frame_number
+    return params
+
+
+def mri_threshold_cargs(
+    params: MriThresholdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_threshold")
+    cargs.append(execution.input_file(params.get("input_vol")))
+    cargs.append(str(params.get("threshold")))
+    cargs.append(params.get("output_vol"))
+    if params.get("binarize") is not None:
+        cargs.extend([
+            "-B",
+            str(params.get("binarize"))
+        ])
+    if params.get("upper_threshold"):
+        cargs.append("-U")
+    if params.get("frame_number") is not None:
+        cargs.extend([
+            "-F",
+            str(params.get("frame_number"))
+        ])
+    return cargs
+
+
+def mri_threshold_outputs(
+    params: MriThresholdParameters,
+    execution: Execution,
+) -> MriThresholdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriThresholdOutputs(
+        root=execution.output_file("."),
+        output_vol_file=execution.output_file(params.get("output_vol")),
+    )
+    return ret
+
+
+def mri_threshold_execute(
+    params: MriThresholdParameters,
+    execution: Execution,
+) -> MriThresholdOutputs:
+    """
+    This program will lower threshold an input volume.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriThresholdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_threshold_cargs(params, execution)
+    ret = mri_threshold_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_threshold(
@@ -54,33 +210,13 @@ def mri_threshold(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_THRESHOLD_METADATA)
-    cargs = []
-    cargs.append("mri_threshold")
-    cargs.append(execution.input_file(input_vol))
-    cargs.append(str(threshold))
-    cargs.append(output_vol)
-    if binarize is not None:
-        cargs.extend([
-            "-B",
-            str(binarize)
-        ])
-    if upper_threshold:
-        cargs.append("-U")
-    if frame_number is not None:
-        cargs.extend([
-            "-F",
-            str(frame_number)
-        ])
-    ret = MriThresholdOutputs(
-        root=execution.output_file("."),
-        output_vol_file=execution.output_file(output_vol),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_threshold_params(input_vol=input_vol, threshold=threshold, output_vol=output_vol, binarize=binarize, upper_threshold=upper_threshold, frame_number=frame_number)
+    return mri_threshold_execute(params, execution)
 
 
 __all__ = [
     "MRI_THRESHOLD_METADATA",
     "MriThresholdOutputs",
     "mri_threshold",
+    "mri_threshold_params",
 ]

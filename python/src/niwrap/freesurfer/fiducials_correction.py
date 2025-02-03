@@ -12,6 +12,44 @@ FIDUCIALS_CORRECTION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FiducialsCorrectionParameters = typing.TypedDict('FiducialsCorrectionParameters', {
+    "__STYX_TYPE__": typing.Literal["fiducials_correction"],
+    "input_file": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fiducials_correction": fiducials_correction_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fiducials_correction": fiducials_correction_outputs,
+    }
+    return vt.get(t)
 
 
 class FiducialsCorrectionOutputs(typing.NamedTuple):
@@ -22,6 +60,91 @@ class FiducialsCorrectionOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Output file with corrected fiducial markers."""
+
+
+def fiducials_correction_params(
+    input_file: InputPathType,
+) -> FiducialsCorrectionParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input file containing imaging data with fiducial markers to\
+            correct.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fiducials_correction",
+        "input_file": input_file,
+    }
+    return params
+
+
+def fiducials_correction_cargs(
+    params: FiducialsCorrectionParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fiducials_correction")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append("[OUTPUT_FILE]")
+    return cargs
+
+
+def fiducials_correction_outputs(
+    params: FiducialsCorrectionParameters,
+    execution: Execution,
+) -> FiducialsCorrectionOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FiducialsCorrectionOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("[OUTPUT_FILE]"),
+    )
+    return ret
+
+
+def fiducials_correction_execute(
+    params: FiducialsCorrectionParameters,
+    execution: Execution,
+) -> FiducialsCorrectionOutputs:
+    """
+    A tool for correcting fiducial markers in imaging data. Note: This command has
+    dependency issues with the Qt platform plugin 'xcb'. Ensure dependencies are
+    properly configured.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FiducialsCorrectionOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fiducials_correction_cargs(params, execution)
+    ret = fiducials_correction_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fiducials_correction(
@@ -46,20 +169,13 @@ def fiducials_correction(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIDUCIALS_CORRECTION_METADATA)
-    cargs = []
-    cargs.append("fiducials_correction")
-    cargs.append(execution.input_file(input_file))
-    cargs.append("[OUTPUT_FILE]")
-    ret = FiducialsCorrectionOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_FILE]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fiducials_correction_params(input_file=input_file)
+    return fiducials_correction_execute(params, execution)
 
 
 __all__ = [
     "FIDUCIALS_CORRECTION_METADATA",
     "FiducialsCorrectionOutputs",
     "fiducials_correction",
+    "fiducials_correction_params",
 ]

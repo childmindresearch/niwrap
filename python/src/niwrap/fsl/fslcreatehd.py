@@ -12,6 +12,57 @@ FSLCREATEHD_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslcreatehdParameters = typing.TypedDict('FslcreatehdParameters', {
+    "__STYX_TYPE__": typing.Literal["fslcreatehd"],
+    "xsize": float,
+    "ysize": float,
+    "zsize": float,
+    "tsize": float,
+    "xvoxsize": float,
+    "yvoxsize": float,
+    "zvoxsize": float,
+    "tr": float,
+    "xorigin": float,
+    "yorigin": float,
+    "zorigin": float,
+    "datatype": float,
+    "headername": str,
+    "nifti_xml_file": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fslcreatehd": fslcreatehd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fslcreatehd": fslcreatehd_outputs,
+    }
+    return vt.get(t)
 
 
 class FslcreatehdOutputs(typing.NamedTuple):
@@ -22,6 +73,143 @@ class FslcreatehdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_headerfile: OutputPathType
     """Generated NIfTI header file"""
+
+
+def fslcreatehd_params(
+    xsize: float,
+    ysize: float,
+    zsize: float,
+    tsize: float,
+    xvoxsize: float,
+    yvoxsize: float,
+    zvoxsize: float,
+    tr: float,
+    xorigin: float,
+    yorigin: float,
+    zorigin: float,
+    datatype: float,
+    headername: str,
+    nifti_xml_file: InputPathType | None = None,
+) -> FslcreatehdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        xsize: Size of the image in the x dimension.
+        ysize: Size of the image in the y dimension.
+        zsize: Size of the image in the z dimension.
+        tsize: Size of the image in the t dimension (time).
+        xvoxsize: Voxel size in the x dimension.
+        yvoxsize: Voxel size in the y dimension.
+        zvoxsize: Voxel size in the z dimension.
+        tr: Repetition time (TR) of the image.
+        xorigin: Origin of the image in the x dimension.
+        yorigin: Origin of the image in the y dimension.
+        zorigin: Origin of the image in the z dimension.
+        datatype: Datatype of the image (2=char, 4=short, 8=int, 16=float,\
+            64=double).
+        headername: Name of the header file to be created.
+        nifti_xml_file: NIfTI XML file describing the header configuration\
+            (Mutually exclusive with other inputs).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fslcreatehd",
+        "xsize": xsize,
+        "ysize": ysize,
+        "zsize": zsize,
+        "tsize": tsize,
+        "xvoxsize": xvoxsize,
+        "yvoxsize": yvoxsize,
+        "zvoxsize": zvoxsize,
+        "tr": tr,
+        "xorigin": xorigin,
+        "yorigin": yorigin,
+        "zorigin": zorigin,
+        "datatype": datatype,
+        "headername": headername,
+    }
+    if nifti_xml_file is not None:
+        params["nifti_xml_file"] = nifti_xml_file
+    return params
+
+
+def fslcreatehd_cargs(
+    params: FslcreatehdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fslcreatehd")
+    cargs.append(str(params.get("xsize")))
+    cargs.append(str(params.get("ysize")))
+    cargs.append(str(params.get("zsize")))
+    cargs.append(str(params.get("tsize")))
+    cargs.append(str(params.get("xvoxsize")))
+    cargs.append(str(params.get("yvoxsize")))
+    cargs.append(str(params.get("zvoxsize")))
+    cargs.append(str(params.get("tr")))
+    cargs.append(str(params.get("xorigin")))
+    cargs.append(str(params.get("yorigin")))
+    cargs.append(str(params.get("zorigin")))
+    cargs.append(str(params.get("datatype")))
+    cargs.append(params.get("headername"))
+    if params.get("nifti_xml_file") is not None:
+        cargs.append(execution.input_file(params.get("nifti_xml_file")))
+    return cargs
+
+
+def fslcreatehd_outputs(
+    params: FslcreatehdParameters,
+    execution: Execution,
+) -> FslcreatehdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslcreatehdOutputs(
+        root=execution.output_file("."),
+        out_headerfile=execution.output_file(params.get("headername") + ".nii.gz"),
+    )
+    return ret
+
+
+def fslcreatehd_execute(
+    params: FslcreatehdParameters,
+    execution: Execution,
+) -> FslcreatehdOutputs:
+    """
+    Tool to create a new NIfTI header.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslcreatehdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fslcreatehd_cargs(params, execution)
+    ret = fslcreatehd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fslcreatehd(
@@ -71,33 +259,13 @@ def fslcreatehd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLCREATEHD_METADATA)
-    cargs = []
-    cargs.append("fslcreatehd")
-    cargs.append(str(xsize))
-    cargs.append(str(ysize))
-    cargs.append(str(zsize))
-    cargs.append(str(tsize))
-    cargs.append(str(xvoxsize))
-    cargs.append(str(yvoxsize))
-    cargs.append(str(zvoxsize))
-    cargs.append(str(tr))
-    cargs.append(str(xorigin))
-    cargs.append(str(yorigin))
-    cargs.append(str(zorigin))
-    cargs.append(str(datatype))
-    cargs.append(headername)
-    if nifti_xml_file is not None:
-        cargs.append(execution.input_file(nifti_xml_file))
-    ret = FslcreatehdOutputs(
-        root=execution.output_file("."),
-        out_headerfile=execution.output_file(headername + ".nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fslcreatehd_params(xsize=xsize, ysize=ysize, zsize=zsize, tsize=tsize, xvoxsize=xvoxsize, yvoxsize=yvoxsize, zvoxsize=zvoxsize, tr=tr, xorigin=xorigin, yorigin=yorigin, zorigin=zorigin, datatype=datatype, headername=headername, nifti_xml_file=nifti_xml_file)
+    return fslcreatehd_execute(params, execution)
 
 
 __all__ = [
     "FSLCREATEHD_METADATA",
     "FslcreatehdOutputs",
     "fslcreatehd",
+    "fslcreatehd_params",
 ]

@@ -12,6 +12,44 @@ V_3DMASK_SVD_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dmaskSvdParameters = typing.TypedDict('V3dmaskSvdParameters', {
+    "__STYX_TYPE__": typing.Literal["3dmaskSVD"],
+    "input_dataset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dmaskSVD": v_3dmask_svd_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dmaskSVD": v_3dmask_svd_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dmaskSvdOutputs(typing.NamedTuple):
@@ -22,6 +60,89 @@ class V3dmaskSvdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     svd_output: OutputPathType
     """Singular vector output redirected to this file"""
+
+
+def v_3dmask_svd_params(
+    input_dataset: InputPathType,
+) -> V3dmaskSvdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dataset: Input dataset.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dmaskSVD",
+        "input_dataset": input_dataset,
+    }
+    return params
+
+
+def v_3dmask_svd_cargs(
+    params: V3dmaskSvdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dmaskSVD")
+    cargs.append("[OPTIONS]")
+    cargs.append(execution.input_file(params.get("input_dataset")))
+    return cargs
+
+
+def v_3dmask_svd_outputs(
+    params: V3dmaskSvdParameters,
+    execution: Execution,
+) -> V3dmaskSvdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dmaskSvdOutputs(
+        root=execution.output_file("."),
+        svd_output=execution.output_file("../stdout"),
+    )
+    return ret
+
+
+def v_3dmask_svd_execute(
+    params: V3dmaskSvdParameters,
+    execution: Execution,
+) -> V3dmaskSvdOutputs:
+    """
+    Computes the principal singular vector of the time series vectors extracted from
+    the input dataset over the input mask.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dmaskSvdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dmask_svd_cargs(params, execution)
+    ret = v_3dmask_svd_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dmask_svd(
@@ -44,20 +165,13 @@ def v_3dmask_svd(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMASK_SVD_METADATA)
-    cargs = []
-    cargs.append("3dmaskSVD")
-    cargs.append("[OPTIONS]")
-    cargs.append(execution.input_file(input_dataset))
-    ret = V3dmaskSvdOutputs(
-        root=execution.output_file("."),
-        svd_output=execution.output_file("../stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dmask_svd_params(input_dataset=input_dataset)
+    return v_3dmask_svd_execute(params, execution)
 
 
 __all__ = [
     "V3dmaskSvdOutputs",
     "V_3DMASK_SVD_METADATA",
     "v_3dmask_svd",
+    "v_3dmask_svd_params",
 ]

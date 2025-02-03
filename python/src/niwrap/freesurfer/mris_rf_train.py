@@ -12,14 +12,148 @@ MRIS_RF_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisRfTrainParameters = typing.TypedDict('MrisRfTrainParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_rf_train"],
+    "subjects": list[str],
+    "output_name": str,
+    "hemi": typing.NotRequired[str | None],
+    "surf": typing.NotRequired[str | None],
+})
 
 
-class MrisRfTrainOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_rf_train(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_rf_train": mris_rf_train_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_rf_train_params(
+    subjects: list[str],
+    output_name: str,
+    hemi: str | None = None,
+    surf: str | None = None,
+) -> MrisRfTrainParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects: List of subjects to process.
+        output_name: Output name for the trained model.
+        hemi: Process specified hemisphere instead of the default 'lh'.
+        surf: Change the default surface name from 'white' to the specified\
+            surface.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_rf_train",
+        "subjects": subjects,
+        "output_name": output_name,
+    }
+    if hemi is not None:
+        params["hemi"] = hemi
+    if surf is not None:
+        params["surf"] = surf
+    return params
+
+
+def mris_rf_train_cargs(
+    params: MrisRfTrainParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_rf_train")
+    cargs.extend(params.get("subjects"))
+    cargs.append(params.get("output_name"))
+    if params.get("hemi") is not None:
+        cargs.extend([
+            "--hemi",
+            params.get("hemi")
+        ])
+    if params.get("surf") is not None:
+        cargs.extend([
+            "--surf",
+            params.get("surf")
+        ])
+    return cargs
+
+
+def mris_rf_train_outputs(
+    params: MrisRfTrainParameters,
+    execution: Execution,
+) -> MrisRfTrainOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisRfTrainOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_rf_train_execute(
+    params: MrisRfTrainParameters,
+    execution: Execution,
+) -> MrisRfTrainOutputs:
+    """
+    Tool for training a random forest classifier using MRIS surface data.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisRfTrainOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_rf_train_cargs(params, execution)
+    ret = mris_rf_train_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_rf_train(
@@ -48,29 +182,12 @@ def mris_rf_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RF_TRAIN_METADATA)
-    cargs = []
-    cargs.append("mris_rf_train")
-    cargs.extend(subjects)
-    cargs.append(output_name)
-    if hemi is not None:
-        cargs.extend([
-            "--hemi",
-            hemi
-        ])
-    if surf is not None:
-        cargs.extend([
-            "--surf",
-            surf
-        ])
-    ret = MrisRfTrainOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_rf_train_params(subjects=subjects, output_name=output_name, hemi=hemi, surf=surf)
+    return mris_rf_train_execute(params, execution)
 
 
 __all__ = [
     "MRIS_RF_TRAIN_METADATA",
-    "MrisRfTrainOutputs",
     "mris_rf_train",
+    "mris_rf_train_params",
 ]

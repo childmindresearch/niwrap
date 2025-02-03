@@ -12,14 +12,126 @@ SURFACE_INFORMATION_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceInformationParameters = typing.TypedDict('SurfaceInformationParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-information"],
+    "surface_file": InputPathType,
+})
 
 
-class SurfaceInformationOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `surface_information(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "surface-information": surface_information_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def surface_information_params(
+    surface_file: InputPathType,
+) -> SurfaceInformationParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface_file: Surface for which information is displayed.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-information",
+        "surface_file": surface_file,
+    }
+    return params
+
+
+def surface_information_cargs(
+    params: SurfaceInformationParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-information")
+    cargs.append(execution.input_file(params.get("surface_file")))
+    return cargs
+
+
+def surface_information_outputs(
+    params: SurfaceInformationParameters,
+    execution: Execution,
+) -> SurfaceInformationOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceInformationOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def surface_information_execute(
+    params: SurfaceInformationParameters,
+    execution: Execution,
+) -> SurfaceInformationOutputs:
+    """
+    Display information about a surface.
+    
+    Information about surface is displayed including vertices,
+    triangles, bounding box, and spacing.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceInformationOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_information_cargs(params, execution)
+    ret = surface_information_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_information(
@@ -44,19 +156,12 @@ def surface_information(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_INFORMATION_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-information")
-    cargs.append(execution.input_file(surface_file))
-    ret = SurfaceInformationOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_information_params(surface_file=surface_file)
+    return surface_information_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_INFORMATION_METADATA",
-    "SurfaceInformationOutputs",
     "surface_information",
+    "surface_information_params",
 ]

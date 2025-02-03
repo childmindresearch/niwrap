@@ -12,14 +12,165 @@ AIV_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AivParameters = typing.TypedDict('AivParameters', {
+    "__STYX_TYPE__": typing.Literal["aiv"],
+    "verbose": bool,
+    "quiet": bool,
+    "title": typing.NotRequired[str | None],
+    "port": typing.NotRequired[float | None],
+    "pad": typing.NotRequired[str | None],
+    "input_images": list[InputPathType],
+})
 
 
-class AivOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `aiv(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "aiv": aiv_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def aiv_params(
+    input_images: list[InputPathType],
+    verbose: bool = False,
+    quiet: bool = False,
+    title: str | None = None,
+    port: float | None = None,
+    pad: str | None = None,
+) -> AivParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_images: Input image files (e.g., img1.jpg, img2.bmp).
+        verbose: Print out the image filenames for progress tracking.
+        quiet: Run the program in quiet mode.
+        title: Specify the window title.
+        port: Listen to TCP/IP port for incoming images.
+        pad: Pad all input images to be the same size.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "aiv",
+        "verbose": verbose,
+        "quiet": quiet,
+        "input_images": input_images,
+    }
+    if title is not None:
+        params["title"] = title
+    if port is not None:
+        params["port"] = port
+    if pad is not None:
+        params["pad"] = pad
+    return params
+
+
+def aiv_cargs(
+    params: AivParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("aiv")
+    if params.get("verbose"):
+        cargs.append("-v")
+    if params.get("quiet"):
+        cargs.append("-q")
+    if params.get("title") is not None:
+        cargs.extend([
+            "-title",
+            params.get("title")
+        ])
+    if params.get("port") is not None:
+        cargs.extend([
+            "-p",
+            str(params.get("port"))
+        ])
+    if params.get("pad") is not None:
+        cargs.extend([
+            "-pad",
+            params.get("pad")
+        ])
+    cargs.extend([execution.input_file(f) for f in params.get("input_images")])
+    return cargs
+
+
+def aiv_outputs(
+    params: AivParameters,
+    execution: Execution,
+) -> AivOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AivOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def aiv_execute(
+    params: AivParameters,
+    execution: Execution,
+) -> AivOutputs:
+    """
+    AFNI Image Viewer program. Shows the 2D images on the command line in an
+    AFNI-like image viewer.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AivOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = aiv_cargs(params, execution)
+    ret = aiv_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def aiv(
@@ -50,41 +201,14 @@ def aiv(
     Returns:
         NamedTuple of outputs (described in `AivOutputs`).
     """
-    if port is not None and not (1024 <= port <= 65535): 
-        raise ValueError(f"'port' must be between 1024 <= x <= 65535 but was {port}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(AIV_METADATA)
-    cargs = []
-    cargs.append("aiv")
-    if verbose:
-        cargs.append("-v")
-    if quiet:
-        cargs.append("-q")
-    if title is not None:
-        cargs.extend([
-            "-title",
-            title
-        ])
-    if port is not None:
-        cargs.extend([
-            "-p",
-            str(port)
-        ])
-    if pad is not None:
-        cargs.extend([
-            "-pad",
-            pad
-        ])
-    cargs.extend([execution.input_file(f) for f in input_images])
-    ret = AivOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = aiv_params(verbose=verbose, quiet=quiet, title=title, port=port, pad=pad, input_images=input_images)
+    return aiv_execute(params, execution)
 
 
 __all__ = [
     "AIV_METADATA",
-    "AivOutputs",
     "aiv",
+    "aiv_params",
 ]

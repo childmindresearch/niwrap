@@ -12,6 +12,44 @@ V__DO_EXAMPLES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VDoExamplesParameters = typing.TypedDict('VDoExamplesParameters', {
+    "__STYX_TYPE__": typing.Literal["@DO.examples"],
+    "auto_test": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@DO.examples": v__do_examples_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@DO.examples": v__do_examples_outputs,
+    }
+    return vt.get(t)
 
 
 class VDoExamplesOutputs(typing.NamedTuple):
@@ -22,6 +60,90 @@ class VDoExamplesOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_log: OutputPathType
     """Output log file when running in auto test mode"""
+
+
+def v__do_examples_params(
+    auto_test: bool = False,
+) -> VDoExamplesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        auto_test: Run this script in test mode where user prompts are timed\
+            out at 2 seconds, and the command output log is preserved in a file\
+            called __testlog.txt.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@DO.examples",
+        "auto_test": auto_test,
+    }
+    return params
+
+
+def v__do_examples_cargs(
+    params: VDoExamplesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@DO.examples")
+    if params.get("auto_test"):
+        cargs.append("-auto_test")
+    return cargs
+
+
+def v__do_examples_outputs(
+    params: VDoExamplesParameters,
+    execution: Execution,
+) -> VDoExamplesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VDoExamplesOutputs(
+        root=execution.output_file("."),
+        output_log=execution.output_file("__testlog.txt"),
+    )
+    return ret
+
+
+def v__do_examples_execute(
+    params: VDoExamplesParameters,
+    execution: Execution,
+) -> VDoExamplesOutputs:
+    """
+    A script to illustrate the use of Displayable Objects in SUMA.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VDoExamplesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__do_examples_cargs(params, execution)
+    ret = v__do_examples_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__do_examples(
@@ -45,20 +167,13 @@ def v__do_examples(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DO_EXAMPLES_METADATA)
-    cargs = []
-    cargs.append("@DO.examples")
-    if auto_test:
-        cargs.append("-auto_test")
-    ret = VDoExamplesOutputs(
-        root=execution.output_file("."),
-        output_log=execution.output_file("__testlog.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__do_examples_params(auto_test=auto_test)
+    return v__do_examples_execute(params, execution)
 
 
 __all__ = [
     "VDoExamplesOutputs",
     "V__DO_EXAMPLES_METADATA",
     "v__do_examples",
+    "v__do_examples_params",
 ]

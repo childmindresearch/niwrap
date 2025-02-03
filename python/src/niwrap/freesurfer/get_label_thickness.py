@@ -12,14 +12,123 @@ GET_LABEL_THICKNESS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+GetLabelThicknessParameters = typing.TypedDict('GetLabelThicknessParameters', {
+    "__STYX_TYPE__": typing.Literal["get_label_thickness"],
+    "infile": InputPathType,
+})
 
 
-class GetLabelThicknessOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `get_label_thickness(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "get_label_thickness": get_label_thickness_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def get_label_thickness_params(
+    infile: InputPathType,
+) -> GetLabelThicknessParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "get_label_thickness",
+        "infile": infile,
+    }
+    return params
+
+
+def get_label_thickness_cargs(
+    params: GetLabelThicknessParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("get_label_thickness")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def get_label_thickness_outputs(
+    params: GetLabelThicknessParameters,
+    execution: Execution,
+) -> GetLabelThicknessOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = GetLabelThicknessOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def get_label_thickness_execute(
+    params: GetLabelThicknessParameters,
+    execution: Execution,
+) -> GetLabelThicknessOutputs:
+    """
+    Tool to calculate label thickness.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `GetLabelThicknessOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = get_label_thickness_cargs(params, execution)
+    ret = get_label_thickness_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def get_label_thickness(
@@ -41,19 +150,12 @@ def get_label_thickness(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GET_LABEL_THICKNESS_METADATA)
-    cargs = []
-    cargs.append("get_label_thickness")
-    cargs.append(execution.input_file(infile))
-    cargs.append("[OPTIONS]")
-    ret = GetLabelThicknessOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = get_label_thickness_params(infile=infile)
+    return get_label_thickness_execute(params, execution)
 
 
 __all__ = [
     "GET_LABEL_THICKNESS_METADATA",
-    "GetLabelThicknessOutputs",
     "get_label_thickness",
+    "get_label_thickness_params",
 ]

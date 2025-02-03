@@ -12,40 +12,119 @@ MTNORMALISE_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+MtnormaliseConfigParameters = typing.TypedDict('MtnormaliseConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+MtnormaliseInputOutputParameters = typing.TypedDict('MtnormaliseInputOutputParameters', {
+    "__STYX_TYPE__": typing.Literal["input_output"],
+    "input": InputPathType,
+    "output": str,
+})
+MtnormaliseParameters = typing.TypedDict('MtnormaliseParameters', {
+    "__STYX_TYPE__": typing.Literal["mtnormalise"],
+    "mask": InputPathType,
+    "order": typing.NotRequired[str | None],
+    "niter": typing.NotRequired[list[int] | None],
+    "reference": typing.NotRequired[float | None],
+    "balanced": bool,
+    "check_norm": typing.NotRequired[str | None],
+    "check_mask": typing.NotRequired[str | None],
+    "check_factors": typing.NotRequired[str | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[MtnormaliseConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "input_output": list[MtnormaliseInputOutputParameters],
+})
 
 
-@dataclasses.dataclass
-class MtnormaliseConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mtnormalise": mtnormalise_cargs,
+        "config": mtnormalise_config_cargs,
+        "input_output": mtnormalise_input_output_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mtnormalise": mtnormalise_outputs,
+        "input_output": mtnormalise_input_output_outputs,
+    }
+    return vt.get(t)
+
+
+def mtnormalise_config_params(
+    key: str,
+    value: str,
+) -> MtnormaliseConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def mtnormalise_config_cargs(
+    params: MtnormaliseConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class MtnormaliseInputOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `list[MtnormaliseInputOutput](...)`.
+    Output object returned when calling `list[MtnormaliseInputOutputParameters](...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -53,50 +132,64 @@ class MtnormaliseInputOutputOutputs(typing.NamedTuple):
     """output normalised tissue compartment image."""
 
 
-@dataclasses.dataclass
-class MtnormaliseInputOutput:
+def mtnormalise_input_output_params(
+    input_: InputPathType,
+    output: str,
+) -> MtnormaliseInputOutputParameters:
     """
-    list of all input and output tissue compartment files (see example usage).
+    Build parameters.
+    
+    Args:
+        input_: input tissue compartment image.
+        output: output normalised tissue compartment image.
+    Returns:
+        Parameter dictionary
     """
-    input_: InputPathType
-    """input tissue compartment image."""
-    output: str
-    """output normalised tissue compartment image."""
+    params = {
+        "__STYXTYPE__": "input_output",
+        "input": input_,
+        "output": output,
+    }
+    return params
+
+
+def mtnormalise_input_output_cargs(
+    params: MtnormaliseInputOutputParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.input_))
-        cargs.append(self.output)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("input")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def mtnormalise_input_output_outputs(
+    params: MtnormaliseInputOutputParameters,
+    execution: Execution,
+) -> MtnormaliseInputOutputOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> MtnormaliseInputOutputOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `MtnormaliseInputOutputOutputs`).
-        """
-        ret = MtnormaliseInputOutputOutputs(
-            root=execution.output_file("."),
-            output=execution.output_file(self.output),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MtnormaliseInputOutputOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file(params.get("output")),
+    )
+    return ret
 
 
 class MtnormaliseOutputs(typing.NamedTuple):
@@ -114,13 +207,13 @@ class MtnormaliseOutputs(typing.NamedTuple):
     check_factors: OutputPathType | None
     """output the tissue balance factors computed during normalisation. """
     input_output: list[MtnormaliseInputOutputOutputs]
-    """Outputs from `MtnormaliseInputOutput`.This is a list of outputs with the
-    same length and order as the inputs."""
+    """Outputs from `mtnormalise_input_output_outputs`.This is a list of outputs
+    with the same length and order as the inputs."""
 
 
-def mtnormalise(
+def mtnormalise_params(
     mask: InputPathType,
-    input_output: list[MtnormaliseInputOutput],
+    input_output: list[MtnormaliseInputOutputParameters],
     order: str | None = None,
     niter: list[int] | None = None,
     reference: float | None = None,
@@ -133,7 +226,252 @@ def mtnormalise(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[MtnormaliseConfig] | None = None,
+    config: list[MtnormaliseConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> MtnormaliseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mask: the mask defines the data used to compute the intensity\
+            normalisation. This option is mandatory.
+        input_output: list of all input and output tissue compartment files\
+            (see example usage).
+        order: the maximum order of the polynomial basis used to fit the\
+            normalisation field in the log-domain. An order of 0 is equivalent to\
+            not allowing spatial variance of the intensity normalisation factor.\
+            (default: 3).
+        niter: set the number of iterations. The first (and potentially only)\
+            entry applies to the main loop. If supplied as a comma-separated list\
+            of integers, the second entry applies to the inner loop to update the\
+            balance factors (default: 15,7).
+        reference: specify the (positive) reference value to which the summed\
+            tissue compartments will be normalised. (default: 0.282095, SH DC term\
+            for unit angular integral).
+        balanced: incorporate the per-tissue balancing factors into scaling of\
+            the output images (NOTE: use of this option has critical consequences\
+            for AFD intensity normalisation; should not be used unless these\
+            consequences are fully understood).
+        check_norm: output the final estimated spatially varying intensity\
+            level that is used for normalisation.
+        check_mask: output the final mask used to compute the normalisation.\
+            This mask excludes regions identified as outliers by the optimisation\
+            process.
+        check_factors: output the tissue balance factors computed during\
+            normalisation.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mtnormalise",
+        "mask": mask,
+        "balanced": balanced,
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "input_output": input_output,
+    }
+    if order is not None:
+        params["order"] = order
+    if niter is not None:
+        params["niter"] = niter
+    if reference is not None:
+        params["reference"] = reference
+    if check_norm is not None:
+        params["check_norm"] = check_norm
+    if check_mask is not None:
+        params["check_mask"] = check_mask
+    if check_factors is not None:
+        params["check_factors"] = check_factors
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def mtnormalise_cargs(
+    params: MtnormaliseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mtnormalise")
+    cargs.extend([
+        "-mask",
+        execution.input_file(params.get("mask"))
+    ])
+    if params.get("order") is not None:
+        cargs.extend([
+            "-order",
+            params.get("order")
+        ])
+    if params.get("niter") is not None:
+        cargs.extend([
+            "-niter",
+            ",".join(map(str, params.get("niter")))
+        ])
+    if params.get("reference") is not None:
+        cargs.extend([
+            "-reference",
+            str(params.get("reference"))
+        ])
+    if params.get("balanced"):
+        cargs.append("-balanced")
+    if params.get("check_norm") is not None:
+        cargs.extend([
+            "-check_norm",
+            params.get("check_norm")
+        ])
+    if params.get("check_mask") is not None:
+        cargs.extend([
+            "-check_mask",
+            params.get("check_mask")
+        ])
+    if params.get("check_factors") is not None:
+        cargs.extend([
+            "-check_factors",
+            params.get("check_factors")
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("input_output")] for a in c])
+    return cargs
+
+
+def mtnormalise_outputs(
+    params: MtnormaliseParameters,
+    execution: Execution,
+) -> MtnormaliseOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MtnormaliseOutputs(
+        root=execution.output_file("."),
+        check_norm=execution.output_file(params.get("check_norm")) if (params.get("check_norm") is not None) else None,
+        check_mask=execution.output_file(params.get("check_mask")) if (params.get("check_mask") is not None) else None,
+        check_factors=execution.output_file(params.get("check_factors")) if (params.get("check_factors") is not None) else None,
+        input_output=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in input_output],
+    )
+    return ret
+
+
+def mtnormalise_execute(
+    params: MtnormaliseParameters,
+    execution: Execution,
+) -> MtnormaliseOutputs:
+    """
+    Multi-tissue informed log-domain intensity normalisation.
+    
+    This command takes as input any number of tissue components (e.g. from
+    multi-tissue CSD) and outputs corresponding normalised tissue components
+    corrected for the effects of (residual) intensity inhomogeneities. Intensity
+    normalisation is performed by optimising the voxel-wise sum of all tissue
+    compartments towards a constant value, under constraints of spatial
+    smoothness (polynomial basis of a given order). Different to the Raffelt et
+    al. 2017 abstract, this algorithm performs this task in the log-domain
+    instead, with added gradual outlier rejection, different handling of the
+    balancing factors between tissue compartments and a different iteration
+    structure.
+    
+    The -mask option is mandatory and is optimally provided with a brain mask
+    (such as the one obtained from dwi2mask earlier in the processing pipeline).
+    Outlier areas with exceptionally low or high combined tissue contributions
+    are accounted for and reoptimised as the intensity inhomogeneity estimation
+    becomes more accurate.
+    
+    References:
+    
+    Raffelt, D.; Dhollander, T.; Tournier, J.-D.; Tabbara, R.; Smith, R. E.;
+    Pierre, E. & Connelly, A. Bias Field Correction and Intensity Normalisation
+    for Quantitative Analysis of Apparent Fibre Density. In Proc. ISMRM, 2017,
+    26, 3541
+    
+    Dhollander, T.; Tabbara, R.; Rosnarho-Tornstrand, J.; Tournier, J.-D.;
+    Raffelt, D. & Connelly, A. Multi-tissue log-domain intensity and
+    inhomogeneity normalisation for quantitative apparent fibre density. In
+    Proc. ISMRM, 2021, 29, 2472.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MtnormaliseOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mtnormalise_cargs(params, execution)
+    ret = mtnormalise_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
+def mtnormalise(
+    mask: InputPathType,
+    input_output: list[MtnormaliseInputOutputParameters],
+    order: str | None = None,
+    niter: list[int] | None = None,
+    reference: float | None = None,
+    balanced: bool = False,
+    check_norm: str | None = None,
+    check_mask: str | None = None,
+    check_factors: str | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[MtnormaliseConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -219,80 +557,16 @@ def mtnormalise(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MTNORMALISE_METADATA)
-    cargs = []
-    cargs.append("mtnormalise")
-    cargs.extend([
-        "-mask",
-        execution.input_file(mask)
-    ])
-    if order is not None:
-        cargs.extend([
-            "-order",
-            order
-        ])
-    if niter is not None:
-        cargs.extend([
-            "-niter",
-            ",".join(map(str, niter))
-        ])
-    if reference is not None:
-        cargs.extend([
-            "-reference",
-            str(reference)
-        ])
-    if balanced:
-        cargs.append("-balanced")
-    if check_norm is not None:
-        cargs.extend([
-            "-check_norm",
-            check_norm
-        ])
-    if check_mask is not None:
-        cargs.extend([
-            "-check_mask",
-            check_mask
-        ])
-    if check_factors is not None:
-        cargs.extend([
-            "-check_factors",
-            check_factors
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.extend([a for c in [s.run(execution) for s in input_output] for a in c])
-    ret = MtnormaliseOutputs(
-        root=execution.output_file("."),
-        check_norm=execution.output_file(check_norm) if (check_norm is not None) else None,
-        check_mask=execution.output_file(check_mask) if (check_mask is not None) else None,
-        check_factors=execution.output_file(check_factors) if (check_factors is not None) else None,
-        input_output=[i.outputs(execution) if hasattr(i, "outputs") else None for i in input_output],
-    )
-    execution.run(cargs)
-    return ret
+    params = mtnormalise_params(mask=mask, order=order, niter=niter, reference=reference, balanced=balanced, check_norm=check_norm, check_mask=check_mask, check_factors=check_factors, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, input_output=input_output)
+    return mtnormalise_execute(params, execution)
 
 
 __all__ = [
     "MTNORMALISE_METADATA",
-    "MtnormaliseConfig",
-    "MtnormaliseInputOutput",
     "MtnormaliseInputOutputOutputs",
     "MtnormaliseOutputs",
     "mtnormalise",
+    "mtnormalise_config_params",
+    "mtnormalise_input_output_params",
+    "mtnormalise_params",
 ]

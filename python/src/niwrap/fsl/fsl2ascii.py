@@ -12,6 +12,45 @@ FSL2ASCII_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Fsl2asciiParameters = typing.TypedDict('Fsl2asciiParameters', {
+    "__STYX_TYPE__": typing.Literal["fsl2ascii"],
+    "input_file": InputPathType,
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fsl2ascii": fsl2ascii_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fsl2ascii": fsl2ascii_outputs,
+    }
+    return vt.get(t)
 
 
 class Fsl2asciiOutputs(typing.NamedTuple):
@@ -22,6 +61,91 @@ class Fsl2asciiOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_ascii_file: OutputPathType
     """Output ASCII text file"""
+
+
+def fsl2ascii_params(
+    input_file: InputPathType,
+    output_file: str,
+) -> Fsl2asciiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input NIfTI (or analyze 7.5 format) image.
+        output_file: Output ASCII text file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsl2ascii",
+        "input_file": input_file,
+        "output_file": output_file,
+    }
+    return params
+
+
+def fsl2ascii_cargs(
+    params: Fsl2asciiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsl2ascii")
+    cargs.append(execution.input_file(params.get("input_file")))
+    cargs.append(params.get("output_file"))
+    return cargs
+
+
+def fsl2ascii_outputs(
+    params: Fsl2asciiParameters,
+    execution: Execution,
+) -> Fsl2asciiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Fsl2asciiOutputs(
+        root=execution.output_file("."),
+        output_ascii_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def fsl2ascii_execute(
+    params: Fsl2asciiParameters,
+    execution: Execution,
+) -> Fsl2asciiOutputs:
+    """
+    Convert NIfTI image or analyze 7.5 format file to ASCII text file.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Fsl2asciiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsl2ascii_cargs(params, execution)
+    ret = fsl2ascii_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsl2ascii(
@@ -45,20 +169,13 @@ def fsl2ascii(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL2ASCII_METADATA)
-    cargs = []
-    cargs.append("fsl2ascii")
-    cargs.append(execution.input_file(input_file))
-    cargs.append(output_file)
-    ret = Fsl2asciiOutputs(
-        root=execution.output_file("."),
-        output_ascii_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsl2ascii_params(input_file=input_file, output_file=output_file)
+    return fsl2ascii_execute(params, execution)
 
 
 __all__ = [
     "FSL2ASCII_METADATA",
     "Fsl2asciiOutputs",
     "fsl2ascii",
+    "fsl2ascii_params",
 ]

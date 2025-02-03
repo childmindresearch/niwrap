@@ -12,14 +12,133 @@ BASIL_VAR_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+BasilVarParameters = typing.TypedDict('BasilVarParameters', {
+    "__STYX_TYPE__": typing.Literal["basil_var"],
+    "results_dir": str,
+    "mask_image": InputPathType,
+})
 
 
-class BasilVarOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `basil_var(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "basil_var": basil_var_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def basil_var_params(
+    results_dir: str,
+    mask_image: InputPathType,
+) -> BasilVarParameters:
+    """
+    Build parameters.
+    
+    Args:
+        results_dir: BASIL results directory.
+        mask_image: Mask image.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "basil_var",
+        "results_dir": results_dir,
+        "mask_image": mask_image,
+    }
+    return params
+
+
+def basil_var_cargs(
+    params: BasilVarParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("basil_var")
+    cargs.extend([
+        "-d",
+        params.get("results_dir")
+    ])
+    cargs.extend([
+        "-m",
+        execution.input_file(params.get("mask_image"))
+    ])
+    return cargs
+
+
+def basil_var_outputs(
+    params: BasilVarParameters,
+    execution: Execution,
+) -> BasilVarOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = BasilVarOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def basil_var_execute(
+    params: BasilVarParameters,
+    execution: Execution,
+) -> BasilVarOutputs:
+    """
+    Variance calculator for BASIL.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `BasilVarOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = basil_var_cargs(params, execution)
+    ret = basil_var_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def basil_var(
@@ -43,25 +162,12 @@ def basil_var(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(BASIL_VAR_METADATA)
-    cargs = []
-    cargs.append("basil_var")
-    cargs.extend([
-        "-d",
-        results_dir
-    ])
-    cargs.extend([
-        "-m",
-        execution.input_file(mask_image)
-    ])
-    ret = BasilVarOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = basil_var_params(results_dir=results_dir, mask_image=mask_image)
+    return basil_var_execute(params, execution)
 
 
 __all__ = [
     "BASIL_VAR_METADATA",
-    "BasilVarOutputs",
     "basil_var",
+    "basil_var_params",
 ]

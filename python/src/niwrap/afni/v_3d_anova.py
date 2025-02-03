@@ -12,6 +12,57 @@ V_3D_ANOVA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dAnovaParameters = typing.TypedDict('V3dAnovaParameters', {
+    "__STYX_TYPE__": typing.Literal["3dANOVA"],
+    "levels": int,
+    "datasets": list[str],
+    "voxel": typing.NotRequired[int | None],
+    "diskspace": bool,
+    "mask": typing.NotRequired[InputPathType | None],
+    "debug": typing.NotRequired[int | None],
+    "ftr": typing.NotRequired[str | None],
+    "mean": typing.NotRequired[str | None],
+    "diff": typing.NotRequired[str | None],
+    "contr": typing.NotRequired[str | None],
+    "old_method": bool,
+    "ok": bool,
+    "assume_sph": bool,
+    "bucket": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dANOVA": v_3d_anova_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dANOVA": v_3d_anova_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dAnovaOutputs(typing.NamedTuple):
@@ -40,6 +91,199 @@ class V3dAnovaOutputs(typing.NamedTuple):
     """Output bucket dataset file"""
     bucket_brick_output: OutputPathType | None
     """Output bucket BRIK file"""
+
+
+def v_3d_anova_params(
+    levels: int,
+    datasets: list[str],
+    voxel: int | None = None,
+    diskspace: bool = False,
+    mask: InputPathType | None = None,
+    debug: int | None = None,
+    ftr: str | None = None,
+    mean: str | None = None,
+    diff: str | None = None,
+    contr: str | None = None,
+    old_method: bool = False,
+    ok: bool = False,
+    assume_sph: bool = False,
+    bucket: str | None = None,
+) -> V3dAnovaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        levels: Number of factor levels.
+        datasets: Datasets for each factor level.
+        voxel: Screen output for the specified voxel number.
+        diskspace: Print out the required disk space for program execution.
+        mask: Use sub-brick #0 of dataset to define which voxels to process.
+        debug: Request extra output verbosity.
+        ftr: F-statistic for treatment effect.
+        mean: Estimate of factor level mean.
+        diff: Difference between factor levels.
+        contr: Contrast in factor levels.
+        old_method: Perform ANOVA using the previous functionality.
+        ok: Confirm understanding of t-stats and sphericity assumptions with\
+            old method.
+        assume_sph: Assume sphericity (zero-sum contrasts only).
+        bucket: Create one AFNI 'bucket' dataset.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dANOVA",
+        "levels": levels,
+        "datasets": datasets,
+        "diskspace": diskspace,
+        "old_method": old_method,
+        "ok": ok,
+        "assume_sph": assume_sph,
+    }
+    if voxel is not None:
+        params["voxel"] = voxel
+    if mask is not None:
+        params["mask"] = mask
+    if debug is not None:
+        params["debug"] = debug
+    if ftr is not None:
+        params["ftr"] = ftr
+    if mean is not None:
+        params["mean"] = mean
+    if diff is not None:
+        params["diff"] = diff
+    if contr is not None:
+        params["contr"] = contr
+    if bucket is not None:
+        params["bucket"] = bucket
+    return params
+
+
+def v_3d_anova_cargs(
+    params: V3dAnovaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dANOVA")
+    cargs.extend([
+        "-levels",
+        str(params.get("levels"))
+    ])
+    cargs.extend([
+        "-dset",
+        *params.get("datasets")
+    ])
+    if params.get("voxel") is not None:
+        cargs.extend([
+            "-voxel",
+            str(params.get("voxel"))
+        ])
+    if params.get("diskspace"):
+        cargs.append("-diskspace")
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("debug") is not None:
+        cargs.extend([
+            "-debug",
+            str(params.get("debug"))
+        ])
+    if params.get("ftr") is not None:
+        cargs.extend([
+            "-ftr",
+            params.get("ftr")
+        ])
+    if params.get("mean") is not None:
+        cargs.extend([
+            "-mean",
+            params.get("mean")
+        ])
+    if params.get("diff") is not None:
+        cargs.extend([
+            "-diff",
+            params.get("diff")
+        ])
+    if params.get("contr") is not None:
+        cargs.extend([
+            "-contr",
+            params.get("contr")
+        ])
+    if params.get("old_method"):
+        cargs.append("-old_method")
+    if params.get("ok"):
+        cargs.append("-OK")
+    if params.get("assume_sph"):
+        cargs.append("-assume_sph")
+    if params.get("bucket") is not None:
+        cargs.extend([
+            "-bucket",
+            params.get("bucket")
+        ])
+    return cargs
+
+
+def v_3d_anova_outputs(
+    params: V3dAnovaParameters,
+    execution: Execution,
+) -> V3dAnovaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dAnovaOutputs(
+        root=execution.output_file("."),
+        ftr_output=execution.output_file(params.get("ftr") + ".HEAD") if (params.get("ftr") is not None) else None,
+        ftr_brick_output=execution.output_file(params.get("ftr") + ".BRIK") if (params.get("ftr") is not None) else None,
+        mean_output=execution.output_file(params.get("mean") + "_mean.HEAD") if (params.get("mean") is not None) else None,
+        mean_brick_output=execution.output_file(params.get("mean") + "_mean.BRIK") if (params.get("mean") is not None) else None,
+        diff_output=execution.output_file(params.get("diff") + "_diff.HEAD") if (params.get("diff") is not None) else None,
+        diff_brick_output=execution.output_file(params.get("diff") + "_diff.BRIK") if (params.get("diff") is not None) else None,
+        contr_output=execution.output_file(params.get("contr") + "_contr.HEAD") if (params.get("contr") is not None) else None,
+        contr_brick_output=execution.output_file(params.get("contr") + "_contr.BRIK") if (params.get("contr") is not None) else None,
+        bucket_output=execution.output_file(params.get("bucket") + ".HEAD") if (params.get("bucket") is not None) else None,
+        bucket_brick_output=execution.output_file(params.get("bucket") + ".BRIK") if (params.get("bucket") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_anova_execute(
+    params: V3dAnovaParameters,
+    execution: Execution,
+) -> V3dAnovaOutputs:
+    """
+    Performs single-factor Analysis of Variance (ANOVA) on 3D datasets.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dAnovaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_anova_cargs(params, execution)
+    ret = v_3d_anova_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_anova(
@@ -88,83 +332,13 @@ def v_3d_anova(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ANOVA_METADATA)
-    cargs = []
-    cargs.append("3dANOVA")
-    cargs.extend([
-        "-levels",
-        str(levels)
-    ])
-    cargs.extend([
-        "-dset",
-        *datasets
-    ])
-    if voxel is not None:
-        cargs.extend([
-            "-voxel",
-            str(voxel)
-        ])
-    if diskspace:
-        cargs.append("-diskspace")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if debug is not None:
-        cargs.extend([
-            "-debug",
-            str(debug)
-        ])
-    if ftr is not None:
-        cargs.extend([
-            "-ftr",
-            ftr
-        ])
-    if mean is not None:
-        cargs.extend([
-            "-mean",
-            mean
-        ])
-    if diff is not None:
-        cargs.extend([
-            "-diff",
-            diff
-        ])
-    if contr is not None:
-        cargs.extend([
-            "-contr",
-            contr
-        ])
-    if old_method:
-        cargs.append("-old_method")
-    if ok:
-        cargs.append("-OK")
-    if assume_sph:
-        cargs.append("-assume_sph")
-    if bucket is not None:
-        cargs.extend([
-            "-bucket",
-            bucket
-        ])
-    ret = V3dAnovaOutputs(
-        root=execution.output_file("."),
-        ftr_output=execution.output_file(ftr + ".HEAD") if (ftr is not None) else None,
-        ftr_brick_output=execution.output_file(ftr + ".BRIK") if (ftr is not None) else None,
-        mean_output=execution.output_file(mean + "_mean.HEAD") if (mean is not None) else None,
-        mean_brick_output=execution.output_file(mean + "_mean.BRIK") if (mean is not None) else None,
-        diff_output=execution.output_file(diff + "_diff.HEAD") if (diff is not None) else None,
-        diff_brick_output=execution.output_file(diff + "_diff.BRIK") if (diff is not None) else None,
-        contr_output=execution.output_file(contr + "_contr.HEAD") if (contr is not None) else None,
-        contr_brick_output=execution.output_file(contr + "_contr.BRIK") if (contr is not None) else None,
-        bucket_output=execution.output_file(bucket + ".HEAD") if (bucket is not None) else None,
-        bucket_brick_output=execution.output_file(bucket + ".BRIK") if (bucket is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_anova_params(levels=levels, datasets=datasets, voxel=voxel, diskspace=diskspace, mask=mask, debug=debug, ftr=ftr, mean=mean, diff=diff, contr=contr, old_method=old_method, ok=ok, assume_sph=assume_sph, bucket=bucket)
+    return v_3d_anova_execute(params, execution)
 
 
 __all__ = [
     "V3dAnovaOutputs",
     "V_3D_ANOVA_METADATA",
     "v_3d_anova",
+    "v_3d_anova_params",
 ]

@@ -12,6 +12,46 @@ REGISTER_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+RegisterCshParameters = typing.TypedDict('RegisterCshParameters', {
+    "__STYX_TYPE__": typing.Literal["register.csh"],
+    "base_image": InputPathType,
+    "new_image": InputPathType,
+    "options": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "register.csh": register_csh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "register.csh": register_csh_outputs,
+    }
+    return vt.get(t)
 
 
 class RegisterCshOutputs(typing.NamedTuple):
@@ -22,6 +62,97 @@ class RegisterCshOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     registered_image: OutputPathType
     """The output registered image"""
+
+
+def register_csh_params(
+    base_image: InputPathType,
+    new_image: InputPathType,
+    options: str | None = None,
+) -> RegisterCshParameters:
+    """
+    Build parameters.
+    
+    Args:
+        base_image: The base image for registration.
+        new_image: The new image to be registered to the base image.
+        options: Additional options for the register.csh command.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "register.csh",
+        "base_image": base_image,
+        "new_image": new_image,
+    }
+    if options is not None:
+        params["options"] = options
+    return params
+
+
+def register_csh_cargs(
+    params: RegisterCshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("register.csh")
+    cargs.append(execution.input_file(params.get("base_image")))
+    cargs.append(execution.input_file(params.get("new_image")))
+    if params.get("options") is not None:
+        cargs.append(params.get("options"))
+    return cargs
+
+
+def register_csh_outputs(
+    params: RegisterCshParameters,
+    execution: Execution,
+) -> RegisterCshOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = RegisterCshOutputs(
+        root=execution.output_file("."),
+        registered_image=execution.output_file(pathlib.Path(params.get("new_image")).name + "_registered"),
+    )
+    return ret
+
+
+def register_csh_execute(
+    params: RegisterCshParameters,
+    execution: Execution,
+) -> RegisterCshOutputs:
+    """
+    A script for registering MRI images.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `RegisterCshOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = register_csh_cargs(params, execution)
+    ret = register_csh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def register_csh(
@@ -47,22 +178,13 @@ def register_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(REGISTER_CSH_METADATA)
-    cargs = []
-    cargs.append("register.csh")
-    cargs.append(execution.input_file(base_image))
-    cargs.append(execution.input_file(new_image))
-    if options is not None:
-        cargs.append(options)
-    ret = RegisterCshOutputs(
-        root=execution.output_file("."),
-        registered_image=execution.output_file(pathlib.Path(new_image).name + "_registered"),
-    )
-    execution.run(cargs)
-    return ret
+    params = register_csh_params(base_image=base_image, new_image=new_image, options=options)
+    return register_csh_execute(params, execution)
 
 
 __all__ = [
     "REGISTER_CSH_METADATA",
     "RegisterCshOutputs",
     "register_csh",
+    "register_csh_params",
 ]

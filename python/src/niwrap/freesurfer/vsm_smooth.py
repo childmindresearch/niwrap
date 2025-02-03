@@ -12,6 +12,47 @@ VSM_SMOOTH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+VsmSmoothParameters = typing.TypedDict('VsmSmoothParameters', {
+    "__STYX_TYPE__": typing.Literal["vsm-smooth"],
+    "input_file": InputPathType,
+    "output_file": str,
+    "fwhm_value": float,
+    "temp_dir": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "vsm-smooth": vsm_smooth_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "vsm-smooth": vsm_smooth_outputs,
+    }
+    return vt.get(t)
 
 
 class VsmSmoothOutputs(typing.NamedTuple):
@@ -22,6 +63,117 @@ class VsmSmoothOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_vsm: OutputPathType
     """The resulting smoothed voxel shift map."""
+
+
+def vsm_smooth_params(
+    input_file: InputPathType,
+    output_file: str,
+    fwhm_value: float,
+    temp_dir: str,
+) -> VsmSmoothParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input voxel shift map (vsm).
+        output_file: Output smoothed voxel shift map.
+        fwhm_value: Full width at half maximum for smoothing.
+        temp_dir: Directory for temporary files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "vsm-smooth",
+        "input_file": input_file,
+        "output_file": output_file,
+        "fwhm_value": fwhm_value,
+        "temp_dir": temp_dir,
+    }
+    return params
+
+
+def vsm_smooth_cargs(
+    params: VsmSmoothParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("vsm-smooth")
+    cargs.extend([
+        "--i",
+        execution.input_file(params.get("input_file"))
+    ])
+    cargs.extend([
+        "--o",
+        params.get("output_file")
+    ])
+    cargs.extend([
+        "--fwhm",
+        str(params.get("fwhm_value"))
+    ])
+    cargs.extend([
+        "--tmpdir",
+        params.get("temp_dir")
+    ])
+    return cargs
+
+
+def vsm_smooth_outputs(
+    params: VsmSmoothParameters,
+    execution: Execution,
+) -> VsmSmoothOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VsmSmoothOutputs(
+        root=execution.output_file("."),
+        output_vsm=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def vsm_smooth_execute(
+    params: VsmSmoothParameters,
+    execution: Execution,
+) -> VsmSmoothOutputs:
+    """
+    Implements a masked smoothing in which the input (vsm) is unchanged in voxels
+    that have a non-zero value. In voxels with a zero value, the value is replaced
+    with vsm smoothed by the given amount. This will likely only change the voxels
+    that are near the edge of the non-zero voxels. This is a simple way to
+    extrapolate the non-zero voxels beyond their range. This works well for a B0
+    distortion correction voxel shift map (vsm), but it can be applied to other
+    maps.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VsmSmoothOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = vsm_smooth_cargs(params, execution)
+    ret = vsm_smooth_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def vsm_smooth(
@@ -55,34 +207,13 @@ def vsm_smooth(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(VSM_SMOOTH_METADATA)
-    cargs = []
-    cargs.append("vsm-smooth")
-    cargs.extend([
-        "--i",
-        execution.input_file(input_file)
-    ])
-    cargs.extend([
-        "--o",
-        output_file
-    ])
-    cargs.extend([
-        "--fwhm",
-        str(fwhm_value)
-    ])
-    cargs.extend([
-        "--tmpdir",
-        temp_dir
-    ])
-    ret = VsmSmoothOutputs(
-        root=execution.output_file("."),
-        output_vsm=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = vsm_smooth_params(input_file=input_file, output_file=output_file, fwhm_value=fwhm_value, temp_dir=temp_dir)
+    return vsm_smooth_execute(params, execution)
 
 
 __all__ = [
     "VSM_SMOOTH_METADATA",
     "VsmSmoothOutputs",
     "vsm_smooth",
+    "vsm_smooth_params",
 ]

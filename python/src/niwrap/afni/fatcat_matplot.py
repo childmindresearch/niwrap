@@ -12,14 +12,128 @@ FATCAT_MATPLOT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FatcatMatplotParameters = typing.TypedDict('FatcatMatplotParameters', {
+    "__STYX_TYPE__": typing.Literal["FATCAT_matplot"],
+    "directory": str,
+    "shiny_folder": bool,
+})
 
 
-class FatcatMatplotOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fatcat_matplot(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "FATCAT_matplot": fatcat_matplot_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fatcat_matplot_params(
+    directory: str,
+    shiny_folder: bool = False,
+) -> FatcatMatplotParameters:
+    """
+    Build parameters.
+    
+    Args:
+        directory: Path to a folder containing .netcc and/or .grid files.
+        shiny_folder: Use a custom shiny folder (for testing purposes).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "FATCAT_matplot",
+        "directory": directory,
+        "shiny_folder": shiny_folder,
+    }
+    return params
+
+
+def fatcat_matplot_cargs(
+    params: FatcatMatplotParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("FATCAT_matplot")
+    cargs.append(params.get("directory"))
+    if params.get("shiny_folder"):
+        cargs.append("-ShinyFolder")
+    return cargs
+
+
+def fatcat_matplot_outputs(
+    params: FatcatMatplotParameters,
+    execution: Execution,
+) -> FatcatMatplotOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FatcatMatplotOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fatcat_matplot_execute(
+    params: FatcatMatplotParameters,
+    execution: Execution,
+) -> FatcatMatplotOutputs:
+    """
+    Launch a shiny app to visualize .netcc and/or .grid files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FatcatMatplotOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fatcat_matplot_cargs(params, execution)
+    ret = fatcat_matplot_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fatcat_matplot(
@@ -43,20 +157,12 @@ def fatcat_matplot(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FATCAT_MATPLOT_METADATA)
-    cargs = []
-    cargs.append("FATCAT_matplot")
-    cargs.append(directory)
-    if shiny_folder:
-        cargs.append("-ShinyFolder")
-    ret = FatcatMatplotOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fatcat_matplot_params(directory=directory, shiny_folder=shiny_folder)
+    return fatcat_matplot_execute(params, execution)
 
 
 __all__ = [
     "FATCAT_MATPLOT_METADATA",
-    "FatcatMatplotOutputs",
     "fatcat_matplot",
+    "fatcat_matplot_params",
 ]

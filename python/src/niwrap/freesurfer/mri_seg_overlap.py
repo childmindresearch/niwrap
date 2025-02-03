@@ -12,6 +12,53 @@ MRI_SEG_OVERLAP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriSegOverlapParameters = typing.TypedDict('MriSegOverlapParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_seg_overlap"],
+    "vol1": InputPathType,
+    "vol2": InputPathType,
+    "out_file": typing.NotRequired[str | None],
+    "measures": typing.NotRequired[list[str] | None],
+    "labels": typing.NotRequired[list[str] | None],
+    "label_names": typing.NotRequired[list[str] | None],
+    "label_file": typing.NotRequired[InputPathType | None],
+    "no_names_flag": bool,
+    "seg_flag": bool,
+    "quiet_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_seg_overlap": mri_seg_overlap_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_seg_overlap": mri_seg_overlap_outputs,
+    }
+    return vt.get(t)
 
 
 class MriSegOverlapOutputs(typing.NamedTuple):
@@ -22,6 +69,154 @@ class MriSegOverlapOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     overlap_report: OutputPathType | None
     """Detailed overlap report saved to a JSON file."""
+
+
+def mri_seg_overlap_params(
+    vol1: InputPathType,
+    vol2: InputPathType,
+    out_file: str | None = None,
+    measures: list[str] | None = None,
+    labels: list[str] | None = None,
+    label_names: list[str] | None = None,
+    label_file: InputPathType | None = None,
+    no_names_flag: bool = False,
+    seg_flag: bool = False,
+    quiet_flag: bool = False,
+) -> MriSegOverlapParameters:
+    """
+    Build parameters.
+    
+    Args:
+        vol1: First segmentation volume input.
+        vol2: Second segmentation volume input.
+        out_file: Save detailed overlap report to a JSON file.
+        measures: List of measures to compute. Options include: dice, jaccard,\
+            voldiff.
+        labels: Space-separated list of label values to include.
+        label_names: Custom label names corresponding to the values specified\
+            with the --labels flag.
+        label_file: Text file specifying the label values to include. Must be\
+            in the format of a freesurfer lookup-table.
+        no_names_flag: Do not report label names.
+        seg_flag: Compute overlap between the major segmentation structures.
+        quiet_flag: Quiet mode - do not print results to stdout.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_seg_overlap",
+        "vol1": vol1,
+        "vol2": vol2,
+        "no_names_flag": no_names_flag,
+        "seg_flag": seg_flag,
+        "quiet_flag": quiet_flag,
+    }
+    if out_file is not None:
+        params["out_file"] = out_file
+    if measures is not None:
+        params["measures"] = measures
+    if labels is not None:
+        params["labels"] = labels
+    if label_names is not None:
+        params["label_names"] = label_names
+    if label_file is not None:
+        params["label_file"] = label_file
+    return params
+
+
+def mri_seg_overlap_cargs(
+    params: MriSegOverlapParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_seg_overlap")
+    cargs.append(execution.input_file(params.get("vol1")))
+    cargs.append(execution.input_file(params.get("vol2")))
+    if params.get("out_file") is not None:
+        cargs.extend([
+            "-o",
+            params.get("out_file")
+        ])
+    if params.get("measures") is not None:
+        cargs.extend([
+            "-m",
+            *params.get("measures")
+        ])
+    if params.get("labels") is not None:
+        cargs.extend([
+            "-l",
+            *params.get("labels")
+        ])
+    if params.get("label_names") is not None:
+        cargs.extend([
+            "-n",
+            *params.get("label_names")
+        ])
+    if params.get("label_file") is not None:
+        cargs.extend([
+            "-f",
+            execution.input_file(params.get("label_file"))
+        ])
+    if params.get("no_names_flag"):
+        cargs.append("-x")
+    if params.get("seg_flag"):
+        cargs.append("-s")
+    if params.get("quiet_flag"):
+        cargs.append("-q")
+    return cargs
+
+
+def mri_seg_overlap_outputs(
+    params: MriSegOverlapParameters,
+    execution: Execution,
+) -> MriSegOverlapOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriSegOverlapOutputs(
+        root=execution.output_file("."),
+        overlap_report=execution.output_file(params.get("out_file")) if (params.get("out_file") is not None) else None,
+    )
+    return ret
+
+
+def mri_seg_overlap_execute(
+    params: MriSegOverlapParameters,
+    execution: Execution,
+) -> MriSegOverlapOutputs:
+    """
+    Compute the structural overlap between two segmentation volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriSegOverlapOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_seg_overlap_cargs(params, execution)
+    ret = mri_seg_overlap_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_seg_overlap(
@@ -64,51 +259,13 @@ def mri_seg_overlap(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEG_OVERLAP_METADATA)
-    cargs = []
-    cargs.append("mri_seg_overlap")
-    cargs.append(execution.input_file(vol1))
-    cargs.append(execution.input_file(vol2))
-    if out_file is not None:
-        cargs.extend([
-            "-o",
-            out_file
-        ])
-    if measures is not None:
-        cargs.extend([
-            "-m",
-            *measures
-        ])
-    if labels is not None:
-        cargs.extend([
-            "-l",
-            *labels
-        ])
-    if label_names is not None:
-        cargs.extend([
-            "-n",
-            *label_names
-        ])
-    if label_file is not None:
-        cargs.extend([
-            "-f",
-            execution.input_file(label_file)
-        ])
-    if no_names_flag:
-        cargs.append("-x")
-    if seg_flag:
-        cargs.append("-s")
-    if quiet_flag:
-        cargs.append("-q")
-    ret = MriSegOverlapOutputs(
-        root=execution.output_file("."),
-        overlap_report=execution.output_file(out_file) if (out_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_seg_overlap_params(vol1=vol1, vol2=vol2, out_file=out_file, measures=measures, labels=labels, label_names=label_names, label_file=label_file, no_names_flag=no_names_flag, seg_flag=seg_flag, quiet_flag=quiet_flag)
+    return mri_seg_overlap_execute(params, execution)
 
 
 __all__ = [
     "MRI_SEG_OVERLAP_METADATA",
     "MriSegOverlapOutputs",
     "mri_seg_overlap",
+    "mri_seg_overlap_params",
 ]

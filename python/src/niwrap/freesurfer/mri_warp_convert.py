@@ -12,6 +12,47 @@ MRI_WARP_CONVERT_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriWarpConvertParameters = typing.TypedDict('MriWarpConvertParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_warp_convert"],
+    "invox": typing.NotRequired[InputPathType | None],
+    "outvox": typing.NotRequired[str | None],
+    "insrcgeom": typing.NotRequired[InputPathType | None],
+    "downsample": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_warp_convert": mri_warp_convert_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_warp_convert": mri_warp_convert_outputs,
+    }
+    return vt.get(t)
 
 
 class MriWarpConvertOutputs(typing.NamedTuple):
@@ -22,6 +63,115 @@ class MriWarpConvertOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outwarp: OutputPathType | None
     """Converted output warp file"""
+
+
+def mri_warp_convert_params(
+    invox: InputPathType | None = None,
+    outvox: str | None = None,
+    insrcgeom: InputPathType | None = None,
+    downsample: bool = False,
+) -> MriWarpConvertParameters:
+    """
+    Build parameters.
+    
+    Args:
+        invox: Input file with displacements in source-voxel space.
+        outvox: Output file with displacements in source-voxel space.
+        insrcgeom: Specify source image geometry (moving volume).
+        downsample: Downsample output M3Z to spacing of 2.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_warp_convert",
+        "downsample": downsample,
+    }
+    if invox is not None:
+        params["invox"] = invox
+    if outvox is not None:
+        params["outvox"] = outvox
+    if insrcgeom is not None:
+        params["insrcgeom"] = insrcgeom
+    return params
+
+
+def mri_warp_convert_cargs(
+    params: MriWarpConvertParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_warp_convert")
+    if params.get("invox") is not None:
+        cargs.extend([
+            "--invox",
+            execution.input_file(params.get("invox"))
+        ])
+    if params.get("outvox") is not None:
+        cargs.extend([
+            "--outvox",
+            params.get("outvox")
+        ])
+    if params.get("insrcgeom") is not None:
+        cargs.extend([
+            "--insrcgeom",
+            execution.input_file(params.get("insrcgeom"))
+        ])
+    if params.get("downsample"):
+        cargs.append("--downsample")
+    return cargs
+
+
+def mri_warp_convert_outputs(
+    params: MriWarpConvertParameters,
+    execution: Execution,
+) -> MriWarpConvertOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriWarpConvertOutputs(
+        root=execution.output_file("."),
+        outwarp=execution.output_file(params.get("outvox")) if (params.get("outvox") is not None) else None,
+    )
+    return ret
+
+
+def mri_warp_convert_execute(
+    params: MriWarpConvertParameters,
+    execution: Execution,
+) -> MriWarpConvertOutputs:
+    """
+    This program converts non-linear deformation field warp file formats.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriWarpConvertOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_warp_convert_cargs(params, execution)
+    ret = mri_warp_convert_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_warp_convert(
@@ -49,35 +199,13 @@ def mri_warp_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_WARP_CONVERT_METADATA)
-    cargs = []
-    cargs.append("mri_warp_convert")
-    if invox is not None:
-        cargs.extend([
-            "--invox",
-            execution.input_file(invox)
-        ])
-    if outvox is not None:
-        cargs.extend([
-            "--outvox",
-            outvox
-        ])
-    if insrcgeom is not None:
-        cargs.extend([
-            "--insrcgeom",
-            execution.input_file(insrcgeom)
-        ])
-    if downsample:
-        cargs.append("--downsample")
-    ret = MriWarpConvertOutputs(
-        root=execution.output_file("."),
-        outwarp=execution.output_file(outvox) if (outvox is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_warp_convert_params(invox=invox, outvox=outvox, insrcgeom=insrcgeom, downsample=downsample)
+    return mri_warp_convert_execute(params, execution)
 
 
 __all__ = [
     "MRI_WARP_CONVERT_METADATA",
     "MriWarpConvertOutputs",
     "mri_warp_convert",
+    "mri_warp_convert_params",
 ]

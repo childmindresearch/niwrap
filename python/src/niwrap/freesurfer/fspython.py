@@ -12,14 +12,125 @@ FSPYTHON_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FspythonParameters = typing.TypedDict('FspythonParameters', {
+    "__STYX_TYPE__": typing.Literal["fspython"],
+    "args": typing.NotRequired[list[str] | None],
+})
 
 
-class FspythonOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fspython(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fspython": fspython_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fspython_params(
+    args: list[str] | None = None,
+) -> FspythonParameters:
+    """
+    Build parameters.
+    
+    Args:
+        args: Arguments passed to the program.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fspython",
+    }
+    if args is not None:
+        params["args"] = args
+    return params
+
+
+def fspython_cargs(
+    params: FspythonParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("python3")
+    cargs.append("[OPTION]")
+    if params.get("args") is not None:
+        cargs.extend(params.get("args"))
+    return cargs
+
+
+def fspython_outputs(
+    params: FspythonParameters,
+    execution: Execution,
+) -> FspythonOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FspythonOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fspython_execute(
+    params: FspythonParameters,
+    execution: Execution,
+) -> FspythonOutputs:
+    """
+    Freesurfer's embedded Python interpreter.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FspythonOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fspython_cargs(params, execution)
+    ret = fspython_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fspython(
@@ -41,20 +152,12 @@ def fspython(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSPYTHON_METADATA)
-    cargs = []
-    cargs.append("python3")
-    cargs.append("[OPTION]")
-    if args is not None:
-        cargs.extend(args)
-    ret = FspythonOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fspython_params(args=args)
+    return fspython_execute(params, execution)
 
 
 __all__ = [
     "FSPYTHON_METADATA",
-    "FspythonOutputs",
     "fspython",
+    "fspython_params",
 ]

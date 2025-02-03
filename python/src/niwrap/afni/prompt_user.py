@@ -12,14 +12,136 @@ PROMPT_USER_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+PromptUserParameters = typing.TypedDict('PromptUserParameters', {
+    "__STYX_TYPE__": typing.Literal["prompt_user"],
+    "pause_message": str,
+    "timeout_alias": typing.NotRequired[float | None],
+})
 
 
-class PromptUserOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `prompt_user(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "prompt_user": prompt_user_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def prompt_user_params(
+    pause_message: str,
+    timeout_alias: float | None = None,
+) -> PromptUserParameters:
+    """
+    Build parameters.
+    
+    Args:
+        pause_message: Pops a window prompting the user with MESSAGE. If\
+            MESSAGE is '-', it is read from stdin.
+        timeout_alias: Alias for -timeout.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "prompt_user",
+        "pause_message": pause_message,
+    }
+    if timeout_alias is not None:
+        params["timeout_alias"] = timeout_alias
+    return params
+
+
+def prompt_user_cargs(
+    params: PromptUserParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("prompt_user")
+    cargs.extend([
+        "<-pause>",
+        params.get("pause_message")
+    ])
+    if params.get("timeout_alias") is not None:
+        cargs.extend([
+            "-to",
+            str(params.get("timeout_alias"))
+        ])
+    return cargs
+
+
+def prompt_user_outputs(
+    params: PromptUserParameters,
+    execution: Execution,
+) -> PromptUserOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PromptUserOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def prompt_user_execute(
+    params: PromptUserParameters,
+    execution: Execution,
+) -> PromptUserOutputs:
+    """
+    Tool that prompts a window requesting user input with a custom message.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PromptUserOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = prompt_user_cargs(params, execution)
+    ret = prompt_user_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def prompt_user(
@@ -44,26 +166,12 @@ def prompt_user(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PROMPT_USER_METADATA)
-    cargs = []
-    cargs.append("prompt_user")
-    cargs.extend([
-        "<-pause>",
-        pause_message
-    ])
-    if timeout_alias is not None:
-        cargs.extend([
-            "-to",
-            str(timeout_alias)
-        ])
-    ret = PromptUserOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = prompt_user_params(pause_message=pause_message, timeout_alias=timeout_alias)
+    return prompt_user_execute(params, execution)
 
 
 __all__ = [
     "PROMPT_USER_METADATA",
-    "PromptUserOutputs",
     "prompt_user",
+    "prompt_user_params",
 ]

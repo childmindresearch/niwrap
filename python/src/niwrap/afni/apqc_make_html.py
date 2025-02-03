@@ -12,14 +12,125 @@ APQC_MAKE_HTML_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+ApqcMakeHtmlParameters = typing.TypedDict('ApqcMakeHtmlParameters', {
+    "__STYX_TYPE__": typing.Literal["apqc_make_html"],
+    "qc_dir": str,
+})
 
 
-class ApqcMakeHtmlOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `apqc_make_html(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "apqc_make_html": apqc_make_html_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def apqc_make_html_params(
+    qc_dir: str,
+) -> ApqcMakeHtmlParameters:
+    """
+    Build parameters.
+    
+    Args:
+        qc_dir: Directory where QC files will be saved.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "apqc_make_html",
+        "qc_dir": qc_dir,
+    }
+    return params
+
+
+def apqc_make_html_cargs(
+    params: ApqcMakeHtmlParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("apqc_make_html.py")
+    cargs.extend([
+        "-qc_dir",
+        params.get("qc_dir")
+    ])
+    return cargs
+
+
+def apqc_make_html_outputs(
+    params: ApqcMakeHtmlParameters,
+    execution: Execution,
+) -> ApqcMakeHtmlOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ApqcMakeHtmlOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def apqc_make_html_execute(
+    params: ApqcMakeHtmlParameters,
+    execution: Execution,
+) -> ApqcMakeHtmlOutputs:
+    """
+    Tool to generate HTML reports.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ApqcMakeHtmlOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = apqc_make_html_cargs(params, execution)
+    ret = apqc_make_html_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def apqc_make_html(
@@ -41,21 +152,12 @@ def apqc_make_html(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(APQC_MAKE_HTML_METADATA)
-    cargs = []
-    cargs.append("apqc_make_html.py")
-    cargs.extend([
-        "-qc_dir",
-        qc_dir
-    ])
-    ret = ApqcMakeHtmlOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = apqc_make_html_params(qc_dir=qc_dir)
+    return apqc_make_html_execute(params, execution)
 
 
 __all__ = [
     "APQC_MAKE_HTML_METADATA",
-    "ApqcMakeHtmlOutputs",
     "apqc_make_html",
+    "apqc_make_html_params",
 ]

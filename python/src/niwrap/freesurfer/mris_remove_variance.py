@@ -12,6 +12,47 @@ MRIS_REMOVE_VARIANCE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisRemoveVarianceParameters = typing.TypedDict('MrisRemoveVarianceParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_remove_variance"],
+    "input_surface_file": InputPathType,
+    "curvature_file": InputPathType,
+    "curvature_file_to_remove": InputPathType,
+    "output_curvature_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_remove_variance": mris_remove_variance_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_remove_variance": mris_remove_variance_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisRemoveVarianceOutputs(typing.NamedTuple):
@@ -22,6 +63,101 @@ class MrisRemoveVarianceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     resulting_curvature_file: OutputPathType
     """The resulting curvature file after removing variance."""
+
+
+def mris_remove_variance_params(
+    input_surface_file: InputPathType,
+    curvature_file: InputPathType,
+    curvature_file_to_remove: InputPathType,
+    output_curvature_file: str,
+) -> MrisRemoveVarianceParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface_file: The input surface file.
+        curvature_file: The curvature file.
+        curvature_file_to_remove: The curvature file to remove from the input\
+            curvature.
+        output_curvature_file: The output curvature file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_remove_variance",
+        "input_surface_file": input_surface_file,
+        "curvature_file": curvature_file,
+        "curvature_file_to_remove": curvature_file_to_remove,
+        "output_curvature_file": output_curvature_file,
+    }
+    return params
+
+
+def mris_remove_variance_cargs(
+    params: MrisRemoveVarianceParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_remove_variance")
+    cargs.append(execution.input_file(params.get("input_surface_file")))
+    cargs.append(execution.input_file(params.get("curvature_file")))
+    cargs.append(execution.input_file(params.get("curvature_file_to_remove")))
+    cargs.append(params.get("output_curvature_file"))
+    return cargs
+
+
+def mris_remove_variance_outputs(
+    params: MrisRemoveVarianceParameters,
+    execution: Execution,
+) -> MrisRemoveVarianceOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisRemoveVarianceOutputs(
+        root=execution.output_file("."),
+        resulting_curvature_file=execution.output_file(params.get("output_curvature_file")),
+    )
+    return ret
+
+
+def mris_remove_variance_execute(
+    params: MrisRemoveVarianceParameters,
+    execution: Execution,
+) -> MrisRemoveVarianceOutputs:
+    """
+    This program removes the linear component of the variance accounted for by one
+    curvature vector from another.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisRemoveVarianceOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_remove_variance_cargs(params, execution)
+    ret = mris_remove_variance_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_remove_variance(
@@ -51,22 +187,13 @@ def mris_remove_variance(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REMOVE_VARIANCE_METADATA)
-    cargs = []
-    cargs.append("mris_remove_variance")
-    cargs.append(execution.input_file(input_surface_file))
-    cargs.append(execution.input_file(curvature_file))
-    cargs.append(execution.input_file(curvature_file_to_remove))
-    cargs.append(output_curvature_file)
-    ret = MrisRemoveVarianceOutputs(
-        root=execution.output_file("."),
-        resulting_curvature_file=execution.output_file(output_curvature_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_remove_variance_params(input_surface_file=input_surface_file, curvature_file=curvature_file, curvature_file_to_remove=curvature_file_to_remove, output_curvature_file=output_curvature_file)
+    return mris_remove_variance_execute(params, execution)
 
 
 __all__ = [
     "MRIS_REMOVE_VARIANCE_METADATA",
     "MrisRemoveVarianceOutputs",
     "mris_remove_variance",
+    "mris_remove_variance_params",
 ]

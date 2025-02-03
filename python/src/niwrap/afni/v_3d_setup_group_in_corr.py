@@ -12,6 +12,52 @@ V_3D_SETUP_GROUP_IN_CORR_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dSetupGroupInCorrParameters = typing.TypedDict('V3dSetupGroupInCorrParameters', {
+    "__STYX_TYPE__": typing.Literal["3dSetupGroupInCorr"],
+    "datasets": list[InputPathType],
+    "mask_dataset": typing.NotRequired[InputPathType | None],
+    "prefix": str,
+    "short_flag": bool,
+    "byte_flag": bool,
+    "labels_file": typing.NotRequired[InputPathType | None],
+    "delete_flag": bool,
+    "prep_method": typing.NotRequired[str | None],
+    "lr_pairs": typing.NotRequired[list[str] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dSetupGroupInCorr": v_3d_setup_group_in_corr_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dSetupGroupInCorr": v_3d_setup_group_in_corr_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dSetupGroupInCorrOutputs(typing.NamedTuple):
@@ -24,6 +70,148 @@ class V3dSetupGroupInCorrOutputs(typing.NamedTuple):
     """Text file containing the header information describing the data file."""
     data_file: OutputPathType
     """Data file containing all the time series from all the datasets."""
+
+
+def v_3d_setup_group_in_corr_params(
+    datasets: list[InputPathType],
+    prefix: str,
+    mask_dataset: InputPathType | None = None,
+    short_flag: bool = False,
+    byte_flag: bool = False,
+    labels_file: InputPathType | None = None,
+    delete_flag: bool = False,
+    prep_method: str | None = None,
+    lr_pairs: list[str] | None = None,
+) -> V3dSetupGroupInCorrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        datasets: AFNI 3D+time datasets to be processed.
+        prefix: Prefix for output dataset names.
+        mask_dataset: Mask dataset for voxel selection.
+        short_flag: Store data as 16-bit shorts.
+        byte_flag: Store data as 8-bit bytes.
+        labels_file: File containing a list of labels for each dataset.
+        delete_flag: Delete input datasets from disk after processing.
+        prep_method: Preprocess each data time series with the specified\
+            method.
+        lr_pairs: Set the domains for left and right hemisphere surfaces and\
+            indicate that the datasets are arranged in (Left, Right) pairs.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dSetupGroupInCorr",
+        "datasets": datasets,
+        "prefix": prefix,
+        "short_flag": short_flag,
+        "byte_flag": byte_flag,
+        "delete_flag": delete_flag,
+    }
+    if mask_dataset is not None:
+        params["mask_dataset"] = mask_dataset
+    if labels_file is not None:
+        params["labels_file"] = labels_file
+    if prep_method is not None:
+        params["prep_method"] = prep_method
+    if lr_pairs is not None:
+        params["lr_pairs"] = lr_pairs
+    return params
+
+
+def v_3d_setup_group_in_corr_cargs(
+    params: V3dSetupGroupInCorrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dSetupGroupInCorr")
+    cargs.extend([execution.input_file(f) for f in params.get("datasets")])
+    if params.get("mask_dataset") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask_dataset"))
+        ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("short_flag"):
+        cargs.append("-short")
+    if params.get("byte_flag"):
+        cargs.append("-byte")
+    if params.get("labels_file") is not None:
+        cargs.extend([
+            "-labels",
+            execution.input_file(params.get("labels_file"))
+        ])
+    if params.get("delete_flag"):
+        cargs.append("-DELETE")
+    if params.get("prep_method") is not None:
+        cargs.extend([
+            "-prep",
+            params.get("prep_method")
+        ])
+    if params.get("lr_pairs") is not None:
+        cargs.extend([
+            "-LRpairs",
+            *params.get("lr_pairs")
+        ])
+    return cargs
+
+
+def v_3d_setup_group_in_corr_outputs(
+    params: V3dSetupGroupInCorrParameters,
+    execution: Execution,
+) -> V3dSetupGroupInCorrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dSetupGroupInCorrOutputs(
+        root=execution.output_file("."),
+        niml_file=execution.output_file(params.get("prefix") + ".grpincorr.niml"),
+        data_file=execution.output_file(params.get("prefix") + ".grpincorr.data"),
+    )
+    return ret
+
+
+def v_3d_setup_group_in_corr_execute(
+    params: V3dSetupGroupInCorrParameters,
+    execution: Execution,
+) -> V3dSetupGroupInCorrOutputs:
+    """
+    Pre-process a collection of AFNI 3D+time datasets for use with Group InstaCorr.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dSetupGroupInCorrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_setup_group_in_corr_cargs(params, execution)
+    ret = v_3d_setup_group_in_corr_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_setup_group_in_corr(
@@ -61,54 +249,15 @@ def v_3d_setup_group_in_corr(
     Returns:
         NamedTuple of outputs (described in `V3dSetupGroupInCorrOutputs`).
     """
-    if lr_pairs is not None and not (len(lr_pairs) <= 2): 
-        raise ValueError(f"Length of 'lr_pairs' must be less than 2 but was {len(lr_pairs)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_SETUP_GROUP_IN_CORR_METADATA)
-    cargs = []
-    cargs.append("3dSetupGroupInCorr")
-    cargs.extend([execution.input_file(f) for f in datasets])
-    if mask_dataset is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask_dataset)
-        ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if short_flag:
-        cargs.append("-short")
-    if byte_flag:
-        cargs.append("-byte")
-    if labels_file is not None:
-        cargs.extend([
-            "-labels",
-            execution.input_file(labels_file)
-        ])
-    if delete_flag:
-        cargs.append("-DELETE")
-    if prep_method is not None:
-        cargs.extend([
-            "-prep",
-            prep_method
-        ])
-    if lr_pairs is not None:
-        cargs.extend([
-            "-LRpairs",
-            *lr_pairs
-        ])
-    ret = V3dSetupGroupInCorrOutputs(
-        root=execution.output_file("."),
-        niml_file=execution.output_file(prefix + ".grpincorr.niml"),
-        data_file=execution.output_file(prefix + ".grpincorr.data"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_setup_group_in_corr_params(datasets=datasets, mask_dataset=mask_dataset, prefix=prefix, short_flag=short_flag, byte_flag=byte_flag, labels_file=labels_file, delete_flag=delete_flag, prep_method=prep_method, lr_pairs=lr_pairs)
+    return v_3d_setup_group_in_corr_execute(params, execution)
 
 
 __all__ = [
     "V3dSetupGroupInCorrOutputs",
     "V_3D_SETUP_GROUP_IN_CORR_METADATA",
     "v_3d_setup_group_in_corr",
+    "v_3d_setup_group_in_corr_params",
 ]

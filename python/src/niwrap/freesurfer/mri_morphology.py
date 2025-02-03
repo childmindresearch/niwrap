@@ -12,6 +12,48 @@ MRI_MORPHOLOGY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMorphologyParameters = typing.TypedDict('MriMorphologyParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_morphology"],
+    "input_volume": InputPathType,
+    "operation": typing.Literal["open", "close", "dilate", "erode", "mode", "fill_holes", "erode_bottom", "dilate_thresh", "erode_thresh"],
+    "number_iter": int,
+    "output_volume": str,
+    "label_option": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_morphology": mri_morphology_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_morphology": mri_morphology_outputs,
+    }
+    return vt.get(t)
 
 
 class MriMorphologyOutputs(typing.NamedTuple):
@@ -22,6 +64,112 @@ class MriMorphologyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The result of the morphological operation applied to the input volume."""
+
+
+def mri_morphology_params(
+    input_volume: InputPathType,
+    operation: typing.Literal["open", "close", "dilate", "erode", "mode", "fill_holes", "erode_bottom", "dilate_thresh", "erode_thresh"],
+    number_iter: int,
+    output_volume: str,
+    label_option: float | None = None,
+) -> MriMorphologyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume file on which operations are to be applied.
+        operation: Morphological operation to be performed. Options include:\
+            open, close, dilate, erode, mode, fill_holes, erode_bottom,\
+            dilate_thresh, erode_thresh.
+        number_iter: Number of iterations to apply the operation.
+        output_volume: Output volume file to store the results of the\
+            operation.
+        label_option: Only apply operations to the specified label instead of\
+            all nonzero voxels.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_morphology",
+        "input_volume": input_volume,
+        "operation": operation,
+        "number_iter": number_iter,
+        "output_volume": output_volume,
+    }
+    if label_option is not None:
+        params["label_option"] = label_option
+    return params
+
+
+def mri_morphology_cargs(
+    params: MriMorphologyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_morphology")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(params.get("operation"))
+    cargs.append(str(params.get("number_iter")))
+    cargs.append(params.get("output_volume"))
+    if params.get("label_option") is not None:
+        cargs.extend([
+            "-l",
+            str(params.get("label_option"))
+        ])
+    return cargs
+
+
+def mri_morphology_outputs(
+    params: MriMorphologyParameters,
+    execution: Execution,
+) -> MriMorphologyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMorphologyOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_morphology_execute(
+    params: MriMorphologyParameters,
+    execution: Execution,
+) -> MriMorphologyOutputs:
+    """
+    MRI Morphology Tool - performs various morphological operations on a volume.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMorphologyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_morphology_cargs(params, execution)
+    ret = mri_morphology_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_morphology(
@@ -55,27 +203,13 @@ def mri_morphology(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MORPHOLOGY_METADATA)
-    cargs = []
-    cargs.append("mri_morphology")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(operation)
-    cargs.append(str(number_iter))
-    cargs.append(output_volume)
-    if label_option is not None:
-        cargs.extend([
-            "-l",
-            str(label_option)
-        ])
-    ret = MriMorphologyOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_morphology_params(input_volume=input_volume, operation=operation, number_iter=number_iter, output_volume=output_volume, label_option=label_option)
+    return mri_morphology_execute(params, execution)
 
 
 __all__ = [
     "MRI_MORPHOLOGY_METADATA",
     "MriMorphologyOutputs",
     "mri_morphology",
+    "mri_morphology_params",
 ]

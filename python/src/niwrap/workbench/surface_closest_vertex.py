@@ -12,14 +12,140 @@ SURFACE_CLOSEST_VERTEX_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceClosestVertexParameters = typing.TypedDict('SurfaceClosestVertexParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-closest-vertex"],
+    "surface": InputPathType,
+    "coord_list_file": str,
+    "vertex_list_out": str,
+})
 
 
-class SurfaceClosestVertexOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `surface_closest_vertex(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "surface-closest-vertex": surface_closest_vertex_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def surface_closest_vertex_params(
+    surface: InputPathType,
+    coord_list_file: str,
+    vertex_list_out: str,
+) -> SurfaceClosestVertexParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: the surface to use.
+        coord_list_file: text file with coordinates.
+        vertex_list_out: output - the output text file with vertex numbers.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-closest-vertex",
+        "surface": surface,
+        "coord_list_file": coord_list_file,
+        "vertex_list_out": vertex_list_out,
+    }
+    return params
+
+
+def surface_closest_vertex_cargs(
+    params: SurfaceClosestVertexParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-closest-vertex")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(params.get("coord_list_file"))
+    cargs.append(params.get("vertex_list_out"))
+    return cargs
+
+
+def surface_closest_vertex_outputs(
+    params: SurfaceClosestVertexParameters,
+    execution: Execution,
+) -> SurfaceClosestVertexOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceClosestVertexOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def surface_closest_vertex_execute(
+    params: SurfaceClosestVertexParameters,
+    execution: Execution,
+) -> SurfaceClosestVertexOutputs:
+    """
+    Find closest surface vertex to coordinates.
+    
+    For each coordinate XYZ triple, find the closest vertex in the surface, and
+    output its vertex number into a text file. The input file should only use
+    whitespace to separate coordinates (spaces, newlines, tabs), for instance:
+    
+    20 30 25
+    30 -20 10.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceClosestVertexOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_closest_vertex_cargs(params, execution)
+    ret = surface_closest_vertex_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_closest_vertex(
@@ -52,21 +178,12 @@ def surface_closest_vertex(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_CLOSEST_VERTEX_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-closest-vertex")
-    cargs.append(execution.input_file(surface))
-    cargs.append(coord_list_file)
-    cargs.append(vertex_list_out)
-    ret = SurfaceClosestVertexOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_closest_vertex_params(surface=surface, coord_list_file=coord_list_file, vertex_list_out=vertex_list_out)
+    return surface_closest_vertex_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_CLOSEST_VERTEX_METADATA",
-    "SurfaceClosestVertexOutputs",
     "surface_closest_vertex",
+    "surface_closest_vertex_params",
 ]

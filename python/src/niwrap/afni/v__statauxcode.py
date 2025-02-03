@@ -12,6 +12,44 @@ V__STATAUXCODE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VStatauxcodeParameters = typing.TypedDict('VStatauxcodeParameters', {
+    "__STYX_TYPE__": typing.Literal["@statauxcode"],
+    "code": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@statauxcode": v__statauxcode_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@statauxcode": v__statauxcode_outputs,
+    }
+    return vt.get(t)
 
 
 class VStatauxcodeOutputs(typing.NamedTuple):
@@ -22,6 +60,88 @@ class VStatauxcodeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """Output file containing the result of the conversion"""
+
+
+def v__statauxcode_params(
+    code_: str,
+) -> VStatauxcodeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        code_: The statistical code or its numerical equivalent to be\
+            converted.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@statauxcode",
+        "code": code_,
+    }
+    return params
+
+
+def v__statauxcode_cargs(
+    params: VStatauxcodeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@statauxcode")
+    cargs.append(params.get("code"))
+    return cargs
+
+
+def v__statauxcode_outputs(
+    params: VStatauxcodeParameters,
+    execution: Execution,
+) -> VStatauxcodeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VStatauxcodeOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file("output.txt"),
+    )
+    return ret
+
+
+def v__statauxcode_execute(
+    params: VStatauxcodeParameters,
+    execution: Execution,
+) -> VStatauxcodeOutputs:
+    """
+    Returns the name or number of a statistics code based on specified mappings.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VStatauxcodeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__statauxcode_cargs(params, execution)
+    ret = v__statauxcode_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__statauxcode(
@@ -44,19 +164,13 @@ def v__statauxcode(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__STATAUXCODE_METADATA)
-    cargs = []
-    cargs.append("@statauxcode")
-    cargs.append(code_)
-    ret = VStatauxcodeOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file("output.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__statauxcode_params(code_=code_)
+    return v__statauxcode_execute(params, execution)
 
 
 __all__ = [
     "VStatauxcodeOutputs",
     "V__STATAUXCODE_METADATA",
     "v__statauxcode",
+    "v__statauxcode_params",
 ]

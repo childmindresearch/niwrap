@@ -12,14 +12,137 @@ SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SurfaceSphereTriangularPatchesParameters = typing.TypedDict('SurfaceSphereTriangularPatchesParameters', {
+    "__STYX_TYPE__": typing.Literal["surface-sphere-triangular-patches"],
+    "sphere": InputPathType,
+    "divisions": int,
+    "text_out": str,
+})
 
 
-class SurfaceSphereTriangularPatchesOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `surface_sphere_triangular_patches(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "surface-sphere-triangular-patches": surface_sphere_triangular_patches_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def surface_sphere_triangular_patches_params(
+    sphere: InputPathType,
+    divisions: int,
+    text_out: str,
+) -> SurfaceSphereTriangularPatchesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        sphere: an undistorted, regularly divided icosahedral sphere.
+        divisions: how many pieces to divide each icosahedral edge into, must\
+            divide perfectly into the given sphere.
+        text_out: output - text file for the vertex numbers of the patches.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface-sphere-triangular-patches",
+        "sphere": sphere,
+        "divisions": divisions,
+        "text_out": text_out,
+    }
+    return params
+
+
+def surface_sphere_triangular_patches_cargs(
+    params: SurfaceSphereTriangularPatchesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-surface-sphere-triangular-patches")
+    cargs.append(execution.input_file(params.get("sphere")))
+    cargs.append(str(params.get("divisions")))
+    cargs.append(params.get("text_out"))
+    return cargs
+
+
+def surface_sphere_triangular_patches_outputs(
+    params: SurfaceSphereTriangularPatchesParameters,
+    execution: Execution,
+) -> SurfaceSphereTriangularPatchesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfaceSphereTriangularPatchesOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def surface_sphere_triangular_patches_execute(
+    params: SurfaceSphereTriangularPatchesParameters,
+    execution: Execution,
+) -> SurfaceSphereTriangularPatchesOutputs:
+    """
+    Divide standard sphere into patches.
+    
+    Divide the given undistorted sphere into equally-sized triangular patches.
+    Patches overlap by a border of 1 vertex.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surface_sphere_triangular_patches_cargs(params, execution)
+    ret = surface_sphere_triangular_patches_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surface_sphere_triangular_patches(
@@ -49,21 +172,12 @@ def surface_sphere_triangular_patches(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-surface-sphere-triangular-patches")
-    cargs.append(execution.input_file(sphere))
-    cargs.append(str(divisions))
-    cargs.append(text_out)
-    ret = SurfaceSphereTriangularPatchesOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = surface_sphere_triangular_patches_params(sphere=sphere, divisions=divisions, text_out=text_out)
+    return surface_sphere_triangular_patches_execute(params, execution)
 
 
 __all__ = [
     "SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA",
-    "SurfaceSphereTriangularPatchesOutputs",
     "surface_sphere_triangular_patches",
+    "surface_sphere_triangular_patches_params",
 ]

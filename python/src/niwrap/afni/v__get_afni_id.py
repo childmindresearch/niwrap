@@ -12,6 +12,44 @@ V__GET_AFNI_ID_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VGetAfniIdParameters = typing.TypedDict('VGetAfniIdParameters', {
+    "__STYX_TYPE__": typing.Literal["@GetAfniID"],
+    "dset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "@GetAfniID": v__get_afni_id_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "@GetAfniID": v__get_afni_id_outputs,
+    }
+    return vt.get(t)
 
 
 class VGetAfniIdOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class VGetAfniIdOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     unique_id: OutputPathType
     """Unique identifier of the dataset"""
+
+
+def v__get_afni_id_params(
+    dset: InputPathType,
+) -> VGetAfniIdParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dset: Dataset for which the unique identifier is to be returned.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@GetAfniID",
+        "dset": dset,
+    }
+    return params
+
+
+def v__get_afni_id_cargs(
+    params: VGetAfniIdParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@GetAfniID")
+    cargs.append(execution.input_file(params.get("dset")))
+    return cargs
+
+
+def v__get_afni_id_outputs(
+    params: VGetAfniIdParameters,
+    execution: Execution,
+) -> VGetAfniIdOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VGetAfniIdOutputs(
+        root=execution.output_file("."),
+        unique_id=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def v__get_afni_id_execute(
+    params: VGetAfniIdParameters,
+    execution: Execution,
+) -> VGetAfniIdOutputs:
+    """
+    Returns the unique identifier of a dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VGetAfniIdOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__get_afni_id_cargs(params, execution)
+    ret = v__get_afni_id_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__get_afni_id(
@@ -43,19 +162,13 @@ def v__get_afni_id(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_ID_METADATA)
-    cargs = []
-    cargs.append("@GetAfniID")
-    cargs.append(execution.input_file(dset))
-    ret = VGetAfniIdOutputs(
-        root=execution.output_file("."),
-        unique_id=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__get_afni_id_params(dset=dset)
+    return v__get_afni_id_execute(params, execution)
 
 
 __all__ = [
     "VGetAfniIdOutputs",
     "V__GET_AFNI_ID_METADATA",
     "v__get_afni_id",
+    "v__get_afni_id_params",
 ]

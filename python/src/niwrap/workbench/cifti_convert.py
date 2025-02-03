@@ -12,111 +12,275 @@ CIFTI_CONVERT_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiConvertToGiftiExtParameters = typing.TypedDict('CiftiConvertToGiftiExtParameters', {
+    "__STYX_TYPE__": typing.Literal["to_gifti_ext"],
+    "cifti_in": InputPathType,
+    "gifti_out": str,
+})
+CiftiConvertResetTimepointsParameters = typing.TypedDict('CiftiConvertResetTimepointsParameters', {
+    "__STYX_TYPE__": typing.Literal["reset_timepoints"],
+    "timestep": float,
+    "timestart": float,
+    "opt_unit_unit": typing.NotRequired[str | None],
+})
+CiftiConvertReplaceBinaryParameters = typing.TypedDict('CiftiConvertReplaceBinaryParameters', {
+    "__STYX_TYPE__": typing.Literal["replace_binary"],
+    "binary_in": str,
+    "opt_flip_endian": bool,
+    "opt_transpose": bool,
+})
+CiftiConvertFromGiftiExtParameters = typing.TypedDict('CiftiConvertFromGiftiExtParameters', {
+    "__STYX_TYPE__": typing.Literal["from_gifti_ext"],
+    "gifti_in": str,
+    "cifti_out": str,
+    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepointsParameters | None],
+    "opt_reset_scalars": bool,
+    "opt_column_reset_scalars": bool,
+    "replace_binary": typing.NotRequired[CiftiConvertReplaceBinaryParameters | None],
+})
+CiftiConvertToNiftiParameters = typing.TypedDict('CiftiConvertToNiftiParameters', {
+    "__STYX_TYPE__": typing.Literal["to_nifti"],
+    "cifti_in": InputPathType,
+    "nifti_out": str,
+    "opt_smaller_file": bool,
+    "opt_smaller_dims": bool,
+})
+CiftiConvertResetTimepointsParameters_ = typing.TypedDict('CiftiConvertResetTimepointsParameters_', {
+    "__STYX_TYPE__": typing.Literal["reset_timepoints"],
+    "timestep": float,
+    "timestart": float,
+    "opt_unit_unit": typing.NotRequired[str | None],
+})
+CiftiConvertFromNiftiParameters = typing.TypedDict('CiftiConvertFromNiftiParameters', {
+    "__STYX_TYPE__": typing.Literal["from_nifti"],
+    "nifti_in": InputPathType,
+    "cifti_template": InputPathType,
+    "cifti_out": str,
+    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepointsParameters_ | None],
+    "opt_reset_scalars": bool,
+})
+CiftiConvertToTextParameters = typing.TypedDict('CiftiConvertToTextParameters', {
+    "__STYX_TYPE__": typing.Literal["to_text"],
+    "cifti_in": InputPathType,
+    "text_out": str,
+    "opt_col_delim_delim_string": typing.NotRequired[str | None],
+})
+CiftiConvertResetTimepointsParameters_2 = typing.TypedDict('CiftiConvertResetTimepointsParameters_2', {
+    "__STYX_TYPE__": typing.Literal["reset_timepoints"],
+    "timestep": float,
+    "timestart": float,
+    "opt_unit_unit": typing.NotRequired[str | None],
+})
+CiftiConvertFromTextParameters = typing.TypedDict('CiftiConvertFromTextParameters', {
+    "__STYX_TYPE__": typing.Literal["from_text"],
+    "text_in": str,
+    "cifti_template": InputPathType,
+    "cifti_out": str,
+    "opt_col_delim_delim_string": typing.NotRequired[str | None],
+    "reset_timepoints": typing.NotRequired[CiftiConvertResetTimepointsParameters_2 | None],
+    "opt_reset_scalars": bool,
+})
+CiftiConvertParameters = typing.TypedDict('CiftiConvertParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-convert"],
+    "to_gifti_ext": typing.NotRequired[CiftiConvertToGiftiExtParameters | None],
+    "from_gifti_ext": typing.NotRequired[CiftiConvertFromGiftiExtParameters | None],
+    "to_nifti": typing.NotRequired[CiftiConvertToNiftiParameters | None],
+    "from_nifti": typing.NotRequired[CiftiConvertFromNiftiParameters | None],
+    "to_text": typing.NotRequired[CiftiConvertToTextParameters | None],
+    "from_text": typing.NotRequired[CiftiConvertFromTextParameters | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiConvertToGiftiExt:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    convert to GIFTI external binary.
-    """
-    cifti_in: InputPathType
-    """the input cifti file"""
-    gifti_out: str
-    """output - the output gifti file"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-to-gifti-ext")
-        cargs.append(execution.input_file(self.cifti_in))
-        cargs.append(self.gifti_out)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-convert": cifti_convert_cargs,
+        "to_gifti_ext": cifti_convert_to_gifti_ext_cargs,
+        "from_gifti_ext": cifti_convert_from_gifti_ext_cargs,
+        "reset_timepoints": cifti_convert_reset_timepoints_cargs,
+        "replace_binary": cifti_convert_replace_binary_cargs,
+        "to_nifti": cifti_convert_to_nifti_cargs,
+        "from_nifti": cifti_convert_from_nifti_cargs,
+        "reset_timepoints": cifti_convert_reset_timepoints_cargs_,
+        "to_text": cifti_convert_to_text_cargs,
+        "from_text": cifti_convert_from_text_cargs,
+        "reset_timepoints": cifti_convert_reset_timepoints_cargs_2,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiConvertResetTimepoints:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    reset the mapping along rows to timepoints, taking length from the gifti
-    file.
-    """
-    timestep: float
-    """the desired time between frames"""
-    timestart: float
-    """the desired time offset of the initial frame"""
-    opt_unit_unit: str | None = None
-    """use a unit other than time: unit identifier (default SECOND)"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-reset-timepoints")
-        cargs.append(str(self.timestep))
-        cargs.append(str(self.timestart))
-        if self.opt_unit_unit is not None:
-            cargs.extend([
-                "-unit",
-                self.opt_unit_unit
-            ])
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-convert": cifti_convert_outputs,
+        "from_gifti_ext": cifti_convert_from_gifti_ext_outputs,
+        "to_nifti": cifti_convert_to_nifti_outputs,
+        "from_nifti": cifti_convert_from_nifti_outputs,
+        "from_text": cifti_convert_from_text_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiConvertReplaceBinary:
+def cifti_convert_to_gifti_ext_params(
+    cifti_in: InputPathType,
+    gifti_out: str,
+) -> CiftiConvertToGiftiExtParameters:
     """
-    replace data with a binary file.
-    """
-    binary_in: str
-    """the binary file that contains replacement data"""
-    opt_flip_endian: bool = False
-    """byteswap the binary file"""
-    opt_transpose: bool = False
-    """transpose the binary file"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-replace-binary")
-        cargs.append(self.binary_in)
-        if self.opt_flip_endian:
-            cargs.append("-flip-endian")
-        if self.opt_transpose:
-            cargs.append("-transpose")
-        return cargs
+    Args:
+        cifti_in: the input cifti file.
+        gifti_out: output - the output gifti file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "to_gifti_ext",
+        "cifti_in": cifti_in,
+        "gifti_out": gifti_out,
+    }
+    return params
+
+
+def cifti_convert_to_gifti_ext_cargs(
+    params: CiftiConvertToGiftiExtParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-to-gifti-ext")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    cargs.append(params.get("gifti_out"))
+    return cargs
+
+
+def cifti_convert_reset_timepoints_params(
+    timestep: float,
+    timestart: float,
+    opt_unit_unit: str | None = None,
+) -> CiftiConvertResetTimepointsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        timestep: the desired time between frames.
+        timestart: the desired time offset of the initial frame.
+        opt_unit_unit: use a unit other than time: unit identifier (default\
+            SECOND).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reset_timepoints",
+        "timestep": timestep,
+        "timestart": timestart,
+    }
+    if opt_unit_unit is not None:
+        params["opt_unit_unit"] = opt_unit_unit
+    return params
+
+
+def cifti_convert_reset_timepoints_cargs(
+    params: CiftiConvertResetTimepointsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-reset-timepoints")
+    cargs.append(str(params.get("timestep")))
+    cargs.append(str(params.get("timestart")))
+    if params.get("opt_unit_unit") is not None:
+        cargs.extend([
+            "-unit",
+            params.get("opt_unit_unit")
+        ])
+    return cargs
+
+
+def cifti_convert_replace_binary_params(
+    binary_in: str,
+    opt_flip_endian: bool = False,
+    opt_transpose: bool = False,
+) -> CiftiConvertReplaceBinaryParameters:
+    """
+    Build parameters.
+    
+    Args:
+        binary_in: the binary file that contains replacement data.
+        opt_flip_endian: byteswap the binary file.
+        opt_transpose: transpose the binary file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "replace_binary",
+        "binary_in": binary_in,
+        "opt_flip_endian": opt_flip_endian,
+        "opt_transpose": opt_transpose,
+    }
+    return params
+
+
+def cifti_convert_replace_binary_cargs(
+    params: CiftiConvertReplaceBinaryParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-replace-binary")
+    cargs.append(params.get("binary_in"))
+    if params.get("opt_flip_endian"):
+        cargs.append("-flip-endian")
+    if params.get("opt_transpose"):
+        cargs.append("-transpose")
+    return cargs
 
 
 class CiftiConvertFromGiftiExtOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiConvertFromGiftiExt | None(...)`.
+    Output object returned when calling `CiftiConvertFromGiftiExtParameters | None(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -124,74 +288,95 @@ class CiftiConvertFromGiftiExtOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
-@dataclasses.dataclass
-class CiftiConvertFromGiftiExt:
+def cifti_convert_from_gifti_ext_params(
+    gifti_in: str,
+    cifti_out: str,
+    reset_timepoints: CiftiConvertResetTimepointsParameters | None = None,
+    opt_reset_scalars: bool = False,
+    opt_column_reset_scalars: bool = False,
+    replace_binary: CiftiConvertReplaceBinaryParameters | None = None,
+) -> CiftiConvertFromGiftiExtParameters:
     """
-    convert a GIFTI made with this command back into a CIFTI.
+    Build parameters.
+    
+    Args:
+        gifti_in: the input gifti file.
+        cifti_out: the output cifti file.
+        reset_timepoints: reset the mapping along rows to timepoints, taking\
+            length from the gifti file.
+        opt_reset_scalars: reset mapping along rows to scalars, taking length\
+            from the gifti file.
+        opt_column_reset_scalars: reset mapping along columns to scalar (useful\
+            for changing number of series in a sdseries file).
+        replace_binary: replace data with a binary file.
+    Returns:
+        Parameter dictionary
     """
-    gifti_in: str
-    """the input gifti file"""
-    cifti_out: str
-    """the output cifti file"""
-    reset_timepoints: CiftiConvertResetTimepoints | None = None
-    """reset the mapping along rows to timepoints, taking length from the gifti
-    file"""
-    opt_reset_scalars: bool = False
-    """reset mapping along rows to scalars, taking length from the gifti file"""
-    opt_column_reset_scalars: bool = False
-    """reset mapping along columns to scalar (useful for changing number of
-    series in a sdseries file)"""
-    replace_binary: CiftiConvertReplaceBinary | None = None
-    """replace data with a binary file"""
+    params = {
+        "__STYXTYPE__": "from_gifti_ext",
+        "gifti_in": gifti_in,
+        "cifti_out": cifti_out,
+        "opt_reset_scalars": opt_reset_scalars,
+        "opt_column_reset_scalars": opt_column_reset_scalars,
+    }
+    if reset_timepoints is not None:
+        params["reset_timepoints"] = reset_timepoints
+    if replace_binary is not None:
+        params["replace_binary"] = replace_binary
+    return params
+
+
+def cifti_convert_from_gifti_ext_cargs(
+    params: CiftiConvertFromGiftiExtParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-from-gifti-ext")
-        cargs.append(self.gifti_in)
-        cargs.append(self.cifti_out)
-        if self.reset_timepoints is not None:
-            cargs.extend(self.reset_timepoints.run(execution))
-        if self.opt_reset_scalars:
-            cargs.append("-reset-scalars")
-        if self.opt_column_reset_scalars:
-            cargs.append("-column-reset-scalars")
-        if self.replace_binary is not None:
-            cargs.extend(self.replace_binary.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-from-gifti-ext")
+    cargs.append(params.get("gifti_in"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("reset_timepoints") is not None:
+        cargs.extend(dyn_cargs(params.get("reset_timepoints")["__STYXTYPE__"])(params.get("reset_timepoints"), execution))
+    if params.get("opt_reset_scalars"):
+        cargs.append("-reset-scalars")
+    if params.get("opt_column_reset_scalars"):
+        cargs.append("-column-reset-scalars")
+    if params.get("replace_binary") is not None:
+        cargs.extend(dyn_cargs(params.get("replace_binary")["__STYXTYPE__"])(params.get("replace_binary"), execution))
+    return cargs
+
+
+def cifti_convert_from_gifti_ext_outputs(
+    params: CiftiConvertFromGiftiExtParameters,
+    execution: Execution,
+) -> CiftiConvertFromGiftiExtOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> CiftiConvertFromGiftiExtOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `CiftiConvertFromGiftiExtOutputs`).
-        """
-        ret = CiftiConvertFromGiftiExtOutputs(
-            root=execution.output_file("."),
-            cifti_out=execution.output_file(self.cifti_out),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiConvertFromGiftiExtOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
 
 
 class CiftiConvertToNiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiConvertToNifti | None(...)`.
+    Output object returned when calling `CiftiConvertToNiftiParameters | None(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -199,102 +384,132 @@ class CiftiConvertToNiftiOutputs(typing.NamedTuple):
     """the output nifti file"""
 
 
-@dataclasses.dataclass
-class CiftiConvertToNifti:
+def cifti_convert_to_nifti_params(
+    cifti_in: InputPathType,
+    nifti_out: str,
+    opt_smaller_file: bool = False,
+    opt_smaller_dims: bool = False,
+) -> CiftiConvertToNiftiParameters:
     """
-    convert to NIFTI1.
+    Build parameters.
+    
+    Args:
+        cifti_in: the input cifti file.
+        nifti_out: the output nifti file.
+        opt_smaller_file: use better-fitting dimension lengths.
+        opt_smaller_dims: minimize the largest dimension, for tools that don't\
+            like large indices.
+    Returns:
+        Parameter dictionary
     """
-    cifti_in: InputPathType
-    """the input cifti file"""
-    nifti_out: str
-    """the output nifti file"""
-    opt_smaller_file: bool = False
-    """use better-fitting dimension lengths"""
-    opt_smaller_dims: bool = False
-    """minimize the largest dimension, for tools that don't like large
-    indices"""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-to-nifti")
-        cargs.append(execution.input_file(self.cifti_in))
-        cargs.append(self.nifti_out)
-        if self.opt_smaller_file:
-            cargs.append("-smaller-file")
-        if self.opt_smaller_dims:
-            cargs.append("-smaller-dims")
-        return cargs
-    
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> CiftiConvertToNiftiOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `CiftiConvertToNiftiOutputs`).
-        """
-        ret = CiftiConvertToNiftiOutputs(
-            root=execution.output_file("."),
-            nifti_out=execution.output_file(self.nifti_out),
-        )
-        return ret
+    params = {
+        "__STYXTYPE__": "to_nifti",
+        "cifti_in": cifti_in,
+        "nifti_out": nifti_out,
+        "opt_smaller_file": opt_smaller_file,
+        "opt_smaller_dims": opt_smaller_dims,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class CiftiConvertResetTimepoints_:
+def cifti_convert_to_nifti_cargs(
+    params: CiftiConvertToNiftiParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    reset the mapping along rows to timepoints, taking length from the nifti
-    file.
-    """
-    timestep: float
-    """the desired time between frames"""
-    timestart: float
-    """the desired time offset of the initial frame"""
-    opt_unit_unit: str | None = None
-    """use a unit other than time: unit identifier (default SECOND)"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-reset-timepoints")
-        cargs.append(str(self.timestep))
-        cargs.append(str(self.timestart))
-        if self.opt_unit_unit is not None:
-            cargs.extend([
-                "-unit",
-                self.opt_unit_unit
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-to-nifti")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    cargs.append(params.get("nifti_out"))
+    if params.get("opt_smaller_file"):
+        cargs.append("-smaller-file")
+    if params.get("opt_smaller_dims"):
+        cargs.append("-smaller-dims")
+    return cargs
+
+
+def cifti_convert_to_nifti_outputs(
+    params: CiftiConvertToNiftiParameters,
+    execution: Execution,
+) -> CiftiConvertToNiftiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiConvertToNiftiOutputs(
+        root=execution.output_file("."),
+        nifti_out=execution.output_file(params.get("nifti_out")),
+    )
+    return ret
+
+
+def cifti_convert_reset_timepoints_params_(
+    timestep: float,
+    timestart: float,
+    opt_unit_unit: str | None = None,
+) -> CiftiConvertResetTimepointsParameters_:
+    """
+    Build parameters.
+    
+    Args:
+        timestep: the desired time between frames.
+        timestart: the desired time offset of the initial frame.
+        opt_unit_unit: use a unit other than time: unit identifier (default\
+            SECOND).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reset_timepoints",
+        "timestep": timestep,
+        "timestart": timestart,
+    }
+    if opt_unit_unit is not None:
+        params["opt_unit_unit"] = opt_unit_unit
+    return params
+
+
+def cifti_convert_reset_timepoints_cargs_(
+    params: CiftiConvertResetTimepointsParameters_,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-reset-timepoints")
+    cargs.append(str(params.get("timestep")))
+    cargs.append(str(params.get("timestart")))
+    if params.get("opt_unit_unit") is not None:
+        cargs.extend([
+            "-unit",
+            params.get("opt_unit_unit")
+        ])
+    return cargs
 
 
 class CiftiConvertFromNiftiOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiConvertFromNifti | None(...)`.
+    Output object returned when calling `CiftiConvertFromNiftiParameters | None(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -302,142 +517,190 @@ class CiftiConvertFromNiftiOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
-@dataclasses.dataclass
-class CiftiConvertFromNifti:
+def cifti_convert_from_nifti_params(
+    nifti_in: InputPathType,
+    cifti_template: InputPathType,
+    cifti_out: str,
+    reset_timepoints: CiftiConvertResetTimepointsParameters_ | None = None,
+    opt_reset_scalars: bool = False,
+) -> CiftiConvertFromNiftiParameters:
     """
-    convert a NIFTI (1 or 2) file made with this command back into CIFTI.
+    Build parameters.
+    
+    Args:
+        nifti_in: the input nifti file.
+        cifti_template: a cifti file with the dimension(s) and mapping(s) that\
+            should be used.
+        cifti_out: the output cifti file.
+        reset_timepoints: reset the mapping along rows to timepoints, taking\
+            length from the nifti file.
+        opt_reset_scalars: reset mapping along rows to scalars, taking length\
+            from the nifti file.
+    Returns:
+        Parameter dictionary
     """
-    nifti_in: InputPathType
-    """the input nifti file"""
-    cifti_template: InputPathType
-    """a cifti file with the dimension(s) and mapping(s) that should be used"""
-    cifti_out: str
-    """the output cifti file"""
-    reset_timepoints: CiftiConvertResetTimepoints_ | None = None
-    """reset the mapping along rows to timepoints, taking length from the nifti
-    file"""
-    opt_reset_scalars: bool = False
-    """reset mapping along rows to scalars, taking length from the nifti file"""
-    
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-from-nifti")
-        cargs.append(execution.input_file(self.nifti_in))
-        cargs.append(execution.input_file(self.cifti_template))
-        cargs.append(self.cifti_out)
-        if self.reset_timepoints is not None:
-            cargs.extend(self.reset_timepoints.run(execution))
-        if self.opt_reset_scalars:
-            cargs.append("-reset-scalars")
-        return cargs
-    
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> CiftiConvertFromNiftiOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `CiftiConvertFromNiftiOutputs`).
-        """
-        ret = CiftiConvertFromNiftiOutputs(
-            root=execution.output_file("."),
-            cifti_out=execution.output_file(self.cifti_out),
-        )
-        return ret
+    params = {
+        "__STYXTYPE__": "from_nifti",
+        "nifti_in": nifti_in,
+        "cifti_template": cifti_template,
+        "cifti_out": cifti_out,
+        "opt_reset_scalars": opt_reset_scalars,
+    }
+    if reset_timepoints is not None:
+        params["reset_timepoints"] = reset_timepoints
+    return params
 
 
-@dataclasses.dataclass
-class CiftiConvertToText:
+def cifti_convert_from_nifti_cargs(
+    params: CiftiConvertFromNiftiParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    convert to a plain text file.
-    """
-    cifti_in: InputPathType
-    """the input cifti file"""
-    text_out: str
-    """output - the output text file"""
-    opt_col_delim_delim_string: str | None = None
-    """choose string to put between elements in a row: the string to use
-    (default is a tab character)"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-to-text")
-        cargs.append(execution.input_file(self.cifti_in))
-        cargs.append(self.text_out)
-        if self.opt_col_delim_delim_string is not None:
-            cargs.extend([
-                "-col-delim",
-                self.opt_col_delim_delim_string
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-from-nifti")
+    cargs.append(execution.input_file(params.get("nifti_in")))
+    cargs.append(execution.input_file(params.get("cifti_template")))
+    cargs.append(params.get("cifti_out"))
+    if params.get("reset_timepoints") is not None:
+        cargs.extend(dyn_cargs(params.get("reset_timepoints")["__STYXTYPE__"])(params.get("reset_timepoints"), execution))
+    if params.get("opt_reset_scalars"):
+        cargs.append("-reset-scalars")
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiConvertResetTimepoints_2:
+def cifti_convert_from_nifti_outputs(
+    params: CiftiConvertFromNiftiParameters,
+    execution: Execution,
+) -> CiftiConvertFromNiftiOutputs:
     """
-    reset the mapping along rows to timepoints, taking length from the text
-    file.
-    """
-    timestep: float
-    """the desired time between frames"""
-    timestart: float
-    """the desired time offset of the initial frame"""
-    opt_unit_unit: str | None = None
-    """use a unit other than time: unit identifier (default SECOND)"""
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-reset-timepoints")
-        cargs.append(str(self.timestep))
-        cargs.append(str(self.timestart))
-        if self.opt_unit_unit is not None:
-            cargs.extend([
-                "-unit",
-                self.opt_unit_unit
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiConvertFromNiftiOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_convert_to_text_params(
+    cifti_in: InputPathType,
+    text_out: str,
+    opt_col_delim_delim_string: str | None = None,
+) -> CiftiConvertToTextParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_in: the input cifti file.
+        text_out: output - the output text file.
+        opt_col_delim_delim_string: choose string to put between elements in a\
+            row: the string to use (default is a tab character).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "to_text",
+        "cifti_in": cifti_in,
+        "text_out": text_out,
+    }
+    if opt_col_delim_delim_string is not None:
+        params["opt_col_delim_delim_string"] = opt_col_delim_delim_string
+    return params
+
+
+def cifti_convert_to_text_cargs(
+    params: CiftiConvertToTextParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-to-text")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    cargs.append(params.get("text_out"))
+    if params.get("opt_col_delim_delim_string") is not None:
+        cargs.extend([
+            "-col-delim",
+            params.get("opt_col_delim_delim_string")
+        ])
+    return cargs
+
+
+def cifti_convert_reset_timepoints_params_2(
+    timestep: float,
+    timestart: float,
+    opt_unit_unit: str | None = None,
+) -> CiftiConvertResetTimepointsParameters_2:
+    """
+    Build parameters.
+    
+    Args:
+        timestep: the desired time between frames.
+        timestart: the desired time offset of the initial frame.
+        opt_unit_unit: use a unit other than time: unit identifier (default\
+            SECOND).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "reset_timepoints",
+        "timestep": timestep,
+        "timestart": timestart,
+    }
+    if opt_unit_unit is not None:
+        params["opt_unit_unit"] = opt_unit_unit
+    return params
+
+
+def cifti_convert_reset_timepoints_cargs_2(
+    params: CiftiConvertResetTimepointsParameters_2,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-reset-timepoints")
+    cargs.append(str(params.get("timestep")))
+    cargs.append(str(params.get("timestart")))
+    if params.get("opt_unit_unit") is not None:
+        cargs.extend([
+            "-unit",
+            params.get("opt_unit_unit")
+        ])
+    return cargs
 
 
 class CiftiConvertFromTextOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `CiftiConvertFromText | None(...)`.
+    Output object returned when calling `CiftiConvertFromTextParameters | None(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -445,71 +708,93 @@ class CiftiConvertFromTextOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
-@dataclasses.dataclass
-class CiftiConvertFromText:
+def cifti_convert_from_text_params(
+    text_in: str,
+    cifti_template: InputPathType,
+    cifti_out: str,
+    opt_col_delim_delim_string: str | None = None,
+    reset_timepoints: CiftiConvertResetTimepointsParameters_2 | None = None,
+    opt_reset_scalars: bool = False,
+) -> CiftiConvertFromTextParameters:
     """
-    convert from plain text to cifti.
+    Build parameters.
+    
+    Args:
+        text_in: the input text file.
+        cifti_template: a cifti file with the dimension(s) and mapping(s) that\
+            should be used.
+        cifti_out: the output cifti file.
+        opt_col_delim_delim_string: specify string that is between elements in\
+            a row: the string to use (default is any whitespace).
+        reset_timepoints: reset the mapping along rows to timepoints, taking\
+            length from the text file.
+        opt_reset_scalars: reset mapping along rows to scalars, taking length\
+            from the text file.
+    Returns:
+        Parameter dictionary
     """
-    text_in: str
-    """the input text file"""
-    cifti_template: InputPathType
-    """a cifti file with the dimension(s) and mapping(s) that should be used"""
-    cifti_out: str
-    """the output cifti file"""
-    opt_col_delim_delim_string: str | None = None
-    """specify string that is between elements in a row: the string to use
-    (default is any whitespace)"""
-    reset_timepoints: CiftiConvertResetTimepoints_2 | None = None
-    """reset the mapping along rows to timepoints, taking length from the text
-    file"""
-    opt_reset_scalars: bool = False
-    """reset mapping along rows to scalars, taking length from the text file"""
+    params = {
+        "__STYXTYPE__": "from_text",
+        "text_in": text_in,
+        "cifti_template": cifti_template,
+        "cifti_out": cifti_out,
+        "opt_reset_scalars": opt_reset_scalars,
+    }
+    if opt_col_delim_delim_string is not None:
+        params["opt_col_delim_delim_string"] = opt_col_delim_delim_string
+    if reset_timepoints is not None:
+        params["reset_timepoints"] = reset_timepoints
+    return params
+
+
+def cifti_convert_from_text_cargs(
+    params: CiftiConvertFromTextParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-from-text")
-        cargs.append(self.text_in)
-        cargs.append(execution.input_file(self.cifti_template))
-        cargs.append(self.cifti_out)
-        if self.opt_col_delim_delim_string is not None:
-            cargs.extend([
-                "-col-delim",
-                self.opt_col_delim_delim_string
-            ])
-        if self.reset_timepoints is not None:
-            cargs.extend(self.reset_timepoints.run(execution))
-        if self.opt_reset_scalars:
-            cargs.append("-reset-scalars")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-from-text")
+    cargs.append(params.get("text_in"))
+    cargs.append(execution.input_file(params.get("cifti_template")))
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_col_delim_delim_string") is not None:
+        cargs.extend([
+            "-col-delim",
+            params.get("opt_col_delim_delim_string")
+        ])
+    if params.get("reset_timepoints") is not None:
+        cargs.extend(dyn_cargs(params.get("reset_timepoints")["__STYXTYPE__"])(params.get("reset_timepoints"), execution))
+    if params.get("opt_reset_scalars"):
+        cargs.append("-reset-scalars")
+    return cargs
+
+
+def cifti_convert_from_text_outputs(
+    params: CiftiConvertFromTextParameters,
+    execution: Execution,
+) -> CiftiConvertFromTextOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> CiftiConvertFromTextOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `CiftiConvertFromTextOutputs`).
-        """
-        ret = CiftiConvertFromTextOutputs(
-            root=execution.output_file("."),
-            cifti_out=execution.output_file(self.cifti_out),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiConvertFromTextOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
 
 
 class CiftiConvertOutputs(typing.NamedTuple):
@@ -519,22 +804,170 @@ class CiftiConvertOutputs(typing.NamedTuple):
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     from_gifti_ext: CiftiConvertFromGiftiExtOutputs | None
-    """Outputs from `CiftiConvertFromGiftiExt`."""
+    """Outputs from `cifti_convert_from_gifti_ext_outputs`."""
     to_nifti: CiftiConvertToNiftiOutputs | None
-    """Outputs from `CiftiConvertToNifti`."""
+    """Outputs from `cifti_convert_to_nifti_outputs`."""
     from_nifti: CiftiConvertFromNiftiOutputs | None
-    """Outputs from `CiftiConvertFromNifti`."""
+    """Outputs from `cifti_convert_from_nifti_outputs`."""
     from_text: CiftiConvertFromTextOutputs | None
-    """Outputs from `CiftiConvertFromText`."""
+    """Outputs from `cifti_convert_from_text_outputs`."""
+
+
+def cifti_convert_params(
+    to_gifti_ext: CiftiConvertToGiftiExtParameters | None = None,
+    from_gifti_ext: CiftiConvertFromGiftiExtParameters | None = None,
+    to_nifti: CiftiConvertToNiftiParameters | None = None,
+    from_nifti: CiftiConvertFromNiftiParameters | None = None,
+    to_text: CiftiConvertToTextParameters | None = None,
+    from_text: CiftiConvertFromTextParameters | None = None,
+) -> CiftiConvertParameters:
+    """
+    Build parameters.
+    
+    Args:
+        to_gifti_ext: convert to GIFTI external binary.
+        from_gifti_ext: convert a GIFTI made with this command back into a\
+            CIFTI.
+        to_nifti: convert to NIFTI1.
+        from_nifti: convert a NIFTI (1 or 2) file made with this command back\
+            into CIFTI.
+        to_text: convert to a plain text file.
+        from_text: convert from plain text to cifti.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-convert",
+    }
+    if to_gifti_ext is not None:
+        params["to_gifti_ext"] = to_gifti_ext
+    if from_gifti_ext is not None:
+        params["from_gifti_ext"] = from_gifti_ext
+    if to_nifti is not None:
+        params["to_nifti"] = to_nifti
+    if from_nifti is not None:
+        params["from_nifti"] = from_nifti
+    if to_text is not None:
+        params["to_text"] = to_text
+    if from_text is not None:
+        params["from_text"] = from_text
+    return params
+
+
+def cifti_convert_cargs(
+    params: CiftiConvertParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-convert")
+    if params.get("to_gifti_ext") is not None:
+        cargs.extend(dyn_cargs(params.get("to_gifti_ext")["__STYXTYPE__"])(params.get("to_gifti_ext"), execution))
+    if params.get("from_gifti_ext") is not None:
+        cargs.extend(dyn_cargs(params.get("from_gifti_ext")["__STYXTYPE__"])(params.get("from_gifti_ext"), execution))
+    if params.get("to_nifti") is not None:
+        cargs.extend(dyn_cargs(params.get("to_nifti")["__STYXTYPE__"])(params.get("to_nifti"), execution))
+    if params.get("from_nifti") is not None:
+        cargs.extend(dyn_cargs(params.get("from_nifti")["__STYXTYPE__"])(params.get("from_nifti"), execution))
+    if params.get("to_text") is not None:
+        cargs.extend(dyn_cargs(params.get("to_text")["__STYXTYPE__"])(params.get("to_text"), execution))
+    if params.get("from_text") is not None:
+        cargs.extend(dyn_cargs(params.get("from_text")["__STYXTYPE__"])(params.get("from_text"), execution))
+    return cargs
+
+
+def cifti_convert_outputs(
+    params: CiftiConvertParameters,
+    execution: Execution,
+) -> CiftiConvertOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiConvertOutputs(
+        root=execution.output_file("."),
+        from_gifti_ext=dyn_outputs(from_gifti_ext["__STYXTYPE__"])(from_gifti_ext, execution) if from_gifti_ext else None,
+        to_nifti=dyn_outputs(to_nifti["__STYXTYPE__"])(to_nifti, execution) if to_nifti else None,
+        from_nifti=dyn_outputs(from_nifti["__STYXTYPE__"])(from_nifti, execution) if from_nifti else None,
+        from_text=dyn_outputs(from_text["__STYXTYPE__"])(from_text, execution) if from_text else None,
+    )
+    return ret
+
+
+def cifti_convert_execute(
+    params: CiftiConvertParameters,
+    execution: Execution,
+) -> CiftiConvertOutputs:
+    """
+    Dump cifti matrix into other formats.
+    
+    This command is used to convert a full CIFTI matrix to/from formats that can
+    be used by programs that don't understand CIFTI. You must specify exactly
+    one of -to-gifti-ext, -from-gifti-ext, -to-nifti, -from-nifti, -to-text, or
+    -from-text.
+    
+    If you want to write an existing CIFTI file with a different CIFTI version,
+    see -file-convert, and its -cifti-version-convert option.
+    
+    If you want part of the CIFTI file as a metric, label, or volume file, see
+    -cifti-separate. If you want to create a CIFTI file from metric and/or
+    volume files, see the -cifti-create-* commands.
+    
+    If you want to import a matrix that is restricted to an ROI, first create a
+    template CIFTI file matching that ROI using a -cifti-create-* command. After
+    importing to CIFTI, you can then expand the file into a standard
+    brainordinates space with -cifti-create-dense-from-template. If you want to
+    export only part of a CIFTI file, first create an roi-restricted CIFTI file
+    with -cifti-restrict-dense-mapping.
+    
+    The -transpose option to -from-gifti-ext is needed if the replacement binary
+    file is in column-major order.
+    
+    The -unit options accept these values:
+    
+    SECOND
+    HERTZ
+    METER
+    RADIAN.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiConvertOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_convert_cargs(params, execution)
+    ret = cifti_convert_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cifti_convert(
-    to_gifti_ext: CiftiConvertToGiftiExt | None = None,
-    from_gifti_ext: CiftiConvertFromGiftiExt | None = None,
-    to_nifti: CiftiConvertToNifti | None = None,
-    from_nifti: CiftiConvertFromNifti | None = None,
-    to_text: CiftiConvertToText | None = None,
-    from_text: CiftiConvertFromText | None = None,
+    to_gifti_ext: CiftiConvertToGiftiExtParameters | None = None,
+    from_gifti_ext: CiftiConvertFromGiftiExtParameters | None = None,
+    to_nifti: CiftiConvertToNiftiParameters | None = None,
+    from_nifti: CiftiConvertFromNiftiParameters | None = None,
+    to_text: CiftiConvertToTextParameters | None = None,
+    from_text: CiftiConvertFromTextParameters | None = None,
     runner: Runner | None = None,
 ) -> CiftiConvertOutputs:
     """
@@ -588,48 +1021,27 @@ def cifti_convert(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CONVERT_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-convert")
-    if to_gifti_ext is not None:
-        cargs.extend(to_gifti_ext.run(execution))
-    if from_gifti_ext is not None:
-        cargs.extend(from_gifti_ext.run(execution))
-    if to_nifti is not None:
-        cargs.extend(to_nifti.run(execution))
-    if from_nifti is not None:
-        cargs.extend(from_nifti.run(execution))
-    if to_text is not None:
-        cargs.extend(to_text.run(execution))
-    if from_text is not None:
-        cargs.extend(from_text.run(execution))
-    ret = CiftiConvertOutputs(
-        root=execution.output_file("."),
-        from_gifti_ext=from_gifti_ext.outputs(execution) if from_gifti_ext else None,
-        to_nifti=to_nifti.outputs(execution) if to_nifti else None,
-        from_nifti=from_nifti.outputs(execution) if from_nifti else None,
-        from_text=from_text.outputs(execution) if from_text else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_convert_params(to_gifti_ext=to_gifti_ext, from_gifti_ext=from_gifti_ext, to_nifti=to_nifti, from_nifti=from_nifti, to_text=to_text, from_text=from_text)
+    return cifti_convert_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_CONVERT_METADATA",
-    "CiftiConvertFromGiftiExt",
     "CiftiConvertFromGiftiExtOutputs",
-    "CiftiConvertFromNifti",
     "CiftiConvertFromNiftiOutputs",
-    "CiftiConvertFromText",
     "CiftiConvertFromTextOutputs",
     "CiftiConvertOutputs",
-    "CiftiConvertReplaceBinary",
-    "CiftiConvertResetTimepoints",
-    "CiftiConvertResetTimepoints_",
-    "CiftiConvertResetTimepoints_2",
-    "CiftiConvertToGiftiExt",
-    "CiftiConvertToNifti",
     "CiftiConvertToNiftiOutputs",
-    "CiftiConvertToText",
     "cifti_convert",
+    "cifti_convert_from_gifti_ext_params",
+    "cifti_convert_from_nifti_params",
+    "cifti_convert_from_text_params",
+    "cifti_convert_params",
+    "cifti_convert_replace_binary_params",
+    "cifti_convert_reset_timepoints_params",
+    "cifti_convert_reset_timepoints_params_",
+    "cifti_convert_reset_timepoints_params_2",
+    "cifti_convert_to_gifti_ext_params",
+    "cifti_convert_to_nifti_params",
+    "cifti_convert_to_text_params",
 ]

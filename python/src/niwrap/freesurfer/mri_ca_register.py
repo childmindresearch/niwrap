@@ -12,6 +12,82 @@ MRI_CA_REGISTER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriCaRegisterParameters = typing.TypedDict('MriCaRegisterParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_ca_register"],
+    "input_volume": InputPathType,
+    "template": InputPathType,
+    "output_volume": str,
+    "tolerance": typing.NotRequired[float | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "transform_lta": typing.NotRequired[InputPathType | None],
+    "level": typing.NotRequired[float | None],
+    "read_intensity": bool,
+    "align": bool,
+    "invert_save_file": typing.NotRequired[str | None],
+    "distance": typing.NotRequired[float | None],
+    "regularize": typing.NotRequired[float | None],
+    "regularize_mean": typing.NotRequired[float | None],
+    "scale_smoothness": typing.NotRequired[float | None],
+    "nobright": bool,
+    "renormalize_map": bool,
+    "renormalize": typing.NotRequired[InputPathType | None],
+    "read_lta": bool,
+    "smoothness": typing.NotRequired[float | None],
+    "samples": typing.NotRequired[float | None],
+    "nsmall": typing.NotRequired[float | None],
+    "fixed": bool,
+    "optimal": bool,
+    "noneg": bool,
+    "wm": bool,
+    "min_avgs": typing.NotRequired[float | None],
+    "transform_limit": typing.NotRequired[float | None],
+    "relabel": typing.NotRequired[float | None],
+    "relabel_avgs": typing.NotRequired[float | None],
+    "reset_avgs": typing.NotRequired[float | None],
+    "vf_file": typing.NotRequired[str | None],
+    "diag_file": typing.NotRequired[str | None],
+    "tr": typing.NotRequired[float | None],
+    "te": typing.NotRequired[float | None],
+    "example": typing.NotRequired[str | None],
+    "bigventricles": bool,
+    "uncompress": bool,
+    "second_pass_renorm": bool,
+    "threads": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_ca_register": mri_ca_register_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_ca_register": mri_ca_register_outputs,
+    }
+    return vt.get(t)
 
 
 class MriCaRegisterOutputs(typing.NamedTuple):
@@ -22,6 +98,373 @@ class MriCaRegisterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Multidimensional transform in m3d format"""
+
+
+def mri_ca_register_params(
+    input_volume: InputPathType,
+    template: InputPathType,
+    output_volume: str,
+    tolerance: float | None = None,
+    mask: InputPathType | None = None,
+    transform_lta: InputPathType | None = None,
+    level: float | None = None,
+    read_intensity: bool = False,
+    align: bool = False,
+    invert_save_file: str | None = None,
+    distance: float | None = None,
+    regularize: float | None = None,
+    regularize_mean: float | None = None,
+    scale_smoothness: float | None = None,
+    nobright: bool = False,
+    renormalize_map: bool = False,
+    renormalize: InputPathType | None = None,
+    read_lta: bool = False,
+    smoothness: float | None = None,
+    samples: float | None = None,
+    nsmall: float | None = None,
+    fixed: bool = False,
+    optimal: bool = False,
+    noneg: bool = False,
+    wm: bool = False,
+    min_avgs: float | None = None,
+    transform_limit: float | None = None,
+    relabel: float | None = None,
+    relabel_avgs: float | None = None,
+    reset_avgs: float | None = None,
+    vf_file: str | None = None,
+    diag_file: str | None = None,
+    tr: float | None = None,
+    te: float | None = None,
+    example: str | None = None,
+    bigventricles: bool = False,
+    uncompress: bool = False,
+    second_pass_renorm: bool = False,
+    threads: float | None = None,
+) -> MriCaRegisterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_volume: Input volume.
+        template: Template in GCA format.
+        output_volume: Output volume in M3D format.
+        tolerance: Defines convergence of registration.
+        mask: Specifies volume to use as a mask.
+        transform_lta: Transform in LTA format.
+        level: Defines how many surrounding voxels will be used in\
+            interpolations, default is 6.
+        read_intensity: Allows reading of multiple intensity normalization.
+        align: Enable alignment.
+        invert_save_file: Invert and save as GCAM file.
+        distance: Distance for registration.
+        regularize: Regularization parameter.
+        regularize_mean: Mean regularization.
+        scale_smoothness: Smoothness scaling factor.
+        nobright: Disable brightness adjustment.
+        renormalize_map: Renormalize using map.
+        renormalize: Renormalize with intensity file.
+        read_lta: Use LTA file for registration.
+        smoothness: Smoothness parameter.
+        samples: Sample points for registration.
+        nsmall: Number of small features.
+        fixed: Fixed mode for registration.
+        optimal: Optimal registration settings.
+        noneg: Disallow negative values.
+        wm: White matter flag.
+        min_avgs: Minimum number of averages.
+        transform_limit: Transform limit.
+        relabel: Relabel options.
+        relabel_avgs: Relabel averages.
+        reset_avgs: Reset averages.
+        vf_file: VF file name.
+        diag_file: Diagnostic file name.
+        tr: TR parameter.
+        te: TE parameter.
+        example: Example file.
+        bigventricles: Handle big ventricles.
+        uncompress: Uncompress files.
+        second_pass_renorm: Second pass renormalization.
+        threads: Number of threads.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_ca_register",
+        "input_volume": input_volume,
+        "template": template,
+        "output_volume": output_volume,
+        "read_intensity": read_intensity,
+        "align": align,
+        "nobright": nobright,
+        "renormalize_map": renormalize_map,
+        "read_lta": read_lta,
+        "fixed": fixed,
+        "optimal": optimal,
+        "noneg": noneg,
+        "wm": wm,
+        "bigventricles": bigventricles,
+        "uncompress": uncompress,
+        "second_pass_renorm": second_pass_renorm,
+    }
+    if tolerance is not None:
+        params["tolerance"] = tolerance
+    if mask is not None:
+        params["mask"] = mask
+    if transform_lta is not None:
+        params["transform_lta"] = transform_lta
+    if level is not None:
+        params["level"] = level
+    if invert_save_file is not None:
+        params["invert_save_file"] = invert_save_file
+    if distance is not None:
+        params["distance"] = distance
+    if regularize is not None:
+        params["regularize"] = regularize
+    if regularize_mean is not None:
+        params["regularize_mean"] = regularize_mean
+    if scale_smoothness is not None:
+        params["scale_smoothness"] = scale_smoothness
+    if renormalize is not None:
+        params["renormalize"] = renormalize
+    if smoothness is not None:
+        params["smoothness"] = smoothness
+    if samples is not None:
+        params["samples"] = samples
+    if nsmall is not None:
+        params["nsmall"] = nsmall
+    if min_avgs is not None:
+        params["min_avgs"] = min_avgs
+    if transform_limit is not None:
+        params["transform_limit"] = transform_limit
+    if relabel is not None:
+        params["relabel"] = relabel
+    if relabel_avgs is not None:
+        params["relabel_avgs"] = relabel_avgs
+    if reset_avgs is not None:
+        params["reset_avgs"] = reset_avgs
+    if vf_file is not None:
+        params["vf_file"] = vf_file
+    if diag_file is not None:
+        params["diag_file"] = diag_file
+    if tr is not None:
+        params["tr"] = tr
+    if te is not None:
+        params["te"] = te
+    if example is not None:
+        params["example"] = example
+    if threads is not None:
+        params["threads"] = threads
+    return params
+
+
+def mri_ca_register_cargs(
+    params: MriCaRegisterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_ca_register")
+    cargs.append(execution.input_file(params.get("input_volume")))
+    cargs.append(execution.input_file(params.get("template")))
+    cargs.append(params.get("output_volume"))
+    if params.get("tolerance") is not None:
+        cargs.extend([
+            "-tol",
+            str(params.get("tolerance"))
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("transform_lta") is not None:
+        cargs.extend([
+            "-T",
+            execution.input_file(params.get("transform_lta"))
+        ])
+    if params.get("level") is not None:
+        cargs.extend([
+            "-level",
+            str(params.get("level"))
+        ])
+    if params.get("read_intensity"):
+        cargs.append("-ri")
+    if params.get("align"):
+        cargs.append("-align")
+    if params.get("invert_save_file") is not None:
+        cargs.extend([
+            "-invert-and-save",
+            params.get("invert_save_file")
+        ])
+    if params.get("distance") is not None:
+        cargs.extend([
+            "-dist",
+            str(params.get("distance"))
+        ])
+    if params.get("regularize") is not None:
+        cargs.extend([
+            "-regularize",
+            str(params.get("regularize"))
+        ])
+    if params.get("regularize_mean") is not None:
+        cargs.extend([
+            "-regularize-mean",
+            str(params.get("regularize_mean"))
+        ])
+    if params.get("scale_smoothness") is not None:
+        cargs.extend([
+            "-scale_smoothness",
+            str(params.get("scale_smoothness"))
+        ])
+    if params.get("nobright"):
+        cargs.append("-nobright")
+    if params.get("renormalize_map"):
+        cargs.append("-renormalize_map")
+    if params.get("renormalize") is not None:
+        cargs.extend([
+            "-renormalize",
+            execution.input_file(params.get("renormalize"))
+        ])
+    if params.get("read_lta"):
+        cargs.append("-read_lta")
+    if params.get("smoothness") is not None:
+        cargs.extend([
+            "-smoothness",
+            str(params.get("smoothness"))
+        ])
+    if params.get("samples") is not None:
+        cargs.extend([
+            "-samples",
+            str(params.get("samples"))
+        ])
+    if params.get("nsmall") is not None:
+        cargs.extend([
+            "-nsmall",
+            str(params.get("nsmall"))
+        ])
+    if params.get("fixed"):
+        cargs.append("-fixed")
+    if params.get("optimal"):
+        cargs.append("-optimal")
+    if params.get("noneg"):
+        cargs.append("-noneg")
+    if params.get("wm"):
+        cargs.append("-wm")
+    if params.get("min_avgs") is not None:
+        cargs.extend([
+            "-min_avgs",
+            str(params.get("min_avgs"))
+        ])
+    if params.get("transform_limit") is not None:
+        cargs.extend([
+            "-tl",
+            str(params.get("transform_limit"))
+        ])
+    if params.get("relabel") is not None:
+        cargs.extend([
+            "-relabel",
+            str(params.get("relabel"))
+        ])
+    if params.get("relabel_avgs") is not None:
+        cargs.extend([
+            "-relabel_avgs",
+            str(params.get("relabel_avgs"))
+        ])
+    if params.get("reset_avgs") is not None:
+        cargs.extend([
+            "-reset_avgs",
+            str(params.get("reset_avgs"))
+        ])
+    if params.get("vf_file") is not None:
+        cargs.extend([
+            "-vf",
+            params.get("vf_file")
+        ])
+    if params.get("diag_file") is not None:
+        cargs.extend([
+            "-diag",
+            params.get("diag_file")
+        ])
+    if params.get("tr") is not None:
+        cargs.extend([
+            "-tr",
+            str(params.get("tr"))
+        ])
+    if params.get("te") is not None:
+        cargs.extend([
+            "-te",
+            str(params.get("te"))
+        ])
+    if params.get("example") is not None:
+        cargs.extend([
+            "-example",
+            params.get("example")
+        ])
+    if params.get("bigventricles"):
+        cargs.append("-<no>bigventricles")
+    if params.get("uncompress"):
+        cargs.append("-uncompress")
+    if params.get("second_pass_renorm"):
+        cargs.append("-secondpassrenorm")
+    if params.get("threads") is not None:
+        cargs.extend([
+            "-threads",
+            str(params.get("threads"))
+        ])
+    return cargs
+
+
+def mri_ca_register_outputs(
+    params: MriCaRegisterParameters,
+    execution: Execution,
+) -> MriCaRegisterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriCaRegisterOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume") + ".m3d"),
+    )
+    return ret
+
+
+def mri_ca_register_execute(
+    params: MriCaRegisterParameters,
+    execution: Execution,
+) -> MriCaRegisterOutputs:
+    """
+    Generates a multi-dimensional talairach transform from a gca file and
+    talairach.lta file.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriCaRegisterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_ca_register_cargs(params, execution)
+    ret = mri_ca_register_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_ca_register(
@@ -121,165 +564,13 @@ def mri_ca_register(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_REGISTER_METADATA)
-    cargs = []
-    cargs.append("mri_ca_register")
-    cargs.append(execution.input_file(input_volume))
-    cargs.append(execution.input_file(template))
-    cargs.append(output_volume)
-    if tolerance is not None:
-        cargs.extend([
-            "-tol",
-            str(tolerance)
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if transform_lta is not None:
-        cargs.extend([
-            "-T",
-            execution.input_file(transform_lta)
-        ])
-    if level is not None:
-        cargs.extend([
-            "-level",
-            str(level)
-        ])
-    if read_intensity:
-        cargs.append("-ri")
-    if align:
-        cargs.append("-align")
-    if invert_save_file is not None:
-        cargs.extend([
-            "-invert-and-save",
-            invert_save_file
-        ])
-    if distance is not None:
-        cargs.extend([
-            "-dist",
-            str(distance)
-        ])
-    if regularize is not None:
-        cargs.extend([
-            "-regularize",
-            str(regularize)
-        ])
-    if regularize_mean is not None:
-        cargs.extend([
-            "-regularize-mean",
-            str(regularize_mean)
-        ])
-    if scale_smoothness is not None:
-        cargs.extend([
-            "-scale_smoothness",
-            str(scale_smoothness)
-        ])
-    if nobright:
-        cargs.append("-nobright")
-    if renormalize_map:
-        cargs.append("-renormalize_map")
-    if renormalize is not None:
-        cargs.extend([
-            "-renormalize",
-            execution.input_file(renormalize)
-        ])
-    if read_lta:
-        cargs.append("-read_lta")
-    if smoothness is not None:
-        cargs.extend([
-            "-smoothness",
-            str(smoothness)
-        ])
-    if samples is not None:
-        cargs.extend([
-            "-samples",
-            str(samples)
-        ])
-    if nsmall is not None:
-        cargs.extend([
-            "-nsmall",
-            str(nsmall)
-        ])
-    if fixed:
-        cargs.append("-fixed")
-    if optimal:
-        cargs.append("-optimal")
-    if noneg:
-        cargs.append("-noneg")
-    if wm:
-        cargs.append("-wm")
-    if min_avgs is not None:
-        cargs.extend([
-            "-min_avgs",
-            str(min_avgs)
-        ])
-    if transform_limit is not None:
-        cargs.extend([
-            "-tl",
-            str(transform_limit)
-        ])
-    if relabel is not None:
-        cargs.extend([
-            "-relabel",
-            str(relabel)
-        ])
-    if relabel_avgs is not None:
-        cargs.extend([
-            "-relabel_avgs",
-            str(relabel_avgs)
-        ])
-    if reset_avgs is not None:
-        cargs.extend([
-            "-reset_avgs",
-            str(reset_avgs)
-        ])
-    if vf_file is not None:
-        cargs.extend([
-            "-vf",
-            vf_file
-        ])
-    if diag_file is not None:
-        cargs.extend([
-            "-diag",
-            diag_file
-        ])
-    if tr is not None:
-        cargs.extend([
-            "-tr",
-            str(tr)
-        ])
-    if te is not None:
-        cargs.extend([
-            "-te",
-            str(te)
-        ])
-    if example is not None:
-        cargs.extend([
-            "-example",
-            example
-        ])
-    if bigventricles:
-        cargs.append("-<no>bigventricles")
-    if uncompress:
-        cargs.append("-uncompress")
-    if second_pass_renorm:
-        cargs.append("-secondpassrenorm")
-    if threads is not None:
-        cargs.extend([
-            "-threads",
-            str(threads)
-        ])
-    ret = MriCaRegisterOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume + ".m3d"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_ca_register_params(input_volume=input_volume, template=template, output_volume=output_volume, tolerance=tolerance, mask=mask, transform_lta=transform_lta, level=level, read_intensity=read_intensity, align=align, invert_save_file=invert_save_file, distance=distance, regularize=regularize, regularize_mean=regularize_mean, scale_smoothness=scale_smoothness, nobright=nobright, renormalize_map=renormalize_map, renormalize=renormalize, read_lta=read_lta, smoothness=smoothness, samples=samples, nsmall=nsmall, fixed=fixed, optimal=optimal, noneg=noneg, wm=wm, min_avgs=min_avgs, transform_limit=transform_limit, relabel=relabel, relabel_avgs=relabel_avgs, reset_avgs=reset_avgs, vf_file=vf_file, diag_file=diag_file, tr=tr, te=te, example=example, bigventricles=bigventricles, uncompress=uncompress, second_pass_renorm=second_pass_renorm, threads=threads)
+    return mri_ca_register_execute(params, execution)
 
 
 __all__ = [
     "MRI_CA_REGISTER_METADATA",
     "MriCaRegisterOutputs",
     "mri_ca_register",
+    "mri_ca_register_params",
 ]

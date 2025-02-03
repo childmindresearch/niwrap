@@ -12,529 +12,909 @@ CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiResampleDconnMemoryWeightedParameters = typing.TypedDict('CiftiResampleDconnMemoryWeightedParameters', {
+    "__STYX_TYPE__": typing.Literal["weighted"],
+    "opt_exponent_exponent": typing.NotRequired[float | None],
+    "opt_legacy_cutoff": bool,
+})
+CiftiResampleDconnMemoryVolumePredilateParameters = typing.TypedDict('CiftiResampleDconnMemoryVolumePredilateParameters', {
+    "__STYX_TYPE__": typing.Literal["volume_predilate"],
+    "dilate_mm": float,
+    "opt_nearest": bool,
+    "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeightedParameters | None],
+})
+CiftiResampleDconnMemoryWeightedParameters_ = typing.TypedDict('CiftiResampleDconnMemoryWeightedParameters_', {
+    "__STYX_TYPE__": typing.Literal["weighted"],
+    "opt_exponent_exponent": typing.NotRequired[float | None],
+    "opt_legacy_cutoff": bool,
+})
+CiftiResampleDconnMemorySurfacePostdilateParameters = typing.TypedDict('CiftiResampleDconnMemorySurfacePostdilateParameters', {
+    "__STYX_TYPE__": typing.Literal["surface_postdilate"],
+    "dilate_mm": float,
+    "opt_nearest": bool,
+    "opt_linear": bool,
+    "weighted": typing.NotRequired[CiftiResampleDconnMemoryWeightedParameters_ | None],
+})
+CiftiResampleDconnMemoryFlirtParameters = typing.TypedDict('CiftiResampleDconnMemoryFlirtParameters', {
+    "__STYX_TYPE__": typing.Literal["flirt"],
+    "source_volume": str,
+    "target_volume": str,
+})
+CiftiResampleDconnMemoryAffineParameters = typing.TypedDict('CiftiResampleDconnMemoryAffineParameters', {
+    "__STYX_TYPE__": typing.Literal["affine"],
+    "affine_file": str,
+    "flirt": typing.NotRequired[CiftiResampleDconnMemoryFlirtParameters | None],
+})
+CiftiResampleDconnMemoryWarpfieldParameters = typing.TypedDict('CiftiResampleDconnMemoryWarpfieldParameters', {
+    "__STYX_TYPE__": typing.Literal["warpfield"],
+    "warpfield": str,
+    "opt_fnirt_source_volume": typing.NotRequired[str | None],
+})
+CiftiResampleDconnMemoryLeftAreaSurfsParameters = typing.TypedDict('CiftiResampleDconnMemoryLeftAreaSurfsParameters', {
+    "__STYX_TYPE__": typing.Literal["left_area_surfs"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+CiftiResampleDconnMemoryLeftAreaMetricsParameters = typing.TypedDict('CiftiResampleDconnMemoryLeftAreaMetricsParameters', {
+    "__STYX_TYPE__": typing.Literal["left_area_metrics"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+CiftiResampleDconnMemoryLeftSpheresParameters = typing.TypedDict('CiftiResampleDconnMemoryLeftSpheresParameters', {
+    "__STYX_TYPE__": typing.Literal["left_spheres"],
+    "current_sphere": InputPathType,
+    "new_sphere": InputPathType,
+    "left_area_surfs": typing.NotRequired[CiftiResampleDconnMemoryLeftAreaSurfsParameters | None],
+    "left_area_metrics": typing.NotRequired[CiftiResampleDconnMemoryLeftAreaMetricsParameters | None],
+})
+CiftiResampleDconnMemoryRightAreaSurfsParameters = typing.TypedDict('CiftiResampleDconnMemoryRightAreaSurfsParameters', {
+    "__STYX_TYPE__": typing.Literal["right_area_surfs"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+CiftiResampleDconnMemoryRightAreaMetricsParameters = typing.TypedDict('CiftiResampleDconnMemoryRightAreaMetricsParameters', {
+    "__STYX_TYPE__": typing.Literal["right_area_metrics"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+CiftiResampleDconnMemoryRightSpheresParameters = typing.TypedDict('CiftiResampleDconnMemoryRightSpheresParameters', {
+    "__STYX_TYPE__": typing.Literal["right_spheres"],
+    "current_sphere": InputPathType,
+    "new_sphere": InputPathType,
+    "right_area_surfs": typing.NotRequired[CiftiResampleDconnMemoryRightAreaSurfsParameters | None],
+    "right_area_metrics": typing.NotRequired[CiftiResampleDconnMemoryRightAreaMetricsParameters | None],
+})
+CiftiResampleDconnMemoryCerebellumAreaSurfsParameters = typing.TypedDict('CiftiResampleDconnMemoryCerebellumAreaSurfsParameters', {
+    "__STYX_TYPE__": typing.Literal["cerebellum_area_surfs"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+CiftiResampleDconnMemoryCerebellumAreaMetricsParameters = typing.TypedDict('CiftiResampleDconnMemoryCerebellumAreaMetricsParameters', {
+    "__STYX_TYPE__": typing.Literal["cerebellum_area_metrics"],
+    "current_area": InputPathType,
+    "new_area": InputPathType,
+})
+CiftiResampleDconnMemoryCerebellumSpheresParameters = typing.TypedDict('CiftiResampleDconnMemoryCerebellumSpheresParameters', {
+    "__STYX_TYPE__": typing.Literal["cerebellum_spheres"],
+    "current_sphere": InputPathType,
+    "new_sphere": InputPathType,
+    "cerebellum_area_surfs": typing.NotRequired[CiftiResampleDconnMemoryCerebellumAreaSurfsParameters | None],
+    "cerebellum_area_metrics": typing.NotRequired[CiftiResampleDconnMemoryCerebellumAreaMetricsParameters | None],
+})
+CiftiResampleDconnMemoryParameters = typing.TypedDict('CiftiResampleDconnMemoryParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-resample-dconn-memory"],
+    "cifti_in": InputPathType,
+    "cifti_template": InputPathType,
+    "template_direction": str,
+    "surface_method": str,
+    "volume_method": str,
+    "cifti_out": str,
+    "opt_surface_largest": bool,
+    "volume_predilate": typing.NotRequired[CiftiResampleDconnMemoryVolumePredilateParameters | None],
+    "surface_postdilate": typing.NotRequired[CiftiResampleDconnMemorySurfacePostdilateParameters | None],
+    "affine": typing.NotRequired[CiftiResampleDconnMemoryAffineParameters | None],
+    "warpfield": typing.NotRequired[CiftiResampleDconnMemoryWarpfieldParameters | None],
+    "left_spheres": typing.NotRequired[CiftiResampleDconnMemoryLeftSpheresParameters | None],
+    "right_spheres": typing.NotRequired[CiftiResampleDconnMemoryRightSpheresParameters | None],
+    "cerebellum_spheres": typing.NotRequired[CiftiResampleDconnMemoryCerebellumSpheresParameters | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryWeighted:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    use weighted dilation (default).
-    """
-    opt_exponent_exponent: float | None = None
-    """specify exponent in weighting function: exponent 'n' to use in (1 /
-    (distance ^ n)) as the weighting function (default 7)"""
-    opt_legacy_cutoff: bool = False
-    """use v1.3.2 logic for the kernel cutoff"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-weighted")
-        if self.opt_exponent_exponent is not None:
-            cargs.extend([
-                "-exponent",
-                str(self.opt_exponent_exponent)
-            ])
-        if self.opt_legacy_cutoff:
-            cargs.append("-legacy-cutoff")
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-resample-dconn-memory": cifti_resample_dconn_memory_cargs,
+        "volume_predilate": cifti_resample_dconn_memory_volume_predilate_cargs,
+        "weighted": cifti_resample_dconn_memory_weighted_cargs,
+        "surface_postdilate": cifti_resample_dconn_memory_surface_postdilate_cargs,
+        "weighted": cifti_resample_dconn_memory_weighted_cargs_,
+        "affine": cifti_resample_dconn_memory_affine_cargs,
+        "flirt": cifti_resample_dconn_memory_flirt_cargs,
+        "warpfield": cifti_resample_dconn_memory_warpfield_cargs,
+        "left_spheres": cifti_resample_dconn_memory_left_spheres_cargs,
+        "left_area_surfs": cifti_resample_dconn_memory_left_area_surfs_cargs,
+        "left_area_metrics": cifti_resample_dconn_memory_left_area_metrics_cargs,
+        "right_spheres": cifti_resample_dconn_memory_right_spheres_cargs,
+        "right_area_surfs": cifti_resample_dconn_memory_right_area_surfs_cargs,
+        "right_area_metrics": cifti_resample_dconn_memory_right_area_metrics_cargs,
+        "cerebellum_spheres": cifti_resample_dconn_memory_cerebellum_spheres_cargs,
+        "cerebellum_area_surfs": cifti_resample_dconn_memory_cerebellum_area_surfs_cargs,
+        "cerebellum_area_metrics": cifti_resample_dconn_memory_cerebellum_area_metrics_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryVolumePredilate:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    dilate the volume components before resampling.
-    """
-    dilate_mm: float
-    """distance, in mm, to dilate"""
-    opt_nearest: bool = False
-    """use nearest value dilation"""
-    weighted: CiftiResampleDconnMemoryWeighted | None = None
-    """use weighted dilation (default)"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-volume-predilate")
-        cargs.append(str(self.dilate_mm))
-        if self.opt_nearest:
-            cargs.append("-nearest")
-        if self.weighted is not None:
-            cargs.extend(self.weighted.run(execution))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-resample-dconn-memory": cifti_resample_dconn_memory_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryWeighted_:
+def cifti_resample_dconn_memory_weighted_params(
+    opt_exponent_exponent: float | None = None,
+    opt_legacy_cutoff: bool = False,
+) -> CiftiResampleDconnMemoryWeightedParameters:
     """
-    use weighted dilation (default).
-    """
-    opt_exponent_exponent: float | None = None
-    """specify exponent in weighting function: exponent 'n' to use in (area /
-    (distance ^ n)) as the weighting function (default 6)"""
-    opt_legacy_cutoff: bool = False
-    """use v1.3.2 logic for the kernel cutoff"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-weighted")
-        if self.opt_exponent_exponent is not None:
-            cargs.extend([
-                "-exponent",
-                str(self.opt_exponent_exponent)
-            ])
-        if self.opt_legacy_cutoff:
-            cargs.append("-legacy-cutoff")
-        return cargs
+    Args:
+        opt_exponent_exponent: specify exponent in weighting function: exponent\
+            'n' to use in (1 / (distance ^ n)) as the weighting function (default\
+            7).
+        opt_legacy_cutoff: use v1.3.2 logic for the kernel cutoff.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "weighted",
+        "opt_legacy_cutoff": opt_legacy_cutoff,
+    }
+    if opt_exponent_exponent is not None:
+        params["opt_exponent_exponent"] = opt_exponent_exponent
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemorySurfacePostdilate:
+def cifti_resample_dconn_memory_weighted_cargs(
+    params: CiftiResampleDconnMemoryWeightedParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    dilate the surface components after resampling.
-    """
-    dilate_mm: float
-    """distance, in mm, to dilate"""
-    opt_nearest: bool = False
-    """use nearest value dilation"""
-    opt_linear: bool = False
-    """use linear dilation"""
-    weighted: CiftiResampleDconnMemoryWeighted_ | None = None
-    """use weighted dilation (default)"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-surface-postdilate")
-        cargs.append(str(self.dilate_mm))
-        if self.opt_nearest:
-            cargs.append("-nearest")
-        if self.opt_linear:
-            cargs.append("-linear")
-        if self.weighted is not None:
-            cargs.extend(self.weighted.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-weighted")
+    if params.get("opt_exponent_exponent") is not None:
+        cargs.extend([
+            "-exponent",
+            str(params.get("opt_exponent_exponent"))
+        ])
+    if params.get("opt_legacy_cutoff"):
+        cargs.append("-legacy-cutoff")
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryFlirt:
+def cifti_resample_dconn_memory_volume_predilate_params(
+    dilate_mm: float,
+    opt_nearest: bool = False,
+    weighted: CiftiResampleDconnMemoryWeightedParameters | None = None,
+) -> CiftiResampleDconnMemoryVolumePredilateParameters:
     """
-    MUST be used if affine is a flirt affine.
-    """
-    source_volume: str
-    """the source volume used when generating the affine"""
-    target_volume: str
-    """the target volume used when generating the affine"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-flirt")
-        cargs.append(self.source_volume)
-        cargs.append(self.target_volume)
-        return cargs
+    Args:
+        dilate_mm: distance, in mm, to dilate.
+        opt_nearest: use nearest value dilation.
+        weighted: use weighted dilation (default).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume_predilate",
+        "dilate_mm": dilate_mm,
+        "opt_nearest": opt_nearest,
+    }
+    if weighted is not None:
+        params["weighted"] = weighted
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryAffine:
+def cifti_resample_dconn_memory_volume_predilate_cargs(
+    params: CiftiResampleDconnMemoryVolumePredilateParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    use an affine transformation on the volume components.
-    """
-    affine_file: str
-    """the affine file to use"""
-    flirt: CiftiResampleDconnMemoryFlirt | None = None
-    """MUST be used if affine is a flirt affine"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-affine")
-        cargs.append(self.affine_file)
-        if self.flirt is not None:
-            cargs.extend(self.flirt.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-volume-predilate")
+    cargs.append(str(params.get("dilate_mm")))
+    if params.get("opt_nearest"):
+        cargs.append("-nearest")
+    if params.get("weighted") is not None:
+        cargs.extend(dyn_cargs(params.get("weighted")["__STYXTYPE__"])(params.get("weighted"), execution))
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryWarpfield:
+def cifti_resample_dconn_memory_weighted_params_(
+    opt_exponent_exponent: float | None = None,
+    opt_legacy_cutoff: bool = False,
+) -> CiftiResampleDconnMemoryWeightedParameters_:
     """
-    use a warpfield on the volume components.
-    """
-    warpfield: str
-    """the warpfield to use"""
-    opt_fnirt_source_volume: str | None = None
-    """MUST be used if using a fnirt warpfield: the source volume used when
-    generating the warpfield"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-warpfield")
-        cargs.append(self.warpfield)
-        if self.opt_fnirt_source_volume is not None:
-            cargs.extend([
-                "-fnirt",
-                self.opt_fnirt_source_volume
-            ])
-        return cargs
+    Args:
+        opt_exponent_exponent: specify exponent in weighting function: exponent\
+            'n' to use in (area / (distance ^ n)) as the weighting function\
+            (default 6).
+        opt_legacy_cutoff: use v1.3.2 logic for the kernel cutoff.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "weighted",
+        "opt_legacy_cutoff": opt_legacy_cutoff,
+    }
+    if opt_exponent_exponent is not None:
+        params["opt_exponent_exponent"] = opt_exponent_exponent
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryLeftAreaSurfs:
+def cifti_resample_dconn_memory_weighted_cargs_(
+    params: CiftiResampleDconnMemoryWeightedParameters_,
+    execution: Execution,
+) -> list[str]:
     """
-    specify left surfaces to do vertex area correction based on.
-    """
-    current_area: InputPathType
-    """a relevant left anatomical surface with current mesh"""
-    new_area: InputPathType
-    """a relevant left anatomical surface with new mesh"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-left-area-surfs")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-weighted")
+    if params.get("opt_exponent_exponent") is not None:
+        cargs.extend([
+            "-exponent",
+            str(params.get("opt_exponent_exponent"))
+        ])
+    if params.get("opt_legacy_cutoff"):
+        cargs.append("-legacy-cutoff")
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryLeftAreaMetrics:
+def cifti_resample_dconn_memory_surface_postdilate_params(
+    dilate_mm: float,
+    opt_nearest: bool = False,
+    opt_linear: bool = False,
+    weighted: CiftiResampleDconnMemoryWeightedParameters_ | None = None,
+) -> CiftiResampleDconnMemorySurfacePostdilateParameters:
     """
-    specify left vertex area metrics to do area correction based on.
-    """
-    current_area: InputPathType
-    """a metric file with vertex areas for the current mesh"""
-    new_area: InputPathType
-    """a metric file with vertex areas for the new mesh"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-left-area-metrics")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        dilate_mm: distance, in mm, to dilate.
+        opt_nearest: use nearest value dilation.
+        opt_linear: use linear dilation.
+        weighted: use weighted dilation (default).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "surface_postdilate",
+        "dilate_mm": dilate_mm,
+        "opt_nearest": opt_nearest,
+        "opt_linear": opt_linear,
+    }
+    if weighted is not None:
+        params["weighted"] = weighted
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryLeftSpheres:
+def cifti_resample_dconn_memory_surface_postdilate_cargs(
+    params: CiftiResampleDconnMemorySurfacePostdilateParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    specify spheres for left surface resampling.
-    """
-    current_sphere: InputPathType
-    """a sphere with the same mesh as the current left surface"""
-    new_sphere: InputPathType
-    """a sphere with the new left mesh that is in register with the current
-    sphere"""
-    left_area_surfs: CiftiResampleDconnMemoryLeftAreaSurfs | None = None
-    """specify left surfaces to do vertex area correction based on"""
-    left_area_metrics: CiftiResampleDconnMemoryLeftAreaMetrics | None = None
-    """specify left vertex area metrics to do area correction based on"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-left-spheres")
-        cargs.append(execution.input_file(self.current_sphere))
-        cargs.append(execution.input_file(self.new_sphere))
-        if self.left_area_surfs is not None:
-            cargs.extend(self.left_area_surfs.run(execution))
-        if self.left_area_metrics is not None:
-            cargs.extend(self.left_area_metrics.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-surface-postdilate")
+    cargs.append(str(params.get("dilate_mm")))
+    if params.get("opt_nearest"):
+        cargs.append("-nearest")
+    if params.get("opt_linear"):
+        cargs.append("-linear")
+    if params.get("weighted") is not None:
+        cargs.extend(dyn_cargs(params.get("weighted")["__STYXTYPE__"])(params.get("weighted"), execution))
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryRightAreaSurfs:
+def cifti_resample_dconn_memory_flirt_params(
+    source_volume: str,
+    target_volume: str,
+) -> CiftiResampleDconnMemoryFlirtParameters:
     """
-    specify right surfaces to do vertex area correction based on.
-    """
-    current_area: InputPathType
-    """a relevant right anatomical surface with current mesh"""
-    new_area: InputPathType
-    """a relevant right anatomical surface with new mesh"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-right-area-surfs")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        source_volume: the source volume used when generating the affine.
+        target_volume: the target volume used when generating the affine.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "flirt",
+        "source_volume": source_volume,
+        "target_volume": target_volume,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryRightAreaMetrics:
+def cifti_resample_dconn_memory_flirt_cargs(
+    params: CiftiResampleDconnMemoryFlirtParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    specify right vertex area metrics to do area correction based on.
-    """
-    current_area: InputPathType
-    """a metric file with vertex areas for the current mesh"""
-    new_area: InputPathType
-    """a metric file with vertex areas for the new mesh"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-right-area-metrics")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-flirt")
+    cargs.append(params.get("source_volume"))
+    cargs.append(params.get("target_volume"))
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryRightSpheres:
+def cifti_resample_dconn_memory_affine_params(
+    affine_file: str,
+    flirt: CiftiResampleDconnMemoryFlirtParameters | None = None,
+) -> CiftiResampleDconnMemoryAffineParameters:
     """
-    specify spheres for right surface resampling.
-    """
-    current_sphere: InputPathType
-    """a sphere with the same mesh as the current right surface"""
-    new_sphere: InputPathType
-    """a sphere with the new right mesh that is in register with the current
-    sphere"""
-    right_area_surfs: CiftiResampleDconnMemoryRightAreaSurfs | None = None
-    """specify right surfaces to do vertex area correction based on"""
-    right_area_metrics: CiftiResampleDconnMemoryRightAreaMetrics | None = None
-    """specify right vertex area metrics to do area correction based on"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-right-spheres")
-        cargs.append(execution.input_file(self.current_sphere))
-        cargs.append(execution.input_file(self.new_sphere))
-        if self.right_area_surfs is not None:
-            cargs.extend(self.right_area_surfs.run(execution))
-        if self.right_area_metrics is not None:
-            cargs.extend(self.right_area_metrics.run(execution))
-        return cargs
+    Args:
+        affine_file: the affine file to use.
+        flirt: MUST be used if affine is a flirt affine.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "affine",
+        "affine_file": affine_file,
+    }
+    if flirt is not None:
+        params["flirt"] = flirt
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryCerebellumAreaSurfs:
+def cifti_resample_dconn_memory_affine_cargs(
+    params: CiftiResampleDconnMemoryAffineParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    specify cerebellum surfaces to do vertex area correction based on.
-    """
-    current_area: InputPathType
-    """a relevant cerebellum anatomical surface with current mesh"""
-    new_area: InputPathType
-    """a relevant cerebellum anatomical surface with new mesh"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cerebellum-area-surfs")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-affine")
+    cargs.append(params.get("affine_file"))
+    if params.get("flirt") is not None:
+        cargs.extend(dyn_cargs(params.get("flirt")["__STYXTYPE__"])(params.get("flirt"), execution))
+    return cargs
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryCerebellumAreaMetrics:
+def cifti_resample_dconn_memory_warpfield_params(
+    warpfield: str,
+    opt_fnirt_source_volume: str | None = None,
+) -> CiftiResampleDconnMemoryWarpfieldParameters:
     """
-    specify cerebellum vertex area metrics to do area correction based on.
-    """
-    current_area: InputPathType
-    """a metric file with vertex areas for the current mesh"""
-    new_area: InputPathType
-    """a metric file with vertex areas for the new mesh"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cerebellum-area-metrics")
-        cargs.append(execution.input_file(self.current_area))
-        cargs.append(execution.input_file(self.new_area))
-        return cargs
+    Args:
+        warpfield: the warpfield to use.
+        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\
+            source volume used when generating the warpfield.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "warpfield",
+        "warpfield": warpfield,
+    }
+    if opt_fnirt_source_volume is not None:
+        params["opt_fnirt_source_volume"] = opt_fnirt_source_volume
+    return params
 
 
-@dataclasses.dataclass
-class CiftiResampleDconnMemoryCerebellumSpheres:
+def cifti_resample_dconn_memory_warpfield_cargs(
+    params: CiftiResampleDconnMemoryWarpfieldParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    specify spheres for cerebellum surface resampling.
-    """
-    current_sphere: InputPathType
-    """a sphere with the same mesh as the current cerebellum surface"""
-    new_sphere: InputPathType
-    """a sphere with the new cerebellum mesh that is in register with the
-    current sphere"""
-    cerebellum_area_surfs: CiftiResampleDconnMemoryCerebellumAreaSurfs | None = None
-    """specify cerebellum surfaces to do vertex area correction based on"""
-    cerebellum_area_metrics: CiftiResampleDconnMemoryCerebellumAreaMetrics | None = None
-    """specify cerebellum vertex area metrics to do area correction based on"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cerebellum-spheres")
-        cargs.append(execution.input_file(self.current_sphere))
-        cargs.append(execution.input_file(self.new_sphere))
-        if self.cerebellum_area_surfs is not None:
-            cargs.extend(self.cerebellum_area_surfs.run(execution))
-        if self.cerebellum_area_metrics is not None:
-            cargs.extend(self.cerebellum_area_metrics.run(execution))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-warpfield")
+    cargs.append(params.get("warpfield"))
+    if params.get("opt_fnirt_source_volume") is not None:
+        cargs.extend([
+            "-fnirt",
+            params.get("opt_fnirt_source_volume")
+        ])
+    return cargs
+
+
+def cifti_resample_dconn_memory_left_area_surfs_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> CiftiResampleDconnMemoryLeftAreaSurfsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a relevant left anatomical surface with current mesh.
+        new_area: a relevant left anatomical surface with new mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "left_area_surfs",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def cifti_resample_dconn_memory_left_area_surfs_cargs(
+    params: CiftiResampleDconnMemoryLeftAreaSurfsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-left-area-surfs")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def cifti_resample_dconn_memory_left_area_metrics_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> CiftiResampleDconnMemoryLeftAreaMetricsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a metric file with vertex areas for the current mesh.
+        new_area: a metric file with vertex areas for the new mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "left_area_metrics",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def cifti_resample_dconn_memory_left_area_metrics_cargs(
+    params: CiftiResampleDconnMemoryLeftAreaMetricsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-left-area-metrics")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def cifti_resample_dconn_memory_left_spheres_params(
+    current_sphere: InputPathType,
+    new_sphere: InputPathType,
+    left_area_surfs: CiftiResampleDconnMemoryLeftAreaSurfsParameters | None = None,
+    left_area_metrics: CiftiResampleDconnMemoryLeftAreaMetricsParameters | None = None,
+) -> CiftiResampleDconnMemoryLeftSpheresParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_sphere: a sphere with the same mesh as the current left surface.
+        new_sphere: a sphere with the new left mesh that is in register with\
+            the current sphere.
+        left_area_surfs: specify left surfaces to do vertex area correction\
+            based on.
+        left_area_metrics: specify left vertex area metrics to do area\
+            correction based on.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "left_spheres",
+        "current_sphere": current_sphere,
+        "new_sphere": new_sphere,
+    }
+    if left_area_surfs is not None:
+        params["left_area_surfs"] = left_area_surfs
+    if left_area_metrics is not None:
+        params["left_area_metrics"] = left_area_metrics
+    return params
+
+
+def cifti_resample_dconn_memory_left_spheres_cargs(
+    params: CiftiResampleDconnMemoryLeftSpheresParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-left-spheres")
+    cargs.append(execution.input_file(params.get("current_sphere")))
+    cargs.append(execution.input_file(params.get("new_sphere")))
+    if params.get("left_area_surfs") is not None:
+        cargs.extend(dyn_cargs(params.get("left_area_surfs")["__STYXTYPE__"])(params.get("left_area_surfs"), execution))
+    if params.get("left_area_metrics") is not None:
+        cargs.extend(dyn_cargs(params.get("left_area_metrics")["__STYXTYPE__"])(params.get("left_area_metrics"), execution))
+    return cargs
+
+
+def cifti_resample_dconn_memory_right_area_surfs_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> CiftiResampleDconnMemoryRightAreaSurfsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a relevant right anatomical surface with current mesh.
+        new_area: a relevant right anatomical surface with new mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "right_area_surfs",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def cifti_resample_dconn_memory_right_area_surfs_cargs(
+    params: CiftiResampleDconnMemoryRightAreaSurfsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-right-area-surfs")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def cifti_resample_dconn_memory_right_area_metrics_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> CiftiResampleDconnMemoryRightAreaMetricsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a metric file with vertex areas for the current mesh.
+        new_area: a metric file with vertex areas for the new mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "right_area_metrics",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def cifti_resample_dconn_memory_right_area_metrics_cargs(
+    params: CiftiResampleDconnMemoryRightAreaMetricsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-right-area-metrics")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def cifti_resample_dconn_memory_right_spheres_params(
+    current_sphere: InputPathType,
+    new_sphere: InputPathType,
+    right_area_surfs: CiftiResampleDconnMemoryRightAreaSurfsParameters | None = None,
+    right_area_metrics: CiftiResampleDconnMemoryRightAreaMetricsParameters | None = None,
+) -> CiftiResampleDconnMemoryRightSpheresParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_sphere: a sphere with the same mesh as the current right\
+            surface.
+        new_sphere: a sphere with the new right mesh that is in register with\
+            the current sphere.
+        right_area_surfs: specify right surfaces to do vertex area correction\
+            based on.
+        right_area_metrics: specify right vertex area metrics to do area\
+            correction based on.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "right_spheres",
+        "current_sphere": current_sphere,
+        "new_sphere": new_sphere,
+    }
+    if right_area_surfs is not None:
+        params["right_area_surfs"] = right_area_surfs
+    if right_area_metrics is not None:
+        params["right_area_metrics"] = right_area_metrics
+    return params
+
+
+def cifti_resample_dconn_memory_right_spheres_cargs(
+    params: CiftiResampleDconnMemoryRightSpheresParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-right-spheres")
+    cargs.append(execution.input_file(params.get("current_sphere")))
+    cargs.append(execution.input_file(params.get("new_sphere")))
+    if params.get("right_area_surfs") is not None:
+        cargs.extend(dyn_cargs(params.get("right_area_surfs")["__STYXTYPE__"])(params.get("right_area_surfs"), execution))
+    if params.get("right_area_metrics") is not None:
+        cargs.extend(dyn_cargs(params.get("right_area_metrics")["__STYXTYPE__"])(params.get("right_area_metrics"), execution))
+    return cargs
+
+
+def cifti_resample_dconn_memory_cerebellum_area_surfs_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> CiftiResampleDconnMemoryCerebellumAreaSurfsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a relevant cerebellum anatomical surface with current\
+            mesh.
+        new_area: a relevant cerebellum anatomical surface with new mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cerebellum_area_surfs",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def cifti_resample_dconn_memory_cerebellum_area_surfs_cargs(
+    params: CiftiResampleDconnMemoryCerebellumAreaSurfsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cerebellum-area-surfs")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def cifti_resample_dconn_memory_cerebellum_area_metrics_params(
+    current_area: InputPathType,
+    new_area: InputPathType,
+) -> CiftiResampleDconnMemoryCerebellumAreaMetricsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_area: a metric file with vertex areas for the current mesh.
+        new_area: a metric file with vertex areas for the new mesh.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cerebellum_area_metrics",
+        "current_area": current_area,
+        "new_area": new_area,
+    }
+    return params
+
+
+def cifti_resample_dconn_memory_cerebellum_area_metrics_cargs(
+    params: CiftiResampleDconnMemoryCerebellumAreaMetricsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cerebellum-area-metrics")
+    cargs.append(execution.input_file(params.get("current_area")))
+    cargs.append(execution.input_file(params.get("new_area")))
+    return cargs
+
+
+def cifti_resample_dconn_memory_cerebellum_spheres_params(
+    current_sphere: InputPathType,
+    new_sphere: InputPathType,
+    cerebellum_area_surfs: CiftiResampleDconnMemoryCerebellumAreaSurfsParameters | None = None,
+    cerebellum_area_metrics: CiftiResampleDconnMemoryCerebellumAreaMetricsParameters | None = None,
+) -> CiftiResampleDconnMemoryCerebellumSpheresParameters:
+    """
+    Build parameters.
+    
+    Args:
+        current_sphere: a sphere with the same mesh as the current cerebellum\
+            surface.
+        new_sphere: a sphere with the new cerebellum mesh that is in register\
+            with the current sphere.
+        cerebellum_area_surfs: specify cerebellum surfaces to do vertex area\
+            correction based on.
+        cerebellum_area_metrics: specify cerebellum vertex area metrics to do\
+            area correction based on.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cerebellum_spheres",
+        "current_sphere": current_sphere,
+        "new_sphere": new_sphere,
+    }
+    if cerebellum_area_surfs is not None:
+        params["cerebellum_area_surfs"] = cerebellum_area_surfs
+    if cerebellum_area_metrics is not None:
+        params["cerebellum_area_metrics"] = cerebellum_area_metrics
+    return params
+
+
+def cifti_resample_dconn_memory_cerebellum_spheres_cargs(
+    params: CiftiResampleDconnMemoryCerebellumSpheresParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cerebellum-spheres")
+    cargs.append(execution.input_file(params.get("current_sphere")))
+    cargs.append(execution.input_file(params.get("new_sphere")))
+    if params.get("cerebellum_area_surfs") is not None:
+        cargs.extend(dyn_cargs(params.get("cerebellum_area_surfs")["__STYXTYPE__"])(params.get("cerebellum_area_surfs"), execution))
+    if params.get("cerebellum_area_metrics") is not None:
+        cargs.extend(dyn_cargs(params.get("cerebellum_area_metrics")["__STYXTYPE__"])(params.get("cerebellum_area_metrics"), execution))
+    return cargs
 
 
 class CiftiResampleDconnMemoryOutputs(typing.NamedTuple):
@@ -547,6 +927,186 @@ class CiftiResampleDconnMemoryOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
+def cifti_resample_dconn_memory_params(
+    cifti_in: InputPathType,
+    cifti_template: InputPathType,
+    template_direction: str,
+    surface_method: str,
+    volume_method: str,
+    cifti_out: str,
+    opt_surface_largest: bool = False,
+    volume_predilate: CiftiResampleDconnMemoryVolumePredilateParameters | None = None,
+    surface_postdilate: CiftiResampleDconnMemorySurfacePostdilateParameters | None = None,
+    affine: CiftiResampleDconnMemoryAffineParameters | None = None,
+    warpfield: CiftiResampleDconnMemoryWarpfieldParameters | None = None,
+    left_spheres: CiftiResampleDconnMemoryLeftSpheresParameters | None = None,
+    right_spheres: CiftiResampleDconnMemoryRightSpheresParameters | None = None,
+    cerebellum_spheres: CiftiResampleDconnMemoryCerebellumSpheresParameters | None = None,
+) -> CiftiResampleDconnMemoryParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_in: the cifti file to resample.
+        cifti_template: a cifti file containing the cifti space to resample to.
+        template_direction: the direction of the template to use as the\
+            resampling space, ROW or COLUMN.
+        surface_method: specify a surface resampling method.
+        volume_method: specify a volume interpolation method.
+        cifti_out: the output cifti file.
+        opt_surface_largest: use largest weight instead of weighted average\
+            when doing surface resampling.
+        volume_predilate: dilate the volume components before resampling.
+        surface_postdilate: dilate the surface components after resampling.
+        affine: use an affine transformation on the volume components.
+        warpfield: use a warpfield on the volume components.
+        left_spheres: specify spheres for left surface resampling.
+        right_spheres: specify spheres for right surface resampling.
+        cerebellum_spheres: specify spheres for cerebellum surface resampling.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-resample-dconn-memory",
+        "cifti_in": cifti_in,
+        "cifti_template": cifti_template,
+        "template_direction": template_direction,
+        "surface_method": surface_method,
+        "volume_method": volume_method,
+        "cifti_out": cifti_out,
+        "opt_surface_largest": opt_surface_largest,
+    }
+    if volume_predilate is not None:
+        params["volume_predilate"] = volume_predilate
+    if surface_postdilate is not None:
+        params["surface_postdilate"] = surface_postdilate
+    if affine is not None:
+        params["affine"] = affine
+    if warpfield is not None:
+        params["warpfield"] = warpfield
+    if left_spheres is not None:
+        params["left_spheres"] = left_spheres
+    if right_spheres is not None:
+        params["right_spheres"] = right_spheres
+    if cerebellum_spheres is not None:
+        params["cerebellum_spheres"] = cerebellum_spheres
+    return params
+
+
+def cifti_resample_dconn_memory_cargs(
+    params: CiftiResampleDconnMemoryParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-resample-dconn-memory")
+    cargs.append(execution.input_file(params.get("cifti_in")))
+    cargs.append(execution.input_file(params.get("cifti_template")))
+    cargs.append(params.get("template_direction"))
+    cargs.append(params.get("surface_method"))
+    cargs.append(params.get("volume_method"))
+    cargs.append(params.get("cifti_out"))
+    if params.get("opt_surface_largest"):
+        cargs.append("-surface-largest")
+    if params.get("volume_predilate") is not None:
+        cargs.extend(dyn_cargs(params.get("volume_predilate")["__STYXTYPE__"])(params.get("volume_predilate"), execution))
+    if params.get("surface_postdilate") is not None:
+        cargs.extend(dyn_cargs(params.get("surface_postdilate")["__STYXTYPE__"])(params.get("surface_postdilate"), execution))
+    if params.get("affine") is not None:
+        cargs.extend(dyn_cargs(params.get("affine")["__STYXTYPE__"])(params.get("affine"), execution))
+    if params.get("warpfield") is not None:
+        cargs.extend(dyn_cargs(params.get("warpfield")["__STYXTYPE__"])(params.get("warpfield"), execution))
+    if params.get("left_spheres") is not None:
+        cargs.extend(dyn_cargs(params.get("left_spheres")["__STYXTYPE__"])(params.get("left_spheres"), execution))
+    if params.get("right_spheres") is not None:
+        cargs.extend(dyn_cargs(params.get("right_spheres")["__STYXTYPE__"])(params.get("right_spheres"), execution))
+    if params.get("cerebellum_spheres") is not None:
+        cargs.extend(dyn_cargs(params.get("cerebellum_spheres")["__STYXTYPE__"])(params.get("cerebellum_spheres"), execution))
+    return cargs
+
+
+def cifti_resample_dconn_memory_outputs(
+    params: CiftiResampleDconnMemoryParameters,
+    execution: Execution,
+) -> CiftiResampleDconnMemoryOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiResampleDconnMemoryOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_resample_dconn_memory_execute(
+    params: CiftiResampleDconnMemoryParameters,
+    execution: Execution,
+) -> CiftiResampleDconnMemoryOutputs:
+    """
+    Use lots of memory to resample dconn.
+    
+    This command does the same thing as running -cifti-resample twice, but uses
+    memory up to approximately 2x the size that the intermediate file would be.
+    This is because the intermediate dconn is kept in memory, rather than
+    written to disk, and the components before and after resampling/dilation
+    have to be in memory at the same time during the relevant computation. The
+    <template-direction> argument should usually be COLUMN, as dtseries,
+    dscalar, and dlabel all have brainordinates on that direction. If spheres
+    are not specified for a surface structure which exists in the cifti files,
+    its data is copied without resampling or dilation. Dilation is done with the
+    'nearest' method, and is done on <new-sphere> for surface data. Volume
+    components are padded before dilation so that dilation doesn't run into the
+    edge of the component bounding box.
+    
+    To get the v1.3.2 and earlier behavior of weighted dilation, specify
+    exponent of 2 for surface and volume, and -legacy-cutoff for both surface
+    and volume.
+    
+    The <volume-method> argument must be one of the following:
+    
+    CUBIC
+    ENCLOSING_VOXEL
+    TRILINEAR
+    
+    The <surface-method> argument must be one of the following:
+    
+    ADAP_BARY_AREA
+    BARYCENTRIC
+    .
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiResampleDconnMemoryOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_resample_dconn_memory_cargs(params, execution)
+    ret = cifti_resample_dconn_memory_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def cifti_resample_dconn_memory(
     cifti_in: InputPathType,
     cifti_template: InputPathType,
@@ -555,13 +1115,13 @@ def cifti_resample_dconn_memory(
     volume_method: str,
     cifti_out: str,
     opt_surface_largest: bool = False,
-    volume_predilate: CiftiResampleDconnMemoryVolumePredilate | None = None,
-    surface_postdilate: CiftiResampleDconnMemorySurfacePostdilate | None = None,
-    affine: CiftiResampleDconnMemoryAffine | None = None,
-    warpfield: CiftiResampleDconnMemoryWarpfield | None = None,
-    left_spheres: CiftiResampleDconnMemoryLeftSpheres | None = None,
-    right_spheres: CiftiResampleDconnMemoryRightSpheres | None = None,
-    cerebellum_spheres: CiftiResampleDconnMemoryCerebellumSpheres | None = None,
+    volume_predilate: CiftiResampleDconnMemoryVolumePredilateParameters | None = None,
+    surface_postdilate: CiftiResampleDconnMemorySurfacePostdilateParameters | None = None,
+    affine: CiftiResampleDconnMemoryAffineParameters | None = None,
+    warpfield: CiftiResampleDconnMemoryWarpfieldParameters | None = None,
+    left_spheres: CiftiResampleDconnMemoryLeftSpheresParameters | None = None,
+    right_spheres: CiftiResampleDconnMemoryRightSpheresParameters | None = None,
+    cerebellum_spheres: CiftiResampleDconnMemoryCerebellumSpheresParameters | None = None,
     runner: Runner | None = None,
 ) -> CiftiResampleDconnMemoryOutputs:
     """
@@ -623,57 +1183,29 @@ def cifti_resample_dconn_memory(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_RESAMPLE_DCONN_MEMORY_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-resample-dconn-memory")
-    cargs.append(execution.input_file(cifti_in))
-    cargs.append(execution.input_file(cifti_template))
-    cargs.append(template_direction)
-    cargs.append(surface_method)
-    cargs.append(volume_method)
-    cargs.append(cifti_out)
-    if opt_surface_largest:
-        cargs.append("-surface-largest")
-    if volume_predilate is not None:
-        cargs.extend(volume_predilate.run(execution))
-    if surface_postdilate is not None:
-        cargs.extend(surface_postdilate.run(execution))
-    if affine is not None:
-        cargs.extend(affine.run(execution))
-    if warpfield is not None:
-        cargs.extend(warpfield.run(execution))
-    if left_spheres is not None:
-        cargs.extend(left_spheres.run(execution))
-    if right_spheres is not None:
-        cargs.extend(right_spheres.run(execution))
-    if cerebellum_spheres is not None:
-        cargs.extend(cerebellum_spheres.run(execution))
-    ret = CiftiResampleDconnMemoryOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_resample_dconn_memory_params(cifti_in=cifti_in, cifti_template=cifti_template, template_direction=template_direction, surface_method=surface_method, volume_method=volume_method, cifti_out=cifti_out, opt_surface_largest=opt_surface_largest, volume_predilate=volume_predilate, surface_postdilate=surface_postdilate, affine=affine, warpfield=warpfield, left_spheres=left_spheres, right_spheres=right_spheres, cerebellum_spheres=cerebellum_spheres)
+    return cifti_resample_dconn_memory_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_RESAMPLE_DCONN_MEMORY_METADATA",
-    "CiftiResampleDconnMemoryAffine",
-    "CiftiResampleDconnMemoryCerebellumAreaMetrics",
-    "CiftiResampleDconnMemoryCerebellumAreaSurfs",
-    "CiftiResampleDconnMemoryCerebellumSpheres",
-    "CiftiResampleDconnMemoryFlirt",
-    "CiftiResampleDconnMemoryLeftAreaMetrics",
-    "CiftiResampleDconnMemoryLeftAreaSurfs",
-    "CiftiResampleDconnMemoryLeftSpheres",
     "CiftiResampleDconnMemoryOutputs",
-    "CiftiResampleDconnMemoryRightAreaMetrics",
-    "CiftiResampleDconnMemoryRightAreaSurfs",
-    "CiftiResampleDconnMemoryRightSpheres",
-    "CiftiResampleDconnMemorySurfacePostdilate",
-    "CiftiResampleDconnMemoryVolumePredilate",
-    "CiftiResampleDconnMemoryWarpfield",
-    "CiftiResampleDconnMemoryWeighted",
-    "CiftiResampleDconnMemoryWeighted_",
     "cifti_resample_dconn_memory",
+    "cifti_resample_dconn_memory_affine_params",
+    "cifti_resample_dconn_memory_cerebellum_area_metrics_params",
+    "cifti_resample_dconn_memory_cerebellum_area_surfs_params",
+    "cifti_resample_dconn_memory_cerebellum_spheres_params",
+    "cifti_resample_dconn_memory_flirt_params",
+    "cifti_resample_dconn_memory_left_area_metrics_params",
+    "cifti_resample_dconn_memory_left_area_surfs_params",
+    "cifti_resample_dconn_memory_left_spheres_params",
+    "cifti_resample_dconn_memory_params",
+    "cifti_resample_dconn_memory_right_area_metrics_params",
+    "cifti_resample_dconn_memory_right_area_surfs_params",
+    "cifti_resample_dconn_memory_right_spheres_params",
+    "cifti_resample_dconn_memory_surface_postdilate_params",
+    "cifti_resample_dconn_memory_volume_predilate_params",
+    "cifti_resample_dconn_memory_warpfield_params",
+    "cifti_resample_dconn_memory_weighted_params",
+    "cifti_resample_dconn_memory_weighted_params_",
 ]

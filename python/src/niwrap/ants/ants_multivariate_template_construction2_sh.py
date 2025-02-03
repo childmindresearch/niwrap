@@ -12,6 +12,44 @@ ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsMultivariateTemplateConstruction2ShParameters = typing.TypedDict('AntsMultivariateTemplateConstruction2ShParameters', {
+    "__STYX_TYPE__": typing.Literal["antsMultivariateTemplateConstruction2.sh"],
+    "input": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "antsMultivariateTemplateConstruction2.sh": ants_multivariate_template_construction2_sh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "antsMultivariateTemplateConstruction2.sh": ants_multivariate_template_construction2_sh_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsMultivariateTemplateConstruction2ShOutputs(typing.NamedTuple):
@@ -22,6 +60,90 @@ class AntsMultivariateTemplateConstruction2ShOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     template: OutputPathType
     """The output multivariate template."""
+
+
+def ants_multivariate_template_construction2_sh_params(
+    input_: str,
+) -> AntsMultivariateTemplateConstruction2ShParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_: Options for setting up and running the multivariate template\
+            construction process.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "antsMultivariateTemplateConstruction2.sh",
+        "input": input_,
+    }
+    return params
+
+
+def ants_multivariate_template_construction2_sh_cargs(
+    params: AntsMultivariateTemplateConstruction2ShParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("antsMultivariateTemplateConstruction2.sh")
+    cargs.append(params.get("input"))
+    return cargs
+
+
+def ants_multivariate_template_construction2_sh_outputs(
+    params: AntsMultivariateTemplateConstruction2ShParameters,
+    execution: Execution,
+) -> AntsMultivariateTemplateConstruction2ShOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsMultivariateTemplateConstruction2ShOutputs(
+        root=execution.output_file("."),
+        template=execution.output_file("<output-prefix>Template.nii.gz"),
+    )
+    return ret
+
+
+def ants_multivariate_template_construction2_sh_execute(
+    params: AntsMultivariateTemplateConstruction2ShParameters,
+    execution: Execution,
+) -> AntsMultivariateTemplateConstruction2ShOutputs:
+    """
+    The antsMultivariateTemplateConstruction2.sh script is part of the Advanced
+    Normalization Tools (ANTs) suite. It is used for constructing multivariate
+    templates.
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsMultivariateTemplateConstruction2ShOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ants_multivariate_template_construction2_sh_cargs(params, execution)
+    ret = ants_multivariate_template_construction2_sh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ants_multivariate_template_construction2_sh(
@@ -46,19 +168,13 @@ def ants_multivariate_template_construction2_sh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA)
-    cargs = []
-    cargs.append("antsMultivariateTemplateConstruction2.sh")
-    cargs.append(input_)
-    ret = AntsMultivariateTemplateConstruction2ShOutputs(
-        root=execution.output_file("."),
-        template=execution.output_file("<output-prefix>Template.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = ants_multivariate_template_construction2_sh_params(input_=input_)
+    return ants_multivariate_template_construction2_sh_execute(params, execution)
 
 
 __all__ = [
     "ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA",
     "AntsMultivariateTemplateConstruction2ShOutputs",
     "ants_multivariate_template_construction2_sh",
+    "ants_multivariate_template_construction2_sh_params",
 ]

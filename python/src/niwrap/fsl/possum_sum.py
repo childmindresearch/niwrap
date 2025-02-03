@@ -12,6 +12,47 @@ POSSUM_SUM_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+PossumSumParameters = typing.TypedDict('PossumSumParameters', {
+    "__STYX_TYPE__": typing.Literal["possum_sum"],
+    "input_signal": InputPathType,
+    "output_signal": str,
+    "num_processors": typing.NotRequired[int | None],
+    "verbose_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "possum_sum": possum_sum_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "possum_sum": possum_sum_outputs,
+    }
+    return vt.get(t)
 
 
 class PossumSumOutputs(typing.NamedTuple):
@@ -22,6 +63,112 @@ class PossumSumOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Sum of all input signals from processors"""
+
+
+def possum_sum_params(
+    input_signal: InputPathType,
+    output_signal: str,
+    num_processors: int | None = None,
+    verbose_flag: bool = False,
+) -> PossumSumParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_signal: Input signal for one processor (possum output matrix).
+        output_signal: Output signal: sum of all the processors (possum matrix\
+            form).
+        num_processors: Number of processors.
+        verbose_flag: Switch on diagnostic messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "possum_sum",
+        "input_signal": input_signal,
+        "output_signal": output_signal,
+        "verbose_flag": verbose_flag,
+    }
+    if num_processors is not None:
+        params["num_processors"] = num_processors
+    return params
+
+
+def possum_sum_cargs(
+    params: PossumSumParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("possum_sum")
+    cargs.extend([
+        "-i",
+        execution.input_file(params.get("input_signal"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_signal")
+    ])
+    if params.get("num_processors") is not None:
+        cargs.extend([
+            "-n",
+            str(params.get("num_processors"))
+        ])
+    if params.get("verbose_flag"):
+        cargs.append("-v")
+    return cargs
+
+
+def possum_sum_outputs(
+    params: PossumSumParameters,
+    execution: Execution,
+) -> PossumSumOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PossumSumOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_signal")),
+    )
+    return ret
+
+
+def possum_sum_execute(
+    params: PossumSumParameters,
+    execution: Execution,
+) -> PossumSumOutputs:
+    """
+    Sum of output signals from multiple possum processors.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PossumSumOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = possum_sum_cargs(params, execution)
+    ret = possum_sum_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def possum_sum(
@@ -50,33 +197,13 @@ def possum_sum(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_SUM_METADATA)
-    cargs = []
-    cargs.append("possum_sum")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_signal)
-    ])
-    cargs.extend([
-        "-o",
-        output_signal
-    ])
-    if num_processors is not None:
-        cargs.extend([
-            "-n",
-            str(num_processors)
-        ])
-    if verbose_flag:
-        cargs.append("-v")
-    ret = PossumSumOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_signal),
-    )
-    execution.run(cargs)
-    return ret
+    params = possum_sum_params(input_signal=input_signal, output_signal=output_signal, num_processors=num_processors, verbose_flag=verbose_flag)
+    return possum_sum_execute(params, execution)
 
 
 __all__ = [
     "POSSUM_SUM_METADATA",
     "PossumSumOutputs",
     "possum_sum",
+    "possum_sum_params",
 ]

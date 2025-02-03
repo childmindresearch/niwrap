@@ -12,14 +12,122 @@ INVFEATREG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+InvfeatregParameters = typing.TypedDict('InvfeatregParameters', {
+    "__STYX_TYPE__": typing.Literal["invfeatreg"],
+    "feat_directory": str,
+})
 
 
-class InvfeatregOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `invfeatreg(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "invfeatreg": invfeatreg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def invfeatreg_params(
+    feat_directory: str,
+) -> InvfeatregParameters:
+    """
+    Build parameters.
+    
+    Args:
+        feat_directory: FEAT Directory.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "invfeatreg",
+        "feat_directory": feat_directory,
+    }
+    return params
+
+
+def invfeatreg_cargs(
+    params: InvfeatregParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("invfeatreg")
+    cargs.append(params.get("feat_directory"))
+    return cargs
+
+
+def invfeatreg_outputs(
+    params: InvfeatregParameters,
+    execution: Execution,
+) -> InvfeatregOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = InvfeatregOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def invfeatreg_execute(
+    params: InvfeatregParameters,
+    execution: Execution,
+) -> InvfeatregOutputs:
+    """
+    Inverse warp image using FNIRT.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `InvfeatregOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = invfeatreg_cargs(params, execution)
+    ret = invfeatreg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def invfeatreg(
@@ -41,18 +149,12 @@ def invfeatreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(INVFEATREG_METADATA)
-    cargs = []
-    cargs.append("invfeatreg")
-    cargs.append(feat_directory)
-    ret = InvfeatregOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = invfeatreg_params(feat_directory=feat_directory)
+    return invfeatreg_execute(params, execution)
 
 
 __all__ = [
     "INVFEATREG_METADATA",
-    "InvfeatregOutputs",
     "invfeatreg",
+    "invfeatreg_params",
 ]

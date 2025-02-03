@@ -12,6 +12,50 @@ MRIS_DIVIDE_PARCELLATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisDivideParcellationParameters = typing.TypedDict('MrisDivideParcellationParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_divide_parcellation"],
+    "subject": str,
+    "hemi": str,
+    "sourceannot": InputPathType,
+    "splitfile_or_areathresh": str,
+    "outannot": str,
+    "scale": typing.NotRequired[float | None],
+    "label_name": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_divide_parcellation": mris_divide_parcellation_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_divide_parcellation": mris_divide_parcellation_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisDivideParcellationOutputs(typing.NamedTuple):
@@ -22,6 +66,123 @@ class MrisDivideParcellationOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outannot_file: OutputPathType
     """The resulting annotation file with divided labels."""
+
+
+def mris_divide_parcellation_params(
+    subject: str,
+    hemi: str,
+    sourceannot: InputPathType,
+    splitfile_or_areathresh: str,
+    outannot: str,
+    scale: float | None = None,
+    label_name: str | None = None,
+) -> MrisDivideParcellationParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: The subject identifier.
+        hemi: The hemisphere identifier, e.g., left (lh) or right (rh).
+        sourceannot: The source annotation file.
+        splitfile_or_areathresh: Either a splitfile specifying divisions or an\
+            area threshold in mm^2.
+        outannot: The output annotation file name.
+        scale: Specify offset scaling for rgb values (default=20).
+        label_name: Only process the label <label name> (not implemented yet).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_divide_parcellation",
+        "subject": subject,
+        "hemi": hemi,
+        "sourceannot": sourceannot,
+        "splitfile_or_areathresh": splitfile_or_areathresh,
+        "outannot": outannot,
+    }
+    if scale is not None:
+        params["scale"] = scale
+    if label_name is not None:
+        params["label_name"] = label_name
+    return params
+
+
+def mris_divide_parcellation_cargs(
+    params: MrisDivideParcellationParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_divide_parcellation")
+    cargs.append(params.get("subject"))
+    cargs.append(params.get("hemi"))
+    cargs.append(execution.input_file(params.get("sourceannot")))
+    cargs.append(params.get("splitfile_or_areathresh"))
+    cargs.append(params.get("outannot"))
+    if params.get("scale") is not None:
+        cargs.extend([
+            "-scale",
+            str(params.get("scale"))
+        ])
+    if params.get("label_name") is not None:
+        cargs.extend([
+            "-l",
+            params.get("label_name")
+        ])
+    return cargs
+
+
+def mris_divide_parcellation_outputs(
+    params: MrisDivideParcellationParameters,
+    execution: Execution,
+) -> MrisDivideParcellationOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisDivideParcellationOutputs(
+        root=execution.output_file("."),
+        outannot_file=execution.output_file(params.get("outannot")),
+    )
+    return ret
+
+
+def mris_divide_parcellation_execute(
+    params: MrisDivideParcellationParameters,
+    execution: Execution,
+) -> MrisDivideParcellationOutputs:
+    """
+    Divides one or more parcellations into divisions perpendicular to the long axis
+    of the label.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisDivideParcellationOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_divide_parcellation_cargs(params, execution)
+    ret = mris_divide_parcellation_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_divide_parcellation(
@@ -57,33 +218,13 @@ def mris_divide_parcellation(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DIVIDE_PARCELLATION_METADATA)
-    cargs = []
-    cargs.append("mris_divide_parcellation")
-    cargs.append(subject)
-    cargs.append(hemi)
-    cargs.append(execution.input_file(sourceannot))
-    cargs.append(splitfile_or_areathresh)
-    cargs.append(outannot)
-    if scale is not None:
-        cargs.extend([
-            "-scale",
-            str(scale)
-        ])
-    if label_name is not None:
-        cargs.extend([
-            "-l",
-            label_name
-        ])
-    ret = MrisDivideParcellationOutputs(
-        root=execution.output_file("."),
-        outannot_file=execution.output_file(outannot),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_divide_parcellation_params(subject=subject, hemi=hemi, sourceannot=sourceannot, splitfile_or_areathresh=splitfile_or_areathresh, outannot=outannot, scale=scale, label_name=label_name)
+    return mris_divide_parcellation_execute(params, execution)
 
 
 __all__ = [
     "MRIS_DIVIDE_PARCELLATION_METADATA",
     "MrisDivideParcellationOutputs",
     "mris_divide_parcellation",
+    "mris_divide_parcellation_params",
 ]

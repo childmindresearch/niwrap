@@ -12,14 +12,180 @@ MRI_CNR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriCnrParameters = typing.TypedDict('MriCnrParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_cnr"],
+    "surf_dir": str,
+    "volume_files": list[InputPathType],
+    "slope": typing.NotRequired[list[str] | None],
+    "logfile": typing.NotRequired[str | None],
+    "labels": typing.NotRequired[list[str] | None],
+    "print_total_cnr": bool,
+    "version_flag": bool,
+    "help_flag": bool,
+})
 
 
-class MriCnrOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_cnr(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_cnr": mri_cnr_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_cnr_params(
+    surf_dir: str,
+    volume_files: list[InputPathType],
+    slope: list[str] | None = None,
+    logfile: str | None = None,
+    labels: list[str] | None = None,
+    print_total_cnr: bool = False,
+    version_flag: bool = False,
+    help_flag: bool = False,
+) -> MriCnrParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surf_dir: Directory containing surface data.
+        volume_files: Volumes to process.
+        slope: Compute slope and write to files labeled with slope_fname.\
+            Requires four additional values: dist_in, dist_out, step_in, and\
+            step_out.
+        logfile: Log CNR to specified logfile. Will contain 8 values in a\
+            specific order: gray_white_cnr, gray_csf_cnr, white_mean, gray_mean,\
+            csf_mean, sqrt(white_var), sqrt(gray_var), sqrt(csf_var).
+        labels: Read hemisphere labels from specified left and right hemisphere\
+            files.
+        print_total_cnr: Print only the total CNR to stdout.
+        version_flag: Print software version information and quit.
+        help_flag: Print usage information and quit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_cnr",
+        "surf_dir": surf_dir,
+        "volume_files": volume_files,
+        "print_total_cnr": print_total_cnr,
+        "version_flag": version_flag,
+        "help_flag": help_flag,
+    }
+    if slope is not None:
+        params["slope"] = slope
+    if logfile is not None:
+        params["logfile"] = logfile
+    if labels is not None:
+        params["labels"] = labels
+    return params
+
+
+def mri_cnr_cargs(
+    params: MriCnrParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_cnr")
+    cargs.append(params.get("surf_dir"))
+    cargs.extend([execution.input_file(f) for f in params.get("volume_files")])
+    if params.get("slope") is not None:
+        cargs.extend([
+            "-s",
+            *params.get("slope")
+        ])
+    if params.get("logfile") is not None:
+        cargs.extend([
+            "-l",
+            params.get("logfile")
+        ])
+    if params.get("labels") is not None:
+        cargs.extend([
+            "label",
+            *params.get("labels")
+        ])
+    if params.get("print_total_cnr"):
+        cargs.append("-t")
+    if params.get("version_flag"):
+        cargs.append("-version")
+    if params.get("help_flag"):
+        cargs.append("-help")
+    return cargs
+
+
+def mri_cnr_outputs(
+    params: MriCnrParameters,
+    execution: Execution,
+) -> MriCnrOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriCnrOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_cnr_execute(
+    params: MriCnrParameters,
+    execution: Execution,
+) -> MriCnrOutputs:
+    """
+    Compute the gray/white/csf contrast-to-noise ratio for volumes using FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriCnrOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_cnr_cargs(params, execution)
+    ret = mri_cnr_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_cnr(
@@ -58,46 +224,14 @@ def mri_cnr(
     Returns:
         NamedTuple of outputs (described in `MriCnrOutputs`).
     """
-    if slope is not None and (len(slope) != 5): 
-        raise ValueError(f"Length of 'slope' must be 5 but was {len(slope)}")
-    if labels is not None and (len(labels) != 2): 
-        raise ValueError(f"Length of 'labels' must be 2 but was {len(labels)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CNR_METADATA)
-    cargs = []
-    cargs.append("mri_cnr")
-    cargs.append(surf_dir)
-    cargs.extend([execution.input_file(f) for f in volume_files])
-    if slope is not None:
-        cargs.extend([
-            "-s",
-            *slope
-        ])
-    if logfile is not None:
-        cargs.extend([
-            "-l",
-            logfile
-        ])
-    if labels is not None:
-        cargs.extend([
-            "label",
-            *labels
-        ])
-    if print_total_cnr:
-        cargs.append("-t")
-    if version_flag:
-        cargs.append("-version")
-    if help_flag:
-        cargs.append("-help")
-    ret = MriCnrOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_cnr_params(surf_dir=surf_dir, volume_files=volume_files, slope=slope, logfile=logfile, labels=labels, print_total_cnr=print_total_cnr, version_flag=version_flag, help_flag=help_flag)
+    return mri_cnr_execute(params, execution)
 
 
 __all__ = [
     "MRI_CNR_METADATA",
-    "MriCnrOutputs",
     "mri_cnr",
+    "mri_cnr_params",
 ]

@@ -12,6 +12,49 @@ FSR_COREG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsrCoregParameters = typing.TypedDict('FsrCoregParameters', {
+    "__STYX_TYPE__": typing.Literal["fsr-coreg"],
+    "import_dir": str,
+    "reference_mode": str,
+    "num_threads": typing.NotRequired[float | None],
+    "force_update": bool,
+    "output_dir": typing.NotRequired[str | None],
+    "expert_options": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fsr-coreg": fsr_coreg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fsr-coreg": fsr_coreg_outputs,
+    }
+    return vt.get(t)
 
 
 class FsrCoregOutputs(typing.NamedTuple):
@@ -24,6 +67,131 @@ class FsrCoregOutputs(typing.NamedTuple):
     """Volume produced for each mode in alignment with the reference mode"""
     registration_transform: OutputPathType | None
     """Registration transform file for mode to reference mode"""
+
+
+def fsr_coreg_params(
+    import_dir: str,
+    reference_mode: str,
+    num_threads: float | None = None,
+    force_update: bool = False,
+    output_dir: str | None = None,
+    expert_options: InputPathType | None = None,
+) -> FsrCoregParameters:
+    """
+    Build parameters.
+    
+    Args:
+        import_dir: Data directory created by fsr-import.
+        reference_mode: Mode to use as a reference (all modes register to this\
+            mode).
+        num_threads: Number of threads to use.
+        force_update: Force update of files regardless of time stamp.
+        output_dir: Set the output directory, default is importdir.
+        expert_options: Expert options file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsr-coreg",
+        "import_dir": import_dir,
+        "reference_mode": reference_mode,
+        "force_update": force_update,
+    }
+    if num_threads is not None:
+        params["num_threads"] = num_threads
+    if output_dir is not None:
+        params["output_dir"] = output_dir
+    if expert_options is not None:
+        params["expert_options"] = expert_options
+    return params
+
+
+def fsr_coreg_cargs(
+    params: FsrCoregParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsr-coreg")
+    cargs.extend([
+        "--i",
+        params.get("import_dir")
+    ])
+    cargs.extend([
+        "--ref",
+        params.get("reference_mode")
+    ])
+    if params.get("num_threads") is not None:
+        cargs.extend([
+            "--threads",
+            str(params.get("num_threads"))
+        ])
+    if params.get("force_update"):
+        cargs.append("--force-update")
+    if params.get("output_dir") is not None:
+        cargs.extend([
+            "--o",
+            params.get("output_dir")
+        ])
+    if params.get("expert_options") is not None:
+        cargs.extend([
+            "--expert",
+            execution.input_file(params.get("expert_options"))
+        ])
+    return cargs
+
+
+def fsr_coreg_outputs(
+    params: FsrCoregParameters,
+    execution: Execution,
+) -> FsrCoregOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsrCoregOutputs(
+        root=execution.output_file("."),
+        aligned_volume=execution.output_file(params.get("output_dir") + "/mode.mgz") if (params.get("output_dir") is not None) else None,
+        registration_transform=execution.output_file(params.get("output_dir") + "/mode.reg-to-ref.lta") if (params.get("output_dir") is not None) else None,
+    )
+    return ret
+
+
+def fsr_coreg_execute(
+    params: FsrCoregParameters,
+    execution: Execution,
+) -> FsrCoregOutputs:
+    """
+    Co-registers input data in preparation for FreeSurfer analysis.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsrCoregOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsr_coreg_cargs(params, execution)
+    ret = fsr_coreg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsr_coreg(
@@ -56,44 +224,13 @@ def fsr_coreg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSR_COREG_METADATA)
-    cargs = []
-    cargs.append("fsr-coreg")
-    cargs.extend([
-        "--i",
-        import_dir
-    ])
-    cargs.extend([
-        "--ref",
-        reference_mode
-    ])
-    if num_threads is not None:
-        cargs.extend([
-            "--threads",
-            str(num_threads)
-        ])
-    if force_update:
-        cargs.append("--force-update")
-    if output_dir is not None:
-        cargs.extend([
-            "--o",
-            output_dir
-        ])
-    if expert_options is not None:
-        cargs.extend([
-            "--expert",
-            execution.input_file(expert_options)
-        ])
-    ret = FsrCoregOutputs(
-        root=execution.output_file("."),
-        aligned_volume=execution.output_file(output_dir + "/mode.mgz") if (output_dir is not None) else None,
-        registration_transform=execution.output_file(output_dir + "/mode.reg-to-ref.lta") if (output_dir is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = fsr_coreg_params(import_dir=import_dir, reference_mode=reference_mode, num_threads=num_threads, force_update=force_update, output_dir=output_dir, expert_options=expert_options)
+    return fsr_coreg_execute(params, execution)
 
 
 __all__ = [
     "FSR_COREG_METADATA",
     "FsrCoregOutputs",
     "fsr_coreg",
+    "fsr_coreg_params",
 ]

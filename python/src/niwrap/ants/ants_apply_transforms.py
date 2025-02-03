@@ -12,11 +12,154 @@ ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
+AntsApplyTransformsWarpedOutputParameters = typing.TypedDict('AntsApplyTransformsWarpedOutputParameters', {
+    "__STYX_TYPE__": typing.Literal["warpedOutput"],
+    "warpedOutputFileName": str,
+})
+AntsApplyTransformsCompositeDisplacementFieldOutputParameters = typing.TypedDict('AntsApplyTransformsCompositeDisplacementFieldOutputParameters', {
+    "__STYX_TYPE__": typing.Literal["compositeDisplacementFieldOutput"],
+    "compositeDisplacementField": str,
+    "printOutCompositeWarpFile": typing.NotRequired[typing.Literal[0, 1] | None],
+})
+AntsApplyTransformsGenericAffineTransformOutputParameters = typing.TypedDict('AntsApplyTransformsGenericAffineTransformOutputParameters', {
+    "__STYX_TYPE__": typing.Literal["genericAffineTransformOutput"],
+    "genericAffineTransformFile": str,
+    "calculateInverse": typing.NotRequired[typing.Literal[0, 1] | None],
+})
+AntsApplyTransformsLinearParameters = typing.TypedDict('AntsApplyTransformsLinearParameters', {
+    "__STYX_TYPE__": typing.Literal["linear"],
+})
+AntsApplyTransformsNearestNeighborParameters = typing.TypedDict('AntsApplyTransformsNearestNeighborParameters', {
+    "__STYX_TYPE__": typing.Literal["nearestNeighbor"],
+})
+AntsApplyTransformsMultiLabelnoparamsParameters = typing.TypedDict('AntsApplyTransformsMultiLabelnoparamsParameters', {
+    "__STYX_TYPE__": typing.Literal["multiLabelnoparams"],
+})
+AntsApplyTransformsSigmaParameters = typing.TypedDict('AntsApplyTransformsSigmaParameters', {
+    "__STYX_TYPE__": typing.Literal["sigma"],
+    "sigma": float,
+})
+AntsApplyTransformsAlphaParameters = typing.TypedDict('AntsApplyTransformsAlphaParameters', {
+    "__STYX_TYPE__": typing.Literal["alpha"],
+    "alpha": float,
+})
+AntsApplyTransformsParamParameters = typing.TypedDict('AntsApplyTransformsParamParameters', {
+    "__STYX_TYPE__": typing.Literal["params"],
+    "params": list[typing.Union[AntsApplyTransformsSigmaParameters, AntsApplyTransformsAlphaParameters]],
+})
+AntsApplyTransformsMultiLabelParameters = typing.TypedDict('AntsApplyTransformsMultiLabelParameters', {
+    "__STYX_TYPE__": typing.Literal["multiLabel"],
+    "params": AntsApplyTransformsParamParameters,
+})
+AntsApplyTransformsGaussianParameters = typing.TypedDict('AntsApplyTransformsGaussianParameters', {
+    "__STYX_TYPE__": typing.Literal["gaussian"],
+    "sigma": typing.NotRequired[float | None],
+    "alpha": typing.NotRequired[float | None],
+})
+AntsApplyTransformsBsplineParameters = typing.TypedDict('AntsApplyTransformsBsplineParameters', {
+    "__STYX_TYPE__": typing.Literal["bspline"],
+    "order": typing.NotRequired[int | None],
+})
+AntsApplyTransformsCosineWindowedSincParameters = typing.TypedDict('AntsApplyTransformsCosineWindowedSincParameters', {
+    "__STYX_TYPE__": typing.Literal["cosineWindowedSinc"],
+})
+AntsApplyTransformsWelchWindowedSincParameters = typing.TypedDict('AntsApplyTransformsWelchWindowedSincParameters', {
+    "__STYX_TYPE__": typing.Literal["welchWindowedSinc"],
+})
+AntsApplyTransformsHammingWindowedSincParameters = typing.TypedDict('AntsApplyTransformsHammingWindowedSincParameters', {
+    "__STYX_TYPE__": typing.Literal["hammingWindowedSinc"],
+})
+AntsApplyTransformsLanczosWindowedSincParameters = typing.TypedDict('AntsApplyTransformsLanczosWindowedSincParameters', {
+    "__STYX_TYPE__": typing.Literal["lanczosWindowedSinc"],
+})
+AntsApplyTransformsGenericLabelParameters = typing.TypedDict('AntsApplyTransformsGenericLabelParameters', {
+    "__STYX_TYPE__": typing.Literal["genericLabel"],
+    "interpolator": typing.NotRequired[str | None],
+})
+AntsApplyTransformsTransformFileNameParameters = typing.TypedDict('AntsApplyTransformsTransformFileNameParameters', {
+    "__STYX_TYPE__": typing.Literal["transformFileName"],
+    "transformFileName": InputPathType,
+})
+AntsApplyTransformsUseInverseParameters = typing.TypedDict('AntsApplyTransformsUseInverseParameters', {
+    "__STYX_TYPE__": typing.Literal["useInverse"],
+    "transformFileName": InputPathType,
+})
+AntsApplyTransformsParameters = typing.TypedDict('AntsApplyTransformsParameters', {
+    "__STYX_TYPE__": typing.Literal["antsApplyTransforms"],
+    "dimensionality": typing.NotRequired[typing.Literal[2, 3, 4] | None],
+    "input_image_type": typing.NotRequired[typing.Literal[0, 1, 2, 3, 4, 5] | None],
+    "input_image": InputPathType,
+    "reference_image": InputPathType,
+    "output": typing.Union[AntsApplyTransformsWarpedOutputParameters, AntsApplyTransformsCompositeDisplacementFieldOutputParameters, AntsApplyTransformsGenericAffineTransformOutputParameters],
+    "interpolation": typing.NotRequired[typing.Union[AntsApplyTransformsLinearParameters, AntsApplyTransformsNearestNeighborParameters, AntsApplyTransformsMultiLabelnoparamsParameters, AntsApplyTransformsMultiLabelParameters, AntsApplyTransformsGaussianParameters, AntsApplyTransformsBsplineParameters, AntsApplyTransformsCosineWindowedSincParameters, AntsApplyTransformsWelchWindowedSincParameters, AntsApplyTransformsHammingWindowedSincParameters, AntsApplyTransformsLanczosWindowedSincParameters, AntsApplyTransformsGenericLabelParameters] | None],
+    "output_data_type": typing.NotRequired[typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None],
+    "transform": typing.NotRequired[list[typing.Union[AntsApplyTransformsTransformFileNameParameters, AntsApplyTransformsUseInverseParameters]] | None],
+    "default_value": typing.NotRequired[float | None],
+    "static_cast_for_R": typing.NotRequired[str | None],
+    "float": typing.NotRequired[typing.Literal[0, 1] | None],
+    "verbose": typing.NotRequired[typing.Literal[0, 1] | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "antsApplyTransforms": ants_apply_transforms_cargs,
+        "warpedOutput": ants_apply_transforms_warped_output_cargs,
+        "compositeDisplacementFieldOutput": ants_apply_transforms_composite_displacement_field_output_cargs,
+        "genericAffineTransformOutput": ants_apply_transforms_generic_affine_transform_output_cargs,
+        "linear": ants_apply_transforms_linear_cargs,
+        "nearestNeighbor": ants_apply_transforms_nearest_neighbor_cargs,
+        "multiLabelnoparams": ants_apply_transforms_multi_labelnoparams_cargs,
+        "multiLabel": ants_apply_transforms_multi_label_cargs,
+        "params": ants_apply_transforms_param_cargs,
+        "sigma": ants_apply_transforms_sigma_cargs,
+        "alpha": ants_apply_transforms_alpha_cargs,
+        "gaussian": ants_apply_transforms_gaussian_cargs,
+        "bspline": ants_apply_transforms_bspline_cargs,
+        "cosineWindowedSinc": ants_apply_transforms_cosine_windowed_sinc_cargs,
+        "welchWindowedSinc": ants_apply_transforms_welch_windowed_sinc_cargs,
+        "hammingWindowedSinc": ants_apply_transforms_hamming_windowed_sinc_cargs,
+        "lanczosWindowedSinc": ants_apply_transforms_lanczos_windowed_sinc_cargs,
+        "genericLabel": ants_apply_transforms_generic_label_cargs,
+        "transformFileName": ants_apply_transforms_transform_file_name_cargs,
+        "useInverse": ants_apply_transforms_use_inverse_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "antsApplyTransforms": ants_apply_transforms_outputs,
+        "warpedOutput": ants_apply_transforms_warped_output_outputs,
+        "compositeDisplacementFieldOutput": ants_apply_transforms_composite_displacement_field_output_outputs,
+        "genericAffineTransformOutput": ants_apply_transforms_generic_affine_transform_output_outputs,
+    }
+    return vt.get(t)
 
 
 class AntsApplyTransformsWarpedOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AntsApplyTransformsWarpedOutput(...)`.
+    Output object returned when calling `AntsApplyTransformsWarpedOutputParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -24,52 +167,65 @@ class AntsApplyTransformsWarpedOutputOutputs(typing.NamedTuple):
     """Warped image."""
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsWarpedOutput:
+def ants_apply_transforms_warped_output_params(
+    warped_output_file_name: str,
+) -> AntsApplyTransformsWarpedOutputParameters:
     """
-    Output the warped image.
+    Build parameters.
+    
+    Args:
+        warped_output_file_name: Output file name.
+    Returns:
+        Parameter dictionary
     """
-    warped_output_file_name: str
-    """Output file name."""
+    params = {
+        "__STYXTYPE__": "warpedOutput",
+        "warpedOutputFileName": warped_output_file_name,
+    }
+    return params
+
+
+def ants_apply_transforms_warped_output_cargs(
+    params: AntsApplyTransformsWarpedOutputParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(self.warped_output_file_name)
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(params.get("warpedOutputFileName"))
+    return cargs
+
+
+def ants_apply_transforms_warped_output_outputs(
+    params: AntsApplyTransformsWarpedOutputParameters,
+    execution: Execution,
+) -> AntsApplyTransformsWarpedOutputOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> AntsApplyTransformsWarpedOutputOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `AntsApplyTransformsWarpedOutputOutputs`).
-        """
-        ret = AntsApplyTransformsWarpedOutputOutputs(
-            root=execution.output_file("."),
-            output_image_outfile=execution.output_file(self.warped_output_file_name),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsApplyTransformsWarpedOutputOutputs(
+        root=execution.output_file("."),
+        output_image_outfile=execution.output_file(params.get("warpedOutputFileName")),
+    )
+    return ret
 
 
 class AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AntsApplyTransformsCompositeDisplacementFieldOutput(...)`.
+    Output object returned when calling `AntsApplyTransformsCompositeDisplacementFieldOutputParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -77,56 +233,71 @@ class AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(typing.NamedTup
     """Warped image."""
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsCompositeDisplacementFieldOutput:
+def ants_apply_transforms_composite_displacement_field_output_params(
+    composite_displacement_field: str,
+    print_out_composite_warp_file: typing.Literal[0, 1] | None = None,
+) -> AntsApplyTransformsCompositeDisplacementFieldOutputParameters:
     """
-    Print out the displacement field based on the composite transform and the
-    reference image.
+    Build parameters.
+    
+    Args:
+        composite_displacement_field: Output file name.
+        print_out_composite_warp_file: Output a composite warp file instead of\
+            a transformed image.
+    Returns:
+        Parameter dictionary
     """
-    composite_displacement_field: str
-    """Output file name."""
-    print_out_composite_warp_file: typing.Literal[0, 1] | None = None
-    """Output a composite warp file instead of a transformed image."""
+    params = {
+        "__STYXTYPE__": "compositeDisplacementFieldOutput",
+        "compositeDisplacementField": composite_displacement_field,
+    }
+    if print_out_composite_warp_file is not None:
+        params["printOutCompositeWarpFile"] = print_out_composite_warp_file
+    return params
+
+
+def ants_apply_transforms_composite_displacement_field_output_cargs(
+    params: AntsApplyTransformsCompositeDisplacementFieldOutputParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        if self.print_out_composite_warp_file is not None:
-            cargs.append("[" + self.composite_displacement_field + ",printOutCompositeWarpFile=" + str(self.print_out_composite_warp_file) + "]")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("printOutCompositeWarpFile") is not None:
+        cargs.append("[" + params.get("compositeDisplacementField") + ",printOutCompositeWarpFile=" + str(params.get("printOutCompositeWarpFile")) + "]")
+    return cargs
+
+
+def ants_apply_transforms_composite_displacement_field_output_outputs(
+    params: AntsApplyTransformsCompositeDisplacementFieldOutputParameters,
+    execution: Execution,
+) -> AntsApplyTransformsCompositeDisplacementFieldOutputOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> AntsApplyTransformsCompositeDisplacementFieldOutputOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `AntsApplyTransformsCompositeDisplacementFieldOutputOutputs`).
-        """
-        ret = AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(
-            root=execution.output_file("."),
-            output_image_outfile=execution.output_file(self.composite_displacement_field),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(
+        root=execution.output_file("."),
+        output_image_outfile=execution.output_file(params.get("compositeDisplacementField")),
+    )
+    return ret
 
 
 class AntsApplyTransformsGenericAffineTransformOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `AntsApplyTransformsGenericAffineTransformOutput(...)`.
+    Output object returned when calling `AntsApplyTransformsGenericAffineTransformOutputParameters(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -134,437 +305,630 @@ class AntsApplyTransformsGenericAffineTransformOutputOutputs(typing.NamedTuple):
     """Warped image."""
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsGenericAffineTransformOutput:
+def ants_apply_transforms_generic_affine_transform_output_params(
+    generic_affine_transform_file: str,
+    calculate_inverse: typing.Literal[0, 1] | None = None,
+) -> AntsApplyTransformsGenericAffineTransformOutputParameters:
     """
-    Compose all affine transforms and (if boolean is set) calculate its inverse
-    which is then written to an ITK file.
-    """
-    generic_affine_transform_file: str
-    """Output file name."""
-    calculate_inverse: typing.Literal[0, 1] | None = None
-    """Calculate the inverse of the affine transform."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        if self.calculate_inverse is not None:
-            cargs.append("Linear[" + self.generic_affine_transform_file + ",calculateInverse=" + str(self.calculate_inverse) + "]")
-        return cargs
+    Args:
+        generic_affine_transform_file: Output file name.
+        calculate_inverse: Calculate the inverse of the affine transform.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "genericAffineTransformOutput",
+        "genericAffineTransformFile": generic_affine_transform_file,
+    }
+    if calculate_inverse is not None:
+        params["calculateInverse"] = calculate_inverse
+    return params
+
+
+def ants_apply_transforms_generic_affine_transform_output_cargs(
+    params: AntsApplyTransformsGenericAffineTransformOutputParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
     
-    def outputs(
-        self,
-        execution: Execution,
-    ) -> AntsApplyTransformsGenericAffineTransformOutputOutputs:
-        """
-        Collect output file paths.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            NamedTuple of outputs (described in `AntsApplyTransformsGenericAffineTransformOutputOutputs`).
-        """
-        ret = AntsApplyTransformsGenericAffineTransformOutputOutputs(
-            root=execution.output_file("."),
-            output_image_outfile=execution.output_file(self.generic_affine_transform_file),
-        )
-        return ret
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("calculateInverse") is not None:
+        cargs.append("Linear[" + params.get("genericAffineTransformFile") + ",calculateInverse=" + str(params.get("calculateInverse")) + "]")
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsLinear:
+def ants_apply_transforms_generic_affine_transform_output_outputs(
+    params: AntsApplyTransformsGenericAffineTransformOutputParameters,
+    execution: Execution,
+) -> AntsApplyTransformsGenericAffineTransformOutputOutputs:
     """
-    Linear interpolation.
-    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("Linear")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsApplyTransformsGenericAffineTransformOutputOutputs(
+        root=execution.output_file("."),
+        output_image_outfile=execution.output_file(params.get("genericAffineTransformFile")),
+    )
+    return ret
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsNearestNeighbor:
+def ants_apply_transforms_linear_params(
+) -> AntsApplyTransformsLinearParameters:
     """
-    Nearest neighbor interpolation.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("NearestNeighbor")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "linear",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsMultiLabelnoparams:
+def ants_apply_transforms_linear_cargs(
+    params: AntsApplyTransformsLinearParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Multi label interpolation.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("MultiLabel")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("Linear")
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsSigma:
+def ants_apply_transforms_nearest_neighbor_params(
+) -> AntsApplyTransformsNearestNeighborParameters:
     """
-    Sigma value.
-    """
-    sigma: float
-    """Sigma value."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("sigma=" + str(self.sigma))
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "nearestNeighbor",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsAlpha:
+def ants_apply_transforms_nearest_neighbor_cargs(
+    params: AntsApplyTransformsNearestNeighborParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Alpha value.
-    """
-    alpha: float
-    """Alpha value."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("alpha=" + str(self.alpha))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("NearestNeighbor")
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsParam:
-    params: list[typing.Union[AntsApplyTransformsSigma, AntsApplyTransformsAlpha]]
+def ants_apply_transforms_multi_labelnoparams_params(
+) -> AntsApplyTransformsMultiLabelnoparamsParameters:
+    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("[" + ",".join([a for c in [s.run(execution) for s in self.params] for a in c]) + "]")
-        return cargs
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "multiLabelnoparams",
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsMultiLabel:
+def ants_apply_transforms_multi_labelnoparams_cargs(
+    params: AntsApplyTransformsMultiLabelnoparamsParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Multi label interpolation.
-    """
-    params: AntsApplyTransformsParam
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("MultiLabel" + "".join(self.params.run(execution)))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("MultiLabel")
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsGaussian:
+def ants_apply_transforms_sigma_params(
+    sigma: float,
+) -> AntsApplyTransformsSigmaParameters:
     """
-    Gaussian interpolation.
-    """
-    sigma: float | None = None
-    """Sigma value."""
-    alpha: float | None = None
-    """Alpha value."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        if self.sigma is not None or self.alpha is not None:
-            cargs.append("Gaussian[sigma=" + (str(self.sigma) if (self.sigma is not None) else "") + ",alpha=" + (str(self.alpha) if (self.alpha is not None) else "") + "]")
-        return cargs
+    Args:
+        sigma: Sigma value.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "sigma",
+        "sigma": sigma,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsBspline:
+def ants_apply_transforms_sigma_cargs(
+    params: AntsApplyTransformsSigmaParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    BSpline interpolation.
-    """
-    order: int | None = None
-    """Order value."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        if self.order is not None:
-            cargs.append("BSpline[order=" + str(self.order) + "]")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("sigma=" + str(params.get("sigma")))
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsCosineWindowedSinc:
+def ants_apply_transforms_alpha_params(
+    alpha: float,
+) -> AntsApplyTransformsAlphaParameters:
     """
-    Cosine windowed sinc interpolation.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("CosineWindowedSinc")
-        return cargs
+    Args:
+        alpha: Alpha value.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "alpha",
+        "alpha": alpha,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsWelchWindowedSinc:
+def ants_apply_transforms_alpha_cargs(
+    params: AntsApplyTransformsAlphaParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Welch windowed sinc interpolation.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("WelchWindowedSinc")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("alpha=" + str(params.get("alpha")))
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsHammingWindowedSinc:
+def ants_apply_transforms_param_params(
+    params: list[typing.Union[AntsApplyTransformsSigmaParameters, AntsApplyTransformsAlphaParameters]],
+) -> AntsApplyTransformsParamParameters:
     """
-    Hamming windowed sinc interpolation.
-    """
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("HammingWindowedSinc")
-        return cargs
+    Args:
+        params:.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "params",
+        "params": params,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsLanczosWindowedSinc:
+def ants_apply_transforms_param_cargs(
+    params: AntsApplyTransformsParamParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Lanczos windowed sinc interpolation.
-    """
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("LanczosWindowedSinc")
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("[" + ",".join([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("params")] for a in c]) + "]")
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsGenericLabel:
+def ants_apply_transforms_multi_label_params(
+    params: AntsApplyTransformsParamParameters,
+) -> AntsApplyTransformsMultiLabelParameters:
     """
-    Generic label interpolation.
-    """
-    interpolator: str | None = None
-    """Interpolator value."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        if self.interpolator is not None:
-            cargs.append("GenericLabel[interpolator=" + self.interpolator + "]")
-        return cargs
+    Args:
+        params:.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "multiLabel",
+        "params": params,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsTransformFileName:
+def ants_apply_transforms_multi_label_cargs(
+    params: AntsApplyTransformsMultiLabelParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    Transform file name.
-    """
-    transform_file_name: InputPathType
-    """Transform file name."""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append(execution.input_file(self.transform_file_name))
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("MultiLabel" + "".join(dyn_cargs(params.get("params")["__STYXTYPE__"])(params.get("params"), execution)))
+    return cargs
 
 
-@dataclasses.dataclass
-class AntsApplyTransformsUseInverse:
+def ants_apply_transforms_gaussian_params(
+    sigma: float | None = None,
+    alpha: float | None = None,
+) -> AntsApplyTransformsGaussianParameters:
     """
-    Use inverse.
-    """
-    transform_file_name: InputPathType
-    """Transform file name."""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("[" + execution.input_file(self.transform_file_name) + ",useInverse]")
-        return cargs
+    Args:
+        sigma: Sigma value.
+        alpha: Alpha value.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "gaussian",
+    }
+    if sigma is not None:
+        params["sigma"] = sigma
+    if alpha is not None:
+        params["alpha"] = alpha
+    return params
+
+
+def ants_apply_transforms_gaussian_cargs(
+    params: AntsApplyTransformsGaussianParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("sigma") is not None or params.get("alpha") is not None:
+        cargs.append("Gaussian[sigma=" + (str(params.get("sigma")) if (params.get("sigma") is not None) else "") + ",alpha=" + (str(params.get("alpha")) if (params.get("alpha") is not None) else "") + "]")
+    return cargs
+
+
+def ants_apply_transforms_bspline_params(
+    order: int | None = None,
+) -> AntsApplyTransformsBsplineParameters:
+    """
+    Build parameters.
+    
+    Args:
+        order: Order value.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "bspline",
+    }
+    if order is not None:
+        params["order"] = order
+    return params
+
+
+def ants_apply_transforms_bspline_cargs(
+    params: AntsApplyTransformsBsplineParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("order") is not None:
+        cargs.append("BSpline[order=" + str(params.get("order")) + "]")
+    return cargs
+
+
+def ants_apply_transforms_cosine_windowed_sinc_params(
+) -> AntsApplyTransformsCosineWindowedSincParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cosineWindowedSinc",
+    }
+    return params
+
+
+def ants_apply_transforms_cosine_windowed_sinc_cargs(
+    params: AntsApplyTransformsCosineWindowedSincParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("CosineWindowedSinc")
+    return cargs
+
+
+def ants_apply_transforms_welch_windowed_sinc_params(
+) -> AntsApplyTransformsWelchWindowedSincParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "welchWindowedSinc",
+    }
+    return params
+
+
+def ants_apply_transforms_welch_windowed_sinc_cargs(
+    params: AntsApplyTransformsWelchWindowedSincParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("WelchWindowedSinc")
+    return cargs
+
+
+def ants_apply_transforms_hamming_windowed_sinc_params(
+) -> AntsApplyTransformsHammingWindowedSincParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "hammingWindowedSinc",
+    }
+    return params
+
+
+def ants_apply_transforms_hamming_windowed_sinc_cargs(
+    params: AntsApplyTransformsHammingWindowedSincParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("HammingWindowedSinc")
+    return cargs
+
+
+def ants_apply_transforms_lanczos_windowed_sinc_params(
+) -> AntsApplyTransformsLanczosWindowedSincParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "lanczosWindowedSinc",
+    }
+    return params
+
+
+def ants_apply_transforms_lanczos_windowed_sinc_cargs(
+    params: AntsApplyTransformsLanczosWindowedSincParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("LanczosWindowedSinc")
+    return cargs
+
+
+def ants_apply_transforms_generic_label_params(
+    interpolator: str | None = None,
+) -> AntsApplyTransformsGenericLabelParameters:
+    """
+    Build parameters.
+    
+    Args:
+        interpolator: Interpolator value.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "genericLabel",
+    }
+    if interpolator is not None:
+        params["interpolator"] = interpolator
+    return params
+
+
+def ants_apply_transforms_generic_label_cargs(
+    params: AntsApplyTransformsGenericLabelParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("interpolator") is not None:
+        cargs.append("GenericLabel[interpolator=" + params.get("interpolator") + "]")
+    return cargs
+
+
+def ants_apply_transforms_transform_file_name_params(
+    transform_file_name: InputPathType,
+) -> AntsApplyTransformsTransformFileNameParameters:
+    """
+    Build parameters.
+    
+    Args:
+        transform_file_name: Transform file name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "transformFileName",
+        "transformFileName": transform_file_name,
+    }
+    return params
+
+
+def ants_apply_transforms_transform_file_name_cargs(
+    params: AntsApplyTransformsTransformFileNameParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append(execution.input_file(params.get("transformFileName")))
+    return cargs
+
+
+def ants_apply_transforms_use_inverse_params(
+    transform_file_name: InputPathType,
+) -> AntsApplyTransformsUseInverseParameters:
+    """
+    Build parameters.
+    
+    Args:
+        transform_file_name: Transform file name.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "useInverse",
+        "transformFileName": transform_file_name,
+    }
+    return params
+
+
+def ants_apply_transforms_use_inverse_cargs(
+    params: AntsApplyTransformsUseInverseParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("[" + execution.input_file(params.get("transformFileName")) + ",useInverse]")
+    return cargs
 
 
 class AntsApplyTransformsOutputs(typing.NamedTuple):
@@ -574,20 +938,233 @@ class AntsApplyTransformsOutputs(typing.NamedTuple):
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
     output: typing.Union[AntsApplyTransformsWarpedOutputOutputs, AntsApplyTransformsCompositeDisplacementFieldOutputOutputs, AntsApplyTransformsGenericAffineTransformOutputOutputs]
-    """Outputs from `AntsApplyTransformsWarpedOutput` or
-    `AntsApplyTransformsCompositeDisplacementFieldOutput` or
-    `AntsApplyTransformsGenericAffineTransformOutput`."""
+    """Outputs from `AntsApplyTransformsWarpedOutputParameters` or
+    `AntsApplyTransformsCompositeDisplacementFieldOutputParameters` or
+    `AntsApplyTransformsGenericAffineTransformOutputParameters`."""
+
+
+def ants_apply_transforms_params(
+    input_image: InputPathType,
+    reference_image: InputPathType,
+    output: typing.Union[AntsApplyTransformsWarpedOutputParameters, AntsApplyTransformsCompositeDisplacementFieldOutputParameters, AntsApplyTransformsGenericAffineTransformOutputParameters],
+    dimensionality: typing.Literal[2, 3, 4] | None = None,
+    input_image_type: typing.Literal[0, 1, 2, 3, 4, 5] | None = None,
+    interpolation: typing.Union[AntsApplyTransformsLinearParameters, AntsApplyTransformsNearestNeighborParameters, AntsApplyTransformsMultiLabelnoparamsParameters, AntsApplyTransformsMultiLabelParameters, AntsApplyTransformsGaussianParameters, AntsApplyTransformsBsplineParameters, AntsApplyTransformsCosineWindowedSincParameters, AntsApplyTransformsWelchWindowedSincParameters, AntsApplyTransformsHammingWindowedSincParameters, AntsApplyTransformsLanczosWindowedSincParameters, AntsApplyTransformsGenericLabelParameters] | None = None,
+    output_data_type: typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None = None,
+    transform: list[typing.Union[AntsApplyTransformsTransformFileNameParameters, AntsApplyTransformsUseInverseParameters]] | None = None,
+    default_value: float | None = None,
+    static_cast_for_r: str | None = None,
+    float_: typing.Literal[0, 1] | None = None,
+    verbose: typing.Literal[0, 1] | None = None,
+) -> AntsApplyTransformsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Currently, the only input objects supported are image\
+            objects. However, the current framework allows for warping of other\
+            objects such as meshes and point sets.
+        reference_image: For warping input images, the reference image defines\
+            the spacing, origin, size, and direction of the output warped image.
+        output: One can either output the warped image or, if the boolean is\
+            set, one can print out the displacement field based on the composite\
+            transform and the reference image. A third option is to compose all\
+            affine transforms and (if boolean is set) calculate its inverse which\
+            is then written to an ITK file.
+        dimensionality: This option forces the image to be treated as a\
+            specified-dimensional image. if not specified, antswarp tries to infer\
+            the dimensionality from the input image.
+        input_image_type: Option specifying the input image type of scalar\
+            (default), vector, tensor, time series, or multi-channel. A time series\
+            image is a scalar image defined by an additional dimension for the time\
+            component whereas a multi-channel image is a vector image with only\
+            spatial dimensions. Five-dimensional images are e.g., AFNI stats image.
+        interpolation: Several interpolation options are available in ITK.\
+            These have all been made available.
+        output_data_type: Output image data type. This is a direct typecast;\
+            output values are not rescaled. Default is to use the internal data\
+            type (float or double). uchar is unsigned char; others are signed.\
+            WARNING: Outputs will be incorrect (overflowed/reinterpreted) if values\
+            exceed the range allowed by your choice. Note that some pixel types are\
+            not supported by some image formats. e.g. int is not supported by jpg.
+        transform: Several transform options are supported including all those\
+            defined in the ITK library in addition to a deformation field\
+            transform. The ordering of the transformations follows the ordering\
+            specified on the command line. An identity transform is pushed onto the\
+            transformation stack. Each new transform encountered on the command\
+            line is also pushed onto the transformation stack. Then, to warp the\
+            input object, each point comprising the input object is warped first\
+            according to the last transform pushed onto the stack followed by the\
+            second to last transform, etc. until the last transform encountered\
+            which is the identity transform. Also, it should be noted that the\
+            inverse transform can be accommodated with the usual caveat that such\
+            an inverse must be defined by the specified transform class.
+        default_value: Default voxel value to be used with input images only.\
+            Specifies the voxel value when the input point maps outside the output\
+            domain. With tensor input images, specifies the default voxel\
+            eigenvalues.
+        static_cast_for_r: Forces static cast in ReadTransform (for R).
+        float_: Use float instead of double for computations.
+        verbose: Verbose output.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "antsApplyTransforms",
+        "input_image": input_image,
+        "reference_image": reference_image,
+        "output": output,
+    }
+    if dimensionality is not None:
+        params["dimensionality"] = dimensionality
+    if input_image_type is not None:
+        params["input_image_type"] = input_image_type
+    if interpolation is not None:
+        params["interpolation"] = interpolation
+    if output_data_type is not None:
+        params["output_data_type"] = output_data_type
+    if transform is not None:
+        params["transform"] = transform
+    if default_value is not None:
+        params["default_value"] = default_value
+    if static_cast_for_r is not None:
+        params["static_cast_for_R"] = static_cast_for_r
+    if float_ is not None:
+        params["float"] = float_
+    if verbose is not None:
+        params["verbose"] = verbose
+    return params
+
+
+def ants_apply_transforms_cargs(
+    params: AntsApplyTransformsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("antsApplyTransforms")
+    if params.get("dimensionality") is not None:
+        cargs.extend([
+            "--dimensionality",
+            str(params.get("dimensionality"))
+        ])
+    if params.get("input_image_type") is not None:
+        cargs.extend([
+            "--input-image-type",
+            str(params.get("input_image_type"))
+        ])
+    cargs.extend([
+        "--input",
+        execution.input_file(params.get("input_image"))
+    ])
+    cargs.extend([
+        "--reference-image",
+        execution.input_file(params.get("reference_image"))
+    ])
+    cargs.extend([
+        "--output",
+        *dyn_cargs(params.get("output")["__STYXTYPE__"])(params.get("output"), execution)
+    ])
+    if params.get("interpolation") is not None:
+        cargs.extend([
+            "--interpolation",
+            *dyn_cargs(params.get("interpolation")["__STYXTYPE__"])(params.get("interpolation"), execution)
+        ])
+    if params.get("output_data_type") is not None:
+        cargs.extend([
+            "--output-data-type",
+            params.get("output_data_type")
+        ])
+    if params.get("transform") is not None:
+        cargs.extend([
+            "--transform",
+            *[a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("transform")] for a in c]
+        ])
+    if params.get("default_value") is not None:
+        cargs.extend([
+            "--default-value",
+            str(params.get("default_value"))
+        ])
+    if params.get("static_cast_for_R") is not None:
+        cargs.extend([
+            "--static-cast-for-R",
+            params.get("static_cast_for_R")
+        ])
+    if params.get("float") is not None:
+        cargs.extend([
+            "--float",
+            str(params.get("float"))
+        ])
+    if params.get("verbose") is not None:
+        cargs.extend([
+            "--verbose",
+            str(params.get("verbose"))
+        ])
+    return cargs
+
+
+def ants_apply_transforms_outputs(
+    params: AntsApplyTransformsParameters,
+    execution: Execution,
+) -> AntsApplyTransformsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AntsApplyTransformsOutputs(
+        root=execution.output_file("."),
+        output=dyn_outputs(output["__STYXTYPE__"])(output, execution),
+    )
+    return ret
+
+
+def ants_apply_transforms_execute(
+    params: AntsApplyTransformsParameters,
+    execution: Execution,
+) -> AntsApplyTransformsOutputs:
+    """
+    antsApplyTransforms, applied to an input image, transforms it according to a
+    reference image and a transform (or a set of transforms).
+    
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AntsApplyTransformsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = ants_apply_transforms_cargs(params, execution)
+    ret = ants_apply_transforms_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def ants_apply_transforms(
     input_image: InputPathType,
     reference_image: InputPathType,
-    output: typing.Union[AntsApplyTransformsWarpedOutput, AntsApplyTransformsCompositeDisplacementFieldOutput, AntsApplyTransformsGenericAffineTransformOutput],
+    output: typing.Union[AntsApplyTransformsWarpedOutputParameters, AntsApplyTransformsCompositeDisplacementFieldOutputParameters, AntsApplyTransformsGenericAffineTransformOutputParameters],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     input_image_type: typing.Literal[0, 1, 2, 3, 4, 5] | None = None,
-    interpolation: typing.Union[AntsApplyTransformsLinear, AntsApplyTransformsNearestNeighbor, AntsApplyTransformsMultiLabelnoparams, AntsApplyTransformsMultiLabel, AntsApplyTransformsGaussian, AntsApplyTransformsBspline, AntsApplyTransformsCosineWindowedSinc, AntsApplyTransformsWelchWindowedSinc, AntsApplyTransformsHammingWindowedSinc, AntsApplyTransformsLanczosWindowedSinc, AntsApplyTransformsGenericLabel] | None = None,
+    interpolation: typing.Union[AntsApplyTransformsLinearParameters, AntsApplyTransformsNearestNeighborParameters, AntsApplyTransformsMultiLabelnoparamsParameters, AntsApplyTransformsMultiLabelParameters, AntsApplyTransformsGaussianParameters, AntsApplyTransformsBsplineParameters, AntsApplyTransformsCosineWindowedSincParameters, AntsApplyTransformsWelchWindowedSincParameters, AntsApplyTransformsHammingWindowedSincParameters, AntsApplyTransformsLanczosWindowedSincParameters, AntsApplyTransformsGenericLabelParameters] | None = None,
     output_data_type: typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None = None,
-    transform: list[typing.Union[AntsApplyTransformsTransformFileName, AntsApplyTransformsUseInverse]] | None = None,
+    transform: list[typing.Union[AntsApplyTransformsTransformFileNameParameters, AntsApplyTransformsUseInverseParameters]] | None = None,
     default_value: float | None = None,
     static_cast_for_r: str | None = None,
     float_: typing.Literal[0, 1] | None = None,
@@ -654,97 +1231,35 @@ def ants_apply_transforms(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(ANTS_APPLY_TRANSFORMS_METADATA)
-    cargs = []
-    cargs.append("antsApplyTransforms")
-    if dimensionality is not None:
-        cargs.extend([
-            "--dimensionality",
-            str(dimensionality)
-        ])
-    if input_image_type is not None:
-        cargs.extend([
-            "--input-image-type",
-            str(input_image_type)
-        ])
-    cargs.extend([
-        "--input",
-        execution.input_file(input_image)
-    ])
-    cargs.extend([
-        "--reference-image",
-        execution.input_file(reference_image)
-    ])
-    cargs.extend([
-        "--output",
-        *output.run(execution)
-    ])
-    if interpolation is not None:
-        cargs.extend([
-            "--interpolation",
-            *interpolation.run(execution)
-        ])
-    if output_data_type is not None:
-        cargs.extend([
-            "--output-data-type",
-            output_data_type
-        ])
-    if transform is not None:
-        cargs.extend([
-            "--transform",
-            *[a for c in [s.run(execution) for s in transform] for a in c]
-        ])
-    if default_value is not None:
-        cargs.extend([
-            "--default-value",
-            str(default_value)
-        ])
-    if static_cast_for_r is not None:
-        cargs.extend([
-            "--static-cast-for-R",
-            static_cast_for_r
-        ])
-    if float_ is not None:
-        cargs.extend([
-            "--float",
-            str(float_)
-        ])
-    if verbose is not None:
-        cargs.extend([
-            "--verbose",
-            str(verbose)
-        ])
-    ret = AntsApplyTransformsOutputs(
-        root=execution.output_file("."),
-        output=output.outputs(execution),
-    )
-    execution.run(cargs)
-    return ret
+    params = ants_apply_transforms_params(dimensionality=dimensionality, input_image_type=input_image_type, input_image=input_image, reference_image=reference_image, output=output, interpolation=interpolation, output_data_type=output_data_type, transform=transform, default_value=default_value, static_cast_for_r=static_cast_for_r, float_=float_, verbose=verbose)
+    return ants_apply_transforms_execute(params, execution)
 
 
 __all__ = [
     "ANTS_APPLY_TRANSFORMS_METADATA",
-    "AntsApplyTransformsAlpha",
-    "AntsApplyTransformsBspline",
-    "AntsApplyTransformsCompositeDisplacementFieldOutput",
     "AntsApplyTransformsCompositeDisplacementFieldOutputOutputs",
-    "AntsApplyTransformsCosineWindowedSinc",
-    "AntsApplyTransformsGaussian",
-    "AntsApplyTransformsGenericAffineTransformOutput",
     "AntsApplyTransformsGenericAffineTransformOutputOutputs",
-    "AntsApplyTransformsGenericLabel",
-    "AntsApplyTransformsHammingWindowedSinc",
-    "AntsApplyTransformsLanczosWindowedSinc",
-    "AntsApplyTransformsLinear",
-    "AntsApplyTransformsMultiLabel",
-    "AntsApplyTransformsMultiLabelnoparams",
-    "AntsApplyTransformsNearestNeighbor",
     "AntsApplyTransformsOutputs",
-    "AntsApplyTransformsParam",
-    "AntsApplyTransformsSigma",
-    "AntsApplyTransformsTransformFileName",
-    "AntsApplyTransformsUseInverse",
-    "AntsApplyTransformsWarpedOutput",
     "AntsApplyTransformsWarpedOutputOutputs",
-    "AntsApplyTransformsWelchWindowedSinc",
     "ants_apply_transforms",
+    "ants_apply_transforms_alpha_params",
+    "ants_apply_transforms_bspline_params",
+    "ants_apply_transforms_composite_displacement_field_output_params",
+    "ants_apply_transforms_cosine_windowed_sinc_params",
+    "ants_apply_transforms_gaussian_params",
+    "ants_apply_transforms_generic_affine_transform_output_params",
+    "ants_apply_transforms_generic_label_params",
+    "ants_apply_transforms_hamming_windowed_sinc_params",
+    "ants_apply_transforms_lanczos_windowed_sinc_params",
+    "ants_apply_transforms_linear_params",
+    "ants_apply_transforms_multi_label_params",
+    "ants_apply_transforms_multi_labelnoparams_params",
+    "ants_apply_transforms_nearest_neighbor_params",
+    "ants_apply_transforms_param_params",
+    "ants_apply_transforms_params",
+    "ants_apply_transforms_sigma_params",
+    "ants_apply_transforms_transform_file_name_params",
+    "ants_apply_transforms_use_inverse_params",
+    "ants_apply_transforms_warped_output_params",
+    "ants_apply_transforms_welch_windowed_sinc_params",
 ]

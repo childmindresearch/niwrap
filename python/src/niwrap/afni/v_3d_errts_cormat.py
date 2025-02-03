@@ -12,6 +12,49 @@ V_3D_ERRTS_CORMAT_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dErrtsCormatParameters = typing.TypedDict('V3dErrtsCormatParameters', {
+    "__STYX_TYPE__": typing.Literal["3dErrtsCormat"],
+    "dset": InputPathType,
+    "concat": typing.NotRequired[str | None],
+    "input": typing.NotRequired[InputPathType | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "maxlag": typing.NotRequired[float | None],
+    "polort": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dErrtsCormat": v_3d_errts_cormat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dErrtsCormat": v_3d_errts_cormat_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dErrtsCormatOutputs(typing.NamedTuple):
@@ -22,6 +65,133 @@ class V3dErrtsCormatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output: OutputPathType
     """1D file of the Toeplitz entries."""
+
+
+def v_3d_errts_cormat_params(
+    dset: InputPathType,
+    concat: str | None = None,
+    input_: InputPathType | None = None,
+    mask: InputPathType | None = None,
+    maxlag: float | None = None,
+    polort: float | None = None,
+) -> V3dErrtsCormatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        dset: Dataset to read, usually the '-errts' output from 3dDeconvolve.
+        concat: As used in 3dDeconvolve.
+        input_: Alternate way of specifying the dataset to read.
+        mask: Mask dataset to apply.
+        maxlag: Set maximum lag.
+        polort: Set polort level. Default is 0.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dErrtsCormat",
+        "dset": dset,
+    }
+    if concat is not None:
+        params["concat"] = concat
+    if input_ is not None:
+        params["input"] = input_
+    if mask is not None:
+        params["mask"] = mask
+    if maxlag is not None:
+        params["maxlag"] = maxlag
+    if polort is not None:
+        params["polort"] = polort
+    return params
+
+
+def v_3d_errts_cormat_cargs(
+    params: V3dErrtsCormatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dErrtsCormat")
+    cargs.append(execution.input_file(params.get("dset")))
+    if params.get("concat") is not None:
+        cargs.extend([
+            "-concat",
+            params.get("concat")
+        ])
+    if params.get("input") is not None:
+        cargs.extend([
+            "-input",
+            execution.input_file(params.get("input"))
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("maxlag") is not None:
+        cargs.extend([
+            "-maxlag",
+            str(params.get("maxlag"))
+        ])
+    if params.get("polort") is not None:
+        cargs.extend([
+            "-polort",
+            str(params.get("polort"))
+        ])
+    return cargs
+
+
+def v_3d_errts_cormat_outputs(
+    params: V3dErrtsCormatParameters,
+    execution: Execution,
+) -> V3dErrtsCormatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dErrtsCormatOutputs(
+        root=execution.output_file("."),
+        output=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def v_3d_errts_cormat_execute(
+    params: V3dErrtsCormatParameters,
+    execution: Execution,
+) -> V3dErrtsCormatOutputs:
+    """
+    Computes the correlation matrix corresponding to the residual (or error) time
+    series in 'dset'.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dErrtsCormatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_errts_cormat_cargs(params, execution)
+    ret = v_3d_errts_cormat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_errts_cormat(
@@ -54,44 +224,13 @@ def v_3d_errts_cormat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ERRTS_CORMAT_METADATA)
-    cargs = []
-    cargs.append("3dErrtsCormat")
-    cargs.append(execution.input_file(dset))
-    if concat is not None:
-        cargs.extend([
-            "-concat",
-            concat
-        ])
-    if input_ is not None:
-        cargs.extend([
-            "-input",
-            execution.input_file(input_)
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if maxlag is not None:
-        cargs.extend([
-            "-maxlag",
-            str(maxlag)
-        ])
-    if polort is not None:
-        cargs.extend([
-            "-polort",
-            str(polort)
-        ])
-    ret = V3dErrtsCormatOutputs(
-        root=execution.output_file("."),
-        output=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_errts_cormat_params(dset=dset, concat=concat, input_=input_, mask=mask, maxlag=maxlag, polort=polort)
+    return v_3d_errts_cormat_execute(params, execution)
 
 
 __all__ = [
     "V3dErrtsCormatOutputs",
     "V_3D_ERRTS_CORMAT_METADATA",
     "v_3d_errts_cormat",
+    "v_3d_errts_cormat_params",
 ]

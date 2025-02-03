@@ -12,14 +12,142 @@ POLYORDER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+PolyorderParameters = typing.TypedDict('PolyorderParameters', {
+    "__STYX_TYPE__": typing.Literal["polyorder"],
+    "ntp": float,
+    "tr": float,
+    "cutoff": float,
+})
 
 
-class PolyorderOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `polyorder(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "polyorder": polyorder_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def polyorder_params(
+    ntp: float,
+    tr: float,
+    cutoff: float,
+) -> PolyorderParameters:
+    """
+    Build parameters.
+    
+    Args:
+        ntp: Number of time points (i.e., number of TRs).
+        tr: TR in seconds.
+        cutoff: Cutoff frequency in Hz.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "polyorder",
+        "ntp": ntp,
+        "tr": tr,
+        "cutoff": cutoff,
+    }
+    return params
+
+
+def polyorder_cargs(
+    params: PolyorderParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("polyorder")
+    cargs.extend([
+        "--ntp",
+        str(params.get("ntp"))
+    ])
+    cargs.extend([
+        "--TR",
+        str(params.get("tr"))
+    ])
+    cargs.extend([
+        "--cutoff",
+        str(params.get("cutoff"))
+    ])
+    return cargs
+
+
+def polyorder_outputs(
+    params: PolyorderParameters,
+    execution: Execution,
+) -> PolyorderOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PolyorderOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def polyorder_execute(
+    params: PolyorderParameters,
+    execution: Execution,
+) -> PolyorderOutputs:
+    """
+    Computes the order of polynomial regressors needed to achieve a highpass filter
+    with the given cutoff frequency.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PolyorderOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = polyorder_cargs(params, execution)
+    ret = polyorder_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def polyorder(
@@ -46,29 +174,12 @@ def polyorder(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(POLYORDER_METADATA)
-    cargs = []
-    cargs.append("polyorder")
-    cargs.extend([
-        "--ntp",
-        str(ntp)
-    ])
-    cargs.extend([
-        "--TR",
-        str(tr)
-    ])
-    cargs.extend([
-        "--cutoff",
-        str(cutoff)
-    ])
-    ret = PolyorderOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = polyorder_params(ntp=ntp, tr=tr, cutoff=cutoff)
+    return polyorder_execute(params, execution)
 
 
 __all__ = [
     "POLYORDER_METADATA",
-    "PolyorderOutputs",
     "polyorder",
+    "polyorder_params",
 ]

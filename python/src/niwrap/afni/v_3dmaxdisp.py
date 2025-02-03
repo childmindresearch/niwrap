@@ -12,6 +12,46 @@ V_3DMAXDISP_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dmaxdispParameters = typing.TypedDict('V3dmaxdispParameters', {
+    "__STYX_TYPE__": typing.Literal["3dmaxdisp"],
+    "inset": InputPathType,
+    "matrix": InputPathType,
+    "verbose": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dmaxdisp": v_3dmaxdisp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dmaxdisp": v_3dmaxdisp_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dmaxdispOutputs(typing.NamedTuple):
@@ -22,6 +62,105 @@ class V3dmaxdispOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     displacement_output: OutputPathType
     """Results showing average and maximum displacements."""
+
+
+def v_3dmaxdisp_params(
+    inset: InputPathType,
+    matrix: InputPathType,
+    verbose: bool = False,
+) -> V3dmaxdispParameters:
+    """
+    Build parameters.
+    
+    Args:
+        inset: Input dataset file used to form the mask over which\
+            displacements will be computed.
+        matrix: 3x4 affine transformation matrix file applied to the\
+            coordinates of the voxels in the dataset mask.
+        verbose: Print a few progress reports.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dmaxdisp",
+        "inset": inset,
+        "matrix": matrix,
+        "verbose": verbose,
+    }
+    return params
+
+
+def v_3dmaxdisp_cargs(
+    params: V3dmaxdispParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dmaxdisp")
+    cargs.extend([
+        "-inset",
+        execution.input_file(params.get("inset"))
+    ])
+    cargs.extend([
+        "-matrix",
+        execution.input_file(params.get("matrix"))
+    ])
+    if params.get("verbose"):
+        cargs.append("-verb")
+    return cargs
+
+
+def v_3dmaxdisp_outputs(
+    params: V3dmaxdispParameters,
+    execution: Execution,
+) -> V3dmaxdispOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dmaxdispOutputs(
+        root=execution.output_file("."),
+        displacement_output=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def v_3dmaxdisp_execute(
+    params: V3dmaxdispParameters,
+    execution: Execution,
+) -> V3dmaxdispOutputs:
+    """
+    Reads in a 3D dataset and a DICOM-based affine matrix to output the average and
+    maximum displacement applied to the edge voxels of the 3D dataset's automask.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dmaxdispOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3dmaxdisp_cargs(params, execution)
+    ret = v_3dmaxdisp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3dmaxdisp(
@@ -50,28 +189,13 @@ def v_3dmaxdisp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DMAXDISP_METADATA)
-    cargs = []
-    cargs.append("3dmaxdisp")
-    cargs.extend([
-        "-inset",
-        execution.input_file(inset)
-    ])
-    cargs.extend([
-        "-matrix",
-        execution.input_file(matrix)
-    ])
-    if verbose:
-        cargs.append("-verb")
-    ret = V3dmaxdispOutputs(
-        root=execution.output_file("."),
-        displacement_output=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3dmaxdisp_params(inset=inset, matrix=matrix, verbose=verbose)
+    return v_3dmaxdisp_execute(params, execution)
 
 
 __all__ = [
     "V3dmaxdispOutputs",
     "V_3DMAXDISP_METADATA",
     "v_3dmaxdisp",
+    "v_3dmaxdisp_params",
 ]

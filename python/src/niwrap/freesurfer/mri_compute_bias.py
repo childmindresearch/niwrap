@@ -12,6 +12,45 @@ MRI_COMPUTE_BIAS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriComputeBiasParameters = typing.TypedDict('MriComputeBiasParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_compute_bias"],
+    "subjects": list[str],
+    "output_volume": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_compute_bias": mri_compute_bias_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_compute_bias": mri_compute_bias_outputs,
+    }
+    return vt.get(t)
 
 
 class MriComputeBiasOutputs(typing.NamedTuple):
@@ -22,6 +61,92 @@ class MriComputeBiasOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The output volume containing the bias correction result."""
+
+
+def mri_compute_bias_params(
+    subjects: list[str],
+    output_volume: str,
+) -> MriComputeBiasParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects: List of subjects for which bias correction is calculated.
+        output_volume: Output volume where the result will be stored.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_compute_bias",
+        "subjects": subjects,
+        "output_volume": output_volume,
+    }
+    return params
+
+
+def mri_compute_bias_cargs(
+    params: MriComputeBiasParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_compute_bias")
+    cargs.extend(params.get("subjects"))
+    cargs.append(params.get("output_volume"))
+    return cargs
+
+
+def mri_compute_bias_outputs(
+    params: MriComputeBiasParameters,
+    execution: Execution,
+) -> MriComputeBiasOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriComputeBiasOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def mri_compute_bias_execute(
+    params: MriComputeBiasParameters,
+    execution: Execution,
+) -> MriComputeBiasOutputs:
+    """
+    Compute bias correction volumes for the given subjects and outputs the result to
+    a specified volume.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriComputeBiasOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_compute_bias_cargs(params, execution)
+    ret = mri_compute_bias_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_compute_bias(
@@ -46,20 +171,13 @@ def mri_compute_bias(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_BIAS_METADATA)
-    cargs = []
-    cargs.append("mri_compute_bias")
-    cargs.extend(subjects)
-    cargs.append(output_volume)
-    ret = MriComputeBiasOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_compute_bias_params(subjects=subjects, output_volume=output_volume)
+    return mri_compute_bias_execute(params, execution)
 
 
 __all__ = [
     "MRI_COMPUTE_BIAS_METADATA",
     "MriComputeBiasOutputs",
     "mri_compute_bias",
+    "mri_compute_bias_params",
 ]

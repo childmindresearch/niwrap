@@ -12,14 +12,118 @@ V__HELP_AFNI_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VHelpAfniParameters = typing.TypedDict('VHelpAfniParameters', {
+    "__STYX_TYPE__": typing.Literal["@help.AFNI"],
+})
 
 
-class VHelpAfniOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__help_afni(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@help.AFNI": v__help_afni_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__help_afni_params(
+) -> VHelpAfniParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@help.AFNI",
+    }
+    return params
+
+
+def v__help_afni_cargs(
+    params: VHelpAfniParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@help.AFNI")
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def v__help_afni_outputs(
+    params: VHelpAfniParameters,
+    execution: Execution,
+) -> VHelpAfniOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VHelpAfniOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__help_afni_execute(
+    params: VHelpAfniParameters,
+    execution: Execution,
+) -> VHelpAfniOutputs:
+    """
+    A script to retrieve and search AFNI's help page for all programs.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VHelpAfniOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__help_afni_cargs(params, execution)
+    ret = v__help_afni_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__help_afni(
@@ -39,18 +143,12 @@ def v__help_afni(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__HELP_AFNI_METADATA)
-    cargs = []
-    cargs.append("@help.AFNI")
-    cargs.append("[OPTIONS]")
-    ret = VHelpAfniOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__help_afni_params()
+    return v__help_afni_execute(params, execution)
 
 
 __all__ = [
-    "VHelpAfniOutputs",
     "V__HELP_AFNI_METADATA",
     "v__help_afni",
+    "v__help_afni_params",
 ]

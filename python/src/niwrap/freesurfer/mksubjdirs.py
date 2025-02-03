@@ -12,14 +12,163 @@ MKSUBJDIRS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MksubjdirsParameters = typing.TypedDict('MksubjdirsParameters', {
+    "__STYX_TYPE__": typing.Literal["mksubjdirs"],
+    "subj_name": str,
+    "mode": typing.NotRequired[str | None],
+    "parents": bool,
+    "verbose": bool,
+    "selinux_context": bool,
+    "help": bool,
+    "version": bool,
+})
 
 
-class MksubjdirsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mksubjdirs(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mksubjdirs": mksubjdirs_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mksubjdirs_params(
+    subj_name: str,
+    mode: str | None = None,
+    parents: bool = False,
+    verbose: bool = False,
+    selinux_context: bool = False,
+    help_: bool = False,
+    version: bool = False,
+) -> MksubjdirsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subj_name: Name of the subject directory to create.
+        mode: Set file mode (as in chmod), not a=rwx - umask.
+        parents: No error if existing, make parent directories as needed.
+        verbose: Print a message for each created directory.
+        selinux_context: Set SELinux security context of each created directory\
+            to the default type.
+        help_: Display help and exit.
+        version: Output version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mksubjdirs",
+        "subj_name": subj_name,
+        "parents": parents,
+        "verbose": verbose,
+        "selinux_context": selinux_context,
+        "help": help_,
+        "version": version,
+    }
+    if mode is not None:
+        params["mode"] = mode
+    return params
+
+
+def mksubjdirs_cargs(
+    params: MksubjdirsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mksubjdirs")
+    cargs.append(params.get("subj_name"))
+    if params.get("mode") is not None:
+        cargs.extend([
+            "-m",
+            params.get("mode")
+        ])
+    if params.get("parents"):
+        cargs.append("-p")
+    if params.get("verbose"):
+        cargs.append("-v")
+    if params.get("selinux_context"):
+        cargs.append("-Z")
+    if params.get("help"):
+        cargs.append("--help")
+    if params.get("version"):
+        cargs.append("--version")
+    return cargs
+
+
+def mksubjdirs_outputs(
+    params: MksubjdirsParameters,
+    execution: Execution,
+) -> MksubjdirsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MksubjdirsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mksubjdirs_execute(
+    params: MksubjdirsParameters,
+    execution: Execution,
+) -> MksubjdirsOutputs:
+    """
+    A command-line tool to create subject directories.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MksubjdirsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mksubjdirs_cargs(params, execution)
+    ret = mksubjdirs_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mksubjdirs(
@@ -54,33 +203,12 @@ def mksubjdirs(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MKSUBJDIRS_METADATA)
-    cargs = []
-    cargs.append("mksubjdirs")
-    cargs.append(subj_name)
-    if mode is not None:
-        cargs.extend([
-            "-m",
-            mode
-        ])
-    if parents:
-        cargs.append("-p")
-    if verbose:
-        cargs.append("-v")
-    if selinux_context:
-        cargs.append("-Z")
-    if help_:
-        cargs.append("--help")
-    if version:
-        cargs.append("--version")
-    ret = MksubjdirsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mksubjdirs_params(subj_name=subj_name, mode=mode, parents=parents, verbose=verbose, selinux_context=selinux_context, help_=help_, version=version)
+    return mksubjdirs_execute(params, execution)
 
 
 __all__ = [
     "MKSUBJDIRS_METADATA",
-    "MksubjdirsOutputs",
     "mksubjdirs",
+    "mksubjdirs_params",
 ]

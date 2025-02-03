@@ -12,6 +12,43 @@ FS_SPMREG_GLNXA64_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsSpmregGlnxa64Parameters = typing.TypedDict('FsSpmregGlnxa64Parameters', {
+    "__STYX_TYPE__": typing.Literal["fs_spmreg.glnxa64"],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fs_spmreg.glnxa64": fs_spmreg_glnxa64_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fs_spmreg.glnxa64": fs_spmreg_glnxa64_outputs,
+    }
+    return vt.get(t)
 
 
 class FsSpmregGlnxa64Outputs(typing.NamedTuple):
@@ -22,6 +59,84 @@ class FsSpmregGlnxa64Outputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_matrix_file: OutputPathType
     """Output registration matrix file"""
+
+
+def fs_spmreg_glnxa64_params(
+) -> FsSpmregGlnxa64Parameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fs_spmreg.glnxa64",
+    }
+    return params
+
+
+def fs_spmreg_glnxa64_cargs(
+    params: FsSpmregGlnxa64Parameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fs_spmreg")
+    cargs.append("[OPTIONS]")
+    return cargs
+
+
+def fs_spmreg_glnxa64_outputs(
+    params: FsSpmregGlnxa64Parameters,
+    execution: Execution,
+) -> FsSpmregGlnxa64Outputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsSpmregGlnxa64Outputs(
+        root=execution.output_file("."),
+        output_matrix_file=execution.output_file("[OUTPUT_MATRIX]"),
+    )
+    return ret
+
+
+def fs_spmreg_glnxa64_execute(
+    params: FsSpmregGlnxa64Parameters,
+    execution: Execution,
+) -> FsSpmregGlnxa64Outputs:
+    """
+    fs_spmreg is a tool for registration using SPM within FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsSpmregGlnxa64Outputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fs_spmreg_glnxa64_cargs(params, execution)
+    ret = fs_spmreg_glnxa64_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fs_spmreg_glnxa64(
@@ -41,19 +156,13 @@ def fs_spmreg_glnxa64(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FS_SPMREG_GLNXA64_METADATA)
-    cargs = []
-    cargs.append("fs_spmreg")
-    cargs.append("[OPTIONS]")
-    ret = FsSpmregGlnxa64Outputs(
-        root=execution.output_file("."),
-        output_matrix_file=execution.output_file("[OUTPUT_MATRIX]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fs_spmreg_glnxa64_params()
+    return fs_spmreg_glnxa64_execute(params, execution)
 
 
 __all__ = [
     "FS_SPMREG_GLNXA64_METADATA",
     "FsSpmregGlnxa64Outputs",
     "fs_spmreg_glnxa64",
+    "fs_spmreg_glnxa64_params",
 ]

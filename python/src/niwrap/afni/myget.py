@@ -12,6 +12,45 @@ MYGET_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+MygetParameters = typing.TypedDict('MygetParameters', {
+    "__STYX_TYPE__": typing.Literal["myget"],
+    "protocol_version": typing.NotRequired[typing.Literal["-1", "-1.1"] | None],
+    "url": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "myget": myget_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "myget": myget_outputs,
+    }
+    return vt.get(t)
 
 
 class MygetOutputs(typing.NamedTuple):
@@ -22,6 +61,92 @@ class MygetOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """The filename to save the downloaded file"""
+
+
+def myget_params(
+    url: str,
+    protocol_version: typing.Literal["-1", "-1.1"] | None = None,
+) -> MygetParameters:
+    """
+    Build parameters.
+    
+    Args:
+        url: The URL to download the file from.
+        protocol_version: Specify protocol version. You can choose between -1\
+            or -1.1.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "myget",
+        "url": url,
+    }
+    if protocol_version is not None:
+        params["protocol_version"] = protocol_version
+    return params
+
+
+def myget_cargs(
+    params: MygetParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    if params.get("protocol_version") is not None:
+        cargs.append("myget" + params.get("protocol_version") + params.get("url"))
+    return cargs
+
+
+def myget_outputs(
+    params: MygetParameters,
+    execution: Execution,
+) -> MygetOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MygetOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file("[OUTPUT_FILE]"),
+    )
+    return ret
+
+
+def myget_execute(
+    params: MygetParameters,
+    execution: Execution,
+) -> MygetOutputs:
+    """
+    A simple file downloader from a URL.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MygetOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = myget_cargs(params, execution)
+    ret = myget_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def myget(
@@ -46,19 +171,13 @@ def myget(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MYGET_METADATA)
-    cargs = []
-    if protocol_version is not None:
-        cargs.append("myget" + protocol_version + url)
-    ret = MygetOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file("[OUTPUT_FILE]"),
-    )
-    execution.run(cargs)
-    return ret
+    params = myget_params(protocol_version=protocol_version, url=url)
+    return myget_execute(params, execution)
 
 
 __all__ = [
     "MYGET_METADATA",
     "MygetOutputs",
     "myget",
+    "myget_params",
 ]

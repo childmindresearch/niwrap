@@ -12,14 +12,117 @@ FIDUCIALS_CALIBRATION_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FiducialsCalibrationParameters = typing.TypedDict('FiducialsCalibrationParameters', {
+    "__STYX_TYPE__": typing.Literal["fiducials_calibration"],
+})
 
 
-class FiducialsCalibrationOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fiducials_calibration(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fiducials_calibration": fiducials_calibration_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fiducials_calibration_params(
+) -> FiducialsCalibrationParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fiducials_calibration",
+    }
+    return params
+
+
+def fiducials_calibration_cargs(
+    params: FiducialsCalibrationParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fiducials_calibration")
+    return cargs
+
+
+def fiducials_calibration_outputs(
+    params: FiducialsCalibrationParameters,
+    execution: Execution,
+) -> FiducialsCalibrationOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FiducialsCalibrationOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fiducials_calibration_execute(
+    params: FiducialsCalibrationParameters,
+    execution: Execution,
+) -> FiducialsCalibrationOutputs:
+    """
+    A tool used for calibrating fiducials.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FiducialsCalibrationOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fiducials_calibration_cargs(params, execution)
+    ret = fiducials_calibration_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fiducials_calibration(
@@ -39,17 +142,12 @@ def fiducials_calibration(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIDUCIALS_CALIBRATION_METADATA)
-    cargs = []
-    cargs.append("fiducials_calibration")
-    ret = FiducialsCalibrationOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fiducials_calibration_params()
+    return fiducials_calibration_execute(params, execution)
 
 
 __all__ = [
     "FIDUCIALS_CALIBRATION_METADATA",
-    "FiducialsCalibrationOutputs",
     "fiducials_calibration",
+    "fiducials_calibration_params",
 ]

@@ -12,6 +12,51 @@ V_3D_ATTRIBUTE_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dAttributeParameters = typing.TypedDict('V3dAttributeParameters', {
+    "__STYX_TYPE__": typing.Literal["3dAttribute"],
+    "all": bool,
+    "name": bool,
+    "center": bool,
+    "ssep": typing.NotRequired[str | None],
+    "sprep": typing.NotRequired[str | None],
+    "quote": bool,
+    "aname": str,
+    "dset": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dAttribute": v_3d_attribute_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dAttribute": v_3d_attribute_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dAttributeOutputs(typing.NamedTuple):
@@ -22,6 +67,130 @@ class V3dAttributeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     stdout: OutputPathType
     """Output of the attribute value"""
+
+
+def v_3d_attribute_params(
+    aname: str,
+    dset: InputPathType,
+    all_: bool = False,
+    name: bool = False,
+    center: bool = False,
+    ssep: str | None = None,
+    sprep: str | None = None,
+    quote: bool = False,
+) -> V3dAttributeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        aname: Attribute name to be printed from the dataset.
+        dset: Dataset from which the attribute value will be printed.
+        all_: Print all attributes from the dataset.
+        name: Include attribute name in the output.
+        center: Print the center of volume in RAI coordinates.
+        ssep: Use string SSEP as a separator between strings for multiple\
+            sub-bricks.
+        sprep: Use string SPREP to replace blank space in string attributes.
+        quote: Use single quote around each string.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dAttribute",
+        "all": all_,
+        "name": name,
+        "center": center,
+        "quote": quote,
+        "aname": aname,
+        "dset": dset,
+    }
+    if ssep is not None:
+        params["ssep"] = ssep
+    if sprep is not None:
+        params["sprep"] = sprep
+    return params
+
+
+def v_3d_attribute_cargs(
+    params: V3dAttributeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dAttribute")
+    if params.get("all"):
+        cargs.append("-all")
+    if params.get("name"):
+        cargs.append("-name")
+    if params.get("center"):
+        cargs.append("-center")
+    if params.get("ssep") is not None:
+        cargs.extend([
+            "-ssep",
+            params.get("ssep")
+        ])
+    if params.get("sprep") is not None:
+        cargs.extend([
+            "-sprep",
+            params.get("sprep")
+        ])
+    if params.get("quote"):
+        cargs.append("-quote")
+    cargs.append(params.get("aname"))
+    cargs.append(execution.input_file(params.get("dset")))
+    return cargs
+
+
+def v_3d_attribute_outputs(
+    params: V3dAttributeParameters,
+    execution: Execution,
+) -> V3dAttributeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dAttributeOutputs(
+        root=execution.output_file("."),
+        stdout=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def v_3d_attribute_execute(
+    params: V3dAttributeParameters,
+    execution: Execution,
+) -> V3dAttributeOutputs:
+    """
+    Prints the value of the attribute 'aname' from the header of the dataset 'dset'.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dAttributeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_attribute_cargs(params, execution)
+    ret = v_3d_attribute_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_attribute(
@@ -58,38 +227,13 @@ def v_3d_attribute(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ATTRIBUTE_METADATA)
-    cargs = []
-    cargs.append("3dAttribute")
-    if all_:
-        cargs.append("-all")
-    if name:
-        cargs.append("-name")
-    if center:
-        cargs.append("-center")
-    if ssep is not None:
-        cargs.extend([
-            "-ssep",
-            ssep
-        ])
-    if sprep is not None:
-        cargs.extend([
-            "-sprep",
-            sprep
-        ])
-    if quote:
-        cargs.append("-quote")
-    cargs.append(aname)
-    cargs.append(execution.input_file(dset))
-    ret = V3dAttributeOutputs(
-        root=execution.output_file("."),
-        stdout=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_attribute_params(all_=all_, name=name, center=center, ssep=ssep, sprep=sprep, quote=quote, aname=aname, dset=dset)
+    return v_3d_attribute_execute(params, execution)
 
 
 __all__ = [
     "V3dAttributeOutputs",
     "V_3D_ATTRIBUTE_METADATA",
     "v_3d_attribute",
+    "v_3d_attribute_params",
 ]

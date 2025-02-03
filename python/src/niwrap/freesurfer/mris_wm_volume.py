@@ -12,14 +12,164 @@ MRIS_WM_VOLUME_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisWmVolumeParameters = typing.TypedDict('MrisWmVolumeParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_wm_volume"],
+    "subject": str,
+    "hemi": str,
+    "subjects_dir": typing.NotRequired[str | None],
+    "whitesurfname": typing.NotRequired[str | None],
+    "asegname": typing.NotRequired[str | None],
+    "verbose": bool,
+})
 
 
-class MrisWmVolumeOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_wm_volume(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_wm_volume": mris_wm_volume_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_wm_volume_params(
+    subject: str,
+    hemi: str,
+    subjects_dir: str | None = None,
+    whitesurfname: str | None = None,
+    asegname: str | None = None,
+    verbose: bool = False,
+) -> MrisWmVolumeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Subject identifier.
+        hemi: Hemisphere to compute volume for (e.g., lh or rh).
+        subjects_dir: The SUBJECTS_DIR where the subject data is stored.
+        whitesurfname: Name of the white surface file.
+        asegname: Name of the aseg file.
+        verbose: Output more messages.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_wm_volume",
+        "subject": subject,
+        "hemi": hemi,
+        "verbose": verbose,
+    }
+    if subjects_dir is not None:
+        params["subjects_dir"] = subjects_dir
+    if whitesurfname is not None:
+        params["whitesurfname"] = whitesurfname
+    if asegname is not None:
+        params["asegname"] = asegname
+    return params
+
+
+def mris_wm_volume_cargs(
+    params: MrisWmVolumeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_wm_volume")
+    cargs.append(params.get("subject"))
+    cargs.append(params.get("hemi"))
+    if params.get("subjects_dir") is not None:
+        cargs.extend([
+            "-SDIR",
+            params.get("subjects_dir")
+        ])
+    if params.get("whitesurfname") is not None:
+        cargs.extend([
+            "-white",
+            params.get("whitesurfname")
+        ])
+    if params.get("asegname") is not None:
+        cargs.extend([
+            "-aseg",
+            params.get("asegname")
+        ])
+    if params.get("verbose"):
+        cargs.append("-v")
+    return cargs
+
+
+def mris_wm_volume_outputs(
+    params: MrisWmVolumeParameters,
+    execution: Execution,
+) -> MrisWmVolumeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisWmVolumeOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_wm_volume_execute(
+    params: MrisWmVolumeParameters,
+    execution: Execution,
+) -> MrisWmVolumeOutputs:
+    """
+    Computes the volume of the enclosed hemisphere white matter surface, ignoring
+    non-white matter voxels in the aseg.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisWmVolumeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_wm_volume_cargs(params, execution)
+    ret = mris_wm_volume_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_wm_volume(
@@ -52,36 +202,12 @@ def mris_wm_volume(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_WM_VOLUME_METADATA)
-    cargs = []
-    cargs.append("mris_wm_volume")
-    cargs.append(subject)
-    cargs.append(hemi)
-    if subjects_dir is not None:
-        cargs.extend([
-            "-SDIR",
-            subjects_dir
-        ])
-    if whitesurfname is not None:
-        cargs.extend([
-            "-white",
-            whitesurfname
-        ])
-    if asegname is not None:
-        cargs.extend([
-            "-aseg",
-            asegname
-        ])
-    if verbose:
-        cargs.append("-v")
-    ret = MrisWmVolumeOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_wm_volume_params(subject=subject, hemi=hemi, subjects_dir=subjects_dir, whitesurfname=whitesurfname, asegname=asegname, verbose=verbose)
+    return mris_wm_volume_execute(params, execution)
 
 
 __all__ = [
     "MRIS_WM_VOLUME_METADATA",
-    "MrisWmVolumeOutputs",
     "mris_wm_volume",
+    "mris_wm_volume_params",
 ]

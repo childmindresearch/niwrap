@@ -12,6 +12,56 @@ V_1D_TOOL_PY_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1dToolPyParameters = typing.TypedDict('V1dToolPyParameters', {
+    "__STYX_TYPE__": typing.Literal["1d_tool.py"],
+    "infile": InputPathType,
+    "write": typing.NotRequired[str | None],
+    "select_cols": typing.NotRequired[str | None],
+    "select_rows": typing.NotRequired[str | None],
+    "select_groups": typing.NotRequired[str | None],
+    "censor_motion": typing.NotRequired[float | None],
+    "pad_into_many_runs": typing.NotRequired[str | None],
+    "set_nruns": typing.NotRequired[float | None],
+    "set_run_lengths": typing.NotRequired[str | None],
+    "show_rows_cols": bool,
+    "transpose": bool,
+    "reverse": bool,
+    "show_max_displace": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1d_tool.py": v_1d_tool_py_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1d_tool.py": v_1d_tool_py_outputs,
+    }
+    return vt.get(t)
 
 
 class V1dToolPyOutputs(typing.NamedTuple):
@@ -22,6 +72,182 @@ class V1dToolPyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType | None
     """Resulting 1D file"""
+
+
+def v_1d_tool_py_params(
+    infile: InputPathType,
+    write: str | None = None,
+    select_cols: str | None = None,
+    select_rows: str | None = None,
+    select_groups: str | None = None,
+    censor_motion: float | None = None,
+    pad_into_many_runs: str | None = None,
+    set_nruns: float | None = None,
+    set_run_lengths: str | None = None,
+    show_rows_cols: bool = False,
+    transpose: bool = False,
+    reverse: bool = False,
+    show_max_displace: bool = False,
+) -> V1dToolPyParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input 1D file.
+        write: Output file to write results.
+        select_cols: Select specific columns.
+        select_rows: Select specific rows.
+        select_groups: Select columns by group numbers.
+        censor_motion: Generate a boolean censor file.
+        pad_into_many_runs: Pad a 1D file into many runs.
+        set_nruns: Set number of runs.
+        set_run_lengths: Set run lengths.
+        show_rows_cols: Show the number of rows and columns.
+        transpose: Transpose the input matrix.
+        reverse: Reverse the data over time.
+        show_max_displace: Show the maximum pairwise displacement.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1d_tool.py",
+        "infile": infile,
+        "show_rows_cols": show_rows_cols,
+        "transpose": transpose,
+        "reverse": reverse,
+        "show_max_displace": show_max_displace,
+    }
+    if write is not None:
+        params["write"] = write
+    if select_cols is not None:
+        params["select_cols"] = select_cols
+    if select_rows is not None:
+        params["select_rows"] = select_rows
+    if select_groups is not None:
+        params["select_groups"] = select_groups
+    if censor_motion is not None:
+        params["censor_motion"] = censor_motion
+    if pad_into_many_runs is not None:
+        params["pad_into_many_runs"] = pad_into_many_runs
+    if set_nruns is not None:
+        params["set_nruns"] = set_nruns
+    if set_run_lengths is not None:
+        params["set_run_lengths"] = set_run_lengths
+    return params
+
+
+def v_1d_tool_py_cargs(
+    params: V1dToolPyParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1d_tool.py")
+    cargs.extend([
+        "-infile",
+        execution.input_file(params.get("infile"))
+    ])
+    if params.get("write") is not None:
+        cargs.extend([
+            "-write",
+            params.get("write")
+        ])
+    if params.get("select_cols") is not None:
+        cargs.extend([
+            "-select_cols",
+            params.get("select_cols")
+        ])
+    if params.get("select_rows") is not None:
+        cargs.extend([
+            "-select_rows",
+            params.get("select_rows")
+        ])
+    if params.get("select_groups") is not None:
+        cargs.extend([
+            "-select_groups",
+            params.get("select_groups")
+        ])
+    if params.get("censor_motion") is not None:
+        cargs.extend([
+            "-censor_motion",
+            str(params.get("censor_motion"))
+        ])
+    if params.get("pad_into_many_runs") is not None:
+        cargs.extend([
+            "-pad_into_many_runs",
+            params.get("pad_into_many_runs")
+        ])
+    if params.get("set_nruns") is not None:
+        cargs.extend([
+            "-set_nruns",
+            str(params.get("set_nruns"))
+        ])
+    if params.get("set_run_lengths") is not None:
+        cargs.extend([
+            "-set_run_lengths",
+            params.get("set_run_lengths")
+        ])
+    if params.get("show_rows_cols"):
+        cargs.append("-show_rows_cols")
+    if params.get("transpose"):
+        cargs.append("-transpose")
+    if params.get("reverse"):
+        cargs.append("-reverse")
+    if params.get("show_max_displace"):
+        cargs.append("-show_max_displace")
+    return cargs
+
+
+def v_1d_tool_py_outputs(
+    params: V1dToolPyParameters,
+    execution: Execution,
+) -> V1dToolPyOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1dToolPyOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("write")) if (params.get("write") is not None) else None,
+    )
+    return ret
+
+
+def v_1d_tool_py_execute(
+    params: V1dToolPyParameters,
+    execution: Execution,
+) -> V1dToolPyOutputs:
+    """
+    A tool for manipulating and evaluating 1D files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1dToolPyOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1d_tool_py_cargs(params, execution)
+    ret = v_1d_tool_py_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1d_tool_py(
@@ -67,70 +293,13 @@ def v_1d_tool_py(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1D_TOOL_PY_METADATA)
-    cargs = []
-    cargs.append("1d_tool.py")
-    cargs.extend([
-        "-infile",
-        execution.input_file(infile)
-    ])
-    if write is not None:
-        cargs.extend([
-            "-write",
-            write
-        ])
-    if select_cols is not None:
-        cargs.extend([
-            "-select_cols",
-            select_cols
-        ])
-    if select_rows is not None:
-        cargs.extend([
-            "-select_rows",
-            select_rows
-        ])
-    if select_groups is not None:
-        cargs.extend([
-            "-select_groups",
-            select_groups
-        ])
-    if censor_motion is not None:
-        cargs.extend([
-            "-censor_motion",
-            str(censor_motion)
-        ])
-    if pad_into_many_runs is not None:
-        cargs.extend([
-            "-pad_into_many_runs",
-            pad_into_many_runs
-        ])
-    if set_nruns is not None:
-        cargs.extend([
-            "-set_nruns",
-            str(set_nruns)
-        ])
-    if set_run_lengths is not None:
-        cargs.extend([
-            "-set_run_lengths",
-            set_run_lengths
-        ])
-    if show_rows_cols:
-        cargs.append("-show_rows_cols")
-    if transpose:
-        cargs.append("-transpose")
-    if reverse:
-        cargs.append("-reverse")
-    if show_max_displace:
-        cargs.append("-show_max_displace")
-    ret = V1dToolPyOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(write) if (write is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1d_tool_py_params(infile=infile, write=write, select_cols=select_cols, select_rows=select_rows, select_groups=select_groups, censor_motion=censor_motion, pad_into_many_runs=pad_into_many_runs, set_nruns=set_nruns, set_run_lengths=set_run_lengths, show_rows_cols=show_rows_cols, transpose=transpose, reverse=reverse, show_max_displace=show_max_displace)
+    return v_1d_tool_py_execute(params, execution)
 
 
 __all__ = [
     "V1dToolPyOutputs",
     "V_1D_TOOL_PY_METADATA",
     "v_1d_tool_py",
+    "v_1d_tool_py_params",
 ]

@@ -12,6 +12,58 @@ FIND_VARIANCE_LINES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FindVarianceLinesParameters = typing.TypedDict('FindVarianceLinesParameters', {
+    "__STYX_TYPE__": typing.Literal["find_variance_lines"],
+    "input_files": list[InputPathType],
+    "mask": typing.NotRequired[str | None],
+    "min_cvox": typing.NotRequired[int | None],
+    "min_nt": typing.NotRequired[int | None],
+    "nerode": typing.NotRequired[int | None],
+    "nfirst": typing.NotRequired[int | None],
+    "percentile": typing.NotRequired[int | None],
+    "polort": typing.NotRequired[str | None],
+    "output_dir": typing.NotRequired[str | None],
+    "do_clean": typing.NotRequired[int | None],
+    "do_img": typing.NotRequired[int | None],
+    "echo": bool,
+    "help": bool,
+    "hist": bool,
+    "ver": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "find_variance_lines": find_variance_lines_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "find_variance_lines": find_variance_lines_outputs,
+    }
+    return vt.get(t)
 
 
 class FindVarianceLinesOutputs(typing.NamedTuple):
@@ -28,6 +80,201 @@ class FindVarianceLinesOutputs(typing.NamedTuple):
     """Cluster reports"""
     jpeg_images: OutputPathType | None
     """JPEG images showing locations of high variance"""
+
+
+def find_variance_lines_params(
+    input_files: list[InputPathType],
+    mask: str | None = None,
+    min_cvox: int | None = None,
+    min_nt: int | None = None,
+    nerode: int | None = None,
+    nfirst: int | None = None,
+    percentile: int | None = None,
+    polort: str | None = None,
+    output_dir: str | None = None,
+    do_clean: int | None = None,
+    do_img: int | None = None,
+    echo: bool = False,
+    help_: bool = False,
+    hist: bool = False,
+    ver: bool = False,
+) -> FindVarianceLinesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input EPI datasets.
+        mask: Mask for computations (default=AUTO).
+        min_cvox: Minimum voxels for valid mask column (default=5).
+        min_nt: Minimum number of time points required (default=10).
+        nerode: How much to erode input or auto-mask (default=0).
+        nfirst: Discard the first VAL time points (default=0).
+        percentile: Percentile of variance values to scale to (default=90).
+        polort: Polynomial detrending degree (default=A).
+        output_dir: Name of the output directory (default=vlines.result).
+        do_clean: Do we clean up a little? (default=1).
+        do_img: Make vline images? (default=1).
+        echo: Run script with shell 'echo' set (default=no).
+        help_: Show this help.
+        hist: Show the version history.
+        ver: Show the current version.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "find_variance_lines",
+        "input_files": input_files,
+        "echo": echo,
+        "help": help_,
+        "hist": hist,
+        "ver": ver,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if min_cvox is not None:
+        params["min_cvox"] = min_cvox
+    if min_nt is not None:
+        params["min_nt"] = min_nt
+    if nerode is not None:
+        params["nerode"] = nerode
+    if nfirst is not None:
+        params["nfirst"] = nfirst
+    if percentile is not None:
+        params["percentile"] = percentile
+    if polort is not None:
+        params["polort"] = polort
+    if output_dir is not None:
+        params["output_dir"] = output_dir
+    if do_clean is not None:
+        params["do_clean"] = do_clean
+    if do_img is not None:
+        params["do_img"] = do_img
+    return params
+
+
+def find_variance_lines_cargs(
+    params: FindVarianceLinesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("find_variance_lines.tcsh")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            params.get("mask")
+        ])
+    if params.get("min_cvox") is not None:
+        cargs.extend([
+            "-min_cvox",
+            str(params.get("min_cvox"))
+        ])
+    if params.get("min_nt") is not None:
+        cargs.extend([
+            "-min_nt",
+            str(params.get("min_nt"))
+        ])
+    if params.get("nerode") is not None:
+        cargs.extend([
+            "-nerode",
+            str(params.get("nerode"))
+        ])
+    if params.get("nfirst") is not None:
+        cargs.extend([
+            "-nfirst",
+            str(params.get("nfirst"))
+        ])
+    if params.get("percentile") is not None:
+        cargs.extend([
+            "-perc",
+            str(params.get("percentile"))
+        ])
+    if params.get("polort") is not None:
+        cargs.extend([
+            "-polort",
+            params.get("polort")
+        ])
+    if params.get("output_dir") is not None:
+        cargs.extend([
+            "-rdir",
+            params.get("output_dir")
+        ])
+    if params.get("do_clean") is not None:
+        cargs.extend([
+            "-do_clean",
+            str(params.get("do_clean"))
+        ])
+    if params.get("do_img") is not None:
+        cargs.extend([
+            "-do_img",
+            str(params.get("do_img"))
+        ])
+    if params.get("echo"):
+        cargs.append("-echo")
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("hist"):
+        cargs.append("-hist")
+    if params.get("ver"):
+        cargs.append("-ver")
+    return cargs
+
+
+def find_variance_lines_outputs(
+    params: FindVarianceLinesParameters,
+    execution: Execution,
+) -> FindVarianceLinesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FindVarianceLinesOutputs(
+        root=execution.output_file("."),
+        variance_maps=execution.output_file(params.get("output_dir") + "/variance_map_run*.nii.gz") if (params.get("output_dir") is not None) else None,
+        scaled_variance_maps=execution.output_file(params.get("output_dir") + "/scaled_variance_map_run*.nii.gz") if (params.get("output_dir") is not None) else None,
+        cluster_reports=execution.output_file(params.get("output_dir") + "/cluster_report_run*.txt") if (params.get("output_dir") is not None) else None,
+        jpeg_images=execution.output_file(params.get("output_dir") + "/*.jpg") if (params.get("output_dir") is not None) else None,
+    )
+    return ret
+
+
+def find_variance_lines_execute(
+    params: FindVarianceLinesParameters,
+    execution: Execution,
+) -> FindVarianceLinesOutputs:
+    """
+    Look for bars of high variance that might suggest scanner interference in EPI
+    datasets.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FindVarianceLinesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = find_variance_lines_cargs(params, execution)
+    ret = find_variance_lines_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def find_variance_lines(
@@ -76,88 +323,15 @@ def find_variance_lines(
     Returns:
         NamedTuple of outputs (described in `FindVarianceLinesOutputs`).
     """
-    if percentile is not None and not (0 <= percentile <= 99): 
-        raise ValueError(f"'percentile' must be between 0 <= x <= 99 but was {percentile}")
-    if do_clean is not None and not (0 <= do_clean <= 1): 
-        raise ValueError(f"'do_clean' must be between 0 <= x <= 1 but was {do_clean}")
-    if do_img is not None and not (0 <= do_img <= 1): 
-        raise ValueError(f"'do_img' must be between 0 <= x <= 1 but was {do_img}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIND_VARIANCE_LINES_METADATA)
-    cargs = []
-    cargs.append("find_variance_lines.tcsh")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            mask
-        ])
-    if min_cvox is not None:
-        cargs.extend([
-            "-min_cvox",
-            str(min_cvox)
-        ])
-    if min_nt is not None:
-        cargs.extend([
-            "-min_nt",
-            str(min_nt)
-        ])
-    if nerode is not None:
-        cargs.extend([
-            "-nerode",
-            str(nerode)
-        ])
-    if nfirst is not None:
-        cargs.extend([
-            "-nfirst",
-            str(nfirst)
-        ])
-    if percentile is not None:
-        cargs.extend([
-            "-perc",
-            str(percentile)
-        ])
-    if polort is not None:
-        cargs.extend([
-            "-polort",
-            polort
-        ])
-    if output_dir is not None:
-        cargs.extend([
-            "-rdir",
-            output_dir
-        ])
-    if do_clean is not None:
-        cargs.extend([
-            "-do_clean",
-            str(do_clean)
-        ])
-    if do_img is not None:
-        cargs.extend([
-            "-do_img",
-            str(do_img)
-        ])
-    if echo:
-        cargs.append("-echo")
-    if help_:
-        cargs.append("-help")
-    if hist:
-        cargs.append("-hist")
-    if ver:
-        cargs.append("-ver")
-    ret = FindVarianceLinesOutputs(
-        root=execution.output_file("."),
-        variance_maps=execution.output_file(output_dir + "/variance_map_run*.nii.gz") if (output_dir is not None) else None,
-        scaled_variance_maps=execution.output_file(output_dir + "/scaled_variance_map_run*.nii.gz") if (output_dir is not None) else None,
-        cluster_reports=execution.output_file(output_dir + "/cluster_report_run*.txt") if (output_dir is not None) else None,
-        jpeg_images=execution.output_file(output_dir + "/*.jpg") if (output_dir is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = find_variance_lines_params(input_files=input_files, mask=mask, min_cvox=min_cvox, min_nt=min_nt, nerode=nerode, nfirst=nfirst, percentile=percentile, polort=polort, output_dir=output_dir, do_clean=do_clean, do_img=do_img, echo=echo, help_=help_, hist=hist, ver=ver)
+    return find_variance_lines_execute(params, execution)
 
 
 __all__ = [
     "FIND_VARIANCE_LINES_METADATA",
     "FindVarianceLinesOutputs",
     "find_variance_lines",
+    "find_variance_lines_params",
 ]

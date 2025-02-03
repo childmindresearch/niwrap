@@ -12,6 +12,49 @@ GAUSS_4DFP_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+Gauss4dfpParameters = typing.TypedDict('Gauss4dfpParameters', {
+    "__STYX_TYPE__": typing.Literal["gauss_4dfp"],
+    "input_file": str,
+    "f_half": float,
+    "output_root": typing.NotRequired[str | None],
+    "endian_flag": typing.NotRequired[str | None],
+    "wrap_flag": bool,
+    "differentiate_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "gauss_4dfp": gauss_4dfp_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "gauss_4dfp": gauss_4dfp_outputs,
+    }
+    return vt.get(t)
 
 
 class Gauss4dfpOutputs(typing.NamedTuple):
@@ -22,6 +65,119 @@ class Gauss4dfpOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType | None
     """Output file in 4dfp format."""
+
+
+def gauss_4dfp_params(
+    input_file: str,
+    f_half: float,
+    output_root: str | None = None,
+    endian_flag: str | None = None,
+    wrap_flag: bool = False,
+    differentiate_flag: bool = False,
+) -> Gauss4dfpParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_file: Input 4dfp or conc file to be processed.
+        f_half: Half frequency in 1/cm for the Gaussian filter application\
+            (f_half is the half frequency in 1/cm).
+        output_root: Root name for the output file. Default is\
+            <inroot>_g<10*f_half>.
+        endian_flag: Specify output endian; 'b' for big or 'l' for little\
+            endian. Default is input endian.
+        wrap_flag: Suppress x and y padding (wrap-around).
+        differentiate_flag: Apply differentiation.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "gauss_4dfp",
+        "input_file": input_file,
+        "f_half": f_half,
+        "wrap_flag": wrap_flag,
+        "differentiate_flag": differentiate_flag,
+    }
+    if output_root is not None:
+        params["output_root"] = output_root
+    if endian_flag is not None:
+        params["endian_flag"] = endian_flag
+    return params
+
+
+def gauss_4dfp_cargs(
+    params: Gauss4dfpParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("gauss_4dfp")
+    cargs.append(params.get("input_file"))
+    cargs.append(str(params.get("f_half")))
+    if params.get("output_root") is not None:
+        cargs.append(params.get("output_root"))
+    if params.get("endian_flag") is not None:
+        cargs.extend([
+            "-@",
+            params.get("endian_flag")
+        ])
+    if params.get("wrap_flag"):
+        cargs.append("-w")
+    if params.get("differentiate_flag"):
+        cargs.append("-d")
+    return cargs
+
+
+def gauss_4dfp_outputs(
+    params: Gauss4dfpParameters,
+    execution: Execution,
+) -> Gauss4dfpOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Gauss4dfpOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_root") + ".4dfp.ifh") if (params.get("output_root") is not None) else None,
+    )
+    return ret
+
+
+def gauss_4dfp_execute(
+    params: Gauss4dfpParameters,
+    execution: Execution,
+) -> Gauss4dfpOutputs:
+    """
+    Applies a Gaussian filter to 4dfp or conc input files.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Gauss4dfpOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = gauss_4dfp_cargs(params, execution)
+    ret = gauss_4dfp_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def gauss_4dfp(
@@ -56,31 +212,13 @@ def gauss_4dfp(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(GAUSS_4DFP_METADATA)
-    cargs = []
-    cargs.append("gauss_4dfp")
-    cargs.append(input_file)
-    cargs.append(str(f_half))
-    if output_root is not None:
-        cargs.append(output_root)
-    if endian_flag is not None:
-        cargs.extend([
-            "-@",
-            endian_flag
-        ])
-    if wrap_flag:
-        cargs.append("-w")
-    if differentiate_flag:
-        cargs.append("-d")
-    ret = Gauss4dfpOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_root + ".4dfp.ifh") if (output_root is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = gauss_4dfp_params(input_file=input_file, f_half=f_half, output_root=output_root, endian_flag=endian_flag, wrap_flag=wrap_flag, differentiate_flag=differentiate_flag)
+    return gauss_4dfp_execute(params, execution)
 
 
 __all__ = [
     "GAUSS_4DFP_METADATA",
     "Gauss4dfpOutputs",
     "gauss_4dfp",
+    "gauss_4dfp_params",
 ]

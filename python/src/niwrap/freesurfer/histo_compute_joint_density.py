@@ -12,6 +12,46 @@ HISTO_COMPUTE_JOINT_DENSITY_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+HistoComputeJointDensityParameters = typing.TypedDict('HistoComputeJointDensityParameters', {
+    "__STYX_TYPE__": typing.Literal["histo_compute_joint_density"],
+    "volume1": InputPathType,
+    "volume2": InputPathType,
+    "joint_density_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "histo_compute_joint_density": histo_compute_joint_density_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "histo_compute_joint_density": histo_compute_joint_density_outputs,
+    }
+    return vt.get(t)
 
 
 class HistoComputeJointDensityOutputs(typing.NamedTuple):
@@ -22,6 +62,95 @@ class HistoComputeJointDensityOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_joint_density: OutputPathType
     """Computed joint density output file"""
+
+
+def histo_compute_joint_density_params(
+    volume1: InputPathType,
+    volume2: InputPathType,
+    joint_density_file: str,
+) -> HistoComputeJointDensityParameters:
+    """
+    Build parameters.
+    
+    Args:
+        volume1: Input volume 1.
+        volume2: Input volume 2.
+        joint_density_file: Output joint density file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "histo_compute_joint_density",
+        "volume1": volume1,
+        "volume2": volume2,
+        "joint_density_file": joint_density_file,
+    }
+    return params
+
+
+def histo_compute_joint_density_cargs(
+    params: HistoComputeJointDensityParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("histo_compute_joint_density")
+    cargs.append(execution.input_file(params.get("volume1")))
+    cargs.append(execution.input_file(params.get("volume2")))
+    cargs.append(params.get("joint_density_file"))
+    return cargs
+
+
+def histo_compute_joint_density_outputs(
+    params: HistoComputeJointDensityParameters,
+    execution: Execution,
+) -> HistoComputeJointDensityOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = HistoComputeJointDensityOutputs(
+        root=execution.output_file("."),
+        output_joint_density=execution.output_file(params.get("joint_density_file")),
+    )
+    return ret
+
+
+def histo_compute_joint_density_execute(
+    params: HistoComputeJointDensityParameters,
+    execution: Execution,
+) -> HistoComputeJointDensityOutputs:
+    """
+    A tool to compute the joint density of two volumes.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `HistoComputeJointDensityOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = histo_compute_joint_density_cargs(params, execution)
+    ret = histo_compute_joint_density_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def histo_compute_joint_density(
@@ -47,21 +176,13 @@ def histo_compute_joint_density(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_COMPUTE_JOINT_DENSITY_METADATA)
-    cargs = []
-    cargs.append("histo_compute_joint_density")
-    cargs.append(execution.input_file(volume1))
-    cargs.append(execution.input_file(volume2))
-    cargs.append(joint_density_file)
-    ret = HistoComputeJointDensityOutputs(
-        root=execution.output_file("."),
-        output_joint_density=execution.output_file(joint_density_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = histo_compute_joint_density_params(volume1=volume1, volume2=volume2, joint_density_file=joint_density_file)
+    return histo_compute_joint_density_execute(params, execution)
 
 
 __all__ = [
     "HISTO_COMPUTE_JOINT_DENSITY_METADATA",
     "HistoComputeJointDensityOutputs",
     "histo_compute_joint_density",
+    "histo_compute_joint_density_params",
 ]

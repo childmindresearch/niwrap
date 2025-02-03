@@ -12,6 +12,47 @@ SURF_DIST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+SurfDistParameters = typing.TypedDict('SurfDistParameters', {
+    "__STYX_TYPE__": typing.Literal["SurfDist"],
+    "surface": InputPathType,
+    "nodepairs": InputPathType,
+    "node_path_do": typing.NotRequired[str | None],
+    "graph": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "SurfDist": surf_dist_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "SurfDist": surf_dist_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfDistOutputs(typing.NamedTuple):
@@ -22,6 +63,106 @@ class SurfDistOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     distances: OutputPathType
     """File containing the distances between nodes"""
+
+
+def surf_dist_params(
+    surface: InputPathType,
+    nodepairs: InputPathType,
+    node_path_do: str | None = None,
+    graph: bool = False,
+) -> SurfDistParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Surface on which distances are computed.
+        nodepairs: Specify node pairs for distance computation.
+        node_path_do: Output the shortest path between each node pair as a SUMA\
+            Displayable object.
+        graph: Calculate distance along the mesh (default).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "SurfDist",
+        "surface": surface,
+        "nodepairs": nodepairs,
+        "graph": graph,
+    }
+    if node_path_do is not None:
+        params["node_path_do"] = node_path_do
+    return params
+
+
+def surf_dist_cargs(
+    params: SurfDistParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("SurfDist")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("nodepairs")))
+    if params.get("node_path_do") is not None:
+        cargs.extend([
+            "-node_path_do",
+            params.get("node_path_do")
+        ])
+    if params.get("graph"):
+        cargs.append("-graph")
+    return cargs
+
+
+def surf_dist_outputs(
+    params: SurfDistParameters,
+    execution: Execution,
+) -> SurfDistOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfDistOutputs(
+        root=execution.output_file("."),
+        distances=execution.output_file("example.1D"),
+    )
+    return ret
+
+
+def surf_dist_execute(
+    params: SurfDistParameters,
+    execution: Execution,
+) -> SurfDistOutputs:
+    """
+    Calculate shortest distance between node pairs on a surface mesh.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfDistOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surf_dist_cargs(params, execution)
+    ret = surf_dist_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surf_dist(
@@ -50,27 +191,13 @@ def surf_dist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_DIST_METADATA)
-    cargs = []
-    cargs.append("SurfDist")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(nodepairs))
-    if node_path_do is not None:
-        cargs.extend([
-            "-node_path_do",
-            node_path_do
-        ])
-    if graph:
-        cargs.append("-graph")
-    ret = SurfDistOutputs(
-        root=execution.output_file("."),
-        distances=execution.output_file("example.1D"),
-    )
-    execution.run(cargs)
-    return ret
+    params = surf_dist_params(surface=surface, nodepairs=nodepairs, node_path_do=node_path_do, graph=graph)
+    return surf_dist_execute(params, execution)
 
 
 __all__ = [
     "SURF_DIST_METADATA",
     "SurfDistOutputs",
     "surf_dist",
+    "surf_dist_params",
 ]

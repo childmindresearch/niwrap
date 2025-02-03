@@ -12,14 +12,142 @@ MRIS_MERGE_PARCELLATIONS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisMergeParcellationsParameters = typing.TypedDict('MrisMergeParcellationsParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_merge_parcellations"],
+    "surface": InputPathType,
+    "label1": InputPathType,
+    "label2": InputPathType,
+    "annot_name": typing.NotRequired[str | None],
+})
 
 
-class MrisMergeParcellationsOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_merge_parcellations(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_merge_parcellations": mris_merge_parcellations_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_merge_parcellations_params(
+    surface: InputPathType,
+    label1: InputPathType,
+    label2: InputPathType,
+    annot_name: str | None = None,
+) -> MrisMergeParcellationsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Surface file to analyze.
+        label1: First label file.
+        label2: Second label file.
+        annot_name: Compute pairwise Hausdorff distance between all annotations.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_merge_parcellations",
+        "surface": surface,
+        "label1": label1,
+        "label2": label2,
+    }
+    if annot_name is not None:
+        params["annot_name"] = annot_name
+    return params
+
+
+def mris_merge_parcellations_cargs(
+    params: MrisMergeParcellationsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_merge_parcellations")
+    cargs.append(execution.input_file(params.get("surface")))
+    cargs.append(execution.input_file(params.get("label1")))
+    cargs.append(execution.input_file(params.get("label2")))
+    if params.get("annot_name") is not None:
+        cargs.extend([
+            "-a",
+            params.get("annot_name")
+        ])
+    return cargs
+
+
+def mris_merge_parcellations_outputs(
+    params: MrisMergeParcellationsParameters,
+    execution: Execution,
+) -> MrisMergeParcellationsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisMergeParcellationsOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_merge_parcellations_execute(
+    params: MrisMergeParcellationsParameters,
+    execution: Execution,
+) -> MrisMergeParcellationsOutputs:
+    """
+    This program computes the Hausdorff distance between two labels on the surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisMergeParcellationsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_merge_parcellations_cargs(params, execution)
+    ret = mris_merge_parcellations_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_merge_parcellations(
@@ -47,25 +175,12 @@ def mris_merge_parcellations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MERGE_PARCELLATIONS_METADATA)
-    cargs = []
-    cargs.append("mris_merge_parcellations")
-    cargs.append(execution.input_file(surface))
-    cargs.append(execution.input_file(label1))
-    cargs.append(execution.input_file(label2))
-    if annot_name is not None:
-        cargs.extend([
-            "-a",
-            annot_name
-        ])
-    ret = MrisMergeParcellationsOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_merge_parcellations_params(surface=surface, label1=label1, label2=label2, annot_name=annot_name)
+    return mris_merge_parcellations_execute(params, execution)
 
 
 __all__ = [
     "MRIS_MERGE_PARCELLATIONS_METADATA",
-    "MrisMergeParcellationsOutputs",
     "mris_merge_parcellations",
+    "mris_merge_parcellations_params",
 ]

@@ -12,6 +12,50 @@ V_1DEVAL_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V1devalParameters = typing.TypedDict('V1devalParameters', {
+    "__STYX_TYPE__": typing.Literal["1deval"],
+    "del": typing.NotRequired[float | None],
+    "start": typing.NotRequired[float | None],
+    "num": typing.NotRequired[float | None],
+    "index": typing.NotRequired[InputPathType | None],
+    "1D": bool,
+    "symbols": typing.NotRequired[list[InputPathType] | None],
+    "expression": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "1deval": v_1deval_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "1deval": v_1deval_outputs,
+    }
+    return vt.get(t)
 
 
 class V1devalOutputs(typing.NamedTuple):
@@ -22,6 +66,146 @@ class V1devalOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_1_d: OutputPathType
     """Output of evaluated expression."""
+
+
+def v_1deval_params(
+    expression: str,
+    del_: float | None = None,
+    start: float | None = None,
+    num: float | None = None,
+    index: InputPathType | None = None,
+    v_1_d: bool = False,
+    symbols: list[InputPathType] | None = None,
+) -> V1devalParameters:
+    """
+    Build parameters.
+    
+    Args:
+        expression: Expression to evaluate.
+        del_: Use 'd' as the step for a single undetermined variable in the\
+            expression.
+        start: Start at value 's' for a single undetermined variable in the\
+            expression.
+        num: Evaluate the expression 'n' times.
+        index: Read index column from file i.1D and write it out as 1st column\
+            of output.
+        v_1_d: Write output in the form of a single '1D:' string suitable for\
+            input on the command line of another program.
+        symbols: Read time series file and assign it to the symbol 'a'. Letters\
+            'a' to 'z' may be used as symbols.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "1deval",
+        "1D": v_1_d,
+        "expression": expression,
+    }
+    if del_ is not None:
+        params["del"] = del_
+    if start is not None:
+        params["start"] = start
+    if num is not None:
+        params["num"] = num
+    if index is not None:
+        params["index"] = index
+    if symbols is not None:
+        params["symbols"] = symbols
+    return params
+
+
+def v_1deval_cargs(
+    params: V1devalParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("1deval")
+    if params.get("del") is not None:
+        cargs.extend([
+            "-del",
+            str(params.get("del"))
+        ])
+    if params.get("start") is not None:
+        cargs.extend([
+            "-start",
+            str(params.get("start"))
+        ])
+    if params.get("num") is not None:
+        cargs.extend([
+            "-num",
+            str(params.get("num"))
+        ])
+    if params.get("index") is not None:
+        cargs.extend([
+            "-index",
+            execution.input_file(params.get("index"))
+        ])
+    if params.get("1D"):
+        cargs.append("-1D:")
+    if params.get("symbols") is not None:
+        cargs.extend([
+            "-a",
+            *[execution.input_file(f) for f in params.get("symbols")]
+        ])
+    cargs.extend([
+        "-expr",
+        params.get("expression")
+    ])
+    return cargs
+
+
+def v_1deval_outputs(
+    params: V1devalParameters,
+    execution: Execution,
+) -> V1devalOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V1devalOutputs(
+        root=execution.output_file("."),
+        output_1_d=execution.output_file("output.1D"),
+    )
+    return ret
+
+
+def v_1deval_execute(
+    params: V1devalParameters,
+    execution: Execution,
+) -> V1devalOutputs:
+    """
+    Evaluates an expression that may include columns of data from one or more text
+    files and writes the result to stdout.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V1devalOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_1deval_cargs(params, execution)
+    ret = v_1deval_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_1deval(
@@ -61,49 +245,13 @@ def v_1deval(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_1DEVAL_METADATA)
-    cargs = []
-    cargs.append("1deval")
-    if del_ is not None:
-        cargs.extend([
-            "-del",
-            str(del_)
-        ])
-    if start is not None:
-        cargs.extend([
-            "-start",
-            str(start)
-        ])
-    if num is not None:
-        cargs.extend([
-            "-num",
-            str(num)
-        ])
-    if index is not None:
-        cargs.extend([
-            "-index",
-            execution.input_file(index)
-        ])
-    if v_1_d:
-        cargs.append("-1D:")
-    if symbols is not None:
-        cargs.extend([
-            "-a",
-            *[execution.input_file(f) for f in symbols]
-        ])
-    cargs.extend([
-        "-expr",
-        expression
-    ])
-    ret = V1devalOutputs(
-        root=execution.output_file("."),
-        output_1_d=execution.output_file("output.1D"),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_1deval_params(del_=del_, start=start, num=num, index=index, v_1_d=v_1_d, symbols=symbols, expression=expression)
+    return v_1deval_execute(params, execution)
 
 
 __all__ = [
     "V1devalOutputs",
     "V_1DEVAL_METADATA",
     "v_1deval",
+    "v_1deval_params",
 ]

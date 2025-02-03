@@ -12,14 +12,142 @@ TBSS_2_REG_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Tbss2RegParameters = typing.TypedDict('Tbss2RegParameters', {
+    "__STYX_TYPE__": typing.Literal["tbss_2_reg"],
+    "use_fmrib58_fa_1mm": bool,
+    "target_image": typing.NotRequired[InputPathType | None],
+    "find_best_target": bool,
+})
 
 
-class Tbss2RegOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `tbss_2_reg(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "tbss_2_reg": tbss_2_reg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def tbss_2_reg_params(
+    use_fmrib58_fa_1mm: bool = False,
+    target_image: InputPathType | None = None,
+    find_best_target: bool = False,
+) -> Tbss2RegParameters:
+    """
+    Build parameters.
+    
+    Args:
+        use_fmrib58_fa_1mm: Use FMRIB58_FA_1mm as the target for nonlinear\
+            registrations (recommended).
+        target_image: Use the specified image as the target for nonlinear\
+            registrations.
+        find_best_target: Find the best target from all images in the FA.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "tbss_2_reg",
+        "use_fmrib58_fa_1mm": use_fmrib58_fa_1mm,
+        "find_best_target": find_best_target,
+    }
+    if target_image is not None:
+        params["target_image"] = target_image
+    return params
+
+
+def tbss_2_reg_cargs(
+    params: Tbss2RegParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("tbss_2_reg")
+    if params.get("use_fmrib58_fa_1mm"):
+        cargs.append("-T")
+    if params.get("target_image") is not None:
+        cargs.extend([
+            "-t",
+            execution.input_file(params.get("target_image"))
+        ])
+    if params.get("find_best_target"):
+        cargs.append("-n")
+    return cargs
+
+
+def tbss_2_reg_outputs(
+    params: Tbss2RegParameters,
+    execution: Execution,
+) -> Tbss2RegOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Tbss2RegOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def tbss_2_reg_execute(
+    params: Tbss2RegParameters,
+    execution: Execution,
+) -> Tbss2RegOutputs:
+    """
+    TBSS utility for target selection and registration for Tract-Based Spatial
+    Statistics (TBSS) analysis.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Tbss2RegOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = tbss_2_reg_cargs(params, execution)
+    ret = tbss_2_reg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def tbss_2_reg(
@@ -48,26 +176,12 @@ def tbss_2_reg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_2_REG_METADATA)
-    cargs = []
-    cargs.append("tbss_2_reg")
-    if use_fmrib58_fa_1mm:
-        cargs.append("-T")
-    if target_image is not None:
-        cargs.extend([
-            "-t",
-            execution.input_file(target_image)
-        ])
-    if find_best_target:
-        cargs.append("-n")
-    ret = Tbss2RegOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = tbss_2_reg_params(use_fmrib58_fa_1mm=use_fmrib58_fa_1mm, target_image=target_image, find_best_target=find_best_target)
+    return tbss_2_reg_execute(params, execution)
 
 
 __all__ = [
     "TBSS_2_REG_METADATA",
-    "Tbss2RegOutputs",
     "tbss_2_reg",
+    "tbss_2_reg_params",
 ]

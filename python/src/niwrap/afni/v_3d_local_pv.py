@@ -12,6 +12,54 @@ V_3D_LOCAL_PV_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dLocalPvParameters = typing.TypedDict('V3dLocalPvParameters', {
+    "__STYX_TYPE__": typing.Literal["3dLocalPV"],
+    "input_dataset": InputPathType,
+    "mask": typing.NotRequired[InputPathType | None],
+    "automask": bool,
+    "prefix": typing.NotRequired[str | None],
+    "prefix2": typing.NotRequired[str | None],
+    "evprefix": typing.NotRequired[str | None],
+    "neighborhood": typing.NotRequired[str | None],
+    "despike": bool,
+    "polort": typing.NotRequired[float | None],
+    "vnorm": bool,
+    "vproj": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dLocalPV": v_3d_local_pv_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dLocalPV": v_3d_local_pv_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dLocalPvOutputs(typing.NamedTuple):
@@ -26,6 +74,176 @@ class V3dLocalPvOutputs(typing.NamedTuple):
     """Second principal vector dataset"""
     singular_value: OutputPathType | None
     """Singular value at each voxel dataset"""
+
+
+def v_3d_local_pv_params(
+    input_dataset: InputPathType,
+    mask: InputPathType | None = None,
+    automask: bool = False,
+    prefix: str | None = None,
+    prefix2: str | None = None,
+    evprefix: str | None = None,
+    neighborhood: str | None = None,
+    despike: bool = False,
+    polort: float | None = None,
+    vnorm: bool = False,
+    vproj: str | None = None,
+) -> V3dLocalPvParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_dataset: Input time series dataset.
+        mask: Restrict operations to this mask.
+        automask: Create a mask from the time series dataset.
+        prefix: Save SVD vector result into this new dataset [default =\
+            'LocalPV'].
+        prefix2: Save second principal vector into this new dataset [default =\
+            don't save it].
+        evprefix: Save singular value at each voxel into this dataset [default\
+            = don't save].
+        neighborhood: Neighborhood definition (e.g., 'SPHERE(5)', 'TOHD(7)',\
+            etc.).
+        despike: Remove time series spikes from input dataset.
+        polort: Detrending.
+        vnorm: Normalize data vectors [strongly recommended].
+        vproj: Project central data time series onto local SVD vector; if\
+            followed by '2', then the central data time series will be projected on\
+            the 2-dimensional subspace spanned by the first 2 principal SVD\
+            vectors. [default: just output principal singular vector].
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dLocalPV",
+        "input_dataset": input_dataset,
+        "automask": automask,
+        "despike": despike,
+        "vnorm": vnorm,
+    }
+    if mask is not None:
+        params["mask"] = mask
+    if prefix is not None:
+        params["prefix"] = prefix
+    if prefix2 is not None:
+        params["prefix2"] = prefix2
+    if evprefix is not None:
+        params["evprefix"] = evprefix
+    if neighborhood is not None:
+        params["neighborhood"] = neighborhood
+    if polort is not None:
+        params["polort"] = polort
+    if vproj is not None:
+        params["vproj"] = vproj
+    return params
+
+
+def v_3d_local_pv_cargs(
+    params: V3dLocalPvParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dLocalPV")
+    cargs.append(execution.input_file(params.get("input_dataset")))
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("automask"):
+        cargs.append("-automask")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("prefix2") is not None:
+        cargs.extend([
+            "-prefix2",
+            params.get("prefix2")
+        ])
+    if params.get("evprefix") is not None:
+        cargs.extend([
+            "-evprefix",
+            params.get("evprefix")
+        ])
+    if params.get("neighborhood") is not None:
+        cargs.extend([
+            "-nbhd",
+            params.get("neighborhood")
+        ])
+    if params.get("despike"):
+        cargs.append("-despike")
+    if params.get("polort") is not None:
+        cargs.extend([
+            "-polort",
+            str(params.get("polort"))
+        ])
+    if params.get("vnorm"):
+        cargs.append("-vnorm")
+    if params.get("vproj") is not None:
+        cargs.extend([
+            "-vproj",
+            params.get("vproj")
+        ])
+    return cargs
+
+
+def v_3d_local_pv_outputs(
+    params: V3dLocalPvParameters,
+    execution: Execution,
+) -> V3dLocalPvOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dLocalPvOutputs(
+        root=execution.output_file("."),
+        svd_vector_result=execution.output_file(params.get("prefix") + ".nii.gz") if (params.get("prefix") is not None) else None,
+        second_principal_vector=execution.output_file(params.get("prefix2") + ".nii.gz") if (params.get("prefix2") is not None) else None,
+        singular_value=execution.output_file(params.get("evprefix") + ".nii.gz") if (params.get("evprefix") is not None) else None,
+    )
+    return ret
+
+
+def v_3d_local_pv_execute(
+    params: V3dLocalPvParameters,
+    execution: Execution,
+) -> V3dLocalPvOutputs:
+    """
+    Computes the Singular Value Decomposition (SVD) of the time series from a
+    neighborhood of each voxel in a 3D+time dataset, which serves as a smoothing
+    method for the dataset.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dLocalPvOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_local_pv_cargs(params, execution)
+    ret = v_3d_local_pv_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_local_pv(
@@ -76,62 +294,13 @@ def v_3d_local_pv(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_LOCAL_PV_METADATA)
-    cargs = []
-    cargs.append("3dLocalPV")
-    cargs.append(execution.input_file(input_dataset))
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if automask:
-        cargs.append("-automask")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if prefix2 is not None:
-        cargs.extend([
-            "-prefix2",
-            prefix2
-        ])
-    if evprefix is not None:
-        cargs.extend([
-            "-evprefix",
-            evprefix
-        ])
-    if neighborhood is not None:
-        cargs.extend([
-            "-nbhd",
-            neighborhood
-        ])
-    if despike:
-        cargs.append("-despike")
-    if polort is not None:
-        cargs.extend([
-            "-polort",
-            str(polort)
-        ])
-    if vnorm:
-        cargs.append("-vnorm")
-    if vproj is not None:
-        cargs.extend([
-            "-vproj",
-            vproj
-        ])
-    ret = V3dLocalPvOutputs(
-        root=execution.output_file("."),
-        svd_vector_result=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
-        second_principal_vector=execution.output_file(prefix2 + ".nii.gz") if (prefix2 is not None) else None,
-        singular_value=execution.output_file(evprefix + ".nii.gz") if (evprefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_local_pv_params(input_dataset=input_dataset, mask=mask, automask=automask, prefix=prefix, prefix2=prefix2, evprefix=evprefix, neighborhood=neighborhood, despike=despike, polort=polort, vnorm=vnorm, vproj=vproj)
+    return v_3d_local_pv_execute(params, execution)
 
 
 __all__ = [
     "V3dLocalPvOutputs",
     "V_3D_LOCAL_PV_METADATA",
     "v_3d_local_pv",
+    "v_3d_local_pv_params",
 ]

@@ -12,134 +12,257 @@ CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+CiftiCreateDenseScalarVolumeParameters = typing.TypedDict('CiftiCreateDenseScalarVolumeParameters', {
+    "__STYX_TYPE__": typing.Literal["volume"],
+    "volume_data": InputPathType,
+    "structure_label_volume": InputPathType,
+})
+CiftiCreateDenseScalarLeftMetricParameters = typing.TypedDict('CiftiCreateDenseScalarLeftMetricParameters', {
+    "__STYX_TYPE__": typing.Literal["left_metric"],
+    "metric": InputPathType,
+    "opt_roi_left_roi_metric": typing.NotRequired[InputPathType | None],
+})
+CiftiCreateDenseScalarRightMetricParameters = typing.TypedDict('CiftiCreateDenseScalarRightMetricParameters', {
+    "__STYX_TYPE__": typing.Literal["right_metric"],
+    "metric": InputPathType,
+    "opt_roi_right_roi_metric": typing.NotRequired[InputPathType | None],
+})
+CiftiCreateDenseScalarCerebellumMetricParameters = typing.TypedDict('CiftiCreateDenseScalarCerebellumMetricParameters', {
+    "__STYX_TYPE__": typing.Literal["cerebellum_metric"],
+    "metric": InputPathType,
+    "opt_roi_cerebellum_roi_metric": typing.NotRequired[InputPathType | None],
+})
+CiftiCreateDenseScalarParameters = typing.TypedDict('CiftiCreateDenseScalarParameters', {
+    "__STYX_TYPE__": typing.Literal["cifti-create-dense-scalar"],
+    "cifti_out": str,
+    "volume": typing.NotRequired[CiftiCreateDenseScalarVolumeParameters | None],
+    "left_metric": typing.NotRequired[CiftiCreateDenseScalarLeftMetricParameters | None],
+    "right_metric": typing.NotRequired[CiftiCreateDenseScalarRightMetricParameters | None],
+    "cerebellum_metric": typing.NotRequired[CiftiCreateDenseScalarCerebellumMetricParameters | None],
+    "opt_name_file_file": typing.NotRequired[str | None],
+})
 
 
-@dataclasses.dataclass
-class CiftiCreateDenseScalarVolume:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    volume component.
-    """
-    volume_data: InputPathType
-    """volume file containing all voxel data for all volume structures"""
-    structure_label_volume: InputPathType
-    """label volume file containing labels for cifti structures"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-volume")
-        cargs.append(execution.input_file(self.volume_data))
-        cargs.append(execution.input_file(self.structure_label_volume))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "cifti-create-dense-scalar": cifti_create_dense_scalar_cargs,
+        "volume": cifti_create_dense_scalar_volume_cargs,
+        "left_metric": cifti_create_dense_scalar_left_metric_cargs,
+        "right_metric": cifti_create_dense_scalar_right_metric_cargs,
+        "cerebellum_metric": cifti_create_dense_scalar_cerebellum_metric_cargs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiCreateDenseScalarLeftMetric:
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    metric for left surface.
-    """
-    metric: InputPathType
-    """the metric file"""
-    opt_roi_left_roi_metric: InputPathType | None = None
-    """roi of vertices to use from left surface: the ROI as a metric file"""
+    Get build outputs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-left-metric")
-        cargs.append(execution.input_file(self.metric))
-        if self.opt_roi_left_roi_metric is not None:
-            cargs.extend([
-                "-roi-left",
-                execution.input_file(self.opt_roi_left_roi_metric)
-            ])
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "cifti-create-dense-scalar": cifti_create_dense_scalar_outputs,
+    }
+    return vt.get(t)
 
 
-@dataclasses.dataclass
-class CiftiCreateDenseScalarRightMetric:
+def cifti_create_dense_scalar_volume_params(
+    volume_data: InputPathType,
+    structure_label_volume: InputPathType,
+) -> CiftiCreateDenseScalarVolumeParameters:
     """
-    metric for right surface.
-    """
-    metric: InputPathType
-    """the metric file"""
-    opt_roi_right_roi_metric: InputPathType | None = None
-    """roi of vertices to use from right surface: the ROI as a metric file"""
+    Build parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-right-metric")
-        cargs.append(execution.input_file(self.metric))
-        if self.opt_roi_right_roi_metric is not None:
-            cargs.extend([
-                "-roi-right",
-                execution.input_file(self.opt_roi_right_roi_metric)
-            ])
-        return cargs
+    Args:
+        volume_data: volume file containing all voxel data for all volume\
+            structures.
+        structure_label_volume: label volume file containing labels for cifti\
+            structures.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "volume",
+        "volume_data": volume_data,
+        "structure_label_volume": structure_label_volume,
+    }
+    return params
 
 
-@dataclasses.dataclass
-class CiftiCreateDenseScalarCerebellumMetric:
+def cifti_create_dense_scalar_volume_cargs(
+    params: CiftiCreateDenseScalarVolumeParameters,
+    execution: Execution,
+) -> list[str]:
     """
-    metric for the cerebellum.
-    """
-    metric: InputPathType
-    """the metric file"""
-    opt_roi_cerebellum_roi_metric: InputPathType | None = None
-    """roi of vertices to use from right surface: the ROI as a metric file"""
+    Build command-line arguments from parameters.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-cerebellum-metric")
-        cargs.append(execution.input_file(self.metric))
-        if self.opt_roi_cerebellum_roi_metric is not None:
-            cargs.extend([
-                "-roi-cerebellum",
-                execution.input_file(self.opt_roi_cerebellum_roi_metric)
-            ])
-        return cargs
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-volume")
+    cargs.append(execution.input_file(params.get("volume_data")))
+    cargs.append(execution.input_file(params.get("structure_label_volume")))
+    return cargs
+
+
+def cifti_create_dense_scalar_left_metric_params(
+    metric: InputPathType,
+    opt_roi_left_roi_metric: InputPathType | None = None,
+) -> CiftiCreateDenseScalarLeftMetricParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric: the metric file.
+        opt_roi_left_roi_metric: roi of vertices to use from left surface: the\
+            ROI as a metric file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "left_metric",
+        "metric": metric,
+    }
+    if opt_roi_left_roi_metric is not None:
+        params["opt_roi_left_roi_metric"] = opt_roi_left_roi_metric
+    return params
+
+
+def cifti_create_dense_scalar_left_metric_cargs(
+    params: CiftiCreateDenseScalarLeftMetricParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-left-metric")
+    cargs.append(execution.input_file(params.get("metric")))
+    if params.get("opt_roi_left_roi_metric") is not None:
+        cargs.extend([
+            "-roi-left",
+            execution.input_file(params.get("opt_roi_left_roi_metric"))
+        ])
+    return cargs
+
+
+def cifti_create_dense_scalar_right_metric_params(
+    metric: InputPathType,
+    opt_roi_right_roi_metric: InputPathType | None = None,
+) -> CiftiCreateDenseScalarRightMetricParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric: the metric file.
+        opt_roi_right_roi_metric: roi of vertices to use from right surface:\
+            the ROI as a metric file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "right_metric",
+        "metric": metric,
+    }
+    if opt_roi_right_roi_metric is not None:
+        params["opt_roi_right_roi_metric"] = opt_roi_right_roi_metric
+    return params
+
+
+def cifti_create_dense_scalar_right_metric_cargs(
+    params: CiftiCreateDenseScalarRightMetricParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-right-metric")
+    cargs.append(execution.input_file(params.get("metric")))
+    if params.get("opt_roi_right_roi_metric") is not None:
+        cargs.extend([
+            "-roi-right",
+            execution.input_file(params.get("opt_roi_right_roi_metric"))
+        ])
+    return cargs
+
+
+def cifti_create_dense_scalar_cerebellum_metric_params(
+    metric: InputPathType,
+    opt_roi_cerebellum_roi_metric: InputPathType | None = None,
+) -> CiftiCreateDenseScalarCerebellumMetricParameters:
+    """
+    Build parameters.
+    
+    Args:
+        metric: the metric file.
+        opt_roi_cerebellum_roi_metric: roi of vertices to use from right\
+            surface: the ROI as a metric file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cerebellum_metric",
+        "metric": metric,
+    }
+    if opt_roi_cerebellum_roi_metric is not None:
+        params["opt_roi_cerebellum_roi_metric"] = opt_roi_cerebellum_roi_metric
+    return params
+
+
+def cifti_create_dense_scalar_cerebellum_metric_cargs(
+    params: CiftiCreateDenseScalarCerebellumMetricParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-cerebellum-metric")
+    cargs.append(execution.input_file(params.get("metric")))
+    if params.get("opt_roi_cerebellum_roi_metric") is not None:
+        cargs.extend([
+            "-roi-cerebellum",
+            execution.input_file(params.get("opt_roi_cerebellum_roi_metric"))
+        ])
+    return cargs
 
 
 class CiftiCreateDenseScalarOutputs(typing.NamedTuple):
@@ -152,12 +275,170 @@ class CiftiCreateDenseScalarOutputs(typing.NamedTuple):
     """the output cifti file"""
 
 
+def cifti_create_dense_scalar_params(
+    cifti_out: str,
+    volume: CiftiCreateDenseScalarVolumeParameters | None = None,
+    left_metric: CiftiCreateDenseScalarLeftMetricParameters | None = None,
+    right_metric: CiftiCreateDenseScalarRightMetricParameters | None = None,
+    cerebellum_metric: CiftiCreateDenseScalarCerebellumMetricParameters | None = None,
+    opt_name_file_file: str | None = None,
+) -> CiftiCreateDenseScalarParameters:
+    """
+    Build parameters.
+    
+    Args:
+        cifti_out: the output cifti file.
+        volume: volume component.
+        left_metric: metric for left surface.
+        right_metric: metric for right surface.
+        cerebellum_metric: metric for the cerebellum.
+        opt_name_file_file: use a text file to set all map names: text file\
+            containing map names, one per line.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cifti-create-dense-scalar",
+        "cifti_out": cifti_out,
+    }
+    if volume is not None:
+        params["volume"] = volume
+    if left_metric is not None:
+        params["left_metric"] = left_metric
+    if right_metric is not None:
+        params["right_metric"] = right_metric
+    if cerebellum_metric is not None:
+        params["cerebellum_metric"] = cerebellum_metric
+    if opt_name_file_file is not None:
+        params["opt_name_file_file"] = opt_name_file_file
+    return params
+
+
+def cifti_create_dense_scalar_cargs(
+    params: CiftiCreateDenseScalarParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-cifti-create-dense-scalar")
+    cargs.append(params.get("cifti_out"))
+    if params.get("volume") is not None:
+        cargs.extend(dyn_cargs(params.get("volume")["__STYXTYPE__"])(params.get("volume"), execution))
+    if params.get("left_metric") is not None:
+        cargs.extend(dyn_cargs(params.get("left_metric")["__STYXTYPE__"])(params.get("left_metric"), execution))
+    if params.get("right_metric") is not None:
+        cargs.extend(dyn_cargs(params.get("right_metric")["__STYXTYPE__"])(params.get("right_metric"), execution))
+    if params.get("cerebellum_metric") is not None:
+        cargs.extend(dyn_cargs(params.get("cerebellum_metric")["__STYXTYPE__"])(params.get("cerebellum_metric"), execution))
+    if params.get("opt_name_file_file") is not None:
+        cargs.extend([
+            "-name-file",
+            params.get("opt_name_file_file")
+        ])
+    return cargs
+
+
+def cifti_create_dense_scalar_outputs(
+    params: CiftiCreateDenseScalarParameters,
+    execution: Execution,
+) -> CiftiCreateDenseScalarOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CiftiCreateDenseScalarOutputs(
+        root=execution.output_file("."),
+        cifti_out=execution.output_file(params.get("cifti_out")),
+    )
+    return ret
+
+
+def cifti_create_dense_scalar_execute(
+    params: CiftiCreateDenseScalarParameters,
+    execution: Execution,
+) -> CiftiCreateDenseScalarOutputs:
+    """
+    Create a cifti dense scalar file.
+    
+    All input files must have the same number of columns/subvolumes. Only the
+    specified components will be in the output cifti file. Map names will be
+    taken from one of the input files. At least one component must be specified.
+    
+    See -volume-label-import and -volume-help for format details of label volume
+    files. The structure-label-volume should have some of the label names from
+    this list, all other label names will be ignored:
+    
+    CORTEX_LEFT
+    CORTEX_RIGHT
+    CEREBELLUM
+    ACCUMBENS_LEFT
+    ACCUMBENS_RIGHT
+    ALL_GREY_MATTER
+    ALL_WHITE_MATTER
+    AMYGDALA_LEFT
+    AMYGDALA_RIGHT
+    BRAIN_STEM
+    CAUDATE_LEFT
+    CAUDATE_RIGHT
+    CEREBELLAR_WHITE_MATTER_LEFT
+    CEREBELLAR_WHITE_MATTER_RIGHT
+    CEREBELLUM_LEFT
+    CEREBELLUM_RIGHT
+    CEREBRAL_WHITE_MATTER_LEFT
+    CEREBRAL_WHITE_MATTER_RIGHT
+    CORTEX
+    DIENCEPHALON_VENTRAL_LEFT
+    DIENCEPHALON_VENTRAL_RIGHT
+    HIPPOCAMPUS_LEFT
+    HIPPOCAMPUS_RIGHT
+    INVALID
+    OTHER
+    OTHER_GREY_MATTER
+    OTHER_WHITE_MATTER
+    PALLIDUM_LEFT
+    PALLIDUM_RIGHT
+    PUTAMEN_LEFT
+    PUTAMEN_RIGHT
+    THALAMUS_LEFT
+    THALAMUS_RIGHT.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cifti_create_dense_scalar_cargs(params, execution)
+    ret = cifti_create_dense_scalar_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def cifti_create_dense_scalar(
     cifti_out: str,
-    volume: CiftiCreateDenseScalarVolume | None = None,
-    left_metric: CiftiCreateDenseScalarLeftMetric | None = None,
-    right_metric: CiftiCreateDenseScalarRightMetric | None = None,
-    cerebellum_metric: CiftiCreateDenseScalarCerebellumMetric | None = None,
+    volume: CiftiCreateDenseScalarVolumeParameters | None = None,
+    left_metric: CiftiCreateDenseScalarLeftMetricParameters | None = None,
+    right_metric: CiftiCreateDenseScalarRightMetricParameters | None = None,
+    cerebellum_metric: CiftiCreateDenseScalarCerebellumMetricParameters | None = None,
     opt_name_file_file: str | None = None,
     runner: Runner | None = None,
 ) -> CiftiCreateDenseScalarOutputs:
@@ -224,37 +505,17 @@ def cifti_create_dense_scalar(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CIFTI_CREATE_DENSE_SCALAR_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-cifti-create-dense-scalar")
-    cargs.append(cifti_out)
-    if volume is not None:
-        cargs.extend(volume.run(execution))
-    if left_metric is not None:
-        cargs.extend(left_metric.run(execution))
-    if right_metric is not None:
-        cargs.extend(right_metric.run(execution))
-    if cerebellum_metric is not None:
-        cargs.extend(cerebellum_metric.run(execution))
-    if opt_name_file_file is not None:
-        cargs.extend([
-            "-name-file",
-            opt_name_file_file
-        ])
-    ret = CiftiCreateDenseScalarOutputs(
-        root=execution.output_file("."),
-        cifti_out=execution.output_file(cifti_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = cifti_create_dense_scalar_params(cifti_out=cifti_out, volume=volume, left_metric=left_metric, right_metric=right_metric, cerebellum_metric=cerebellum_metric, opt_name_file_file=opt_name_file_file)
+    return cifti_create_dense_scalar_execute(params, execution)
 
 
 __all__ = [
     "CIFTI_CREATE_DENSE_SCALAR_METADATA",
-    "CiftiCreateDenseScalarCerebellumMetric",
-    "CiftiCreateDenseScalarLeftMetric",
     "CiftiCreateDenseScalarOutputs",
-    "CiftiCreateDenseScalarRightMetric",
-    "CiftiCreateDenseScalarVolume",
     "cifti_create_dense_scalar",
+    "cifti_create_dense_scalar_cerebellum_metric_params",
+    "cifti_create_dense_scalar_left_metric_params",
+    "cifti_create_dense_scalar_params",
+    "cifti_create_dense_scalar_right_metric_params",
+    "cifti_create_dense_scalar_volume_params",
 ]

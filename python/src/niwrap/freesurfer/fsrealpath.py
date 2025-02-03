@@ -12,14 +12,128 @@ FSREALPATH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+FsrealpathParameters = typing.TypedDict('FsrealpathParameters', {
+    "__STYX_TYPE__": typing.Literal["fsrealpath"],
+    "path": str,
+    "help": bool,
+})
 
 
-class FsrealpathOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `fsrealpath(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "fsrealpath": fsrealpath_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def fsrealpath_params(
+    path: str,
+    help_: bool = False,
+) -> FsrealpathParameters:
+    """
+    Build parameters.
+    
+    Args:
+        path: The path to resolve.
+        help_: Show this help message and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsrealpath",
+        "path": path,
+        "help": help_,
+    }
+    return params
+
+
+def fsrealpath_cargs(
+    params: FsrealpathParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsrealpath")
+    cargs.append(params.get("path"))
+    if params.get("help"):
+        cargs.append("-h")
+    return cargs
+
+
+def fsrealpath_outputs(
+    params: FsrealpathParameters,
+    execution: Execution,
+) -> FsrealpathOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FsrealpathOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def fsrealpath_execute(
+    params: FsrealpathParameters,
+    execution: Execution,
+) -> FsrealpathOutputs:
+    """
+    Resolve symbolic links in a path.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FsrealpathOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsrealpath_cargs(params, execution)
+    ret = fsrealpath_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsrealpath(
@@ -43,20 +157,12 @@ def fsrealpath(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSREALPATH_METADATA)
-    cargs = []
-    cargs.append("fsrealpath")
-    cargs.append(path)
-    if help_:
-        cargs.append("-h")
-    ret = FsrealpathOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = fsrealpath_params(path=path, help_=help_)
+    return fsrealpath_execute(params, execution)
 
 
 __all__ = [
     "FSREALPATH_METADATA",
-    "FsrealpathOutputs",
     "fsrealpath",
+    "fsrealpath_params",
 ]

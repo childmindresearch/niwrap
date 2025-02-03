@@ -12,14 +12,181 @@ MRIS_NITERS2FWHM_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisNiters2fwhmParameters = typing.TypedDict('MrisNiters2fwhmParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_niters2fwhm"],
+    "subject": str,
+    "hemi": str,
+    "surf": str,
+    "dof": float,
+    "niters": float,
+    "debug": bool,
+    "checkopts": bool,
+    "help": bool,
+    "version": bool,
+})
 
 
-class MrisNiters2fwhmOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mris_niters2fwhm(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mris_niters2fwhm": mris_niters2fwhm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mris_niters2fwhm_params(
+    subject: str,
+    hemi: str,
+    surf: str,
+    dof: float,
+    niters: float,
+    debug: bool = False,
+    checkopts: bool = False,
+    help_: bool = False,
+    version: bool = False,
+) -> MrisNiters2fwhmParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject: Subject identifier.
+        hemi: Hemisphere (e.g., lh or rh).
+        surf: Surface type (e.g., white, pial).
+        dof: Degrees of Freedom.
+        niters: Maximum number of iterations.
+        debug: Turn on debugging.
+        checkopts: Don't run anything, just check options and exit.
+        help_: Print out information on how to use this program.
+        version: Print out version and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_niters2fwhm",
+        "subject": subject,
+        "hemi": hemi,
+        "surf": surf,
+        "dof": dof,
+        "niters": niters,
+        "debug": debug,
+        "checkopts": checkopts,
+        "help": help_,
+        "version": version,
+    }
+    return params
+
+
+def mris_niters2fwhm_cargs(
+    params: MrisNiters2fwhmParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_niters2fwhm")
+    cargs.extend([
+        "--s",
+        params.get("subject")
+    ])
+    cargs.extend([
+        "--h",
+        params.get("hemi")
+    ])
+    cargs.extend([
+        "--surf",
+        params.get("surf")
+    ])
+    cargs.extend([
+        "--dof",
+        str(params.get("dof"))
+    ])
+    cargs.extend([
+        "--niters",
+        str(params.get("niters"))
+    ])
+    if params.get("debug"):
+        cargs.append("--debug")
+    if params.get("checkopts"):
+        cargs.append("--checkopts")
+    if params.get("help"):
+        cargs.append("--help")
+    if params.get("version"):
+        cargs.append("--version")
+    return cargs
+
+
+def mris_niters2fwhm_outputs(
+    params: MrisNiters2fwhmParameters,
+    execution: Execution,
+) -> MrisNiters2fwhmOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisNiters2fwhmOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mris_niters2fwhm_execute(
+    params: MrisNiters2fwhmParameters,
+    execution: Execution,
+) -> MrisNiters2fwhmOutputs:
+    """
+    Convert number of iterations to full width at half maximum (FWHM) for surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisNiters2fwhmOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_niters2fwhm_cargs(params, execution)
+    ret = mris_niters2fwhm_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_niters2fwhm(
@@ -57,45 +224,12 @@ def mris_niters2fwhm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_NITERS2FWHM_METADATA)
-    cargs = []
-    cargs.append("mris_niters2fwhm")
-    cargs.extend([
-        "--s",
-        subject
-    ])
-    cargs.extend([
-        "--h",
-        hemi
-    ])
-    cargs.extend([
-        "--surf",
-        surf
-    ])
-    cargs.extend([
-        "--dof",
-        str(dof)
-    ])
-    cargs.extend([
-        "--niters",
-        str(niters)
-    ])
-    if debug:
-        cargs.append("--debug")
-    if checkopts:
-        cargs.append("--checkopts")
-    if help_:
-        cargs.append("--help")
-    if version:
-        cargs.append("--version")
-    ret = MrisNiters2fwhmOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_niters2fwhm_params(subject=subject, hemi=hemi, surf=surf, dof=dof, niters=niters, debug=debug, checkopts=checkopts, help_=help_, version=version)
+    return mris_niters2fwhm_execute(params, execution)
 
 
 __all__ = [
     "MRIS_NITERS2FWHM_METADATA",
-    "MrisNiters2fwhmOutputs",
     "mris_niters2fwhm",
+    "mris_niters2fwhm_params",
 ]

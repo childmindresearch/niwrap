@@ -12,6 +12,47 @@ MRIS_LABEL_CALC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisLabelCalcParameters = typing.TypedDict('MrisLabelCalcParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_label_calc"],
+    "command": typing.Literal["union", "intersect", "invert", "erode", "dilate"],
+    "input1": InputPathType,
+    "input2": InputPathType,
+    "output": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_label_calc": mris_label_calc_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_label_calc": mris_label_calc_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisLabelCalcOutputs(typing.NamedTuple):
@@ -22,6 +63,100 @@ class MrisLabelCalcOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_label: OutputPathType
     """The resulting label file after operation"""
+
+
+def mris_label_calc_params(
+    command: typing.Literal["union", "intersect", "invert", "erode", "dilate"],
+    input1: InputPathType,
+    input2: InputPathType,
+    output: str,
+) -> MrisLabelCalcParameters:
+    """
+    Build parameters.
+    
+    Args:
+        command: Command to perform on input labels.
+        input1: First input label file.
+        input2: Second input label file (used for 'invert', 'erode', 'dilate'\
+            operations).
+        output: Output label file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_label_calc",
+        "command": command,
+        "input1": input1,
+        "input2": input2,
+        "output": output,
+    }
+    return params
+
+
+def mris_label_calc_cargs(
+    params: MrisLabelCalcParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_label_calc")
+    cargs.append(params.get("command"))
+    cargs.append(execution.input_file(params.get("input1")))
+    cargs.append(execution.input_file(params.get("input2")))
+    cargs.append(params.get("output"))
+    return cargs
+
+
+def mris_label_calc_outputs(
+    params: MrisLabelCalcParameters,
+    execution: Execution,
+) -> MrisLabelCalcOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisLabelCalcOutputs(
+        root=execution.output_file("."),
+        output_label=execution.output_file(params.get("output") + ".label"),
+    )
+    return ret
+
+
+def mris_label_calc_execute(
+    params: MrisLabelCalcParameters,
+    execution: Execution,
+) -> MrisLabelCalcOutputs:
+    """
+    Tool for surface label calculations.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisLabelCalcOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_label_calc_cargs(params, execution)
+    ret = mris_label_calc_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_label_calc(
@@ -50,22 +185,13 @@ def mris_label_calc(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL_CALC_METADATA)
-    cargs = []
-    cargs.append("mris_label_calc")
-    cargs.append(command)
-    cargs.append(execution.input_file(input1))
-    cargs.append(execution.input_file(input2))
-    cargs.append(output)
-    ret = MrisLabelCalcOutputs(
-        root=execution.output_file("."),
-        output_label=execution.output_file(output + ".label"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_label_calc_params(command=command, input1=input1, input2=input2, output=output)
+    return mris_label_calc_execute(params, execution)
 
 
 __all__ = [
     "MRIS_LABEL_CALC_METADATA",
     "MrisLabelCalcOutputs",
     "mris_label_calc",
+    "mris_label_calc_params",
 ]

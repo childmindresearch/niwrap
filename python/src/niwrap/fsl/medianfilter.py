@@ -12,6 +12,45 @@ MEDIANFILTER_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+MedianfilterParameters = typing.TypedDict('MedianfilterParameters', {
+    "__STYX_TYPE__": typing.Literal["medianfilter"],
+    "infile": InputPathType,
+    "outfile": InputPathType,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "medianfilter": medianfilter_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "medianfilter": medianfilter_outputs,
+    }
+    return vt.get(t)
 
 
 class MedianfilterOutputs(typing.NamedTuple):
@@ -22,6 +61,92 @@ class MedianfilterOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     filtered_file: OutputPathType
     """Output file containing the median filtered image"""
+
+
+def medianfilter_params(
+    infile: InputPathType,
+    outfile: InputPathType,
+) -> MedianfilterParameters:
+    """
+    Build parameters.
+    
+    Args:
+        infile: Input image file to be filtered (e.g., img.nii.gz).
+        outfile: Output file to store the filtered image (e.g.,\
+            img_filtered.nii.gz).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "medianfilter",
+        "infile": infile,
+        "outfile": outfile,
+    }
+    return params
+
+
+def medianfilter_cargs(
+    params: MedianfilterParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("medianfilter")
+    cargs.append(execution.input_file(params.get("infile")))
+    cargs.append(execution.input_file(params.get("outfile")))
+    return cargs
+
+
+def medianfilter_outputs(
+    params: MedianfilterParameters,
+    execution: Execution,
+) -> MedianfilterOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MedianfilterOutputs(
+        root=execution.output_file("."),
+        filtered_file=execution.output_file(pathlib.Path(params.get("outfile")).name),
+    )
+    return ret
+
+
+def medianfilter_execute(
+    params: MedianfilterParameters,
+    execution: Execution,
+) -> MedianfilterOutputs:
+    """
+    A tool to perform 26 neighbourhood median filtering on an input image.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MedianfilterOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = medianfilter_cargs(params, execution)
+    ret = medianfilter_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def medianfilter(
@@ -46,20 +171,13 @@ def medianfilter(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MEDIANFILTER_METADATA)
-    cargs = []
-    cargs.append("medianfilter")
-    cargs.append(execution.input_file(infile))
-    cargs.append(execution.input_file(outfile))
-    ret = MedianfilterOutputs(
-        root=execution.output_file("."),
-        filtered_file=execution.output_file(pathlib.Path(outfile).name),
-    )
-    execution.run(cargs)
-    return ret
+    params = medianfilter_params(infile=infile, outfile=outfile)
+    return medianfilter_execute(params, execution)
 
 
 __all__ = [
     "MEDIANFILTER_METADATA",
     "MedianfilterOutputs",
     "medianfilter",
+    "medianfilter_params",
 ]

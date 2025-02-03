@@ -12,6 +12,51 @@ FAT_PROC_IMIT2W_FROM_T1W_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FatProcImit2wFromT1wParameters = typing.TypedDict('FatProcImit2wFromT1wParameters', {
+    "__STYX_TYPE__": typing.Literal["fat_proc_imit2w_from_t1w"],
+    "t1_file": InputPathType,
+    "prefix": str,
+    "workdir": typing.NotRequired[str | None],
+    "mask": typing.NotRequired[InputPathType | None],
+    "ss_blur_fwhm": typing.NotRequired[float | None],
+    "no_clean": bool,
+    "no_qc_view": bool,
+    "qc_prefix": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fat_proc_imit2w_from_t1w": fat_proc_imit2w_from_t1w_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fat_proc_imit2w_from_t1w": fat_proc_imit2w_from_t1w_outputs,
+    }
+    return vt.get(t)
 
 
 class FatProcImit2wFromT1wOutputs(typing.NamedTuple):
@@ -30,6 +75,152 @@ class FatProcImit2wFromT1wOutputs(typing.NamedTuple):
     qc_images: OutputPathType
     """QC images of the skull-stripped T1w volume and the final imitation-T2w
     volume"""
+
+
+def fat_proc_imit2w_from_t1w_params(
+    t1_file: InputPathType,
+    prefix: str,
+    workdir: str | None = None,
+    mask: InputPathType | None = None,
+    ss_blur_fwhm: float | None = None,
+    no_clean: bool = False,
+    no_qc_view: bool = False,
+    qc_prefix: str | None = None,
+) -> FatProcImit2wFromT1wParameters:
+    """
+    Build parameters.
+    
+    Args:
+        t1_file: Full name of the input T1w volume.
+        prefix: Output prefix for files and snapshots.
+        workdir: Specify a working directory, which can be removed (default:\
+            __WORKING_imit2w_from_t1w).
+        mask: Optional input of a pre-skullstripped T1_FILE (either mask or\
+            skull-stripped volume).
+        ss_blur_fwhm: Optional, add in blurring during the 3dSkullStrip part\
+            (in mm, default: 2 FWHM).
+        no_clean: Optional switch to NOT remove working directory\
+            '__WORKING_imit2w_from_t1w' (default: remove working dir).
+        no_qc_view: Turn off the automatic creation of QC montages (default:\
+            on).
+        qc_prefix: Change the prefix of the QC images (default: use prefix of\
+            volumes).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fat_proc_imit2w_from_t1w",
+        "t1_file": t1_file,
+        "prefix": prefix,
+        "no_clean": no_clean,
+        "no_qc_view": no_qc_view,
+    }
+    if workdir is not None:
+        params["workdir"] = workdir
+    if mask is not None:
+        params["mask"] = mask
+    if ss_blur_fwhm is not None:
+        params["ss_blur_fwhm"] = ss_blur_fwhm
+    if qc_prefix is not None:
+        params["qc_prefix"] = qc_prefix
+    return params
+
+
+def fat_proc_imit2w_from_t1w_cargs(
+    params: FatProcImit2wFromT1wParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fat_proc_imit2w_from_t1w")
+    cargs.extend([
+        "-inset",
+        execution.input_file(params.get("t1_file"))
+    ])
+    cargs.extend([
+        "-prefix",
+        params.get("prefix")
+    ])
+    if params.get("workdir") is not None:
+        cargs.extend([
+            "-workdir",
+            params.get("workdir")
+        ])
+    if params.get("mask") is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(params.get("mask"))
+        ])
+    if params.get("ss_blur_fwhm") is not None:
+        cargs.extend([
+            "-ss_blur_fwhm",
+            str(params.get("ss_blur_fwhm"))
+        ])
+    if params.get("no_clean"):
+        cargs.append("-no_clean")
+    if params.get("no_qc_view"):
+        cargs.append("-no_qc_view")
+    if params.get("qc_prefix") is not None:
+        cargs.extend([
+            "-qc_prefix",
+            params.get("qc_prefix")
+        ])
+    return cargs
+
+
+def fat_proc_imit2w_from_t1w_outputs(
+    params: FatProcImit2wFromT1wParameters,
+    execution: Execution,
+) -> FatProcImit2wFromT1wOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FatProcImit2wFromT1wOutputs(
+        root=execution.output_file("."),
+        t2w_contrast_volume=execution.output_file(params.get("prefix") + ".nii.gz"),
+        cleaned_t1w_volume=execution.output_file(params.get("prefix") + "_orig.nii.gz"),
+        skull_stripped_t1w=execution.output_file(params.get("prefix") + "_orig_ss.nii.gz"),
+        qc_images=execution.output_file(params.get("prefix") + "_qc*.nii.gz"),
+    )
+    return ret
+
+
+def fat_proc_imit2w_from_t1w_execute(
+    params: FatProcImit2wFromT1wParameters,
+    execution: Execution,
+) -> FatProcImit2wFromT1wOutputs:
+    """
+    Process T1w anatomical images to generate an imitation T2w-contrast image.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FatProcImit2wFromT1wOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fat_proc_imit2w_from_t1w_cargs(params, execution)
+    ret = fat_proc_imit2w_from_t1w_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fat_proc_imit2w_from_t1w(
@@ -71,53 +262,13 @@ def fat_proc_imit2w_from_t1w(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_IMIT2W_FROM_T1W_METADATA)
-    cargs = []
-    cargs.append("fat_proc_imit2w_from_t1w")
-    cargs.extend([
-        "-inset",
-        execution.input_file(t1_file)
-    ])
-    cargs.extend([
-        "-prefix",
-        prefix
-    ])
-    if workdir is not None:
-        cargs.extend([
-            "-workdir",
-            workdir
-        ])
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    if ss_blur_fwhm is not None:
-        cargs.extend([
-            "-ss_blur_fwhm",
-            str(ss_blur_fwhm)
-        ])
-    if no_clean:
-        cargs.append("-no_clean")
-    if no_qc_view:
-        cargs.append("-no_qc_view")
-    if qc_prefix is not None:
-        cargs.extend([
-            "-qc_prefix",
-            qc_prefix
-        ])
-    ret = FatProcImit2wFromT1wOutputs(
-        root=execution.output_file("."),
-        t2w_contrast_volume=execution.output_file(prefix + ".nii.gz"),
-        cleaned_t1w_volume=execution.output_file(prefix + "_orig.nii.gz"),
-        skull_stripped_t1w=execution.output_file(prefix + "_orig_ss.nii.gz"),
-        qc_images=execution.output_file(prefix + "_qc*.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fat_proc_imit2w_from_t1w_params(t1_file=t1_file, prefix=prefix, workdir=workdir, mask=mask, ss_blur_fwhm=ss_blur_fwhm, no_clean=no_clean, no_qc_view=no_qc_view, qc_prefix=qc_prefix)
+    return fat_proc_imit2w_from_t1w_execute(params, execution)
 
 
 __all__ = [
     "FAT_PROC_IMIT2W_FROM_T1W_METADATA",
     "FatProcImit2wFromT1wOutputs",
     "fat_proc_imit2w_from_t1w",
+    "fat_proc_imit2w_from_t1w_params",
 ]

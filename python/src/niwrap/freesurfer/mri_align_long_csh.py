@@ -12,6 +12,44 @@ MRI_ALIGN_LONG_CSH_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriAlignLongCshParameters = typing.TypedDict('MriAlignLongCshParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_align_long.csh"],
+    "base_id": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_align_long.csh": mri_align_long_csh_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_align_long.csh": mri_align_long_csh_outputs,
+    }
+    return vt.get(t)
 
 
 class MriAlignLongCshOutputs(typing.NamedTuple):
@@ -24,6 +62,89 @@ class MriAlignLongCshOutputs(typing.NamedTuple):
     """Aligned norm volume in base space"""
     aligned_aseg: OutputPathType
     """Aligned aseg volume in base space"""
+
+
+def mri_align_long_csh_params(
+    base_id: str,
+) -> MriAlignLongCshParameters:
+    """
+    Build parameters.
+    
+    Args:
+        base_id: Identifier for the base subject.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_align_long.csh",
+        "base_id": base_id,
+    }
+    return params
+
+
+def mri_align_long_csh_cargs(
+    params: MriAlignLongCshParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_align_long.csh")
+    cargs.append(params.get("base_id"))
+    return cargs
+
+
+def mri_align_long_csh_outputs(
+    params: MriAlignLongCshParameters,
+    execution: Execution,
+) -> MriAlignLongCshOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriAlignLongCshOutputs(
+        root=execution.output_file("."),
+        aligned_norm=execution.output_file("[base_id].long.base/mri/norm-base.mgz"),
+        aligned_aseg=execution.output_file("[base_id].long.base/mri/aseg.base.mgz"),
+    )
+    return ret
+
+
+def mri_align_long_csh_execute(
+    params: MriAlignLongCshParameters,
+    execution: Execution,
+) -> MriAlignLongCshOutputs:
+    """
+    Aligns all longitudinal norm and aseg files to the base space in FreeSurfer
+    processing.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriAlignLongCshOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_align_long_csh_cargs(params, execution)
+    ret = mri_align_long_csh_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_align_long_csh(
@@ -46,20 +167,13 @@ def mri_align_long_csh(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ALIGN_LONG_CSH_METADATA)
-    cargs = []
-    cargs.append("mri_align_long.csh")
-    cargs.append(base_id)
-    ret = MriAlignLongCshOutputs(
-        root=execution.output_file("."),
-        aligned_norm=execution.output_file("[base_id].long.base/mri/norm-base.mgz"),
-        aligned_aseg=execution.output_file("[base_id].long.base/mri/aseg.base.mgz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_align_long_csh_params(base_id=base_id)
+    return mri_align_long_csh_execute(params, execution)
 
 
 __all__ = [
     "MRI_ALIGN_LONG_CSH_METADATA",
     "MriAlignLongCshOutputs",
     "mri_align_long_csh",
+    "mri_align_long_csh_params",
 ]

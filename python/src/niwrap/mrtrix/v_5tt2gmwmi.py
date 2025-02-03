@@ -12,35 +12,101 @@ V_5TT2GMWMI_METADATA = Metadata(
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
 )
+V5tt2gmwmiConfigParameters = typing.TypedDict('V5tt2gmwmiConfigParameters', {
+    "__STYX_TYPE__": typing.Literal["config"],
+    "key": str,
+    "value": str,
+})
+V5tt2gmwmiParameters = typing.TypedDict('V5tt2gmwmiParameters', {
+    "__STYX_TYPE__": typing.Literal["5tt2gmwmi"],
+    "mask_in": typing.NotRequired[InputPathType | None],
+    "info": bool,
+    "quiet": bool,
+    "debug": bool,
+    "force": bool,
+    "nthreads": typing.NotRequired[int | None],
+    "config": typing.NotRequired[list[V5tt2gmwmiConfigParameters] | None],
+    "help": bool,
+    "version": bool,
+    "5tt_in": InputPathType,
+    "mask_out": str,
+})
 
 
-@dataclasses.dataclass
-class V5tt2gmwmiConfig:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    temporarily set the value of an MRtrix config file entry.
-    """
-    key: str
-    """temporarily set the value of an MRtrix config file entry."""
-    value: str
-    """temporarily set the value of an MRtrix config file entry."""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-config")
-        cargs.append(self.key)
-        cargs.append(self.value)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "5tt2gmwmi": v_5tt2gmwmi_cargs,
+        "config": v_5tt2gmwmi_config_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "5tt2gmwmi": v_5tt2gmwmi_outputs,
+    }
+    return vt.get(t)
+
+
+def v_5tt2gmwmi_config_params(
+    key: str,
+    value: str,
+) -> V5tt2gmwmiConfigParameters:
+    """
+    Build parameters.
+    
+    Args:
+        key: temporarily set the value of an MRtrix config file entry.
+        value: temporarily set the value of an MRtrix config file entry.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "config",
+        "key": key,
+        "value": value,
+    }
+    return params
+
+
+def v_5tt2gmwmi_config_cargs(
+    params: V5tt2gmwmiConfigParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-config")
+    cargs.append(params.get("key"))
+    cargs.append(params.get("value"))
+    return cargs
 
 
 class V5tt2gmwmiOutputs(typing.NamedTuple):
@@ -53,6 +119,162 @@ class V5tt2gmwmiOutputs(typing.NamedTuple):
     """the output mask image"""
 
 
+def v_5tt2gmwmi_params(
+    v_5tt_in: InputPathType,
+    mask_out: str,
+    mask_in: InputPathType | None = None,
+    info: bool = False,
+    quiet: bool = False,
+    debug: bool = False,
+    force: bool = False,
+    nthreads: int | None = None,
+    config: list[V5tt2gmwmiConfigParameters] | None = None,
+    help_: bool = False,
+    version: bool = False,
+) -> V5tt2gmwmiParameters:
+    """
+    Build parameters.
+    
+    Args:
+        v_5tt_in: the input 5TT segmented anatomical image.
+        mask_out: the output mask image.
+        mask_in: Filter an input mask image according to those voxels that lie\
+            upon the grey matter - white matter boundary. If no input mask is\
+            provided, the output will be a whole-brain mask image calculated using\
+            the anatomical image only.
+        info: display information messages.
+        quiet: do not display information messages or progress status;\
+            alternatively, this can be achieved by setting the MRTRIX_QUIET\
+            environment variable to a non-empty string.
+        debug: display debugging messages.
+        force: force overwrite of output files (caution: using the same file as\
+            input and output might cause unexpected behaviour).
+        nthreads: use this number of threads in multi-threaded applications\
+            (set to 0 to disable multi-threading).
+        config: temporarily set the value of an MRtrix config file entry.
+        help_: display this information page and exit.
+        version: display version information and exit.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "5tt2gmwmi",
+        "info": info,
+        "quiet": quiet,
+        "debug": debug,
+        "force": force,
+        "help": help_,
+        "version": version,
+        "5tt_in": v_5tt_in,
+        "mask_out": mask_out,
+    }
+    if mask_in is not None:
+        params["mask_in"] = mask_in
+    if nthreads is not None:
+        params["nthreads"] = nthreads
+    if config is not None:
+        params["config"] = config
+    return params
+
+
+def v_5tt2gmwmi_cargs(
+    params: V5tt2gmwmiParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("5tt2gmwmi")
+    if params.get("mask_in") is not None:
+        cargs.extend([
+            "-mask_in",
+            execution.input_file(params.get("mask_in"))
+        ])
+    if params.get("info"):
+        cargs.append("-info")
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("debug"):
+        cargs.append("-debug")
+    if params.get("force"):
+        cargs.append("-force")
+    if params.get("nthreads") is not None:
+        cargs.extend([
+            "-nthreads",
+            str(params.get("nthreads"))
+        ])
+    if params.get("config") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("config")] for a in c])
+    if params.get("help"):
+        cargs.append("-help")
+    if params.get("version"):
+        cargs.append("-version")
+    cargs.append(execution.input_file(params.get("5tt_in")))
+    cargs.append(params.get("mask_out"))
+    return cargs
+
+
+def v_5tt2gmwmi_outputs(
+    params: V5tt2gmwmiParameters,
+    execution: Execution,
+) -> V5tt2gmwmiOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V5tt2gmwmiOutputs(
+        root=execution.output_file("."),
+        mask_out=execution.output_file(params.get("mask_out")),
+    )
+    return ret
+
+
+def v_5tt2gmwmi_execute(
+    params: V5tt2gmwmiParameters,
+    execution: Execution,
+) -> V5tt2gmwmiOutputs:
+    """
+    Generate a mask image appropriate for seeding streamlines on the grey
+    matter-white matter interface.
+    
+    
+    
+    References:
+    
+    Smith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A.
+    Anatomically-constrained tractography:Improved diffusion MRI streamlines
+    tractography through effective use of anatomical information. NeuroImage,
+    2012, 62, 1924-1938.
+    
+    Author: MRTrix3 Developers
+    
+    URL: https://www.mrtrix.org/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V5tt2gmwmiOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_5tt2gmwmi_cargs(params, execution)
+    ret = v_5tt2gmwmi_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def v_5tt2gmwmi(
     v_5tt_in: InputPathType,
     mask_out: str,
@@ -62,7 +284,7 @@ def v_5tt2gmwmi(
     debug: bool = False,
     force: bool = False,
     nthreads: int | None = None,
-    config: list[V5tt2gmwmiConfig] | None = None,
+    config: list[V5tt2gmwmiConfigParameters] | None = None,
     help_: bool = False,
     version: bool = False,
     runner: Runner | None = None,
@@ -109,45 +331,14 @@ def v_5tt2gmwmi(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_5TT2GMWMI_METADATA)
-    cargs = []
-    cargs.append("5tt2gmwmi")
-    if mask_in is not None:
-        cargs.extend([
-            "-mask_in",
-            execution.input_file(mask_in)
-        ])
-    if info:
-        cargs.append("-info")
-    if quiet:
-        cargs.append("-quiet")
-    if debug:
-        cargs.append("-debug")
-    if force:
-        cargs.append("-force")
-    if nthreads is not None:
-        cargs.extend([
-            "-nthreads",
-            str(nthreads)
-        ])
-    if config is not None:
-        cargs.extend([a for c in [s.run(execution) for s in config] for a in c])
-    if help_:
-        cargs.append("-help")
-    if version:
-        cargs.append("-version")
-    cargs.append(execution.input_file(v_5tt_in))
-    cargs.append(mask_out)
-    ret = V5tt2gmwmiOutputs(
-        root=execution.output_file("."),
-        mask_out=execution.output_file(mask_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_5tt2gmwmi_params(mask_in=mask_in, info=info, quiet=quiet, debug=debug, force=force, nthreads=nthreads, config=config, help_=help_, version=version, v_5tt_in=v_5tt_in, mask_out=mask_out)
+    return v_5tt2gmwmi_execute(params, execution)
 
 
 __all__ = [
-    "V5tt2gmwmiConfig",
     "V5tt2gmwmiOutputs",
     "V_5TT2GMWMI_METADATA",
     "v_5tt2gmwmi",
+    "v_5tt2gmwmi_config_params",
+    "v_5tt2gmwmi_params",
 ]

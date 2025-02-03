@@ -12,14 +12,130 @@ CAT_MATVEC_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+CatMatvecParameters = typing.TypedDict('CatMatvecParameters', {
+    "__STYX_TYPE__": typing.Literal["cat_matvec"],
+    "four_by_four_format": bool,
+    "matvec_spec": list[str],
+})
 
 
-class CatMatvecOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `cat_matvec(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "cat_matvec": cat_matvec_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def cat_matvec_params(
+    matvec_spec: list[str],
+    four_by_four_format: bool = False,
+) -> CatMatvecParameters:
+    """
+    Build parameters.
+    
+    Args:
+        matvec_spec: Specifies the matrix transformation. Can take forms\
+            described in the documentation.
+        four_by_four_format: Output matrix in augmented form (last row is 0 0 0\
+            1). This option does not work with -MATRIX or -ONELINE.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "cat_matvec",
+        "four_by_four_format": four_by_four_format,
+        "matvec_spec": matvec_spec,
+    }
+    return params
+
+
+def cat_matvec_cargs(
+    params: CatMatvecParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("cat_matvec")
+    if params.get("four_by_four_format"):
+        cargs.append("-4x4")
+    cargs.extend(params.get("matvec_spec"))
+    return cargs
+
+
+def cat_matvec_outputs(
+    params: CatMatvecParameters,
+    execution: Execution,
+) -> CatMatvecOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = CatMatvecOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def cat_matvec_execute(
+    params: CatMatvecParameters,
+    execution: Execution,
+) -> CatMatvecOutputs:
+    """
+    Catenates 3D rotation+shift matrix+vector transformations.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `CatMatvecOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = cat_matvec_cargs(params, execution)
+    ret = cat_matvec_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def cat_matvec(
@@ -45,20 +161,12 @@ def cat_matvec(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CAT_MATVEC_METADATA)
-    cargs = []
-    cargs.append("cat_matvec")
-    if four_by_four_format:
-        cargs.append("-4x4")
-    cargs.extend(matvec_spec)
-    ret = CatMatvecOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = cat_matvec_params(four_by_four_format=four_by_four_format, matvec_spec=matvec_spec)
+    return cat_matvec_execute(params, execution)
 
 
 __all__ = [
     "CAT_MATVEC_METADATA",
-    "CatMatvecOutputs",
     "cat_matvec",
+    "cat_matvec_params",
 ]

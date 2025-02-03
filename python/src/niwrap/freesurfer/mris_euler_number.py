@@ -12,6 +12,45 @@ MRIS_EULER_NUMBER_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisEulerNumberParameters = typing.TypedDict('MrisEulerNumberParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_euler_number"],
+    "input_surface": InputPathType,
+    "output_file": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_euler_number": mris_euler_number_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_euler_number": mris_euler_number_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisEulerNumberOutputs(typing.NamedTuple):
@@ -22,6 +61,96 @@ class MrisEulerNumberOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outfile: OutputPathType | None
     """File where the number of holes is written"""
+
+
+def mris_euler_number_params(
+    input_surface: InputPathType,
+    output_file: str | None = None,
+) -> MrisEulerNumberParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_surface: Input surface file.
+        output_file: Write number of holes to output file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_euler_number",
+        "input_surface": input_surface,
+    }
+    if output_file is not None:
+        params["output_file"] = output_file
+    return params
+
+
+def mris_euler_number_cargs(
+    params: MrisEulerNumberParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_euler_number")
+    cargs.append(execution.input_file(params.get("input_surface")))
+    if params.get("output_file") is not None:
+        cargs.extend([
+            "-o",
+            params.get("output_file")
+        ])
+    return cargs
+
+
+def mris_euler_number_outputs(
+    params: MrisEulerNumberParameters,
+    execution: Execution,
+) -> MrisEulerNumberOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisEulerNumberOutputs(
+        root=execution.output_file("."),
+        outfile=execution.output_file(params.get("output_file")) if (params.get("output_file") is not None) else None,
+    )
+    return ret
+
+
+def mris_euler_number_execute(
+    params: MrisEulerNumberParameters,
+    execution: Execution,
+) -> MrisEulerNumberOutputs:
+    """
+    This program computes EulerNumber for a cortical surface.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisEulerNumberOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_euler_number_cargs(params, execution)
+    ret = mris_euler_number_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_euler_number(
@@ -45,24 +174,13 @@ def mris_euler_number(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EULER_NUMBER_METADATA)
-    cargs = []
-    cargs.append("mris_euler_number")
-    cargs.append(execution.input_file(input_surface))
-    if output_file is not None:
-        cargs.extend([
-            "-o",
-            output_file
-        ])
-    ret = MrisEulerNumberOutputs(
-        root=execution.output_file("."),
-        outfile=execution.output_file(output_file) if (output_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_euler_number_params(input_surface=input_surface, output_file=output_file)
+    return mris_euler_number_execute(params, execution)
 
 
 __all__ = [
     "MRIS_EULER_NUMBER_METADATA",
     "MrisEulerNumberOutputs",
     "mris_euler_number",
+    "mris_euler_number_params",
 ]

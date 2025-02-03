@@ -12,14 +12,159 @@ V__SPHARM_EXAMPLES_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+VSpharmExamplesParameters = typing.TypedDict('VSpharmExamplesParameters', {
+    "__STYX_TYPE__": typing.Literal["@Spharm.examples"],
+    "help_web": bool,
+    "help_web_alias": bool,
+    "help_view": bool,
+    "help_view_alias": bool,
+    "all_opts": bool,
+    "help_find": typing.NotRequired[str | None],
+})
 
 
-class VSpharmExamplesOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `v__spharm_examples(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "@Spharm.examples": v__spharm_examples_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def v__spharm_examples_params(
+    help_web: bool = False,
+    help_web_alias: bool = False,
+    help_view: bool = False,
+    help_view_alias: bool = False,
+    all_opts: bool = False,
+    help_find: str | None = None,
+) -> VSpharmExamplesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        help_web: Open webpage with help for this program.
+        help_web_alias: Same as -h_web.
+        help_view: Open -help output in a GUI editor.
+        help_view_alias: Same as -h_view.
+        all_opts: List all of the options for this script.
+        help_find: Search for lines containing WORD in -help output. Search is\
+            approximate.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "@Spharm.examples",
+        "help_web": help_web,
+        "help_web_alias": help_web_alias,
+        "help_view": help_view,
+        "help_view_alias": help_view_alias,
+        "all_opts": all_opts,
+    }
+    if help_find is not None:
+        params["help_find"] = help_find
+    return params
+
+
+def v__spharm_examples_cargs(
+    params: VSpharmExamplesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("@Spharm.examples")
+    if params.get("help_web"):
+        cargs.append("-h_web")
+    if params.get("help_web_alias"):
+        cargs.append("-hweb")
+    if params.get("help_view"):
+        cargs.append("-h_view")
+    if params.get("help_view_alias"):
+        cargs.append("-hview")
+    if params.get("all_opts"):
+        cargs.append("-all_opts")
+    if params.get("help_find") is not None:
+        cargs.extend([
+            "-h_find",
+            params.get("help_find")
+        ])
+    return cargs
+
+
+def v__spharm_examples_outputs(
+    params: VSpharmExamplesParameters,
+    execution: Execution,
+) -> VSpharmExamplesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = VSpharmExamplesOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def v__spharm_examples_execute(
+    params: VSpharmExamplesParameters,
+    execution: Execution,
+) -> VSpharmExamplesOutputs:
+    """
+    A script to demonstrate the usage of spherical harmonics decomposition with
+    SUMA.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `VSpharmExamplesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v__spharm_examples_cargs(params, execution)
+    ret = v__spharm_examples_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v__spharm_examples(
@@ -53,32 +198,12 @@ def v__spharm_examples(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SPHARM_EXAMPLES_METADATA)
-    cargs = []
-    cargs.append("@Spharm.examples")
-    if help_web:
-        cargs.append("-h_web")
-    if help_web_alias:
-        cargs.append("-hweb")
-    if help_view:
-        cargs.append("-h_view")
-    if help_view_alias:
-        cargs.append("-hview")
-    if all_opts:
-        cargs.append("-all_opts")
-    if help_find is not None:
-        cargs.extend([
-            "-h_find",
-            help_find
-        ])
-    ret = VSpharmExamplesOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v__spharm_examples_params(help_web=help_web, help_web_alias=help_web_alias, help_view=help_view, help_view_alias=help_view_alias, all_opts=all_opts, help_find=help_find)
+    return v__spharm_examples_execute(params, execution)
 
 
 __all__ = [
-    "VSpharmExamplesOutputs",
     "V__SPHARM_EXAMPLES_METADATA",
     "v__spharm_examples",
+    "v__spharm_examples_params",
 ]

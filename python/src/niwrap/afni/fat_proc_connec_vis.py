@@ -12,6 +12,54 @@ FAT_PROC_CONNEC_VIS_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+FatProcConnecVisParameters = typing.TypedDict('FatProcConnecVisParameters', {
+    "__STYX_TYPE__": typing.Literal["fat_proc_connec_vis"],
+    "in_rois": str,
+    "prefix": str,
+    "prefix_file": typing.NotRequired[str | None],
+    "tsmoo_kpb": typing.NotRequired[float | None],
+    "tsmoo_niter": typing.NotRequired[float | None],
+    "iso_opt": typing.NotRequired[str | None],
+    "trackid_no_or": bool,
+    "output_tcat": bool,
+    "output_tstat": bool,
+    "wdir": typing.NotRequired[str | None],
+    "no_clean": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fat_proc_connec_vis": fat_proc_connec_vis_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fat_proc_connec_vis": fat_proc_connec_vis_outputs,
+    }
+    return vt.get(t)
 
 
 class FatProcConnecVisOutputs(typing.NamedTuple):
@@ -27,6 +75,185 @@ class FatProcConnecVisOutputs(typing.NamedTuple):
     tstat_file: OutputPathType
     """Single brick file from 3dTstat operation on the tcat dataset, produced by
     the -output_tstat flag"""
+
+
+def fat_proc_connec_vis_params(
+    in_rois: str,
+    prefix: str,
+    prefix_file: str | None = None,
+    tsmoo_kpb: float | None = None,
+    tsmoo_niter: float | None = None,
+    iso_opt: str | None = None,
+    trackid_no_or: bool = False,
+    output_tcat: bool = False,
+    output_tstat: bool = False,
+    wdir: str | None = None,
+    no_clean: bool = False,
+) -> FatProcConnecVisParameters:
+    """
+    Build parameters.
+    
+    Args:
+        in_rois: List of separate files, each with a single ROI volume mask;\
+            can include wildcards, etc. to specify the list.
+        prefix: Directory to contain the output files: *cmd.txt and surface\
+            files such as *.gii and *.niml.dset; the namebase of files within this\
+            directory will be the default for the program, 'wmc'. The value PPP can\
+            contain parts of a path in it.
+        prefix_file: Prefix for the output files: *cmd.txt and surface files\
+            such as *.gii and *.niml.dset; can include path steps; and can make one\
+            level of a new directory. For example, if FFF were 'A/B', then the\
+            program could make a new directory called 'A' if it didn't exist\
+            already and populate it with individual files having the same prefix\
+            'B'.
+        tsmoo_kpb: 'KPB' parameter in IsoSurface program; default value is\
+            0.01.
+        tsmoo_niter: 'NITER' parameter in IsoSurface program; default value is\
+            6.
+        iso_opt: Input one of the 'iso* options' from IsoSurface program, such\
+            as 'isorois+dsets', 'mergerois', etc. Quotations around the entry may\
+            be needed, especially if something like the '-mergerois [LAB_OUT]'\
+            route is being followed. Default: isorois+dsets.
+        trackid_no_or: Use this option to have the program recognize the naming\
+            convention of 3dTrackID output and to ignore the OR-logic ROIs,\
+            including only the AND-logic (AKA pairwise) connections.
+        output_tcat: Flag to output the multibrick file of concatenated ROI\
+            masks; note that the [0]th brick will be all zeros (it is just a\
+            placeholder). So, if there are N ROI maps concatenated, there will be\
+            N+1 bricks in the output dataset, which has the name PPP_tcat.nii.gz.
+        output_tstat: Flag to output the single brick file from the 3dTstat\
+            operation on the tcat dataset. If there were N ROI maps concatenated,\
+            then the largest value should be N. The output file's name will be\
+            PPP_tstat.nii.gz.
+        wdir: Working directory prefix. The format is '__WDIR_connec_vis_PPP',\
+            where PPP is the input prefix.
+        no_clean: Optional switch to NOT remove the working directory (default\
+            is to remove the working directory).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fat_proc_connec_vis",
+        "in_rois": in_rois,
+        "prefix": prefix,
+        "trackid_no_or": trackid_no_or,
+        "output_tcat": output_tcat,
+        "output_tstat": output_tstat,
+        "no_clean": no_clean,
+    }
+    if prefix_file is not None:
+        params["prefix_file"] = prefix_file
+    if tsmoo_kpb is not None:
+        params["tsmoo_kpb"] = tsmoo_kpb
+    if tsmoo_niter is not None:
+        params["tsmoo_niter"] = tsmoo_niter
+    if iso_opt is not None:
+        params["iso_opt"] = iso_opt
+    if wdir is not None:
+        params["wdir"] = wdir
+    return params
+
+
+def fat_proc_connec_vis_cargs(
+    params: FatProcConnecVisParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fat_proc_connec_vis")
+    cargs.append(params.get("in_rois"))
+    cargs.append(params.get("prefix"))
+    if params.get("prefix_file") is not None:
+        cargs.extend([
+            "-prefix_file",
+            params.get("prefix_file")
+        ])
+    if params.get("tsmoo_kpb") is not None:
+        cargs.extend([
+            "-tsmoo_kpb",
+            str(params.get("tsmoo_kpb"))
+        ])
+    if params.get("tsmoo_niter") is not None:
+        cargs.extend([
+            "-tsmoo_niter",
+            str(params.get("tsmoo_niter"))
+        ])
+    if params.get("iso_opt") is not None:
+        cargs.extend([
+            "-iso_opt",
+            params.get("iso_opt")
+        ])
+    if params.get("trackid_no_or"):
+        cargs.append("-trackid_no_or")
+    if params.get("output_tcat"):
+        cargs.append("-output_tcat")
+    if params.get("output_tstat"):
+        cargs.append("-output_tstat")
+    if params.get("wdir") is not None:
+        cargs.extend([
+            "-wdir",
+            params.get("wdir")
+        ])
+    if params.get("no_clean"):
+        cargs.append("-no_clean")
+    return cargs
+
+
+def fat_proc_connec_vis_outputs(
+    params: FatProcConnecVisParameters,
+    execution: Execution,
+) -> FatProcConnecVisOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FatProcConnecVisOutputs(
+        root=execution.output_file("."),
+        cmd_txt=execution.output_file(params.get("prefix") + "_cmd.txt"),
+        tcat_file=execution.output_file(params.get("prefix") + "_tcat.nii.gz"),
+        tstat_file=execution.output_file(params.get("prefix") + "_tstat.nii.gz"),
+    )
+    return ret
+
+
+def fat_proc_connec_vis_execute(
+    params: FatProcConnecVisParameters,
+    execution: Execution,
+) -> FatProcConnecVisOutputs:
+    """
+    This program is for visualizing the volumetric output of tracking, mainly for
+    the '-dump_rois ...' from 3dTrackID. It creates surface-ized views of the
+    separate white matter connection maps (WMCs) which can be viewed simultaneously
+    in 3D with SUMA.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FatProcConnecVisOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fat_proc_connec_vis_cargs(params, execution)
+    ret = fat_proc_connec_vis_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fat_proc_connec_vis(
@@ -95,55 +322,13 @@ def fat_proc_connec_vis(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_PROC_CONNEC_VIS_METADATA)
-    cargs = []
-    cargs.append("fat_proc_connec_vis")
-    cargs.append(in_rois)
-    cargs.append(prefix)
-    if prefix_file is not None:
-        cargs.extend([
-            "-prefix_file",
-            prefix_file
-        ])
-    if tsmoo_kpb is not None:
-        cargs.extend([
-            "-tsmoo_kpb",
-            str(tsmoo_kpb)
-        ])
-    if tsmoo_niter is not None:
-        cargs.extend([
-            "-tsmoo_niter",
-            str(tsmoo_niter)
-        ])
-    if iso_opt is not None:
-        cargs.extend([
-            "-iso_opt",
-            iso_opt
-        ])
-    if trackid_no_or:
-        cargs.append("-trackid_no_or")
-    if output_tcat:
-        cargs.append("-output_tcat")
-    if output_tstat:
-        cargs.append("-output_tstat")
-    if wdir is not None:
-        cargs.extend([
-            "-wdir",
-            wdir
-        ])
-    if no_clean:
-        cargs.append("-no_clean")
-    ret = FatProcConnecVisOutputs(
-        root=execution.output_file("."),
-        cmd_txt=execution.output_file(prefix + "_cmd.txt"),
-        tcat_file=execution.output_file(prefix + "_tcat.nii.gz"),
-        tstat_file=execution.output_file(prefix + "_tstat.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = fat_proc_connec_vis_params(in_rois=in_rois, prefix=prefix, prefix_file=prefix_file, tsmoo_kpb=tsmoo_kpb, tsmoo_niter=tsmoo_niter, iso_opt=iso_opt, trackid_no_or=trackid_no_or, output_tcat=output_tcat, output_tstat=output_tstat, wdir=wdir, no_clean=no_clean)
+    return fat_proc_connec_vis_execute(params, execution)
 
 
 __all__ = [
     "FAT_PROC_CONNEC_VIS_METADATA",
     "FatProcConnecVisOutputs",
     "fat_proc_connec_vis",
+    "fat_proc_connec_vis_params",
 ]

@@ -12,6 +12,47 @@ OCT_REGISTER_MOSAIC_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+OctRegisterMosaicParameters = typing.TypedDict('OctRegisterMosaicParameters', {
+    "__STYX_TYPE__": typing.Literal["oct_register_mosaic"],
+    "tiles_or_mosaic_list": list[str],
+    "output_volume": str,
+    "downsample": typing.NotRequired[float | None],
+    "weight_file": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "oct_register_mosaic": oct_register_mosaic_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "oct_register_mosaic": oct_register_mosaic_outputs,
+    }
+    return vt.get(t)
 
 
 class OctRegisterMosaicOutputs(typing.NamedTuple):
@@ -22,6 +63,111 @@ class OctRegisterMosaicOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     registered_output: OutputPathType
     """The registered output volume"""
+
+
+def oct_register_mosaic_params(
+    tiles_or_mosaic_list: list[str],
+    output_volume: str,
+    downsample: float | None = None,
+    weight_file: InputPathType | None = None,
+) -> OctRegisterMosaicParameters:
+    """
+    Build parameters.
+    
+    Args:
+        tiles_or_mosaic_list: OCT tile images to be registered or a file\
+            listing the mosaic tiles.
+        output_volume: Output registered volume.
+        downsample: Use Gaussian downsampling specified number of times.
+        weight_file: File with tile weights to use in tile averaging.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "oct_register_mosaic",
+        "tiles_or_mosaic_list": tiles_or_mosaic_list,
+        "output_volume": output_volume,
+    }
+    if downsample is not None:
+        params["downsample"] = downsample
+    if weight_file is not None:
+        params["weight_file"] = weight_file
+    return params
+
+
+def oct_register_mosaic_cargs(
+    params: OctRegisterMosaicParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("oct_register_mosaic")
+    cargs.extend(params.get("tiles_or_mosaic_list"))
+    cargs.append(params.get("output_volume"))
+    if params.get("downsample") is not None:
+        cargs.extend([
+            "-D",
+            str(params.get("downsample"))
+        ])
+    if params.get("weight_file") is not None:
+        cargs.extend([
+            "-W",
+            execution.input_file(params.get("weight_file"))
+        ])
+    return cargs
+
+
+def oct_register_mosaic_outputs(
+    params: OctRegisterMosaicParameters,
+    execution: Execution,
+) -> OctRegisterMosaicOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = OctRegisterMosaicOutputs(
+        root=execution.output_file("."),
+        registered_output=execution.output_file(params.get("output_volume")),
+    )
+    return ret
+
+
+def oct_register_mosaic_execute(
+    params: OctRegisterMosaicParameters,
+    execution: Execution,
+) -> OctRegisterMosaicOutputs:
+    """
+    Tool for registering multiple OCT (Optical Coherence Tomography) tiles or a
+    mosaic list into a single output volume.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `OctRegisterMosaicOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = oct_register_mosaic_cargs(params, execution)
+    ret = oct_register_mosaic_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def oct_register_mosaic(
@@ -51,30 +197,13 @@ def oct_register_mosaic(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(OCT_REGISTER_MOSAIC_METADATA)
-    cargs = []
-    cargs.append("oct_register_mosaic")
-    cargs.extend(tiles_or_mosaic_list)
-    cargs.append(output_volume)
-    if downsample is not None:
-        cargs.extend([
-            "-D",
-            str(downsample)
-        ])
-    if weight_file is not None:
-        cargs.extend([
-            "-W",
-            execution.input_file(weight_file)
-        ])
-    ret = OctRegisterMosaicOutputs(
-        root=execution.output_file("."),
-        registered_output=execution.output_file(output_volume),
-    )
-    execution.run(cargs)
-    return ret
+    params = oct_register_mosaic_params(tiles_or_mosaic_list=tiles_or_mosaic_list, output_volume=output_volume, downsample=downsample, weight_file=weight_file)
+    return oct_register_mosaic_execute(params, execution)
 
 
 __all__ = [
     "OCT_REGISTER_MOSAIC_METADATA",
     "OctRegisterMosaicOutputs",
     "oct_register_mosaic",
+    "oct_register_mosaic_params",
 ]

@@ -12,6 +12,48 @@ MRI_BRAINVOL_STATS_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriBrainvolStatsParameters = typing.TypedDict('MriBrainvolStatsParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_brainvol_stats"],
+    "subject_id": str,
+    "xml_string": typing.NotRequired[str | None],
+    "no_surface": bool,
+    "include_segmentation": bool,
+    "output_file": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_brainvol_stats": mri_brainvol_stats_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_brainvol_stats": mri_brainvol_stats_outputs,
+    }
+    return vt.get(t)
 
 
 class MriBrainvolStatsOutputs(typing.NamedTuple):
@@ -22,6 +64,122 @@ class MriBrainvolStatsOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     brain_vol_stats_output: OutputPathType | None
     """Brain volume statistics output file."""
+
+
+def mri_brainvol_stats_params(
+    subject_id: str,
+    xml_string: str | None = None,
+    no_surface: bool = False,
+    include_segmentation: bool = False,
+    output_file: str | None = None,
+) -> MriBrainvolStatsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subject_id: The subject ID for which brain volume statistics are\
+            computed.
+        xml_string: XML string containing input data. The XML is used to define\
+            additional parameters for computation.
+        no_surface: Flag to specify that surface-based measurements should not\
+            be included in the output.
+        include_segmentation: Flag to include segmentation information in the\
+            brain volume calculations.
+        output_file: Output file path to write the brain volume statistics.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_brainvol_stats",
+        "subject_id": subject_id,
+        "no_surface": no_surface,
+        "include_segmentation": include_segmentation,
+    }
+    if xml_string is not None:
+        params["xml_string"] = xml_string
+    if output_file is not None:
+        params["output_file"] = output_file
+    return params
+
+
+def mri_brainvol_stats_cargs(
+    params: MriBrainvolStatsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_brainvol_stats")
+    cargs.extend([
+        "--subject",
+        params.get("subject_id")
+    ])
+    if params.get("xml_string") is not None:
+        cargs.extend([
+            "--xml",
+            params.get("xml_string")
+        ])
+    if params.get("no_surface"):
+        cargs.append("--no-surface")
+    if params.get("include_segmentation"):
+        cargs.append("--seg")
+    if params.get("output_file") is not None:
+        cargs.extend([
+            "--out",
+            params.get("output_file")
+        ])
+    return cargs
+
+
+def mri_brainvol_stats_outputs(
+    params: MriBrainvolStatsParameters,
+    execution: Execution,
+) -> MriBrainvolStatsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriBrainvolStatsOutputs(
+        root=execution.output_file("."),
+        brain_vol_stats_output=execution.output_file(params.get("output_file")) if (params.get("output_file") is not None) else None,
+    )
+    return ret
+
+
+def mri_brainvol_stats_execute(
+    params: MriBrainvolStatsParameters,
+    execution: Execution,
+) -> MriBrainvolStatsOutputs:
+    """
+    Tool for computing brain volume statistics with FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriBrainvolStatsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_brainvol_stats_cargs(params, execution)
+    ret = mri_brainvol_stats_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_brainvol_stats(
@@ -55,36 +213,13 @@ def mri_brainvol_stats(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_BRAINVOL_STATS_METADATA)
-    cargs = []
-    cargs.append("mri_brainvol_stats")
-    cargs.extend([
-        "--subject",
-        subject_id
-    ])
-    if xml_string is not None:
-        cargs.extend([
-            "--xml",
-            xml_string
-        ])
-    if no_surface:
-        cargs.append("--no-surface")
-    if include_segmentation:
-        cargs.append("--seg")
-    if output_file is not None:
-        cargs.extend([
-            "--out",
-            output_file
-        ])
-    ret = MriBrainvolStatsOutputs(
-        root=execution.output_file("."),
-        brain_vol_stats_output=execution.output_file(output_file) if (output_file is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_brainvol_stats_params(subject_id=subject_id, xml_string=xml_string, no_surface=no_surface, include_segmentation=include_segmentation, output_file=output_file)
+    return mri_brainvol_stats_execute(params, execution)
 
 
 __all__ = [
     "MRI_BRAINVOL_STATS_METADATA",
     "MriBrainvolStatsOutputs",
     "mri_brainvol_stats",
+    "mri_brainvol_stats_params",
 ]

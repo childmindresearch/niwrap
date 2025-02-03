@@ -12,6 +12,44 @@ IM2NIML_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+Im2nimlParameters = typing.TypedDict('Im2nimlParameters', {
+    "__STYX_TYPE__": typing.Literal["im2niml"],
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "im2niml": im2niml_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "im2niml": im2niml_outputs,
+    }
+    return vt.get(t)
 
 
 class Im2nimlOutputs(typing.NamedTuple):
@@ -22,6 +60,88 @@ class Im2nimlOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     niml_output: OutputPathType
     """NIML element"""
+
+
+def im2niml_params(
+    input_files: list[InputPathType],
+) -> Im2nimlParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input image file(s) (e.g. image.jpg).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "im2niml",
+        "input_files": input_files,
+    }
+    return params
+
+
+def im2niml_cargs(
+    params: Im2nimlParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("im2niml")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def im2niml_outputs(
+    params: Im2nimlParameters,
+    execution: Execution,
+) -> Im2nimlOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Im2nimlOutputs(
+        root=execution.output_file("."),
+        niml_output=execution.output_file("stdout"),
+    )
+    return ret
+
+
+def im2niml_execute(
+    params: Im2nimlParameters,
+    execution: Execution,
+) -> Im2nimlOutputs:
+    """
+    Converts the input image(s) to a text-based NIML element and writes the result
+    to stdout.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Im2nimlOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = im2niml_cargs(params, execution)
+    ret = im2niml_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def im2niml(
@@ -44,19 +164,13 @@ def im2niml(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(IM2NIML_METADATA)
-    cargs = []
-    cargs.append("im2niml")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = Im2nimlOutputs(
-        root=execution.output_file("."),
-        niml_output=execution.output_file("stdout"),
-    )
-    execution.run(cargs)
-    return ret
+    params = im2niml_params(input_files=input_files)
+    return im2niml_execute(params, execution)
 
 
 __all__ = [
     "IM2NIML_METADATA",
     "Im2nimlOutputs",
     "im2niml",
+    "im2niml_params",
 ]

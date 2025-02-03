@@ -12,14 +12,134 @@ UNPACKIMADIR_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+UnpackimadirParameters = typing.TypedDict('UnpackimadirParameters', {
+    "__STYX_TYPE__": typing.Literal["unpackimadir"],
+    "source_directory": str,
+    "target_directory": str,
+})
 
 
-class UnpackimadirOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `unpackimadir(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "unpackimadir": unpackimadir_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def unpackimadir_params(
+    source_directory: str,
+    target_directory: str,
+) -> UnpackimadirParameters:
+    """
+    Build parameters.
+    
+    Args:
+        source_directory: Source directory containing the images to be unpacked.
+        target_directory: Target directory where the unpacked images will be\
+            stored.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "unpackimadir",
+        "source_directory": source_directory,
+        "target_directory": target_directory,
+    }
+    return params
+
+
+def unpackimadir_cargs(
+    params: UnpackimadirParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("unpackimadir")
+    cargs.extend([
+        "-src",
+        params.get("source_directory")
+    ])
+    cargs.extend([
+        "-targ",
+        params.get("target_directory")
+    ])
+    return cargs
+
+
+def unpackimadir_outputs(
+    params: UnpackimadirParameters,
+    execution: Execution,
+) -> UnpackimadirOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = UnpackimadirOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def unpackimadir_execute(
+    params: UnpackimadirParameters,
+    execution: Execution,
+) -> UnpackimadirOutputs:
+    """
+    Unpack image directories.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `UnpackimadirOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = unpackimadir_cargs(params, execution)
+    ret = unpackimadir_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def unpackimadir(
@@ -44,25 +164,12 @@ def unpackimadir(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(UNPACKIMADIR_METADATA)
-    cargs = []
-    cargs.append("unpackimadir")
-    cargs.extend([
-        "-src",
-        source_directory
-    ])
-    cargs.extend([
-        "-targ",
-        target_directory
-    ])
-    ret = UnpackimadirOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = unpackimadir_params(source_directory=source_directory, target_directory=target_directory)
+    return unpackimadir_execute(params, execution)
 
 
 __all__ = [
     "UNPACKIMADIR_METADATA",
-    "UnpackimadirOutputs",
     "unpackimadir",
+    "unpackimadir_params",
 ]

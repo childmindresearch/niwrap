@@ -12,14 +12,205 @@ PLUGOUT_TTA_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+PlugoutTtaParameters = typing.TypedDict('PlugoutTtaParameters', {
+    "__STYX_TYPE__": typing.Literal["plugout_tta"],
+    "host": typing.NotRequired[str | None],
+    "port": typing.NotRequired[int | None],
+    "verbose": bool,
+    "port_offset": typing.NotRequired[int | None],
+    "port_offset_quiet": typing.NotRequired[int | None],
+    "port_offset_bloc": typing.NotRequired[int | None],
+    "max_port_bloc": bool,
+    "max_port_bloc_quiet": bool,
+    "num_assigned_ports": bool,
+    "num_assigned_ports_quiet": bool,
+})
 
 
-class PlugoutTtaOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `plugout_tta(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "plugout_tta": plugout_tta_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def plugout_tta_params(
+    host: str | None = None,
+    port: int | None = None,
+    verbose: bool = False,
+    port_offset: int | None = None,
+    port_offset_quiet: int | None = None,
+    port_offset_bloc: int | None = None,
+    max_port_bloc: bool = False,
+    max_port_bloc_quiet: bool = False,
+    num_assigned_ports: bool = False,
+    num_assigned_ports_quiet: bool = False,
+) -> PlugoutTtaParameters:
+    """
+    Build parameters.
+    
+    Args:
+        host: Connect to AFNI running on the specified computer using TCP/IP.\
+            Use '-host localhost' to connect on current host with TCP/IP.
+        port: Use TCP/IP port number 'pp'. Default is 8005.
+        verbose: Verbose mode: prints out progress reports.
+        port_offset: Provide a port offset to allow multiple instances of\
+            programs to communicate on the same machine. All ports are assigned\
+            numbers relative to PORT_OFFSET. Range: [1025, 65500].
+        port_offset_quiet: Like -np, but more quiet in the face of adversity.
+        port_offset_bloc: Provide a port offset block. Easier to use than -np.\
+            Range: [0, MAX_BLOC]. Using this reduces chances of port conflicts.
+        max_port_bloc: Print the current value of MAX_BLOC and exit.
+        max_port_bloc_quiet: Print MAX_BLOC value and exit quietly.
+        num_assigned_ports: Print the number of assigned ports used by AFNI\
+            then quit.
+        num_assigned_ports_quiet: Print the number of assigned ports used by\
+            AFNI then quit quietly.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "plugout_tta",
+        "verbose": verbose,
+        "max_port_bloc": max_port_bloc,
+        "max_port_bloc_quiet": max_port_bloc_quiet,
+        "num_assigned_ports": num_assigned_ports,
+        "num_assigned_ports_quiet": num_assigned_ports_quiet,
+    }
+    if host is not None:
+        params["host"] = host
+    if port is not None:
+        params["port"] = port
+    if port_offset is not None:
+        params["port_offset"] = port_offset
+    if port_offset_quiet is not None:
+        params["port_offset_quiet"] = port_offset_quiet
+    if port_offset_bloc is not None:
+        params["port_offset_bloc"] = port_offset_bloc
+    return params
+
+
+def plugout_tta_cargs(
+    params: PlugoutTtaParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("plugout_tta")
+    if params.get("host") is not None:
+        cargs.extend([
+            "-host",
+            params.get("host")
+        ])
+    if params.get("port") is not None:
+        cargs.extend([
+            "-port",
+            str(params.get("port"))
+        ])
+    if params.get("verbose"):
+        cargs.append("-v")
+    if params.get("port_offset") is not None:
+        cargs.extend([
+            "-np",
+            str(params.get("port_offset"))
+        ])
+    if params.get("port_offset_quiet") is not None:
+        cargs.extend([
+            "-npq",
+            str(params.get("port_offset_quiet"))
+        ])
+    if params.get("port_offset_bloc") is not None:
+        cargs.extend([
+            "-npb",
+            str(params.get("port_offset_bloc"))
+        ])
+    if params.get("max_port_bloc"):
+        cargs.append("-max_port_bloc")
+    if params.get("max_port_bloc_quiet"):
+        cargs.append("-max_port_bloc_quiet")
+    if params.get("num_assigned_ports"):
+        cargs.append("-num_assigned_ports")
+    if params.get("num_assigned_ports_quiet"):
+        cargs.append("-num_assigned_ports_quiet")
+    return cargs
+
+
+def plugout_tta_outputs(
+    params: PlugoutTtaParameters,
+    execution: Execution,
+) -> PlugoutTtaOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = PlugoutTtaOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def plugout_tta_execute(
+    params: PlugoutTtaParameters,
+    execution: Execution,
+) -> PlugoutTtaOutputs:
+    """
+    Connects to AFNI and receives notification whenever the user changes Talairach
+    coordinates, then drives Netscape to display the closest figures from the
+    Talairach-Tournoux atlas.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `PlugoutTtaOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = plugout_tta_cargs(params, execution)
+    ret = plugout_tta_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def plugout_tta(
@@ -67,52 +258,12 @@ def plugout_tta(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(PLUGOUT_TTA_METADATA)
-    cargs = []
-    cargs.append("plugout_tta")
-    if host is not None:
-        cargs.extend([
-            "-host",
-            host
-        ])
-    if port is not None:
-        cargs.extend([
-            "-port",
-            str(port)
-        ])
-    if verbose:
-        cargs.append("-v")
-    if port_offset is not None:
-        cargs.extend([
-            "-np",
-            str(port_offset)
-        ])
-    if port_offset_quiet is not None:
-        cargs.extend([
-            "-npq",
-            str(port_offset_quiet)
-        ])
-    if port_offset_bloc is not None:
-        cargs.extend([
-            "-npb",
-            str(port_offset_bloc)
-        ])
-    if max_port_bloc:
-        cargs.append("-max_port_bloc")
-    if max_port_bloc_quiet:
-        cargs.append("-max_port_bloc_quiet")
-    if num_assigned_ports:
-        cargs.append("-num_assigned_ports")
-    if num_assigned_ports_quiet:
-        cargs.append("-num_assigned_ports_quiet")
-    ret = PlugoutTtaOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = plugout_tta_params(host=host, port=port, verbose=verbose, port_offset=port_offset, port_offset_quiet=port_offset_quiet, port_offset_bloc=port_offset_bloc, max_port_bloc=max_port_bloc, max_port_bloc_quiet=max_port_bloc_quiet, num_assigned_ports=num_assigned_ports, num_assigned_ports_quiet=num_assigned_ports_quiet)
+    return plugout_tta_execute(params, execution)
 
 
 __all__ = [
     "PLUGOUT_TTA_METADATA",
-    "PlugoutTtaOutputs",
     "plugout_tta",
+    "plugout_tta_params",
 ]

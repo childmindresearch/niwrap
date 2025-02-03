@@ -12,6 +12,47 @@ MRI_MARK_TEMPORAL_LOBE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriMarkTemporalLobeParameters = typing.TypedDict('MriMarkTemporalLobeParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_mark_temporal_lobe"],
+    "spacing": typing.NotRequired[str | None],
+    "use_gradient": bool,
+    "subjects": list[InputPathType],
+    "output_file": str,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_mark_temporal_lobe": mri_mark_temporal_lobe_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_mark_temporal_lobe": mri_mark_temporal_lobe_outputs,
+    }
+    return vt.get(t)
 
 
 class MriMarkTemporalLobeOutputs(typing.NamedTuple):
@@ -22,6 +63,103 @@ class MriMarkTemporalLobeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_file: OutputPathType
     """Marked temporal lobe output file"""
+
+
+def mri_mark_temporal_lobe_params(
+    subjects: list[InputPathType],
+    output_file: str,
+    spacing: str | None = None,
+    use_gradient: bool = False,
+) -> MriMarkTemporalLobeParameters:
+    """
+    Build parameters.
+    
+    Args:
+        subjects: Subject MRI images.
+        output_file: Output file for marked temporal lobes.
+        spacing: The spacing of classifiers in canonical space.
+        use_gradient: Flag to use intensity gradient as input to classifier.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_mark_temporal_lobe",
+        "use_gradient": use_gradient,
+        "subjects": subjects,
+        "output_file": output_file,
+    }
+    if spacing is not None:
+        params["spacing"] = spacing
+    return params
+
+
+def mri_mark_temporal_lobe_cargs(
+    params: MriMarkTemporalLobeParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_mark_temporal_lobe")
+    if params.get("spacing") is not None:
+        cargs.extend([
+            "-spacing",
+            params.get("spacing")
+        ])
+    if params.get("use_gradient"):
+        cargs.append("-gradient" + "".join([execution.input_file(f) for f in params.get("subjects")]) + params.get("output_file"))
+    return cargs
+
+
+def mri_mark_temporal_lobe_outputs(
+    params: MriMarkTemporalLobeParameters,
+    execution: Execution,
+) -> MriMarkTemporalLobeOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriMarkTemporalLobeOutputs(
+        root=execution.output_file("."),
+        output_file=execution.output_file(params.get("output_file")),
+    )
+    return ret
+
+
+def mri_mark_temporal_lobe_execute(
+    params: MriMarkTemporalLobeParameters,
+    execution: Execution,
+) -> MriMarkTemporalLobeOutputs:
+    """
+    A tool for marking the temporal lobe in MRI images.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriMarkTemporalLobeOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_mark_temporal_lobe_cargs(params, execution)
+    ret = mri_mark_temporal_lobe_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_mark_temporal_lobe(
@@ -49,25 +187,13 @@ def mri_mark_temporal_lobe(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MARK_TEMPORAL_LOBE_METADATA)
-    cargs = []
-    cargs.append("mri_mark_temporal_lobe")
-    if spacing is not None:
-        cargs.extend([
-            "-spacing",
-            spacing
-        ])
-    if use_gradient:
-        cargs.append("-gradient" + "".join([execution.input_file(f) for f in subjects]) + output_file)
-    ret = MriMarkTemporalLobeOutputs(
-        root=execution.output_file("."),
-        output_file=execution.output_file(output_file),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_mark_temporal_lobe_params(spacing=spacing, use_gradient=use_gradient, subjects=subjects, output_file=output_file)
+    return mri_mark_temporal_lobe_execute(params, execution)
 
 
 __all__ = [
     "MRI_MARK_TEMPORAL_LOBE_METADATA",
     "MriMarkTemporalLobeOutputs",
     "mri_mark_temporal_lobe",
+    "mri_mark_temporal_lobe_params",
 ]

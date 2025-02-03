@@ -12,14 +12,127 @@ AFNI_RUN_R_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+AfniRunRParameters = typing.TypedDict('AfniRunRParameters', {
+    "__STYX_TYPE__": typing.Literal["afni_run_R"],
+    "r_script": InputPathType,
+    "r_args": list[str],
+})
 
 
-class AfniRunROutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `afni_run_r(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "afni_run_R": afni_run_r_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def afni_run_r_params(
+    r_script: InputPathType,
+    r_args: list[str],
+) -> AfniRunRParameters:
+    """
+    Build parameters.
+    
+    Args:
+        r_script: R script to be executed.
+        r_args: Arguments to be passed to the R script.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "afni_run_R",
+        "r_script": r_script,
+        "r_args": r_args,
+    }
+    return params
+
+
+def afni_run_r_cargs(
+    params: AfniRunRParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("afni_run_R")
+    cargs.append(execution.input_file(params.get("r_script")))
+    cargs.extend(params.get("r_args"))
+    return cargs
+
+
+def afni_run_r_outputs(
+    params: AfniRunRParameters,
+    execution: Execution,
+) -> AfniRunROutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = AfniRunROutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def afni_run_r_execute(
+    params: AfniRunRParameters,
+    execution: Execution,
+) -> AfniRunROutputs:
+    """
+    Run an R script with the specified arguments.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `AfniRunROutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = afni_run_r_cargs(params, execution)
+    ret = afni_run_r_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def afni_run_r(
@@ -43,19 +156,12 @@ def afni_run_r(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_RUN_R_METADATA)
-    cargs = []
-    cargs.append("afni_run_R")
-    cargs.append(execution.input_file(r_script))
-    cargs.extend(r_args)
-    ret = AfniRunROutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = afni_run_r_params(r_script=r_script, r_args=r_args)
+    return afni_run_r_execute(params, execution)
 
 
 __all__ = [
     "AFNI_RUN_R_METADATA",
-    "AfniRunROutputs",
     "afni_run_r",
+    "afni_run_r_params",
 ]

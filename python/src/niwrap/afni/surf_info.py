@@ -12,6 +12,53 @@ SURF_INFO_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+SurfInfoParameters = typing.TypedDict('SurfInfoParameters', {
+    "__STYX_TYPE__": typing.Literal["SurfInfo"],
+    "surface": InputPathType,
+    "com": bool,
+    "debug_level": typing.NotRequired[float | None],
+    "detail_level": typing.NotRequired[float | None],
+    "quiet": bool,
+    "separator": typing.NotRequired[str | None],
+    "input_surface": typing.NotRequired[str | None],
+    "surface_state": typing.NotRequired[str | None],
+    "surface_volume": typing.NotRequired[InputPathType | None],
+    "spec_file": typing.NotRequired[InputPathType | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "SurfInfo": surf_info_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "SurfInfo": surf_info_outputs,
+    }
+    return vt.get(t)
 
 
 class SurfInfoOutputs(typing.NamedTuple):
@@ -22,6 +69,162 @@ class SurfInfoOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metrics_output: OutputPathType
     """Output file containing calculated surface metrics."""
+
+
+def surf_info_params(
+    surface: InputPathType,
+    com: bool = False,
+    debug_level: float | None = None,
+    detail_level: float | None = None,
+    quiet: bool = False,
+    separator: str | None = None,
+    input_surface: str | None = None,
+    surface_state: str | None = None,
+    surface_volume: InputPathType | None = None,
+    spec_file: InputPathType | None = None,
+) -> SurfInfoParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Input surface file.
+        com: Output the center of mass.
+        debug_level: Debugging level (2 turns LocalHead ON).
+        detail_level: Calculate surface metrics. 1=yes, 0=no.
+        quiet: Do not include the name of the parameter in output.
+        separator: Use string SEP to separate parameter values. Default is ' ;\
+            '.
+        input_surface: Specify the input surface type and file.
+        surface_state: Specify surface type, state, and name.
+        surface_volume: Specify a surface volume file.
+        spec_file: Specify a surface specification (spec) file.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "SurfInfo",
+        "surface": surface,
+        "com": com,
+        "quiet": quiet,
+    }
+    if debug_level is not None:
+        params["debug_level"] = debug_level
+    if detail_level is not None:
+        params["detail_level"] = detail_level
+    if separator is not None:
+        params["separator"] = separator
+    if input_surface is not None:
+        params["input_surface"] = input_surface
+    if surface_state is not None:
+        params["surface_state"] = surface_state
+    if surface_volume is not None:
+        params["surface_volume"] = surface_volume
+    if spec_file is not None:
+        params["spec_file"] = spec_file
+    return params
+
+
+def surf_info_cargs(
+    params: SurfInfoParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("SurfInfo")
+    cargs.append("[options]")
+    cargs.append(execution.input_file(params.get("surface")))
+    if params.get("com"):
+        cargs.append("-COM")
+    if params.get("debug_level") is not None:
+        cargs.extend([
+            "-debug",
+            str(params.get("debug_level"))
+        ])
+    if params.get("detail_level") is not None:
+        cargs.extend([
+            "-detail",
+            str(params.get("detail_level"))
+        ])
+    if params.get("quiet"):
+        cargs.append("-quiet")
+    if params.get("separator") is not None:
+        cargs.extend([
+            "-sep",
+            params.get("separator")
+        ])
+    if params.get("input_surface") is not None:
+        cargs.extend([
+            "-i_TYPE",
+            params.get("input_surface")
+        ])
+    if params.get("surface_state") is not None:
+        cargs.extend([
+            "-tsn",
+            params.get("surface_state")
+        ])
+    if params.get("surface_volume") is not None:
+        cargs.extend([
+            "-sv",
+            execution.input_file(params.get("surface_volume"))
+        ])
+    if params.get("spec_file") is not None:
+        cargs.extend([
+            "-spec",
+            execution.input_file(params.get("spec_file"))
+        ])
+    return cargs
+
+
+def surf_info_outputs(
+    params: SurfInfoParameters,
+    execution: Execution,
+) -> SurfInfoOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SurfInfoOutputs(
+        root=execution.output_file("."),
+        metrics_output=execution.output_file(pathlib.Path(params.get("surface")).name + "_metrics.txt"),
+    )
+    return ret
+
+
+def surf_info_execute(
+    params: SurfInfoParameters,
+    execution: Execution,
+) -> SurfInfoOutputs:
+    """
+    Tool to gather information about surface files.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SurfInfoOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = surf_info_cargs(params, execution)
+    ret = surf_info_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def surf_info(
@@ -62,59 +265,13 @@ def surf_info(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_INFO_METADATA)
-    cargs = []
-    cargs.append("SurfInfo")
-    cargs.append("[options]")
-    cargs.append(execution.input_file(surface))
-    if com:
-        cargs.append("-COM")
-    if debug_level is not None:
-        cargs.extend([
-            "-debug",
-            str(debug_level)
-        ])
-    if detail_level is not None:
-        cargs.extend([
-            "-detail",
-            str(detail_level)
-        ])
-    if quiet:
-        cargs.append("-quiet")
-    if separator is not None:
-        cargs.extend([
-            "-sep",
-            separator
-        ])
-    if input_surface is not None:
-        cargs.extend([
-            "-i_TYPE",
-            input_surface
-        ])
-    if surface_state is not None:
-        cargs.extend([
-            "-tsn",
-            surface_state
-        ])
-    if surface_volume is not None:
-        cargs.extend([
-            "-sv",
-            execution.input_file(surface_volume)
-        ])
-    if spec_file is not None:
-        cargs.extend([
-            "-spec",
-            execution.input_file(spec_file)
-        ])
-    ret = SurfInfoOutputs(
-        root=execution.output_file("."),
-        metrics_output=execution.output_file(pathlib.Path(surface).name + "_metrics.txt"),
-    )
-    execution.run(cargs)
-    return ret
+    params = surf_info_params(surface=surface, com=com, debug_level=debug_level, detail_level=detail_level, quiet=quiet, separator=separator, input_surface=input_surface, surface_state=surface_state, surface_volume=surface_volume, spec_file=spec_file)
+    return surf_info_execute(params, execution)
 
 
 __all__ = [
     "SURF_INFO_METADATA",
     "SurfInfoOutputs",
     "surf_info",
+    "surf_info_params",
 ]

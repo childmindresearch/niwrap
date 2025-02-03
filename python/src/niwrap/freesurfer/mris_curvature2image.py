@@ -12,6 +12,51 @@ MRIS_CURVATURE2IMAGE_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MrisCurvature2imageParameters = typing.TypedDict('MrisCurvature2imageParameters', {
+    "__STYX_TYPE__": typing.Literal["mris_curvature2image"],
+    "surface": InputPathType,
+    "mask": InputPathType,
+    "output_overlay": str,
+    "output_distance": str,
+    "overlay": InputPathType,
+    "label": InputPathType,
+    "invert_flag": bool,
+    "radius": float,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mris_curvature2image": mris_curvature2image_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mris_curvature2image": mris_curvature2image_outputs,
+    }
+    return vt.get(t)
 
 
 class MrisCurvature2imageOutputs(typing.NamedTuple):
@@ -24,6 +69,138 @@ class MrisCurvature2imageOutputs(typing.NamedTuple):
     """Generated overlay image file."""
     output_distance_img: OutputPathType
     """Generated distance image file."""
+
+
+def mris_curvature2image_params(
+    surface: InputPathType,
+    mask: InputPathType,
+    output_overlay: str,
+    output_distance: str,
+    overlay: InputPathType,
+    label: InputPathType,
+    radius: float,
+    invert_flag: bool = False,
+) -> MrisCurvature2imageParameters:
+    """
+    Build parameters.
+    
+    Args:
+        surface: Input surface file.
+        mask: Input mask file.
+        output_overlay: Output overlay image file.
+        output_distance: Output distance image file.
+        overlay: Overlay file.
+        label: Label file.
+        radius: Radius value for processing.
+        invert_flag: Flag to invert the curvature values.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mris_curvature2image",
+        "surface": surface,
+        "mask": mask,
+        "output_overlay": output_overlay,
+        "output_distance": output_distance,
+        "overlay": overlay,
+        "label": label,
+        "invert_flag": invert_flag,
+        "radius": radius,
+    }
+    return params
+
+
+def mris_curvature2image_cargs(
+    params: MrisCurvature2imageParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mris_curvature2image")
+    cargs.extend([
+        "-s",
+        execution.input_file(params.get("surface"))
+    ])
+    cargs.extend([
+        "-m",
+        execution.input_file(params.get("mask"))
+    ])
+    cargs.extend([
+        "-o",
+        params.get("output_overlay")
+    ])
+    cargs.extend([
+        "-d",
+        params.get("output_distance")
+    ])
+    cargs.extend([
+        "-c",
+        execution.input_file(params.get("overlay"))
+    ])
+    cargs.extend([
+        "-l",
+        execution.input_file(params.get("label"))
+    ])
+    if params.get("invert_flag"):
+        cargs.append("-inv")
+    cargs.extend([
+        "-r",
+        str(params.get("radius"))
+    ])
+    return cargs
+
+
+def mris_curvature2image_outputs(
+    params: MrisCurvature2imageParameters,
+    execution: Execution,
+) -> MrisCurvature2imageOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MrisCurvature2imageOutputs(
+        root=execution.output_file("."),
+        output_overlay_img=execution.output_file(params.get("output_overlay")),
+        output_distance_img=execution.output_file(params.get("output_distance")),
+    )
+    return ret
+
+
+def mris_curvature2image_execute(
+    params: MrisCurvature2imageParameters,
+    execution: Execution,
+) -> MrisCurvature2imageOutputs:
+    """
+    Tool to convert surface curvature data to an image using FreeSurfer.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mris_curvature2image_cargs(params, execution)
+    ret = mris_curvature2image_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mris_curvature2image(
@@ -59,49 +236,13 @@ def mris_curvature2image(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CURVATURE2IMAGE_METADATA)
-    cargs = []
-    cargs.append("mris_curvature2image")
-    cargs.extend([
-        "-s",
-        execution.input_file(surface)
-    ])
-    cargs.extend([
-        "-m",
-        execution.input_file(mask)
-    ])
-    cargs.extend([
-        "-o",
-        output_overlay
-    ])
-    cargs.extend([
-        "-d",
-        output_distance
-    ])
-    cargs.extend([
-        "-c",
-        execution.input_file(overlay)
-    ])
-    cargs.extend([
-        "-l",
-        execution.input_file(label)
-    ])
-    if invert_flag:
-        cargs.append("-inv")
-    cargs.extend([
-        "-r",
-        str(radius)
-    ])
-    ret = MrisCurvature2imageOutputs(
-        root=execution.output_file("."),
-        output_overlay_img=execution.output_file(output_overlay),
-        output_distance_img=execution.output_file(output_distance),
-    )
-    execution.run(cargs)
-    return ret
+    params = mris_curvature2image_params(surface=surface, mask=mask, output_overlay=output_overlay, output_distance=output_distance, overlay=overlay, label=label, invert_flag=invert_flag, radius=radius)
+    return mris_curvature2image_execute(params, execution)
 
 
 __all__ = [
     "MRIS_CURVATURE2IMAGE_METADATA",
     "MrisCurvature2imageOutputs",
     "mris_curvature2image",
+    "mris_curvature2image_params",
 ]

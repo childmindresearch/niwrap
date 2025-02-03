@@ -12,6 +12,47 @@ HIST2PROB_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+Hist2probParameters = typing.TypedDict('Hist2probParameters', {
+    "__STYX_TYPE__": typing.Literal["hist2prob"],
+    "image": InputPathType,
+    "size": int,
+    "low_threshold": float,
+    "high_threshold": float,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "hist2prob": hist2prob_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "hist2prob": hist2prob_outputs,
+    }
+    return vt.get(t)
 
 
 class Hist2probOutputs(typing.NamedTuple):
@@ -22,6 +63,99 @@ class Hist2probOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_probability_map: OutputPathType
     """Output probability map converted from histogram"""
+
+
+def hist2prob_params(
+    image: InputPathType,
+    size: int,
+    low_threshold: float,
+    high_threshold: float,
+) -> Hist2probParameters:
+    """
+    Build parameters.
+    
+    Args:
+        image: Input histogram image.
+        size: Size of the histogram.
+        low_threshold: Lower threshold for probability conversion.
+        high_threshold: Higher threshold for probability conversion.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "hist2prob",
+        "image": image,
+        "size": size,
+        "low_threshold": low_threshold,
+        "high_threshold": high_threshold,
+    }
+    return params
+
+
+def hist2prob_cargs(
+    params: Hist2probParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("hist2prob")
+    cargs.append(execution.input_file(params.get("image")))
+    cargs.append(str(params.get("size")))
+    cargs.append(str(params.get("low_threshold")))
+    cargs.append(str(params.get("high_threshold")))
+    return cargs
+
+
+def hist2prob_outputs(
+    params: Hist2probParameters,
+    execution: Execution,
+) -> Hist2probOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = Hist2probOutputs(
+        root=execution.output_file("."),
+        output_probability_map=execution.output_file(pathlib.Path(params.get("image")).name + "_probability_map.nii.gz"),
+    )
+    return ret
+
+
+def hist2prob_execute(
+    params: Hist2probParameters,
+    execution: Execution,
+) -> Hist2probOutputs:
+    """
+    Converts a histogram image to a probability map based on specified thresholds.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `Hist2probOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = hist2prob_cargs(params, execution)
+    ret = hist2prob_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def hist2prob(
@@ -49,22 +183,13 @@ def hist2prob(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIST2PROB_METADATA)
-    cargs = []
-    cargs.append("hist2prob")
-    cargs.append(execution.input_file(image))
-    cargs.append(str(size))
-    cargs.append(str(low_threshold))
-    cargs.append(str(high_threshold))
-    ret = Hist2probOutputs(
-        root=execution.output_file("."),
-        output_probability_map=execution.output_file(pathlib.Path(image).name + "_probability_map.nii.gz"),
-    )
-    execution.run(cargs)
-    return ret
+    params = hist2prob_params(image=image, size=size, low_threshold=low_threshold, high_threshold=high_threshold)
+    return hist2prob_execute(params, execution)
 
 
 __all__ = [
     "HIST2PROB_METADATA",
     "Hist2probOutputs",
     "hist2prob",
+    "hist2prob_params",
 ]

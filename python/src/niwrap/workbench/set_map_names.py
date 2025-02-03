@@ -12,50 +12,211 @@ SET_MAP_NAMES_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+SetMapNamesMapParameters = typing.TypedDict('SetMapNamesMapParameters', {
+    "__STYX_TYPE__": typing.Literal["map"],
+    "index": int,
+    "new_name": str,
+})
+SetMapNamesParameters = typing.TypedDict('SetMapNamesParameters', {
+    "__STYX_TYPE__": typing.Literal["set-map-names"],
+    "data_file": str,
+    "opt_name_file_file": typing.NotRequired[str | None],
+    "opt_from_data_file_file": typing.NotRequired[str | None],
+    "map": typing.NotRequired[list[SetMapNamesMapParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class SetMapNamesMap:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    specify a map to set the name of.
-    """
-    index: int
-    """the map index to change the name of"""
-    new_name: str
-    """the name to set for the map"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-map")
-        cargs.append(str(self.index))
-        cargs.append(self.new_name)
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "set-map-names": set_map_names_cargs,
+        "map": set_map_names_map_cargs,
+    }
+    return vt.get(t)
 
 
-class SetMapNamesOutputs(typing.NamedTuple):
+def dyn_outputs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `set_map_names(...)`.
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {}
+    return vt.get(t)
+
+
+def set_map_names_map_params(
+    index: int,
+    new_name: str,
+) -> SetMapNamesMapParameters:
+    """
+    Build parameters.
+    
+    Args:
+        index: the map index to change the name of.
+        new_name: the name to set for the map.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "map",
+        "index": index,
+        "new_name": new_name,
+    }
+    return params
+
+
+def set_map_names_map_cargs(
+    params: SetMapNamesMapParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-map")
+    cargs.append(str(params.get("index")))
+    cargs.append(params.get("new_name"))
+    return cargs
+
+
+def set_map_names_params(
+    data_file: str,
+    opt_name_file_file: str | None = None,
+    opt_from_data_file_file: str | None = None,
+    map_: list[SetMapNamesMapParameters] | None = None,
+) -> SetMapNamesParameters:
+    """
+    Build parameters.
+    
+    Args:
+        data_file: the file to set the map names of.
+        opt_name_file_file: use a text file to replace all map names: text file\
+            containing map names, one per line.
+        opt_from_data_file_file: use the map names from another data file: a\
+            data file with the same number of maps.
+        map_: specify a map to set the name of.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "set-map-names",
+        "data_file": data_file,
+    }
+    if opt_name_file_file is not None:
+        params["opt_name_file_file"] = opt_name_file_file
+    if opt_from_data_file_file is not None:
+        params["opt_from_data_file_file"] = opt_from_data_file_file
+    if map_ is not None:
+        params["map"] = map_
+    return params
+
+
+def set_map_names_cargs(
+    params: SetMapNamesParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-set-map-names")
+    cargs.append(params.get("data_file"))
+    if params.get("opt_name_file_file") is not None:
+        cargs.extend([
+            "-name-file",
+            params.get("opt_name_file_file")
+        ])
+    if params.get("opt_from_data_file_file") is not None:
+        cargs.extend([
+            "-from-data-file",
+            params.get("opt_from_data_file_file")
+        ])
+    if params.get("map") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("map")] for a in c])
+    return cargs
+
+
+def set_map_names_outputs(
+    params: SetMapNamesParameters,
+    execution: Execution,
+) -> SetMapNamesOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = SetMapNamesOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def set_map_names_execute(
+    params: SetMapNamesParameters,
+    execution: Execution,
+) -> SetMapNamesOutputs:
+    """
+    Set the name of one or more maps in a file.
+    
+    Sets the name of one or more maps for metric, shape, label, volume, cifti
+    scalar or cifti label files. You must specify either -name-file, or
+    -from-data-file, or at least one -map option. The three option types are
+    mutually exclusive.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `SetMapNamesOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = set_map_names_cargs(params, execution)
+    ret = set_map_names_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def set_map_names(
     data_file: str,
     opt_name_file_file: str | None = None,
     opt_from_data_file_file: str | None = None,
-    map_: list[SetMapNamesMap] | None = None,
+    map_: list[SetMapNamesMapParameters] | None = None,
     runner: Runner | None = None,
 ) -> SetMapNamesOutputs:
     """
@@ -83,32 +244,13 @@ def set_map_names(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(SET_MAP_NAMES_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-set-map-names")
-    cargs.append(data_file)
-    if opt_name_file_file is not None:
-        cargs.extend([
-            "-name-file",
-            opt_name_file_file
-        ])
-    if opt_from_data_file_file is not None:
-        cargs.extend([
-            "-from-data-file",
-            opt_from_data_file_file
-        ])
-    if map_ is not None:
-        cargs.extend([a for c in [s.run(execution) for s in map_] for a in c])
-    ret = SetMapNamesOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = set_map_names_params(data_file=data_file, opt_name_file_file=opt_name_file_file, opt_from_data_file_file=opt_from_data_file_file, map_=map_)
+    return set_map_names_execute(params, execution)
 
 
 __all__ = [
     "SET_MAP_NAMES_METADATA",
-    "SetMapNamesMap",
-    "SetMapNamesOutputs",
     "set_map_names",
+    "set_map_names_map_params",
+    "set_map_names_params",
 ]

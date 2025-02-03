@@ -12,6 +12,49 @@ V_2PERM_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V2permParameters = typing.TypedDict('V2permParameters', {
+    "__STYX_TYPE__": typing.Literal["2perm"],
+    "prefix": typing.NotRequired[str | None],
+    "comma": bool,
+    "bottom_int": float,
+    "top_int": float,
+    "subset1_size": typing.NotRequired[float | None],
+    "subset2_size": typing.NotRequired[float | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "2perm": v_2perm_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "2perm": v_2perm_outputs,
+    }
+    return vt.get(t)
 
 
 class V2permOutputs(typing.NamedTuple):
@@ -24,6 +67,120 @@ class V2permOutputs(typing.NamedTuple):
     """First subset output file"""
     file_b: OutputPathType | None
     """Second subset output file"""
+
+
+def v_2perm_params(
+    bottom_int: float,
+    top_int: float,
+    prefix: str | None = None,
+    comma: bool = False,
+    subset1_size: float | None = None,
+    subset2_size: float | None = None,
+) -> V2permParameters:
+    """
+    Build parameters.
+    
+    Args:
+        bottom_int: Bottom integer of the range.
+        top_int: Top integer of the range.
+        prefix: Prefix for output files (default 'AFNIroolz').
+        comma: Write each file as a single row of comma-separated numbers.
+        subset1_size: Size of the first subset (optional, default is half the\
+            range).
+        subset2_size: Size of the second subset (optional, default is half the\
+            range).
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "2perm",
+        "comma": comma,
+        "bottom_int": bottom_int,
+        "top_int": top_int,
+    }
+    if prefix is not None:
+        params["prefix"] = prefix
+    if subset1_size is not None:
+        params["subset1_size"] = subset1_size
+    if subset2_size is not None:
+        params["subset2_size"] = subset2_size
+    return params
+
+
+def v_2perm_cargs(
+    params: V2permParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("2perm")
+    if params.get("prefix") is not None:
+        cargs.extend([
+            "-prefix",
+            params.get("prefix")
+        ])
+    if params.get("comma"):
+        cargs.append("-comma")
+    cargs.append(str(params.get("bottom_int")))
+    cargs.append(str(params.get("top_int")))
+    if params.get("subset1_size") is not None:
+        cargs.append(str(params.get("subset1_size")))
+    if params.get("subset2_size") is not None:
+        cargs.append(str(params.get("subset2_size")))
+    return cargs
+
+
+def v_2perm_outputs(
+    params: V2permParameters,
+    execution: Execution,
+) -> V2permOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V2permOutputs(
+        root=execution.output_file("."),
+        file_a=execution.output_file(params.get("prefix") + "_A") if (params.get("prefix") is not None) else None,
+        file_b=execution.output_file(params.get("prefix") + "_B") if (params.get("prefix") is not None) else None,
+    )
+    return ret
+
+
+def v_2perm_execute(
+    params: V2permParameters,
+    execution: Execution,
+) -> V2permOutputs:
+    """
+    Generates two random non-overlapping subsets of a given set of integers.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V2permOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_2perm_cargs(params, execution)
+    ret = v_2perm_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_2perm(
@@ -57,32 +214,13 @@ def v_2perm(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_2PERM_METADATA)
-    cargs = []
-    cargs.append("2perm")
-    if prefix is not None:
-        cargs.extend([
-            "-prefix",
-            prefix
-        ])
-    if comma:
-        cargs.append("-comma")
-    cargs.append(str(bottom_int))
-    cargs.append(str(top_int))
-    if subset1_size is not None:
-        cargs.append(str(subset1_size))
-    if subset2_size is not None:
-        cargs.append(str(subset2_size))
-    ret = V2permOutputs(
-        root=execution.output_file("."),
-        file_a=execution.output_file(prefix + "_A") if (prefix is not None) else None,
-        file_b=execution.output_file(prefix + "_B") if (prefix is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = v_2perm_params(prefix=prefix, comma=comma, bottom_int=bottom_int, top_int=top_int, subset1_size=subset1_size, subset2_size=subset2_size)
+    return v_2perm_execute(params, execution)
 
 
 __all__ = [
     "V2permOutputs",
     "V_2PERM_METADATA",
     "v_2perm",
+    "v_2perm_params",
 ]

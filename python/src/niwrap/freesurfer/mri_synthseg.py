@@ -12,6 +12,58 @@ MRI_SYNTHSEG_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriSynthsegParameters = typing.TypedDict('MriSynthsegParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_synthseg"],
+    "input_image": InputPathType,
+    "output_segmentation": str,
+    "cortex_parcellation": bool,
+    "robust_prediction": bool,
+    "fast_prediction": bool,
+    "clip_ct": bool,
+    "output_volume": typing.NotRequired[str | None],
+    "output_qc": typing.NotRequired[str | None],
+    "output_posteriors": typing.NotRequired[str | None],
+    "resampled_images": typing.NotRequired[str | None],
+    "image_patch_size": typing.NotRequired[list[float] | None],
+    "threads": typing.NotRequired[float | None],
+    "cpu": bool,
+    "version_1": bool,
+    "photo_synthseg": typing.NotRequired[str | None],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "mri_synthseg": mri_synthseg_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "mri_synthseg": mri_synthseg_outputs,
+    }
+    return vt.get(t)
 
 
 class MriSynthsegOutputs(typing.NamedTuple):
@@ -30,6 +82,174 @@ class MriSynthsegOutputs(typing.NamedTuple):
     """Posteriors output(s)"""
     resampled_images_file: OutputPathType | None
     """Resampled image(s)"""
+
+
+def mri_synthseg_params(
+    input_image: InputPathType,
+    output_segmentation: str,
+    cortex_parcellation: bool = False,
+    robust_prediction: bool = False,
+    fast_prediction: bool = False,
+    clip_ct: bool = False,
+    output_volume: str | None = None,
+    output_qc: str | None = None,
+    output_posteriors: str | None = None,
+    resampled_images: str | None = None,
+    image_patch_size: list[float] | None = None,
+    threads: float | None = None,
+    cpu: bool = False,
+    version_1: bool = False,
+    photo_synthseg: str | None = None,
+) -> MriSynthsegParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_image: Image(s) to segment. Can be a path to an image or to a\
+            folder.
+        output_segmentation: Segmentation output(s). Must be a folder if --i\
+            designates a folder.
+        cortex_parcellation: Perform cortex parcellation.
+        robust_prediction: Use robust predictions (slower).
+        fast_prediction: Bypass some processing for faster prediction.
+        clip_ct: Clip CT scans in Hounsfield scale to [0, 80].
+        output_volume: Output CSV file with volumes for all structures and\
+            subjects.
+        output_qc: Output CSV file with QC scores for all subjects.
+        output_posteriors: Posteriors output(s). Must be a folder if --i\
+            designates a folder.
+        resampled_images: Resampled image(s). Must be a folder if --i is a\
+            folder.
+        image_patch_size: Only analyse an image patch of the given size.
+        threads: Number of cores to be used. Default is 1.
+        cpu: Enforce running with CPU rather than GPU.
+        version_1: Use SynthSeg 1.0 (updated 25/06/22).
+        photo_synthseg: Photo-SynthSeg: segment 3D reconstructed stack of\
+            coronal dissection photos of the cerebrum; must be left, right, or\
+            both.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_synthseg",
+        "input_image": input_image,
+        "output_segmentation": output_segmentation,
+        "cortex_parcellation": cortex_parcellation,
+        "robust_prediction": robust_prediction,
+        "fast_prediction": fast_prediction,
+        "clip_ct": clip_ct,
+        "cpu": cpu,
+        "version_1": version_1,
+    }
+    if output_volume is not None:
+        params["output_volume"] = output_volume
+    if output_qc is not None:
+        params["output_qc"] = output_qc
+    if output_posteriors is not None:
+        params["output_posteriors"] = output_posteriors
+    if resampled_images is not None:
+        params["resampled_images"] = resampled_images
+    if image_patch_size is not None:
+        params["image_patch_size"] = image_patch_size
+    if threads is not None:
+        params["threads"] = threads
+    if photo_synthseg is not None:
+        params["photo_synthseg"] = photo_synthseg
+    return params
+
+
+def mri_synthseg_cargs(
+    params: MriSynthsegParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_synthseg")
+    cargs.append(execution.input_file(params.get("input_image")))
+    cargs.append(params.get("output_segmentation"))
+    if params.get("cortex_parcellation"):
+        cargs.append("--parc")
+    if params.get("robust_prediction"):
+        cargs.append("--robust")
+    if params.get("fast_prediction"):
+        cargs.append("--fast")
+    if params.get("clip_ct"):
+        cargs.append("--ct")
+    if params.get("output_volume") is not None:
+        cargs.append(params.get("output_volume"))
+    if params.get("output_qc") is not None:
+        cargs.append(params.get("output_qc"))
+    if params.get("output_posteriors") is not None:
+        cargs.append(params.get("output_posteriors"))
+    if params.get("resampled_images") is not None:
+        cargs.append(params.get("resampled_images"))
+    if params.get("image_patch_size") is not None:
+        cargs.extend(map(str, params.get("image_patch_size")))
+    if params.get("threads") is not None:
+        cargs.append(str(params.get("threads")))
+    if params.get("cpu"):
+        cargs.append("--cpu")
+    if params.get("version_1"):
+        cargs.append("--v1")
+    if params.get("photo_synthseg") is not None:
+        cargs.append(params.get("photo_synthseg"))
+    return cargs
+
+
+def mri_synthseg_outputs(
+    params: MriSynthsegParameters,
+    execution: Execution,
+) -> MriSynthsegOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriSynthsegOutputs(
+        root=execution.output_file("."),
+        output_segmentation_file=execution.output_file(params.get("output_segmentation")),
+        output_volume_csv=execution.output_file(params.get("output_volume")) if (params.get("output_volume") is not None) else None,
+        output_qc_csv=execution.output_file(params.get("output_qc")) if (params.get("output_qc") is not None) else None,
+        output_posteriors_file=execution.output_file(params.get("output_posteriors")) if (params.get("output_posteriors") is not None) else None,
+        resampled_images_file=execution.output_file(params.get("resampled_images")) if (params.get("resampled_images") is not None) else None,
+    )
+    return ret
+
+
+def mri_synthseg_execute(
+    params: MriSynthsegParameters,
+    execution: Execution,
+) -> MriSynthsegOutputs:
+    """
+    SynthSeg is a tool for brain image segmentation.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriSynthsegOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_synthseg_cargs(params, execution)
+    ret = mri_synthseg_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_synthseg(
@@ -86,50 +306,13 @@ def mri_synthseg(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SYNTHSEG_METADATA)
-    cargs = []
-    cargs.append("mri_synthseg")
-    cargs.append(execution.input_file(input_image))
-    cargs.append(output_segmentation)
-    if cortex_parcellation:
-        cargs.append("--parc")
-    if robust_prediction:
-        cargs.append("--robust")
-    if fast_prediction:
-        cargs.append("--fast")
-    if clip_ct:
-        cargs.append("--ct")
-    if output_volume is not None:
-        cargs.append(output_volume)
-    if output_qc is not None:
-        cargs.append(output_qc)
-    if output_posteriors is not None:
-        cargs.append(output_posteriors)
-    if resampled_images is not None:
-        cargs.append(resampled_images)
-    if image_patch_size is not None:
-        cargs.extend(map(str, image_patch_size))
-    if threads is not None:
-        cargs.append(str(threads))
-    if cpu:
-        cargs.append("--cpu")
-    if version_1:
-        cargs.append("--v1")
-    if photo_synthseg is not None:
-        cargs.append(photo_synthseg)
-    ret = MriSynthsegOutputs(
-        root=execution.output_file("."),
-        output_segmentation_file=execution.output_file(output_segmentation),
-        output_volume_csv=execution.output_file(output_volume) if (output_volume is not None) else None,
-        output_qc_csv=execution.output_file(output_qc) if (output_qc is not None) else None,
-        output_posteriors_file=execution.output_file(output_posteriors) if (output_posteriors is not None) else None,
-        resampled_images_file=execution.output_file(resampled_images) if (resampled_images is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_synthseg_params(input_image=input_image, output_segmentation=output_segmentation, cortex_parcellation=cortex_parcellation, robust_prediction=robust_prediction, fast_prediction=fast_prediction, clip_ct=clip_ct, output_volume=output_volume, output_qc=output_qc, output_posteriors=output_posteriors, resampled_images=resampled_images, image_patch_size=image_patch_size, threads=threads, cpu=cpu, version_1=version_1, photo_synthseg=photo_synthseg)
+    return mri_synthseg_execute(params, execution)
 
 
 __all__ = [
     "MRI_SYNTHSEG_METADATA",
     "MriSynthsegOutputs",
     "mri_synthseg",
+    "mri_synthseg_params",
 ]

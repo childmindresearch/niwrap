@@ -12,14 +12,118 @@ MRI_GCAB_TRAIN_METADATA = Metadata(
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
+MriGcabTrainParameters = typing.TypedDict('MriGcabTrainParameters', {
+    "__STYX_TYPE__": typing.Literal["mri_gcab_train"],
+})
 
 
-class MriGcabTrainOutputs(typing.NamedTuple):
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    Output object returned when calling `mri_gcab_train(...)`.
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
     """
-    root: OutputPathType
-    """Output root folder. This is the root folder for all outputs."""
+    vt = {
+        "mri_gcab_train": mri_gcab_train_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {}
+    return vt.get(t)
+
+
+def mri_gcab_train_params(
+) -> MriGcabTrainParameters:
+    """
+    Build parameters.
+    
+    Args:
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "mri_gcab_train",
+    }
+    return params
+
+
+def mri_gcab_train_cargs(
+    params: MriGcabTrainParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("mri_gcab_train")
+    return cargs
+
+
+def mri_gcab_train_outputs(
+    params: MriGcabTrainParameters,
+    execution: Execution,
+) -> MriGcabTrainOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = MriGcabTrainOutputs(
+        root=execution.output_file("."),
+    )
+    return ret
+
+
+def mri_gcab_train_execute(
+    params: MriGcabTrainParameters,
+    execution: Execution,
+) -> MriGcabTrainOutputs:
+    """
+    Previously used command in FreeSurfer for training with Gaussian Classifier
+    Atlas-based (GCAB) modeling; has been removed in the current version.
+    
+    Author: FreeSurfer Developers
+    
+    URL: https://github.com/freesurfer/freesurfer
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `MriGcabTrainOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = mri_gcab_train_cargs(params, execution)
+    ret = mri_gcab_train_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def mri_gcab_train(
@@ -40,17 +144,12 @@ def mri_gcab_train(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GCAB_TRAIN_METADATA)
-    cargs = []
-    cargs.append("mri_gcab_train")
-    ret = MriGcabTrainOutputs(
-        root=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = mri_gcab_train_params()
+    return mri_gcab_train_execute(params, execution)
 
 
 __all__ = [
     "MRI_GCAB_TRAIN_METADATA",
-    "MriGcabTrainOutputs",
     "mri_gcab_train",
+    "mri_gcab_train_params",
 ]

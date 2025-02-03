@@ -12,6 +12,61 @@ FSL_ANAT_METADATA = Metadata(
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
+FslAnatParameters = typing.TypedDict('FslAnatParameters', {
+    "__STYX_TYPE__": typing.Literal["fsl_anat"],
+    "structural_image": typing.NotRequired[InputPathType | None],
+    "existing_anat_dir": typing.NotRequired[str | None],
+    "output_dir": typing.NotRequired[str | None],
+    "clobber_flag": bool,
+    "strongbias_flag": bool,
+    "weakbias_flag": bool,
+    "noreorient_flag": bool,
+    "nocrop_flag": bool,
+    "nobias_flag": bool,
+    "noreg_flag": bool,
+    "nononlinreg_flag": bool,
+    "noseg_flag": bool,
+    "nosubcortseg_flag": bool,
+    "bias_smoothing": typing.NotRequired[float | None],
+    "image_type": typing.NotRequired[str | None],
+    "nosearch_flag": bool,
+    "bet_f_param": typing.NotRequired[float | None],
+    "nocleanup_flag": bool,
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "fsl_anat": fsl_anat_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "fsl_anat": fsl_anat_outputs,
+    }
+    return vt.get(t)
 
 
 class FslAnatOutputs(typing.NamedTuple):
@@ -22,6 +77,209 @@ class FslAnatOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_anat_dir: OutputPathType | None
     """Output anatomical directory"""
+
+
+def fsl_anat_params(
+    structural_image: InputPathType | None = None,
+    existing_anat_dir: str | None = None,
+    output_dir: str | None = None,
+    clobber_flag: bool = False,
+    strongbias_flag: bool = False,
+    weakbias_flag: bool = False,
+    noreorient_flag: bool = False,
+    nocrop_flag: bool = False,
+    nobias_flag: bool = False,
+    noreg_flag: bool = False,
+    nononlinreg_flag: bool = False,
+    noseg_flag: bool = False,
+    nosubcortseg_flag: bool = False,
+    bias_smoothing: float | None = None,
+    image_type: str | None = None,
+    nosearch_flag: bool = False,
+    bet_f_param: float | None = None,
+    nocleanup_flag: bool = False,
+) -> FslAnatParameters:
+    """
+    Build parameters.
+    
+    Args:
+        structural_image: Filename of input image (for one image only).
+        existing_anat_dir: Directory name for existing .anat directory where\
+            this script will be run in place.
+        output_dir: Basename of directory for output (default is input image\
+            basename followed by .anat).
+        clobber_flag: If .anat directory exists (as specified by -o or default\
+            from -i) then delete it and make a new one.
+        strongbias_flag: Used for images with very strong bias fields.
+        weakbias_flag: Used for images with smoother, more typical, bias fields\
+            (default setting).
+        noreorient_flag: Turn off step that does reorientation to standard\
+            (fslreorient2std).
+        nocrop_flag: Turn off step that does automated cropping (robustfov).
+        nobias_flag: Turn off steps that do bias field correction (via FAST).
+        noreg_flag: Turn off steps that do registration to standard (FLIRT and\
+            FNIRT).
+        nononlinreg_flag: Turn off step that does non-linear registration\
+            (FNIRT).
+        noseg_flag: Turn off step that does tissue-type segmentation (FAST).
+        nosubcortseg_flag: Turn off step that does sub-cortical segmentation\
+            (FIRST).
+        bias_smoothing: Specify the value for bias field smoothing (the -l\
+            option in FAST).
+        image_type: Specify the type of image (choose one of T1 T2 PD - default\
+            is T1).
+        nosearch_flag: Specify that linear registration uses the -nosearch\
+            option (FLIRT).
+        bet_f_param: Specify f parameter for BET (only used if not running\
+            non-linear reg and also wanting brain extraction done).
+        nocleanup_flag: Do not remove intermediate files.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fsl_anat",
+        "clobber_flag": clobber_flag,
+        "strongbias_flag": strongbias_flag,
+        "weakbias_flag": weakbias_flag,
+        "noreorient_flag": noreorient_flag,
+        "nocrop_flag": nocrop_flag,
+        "nobias_flag": nobias_flag,
+        "noreg_flag": noreg_flag,
+        "nononlinreg_flag": nononlinreg_flag,
+        "noseg_flag": noseg_flag,
+        "nosubcortseg_flag": nosubcortseg_flag,
+        "nosearch_flag": nosearch_flag,
+        "nocleanup_flag": nocleanup_flag,
+    }
+    if structural_image is not None:
+        params["structural_image"] = structural_image
+    if existing_anat_dir is not None:
+        params["existing_anat_dir"] = existing_anat_dir
+    if output_dir is not None:
+        params["output_dir"] = output_dir
+    if bias_smoothing is not None:
+        params["bias_smoothing"] = bias_smoothing
+    if image_type is not None:
+        params["image_type"] = image_type
+    if bet_f_param is not None:
+        params["bet_f_param"] = bet_f_param
+    return params
+
+
+def fsl_anat_cargs(
+    params: FslAnatParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("fsl_anat")
+    if params.get("structural_image") is not None:
+        cargs.extend([
+            "-i",
+            execution.input_file(params.get("structural_image"))
+        ])
+    if params.get("existing_anat_dir") is not None:
+        cargs.extend([
+            "-d",
+            params.get("existing_anat_dir")
+        ])
+    if params.get("output_dir") is not None:
+        cargs.extend([
+            "-o",
+            params.get("output_dir")
+        ])
+    if params.get("clobber_flag"):
+        cargs.append("--clobber")
+    if params.get("strongbias_flag"):
+        cargs.append("--strongbias")
+    if params.get("weakbias_flag"):
+        cargs.append("--weakbias")
+    if params.get("noreorient_flag"):
+        cargs.append("--noreorient")
+    if params.get("nocrop_flag"):
+        cargs.append("--nocrop")
+    if params.get("nobias_flag"):
+        cargs.append("--nobias")
+    if params.get("noreg_flag"):
+        cargs.append("--noreg")
+    if params.get("nononlinreg_flag"):
+        cargs.append("--nononlinreg")
+    if params.get("noseg_flag"):
+        cargs.append("--noseg")
+    if params.get("nosubcortseg_flag"):
+        cargs.append("--nosubcortseg")
+    if params.get("bias_smoothing") is not None:
+        cargs.extend([
+            "-s",
+            str(params.get("bias_smoothing"))
+        ])
+    if params.get("image_type") is not None:
+        cargs.extend([
+            "-t",
+            params.get("image_type")
+        ])
+    if params.get("nosearch_flag"):
+        cargs.append("--nosearch")
+    if params.get("bet_f_param") is not None:
+        cargs.extend([
+            "--betfparam",
+            str(params.get("bet_f_param"))
+        ])
+    if params.get("nocleanup_flag"):
+        cargs.append("--nocleanup")
+    return cargs
+
+
+def fsl_anat_outputs(
+    params: FslAnatParameters,
+    execution: Execution,
+) -> FslAnatOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = FslAnatOutputs(
+        root=execution.output_file("."),
+        output_anat_dir=execution.output_file(params.get("output_dir") + ".anat") if (params.get("output_dir") is not None) else None,
+    )
+    return ret
+
+
+def fsl_anat_execute(
+    params: FslAnatParameters,
+    execution: Execution,
+) -> FslAnatOutputs:
+    """
+    A wrapper for FSL tools to process anatomical scans.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `FslAnatOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = fsl_anat_cargs(params, execution)
+    ret = fsl_anat_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def fsl_anat(
@@ -89,72 +347,13 @@ def fsl_anat(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSL_ANAT_METADATA)
-    cargs = []
-    cargs.append("fsl_anat")
-    if structural_image is not None:
-        cargs.extend([
-            "-i",
-            execution.input_file(structural_image)
-        ])
-    if existing_anat_dir is not None:
-        cargs.extend([
-            "-d",
-            existing_anat_dir
-        ])
-    if output_dir is not None:
-        cargs.extend([
-            "-o",
-            output_dir
-        ])
-    if clobber_flag:
-        cargs.append("--clobber")
-    if strongbias_flag:
-        cargs.append("--strongbias")
-    if weakbias_flag:
-        cargs.append("--weakbias")
-    if noreorient_flag:
-        cargs.append("--noreorient")
-    if nocrop_flag:
-        cargs.append("--nocrop")
-    if nobias_flag:
-        cargs.append("--nobias")
-    if noreg_flag:
-        cargs.append("--noreg")
-    if nononlinreg_flag:
-        cargs.append("--nononlinreg")
-    if noseg_flag:
-        cargs.append("--noseg")
-    if nosubcortseg_flag:
-        cargs.append("--nosubcortseg")
-    if bias_smoothing is not None:
-        cargs.extend([
-            "-s",
-            str(bias_smoothing)
-        ])
-    if image_type is not None:
-        cargs.extend([
-            "-t",
-            image_type
-        ])
-    if nosearch_flag:
-        cargs.append("--nosearch")
-    if bet_f_param is not None:
-        cargs.extend([
-            "--betfparam",
-            str(bet_f_param)
-        ])
-    if nocleanup_flag:
-        cargs.append("--nocleanup")
-    ret = FslAnatOutputs(
-        root=execution.output_file("."),
-        output_anat_dir=execution.output_file(output_dir + ".anat") if (output_dir is not None) else None,
-    )
-    execution.run(cargs)
-    return ret
+    params = fsl_anat_params(structural_image=structural_image, existing_anat_dir=existing_anat_dir, output_dir=output_dir, clobber_flag=clobber_flag, strongbias_flag=strongbias_flag, weakbias_flag=weakbias_flag, noreorient_flag=noreorient_flag, nocrop_flag=nocrop_flag, nobias_flag=nobias_flag, noreg_flag=noreg_flag, nononlinreg_flag=nononlinreg_flag, noseg_flag=noseg_flag, nosubcortseg_flag=nosubcortseg_flag, bias_smoothing=bias_smoothing, image_type=image_type, nosearch_flag=nosearch_flag, bet_f_param=bet_f_param, nocleanup_flag=nocleanup_flag)
+    return fsl_anat_execute(params, execution)
 
 
 __all__ = [
     "FSL_ANAT_METADATA",
     "FslAnatOutputs",
     "fsl_anat",
+    "fsl_anat_params",
 ]

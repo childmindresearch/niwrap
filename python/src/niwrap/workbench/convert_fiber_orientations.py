@@ -12,50 +12,118 @@ CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+ConvertFiberOrientationsFiberParameters = typing.TypedDict('ConvertFiberOrientationsFiberParameters', {
+    "__STYX_TYPE__": typing.Literal["fiber"],
+    "mean_f": InputPathType,
+    "stdev_f": InputPathType,
+    "theta": InputPathType,
+    "phi": InputPathType,
+    "psi": InputPathType,
+    "ka": InputPathType,
+    "kb": InputPathType,
+})
+ConvertFiberOrientationsParameters = typing.TypedDict('ConvertFiberOrientationsParameters', {
+    "__STYX_TYPE__": typing.Literal["convert-fiber-orientations"],
+    "label_volume": InputPathType,
+    "fiber_out": str,
+    "fiber": typing.NotRequired[list[ConvertFiberOrientationsFiberParameters] | None],
+})
 
 
-@dataclasses.dataclass
-class ConvertFiberOrientationsFiber:
+def dyn_cargs(
+    t: str,
+) -> None:
     """
-    specify the parameter volumes for a fiber.
-    """
-    mean_f: InputPathType
-    """mean fiber strength"""
-    stdev_f: InputPathType
-    """standard deviation of fiber strength"""
-    theta: InputPathType
-    """theta angle"""
-    phi: InputPathType
-    """phi angle"""
-    psi: InputPathType
-    """psi angle"""
-    ka: InputPathType
-    """ka bingham parameter"""
-    kb: InputPathType
-    """kb bingham parameter"""
+    Get build cargs function by command type.
     
-    def run(
-        self,
-        execution: Execution,
-    ) -> list[str]:
-        """
-        Build command line arguments. This method is called by the main command.
-        
-        Args:
-            execution: The execution object.
-        Returns:
-            Command line arguments
-        """
-        cargs = []
-        cargs.append("-fiber")
-        cargs.append(execution.input_file(self.mean_f))
-        cargs.append(execution.input_file(self.stdev_f))
-        cargs.append(execution.input_file(self.theta))
-        cargs.append(execution.input_file(self.phi))
-        cargs.append(execution.input_file(self.psi))
-        cargs.append(execution.input_file(self.ka))
-        cargs.append(execution.input_file(self.kb))
-        return cargs
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "convert-fiber-orientations": convert_fiber_orientations_cargs,
+        "fiber": convert_fiber_orientations_fiber_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "convert-fiber-orientations": convert_fiber_orientations_outputs,
+    }
+    return vt.get(t)
+
+
+def convert_fiber_orientations_fiber_params(
+    mean_f: InputPathType,
+    stdev_f: InputPathType,
+    theta: InputPathType,
+    phi: InputPathType,
+    psi: InputPathType,
+    ka: InputPathType,
+    kb: InputPathType,
+) -> ConvertFiberOrientationsFiberParameters:
+    """
+    Build parameters.
+    
+    Args:
+        mean_f: mean fiber strength.
+        stdev_f: standard deviation of fiber strength.
+        theta: theta angle.
+        phi: phi angle.
+        psi: psi angle.
+        ka: ka bingham parameter.
+        kb: kb bingham parameter.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "fiber",
+        "mean_f": mean_f,
+        "stdev_f": stdev_f,
+        "theta": theta,
+        "phi": phi,
+        "psi": psi,
+        "ka": ka,
+        "kb": kb,
+    }
+    return params
+
+
+def convert_fiber_orientations_fiber_cargs(
+    params: ConvertFiberOrientationsFiberParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("-fiber")
+    cargs.append(execution.input_file(params.get("mean_f")))
+    cargs.append(execution.input_file(params.get("stdev_f")))
+    cargs.append(execution.input_file(params.get("theta")))
+    cargs.append(execution.input_file(params.get("phi")))
+    cargs.append(execution.input_file(params.get("psi")))
+    cargs.append(execution.input_file(params.get("ka")))
+    cargs.append(execution.input_file(params.get("kb")))
+    return cargs
 
 
 class ConvertFiberOrientationsOutputs(typing.NamedTuple):
@@ -68,10 +136,141 @@ class ConvertFiberOrientationsOutputs(typing.NamedTuple):
     """the output fiber orientation file"""
 
 
+def convert_fiber_orientations_params(
+    label_volume: InputPathType,
+    fiber_out: str,
+    fiber: list[ConvertFiberOrientationsFiberParameters] | None = None,
+) -> ConvertFiberOrientationsParameters:
+    """
+    Build parameters.
+    
+    Args:
+        label_volume: volume of cifti structure labels.
+        fiber_out: the output fiber orientation file.
+        fiber: specify the parameter volumes for a fiber.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "convert-fiber-orientations",
+        "label_volume": label_volume,
+        "fiber_out": fiber_out,
+    }
+    if fiber is not None:
+        params["fiber"] = fiber
+    return params
+
+
+def convert_fiber_orientations_cargs(
+    params: ConvertFiberOrientationsParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("wb_command")
+    cargs.append("-convert-fiber-orientations")
+    cargs.append(execution.input_file(params.get("label_volume")))
+    cargs.append(params.get("fiber_out"))
+    if params.get("fiber") is not None:
+        cargs.extend([a for c in [dyn_cargs(s["__STYXTYPE__"])(s, execution) for s in params.get("fiber")] for a in c])
+    return cargs
+
+
+def convert_fiber_orientations_outputs(
+    params: ConvertFiberOrientationsParameters,
+    execution: Execution,
+) -> ConvertFiberOrientationsOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = ConvertFiberOrientationsOutputs(
+        root=execution.output_file("."),
+        fiber_out=execution.output_file(params.get("fiber_out")),
+    )
+    return ret
+
+
+def convert_fiber_orientations_execute(
+    params: ConvertFiberOrientationsParameters,
+    execution: Execution,
+) -> ConvertFiberOrientationsOutputs:
+    """
+    Convert bingham parameter volumes to fiber orientation file.
+    
+    Takes precomputed bingham parameters from volume files and converts them to
+    the format workbench uses for display. The <label-volume> argument must be a
+    label volume, where the labels use these strings:
+    
+    
+    CORTEX_LEFT
+    CORTEX_RIGHT
+    CEREBELLUM
+    ACCUMBENS_LEFT
+    ACCUMBENS_RIGHT
+    ALL_GREY_MATTER
+    ALL_WHITE_MATTER
+    AMYGDALA_LEFT
+    AMYGDALA_RIGHT
+    BRAIN_STEM
+    CAUDATE_LEFT
+    CAUDATE_RIGHT
+    CEREBELLAR_WHITE_MATTER_LEFT
+    CEREBELLAR_WHITE_MATTER_RIGHT
+    CEREBELLUM_LEFT
+    CEREBELLUM_RIGHT
+    CEREBRAL_WHITE_MATTER_LEFT
+    CEREBRAL_WHITE_MATTER_RIGHT
+    CORTEX
+    DIENCEPHALON_VENTRAL_LEFT
+    DIENCEPHALON_VENTRAL_RIGHT
+    HIPPOCAMPUS_LEFT
+    HIPPOCAMPUS_RIGHT
+    INVALID
+    OTHER
+    OTHER_GREY_MATTER
+    OTHER_WHITE_MATTER
+    PALLIDUM_LEFT
+    PALLIDUM_RIGHT
+    PUTAMEN_LEFT
+    PUTAMEN_RIGHT
+    THALAMUS_LEFT
+    THALAMUS_RIGHT.
+    
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = convert_fiber_orientations_cargs(params, execution)
+    ret = convert_fiber_orientations_outputs(params, execution)
+    execution.run(cargs)
+    return ret
+
+
 def convert_fiber_orientations(
     label_volume: InputPathType,
     fiber_out: str,
-    fiber: list[ConvertFiberOrientationsFiber] | None = None,
+    fiber: list[ConvertFiberOrientationsFiberParameters] | None = None,
     runner: Runner | None = None,
 ) -> ConvertFiberOrientationsOutputs:
     """
@@ -130,24 +329,14 @@ def convert_fiber_orientations(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_FIBER_ORIENTATIONS_METADATA)
-    cargs = []
-    cargs.append("wb_command")
-    cargs.append("-convert-fiber-orientations")
-    cargs.append(execution.input_file(label_volume))
-    cargs.append(fiber_out)
-    if fiber is not None:
-        cargs.extend([a for c in [s.run(execution) for s in fiber] for a in c])
-    ret = ConvertFiberOrientationsOutputs(
-        root=execution.output_file("."),
-        fiber_out=execution.output_file(fiber_out),
-    )
-    execution.run(cargs)
-    return ret
+    params = convert_fiber_orientations_params(label_volume=label_volume, fiber_out=fiber_out, fiber=fiber)
+    return convert_fiber_orientations_execute(params, execution)
 
 
 __all__ = [
     "CONVERT_FIBER_ORIENTATIONS_METADATA",
-    "ConvertFiberOrientationsFiber",
     "ConvertFiberOrientationsOutputs",
     "convert_fiber_orientations",
+    "convert_fiber_orientations_fiber_params",
+    "convert_fiber_orientations_params",
 ]

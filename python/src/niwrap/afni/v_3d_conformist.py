@@ -12,6 +12,44 @@ V_3D_CONFORMIST_METADATA = Metadata(
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
+V3dConformistParameters = typing.TypedDict('V3dConformistParameters', {
+    "__STYX_TYPE__": typing.Literal["3dConformist"],
+    "input_files": list[InputPathType],
+})
+
+
+def dyn_cargs(
+    t: str,
+) -> None:
+    """
+    Get build cargs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build cargs function.
+    """
+    vt = {
+        "3dConformist": v_3d_conformist_cargs,
+    }
+    return vt.get(t)
+
+
+def dyn_outputs(
+    t: str,
+) -> None:
+    """
+    Get build outputs function by command type.
+    
+    Args:
+        t: Command type.
+    Returns:
+        Build outputs function.
+    """
+    vt = {
+        "3dConformist": v_3d_conformist_outputs,
+    }
+    return vt.get(t)
 
 
 class V3dConformistOutputs(typing.NamedTuple):
@@ -22,6 +60,87 @@ class V3dConformistOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_files: OutputPathType
     """Zero padded output dataset files"""
+
+
+def v_3d_conformist_params(
+    input_files: list[InputPathType],
+) -> V3dConformistParameters:
+    """
+    Build parameters.
+    
+    Args:
+        input_files: Input datasets to be zero padded to the same size.
+    Returns:
+        Parameter dictionary
+    """
+    params = {
+        "__STYXTYPE__": "3dConformist",
+        "input_files": input_files,
+    }
+    return params
+
+
+def v_3d_conformist_cargs(
+    params: V3dConformistParameters,
+    execution: Execution,
+) -> list[str]:
+    """
+    Build command-line arguments from parameters.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Command-line arguments.
+    """
+    cargs = []
+    cargs.append("3dConformist")
+    cargs.extend([execution.input_file(f) for f in params.get("input_files")])
+    return cargs
+
+
+def v_3d_conformist_outputs(
+    params: V3dConformistParameters,
+    execution: Execution,
+) -> V3dConformistOutputs:
+    """
+    Build outputs object containing output file paths and possibly stdout/stderr.
+    
+    Args:
+        params: The parameters.
+        execution: The execution object for resolving input paths.
+    Returns:
+        Outputs object.
+    """
+    ret = V3dConformistOutputs(
+        root=execution.output_file("."),
+        output_files=execution.output_file("."),
+    )
+    return ret
+
+
+def v_3d_conformist_execute(
+    params: V3dConformistParameters,
+    execution: Execution,
+) -> V3dConformistOutputs:
+    """
+    Program to conform a collection of datasets to the same size by zero padding.
+    
+    Author: AFNI Developers
+    
+    URL: https://afni.nimh.nih.gov/
+    
+    Args:
+        params: The parameters.
+        execution: The execution object.
+    Returns:
+        NamedTuple of outputs (described in `V3dConformistOutputs`).
+    """
+    # validate constraint checks (or after middlewares?)
+    cargs = v_3d_conformist_cargs(params, execution)
+    ret = v_3d_conformist_outputs(params, execution)
+    execution.run(cargs)
+    return ret
 
 
 def v_3d_conformist(
@@ -43,19 +162,13 @@ def v_3d_conformist(
     """
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_CONFORMIST_METADATA)
-    cargs = []
-    cargs.append("3dConformist")
-    cargs.extend([execution.input_file(f) for f in input_files])
-    ret = V3dConformistOutputs(
-        root=execution.output_file("."),
-        output_files=execution.output_file("."),
-    )
-    execution.run(cargs)
-    return ret
+    params = v_3d_conformist_params(input_files=input_files)
+    return v_3d_conformist_execute(params, execution)
 
 
 __all__ = [
     "V3dConformistOutputs",
     "V_3D_CONFORMIST_METADATA",
     "v_3d_conformist",
+    "v_3d_conformist_params",
 ]
