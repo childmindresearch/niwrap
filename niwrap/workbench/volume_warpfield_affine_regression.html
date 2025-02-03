@@ -34,24 +34,6 @@
                     <a class="variable" href="#VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA">VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA</a>
             </li>
             <li>
-                    <a class="class" href="#VolumeWarpfieldAffineRegressionFlirtOut">VolumeWarpfieldAffineRegressionFlirtOut</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="function" href="#VolumeWarpfieldAffineRegressionFlirtOut.__init__">VolumeWarpfieldAffineRegressionFlirtOut</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#VolumeWarpfieldAffineRegressionFlirtOut.source_volume">source_volume</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#VolumeWarpfieldAffineRegressionFlirtOut.target_volume">target_volume</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#VolumeWarpfieldAffineRegressionFlirtOut.run">run</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
                     <a class="class" href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -65,6 +47,12 @@
             </li>
             <li>
                     <a class="function" href="#volume_warpfield_affine_regression">volume_warpfield_affine_regression</a>
+            </li>
+            <li>
+                    <a class="function" href="#volume_warpfield_affine_regression_flirt_out_params">volume_warpfield_affine_regression_flirt_out_params</a>
+            </li>
+            <li>
+                    <a class="function" href="#volume_warpfield_affine_regression_params">volume_warpfield_affine_regression_params</a>
             </li>
     </ul>
 
@@ -101,114 +89,275 @@
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="p">)</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="k">class</span><span class="w"> </span><span class="nc">VolumeWarpfieldAffineRegressionFlirtOut</span><span class="p">:</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    write output as a flirt matrix rather than a world coordinate transform.</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the volume you want to apply the transform to&quot;&quot;&quot;</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the target space you want the transformed volume to match&quot;&quot;&quot;</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">        </span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">        Args:</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">        Returns:</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">            Command line arguments</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flirt-out&quot;</span><span class="p">)</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_volume</span><span class="p">)</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_volume</span><span class="p">)</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="k">class</span><span class="w"> </span><span class="nc">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Output object returned when calling `volume_warpfield_affine_regression(...)`.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression</span><span class="p">(</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">flirt_out</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOut</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">:</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    Regress affine from warpfield.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    </span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    For all voxels in the warpfield, do a regression that predicts the post-warp</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    coordinate from the source coordinate. When -roi is specified, only consider</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    voxels with a value greater than 0 in &lt;roi-vol&gt;.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    </span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    The default is to expect the warpfield to be in relative world coordinates</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    (mm space), and to write the output as a world affine (mm space to mm</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    space). If you are using FSL-created files and utilities, specify -fnirt and</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    -flirt as needed, as their coordinate conventions are different.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    </span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    </span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    Args:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        warpfield: the input warpfield.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        affine_out: output - the output affine file.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">            mask): the mask volume.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">            used when generating the fnirt warpfield.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        flirt_out: write output as a flirt matrix rather than a world\</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            coordinate transform.</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Returns:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-warpfield-affine-regression&quot;</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">warpfield</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine_out</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">opt_roi_roi_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_roi_roi_vol</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">opt_fnirt_source_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-fnirt&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="n">opt_fnirt_source_volume</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">flirt_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flirt_out</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="s2">&quot;VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionFlirtOut&quot;</span><span class="p">,</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="p">]</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;VolumeWarpfieldAffineRegressionFlirtOutParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;flirt_out&quot;</span><span class="p">],</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a>    <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>    <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="p">})</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="n">VolumeWarpfieldAffineRegressionParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;VolumeWarpfieldAffineRegressionParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;volume-warpfield-affine-regression&quot;</span><span class="p">],</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="s2">&quot;warpfield&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="s2">&quot;affine_out&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="s2">&quot;opt_roi_roi_vol&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="s2">&quot;opt_fnirt_source_volume&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    <span class="s2">&quot;flirt_out&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a><span class="p">})</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dyn_cargs</span><span class="p">(</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">    Get build cargs function by command type.</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">    </span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">    Args:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        t: Command type.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    Returns:</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">        Build cargs function.</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="n">vt</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="s2">&quot;volume-warpfield-affine-regression&quot;</span><span class="p">:</span> <span class="n">volume_warpfield_affine_regression_cargs</span><span class="p">,</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>        <span class="s2">&quot;flirt_out&quot;</span><span class="p">:</span> <span class="n">volume_warpfield_affine_regression_flirt_out_cargs</span><span class="p">,</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="p">}</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="k">return</span> <span class="n">vt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dyn_outputs</span><span class="p">(</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>    <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Get build outputs function by command type.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        t: Command type.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Returns:</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        Build outputs function.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">vt</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="k">return</span> <span class="n">vt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_flirt_out_params</span><span class="p">(</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span><span class="p">:</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    Build parameters.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    </span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Args:</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        source_volume: the volume you want to apply the transform to.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        target_volume: the target space you want the transformed volume to\</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            match.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    Returns:</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;flirt_out&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="n">source_volume</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="n">target_volume</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="p">}</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_flirt_out_cargs</span><span class="p">(</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    Build command-line arguments from parameters.</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Args:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        execution: The execution object for resolving input paths.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Returns:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        Command-line arguments.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flirt-out&quot;</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_volume&quot;</span><span class="p">))</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_volume&quot;</span><span class="p">))</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="k">class</span><span class="w"> </span><span class="nc">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Output object returned when calling `volume_warpfield_affine_regression(...)`.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_params</span><span class="p">(</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">flirt_out</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionParameters</span><span class="p">:</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    Build parameters.</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    </span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    Args:</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        warpfield: the input warpfield.</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        affine_out: output - the output affine file.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            mask): the mask volume.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            used when generating the fnirt warpfield.</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        flirt_out: write output as a flirt matrix rather than a world\</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">            coordinate transform.</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    Returns:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;volume-warpfield-affine-regression&quot;</span><span class="p">,</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="s2">&quot;warpfield&quot;</span><span class="p">:</span> <span class="n">warpfield</span><span class="p">,</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="s2">&quot;affine_out&quot;</span><span class="p">:</span> <span class="n">affine_out</span><span class="p">,</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="p">}</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">opt_roi_roi_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_roi_roi_vol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_roi_roi_vol</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">opt_fnirt_source_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_fnirt_source_volume&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_fnirt_source_volume</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">flirt_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;flirt_out&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flirt_out</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_cargs</span><span class="p">(</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionParameters</span><span class="p">,</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    Build command-line arguments from parameters.</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    </span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    Args:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        execution: The execution object for resolving input paths.</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    Returns:</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        Command-line arguments.</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-warpfield-affine-regression&quot;</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;warpfield&quot;</span><span class="p">))</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;affine_out&quot;</span><span class="p">))</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_roi_roi_vol&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_roi_roi_vol&quot;</span><span class="p">))</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="p">])</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_fnirt_source_volume&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>            <span class="s2">&quot;-fnirt&quot;</span><span class="p">,</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_fnirt_source_volume&quot;</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="p">])</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;flirt_out&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dyn_cargs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;flirt_out&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;flirt_out&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">))</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_outputs</span><span class="p">(</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionParameters</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">:</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    Build outputs object containing output file paths and possibly stdout/stderr.</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    </span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    Args:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        execution: The execution object for resolving input paths.</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    Returns:</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        Outputs object.</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_execute</span><span class="p">(</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionParameters</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    Regress affine from warpfield.</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    </span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    For all voxels in the warpfield, do a regression that predicts the post-warp</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    coordinate from the source coordinate. When -roi is specified, only consider</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    voxels with a value greater than 0 in &lt;roi-vol&gt;.</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    The default is to expect the warpfield to be in relative world coordinates</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    (mm space), and to write the output as a world affine (mm space to mm</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    space). If you are using FSL-created files and utilities, specify -fnirt and</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    -flirt as needed, as their coordinate conventions are different.</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Args:</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        execution: The execution object.</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    Returns:</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_warpfield_affine_regression_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_warpfield_affine_regression_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression</span><span class="p">(</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="n">flirt_out</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">:</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    Regress affine from warpfield.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    </span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    For all voxels in the warpfield, do a regression that predicts the post-warp</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    coordinate from the source coordinate. When -roi is specified, only consider</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    voxels with a value greater than 0 in &lt;roi-vol&gt;.</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">    </span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    The default is to expect the warpfield to be in relative world coordinates</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    (mm space), and to write the output as a world affine (mm space to mm</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    space). If you are using FSL-created files and utilities, specify -fnirt and</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">    -flirt as needed, as their coordinate conventions are different.</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">    </span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">    </span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    </span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    Args:</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">        warpfield: the input warpfield.</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">        affine_out: output - the output affine file.</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">            mask): the mask volume.</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">            used when generating the fnirt warpfield.</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">        flirt_out: write output as a flirt matrix rather than a world\</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">            coordinate transform.</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">    Returns:</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA</span><span class="p">)</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_warpfield_affine_regression_params</span><span class="p">(</span><span class="n">warpfield</span><span class="o">=</span><span class="n">warpfield</span><span class="p">,</span> <span class="n">affine_out</span><span class="o">=</span><span class="n">affine_out</span><span class="p">,</span> <span class="n">opt_roi_roi_vol</span><span class="o">=</span><span class="n">opt_roi_roi_vol</span><span class="p">,</span> <span class="n">opt_fnirt_source_volume</span><span class="o">=</span><span class="n">opt_fnirt_source_volume</span><span class="p">,</span> <span class="n">flirt_out</span><span class="o">=</span><span class="n">flirt_out</span><span class="p">)</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="k">return</span> <span class="n">volume_warpfield_affine_regression_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression_flirt_out_params&quot;</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression_params&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -226,139 +375,6 @@
     
 
                 </section>
-                <section id="VolumeWarpfieldAffineRegressionFlirtOut">
-                            <input id="VolumeWarpfieldAffineRegressionFlirtOut-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr class">
-                    <div class="decorator decorator-dataclasses.dataclass">@dataclasses.dataclass</div>
-
-    <span class="def">class</span>
-    <span class="name">VolumeWarpfieldAffineRegressionFlirtOut</span>:
-
-                <label class="view-source-button" for="VolumeWarpfieldAffineRegressionFlirtOut-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOut"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWarpfieldAffineRegressionFlirtOut-18"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-18"><span class="linenos">18</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-19"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-19"><span class="linenos">19</span></a><span class="k">class</span><span class="w"> </span><span class="nc">VolumeWarpfieldAffineRegressionFlirtOut</span><span class="p">:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-20"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-21"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-21"><span class="linenos">21</span></a><span class="sd">    write output as a flirt matrix rather than a world coordinate transform.</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-22"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-22"><span class="linenos">22</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-23"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-23"><span class="linenos">23</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-24"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the volume you want to apply the transform to&quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-25"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-25"><span class="linenos">25</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-26"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-26"><span class="linenos">26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the target space you want the transformed volume to match&quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-27"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-27"><span class="linenos">27</span></a>    
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-28"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-29"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-30"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-30"><span class="linenos">30</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-31"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-31"><span class="linenos">31</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-32"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-33"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-33"><span class="linenos">33</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-34"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-34"><span class="linenos">34</span></a><span class="sd">        </span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-35"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-35"><span class="linenos">35</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-36"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-36"><span class="linenos">36</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-37"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-37"><span class="linenos">37</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-38"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-38"><span class="linenos">38</span></a><span class="sd">            Command line arguments</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-39"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-39"><span class="linenos">39</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-40"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-40"><span class="linenos">40</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-41"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-41"><span class="linenos">41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flirt-out&quot;</span><span class="p">)</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-42"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_volume</span><span class="p">)</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-43"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_volume</span><span class="p">)</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut-44"><a href="#VolumeWarpfieldAffineRegressionFlirtOut-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>write output as a flirt matrix rather than a world coordinate transform.</p>
-</div>
-
-
-                            <div id="VolumeWarpfieldAffineRegressionFlirtOut.__init__" class="classattr">
-                                <div class="attr function">
-            
-        <span class="name">VolumeWarpfieldAffineRegressionFlirtOut</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
-
-        
-    </div>
-    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOut.__init__"></a>
-    
-    
-
-                            </div>
-                            <div id="VolumeWarpfieldAffineRegressionFlirtOut.source_volume" class="classattr">
-                                <div class="attr variable">
-            <span class="name">source_volume</span><span class="annotation">: str</span>
-
-        
-    </div>
-    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOut.source_volume"></a>
-    
-            <div class="docstring"><p>the volume you want to apply the transform to</p>
-</div>
-
-
-                            </div>
-                            <div id="VolumeWarpfieldAffineRegressionFlirtOut.target_volume" class="classattr">
-                                <div class="attr variable">
-            <span class="name">target_volume</span><span class="annotation">: str</span>
-
-        
-    </div>
-    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOut.target_volume"></a>
-    
-            <div class="docstring"><p>the target space you want the transformed volume to match</p>
-</div>
-
-
-                            </div>
-                            <div id="VolumeWarpfieldAffineRegressionFlirtOut.run" class="classattr">
-                                        <input id="VolumeWarpfieldAffineRegressionFlirtOut.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
-
-                <label class="view-source-button" for="VolumeWarpfieldAffineRegressionFlirtOut.run-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOut.run"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-28"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-29"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-30"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-30"><span class="linenos">30</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-31"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-31"><span class="linenos">31</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-32"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-33"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-33"><span class="linenos">33</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-34"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-34"><span class="linenos">34</span></a><span class="sd">        </span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-35"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-35"><span class="linenos">35</span></a><span class="sd">        Args:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-36"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-36"><span class="linenos">36</span></a><span class="sd">            execution: The execution object.</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-37"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-37"><span class="linenos">37</span></a><span class="sd">        Returns:</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-38"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-38"><span class="linenos">38</span></a><span class="sd">            Command line arguments</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-39"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-39"><span class="linenos">39</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-40"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-40"><span class="linenos">40</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-41"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-41"><span class="linenos">41</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flirt-out&quot;</span><span class="p">)</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-42"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-42"><span class="linenos">42</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_volume</span><span class="p">)</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-43"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-43"><span class="linenos">43</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_volume</span><span class="p">)</span>
-</span><span id="VolumeWarpfieldAffineRegressionFlirtOut.run-44"><a href="#VolumeWarpfieldAffineRegressionFlirtOut.run-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>execution:</strong>  The execution object.</li>
-</ul>
-
-<h6 id="returns">Returns:</h6>
-
-<blockquote>
-  <p>Command line arguments</p>
-</blockquote>
-</div>
-
-
-                            </div>
-                </section>
                 <section id="VolumeWarpfieldAffineRegressionOutputs">
                             <input id="VolumeWarpfieldAffineRegressionOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -370,12 +386,12 @@
 
     </div>
     <a class="headerlink" href="#VolumeWarpfieldAffineRegressionOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWarpfieldAffineRegressionOutputs-47"><a href="#VolumeWarpfieldAffineRegressionOutputs-47"><span class="linenos">47</span></a><span class="k">class</span><span class="w"> </span><span class="nc">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="VolumeWarpfieldAffineRegressionOutputs-48"><a href="#VolumeWarpfieldAffineRegressionOutputs-48"><span class="linenos">48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionOutputs-49"><a href="#VolumeWarpfieldAffineRegressionOutputs-49"><span class="linenos">49</span></a><span class="sd">    Output object returned when calling `volume_warpfield_affine_regression(...)`.</span>
-</span><span id="VolumeWarpfieldAffineRegressionOutputs-50"><a href="#VolumeWarpfieldAffineRegressionOutputs-50"><span class="linenos">50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeWarpfieldAffineRegressionOutputs-51"><a href="#VolumeWarpfieldAffineRegressionOutputs-51"><span class="linenos">51</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="VolumeWarpfieldAffineRegressionOutputs-52"><a href="#VolumeWarpfieldAffineRegressionOutputs-52"><span class="linenos">52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWarpfieldAffineRegressionOutputs-106"><a href="#VolumeWarpfieldAffineRegressionOutputs-106"><span class="linenos">106</span></a><span class="k">class</span><span class="w"> </span><span class="nc">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="VolumeWarpfieldAffineRegressionOutputs-107"><a href="#VolumeWarpfieldAffineRegressionOutputs-107"><span class="linenos">107</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeWarpfieldAffineRegressionOutputs-108"><a href="#VolumeWarpfieldAffineRegressionOutputs-108"><span class="linenos">108</span></a><span class="sd">    Output object returned when calling `volume_warpfield_affine_regression(...)`.</span>
+</span><span id="VolumeWarpfieldAffineRegressionOutputs-109"><a href="#VolumeWarpfieldAffineRegressionOutputs-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="VolumeWarpfieldAffineRegressionOutputs-110"><a href="#VolumeWarpfieldAffineRegressionOutputs-110"><span class="linenos">110</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="VolumeWarpfieldAffineRegressionOutputs-111"><a href="#VolumeWarpfieldAffineRegressionOutputs-111"><span class="linenos">111</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -416,73 +432,53 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_warpfield_affine_regression</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n"><a href="#VolumeWarpfieldAffineRegressionFlirtOut">VolumeWarpfieldAffineRegressionFlirtOut</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a></span>:</span></span>
+        <span class="name">volume_warpfield_affine_regression</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_warpfield_affine_regression-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#volume_warpfield_affine_regression"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_warpfield_affine_regression-55"><a href="#volume_warpfield_affine_regression-55"><span class="linenos"> 55</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression</span><span class="p">(</span>
-</span><span id="volume_warpfield_affine_regression-56"><a href="#volume_warpfield_affine_regression-56"><span class="linenos"> 56</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-57"><a href="#volume_warpfield_affine_regression-57"><span class="linenos"> 57</span></a>    <span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-58"><a href="#volume_warpfield_affine_regression-58"><span class="linenos"> 58</span></a>    <span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-59"><a href="#volume_warpfield_affine_regression-59"><span class="linenos"> 59</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-60"><a href="#volume_warpfield_affine_regression-60"><span class="linenos"> 60</span></a>    <span class="n">flirt_out</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOut</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-61"><a href="#volume_warpfield_affine_regression-61"><span class="linenos"> 61</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-62"><a href="#volume_warpfield_affine_regression-62"><span class="linenos"> 62</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">:</span>
-</span><span id="volume_warpfield_affine_regression-63"><a href="#volume_warpfield_affine_regression-63"><span class="linenos"> 63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_warpfield_affine_regression-64"><a href="#volume_warpfield_affine_regression-64"><span class="linenos"> 64</span></a><span class="sd">    Regress affine from warpfield.</span>
-</span><span id="volume_warpfield_affine_regression-65"><a href="#volume_warpfield_affine_regression-65"><span class="linenos"> 65</span></a><span class="sd">    </span>
-</span><span id="volume_warpfield_affine_regression-66"><a href="#volume_warpfield_affine_regression-66"><span class="linenos"> 66</span></a><span class="sd">    For all voxels in the warpfield, do a regression that predicts the post-warp</span>
-</span><span id="volume_warpfield_affine_regression-67"><a href="#volume_warpfield_affine_regression-67"><span class="linenos"> 67</span></a><span class="sd">    coordinate from the source coordinate. When -roi is specified, only consider</span>
-</span><span id="volume_warpfield_affine_regression-68"><a href="#volume_warpfield_affine_regression-68"><span class="linenos"> 68</span></a><span class="sd">    voxels with a value greater than 0 in &lt;roi-vol&gt;.</span>
-</span><span id="volume_warpfield_affine_regression-69"><a href="#volume_warpfield_affine_regression-69"><span class="linenos"> 69</span></a><span class="sd">    </span>
-</span><span id="volume_warpfield_affine_regression-70"><a href="#volume_warpfield_affine_regression-70"><span class="linenos"> 70</span></a><span class="sd">    The default is to expect the warpfield to be in relative world coordinates</span>
-</span><span id="volume_warpfield_affine_regression-71"><a href="#volume_warpfield_affine_regression-71"><span class="linenos"> 71</span></a><span class="sd">    (mm space), and to write the output as a world affine (mm space to mm</span>
-</span><span id="volume_warpfield_affine_regression-72"><a href="#volume_warpfield_affine_regression-72"><span class="linenos"> 72</span></a><span class="sd">    space). If you are using FSL-created files and utilities, specify -fnirt and</span>
-</span><span id="volume_warpfield_affine_regression-73"><a href="#volume_warpfield_affine_regression-73"><span class="linenos"> 73</span></a><span class="sd">    -flirt as needed, as their coordinate conventions are different.</span>
-</span><span id="volume_warpfield_affine_regression-74"><a href="#volume_warpfield_affine_regression-74"><span class="linenos"> 74</span></a><span class="sd">    </span>
-</span><span id="volume_warpfield_affine_regression-75"><a href="#volume_warpfield_affine_regression-75"><span class="linenos"> 75</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_warpfield_affine_regression-76"><a href="#volume_warpfield_affine_regression-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
-</span><span id="volume_warpfield_affine_regression-77"><a href="#volume_warpfield_affine_regression-77"><span class="linenos"> 77</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_warpfield_affine_regression-78"><a href="#volume_warpfield_affine_regression-78"><span class="linenos"> 78</span></a><span class="sd">    </span>
-</span><span id="volume_warpfield_affine_regression-79"><a href="#volume_warpfield_affine_regression-79"><span class="linenos"> 79</span></a><span class="sd">    Args:</span>
-</span><span id="volume_warpfield_affine_regression-80"><a href="#volume_warpfield_affine_regression-80"><span class="linenos"> 80</span></a><span class="sd">        warpfield: the input warpfield.</span>
-</span><span id="volume_warpfield_affine_regression-81"><a href="#volume_warpfield_affine_regression-81"><span class="linenos"> 81</span></a><span class="sd">        affine_out: output - the output affine file.</span>
-</span><span id="volume_warpfield_affine_regression-82"><a href="#volume_warpfield_affine_regression-82"><span class="linenos"> 82</span></a><span class="sd">        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\</span>
-</span><span id="volume_warpfield_affine_regression-83"><a href="#volume_warpfield_affine_regression-83"><span class="linenos"> 83</span></a><span class="sd">            mask): the mask volume.</span>
-</span><span id="volume_warpfield_affine_regression-84"><a href="#volume_warpfield_affine_regression-84"><span class="linenos"> 84</span></a><span class="sd">        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\</span>
-</span><span id="volume_warpfield_affine_regression-85"><a href="#volume_warpfield_affine_regression-85"><span class="linenos"> 85</span></a><span class="sd">            used when generating the fnirt warpfield.</span>
-</span><span id="volume_warpfield_affine_regression-86"><a href="#volume_warpfield_affine_regression-86"><span class="linenos"> 86</span></a><span class="sd">        flirt_out: write output as a flirt matrix rather than a world\</span>
-</span><span id="volume_warpfield_affine_regression-87"><a href="#volume_warpfield_affine_regression-87"><span class="linenos"> 87</span></a><span class="sd">            coordinate transform.</span>
-</span><span id="volume_warpfield_affine_regression-88"><a href="#volume_warpfield_affine_regression-88"><span class="linenos"> 88</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_warpfield_affine_regression-89"><a href="#volume_warpfield_affine_regression-89"><span class="linenos"> 89</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_warpfield_affine_regression-90"><a href="#volume_warpfield_affine_regression-90"><span class="linenos"> 90</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).</span>
-</span><span id="volume_warpfield_affine_regression-91"><a href="#volume_warpfield_affine_regression-91"><span class="linenos"> 91</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_warpfield_affine_regression-92"><a href="#volume_warpfield_affine_regression-92"><span class="linenos"> 92</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_warpfield_affine_regression-93"><a href="#volume_warpfield_affine_regression-93"><span class="linenos"> 93</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-94"><a href="#volume_warpfield_affine_regression-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="volume_warpfield_affine_regression-95"><a href="#volume_warpfield_affine_regression-95"><span class="linenos"> 95</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-96"><a href="#volume_warpfield_affine_regression-96"><span class="linenos"> 96</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-warpfield-affine-regression&quot;</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-97"><a href="#volume_warpfield_affine_regression-97"><span class="linenos"> 97</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">warpfield</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-98"><a href="#volume_warpfield_affine_regression-98"><span class="linenos"> 98</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine_out</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-99"><a href="#volume_warpfield_affine_regression-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">opt_roi_roi_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_warpfield_affine_regression-100"><a href="#volume_warpfield_affine_regression-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_warpfield_affine_regression-101"><a href="#volume_warpfield_affine_regression-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-102"><a href="#volume_warpfield_affine_regression-102"><span class="linenos">102</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_roi_roi_vol</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-103"><a href="#volume_warpfield_affine_regression-103"><span class="linenos">103</span></a>        <span class="p">])</span>
-</span><span id="volume_warpfield_affine_regression-104"><a href="#volume_warpfield_affine_regression-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">opt_fnirt_source_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_warpfield_affine_regression-105"><a href="#volume_warpfield_affine_regression-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_warpfield_affine_regression-106"><a href="#volume_warpfield_affine_regression-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-fnirt&quot;</span><span class="p">,</span>
-</span><span id="volume_warpfield_affine_regression-107"><a href="#volume_warpfield_affine_regression-107"><span class="linenos">107</span></a>            <span class="n">opt_fnirt_source_volume</span>
-</span><span id="volume_warpfield_affine_regression-108"><a href="#volume_warpfield_affine_regression-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="volume_warpfield_affine_regression-109"><a href="#volume_warpfield_affine_regression-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">flirt_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_warpfield_affine_regression-110"><a href="#volume_warpfield_affine_regression-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flirt_out</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="volume_warpfield_affine_regression-111"><a href="#volume_warpfield_affine_regression-111"><span class="linenos">111</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">(</span>
-</span><span id="volume_warpfield_affine_regression-112"><a href="#volume_warpfield_affine_regression-112"><span class="linenos">112</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="volume_warpfield_affine_regression-113"><a href="#volume_warpfield_affine_regression-113"><span class="linenos">113</span></a>    <span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-114"><a href="#volume_warpfield_affine_regression-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="volume_warpfield_affine_regression-115"><a href="#volume_warpfield_affine_regression-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_warpfield_affine_regression-235"><a href="#volume_warpfield_affine_regression-235"><span class="linenos">235</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression</span><span class="p">(</span>
+</span><span id="volume_warpfield_affine_regression-236"><a href="#volume_warpfield_affine_regression-236"><span class="linenos">236</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression-237"><a href="#volume_warpfield_affine_regression-237"><span class="linenos">237</span></a>    <span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression-238"><a href="#volume_warpfield_affine_regression-238"><span class="linenos">238</span></a>    <span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression-239"><a href="#volume_warpfield_affine_regression-239"><span class="linenos">239</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression-240"><a href="#volume_warpfield_affine_regression-240"><span class="linenos">240</span></a>    <span class="n">flirt_out</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression-241"><a href="#volume_warpfield_affine_regression-241"><span class="linenos">241</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression-242"><a href="#volume_warpfield_affine_regression-242"><span class="linenos">242</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionOutputs</span><span class="p">:</span>
+</span><span id="volume_warpfield_affine_regression-243"><a href="#volume_warpfield_affine_regression-243"><span class="linenos">243</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_warpfield_affine_regression-244"><a href="#volume_warpfield_affine_regression-244"><span class="linenos">244</span></a><span class="sd">    Regress affine from warpfield.</span>
+</span><span id="volume_warpfield_affine_regression-245"><a href="#volume_warpfield_affine_regression-245"><span class="linenos">245</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression-246"><a href="#volume_warpfield_affine_regression-246"><span class="linenos">246</span></a><span class="sd">    For all voxels in the warpfield, do a regression that predicts the post-warp</span>
+</span><span id="volume_warpfield_affine_regression-247"><a href="#volume_warpfield_affine_regression-247"><span class="linenos">247</span></a><span class="sd">    coordinate from the source coordinate. When -roi is specified, only consider</span>
+</span><span id="volume_warpfield_affine_regression-248"><a href="#volume_warpfield_affine_regression-248"><span class="linenos">248</span></a><span class="sd">    voxels with a value greater than 0 in &lt;roi-vol&gt;.</span>
+</span><span id="volume_warpfield_affine_regression-249"><a href="#volume_warpfield_affine_regression-249"><span class="linenos">249</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression-250"><a href="#volume_warpfield_affine_regression-250"><span class="linenos">250</span></a><span class="sd">    The default is to expect the warpfield to be in relative world coordinates</span>
+</span><span id="volume_warpfield_affine_regression-251"><a href="#volume_warpfield_affine_regression-251"><span class="linenos">251</span></a><span class="sd">    (mm space), and to write the output as a world affine (mm space to mm</span>
+</span><span id="volume_warpfield_affine_regression-252"><a href="#volume_warpfield_affine_regression-252"><span class="linenos">252</span></a><span class="sd">    space). If you are using FSL-created files and utilities, specify -fnirt and</span>
+</span><span id="volume_warpfield_affine_regression-253"><a href="#volume_warpfield_affine_regression-253"><span class="linenos">253</span></a><span class="sd">    -flirt as needed, as their coordinate conventions are different.</span>
+</span><span id="volume_warpfield_affine_regression-254"><a href="#volume_warpfield_affine_regression-254"><span class="linenos">254</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression-255"><a href="#volume_warpfield_affine_regression-255"><span class="linenos">255</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_warpfield_affine_regression-256"><a href="#volume_warpfield_affine_regression-256"><span class="linenos">256</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression-257"><a href="#volume_warpfield_affine_regression-257"><span class="linenos">257</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_warpfield_affine_regression-258"><a href="#volume_warpfield_affine_regression-258"><span class="linenos">258</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression-259"><a href="#volume_warpfield_affine_regression-259"><span class="linenos">259</span></a><span class="sd">    Args:</span>
+</span><span id="volume_warpfield_affine_regression-260"><a href="#volume_warpfield_affine_regression-260"><span class="linenos">260</span></a><span class="sd">        warpfield: the input warpfield.</span>
+</span><span id="volume_warpfield_affine_regression-261"><a href="#volume_warpfield_affine_regression-261"><span class="linenos">261</span></a><span class="sd">        affine_out: output - the output affine file.</span>
+</span><span id="volume_warpfield_affine_regression-262"><a href="#volume_warpfield_affine_regression-262"><span class="linenos">262</span></a><span class="sd">        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\</span>
+</span><span id="volume_warpfield_affine_regression-263"><a href="#volume_warpfield_affine_regression-263"><span class="linenos">263</span></a><span class="sd">            mask): the mask volume.</span>
+</span><span id="volume_warpfield_affine_regression-264"><a href="#volume_warpfield_affine_regression-264"><span class="linenos">264</span></a><span class="sd">        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\</span>
+</span><span id="volume_warpfield_affine_regression-265"><a href="#volume_warpfield_affine_regression-265"><span class="linenos">265</span></a><span class="sd">            used when generating the fnirt warpfield.</span>
+</span><span id="volume_warpfield_affine_regression-266"><a href="#volume_warpfield_affine_regression-266"><span class="linenos">266</span></a><span class="sd">        flirt_out: write output as a flirt matrix rather than a world\</span>
+</span><span id="volume_warpfield_affine_regression-267"><a href="#volume_warpfield_affine_regression-267"><span class="linenos">267</span></a><span class="sd">            coordinate transform.</span>
+</span><span id="volume_warpfield_affine_regression-268"><a href="#volume_warpfield_affine_regression-268"><span class="linenos">268</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_warpfield_affine_regression-269"><a href="#volume_warpfield_affine_regression-269"><span class="linenos">269</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_warpfield_affine_regression-270"><a href="#volume_warpfield_affine_regression-270"><span class="linenos">270</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).</span>
+</span><span id="volume_warpfield_affine_regression-271"><a href="#volume_warpfield_affine_regression-271"><span class="linenos">271</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_warpfield_affine_regression-272"><a href="#volume_warpfield_affine_regression-272"><span class="linenos">272</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_warpfield_affine_regression-273"><a href="#volume_warpfield_affine_regression-273"><span class="linenos">273</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA</span><span class="p">)</span>
+</span><span id="volume_warpfield_affine_regression-274"><a href="#volume_warpfield_affine_regression-274"><span class="linenos">274</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_warpfield_affine_regression_params</span><span class="p">(</span><span class="n">warpfield</span><span class="o">=</span><span class="n">warpfield</span><span class="p">,</span> <span class="n">affine_out</span><span class="o">=</span><span class="n">affine_out</span><span class="p">,</span> <span class="n">opt_roi_roi_vol</span><span class="o">=</span><span class="n">opt_roi_roi_vol</span><span class="p">,</span> <span class="n">opt_fnirt_source_volume</span><span class="o">=</span><span class="n">opt_fnirt_source_volume</span><span class="p">,</span> <span class="n">flirt_out</span><span class="o">=</span><span class="n">flirt_out</span><span class="p">)</span>
+</span><span id="volume_warpfield_affine_regression-275"><a href="#volume_warpfield_affine_regression-275"><span class="linenos">275</span></a>    <span class="k">return</span> <span class="n">volume_warpfield_affine_regression_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -516,6 +512,127 @@ space). If you are using FSL-created files and utilities, specify -fnirt and
 
 <blockquote>
   <p>NamedTuple of outputs (described in <code><a href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a></code>).</p>
+</blockquote>
+</div>
+
+
+                </section>
+                <section id="volume_warpfield_affine_regression_flirt_out_params">
+                            <input id="volume_warpfield_affine_regression_flirt_out_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">volume_warpfield_affine_regression_flirt_out_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span>:</span></span>
+
+                <label class="view-source-button" for="volume_warpfield_affine_regression_flirt_out_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#volume_warpfield_affine_regression_flirt_out_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_warpfield_affine_regression_flirt_out_params-64"><a href="#volume_warpfield_affine_regression_flirt_out_params-64"><span class="linenos">64</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_flirt_out_params</span><span class="p">(</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-65"><a href="#volume_warpfield_affine_regression_flirt_out_params-65"><span class="linenos">65</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-66"><a href="#volume_warpfield_affine_regression_flirt_out_params-66"><span class="linenos">66</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-67"><a href="#volume_warpfield_affine_regression_flirt_out_params-67"><span class="linenos">67</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span><span class="p">:</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-68"><a href="#volume_warpfield_affine_regression_flirt_out_params-68"><span class="linenos">68</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-69"><a href="#volume_warpfield_affine_regression_flirt_out_params-69"><span class="linenos">69</span></a><span class="sd">    Build parameters.</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-70"><a href="#volume_warpfield_affine_regression_flirt_out_params-70"><span class="linenos">70</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-71"><a href="#volume_warpfield_affine_regression_flirt_out_params-71"><span class="linenos">71</span></a><span class="sd">    Args:</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-72"><a href="#volume_warpfield_affine_regression_flirt_out_params-72"><span class="linenos">72</span></a><span class="sd">        source_volume: the volume you want to apply the transform to.</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-73"><a href="#volume_warpfield_affine_regression_flirt_out_params-73"><span class="linenos">73</span></a><span class="sd">        target_volume: the target space you want the transformed volume to\</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-74"><a href="#volume_warpfield_affine_regression_flirt_out_params-74"><span class="linenos">74</span></a><span class="sd">            match.</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-75"><a href="#volume_warpfield_affine_regression_flirt_out_params-75"><span class="linenos">75</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-76"><a href="#volume_warpfield_affine_regression_flirt_out_params-76"><span class="linenos">76</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-77"><a href="#volume_warpfield_affine_regression_flirt_out_params-77"><span class="linenos">77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-78"><a href="#volume_warpfield_affine_regression_flirt_out_params-78"><span class="linenos">78</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-79"><a href="#volume_warpfield_affine_regression_flirt_out_params-79"><span class="linenos">79</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;flirt_out&quot;</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-80"><a href="#volume_warpfield_affine_regression_flirt_out_params-80"><span class="linenos">80</span></a>        <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="n">source_volume</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-81"><a href="#volume_warpfield_affine_regression_flirt_out_params-81"><span class="linenos">81</span></a>        <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="n">target_volume</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-82"><a href="#volume_warpfield_affine_regression_flirt_out_params-82"><span class="linenos">82</span></a>    <span class="p">}</span>
+</span><span id="volume_warpfield_affine_regression_flirt_out_params-83"><a href="#volume_warpfield_affine_regression_flirt_out_params-83"><span class="linenos">83</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>source_volume:</strong>  the volume you want to apply the transform to.</li>
+<li><strong>target_volume:</strong>  the target space you want the transformed volume to            match.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
+</blockquote>
+</div>
+
+
+                </section>
+                <section id="volume_warpfield_affine_regression_params">
+                            <input id="volume_warpfield_affine_regression_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">volume_warpfield_affine_regression_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionParameters</span>:</span></span>
+
+                <label class="view-source-button" for="volume_warpfield_affine_regression_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#volume_warpfield_affine_regression_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_warpfield_affine_regression_params-114"><a href="#volume_warpfield_affine_regression_params-114"><span class="linenos">114</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_warpfield_affine_regression_params</span><span class="p">(</span>
+</span><span id="volume_warpfield_affine_regression_params-115"><a href="#volume_warpfield_affine_regression_params-115"><span class="linenos">115</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-116"><a href="#volume_warpfield_affine_regression_params-116"><span class="linenos">116</span></a>    <span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-117"><a href="#volume_warpfield_affine_regression_params-117"><span class="linenos">117</span></a>    <span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-118"><a href="#volume_warpfield_affine_regression_params-118"><span class="linenos">118</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-119"><a href="#volume_warpfield_affine_regression_params-119"><span class="linenos">119</span></a>    <span class="n">flirt_out</span><span class="p">:</span> <span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-120"><a href="#volume_warpfield_affine_regression_params-120"><span class="linenos">120</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWarpfieldAffineRegressionParameters</span><span class="p">:</span>
+</span><span id="volume_warpfield_affine_regression_params-121"><a href="#volume_warpfield_affine_regression_params-121"><span class="linenos">121</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_warpfield_affine_regression_params-122"><a href="#volume_warpfield_affine_regression_params-122"><span class="linenos">122</span></a><span class="sd">    Build parameters.</span>
+</span><span id="volume_warpfield_affine_regression_params-123"><a href="#volume_warpfield_affine_regression_params-123"><span class="linenos">123</span></a><span class="sd">    </span>
+</span><span id="volume_warpfield_affine_regression_params-124"><a href="#volume_warpfield_affine_regression_params-124"><span class="linenos">124</span></a><span class="sd">    Args:</span>
+</span><span id="volume_warpfield_affine_regression_params-125"><a href="#volume_warpfield_affine_regression_params-125"><span class="linenos">125</span></a><span class="sd">        warpfield: the input warpfield.</span>
+</span><span id="volume_warpfield_affine_regression_params-126"><a href="#volume_warpfield_affine_regression_params-126"><span class="linenos">126</span></a><span class="sd">        affine_out: output - the output affine file.</span>
+</span><span id="volume_warpfield_affine_regression_params-127"><a href="#volume_warpfield_affine_regression_params-127"><span class="linenos">127</span></a><span class="sd">        opt_roi_roi_vol: only consider voxels within a mask (e.g., a brain\</span>
+</span><span id="volume_warpfield_affine_regression_params-128"><a href="#volume_warpfield_affine_regression_params-128"><span class="linenos">128</span></a><span class="sd">            mask): the mask volume.</span>
+</span><span id="volume_warpfield_affine_regression_params-129"><a href="#volume_warpfield_affine_regression_params-129"><span class="linenos">129</span></a><span class="sd">        opt_fnirt_source_volume: input is a fnirt warpfield: the source volume\</span>
+</span><span id="volume_warpfield_affine_regression_params-130"><a href="#volume_warpfield_affine_regression_params-130"><span class="linenos">130</span></a><span class="sd">            used when generating the fnirt warpfield.</span>
+</span><span id="volume_warpfield_affine_regression_params-131"><a href="#volume_warpfield_affine_regression_params-131"><span class="linenos">131</span></a><span class="sd">        flirt_out: write output as a flirt matrix rather than a world\</span>
+</span><span id="volume_warpfield_affine_regression_params-132"><a href="#volume_warpfield_affine_regression_params-132"><span class="linenos">132</span></a><span class="sd">            coordinate transform.</span>
+</span><span id="volume_warpfield_affine_regression_params-133"><a href="#volume_warpfield_affine_regression_params-133"><span class="linenos">133</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_warpfield_affine_regression_params-134"><a href="#volume_warpfield_affine_regression_params-134"><span class="linenos">134</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="volume_warpfield_affine_regression_params-135"><a href="#volume_warpfield_affine_regression_params-135"><span class="linenos">135</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_warpfield_affine_regression_params-136"><a href="#volume_warpfield_affine_regression_params-136"><span class="linenos">136</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="volume_warpfield_affine_regression_params-137"><a href="#volume_warpfield_affine_regression_params-137"><span class="linenos">137</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;volume-warpfield-affine-regression&quot;</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-138"><a href="#volume_warpfield_affine_regression_params-138"><span class="linenos">138</span></a>        <span class="s2">&quot;warpfield&quot;</span><span class="p">:</span> <span class="n">warpfield</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-139"><a href="#volume_warpfield_affine_regression_params-139"><span class="linenos">139</span></a>        <span class="s2">&quot;affine_out&quot;</span><span class="p">:</span> <span class="n">affine_out</span><span class="p">,</span>
+</span><span id="volume_warpfield_affine_regression_params-140"><a href="#volume_warpfield_affine_regression_params-140"><span class="linenos">140</span></a>    <span class="p">}</span>
+</span><span id="volume_warpfield_affine_regression_params-141"><a href="#volume_warpfield_affine_regression_params-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">opt_roi_roi_vol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_warpfield_affine_regression_params-142"><a href="#volume_warpfield_affine_regression_params-142"><span class="linenos">142</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_roi_roi_vol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_roi_roi_vol</span>
+</span><span id="volume_warpfield_affine_regression_params-143"><a href="#volume_warpfield_affine_regression_params-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">opt_fnirt_source_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_warpfield_affine_regression_params-144"><a href="#volume_warpfield_affine_regression_params-144"><span class="linenos">144</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_fnirt_source_volume&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_fnirt_source_volume</span>
+</span><span id="volume_warpfield_affine_regression_params-145"><a href="#volume_warpfield_affine_regression_params-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">flirt_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_warpfield_affine_regression_params-146"><a href="#volume_warpfield_affine_regression_params-146"><span class="linenos">146</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;flirt_out&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flirt_out</span>
+</span><span id="volume_warpfield_affine_regression_params-147"><a href="#volume_warpfield_affine_regression_params-147"><span class="linenos">147</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>warpfield:</strong>  the input warpfield.</li>
+<li><strong>affine_out:</strong>  output - the output affine file.</li>
+<li><strong>opt_roi_roi_vol:</strong>  only consider voxels within a mask (e.g., a brain            mask): the mask volume.</li>
+<li><strong>opt_fnirt_source_volume:</strong>  input is a fnirt warpfield: the source volume            used when generating the fnirt warpfield.</li>
+<li><strong>flirt_out:</strong>  write output as a flirt matrix rather than a world            coordinate transform.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
 </blockquote>
 </div>
 

@@ -60,6 +60,9 @@
             <li>
                     <a class="function" href="#v_3d_allineate">v_3d_allineate</a>
             </li>
+            <li>
+                    <a class="function" href="#v_3d_allineate_params">v_3d_allineate_params</a>
+            </li>
     </ul>
 
 
@@ -95,148 +98,327 @@
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="p">)</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="k">class</span><span class="w"> </span><span class="nc">V3dAllineateOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="sd">    Output object returned when calling `v_3d_allineate(...)`.</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="n">out_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset brick file&quot;&quot;&quot;</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="n">out_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset head file&quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="n">out_param_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved warp parameters&quot;&quot;&quot;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>    <span class="n">out_matrix_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved matrix transformations&quot;&quot;&quot;</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="n">V3dAllineateParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;V3dAllineateParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">],</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a>    <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>    <span class="s2">&quot;base&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a>    <span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a>    <span class="s2">&quot;param_save&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="s2">&quot;param_apply&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="s2">&quot;matrix_save&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a>    <span class="s2">&quot;matrix_apply&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>    <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="s2">&quot;interp&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    <span class="s2">&quot;final&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="s2">&quot;nmatch&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>    <span class="s2">&quot;nopad&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>    <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="s2">&quot;quiet&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="p">})</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate</span><span class="p">(</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">source</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>    <span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>    <span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>    <span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>    <span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>    <span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>    <span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateOutputs</span><span class="p">:</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Program to align one dataset (the &#39;source&#39;) to a &#39;base&#39; dataset using an affine</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    (matrix) transformation of space.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    Args:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        source: Source dataset file.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        prefix: Output prefix.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        base: Base dataset file.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        param_save: Save the warp parameters in ASCII (.1D) format into file.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        param_apply: Read warp parameters from file and apply them to the\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            source dataset.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        matrix_save: Save the transformation matrix for each sub-brick into\</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            file.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        matrix_apply: Use the matrices in file to define the spatial\</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            transformations to be applied.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        cost: Defines the &#39;cost&#39; function that defines the matching between the\</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">            source and the base.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        interp: Defines interpolation method to use during matching process.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        final: Defines the interpolation mode used to create the output dataset.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        nmatch: Use at most &#39;nnn&#39; scattered points to match the datasets.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        nopad: Do not use zero-padding on the base image.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        verbose: Print out verbose progress reports.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        quiet: Don&#39;t print out verbose stuff.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    Returns:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAllineateOutputs`).</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ALLINEATE_METADATA</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">prefix</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">param_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-1Dparam_save&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="n">param_save</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">param_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-1Dparam_apply&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">param_apply</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">matrix_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-1Dmatrix_save&quot;</span><span class="p">,</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="n">matrix_save</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">])</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">matrix_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="s2">&quot;-1Dmatrix_apply&quot;</span><span class="p">,</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">matrix_apply</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="p">])</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-cost&quot;</span><span class="p">,</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="n">cost</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="p">])</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">interp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-interp&quot;</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="n">interp</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">final</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-final&quot;</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="n">final</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">nmatch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;-nmatch&quot;</span><span class="p">,</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nmatch</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">nopad</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nopad&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAllineateOutputs</span><span class="p">(</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">out_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">out_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">out_param_save</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">param_save</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">param_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">out_matrix_save</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">matrix_save</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">matrix_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;V3dAllineateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;V_3D_ALLINEATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;v_3d_allineate&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="p">]</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dyn_cargs</span><span class="p">(</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    Get build cargs function by command type.</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    </span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    Args:</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">        t: Command type.</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    Returns:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">        Build cargs function.</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>    <span class="n">vt</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>        <span class="s2">&quot;3dAllineate&quot;</span><span class="p">:</span> <span class="n">v_3d_allineate_cargs</span><span class="p">,</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>    <span class="p">}</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>    <span class="k">return</span> <span class="n">vt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dyn_outputs</span><span class="p">(</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Get build outputs function by command type.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Args:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        t: Command type.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    Returns:</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        Build outputs function.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">vt</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="s2">&quot;3dAllineate&quot;</span><span class="p">:</span> <span class="n">v_3d_allineate_outputs</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="p">}</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="k">return</span> <span class="n">vt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="k">class</span><span class="w"> </span><span class="nc">V3dAllineateOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Output object returned when calling `v_3d_allineate(...)`.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">out_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset brick file&quot;&quot;&quot;</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">out_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset head file&quot;&quot;&quot;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">out_param_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved warp parameters&quot;&quot;&quot;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">out_matrix_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved matrix transformations&quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate_params</span><span class="p">(</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">source</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateParameters</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    Build parameters.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    </span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    Args:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        source: Source dataset file.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        prefix: Output prefix.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        base: Base dataset file.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        param_save: Save the warp parameters in ASCII (.1D) format into file.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        param_apply: Read warp parameters from file and apply them to the\</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">            source dataset.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        matrix_save: Save the transformation matrix for each sub-brick into\</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">            file.</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">        matrix_apply: Use the matrices in file to define the spatial\</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            transformations to be applied.</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        cost: Defines the &#39;cost&#39; function that defines the matching between the\</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">            source and the base.</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        interp: Defines interpolation method to use during matching process.</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        final: Defines the interpolation mode used to create the output dataset.</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">        nmatch: Use at most &#39;nnn&#39; scattered points to match the datasets.</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        nopad: Do not use zero-padding on the base image.</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        verbose: Print out verbose progress reports.</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        quiet: Don&#39;t print out verbose stuff.</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    Returns:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;3dAllineate&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="n">prefix</span><span class="p">,</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="s2">&quot;nopad&quot;</span><span class="p">:</span> <span class="n">nopad</span><span class="p">,</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="n">verbose</span><span class="p">,</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="s2">&quot;quiet&quot;</span><span class="p">:</span> <span class="n">quiet</span><span class="p">,</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="p">}</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">base</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">param_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;param_save&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_save</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">param_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;param_apply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_apply</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">matrix_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;matrix_save&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_save</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">matrix_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;matrix_apply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_apply</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">interp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;interp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">final</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;final&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">nmatch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;nmatch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmatch</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate_cargs</span><span class="p">(</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">V3dAllineateParameters</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    Build command-line arguments from parameters.</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    </span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    Args:</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        execution: The execution object for resolving input paths.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    Returns:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        Command-line arguments.</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">)))</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;base&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;base&quot;</span><span class="p">))</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="p">])</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="p">])</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_save&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-1Dparam_save&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_save&quot;</span><span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_apply&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="s2">&quot;-1Dparam_apply&quot;</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_apply&quot;</span><span class="p">)</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="p">])</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matrix_save&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="s2">&quot;-1Dmatrix_save&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matrix_save&quot;</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matrix_apply&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;-1Dmatrix_apply&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matrix_apply&quot;</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="s2">&quot;-cost&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">)</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="p">])</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;interp&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="s2">&quot;-interp&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;interp&quot;</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="p">])</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;final&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="s2">&quot;-final&quot;</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;final&quot;</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="p">])</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nmatch&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="s2">&quot;-nmatch&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nmatch&quot;</span><span class="p">))</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="p">])</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nopad&quot;</span><span class="p">):</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nopad&quot;</span><span class="p">)</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;verbose&quot;</span><span class="p">):</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;quiet&quot;</span><span class="p">):</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate_outputs</span><span class="p">(</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">V3dAllineateParameters</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateOutputs</span><span class="p">:</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    Build outputs object containing output file paths and possibly stdout/stderr.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">    </span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">    Args:</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        execution: The execution object for resolving input paths.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    Returns:</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        Outputs object.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAllineateOutputs</span><span class="p">(</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">out_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="n">out_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="n">out_param_save</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_save&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_save&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">out_matrix_save</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matrix_save&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;matrix_save&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="p">)</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate_execute</span><span class="p">(</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">V3dAllineateParameters</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateOutputs</span><span class="p">:</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">    Program to align one dataset (the &#39;source&#39;) to a &#39;base&#39; dataset using an affine</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    (matrix) transformation of space.</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">    </span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">    </span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    </span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    Args:</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">        params: The parameters.</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">        execution: The execution object.</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    Returns:</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAllineateOutputs`).</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v_3d_allineate_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v_3d_allineate_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate</span><span class="p">(</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="n">source</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateOutputs</span><span class="p">:</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">    Program to align one dataset (the &#39;source&#39;) to a &#39;base&#39; dataset using an affine</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">    (matrix) transformation of space.</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    </span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    </span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">    </span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">    Args:</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">        source: Source dataset file.</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">        prefix: Output prefix.</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">        base: Base dataset file.</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">        param_save: Save the warp parameters in ASCII (.1D) format into file.</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">        param_apply: Read warp parameters from file and apply them to the\</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">            source dataset.</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">        matrix_save: Save the transformation matrix for each sub-brick into\</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">            file.</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">        matrix_apply: Use the matrices in file to define the spatial\</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">            transformations to be applied.</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">        cost: Defines the &#39;cost&#39; function that defines the matching between the\</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">            source and the base.</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">        interp: Defines interpolation method to use during matching process.</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">        final: Defines the interpolation mode used to create the output dataset.</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        nmatch: Use at most &#39;nnn&#39; scattered points to match the datasets.</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">        nopad: Do not use zero-padding on the base image.</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">        verbose: Print out verbose progress reports.</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">        quiet: Don&#39;t print out verbose stuff.</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    Returns:</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAllineateOutputs`).</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ALLINEATE_METADATA</span><span class="p">)</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_allineate_params</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">param_save</span><span class="o">=</span><span class="n">param_save</span><span class="p">,</span> <span class="n">param_apply</span><span class="o">=</span><span class="n">param_apply</span><span class="p">,</span> <span class="n">matrix_save</span><span class="o">=</span><span class="n">matrix_save</span><span class="p">,</span> <span class="n">matrix_apply</span><span class="o">=</span><span class="n">matrix_apply</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="n">cost</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="n">interp</span><span class="p">,</span> <span class="n">final</span><span class="o">=</span><span class="n">final</span><span class="p">,</span> <span class="n">nmatch</span><span class="o">=</span><span class="n">nmatch</span><span class="p">,</span> <span class="n">nopad</span><span class="o">=</span><span class="n">nopad</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="k">return</span> <span class="n">v_3d_allineate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;V3dAllineateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;V_3D_ALLINEATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;v_3d_allineate&quot;</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;v_3d_allineate_params&quot;</span><span class="p">,</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -252,20 +434,20 @@
 
     </div>
     <a class="headerlink" href="#V3dAllineateOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="V3dAllineateOutputs-18"><a href="#V3dAllineateOutputs-18"><span class="linenos">18</span></a><span class="k">class</span><span class="w"> </span><span class="nc">V3dAllineateOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="V3dAllineateOutputs-19"><a href="#V3dAllineateOutputs-19"><span class="linenos">19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="V3dAllineateOutputs-20"><a href="#V3dAllineateOutputs-20"><span class="linenos">20</span></a><span class="sd">    Output object returned when calling `v_3d_allineate(...)`.</span>
-</span><span id="V3dAllineateOutputs-21"><a href="#V3dAllineateOutputs-21"><span class="linenos">21</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="V3dAllineateOutputs-22"><a href="#V3dAllineateOutputs-22"><span class="linenos">22</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="V3dAllineateOutputs-23"><a href="#V3dAllineateOutputs-23"><span class="linenos">23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="V3dAllineateOutputs-24"><a href="#V3dAllineateOutputs-24"><span class="linenos">24</span></a>    <span class="n">out_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="V3dAllineateOutputs-25"><a href="#V3dAllineateOutputs-25"><span class="linenos">25</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset brick file&quot;&quot;&quot;</span>
-</span><span id="V3dAllineateOutputs-26"><a href="#V3dAllineateOutputs-26"><span class="linenos">26</span></a>    <span class="n">out_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="V3dAllineateOutputs-27"><a href="#V3dAllineateOutputs-27"><span class="linenos">27</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset head file&quot;&quot;&quot;</span>
-</span><span id="V3dAllineateOutputs-28"><a href="#V3dAllineateOutputs-28"><span class="linenos">28</span></a>    <span class="n">out_param_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="V3dAllineateOutputs-29"><a href="#V3dAllineateOutputs-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved warp parameters&quot;&quot;&quot;</span>
-</span><span id="V3dAllineateOutputs-30"><a href="#V3dAllineateOutputs-30"><span class="linenos">30</span></a>    <span class="n">out_matrix_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span id="V3dAllineateOutputs-31"><a href="#V3dAllineateOutputs-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved matrix transformations&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="V3dAllineateOutputs-69"><a href="#V3dAllineateOutputs-69"><span class="linenos">69</span></a><span class="k">class</span><span class="w"> </span><span class="nc">V3dAllineateOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="V3dAllineateOutputs-70"><a href="#V3dAllineateOutputs-70"><span class="linenos">70</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="V3dAllineateOutputs-71"><a href="#V3dAllineateOutputs-71"><span class="linenos">71</span></a><span class="sd">    Output object returned when calling `v_3d_allineate(...)`.</span>
+</span><span id="V3dAllineateOutputs-72"><a href="#V3dAllineateOutputs-72"><span class="linenos">72</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="V3dAllineateOutputs-73"><a href="#V3dAllineateOutputs-73"><span class="linenos">73</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="V3dAllineateOutputs-74"><a href="#V3dAllineateOutputs-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="V3dAllineateOutputs-75"><a href="#V3dAllineateOutputs-75"><span class="linenos">75</span></a>    <span class="n">out_brik</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="V3dAllineateOutputs-76"><a href="#V3dAllineateOutputs-76"><span class="linenos">76</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset brick file&quot;&quot;&quot;</span>
+</span><span id="V3dAllineateOutputs-77"><a href="#V3dAllineateOutputs-77"><span class="linenos">77</span></a>    <span class="n">out_head</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="V3dAllineateOutputs-78"><a href="#V3dAllineateOutputs-78"><span class="linenos">78</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output dataset head file&quot;&quot;&quot;</span>
+</span><span id="V3dAllineateOutputs-79"><a href="#V3dAllineateOutputs-79"><span class="linenos">79</span></a>    <span class="n">out_param_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dAllineateOutputs-80"><a href="#V3dAllineateOutputs-80"><span class="linenos">80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved warp parameters&quot;&quot;&quot;</span>
+</span><span id="V3dAllineateOutputs-81"><a href="#V3dAllineateOutputs-81"><span class="linenos">81</span></a>    <span class="n">out_matrix_save</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="V3dAllineateOutputs-82"><a href="#V3dAllineateOutputs-82"><span class="linenos">82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;File holding saved matrix transformations&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -377,123 +559,58 @@
 
     </div>
     <a class="headerlink" href="#v_3d_allineate"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_allineate-34"><a href="#v_3d_allineate-34"><span class="linenos"> 34</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate</span><span class="p">(</span>
-</span><span id="v_3d_allineate-35"><a href="#v_3d_allineate-35"><span class="linenos"> 35</span></a>    <span class="n">source</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="v_3d_allineate-36"><a href="#v_3d_allineate-36"><span class="linenos"> 36</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="v_3d_allineate-37"><a href="#v_3d_allineate-37"><span class="linenos"> 37</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-38"><a href="#v_3d_allineate-38"><span class="linenos"> 38</span></a>    <span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-39"><a href="#v_3d_allineate-39"><span class="linenos"> 39</span></a>    <span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-40"><a href="#v_3d_allineate-40"><span class="linenos"> 40</span></a>    <span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-41"><a href="#v_3d_allineate-41"><span class="linenos"> 41</span></a>    <span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-42"><a href="#v_3d_allineate-42"><span class="linenos"> 42</span></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-43"><a href="#v_3d_allineate-43"><span class="linenos"> 43</span></a>    <span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-44"><a href="#v_3d_allineate-44"><span class="linenos"> 44</span></a>    <span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-45"><a href="#v_3d_allineate-45"><span class="linenos"> 45</span></a>    <span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-46"><a href="#v_3d_allineate-46"><span class="linenos"> 46</span></a>    <span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_allineate-47"><a href="#v_3d_allineate-47"><span class="linenos"> 47</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_allineate-48"><a href="#v_3d_allineate-48"><span class="linenos"> 48</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_allineate-49"><a href="#v_3d_allineate-49"><span class="linenos"> 49</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-50"><a href="#v_3d_allineate-50"><span class="linenos"> 50</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateOutputs</span><span class="p">:</span>
-</span><span id="v_3d_allineate-51"><a href="#v_3d_allineate-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v_3d_allineate-52"><a href="#v_3d_allineate-52"><span class="linenos"> 52</span></a><span class="sd">    Program to align one dataset (the &#39;source&#39;) to a &#39;base&#39; dataset using an affine</span>
-</span><span id="v_3d_allineate-53"><a href="#v_3d_allineate-53"><span class="linenos"> 53</span></a><span class="sd">    (matrix) transformation of space.</span>
-</span><span id="v_3d_allineate-54"><a href="#v_3d_allineate-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="v_3d_allineate-55"><a href="#v_3d_allineate-55"><span class="linenos"> 55</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="v_3d_allineate-56"><a href="#v_3d_allineate-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="v_3d_allineate-57"><a href="#v_3d_allineate-57"><span class="linenos"> 57</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="v_3d_allineate-58"><a href="#v_3d_allineate-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
-</span><span id="v_3d_allineate-59"><a href="#v_3d_allineate-59"><span class="linenos"> 59</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_allineate-60"><a href="#v_3d_allineate-60"><span class="linenos"> 60</span></a><span class="sd">        source: Source dataset file.</span>
-</span><span id="v_3d_allineate-61"><a href="#v_3d_allineate-61"><span class="linenos"> 61</span></a><span class="sd">        prefix: Output prefix.</span>
-</span><span id="v_3d_allineate-62"><a href="#v_3d_allineate-62"><span class="linenos"> 62</span></a><span class="sd">        base: Base dataset file.</span>
-</span><span id="v_3d_allineate-63"><a href="#v_3d_allineate-63"><span class="linenos"> 63</span></a><span class="sd">        param_save: Save the warp parameters in ASCII (.1D) format into file.</span>
-</span><span id="v_3d_allineate-64"><a href="#v_3d_allineate-64"><span class="linenos"> 64</span></a><span class="sd">        param_apply: Read warp parameters from file and apply them to the\</span>
-</span><span id="v_3d_allineate-65"><a href="#v_3d_allineate-65"><span class="linenos"> 65</span></a><span class="sd">            source dataset.</span>
-</span><span id="v_3d_allineate-66"><a href="#v_3d_allineate-66"><span class="linenos"> 66</span></a><span class="sd">        matrix_save: Save the transformation matrix for each sub-brick into\</span>
-</span><span id="v_3d_allineate-67"><a href="#v_3d_allineate-67"><span class="linenos"> 67</span></a><span class="sd">            file.</span>
-</span><span id="v_3d_allineate-68"><a href="#v_3d_allineate-68"><span class="linenos"> 68</span></a><span class="sd">        matrix_apply: Use the matrices in file to define the spatial\</span>
-</span><span id="v_3d_allineate-69"><a href="#v_3d_allineate-69"><span class="linenos"> 69</span></a><span class="sd">            transformations to be applied.</span>
-</span><span id="v_3d_allineate-70"><a href="#v_3d_allineate-70"><span class="linenos"> 70</span></a><span class="sd">        cost: Defines the &#39;cost&#39; function that defines the matching between the\</span>
-</span><span id="v_3d_allineate-71"><a href="#v_3d_allineate-71"><span class="linenos"> 71</span></a><span class="sd">            source and the base.</span>
-</span><span id="v_3d_allineate-72"><a href="#v_3d_allineate-72"><span class="linenos"> 72</span></a><span class="sd">        interp: Defines interpolation method to use during matching process.</span>
-</span><span id="v_3d_allineate-73"><a href="#v_3d_allineate-73"><span class="linenos"> 73</span></a><span class="sd">        final: Defines the interpolation mode used to create the output dataset.</span>
-</span><span id="v_3d_allineate-74"><a href="#v_3d_allineate-74"><span class="linenos"> 74</span></a><span class="sd">        nmatch: Use at most &#39;nnn&#39; scattered points to match the datasets.</span>
-</span><span id="v_3d_allineate-75"><a href="#v_3d_allineate-75"><span class="linenos"> 75</span></a><span class="sd">        nopad: Do not use zero-padding on the base image.</span>
-</span><span id="v_3d_allineate-76"><a href="#v_3d_allineate-76"><span class="linenos"> 76</span></a><span class="sd">        verbose: Print out verbose progress reports.</span>
-</span><span id="v_3d_allineate-77"><a href="#v_3d_allineate-77"><span class="linenos"> 77</span></a><span class="sd">        quiet: Don&#39;t print out verbose stuff.</span>
-</span><span id="v_3d_allineate-78"><a href="#v_3d_allineate-78"><span class="linenos"> 78</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v_3d_allineate-79"><a href="#v_3d_allineate-79"><span class="linenos"> 79</span></a><span class="sd">    Returns:</span>
-</span><span id="v_3d_allineate-80"><a href="#v_3d_allineate-80"><span class="linenos"> 80</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAllineateOutputs`).</span>
-</span><span id="v_3d_allineate-81"><a href="#v_3d_allineate-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v_3d_allineate-82"><a href="#v_3d_allineate-82"><span class="linenos"> 82</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v_3d_allineate-83"><a href="#v_3d_allineate-83"><span class="linenos"> 83</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ALLINEATE_METADATA</span><span class="p">)</span>
-</span><span id="v_3d_allineate-84"><a href="#v_3d_allineate-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v_3d_allineate-85"><a href="#v_3d_allineate-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
-</span><span id="v_3d_allineate-86"><a href="#v_3d_allineate-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
-</span><span id="v_3d_allineate-87"><a href="#v_3d_allineate-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-88"><a href="#v_3d_allineate-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-89"><a href="#v_3d_allineate-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-90"><a href="#v_3d_allineate-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
-</span><span id="v_3d_allineate-91"><a href="#v_3d_allineate-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-92"><a href="#v_3d_allineate-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-93"><a href="#v_3d_allineate-93"><span class="linenos"> 93</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-94"><a href="#v_3d_allineate-94"><span class="linenos"> 94</span></a>        <span class="n">prefix</span>
-</span><span id="v_3d_allineate-95"><a href="#v_3d_allineate-95"><span class="linenos"> 95</span></a>    <span class="p">])</span>
-</span><span id="v_3d_allineate-96"><a href="#v_3d_allineate-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">param_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-97"><a href="#v_3d_allineate-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-98"><a href="#v_3d_allineate-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-1Dparam_save&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-99"><a href="#v_3d_allineate-99"><span class="linenos"> 99</span></a>            <span class="n">param_save</span>
-</span><span id="v_3d_allineate-100"><a href="#v_3d_allineate-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-101"><a href="#v_3d_allineate-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">param_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-102"><a href="#v_3d_allineate-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-103"><a href="#v_3d_allineate-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-1Dparam_apply&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-104"><a href="#v_3d_allineate-104"><span class="linenos">104</span></a>            <span class="n">param_apply</span>
-</span><span id="v_3d_allineate-105"><a href="#v_3d_allineate-105"><span class="linenos">105</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-106"><a href="#v_3d_allineate-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">matrix_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-107"><a href="#v_3d_allineate-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-108"><a href="#v_3d_allineate-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-1Dmatrix_save&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-109"><a href="#v_3d_allineate-109"><span class="linenos">109</span></a>            <span class="n">matrix_save</span>
-</span><span id="v_3d_allineate-110"><a href="#v_3d_allineate-110"><span class="linenos">110</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-111"><a href="#v_3d_allineate-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">matrix_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-112"><a href="#v_3d_allineate-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-113"><a href="#v_3d_allineate-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-1Dmatrix_apply&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-114"><a href="#v_3d_allineate-114"><span class="linenos">114</span></a>            <span class="n">matrix_apply</span>
-</span><span id="v_3d_allineate-115"><a href="#v_3d_allineate-115"><span class="linenos">115</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-116"><a href="#v_3d_allineate-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-117"><a href="#v_3d_allineate-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-118"><a href="#v_3d_allineate-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-cost&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-119"><a href="#v_3d_allineate-119"><span class="linenos">119</span></a>            <span class="n">cost</span>
-</span><span id="v_3d_allineate-120"><a href="#v_3d_allineate-120"><span class="linenos">120</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-121"><a href="#v_3d_allineate-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">interp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-122"><a href="#v_3d_allineate-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-123"><a href="#v_3d_allineate-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-interp&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-124"><a href="#v_3d_allineate-124"><span class="linenos">124</span></a>            <span class="n">interp</span>
-</span><span id="v_3d_allineate-125"><a href="#v_3d_allineate-125"><span class="linenos">125</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-126"><a href="#v_3d_allineate-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">final</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-127"><a href="#v_3d_allineate-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-128"><a href="#v_3d_allineate-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-final&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-129"><a href="#v_3d_allineate-129"><span class="linenos">129</span></a>            <span class="n">final</span>
-</span><span id="v_3d_allineate-130"><a href="#v_3d_allineate-130"><span class="linenos">130</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-131"><a href="#v_3d_allineate-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">nmatch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_allineate-132"><a href="#v_3d_allineate-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_allineate-133"><a href="#v_3d_allineate-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-nmatch&quot;</span><span class="p">,</span>
-</span><span id="v_3d_allineate-134"><a href="#v_3d_allineate-134"><span class="linenos">134</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nmatch</span><span class="p">)</span>
-</span><span id="v_3d_allineate-135"><a href="#v_3d_allineate-135"><span class="linenos">135</span></a>        <span class="p">])</span>
-</span><span id="v_3d_allineate-136"><a href="#v_3d_allineate-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">nopad</span><span class="p">:</span>
-</span><span id="v_3d_allineate-137"><a href="#v_3d_allineate-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nopad&quot;</span><span class="p">)</span>
-</span><span id="v_3d_allineate-138"><a href="#v_3d_allineate-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span id="v_3d_allineate-139"><a href="#v_3d_allineate-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="v_3d_allineate-140"><a href="#v_3d_allineate-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="v_3d_allineate-141"><a href="#v_3d_allineate-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="v_3d_allineate-142"><a href="#v_3d_allineate-142"><span class="linenos">142</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAllineateOutputs</span><span class="p">(</span>
-</span><span id="v_3d_allineate-143"><a href="#v_3d_allineate-143"><span class="linenos">143</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_allineate-144"><a href="#v_3d_allineate-144"><span class="linenos">144</span></a>        <span class="n">out_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
-</span><span id="v_3d_allineate-145"><a href="#v_3d_allineate-145"><span class="linenos">145</span></a>        <span class="n">out_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
-</span><span id="v_3d_allineate-146"><a href="#v_3d_allineate-146"><span class="linenos">146</span></a>        <span class="n">out_param_save</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">param_save</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">param_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-147"><a href="#v_3d_allineate-147"><span class="linenos">147</span></a>        <span class="n">out_matrix_save</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">matrix_save</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">matrix_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_allineate-148"><a href="#v_3d_allineate-148"><span class="linenos">148</span></a>    <span class="p">)</span>
-</span><span id="v_3d_allineate-149"><a href="#v_3d_allineate-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v_3d_allineate-150"><a href="#v_3d_allineate-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_allineate-277"><a href="#v_3d_allineate-277"><span class="linenos">277</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate</span><span class="p">(</span>
+</span><span id="v_3d_allineate-278"><a href="#v_3d_allineate-278"><span class="linenos">278</span></a>    <span class="n">source</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="v_3d_allineate-279"><a href="#v_3d_allineate-279"><span class="linenos">279</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="v_3d_allineate-280"><a href="#v_3d_allineate-280"><span class="linenos">280</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-281"><a href="#v_3d_allineate-281"><span class="linenos">281</span></a>    <span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-282"><a href="#v_3d_allineate-282"><span class="linenos">282</span></a>    <span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-283"><a href="#v_3d_allineate-283"><span class="linenos">283</span></a>    <span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-284"><a href="#v_3d_allineate-284"><span class="linenos">284</span></a>    <span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-285"><a href="#v_3d_allineate-285"><span class="linenos">285</span></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-286"><a href="#v_3d_allineate-286"><span class="linenos">286</span></a>    <span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-287"><a href="#v_3d_allineate-287"><span class="linenos">287</span></a>    <span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-288"><a href="#v_3d_allineate-288"><span class="linenos">288</span></a>    <span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-289"><a href="#v_3d_allineate-289"><span class="linenos">289</span></a>    <span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_allineate-290"><a href="#v_3d_allineate-290"><span class="linenos">290</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_allineate-291"><a href="#v_3d_allineate-291"><span class="linenos">291</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_allineate-292"><a href="#v_3d_allineate-292"><span class="linenos">292</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate-293"><a href="#v_3d_allineate-293"><span class="linenos">293</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateOutputs</span><span class="p">:</span>
+</span><span id="v_3d_allineate-294"><a href="#v_3d_allineate-294"><span class="linenos">294</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v_3d_allineate-295"><a href="#v_3d_allineate-295"><span class="linenos">295</span></a><span class="sd">    Program to align one dataset (the &#39;source&#39;) to a &#39;base&#39; dataset using an affine</span>
+</span><span id="v_3d_allineate-296"><a href="#v_3d_allineate-296"><span class="linenos">296</span></a><span class="sd">    (matrix) transformation of space.</span>
+</span><span id="v_3d_allineate-297"><a href="#v_3d_allineate-297"><span class="linenos">297</span></a><span class="sd">    </span>
+</span><span id="v_3d_allineate-298"><a href="#v_3d_allineate-298"><span class="linenos">298</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="v_3d_allineate-299"><a href="#v_3d_allineate-299"><span class="linenos">299</span></a><span class="sd">    </span>
+</span><span id="v_3d_allineate-300"><a href="#v_3d_allineate-300"><span class="linenos">300</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v_3d_allineate-301"><a href="#v_3d_allineate-301"><span class="linenos">301</span></a><span class="sd">    </span>
+</span><span id="v_3d_allineate-302"><a href="#v_3d_allineate-302"><span class="linenos">302</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_allineate-303"><a href="#v_3d_allineate-303"><span class="linenos">303</span></a><span class="sd">        source: Source dataset file.</span>
+</span><span id="v_3d_allineate-304"><a href="#v_3d_allineate-304"><span class="linenos">304</span></a><span class="sd">        prefix: Output prefix.</span>
+</span><span id="v_3d_allineate-305"><a href="#v_3d_allineate-305"><span class="linenos">305</span></a><span class="sd">        base: Base dataset file.</span>
+</span><span id="v_3d_allineate-306"><a href="#v_3d_allineate-306"><span class="linenos">306</span></a><span class="sd">        param_save: Save the warp parameters in ASCII (.1D) format into file.</span>
+</span><span id="v_3d_allineate-307"><a href="#v_3d_allineate-307"><span class="linenos">307</span></a><span class="sd">        param_apply: Read warp parameters from file and apply them to the\</span>
+</span><span id="v_3d_allineate-308"><a href="#v_3d_allineate-308"><span class="linenos">308</span></a><span class="sd">            source dataset.</span>
+</span><span id="v_3d_allineate-309"><a href="#v_3d_allineate-309"><span class="linenos">309</span></a><span class="sd">        matrix_save: Save the transformation matrix for each sub-brick into\</span>
+</span><span id="v_3d_allineate-310"><a href="#v_3d_allineate-310"><span class="linenos">310</span></a><span class="sd">            file.</span>
+</span><span id="v_3d_allineate-311"><a href="#v_3d_allineate-311"><span class="linenos">311</span></a><span class="sd">        matrix_apply: Use the matrices in file to define the spatial\</span>
+</span><span id="v_3d_allineate-312"><a href="#v_3d_allineate-312"><span class="linenos">312</span></a><span class="sd">            transformations to be applied.</span>
+</span><span id="v_3d_allineate-313"><a href="#v_3d_allineate-313"><span class="linenos">313</span></a><span class="sd">        cost: Defines the &#39;cost&#39; function that defines the matching between the\</span>
+</span><span id="v_3d_allineate-314"><a href="#v_3d_allineate-314"><span class="linenos">314</span></a><span class="sd">            source and the base.</span>
+</span><span id="v_3d_allineate-315"><a href="#v_3d_allineate-315"><span class="linenos">315</span></a><span class="sd">        interp: Defines interpolation method to use during matching process.</span>
+</span><span id="v_3d_allineate-316"><a href="#v_3d_allineate-316"><span class="linenos">316</span></a><span class="sd">        final: Defines the interpolation mode used to create the output dataset.</span>
+</span><span id="v_3d_allineate-317"><a href="#v_3d_allineate-317"><span class="linenos">317</span></a><span class="sd">        nmatch: Use at most &#39;nnn&#39; scattered points to match the datasets.</span>
+</span><span id="v_3d_allineate-318"><a href="#v_3d_allineate-318"><span class="linenos">318</span></a><span class="sd">        nopad: Do not use zero-padding on the base image.</span>
+</span><span id="v_3d_allineate-319"><a href="#v_3d_allineate-319"><span class="linenos">319</span></a><span class="sd">        verbose: Print out verbose progress reports.</span>
+</span><span id="v_3d_allineate-320"><a href="#v_3d_allineate-320"><span class="linenos">320</span></a><span class="sd">        quiet: Don&#39;t print out verbose stuff.</span>
+</span><span id="v_3d_allineate-321"><a href="#v_3d_allineate-321"><span class="linenos">321</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v_3d_allineate-322"><a href="#v_3d_allineate-322"><span class="linenos">322</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_allineate-323"><a href="#v_3d_allineate-323"><span class="linenos">323</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAllineateOutputs`).</span>
+</span><span id="v_3d_allineate-324"><a href="#v_3d_allineate-324"><span class="linenos">324</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_allineate-325"><a href="#v_3d_allineate-325"><span class="linenos">325</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v_3d_allineate-326"><a href="#v_3d_allineate-326"><span class="linenos">326</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ALLINEATE_METADATA</span><span class="p">)</span>
+</span><span id="v_3d_allineate-327"><a href="#v_3d_allineate-327"><span class="linenos">327</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_allineate_params</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">param_save</span><span class="o">=</span><span class="n">param_save</span><span class="p">,</span> <span class="n">param_apply</span><span class="o">=</span><span class="n">param_apply</span><span class="p">,</span> <span class="n">matrix_save</span><span class="o">=</span><span class="n">matrix_save</span><span class="p">,</span> <span class="n">matrix_apply</span><span class="o">=</span><span class="n">matrix_apply</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="n">cost</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="n">interp</span><span class="p">,</span> <span class="n">final</span><span class="o">=</span><span class="n">final</span><span class="p">,</span> <span class="n">nmatch</span><span class="o">=</span><span class="n">nmatch</span><span class="p">,</span> <span class="n">nopad</span><span class="o">=</span><span class="n">nopad</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span>
+</span><span id="v_3d_allineate-328"><a href="#v_3d_allineate-328"><span class="linenos">328</span></a>    <span class="k">return</span> <span class="n">v_3d_allineate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -528,6 +645,118 @@
 
 <blockquote>
   <p>NamedTuple of outputs (described in <code><a href="#V3dAllineateOutputs">V3dAllineateOutputs</a></code>).</p>
+</blockquote>
+</div>
+
+
+                </section>
+                <section id="v_3d_allineate_params">
+                            <input id="v_3d_allineate_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">v_3d_allineate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">source</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_allineate</span><span class="o">.</span><span class="n">V3dAllineateParameters</span>:</span></span>
+
+                <label class="view-source-button" for="v_3d_allineate_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#v_3d_allineate_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_allineate_params-85"><a href="#v_3d_allineate_params-85"><span class="linenos"> 85</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_allineate_params</span><span class="p">(</span>
+</span><span id="v_3d_allineate_params-86"><a href="#v_3d_allineate_params-86"><span class="linenos"> 86</span></a>    <span class="n">source</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-87"><a href="#v_3d_allineate_params-87"><span class="linenos"> 87</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-88"><a href="#v_3d_allineate_params-88"><span class="linenos"> 88</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-89"><a href="#v_3d_allineate_params-89"><span class="linenos"> 89</span></a>    <span class="n">param_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-90"><a href="#v_3d_allineate_params-90"><span class="linenos"> 90</span></a>    <span class="n">param_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-91"><a href="#v_3d_allineate_params-91"><span class="linenos"> 91</span></a>    <span class="n">matrix_save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-92"><a href="#v_3d_allineate_params-92"><span class="linenos"> 92</span></a>    <span class="n">matrix_apply</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-93"><a href="#v_3d_allineate_params-93"><span class="linenos"> 93</span></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-94"><a href="#v_3d_allineate_params-94"><span class="linenos"> 94</span></a>    <span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-95"><a href="#v_3d_allineate_params-95"><span class="linenos"> 95</span></a>    <span class="n">final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-96"><a href="#v_3d_allineate_params-96"><span class="linenos"> 96</span></a>    <span class="n">nmatch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-97"><a href="#v_3d_allineate_params-97"><span class="linenos"> 97</span></a>    <span class="n">nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-98"><a href="#v_3d_allineate_params-98"><span class="linenos"> 98</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-99"><a href="#v_3d_allineate_params-99"><span class="linenos"> 99</span></a>    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-100"><a href="#v_3d_allineate_params-100"><span class="linenos">100</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAllineateParameters</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-101"><a href="#v_3d_allineate_params-101"><span class="linenos">101</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v_3d_allineate_params-102"><a href="#v_3d_allineate_params-102"><span class="linenos">102</span></a><span class="sd">    Build parameters.</span>
+</span><span id="v_3d_allineate_params-103"><a href="#v_3d_allineate_params-103"><span class="linenos">103</span></a><span class="sd">    </span>
+</span><span id="v_3d_allineate_params-104"><a href="#v_3d_allineate_params-104"><span class="linenos">104</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_allineate_params-105"><a href="#v_3d_allineate_params-105"><span class="linenos">105</span></a><span class="sd">        source: Source dataset file.</span>
+</span><span id="v_3d_allineate_params-106"><a href="#v_3d_allineate_params-106"><span class="linenos">106</span></a><span class="sd">        prefix: Output prefix.</span>
+</span><span id="v_3d_allineate_params-107"><a href="#v_3d_allineate_params-107"><span class="linenos">107</span></a><span class="sd">        base: Base dataset file.</span>
+</span><span id="v_3d_allineate_params-108"><a href="#v_3d_allineate_params-108"><span class="linenos">108</span></a><span class="sd">        param_save: Save the warp parameters in ASCII (.1D) format into file.</span>
+</span><span id="v_3d_allineate_params-109"><a href="#v_3d_allineate_params-109"><span class="linenos">109</span></a><span class="sd">        param_apply: Read warp parameters from file and apply them to the\</span>
+</span><span id="v_3d_allineate_params-110"><a href="#v_3d_allineate_params-110"><span class="linenos">110</span></a><span class="sd">            source dataset.</span>
+</span><span id="v_3d_allineate_params-111"><a href="#v_3d_allineate_params-111"><span class="linenos">111</span></a><span class="sd">        matrix_save: Save the transformation matrix for each sub-brick into\</span>
+</span><span id="v_3d_allineate_params-112"><a href="#v_3d_allineate_params-112"><span class="linenos">112</span></a><span class="sd">            file.</span>
+</span><span id="v_3d_allineate_params-113"><a href="#v_3d_allineate_params-113"><span class="linenos">113</span></a><span class="sd">        matrix_apply: Use the matrices in file to define the spatial\</span>
+</span><span id="v_3d_allineate_params-114"><a href="#v_3d_allineate_params-114"><span class="linenos">114</span></a><span class="sd">            transformations to be applied.</span>
+</span><span id="v_3d_allineate_params-115"><a href="#v_3d_allineate_params-115"><span class="linenos">115</span></a><span class="sd">        cost: Defines the &#39;cost&#39; function that defines the matching between the\</span>
+</span><span id="v_3d_allineate_params-116"><a href="#v_3d_allineate_params-116"><span class="linenos">116</span></a><span class="sd">            source and the base.</span>
+</span><span id="v_3d_allineate_params-117"><a href="#v_3d_allineate_params-117"><span class="linenos">117</span></a><span class="sd">        interp: Defines interpolation method to use during matching process.</span>
+</span><span id="v_3d_allineate_params-118"><a href="#v_3d_allineate_params-118"><span class="linenos">118</span></a><span class="sd">        final: Defines the interpolation mode used to create the output dataset.</span>
+</span><span id="v_3d_allineate_params-119"><a href="#v_3d_allineate_params-119"><span class="linenos">119</span></a><span class="sd">        nmatch: Use at most &#39;nnn&#39; scattered points to match the datasets.</span>
+</span><span id="v_3d_allineate_params-120"><a href="#v_3d_allineate_params-120"><span class="linenos">120</span></a><span class="sd">        nopad: Do not use zero-padding on the base image.</span>
+</span><span id="v_3d_allineate_params-121"><a href="#v_3d_allineate_params-121"><span class="linenos">121</span></a><span class="sd">        verbose: Print out verbose progress reports.</span>
+</span><span id="v_3d_allineate_params-122"><a href="#v_3d_allineate_params-122"><span class="linenos">122</span></a><span class="sd">        quiet: Don&#39;t print out verbose stuff.</span>
+</span><span id="v_3d_allineate_params-123"><a href="#v_3d_allineate_params-123"><span class="linenos">123</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_allineate_params-124"><a href="#v_3d_allineate_params-124"><span class="linenos">124</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="v_3d_allineate_params-125"><a href="#v_3d_allineate_params-125"><span class="linenos">125</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_allineate_params-126"><a href="#v_3d_allineate_params-126"><span class="linenos">126</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="v_3d_allineate_params-127"><a href="#v_3d_allineate_params-127"><span class="linenos">127</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;3dAllineate&quot;</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-128"><a href="#v_3d_allineate_params-128"><span class="linenos">128</span></a>        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-129"><a href="#v_3d_allineate_params-129"><span class="linenos">129</span></a>        <span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="n">prefix</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-130"><a href="#v_3d_allineate_params-130"><span class="linenos">130</span></a>        <span class="s2">&quot;nopad&quot;</span><span class="p">:</span> <span class="n">nopad</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-131"><a href="#v_3d_allineate_params-131"><span class="linenos">131</span></a>        <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="n">verbose</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-132"><a href="#v_3d_allineate_params-132"><span class="linenos">132</span></a>        <span class="s2">&quot;quiet&quot;</span><span class="p">:</span> <span class="n">quiet</span><span class="p">,</span>
+</span><span id="v_3d_allineate_params-133"><a href="#v_3d_allineate_params-133"><span class="linenos">133</span></a>    <span class="p">}</span>
+</span><span id="v_3d_allineate_params-134"><a href="#v_3d_allineate_params-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-135"><a href="#v_3d_allineate_params-135"><span class="linenos">135</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">base</span>
+</span><span id="v_3d_allineate_params-136"><a href="#v_3d_allineate_params-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">param_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-137"><a href="#v_3d_allineate_params-137"><span class="linenos">137</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;param_save&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_save</span>
+</span><span id="v_3d_allineate_params-138"><a href="#v_3d_allineate_params-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">param_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-139"><a href="#v_3d_allineate_params-139"><span class="linenos">139</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;param_apply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_apply</span>
+</span><span id="v_3d_allineate_params-140"><a href="#v_3d_allineate_params-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">matrix_save</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-141"><a href="#v_3d_allineate_params-141"><span class="linenos">141</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;matrix_save&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_save</span>
+</span><span id="v_3d_allineate_params-142"><a href="#v_3d_allineate_params-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">matrix_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-143"><a href="#v_3d_allineate_params-143"><span class="linenos">143</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;matrix_apply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_apply</span>
+</span><span id="v_3d_allineate_params-144"><a href="#v_3d_allineate_params-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-145"><a href="#v_3d_allineate_params-145"><span class="linenos">145</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost</span>
+</span><span id="v_3d_allineate_params-146"><a href="#v_3d_allineate_params-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">interp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-147"><a href="#v_3d_allineate_params-147"><span class="linenos">147</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;interp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp</span>
+</span><span id="v_3d_allineate_params-148"><a href="#v_3d_allineate_params-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">final</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-149"><a href="#v_3d_allineate_params-149"><span class="linenos">149</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;final&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final</span>
+</span><span id="v_3d_allineate_params-150"><a href="#v_3d_allineate_params-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">nmatch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_allineate_params-151"><a href="#v_3d_allineate_params-151"><span class="linenos">151</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;nmatch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nmatch</span>
+</span><span id="v_3d_allineate_params-152"><a href="#v_3d_allineate_params-152"><span class="linenos">152</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>source:</strong>  Source dataset file.</li>
+<li><strong>prefix:</strong>  Output prefix.</li>
+<li><strong>base:</strong>  Base dataset file.</li>
+<li><strong>param_save:</strong>  Save the warp parameters in ASCII (.1D) format into file.</li>
+<li><strong>param_apply:</strong>  Read warp parameters from file and apply them to the            source dataset.</li>
+<li><strong>matrix_save:</strong>  Save the transformation matrix for each sub-brick into            file.</li>
+<li><strong>matrix_apply:</strong>  Use the matrices in file to define the spatial            transformations to be applied.</li>
+<li><strong>cost:</strong>  Defines the 'cost' function that defines the matching between the            source and the base.</li>
+<li><strong>interp:</strong>  Defines interpolation method to use during matching process.</li>
+<li><strong>final:</strong>  Defines the interpolation mode used to create the output dataset.</li>
+<li><strong>nmatch:</strong>  Use at most 'nnn' scattered points to match the datasets.</li>
+<li><strong>nopad:</strong>  Do not use zero-padding on the base image.</li>
+<li><strong>verbose:</strong>  Print out verbose progress reports.</li>
+<li><strong>quiet:</strong>  Don't print out verbose stuff.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
 </blockquote>
 </div>
 
